@@ -1,0 +1,32 @@
+
+/*
+SELECT * FROM PS_PROD_GROUP_TBL
+*/
+DROP PROCEDURE Odin_CompareProdGroupTbl
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_CompareProdGroupTbl
+		@prodGroup VARCHAR(30)='',
+		@prodGroupType CHAR(4)=''
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	SELECT * FROM PS_PROD_GROUP_TBL
+	WHERE PROD_GRP_TYPE= @prodGroupType
+		AND PRODUCT_GROUP = @prodGroup
+		AND EFF_STATUS ='A'
+
+
+END
+GO
+
+GRANT EXECUTE ON Odin_CompareProdGroupTbl TO Odin
+

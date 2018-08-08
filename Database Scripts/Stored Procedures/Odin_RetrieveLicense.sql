@@ -1,0 +1,23 @@
+
+DROP PROCEDURE Odin_RetrieveLicense
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_RetrieveLicense
+		@statsCode VARCHAR(30)=''
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	SELECT LICENSE FROM Odin_Web_License
+
+
+END
+GO
+
+GRANT EXECUTE ON Odin_RetrieveLicense TO Odin

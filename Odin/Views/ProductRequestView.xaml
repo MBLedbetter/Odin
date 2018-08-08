@@ -1,0 +1,315 @@
+﻿<Window
+    x:Class="Odin.Views.ProductRequestView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:app="clr-namespace:Odin"
+    Title="ProductRequestView"
+    Height="554"
+    Width="700">
+    <Grid
+        Margin="0,0,0,4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                Width="77" />
+            <ColumnDefinition
+                Width="Auto"
+                MinWidth="104" />
+            <ColumnDefinition
+                Width="Auto"
+                MinWidth="185" />
+            <ColumnDefinition
+                Width="Auto"
+                MinWidth="29" />
+            <ColumnDefinition
+                Width="Auto"
+                MinWidth="296" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="auto" />
+            <RowDefinition
+                Height="auto" />
+            <RowDefinition
+                Height="195" />
+            <RowDefinition
+                Height="15" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel
+            FlowDirection="RightToLeft"
+            Grid.Row="6"
+            Grid.ColumnSpan="5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Bottom"
+            Orientation="Horizontal"
+            Height="0"
+            Margin="0,0,0,52">
+        </StackPanel>
+        <ListView
+            SelectedItem="{Binding SelectedRequest}"
+            Grid.ColumnSpan="5"
+            ItemsSource="{Binding RequestList}"
+            HorizontalAlignment="Left"
+            Height="200"
+            Margin="10,10,0,0"
+            Grid.Row="2"
+            VerticalAlignment="Top"
+            Grid.RowSpan="2"
+            Width="670">
+            <ListView.ItemContainerStyle>
+                <Style
+                    TargetType="{x:Type ListViewItem}">
+                    <EventSetter
+                        Event="Control.MouseDoubleClick"
+                        Handler="Request_MouseDoubleClick" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding RequestId}"
+                            Width="auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Content="RequestId"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding RequestStatus}"
+                            Width="auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Content="RequestStatus"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding UserName}"
+                            Width="auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Content="User"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding DttmSubmitted}"
+                            Width="auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Content="Date Submitted"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding GroupComment}"
+                            Width="auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Content="Comments"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView
+            Grid.ColumnSpan="5"
+            SelectedItem="{Binding SelectedRequest2}"
+            ItemsSource="{Binding SelectedRequestlingList}"
+            HorizontalAlignment="Left"
+            Height="200"
+            Margin="10,10,0,0"
+            Grid.Row="4"
+            VerticalAlignment="Top"
+            Width="670">
+            <ListView.ItemContainerStyle>
+                <Style
+                    TargetType="{x:Type ListViewItem}">
+                    <EventSetter
+                        Event="Control.MouseDoubleClick"
+                        Handler="ItemRequest_MouseDoubleClick" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding RequestId}"
+                            Width="auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Content="RequestId"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding ItemId}"
+                            Width="auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Content="ItemId"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding UserName}"
+                            Width="auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Content="User Name"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding ItemStatus}"
+                            Width="auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Content="Item Status"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding RequestStatus}"
+                            Width="auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Content="Request Status"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding DttmSubmitted}"
+                            Width="auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Content="Date | Time Submitted"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding Comment}"
+                            Width="auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Content="Comments"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button
+            Command="{Binding CreateCSVCommand}"
+            Content="Create CSV"
+            Grid.Column="4"
+            Margin="0,7,12,6"
+            HorizontalAlignment="Right"
+            Grid.Row="5"
+            VerticalAlignment="Center"
+            Visibility="{Binding ControlVisibility}"
+            Width="95"
+            Height="20" />
+        <Button
+            Command="{Binding SubmitRequestCommand}"
+            Content="Submit Confirmation"
+            Grid.Column="4"
+            Height="29"
+            Margin="0,0,112,31"
+            HorizontalAlignment="Right"
+            Grid.Row="6"
+            VerticalAlignment="Center"
+            Visibility="{Binding ControlVisibility}"
+            Width="135" />
+        <Button
+            Content="Cancel"
+            Grid.Column="4"
+            Margin="0,0,12,31"
+            HorizontalAlignment="Right"
+            Grid.Row="6"
+            Height="29"
+            VerticalAlignment="Center"
+            Width="95"
+            Click="CancelButton_Click" />
+        <Button
+            Command="{Binding PullImagesCommand}"
+            Content="Pull Images"
+            VerticalAlignment="Center"
+            Grid.Column="2"
+            Margin="157,7,0,7"
+            HorizontalAlignment="Left"
+            Grid.Row="5"
+            Visibility="{Binding ControlVisibility}"
+            Width="101"
+            Height="20" Grid.ColumnSpan="3" />
+        <Button
+            Command="{Binding ChangeRequestStatusCommand}"
+            Content="Change Request Status"
+            VerticalAlignment="Center"
+            Grid.Column="4"
+            Margin="49,7,0,7"
+            HorizontalAlignment="Left"
+            Grid.Row="5"
+            Visibility="{Binding ControlVisibility}"
+            Width="135"
+            Height="20" />
+        <!-- Request Status -->
+        <Label
+            Content="Request Status"
+            Grid.Row="5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Height="26"
+            Visibility="{Binding ControlVisibility}"
+            Margin="10,4,0,4"
+            Width="89" Grid.ColumnSpan="2" />
+        <ComboBox
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Height="24"
+            Grid.Row="5"
+            Grid.Column="1"
+            IsEnabled="{Binding IsRequestSelected}"
+            ItemsSource="{Binding RequestStatusList}"
+            Text="{Binding SelectedRequestStatus}"
+            Width="180"
+            Visibility="{Binding ControlVisibility}"
+            Margin="0,4,88,6" Grid.ColumnSpan="2" />
+
+    </Grid>
+</Window>

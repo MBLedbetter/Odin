@@ -1,0 +1,26 @@
+
+DROP PROCEDURE Odin_RemoveOption
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_RemoveOption
+		@optionId VARCHAR(250) = '',
+		@value VARCHAR(250) = ''
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	DELETE FROM ODIN_OPTIONS_TABLE 
+	WHERE OPTION_ID = @optionId
+	AND VALUE = @value
+
+END
+GO
+
+GRANT EXECUTE ON Odin_RemoveOption TO Odin

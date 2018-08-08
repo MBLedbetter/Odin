@@ -1,0 +1,52 @@
+/*
+SELECT * FROM PS_BU_ITEMS_CONFIG ORDER BY INV_ITEM_ID
+*/
+DROP PROCEDURE Odin_InsertBuItemsConfig
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_InsertBuItemsConfig(
+	@itemId varchar(18),
+	@busUnit varchar(5)
+	)
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+	IF NOT EXISTS (SELECT * FROM PS_BU_ITEMS_CONFIG 
+                   WHERE INV_ITEM_ID = @itemId
+                   AND BUSINESS_UNIT = @busUnit
+				   )
+		   BEGIN
+	INSERT INTO PS_BU_ITEMS_CONFIG(
+		BUSINESS_UNIT,
+		INV_ITEM_ID,
+		RULE_BASED_COMP,
+		RULE_BASED_OPER,
+		REF_BOM_ITEM,
+		CFG_LEAD_TIME,
+		SHIP_TYPE_ID,
+		BUSINESS_UNIT_CP,
+		LASTUPDDTTM
+	)
+	VALUES(
+		@busUnit,		--BUSINESS_UNIT
+		@itemId,		--INV_ITEM_ID
+		'Y',			--RULE_BASED_COMP
+		'Y',			--RULE_BASED_OPER
+		'',				--REF_BOM_ITEM
+		0.00,			--CFG_LEAD_TIME
+		'',				--SHIP_TYPE_ID
+		'',				--BUSINESS_UNIT_CP
+		GETDATE()		--LASTUPDDTTM
+	)				
+
+	END
+END
+GO
+
+GRANT EXECUTE ON Odin_InsertBuItemsConfig TO Odin

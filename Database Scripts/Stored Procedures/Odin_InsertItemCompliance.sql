@@ -1,0 +1,40 @@
+/*
+SELECT * FROM PS_ITEM_COMPLIANCE
+*/
+DROP PROCEDURE Odin_InsertItemCompliance
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_InsertItemCompliance
+
+	@itemId varchar(14) = ''
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+	IF NOT EXISTS (SELECT * FROM PS_ITEM_COMPLIANCE 
+                   WHERE INV_ITEM_ID = @itemId
+				   )
+		   BEGIN
+	INSERT INTO PS_ITEM_COMPLIANCE(
+			SETID,
+			INV_ITEM_ID,
+			PROP_65_COMPLIANT
+			)
+	VALUES(
+			'SHARE',			--SETID
+			@itemId,			--INV_ITEM_ID
+			'N'					--PROP_65_COMPLAINT
+			)
+			END
+
+END
+GO
+
+GRANT EXECUTE ON Odin_InsertItemCompliance TO Odin
+GO

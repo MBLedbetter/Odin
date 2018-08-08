@@ -1,0 +1,60 @@
+/*
+SELECT * FROM PS_CUSTOMER_PRODUCT_ATTRIBUTES
+SELECT * FROM PS_ITEM_ATTRIB_EX
+ALTER TABLE PS_ITEM_ATTRIB_EX ADD DEFAULT '' FOR SELL_ON_ART
+DBCC OPENTRAN
+ROLLBACK
+KILL 90
+*/
+DROP PROCEDURE Odin_InsertCustomerProductAttributes
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_InsertCustomerProductAttributes
+	@itemId varchar(18),
+	@customerId varchar(15),
+	@sendInventoryFlag varchar(1)
+
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+	
+	IF NOT EXISTS (SELECT * FROM PS_CUSTOMER_PRODUCT_ATTRIBUTES 
+                   WHERE PRODUCT_ID = @itemId
+				   AND CUST_ID = @customerId
+				   AND SETID ='SHARE')
+	BEGIN
+		INSERT INTO PS_CUSTOMER_PRODUCT_ATTRIBUTES(
+			SETID,
+			PRODUCT_ID,
+			CUST_ID,
+			INNERPACK_QTY,
+			CASEPACK_QTY,
+			SEND_INVENTORY)
+		VALUES(
+			'SHARE',				-- SETID
+			@itemId,				-- PRODUCT_ID
+			@customerId,			-- CUST_ID
+			0,						-- INNERPACK_QTY
+			0,						-- CASEPACK_QTY
+			@sendInventoryFlag)		-- SEND_INVENTORY
+		 END
+
+	UPDATE PS_CUSTOMER_PRODUCT_ATTRIBUTES
+	SET
+		SEND_INVENTORY = @sendInventoryFlag
+	WHERE 
+		PRODUCT_ID = @itemId
+		AND CUST_ID = @customerId
+		AND SETID = 'SHARE'
+END
+GO
+
+GRANT EXECUTE ON Odin_InsertCustomerProductAttributes TO Odin
+GO

@@ -1,0 +1,35 @@
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[ODIN_ROLE_PERMISSIONS](
+	[ROLE] [varchar](255) NOT NULL,
+	[PERMISSION] [varchar](255) NOT NULL
+)
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+/*
+SELECT * FROM Odin_RolePermissions
+Drop table ODIN_ROLE_PERMISSIONS
+*/
+INSERT INTO Odin_RolePermissions
+Values('ADMIN','ADMIN_CONTROLS')
+INSERT INTO Odin_RolePermissions
+Values('ADMIN','SAVE_ITEMS')
+INSERT INTO Odin_RolePermissions
+Values('MARKETING','WEB_SUBMIT')
+INSERT INTO Odin_RolePermissions
+Values('MARKETING','SAVE_ITEMS')
+INSERT INTO Odin_RolePermissions
+Values('OPERATIONS','SAVE_ITEMS')
+INSERT INTO Odin_RolePermissions
+Values('ADMIN','WEB_SUBMIT')

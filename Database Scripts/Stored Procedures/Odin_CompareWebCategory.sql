@@ -1,0 +1,24 @@
+
+DROP PROCEDURE Odin_CompareWebCategory
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_CompareWebCategory
+		@category VARCHAR(MAX) = ''
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	SELECT ID FROM Odin_WebCategories WHERE CATEGORY=@category
+
+
+END
+GO
+
+GRANT EXECUTE ON Odin_CompareWebCategory TO Odin

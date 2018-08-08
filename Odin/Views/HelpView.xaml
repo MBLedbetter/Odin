@@ -1,0 +1,56 @@
+﻿<Window x:Class="Odin.Views.HelpView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:app="clr-namespace:Odin"
+        Title="Help" 
+        Height="740" 
+        Width="1046"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TabControl
+            VerticalAlignment="Top" Margin="10,0" Height="658">
+            <TabItem
+                Header="How To Odin">
+                <Grid>
+                    <WebBrowser 
+                        HorizontalAlignment="Left"
+                            Height="610"
+                            Margin="10"
+                            VerticalAlignment="Top"
+                            Width="992"
+                            Name="MainBrowser"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem
+                Header="Required Fields">
+                <Grid>
+                    <WebBrowser 
+                        HorizontalAlignment="Left"
+                            Height="610"
+                            Margin="10"
+                            VerticalAlignment="Top"
+                            Width="992"
+                            Name="RequiredFieldBrowser"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <StackPanel
+            FlowDirection="RightToLeft"
+            Grid.Row="27"
+            Grid.ColumnSpan="7"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Bottom"
+            Orientation="Horizontal">
+            <Button
+                Height="26"
+                Margin="10"
+                Width="80"
+                Content="Exit"
+                Click="CancelButton_Click" />
+
+        </StackPanel>
+    </Grid>
+</Window>

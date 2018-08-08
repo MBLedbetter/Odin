@@ -1,0 +1,164 @@
+﻿<Window
+    x:Class="Odin.Views.FindItemView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="{Binding Title}"
+    Height="320"
+    MaxWidth="500"
+    Width="500">
+    <Grid Margin="0,0,2,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                Width="120" />
+            <ColumnDefinition
+                Width="*" />
+            <ColumnDefinition
+                Width="120" />
+            <ColumnDefinition
+                Width="120" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="50" />
+            <RowDefinition
+                Height="24" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="50" />
+            <RowDefinition
+                Height="20" />
+        </Grid.RowDefinitions>
+
+        <!-- Item ID-->
+        <Label
+            Content="Search For :"
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="10,9,0,16"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center" />
+        <TextBox
+            HorizontalAlignment="Left"
+            Height="23"
+            Margin="10,13,0,13"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Grid.Row="0"
+            TextWrapping="Wrap"
+            Text="{Binding Path=SearchInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"             
+            VerticalContentAlignment="Center"
+            Width="232">
+            <TextBox.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding EnterKeyCommand}"/>
+            </TextBox.InputBindings>
+        </TextBox>
+        <Button
+            Command="{Binding FindItemCommand}"
+            Content="Find Item"            
+            Grid.Column="3"
+            Grid.Row="0"
+            HorizontalAlignment="Left"
+            Margin="10,14,0,0"
+            VerticalAlignment="Top"
+            Width="105"
+            Height="24"
+            IsEnabled="{Binding ButtonVisibility}" />
+        <!-- Button
+            Content="Remove Item"
+            Grid.Column="3"
+            Grid.Row="2"
+            HorizontalAlignment="Right"
+            Margin="0,44,5,0"
+            VerticalAlignment="Top"
+            Width="105"
+            Command="{Binding RemoveItemCommand}"
+            Height="27" /-->
+        <Button
+            Content="Add Excel List"
+            Grid.Column="3"
+            Grid.Row="2"
+            HorizontalAlignment="Left"
+            Margin="10,10,0,0"
+            VerticalAlignment="Top"
+            Width="105"
+            Command="{Binding AddListCommand}"
+            Height="25" 
+            IsEnabled="{Binding ButtonVisibility}" />
+        <Button
+            Height="26"
+            Grid.Column="3"
+            Grid.Row="3"
+            Content="Cancel"
+            Click="CancelButton_Click"
+            Margin="10"/>
+        <Button
+            Height="26"
+            Grid.Column="2"
+            Grid.Row="3"
+            Content="Submit"
+            Click="SubmitButton_Click"
+            VerticalAlignment="Top"
+            IsEnabled="{Binding SubmitButtonVisibility}" 
+            Margin="10"/>
+
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Content="Selected Items :"
+            Margin="10,0" />
+        <ListView
+            SelectedItem="{Binding SelectedItem}"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Grid.Row="2"
+            HorizontalAlignment="Left"
+            ItemsSource="{Binding ItemList}"
+            Margin="10,10,0,0"
+            MinHeight="125"
+            MinWidth="352"
+            VerticalAlignment="Top">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding ItemId}"
+                            Width="80">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Content="Item Id"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0"
+                                    Click="ItemId_Column_Click" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding Description}"
+                            Width="380">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Click="Description_Column_Click"
+                                    Content="Description"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBlock
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Grid.Row="4"
+            Text="{Binding ProgressText}"
+            TextAlignment="Center"
+            Height="20"
+            >
+            
+        </TextBlock>
+
+    </Grid>
+</Window>

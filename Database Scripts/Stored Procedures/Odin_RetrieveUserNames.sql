@@ -1,0 +1,21 @@
+
+DROP PROCEDURE Odin_RetrieveUserNames
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_RetrieveUserNames
+AS
+BEGIN
+
+	SELECT DISTINCT UserName FROM Odin_UserRoles
+
+END
+GO
+
+GRANT EXECUTE ON Odin_RetrieveUserNames TO Odin
+GO

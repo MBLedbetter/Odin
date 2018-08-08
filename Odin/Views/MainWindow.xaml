@@ -1,0 +1,1555 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ribbon="clr-namespace:DevComponents.WpfRibbon;assembly=DevComponents.WpfRibbon"
+    xmlns:Controls="clr-namespace:DevComponents.WPF.Controls;assembly=DevComponents.WPF.Controls"
+    x:Class="Odin.Views.MainWindow"
+    Title="{Binding WindowTitle}"
+    Height="630"
+    Width="966"
+    Background="Black"
+    Loaded="Window_Loaded">
+    <Grid
+        Background="LightGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="139*" />
+            <ColumnDefinition Width="236*"/>
+            <ColumnDefinition Width="104*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="150" />
+            <RowDefinition
+                Height="100*" />
+            <RowDefinition
+                Height="5" />
+            <RowDefinition
+                Height="100*"/>
+            <RowDefinition
+                Height="40" />
+            <RowDefinition
+                Height="30" />
+        </Grid.RowDefinitions>
+        <ribbon:Ribbon
+            LicenseKey="DAD80300DA22"
+            x:Name="ribbon"
+            SystemButtons="False" 
+            Grid.ColumnSpan="3" 
+            Grid.Row="0" 
+            Grid.RowSpan="2" SelectionChanged="ribbon_SelectionChanged"
+            >
+            <ribbon:Ribbon.ApplicationMenu>
+                <ribbon:ApplicationMenu
+                    Header="File"
+                    x:Name="FileMenu"
+                    Color="Orange">
+                    <ribbon:ApplicationMenu.Background>
+                        <LinearGradientBrush
+                            EndPoint="0.5,1"
+                            StartPoint="0.5,0">
+                            <GradientStop
+                                Color="Black"
+                                Offset="0" />
+                            <GradientStop
+                                Color="White"
+                                Offset="1" />
+                        </LinearGradientBrush>
+                    </ribbon:ApplicationMenu.Background>
+
+                    <ribbon:ApplicationMenu.Image>
+                        <Image
+                            Source="/odin;component/Resources/Images/Odin2.png" />
+                    </ribbon:ApplicationMenu.Image>
+                    <!-- "Clear Table" button -->
+                    <ribbon:ButtonDropDown
+                        Command="{Binding FormRefreshCommand}"
+                        Header="Clear Table"
+                        ToolTip="Remove all loaded products from table.">
+                    </ribbon:ButtonDropDown>
+                    <!-- "Change Database" button -->
+                    <ribbon:ButtonDropDown
+                        Command="{Binding DBSettingsCommand}"
+                        Header="Change Database Settings"
+                        ToolTip="Change the database login in information">
+                    </ribbon:ButtonDropDown>
+                    <!-- "Item Records" button -->
+                    <ribbon:ButtonDropDown
+                        Command="{Binding ItemRecordsCommand}"
+                        Header="Item Records"
+                        ToolTip="View item Records">
+                    </ribbon:ButtonDropDown>
+                    <!-- "Notification View" button -->
+                    <ribbon:ButtonDropDown
+                        Command="{Binding UpdateHistoryCommand}"
+                        Header="Notification History"
+                        ToolTip="View All Odin Updates">
+                    </ribbon:ButtonDropDown>
+                    <!-- "Options" button -->
+                    <ribbon:ButtonDropDown
+                        Command="{Binding OptionsCommand}"
+                        Header="Options"
+                        ToolTip="Set Odin Options">
+                    </ribbon:ButtonDropDown>
+                    <!-- "About" button
+                    <ribbon:ButtonDropDown
+                        Command="{Binding AboutCommand}"
+                        Header="About"
+                        ToolTip="Get information about this installment">
+                    </ribbon:ButtonDropDown -->
+                    <!-- "Help" button -->
+                    <ribbon:ButtonDropDown
+                        Command="{Binding HelpCommand}"
+                        Header="Help"
+                        ToolTip="View Odin documentation">
+                    </ribbon:ButtonDropDown>
+
+                </ribbon:ApplicationMenu>
+
+            </ribbon:Ribbon.ApplicationMenu>
+
+            <!-- "Home" tab -->
+            <ribbon:RibbonTab
+                Header="Items"
+                ToolTip='Options for adding new items to Peoplesoft'>
+                <ribbon:RibbonBarPanel
+                    Height="90">
+                    <ribbon:RibbonBar
+                        Header="New Items"
+                        HorizontalContentAlignment="Stretch">
+                        <!-- Load Items Button-->
+                        <!--ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding CreateNewItemCommand}"
+                            Header="Create New Item"
+                            ToolTip="Creates a New Item"
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Upload.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </-->
+                        <!-- Load Items Button-->
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding LoadItemsCommand}"
+                            Header="Load Item Setup Spreadsheet"
+                            ToolTip="Upload a product list"
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Add.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding ValidateSpreadsheetCommand}"
+                            Header="Validate Spreadsheet"
+                            ToolTip="Validate A Selected Spreadsheet"
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Check.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+                        <!--ribbon:ButtonDropDown
+                            Command="{Binding RequestNewCategoryCommand}"
+                            Header="Request New Category"
+                            ToolTip="Request a new category"
+                            Visibility="{Binding RequestNewCategoryVisibility}"
+                            Width="120">
+                        </-->
+
+                    </ribbon:RibbonBar>
+                    <ribbon:RibbonBar
+                        Header="Existing Items"
+                        HorizontalContentAlignment="Stretch">
+
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding FindItemCommand}"
+                            Header="Find Products"
+                            ToolTip="Get products that already exist in peoplesoft by providing a list of item Ids."
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Search.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding UpdateProductsCommand}"
+                            Header="Update Products"
+                            ToolTip="Add website info or update products already in peoplesoft by uploading an excell spreadsheet."
+                            Width="120">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Update.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding DeleteItemCommand}"
+                            Header="Remove Products"
+                            ToolTip="Upload a list of items to be removed from the website."
+                            Width="120">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Remove.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+                    </ribbon:RibbonBar>
+                    <ribbon:RibbonBar
+                        Header=""
+                        HorizontalContentAlignment="Stretch">
+
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Click="CreateFullExcel_Click" 
+                            Header="Create Full Excelll Sheet"
+                            ToolTip="Get products that already exist in peoplesoft by providing a list of item Ids."
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Download.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+                    </ribbon:RibbonBar>
+
+                </ribbon:RibbonBarPanel>
+
+            </ribbon:RibbonTab>
+            <ribbon:RibbonTab
+                Header="Templates"
+                Visibility="{Binding PermissionSaveItemVisibility}"
+                ToolTip="Options for updating existing information in Peoplesoft">
+                <ribbon:RibbonBarPanel
+                    Height="90">
+                    <ribbon:RibbonBar
+                        Header="New Templates"
+                        HorizontalContentAlignment="Stretch">
+                        <!-- Create Template Button-->
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding NewTemplateCommand}"
+                            Header="Create New Template"
+                            ToolTip="Create a New Default Template"
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/New.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+                        <!-- Load Template Button-->
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding LoadTemplateCommand}"
+                            Header="Load Template"
+                            ToolTip="Create a New Default Template"
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Load.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+                    </ribbon:RibbonBar>
+                    <ribbon:RibbonBar
+                        Header="Existing Templates"
+                        HorizontalContentAlignment="Stretch">
+                        <!-- Edit Template Button-->
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding UpdateTemplateCommand}"
+                            Header="Edit Existing Template"
+                            ToolTip="Update an Existing Template"
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Edit.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+                        <!-- Edit Template Button-->
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding UploadTemplateCommand}"
+                            Header="Load Template Updates"
+                            ToolTip="Update an Existing Template"
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Load.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+                    </ribbon:RibbonBar>
+                    <ribbon:RibbonBar
+                        Header="Template etc"
+                        HorizontalContentAlignment="Stretch">
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding CreateFullTemplateCommand}"
+                            Header="Create Blank Template Excell"
+                            ToolTip="Create an empty template excell sheet."
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Download.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding TemplateAllCommand}"
+                            Header="View Existing Templates"
+                            ToolTip="Opens a window displaying all existing templates"
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Search.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+                    </ribbon:RibbonBar>
+
+                </ribbon:RibbonBarPanel>
+
+            </ribbon:RibbonTab>
+            <ribbon:RibbonTab
+                Header=" My Submissions"
+                ToolTip="Options for website removal requests.">
+                <ribbon:RibbonBarPanel
+                    Height="90">
+                    <ribbon:RibbonBar
+                        Header="Actions"
+                        HorizontalContentAlignment="Stretch">
+
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding ViewSubmissionsCommand}"
+                            Header="Review My Submissions"
+                            ToolTip="Review your past web submissions."
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Review.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+
+                    </ribbon:RibbonBar>
+
+                </ribbon:RibbonBarPanel>
+
+            </ribbon:RibbonTab>
+            <ribbon:RibbonTab
+                Header="Admin Control"
+                ToolTip="Admin Controls"
+                Visibility="{Binding PermissionAdminVisibility}"
+                >
+                <ribbon:RibbonBarPanel
+                    Height="90">
+                    <ribbon:RibbonBar
+                        Header="Actions"
+                        HorizontalContentAlignment="Stretch">
+
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding ViewSubmissionsAdminCommand}"
+                            Header="View Submissions"
+                            ToolTip="Use to view submissions."
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Search.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding ManageFieldCommand}"
+                            Header="Manage Fields"
+                            ToolTip="Manage Field Options."
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Edit.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding ManagePermisionCommand}"
+                            Header="Manage Permisions"
+                            ToolTip="Manage user permisions."
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Search.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding FindItemUpdateRecordCommand}"
+                            Header="Find Update Records"
+                            ToolTip="Find a list of updates made to an item"
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Search.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+
+                    </ribbon:RibbonBar>
+
+                </ribbon:RibbonBarPanel>
+
+            </ribbon:RibbonTab>
+            <ribbon:RibbonTab
+                Header=" Ecommerce Manager "
+                ToolTip="Ecommerce Management Tools"
+                Visibility="{Binding PermissionEcommerceControlVisibility}"
+                >
+                <ribbon:RibbonBarPanel
+                    Height="90">
+                    <ribbon:RibbonBar
+                        Header="Search"
+                        HorizontalContentAlignment="Stretch">
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding FindItemCommand}"
+                            Header="Find Products"
+                            ToolTip="Get products that already exist in peoplesoft by providing a list of item Ids."
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Search.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+                    </ribbon:RibbonBar>
+                    <ribbon:RibbonBar
+                        Header="Create"
+                        HorizontalContentAlignment="Stretch">
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding CreateEcommerceExcelCommand}"
+                            Header="Create Ecommerce Excel From Items"
+                            ToolTip="Create Ecommerce excel sheet with current items."
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/New.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding PullEcommerceCommand}"
+                            Header="Pull Ecommerce Items Date Range"
+                            ToolTip="Pull down all active amazon items."
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Download.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding OpenExcelGeneratorCommand}"
+                            Header="Excel Layout Generator"
+                            ToolTip="Create or modify excel layouts."
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Add.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+                    </ribbon:RibbonBar>
+                    <ribbon:RibbonBar
+                        Header="Addition Images"
+                        HorizontalContentAlignment="Stretch">
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding RequestEcommerceImagesCommand}"
+                            Header="Submit Additional Images"
+                            ToolTip="Submit additional item images."
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Load.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+                        <ribbon:ButtonDropDown
+                            ImagePosition="Top"
+                            Command="{Binding RequestEcommerceImageListCommand}"
+                            Header="View Existing Images"
+                            ToolTip="View a list of the existing images on the web server."
+                            Width="100">
+                            <ribbon:ButtonDropDown.Image>
+                                <Image
+                                    Source="/odin;component/Resources/Images/Search.png"
+                                    Height="32"
+                                    Width="32" />
+                            </ribbon:ButtonDropDown.Image>
+                        </ribbon:ButtonDropDown>
+                    </ribbon:RibbonBar>
+                </ribbon:RibbonBarPanel>
+            </ribbon:RibbonTab>
+        </ribbon:Ribbon>
+        <!-- Item List View -->
+        <ListView
+            SelectedItem="{Binding SelectedItem}"
+            IsSynchronizedWithCurrentItem="True"
+            ItemsSource="{Binding Items}"
+            Background="White"
+            Grid.ColumnSpan="3" 
+            Margin="0,145,0,5" 
+            Grid.RowSpan="2">
+            <ListView.ItemContainerStyle>
+                <Style
+                    TargetType="{x:Type ListViewItem}">
+                    <Setter
+                        Property="Background"
+                        Value="{Binding RowColor}" />
+                    <EventSetter
+                        Event="Control.MouseDoubleClick"
+                        Handler="itemListView_MouseDoubleClick" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView 
+                    AllowsColumnReorder="True">
+                    <GridViewColumn                        
+                        DisplayMemberBinding="{Binding ItemRow}"
+                        Width="auto">
+                        <GridViewColumnHeader
+                            Content="Line #"
+                            HorizontalContentAlignment="Left"
+                            Height="30"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Status}"
+                        Width="auto">
+                        <GridViewColumnHeader
+                            Content="Status"
+                            HorizontalContentAlignment="Left"
+                            Height="30"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ItemId}"
+                        Width="auto">
+                        <GridViewColumnHeader
+                            Command="{Binding SortCommand}"
+                            CommandParameter="ItemId"
+                            Content="Item Id"
+                            HorizontalContentAlignment="Left"
+                            Height="30"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Description}"
+                        Width="{Binding DescriptionVisibility}">
+                        <GridViewColumnHeader
+                            Content="Description"
+                            HorizontalContentAlignment="Left"
+                            Padding="10,0,0,0" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding AccountingGroup}"
+                        Width="{Binding AccountingGroupVisibility}">
+                        <GridViewColumnHeader
+                            Content="Accounting Group (Product)"
+                            Height="30"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding BillOfMaterialsString}"
+                        Width="{Binding BillOfMaterialsVisibility}">
+                        <GridViewColumnHeader
+                            Content="Bill Of Materials"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding CasepackHeight}"
+                        Width="{Binding CasepackHeightVisibility}">
+                        <GridViewColumnHeader
+                            Content="Casepack Height"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding CasepackLength}"
+                        Width="{Binding CasepackLengthVisibility}">
+                        <GridViewColumnHeader
+                            Content="Casepack Length"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding CasepackQty}"
+                        Width="{Binding CasepackQtyVisibility}">
+                        <GridViewColumnHeader
+                            Content="Casepack Quantity"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding CasepackWeight}"
+                        Width="{Binding CasepackWeightVisibility}">
+                        <GridViewColumnHeader
+                            Content="Casepack Weight"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding CasepackWidth}"
+                        Width="{Binding CasepackWidthVisibility}">
+                        <GridViewColumnHeader
+                            Content="Casepack Width"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Color}"
+                        Width="{Binding ColorVisibility}">
+                        <GridViewColumnHeader
+                            Content="Label Color"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding CountryOfOrigin}"
+                        Width="{Binding CountryOfOriginVisibility}">
+                        <GridViewColumnHeader
+                            Content="Country of Origin"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding CostProfileGroup}"
+                        Width="{Binding CostProfileGroupVisibility}">
+                        <GridViewColumnHeader
+                            Content="Cost Profile Group"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding DefaultActualCostCad}"
+                        Width="{Binding DefaultActualCostCadVisibility}">
+                        <GridViewColumnHeader
+                            Content="Default Actual Cost CAD"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding DefaultActualCostUsd}"
+                        Width="{Binding DefaultActualCostUsdVisibility}">
+                        <GridViewColumnHeader
+                            Content="Default Actual Cost USD"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding DirectImport}"
+                        Width="{Binding DirectImportVisibility}">
+                        <GridViewColumnHeader
+                            Content="Direct Import"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Duty}"
+                        Width="{Binding DutyVisibility}">
+                        <GridViewColumnHeader
+                            Content="Duty"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ean}"
+                        Width="{Binding EanVisibility}">
+                        <GridViewColumnHeader
+                            Content="EAN"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Gpc}"
+                        Width="{Binding GpcVisibility}">
+                        <GridViewColumnHeader
+                            Content="GPC"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Height}"
+                        Width="{Binding HeightVisibility}">
+                        <GridViewColumnHeader
+                            Content="Height"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ImagePath}"
+                        Width="{Binding ImagePath1Visibility}">
+                        <GridViewColumnHeader
+                            Content="Image Path"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding AltImageFile1}"
+                        Width="{Binding ImagePath2Visibility}">
+                        <GridViewColumnHeader
+                            Content="Image Path 2"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding AltImageFile2}"
+                        Width="{Binding ImagePath3Visibility}">
+                        <GridViewColumnHeader
+                            Content="Image Path 3"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding AltImageFile3}"
+                        Width="{Binding ImagePath4Visibility}">
+                        <GridViewColumnHeader
+                            Content="Image Path 4"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding AltImageFile4}"
+                        Width="{Binding ImagePath5Visibility}">
+                        <GridViewColumnHeader
+                            Content="Image Path 5"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding InnerpackHeight}"
+                        Width="{Binding InnerpackHeightVisibility}">
+                        <GridViewColumnHeader
+                            Content="Innerpack Height"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding InnerpackLength}"
+                        Width="{Binding InnerpackLengthVisibility}">
+                        <GridViewColumnHeader
+                            Content="Innerpack Length"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding InnerpackQuantity}"
+                        Width="{Binding InnerpackQuantityVisibility}">
+                        <GridViewColumnHeader
+                            Content="Innerpack Quantity"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding InnerpackWeight}"
+                        Width="{Binding InnerpackWeightVisibility}">
+                        <GridViewColumnHeader
+                            Content="Innerpack Weight"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding InnerpackWidth}"
+                        Width="{Binding InnerpackWidthVisibility}">
+                        <GridViewColumnHeader
+                            Content="Innerpack Width"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Isbn}"
+                        Width="{Binding IsbnVisibility}">
+                        <GridViewColumnHeader
+                            Content="Isbn"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ItemCategory}"
+                        Width="{Binding ItemCategoryVisibility}">
+                        <GridViewColumnHeader
+                            Content="Item Category"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ItemFamily}"
+                        Width="{Binding ItemFamilyVisibility}">
+                        <GridViewColumnHeader
+                            Content="Item Family"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ItemGroup}"
+                        Width="{Binding ItemGroupVisibility}">
+                        <GridViewColumnHeader
+                            Content="Item Group"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Language}"
+                        Width="{Binding LanguageVisibility}">
+                        <GridViewColumnHeader
+                            Content="Language"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Length}"
+                        Width="{Binding LengthVisibility}">
+                        <GridViewColumnHeader
+                            Content="Item Length"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding LicenseBeginDate}"
+                        Width="{Binding LicenseBeginDateVisibility}">
+                        <GridViewColumnHeader
+                            Content="License Begin Date"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ListPriceCad}"
+                        Width="{Binding ListPriceCadVisibility}">
+                        <GridViewColumnHeader
+                            Content="List Price CAD"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ListPriceMxn}"
+                        Width="{Binding ListPriceMxnVisibility}">
+                        <GridViewColumnHeader
+                            Content="List Price MXN"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ListPriceUsd}"
+                        Width="{Binding ListPriceUsdVisibility}">
+                        <GridViewColumnHeader
+                            Content="List Price USD"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding MfgSource}"
+                        Width="{Binding MfgSourceVisibility}">
+                        <GridViewColumnHeader
+                            Content="MFG Source"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Msrp}"
+                        Width="{Binding MsrpVisibility}">
+                        <GridViewColumnHeader
+                            Content="Msrp"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding MsrpCad}"
+                        Width="{Binding MsrpCadVisibility}">
+                        <GridViewColumnHeader
+                            Content="MsrpCad"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding MsrpMxn}"
+                        Width="{Binding MsrpMxnVisibility}">
+                        <GridViewColumnHeader
+                            Content="MsrpMxn"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ProductFormat}"
+                        Width="{Binding ProductFormatVisibility}">
+                        <GridViewColumnHeader
+                            Content="Product Format"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ProductGroup}"
+                        Width="{Binding ProductGroupVisibility}">
+                        <GridViewColumnHeader
+                            Content="ProductGroup"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ProductIdTranslationString}"
+                        Width="{Binding ProductIdTranslationVisibility}">
+                        <GridViewColumnHeader
+                            Content="Product Id Translation"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ProductLine}"
+                        Width="{Binding ProductLineVisibility}">
+                        <GridViewColumnHeader
+                            Content="Product Line"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding PricingGroup}"
+                        Width="{Binding PricingGroupVisibility}">
+                        <GridViewColumnHeader
+                            Content="Price Group (Product)"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding PrintOnDemand}"
+                        Width="{Binding PrintOnDemandVisibility}">
+                        <GridViewColumnHeader
+                            Content="Print On Demand"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding PsStatus}"
+                        Width="{Binding PsStatusVisibility}">
+                        <GridViewColumnHeader
+                            Content="PS Status"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SatCode}"
+                        Width="{Binding SatCodeVisibility}">
+                        <GridViewColumnHeader
+                            Content="SAT Code"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnAllPosters}"
+                        Width="{Binding SellOnAllPostersVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On All Posters"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnAmazon}"
+                        Width="{Binding SellOnAmazonVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Amazon"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnFanatics}"
+                        Width="{Binding SellOnFanaticsVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Fanatics"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnHayneedle}"
+                        Width="{Binding SellOnHayneedleVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Hayneedle"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnTarget}"
+                        Width="{Binding SellOnTargetVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Target"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnTrends}"
+                        Width="{Binding SellOnTrendsVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Trends"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnWalmart}"
+                        Width="{Binding SellOnWalmartVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Walmart"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnWayfair}"
+                        Width="{Binding SellOnWayfairVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Wayfair"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding StatsCode}"
+                        Width="{Binding StatsCodeVisibility}">
+                        <GridViewColumnHeader
+                            Content="Stats Code"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding StandardCost}"
+                        Width="{Binding StandardCostVisibility}">
+                        <GridViewColumnHeader
+                            Content="Default Actual Cost"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding TariffCode}"
+                        Width="{Binding TariffCodeVisibility}">
+                        <GridViewColumnHeader
+                            Content="Tariff Code"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Territory}"
+                        Width="{Binding TerritoryVisibility}">
+                        <GridViewColumnHeader
+                            Content="Territory"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Udex}"
+                        Width="{Binding UdexVisibility}">
+                        <GridViewColumnHeader
+                            Content="UDEX"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Upc}"
+                        Width="{Binding UpcVisibility}">
+                        <GridViewColumnHeader
+                            Content="UPC"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding WebsitePrice}"
+                        Width="{Binding WebsitePriceVisibility}">
+                        <GridViewColumnHeader
+                            Content="Website Price"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Weight}"
+                        Width="{Binding WeightVisibility}">
+                        <GridViewColumnHeader
+                            Content="Item Weight"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Width}"
+                        Width="{Binding WidthVisibility}">
+                        <GridViewColumnHeader
+                            Content="Item Width"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Category}"
+                        Width="{Binding CategoryVisibility}">
+                        <GridViewColumnHeader
+                            Content="Category"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Category2}"
+                        Width="{Binding Category2Visibility}">
+                        <GridViewColumnHeader
+                            Content="Category 2"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Category3}"
+                        Width="{Binding Category3Visibility}">
+                        <GridViewColumnHeader
+                            Content="Category 3"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ItemKeywords}"
+                        Width="{Binding ItemKeywordsVisibility}">
+                        <GridViewColumnHeader
+                            Content="Item Keywords"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding InStockDate}"
+                        Width="{Binding InStockDateVisibility}">
+                        <GridViewColumnHeader
+                            Content="In Stock Date"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Copyright}"
+                        Width="{Binding CopyrightVisibility}">
+                        <GridViewColumnHeader
+                            Content="Copyright"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding MetaDescription}"
+                        Width="{Binding MetaDescriptionVisibility}">
+                        <GridViewColumnHeader
+                            Content="Meta Description"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding License}"
+                        Width="{Binding LicenseVisibility}">
+                        <GridViewColumnHeader
+                            Content="License"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Property}"
+                        Width="{Binding PropertyVisibility}">
+                        <GridViewColumnHeader
+                            Content="Property"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ShortDescription}"
+                        Width="{Binding ShortDescriptionVisibility}">
+                        <GridViewColumnHeader
+                            Content="ShortDescription"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Size}"
+                        Width="{Binding SizeVisibility}">
+                        <GridViewColumnHeader
+                            Content="Size"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ProductQty}"
+                        Width="{Binding ProductQtyVisibility}">
+                        <GridViewColumnHeader
+                            Content="Product Qty"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_Asin}"
+                        Width="{Binding Ecommerce_AsinVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce ASIN"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_Bullet1}"
+                        Width="{Binding Ecommerce_Bullet1Visibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce Bullet1"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_Bullet2}"
+                        Width="{Binding Ecommerce_Bullet2Visibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce Bullet2"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_Bullet3}"
+                        Width="{Binding Ecommerce_Bullet3Visibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce Bullet3"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_Bullet4}"
+                        Width="{Binding Ecommerce_Bullet4Visibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce Bullet4"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_Bullet5}"
+                        Width="{Binding Ecommerce_Bullet5Visibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce Bullet5"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_Components}"
+                        Width="{Binding Ecommerce_ComponentsVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce Components"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_Cost}"
+                        Width="{Binding Ecommerce_CostVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce Cost"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_CountryofOrigin}"
+                        Width="{Binding Ecommerce_CountryofOriginVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce Country of Origin"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_ExternalId}"
+                        Width="{Binding Ecommerce_ExternalIdVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce ExternalID"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_ExternalIdType}"
+                        Width="{Binding Ecommerce_ExternalIdTypeVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce ExternalIdType"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_ItemHeight}"
+                        Width="{Binding Ecommerce_ItemHeightVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce ItemHeight"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_ItemLength}"
+                        Width="{Binding Ecommerce_ItemLengthVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce ItemLength"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_ItemName}"
+                        Width="{Binding Ecommerce_ItemNameVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce ItemName"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_ItemWeight}"
+                        Width="{Binding Ecommerce_ItemWeightVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce ItemWeight"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_ItemWidth}"
+                        Width="{Binding Ecommerce_ItemWidthVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce ItemWidth"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_ModelName}"
+                        Width="{Binding Ecommerce_ModelNameVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce ModelName"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_PackageHeight}"
+                        Width="{Binding Ecommerce_PackageHeightVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce PackageHeight"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_PackageLength}"
+                        Width="{Binding Ecommerce_PackageLengthVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce PackageLength"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_PackageWeight}"
+                        Width="{Binding Ecommerce_PackageWeightVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce PackageWeight"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_PackageWidth}"
+                        Width="{Binding Ecommerce_PackageWidthVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce PackageWidth"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_PageQty}"
+                        Width="{Binding Ecommerce_PageQtyVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce Page Qty"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_ProductCategory}"
+                        Width="{Binding Ecommerce_ProductCategoryVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce ProductCategory"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_ProductDescription}"
+                        Width="{Binding Ecommerce_ProductDescriptionVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce ProductDescription"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_ProductSubcategory}"
+                        Width="{Binding Ecommerce_ProductSubcategoryVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce ProductSubcategory"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_ManufacturerName}"
+                        Width="{Binding Ecommerce_ManufacturerNameVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce ManufacturerName"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_Msrp}"
+                        Width="{Binding Ecommerce_MsrpVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce Msrp"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_Size}"
+                        Width="{Binding Ecommerce_SizeVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce Size"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Ecommerce_Upc}"
+                        Width="{Binding Ecommerce_UpcVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce Upc"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <GridSplitter Grid.Row="2" 
+                      Height="5" 
+                      HorizontalAlignment="Stretch" 
+                      Grid.ColumnSpan="3" />
+        <!-- list of errors-->
+        <ListView
+            SelectedItem="{Binding SelectedError}"
+            IsSynchronizedWithCurrentItem="True"
+            ItemsSource="{Binding ItemErrors}"
+            Grid.Row="3"
+            Margin="0" Grid.ColumnSpan="3" 
+            >
+            <ListView.Background>
+                <LinearGradientBrush
+                    EndPoint="0.5,1"
+                    MappingMode="RelativeToBoundingBox"
+                    StartPoint="0.5,0">
+                    <GradientStop
+                        Color="#FFD8D8D8"
+                        Offset="1" />
+                    <GradientStop
+                        Color="White"
+                        Offset="0.379" />
+                </LinearGradientBrush>
+            </ListView.Background>
+
+            <ListView.ItemContainerStyle>
+                <Style
+                    TargetType="{x:Type ListViewItem}">
+                    <EventSetter
+                        Event="Control.MouseDoubleClick"
+                        Handler="errorListView_MouseDoubleClick" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding LineNumber}"
+                        Width="80">
+                        <GridViewColumnHeader
+                            Content="Line #"
+                            HorizontalContentAlignment="Left"
+                            Padding="10,0,0,0" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ItemIdNumber}"
+                        Width="120">
+                        <GridViewColumnHeader
+                            Content="Item Id Number"
+                            HorizontalContentAlignment="Left"
+                            Padding="10,0,0,0" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ErrorMessage}"
+                        Width="800">
+                        <GridViewColumnHeader
+                            Content="Error Message"
+                            HorizontalContentAlignment="Left"
+                            Padding="10,0,0,0" />
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button
+            Content="Save Items to Peoplesoft"
+            IsEnabled="{Binding SaveStatus}"
+            HorizontalAlignment="Right"
+            Grid.Row="4"
+            Margin="0,5,5,0"
+            Height="30"
+            Visibility="{Binding PermissionSaveItemVisibility}"
+            VerticalAlignment="Top"
+            Width="140"
+            Click="SaveButton_Click" 
+            Grid.Column="2"/>
+        <Button
+            IsEnabled="{Binding SubmitStatus}"
+            Visibility="{Binding PermissionSubmitItemVisibility}"
+            Content="Submit Website Request"
+            HorizontalAlignment="Right"
+            Height="30"
+            Grid.Row="4"
+            Margin="0,5,150,0"
+            VerticalAlignment="Top"
+            Width="141"
+            Click="SubmitButton_Click"
+            Grid.ColumnSpan="2" Grid.Column="1"/>
+        <TextBlock            
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Grid.Row="5"
+            Margin="5"
+            Text="{Binding ProgressText}"  
+            TextAlignment="Center"
+            />
+    </Grid>
+
+</Window>

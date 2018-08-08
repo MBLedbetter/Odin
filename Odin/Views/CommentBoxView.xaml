@@ -1,0 +1,65 @@
+﻿<Window x:Class="Odin.Views.CommentBoxView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CommentBoxView" Height="230" Width="450">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                Width="Auto" />
+            <ColumnDefinition
+                Width="Auto" />
+            <ColumnDefinition
+                Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Item ID-->
+        <Label
+            Content="Comments"
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="10,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Grid.ColumnSpan="2" />
+        <TextBox
+            HorizontalAlignment="Left"
+            Height="100"
+            Margin="10"
+            Grid.Row="1"
+            TextWrapping="Wrap"
+            Grid.Column="1"
+            Text="{Binding Comment}"
+            VerticalContentAlignment="Center"
+            Width="420" />
+
+        <StackPanel
+            FlowDirection="RightToLeft"
+            Grid.Row="4"
+            Grid.ColumnSpan="5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Bottom"
+            Orientation="Horizontal">
+            <Button
+                Height="26"
+                Margin="8"
+                Width="80"
+                Content="Skip"
+                Click="SkipButton_Click" />
+            <Button
+                Height="26"
+                Width="80"
+                Content="Submit"
+                Click="SubmitButton_Click" />
+
+        </StackPanel>
+    </Grid>
+</Window>

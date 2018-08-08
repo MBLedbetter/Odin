@@ -1,0 +1,186 @@
+﻿<Window x:Class="Odin.Views.PermissionsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Edit Roles and Permissions" Height="500" Width="550">
+    <Grid
+        Margin="0,0,0,35">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                Width="0" />
+            <ColumnDefinition
+                Width="69" />
+            <ColumnDefinition
+                Width="Auto" />
+            <ColumnDefinition
+                Width="Auto" />
+            <ColumnDefinition
+                Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel
+            FlowDirection="RightToLeft"
+            Grid.Row="3"
+            Grid.ColumnSpan="5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Bottom"
+            Orientation="Horizontal">
+
+        </StackPanel>
+
+        <ListView
+            ItemsSource="{Binding PermissionRoleList}"
+            SelectedItem="{Binding SelectedPermissionRole}"
+            HorizontalAlignment="Left"
+            Height="150"
+            Margin="10,10,0,0"
+            Grid.Row="4"
+            VerticalAlignment="Top"
+            Grid.Column="1"
+            Grid.ColumnSpan="4"
+            Width="500">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding Field1}"
+                            Width="250">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Click="Role_Column_Click"
+                                    Content="Role"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding Field2}"
+                            Width="250">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Click="Permission_Column_Click"
+                                    Content="Permission"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button
+            Command="{Binding CreateUserRoleCommand}"
+            Content="Create UserRole"
+            Grid.ColumnSpan="5"
+            Grid.Row="3"
+            HorizontalAlignment="Left"
+            Margin="10,14,0,0"
+            VerticalAlignment="Top"
+            Width="121" />
+        <Button
+            Content="Remove UserRole"
+            Command="{Binding RemoveUserRoleCommand}"
+            Grid.Column="4"
+            HorizontalAlignment="Left"
+            Margin="327,14,0,0"
+            Grid.Row="3"
+            VerticalAlignment="Top"
+            Width="121" />
+        <Button
+            Content="Edit UserRole"
+            Command="{Binding EditUserRoleCommand}"
+            Grid.Column="4"
+            HorizontalAlignment="Left"
+            Margin="137,14,0,0"
+            Grid.Row="3"
+            VerticalAlignment="Top"
+            Width="121" />
+        <ListView
+            ItemsSource="{Binding UserRoleList}"
+            SelectedItem="{Binding SelectedUserRole}"
+            HorizontalAlignment="Left"
+            Height="150"
+            Margin="10,10,0,0"
+            Grid.Row="2"
+            VerticalAlignment="Top"
+            Grid.Column="1"
+            Grid.ColumnSpan="4"
+            Width="500">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding Field1}"
+                            Width="250">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Click="UserName_Column_Click"
+                                    Content="User Name"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding Field2}"
+                            Width="250">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Click="UserRole_Column_Click"
+                                    Content="User Role"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button
+            Content="Remove Role/Permission"
+            Command="{Binding RemoveRolePermissionCommand}"
+            Grid.Column="4"
+            HorizontalAlignment="Left"
+            Margin="300,14,0,0"
+            Grid.Row="5"
+            VerticalAlignment="Top"
+            Width="140" />
+        <Button
+            Content="Create Role/Permission"
+            Command="{Binding CreateRolePermissionCommand}"
+            Grid.Column="4"
+            HorizontalAlignment="Left"
+            Margin="137,14,0,0"
+            Grid.Row="5"
+            VerticalAlignment="Top"
+            Width="140" />
+        <Button
+            Click="SubmitButton_Click"
+            Content="Exit"
+            Grid.Column="4"
+            Grid.Row="6"
+            HorizontalAlignment="Right"
+            Margin="0,20,20,0"
+            Padding="5"
+            VerticalAlignment="Top"
+            Width="100" />
+
+    </Grid>
+</Window>

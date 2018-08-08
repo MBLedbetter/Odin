@@ -1,0 +1,80 @@
+﻿<Window
+    x:Class="Odin.Views.PermissionEditView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:app="clr-namespace:Odin"
+    Title="PermissionEditView"
+    Height="250"
+    Width="250">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                Width="Auto" />
+            <ColumnDefinition
+                Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="*" />
+        </Grid.RowDefinitions>
+        <TextBox
+            HorizontalAlignment="Left"
+            Grid.Column="0"
+            Grid.Row="0"
+            Height="23"
+            Margin="29,47,0,0"
+            TextWrapping="Wrap"
+            Text="{Binding Field1}"
+            VerticalAlignment="Top"
+            Width="180" />
+        <ComboBox
+            HorizontalAlignment="Left"
+            Height="23"
+            Margin="29,117,0,0"
+            Grid.Column="0"
+            Grid.Row="0"
+            Text="{Binding Field2}"
+            ItemsSource="{Binding UserRoles}"
+            VerticalAlignment="Top"
+            Width="180" />
+        <TextBlock
+            HorizontalAlignment="Left"
+            Margin="29,26,0,0"
+            TextWrapping="Wrap"
+            Text="{Binding Field1Title}"
+            VerticalAlignment="Top" />
+        <TextBlock
+            HorizontalAlignment="Left"
+            Margin="29,96,0,0"
+            TextWrapping="Wrap"
+            Text="{Binding Field2Title}"
+            VerticalAlignment="Top"
+            RenderTransformOrigin="0.02,0.312" />
+        <Button
+            Click="CancelButton_Click"
+            Grid.ColumnSpan="2"
+            Content="Cancel"
+            Grid.Column="0"
+            HorizontalAlignment="Left"
+            Margin="135,20,0,0"
+            Grid.Row="3"
+            VerticalAlignment="Top"
+            Width="75" />
+        <Button
+            Click="SubmitButton_Click"
+            Content="Submit"
+            Grid.Column="0"
+            HorizontalAlignment="Left"
+            Margin="30,20,0,0"
+            Grid.Row="3"
+            VerticalAlignment="Top"
+            Width="75" />
+
+    </Grid>
+</Window>

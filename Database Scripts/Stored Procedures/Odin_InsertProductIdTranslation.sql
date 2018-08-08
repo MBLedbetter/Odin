@@ -1,0 +1,52 @@
+
+DROP PROCEDURE Odin_InsertProductIdTranslation
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_InsertProductIdTranslation
+	@fromProductId VARCHAR(18)= '',
+	@toProductId VARCHAR(18)= '',
+	@oprid VARCHAR(50)= '',
+	@qty INT = 1
+
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+	
+	BEGIN
+		
+		/*DELETE FROM PS_MARKETPLACE_PRODUCT_TRANSLATIONS WHERE FROM_PRODUCT_ID = @fromProductId AND TO_PRODUCT_ID = @toProductId;*/
+		INSERT INTO PS_MARKETPLACE_PRODUCT_TRANSLATIONS(
+			FROM_PRODUCT_ID,
+			TO_PRODUCT_ID,
+			TO_QTY,
+			DTTM_ADDED,
+			OPRID
+		)
+		VALUES(
+				@fromProductId, -- FROM_PRODUCT_ID
+				@toProductId, -- TO_PRODUCT_ID
+				@qty, -- TO_QTY
+				GETDATE(), -- DTTM_ADDED
+				@oprid -- OPRID
+		)
+	END
+
+
+
+
+END
+GO
+
+GRANT EXECUTE ON Odin_InsertProductIdTranslation TO Odin
+GO
+/*
+SELECT * FROM PS_MARKETPLACE_PRODUCT_TRANSLATIONS
+sp_help PS_MARKETPLACE_PRODUCT_TRANSLATIONS
+*/

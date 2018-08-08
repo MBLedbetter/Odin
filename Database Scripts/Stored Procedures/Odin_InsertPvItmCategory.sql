@@ -1,0 +1,60 @@
+
+DROP PROCEDURE Odin_InsertPvItmCategory
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_InsertPvItmCategory
+	@itemCategory VARCHAR(15)='',
+	@itemId varchar(18)
+	
+
+AS
+BEGIN
+
+	DECLARE @categoryID AS VARCHAR(5)
+	SET NOCOUNT ON;
+	SELECT @categoryID = CATEGORY_ID
+		FROM PS_ITM_CAT_TBL 
+		WHERE CATEGORY_CD = @itemCategory
+	
+	IF NOT EXISTS (SELECT * FROM PS_PV_ITM_CATEGORY 
+                   WHERE INV_ITEM_ID = @itemId
+				   )
+		   BEGIN
+			   INSERT INTO PS_PV_ITM_CATEGORY(
+			SETID,
+			INV_ITEM_ID,
+			CATEGORY_ID,
+			PV_PREFERRED_CAT
+	)
+	VALUES(
+	'SHARE',		--SETID
+	@itemId,		--INV_ITEM_ID
+	@categoryID,	--CATEGORY_ID
+	'Y'				--PV_PREFERRED_CAT
+	)	
+		   END
+
+	UPDATE PS_PV_ITM_CATEGORY
+	SET
+		CATEGORY_ID = @categoryID
+	WHERE
+		INV_ITEM_ID = @itemId
+		AND PV_PREFERRED_CAT = 'Y'
+		AND SETID = 'SHARE'
+
+
+
+END
+GO
+
+GRANT EXECUTE ON Odin_InsertPvItmCategory TO Odin
+GO
+/*
+sp_help PS_PV_ITM_CATEGORY
+*/

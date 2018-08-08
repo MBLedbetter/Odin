@@ -1,0 +1,52 @@
+/*
+SELECT * FROM PS_DEFAULT_LOC_INV ORDER BY INV_ITEM_ID ASC
+sp_help PS_DEFAULT_LOC_INV
+*/
+DROP PROCEDURE Odin_InsertDefaultLocInv
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_InsertDefaultLocInv(
+	@itemId varchar(18)='',
+	@busUnit varchar(5)=''
+	)
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+	IF NOT EXISTS (SELECT * FROM PS_DEFAULT_LOC_INV 
+                   WHERE INV_ITEM_ID = @itemId
+                   AND BUSINESS_UNIT = @busUnit
+				   )
+				   BEGIN
+	INSERT INTO PS_DEFAULT_LOC_INV(
+			BUSINESS_UNIT,
+			INV_ITEM_ID,
+			DEF_LOC_TYPE,
+			STORAGE_AREA,
+			STOR_LEVEL_1,
+			STOR_LEVEL_2,
+			STOR_LEVEL_3,
+			STOR_LEVEL_4
+	)
+	VALUES(
+		@busUnit,		--BUSINESS_UNIT
+		@itemId,		--INV_ITEM_ID
+		'O',			--DEF_LOC_TYPE
+		'RECV',			--STORAGE_AREA
+		'0',			--STOR_LEVEL_1
+		'0',			--STOR_LEVEL_2
+		'',				--STOR_LEVEL_3
+		''				--STOR_LEVEL_4
+	)				
+	END
+
+END
+GO
+
+GRANT EXECUTE ON Odin_InsertDefaultLocInv TO Odin
+GO

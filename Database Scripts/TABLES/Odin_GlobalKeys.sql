@@ -1,0 +1,25 @@
+-- DROP TABLE [Odin_GlobalKeys]
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[Odin_GlobalKeys]
+(
+	[KEY] VARCHAR(254) NOT NULL,
+	[VALUE] VARCHAR(254) NOT NULL
+)
+GO
+
+SET ANSI_PADDING OFF
+GO
+/*
+
+INSERT INTO Odin_GlobalKeys values('Amazon','A')
+
+*/

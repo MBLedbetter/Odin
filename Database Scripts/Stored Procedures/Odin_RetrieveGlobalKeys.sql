@@ -1,0 +1,23 @@
+
+DROP PROCEDURE Odin_RetrieveGlobalKeys
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_RetrieveGlobalKeys
+		@key VARCHAR(254) = ''
+AS
+BEGIN
+
+	SELECT VALUE
+		FROM Odin_GlobalKeys 
+		WHERE [KEY] = @key
+END
+GO
+
+GRANT EXECUTE ON Odin_RetrieveGlobalKeys TO Odin
+GO

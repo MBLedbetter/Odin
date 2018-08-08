@@ -1,0 +1,30 @@
+
+/*
+SELECT * FROM PS_PROD_GROUP_TBL
+*/
+DROP PROCEDURE Odin_RetrievePricingGroups
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_RetrievePricingGroups
+		@prodGroupType CHAR(4)=''
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	SELECT * FROM PS_PROD_GROUP_TBL
+	WHERE PROD_GRP_TYPE= @prodGroupType
+		AND EFF_STATUS ='A'
+
+
+END
+GO
+
+GRANT EXECUTE ON Odin_RetrievePricingGroups TO Odin
+

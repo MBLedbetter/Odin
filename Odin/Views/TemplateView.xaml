@@ -1,0 +1,1711 @@
+﻿<Window x:Class="Odin.Views.TemplateView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:app="clr-namespace:Odin"
+        Title="{Binding WindowTitle}" 
+        Height="780" 
+        Width="1023"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="74" />
+            <ColumnDefinition Width="66"/>
+            <ColumnDefinition Width="139" />
+            <ColumnDefinition Width="47"/>
+            <ColumnDefinition Width="140" />
+            <ColumnDefinition Width="118*" />
+            <ColumnDefinition Width="65*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                            Height="40" />
+            <RowDefinition
+                            Height="*" />
+            <RowDefinition
+                            Height="50" />
+        </Grid.RowDefinitions>
+        <!-- Template Name -->
+        <Label
+            Background="{Binding TemplateBoxColor}"
+            Content="Template Name"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Grid.Row="0"
+            HorizontalAlignment="Left"
+            Margin="0,7"
+            ToolTip="{Binding TemplateToolTip}"
+            Width="140"
+            VerticalAlignment="Center"  />
+        <TextBox
+            HorizontalAlignment="Left"
+            Margin="6,8,0,8"
+            Height="23"
+            Grid.Row="0"
+            TextWrapping="Wrap"
+            MaxLength="60"
+            Grid.Column="2"
+            IsEnabled="true"
+            Text="{Binding TemplateId}"
+            VerticalContentAlignment="Center"
+            Visibility="{Binding UpdateVisibility}"
+            Width="180" Grid.ColumnSpan="2" />
+        <!-- Template Name -->
+        <Label
+            Content="Clone Template"
+            Grid.Column="4"
+            Grid.Row="0"
+            HorizontalAlignment="Left"
+            Margin="27,8,0,7"
+            ToolTip="{Binding TemplateCloneToolTip}"
+            Visibility="{Binding UpdateVisibility}"
+            VerticalAlignment="Center"
+            Width="113"  />
+        <ComboBox
+            HorizontalAlignment="Left"
+            IsEnabled="{Binding BlockInfo}"
+            Margin="6,8,0,8"
+            Height="23"
+            Grid.Row="0"
+            Grid.Column="{Binding TemplateListColumn}"
+            Text="{Binding Template}"
+            ItemsSource="{Binding TemplateList}"
+            Width="180" 
+            Grid.ColumnSpan="3" />
+        <TabControl
+            Grid.Column="0"
+            Grid.ColumnSpan="7"
+            Grid.RowSpan="3"
+            Height="698" 
+            VerticalAlignment="Top" Margin="6,38,-6,0">
+            <TabItem
+                Background="{Binding ItemInfoTabColor}"
+                Header="      Item Info      ">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition 
+                            Width="Auto" />
+                        <ColumnDefinition
+                            Width="116.512" />
+                        <ColumnDefinition Width="75.488"/>
+                        <ColumnDefinition
+                            Width="Auto" />
+                        <ColumnDefinition
+                            Width="Auto" />
+                        <ColumnDefinition
+                            Width="Auto" />
+                        <ColumnDefinition
+                            Width="Auto" />
+                        <ColumnDefinition
+                            Width="Auto" />
+                        <ColumnDefinition
+                            Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <!-- Accounting Group -->
+                    <Label
+                        Background="{Binding AccountingGroupBoxColor}"
+                        Content="Accounting Group"
+                        ToolTip="{Binding AccountingGroupToolTip}"
+                        Width="140"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center" Margin="0,5" />
+                    <ComboBox
+                        HorizontalAlignment="Left"
+                        IsEnabled="{Binding BlockInfo}"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        ItemsSource="{Binding AccountingGroupList}"
+                        Text="{Binding AccountingGroup}"
+                        Width="180" Grid.ColumnSpan="2" />
+                    <!-- Casepack Height -->
+                    <Label
+                        Background="{Binding CasepackHeightBoxColor}"
+                        Content="Casepack Height"
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding CasepackHeightToolTip}"
+                        VerticalAlignment="Center"
+                        Width="140" Margin="0,5" />
+                    <TextBox
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="1"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="1"
+                        IsEnabled="true"
+                        Text="{Binding CasepackHeight}"
+                        VerticalContentAlignment="Center"
+                        Width="180" Grid.ColumnSpan="2" />
+                    <!-- Casepack Length -->
+                    <Label
+                        Background="{Binding CasepackLengthBoxColor}"
+                        Content="Casepack Length"
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding CasepackLengthToolTip}"
+                        VerticalAlignment="Center"
+                        Width="140" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="2"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="1"
+                        Text="{Binding CasepackLength}"
+                        VerticalContentAlignment="Center"
+                        Width="180" Grid.ColumnSpan="2" />
+                    <!-- Casepack Quantity -->
+                    <Label
+                        Background="{Binding CasepackQtyBoxColor}"
+                        Content="Casepack Quantity"
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding CasepackQtyToolTip}"
+                        VerticalAlignment="Center"
+                        Width="140" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="3"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="1"
+                        Text="{Binding CasepackQty}"
+                        VerticalContentAlignment="Center"
+                        Width="180" Grid.ColumnSpan="2" />
+                    <!-- Casepack Weight -->
+                    <Label
+                        Background="{Binding CasepackWeightBoxColor}"
+                        Content="Casepack Weight"
+                        Grid.Column="0"
+                        Grid.Row="4"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding CasepackWeightToolTip}"
+                        VerticalAlignment="Center"
+                        Width="140" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="4"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="1"
+                        Text="{Binding CasepackWeight}"
+                        VerticalContentAlignment="Center"
+                        Width="180" Grid.ColumnSpan="2" />
+                    <!-- Casepack Width -->
+                    <Label
+                        Background="{Binding CasepackWidthBoxColor}"
+                        Content="Casepack Width"
+                        Grid.Column="0"
+                        Grid.Row="5"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding CasepackWidthToolTip}"
+                        VerticalAlignment="Center"
+                        Width="140" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="5"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="1"
+                        Text="{Binding CasepackWidth}"
+                        VerticalContentAlignment="Center"
+                        Width="180" Grid.ColumnSpan="2" />
+                    <!-- Cost Profile Group -->
+                    <Label
+                        Background="{Binding CostProfileGroupBoxColor}"
+                        Content="Cost Profile Group"
+                        Grid.Row="6"
+                        Width="140"
+                        Height="30"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding CostProfileGroupToolTip}"
+                        VerticalAlignment="Center" Margin="0,3" />
+                    <ComboBox
+                        HorizontalAlignment="Left"
+                        IsEnabled="{Binding BlockInfo}"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        ItemsSource="{Binding CostProfileGroupList}"
+                        Text="{Binding CostProfileGroup}"
+                        Width="180" Grid.ColumnSpan="2" />
+                    <!-- Default Actual Cost CAD -->
+                    <Label
+                        Background="{Binding DefaultActualCostCadBoxColor}"
+                        Content="Default Actual Cost CAD"
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding DefaultActualCostCadToolTip}"
+                        Width="140"
+                        VerticalAlignment="Center" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="7"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="1"
+                        Text="{Binding DefaultActualCostCad}"
+                        VerticalContentAlignment="Center"
+                        Width="180" Grid.ColumnSpan="2" />
+                    <!-- Default Actual Cost USD -->
+                    <Label
+                        Background="{Binding DefaultActualCostUsdBoxColor}"
+                        Content="Default Actual Cost USD"
+                        Grid.Row="8"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding DefaultActualCostUsdToolTip}"
+                        Width="140"
+                        VerticalAlignment="Center" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="8"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="1"
+                        Text="{Binding DefaultActualCostUsd}"
+                        VerticalContentAlignment="Center"
+                        Width="180" Grid.ColumnSpan="2" />
+                    <!-- GPC -->
+                    <Label
+                        Content="Gpc"
+                        Background="{Binding GpcBoxColor}"
+                        Grid.Row="9"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding GpcToolTip}"
+                        VerticalAlignment="Center"
+                        Width="120" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="9"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="1"
+                        Text="{Binding Gpc}"
+                        VerticalContentAlignment="Center"
+                        Width="180" Grid.ColumnSpan="2" />
+                    <!-- Duty -->
+                    <Label
+                        Content="Duty"
+                        Background="{Binding DutyBoxColor}"
+                        Grid.Row="10"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding DutyToolTip}"
+                        VerticalAlignment="Center"
+                        Width="120" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="10"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="1"
+                        Text="{Binding Duty}"
+                        VerticalContentAlignment="Center"
+                        Width="180" Grid.ColumnSpan="2" />
+                    <!-- Height -->
+                    <Label
+                        Content="Height"
+                        Background="{Binding HeightBoxColor}"
+                        Grid.Row="11"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding HeightToolTip}"
+                        VerticalAlignment="Center"
+                        Width="120" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="11"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="1"
+                        Text="{Binding Height}"
+                        VerticalContentAlignment="Center"
+                        Width="180" Grid.ColumnSpan="2" />
+                    <!-- Innerpack Height -->
+                    <Label
+                        Content="Innerpack Height"
+                        Background="{Binding InnerpackHeightBoxColor}"
+                        Grid.Row="12"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding InnerpackHeightToolTip}"
+                        VerticalAlignment="Center"
+                        Width="120" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        Name="InnerpackHeightTxt"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="12"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="1"
+                        Text="{Binding InnerpackHeight}"
+                        VerticalContentAlignment="Center"
+                        Width="180" Grid.ColumnSpan="2" />
+                    <!-- Innerpack Length -->
+                    <Label
+                        Content="Innerpack Length"
+                        Background="{Binding InnerpackLengthBoxColor}"
+                        Grid.Row="13"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding InnerpackLengthToolTip}"
+                        VerticalAlignment="Center"
+                        Width="120" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="13"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="1"
+                        Text="{Binding InnerpackLength}"
+                        VerticalContentAlignment="Center"
+                        Width="180" Grid.ColumnSpan="2" />
+                    <!-- Innerpack Quantity -->
+                    <Label
+                        Content="Innerpack Quantity"
+                        Background="{Binding InnerpackQuantityBoxColor}"
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding InnerpackQuantityToolTip}"
+                        VerticalAlignment="Center"
+                        Width="120" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="0"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="4"
+                        Text="{Binding InnerpackQuantity}"
+                        VerticalContentAlignment="Center"
+                        Width="180" />
+                    <!-- Innerpack Weight -->
+                    <Label
+                        Content="Innerpack Weight"
+                        Background="{Binding InnerpackWeightBoxColor}"
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding InnerpackWeightToolTip}"
+                        VerticalAlignment="Center"
+                        Width="120" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="1"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="4"
+                        Text="{Binding InnerpackWeight}"
+                        VerticalContentAlignment="Center"
+                        Width="180" />
+                    <!-- Innerpack Width -->
+                    <Label
+                        Content="Innerpack Width"
+                        Background="{Binding InnerpackWidthBoxColor}"
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding InnerpackWidthToolTip}"
+                        VerticalAlignment="Center"
+                        Width="120" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="2"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="4"
+                        Text="{Binding InnerpackWidth}"
+                        VerticalContentAlignment="Center"
+                        Width="180" />
+                    <!-- Item Category -->
+                    <Label
+                        Content="Item Category"
+                        Background="{Binding ItemCategoryBoxColor}"
+                        Grid.Row="3"
+                        Width="120"
+                        Grid.Column="3"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding ItemCategoryToolTip}"
+                        VerticalAlignment="Center" Margin="0,5" />
+                    <ComboBox
+                        HorizontalAlignment="Left"
+                        IsEnabled="{Binding BlockInfo}"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="3"
+                        Grid.Column="4"
+                        ItemsSource="{Binding ItemCategories}"
+                        Text="{Binding ItemCategory}"
+                        Width="180" />
+                    <!-- Item Family -->
+                    <Label
+                        Background="{Binding ItemFamilyBoxColor}"
+                        Content="Item Family"
+                        Grid.Column="3"
+                        Grid.Row="4"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding ItemFamilyToolTip}"
+                        VerticalAlignment="Center" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="4"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="4"
+                        Text="{Binding ItemFamily}"
+                        VerticalContentAlignment="Center"
+                        Width="180" />
+                    <!-- Item Group -->
+                    <Label
+                        Content="Item Group"
+                        Background="{Binding ItemGroupBoxColor}"
+                        Grid.Row="5"
+                        Width="120"
+                        Grid.Column="3"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding ItemGroupToolTip}"
+                        VerticalAlignment="Center" Margin="0,5" />
+                    <ComboBox
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="5"
+                        Grid.Column="4"
+                        IsEnabled="{Binding BlockInfo}"
+                        ItemsSource="{Binding ItemGroups}"
+                        Text="{Binding ItemGroup}"
+                        Width="180" />
+                    <!-- Length -->
+                    <Label
+                        Content="Length"
+                        Background="{Binding LengthBoxColor}"
+                        Grid.Row="6"
+                        Grid.Column="3"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding LengthToolTip}"
+                        VerticalAlignment="Center"
+                        Width="120" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="6"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="4"
+                        Text="{Binding Length}"
+                        VerticalContentAlignment="Center"
+                        Width="180" />
+                    <!-- List Price CAD -->
+                    <Label
+                        Width="120"
+                        Content="List Price (CAD)"
+                        Background="{Binding ListPriceCadBoxColor}"
+                        Grid.Row="7"
+                        Grid.Column="3"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding ListPriceCadToolTip}"
+                        VerticalAlignment="Center" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="7"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="4"
+                        Text="{Binding ListPriceCad}"
+                        VerticalContentAlignment="Center"
+                        Width="180" />
+                    <!-- List Price MXN -->
+                    <Label
+                        Width="120"
+                        Content="List Price (MXN)"
+                        Background="{Binding ListPriceMxnBoxColor}"
+                        Grid.Row="8"
+                        Grid.Column="3"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding ListPriceMxnToolTip}"
+                        VerticalAlignment="Center" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="8"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="4"
+                        Text="{Binding ListPriceMxn}"
+                        VerticalContentAlignment="Center"
+                        Width="180" />
+                    <!-- ListPriceUSD -->
+                    <Label
+                        Background="{Binding ListPriceUsdBoxColor}"
+                        Content="List Price (USD)"
+                        Grid.Column="3"
+                        Grid.Row="9"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding ListPriceUsdToolTip}"
+                        VerticalAlignment="Center"
+                        Width="120" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="9"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="4"
+                        Text="{Binding ListPriceUsd}"
+                        VerticalContentAlignment="Center"
+                        Width="180" />
+                    <!-- MfgSource -->
+                    <Label
+                        Background="{Binding MfgSourceBoxColor}"
+                        Content="MfgSource"
+                        Grid.Column="3"
+                        Grid.Row="10"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding MfgSourceToolTip}"
+                        VerticalAlignment="Center"
+                        Width="120" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="10"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="4"
+                        Text="{Binding MfgSource}"
+                        VerticalContentAlignment="Center"
+                        Width="180" />
+                    <!-- Msrp -->
+                    <Label
+                        Background="{Binding MsrpBoxColor}"
+                        Content="Msrp USD"
+                        Grid.Column="3"
+                        Grid.Row="11"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding MsrpToolTip}"
+                        VerticalAlignment="Center"
+                        Width="120" Margin="0,5" />
+                    <TextBox
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="11"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="4"
+                        Text="{Binding Msrp}"
+                        VerticalContentAlignment="Center"
+                        Width="180" />
+                    <!-- MsrpCad -->
+                    <Label
+                        Background="{Binding MsrpCadBoxColor}"
+                        Content="Msrp CAD"
+                        Grid.Column="3"
+                        Grid.Row="12"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding MsrpCadToolTip}"
+                        VerticalAlignment="Center"
+                        Width="120" Margin="0,5" />
+                    <TextBox
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Column="4"
+                        Grid.Row="12"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Text="{Binding MsrpCad}"
+                        VerticalContentAlignment="Center"
+                        Width="180" />
+                    <!-- MsrpMxn -->
+                    <Label
+                        Background="{Binding MsrpMxnBoxColor}"
+                        Content="Msrp MXN"
+                        Grid.Column="5"
+                        Grid.Row="0"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding MsrpMxnToolTip}"
+                        VerticalAlignment="Center"
+                        Width="120" Margin="0,5" />
+                    <TextBox
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="0"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="6"
+                        Text="{Binding MsrpMxn}"
+                        VerticalContentAlignment="Center"
+                        Width="180" />
+                    <!-- Pricing Group -->
+                    <Label
+                        Background="{Binding PricingGroupBoxColor}"
+                        Content="Pricing Group"
+                        Grid.Column="5"
+                        Grid.Row="1"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding PricingGroupToolTip}"
+                        VerticalAlignment="Center"
+                        Width="110" Margin="0,5" />
+                    <ComboBox
+                        HorizontalAlignment="Left"
+                        IsEnabled="{Binding BlockInfo}"
+                        Margin="5,10,0,2"
+                        Height="23"
+                        Grid.Row="1"
+                        Grid.Column="6"
+                        ItemsSource="{Binding PricingGroups}"
+                        Text="{Binding PricingGroup}"
+                        Width="180" />
+                    <!-- Print On Demand -->
+                    <Label
+                        Background="{Binding PrintOnDemandBoxColor}"
+                        Content="Print On Demand"
+                        Grid.Column="5"
+                        Grid.Row="2"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding PrintOnDemandToolTip}"
+                        VerticalAlignment="Center"
+                        Width="110" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="2"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="6"
+                        Text="{Binding PrintOnDemand}"
+                        VerticalContentAlignment="Center"
+                        Width="30" />
+                    <!-- Product Format -->
+                    <Label
+                        Background="{Binding ProductFormatBoxColor}"
+                        Content="Product Format"
+                        Grid.Column="5"
+                        Grid.Row="3"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding ProductFormatToolTip}"
+                        VerticalAlignment="Center"
+                        Width="110" Margin="0,5" />
+                    <ComboBox
+                        HorizontalAlignment="Left"
+                        IsEnabled="{Binding BlockInfo}"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        ItemsSource="{Binding ProductFormats}"
+                        Grid.Row="3"
+                        Grid.Column="6"
+                        Text="{Binding ProductFormat}"
+                        Width="180" />
+                    <!-- Product Group -->
+                    <Label
+                        Background="{Binding ProductGroupBoxColor}"
+                        Content="Product Group"
+                        Grid.Row="4"
+                        Grid.Column="5"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding ProductGroupToolTip}"
+                        VerticalAlignment="Center"
+                        Width="110" Margin="0,5" />
+                    <ComboBox
+                        HorizontalAlignment="Left"
+                        IsEnabled="{Binding BlockInfo}"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        ItemsSource="{Binding ProductGroups}"
+                        Grid.Row="4"
+                        Grid.Column="6"
+                        Text="{Binding ProductGroup}"
+                        Width="180" />
+                    <!-- Product Line -->
+                    <Label
+                        Background="{Binding ProductLineBoxColor}"
+                        Content="Product Line"
+                        Grid.Column="5"
+                        Grid.Row="5"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding ProductLineToolTip}"
+                        VerticalAlignment="Center"
+                        Width="110" Margin="0,5" />
+                    <ComboBox
+                        HorizontalAlignment="Left"
+                        IsEnabled="{Binding BlockInfo}"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        ItemsSource="{Binding ProductLines}"
+                        Grid.Row="5"
+                        Grid.Column="6"
+                        Text="{Binding ProductLine}"
+                        Width="180" />
+
+                    <!-- PS Status -->
+                    <Label
+                        Background="{Binding PsStatusBoxColor}"
+                        Content="PS Status"
+                        Grid.Column="5"
+                        Grid.Row="6"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding PsStatusToolTip}"
+                        VerticalAlignment="Center"
+                        Width="110" Margin="0,5" />
+                    <ComboBox
+                        HorizontalAlignment="Left"
+                        IsEnabled="{Binding BlockInfo}"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="6"
+                        Grid.Column="6"
+                        ItemsSource="{Binding PsStatuses}"
+                        Text="{Binding PsStatus}"
+                        Width="80" />
+                    <!-- SAT Code -->
+                    <Label
+                        Background="{Binding SatCodeBoxColor}"
+                        Content="SAT Code"
+                        Grid.Column="5"
+                        Grid.Row="7"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding SatCodeToolTip}"
+                        VerticalAlignment="Center"
+                        Width="110" Margin="0,5"/>
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="7"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="6"
+                        Text="{Binding SatCode}"
+                        VerticalContentAlignment="Center"
+                        Width="180" />
+                    <!-- Tariff Code -->
+                    <Label
+                        Background="{Binding TariffCodeBoxColor}"
+                        Content="Tariff Code"
+                        Grid.Row="8"
+                        Grid.Column="5"
+                        Width="110"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding TariffCodeToolTip}"
+                        VerticalAlignment="Center" Margin="0,5" />
+                    <ComboBox
+                        HorizontalAlignment="Left"
+                        IsEnabled="{Binding BlockInfo}"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="8"
+                        Grid.Column="6"
+                        ItemsSource="{Binding TariffCodes}"
+                        Text="{Binding TariffCode}"
+                        Width="180" />
+                    <!-- UDEX -->
+                    <Label
+                        Background="{Binding UdexBoxColor}"
+                        Content="UDEX"
+                        Grid.Column="5"
+                        Grid.Row="9"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding UdexToolTip}"
+                        VerticalAlignment="Center"
+                        Width="110" Margin="0,5"/>
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="9"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="6"
+                        Text="{Binding Udex}"
+                        VerticalContentAlignment="Center"
+                        Width="180" />
+                    <!-- Weight -->
+                    <Label
+                        Background="{Binding WeightBoxColor}"
+                        Content="Weight"
+                        Grid.Column="5"
+                        Grid.Row="10"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding WeightToolTip}"
+                        VerticalAlignment="Center" 
+                        Width="120" Margin="0,5"/>
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="10"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="6"
+                        Text="{Binding Weight}"
+                        VerticalContentAlignment="Center"
+                        Width="180" />
+                    <!-- Width -->
+                    <Label
+                        Background="{Binding WidthBoxColor}"
+                        Content="Width"
+                        Grid.Column="5"
+                        Grid.Row="11"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding WidthToolTip}"
+                        VerticalAlignment="Center" Margin="0,5" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="11"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="6"
+                        Text="{Binding Width}"
+                        VerticalContentAlignment="Center"
+                        Width="180" />
+                </Grid>
+            </TabItem>
+            <TabItem
+                Background="{Binding WebInfoTabColor}"
+                Header="      Web Info      " 
+                Height="22" 
+                VerticalAlignment="Bottom">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="27" />
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition Width="310"/>
+                        <ColumnDefinition
+                            Width="20" />
+                        <ColumnDefinition
+                            Width="140" />
+                        <ColumnDefinition Width="310"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Category -->
+                    <Label
+                        Background="{Binding CategoryBoxColor}"
+                        Content="Category 1"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding CategoryToolTip}"
+                        VerticalAlignment="Center" Margin="0,4,0,6" Grid.ColumnSpan="2" />
+                    <ComboBox
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        ItemsSource="{Binding WebCategoryList}"
+                        Text="{Binding Category}"
+                        Width="300" Grid.ColumnSpan="1" />
+
+                    <!-- Category2 -->
+                    <Label
+                        Background="{Binding Category2BoxColor}"
+                        Content="Category 2"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding Category2ToolTip}"
+                        VerticalAlignment="Center" Margin="0,4,0,6" Grid.ColumnSpan="2" />
+                    <ComboBox
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="1"
+                        ItemsSource="{Binding WebCategoryList}"
+                        Grid.Column="2"
+                        Text="{Binding Category2}"
+                        Width="300" Grid.ColumnSpan="1" />
+
+                    <!-- Category3 -->
+                    <Label
+                        Background="{Binding Category3BoxColor}"
+                        Content="Category 3"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding Category3ToolTip}"
+                        VerticalAlignment="Center" Margin="0,9,0,10" Grid.ColumnSpan="2" />
+                    <ComboBox
+                        HorizontalAlignment="Left"
+                        Margin="6,11,0,11"
+                        Height="23"
+                        Grid.Row="2"
+                        ItemsSource="{Binding WebCategoryList}"
+                        Grid.Column="2"
+                        Text="{Binding Category3}"
+                        Width="300" Grid.ColumnSpan="1" />
+                    <!-- Copywright -->
+                    <Label
+                        Background="{Binding CopyrightBoxColor}"
+                        Content="Copyright"
+                        Grid.Row="3"
+                        Grid.RowSpan="2"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding CopyrightToolTip}"
+                        VerticalAlignment="Center" Margin="0,12,0,13" Grid.ColumnSpan="2" />
+                    <TextBox
+                        HorizontalAlignment="Left"
+                        Margin="6,7,0,8"
+                        Height="68"
+                        Grid.Row="3"
+                        Grid.RowSpan="2"
+                        TextWrapping="Wrap"
+                        MaxLength="1000"
+                        Grid.Column="2"
+                        Text="{Binding Copyright}"
+                        VerticalContentAlignment="Center"
+                        Width="300"/>
+                    <!-- Meta Description -->
+                    <Label
+                        Background="{Binding MetaDescriptionBoxColor}"
+                        Content="Meta Description"
+                        Grid.Row="0"
+                        Grid.Column="4"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding MetaDescriptionToolTip}"
+                        VerticalAlignment="Center" Margin="0,4,0,6" Grid.ColumnSpan="2" />
+                    <ComboBox
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="0"
+                        Grid.Column="5"
+                        ItemsSource="{Binding MetaDescriptions}"
+                        Text="{Binding MetaDescription}"
+                        Width="300" Grid.ColumnSpan="1" />
+                    <!-- Product Qty -->
+                    <Label
+                        Background="{Binding ProductQtyBoxColor}"
+                        Content="Product Qty"
+                        Grid.Row="1"
+                        Grid.Column="4"
+                        HorizontalAlignment="Left"
+                        IsEnabled="{Binding IsUpdate}"
+                        ToolTip="{Binding ProductQtyToolTip}"
+                        VerticalAlignment="Center" Margin="0,6,0,4" Grid.ColumnSpan="2" />
+                    <TextBox
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="1"
+                        TextWrapping="Wrap"
+                        MaxLength="1000"
+                        Grid.Column="5"
+                        IsEnabled="{Binding IsNew}"
+                        Text="{Binding ProductQty}"
+                        VerticalContentAlignment="Top"
+                        Width="300" Grid.ColumnSpan="1" />
+                    <!-- Size -->
+                    <Label
+                        Background="{Binding SizeBoxColor}"
+                        Content="Size"
+                        Grid.Row="2"
+                        Grid.Column="4"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding SizeToolTip}"
+                        VerticalAlignment="Center" Margin="0,6,0,4" />
+                    <TextBox
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="2"
+                        TextWrapping="Wrap"
+                        MaxLength="1000"
+                        Grid.Column="5"
+                        Text="{Binding Size}"
+                        VerticalContentAlignment="Top"
+                        Width="300" Grid.ColumnSpan="1" />
+                    <!-- Website Price -->
+                    <Label
+                        Background="{Binding WebsitePriceBoxColor}"
+                        Content="Website Price"
+                        Grid.Row="3"
+                        Grid.Column="4"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding WebsitePriceToolTip}"
+                        VerticalAlignment="Center" Margin="0,6,0,4" />
+                    <TextBox
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="3"
+                        TextWrapping="Wrap"
+                        MaxLength="1000"
+                        Grid.Column="5"
+                        Text="{Binding WebsitePrice}"
+                        VerticalContentAlignment="Top"
+                        Width="300" Grid.ColumnSpan="1" />
+
+                </Grid>
+            </TabItem>
+            <TabItem 
+                Header="      E-Commerce Info      "
+                Background="{Binding EcommerceTabColor}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="180"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Bullet 1-->
+                    <Label
+                        Background="{Binding EcommerceBullet1BoxColor}"
+                        Content="Bullet 1"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_Bullet1ToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="46"
+                        HorizontalAlignment="Left"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommerceBullet1}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Bullet 2-->
+                    <Label
+                        Background="{Binding EcommerceBullet2BoxColor}"
+                        Content="Bullet 2"
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_Bullet2ToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="46"
+                        HorizontalAlignment="Left"
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Grid.RowSpan="2"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommerceBullet2}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Bullet 3-->
+                    <Label
+                        Background="{Binding EcommerceBullet3BoxColor}"
+                        Content="Bullet 3"
+                        Grid.Column="0"
+                        Grid.Row="4"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_Bullet3ToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="46"
+                        HorizontalAlignment="Left"
+                        Grid.Column="1"
+                        Grid.Row="4"
+                        Grid.RowSpan="2"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommerceBullet3}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Bullet 4-->
+                    <Label
+                        Background="{Binding EcommerceBullet4BoxColor}"
+                        Content="Bullet 4"
+                        Grid.Column="0"
+                        Grid.Row="6"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_Bullet4ToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="46"
+                        HorizontalAlignment="Left"
+                        Grid.Column="1"
+                        Grid.Row="6"
+                        Grid.RowSpan="2"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommerceBullet4}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Bullet 5-->
+                    <Label
+                        Background="{Binding EcommerceBullet5BoxColor}"
+                        Content="Bullet 5"
+                        Grid.Column="0"
+                        Grid.Row="8"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_Bullet5ToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="46"
+                        HorizontalAlignment="Left"
+                        Grid.Column="1"
+                        Grid.Row="8"
+                        Grid.RowSpan="2"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommerceBullet5}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Components -->
+                    <Label
+                        Background="{Binding EcommerceComponentsBoxColor}"
+                        Content="Components"
+                        Grid.Column="0"
+                        Grid.Row="10"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_ComponentsToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        Grid.Column="1"
+                        Grid.Row="10"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommerceComponents}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Cost Amazon-->
+                    <Label
+                        Background="{Binding EcommerceCostBoxColor}"
+                        Content="Cost"
+                        Grid.Column="0"
+                        Grid.Row="11"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_CostToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        Grid.Column="1"
+                        Grid.Row="11"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommerceCost}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- External ID Type -->
+                    <Label
+                        Background="{Binding EcommerceExternalIdTypeBoxColor}"
+                        Content="External ID Type"
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding Ecommerce_ExternalIdTypeToolTip}"
+                        VerticalAlignment="Center" Margin="0,4,0,5" />
+                    <ComboBox
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Height="23"
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        ItemsSource="{Binding EcommerceExternalIdTypeGroups}"
+                        Text="{Binding EcommerceExternalIdType}"
+                        Width="170"  />
+                    <!-- Item Height -->
+                    <Label
+                        Background="{Binding EcommerceItemHeightBoxColor}"
+                        Content="Item Height"
+                        Grid.Column="2"
+                        Grid.Row="1"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_ItemHeightToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        Grid.Column="3"
+                        Grid.Row="1"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommerceItemHeight}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Item Length -->
+                    <Label
+                        Background="{Binding EcommerceItemLengthBoxColor}"
+                        Content="Item Length"
+                        Grid.Column="2"
+                        Grid.Row="2"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_ItemLengthToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        Grid.Column="3"
+                        Grid.Row="2"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommerceItemLength}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Item Weight -->
+                    <Label
+                        Background="{Binding EcommerceItemWeightBoxColor}"
+                        Content="Item Weight"
+                        Grid.Column="2"
+                        Grid.Row="3"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_ItemWeightToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        Grid.Column="3"
+                        Grid.Row="3"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommerceItemWeight}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Item Width -->
+                    <Label
+                        Background="{Binding EcommerceItemWidthBoxColor}"
+                        Content="Item Width"
+                        Grid.Column="2"
+                        Grid.Row="4"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_ItemWidthToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        Grid.Column="3"
+                        Grid.Row="4"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommerceItemWidth}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Model Name -->
+                    <Label
+                        Background="{Binding EcommerceModelNameBoxColor}"
+                        Content="Model Name"
+                        Grid.Column="2"
+                        Grid.Row="5"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_ModelNameToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        Grid.Column="3"
+                        Grid.Row="5"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommerceModelName}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Package Height -->
+                    <Label
+                        Background="{Binding EcommercePackageHeightBoxColor}"
+                        Content="Package Height"
+                        Grid.Column="2"
+                        Grid.Row="6"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_PackageHeightToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        Grid.Column="3"
+                        Grid.Row="6"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommercePackageHeight}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Package Length -->
+                    <Label
+                        Background="{Binding EcommercePackageLengthBoxColor}"
+                        Content="Package Length"
+                        Grid.Column="2"
+                        Grid.Row="7"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_PackageLengthToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        Grid.Column="3"
+                        Grid.Row="7"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommercePackageLength}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Package Weight -->
+                    <Label
+                        Background="{Binding EcommercePackageWeightBoxColor}"
+                        Content="Package Weight"
+                        Grid.Column="2"
+                        Grid.Row="8"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_PackageWeightToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        Grid.Column="3"
+                        Grid.Row="8"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommercePackageWeight}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Package Width -->
+                    <Label
+                        Background="{Binding EcommercePackageWidthBoxColor}"
+                        Content="Package Width"
+                        Grid.Column="2"
+                        Grid.Row="9"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_PackageWidthToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        Grid.Column="3"
+                        Grid.Row="9"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommercePackageWidth}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Package Width -->
+                    <Label
+                        Background="{Binding EcommercePageQtyBoxColor}"
+                        Content="Page Qty"
+                        Grid.Column="2"
+                        Grid.Row="10"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_PageQtyToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        Grid.Column="3"
+                        Grid.Row="10"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommercePageQty}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Product Category -->
+                    <Label
+                        Background="{Binding EcommerceProductCategoryBoxColor}"
+                        Content="Product Category"
+                        Grid.Column="4"
+                        Grid.Row="0"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_ProductCategoryToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        Grid.Column="5"
+                        Grid.Row="0"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommerceProductCategory}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Product Description -->
+                    <Label
+                        Background="{Binding EcommerceProductDescriptionBoxColor}"
+                        Content="Product Description"
+                        Grid.Column="4"
+                        Grid.Row="1"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_ProductDescriptionToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="120"
+                        HorizontalAlignment="Left"
+                        Grid.Column="5"
+                        Grid.Row="1"
+                        Grid.RowSpan="4"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommerceProductDescription}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Product Subcategory -->
+                    <Label
+                        Background="{Binding EcommerceProductSubcategoryBoxColor}"
+                        Content="Product Subcategory"
+                        Grid.Column="4"
+                        Grid.Row="5"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_ProductSubcategoryToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        Grid.Column="5"
+                        Grid.Row="5"
+                        Margin="6,6,0,6"
+                        Text="{Binding EcommerceProductSubcategory}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Manufacturer Name -->
+                    <Label
+                        Background="{Binding EcommerceManufacturerNameBoxColor}"
+                        Content="Manufacturer Name"
+                        Grid.Column="4"
+                        Grid.Row="6"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_ManufacturerNameToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        Grid.Column="5"
+                        Grid.Row="6"
+                        Margin="6,6,0,6"
+                        Text="{Binding EcommerceManufacturerName}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Msrp -->
+                    <Label
+                        Background="{Binding EcommerceMsrpBoxColor}"
+                        Content="Msrp"
+                        Grid.Column="4"
+                        Grid.Row="7"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_MsrpToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        Grid.Column="5"
+                        Grid.Row="7"
+                        Margin="6,6,0,6"
+                        Text="{Binding EcommerceMsrp}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Size -->
+                    <Label
+                        Background="{Binding EcommerceSizeBoxColor}"
+                        Content="Size"
+                        Grid.Column="4"
+                        Grid.Row="8"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_SizeToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        Grid.Column="5"
+                        Grid.Row="8"
+                        Margin="6,6,0,6"
+                        Text="{Binding EcommerceSize}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Ecommerce Upc -->
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <StackPanel
+            FlowDirection="RightToLeft"
+            Grid.Row="2"
+            Grid.ColumnSpan="7"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Bottom"
+            Orientation="Horizontal">
+            <Button
+                Height="26"
+                Margin="10"
+                Width="80"
+                Content="Exit"
+                Click="CancelButton_Click" />
+            <Button
+                Height="26"
+                Margin="10"
+                Width="80"
+                Content="Save"
+                Command="{Binding SaveCommand}" />
+            <Button
+                Height="26"
+                Margin="10"
+                Width="80"
+                Content="Remove"
+                Click="RemoveButton_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

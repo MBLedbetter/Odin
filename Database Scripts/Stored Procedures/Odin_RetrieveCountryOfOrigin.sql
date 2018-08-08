@@ -1,0 +1,23 @@
+
+DROP PROCEDURE Odin_RetrieveCountryOfOrigin
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_RetrieveCountryOfOrigin
+	@value VARCHAR(18)
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	SELECT [DESCR] FROM PS_COUNTRY_TBL
+	WHERE COUNTRY = @value
+
+END
+GO
+
+GRANT EXECUTE ON Odin_RetrieveCountryOfOrigin TO Odin

@@ -1,0 +1,23 @@
+
+DROP PROCEDURE Odin_GetCategoryCategories
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_GetCategoryCategories
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	SELECT * FROM Odin_CategoryList ORDER BY CategoryMap ASC
+
+
+END
+GO
+
+GRANT EXECUTE ON Odin_GetCategoryCategories TO Odin

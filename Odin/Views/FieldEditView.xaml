@@ -1,0 +1,323 @@
+﻿<Window
+    x:Class="Odin.Views.FieldEditView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Field Edit"
+    Height="350"
+    MinWidth="300" Width="525">
+    <Grid>
+        <TabControl
+            VerticalAlignment="Top">
+            <TabItem  Header="Category" Height="22" >
+                <Grid Margin="0,0,0,35">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="0" />
+                        <ColumnDefinition
+                            Width="69" />
+                        <ColumnDefinition
+                            Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel
+                        Grid.Row="3"
+                        Grid.ColumnSpan="3"
+                        HorizontalAlignment="Stretch"
+                        Orientation="Horizontal">
+
+                    </StackPanel>
+                    <ListView
+                        ItemsSource="{Binding Categories}"
+                        SelectedItem="{Binding SelectedCategory}"
+                        HorizontalAlignment="Left"
+                        Height="224"
+                        Margin="10,10,0,0"
+                        Grid.Row="2"
+                        VerticalAlignment="Top"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3" Width="480" Grid.RowSpan="2">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn>
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader
+                                                Content="Category"
+                                                HorizontalContentAlignment="Left"
+                                                Height="20"
+                                                Padding="10,0,0,0"
+                                                MinWidth="380" Width="502" />
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button
+                        Command="{Binding AddNewCategoryCommand}"
+                        Content="Add New"
+                        Grid.ColumnSpan="3"
+                        Grid.Row="3"
+                        HorizontalAlignment="Left"
+                        Margin="10,244,0,-30"
+                        VerticalAlignment="Top"
+                        Width="121" />
+                    <Button
+                        Content="Remove"
+                        Command="{Binding RemoveCategoryCommand}"
+                        Grid.Column="2"
+                        HorizontalAlignment="Left"
+                        Margin="80,244,0,-30"
+                        Grid.Row="3"
+                        VerticalAlignment="Top"
+                        Width="121" />
+                    <Button
+                        Content="Edit"
+                        Command="{Binding EditCategoryCommand}"
+                        Grid.Column="2"
+                        HorizontalAlignment="Left"
+                        Margin="220,244,0,-30"
+                        Grid.Row="3"
+                        VerticalAlignment="Top"
+                        Width="121" />
+                </Grid>
+            </TabItem>
+            <TabItem  Header="License / Property" Height="22" >
+                <Grid Margin="0,0,0,35">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                        Width="0" />
+                        <ColumnDefinition
+                        Width="69" />
+                        <ColumnDefinition
+                        Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                        Height="Auto" />
+                        <RowDefinition
+                        Height="Auto" />
+                        <RowDefinition
+                        Height="Auto" />
+                        <RowDefinition
+                        Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel
+                    Grid.Row="3"
+                    Grid.ColumnSpan="3"
+                    HorizontalAlignment="Stretch"
+                    Orientation="Horizontal">
+
+                    </StackPanel>
+
+                    <ListView
+                        ItemsSource="{Binding Licenses}"
+                        SelectedItem="{Binding SelectedLicense}"
+                        HorizontalAlignment="Left"
+                        Height="224"
+                        Margin="10,10,0,0"
+                        Grid.Row="2"
+                        VerticalAlignment="Top"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3" Width="480" Grid.RowSpan="2">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn>
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader
+                                                Content="License : Property"
+                                                HorizontalContentAlignment="Left"
+                                                Height="20"
+                                                Padding="10,0,0,0"
+                                                MinWidth="380" Width="502" />
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button
+                        Command="{Binding AddNewLicenseCommand}"
+                        Content="Add New"
+                        Grid.ColumnSpan="3"
+                        Grid.Row="3"
+                        HorizontalAlignment="Left"
+                        Margin="10,244,0,-30"
+                        VerticalAlignment="Top"
+                        Width="121" />
+                    <Button
+                        Content="Remove"
+                        Command="{Binding RemoveLicenseCommand}"
+                        Grid.Column="2"
+                        HorizontalAlignment="Left"
+                        Margin="80,244,0,-30"
+                        Grid.Row="3"
+                        VerticalAlignment="Top"
+                        Width="121" />
+
+                </Grid>
+            </TabItem>
+            <TabItem  Header="Meta Description" Height="22" >
+                <Grid Margin="0,0,0,35">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                        Width="0" />
+                        <ColumnDefinition
+                        Width="69" />
+                        <ColumnDefinition
+                        Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                        Height="Auto" />
+                        <RowDefinition
+                        Height="Auto" />
+                        <RowDefinition
+                        Height="Auto" />
+                        <RowDefinition
+                        Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel
+                    Grid.Row="3"
+                    Grid.ColumnSpan="3"
+                    HorizontalAlignment="Stretch"
+                    Orientation="Horizontal">
+
+                    </StackPanel>
+
+                    <ListView
+                        ItemsSource="{Binding MetaDescriptions}"
+                        SelectedItem="{Binding SelectedMetaDescription}"
+                        HorizontalAlignment="Left"
+                        Height="224"
+                        Margin="10,10,0,0"
+                        Grid.Row="2"
+                        VerticalAlignment="Top"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3" Width="480" Grid.RowSpan="2">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn>
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader
+                                                Content="Meta Description"
+                                                HorizontalContentAlignment="Left"
+                                                Height="20"
+                                                Padding="10,0,0,0"
+                                                MinWidth="380" Width="502" />
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button
+                        Command="{Binding AddNewMetaDescriptionCommand}"
+                        Content="Add New"
+                        Grid.ColumnSpan="3"
+                        Grid.Row="3"
+                        HorizontalAlignment="Left"
+                        Margin="10,244,0,-30"
+                        VerticalAlignment="Top"
+                        Width="121" />
+                    <Button
+                        Content="Remove"
+                        Command="{Binding RemoveMetaDescriptionCommand}"
+                        Grid.Column="2"
+                        HorizontalAlignment="Left"
+                        Margin="80,244,0,-30"
+                        Grid.Row="3"
+                        VerticalAlignment="Top"
+                        Width="121" />
+
+                </Grid>
+            </TabItem>
+            <TabItem  Header="Territory" Height="22" >
+                <Grid Margin="0,0,0,35">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                        Width="0" />
+                        <ColumnDefinition
+                        Width="69" />
+                        <ColumnDefinition
+                        Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                        Height="Auto" />
+                        <RowDefinition
+                        Height="Auto" />
+                        <RowDefinition
+                        Height="Auto" />
+                        <RowDefinition
+                        Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel
+                    Grid.Row="3"
+                    Grid.ColumnSpan="3"
+                    HorizontalAlignment="Stretch"
+                    Orientation="Horizontal">
+
+                    </StackPanel>
+
+                    <ListView
+                        ItemsSource="{Binding Territories}"
+                        SelectedItem="{Binding SelectedTerritory}"
+                        HorizontalAlignment="Left"
+                        Height="224"
+                        Margin="10,10,0,0"
+                        Grid.Row="2"
+                        VerticalAlignment="Top"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3" Width="480" Grid.RowSpan="2">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn>
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader
+                                                Content="Territory"
+                                                HorizontalContentAlignment="Left"
+                                                Height="20"
+                                                Padding="10,0,0,0"
+                                                MinWidth="380" Width="502" />
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button
+                        Command="{Binding AddNewTerritoryCommand}"
+                        Content="Add New"
+                        Grid.ColumnSpan="3"
+                        Grid.Row="3"
+                        HorizontalAlignment="Left"
+                        Margin="10,244,0,-30"
+                        VerticalAlignment="Top"
+                        Width="121" />
+                    <Button
+                        Content="Remove"
+                        Command="{Binding RemoveTerritoryCommand}"
+                        Grid.Column="2"
+                        HorizontalAlignment="Left"
+                        Margin="80,244,0,-30"
+                        Grid.Row="3"
+                        VerticalAlignment="Top"
+                        Width="121" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

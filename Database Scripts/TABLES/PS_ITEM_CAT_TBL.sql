@@ -1,0 +1,128 @@
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[PS_ITM_CAT_TBL](
+	[SETID] [char](5) NOT NULL,
+	[CATEGORY_TYPE] [char](3) NOT NULL,
+	[CATEGORY_CD] [char](18) NOT NULL,
+	[CATEGORY_ID] [char](5) NOT NULL,
+	[EFFDT] [dbo].[PSDATE] NULL,
+	[DESCR] [char](30) NOT NULL,
+	[DESCRSHORT] [char](10) NOT NULL,
+	[PROFILE_ID] [char](10) NOT NULL,
+	[NBR_OF_ITMS] [int] NOT NULL,
+	[LEAD_TIME] [smallint] NOT NULL,
+	[INSPECT_CD] [char](1) NOT NULL,
+	[INSPECT_UOM_TYPE] [char](1) NOT NULL,
+	[ROUTING_ID] [char](10) NOT NULL,
+	[REJECT_DAYS] [smallint] NOT NULL,
+	[ACCOUNT] [char](10) NOT NULL,
+	[ALTACCT] [char](10) NOT NULL,
+	[UNIT_PRC_TOL] [decimal](13, 5) NOT NULL,
+	[PCT_UNIT_PRC_TOL] [decimal](5, 2) NOT NULL,
+	[RECV_REQ] [char](1) NOT NULL,
+	[EXT_PRC_TOL] [decimal](13, 5) NOT NULL,
+	[PCT_EXT_PRC_TOL] [decimal](5, 2) NOT NULL,
+	[QTY_RECV_TOL_PCT] [decimal](5, 2) NOT NULL,
+	[RJCT_OVER_TOL_FLAG] [char](1) NOT NULL,
+	[PRIMARY_BUYER] [char](30) NOT NULL,
+	[RECV_PARTIAL_FLG] [char](1) NOT NULL,
+	[CURRENCY_CD] [char](3) NOT NULL,
+	[PCT_UNDER_QTY] [smallint] NOT NULL,
+	[SRC_METHOD] [char](1) NOT NULL,
+	[LEAD_TIME_IMP] [decimal](5, 2) NOT NULL,
+	[PRICE_IMP] [decimal](5, 2) NOT NULL,
+	[SHIPTO_PR_IMP] [decimal](5, 2) NOT NULL,
+	[VNDR_PR_IMP] [decimal](5, 2) NOT NULL,
+	[HIST_END_DT] [dbo].[PSDATE] NULL,
+	[HIST_NBR_MTHS] [smallint] NOT NULL,
+	[HIST_START_DT] [dbo].[PSDATE] NULL,
+	[MERCH_AMT_CAT_TOT] [decimal](26, 3) NOT NULL,
+	[HIST_START_MTH] [smallint] NOT NULL,
+	[UNIT_PRC_TOL_L] [decimal](13, 5) NOT NULL,
+	[PCT_UNIT_PRC_TOL_L] [decimal](5, 2) NOT NULL,
+	[EXT_PRC_TOL_L] [decimal](13, 5) NOT NULL,
+	[PCT_EXT_PRC_TOL_L] [decimal](5, 2) NOT NULL,
+	[SHIP_LATE_DAYS] [smallint] NOT NULL,
+	[CUM_SRC_RUN_LEVEL] [char](1) NOT NULL,
+	[EFF_STATUS] [char](1) NOT NULL,
+	[MARKETCODE] [char](2) NOT NULL,
+	[PHYSICAL_NATURE] [char](1) NOT NULL,
+	[VAT_SVC_PERFRM_FLG] [char](1) NOT NULL,
+	[ULTIMATE_USE_CD] [char](8) NOT NULL,
+	[WF_PRC_TOL_OVR] [decimal](13, 5) NOT NULL,
+	[WF_PRC_TOL_UND] [decimal](13, 5) NOT NULL,
+	[WF_PCT_PRC_TOL_OVR] [decimal](5, 2) NOT NULL,
+	[WF_PCT_PRC_TOL_UND] [decimal](5, 2) NOT NULL,
+	[RFQ_REQ_FLAG] [char](1) NOT NULL,
+	[COMMENTS_LONG] [text] NULL
+) 
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+/*
+INSERT INTO PS_ITM_CAT_TBL
+VALUES('SHARE',
+	'PSF',
+	'POSTER',
+	'00024',
+	'2005-01-13 00:00:00.000',
+	'POSTER',
+	'POSTER',					--DESCRSHORT
+	'',							--PROFILE_ID
+	 0,							--NBR_OF_ITMS
+	 0,							--LEAD_TIME
+	 'N',						--INSPECT_CD
+	 'S',						--INSPECT_UOM_TYPE
+	 '',						--ROUTING_ID
+	 0,							--REJECT_DAYS
+	 '50150',					--ACCOUNT
+	 '',						--ALTACCT
+	 999999.00000,				--UNIT_PRC_TOL
+	 5.00,						--PCT_UNIT_PRC_TOL
+	 'Y',						--RECV_REQ
+	 50.00000,					--EXT_PRC_TOL
+	 100.00,					--PCT_EXT_PRC_TOL
+	 0.00,						--QTY_RECV_TOL_PCT
+	 'N',						--RJCT_OVER_TOL_FLAG
+	 '',						--PRIMARY_BUYER
+	 '1',						--RECV_PARTIAL_FLG
+	 'USD',						--CURRENCY_CD
+	 0,							--PCT_UNDER_QTY
+	 'B',						--SRC_METHOD
+	 0.00,						--LEAD_TIME_IMP
+	 0.00,						--PRICE_IMP
+	 0.00,						--SHIPTO_PR_IMP
+	 0.00,						--VNDR_PR_IMP
+	 NULL,						--HIST_END_DT
+	 0,							--HIST_NBR_MTHS
+	 NULL,						--HIST_START_DT
+	 0.000,						--MERCH_AMT_CAT_TOT
+	 0,							--HIST_START_MTH
+	 999999.00000,				--UNIT_PRC_TOL_L
+	 100.00,					--PCT_UNIT_PRC_TOL_L
+	 999999.00000,				--EXT_PRC_TOL_L
+	 100.00,					--PCT_EXT_PRC_TOL_L
+	 0,							--SHIP_LATE_DAYS
+	 '',						--CUM_SRC_RUN_LEVEL
+	 'A',						--EFF_STATUS
+	 '01',						--MARKETCODE
+	 'G',						--PHYSICAL_NATURE
+	 '',						--VAT_SVC_PERFRM_FLG
+	 '',						--ULTIMATE_USE_CD
+	 99999999.00000,
+	 99999999.00000,
+	 999.00,
+	 999.00,
+	 'N',
+NULL)
+*/

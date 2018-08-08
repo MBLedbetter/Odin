@@ -1,0 +1,210 @@
+
+DROP PROCEDURE Odin_InsertProdItem
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_InsertProdItem(
+	@itemId varchar(18),
+	@prodCat varchar(15),
+	@statsCode varchar(30),
+	@description varchar(254),
+	@desc30 varchar(30),
+	@isbn varchar(10),
+	@ean varchar(30),
+	@udex varchar(30),
+	@gpc varchar(30),
+	@userName VARCHAR(30)
+	)
+	
+
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+	
+	IF NOT EXISTS (SELECT * FROM PS_PROD_ITEM 
+                   WHERE PRODUCT_ID = @itemId
+				   )
+		   BEGIN
+			   INSERT INTO PS_PROD_ITEM(
+			SETID,
+			PRODUCT_ID,
+			DESCR,
+			PRODUCT_USE,
+			MODEL_NBR,
+			CATALOG_NBR,
+			TAX_PRODUCT_NBR,
+			TAX_TRANS_TYPE,
+			TAX_TRANS_SUB_TYPE,
+			PRODUCT_KIT_FLAG,
+			EFF_STATUS,
+			INV_ITEM_ID,
+			DROP_SHIP_FLAG,
+			COMM_FLAG,
+			COMM_PCT,
+			UPPER_MARGIN_PCT,
+			LOWER_MARGIN_PCT,
+			HOLD_UPDATE_SW,
+			BUSINESS_UNIT_PC,
+			PROJECT_ID,
+			ACTIVITY_ID,
+			COST_ELEMENT,
+			EXPORT_LIC_REQ,
+			FORECAST_ITEM_FLAG,
+			RETURN_FLAG,
+			DESCR254,
+			CFG_KIT_FLAG,
+			CFG_CODE_OPT,
+			CP_TEMPLATE_ID,
+			CP_TREE_DIST,
+			PHYSICAL_NATURE,
+			PRICE_KIT_FLAG,
+			PROD_BRAND,
+			PROD_CATEGORY,
+			THIRD_PARTY_FLG,
+			RENEWABLE,
+			PRICING_STRUCTURE,
+			PERCENTAGE,
+			APPLIES_TO,
+			REV_RECOG_METHOD,
+			CA_BP_TMPL_ID,
+			BP_DTL_TMPL_ID,
+			RNW_TEMPLATE_ID,
+			CA_AP_TMPL_ID,
+			PROD_FIELD_C1_A,
+			PROD_FIELD_C1_B,
+			PROD_FIELD_C1_C,
+			PROD_FIELD_C1_D,
+			PROD_FIELD_C10_A,
+			PROD_FIELD_C10_B,
+			PROD_FIELD_C10_C,
+			PROD_FIELD_C10_D,
+			PROD_FIELD_C2,
+			PROD_FIELD_C30_A,
+			PROD_FIELD_C30_B,
+			PROD_FIELD_C30_C,
+			PROD_FIELD_C30_D,
+			PROD_FIELD_C4,
+			PROD_FIELD_C6,
+			PROD_FIELD_C8,
+			PROD_FIELD_N12_A,
+			PROD_FIELD_N12_B,
+			PROD_FIELD_N12_C,
+			PROD_FIELD_N12_D,
+			PROD_FIELD_N15_A,
+			PROD_FIELD_N15_B,
+			PROD_FIELD_N15_C,
+			PROD_FIELD_N15_D,
+			VAT_SVC_PERFRM_FLG,
+			DATETIME_ADDED,
+			LASTUPDDTTM,
+			LAST_MAINT_OPRID
+	)
+	VALUES(
+			'SHARE',		--SETID
+			@itemId,		--PRODUCT_ID
+			@desc30,		--DESCR
+			'1',			--PRODUCT_USE
+			'',				--MODEL_NBR
+			'',				--CATALOG_NBR
+			@itemId,		--TAX_PRODUCT_NBR
+			'',				--TAX_TRANS_TYPE
+			'',				--TAX_TRANS_SUB_TYPE
+			'N',			--PRODUCT_KIT_FLAG
+			'A',			--EFF_STATUS
+			@itemId,		--INV_ITEM_ID
+			'N',			--DROP_SHIP_FLAG
+			'N',			--COMM_FLAG
+			0.00,			--COMM_PCT
+			0.00,			--UPPER_MARGIN_PCT
+			0.00,			--LOWER_MARGIN_PCT
+			'N',			--HOLD_UPDATE_SW
+			'',				--BUSINESS_UNIT_PC
+			'',				--PROJECT_ID
+			'',				--ACTIVITY_ID
+			'',				--COST_ELEMENT
+			'N',			--EXPORT_LIC_REQ
+			'N',			--FORECAST_ITEM_FLAG
+			'Y',			--RETURN_FLAG
+			@description,	--DESCR254
+			'N',			--CFG_KIT_FLAG
+			'N',			--CFG_CODE_OPT
+			'',				--CP_TEMPLATE_ID
+			'',				--CP_TREE_DIST
+			'G',			--PHYSICAL_NATURE
+			'',				--PRICE_KIT_FLAG
+			'',				--PROD_BRAND
+			@prodCat,		--PROD_CATEGORY
+			'N',			--THIRD_PARTY_FLG
+			'N',			--RENEWABLE
+			'AMT',			--PRICING_STRUCTURE
+			0.00,			--PERCENTAGE
+			'',				--APPLIES_TO
+			'4',			--REV_RECOG_METHOD
+			'',				--CA_BP_TMPL_ID
+			'',				--BP_DTL_TMPL_ID
+			'',				--RNW_TEMPLATE_ID
+			'',				--CA_AP_TMPL_ID
+			'',				--PROD_FIELD_C1_A
+			'',				--PROD_FIELD_C1_B
+			'',				--PROD_FIELD_C1_C
+			'',				--PROD_FIELD_C1_D
+			@isbn,			--PROD_FIELD_C10_A
+			'',				--PROD_FIELD_C10_B
+			@gpc,			--PROD_FIELD_C10_C
+			'',				--PROD_FIELD_C10_D
+			'',				--PROD_FIELD_C2
+			@ean,			--PROD_FIELD_C30_A
+			@statsCode,		--PROD_FIELD_C30_B
+			@udex,			--PROD_FIELD_C30_C
+			'',				--PROD_FIELD_C30_D
+			'',				--PROD_FIELD_C4
+			'',				--PROD_FIELD_C6
+			'',				--PROD_FIELD_C8
+			0.000,			--PROD_FIELD_N12_A
+			0.000,			--PROD_FIELD_N12_B
+			0.000,			--PROD_FIELD_N12_C
+			0.000,			--PROD_FIELD_N12_D
+			0,				--PROD_FIELD_N15_A
+			0,				--PROD_FIELD_N15_B
+			0,				--PROD_FIELD_N15_C
+			0,				--PROD_FIELD_N15_D
+			'',				--VAT_SVC_PERFRM_FLG
+			GETDATE(),		--DATETIME_ADDED
+			GETDATE(),		--LASTUPDDTTM
+			@userName		--LAST_MAINT_OPRID
+	)	
+			
+		   END
+	
+	UPDATE PS_PROD_ITEM
+	SET
+			DESCR = @desc30,
+			DESCR254 = @description,
+			PROD_CATEGORY = @prodCat,
+			PROD_FIELD_C10_A = @isbn,
+			PROD_FIELD_C10_C = @gpc,
+			PROD_FIELD_C30_A = @ean,
+			PROD_FIELD_C30_B = @statsCode,
+			PROD_FIELD_C30_C = @udex,
+			LASTUPDDTTM = GETDATE(),
+			LAST_MAINT_OPRID = @userName
+
+	WHERE 
+		PRODUCT_ID = @itemId
+		AND SETID = 'SHARE'
+
+END
+GO
+
+GRANT EXECUTE ON Odin_InsertProdItem TO Odin
+GO
+/*
+SELECT * FROM PS_PROD_ITEM
+sp_help PS_PROD_ITEM
+*/

@@ -1,0 +1,23 @@
+
+DROP PROCEDURE Odin_GetMetaDescriptionList
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_GetMetaDescriptionList
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	SELECT DISTINCT META_DESCRIPTION FROM Odin_MetaDescription
+
+END
+GO
+
+GRANT EXECUTE ON Odin_GetMetaDescriptionList TO Odin
+

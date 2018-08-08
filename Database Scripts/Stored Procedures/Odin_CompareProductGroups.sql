@@ -1,0 +1,26 @@
+
+DROP PROCEDURE Odin_CompareProductGroups
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_CompareProductGroups
+		@prodGroup VARCHAR(30) = ''
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	SELECT * FROM PS_PRODUCT_GROUPS
+	WHERE UPPER(PROD_GROUP) = UPPER(@prodGroup)
+
+
+END
+GO
+
+GRANT EXECUTE ON Odin_CompareProductGroups TO Odin
+

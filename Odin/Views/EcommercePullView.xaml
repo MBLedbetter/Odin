@@ -1,0 +1,136 @@
+﻿<Window x:Class="Odin.Views.EcommercePullView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:app="clr-namespace:Odin"
+        Title="Pull Ecommerce Template" 
+        Height="300" 
+        Width="300"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition 
+                            Width="10" />
+            <ColumnDefinition 
+                            Width="Auto" />
+            <ColumnDefinition 
+                            Width="90" />
+            <ColumnDefinition 
+                            Width="90"/>
+            <ColumnDefinition 
+                            Width="10" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="30" />
+            <RowDefinition
+                Height="40" />
+            <RowDefinition
+                Height="30" />
+            <RowDefinition
+                Height="30" />
+            <RowDefinition
+                Height="40" />
+            <RowDefinition
+                Height="40" />
+            <RowDefinition
+                Height="10" />
+            <RowDefinition
+                Height="30" />
+
+        </Grid.RowDefinitions>
+
+        <!-- Ecommerce Template -->
+        <Label
+            Content="Template"
+            ToolTip="{Binding EcommerceTemplateToolTip}"
+            Width="80"
+            Grid.Row="1"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center" Height="26" Margin="0,8,0,7" />
+        <ComboBox
+            HorizontalAlignment="Left"
+            Margin="6,11,0,7"
+            Grid.Row="1"
+            Grid.Column="2"
+            Text="{Binding Template}"
+            ItemsSource="{Binding TemplateList}"
+            Width="140" Grid.ColumnSpan="2" />
+        <!-- Dates -->
+        <Label
+            Content="Date Range"
+            Width="264"
+            IsEnabled="{Binding SearchEnabled}"
+            Grid.Row="2"
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center" Margin="0,0,10,5" Height="26" Grid.ColumnSpan="4" />
+        <!-- Start Date -->
+        <Label
+            Content="Start:"
+            IsEnabled="{Binding SearchEnabled}"
+            Width="39"
+            Grid.Row="3"
+            Grid.Column="1"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center" Margin="0,6,1,8" Height="26" />
+        <DatePicker
+            HorizontalAlignment="Left"
+            Height="23"
+            Grid.Row="3"
+            Grid.Column="2"
+            IsEnabled="{Binding SearchEnabled}"
+            SelectedDate="{Binding StartDate}"
+            VerticalContentAlignment="Center"
+            Width="140"
+            Grid.ColumnSpan="2" />
+        <!-- End Date -->
+        <Label
+            Content="End:"
+            Width="35"
+            Grid.Row="4"
+            Grid.Column="1"
+            HorizontalAlignment="Right"
+            IsEnabled="{Binding SearchEnabled}"
+            VerticalAlignment="Center" Margin="0,6,1,8" Height="26" />
+        <DatePicker
+            HorizontalAlignment="Left"
+            Height="23"
+            Grid.Row="4"
+            Grid.Column="2"
+            SelectedDate="{Binding EndDate}"
+            IsEnabled="{Binding SearchEnabled}"
+            VerticalContentAlignment="Center"
+            Width="140"
+            Grid.ColumnSpan="2" />
+        <!-- End Date -->
+        <Label
+            Content="{Binding Message}"
+            FontStyle="Italic"
+            Foreground="DarkGray"
+            Width="267"
+            Grid.Row="5"
+            Grid.Column="1"
+            Grid.ColumnSpan="3"
+            HorizontalAlignment="Center"
+            IsEnabled="{Binding SearchEnabled}"
+            VerticalAlignment="Center" 
+            Height="26" Margin="4,7,0,8" />
+        <Button
+            Grid.Row="6"
+            Grid.Column="2"
+            Height="26"
+            Width="80"
+            Content="Pull"
+            Command="{Binding PullCommand}" 
+            Margin="16,10,0,6" 
+            Grid.RowSpan="2" />
+        <Button
+            Grid.Row="6"
+            Grid.Column="3"
+            Height="26"
+            Width="80"
+            Content="Exit"
+            Click="ExitButton_Click" Margin="16,10,0,6" Grid.RowSpan="2"/>
+    </Grid>
+</Window>

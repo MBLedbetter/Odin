@@ -1,0 +1,78 @@
+
+DROP PROCEDURE Odin_InsertSfPrdnAreaIt
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_InsertSfPrdnAreaIt
+	@itemId VARCHAR(18)= ''
+
+AS
+BEGIN
+
+	
+	SET NOCOUNT ON;
+	IF NOT EXISTS (SELECT * FROM PS_SF_PRDN_AREA_IT 
+                   WHERE INV_ITEM_ID = @itemId
+				   )
+	BEGIN
+		
+		INSERT INTO PS_SF_PRDN_AREA_IT(
+		  BUSINESS_UNIT
+		, PRDN_AREA_CODE
+		, INV_ITEM_ID
+		, BOM_CODE
+		, RTG_CODE
+		, DATE_IN_EFFECT
+		, REVISION
+		, PRIMARY_FLG
+		, MA_PRDN_ID_FLG
+		, ISSUE_METHOD
+		, PA_IT_STATUS
+		, PRDN_RATE_QTY
+		, NET_CHANGE_FLG
+		, NET_CHANGE_EP
+		, PA_IT_PRIORITY
+		, PERCENTAGE
+		, LOCK_BOM_RTG_FLG
+		, PRDN_SCH_DEFN_FLG
+		, BEG_SEQ
+		, PRDN_AREA_ITEM_TXT
+		)
+		VALUES(
+		'TRUS1',   -- BUSINESS_UNIT
+		'USA',     -- PRDN_AREA_CODE
+		@itemId,   -- INV_ITEM_ID
+		'1',       -- BOM_CODE
+		'0',       -- RTG_CODE
+		GETDATE(), -- DATE_IN_EFFECT
+		'',        -- REVISION
+		'Y',       -- PRIMARY_FLG
+		'Y',       -- MA_PRDN_ID_FLG
+		'ISS',     -- ISSUE_METHOD
+		'ACT',     -- PA_IT_STATUS
+		0.0000,    -- PRDN_RATE_QTY
+		'N',       -- NET_CHANGE_FLG
+		'N',       -- NET_CHANGE_EP
+		0,         -- PA_IT_PRIORITY
+		0.00,      -- PERCENTAGE
+		'N',       -- LOCK_BOM_RTG_FLG
+		'CMP',     -- PRDN_SCH_DEFN_FLG
+		'',        -- BEG_SEQ
+		NULL       -- PRDN_AREA_ITEM_TXT
+		)
+	END
+	
+END
+GO
+
+GRANT EXECUTE ON Odin_InsertSfPrdnAreaIt TO Odin
+GO
+/*
+SELECT * FROM PS_SF_PRDN_AREA_IT
+sp_help PS_SF_PRDN_AREA_IT
+*/

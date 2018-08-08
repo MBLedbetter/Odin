@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Odin.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DbName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FS88PRD</Value>
+    </Setting>
+    <Setting Name="DbPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">kjteEy3Gert3</Value>
+    </Setting>
+    <Setting Name="DbServerName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">YODA</Value>
+    </Setting>
+    <Setting Name="DbLoginId" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Developing" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ImgSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Y:\</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

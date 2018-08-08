@@ -1,0 +1,37 @@
+/*
+SELECT * FROM Odin_LicenseStats
+*/
+DROP PROCEDURE Odin_GetPropertyList
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_GetPropertyList
+		@license VARCHAR(30) = ''
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+	IF (@license = '')
+	BEGIN
+		SELECT LICENSE + ' : ' + PROPERTY AS PROPERTY_RETURN
+		FROM Odin_Web_License
+		WHERE PROPERTY <> ''
+	END
+	IF (@license <> '')
+	BEGIN
+		SELECT DISTINCT PROPERTY AS PROPERTY_RETURN 
+		FROM Odin_Web_License
+		WHERE (LICENSE = @license)
+	END
+
+
+
+END
+GO
+
+GRANT EXECUTE ON Odin_GetPropertyList TO Odin

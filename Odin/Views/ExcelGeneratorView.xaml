@@ -1,0 +1,231 @@
+﻿<Window x:Class="Odin.Views.ExcelGeneratorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Odin.Views"
+        mc:Ignorable="d"
+        Title="Excel Template Generator" 
+        Height="490" 
+        Width="640">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                            Width="*" />
+            <ColumnDefinition
+                            Width="40" />
+            <ColumnDefinition 
+                            Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                            Height="40" />
+            <RowDefinition
+                            Height="40" />
+            <RowDefinition
+                            Height="30" />
+            <RowDefinition
+                            Height="Auto" />
+            <RowDefinition
+                            Height="Auto" />
+            <RowDefinition
+                            Height="Auto" />
+        </Grid.RowDefinitions>
+        <!-- Layout Name -->
+        <Label
+            Content="Excel Template"
+            Grid.Column="0"
+            Grid.Row="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Width="113" Margin="0,5,0,10"  />
+        <ComboBox
+            Grid.Column="0"
+            Grid.Row="0"
+            Height="23"
+            HorizontalAlignment="Left"
+            ItemsSource="{Binding ExcelLists}"
+            Text="{Binding ExcelLayout}"
+            Width="180" Margin="96,8,0,10"  />
+        <!-- Layout Name -->
+        <Label
+            Content="Customer"
+            Grid.Column="2"
+            Grid.Row="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Width="113" Margin="0,5,0,10"  />
+        <ComboBox
+            Grid.Column="2"
+            Grid.Row="0"
+            Height="23"
+            HorizontalAlignment="Left"
+            IsEnabled="{Binding IsNew}"
+            ItemsSource="{Binding CustomerList}"
+            Text="{Binding ExcelCustomer}"
+            Width="180" Margin="96,8,0,10"  />
+        <!-- Layout Name -->
+        <Label
+            Content="Product Type"
+            Grid.Column="2"
+            Grid.Row="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Width="113" Margin="0,5,0,10"  />
+        <ComboBox
+            Grid.Column="3"
+            Grid.Row="1"
+            Height="23"
+            HorizontalAlignment="Left"
+            IsEnabled="{Binding IsNew}"
+            ItemsSource="{Binding ProductTypeList}"
+            Text="{Binding ProductType}"
+            Width="180" Margin="96,8,0,10"  />
+        <!--    Fields List     -->
+        <Label
+            Content="Fields"
+            Grid.Column="0"
+            Grid.Row="2"
+            HorizontalAlignment="Left"
+            Margin="20,5"
+            VerticalAlignment="Center"
+            Height="26" />
+        <ListView
+            Grid.Column="0"
+            Grid.Row="3"
+            HorizontalAlignment="Left"
+            ItemsSource="{Binding Fields}"
+            Margin="10,5"
+            MaxHeight="200"
+            MinHeight="200"
+            Name="VariantGroupExclusionOptions"
+            SelectedItem="{Binding SelectedField}"
+            VerticalAlignment="Top"
+            MinWidth="266"
+            Width="Auto">
+        </ListView>
+        <Button
+            Command="{Binding ShiftRightCommand}"
+            Content=" + "
+            Grid.Column="1"
+            Grid.Row="3"
+            Height="26"
+            Width="30" Margin="5,38,5,70"/>
+        <Button
+            Command="{Binding SwapCommand}" 
+            Content=" &lt;-> "
+            Grid.Column="1"
+            Grid.Row="3"
+            Height="26"
+            Margin="5,69,5,38"
+            Width="30" />
+        <Button
+            Command="{Binding ShiftLeftCommand}" 
+            Content=" - "
+            Grid.Column="1"
+            Grid.Row="3"
+            Height="26"
+            Width="30" Margin="5,136,5,44" />
+        <!--    Fields List     -->
+        <Label
+            Content="Excel Columns"
+            Grid.Column="2"
+            Grid.Row="2"
+            HorizontalAlignment="Left"
+            Margin="20,5"
+            VerticalAlignment="Center"
+            Height="26" />
+        <ListView
+            Grid.Column="2"
+            Grid.Row="3"
+            HorizontalAlignment="Left"
+            ItemsSource="{Binding ExcelColumns}"
+            Margin="10,5"
+            MaxHeight="200"
+            MinHeight="200"
+            Name="ExcelTemplateLayout"
+            SelectedItem="{Binding SelectedExcelColumn}"
+            VerticalAlignment="Top"
+            MinWidth="266"
+            Width="Auto">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding ColumnNumber}"
+                            Width="40">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Content="#"
+                                    HorizontalContentAlignment="Center"
+                                    Height="20"
+                                    Padding="0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding ColumnLetter}"
+                            Width="40">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Content=""
+                                    HorizontalContentAlignment="Center"
+                                    Height="20"
+                                    Padding="0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding Field}"
+                            Width="200">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Content="Field"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="5,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button
+            Command="{Binding ShiftUpCommand}"
+            Content=" Shift Up "
+            Grid.Column="2"
+            Grid.Row="4"
+            Height="26"
+            Width="70" 
+            Margin="20,8,186,19"/>
+        <Button
+            Command="{Binding ShiftDownCommand}" 
+            Content=" Shift Down "
+            Grid.Column="2"
+            Grid.Row="4"
+            Height="26"
+            Width="70" 
+            Margin="101,4,105,16" />
+        <!-- Button
+            Command="{Binding SetOptionCommand}" 
+            Content=" Set Option "
+            Grid.Column="2"
+            Grid.Row="3"
+            Height="26" 
+            Margin="178,7,10,19" /-->
+        <Button
+            Click="SaveButton_Click"
+            Content="Save"
+            Grid.Column="2"
+            Grid.Row="5"
+            Height="26"
+            Margin="101,45,95,-24"
+            Width="80" />
+        <Button
+            Click="ExitButton_Click"
+            Content="Exit"
+            Grid.Column="2"
+            Grid.Row="5"
+            Height="26"
+            Margin="186,45,10,-25"
+            Width="80" />
+    </Grid>
+</Window>

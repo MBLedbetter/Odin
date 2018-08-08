@@ -1,0 +1,21 @@
+
+DROP PROCEDURE Odin_GetRolePermissionList
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE Odin_GetRolePermissionList
+AS
+BEGIN
+
+	SELECT * FROM Odin_RolePermissions
+
+END
+GO
+
+GRANT EXECUTE ON Odin_GetRolePermissionList TO Odin
+GO
