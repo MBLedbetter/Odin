@@ -4615,17 +4615,20 @@ namespace OdinServices
         {
             if (required || !string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
+                if (required)
                 {
-                    return "Ecommerce Product Description " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                    if (string.IsNullOrEmpty(value))
+                    {
+                        return "Ecommerce Product Description " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                    }
+                    if (!DbUtil.CheckMinimum(value, 100))
+                    {
+                        return "Ecommerce Product Description " + OdinServices.Properties.Resources.Error_LengthMin + "100 characters.";
+                    }
                 }
                 if (value.Length > 8000)
                 {
                     return "Ecommerce Product Description " + OdinServices.Properties.Resources.Error_LengthMax + "8000 characters.";
-                }
-                if (!DbUtil.CheckMinimum(value, 100))
-                {
-                    return "Ecommerce Product Description " + OdinServices.Properties.Resources.Error_LengthMin + "100 characters.";
                 }
                 return "";
             }
