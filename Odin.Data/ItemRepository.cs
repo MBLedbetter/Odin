@@ -3044,20 +3044,6 @@ namespace Odin.Data
         }
 
         /// <summary>
-        ///     Removes all values from PS_MARKETPLACE_PRODUCT_TRANSLATIONS that corespond with the given item id
-        /// </summary>
-        /// <param name="item"></param>
-        /// <param name="context"></param>
-        /// <returns></returns>
-        private void RemoveMarketplaceProductTranslationsAll(ItemObject item, OdinContext context)
-        {
-            foreach (MarketplaceProductTranslations marketplaceProductTranslations in (from o in context.MarketplaceProductTranslations where o.FromProductId == item.ItemId select o))
-            {
-                context.MarketplaceProductTranslations.Remove(marketplaceProductTranslations);
-            }
-        }
-
-        /// <summary>
         ///     Removes all values from PS_PROD_PGRP_LNK where ProductId = the given itemid
         /// </summary>
         private void RemoveProdPgrpLnkAll(string itemId, OdinContext context)

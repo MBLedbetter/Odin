@@ -2792,6 +2792,10 @@ namespace OdinServices
                 {
                     return field + " cannot contain apostrophes.";
                 }
+                if (CheckSpecialChar(value))
+                {
+                    return field + " cannot contain special characters.";
+                }
                 if (value.Length > 254)
                 {
                     return field + " " + OdinServices.Properties.Resources.Error_LengthMax + "254 characters.";
