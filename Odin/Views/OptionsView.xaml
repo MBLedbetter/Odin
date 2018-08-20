@@ -1604,7 +1604,7 @@
                         IsChecked="{Binding SellOnFanaticsVisibility}"
                         VerticalAlignment="Center"/>
                         <Label
-                        Content="Sell On Hayneedle"
+                        Content="Sell On Guitar Center"
                         Grid.Row="41"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
@@ -1612,38 +1612,38 @@
                         Height="26" />
                         <CheckBox
                         Grid.Row="41"
+                        Grid.Column="3"
+                        HorizontalAlignment="Center"
+                        IsChecked="{Binding SellOnGuitarCenterVisibility}"
+                        VerticalAlignment="Center"/>
+                        <Label
+                        Content="Sell On Hayneedle"
+                        Grid.Row="42"
+                        Grid.Column="2"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Height="26" />
+                        <CheckBox
+                        Grid.Row="42"
                         Grid.Column="3"
                         HorizontalAlignment="Center"
                         IsChecked="{Binding SellOnHayneedleVisibility}"
                         VerticalAlignment="Center"/>
                         <Label
                         Content="Sell On Target"
-                        Grid.Row="42"
+                        Grid.Row="43"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Height="26" />
                         <CheckBox
-                        Grid.Row="42"
+                        Grid.Row="43"
                         Grid.Column="3"
                         HorizontalAlignment="Center"
                         IsChecked="{Binding SellOnTargetVisibility}"
                         VerticalAlignment="Center"/>
                         <Label
                         Content="Sell On Trends"
-                        Grid.Row="43"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
-                        <CheckBox
-                        Grid.Row="43"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding SellOnTrendsVisibility}"
-                        VerticalAlignment="Center"/>
-                        <Label
-                        Content="Sell On Walmart"
                         Grid.Row="41"
                         Grid.Column="4"
                         HorizontalAlignment="Left"
@@ -1653,10 +1653,10 @@
                         Grid.Row="41"
                         Grid.Column="5"
                         HorizontalAlignment="Center"
-                        IsChecked="{Binding SellOnWalmartVisibility}"
+                        IsChecked="{Binding SellOnTrendsVisibility}"
                         VerticalAlignment="Center"/>
                         <Label
-                        Content="Sell On Wayfair"
+                        Content="Sell On Walmart"
                         Grid.Row="42"
                         Grid.Column="4"
                         HorizontalAlignment="Left"
@@ -1664,6 +1664,19 @@
                         Height="26" />
                         <CheckBox
                         Grid.Row="42"
+                        Grid.Column="5"
+                        HorizontalAlignment="Center"
+                        IsChecked="{Binding SellOnWalmartVisibility}"
+                        VerticalAlignment="Center"/>
+                        <Label
+                        Content="Sell On Wayfair"
+                        Grid.Row="43"
+                        Grid.Column="4"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Height="26" />
+                        <CheckBox
+                        Grid.Row="43"
                         Grid.Column="5"
                         HorizontalAlignment="Center"
                         IsChecked="{Binding SellOnWayfairVisibility}"

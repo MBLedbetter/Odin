@@ -33,5 +33,10 @@ namespace Odin.Views
         {
             (this.DataContext as ExcelGeneratorViewModel).SaveExcelLayoutCommand.Execute(null);
         }
+
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as ExcelGeneratorViewModel).RemoveExcelLayoutCommand.Execute(null);
+        }
     }
 }

@@ -152,6 +152,23 @@ namespace Odin.Data
         #region Public Removal Methods
 
         /// <summary>
+        ///     Removes data from  EXCEL_LAYOUT_IDS for given layout ID
+        /// </summary>
+        /// <param name="layoutId"></param>
+        /// <returns></returns>
+        public void RemoveExcelLayout(int layoutId)
+        {
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                foreach (OdinExcelLayoutIds odinExcelLayoutids in (from o in context.OdinExcelLayoutIds where o.LayoutId == layoutId select o))
+                {
+                    context.OdinExcelLayoutIds.Remove(odinExcelLayoutids);
+                }
+                context.SaveChanges();
+            }
+        }
+
+        /// <summary>
         ///     Removes all column data for the given layout from EXCEL_LAYOUT_DATA
         /// </summary>
         /// <param name="layoutId"></param>
@@ -206,11 +223,11 @@ namespace Odin.Data
                          orderby z.ColumnNumber ascending
                          select new
                          {
-                             LayoutId = y.LayoutId,
-                             ColumnNumber = z.ColumnNumber,
-                             Field = z.Field,
-                             Option = z.Option,
-                             Customer = z.Customer
+                             y.LayoutId,
+                             z.ColumnNumber,
+                             z.Field,
+                             z.Option,
+                             z.Customer
 
                          }).ToList();
 
@@ -431,11 +448,7 @@ namespace Odin.Data
         /// </summary>
         public TemplateRepository(IOdinContextFactory contextFactory)
         {
-            if (contextFactory == null)
-            {
-                throw new ArgumentNullException("contextFactory");
-            }
-            this.contextFactory = contextFactory;
+            this.contextFactory = contextFactory ?? throw new ArgumentNullException("contextFactory");
             GlobalData.TemplateNames = RetrieveTemplateNameList();
         }
 

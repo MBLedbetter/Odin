@@ -56,7 +56,7 @@ namespace ExcelLibrary
         /// <param name="m">Row Number</param>
         /// <param name="a">Collumn Letter</param>
         /// <returns></returns>
-        private string getValue(int m, string a, Range range)
+        private string GetValue(int m, string a, Range range)
         {
             string newValue = string.Empty;
             string rowCol = a + m.ToString();
@@ -77,7 +77,7 @@ namespace ExcelLibrary
         ///     Method to close excel connection
         /// </summary>
         /// 
-        private void excel_close()
+        private void ExcelClose()
         {
             if (appExcel != null)
             {
@@ -89,7 +89,8 @@ namespace ExcelLibrary
                     CurrentWorksheet = null;
                 }
                 catch (Exception ex)
-                {                    
+                {
+                    MessageBox.Show(ex.ToString());
                     appExcel = null;
                 }
                 finally
@@ -126,12 +127,12 @@ namespace ExcelLibrary
 
                 if (nullFields == false)
                 {
-                    string newItem = getValue(o, "A", range);
+                    string newItem = GetValue(o, "A", range);
                     itemList.Add(newItem);
                 }
             }
 
-            excel_close();
+            ExcelClose();
 
             return itemList;
         }

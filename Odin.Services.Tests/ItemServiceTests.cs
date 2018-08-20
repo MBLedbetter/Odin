@@ -329,6 +329,7 @@ namespace Odin.Services.Tests
             Assert.AreEqual("ASizeA", completeItem.Ecommerce_Size);
             Assert.AreEqual("SellOnAmazonA", completeItem.SellOnAmazon);
             Assert.AreEqual("SellOnFanaticsA", completeItem.SellOnFanatics);
+            Assert.AreEqual("SellOnGuitarCenterA", completeItem.SellOnGuitarCenter);
             Assert.AreEqual("SellOnAllPostersA", completeItem.SellOnAllPosters);
             Assert.AreEqual("SellOnHayneedleA", completeItem.SellOnHayneedle);
             Assert.AreEqual("SellOnTargetA", completeItem.SellOnTarget);
@@ -1124,10 +1125,12 @@ namespace Odin.Services.Tests
             fakeWorkbookReader.ColumnHeaders.Add("Template Name");
             fakeWorkbookReader.ColumnHeaders.Add("Sell On Amazon");
             fakeWorkbookReader.ColumnHeaders.Add("Sell On Fanatics");
+            fakeWorkbookReader.ColumnHeaders.Add("Sell On Guitar Center");
             fakeWorkbookReader.AddWorksheetRow();
             fakeWorkbookReader.AddCellValue("ItemIdB"); // Item Id
             fakeWorkbookReader.AddCellValue("TemplateId1"); // Template Id
             fakeWorkbookReader.AddCellValue(""); // Sell On Amazon
+            fakeWorkbookReader.AddCellValue(""); // Sell On Fanatics
             fakeWorkbookReader.AddCellValue(""); // Sell On Fanatics
             ItemService itemService = new ItemService(fakeWorkbookReader, new TestItemRepository(), new TestTemplateRepository());
 
@@ -1601,12 +1604,14 @@ namespace Odin.Services.Tests
             fakeWorkbookReader.ColumnHeaders.Add("Sell On Amazon");
             fakeWorkbookReader.ColumnHeaders.Add("Sell On Fanatics");
             fakeWorkbookReader.ColumnHeaders.Add("Sell On Walmart");
+            fakeWorkbookReader.ColumnHeaders.Add("Sell On Guitar Center");
             fakeWorkbookReader.AddWorksheetRow();
             fakeWorkbookReader.AddCellValue("ST1234"); // Item Id
             fakeWorkbookReader.AddCellValue(""); // PS Status
             fakeWorkbookReader.AddCellValue(""); // Sell On Amazon
             fakeWorkbookReader.AddCellValue(""); // Sell On Fanatics
             fakeWorkbookReader.AddCellValue(""); // Sell On Walmart
+            fakeWorkbookReader.AddCellValue(""); // Sell On Guitar Center
             TestItemRepository testItemRepository = new TestItemRepository();
 
             #endregion // Set Up
@@ -1634,6 +1639,7 @@ namespace Odin.Services.Tests
             Assert.AreEqual("I", item.PsStatus); // PS Status
             Assert.AreEqual("N", item.SellOnAmazon); // Sell On Amazon
             Assert.AreEqual("N", item.SellOnFanatics); // Sell On Fanatics
+            Assert.AreEqual("N", item.SellOnGuitarCenter); // Sell On Guitar Center
             Assert.AreEqual("N", item.SellOnHayneedle); // Sell On Hayneedle
             Assert.AreEqual("N", item.SellOnWalmart); // Sell On Walmart
 

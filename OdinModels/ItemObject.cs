@@ -2255,6 +2255,28 @@ namespace OdinModels
         public bool SellOnFanaticsUpdate = false;
 
         /// <summary>
+        ///     Gets or sets the SellOnGuitarCenter field
+        /// </summary>
+        public string SellOnGuitarCenter
+        {
+            get
+            {
+                return _sellOnGuitarCenter;
+            }
+            set
+            {
+                if (_sellOnGuitarCenter != value) { SellOnGuitarCenterUpdate = true; }
+                _sellOnGuitarCenter = value;
+                if (this.PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("SellOnGuitarCenter"));
+                }
+            }
+        }
+        private string _sellOnGuitarCenter = "";
+        public bool SellOnGuitarCenterUpdate = false;
+
+        /// <summary>
         ///     Gets or sets the SellOnHayneedle field
         /// </summary>
         public string SellOnHayneedle
@@ -2737,6 +2759,7 @@ namespace OdinModels
             this.SellOnAllPostersUpdate = false;
             this.SellOnAmazonUpdate = false;
             this.SellOnFanaticsUpdate = false;
+            this.SellOnGuitarCenterUpdate = false;
             this.SellOnHayneedleUpdate = false;
             this.SellOnWalmartUpdate = false;
             this.SellOnWayfairUpdate = false;
@@ -2973,6 +2996,7 @@ namespace OdinModels
                 this.SellOnAllPosters = item.SellOnAllPosters;
                 this.SellOnAmazon = item.SellOnAmazon;
                 this.SellOnFanatics = item.SellOnFanatics;
+                this.SellOnGuitarCenter = item.SellOnGuitarCenter;
                 this.SellOnHayneedle = item.SellOnHayneedle;
                 this.SellOnTarget = item.SellOnTarget;
                 this.SellOnTrends = item.SellOnTrends;
@@ -3104,6 +3128,7 @@ namespace OdinModels
             if (SellOnAllPostersUpdate == true) { return true; }
             if (SellOnAmazonUpdate == true) { return true; }
             if (SellOnFanaticsUpdate == true) { return true; }
+            if (SellOnGuitarCenterUpdate == true) { return true; }
             if (SellOnHayneedleUpdate == true) { return true; }
             if (SellOnTargetUpdate == true) { return true; }
             if (SellOnTrendsUpdate == true) { return true; }
@@ -3229,6 +3254,7 @@ namespace OdinModels
             if (this.SellOnAllPosters == "Y") { return true; }
             if (this.SellOnAmazon == "Y") { return true; }
             if (this.SellOnFanatics == "Y") { return true; }
+            if (this.SellOnGuitarCenter == "Y") { return true; }
             if (this.SellOnHayneedle == "Y") { return true; }
             if (this.SellOnTarget == "Y") { return true; }
             if (this.SellOnWalmart == "Y") { return true; }
@@ -3245,6 +3271,7 @@ namespace OdinModels
             if (this.SellOnAllPosters == "Y") { return true; }
             if (this.SellOnAmazon == "Y") { return true; }
             if (this.SellOnFanatics == "Y") { return true; }
+            if (this.SellOnGuitarCenter == "Y") { return true; }
             if (this.SellOnHayneedle == "Y") { return true; }
             if (this.SellOnTarget == "Y") { return true; }
             if (this.SellOnTrends == "Y") { return true; }
@@ -3454,6 +3481,7 @@ namespace OdinModels
             if (SellOnAllPostersUpdate == true) { return true; }
             if (SellOnAmazonUpdate == true) { return true; }
             if (SellOnFanaticsUpdate == true) { return true; }
+            if (SellOnGuitarCenterUpdate == true) { return true; }
             if (SellOnHayneedleUpdate == true) { return true; }
             if (SellOnTargetUpdate == true) { return true; }
             if (SellOnWalmartUpdate == true) { return true; }
@@ -3471,6 +3499,7 @@ namespace OdinModels
             if (string.IsNullOrEmpty(this.SellOnAllPosters)) { this.SellOnAllPosters="N"; }
             if (string.IsNullOrEmpty(this.SellOnAmazon)) { this.SellOnAmazon = "N"; }
             if (string.IsNullOrEmpty(this.SellOnFanatics)) { this.SellOnFanatics = "N"; }
+            if (string.IsNullOrEmpty(this.SellOnGuitarCenter)) { this.SellOnGuitarCenter = "N"; }
             if (string.IsNullOrEmpty(this.SellOnHayneedle)) { this.SellOnHayneedle = "N"; }
             if (string.IsNullOrEmpty(this.SellOnTarget)) { this.SellOnTarget = "N"; }
             if (string.IsNullOrEmpty(this.SellOnWalmart)) { this.SellOnWalmart = "N"; }
@@ -3699,6 +3728,7 @@ namespace OdinModels
             string sellOnAllPosters,
             string sellOnAmazon,
             string sellOnFanatics,
+            string sellOnGuitarCenter,
             string sellOnHayneedle,
             string sellOnTarget,
             string sellOnTrends,
@@ -3813,6 +3843,7 @@ namespace OdinModels
             this.SellOnAllPosters = sellOnAllPosters;
             this.SellOnAmazon = sellOnAmazon;
             this.SellOnFanatics = sellOnFanatics;
+            this.SellOnGuitarCenter = sellOnGuitarCenter;
             this.SellOnHayneedle = sellOnHayneedle;
             this.SellOnTarget = sellOnTarget;
             this.SellOnTrends = sellOnTrends;

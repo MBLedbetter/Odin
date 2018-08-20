@@ -416,6 +416,7 @@ namespace Odin.Data.Tests
             GlobalData.CustomerIdConversions.Add("ALL POSTERS", "1");
             GlobalData.CustomerIdConversions.Add("AMAZON", "2");
             GlobalData.CustomerIdConversions.Add("FANATICS", "3");
+            GlobalData.CustomerIdConversions.Add("GUITAR CENTER", "8");
             GlobalData.CustomerIdConversions.Add("HAYNEEDLE", "4");
             GlobalData.CustomerIdConversions.Add("TARGET", "5");
             GlobalData.CustomerIdConversions.Add("WALMART", "6");
@@ -426,6 +427,7 @@ namespace Odin.Data.Tests
             item.SellOnAllPosters = "Y";
             item.SellOnAmazon = "N";
             item.SellOnFanatics = "Y";
+            item.SellOnGuitarCenter = "Y";
             item.SellOnHayneedle = "N";
             item.SellOnTarget = "Y";
             item.SellOnWalmart = "N";
@@ -471,6 +473,9 @@ namespace Odin.Data.Tests
 
                 Assert.AreEqual("7", result[6].CustId);
                 Assert.AreEqual("Y", result[6].SendInventory);
+
+                Assert.AreEqual("8", result[7].CustId);
+                Assert.AreEqual("Y", result[7].SendInventory);
             }
 
             #endregion // Assert
@@ -1034,6 +1039,7 @@ namespace Odin.Data.Tests
             GlobalData.CustomerIdConversions.Add("TARGET", "5");
             GlobalData.CustomerIdConversions.Add("WALMART", "6");
             GlobalData.CustomerIdConversions.Add("WAYFAIR", "8");
+            GlobalData.CustomerIdConversions.Add("GUITAR CENTER", "9");
 
             List<ChildElement> billOfMaterials = new List<ChildElement>();
             billOfMaterials.Add(new ChildElement("ST1111", "TestItem2", 1));
@@ -1052,6 +1058,7 @@ namespace Odin.Data.Tests
             item.SellOnAllPosters = "Y";
             item.SellOnAmazon = "Y";
             item.SellOnFanatics = "N";
+            item.SellOnGuitarCenter = "N";
             item.SellOnHayneedle = "N";
             item.SellOnTarget = "N";
             item.SellOnTrends = "N";
@@ -1178,6 +1185,7 @@ namespace Odin.Data.Tests
             Assert.AreEqual("Y", newItem.SellOnAllPosters);
             Assert.AreEqual("Y", newItem.SellOnAmazon);
             Assert.AreEqual("N", newItem.SellOnFanatics);
+            Assert.AreEqual("N", newItem.SellOnGuitarCenter);
             Assert.AreEqual("N", newItem.SellOnHayneedle);
             Assert.AreEqual("N", newItem.SellOnWalmart);
             Assert.AreEqual("N", newItem.SellOnWayfair);
@@ -1561,6 +1569,7 @@ namespace Odin.Data.Tests
             item.SellOnAllPosters = "Y";
             item.SellOnAmazon = "Y";
             item.SellOnFanatics = "N";
+            item.SellOnGuitarCenter = "N";
             item.SellOnHayneedle = "N";
             item.SellOnTarget = "N";
             item.SellOnTrends = "N";
@@ -1656,6 +1665,7 @@ namespace Odin.Data.Tests
                 Assert.AreEqual("SatCode", itemUpdateRecord.SatCode);  //item.SatCode
                 Assert.AreEqual("ShortDescription", itemUpdateRecord.ShortDesc);  //item.ShortDescription
                 Assert.AreEqual("N", itemUpdateRecord.SellOnFanatics);  //item.SellOnFanatics
+                Assert.AreEqual("N", itemUpdateRecord.SellOnGuitarCenter);  //item.SellOnGuitarCenter
                 Assert.AreEqual("N", itemUpdateRecord.SellOnHayneedle);  //item.SellOnHayneedle
                 Assert.AreEqual("N", itemUpdateRecord.SellOnTarget);  //item.SellOnTarget
                 Assert.AreEqual("N", itemUpdateRecord.SellOnWeb);  //item.SellOnTrends
@@ -2855,12 +2865,14 @@ namespace Odin.Data.Tests
             GlobalData.CustomerIdConversions.Add("TARGET", "5");
             GlobalData.CustomerIdConversions.Add("WALMART", "6");
             GlobalData.CustomerIdConversions.Add("WAYFAIR", "7");
+            GlobalData.CustomerIdConversions.Add("GUITAR CENTER", "9");
 
             ItemObject item = new ItemObject();
             item.ItemId = "TEST1";
             item.SellOnAllPosters = "Y";
             item.SellOnAmazon = "N";
             item.SellOnFanatics = "Y";
+            item.SellOnGuitarCenter = "Y";
             item.SellOnHayneedle = "N";
             item.SellOnTarget = "Y";
             item.SellOnWalmart = "N";
@@ -2878,6 +2890,7 @@ namespace Odin.Data.Tests
             item.SellOnAllPosters = "N";
             item.SellOnAmazon = "Y";
             item.SellOnFanatics = "N";
+            item.SellOnGuitarCenter = "N";
             item.SellOnHayneedle = "Y";
             item.SellOnTarget = "N";
             item.SellOnWalmart = "Y";
@@ -2921,6 +2934,9 @@ namespace Odin.Data.Tests
 
                 Assert.AreEqual("7", result[6].CustId);
                 Assert.AreEqual("N", result[6].SendInventory);
+
+                Assert.AreEqual("9", result[7].CustId);
+                Assert.AreEqual("N", result[7].SendInventory);
             }
 
             #endregion // Assert

@@ -6,8 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace Odin.ViewModels
@@ -15,6 +14,19 @@ namespace Odin.ViewModels
     public class ExcelGeneratorViewModel : ViewModelBase
     {
         #region Commands
+
+        public ICommand RemoveExcelLayoutCommand
+        {
+            get
+            {
+                if (_removeExcelLayoutCommand == null)
+                {
+                    _removeExcelLayoutCommand = new RelayCommand(param => RemoveExcelLayout());
+                }
+                return _removeExcelLayoutCommand;
+            }
+        }
+        private RelayCommand _removeExcelLayoutCommand;
 
         public ICommand SaveExcelLayoutCommand
         {
@@ -29,20 +41,6 @@ namespace Odin.ViewModels
         }
         private RelayCommand _saveExcelLayoutCommand;
 
-        /*
-        public ICommand SetOptionCommand
-        {
-            get
-            {
-                if (_setOptionCommand == null)
-                {
-                    _setOptionCommand = new RelayCommand(param => SetCellOption());
-                }
-                return _setOptionCommand;
-            }
-        }
-        private RelayCommand _setOptionCommand;
-        */
 
         public ICommand ShiftDownCommand
         {
@@ -476,6 +474,27 @@ namespace Odin.ViewModels
         }
         
         /// <summary>
+        ///     Removes the given layout information from EXCEL_
+        /// </summary>
+        public void RemoveExcelLayout()
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you wish to delete this layout.", "Remove Layout", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                try
+                {
+                    ExcelService.RemoveExcelLayout(this.ExcelId);
+                    this.ExcelLists = RetrieveExcelLayoutNames();
+                    MessageBox.Show("Layout Removed.");
+                }
+                catch (Exception ex)
+                {
+                    ErrorLog.LogError("Odin was unable to remove the give layout from the database.", ex.ToString());
+                }
+            }
+        }
+
+        /// <summary>
         ///     Saves the current excel layout
         /// </summary>
         public void SaveExcelLayout()
@@ -561,10 +580,8 @@ namespace Odin.ViewModels
         /// </summary>
         public ExcelGeneratorViewModel(ExcelService excelService, ItemService itemService)
         {
-            if (excelService == null) { throw new ArgumentNullException("excelService"); }
-            if (itemService == null) { throw new ArgumentNullException("itemService"); }
-            this.ExcelService = excelService;
-            this.ItemService = itemService;
+            this.ExcelService = excelService ?? throw new ArgumentNullException("excelService");
+            this.ItemService = itemService ?? throw new ArgumentNullException("itemService");
             ExcelGeneratorStartUp();
         }
 

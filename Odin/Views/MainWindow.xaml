@@ -1013,6 +1013,14 @@
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnGuitarCenter}"
+                        Width="{Binding SellOnGuitarCenterVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Guitar Center"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
                         DisplayMemberBinding="{Binding SellOnHayneedle}"
                         Width="{Binding SellOnHayneedleVisibility}">
                         <GridViewColumnHeader

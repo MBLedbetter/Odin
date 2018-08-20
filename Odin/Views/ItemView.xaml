@@ -1586,6 +1586,8 @@
                             Height="Auto" />
                         <RowDefinition
                             Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
                     </Grid.RowDefinitions>
                     <!-- Sell On AllPosters -->
                     <Label
@@ -1648,11 +1650,32 @@
                             TextWrapping="Wrap"
                             VerticalContentAlignment="Center"
                             Width="70" />
+                    <!-- Sell On Guitar Center -->
+                    <Label
+                            Background="{Binding SellOnGuitarCenterBoxColor}"
+                            Content="Sell On Guitar Center"
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            ToolTip="{Binding SellOnGuitarCenterToolTip}"
+                            VerticalAlignment="Center"
+                        Margin="0,4,0,5"
+                        Height="26"/>
+                    <TextBox
+                            HorizontalAlignment="Left"
+                            Grid.Column="1"
+                            Grid.Row="3"
+                            Grid.RowSpan="1"
+                            Margin="6,6,0,6"                        
+                            Text="{Binding SellOnGuitarCenter}"
+                            TextWrapping="Wrap"
+                            VerticalContentAlignment="Center"
+                            Width="70" />
                     <!-- Sell On Hayneedle -->
                     <Label
                             Background="{Binding SellOnHayneedleBoxColor}"
                             Content="Sell On Hayneedle"
-                            Grid.Row="3"
+                            Grid.Row="4"
                             Grid.Column="0"
                             HorizontalAlignment="Left"
                             ToolTip="{Binding SellOnHayneedleToolTip}"
@@ -1662,7 +1685,7 @@
                     <TextBox
                             HorizontalAlignment="Left"
                             Grid.Column="1"
-                            Grid.Row="3"
+                            Grid.Row="4"
                             Grid.RowSpan="1"
                             Margin="6,6,0,6"                        
                             Text="{Binding SellOnHayneedle}"
@@ -1673,7 +1696,7 @@
                     <Label
                             Background="{Binding SellOnTargetBoxColor}"
                             Content="Sell On Target"
-                            Grid.Row="4"
+                            Grid.Row="5"
                             Grid.Column="0"
                             HorizontalAlignment="Left"
                             ToolTip="{Binding SellOnTargetToolTip}"
@@ -1683,7 +1706,7 @@
                     <TextBox
                             HorizontalAlignment="Left"
                             Grid.Column="1"
-                            Grid.Row="4"
+                            Grid.Row="5"
                             Grid.RowSpan="1"
                             Margin="6,6,0,6"                        
                             Text="{Binding SellOnTarget}"
@@ -1694,7 +1717,7 @@
                     <Label
                             Background="{Binding SellOnTrendsBoxColor}"
                             Content="Sell On Trends"
-                            Grid.Row="5"
+                            Grid.Row="6"
                             Grid.Column="0"
                             HorizontalAlignment="Left"
                             ToolTip="{Binding SellOnTrendsToolTip}"
@@ -1704,7 +1727,7 @@
                     <TextBox
                             HorizontalAlignment="Left"
                             Grid.Column="1"
-                            Grid.Row="5"
+                            Grid.Row="6"
                             Grid.RowSpan="1"
                             Margin="6,6,0,6"                        
                             Text="{Binding SellOnTrends}"
@@ -1715,7 +1738,7 @@
                     <Label
                         Background="{Binding SellOnWalmartBoxColor}"
                         Content="Sell On Walmart"
-                        Grid.Row="6"
+                        Grid.Row="7"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SellOnWalmartToolTip}"
@@ -1725,7 +1748,7 @@
                     <TextBox
                             HorizontalAlignment="Left"
                             Grid.Column="1"
-                            Grid.Row="6"
+                            Grid.Row="7"
                             Grid.RowSpan="1"
                             Margin="6,6,0,6"                        
                             Text="{Binding SellOnWalmart}"
@@ -1736,7 +1759,7 @@
                     <Label
                         Background="{Binding SellOnWayfairBoxColor}"
                         Content="Sell On Wayfair"
-                        Grid.Row="7"
+                        Grid.Row="8"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SellOnWayfairToolTip}"
@@ -1746,7 +1769,7 @@
                     <TextBox
                             HorizontalAlignment="Left"
                             Grid.Column="1"
-                            Grid.Row="7"
+                            Grid.Row="8"
                             Grid.RowSpan="1"
                             Margin="6,6,0,6"                        
                             Text="{Binding SellOnWayfair}"

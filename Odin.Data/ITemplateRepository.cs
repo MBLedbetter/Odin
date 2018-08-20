@@ -40,6 +40,12 @@ namespace Odin.Data
         #region Public Removal Methods
 
         /// <summary>
+        ///     Removes layout data associate with the given layout id
+        /// </summary>
+        /// <param name="layoutName"></param>
+        void RemoveExcelLayout(int layoutId);
+
+        /// <summary>
         ///     Removes all column data for the given layout from EXCEL_LAYOUT_DATA
         /// </summary>
         /// <param name="layoutId"></param>

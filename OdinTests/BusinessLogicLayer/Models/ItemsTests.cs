@@ -65,6 +65,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             ItemObject sellOnAllPostersItem = new ItemObject();
             ItemObject sellOnAmazonItem = new ItemObject();
             ItemObject sellOnFanaticsItem = new ItemObject();
+            ItemObject sellOnGuitarCenterItem = new ItemObject();
             ItemObject sellOnHayneedleItem = new ItemObject();
             ItemObject sellOnTargetItem = new ItemObject();
             ItemObject sellOnTrendsItem = new ItemObject();
@@ -187,6 +188,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             sellOnAmazonItem.SellOnAmazon = "1";
             sellOnAllPostersItem.SellOnAmazon = "1";
             sellOnFanaticsItem.SellOnFanatics = "1";
+            sellOnGuitarCenterItem.SellOnGuitarCenter = "1";
             sellOnHayneedleItem.SellOnHayneedle = "1";
             sellOnTargetItem.SellOnAmazon = "1";
             sellOnTrendsItem.SellOnTrends = "1";
@@ -325,6 +327,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             Assert.IsTrue(sellOnAllPostersItem.SellOnFlagUpdate());
             Assert.IsTrue(sellOnAmazonItem.SellOnFlagUpdate());
             Assert.IsTrue(sellOnFanaticsItem.SellOnFlagUpdate());
+            Assert.IsTrue(sellOnGuitarCenterItem.SellOnFlagUpdate());
             Assert.IsTrue(sellOnHayneedleItem.SellOnFlagUpdate());
             Assert.IsTrue(sellOnTargetItem.SellOnFlagUpdate());
             Assert.IsTrue(sellOnWalmartItem.SellOnFlagUpdate());
@@ -752,6 +755,7 @@ namespace OdinTests.BusinessLogicLayer.Models
                 "SellOnAllPosters",
                 "sellOnAmazon",
                 "sellOnFanatics",
+                "sellOnGuitarCenter",
                 "sellOnHayneedle",
                 "SellOnTarget",
                 "SellOnTrends",
@@ -1192,6 +1196,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             "SellOnAllPosters",
             "sellOnAmazon",
             "sellOnFanatics",
+            "sellOnGuitarCenter",
             "sellOnHayneedle",
             "SellOnTarget",
             "SellOnTrends",

@@ -143,6 +143,7 @@ namespace OdinServices
             public static string SellOnAllPosters = "Sell On All Posters";
             public static string SellOnAmazon = "Sell On Amazon";
             public static string SellOnFanatics = "Sell On Fanatics";
+            public static string SellOnGuitarCenter = "Sell On Guitar Center";
             public static string SellOnHayneedle = "Sell On Hayneedle";
             public static string SellOnTarget = "Sell On Target";
             public static string SellOnTrends = "Sell On Trends";
@@ -722,6 +723,7 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.SellOnTarget)) && (item.SellOnTarget.Trim() != returnItem.SellOnTarget.Trim())) { returnItem.SellOnTarget = item.SellOnTarget.Trim(); } // Sell On Target
             if ((!string.IsNullOrEmpty(item.SellOnTrends)) && (item.SellOnTrends.Trim() != returnItem.SellOnTrends.Trim())) { returnItem.SellOnTrends = item.SellOnTrends.Trim(); } // Sell On Trends
             if ((!string.IsNullOrEmpty(item.SellOnFanatics)) && (item.SellOnFanatics.Trim() != returnItem.SellOnFanatics.Trim())) { returnItem.SellOnFanatics = item.SellOnFanatics.Trim(); } // Sell On Fanatics
+            if ((!string.IsNullOrEmpty(item.SellOnGuitarCenter)) && (item.SellOnGuitarCenter.Trim() != returnItem.SellOnGuitarCenter.Trim())) { returnItem.SellOnGuitarCenter = item.SellOnGuitarCenter.Trim(); } // Sell On Guitar Center
             if ((!string.IsNullOrEmpty(item.SellOnHayneedle)) && (item.SellOnHayneedle.Trim() != returnItem.SellOnHayneedle.Trim())) { returnItem.SellOnHayneedle = item.SellOnHayneedle.Trim(); } // Sell On Hayneedle
             if ((!string.IsNullOrEmpty(item.SellOnWalmart)) && (item.SellOnWalmart.Trim() != returnItem.SellOnWalmart.Trim())) { returnItem.SellOnWalmart = item.SellOnWalmart.Trim(); } // Sell On Walmart
             if ((!string.IsNullOrEmpty(item.SellOnWayfair)) && (item.SellOnWayfair.Trim() != returnItem.SellOnWayfair.Trim())) { returnItem.SellOnWayfair = item.SellOnWayfair.Trim(); } // Sell On Wayfair
@@ -1034,6 +1036,7 @@ namespace OdinServices
                 if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnAllPosters))) { item.SellOnAllPosters = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnAllPosters).Trim(); }
                 if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.A_AmazonActive, WorksheetColumnHeaders.SellOnAmazon))) { item.SellOnAmazon = worksheetData.GetValue(row, WorksheetColumnHeaders.A_AmazonActive, WorksheetColumnHeaders.SellOnAmazon).Trim(); }
                 if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnFanatics))) { item.SellOnFanatics = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnFanatics).Trim(); }
+                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnGuitarCenter))) { item.SellOnGuitarCenter = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnGuitarCenter).Trim(); }
                 if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnHayneedle))) { item.SellOnHayneedle = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnHayneedle).Trim(); }
                 if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnTarget))) { item.SellOnTarget = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnTarget).Trim(); }
                 if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnTrends))) { item.SellOnTrends = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnTrends).Trim(); }
@@ -2065,6 +2068,8 @@ namespace OdinServices
             error = ValidateSellOnValue(var.SellOnAmazon, "Amazon");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             error = ValidateSellOnValue(var.SellOnFanatics, "Fanatics");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            error = ValidateSellOnValue(var.SellOnGuitarCenter, "Guitar Center");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             error = ValidateSellOnValue(var.SellOnHayneedle, "Hayneedle");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }

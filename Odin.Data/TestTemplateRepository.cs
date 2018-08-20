@@ -165,6 +165,15 @@ namespace Odin.Data
         /// </summary>
         /// <param name="layoutId"></param>
         /// <returns></returns>
+        public void RemoveExcelLayout(int layoutId)
+        {
+        }
+
+        /// <summary>
+        ///     Removes all column data for the given layout from EXCEL_LAYOUT_DATA
+        /// </summary>
+        /// <param name="layoutId"></param>
+        /// <returns></returns>
         public void RemoveExcelLayoutColumns(int layoutId)
         {
         }

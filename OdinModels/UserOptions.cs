@@ -1405,6 +1405,19 @@ namespace OdinModels
         }
         private static bool _sellOnFanaticsVisibility = true;
 
+        public static bool SellOnGuitarCenterVisibility
+        {
+            get
+            {
+                return _sellOnGuitarCenterVisibility;
+            }
+            set
+            {
+                _sellOnGuitarCenterVisibility = value;
+            }
+        }
+        private static bool _sellOnGuitarCenterVisibility = true;
+
         public static bool SellOnHayneedleVisibility
         {
             get

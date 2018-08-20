@@ -341,11 +341,13 @@ namespace OdinTests.ViewModels
             ItemObject item3 = new ItemObject();
             ItemObject item4 = new ItemObject();
             ItemObject item5 = new ItemObject();
+            ItemObject item6 = new ItemObject();
             item1.SellOnAmazon = "Y";
             item2.SellOnWalmart = "Y";
             item3.SellOnFanatics = "Y";
             item3.SellOnHayneedle = "Y";
             item4.SellOnTrends = "Y";
+            item6.SellOnGuitarCenter = "Y";
 
 
             #endregion // Setup
@@ -357,6 +359,7 @@ namespace OdinTests.ViewModels
             ItemViewModel itemViewModel3 = new ItemViewModel(item3, itemService, new List<string>());
             ItemViewModel itemViewModel4 = new ItemViewModel(item4, itemService, new List<string>());
             ItemViewModel itemViewModel5 = new ItemViewModel(item5, itemService, new List<string>());
+            ItemViewModel itemViewModel6 = new ItemViewModel(item6, itemService, new List<string>());
 
             #endregion // Act
 
@@ -366,6 +369,7 @@ namespace OdinTests.ViewModels
             Assert.AreEqual(true, itemViewModel3.ItemViewModelItem.HasEcommerce());
             Assert.AreEqual(false, itemViewModel4.ItemViewModelItem.HasEcommerce());
             Assert.AreEqual(false, itemViewModel5.ItemViewModelItem.HasEcommerce());
+            Assert.AreEqual(true, itemViewModel6.ItemViewModelItem.HasEcommerce());
 
             #endregion // Assert
         }
@@ -1065,6 +1069,7 @@ namespace OdinTests.ViewModels
                 "N",
                 "N",
                 "N",
+                "N",
                 "Short Description",
                 "size",
                 "5.00",
@@ -1093,6 +1098,7 @@ namespace OdinTests.ViewModels
 
             Assert.AreEqual(item.SellOnAmazon, newItem.SellOnAmazon);
             Assert.AreEqual(item.SellOnFanatics, newItem.SellOnFanatics);
+            Assert.AreEqual(item.SellOnGuitarCenter, newItem.SellOnGuitarCenter);
             Assert.AreEqual(item.SellOnHayneedle, newItem.SellOnHayneedle);
             Assert.AreEqual(item.SellOnWalmart, newItem.SellOnWalmart);
             Assert.AreEqual(item.SellOnTrends, newItem.SellOnTrends);

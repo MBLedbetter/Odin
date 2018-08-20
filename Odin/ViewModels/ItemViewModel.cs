@@ -3742,6 +3742,77 @@ namespace Odin.ViewModels
         }
         private string _sellOnFanaticsToolTip = string.Empty;
 
+
+        /// <summary>
+        ///     Gets or sets the Sell On GuitarCenter
+        /// </summary>
+        public string SellOnGuitarCenter
+        {
+            get
+            {
+                return this.ItemViewModelItem.SellOnGuitarCenter;
+            }
+            set
+            {
+                if (this.ItemViewModelItem.SellOnGuitarCenter != value)
+                {
+                    this.ItemViewModelItem.SellOnGuitarCenter = value;
+                    this.SellOnGuitarCenterError = ItemService.ValidateSellOnValue(value, "Guitar Center");
+                    ValidateEcommerce();
+                    OnPropertyChanged("SellOnGuitarCenter");
+                }
+            }
+        }
+        public string SellOnGuitarCenterBoxColor
+        {
+            get
+            {
+                return _sellOnGuitarCenterBoxColor;
+            }
+            set
+            {
+                _sellOnGuitarCenterBoxColor = value;
+                OnPropertyChanged("SellOnGuitarCenterBoxColor");
+            }
+        }
+        private string _sellOnGuitarCenterBoxColor = "White";
+        public string SellOnGuitarCenterError
+        {
+            get
+            {
+                return _sellOnGuitarCenterError;
+            }
+            set
+            {
+                _sellOnGuitarCenterError = value;
+                if (value != "")
+                {
+                    SellOnGuitarCenterToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SellOnGuitarCenter");
+                }
+                else
+                {
+                    SellOnGuitarCenterToolTip = ReturnToolTip("SellOnGuitarCenter");
+                }
+                this.SellOnGuitarCenterBoxColor = (value == "") ? "White" : "Tomato";
+                this.TabColorWebFlag = CheckWebFlagsTabColor();
+                OnPropertyChanged("SellOnGuitarCenterError");
+            }
+        }
+        private string _sellOnGuitarCenterError = string.Empty;
+        public string SellOnGuitarCenterToolTip
+        {
+            get
+            {
+                return _sellOnGuitarCenterToolTip;
+            }
+            set
+            {
+                this._sellOnGuitarCenterToolTip = value;
+                OnPropertyChanged("SellOnGuitarCenterToolTip");
+            }
+        }
+        private string _sellOnGuitarCenterToolTip = string.Empty;
+
         /// <summary>
         ///     Gets or sets the Sell On Hayneedle
         /// </summary>
@@ -8424,6 +8495,7 @@ namespace Odin.ViewModels
             if (SellOnAllPostersBoxColor != "White") { return "Tomato"; }
             if (SellOnAmazonBoxColor != "White") { return "Tomato";  }
             if (SellOnFanaticsBoxColor != "White") { return "Tomato"; }
+            if (SellOnGuitarCenterBoxColor != "White") { return "Tomato"; }
             if (SellOnHayneedleBoxColor != "White") { return "Tomato"; }
             if (SellOnTargetBoxColor != "White") { return "Tomato"; }
             if (SellOnTrendsBoxColor != "White") { return "Tomato"; }
@@ -8725,6 +8797,7 @@ namespace Odin.ViewModels
             this.SellOnAllPostersToolTip = ReturnToolTip("SellOnAllPosters");
             this.SellOnAmazonToolTip = ReturnToolTip("SellOnAmazon");
             this.SellOnFanaticsToolTip = ReturnToolTip("SellOnFanatics");
+            this.SellOnGuitarCenterToolTip = ReturnToolTip("SellOnGuitarCenter");
             this.SellOnHayneedleToolTip = ReturnToolTip("SellOnHayneedle");
             this.SellOnTargetErrorToolTip = ReturnToolTip("SellOnTarget");
             this.SellOnTrendsToolTip = ReturnToolTip("SellOnTrends");
@@ -8839,6 +8912,7 @@ namespace Odin.ViewModels
             this.SellOnAllPostersError = ItemService.ValidateSellOnValue(this.SellOnAllPosters, "All Posters");
             this.SellOnAmazonError = ItemService.ValidateSellOnValue(this.SellOnAmazon, "Amazon");
             this.SellOnFanaticsError = ItemService.ValidateSellOnValue(this.SellOnFanatics, "Fanatics");
+            this.SellOnGuitarCenterError = ItemService.ValidateSellOnValue(this.SellOnGuitarCenter, "Guitar Center");
             this.SellOnHayneedleError = ItemService.ValidateSellOnValue(this.SellOnHayneedle, "Hayneedle");
             this.SellOnTargetError = ItemService.ValidateSellOnValue(this.SellOnTarget, "Target");
             this.SellOnTrendsError = ItemService.ValidateSellOnValue(this.SellOnTrends, "Trends");

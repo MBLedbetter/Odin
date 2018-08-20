@@ -5,9 +5,7 @@ using OdinModels;
 using OdinServices;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -6139,10 +6137,6 @@ namespace Odin.ViewModels
                     ErrorLog.LogError("Odin was unable to remove the give template from the database.", ex.ToString());
                 }
             }
-            else if (dialogResult == DialogResult.No)
-            {
-                //do something else
-            }
             return false;
         }
 
@@ -6313,9 +6307,8 @@ namespace Odin.ViewModels
         /// <param name="templateStatus"></param>
         public TemplateViewModel(ItemService itemService, string templateStatus, Template template = null)
         {
-            if (itemService == null) { throw new ArgumentNullException("itemService"); }
+            this.ItemService = itemService ?? throw new ArgumentNullException("itemService");
             this.TemplateObject = new Template();
-            this.ItemService = itemService;
             this.TemplateList = GlobalData.TemplateNames;
             this.TemplateStatus = templateStatus;
             SetVisibility(templateStatus);

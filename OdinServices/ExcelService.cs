@@ -45,7 +45,7 @@ namespace OdinServices
         /// <summary>
         ///     Gets or sets the requestnum
         /// </summary>
-        int requestNum { get; set; }
+        int RequestNum { get; set; }
 
         public IRequestRepository RequestRepository { get; set; }
         
@@ -128,335 +128,6 @@ namespace OdinServices
             }
             return false;
         }
-
-        #region Retrieval Methods
-
-        /// <summary>
-        ///     Reads the fieldname and associates the coresponding value from the item
-        /// </summary>
-        /// <param name="fieldName"></param>
-        /// <param name="item"></param>
-        /// <returns></returns>
-        public string RetrieveCellValue(string fieldName, ItemObject item, string customer)
-        {
-            if (!string.IsNullOrEmpty(fieldName))
-            {
-                if (fieldName.Substring(0, 1) == "\"")
-                {
-                    return fieldName.Replace("\"", "");
-                }
-            }
-            switch(fieldName)
-            {
-                case "-EMPTY-":
-                    return "";
-                case "Acctg Group (Product)":
-                    return item.AccountingGroup;
-                case "Bill Of Materials":
-                    return item.ReturnBillOfMaterials();
-                case "Batteries Needed":
-                    return "";
-                case "Battery Cell Type":
-                    return ReturnBatteryCellType(item.PricingGroup);
-                case "Brand Name":
-                    return ReturnBrandName(item.ProductLine);
-                case "Browse Keyword":
-                    return ReturnBrowseKeyword(item.Ecommerce_ProductSubcategory);
-                case "Casepack Height":
-                    return item.CasepackHeight;
-                case "Casepack Length":
-                    return item.CasepackLength;
-                case "Casepack Weight":
-                    return item.CasepackWeight;
-                case "Casepack Width":
-                    return item.CasepackWidth;
-                case "Casepack Qty":
-                    return (!string.IsNullOrEmpty(item.CasepackQty)) ? item.CasepackQty : "0";
-                case "Category":
-                    return item.Category;
-                case "Category2":
-                    return item.Category2;
-                case "Category3":
-                    return item.Category3;
-                case "Copyright":
-                    return item.Copyright;
-                case "Cost Profile Group":
-                    return item.CostProfileGroup;
-                case "Country of Origin":
-                    return item.CountryOfOrigin;
-                case "Country of Origin Full":
-                    return ItemService.RetrieveFullCountryOfOrigin(item.CountryOfOrigin);
-                case "Country of Origin - Country Code":
-                    return ItemService.RetrieveFullCountryOfOrigin(item.CountryOfOrigin) + " - " + item.CountryOfOrigin;
-                case "Default Actual Cost CAD":
-                    return item.DefaultActualCostCad;
-                case "Default Actual Cost USD":
-                    return item.DefaultActualCostUsd;
-                case "Description":
-                    return item.Description;
-                case "Direct Import":
-                    return item.DirectImport;
-                case "EAN":
-                    return item.Ean;
-                case "Ecommerce ASIN":
-                    return item.Ecommerce_Asin;
-                case "Ecommerce Bullet ALL":
-                    return MergeBullets(item);
-                case "Ecommerce Bullet ALL Bulleted":
-                    return ModifyBulletedCopy(item);
-                case "Ecommerce Bullet 1":
-                    return item.Ecommerce_Bullet1;
-                case "Ecommerce Bullet 2":
-                    return item.Ecommerce_Bullet2;
-                case "Ecommerce Bullet 3":
-                    return item.Ecommerce_Bullet3;
-                case "Ecommerce Bullet 4":
-                    return item.Ecommerce_Bullet4;
-                case "Ecommerce Bullet 5":
-                    return item.Ecommerce_Bullet5;
-                case "Ecommerce Components":
-                    return ModifyComponents(item.Ecommerce_Components);
-                case "Ecommerce Components Count":
-                    return ReturnNumberOfComponents(item.Ecommerce_Components);
-                case "Ecommerce Cost":
-                    return item.Ecommerce_Cost;
-                case "Ecommerce Country of Origin":
-                    return item.Ecommerce_CountryofOrigin;
-                case "Ecommerce External ID":
-                    return item.Ecommerce_ExternalId;
-                case "Ecommerce External ID Type":
-                    return item.Ecommerce_ExternalIdType;
-                case "Ecommerce Image Path 1":
-                    return SetImagePath(item.Ecommerce_ImagePath1);
-                case "Ecommerce Image Path 2":
-                    return SetImagePath(item.Ecommerce_ImagePath2);
-                case "Ecommerce Image Path 3":
-                    return SetImagePath(item.Ecommerce_ImagePath3);
-                case "Ecommerce Image Path 4":
-                    return SetImagePath(item.Ecommerce_ImagePath4);
-                case "Ecommerce Image Path 5":
-                    return SetImagePath(item.Ecommerce_ImagePath5);
-                case "Ecommerce Item Height":
-                    return item.Ecommerce_ItemHeight;
-                case "Ecommerce Item Length":
-                    return item.Ecommerce_ItemLength;
-                case "Ecommerce Item Name":
-                    return item.Ecommerce_ItemName;
-                case "Ecommerce Item Weight":
-                    return item.Ecommerce_ItemWeight;
-                case "Ecommerce Item Weight (milliliters)":
-                    return DbUtil.ConvertToMilliliters(item.Ecommerce_ItemWeight);
-                case "Ecommerce Item Width":
-                    return item.Ecommerce_ItemWidth;
-                case "Ecommerce Model Name":
-                    return item.Ecommerce_ModelName;
-                case "Ecommerce Package Height":
-                    return item.Ecommerce_PackageHeight;
-                case "Ecommerce Package Length":
-                    return item.Ecommerce_PackageLength;
-                case "Ecommerce Package Weight":
-                    return item.Ecommerce_PackageWeight;
-                case "Ecommerce Package Width":
-                    return item.Ecommerce_PackageWidth;
-                case "Ecommerce Page Qty":
-                    return item.Ecommerce_PageQty;
-                case "Ecommerce Product Category":
-                    return item.Ecommerce_ProductCategory;
-                case "Ecommerce Product Description":
-                    return item.Ecommerce_ProductDescription;
-                case "Ecommerce Product Subcategory":
-                    return item.Ecommerce_ProductSubcategory;
-                case "Ecommerce Manufacturer Name":
-                    return item.Ecommerce_ManufacturerName;
-                case "Ecommerce Msrp":
-                    return item.Ecommerce_Msrp;
-                case "Ecommerce Search Terms":
-                    return TrimSearchTerms(item.Ecommerce_SearchTerms, customer);
-                case "Ecommerce Size":
-                    return item.Ecommerce_Size;
-                case "Ecommerce Upc":
-                    return item.Ecommerce_Upc;
-                case "GPC":
-                    return item.Gpc;
-                case "Image Path":
-                    return item.ImagePath;
-                case "Image Path 1":
-                    return item.ImagePath;
-                case "Image Path 2":
-                    return item.AltImageFile1;
-                case "Image Path 3":
-                    return item.AltImageFile2;
-                case "Image Path 4":
-                    return item.AltImageFile3;
-                case "Image Path 5":
-                    return item.AltImageFile4;
-                case "In Stock Date":
-                    return item.InStockDate;
-                case "Innerpack Height":
-                    return item.InnerpackHeight;
-                case "Innerpack Length":
-                    return item.InnerpackLength;
-                case "Innerpack Weight":
-                    return item.InnerpackWeight;
-                case "Innerpack Width":
-                    return item.InnerpackWidth;
-                case "Innerpack Qty":
-                    return item.InnerpackQuantity;
-                case "ISBN":
-                    return item.Isbn;
-                case "Item Category":
-                    return item.ItemCategory;
-                case "Item Family":
-                    return item.ItemFamily;
-                case "Item Group":
-                    return item.ItemGroup;
-                case "Item Height":
-                    return item.Height;
-                case "Item Keywords":
-                    return item.ItemKeywords;
-                case "Item ID":
-                    return item.ItemId;
-                case "Item ID + EC":
-                    return item.ItemId + "EC";
-                case "Item Length":
-                    return item.Length;
-                case "Item Weight":
-                    return item.Weight;
-                case "Item Width":
-                    return item.Width;
-                case "Label Color":
-                    return item.Color;
-                case "Language":
-                    return item.Language;
-                case "License":
-                    return item.License;
-                case "License Begin Date":
-                    return item.LicenseBeginDate;
-                case "List Price (CAD)":
-                    return item.ListPriceCad;
-                case "List Price (MXN)":
-                    return item.ListPriceMxn;
-                case "List Price (USD)":
-                    return item.ListPriceUsd;
-                case "Meta Description":
-                    return item.MetaDescription;
-                case "Mfg Source":
-                    return item.MfgSource;
-                case "MSRP":
-                    return item.Msrp;
-                case "MSRP CAD":
-                    return item.MsrpCad;
-                case "MSRP MXN":
-                    return item.MsrpMxn;
-                case "Price Group (Product)":
-                    return item.PricingGroup;
-                case "Print On Demand":
-                    return item.PrintOnDemand;
-                case "Product Format":
-                    return item.ProductFormat;
-                case "Product Group":
-                    return item.ProductGroup;
-                case "Product ID":
-                    return item.ItemId;
-                case "Product Id Translation":
-                    return item.ReturnProductIdTranslations();
-                case "Product Line":
-                    return item.ProductLine;
-                case "Product Qty":
-                    return item.ProductQty;
-                case "Property":
-                    return item.Property;
-                case "PS Status":
-                    return item.PsStatus;
-                case "SAT Code":
-                    return item.SatCode;
-                case "Sell On All Posters":
-                    return item.SellOnAllPosters;
-                case "Sell On Amazon":
-                    return item.SellOnAmazon;
-                case "Sell On Fanatics":
-                    return item.SellOnFanatics;
-                case "Sell On Hayneedle":
-                    return item.SellOnHayneedle;
-                case "Sell On Target":
-                    return item.SellOnTarget;
-                case "Sell On Trends":
-                    return item.SellOnTrends;
-                case "Sell On Walmart":
-                    return item.SellOnWalmart;
-                case "Sell On Wayfair":
-                    return item.SellOnWayfair;
-                case "Short Description":
-                    return item.ShortDescription;
-                case "Size":
-                    return item.Size;
-                case "Stats Code":
-                    return item.StatsCode;
-                case "Tariff Code":
-                    return item.TariffCode;
-                case "Territory":
-                    return item.Territory;
-                case "Title":
-                    return item.Title;
-                case "UDEX":
-                    return item.Udex;
-                case "UPC":
-                    return item.Upc;
-                case "Variant Attribute Name":
-                    return ReturnVariantAttributeName(item.ItemId, customer);
-                case "Variant Group Id":
-                    return ReturnVariantGroupId(item.ItemId);
-                case "Website Price":
-                    return item.WebsitePrice;
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Retrieves the coresponding layout id for the given layout
-        /// </summary>
-        /// <param name="layoutName"></param>
-        /// <returns></returns>
-        public string RetrieveExcelLayoutCustomer(string layoutName)
-        {
-            foreach(Layout layout in LayoutList)
-            {
-                if(layout.Name==layoutName)
-                {
-                    return layout.Customer;
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Retrieves the coresponding layout id for the given layout
-        /// </summary>
-        /// <param name="layoutName"></param>
-        /// <returns></returns>
-        public int RetrieveExcelLayoutId(string layoutName)
-        {
-            return TemplateRepository.RetrieveExcelLayoutId(layoutName);
-        }
-
-        /// <summary>
-        ///     Retrieves the coresponding productType for the given layout
-        /// </summary>
-        /// <param name="layoutName"></param>
-        /// <returns></returns>
-        public string RetrieveExcelLayoutProductType(string layoutName)
-        {
-            foreach (Layout layout in LayoutList)
-            {
-                if (layout.Name == layoutName)
-                {
-                    return layout.ProductType;
-                }
-            }
-            return "";
-        }
-
-        #endregion // Retrieval Methods
 
         /// <summary>
         ///     Create a excell documents for a given list of items
@@ -1077,6 +748,18 @@ namespace OdinServices
             this.TemplateHeaders.Add("Ecommerce Size");
             this.TemplateHeaders.Add("Website Price");
         }
+        
+        #region Removal Methods
+        
+        /// <summary>
+        ///     Removes layout data associate with the given layout id from EXCEL_LAYOUT_DATA and EXCEL_LAYOUT_IDS
+        /// </summary>
+        /// <param name="layoutName"></param>
+        public void RemoveExcelLayout(int layoutId)
+        {
+            TemplateRepository.RemoveExcelLayout(layoutId);
+            TemplateRepository.RemoveExcelLayoutColumns(layoutId);
+        }
 
         /// <summary>
         ///     Removes all column data for the given layout
@@ -1087,8 +770,337 @@ namespace OdinServices
         {
             TemplateRepository.RemoveExcelLayoutColumns(layoutId);
         }
-        
+
+        #endregion // Removal Methods
+
         #region Retrieval Methods
+
+        /// <summary>
+        ///     Reads the fieldname and associates the coresponding value from the item
+        /// </summary>
+        /// <param name="fieldName"></param>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public string RetrieveCellValue(string fieldName, ItemObject item, string customer)
+        {
+            if (!string.IsNullOrEmpty(fieldName))
+            {
+                if (fieldName.Substring(0, 1) == "\"")
+                {
+                    return fieldName.Replace("\"", "");
+                }
+            }
+            switch (fieldName)
+            {
+                case "-EMPTY-":
+                    return "";
+                case "Acctg Group (Product)":
+                    return item.AccountingGroup;
+                case "Bill Of Materials":
+                    return item.ReturnBillOfMaterials();
+                case "Batteries Needed":
+                    return "";
+                case "Battery Cell Type":
+                    return ReturnBatteryCellType(item.PricingGroup);
+                case "Brand Name":
+                    return ReturnBrandName(item.ProductLine);
+                case "Browse Keyword":
+                    return ReturnBrowseKeyword(item.Ecommerce_ProductSubcategory);
+                case "Casepack Height":
+                    return item.CasepackHeight;
+                case "Casepack Length":
+                    return item.CasepackLength;
+                case "Casepack Weight":
+                    return item.CasepackWeight;
+                case "Casepack Width":
+                    return item.CasepackWidth;
+                case "Casepack Qty":
+                    return (!string.IsNullOrEmpty(item.CasepackQty)) ? item.CasepackQty : "0";
+                case "Category":
+                    return item.Category;
+                case "Category2":
+                    return item.Category2;
+                case "Category3":
+                    return item.Category3;
+                case "Copyright":
+                    return item.Copyright;
+                case "Cost Profile Group":
+                    return item.CostProfileGroup;
+                case "Country of Origin":
+                    return item.CountryOfOrigin;
+                case "Country of Origin Full":
+                    return ItemService.RetrieveFullCountryOfOrigin(item.CountryOfOrigin);
+                case "Country of Origin - Country Code":
+                    return ItemService.RetrieveFullCountryOfOrigin(item.CountryOfOrigin) + " - " + item.CountryOfOrigin;
+                case "Default Actual Cost CAD":
+                    return item.DefaultActualCostCad;
+                case "Default Actual Cost USD":
+                    return item.DefaultActualCostUsd;
+                case "Description":
+                    return item.Description;
+                case "Direct Import":
+                    return item.DirectImport;
+                case "EAN":
+                    return item.Ean;
+                case "Ecommerce ASIN":
+                    return item.Ecommerce_Asin;
+                case "Ecommerce Bullet ALL":
+                    return MergeBullets(item);
+                case "Ecommerce Bullet ALL Bulleted":
+                    return ModifyBulletedCopy(item);
+                case "Ecommerce Bullet 1":
+                    return item.Ecommerce_Bullet1;
+                case "Ecommerce Bullet 2":
+                    return item.Ecommerce_Bullet2;
+                case "Ecommerce Bullet 3":
+                    return item.Ecommerce_Bullet3;
+                case "Ecommerce Bullet 4":
+                    return item.Ecommerce_Bullet4;
+                case "Ecommerce Bullet 5":
+                    return item.Ecommerce_Bullet5;
+                case "Ecommerce Components":
+                    return ModifyComponents(item.Ecommerce_Components);
+                case "Ecommerce Components Count":
+                    return ReturnNumberOfComponents(item.Ecommerce_Components);
+                case "Ecommerce Cost":
+                    return item.Ecommerce_Cost;
+                case "Ecommerce Country of Origin":
+                    return item.Ecommerce_CountryofOrigin;
+                case "Ecommerce External ID":
+                    return item.Ecommerce_ExternalId;
+                case "Ecommerce External ID Type":
+                    return item.Ecommerce_ExternalIdType;
+                case "Ecommerce Image Path 1":
+                    return SetImagePath(item.Ecommerce_ImagePath1);
+                case "Ecommerce Image Path 2":
+                    return SetImagePath(item.Ecommerce_ImagePath2);
+                case "Ecommerce Image Path 3":
+                    return SetImagePath(item.Ecommerce_ImagePath3);
+                case "Ecommerce Image Path 4":
+                    return SetImagePath(item.Ecommerce_ImagePath4);
+                case "Ecommerce Image Path 5":
+                    return SetImagePath(item.Ecommerce_ImagePath5);
+                case "Ecommerce Item Height":
+                    return item.Ecommerce_ItemHeight;
+                case "Ecommerce Item Length":
+                    return item.Ecommerce_ItemLength;
+                case "Ecommerce Item Name":
+                    return item.Ecommerce_ItemName;
+                case "Ecommerce Item Weight":
+                    return item.Ecommerce_ItemWeight;
+                case "Ecommerce Item Weight (milliliters)":
+                    return DbUtil.ConvertToMilliliters(item.Ecommerce_ItemWeight);
+                case "Ecommerce Item Width":
+                    return item.Ecommerce_ItemWidth;
+                case "Ecommerce Model Name":
+                    return item.Ecommerce_ModelName;
+                case "Ecommerce Package Height":
+                    return item.Ecommerce_PackageHeight;
+                case "Ecommerce Package Length":
+                    return item.Ecommerce_PackageLength;
+                case "Ecommerce Package Weight":
+                    return item.Ecommerce_PackageWeight;
+                case "Ecommerce Package Width":
+                    return item.Ecommerce_PackageWidth;
+                case "Ecommerce Page Qty":
+                    return item.Ecommerce_PageQty;
+                case "Ecommerce Product Category":
+                    return item.Ecommerce_ProductCategory;
+                case "Ecommerce Product Description":
+                    return item.Ecommerce_ProductDescription;
+                case "Ecommerce Product Subcategory":
+                    return item.Ecommerce_ProductSubcategory;
+                case "Ecommerce Manufacturer Name":
+                    return item.Ecommerce_ManufacturerName;
+                case "Ecommerce Msrp":
+                    return item.Ecommerce_Msrp;
+                case "Ecommerce Search Terms":
+                    return TrimSearchTerms(item.Ecommerce_SearchTerms, customer);
+                case "Ecommerce Size":
+                    return item.Ecommerce_Size;
+                case "Ecommerce Upc":
+                    return item.Ecommerce_Upc;
+                case "GPC":
+                    return item.Gpc;
+                case "Image Path":
+                    return item.ImagePath;
+                case "Image Path 1":
+                    return item.ImagePath;
+                case "Image Path 2":
+                    return item.AltImageFile1;
+                case "Image Path 3":
+                    return item.AltImageFile2;
+                case "Image Path 4":
+                    return item.AltImageFile3;
+                case "Image Path 5":
+                    return item.AltImageFile4;
+                case "In Stock Date":
+                    return item.InStockDate;
+                case "Innerpack Height":
+                    return item.InnerpackHeight;
+                case "Innerpack Length":
+                    return item.InnerpackLength;
+                case "Innerpack Weight":
+                    return item.InnerpackWeight;
+                case "Innerpack Width":
+                    return item.InnerpackWidth;
+                case "Innerpack Qty":
+                    return item.InnerpackQuantity;
+                case "ISBN":
+                    return item.Isbn;
+                case "Item Category":
+                    return item.ItemCategory;
+                case "Item Family":
+                    return item.ItemFamily;
+                case "Item Group":
+                    return item.ItemGroup;
+                case "Item Height":
+                    return item.Height;
+                case "Item Keywords":
+                    return item.ItemKeywords;
+                case "Item ID":
+                    return item.ItemId;
+                case "Item ID + EC":
+                    return item.ItemId + "EC";
+                case "Item Length":
+                    return item.Length;
+                case "Item Weight":
+                    return item.Weight;
+                case "Item Width":
+                    return item.Width;
+                case "Label Color":
+                    return item.Color;
+                case "Language":
+                    return item.Language;
+                case "License":
+                    return item.License;
+                case "License Begin Date":
+                    return item.LicenseBeginDate;
+                case "List Price (CAD)":
+                    return item.ListPriceCad;
+                case "List Price (MXN)":
+                    return item.ListPriceMxn;
+                case "List Price (USD)":
+                    return item.ListPriceUsd;
+                case "Meta Description":
+                    return item.MetaDescription;
+                case "Mfg Source":
+                    return item.MfgSource;
+                case "MSRP":
+                    return item.Msrp;
+                case "MSRP CAD":
+                    return item.MsrpCad;
+                case "MSRP MXN":
+                    return item.MsrpMxn;
+                case "Price Group (Product)":
+                    return item.PricingGroup;
+                case "Print On Demand":
+                    return item.PrintOnDemand;
+                case "Product Format":
+                    return item.ProductFormat;
+                case "Product Group":
+                    return item.ProductGroup;
+                case "Product ID":
+                    return item.ItemId;
+                case "Product Id Translation":
+                    return item.ReturnProductIdTranslations();
+                case "Product Line":
+                    return item.ProductLine;
+                case "Product Qty":
+                    return item.ProductQty;
+                case "Property":
+                    return item.Property;
+                case "PS Status":
+                    return item.PsStatus;
+                case "SAT Code":
+                    return item.SatCode;
+                case "Sell On All Posters":
+                    return item.SellOnAllPosters;
+                case "Sell On Amazon":
+                    return item.SellOnAmazon;
+                case "Sell On Fanatics":
+                    return item.SellOnFanatics;
+                case "Sell On Guitar Center":
+                    return item.SellOnGuitarCenter;
+                case "Sell On Hayneedle":
+                    return item.SellOnHayneedle;
+                case "Sell On Target":
+                    return item.SellOnTarget;
+                case "Sell On Trends":
+                    return item.SellOnTrends;
+                case "Sell On Walmart":
+                    return item.SellOnWalmart;
+                case "Sell On Wayfair":
+                    return item.SellOnWayfair;
+                case "Short Description":
+                    return item.ShortDescription;
+                case "Size":
+                    return item.Size;
+                case "Stats Code":
+                    return item.StatsCode;
+                case "Tariff Code":
+                    return item.TariffCode;
+                case "Territory":
+                    return item.Territory;
+                case "Title":
+                    return item.Title;
+                case "UDEX":
+                    return item.Udex;
+                case "UPC":
+                    return item.Upc;
+                case "Variant Attribute Name":
+                    return ReturnVariantAttributeName(item.ItemId, customer);
+                case "Variant Group Id":
+                    return ReturnVariantGroupId(item.ItemId);
+                case "Website Price":
+                    return item.WebsitePrice;
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Retrieves the coresponding layout id for the given layout
+        /// </summary>
+        /// <param name="layoutName"></param>
+        /// <returns></returns>
+        public string RetrieveExcelLayoutCustomer(string layoutName)
+        {
+            foreach (Layout layout in LayoutList)
+            {
+                if (layout.Name == layoutName)
+                {
+                    return layout.Customer;
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Retrieves the coresponding layout id for the given layout
+        /// </summary>
+        /// <param name="layoutName"></param>
+        /// <returns></returns>
+        public int RetrieveExcelLayoutId(string layoutName)
+        {
+            return TemplateRepository.RetrieveExcelLayoutId(layoutName);
+        }
+
+        /// <summary>
+        ///     Retrieves the coresponding productType for the given layout
+        /// </summary>
+        /// <param name="layoutName"></param>
+        /// <returns></returns>
+        public string RetrieveExcelLayoutProductType(string layoutName)
+        {
+            foreach (Layout layout in LayoutList)
+            {
+                if (layout.Name == layoutName)
+                {
+                    return layout.ProductType;
+                }
+            }
+            return "";
+        }
 
         /// <summary>
         ///     Retrieves a list of excel columns for the given layout name
@@ -1287,7 +1299,7 @@ namespace OdinServices
 
         public string ReturnRequestNum()
         {
-            return Convert.ToString(requestNum);
+            return Convert.ToString(RequestNum);
         }
 
         /// <summary>
@@ -1354,8 +1366,8 @@ namespace OdinServices
         /// <param name="Items"></param>
         public void SubmitRequest(ObservableCollection<ItemObject> Items, string status, string Comment)
         {
-            requestNum = Convert.ToInt32(RequestRepository.RetrieveSubmitRequestNumber());
-            RequestRepository.SubmitRequest(Items, status, Comment, requestNum);
+            RequestNum = Convert.ToInt32(RequestRepository.RetrieveSubmitRequestNumber());
+            RequestRepository.SubmitRequest(Items, status, Comment, RequestNum);
         }
         
         /// <summary>
@@ -1637,22 +1649,6 @@ namespace OdinServices
         /// <param name="requestReposiory"></param>
         public ExcelService(bool isTest, ItemService itemService, OptionService optionService, ITemplateRepository templateRepository, IRequestRepository requestReposiory)
         {
-            if (itemService == null)
-            {
-                throw new ArgumentNullException("itemService");
-            }
-            if (optionService == null)
-            {
-                throw new ArgumentNullException("optionService");
-            }
-            if (templateRepository == null)
-            {
-                throw new ArgumentNullException("templateRepository");
-            }
-            if (requestReposiory == null)
-            {
-                throw new ArgumentNullException("requestReposiory");
-            }
             if (!GlobalData.FtpUserexceptions.Contains(GlobalData.UserName))
             {
                 this.FtpService = new FtpService();
@@ -1661,11 +1657,11 @@ namespace OdinServices
             {
                 this.FtpService = null;
             }
-            this.ItemService = itemService;
-            this.RequestRepository = requestReposiory;
-            this.OptionService = optionService;
+            this.ItemService = itemService ?? throw new ArgumentNullException("itemService");
+            this.RequestRepository = requestReposiory ?? throw new ArgumentNullException("requestReposiory");
+            this.OptionService = optionService ?? throw new ArgumentNullException("optionService");
+            this.TemplateRepository = templateRepository ?? throw new ArgumentNullException("templateRepository");
             PopulateTemplateHeaders();
-            this.TemplateRepository = templateRepository;
             this.LayoutList = RetrieveExcelLayouts();
         }
 

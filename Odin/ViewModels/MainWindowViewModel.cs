@@ -1940,6 +1940,24 @@ namespace Odin.ViewModels
         }
         private string _sellOnFanaticsVisibility = "auto";
 
+
+        /// <summary>
+        ///     Gets or sets the SellOnGuitarCenterVisibility field
+        /// </summary>
+        public string SellOnGuitarCenterVisibility
+        {
+            get
+            {
+                return _sellOnGuitarCenterVisibility;
+            }
+            set
+            {
+                _sellOnGuitarCenterVisibility = value;
+                OnPropertyChanged("SellOnGuitarCenterVisibility");
+            }
+        }
+        private string _sellOnGuitarCenterVisibility = "auto";
+
         /// <summary>
         ///     Gets or sets the SellOnHayneedleVisibility field
         /// </summary>
@@ -3301,6 +3319,7 @@ namespace Odin.ViewModels
             this.SellOnAllPostersVisibility = (UserOptions.SellOnAllPostersVisibility) ? "100" : "0";
             this.SellOnAmazonVisibility = (UserOptions.SellOnAmazonVisibility) ? "100" : "0";
             this.SellOnFanaticsVisibility = (UserOptions.SellOnFanaticsVisibility) ? "100" : "0";
+            this.SellOnGuitarCenterVisibility = (UserOptions.SellOnGuitarCenterVisibility) ? "100" : "0";
             this.SellOnHayneedleVisibility = (UserOptions.SellOnHayneedleVisibility) ? "100" : "0";
             this.SellOnTargetVisibility = (UserOptions.SellOnTargetVisibility) ? "100" : "0";
             this.SellOnTrendsVisibility = (UserOptions.SellOnTrendsVisibility) ? "100" : "0";
