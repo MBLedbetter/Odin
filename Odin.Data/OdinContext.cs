@@ -86,6 +86,11 @@ namespace Odin.Data
         public DbSet<EnBomHeader> EnBomHeader { get; set; }
 
         /// <summary>
+        ///     Gets or sets a list of the EnBomOutputs lines that are in this context.
+        /// </summary>
+        public DbSet<EnBomOutputs> EnBomOutputs { get; set; }
+
+        /// <summary>
         ///     Gets or sets a list of the FxdBinLocInv lines that are in this context.
         /// </summary>
         public DbSet<FxdBinLocInv> FxdBinLocInv { get; set; }
@@ -455,6 +460,7 @@ namespace Odin.Data
             MapDefaultLocInv(modelBuilder);
             MapEnBomComps(modelBuilder);
             MapEnBomHeader(modelBuilder);
+            MapEnBomOutputs(modelBuilder);
             MapFxdBinLocInv(modelBuilder);
             MapHrmnTariffCd(modelBuilder);
             MapInvItemFam(modelBuilder);
@@ -1117,6 +1123,50 @@ namespace Odin.Data
             modelBuilder.Entity<EnBomHeader>().Property(p => p.InvItemId).HasColumnName("INV_ITEM_ID");
             modelBuilder.Entity<EnBomHeader>().Property(p => p.Text254).HasColumnName("TEXT254");
 
+        }
+
+
+        /// <summary>
+        ///             This method maps the EnBomOutputs class to the database.
+        /// </summary>
+        /// 
+        /// <param name="modelBuilder">
+        ///             The DbModelBuilder to update with the mapping.
+        /// </param>
+        private void MapEnBomOutputs(DbModelBuilder modelBuilder)
+        {
+            // Map the EnBomHeader class to the PS_EN_BOM_OUTPUTS table
+            modelBuilder.Entity<EnBomOutputs>()
+                .HasKey(p => new
+                {
+                    p.BusinessUnit, 
+                    p.InvItemId, 
+                    p.BomState, 
+                    p.BomType, 
+                    p.BomCode, 
+                    p.MgOutputType, 
+                    p.MgOutputItem, 
+                    p.OpSequence, 
+                    p.DateInEffect
+                })
+                .ToTable("PS_EN_BOM_OUTPUTS");
+            // Map each column
+            modelBuilder.Entity<EnBomOutputs>().Property(p => p.BusinessUnit).HasColumnName("BUSINESS_UNIT");
+            modelBuilder.Entity<EnBomOutputs>().Property(p => p.InvItemId).HasColumnName("INV_ITEM_ID");
+            modelBuilder.Entity<EnBomOutputs>().Property(p => p.BomState).HasColumnName("BOM_STATE");
+            modelBuilder.Entity<EnBomOutputs>().Property(p => p.BomType).HasColumnName("BOM_TYPE");
+            modelBuilder.Entity<EnBomOutputs>().Property(p => p.BomCode).HasColumnName("BOM_CODE");
+            modelBuilder.Entity<EnBomOutputs>().Property(p => p.MgOutputType).HasColumnName("MG_OUTPUT_TYPE");
+            modelBuilder.Entity<EnBomOutputs>().Property(p => p.MgOutputItem).HasColumnName("MG_OUTPUT_ITEM");
+            modelBuilder.Entity<EnBomOutputs>().Property(p => p.OpSequence).HasColumnName("OP_SEQUENCE");
+            modelBuilder.Entity<EnBomOutputs>().Property(p => p.DateInEffect).HasColumnName("DATE_IN_EFFECT");
+            modelBuilder.Entity<EnBomOutputs>().Property(p => p.DateObsolete).HasColumnName("DATE_OBSOLETE");
+            modelBuilder.Entity<EnBomOutputs>().Property(p => p.MgOutputQty).HasColumnName("MG_OUTPUT_QTY");
+            modelBuilder.Entity<EnBomOutputs>().Property(p => p.MgOutputQtyCode).HasColumnName("MG_OUTPUT_QTY_CODE");
+            modelBuilder.Entity<EnBomOutputs>().Property(p => p.MgOutputResPct).HasColumnName("MG_OUTPUT_RES_PCT");
+            modelBuilder.Entity<EnBomOutputs>().Property(p => p.MgOutputCostPct).HasColumnName("MG_OUTPUT_COST_PCT");
+            modelBuilder.Entity<EnBomOutputs>().Property(p => p.IncrRelType).HasColumnName("INCR_REL_TYPE");
+            modelBuilder.Entity<EnBomOutputs>().Property(p => p.IncrRelOffset).HasColumnName("INCR_REL_OFFSET");
         }
 
         /// <summary>

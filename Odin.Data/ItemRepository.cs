@@ -112,6 +112,7 @@ namespace Odin.Data
                             {
                                 InsertEnBomCompsAll(item, context);
                                 InsertEnBomHeader(item, context);
+                                InsertEnBomOutputs(item, context);
                                 InsertSfPrdnAreaIt(item, context);
                             }
                             InsertItemUpdateRecord(item, context);
@@ -138,15 +139,17 @@ namespace Odin.Data
 
                             if (item.ProductIdTranslationUpdate)
                             {
+                                // === Removed Circa 8/15/2018 ===
                                 // RemoveMarketplaceProductTranslationsAll(item, context);
                                 // InsertProductIdTranslationAll(item, context);
                             }
                             if (item.BillOfMaterialsUpdate)
                             {
                                 RemoveEnBomCompsAll(item.ItemId, context);
-                                InsertSfPrdnAreaIt(item, context);
                                 InsertEnBomCompsAll(item, context);
                                 InsertEnBomHeader(item, context);
+                                InsertEnBomOutputs(item, context);
+                                InsertSfPrdnAreaIt(item, context);
                             }
                             InsertItemUpdateRecord(item, context);
                         }
@@ -351,6 +354,37 @@ namespace Odin.Data
                     Descrshort = DbUtil.Char10(item.Description).ToUpper(),
                     InvItemId = item.ItemId,
                     Text254 = ""
+                });
+            }
+        }
+
+        /// <summary>
+        ///     Insert Bill of material record into PS_EN_BOM_OUTPUTS
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="transaction"></param>
+        public void InsertEnBomOutputs(ItemObject item, OdinContext context)
+        {
+            if (!context.EnBomOutputs.Any(o => o.InvItemId == item.ItemId && o.BusinessUnit == "TRUS1"))
+            {
+                context.EnBomOutputs.Add(new EnBomOutputs
+                {
+                    BomCode = 1,
+                    BomState = "PR",
+                    BomType = "PR",
+                    BusinessUnit = "TRUS1",
+                    DateInEffect = new DateTime(1901, 01, 01, 0, 0, 0),
+                    DateObsolete = new DateTime(2099, 12, 31, 0, 0, 0),
+                    IncrRelOffset = 0.0000M,
+                    IncrRelType = "1",
+                    InvItemId = item.ItemId,
+                    MgOutputCostPct = 100,
+                    MgOutputItem = item.ItemId,
+                    MgOutputQty = 1.0000M,
+                    MgOutputQtyCode = "ASY",
+                    MgOutputResPct = 100,
+                    MgOutputType = "CP",
+                    OpSequence = 0
                 });
             }
         }
