@@ -31,7 +31,7 @@ namespace Odin.Data
             set { _testItemCollection = value; }
         }
         private ObservableCollection<ItemObject> _testItemCollection = new ObservableCollection<ItemObject>();
-        
+
         #endregion // Private Properties
 
         #region Private Methods
@@ -44,13 +44,11 @@ namespace Odin.Data
         /// <returns>List of Accounting Group values</returns>
         private List<string> RetrieveAccountingtGroupList()
         {
-            List<string> result = new List<string>();
-
-            result.Add("AccountingGroup1");
-            result.Add("AccountingGroup2");
-            result.Add("AccountingGroup3");
-
-            return result;
+            return new List<string>(){
+                "AccountingGroup1",
+                "AccountingGroup2",
+                "AccountingGroup3"
+            };
         }
 
         /// <summary>
@@ -60,12 +58,13 @@ namespace Odin.Data
         /// <returns></returns>
         private List<ChildElement> RetrieveBillOfMaterials(string itemId)
         {
-            List<ChildElement> result = new List<ChildElement>();
-            result.Add(new ChildElement("ComponentId1", "ItemId1", 0));
-            result.Add(new ChildElement("ComponentId2", "ItemId1", 2));
-            result.Add(new ChildElement("ComponentId1", "ItemId2", 2));
-            result.Add(new ChildElement("ComponentId2", "ItemId2", 0));
-            return result;
+            return new List<ChildElement>(new ChildElement[] {
+                new ChildElement("ComponentId1", "ItemId1", 0),
+                new ChildElement("ComponentId2", "ItemId1", 2),
+                new ChildElement("ComponentId1", "ItemId2", 2),
+                new ChildElement("ComponentId2", "ItemId2", 0)
+                });
+
         }
 
         /// <summary>
@@ -74,28 +73,28 @@ namespace Odin.Data
         /// <returns>List of Accounting Group values</returns>
         private string RetriveCategoryId(string itemCategory)
         {
-            foreach(KeyValuePair<string,string> x in GlobalData.WebCategoryList)
+            foreach (KeyValuePair<string, string> x in GlobalData.WebCategoryList)
             {
-                if(x.Value == itemCategory)
+                if (x.Value == itemCategory)
                 {
                     return x.Key;
                 }
             }
             return "";
         }
-        
+
         /// <summary>
         ///     Retrieves list of the Cost Profile Groups from the DB
         /// </summary>
         /// <returns>List of Cost Profile Groups</returns>
         private List<string> RetrieveCostProfileGroups()
         {
-            List<string> results = new List<string>();
-            results.Add("CostProfileGroup1");
-            results.Add("CostProfileGroup2");
-            results.Add("CostProfileGroup3");
-            results.Add("CostProfileGroup4");
-            return results;
+            return new List<string>() {
+                "CostProfileGroup1",
+                "CostProfileGroup2",
+                "CostProfileGroup3",
+                "CostProfileGroup4",
+            };
         }
 
         /// <summary>
@@ -104,14 +103,14 @@ namespace Odin.Data
         /// <returns>List of countries of origin</returns>
         private Dictionary<string, string> RetrieveCountriesOfOrigin()
         {
-            Dictionary<string, string> returnValues = new Dictionary<string, string>();
-            returnValues.Add("CO1", "CountryOfOrigin1");
-            returnValues.Add("CO2", "CountryOfOrigin2");
-            returnValues.Add("CO3", "CountryOfOrigin3");
-            returnValues.Add("CO4", "CountryOfOrigin4");
-            returnValues.Add("CO5", "CountryOfOrigin5");
-            returnValues.Add("CO6", "CountryOfOrigin6");
-            return returnValues;
+            return new Dictionary<string, string>() {
+                { "CO1", "CountryOfOrigin1"},
+                { "CO2", "CountryOfOrigin2"},
+                { "CO3", "CountryOfOrigin3"},
+                { "CO4", "CountryOfOrigin4"},
+                { "CO5", "CountryOfOrigin5"},
+                { "CO6", "CountryOfOrigin6"}
+            };
         }
 
         /// <summary>
@@ -138,11 +137,11 @@ namespace Odin.Data
         /// <returns></returns>
         private Dictionary<string, string> RetrieveCustomerIdConversionsList()
         {
-            Dictionary<string, string> returnValues = new Dictionary<string, string>();
-            returnValues.Add("1", "Customer1");
-            returnValues.Add("2", "Customer2");
-            returnValues.Add("3", "Customer3");
-            return returnValues;
+            return new Dictionary<string, string>() {
+                { "1", "Customer1" },
+                { "2", "Customer2" },
+                { "3", "Customer3" }
+            };
         }
 
         /// <summary>
@@ -153,7 +152,7 @@ namespace Odin.Data
         /// <returns></returns>
         private string RetrieveDefaultActualCost(string itemId, string businessUnit)
         {
-            switch(itemId)
+            switch (itemId)
             {
                 case "ItemId1":
                     if (businessUnit == "TRUS1")
@@ -179,11 +178,11 @@ namespace Odin.Data
         /// <returns></returns>
         private Dictionary<string, string> RetrieveItemCategories()
         {
-            Dictionary<string, string> returnValues = new Dictionary<string, string>();
-            returnValues.Add("1", "ItemCategory1");
-            returnValues.Add("2", "ItemCategory2");
-            returnValues.Add("3", "ItemCategory3");
-            return returnValues;
+            return new Dictionary<string, string>() {
+                { "1", "ItemCategory1"},
+                { "2", "ItemCategory2"},
+                { "3", "ItemCategory3"}
+            };
         }
 
         /// <summary>
@@ -192,14 +191,13 @@ namespace Odin.Data
         /// <returns>List of External Id Types</returns>
         private List<string> RetrieveEcommerce_ExternalIdTypeList()
         {
-            List<string> Types = new List<string>();
-            Types.Add("");
-            Types.Add("ISBN");
-            Types.Add("EAN");
-            Types.Add("UPC");
-            Types.Add("UPC (12-digits)");
-
-            return Types;
+            return new List<string>() {
+                "",
+                "ISBN",
+                "EAN",
+                "UPC",
+                "UPC (12-digits)"
+            };
         }
 
         /// <summary>
@@ -209,11 +207,11 @@ namespace Odin.Data
         /// <returns>list of existing item Ids with matching UPCs</returns>
         private Dictionary<string, string> RetrieveEcommerceUPCs()
         {
-            Dictionary<string, string> returnValues = new Dictionary<string, string>();
-            returnValues.Add("EcomUpc1", "ItemId1");
-            returnValues.Add("EcomUpc2", "ItemId2");
-            returnValues.Add("EcomUpc3", "ItemId3");
-            return returnValues;
+            return new Dictionary<string, string>() {
+                { "EcomUpc1", "ItemId1"},
+                { "EcomUpc2", "ItemId2"},
+                { "EcomUpc3", "ItemId3"}
+            };
         }
 
         /// <summary>
@@ -235,11 +233,11 @@ namespace Odin.Data
         /// <returns></returns>
         private List<string> RetrieveExceptions(string field, string exceptionTrigger, string exceptionResult)
         {
-            List<string> x = new List<string>();
-            x.Add("Exception1");
-            x.Add("Exception2");
-            x.Add("Exception3");
-            return x;
+            return new List<string>() {
+                "Exception1",
+                "Exception2",
+                "Exception3"
+            };
         }
 
         /// <summary>
@@ -258,12 +256,12 @@ namespace Odin.Data
         /// <returns>List of InvItemGroup values</returns>
         private List<string> RetrieveItemGroups()
         {
-            List<string> x = new List<string>();
-            x.Add("ItemGroup1");
-            x.Add("ItemGroup2");
-            x.Add("ItemGroup3");
-            x.Add("ItemGroup4");
-            return x;
+            return new List<string>() {
+                "ItemGroup1",
+                "ItemGroup2",
+                "ItemGroup3",
+                "ItemGroup4"
+            };
         }
 
         /// <summary>
@@ -273,15 +271,15 @@ namespace Odin.Data
         /// <returns></returns>
         private List<string> RetrieveItemIds()
         {
-            List<string> x = new List<string>();
-            x.Add("ItemId1");
-            x.Add("ItemId2");
-            x.Add("ItemId3");
-            x.Add("ItemId4");
-            x.Add("ItemId5");
-            return x;
+            return new List<string>() {
+                "ItemId1",
+                "ItemId2",
+                "ItemId3",
+                "ItemId4",
+                "ItemId5"
+            };
         }
-        
+
         /// <summary>
         ///     Retrieves all the language cd values from PS_ITEM_LANGUAGE and returns them as a string
         /// </summary>
@@ -327,13 +325,11 @@ namespace Odin.Data
         /// <returns>List of web languages</returns>
         private List<string> RetrieveLanguages()
         {
-            List<string> x = new List<string>();
-
-            x.Add("ENG");
-            x.Add("FRA");
-            x.Add("SPA");
-
-            return x;
+            return new List<string>() {
+                "ENG",
+                "FRA",
+                "SPA"
+            };
         }
 
         /// <summary>
@@ -342,13 +338,12 @@ namespace Odin.Data
         /// <returns>List of InvItemGroup values</returns>
         private List<string> RetrieveLicenseList()
         {
-            List<string> x = new List<string>();
+            return new List<string>(){
+                "License1",
+                "License2",
+                "License3"
+            };
 
-            x.Add("License1");
-            x.Add("License2");
-            x.Add("License3");
-
-            return x;
         }
 
         /// <summary>
@@ -386,13 +381,11 @@ namespace Odin.Data
         /// <returns></returns>
         private List<string> RetrieveMetaDescriptionList()
         {
-            List<string> x = new List<string>();
-
-            x.Add("MetaDescription1");
-            x.Add("MetaDescription2");
-            x.Add("MetaDescription3");
-
-            return x;
+            return new List<string>(){
+                "MetaDescription1",
+                "MetaDescription2",
+                "MetaDescription3"
+            };
         }
 
         /// <summary>
@@ -432,7 +425,7 @@ namespace Odin.Data
         /// <returns></returns>
         private string RetrieveMsrp(string itemId, string businessUnit, string currencyCode)
         {
-            if(itemId == "ItemId1"&&businessUnit == "BusinessUnit1" && currencyCode == "CurrencyCode1")
+            if (itemId == "ItemId1" && businessUnit == "BusinessUnit1" && currencyCode == "CurrencyCode1")
             {
                 return "MSRP1";
             }
@@ -449,13 +442,12 @@ namespace Odin.Data
         /// <returns>List of Pricing Group values</returns>
         private List<string> RetrievePriceGroupList()
         {
-            List<string> values = new List<string>();
-            values.Add("");
-            values.Add("PriceGroup1");
-            values.Add("PriceGroup2");
-            values.Add("PriceGroup3");
-            return values;
-            
+            return new List<string>() {
+                "",
+                "PriceGroup1",
+                "PriceGroup2",
+                "PriceGroup3"
+            };
         }
 
         /// <summary>
@@ -464,11 +456,11 @@ namespace Odin.Data
         /// <returns>List of item category values</returns>
         private List<string> RetrieveProductCategories()
         {
-            List<string> values = new List<string>();
-            values.Add("ProductCategory1");
-            values.Add("ProductCategory2");
-            values.Add("ProductCategory3");
-            return values;
+            return new List<string>() {
+                "ProductCategory1",
+                "ProductCategory2",
+                "ProductCategory3"
+            };
         }
 
         /// <summary>
@@ -477,11 +469,11 @@ namespace Odin.Data
         /// <returns>list of product formats</returns>
         private List<ProductFormat> RetrieveProductFormatList()
         {
-            List<ProductFormat> Values = new List<ProductFormat>();
-            Values.Add(new ProductFormat("ProductFormat1", "ProductLine1", "ProductGroup1"));
-            Values.Add(new ProductFormat("ProductFormat2", "ProductLine2", "ProductGroup2"));
-            Values.Add(new ProductFormat("ProductFormat3", "ProductLine3", "ProductGroup3"));
-            return Values;
+            return new List<ProductFormat>(){
+                new ProductFormat("ProductFormat1", "ProductLine1", "ProductGroup1"),
+                new ProductFormat("ProductFormat2", "ProductLine2", "ProductGroup2"),
+                new ProductFormat("ProductFormat3", "ProductLine3", "ProductGroup3")
+            };
         }
 
         /// <summary>
@@ -505,12 +497,12 @@ namespace Odin.Data
         /// <returns></returns>
         private List<string> RetrieveProductGroupList()
         {
-            List<string> results = new List<string>();
-            results.Add("ProductGroup1");
-            results.Add("ProductGroup2");
-            results.Add("ProductGroup3");
-            results.Add("ProductGroup4");
-            return results;
+            return new List<string>() {
+                "ProductGroup1",
+                "ProductGroup2",
+                "ProductGroup3",
+                "ProductGroup4"
+            };
         }
 
         /// <summary>
@@ -524,7 +516,7 @@ namespace Odin.Data
 
             return Values;
         }
-        
+
         /// <summary>
         ///     Retrieves list of Product Id Translations for a given item
         /// </summary>
@@ -532,12 +524,12 @@ namespace Odin.Data
         /// <returns></returns>
         private List<ChildElement> RetrieveProductIdTranslationList()
         {
-            List<ChildElement> Values = new List<ChildElement>();
-            Values.Add(new ChildElement("ChildId1", "ItemId1", 3));
-            Values.Add(new ChildElement("ChildId2", "ItemId1", 2));
-            Values.Add(new ChildElement("ChildId3", "ItemId1", 1));
-            Values.Add(new ChildElement("ChildId1", "ItemId2", 3));
-            return Values;
+            return new List<ChildElement>(){
+                new ChildElement("ChildId1", "ItemId1", 3),
+                new ChildElement("ChildId2", "ItemId1", 2),
+                new ChildElement("ChildId3", "ItemId1", 1),
+                new ChildElement("ChildId1", "ItemId2", 3)
+            };
         }
 
         /// <summary>
@@ -546,11 +538,11 @@ namespace Odin.Data
         /// <returns>List of all product lines</returns>
         private List<KeyValuePair<string, string>> RetrieveProductLines()
         {
-            List<KeyValuePair<string, string>> results = new List<KeyValuePair<string, string>>();
-            results.Add(new KeyValuePair<string, string>("ProductGroup1", "ProductLine1"));
-            results.Add(new KeyValuePair<string, string>("ProductGroup2", "ProductLine2"));
-            results.Add(new KeyValuePair<string, string>("ProductGroup3", "ProductLine3"));
-            return results;
+            return new List<KeyValuePair<string, string>>() {
+                new KeyValuePair<string, string>("ProductGroup1", "ProductLine1"),
+                new KeyValuePair<string, string>( "ProductGroup2", "ProductLine2" ),
+                new KeyValuePair<string, string>("ProductGroup3", "ProductLine3")
+            };
         }
 
         /// <summary>
@@ -559,15 +551,13 @@ namespace Odin.Data
         /// <returns></returns>
         private List<KeyValuePair<string, string>> RetrieveProperties()
         {
-            List<KeyValuePair<string, string>> results = new List<KeyValuePair<string, string>>();
-            
-            results.Add(new KeyValuePair<string, string>("License1", "Property1"));
-            results.Add(new KeyValuePair<string, string>("License1", "Property2"));
-            results.Add(new KeyValuePair<string, string>("License2", "Property1"));
-            results.Add(new KeyValuePair<string, string>("License2", "Property2"));
-            results.Add(new KeyValuePair<string, string>("License2", "Property3"));
-            
-            return results;
+            return new List<KeyValuePair<string, string>>() {
+                new KeyValuePair<string, string>("License1", "Property1"),
+                new KeyValuePair<string, string>("License1", "Property2"),
+                new KeyValuePair<string, string>("License2", "Property1"),
+                new KeyValuePair<string, string>("License2", "Property2"),
+                new KeyValuePair<string, string>("License2", "Property3")
+            };
         }
 
         /// <summary>
@@ -576,12 +566,12 @@ namespace Odin.Data
         /// <returns>List of product lines</returns>
         private List<string> RetrievePsStatuses()
         {
-            List<string> results = new List<string>();
-            results.Add("PsStatus1");
-            results.Add("PsStatus2");
-            results.Add("PsStatus3");
-            results.Add("PsStatus4");
-            return results;
+            return new List<string>() {
+                "PsStatus1",
+                "PsStatus2",
+                "PsStatus3",
+                "PsStatus4"
+            };
         }
 
         /// <summary>
@@ -590,9 +580,9 @@ namespace Odin.Data
         /// <returns>list of special characters</returns>
         private List<string> RetrieveSpecialCharacters()
         {
-            List<string> results = new List<string>();
-            results.Add("");
-            return results;
+            return new List<string>() {
+                ""
+            };
         }
 
         /// <summary>
@@ -601,12 +591,12 @@ namespace Odin.Data
         /// <returns></returns>
         private List<string> RetrieveRequestStatuses()
         {
-            List<string> results = new List<string>();
-            results.Add("Pending");
-            results.Add("Completed");
-            results.Add("Canceled");
-            results.Add("Incomplete");
-            return results;
+            return new List<string>() {
+                "Pending",
+                "Completed",
+                "Canceled",
+                "Incomplete"
+            };
         }
 
         /// <summary>
@@ -617,7 +607,7 @@ namespace Odin.Data
         /// <returns></returns>
         private string RetrieveSendInventoryFlag(string itemId, string company)
         {
-            if (itemId == "ItemId1" && company == "Company1"){return "Flag1"; }
+            if (itemId == "ItemId1" && company == "Company1") { return "Flag1"; }
             if (itemId == "ItemId2" && company == "Company2") { return "Flag2"; }
             if (itemId == "ItemId3" && company == "Company3") { return "Flag3"; }
             return "";
@@ -629,12 +619,12 @@ namespace Odin.Data
         /// <returns>List of tarriff codes</returns>
         private List<string> RetrieveTarriffCodeList()
         {
-            List<string> results = new List<string>();
-            results.Add("TarriffCode1");
-            results.Add("TarriffCode2");
-            results.Add("TarriffCode3");
-            results.Add("TarriffCode4");
-            return results;
+            return new List<string>() {
+                "TarriffCode1",
+                "TarriffCode2",
+                "TarriffCode3",
+                "TarriffCode4"
+            };
         }
 
         /// <summary>
@@ -643,11 +633,11 @@ namespace Odin.Data
         /// <returns>List of territories</returns>
         private List<string> RetrieveTerritories()
         {
-            List<string> values = new List<string>();
-            values.Add("Territory1");
-            values.Add("Territory2");
-            values.Add("Territory3");
-            return values;
+            return new List<string>() {
+                "Territory1",
+                "Territory2",
+                "Territory3"
+            };
         }
 
         /// <summary>
@@ -676,12 +666,12 @@ namespace Odin.Data
         /// <returns></returns>
         private Dictionary<string, string> RetrieveToolTips()
         {
-            Dictionary<string, string> results = new Dictionary<string, string>();
-            results.Add("ToolTipName1", "ToolTipValue1");
-            results.Add("ToolTipName2", "ToolTipValue2");
-            results.Add("ToolTipName3", "ToolTipValue3");
-            results.Add("ToolTipName4", "ToolTipValue4");
-            return results;
+            return new Dictionary<string, string>() {
+                {"ToolTipName1", "ToolTipValue1"},
+                {"ToolTipName2", "ToolTipValue2"},
+                {"ToolTipName3", "ToolTipValue3"},
+                {"ToolTipName4", "ToolTipValue4"}
+            };
         }
 
         /// <summary>
@@ -690,12 +680,11 @@ namespace Odin.Data
         /// <returns></returns>
         private List<string> RetrieveUserNames()
         {
-            List<string> values = new List<string>();
-            values.Add("User1");
-            values.Add("User2");
-            values.Add("User3");
-            return values;
-            
+            return new List<string>() {
+                "User1",
+                "User2",
+                "User3"
+            };            
         }
 
         /// <summary>
@@ -704,12 +693,12 @@ namespace Odin.Data
         /// <returns></returns>
         private List<string> RetrieveUserRoles()
         {
-            List<string> values = new List<string>();
-            values.Add("");
-            values.Add("UserRole1");
-            values.Add("UserRole2");
-            values.Add("UserRole3");
-            return values;
+            return new List<string>(){
+                "",
+                "UserRole1",
+                "UserRole2",
+                "UserRole3"
+            };
             
         }
 
@@ -719,14 +708,14 @@ namespace Odin.Data
         /// <returns></returns>
         private List<KeyValuePair<string, string>> RetrieveUpcs()
         {
-           List< KeyValuePair<string, string>> upcs = new List<KeyValuePair<string, string>>();
-            upcs.Add(new KeyValuePair<string, string>("Upc1", "ItemId1"));
-            upcs.Add(new KeyValuePair<string, string>("Upc2", "ItemId2"));
-            upcs.Add(new KeyValuePair<string, string>("Upc3", "ItemId3"));
-            upcs.Add(new KeyValuePair<string, string>("EcomUpc1", "ItemId1"));
-            upcs.Add(new KeyValuePair<string, string>("EcomUpc2", "ItemId2"));
-            upcs.Add(new KeyValuePair<string, string>("EcomUpc3", "ItemId3"));
-            return upcs;
+            return new List<KeyValuePair<string, string>>(){
+                new KeyValuePair<string, string>("Upc1", "ItemId1"),
+                new KeyValuePair<string, string>("Upc2", "ItemId2"),
+                new KeyValuePair<string, string>("Upc3", "ItemId3"),
+                new KeyValuePair<string, string>("EcomUpc1", "ItemId1"),
+                new KeyValuePair<string, string>("EcomUpc2", "ItemId2"),
+                new KeyValuePair<string, string>("EcomUpc3", "ItemId3")
+            };
         }
 
         /// <summary>
@@ -735,13 +724,13 @@ namespace Odin.Data
         /// <returns></returns>
         private Dictionary<string, string> RetrieveWebCategoryList()
         {
-            Dictionary<string, string> returnValues = new Dictionary<string, string>();
-            returnValues.Add("1", "Category1");
-            returnValues.Add("2", "Category2");
-            returnValues.Add("3", "Category3");            
-            returnValues.Add("4", "Category4");
-            returnValues.Add("5", "Category5");
-            return returnValues;
+            return new Dictionary<string, string>() { 
+                { "1", "Category1"},
+                { "2", "Category2"},
+                { "3", "Category3"},
+                { "4", "Category4"},
+                { "5", "Category5"}
+            };
         }
 
         #endregion // Private Retrieval Methods
@@ -753,123 +742,124 @@ namespace Odin.Data
         /// </summary>
         private void PopulateTestItems()
         {
-            ItemObject item = new ItemObject(
-                        "Update",
-                        "AltImageFile1A",
-                        "AltImageFile2A",
-                        "AltImageFile3A",
-                        "AltImageFile4A",
-                        "AccountingGroupA",
-                        new List<ChildElement>(),
-                        "CasepackHeightA",
-                        "CasepackLengthA",
-                        "CasepackQtyA",
-                        "CasepackUpcA",
-                        "CasepackWidthA",
-                        "CasepackWeightA",
-                        "1,2,3",
-                        "A",
-                        "A",
-                        "ColorA",
-                        "CopyrightA",
-                        "CountryOfOriginA",
-                        "CostProfileGroupA",
-                        "DefaultActualCostUsdA",
-                        "DefaultActualCostCadA",
-                        "DescriptionA",
-                        "DirectImportA",
-                        "DutyA",
-                        "EanA",
-                        "AAsinA",
-                        "ABullet1A",
-                        "ABullet2A",
-                        "ABullet3A",
-                        "ABullet4A",
-                        "ABullet5A",
-                        "AComponentsA",
-                        "ACostA",
-                        "AExternalIdA",
-                        "AExternalIdTypeA",
-                        "AItemHeightA",
-                        "AItemLengthA",
-                        "AItemNameA",
-                        "AItemWeightA",
-                        "AItemWidthA",
-                        "AModelNameA",
-                        "APackageHeightA",
-                        "APackageLengthA",
-                        "APackageWeightA",
-                        "APackageWidthA",
-                        "APageQtyA",
-                        "AProductCategoryA",
-                        "AProductDescriptionA",
-                        "AProductSubcategoryA",
-                        "AManufacturerNameA",
-                        "AMsrpA",
-                        "ASearchTermsA",
-                        "ASizeA",
-                        "AUpcA",
-                        "GpcA",
-                        "HeightA",
-                        "ImagePathA",
-                        "InnerpackHeightA",
-                        "InnerpackLengthA",
-                        "InnerpackQuantityA",
-                        "InnerpackUpcA",
-                        "InnerpackWidthA",
-                        "InnerpackWeightA",
-                        "InStockDateA",
-                        "IsbnA",
-                        "ItemCategoryA",
-                        "ItemFamilyA",
-                        "ItemGroupA",
-                        "ItemIdA",
-                        "ItemKeywordsA",
-                        "LanguageA",
-                        "LengthA",
-                        "LicenseA",
-                        "LicenseBeginDateA",
-                        "ListPriceCadA",
-                        "ListPriceUsdA",
-                        "ListPriceMxnA",
-                        "MetaDescriptionA",
-                        "MfgSourceA",
-                        "MsrpUsdA",
-                        "MsrpCadA",
-                        "MsrpMxnA",
-                        "ProductFormatA",
-                        "ProductGroupA",
-                        new List<ChildElement>(),
-                        "ProductLineA",
-                        "ProductQuantityA",
-                        "PropertyA",
-                        "PricingGroupA",
-                        "PrintOnDemandA",
-                        "PsStatusA",
-                        "SatCodeA",
-                        "SellOnAllPostersA",
-                        "SellOnAmazonA",
-                        "SellOnFanaticsA",
-                        "SellOnGuitarCenterA",
-                        "SellOnHayneedleA",
-                        "SellOnTargetA",
-                        "SellOnTrendsA",
-                        "SellOnWalmartA",
-                        "SellOnWayfairA",
-                        "ShortDescriptionA",
-                        "SizeA",
-                        "StandardCostA",
-                        "StatsCodeA",
-                        "TariffCodeA",
-                        "TerritoryA",
-                        "TitleA",
-                        "UdexA",
-                        "UpcA",
-                        "WebsitePriceA",
-                        "WeightA",
-                        "WidthA"
-                );
-            item.OnSite = "Y";
+            ItemObject item = new ItemObject()
+            {
+                Status = "Update",
+                AltImageFile1 = "AltImageFile1A",
+                AltImageFile2 = "AltImageFile2A",
+                AltImageFile3 = "AltImageFile3A",
+                AltImageFile4 = "AltImageFile4A",
+                AccountingGroup = "AccountingGroupA",
+                BillOfMaterials = new List<ChildElement>(),
+                CasepackHeight = "CasepackHeightA",
+                CasepackLength = "CasepackLengthA",
+                CasepackQty = "CasepackQtyA",
+                CasepackUpc = "CasepackUpcA",
+                CasepackWidth = "CasepackWidthA",
+                CasepackWeight = "CasepackWeightA",
+                Category = "1,2,3",
+                Category2 = "A",
+                Category3 = "A",
+                Color = "ColorA",
+                Copyright = "CopyrightA",
+                CountryOfOrigin = "CountryOfOriginA",
+                CostProfileGroup = "CostProfileGroupA",
+                DefaultActualCostUsd="DefaultActualCostUsdA",
+                DefaultActualCostCad="DefaultActualCostCadA",
+                Description = "DescriptionA",
+                DirectImport = "DirectImportA",
+                Duty = "DutyA",
+                Ean = "EanA",
+                Ecommerce_Asin = "AAsinA",
+                Ecommerce_Bullet1 = "ABullet1A",
+                Ecommerce_Bullet2 = "ABullet2A",
+                Ecommerce_Bullet3 = "ABullet3A",
+                Ecommerce_Bullet4 = "ABullet4A",
+                Ecommerce_Bullet5 = "ABullet5A",
+                Ecommerce_Components = "AComponentsA",
+                Ecommerce_Cost = "ACostA",
+                Ecommerce_ExternalId = "AExternalIdA",
+                Ecommerce_ExternalIdType = "AExternalIdTypeA",
+                Ecommerce_ItemHeight = "AItemHeightA",
+                Ecommerce_ItemLength = "AItemLengthA",
+                Ecommerce_ItemName = "AItemNameA",
+                Ecommerce_ItemWeight = "AItemWeightA",
+                Ecommerce_ItemWidth = "AItemWidthA",
+                Ecommerce_ModelName = "AModelNameA",
+                Ecommerce_PackageHeight = "APackageHeightA",
+                Ecommerce_PackageLength = "APackageLengthA",
+                Ecommerce_PackageWeight = "APackageWeightA",
+                Ecommerce_PackageWidth = "APackageWidthA",
+                Ecommerce_PageQty = "APageQtyA",
+                Ecommerce_ProductCategory = "AProductCategoryA",
+                Ecommerce_ProductDescription = "AProductDescriptionA",
+                Ecommerce_ProductSubcategory = "AProductSubcategoryA",
+                Ecommerce_ManufacturerName = "AManufacturerNameA",
+                Ecommerce_Msrp = "AMsrpA",
+                Ecommerce_SearchTerms = "ASearchTermsA",
+                Ecommerce_Size = "ASizeA",
+                Ecommerce_Upc = "AUpcA",
+                Gpc = "GpcA",
+                Height = "HeightA",
+                ImagePath = "ImagePathA",
+                InnerpackHeight = "InnerpackHeightA",
+                InnerpackLength = "InnerpackLengthA",
+                InnerpackQuantity = "InnerpackQuantityA",
+                InnerpackUpc = "InnerpackUpcA",
+                InnerpackWidth = "InnerpackWidthA",
+                InnerpackWeight = "InnerpackWeightA",
+                InStockDate = "InStockDateA",
+                Isbn = "IsbnA",
+                ItemCategory = "ItemCategoryA",
+                ItemFamily = "ItemFamilyA",
+                ItemGroup = "ItemGroupA",
+                ItemId = "ItemIdA",
+                ItemKeywords = "ItemKeywordsA",
+                Language = "LanguageA",
+                Length = "LengthA",
+                License = "LicenseA",
+                LicenseBeginDate = "LicenseBeginDateA",
+                ListPriceCad = "ListPriceCadA",
+                ListPriceUsd = "ListPriceUsdA",
+                ListPriceMxn="ListPriceMxnA",
+                MetaDescription = "MetaDescriptionA",
+                MfgSource="MfgSourceA",
+                Msrp="MsrpUsdA",
+                MsrpCad="MsrpCadA",
+                MsrpMxn="MsrpMxnA",
+                OnSite = "Y",
+                ProductFormat ="ProductFormatA",
+                ProductGroup="ProductGroupA",
+                ProductIdTranslation = new List<ChildElement>(),
+                ProductLine="ProductLineA",
+                ProductQty="ProductQuantityA",
+                Property="PropertyA",
+                PricingGroup="PricingGroupA",
+                PrintOnDemand="PrintOnDemandA",
+                PsStatus="PsStatusA",
+                SatCode="SatCodeA",
+                SellOnAllPosters="SellOnAllPostersA",
+                SellOnAmazon="SellOnAmazonA",
+                SellOnFanatics="SellOnFanaticsA",
+                SellOnGuitarCenter="SellOnGuitarCenterA",
+                SellOnHayneedle="SellOnHayneedleA",
+                SellOnTarget="SellOnTargetA",
+                SellOnTrends="SellOnTrendsA",
+                SellOnWalmart="SellOnWalmartA",
+                SellOnWayfair="SellOnWayfairA",
+                ShortDescription="ShortDescriptionA",
+                Size="SizeA",
+                StandardCost="StandardCostA",
+                StatsCode="StatsCodeA",
+                TariffCode="TariffCodeA",
+                Territory="TerritoryA",
+                Title="TitleA",
+                Udex="UdexA",
+                Upc="UpcA",
+                WebsitePrice="WebsitePriceA",
+                Weight = "WeightA",
+                Width = "WidthA"
+            };
             item.Ecommerce_CountryofOrigin = "CountryOfOriginB";
             item.Status = "Update";
             item.ResetUpdate();
@@ -1186,7 +1176,7 @@ namespace Odin.Data
         /// </summary>
         /// <param name="item"></param>
         /// <param name="transaction"></param>
-        public void InsertEnBomCompsAll(ItemObject item, OdinContext context)
+        public void InsertEnBomCompsAll(ItemObject item)
         {
         }
 
@@ -1444,10 +1434,7 @@ namespace Odin.Data
         /// <returns></returns>
         public List<string> RetrieveActiveEcommerceItemIds(string startDate, string endDate, string productGroup, string customerName)
         {
-            List<string> returnValues = new List<string>();
-            returnValues.Add("ItemId1");
-            returnValues.Add("ItemId2");
-            returnValues.Add("ItemId3");
+            List<string> returnValues = new List<string>(new string[] {"ItemId1","ItemId2","ItemId3"});
             return returnValues;
         }
 
@@ -1466,7 +1453,6 @@ namespace Odin.Data
             GlobalData.ItemCategories = RetrieveItemCategories();
             GlobalData.ItemGroups = RetrieveItemGroups();
             GlobalData.ItemIds = RetrieveItemIds();
-            // GlobalData.ItemRecords = RetrieveItemRecords();
             GlobalData.Languages = RetrieveLanguages();
             GlobalData.Licenses = RetrieveLicenseList();
             GlobalData.MetaDescriptions = RetrieveMetaDescriptionList();
@@ -1536,10 +1522,9 @@ namespace Odin.Data
         /// <returns></returns>
         public List<SearchItem> RetrieveItemSearchResults(string value)
         {
-            List<SearchItem> returnSearchItemList = new List<SearchItem>();
-            returnSearchItemList.Add(new SearchItem("ItemId", "Descr254"));
-
-            return returnSearchItemList;
+            return new List<SearchItem>() {
+                new SearchItem("ItemId", "Descr254")
+            };
         }
 
         /// <summary>
@@ -1548,13 +1533,13 @@ namespace Odin.Data
         /// <returns>List of user records</returns>
         public List<ItemRecord> RetrieveItemRecords()
         {
-            List<ItemRecord> records = new List<ItemRecord>();
-
-            records.Add(new ItemRecord("InputDate1", "ItemId1", "Status1", "UserName1"));
-            records.Add(new ItemRecord("InputDate2", "ItemId2", "Status2", "UserName2"));
-            records.Add(new ItemRecord("InputDate3", "ItemId1", "Status1", "UserName2"));
-            records.Add(new ItemRecord("InputDate4", "ItemId2", "Status2", "UserName3"));
-            records.Add(new ItemRecord("InputDate5", "ItemId1", "Status1", "UserName3"));
+            List<ItemRecord> records = new List<ItemRecord>(new ItemRecord[]{
+                new ItemRecord("InputDate1", "ItemId1", "Status1", "UserName1"),
+                new ItemRecord("InputDate2", "ItemId2", "Status2", "UserName2"),
+                new ItemRecord("InputDate3", "ItemId1", "Status1", "UserName2"),
+                new ItemRecord("InputDate4", "ItemId2", "Status2", "UserName3"),
+                new ItemRecord("InputDate5", "ItemId1", "Status1", "UserName3")
+            });
 
             return records;
         }
@@ -1566,10 +1551,8 @@ namespace Odin.Data
         /// <returns></returns>
         public List<ItemObject> RetrieveItemUpdateRecords(string itemId)
         {
-            List<ItemObject> items = new List<ItemObject>();
-
-            ItemObject item = new ItemObject(
-                                "Update",
+            List<ItemObject> items = new List<ItemObject>(new ItemObject[] {
+            new ItemObject(     "Update",
                                 "AltImageFile1",
                                 "AltImageFile2",
                                 "AltImageFile3",
@@ -1683,12 +1666,10 @@ namespace Odin.Data
                                 "WebsitePrice",
                                 "Weight",
                                 "Width"
-                        );
-            item.OnSite = "Y";
-            item.Ecommerce_CountryofOrigin = "CountryOfOrigin";
-            item.Status = "Update";
-            items.Add(item);
-
+                        ) });
+            items[0].OnSite = "Y";
+            items[0].Ecommerce_CountryofOrigin = "CountryOfOrigin";
+            items[0].Status = "Update";
             return items;
         }
 
@@ -1698,12 +1679,11 @@ namespace Odin.Data
         /// <returns></returns>
         public List<string> RetrieveLicensePropertyList()
         {
-            List<string> x = new List<string>();
-
-            x.Add("License1:Property1");
-            x.Add("License2:Property2");
-            x.Add("License3:Property3");
-            return x;
+            return new List<string>(new string[] {
+                "License1:Property1",
+                "License2:Property2",
+                "License3:Property3"
+            });
         }
 
         /// <summary>

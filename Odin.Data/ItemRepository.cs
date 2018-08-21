@@ -73,89 +73,86 @@ namespace Odin.Data
             {
                 using (OdinContext context = this.contextFactory.CreateContext())
                 {
-                    using (OdinContext context2 = this.contextFactory.CreateContext())
+                    if (item.Status == "Add")
                     {
-                        if (item.Status == "Add")
-                        {
-                            InsertAssetItemAttr(item, context);
-                            InsertBuItemsConfigAll(item, context);
-                            InsertBuItemsInvAll(item, context);
-                            InsertBuItemUtilCdAll(item, context);
-                            InsertCmItemMethodAll(item, context);
-                            InsertCustomerProductAttributesAll(item, context);
-                            InsertDefaultLocInvAll(item, context);
-                            InsertEcommerceValues(item, context);
-                            InsertFxdBinLocInvAll(item, context);
-                            InsertInvItems(item, context);
-                            InsertInvItemUom(item, context);
-                            InsertItemAttribEx(item, context);
-                            InsertItemCompliance(item, context);
-                            InsertItemLanguageAll(item);
-                            InsertItemTerritoryAll(item);
-                            InsertItemWebInfo(item, context);
-                            InsertMasterItemTbl(item, context);
-                            InsertPlItemAttribAll(item, context);
-                            InsertProdItem(item, context);
-                            InsertProdPgrpLnkAll(item, context);
-                            InsertProdPriceAll(item, context);
-                            InsertProdPriceBuAll(item, context);
-                            InsertProdUom(item, context);
-                            InsertPurchItemAttr(item, context);
-                            InsertPvItmCategory(item, context);
-                            InsertUomTypeInvAll(item, context);
+                        InsertAssetItemAttr(item, context);
+                        InsertBuItemsConfigAll(item, context);
+                        InsertBuItemsInvAll(item, context);
+                        InsertBuItemUtilCdAll(item, context);
+                        InsertCmItemMethodAll(item, context);
+                        InsertCustomerProductAttributesAll(item, context);
+                        InsertDefaultLocInvAll(item, context);
+                        InsertEcommerceValues(item, context);
+                        InsertFxdBinLocInvAll(item, context);
+                        InsertInvItems(item, context);
+                        InsertInvItemUom(item, context);
+                        InsertItemAttribEx(item, context);
+                        InsertItemCompliance(item, context);
+                        InsertItemLanguageAll(item);
+                        InsertItemTerritoryAll(item);
+                        InsertItemWebInfo(item, context);
+                        InsertMasterItemTbl(item, context);
+                        InsertPlItemAttribAll(item, context);
+                        InsertProdItem(item, context);
+                        InsertProdPgrpLnkAll(item, context);
+                        InsertProdPriceAll(item, context);
+                        InsertProdPriceBuAll(item, context);
+                        InsertProdUom(item, context);
+                        InsertPurchItemAttr(item, context);
+                        InsertPvItmCategory(item, context);
+                        InsertUomTypeInvAll(item, context);
 
-                            if (item.ProductIdTranslation.Count > 0)
-                            {
-                                InsertProductIdTranslationAll(item, context);
-                            }
-                            if (item.BillOfMaterials.Count > 0)
-                            {
-                                InsertEnBomCompsAll(item, context);
-                                InsertEnBomHeader(item, context);
-                                InsertEnBomOutputs(item, context);
-                                InsertSfPrdnAreaIt(item, context);
-                            }
-                            InsertItemUpdateRecord(item, context);
-                        }
-                        else if (item.CheckUpdates())
+                        if (item.ProductIdTranslation.Count > 0)
                         {
-                            if (item.BuItemsInvUpdate()) { UpdateBuItemsInvAll(item, context); }
-                            if (item.CmItemMethodUpdate()) { UpdateCmItemMethodAll(item, context); }
-                            if (item.SellOnFlagUpdate()) { UpdateCustomerProductAttributesAll(item, context); }
-                            if (item.EcommerceValuesUpdate()) { UpdateEcommerceValues(item, context); }
-                            if (item.FxdBinLocInvUpdate()) { UpdateFxdBinLocInvAll(item); }
-                            if (item.InvItemsUpdate()) { UpdateInvItems(item, context); }
-                            if (item.ItemAttribExUpdate()) { UpdateItemAttribEx(item, context); }
-                            if (item.ItemLanguageUpdate()) { InsertItemLanguageAll(item); }
-                            if (item.ItemTerritoryUpdate()) { InsertItemTerritoryAll(item); }
-                            if (item.ItemWebInfoUpdate()) { UpdateItemWebInfo(item, context); }
-                            if (item.MasterItemUpdate()) { UpdateMasterItemTbl(item, context); }
-                            if (item.ProdItemUpdate()) { UpdateProdItem(item, context); }
-                            if (item.ProdPgrpLnkUpdate()) { UpdateProdPgrpLnkAll(item); }
-                            if (item.ProdPriceUpdate()) { UpdateProdPriceAll(item, context); }
-                            if (item.ProdPriceBuUpdate()) { UpdateProdPriceBuAll(item, context); }
-                            if (item.PurchItemAttrUpdate()) { UpdatePurchItemAttr(item, context); }
-                            if (item.PvItmCategoryUpdate()) { UpdatePvItmCategory(item); }
-
-                            if (item.ProductIdTranslationUpdate)
-                            {
-                                // === Removed Circa 8/15/2018 ===
-                                // RemoveMarketplaceProductTranslationsAll(item, context);
-                                // InsertProductIdTranslationAll(item, context);
-                            }
-                            if (item.BillOfMaterialsUpdate)
-                            {
-                                RemoveEnBomCompsAll(item.ItemId, context);
-                                InsertEnBomCompsAll(item, context);
-                                InsertEnBomHeader(item, context);
-                                InsertEnBomOutputs(item, context);
-                                InsertSfPrdnAreaIt(item, context);
-                            }
-                            InsertItemUpdateRecord(item, context);
+                            InsertProductIdTranslationAll(item, context);
                         }
-                        context.SaveChanges();
-                        this.SaveProgress = count.ToString();
+                        if (item.BillOfMaterials.Count > 0)
+                        {
+                            InsertEnBomCompsAll(item);
+                            InsertEnBomHeader(item, context);
+                            InsertEnBomOutputs(item, context);
+                            InsertSfPrdnAreaIt(item, context);
+                        }
+                        InsertItemUpdateRecord(item, context);
                     }
+                    else if (item.CheckUpdates())
+                    {
+                        if (item.BuItemsInvUpdate()) { UpdateBuItemsInvAll(item, context); }
+                        if (item.CmItemMethodUpdate()) { UpdateCmItemMethodAll(item, context); }
+                        if (item.SellOnFlagUpdate()) { UpdateCustomerProductAttributesAll(item, context); }
+                        if (item.EcommerceValuesUpdate()) { UpdateEcommerceValues(item, context); }
+                        if (item.FxdBinLocInvUpdate()) { UpdateFxdBinLocInvAll(item); }
+                        if (item.InvItemsUpdate()) { UpdateInvItems(item, context); }
+                        if (item.ItemAttribExUpdate()) { UpdateItemAttribEx(item, context); }
+                        if (item.ItemLanguageUpdate()) { InsertItemLanguageAll(item); }
+                        if (item.ItemTerritoryUpdate()) { InsertItemTerritoryAll(item); }
+                        if (item.ItemWebInfoUpdate()) { UpdateItemWebInfo(item, context); }
+                        if (item.MasterItemUpdate()) { UpdateMasterItemTbl(item, context); }
+                        if (item.ProdItemUpdate()) { UpdateProdItem(item, context); }
+                        if (item.ProdPgrpLnkUpdate()) { UpdateProdPgrpLnkAll(item); }
+                        if (item.ProdPriceUpdate()) { UpdateProdPriceAll(item, context); }
+                        if (item.ProdPriceBuUpdate()) { UpdateProdPriceBuAll(item, context); }
+                        if (item.PurchItemAttrUpdate()) { UpdatePurchItemAttr(item, context); }
+                        if (item.PvItmCategoryUpdate()) { UpdatePvItmCategory(item); }
+
+                        if (item.ProductIdTranslationUpdate)
+                        {
+                            // === Removed Circa 8/15/2018 ===
+                            // RemoveMarketplaceProductTranslationsAll(item, context);
+                            // InsertProductIdTranslationAll(item, context);
+                        }
+                        if (item.BillOfMaterialsUpdate)
+                        {
+                            RemoveEnBomCompsAll(item.ItemId);
+                            InsertEnBomCompsAll(item);
+                            InsertEnBomHeader(item, context);
+                            InsertEnBomOutputs(item, context);
+                            InsertSfPrdnAreaIt(item, context);
+                        }
+                        InsertItemUpdateRecord(item, context);
+                    }
+                    context.SaveChanges();
+                    this.SaveProgress = count.ToString();
                 }
             }
         }
@@ -394,11 +391,15 @@ namespace Odin.Data
         /// </summary>
         /// <param name="item"></param>
         /// <param name="transaction"></param>
-        public void InsertEnBomCompsAll(ItemObject item, OdinContext context)
+        public void InsertEnBomCompsAll(ItemObject item)
         {
-            foreach (ChildElement child in item.BillOfMaterials)
+            using (OdinContext context1 = this.contextFactory.CreateContext())
             {
-                InsertEnBomComps(item, child.ItemId, child.Qty, context);
+                foreach (ChildElement child in item.BillOfMaterials)
+                {
+                    InsertEnBomComps(item, child.ItemId, child.Qty, context1);
+                }
+                context1.SaveChanges();
             }
         }
 
@@ -1507,8 +1508,10 @@ namespace Odin.Data
         /// <returns></returns>
         public ItemObject RetrieveItem(string idInput, int row)
         {
-            ItemObject item = new ItemObject();
-            item.ItemId = idInput;
+            ItemObject item = new ItemObject
+            {
+                ItemId = idInput
+            };
             // DateTime effdt = RetrieveEffdt(idInput);
 
             using (OdinContext context = this.contextFactory.CreateContext())
@@ -3025,7 +3028,7 @@ namespace Odin.Data
                 });
             }
         }
-        
+
         #endregion // Private Insert Methods
 
         #region Private Removal Methods
@@ -3034,12 +3037,16 @@ namespace Odin.Data
         ///     Removes all values from PS_EN_BOM_COMPS where COMPONENT_ID = the given itemid
         /// </summary>
         /// <param name="category">item id of bom components to remove</param>
-        private void RemoveEnBomCompsAll(string itemId, OdinContext context)
+        private void RemoveEnBomCompsAll(string itemId)
         {
-            foreach (EnBomComps enBomComps in (from o in context.EnBomComps where o.ComponentId == itemId select o))
+            using (OdinContext context1 = this.contextFactory.CreateContext())
             {
-                context.EnBomComps.Remove(enBomComps);
-            }            
+                foreach (EnBomComps enBomComps in (from o in context1.EnBomComps where o.ComponentId == itemId select o))
+                {
+                    context1.EnBomComps.Remove(enBomComps);
+                }
+                context1.SaveChanges();
+            }
         }
 
         /// <summary>
@@ -3214,13 +3221,7 @@ namespace Odin.Data
         /// <returns>List of External Id Types</returns>
         private List<string> RetrieveEcommerce_ExternalIdTypeList()
         {
-            List<string> Types = new List<string>();
-            Types.Add("");
-            Types.Add("ISBN");
-            Types.Add("EAN");
-            Types.Add("UPC");
-            Types.Add("UPC (12-digits)");
-
+            List<string> Types = new List<string>( new string[] { "", "ISBN", "EAN", "UPC", "UPC (12-digits)"});
             return Types;
         }
         
@@ -3482,11 +3483,7 @@ namespace Odin.Data
         /// <returns></returns>
         private List<string> RetrieveRequestStatuses()
         {
-            List<string> results = new List<string>();
-            results.Add("Pending");
-            results.Add("Completed");
-            results.Add("Canceled");
-            results.Add("Incomplete");
+            List<string> results = new List<string>(new string[] {"Pending","Completed","Canceled","Incomplete"});
             return results;
         }
 
@@ -3696,11 +3693,7 @@ namespace Odin.Data
         /// <param name="contextFactory"></param>
         public ItemRepository(IOdinContextFactory contextFactory)
         {
-            if (contextFactory == null)
-            {
-                throw new ArgumentNullException("contextFactory");
-            }
-            this.contextFactory = contextFactory;
+            this.contextFactory = contextFactory ?? throw new ArgumentNullException("contextFactory");
         }
 
         #endregion // Constructors

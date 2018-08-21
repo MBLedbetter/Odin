@@ -7,6 +7,7 @@ INSERT INTO ODIN_NOTIFICATIONS VALUES (3, '2018-06-27 00:00:00.000', 'Image coll
 INSERT INTO ODIN_NOTIFICATIONS VALUES (4, '2018-07-17 00:00:00.000', '"Website Price" field has been added to ecommerce info tab. This field will be used for the displayed price on Trendsinternational.com and will be a required field for website submissions.')
 INSERT INTO ODIN_NOTIFICATIONS VALUES (5, '2018-27-17 00:00:00.000', 'A Product Format Exclusion tool has been added to the option pannel. See help documentation for details (pg 12).')
 INSERT INTO ODIN_NOTIFICATIONS VALUES (6, '2018-08-08 00:00:00.000', 'Product Id Translations can no longer be modified after an items initial setup. Orders in progress will error if this field is adjusted. Ecommerce Image paths in excel sheets will no longer be read into Odin and will be generated from the Image Path fields.')
+INSERT INTO ODIN_NOTIFICATIONS VALUES (7, '2018-08-21 00:00:00.000', 'Sell On Guitar Center field has been added.')
 */
 SET ANSI_NULLS ON
 GO

@@ -95,7 +95,7 @@ namespace Odin.Data
         /// </summary>
         /// <param name="item"></param>
         /// <param name="transaction"></param>
-        void InsertEnBomCompsAll(ItemObject item, OdinContext context);
+        void InsertEnBomCompsAll(ItemObject item);
 
         /// <summary>
         ///     Runs InserteEnBomHeader for each item with bill of materials

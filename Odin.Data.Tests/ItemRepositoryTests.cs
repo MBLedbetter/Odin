@@ -27,8 +27,8 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
+            ItemObject item = new ItemObject{
+            ItemId = "TEST1"};
 
             #endregion // Assemble
 
@@ -70,8 +70,10 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
+            ItemObject item = new ItemObject()
+            {
+                ItemId = "TEST1"
+            };
             #endregion // Assemble
 
             #region Act
@@ -115,12 +117,13 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.MfgSource = "MG";
-            item.CountryOfOrigin = "COO";
-            item.DefaultActualCostUsd = "9.99";
-            item.DefaultActualCostCad = "8.99";
+            ItemObject item = new ItemObject {
+                ItemId = "TEST1",
+                MfgSource = "MG",
+                CountryOfOrigin = "COO",
+                DefaultActualCostUsd = "9.99",
+                DefaultActualCostCad = "8.99"
+            };
 
             #endregion // Assemble
 
@@ -329,8 +332,10 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
+            ItemObject item = new ItemObject
+            {
+                ItemId = "TEST1"
+            };
 
             #endregion // Assemble
 
@@ -370,8 +375,10 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
+            ItemObject item = new ItemObject()
+            {
+                ItemId = "TEST1"
+            };
             item.CostProfileGroup = "ACTUAL_FIFO";
             #endregion // Assemble
 
@@ -416,22 +423,23 @@ namespace Odin.Data.Tests
             GlobalData.CustomerIdConversions.Add("ALL POSTERS", "1");
             GlobalData.CustomerIdConversions.Add("AMAZON", "2");
             GlobalData.CustomerIdConversions.Add("FANATICS", "3");
-            GlobalData.CustomerIdConversions.Add("GUITAR CENTER", "8");
             GlobalData.CustomerIdConversions.Add("HAYNEEDLE", "4");
             GlobalData.CustomerIdConversions.Add("TARGET", "5");
             GlobalData.CustomerIdConversions.Add("WALMART", "6");
             GlobalData.CustomerIdConversions.Add("WAYFAIR", "7");
+            GlobalData.CustomerIdConversions.Add("GUITAR CENTER", "8");
 
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.SellOnAllPosters = "Y";
-            item.SellOnAmazon = "N";
-            item.SellOnFanatics = "Y";
-            item.SellOnGuitarCenter = "Y";
-            item.SellOnHayneedle = "N";
-            item.SellOnTarget = "Y";
-            item.SellOnWalmart = "N";
-            item.SellOnWayfair = "Y";
+            ItemObject item = new ItemObject {
+                ItemId = "TEST1",
+                SellOnAllPosters = "Y",
+                SellOnAmazon = "N",
+                SellOnFanatics = "Y",
+                SellOnGuitarCenter = "Y",
+                SellOnHayneedle = "N",
+                SellOnTarget = "Y",
+                SellOnWalmart = "N",
+                SellOnWayfair = "Y"
+            };
 
             #endregion // Assemble
 
@@ -495,8 +503,10 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
+            ItemObject item = new ItemObject()
+            {
+                ItemId = "TEST1"
+            };
             #endregion // Assemble
 
             #region Act
@@ -541,44 +551,44 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.Ecommerce_Asin ="Asin";
-            item.Ecommerce_Bullet1 ="Bullet1";
-            item.Ecommerce_Bullet2 = "Bullet2";
-            item.Ecommerce_Bullet3 = "Bullet3";
-            item.Ecommerce_Bullet4 = "Bullet4"; 
-            item.Ecommerce_Bullet5 = "Bullet5";
-            item.Ecommerce_Components ="Components";
-            item.Ecommerce_Cost ="5";
-            item.Ecommerce_CountryofOrigin ="Coo";
-            item.Ecommerce_ExternalId ="ExId";
-            item.Ecommerce_ExternalIdType ="ExIdT";
-            item.Ecommerce_ImagePath1 ="ImageUrl1";
-            item.Ecommerce_ImagePath2 = "ImageUrl2";
-            item.Ecommerce_ImagePath3 = "ImageUrl3";
-            item.Ecommerce_ImagePath4 = "ImageUrl4";
-            item.Ecommerce_ImagePath5 = "ImageUrl5";
-            item.Ecommerce_ItemHeight = "6";
-            item.Ecommerce_ItemLength = "1";
-            item.Ecommerce_ItemName ="ItemName";
-            item.Ecommerce_ItemWeight ="2";
-            item.Ecommerce_ItemWidth ="3";
-            item.Ecommerce_ModelName ="ModelName";
-            item.Ecommerce_PackageHeight ="1.1";
-            item.Ecommerce_PackageLength ="1.2";
-            item.Ecommerce_PackageWeight ="1.3";
-            item.Ecommerce_PackageWidth ="1.4";
-            item.Ecommerce_PageQty ="3";
-            item.Ecommerce_ProductCategory ="ProductCategory";
-            item.Ecommerce_ProductDescription ="FullDescription";
-            item.Ecommerce_ProductSubcategory ="ProductSubcategory";
-            item.Ecommerce_ManufacturerName ="ManufacturerName";
-            item.Ecommerce_Msrp ="9.99";
-            item.Ecommerce_SearchTerms ="SearchTerms";
-            item.Ecommerce_Size ="Size";
-            item.Ecommerce_Upc ="UpcOverride";
-
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                Ecommerce_Asin = "Asin",
+                Ecommerce_Bullet1 = "Bullet1",
+                Ecommerce_Bullet2 = "Bullet2",
+                Ecommerce_Bullet3 = "Bullet3",
+                Ecommerce_Bullet4 = "Bullet4",
+                Ecommerce_Bullet5 = "Bullet5",
+                Ecommerce_Components = "Components",
+                Ecommerce_Cost = "5",
+                Ecommerce_CountryofOrigin = "Coo",
+                Ecommerce_ExternalId = "ExId",
+                Ecommerce_ExternalIdType = "ExIdT",
+                Ecommerce_ImagePath1 = "ImageUrl1",
+                Ecommerce_ImagePath2 = "ImageUrl2",
+                Ecommerce_ImagePath3 = "ImageUrl3",
+                Ecommerce_ImagePath4 = "ImageUrl4",
+                Ecommerce_ImagePath5 = "ImageUrl5",
+                Ecommerce_ItemHeight = "6",
+                Ecommerce_ItemLength = "1",
+                Ecommerce_ItemName = "ItemName",
+                Ecommerce_ItemWeight = "2",
+                Ecommerce_ItemWidth = "3",
+                Ecommerce_ModelName = "ModelName",
+                Ecommerce_PackageHeight = "1.1",
+                Ecommerce_PackageLength = "1.2",
+                Ecommerce_PackageWeight = "1.3",
+                Ecommerce_PackageWidth = "1.4",
+                Ecommerce_PageQty = "3",
+                Ecommerce_ProductCategory = "ProductCategory",
+                Ecommerce_ProductDescription = "FullDescription",
+                Ecommerce_ProductSubcategory = "ProductSubcategory",
+                Ecommerce_ManufacturerName = "ManufacturerName",
+                Ecommerce_Msrp = "9.99",
+                Ecommerce_SearchTerms = "SearchTerms",
+                Ecommerce_Size = "Size",
+                Ecommerce_Upc = "UpcOverride",
+            };
             #endregion // Assemble
 
             #region Act
@@ -651,8 +661,10 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
+            ItemObject item = new ItemObject
+            {
+                ItemId = "TEST1"
+            };
             item.Description = "The Items Description for this test";
 
             #endregion // Assemble
@@ -701,10 +713,13 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.ItemGroup = "POSTER";
-            item.ItemFamily = "FLAT";
+            ItemObject item = new ItemObject()
+            {
+                ItemId = "TEST1",
+                ItemGroup = "POSTER",
+                ItemFamily = "FLAT"
+            };
+
             #endregion // Assemble
 
             #region Act
@@ -750,16 +765,17 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.TariffCode = "TariffCode";
-            item.Description = "Description";
-            item.Height = "11.1";
-            item.Length = "12.1";
-            item.Weight = "13.1";
-            item.Width = "14.1";
-            item.Upc = "UPC";
-            item.Color = "RED";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                TariffCode = "TariffCode",
+                Description = "Description",
+                Height = "11.1",
+                Length = "12.1",
+                Weight = "13.1",
+                Width = "14.1",
+                Upc = "UPC",
+                Color = "RED"
+            };
             #endregion // Assemble
 
             #region Act
@@ -843,8 +859,10 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
+            ItemObject item = new ItemObject()
+            {
+                ItemId = "TEST1"
+            };
             #endregion // Assemble
 
             #region Act
@@ -895,35 +913,36 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.CasepackHeight = "1.1";
-            item.CasepackLength = "1.2";
-            item.CasepackQty = "4";
-            item.CasepackUpc = "UPC";
-            item.CasepackWidth = "1.3";
-            item.CasepackWeight = "1.4";
-            item.DirectImport = "Y";
-            item.Duty = item.Duty;
-            item.InnerpackHeight = "2.1";
-            item.InnerpackLength = "2.2";
-            item.InnerpackQuantity = "2";
-            item.InnerpackUpc = "UPC2";
-            item.InnerpackWeight = "2.3";
-            item.InnerpackWidth = "2.4";
-            item.LicenseBeginDate = "4/17/2014";
-            item.ProductFormat = "ProductFormat";
-            item.ProductGroup = "ProductGroup";
-            item.ProductLine = "ProductLine";
-            item.SatCode = "SatCode";
-            item.SellOnTrends = "Y";
-            item.PrintOnDemand = "N";
-            // item.TranslateEdiProd = item.ReturnTranslateEdiProd();
-            item.ImagePath = "ImagePath";
-            item.AltImageFile1 = "AltImageFile1";
-            item.AltImageFile2 = "AltImageFile2";
-            item.AltImageFile3 = "AltImageFile3";
-            item.AltImageFile4 = "AltImageFile4";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                CasepackHeight = "1.1",
+                CasepackLength = "1.2",
+                CasepackQty = "4",
+                CasepackUpc = "UPC",
+                CasepackWidth = "1.3",
+                CasepackWeight = "1.4",
+                DirectImport = "Y",
+                // Duty = Duty,
+                InnerpackHeight = "2.1",
+                InnerpackLength = "2.2",
+                InnerpackQuantity = "2",
+                InnerpackUpc = "UPC2",
+                InnerpackWeight = "2.3",
+                InnerpackWidth = "2.4",
+                LicenseBeginDate = "4/17/2014",
+                ProductFormat = "ProductFormat",
+                ProductGroup = "ProductGroup",
+                ProductLine = "ProductLine",
+                SatCode = "SatCode",
+                SellOnTrends = "Y",
+                PrintOnDemand = "N",
+                // TranslateEdiProd = ReturnTranslateEdiProd(),
+                ImagePath = "ImagePath",
+                AltImageFile1 = "AltImageFile1",
+                AltImageFile2 = "AltImageFile2",
+                AltImageFile3 = "AltImageFile3",
+                AltImageFile4 = "AltImageFile4"
+                };
 
             #endregion // Assemble
 
@@ -988,8 +1007,10 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
+            ItemObject item = new ItemObject()
+            {
+                ItemId = "TEST1"
+            };
             #endregion // Assemble
 
             #region Act
@@ -1041,135 +1062,137 @@ namespace Odin.Data.Tests
             GlobalData.CustomerIdConversions.Add("WAYFAIR", "8");
             GlobalData.CustomerIdConversions.Add("GUITAR CENTER", "9");
 
-            List<ChildElement> billOfMaterials = new List<ChildElement>();
-            billOfMaterials.Add(new ChildElement("ST1111", "TestItem2", 1));
-            billOfMaterials.Add(new ChildElement("ST2222", "TestItem2", 2));
+            List<ChildElement> billOfMaterials = new List<ChildElement>() {
+                new ChildElement("ST1111", "TestItem2", 1),
+                new ChildElement("ST2222", "TestItem2", 2)
+            };
 
-            List<ChildElement> PID = new List<ChildElement>();
-            PID.Add(new ChildElement("ST1111", "TestItem2", 5));
-            PID.Add(new ChildElement("ST2222", "TestItem2", 1));
+            List<ChildElement> PID = new List<ChildElement>() {
+                new ChildElement("ST1111", "TestItem2", 5),
+                new ChildElement("ST2222", "TestItem2", 1)
+            };
 
-            ItemObject item = new ItemObject();
+            ItemObject item = new ItemObject() {
 
-            item.AltImageFile1 = "\\\\isiloncifs\\Store 2\\•CAPTURES\\Poster Captures\\3000\\3400\\3403_BRETT FAVRE.TIFF";
-            item.AltImageFile2 = "\\\\isiloncifs\\Store 2\\•CAPTURES\\Poster Captures\\3000\\3400\\3403_BRETT FAVRE.TIFF";
-            item.AltImageFile3 = "\\\\isiloncifs\\Store 2\\•CAPTURES\\Poster Captures\\3000\\3400\\3403_BRETT FAVRE.TIFF";
-            item.AltImageFile4 = "\\\\isiloncifs\\Store 2\\•CAPTURES\\Poster Captures\\3000\\3400\\3403_BRETT FAVRE.TIFF";
-            item.SellOnAllPosters = "Y";
-            item.SellOnAmazon = "Y";
-            item.SellOnFanatics = "N";
-            item.SellOnGuitarCenter = "N";
-            item.SellOnHayneedle = "N";
-            item.SellOnTarget = "N";
-            item.SellOnTrends = "N";
-            item.SellOnWalmart = "N";
-            item.SellOnWayfair = "N";
-            item.Ecommerce_Asin = "ASIN";
-            item.Ecommerce_Bullet1 = "Bullet1";
-            item.Ecommerce_Bullet2 = "Bullet2";
-            item.Ecommerce_Bullet3 = "Bullet3";
-            item.Ecommerce_Bullet4 = "Bullet4";
-            item.Ecommerce_Bullet5 = "Bullet5";
-            item.Ecommerce_Components = "Components";
-            item.Ecommerce_Cost = "5.99";
-            item.Ecommerce_ExternalId = "000000000000";
-            item.Ecommerce_ExternalIdType = "UPC";
-            item.Ecommerce_ImagePath1 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath1.jpg";
-            item.Ecommerce_ImagePath2 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath2.jpg";
-            item.Ecommerce_ImagePath3 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath3.jpg";
-            item.Ecommerce_ImagePath4 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath4.jpg";
-            item.Ecommerce_ImagePath5 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath5.jpg";
-            item.Ecommerce_ItemHeight = "6";
-            item.Ecommerce_ItemLength = "7";
-            item.Ecommerce_ItemName = "ItemName";
-            item.Ecommerce_ItemWeight = "8";
-            item.Ecommerce_ItemWidth = "9";
-            item.Ecommerce_ModelName = "Model Name";
-            item.Ecommerce_PackageHeight = "5";
-            item.Ecommerce_PackageLength = "4";
-            item.Ecommerce_PackageWeight = "3";
-            item.Ecommerce_PackageWidth = "2";
-            item.Ecommerce_PageQty = "5";
-            item.Ecommerce_ProductCategory = "ProductCategory";
-            item.Ecommerce_ProductDescription = "ProductDescription";
-            item.Ecommerce_ProductSubcategory = "ProductSubcategory";
-            item.Ecommerce_ManufacturerName = "ManufacturerName";
-            item.Ecommerce_Msrp = "1.99";
-            item.Ecommerce_SearchTerms = "SearchTerms";
-            item.Ecommerce_Size = "Size";
-            item.Ecommerce_Upc = "UPC";
-            item.AccountingGroup = "ACCOUNTING";
-            item.BillOfMaterials = billOfMaterials;
-            item.CasepackHeight = "1.";
-            item.CasepackLength = "2.0";
-            item.CasepackQty = "5";
-            item.CasepackUpc = "999999999999";
-            item.CasepackWidth = "77.0";
-            item.CasepackWeight = "34.0";
-            item.Category = "Category1";
-            item.Category2 = "Category2";
-            item.Category3 = "Category3";
-            item.Color = "Color";
-            item.Copyright = "Copyright";
-            item.CountryOfOrigin = "COO";
-            item.CostProfileGroup = "CPG";
-            item.DefaultActualCostUsd = "4.99";
-            item.DefaultActualCostCad = "8";
-            item.Description = "Description";
-            item.DirectImport = "N";
-            item.Duty = "Duty";
-            item.Ean = "EAN";
-            item.Gpc = "GPC";
-            item.Height = "2";
-            item.ImagePath = "ImagePath";
-            item.InnerpackHeight = "8.7";
-            item.InnerpackLength = "9.7";
-            item.InnerpackQuantity = "90";
-            item.InnerpackUpc = "77777777";
-            item.InnerpackWidth = "14";
-            item.InnerpackWeight = "52";
-            item.InStockDate = "";
-            item.Isbn = "I";
-            item.ItemCategory = "ItemCategory1";
-            item.ItemFamily = "F";
-            item.ItemGroup = "G";
-            item.ItemId = "TestItem2";
-            item.ItemKeywords = "Item Keywords";
-            item.Language = "ENG";
-            item.Length = "91";
-            item.License = "License";
-            item.LicenseBeginDate = "";
-            item.ListPriceCad = "7.77";
-            item.ListPriceMxn = "7.88";
-            item.ListPriceUsd = "7.99";
-            item.MetaDescription = "MetaDescription";
-            item.MfgSource = "MF";
-            item.Msrp = "7.77";
-            item.MsrpCad = "19.99";
-            item.MsrpMxn = "9.99";
-            item.ProductFormat = "ProdF";
-            item.ProductGroup = "ProdG";
-            item.ProductIdTranslation = PID;
-            item.ProductLine = "ProdL";
-            item.ProductQty = "9";
-            item.Property = "Property";
-            item.PricingGroup = "PRICING GR";
-            item.PrintOnDemand = "Y";
-            item.PsStatus = "A";
-            item.SatCode = "SatCode";
-            item.ShortDescription = "Short Description";
-            item.Size = "Size";
-            item.StandardCost = "5";
-            item.StatsCode = "statsCode";
-            item.Status = "Add";
-            item.TariffCode = "TC";
-            item.Territory = "USA";
-            item.Title = "Title";
-            item.Udex = "UD";
-            item.Upc = "000000000000";
-            item.Weight = "2";
-            item.Width = "1";
-            item.Status = "Add";
+                AltImageFile1 = "\\\\isiloncifs\\Store 2\\•CAPTURES\\Poster Captures\\3000\\3400\\3403_BRETT FAVRE.TIFF",
+                AltImageFile2 = "\\\\isiloncifs\\Store 2\\•CAPTURES\\Poster Captures\\3000\\3400\\3403_BRETT FAVRE.TIFF",
+                AltImageFile3 = "\\\\isiloncifs\\Store 2\\•CAPTURES\\Poster Captures\\3000\\3400\\3403_BRETT FAVRE.TIFF",
+                AltImageFile4 = "\\\\isiloncifs\\Store 2\\•CAPTURES\\Poster Captures\\3000\\3400\\3403_BRETT FAVRE.TIFF",
+                SellOnAllPosters = "Y",
+                SellOnAmazon = "Y",
+                SellOnFanatics = "N",
+                SellOnGuitarCenter = "N",
+                SellOnHayneedle = "N",
+                SellOnTarget = "N",
+                SellOnTrends = "N",
+                SellOnWalmart = "N",
+                SellOnWayfair = "N",
+                Ecommerce_Asin = "ASIN",
+                Ecommerce_Bullet1 = "Bullet1",
+                Ecommerce_Bullet2 = "Bullet2",
+                Ecommerce_Bullet3 = "Bullet3",
+                Ecommerce_Bullet4 = "Bullet4",
+                Ecommerce_Bullet5 = "Bullet5",
+                Ecommerce_Components = "Components",
+                Ecommerce_Cost = "5.99",
+                Ecommerce_ExternalId = "000000000000",
+                Ecommerce_ExternalIdType = "UPC",
+                Ecommerce_ImagePath1 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath1.jpg",
+                Ecommerce_ImagePath2 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath2.jpg",
+                Ecommerce_ImagePath3 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath3.jpg",
+                Ecommerce_ImagePath4 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath4.jpg",
+                Ecommerce_ImagePath5 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath5.jpg",
+                Ecommerce_ItemHeight = "6",
+                Ecommerce_ItemLength = "7",
+                Ecommerce_ItemName = "ItemName",
+                Ecommerce_ItemWeight = "8",
+                Ecommerce_ItemWidth = "9",
+                Ecommerce_ModelName = "Model Name",
+                Ecommerce_PackageHeight = "5",
+                Ecommerce_PackageLength = "4",
+                Ecommerce_PackageWeight = "3",
+                Ecommerce_PackageWidth = "2",
+                Ecommerce_PageQty = "5",
+                Ecommerce_ProductCategory = "ProductCategory",
+                Ecommerce_ProductDescription = "ProductDescription",
+                Ecommerce_ProductSubcategory = "ProductSubcategory",
+                Ecommerce_ManufacturerName = "ManufacturerName",
+                Ecommerce_Msrp = "1.99",
+                Ecommerce_SearchTerms = "SearchTerms",
+                Ecommerce_Size = "Size",
+                Ecommerce_Upc = "UPC",
+                AccountingGroup = "ACCOUNTING",
+                BillOfMaterials = billOfMaterials,
+                CasepackHeight = "1.",
+                CasepackLength = "2.0",
+                CasepackQty = "5",
+                CasepackUpc = "999999999999",
+                CasepackWidth = "77.0",
+                CasepackWeight = "34.0",
+                Category = "Category1",
+                Category2 = "Category2",
+                Category3 = "Category3",
+                Color = "Color",
+                Copyright = "Copyright",
+                CountryOfOrigin = "COO",
+                CostProfileGroup = "CPG",
+                DefaultActualCostUsd = "4.99",
+                DefaultActualCostCad = "8",
+                Description = "Description",
+                DirectImport = "N",
+                Duty = "Duty",
+                Ean = "EAN",
+                Gpc = "GPC",
+                Height = "2",
+                ImagePath = "ImagePath",
+                InnerpackHeight = "8.7",
+                InnerpackLength = "9.7",
+                InnerpackQuantity = "90",
+                InnerpackUpc = "77777777",
+                InnerpackWidth = "14",
+                InnerpackWeight = "52",
+                InStockDate = "",
+                Isbn = "I",
+                ItemCategory = "ItemCategory1",
+                ItemFamily = "F",
+                ItemGroup = "G",
+                ItemId = "TestItem2",
+                ItemKeywords = "Item Keywords",
+                Language = "ENG",
+                Length = "91",
+                License = "License",
+                LicenseBeginDate = "",
+                ListPriceCad = "7.77",
+                ListPriceMxn = "7.88",
+                ListPriceUsd = "7.99",
+                MetaDescription = "MetaDescription",
+                MfgSource = "MF",
+                Msrp = "7.77",
+                MsrpCad = "19.99",
+                MsrpMxn = "9.99",
+                ProductFormat = "ProdF",
+                ProductGroup = "ProdG",
+                ProductIdTranslation = PID,
+                ProductLine = "ProdL",
+                ProductQty = "9",
+                Property = "Property",
+                PricingGroup = "PRICING GR",
+                PrintOnDemand = "Y",
+                PsStatus = "A",
+                SatCode = "SatCode",
+                ShortDescription = "Short Description",
+                Size = "Size",
+                StandardCost = "5",
+                StatsCode = "statsCode",
+                Status = "Add",
+                TariffCode = "TC",
+                Territory = "USA",
+                Title = "Title",
+                Udex = "UD",
+                Upc = "000000000000",
+                Weight = "2",
+                Width = "1"
+            };
             item.ResetUpdate();
 
             #endregion // Assemble
@@ -1314,9 +1337,10 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.Language = "ENG/FRA/SPA";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                Language = "ENG/FRA/SPA"
+            };
             #endregion // Assemble
 
             #region Act
@@ -1355,9 +1379,11 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.Territory = "USA/CAN/MEX";
+            ItemObject item = new ItemObject()
+            {
+                ItemId = "TEST1",
+                Territory = "USA/CAN/MEX"
+            };
             #endregion // Assemble
 
             #region Act
@@ -1398,21 +1424,23 @@ namespace Odin.Data.Tests
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
             GlobalData.WebCategoryList.Add("1", "Category1");
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.Active = 1;
-            item.Category = "Category1";
-            item.Copyright = "Copyright";
-            item.ImagePath = "ImagePath";
-            item.InStockDate = "1900-01-01";
-            item.ItemKeywords = "ItemKeywords";
-            item.License = "License";
-            item.MetaDescription = "MetaDescription";
-            item.ProductQty = "4";
-            item.Property = "Property";
-            item.ShortDescription ="ShortDesc";
-            item.Size = "Size";
-            item.Title = "Title";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                Active = 1,
+                Category = "Category1",
+                Copyright = "Copyright",
+                ImagePath = "ImagePath",
+                InStockDate = "1900-01-01",
+                ItemKeywords = "ItemKeywords",
+                License = "License",
+                MetaDescription = "MetaDescription",
+                ProductQty = "4",
+                Property = "Property",
+                ShortDescription = "ShortDesc",
+                Size = "Size",
+                Title = "Title"
+            };
+
             #endregion // Assemble
 
             #region Act
@@ -1460,7 +1488,7 @@ namespace Odin.Data.Tests
         public void ItemRepositoryTests_InsertItemUpdateRecord_ItemInfoShouldSave()
         {
             #region Assemble
-            
+
             DbHelpers.ClearDatabase();
             GlobalData.ClearValues();
             GlobalData.WebCategoryList.Add("1", "Category1");
@@ -1471,120 +1499,121 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.Status = "Add";
-            item.Ecommerce_Asin = "Asin";
-            item.Ecommerce_Bullet1 = "Ecommerce_Bullet1";
-            item.Ecommerce_Bullet2 = "Ecommerce_Bullet2";
-            item.Ecommerce_Bullet3 = "Ecommerce_Bullet3";
-            item.Ecommerce_Bullet4 = "Ecommerce_Bullet4";
-            item.Ecommerce_Bullet5 = "Ecommerce_Bullet5";
-            item.Ecommerce_Components = "Ecommerce_Components";
-            item.Ecommerce_Cost = "E-Cost";
-            item.Ecommerce_ExternalIdType = "ExIdType";
-            item.Ecommerce_ExternalId = "ExternalId";
-            item.Ecommerce_ItemHeight = "ItemHeight";
-            item.Ecommerce_ItemLength = "ItemLength";
-            item.Ecommerce_ItemName = "Ecommerce_ItemName";
-            item.Ecommerce_ItemWeight = "ItemWeight";
-            item.Ecommerce_ItemWidth = "ItemWidth";
-            item.Ecommerce_ManufacturerName = "Ecommerce_ManufacturerName";
-            item.Ecommerce_ModelName = "Ecommerce_ModelName";
-            item.Ecommerce_Msrp = "msrp";
-            item.Ecommerce_PackageLength = "3.1";
-            item.Ecommerce_PackageHeight = "3.2";
-            item.Ecommerce_PackageWeight = "3.3";
-            item.Ecommerce_PackageWidth = "3.4";
-            item.Ecommerce_PageQty = "PQty";
-            item.Ecommerce_ProductCategory = "Ecommerce_ProductCategory";
-            item.Ecommerce_ProductDescription = "Ecommerce_ProductDescription";
-            item.Ecommerce_ProductSubcategory = "Ecommerce_ProductSubcategory";
-            item.Ecommerce_SearchTerms = "Ecommerce_SearchTerms";
-            item.Ecommerce_Size = "Ecommerce_Size";
-            item.Ecommerce_Upc = "EUpc";
-            item.AccountingGroup = "AGroup";
-            item.AltImageFile1 = "ImagePath2";
-            item.AltImageFile2 = "ImagePath3";
-            item.AltImageFile3 = "ImagePath4";
-            item.AltImageFile4 = "ImagePath5";
-            item.BillOfMaterials = new List<ChildElement>();
-            item.CasepackHeight = "2.1";
-            item.CasepackLength = "2.2";
-            item.CasepackQty = "2";
-            item.CasepackUpc = "2222";
-            item.CasepackWidth = "2.3";
-            item.CasepackWeight = "2.4";
-            item.Category = "Category";
-            item.Category2 = "Category2";
-            item.Category3 = "Category3";
-            item.Color = "Color";
-            item.Copyright = "Copyright";
-            item.CountryOfOrigin = "COO";
-            item.CostProfileGroup = "CPG";
-            item.DefaultActualCostUsd = "dacusd";
-            item.DefaultActualCostCad = "daccad";
-            item.Description = "Description";
-            item.DirectImport = "N";
-            item.Duty = "Duty";
-            item.Ean = "Ean";
-            item.Gpc = "Gpc";
-            item.Height = "Height";
-            item.ImagePath = "ImagePath";
-            item.InnerpackHeight = "1.1";
-            item.InnerpackLength = "1.2";
-            item.InnerpackQuantity = "1";
-            item.InnerpackUpc = "1111";
-            item.InnerpackWidth = "1.3";
-            item.InnerpackWeight = "1.4";
-            item.InStockDate = "InStockDate";
-            item.Isbn = "Isbn";
-            item.ItemCategory = "ItemCategory";
-            item.ItemFamily = "ItemF";
-            item.ItemGroup = "ItemGroup";
-            item.ItemKeywords = "ItemKeywords";
-            item.Language = "Language";
-            item.Length = "Length";
-            item.License = "License";
-            item.LicenseBeginDate = "LicenseBeginDate";
-            item.ListPriceCad = "1.99";
-            item.ListPriceUsd = "2.99";
-            item.ListPriceMxn = "3.99";
-            item.MetaDescription = "MetaDescription";
-            item.MfgSource = "MS";
-            item.Msrp = "11.99";
-            item.MsrpCad = "12.99";
-            item.MsrpMxn = "13.99";
-            item.ProductFormat = "ProductFormat";
-            item.ProductGroup = "ProductGroup";
-            item.ProductIdTranslation = new List<ChildElement>();
-            item.ProductLine = "ProductLine";
-            item.ProductQty = "ProductQty";
-            item.PricingGroup = "PGroup";
-            item.PrintOnDemand = "Y";
-            item.PsStatus = "O";
-            item.Property = "Property";
-            item.SatCode = "SatCode";
-            item.ShortDescription = "ShortDescription";
-            item.SellOnAllPosters = "Y";
-            item.SellOnAmazon = "Y";
-            item.SellOnFanatics = "N";
-            item.SellOnGuitarCenter = "N";
-            item.SellOnHayneedle = "N";
-            item.SellOnTarget = "N";
-            item.SellOnTrends = "N";
-            item.SellOnWalmart = "N";
-            item.SellOnWayfair = "N";
-            item.Size = "Size";
-            item.StandardCost = "StandardCost";
-            item.StatsCode = "StatsCode";
-            item.TariffCode = "TariffCode";
-            item.Territory = "Territory";
-            item.Title = "Title";
-            item.Udex = "Udex";
-            item.Upc = "Upc";
-            item.Weight = "Weight";
-            item.Width = "Width";
+            ItemObject item = new ItemObject() { 
+                ItemId = "TEST1",
+                Status = "Add",
+                Ecommerce_Asin = "Asin",
+                Ecommerce_Bullet1 = "Ecommerce_Bullet1",
+                Ecommerce_Bullet2 = "Ecommerce_Bullet2",
+                Ecommerce_Bullet3 = "Ecommerce_Bullet3",
+                Ecommerce_Bullet4 = "Ecommerce_Bullet4",
+                Ecommerce_Bullet5 = "Ecommerce_Bullet5",
+                Ecommerce_Components = "Ecommerce_Components",
+                Ecommerce_Cost = "E-Cost",
+                Ecommerce_ExternalIdType = "ExIdType",
+                Ecommerce_ExternalId = "ExternalId",
+                Ecommerce_ItemHeight = "ItemHeight",
+                Ecommerce_ItemLength = "ItemLength",
+                Ecommerce_ItemName = "Ecommerce_ItemName",
+                Ecommerce_ItemWeight = "ItemWeight",
+                Ecommerce_ItemWidth = "ItemWidth",
+                Ecommerce_ManufacturerName = "Ecommerce_ManufacturerName",
+                Ecommerce_ModelName = "Ecommerce_ModelName",
+                Ecommerce_Msrp = "msrp",
+                Ecommerce_PackageLength = "3.1",
+                Ecommerce_PackageHeight = "3.2",
+                Ecommerce_PackageWeight = "3.3",
+                Ecommerce_PackageWidth = "3.4",
+                Ecommerce_PageQty = "PQty",
+                Ecommerce_ProductCategory = "Ecommerce_ProductCategory",
+                Ecommerce_ProductDescription = "Ecommerce_ProductDescription",
+                Ecommerce_ProductSubcategory = "Ecommerce_ProductSubcategory",
+                Ecommerce_SearchTerms = "Ecommerce_SearchTerms",
+                Ecommerce_Size = "Ecommerce_Size",
+                Ecommerce_Upc = "EUpc",
+                AccountingGroup = "AGroup",
+                AltImageFile1 = "ImagePath2",
+                AltImageFile2 = "ImagePath3",
+                AltImageFile3 = "ImagePath4",
+                AltImageFile4 = "ImagePath5",
+                BillOfMaterials = new List<ChildElement>(),
+                CasepackHeight = "2.1",
+                CasepackLength = "2.2",
+                CasepackQty = "2",
+                CasepackUpc = "2222",
+                CasepackWidth = "2.3",
+                CasepackWeight = "2.4",
+                Category = "Category",
+                Category2 = "Category2",
+                Category3 = "Category3",
+                Color = "Color",
+                Copyright = "Copyright",
+                CountryOfOrigin = "COO",
+                CostProfileGroup = "CPG",
+                DefaultActualCostUsd = "dacusd",
+                DefaultActualCostCad = "daccad",
+                Description = "Description",
+                DirectImport = "N",
+                Duty = "Duty",
+                Ean = "Ean",
+                Gpc = "Gpc",
+                Height = "Height",
+                ImagePath = "ImagePath",
+                InnerpackHeight = "1.1",
+                InnerpackLength = "1.2",
+                InnerpackQuantity = "1",
+                InnerpackUpc = "1111",
+                InnerpackWidth = "1.3",
+                InnerpackWeight = "1.4",
+                InStockDate = "InStockDate",
+                Isbn = "Isbn",
+                ItemCategory = "ItemCategory",
+                ItemFamily = "ItemF",
+                ItemGroup = "ItemGroup",
+                ItemKeywords = "ItemKeywords",
+                Language = "Language",
+                Length = "Length",
+                License = "License",
+                LicenseBeginDate = "LicenseBeginDate",
+                ListPriceCad = "1.99",
+                ListPriceUsd = "2.99",
+                ListPriceMxn = "3.99",
+                MetaDescription = "MetaDescription",
+                MfgSource = "MS",
+                Msrp = "11.99",
+                MsrpCad = "12.99",
+                MsrpMxn = "13.99",
+                ProductFormat = "ProductFormat",
+                ProductGroup = "ProductGroup",
+                ProductIdTranslation = new List<ChildElement>(),
+                ProductLine = "ProductLine",
+                ProductQty = "ProductQty",
+                PricingGroup = "PGroup",
+                PrintOnDemand = "Y",
+                PsStatus = "O",
+                Property = "Property",
+                SatCode = "SatCode",
+                ShortDescription = "ShortDescription",
+                SellOnAllPosters = "Y",
+                SellOnAmazon = "Y",
+                SellOnFanatics = "N",
+                SellOnGuitarCenter = "N",
+                SellOnHayneedle = "N",
+                SellOnTarget = "N",
+                SellOnTrends = "N",
+                SellOnWalmart = "N",
+                SellOnWayfair = "N",
+                Size = "Size",
+                StandardCost = "StandardCost",
+                StatsCode = "StatsCode",
+                TariffCode = "TariffCode",
+                Territory = "Territory",
+                Title = "Title",
+                Udex = "Udex",
+                Upc = "Upc",
+                Weight = "Weight",
+                Width = "Width"
+            };
 
             #endregion // Assemble
 
@@ -1737,14 +1766,15 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.Description = "This is a description of more than 30 characters I hope.";
-            item.CostProfileGroup = "CPG";
-            item.ItemGroup = "ItemGroup";
-            item.ItemFamily = "ItemFamily";
-            item.ItemCategory = "ItemCategory1";
-            item.PsStatus = "S";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                Description = "This is a description of more than 30 characters I hope.",
+                CostProfileGroup = "CPG",
+                ItemGroup = "ItemGroup",
+                ItemFamily = "ItemFamily",
+                ItemCategory = "ItemCategory1",
+                PsStatus = "S"
+            };
             GlobalData.ItemCategories.Add("1", "ItemCategory1");
 
             #endregion // Assemble
@@ -1854,8 +1884,10 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
+            ItemObject item = new ItemObject()
+            {
+                ItemId = "TEST1"
+            };
             #endregion // Assemble
 
             #region Act
@@ -1942,15 +1974,16 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.Description = "This is a description of more than 30 characters I hope.";
-            item.Gpc = "Gpc";
-            item.Ean = "Ean";
-            item.ItemCategory = "ItemCategory";
-            item.Isbn = "Isbn";
-            item.StatsCode = "StatsCode";
-            item.Udex = "Udex";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                Description = "This is a description of more than 30 characters I hope.",
+                Gpc = "Gpc",
+                Ean = "Ean",
+                ItemCategory = "ItemCategory",
+                Isbn = "Isbn",
+                StatsCode = "StatsCode",
+                Udex = "Udex"
+            };
 
             #endregion // Assemble
 
@@ -2061,9 +2094,10 @@ namespace Odin.Data.Tests
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
             string username = GlobalData.UserName;
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.PricingGroup = "PG";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                PricingGroup = "PG"
+            };
 
             #endregion // Assemble
 
@@ -2113,14 +2147,15 @@ namespace Odin.Data.Tests
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
             string userName = GlobalData.UserName;
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.ListPriceCad = "5.99";
-            item.MsrpCad = "10.99";
-            item.ListPriceMxn = "6.99";
-            item.MsrpMxn = "12.99";
-            item.ListPriceUsd = "7.99";
-            item.Msrp = "14.99";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                ListPriceCad = "5.99",
+                MsrpCad = "10.99",
+                ListPriceMxn = "6.99",
+                MsrpMxn = "12.99",
+                ListPriceUsd = "7.99",
+                Msrp = "14.99"
+            };
 
             #endregion // Assemble
 
@@ -2197,9 +2232,10 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.ListPriceMxn = "6";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                ListPriceMxn = "6"
+            };
 
             #endregion // Assemble
 
@@ -2259,8 +2295,10 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
+            ItemObject item = new ItemObject()
+            {
+                ItemId = "TEST1"
+            };
 
             #endregion // Assemble
 
@@ -2308,10 +2346,11 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.Description = "This is a description of more than 30 characters I hope.";
-            item.StandardCost = "9.99";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                Description = "This is a description of more than 30 characters I hope.",
+                StandardCost = "9.99"
+            };
 
             #endregion // Assemble
 
@@ -2428,9 +2467,10 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.ItemCategory = "Category1";
+            ItemObject item = new ItemObject(){
+                ItemId = "TEST1",
+                ItemCategory = "Category1"
+            };
             GlobalData.ItemCategories.Add("1","Category1");
 
             #endregion // Assemble
@@ -2472,8 +2512,9 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
+            ItemObject item = new ItemObject(){
+                ItemId = "TEST1"
+            };
             #endregion // Assemble
 
             #region Act
@@ -2618,7 +2659,7 @@ namespace Odin.Data.Tests
             #endregion // Assert
 
         }
-        
+
         /// <summary>
         ///     Checks existing product id transalations. Item id ST4444 does not exist in the product id
         ///     translation table with the correct parent id.
@@ -2634,14 +2675,17 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "FROMITEM1";
+            ItemObject item = new ItemObject()
+            {
+                ItemId = "FROMITEM1"
+            };
 
             // List with matching item ids
-            List<ChildElement> productIdTranslationList1 = new List<ChildElement>();
-            productIdTranslationList1.Add(new ChildElement("ST1111", item.ItemId, 2));
-            productIdTranslationList1.Add(new ChildElement("ST2222", item.ItemId, 2));
-            productIdTranslationList1.Add(new ChildElement("ST3333", item.ItemId, 2));
+            List<ChildElement> productIdTranslationList1 = new List<ChildElement>(new ChildElement[] {
+                new ChildElement("ST1111", item.ItemId, 2),
+                new ChildElement("ST2222", item.ItemId, 2),
+                new ChildElement("ST3333", item.ItemId, 2)
+            });
             
             item.ProductIdTranslation = productIdTranslationList1;
             using (OdinContext context = OdinContextFactory.CreateContext())
@@ -2682,12 +2726,13 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.MfgSource = "MG";
-            item.CountryOfOrigin = "COO";
-            item.DefaultActualCostUsd = "9.99";
-            item.DefaultActualCostCad = "8.99";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                MfgSource = "MG",
+                CountryOfOrigin = "COO",
+                DefaultActualCostUsd = "9.99",
+                DefaultActualCostCad = "8.99"
+            };
                         
             #endregion // Assemble
 
@@ -2745,12 +2790,13 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.MfgSource = "MG";
-            item.CountryOfOrigin = "COO";
-            item.DefaultActualCostUsd = "9.99";
-            item.DefaultActualCostCad = "8.99";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                MfgSource = "MG",
+                CountryOfOrigin = "COO",
+                DefaultActualCostUsd = "9.99",
+                DefaultActualCostCad = "8.99"
+            };
 
             #endregion // Assemble
 
@@ -2811,9 +2857,11 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.CostProfileGroup = "ACTUAL_FIFO";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                CostProfileGroup = "ACTUAL_FIFO"
+            };
+
             #endregion // Assemble
 
             #region Act
@@ -2846,7 +2894,7 @@ namespace Odin.Data.Tests
 
             #endregion // Assert
         }
-        
+
         /// <summary>
         ///     Tests UpdateCustomerProductAttributesAll is properly updating info in PS_CUSTOMER_PRODUCT_ATTRIBUTES
         /// </summary>
@@ -2867,16 +2915,17 @@ namespace Odin.Data.Tests
             GlobalData.CustomerIdConversions.Add("WAYFAIR", "7");
             GlobalData.CustomerIdConversions.Add("GUITAR CENTER", "9");
 
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.SellOnAllPosters = "Y";
-            item.SellOnAmazon = "N";
-            item.SellOnFanatics = "Y";
-            item.SellOnGuitarCenter = "Y";
-            item.SellOnHayneedle = "N";
-            item.SellOnTarget = "Y";
-            item.SellOnWalmart = "N";
-            item.SellOnWayfair = "Y";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                SellOnAllPosters = "Y",
+                SellOnAmazon = "N",
+                SellOnFanatics = "Y",
+                SellOnGuitarCenter = "Y",
+                SellOnHayneedle = "N",
+                SellOnTarget = "Y",
+                SellOnWalmart = "N",
+                SellOnWayfair = "Y"
+            };
 
             #endregion // Assemble
 
@@ -2944,8 +2993,8 @@ namespace Odin.Data.Tests
         }
 
         /// <summary>
-            ///     Tests UpdateEcommerceValues is properly updating info in PS_AMAZON_ITEM_ATTRIBUTES
-            /// </summary>
+        ///     Tests UpdateEcommerceValues is properly updating info in PS_AMAZON_ITEM_ATTRIBUTES
+        /// </summary>
         [TestMethod]
         public void ItemRepositoryTests_UpdateEcommerceValues_ItemInfoShouldSave()
         {
@@ -2954,43 +3003,44 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.Ecommerce_Asin = "NISA";
-            item.Ecommerce_Bullet1 = "B1";
-            item.Ecommerce_Bullet2 = "B2";
-            item.Ecommerce_Bullet3 = "B3";
-            item.Ecommerce_Bullet4 = "B4";
-            item.Ecommerce_Bullet5 = "B5";
-            item.Ecommerce_Components = "CMPTS";
-            item.Ecommerce_Cost = "7";
-            item.Ecommerce_CountryofOrigin = "USA";
-            item.Ecommerce_ExternalId = "IDEX";
-            item.Ecommerce_ExternalIdType = "TDIXE";
-            item.Ecommerce_ImagePath1 = "1IMG";
-            item.Ecommerce_ImagePath2 = "2IMG";
-            item.Ecommerce_ImagePath3 = "3IMG";
-            item.Ecommerce_ImagePath4 = "4IMG";
-            item.Ecommerce_ImagePath5 = "5IMG";
-            item.Ecommerce_ItemHeight = "22";
-            item.Ecommerce_ItemLength = "12";
-            item.Ecommerce_ItemName = "ItemName";
-            item.Ecommerce_ItemWeight = "2.5";
-            item.Ecommerce_ItemWidth = "3.2";
-            item.Ecommerce_ModelName = "MName";
-            item.Ecommerce_PackageHeight = "2.1";
-            item.Ecommerce_PackageLength = "7.2";
-            item.Ecommerce_PackageWeight = "8.3";
-            item.Ecommerce_PackageWidth = "5.4";
-            item.Ecommerce_PageQty = "34";
-            item.Ecommerce_ProductCategory = "PCAT";
-            item.Ecommerce_ProductDescription = "FDESC";
-            item.Ecommerce_ProductSubcategory = "PRODSUB";
-            item.Ecommerce_ManufacturerName = "MNAME";
-            item.Ecommerce_Msrp = "19.99";
-            item.Ecommerce_SearchTerms = "STERMS";
-            item.Ecommerce_Size = "SLIZ";
-            item.Ecommerce_Upc = "UOVER";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                Ecommerce_Asin = "NISA",
+                Ecommerce_Bullet1 = "B1",
+                Ecommerce_Bullet2 = "B2",
+                Ecommerce_Bullet3 = "B3",
+                Ecommerce_Bullet4 = "B4",
+                Ecommerce_Bullet5 = "B5",
+                Ecommerce_Components = "CMPTS",
+                Ecommerce_Cost = "7",
+                Ecommerce_CountryofOrigin = "USA",
+                Ecommerce_ExternalId = "IDEX",
+                Ecommerce_ExternalIdType = "TDIXE",
+                Ecommerce_ImagePath1 = "1IMG",
+                Ecommerce_ImagePath2 = "2IMG",
+                Ecommerce_ImagePath3 = "3IMG",
+                Ecommerce_ImagePath4 = "4IMG",
+                Ecommerce_ImagePath5 = "5IMG",
+                Ecommerce_ItemHeight = "22",
+                Ecommerce_ItemLength = "12",
+                Ecommerce_ItemName = "ItemName",
+                Ecommerce_ItemWeight = "2.5",
+                Ecommerce_ItemWidth = "3.2",
+                Ecommerce_ModelName = "MName",
+                Ecommerce_PackageHeight = "2.1",
+                Ecommerce_PackageLength = "7.2",
+                Ecommerce_PackageWeight = "8.3",
+                Ecommerce_PackageWidth = "5.4",
+                Ecommerce_PageQty = "34",
+                Ecommerce_ProductCategory = "PCAT",
+                Ecommerce_ProductDescription = "FDESC",
+                Ecommerce_ProductSubcategory = "PRODSUB",
+                Ecommerce_ManufacturerName = "MNAME",
+                Ecommerce_Msrp = "19.99",
+                Ecommerce_SearchTerms = "STERMS",
+                Ecommerce_Size = "SLIZ",
+                Ecommerce_Upc = "UOVER"
+            };
 
             #endregion // Assemble
 
@@ -3105,10 +3155,11 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.ItemGroup = "STICKER";
-            item.ItemFamily = "OUCH";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                ItemGroup = "STICKER",
+                ItemFamily = "OUCH"
+            };
 
             #endregion // Assemble
 
@@ -3162,16 +3213,18 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.TariffCode = "TarC";
-            item.Description = "OG Description";
-            item.Height = "1.1";
-            item.Length = "2.1";
-            item.Weight = "3.1";
-            item.Width = "4.1";
-            item.Upc = "OGUPC";
-            item.Color = "TAN";
+            ItemObject item = new ItemObject
+            {
+                ItemId = "TEST1",
+                TariffCode = "TarC",
+                Description = "OG Description",
+                Height = "1.1",
+                Length = "2.1",
+                Weight = "3.1",
+                Width = "4.1",
+                Upc = "OGUPC",
+                Color = "TAN"
+            };
 
             #endregion // Assemble
 
@@ -3233,35 +3286,36 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.CasepackHeight = "12.1";
-            item.CasepackLength = "13.2";
-            item.CasepackQty = "7";
-            item.CasepackUpc = "OGUPC";
-            item.CasepackWidth = "11.3";
-            item.CasepackWeight = "14.4";
-            item.DirectImport = "N";
-            item.Duty = item.Duty;
-            item.InnerpackHeight = "21.1";
-            item.InnerpackLength = "22.2";
-            item.InnerpackQuantity = "23";
-            item.InnerpackUpc = "OGUPC2";
-            item.InnerpackWeight = "24.3";
-            item.InnerpackWidth = "25.4";
-            item.LicenseBeginDate = "1/27/2015";
-            item.ProductFormat = "ProdFor";
-            item.ProductGroup = "ProdGr";
-            item.ProductLine = "ProdLoi";
-            item.SatCode = "CodeSat";
-            item.SellOnTrends = "N";
-            item.PrintOnDemand = "Y";
-            // item.TranslateEdiProd = item.ReturnTranslateEdiProd();
-            item.ImagePath = "OGImagePath";
-            item.AltImageFile1 = "OGAltImageFile1";
-            item.AltImageFile2 = "OGAltImageFile2";
-            item.AltImageFile3 = "OGAltImageFile3";
-            item.AltImageFile4 = "OGAltImageFile4";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                CasepackHeight = "12.1",
+                CasepackLength = "13.2",
+                CasepackQty = "7",
+                CasepackUpc = "OGUPC",
+                CasepackWidth = "11.3",
+                CasepackWeight = "14.4",
+                DirectImport = "N",
+                // Duty = Duty,
+                InnerpackHeight = "21.1",
+                InnerpackLength = "22.2",
+                InnerpackQuantity = "23",
+                InnerpackUpc = "OGUPC2",
+                InnerpackWeight = "24.3",
+                InnerpackWidth = "25.4",
+                LicenseBeginDate = "1/27/2015",
+                ProductFormat = "ProdFor",
+                ProductGroup = "ProdGr",
+                ProductLine = "ProdLoi",
+                SatCode = "CodeSat",
+                SellOnTrends = "N",
+                PrintOnDemand = "Y",
+                // TranslateEdiProd = ReturnTranslateEdiProd(),
+                ImagePath = "OGImagePath",
+                AltImageFile1 = "OGAltImageFile1",
+                AltImageFile2 = "OGAltImageFile2",
+                AltImageFile3 = "OGAltImageFile3",
+                AltImageFile4 = "OGAltImageFile4"
+            };
 
             #endregion // Assemble
 
@@ -3371,23 +3425,24 @@ namespace Odin.Data.Tests
             GlobalData.WebCategoryList.Add("4", "Category4");
             GlobalData.WebCategoryList.Add("5", "Category5");
 
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.Active = 0;
-            item.Category = "Category1";
-            item.Category2 = "Category2";
-            item.Category3 = "Category3";
-            item.Copyright = "CRight";
-            item.ImagePath = "IPath";
-            item.InStockDate = "1991-01-01";
-            item.ItemKeywords = "Keywordies";
-            item.License = "LCENSE";
-            item.MetaDescription = "MDESC";
-            item.ProductQty = "1";
-            item.Property = "PDiddy";
-            item.ShortDescription = "Shorty";
-            item.Size = "Sizzle";
-            item.Title = "T-Itle";
+            ItemObject item = new ItemObject() { 
+                ItemId = "TEST1",
+                Active = 0,
+                Category = "Category1",
+                Category2 = "Category2",
+                Category3 = "Category3",
+                Copyright = "CRight",
+                ImagePath = "IPath",
+                InStockDate = "1991-01-01",
+                ItemKeywords = "Keywordies",
+                License = "LCENSE",
+                MetaDescription = "MDESC",
+                ProductQty = "1",
+                Property = "PDiddy",
+                ShortDescription = "Shorty",
+                Size = "Sizzle",
+                Title = "T-Itle"
+            };
 
             #endregion // Assemble
 
@@ -3470,14 +3525,15 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.Description = "This is a new description of more than 30 characters I hope.";
-            item.CostProfileGroup = "CPG";
-            item.ItemGroup = "ItemGroup";
-            item.ItemFamily = "ItemFamily";
-            item.ItemCategory = "ItemCategory1";
-            item.PsStatus = "H";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                Description = "This is a new description of more than 30 characters I hope.",
+                CostProfileGroup = "CPG",
+                ItemGroup = "ItemGroup",
+                ItemFamily = "ItemFamily",
+                ItemCategory = "ItemCategory1",
+                PsStatus = "H"
+            };
             GlobalData.ItemCategories.Add("1", "ItemCategory1");
             GlobalData.ItemCategories.Add("2", "ItemCategory2");
 
@@ -3585,8 +3641,10 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
+            ItemObject item = new ItemObject()
+            {
+                ItemId = "TEST1"
+            };
 
             #endregion // Assemble
 
@@ -3632,15 +3690,16 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.Description = "This is an old description of more than 30 characters I hope.";
-            item.Gpc = "CPG";
-            item.Ean = "NAE";
-            item.ItemCategory = "ItemCat";
-            item.Isbn = "NBSi";
-            item.StatsCode = "CodeStats";
-            item.Udex = "Xedu";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                Description = "This is an old description of more than 30 characters I hope.",
+                Gpc = "CPG",
+                Ean = "NAE",
+                ItemCategory = "ItemCat",
+                Isbn = "NBSi",
+                StatsCode = "CodeStats",
+                Udex = "Xedu"
+            };
 
             #endregion // Assemble
 
@@ -3703,10 +3762,11 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.AccountingGroup = "AG";
-            item.PricingGroup = "PG";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                AccountingGroup = "AG",
+                PricingGroup = "PG"
+            };
 
             #endregion // Assemble
 
@@ -3759,14 +3819,15 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.ListPriceCad = "15.99";
-            item.MsrpCad = "11.99";
-            item.ListPriceMxn = "16.99";
-            item.MsrpMxn = "11.99";
-            item.ListPriceUsd = "17.99";
-            item.Msrp = "11.99";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                ListPriceCad = "15.99",
+                MsrpCad = "11.99",
+                ListPriceMxn = "16.99",
+                MsrpMxn = "11.99",
+                ListPriceUsd = "17.99",
+                Msrp = "11.99"
+            };
 
             #endregion // Assemble
 
@@ -3853,8 +3914,10 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
+            ItemObject item = new ItemObject()
+            {
+                ItemId = "TEST1"
+            };
             int OgCount;
             int newCount;
 
@@ -3908,10 +3971,12 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.Description = "This is a new description of more than 30 characters I hope.";
-            item.StandardCost = "19.99";
+            ItemObject item = new ItemObject()
+            {
+                ItemId = "TEST1",
+                Description = "This is a new description of more than 30 characters I hope.",
+                StandardCost = "19.99"
+            };
 
             #endregion // Assemble
 
@@ -3961,9 +4026,10 @@ namespace Odin.Data.Tests
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             GlobalData.ClearValues();
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject();
-            item.ItemId = "TEST1";
-            item.ItemCategory = "Category2";
+            ItemObject item = new ItemObject() {
+                ItemId = "TEST1",
+                ItemCategory = "Category2"
+            };
             GlobalData.ItemCategories.Add("1", "Category1");
             GlobalData.ItemCategories.Add("2", "Category2");
 
