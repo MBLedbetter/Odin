@@ -3661,6 +3661,10 @@ namespace Odin.Data
                     customerProductAttributes.SendInventory = sellOnFlag;
                 }
             }
+            else
+            {
+                InsertCustomerProductAttributes(itemId, customer, sellOnFlag, context);
+            }
         }
                 
         /// <summary>
