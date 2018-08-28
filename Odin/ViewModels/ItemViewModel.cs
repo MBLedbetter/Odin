@@ -244,7 +244,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.ReturnBillOfMaterials() != value)
                 {
                     this.ItemViewModelItem.BillOfMaterials = ItemService.ParseChildElementIds(this.ItemId, value);
-                    this.BillOfMaterialsError = ItemService.ValidateBillOfMaterials(this.ItemId, this.ItemViewModelItem.BillOfMaterials, this.ItemIds, this.ProdType);
+                    this.BillOfMaterialsError = ItemService.ValidateBillOfMaterials(this.ItemId, this.ItemViewModelItem.BillOfMaterials, this.ItemIds, this.Status, this.ProdType);
                     OnPropertyChanged("BillOfMaterials");
                 }
             }
@@ -8833,8 +8833,10 @@ namespace Odin.ViewModels
                     errorMessages.Add(errors[i].ErrorMessage);
                     errors.Remove(errors[i]);
                 }
-                AlertView window = new AlertView();
-                window.DataContext = new AlertViewModel(errorMessages, "Alert", "Please resolve the following errors before submitting.");
+                AlertView window = new AlertView()
+                {
+                    DataContext = new AlertViewModel(errorMessages, "Alert", "Please resolve the following errors before submitting.")
+                };
                 window.ShowDialog();
                 return false;
             }
@@ -8855,7 +8857,7 @@ namespace Odin.ViewModels
             this.AltImageFile2Error = ItemService.ValidateImagePath(this.AltImageFile2, "Image Path 3", false);
             this.AltImageFile3Error = ItemService.ValidateImagePath(this.AltImageFile3, "Image Path 4", false);
             this.AltImageFile4Error = ItemService.ValidateImagePath(this.AltImageFile4, "Image Path 5", false);
-            this.BillOfMaterialsError = ItemService.ValidateBillOfMaterials(var.ItemId, var.BillOfMaterials, this.ItemIds, var.ProdType);
+            this.BillOfMaterialsError = ItemService.ValidateBillOfMaterials(var.ItemId, var.BillOfMaterials, this.ItemIds, var.Status, var.ProdType);
             this.CasepackHeightError = ItemService.ValidateCasepack(var.CasepackHeight, var.CasepackLength, var.CasepackWeight, var.CasepackWidth, var.ProdType, "Casepack Height");
             this.CasepackLengthError = ItemService.ValidateCasepack(var.CasepackHeight, var.CasepackLength, var.CasepackWeight, var.CasepackWidth, var.ProdType, "Casepack Length");
             this.CasepackWeightError = ItemService.ValidateCasepack(var.CasepackHeight, var.CasepackLength, var.CasepackWeight, var.CasepackWidth, var.ProdType, "Casepack Weight");
@@ -8980,13 +8982,9 @@ namespace Odin.ViewModels
         /// <param name="itemService"></param>
         public ItemViewModel(ItemObject itemObj, ItemService itemService, List<string> itemIds)
         {
-            if (itemService == null) { throw new ArgumentNullException("itemService"); }
-            if (itemService == null)
-            {
-                throw new ArgumentNullException("itemService");
-            }
+            if (itemService == null) { throw new ArgumentNullException("itemService"); }    
+            this.ItemService = itemService ?? throw new ArgumentNullException("itemService");
             this.ItemIds = itemIds;
-            this.ItemService = itemService;
             this.ItemViewModelItem = (itemObj.Clone() as ItemObject);
             SetOptions(itemObj);
             SetToolTips();

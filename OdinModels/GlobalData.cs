@@ -27,6 +27,23 @@ namespace OdinModels
         private static List<string> _accountingGroups = new List<string>();
 
         /// <summary>
+        ///     Existing Bill of materials
+        /// </summary>
+        public static List<ChildElement> BillofMaterials
+        {
+            get
+            {
+                return _billofMaterials;
+            }
+            set
+            {
+                _billofMaterials = value;
+            }
+
+        }
+        private static List<ChildElement> _billofMaterials = new List<ChildElement>();
+
+        /// <summary>
         ///     Copyright dropdown values
         /// </summary>
         public static List<string> CopyrightGroups
@@ -665,8 +682,7 @@ namespace OdinModels
         /// <returns></returns>
         public static List<string> ReturnWebCategoryListValues()
         {
-            List<string> results = new List<string>();
-            results.Add("");
+            List<string> results = new List<string>() { "" };
             foreach (KeyValuePair<string, string> x in WebCategoryList)
             {
                 results.Add(x.Value);

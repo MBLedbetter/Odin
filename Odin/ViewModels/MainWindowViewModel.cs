@@ -2670,8 +2670,10 @@ namespace Odin.ViewModels
         /// </summary>
         public void About()
         {
-            AboutView window = new AboutView();
-            window.DataContext = new AboutViewModel();
+            AboutView window = new AboutView()
+            {
+                DataContext = new AboutViewModel()
+            };
             window.ShowDialog();
         }
 
@@ -2768,8 +2770,10 @@ namespace Odin.ViewModels
             List<string> wrongHeaders = ItemService.ValidateHeaderCollumns(fileName);
             if (wrongHeaders.Count > 0)
             {
-                AlertView window = new AlertView();
-                window.DataContext = new AlertViewModel(wrongHeaders, "Alert", "Odin did not recognize the following collumn headers.");
+                AlertView window = new AlertView()
+                {
+                    DataContext = new AlertViewModel(wrongHeaders, "Alert", "Odin did not recognize the following collumn headers.")
+                };
                 window.ShowDialog();
             }
             return true;
@@ -2790,8 +2794,10 @@ namespace Odin.ViewModels
         /// </summary>
         public void CreateAmazonExcelFromList(ObservableCollection<ItemObject> itemsList = null)
         {
-            EcommercePullView window = new EcommercePullView();
-            window.DataContext = new EcommercePullViewModel(this.ItemService, this.ExcelService, this.Items);
+            EcommercePullView window = new EcommercePullView()
+            {
+                DataContext = new EcommercePullViewModel(this.ItemService, this.ExcelService, this.Items)
+            };
             window.ShowDialog();            
         }
 
@@ -2815,8 +2821,10 @@ namespace Odin.ViewModels
         /// </summary>
         public void EditDbSettings()
         {
-            DbSettingsView window = new DbSettingsView();
-            window.DataContext = new DbSettingsViewModel();
+            DbSettingsView window = new DbSettingsView()
+            {
+                DataContext = new DbSettingsViewModel()
+            };
             window.ShowDialog();
             if ((window.DataContext as DbSettingsViewModel).Status == true)
             {
@@ -2911,8 +2919,10 @@ namespace Odin.ViewModels
         /// <param name="type">variable that distiguishes whether user is searching by id or uploading web info</param>
         public void FindItem(string type)
         {
-            FindItemView window = new FindItemView();
-            window.DataContext = new FindItemViewModel(type, ItemService, WorkbookReader);
+            FindItemView window = new FindItemView()
+            {
+                DataContext = new FindItemViewModel(type, ItemService, WorkbookReader)
+            };
             if (window.ShowDialog() == true)
             {
                 Mouse.OverrideCursor = Cursors.Wait;
@@ -2947,8 +2957,10 @@ namespace Odin.ViewModels
 
         public void FindItemUpdateRecord()
         {
-            AdminRecordView window = new AdminRecordView();
-            window.DataContext = new AdminRecordViewModel(ItemService);
+            AdminRecordView window = new AdminRecordView()
+            {
+                DataContext = new AdminRecordViewModel(ItemService)
+            };
             window.ShowDialog();
         }
 
@@ -2969,8 +2981,10 @@ namespace Odin.ViewModels
         /// </summary>
         public void LoadItems()
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Excel files|*.xls; *.xlsx";
+            OpenFileDialog dialog = new OpenFileDialog()
+            {
+                Filter = "Excel files|*.xls; *.xlsx"
+            };
             if (dialog.ShowDialog() != true)
             {
                 return;
@@ -3021,8 +3035,10 @@ namespace Odin.ViewModels
         public void LoadTemplates()
         {
 
-            TemplateView window = new TemplateView();
-            window.DataContext = new TemplateViewModel(this.ItemService, "Add");
+            TemplateView window = new TemplateView()
+            {
+                DataContext = new TemplateViewModel(this.ItemService, "Add")
+            };
             (window.DataContext as TemplateViewModel).LoadTemplateExcelInfo();
             if (window.ShowDialog() == true)
             {
@@ -3035,8 +3051,10 @@ namespace Odin.ViewModels
         /// </summary>
         public void ManagePermision()
         {
-            PermissionsView window = new PermissionsView();
-            window.DataContext = new PermissionsViewModel(OptionService);
+            PermissionsView window = new PermissionsView()
+            {
+                DataContext = new PermissionsViewModel(OptionService)
+            };
             if (window.ShowDialog() == true)
             {
 
@@ -3045,8 +3063,10 @@ namespace Odin.ViewModels
         
         public void NewTemplate()
         {
-            TemplateView window = new TemplateView();
-            window.DataContext = new TemplateViewModel(this.ItemService, "Add");
+            TemplateView window = new TemplateView()
+            {
+                DataContext = new TemplateViewModel(this.ItemService, "Add")
+            };
             if (window.ShowDialog() == true)
             {
 
@@ -3058,8 +3078,10 @@ namespace Odin.ViewModels
         /// </summary>
         public void OpenHelpWindow()
         {
-            HelpView window = new HelpView();
-            window.DataContext = new HelpViewModel();
+            HelpView window = new HelpView()
+            {
+                DataContext = new HelpViewModel()
+            };
             window.ShowDialog();
         }
 
@@ -3068,15 +3090,19 @@ namespace Odin.ViewModels
         /// </summary>
         public void OpenExcelGenerator()
         {
-            ExcelGeneratorView window = new ExcelGeneratorView();
-            window.DataContext = new ExcelGeneratorViewModel(this.ExcelService,this.ItemService);
+            ExcelGeneratorView window = new ExcelGeneratorView()
+            {
+                DataContext = new ExcelGeneratorViewModel(this.ExcelService, this.ItemService)
+            };
             window.ShowDialog();
         }
 
         public void OpenItemRecordsWindow()
         {
-            ItemRecordListView window = new ItemRecordListView();
-            window.DataContext = new ItemRecordListViewModel(this.ItemService);
+            ItemRecordListView window = new ItemRecordListView()
+            {
+                DataContext = new ItemRecordListViewModel(this.ItemService)
+            };
             window.ShowDialog();
         }
 
@@ -3086,8 +3112,10 @@ namespace Odin.ViewModels
         /// <param name="item"></param>
         public void OpenManageFieldsWindow()
         {
-            FieldEditView window = new FieldEditView();
-            window.DataContext = new FieldEditViewModel(ItemService, EmailService);
+            FieldEditView window = new FieldEditView()
+            {
+                DataContext = new FieldEditViewModel(ItemService, EmailService)
+            };
             window.ShowDialog();
         }
 
@@ -3096,8 +3124,10 @@ namespace Odin.ViewModels
         /// </summary>
         public void OpenOptionsWindow()
         {
-            OptionsView window = new OptionsView();
-            window.DataContext = new OptionsViewModel(this.OptionService);
+            OptionsView window = new OptionsView()
+            {
+                DataContext = new OptionsViewModel(this.OptionService)
+            };
             window.ShowDialog();
             if ((window.DataContext as OptionsViewModel).HasUpdate)
             {
@@ -3111,8 +3141,10 @@ namespace Odin.ViewModels
         /// </summary>
         public void OpenTemplateAll()
         {
-            TemplateAllView window = new TemplateAllView();
-            window.DataContext = new TemplateAllViewModel(this.ItemService, this.ExcelService);
+            TemplateAllView window = new TemplateAllView()
+            {
+                DataContext = new TemplateAllViewModel(this.ItemService, this.ExcelService)
+            };
             window.ShowDialog();
         }
 
@@ -3122,8 +3154,10 @@ namespace Odin.ViewModels
         public void OpenNotificationHistory()
         {
             List<string> notificationList = OptionService.RetrieveNotifications("All");
-            AlertView window = new AlertView();
-            window.DataContext = new AlertViewModel(notificationList, "", "");
+            AlertView window = new AlertView()
+            {
+                DataContext = new AlertViewModel(notificationList, "", "")
+            };
             window.ShowDialog();
         }
 
@@ -3141,9 +3175,10 @@ namespace Odin.ViewModels
             {
                 List<string> existingFiles = this.FtpService.ReturnExistingImageFiles();
                 List<string> skippedFiles = new List<string>();
-                OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Multiselect = true;
-                dialog.Filter = "Excel files|*.jpg; *.jpeg; *.png";
+                OpenFileDialog dialog = new OpenFileDialog() {
+                    Multiselect = true,
+                    Filter = "Excel files|*.jpg; *.jpeg; *.png"
+                };
                 if (dialog.ShowDialog() != true)
                 {
                     return;
@@ -3169,16 +3204,20 @@ namespace Odin.ViewModels
                 }
                 if (skippedFiles.Count > 0)
                 {
-                    AlertView window = new AlertView();
-                    window.DataContext = new AlertViewModel(skippedFiles, "Alert", "The following images already exist on the server or the names contain special characters.");
+                    AlertView window = new AlertView()
+                    {
+                        DataContext = new AlertViewModel(skippedFiles, "Alert", "The following images already exist on the server or the names contain special characters.")
+                    };
                     window.ShowDialog();
                 }
                 this.ProgressText = "Image file upload complete.";
             }
             else
             {
-                AlertView window = new AlertView();
-                window.DataContext = new AlertViewModel(new List<string>(), "Alert", "The Image files could not be uploaded.");
+                AlertView window = new AlertView()
+                {
+                    DataContext = new AlertViewModel(new List<string>(), "Alert", "The Image files could not be uploaded.")
+                };
                 window.ShowDialog();
                 this.ProgressText = "Image files could not be uploaded.";
             }
@@ -3431,8 +3470,10 @@ namespace Odin.ViewModels
                             bool isNew = string.IsNullOrEmpty(Items[0].NewDate) ? true : false;
                             if (isNew)
                             {
-                                CommentBoxView window = new CommentBoxView();
-                                window.DataContext = new CommentBoxViewModel();
+                                CommentBoxView window = new CommentBoxView()
+                                {
+                                    DataContext = new CommentBoxViewModel()
+                                };
                                 window.ShowDialog();
                                 if (window.DialogResult == true)
                                 {
@@ -3450,8 +3491,10 @@ namespace Odin.ViewModels
                             }
                             else
                             {
-                                CommentBoxView window = new CommentBoxView();
-                                window.DataContext = new CommentBoxViewModel();
+                                CommentBoxView window = new CommentBoxView()
+                                {
+                                    DataContext = new CommentBoxViewModel()
+                                };
                                 window.ShowDialog();
 
                                 if (window.DialogResult == true)
@@ -3500,8 +3543,10 @@ namespace Odin.ViewModels
         /// </summary>
         public void UpdateTemplate()
         {
-            TemplateView window = new TemplateView();
-            window.DataContext = new TemplateViewModel(this.ItemService, "Update");
+            TemplateView window = new TemplateView()
+            {
+                DataContext = new TemplateViewModel(this.ItemService, "Update")
+            };
             if (window.ShowDialog() == true)
             {
 
@@ -3513,8 +3558,10 @@ namespace Odin.ViewModels
         /// </summary>
         public void UpdateProducts()
         {
-            UploadWebView window = new UploadWebView();
-            window.DataContext = new ItemUpdateViewModel(ItemService, ExcelService);
+            UploadWebView window = new UploadWebView()
+            {
+                DataContext = new ItemUpdateViewModel(ItemService, ExcelService)
+            };
             if (window.ShowDialog() == true)
             {
                 this.ProgressText = "Validating Item Info";
@@ -3548,8 +3595,10 @@ namespace Odin.ViewModels
         {
             WorkbookReader workbookReader = new WorkbookReader();
             string idAbsentees = String.Empty;
-            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
-            dialog.Filter = "Excel files|*.xls; *.xlsx";
+            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog()
+            {
+                Filter = "Excel files|*.xls; *.xlsx"
+            };
             if (dialog.ShowDialog() != true)
             {
                 return;
@@ -3561,8 +3610,10 @@ namespace Odin.ViewModels
                     List<string> results = ItemService.UploadTemplates(dialog.FileName);
                     if (results.Count != 0)
                     {
-                        AlertView window = new AlertView();
-                        window.DataContext = new AlertViewModel(results, "Alert", "Please resolve the following errors before uploading the templates.");
+                        AlertView window = new AlertView()
+                        {
+                            DataContext = new AlertViewModel(results, "Alert", "Please resolve the following errors before uploading the templates.")
+                        };
                         window.ShowDialog();
                     }
                     else
@@ -3614,8 +3665,10 @@ namespace Odin.ViewModels
         /// </summary>
         public void ValidateSpreadSheet()
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Excel files|*.xls; *.xlsx";
+            OpenFileDialog dialog = new OpenFileDialog()
+            {
+                Filter = "Excel files|*.xls; *.xlsx"
+            };
             if (dialog.ShowDialog() != true)
             {
                 return ;
@@ -3649,8 +3702,10 @@ namespace Odin.ViewModels
                             errorMessages.Add("Row: " + error.LineNumber + " Error: " + error.ErrorMessage + "\r\n");
                         }
 
-                        AlertView window = new AlertView();
-                        window.DataContext = new AlertViewModel(errorMessages, "Alert", "The following errors were found in the given spreadsheet.");
+                        AlertView window = new AlertView()
+                        {
+                            DataContext = new AlertViewModel(errorMessages, "Alert", "The following errors were found in the given spreadsheet.")
+                        };
                         window.ShowDialog();
                     }
                 }
@@ -3671,8 +3726,10 @@ namespace Odin.ViewModels
             {
                 List<string> existingImages = this.FtpService.ExistingImageFiles;
                 existingImages.Sort();
-                AlertView window = new AlertView();
-                window.DataContext = new AlertViewModel(existingImages, "Info", "The following images exist on the server.");
+                AlertView window = new AlertView()
+                {
+                    DataContext = new AlertViewModel(existingImages, "Info", "The following images exist on the server.")
+                };
                 window.ShowDialog();
             }
             else
@@ -3687,8 +3744,10 @@ namespace Odin.ViewModels
         public void ViewSubmissionsAdmin()
         {
             Items.Clear();
-            ProductRequestView window1 = new ProductRequestView();
-            window1.DataContext = new ProductRequestViewModel(true, true, EmailService, ExcelService, OptionService, ItemService);
+            ProductRequestView window1 = new ProductRequestView()
+            {
+                DataContext = new ProductRequestViewModel(true, true, EmailService, ExcelService, OptionService, ItemService)
+            };
      
             window1.ShowDialog();
         }
@@ -3699,8 +3758,10 @@ namespace Odin.ViewModels
         public void ViewSubmissions()
         {
             Items.Clear();
-            ProductRequestView window = new ProductRequestView();
-            window.DataContext = new ProductRequestViewModel(false, false, EmailService, ExcelService, OptionService, ItemService);
+            ProductRequestView window = new ProductRequestView()
+            {
+                DataContext = new ProductRequestViewModel(false, false, EmailService, ExcelService, OptionService, ItemService)
+            };
             window.ShowDialog();
         }
 

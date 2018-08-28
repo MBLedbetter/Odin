@@ -238,6 +238,24 @@ namespace OdinServices
         }
         
         /// <summary>
+        ///     Checks existing bill of materials. If a match exists return true. Else return false.
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <param name="childId"></param>
+        /// <returns></returns>
+        public bool CheckBillofMaterial(string itemId, string childId)
+        {
+            foreach(ChildElement x in GlobalData.BillofMaterials)
+            {
+                if(x.ItemId == childId && x.ParentId == itemId)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
         ///     Checks that provided image path returns a file
         /// </summary>
         /// <param name="value"></param>
@@ -1080,80 +1098,82 @@ namespace OdinServices
             }
             for (int row = 0; row < worksheetData.CellData.Count; row++)
             {
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.TemplateId))||type == "Add")
+                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.TemplateId)) || type == "Add")
                 {
-                    Template template = new Template();
-                    template.TemplateId = worksheetData.GetValue(row, WorksheetColumnHeaders.TemplateId, WorksheetColumnHeaders.TemplateName).Trim();
-                    template.AccountingGroup = worksheetData.GetValue(row, WorksheetColumnHeaders.AccountingGroup, WorksheetColumnHeaders.AcctgGroup).Trim();
-                    template.CasepackHeight = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackHeight).Trim());
-                    template.CasepackLength = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackLength).Trim());
-                    template.CasepackQty = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackQty).Trim());
-                    template.CasepackWidth = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackWidth).Trim());
-                    template.CasepackWeight = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackWeight).Trim());
-                    template.Category = DbUtil.ReplaceCharacters(worksheetData.GetValue(row, WorksheetColumnHeaders.Category).Trim());
-                    template.Category2 = DbUtil.ReplaceCharacters(worksheetData.GetValue(row, WorksheetColumnHeaders.Category2).Trim());
-                    template.Category3 = DbUtil.ReplaceCharacters(worksheetData.GetValue(row, WorksheetColumnHeaders.Category3).Trim());
-                    template.Copyright = worksheetData.GetValue(row, WorksheetColumnHeaders.Copyright).Trim();
-                    template.CountryOfOrigin = worksheetData.GetValue(row, WorksheetColumnHeaders.CountryOfOrigin).Trim();
-                    template.CostProfileGroup = worksheetData.GetValue(row, WorksheetColumnHeaders.CostProfileGroup).Trim();
-                    template.DefaultActualCostUsd = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.DacUsd, WorksheetColumnHeaders.DefaultActualCostUsd).Trim());
-                    template.DefaultActualCostCad = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.DacCad, WorksheetColumnHeaders.DefaultActualCostCad).Trim());
-                    template.Gpc = worksheetData.GetValue(row, WorksheetColumnHeaders.Gpc).Trim();
-                    template.Height = worksheetData.GetValue(row, WorksheetColumnHeaders.Height, WorksheetColumnHeaders.ItemHeight).Trim();
-                    template.InnerpackHeight = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackHeight).Trim());
-                    template.InnerpackLength = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackLength).Trim());
-                    template.InnerpackQuantity = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackQuantity, WorksheetColumnHeaders.InnerpackQty).Trim());
-                    template.InnerpackWidth = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackWidth).Trim());
-                    template.InnerpackWeight = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackWeight).Trim());
-                    template.ItemCategory = worksheetData.GetValue(row, WorksheetColumnHeaders.ItemCategory).Trim();
-                    template.ItemFamily = worksheetData.GetValue(row, WorksheetColumnHeaders.ItemFamily).Trim();
-                    template.ItemGroup = worksheetData.GetValue(row, WorksheetColumnHeaders.ItemGroup).Trim();
-                    template.Length = worksheetData.GetValue(row, WorksheetColumnHeaders.Length, WorksheetColumnHeaders.ItemLength).Trim();
-                    template.ListPriceCad = worksheetData.GetValue(row, WorksheetColumnHeaders.ListPriceCad, WorksheetColumnHeaders.ListPriceCadCAD).Trim();
-                    template.ListPriceUsd = worksheetData.GetValue(row, WorksheetColumnHeaders.ListPriceUsd, WorksheetColumnHeaders.ListPriceUsdUSD).Trim();
-                    template.ListPriceMxn = worksheetData.GetValue(row, WorksheetColumnHeaders.ListPriceMxn, WorksheetColumnHeaders.ListPriceMxnMXN).Trim();
-                    template.MetaDescription = worksheetData.GetValue(row, WorksheetColumnHeaders.MetaDescription).Trim();
-                    template.MfgSource = worksheetData.GetValue(row, WorksheetColumnHeaders.MfgSource).Trim();
-                    template.Msrp = worksheetData.GetValue(row, WorksheetColumnHeaders.Msrp).Trim();
-                    template.MsrpCad = worksheetData.GetValue(row, WorksheetColumnHeaders.MsrpCad).Trim();
-                    template.MsrpMxn = worksheetData.GetValue(row, WorksheetColumnHeaders.MsrpMxn).Trim();
-                    template.PricingGroup = worksheetData.GetValue(row, WorksheetColumnHeaders.PricingGroup, WorksheetColumnHeaders.PricingGroupProduct).Trim();
-                    template.PrintOnDemand = worksheetData.GetValue(row, WorksheetColumnHeaders.PrintOnDemand).Trim();
-                    template.ProductFormat = worksheetData.GetValue(row, WorksheetColumnHeaders.ProductFormat).Trim();
-                    template.ProductGroup = worksheetData.GetValue(row, WorksheetColumnHeaders.ProductGroup).Trim();
-                    template.ProductLine = worksheetData.GetValue(row, WorksheetColumnHeaders.ProductLine).Trim();
-                    template.ProductQty = worksheetData.GetValue(row, WorksheetColumnHeaders.ProductQty, WorksheetColumnHeaders.ProductQuantity).Trim();
-                    template.PsStatus = worksheetData.GetValue(row, WorksheetColumnHeaders.PsStatus).Trim();
-                    template.Size = worksheetData.GetValue(row, WorksheetColumnHeaders.Size).Trim();
-                    template.TariffCode = worksheetData.GetValue(row, WorksheetColumnHeaders.TariffCode).Trim();
-                    template.Udex = worksheetData.GetValue(row, WorksheetColumnHeaders.Udex).Trim();
-                    template.WebsitePrice = worksheetData.GetValue(row, WorksheetColumnHeaders.WebsitePrice).Trim();
-                    template.Weight = worksheetData.GetValue(row, WorksheetColumnHeaders.Weight, WorksheetColumnHeaders.ItemWeight).Trim();
-                    template.Width = worksheetData.GetValue(row, WorksheetColumnHeaders.Width, WorksheetColumnHeaders.ItemWidth).Trim();
-                    template.EcommerceBullet1 = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet1, WorksheetColumnHeaders.A_Bullet1).Trim();
-                    template.EcommerceBullet2 = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet2, WorksheetColumnHeaders.A_Bullet2).Trim();
-                    template.EcommerceBullet3 = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet3, WorksheetColumnHeaders.A_Bullet3).Trim();
-                    template.EcommerceBullet4 = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet4, WorksheetColumnHeaders.A_Bullet4).Trim();
-                    template.EcommerceBullet5 = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet5, WorksheetColumnHeaders.A_Bullet5).Trim();
-                    template.EcommerceComponents = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Components, WorksheetColumnHeaders.A_Components).Trim();
-                    template.EcommerceCost = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Cost, WorksheetColumnHeaders.A_Cost).Trim();
-                    template.EcommerceExternalIdType = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ExternalIdType, WorksheetColumnHeaders.A_ExternalIdType).Trim();
-                    template.EcommerceItemHeight = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ItemHeight, WorksheetColumnHeaders.A_ItemHeight).Trim();
-                    template.EcommerceItemLength = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ItemLength, WorksheetColumnHeaders.A_ItemLength).Trim();
-                    template.EcommerceItemWeight = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ItemWeight, WorksheetColumnHeaders.A_ItemWeight).Trim();
-                    template.EcommerceItemWidth = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ItemWidth, WorksheetColumnHeaders.A_ItemWidth).Trim();
-                    template.EcommerceModelName = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ModelName, WorksheetColumnHeaders.A_ModelName).Trim();
-                    template.EcommercePackageHeight = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PackageHeight, WorksheetColumnHeaders.A_PackageHeight).Trim();
-                    template.EcommercePackageLength = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PackageLength, WorksheetColumnHeaders.A_PackageLength).Trim();
-                    template.EcommercePackageWeight = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PackageWeight, WorksheetColumnHeaders.A_PackageWeight).Trim();
-                    template.EcommercePackageWidth = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PackageWidth, WorksheetColumnHeaders.A_PackageWidth).Trim();
-                    template.EcommercePageQty = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PageQty, WorksheetColumnHeaders.A_PageQty).Trim();
-                    template.EcommerceProductCategory = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ProductCategory, WorksheetColumnHeaders.A_ProductCategory).Trim();
-                    template.EcommerceProductDescription = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ProductDescription, WorksheetColumnHeaders.A_ProductDescription).Trim();
-                    template.EcommerceProductSubcategory = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ProductSubcategory, WorksheetColumnHeaders.A_ProductSubcategory).Trim();
-                    template.EcommerceManufacturerName = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ManufacturerName, WorksheetColumnHeaders.A_ManufacturerName).Trim();
-                    template.EcommerceMsrp = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Msrp, WorksheetColumnHeaders.A_Msrp).Trim();
-                    template.EcommerceSize = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Size, WorksheetColumnHeaders.A_Size).Trim();
+                    Template template = new Template()
+                    {
+                        TemplateId = worksheetData.GetValue(row, WorksheetColumnHeaders.TemplateId, WorksheetColumnHeaders.TemplateName).Trim(),
+                        AccountingGroup = worksheetData.GetValue(row, WorksheetColumnHeaders.AccountingGroup, WorksheetColumnHeaders.AcctgGroup).Trim(),
+                        CasepackHeight = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackHeight).Trim()),
+                        CasepackLength = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackLength).Trim()),
+                        CasepackQty = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackQty).Trim()),
+                        CasepackWidth = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackWidth).Trim()),
+                        CasepackWeight = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackWeight).Trim()),
+                        Category = DbUtil.ReplaceCharacters(worksheetData.GetValue(row, WorksheetColumnHeaders.Category).Trim()),
+                        Category2 = DbUtil.ReplaceCharacters(worksheetData.GetValue(row, WorksheetColumnHeaders.Category2).Trim()),
+                        Category3 = DbUtil.ReplaceCharacters(worksheetData.GetValue(row, WorksheetColumnHeaders.Category3).Trim()),
+                        Copyright = worksheetData.GetValue(row, WorksheetColumnHeaders.Copyright).Trim(),
+                        CountryOfOrigin = worksheetData.GetValue(row, WorksheetColumnHeaders.CountryOfOrigin).Trim(),
+                        CostProfileGroup = worksheetData.GetValue(row, WorksheetColumnHeaders.CostProfileGroup).Trim(),
+                        DefaultActualCostUsd = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.DacUsd, WorksheetColumnHeaders.DefaultActualCostUsd).Trim()),
+                        DefaultActualCostCad = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.DacCad, WorksheetColumnHeaders.DefaultActualCostCad).Trim()),
+                        Gpc = worksheetData.GetValue(row, WorksheetColumnHeaders.Gpc).Trim(),
+                        Height = worksheetData.GetValue(row, WorksheetColumnHeaders.Height, WorksheetColumnHeaders.ItemHeight).Trim(),
+                        InnerpackHeight = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackHeight).Trim()),
+                        InnerpackLength = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackLength).Trim()),
+                        InnerpackQuantity = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackQuantity, WorksheetColumnHeaders.InnerpackQty).Trim()),
+                        InnerpackWidth = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackWidth).Trim()),
+                        InnerpackWeight = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackWeight).Trim()),
+                        ItemCategory = worksheetData.GetValue(row, WorksheetColumnHeaders.ItemCategory).Trim(),
+                        ItemFamily = worksheetData.GetValue(row, WorksheetColumnHeaders.ItemFamily).Trim(),
+                        ItemGroup = worksheetData.GetValue(row, WorksheetColumnHeaders.ItemGroup).Trim(),
+                        Length = worksheetData.GetValue(row, WorksheetColumnHeaders.Length, WorksheetColumnHeaders.ItemLength).Trim(),
+                        ListPriceCad = worksheetData.GetValue(row, WorksheetColumnHeaders.ListPriceCad, WorksheetColumnHeaders.ListPriceCadCAD).Trim(),
+                        ListPriceUsd = worksheetData.GetValue(row, WorksheetColumnHeaders.ListPriceUsd, WorksheetColumnHeaders.ListPriceUsdUSD).Trim(),
+                        ListPriceMxn = worksheetData.GetValue(row, WorksheetColumnHeaders.ListPriceMxn, WorksheetColumnHeaders.ListPriceMxnMXN).Trim(),
+                        MetaDescription = worksheetData.GetValue(row, WorksheetColumnHeaders.MetaDescription).Trim(),
+                        MfgSource = worksheetData.GetValue(row, WorksheetColumnHeaders.MfgSource).Trim(),
+                        Msrp = worksheetData.GetValue(row, WorksheetColumnHeaders.Msrp).Trim(),
+                        MsrpCad = worksheetData.GetValue(row, WorksheetColumnHeaders.MsrpCad).Trim(),
+                        MsrpMxn = worksheetData.GetValue(row, WorksheetColumnHeaders.MsrpMxn).Trim(),
+                        PricingGroup = worksheetData.GetValue(row, WorksheetColumnHeaders.PricingGroup, WorksheetColumnHeaders.PricingGroupProduct).Trim(),
+                        PrintOnDemand = worksheetData.GetValue(row, WorksheetColumnHeaders.PrintOnDemand).Trim(),
+                        ProductFormat = worksheetData.GetValue(row, WorksheetColumnHeaders.ProductFormat).Trim(),
+                        ProductGroup = worksheetData.GetValue(row, WorksheetColumnHeaders.ProductGroup).Trim(),
+                        ProductLine = worksheetData.GetValue(row, WorksheetColumnHeaders.ProductLine).Trim(),
+                        ProductQty = worksheetData.GetValue(row, WorksheetColumnHeaders.ProductQty, WorksheetColumnHeaders.ProductQuantity).Trim(),
+                        PsStatus = worksheetData.GetValue(row, WorksheetColumnHeaders.PsStatus).Trim(),
+                        Size = worksheetData.GetValue(row, WorksheetColumnHeaders.Size).Trim(),
+                        TariffCode = worksheetData.GetValue(row, WorksheetColumnHeaders.TariffCode).Trim(),
+                        Udex = worksheetData.GetValue(row, WorksheetColumnHeaders.Udex).Trim(),
+                        WebsitePrice = worksheetData.GetValue(row, WorksheetColumnHeaders.WebsitePrice).Trim(),
+                        Weight = worksheetData.GetValue(row, WorksheetColumnHeaders.Weight, WorksheetColumnHeaders.ItemWeight).Trim(),
+                        Width = worksheetData.GetValue(row, WorksheetColumnHeaders.Width, WorksheetColumnHeaders.ItemWidth).Trim(),
+                        EcommerceBullet1 = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet1, WorksheetColumnHeaders.A_Bullet1).Trim(),
+                        EcommerceBullet2 = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet2, WorksheetColumnHeaders.A_Bullet2).Trim(),
+                        EcommerceBullet3 = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet3, WorksheetColumnHeaders.A_Bullet3).Trim(),
+                        EcommerceBullet4 = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet4, WorksheetColumnHeaders.A_Bullet4).Trim(),
+                        EcommerceBullet5 = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet5, WorksheetColumnHeaders.A_Bullet5).Trim(),
+                        EcommerceComponents = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Components, WorksheetColumnHeaders.A_Components).Trim(),
+                        EcommerceCost = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Cost, WorksheetColumnHeaders.A_Cost).Trim(),
+                        EcommerceExternalIdType = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ExternalIdType, WorksheetColumnHeaders.A_ExternalIdType).Trim(),
+                        EcommerceItemHeight = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ItemHeight, WorksheetColumnHeaders.A_ItemHeight).Trim(),
+                        EcommerceItemLength = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ItemLength, WorksheetColumnHeaders.A_ItemLength).Trim(),
+                        EcommerceItemWeight = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ItemWeight, WorksheetColumnHeaders.A_ItemWeight).Trim(),
+                        EcommerceItemWidth = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ItemWidth, WorksheetColumnHeaders.A_ItemWidth).Trim(),
+                        EcommerceModelName = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ModelName, WorksheetColumnHeaders.A_ModelName).Trim(),
+                        EcommercePackageHeight = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PackageHeight, WorksheetColumnHeaders.A_PackageHeight).Trim(),
+                        EcommercePackageLength = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PackageLength, WorksheetColumnHeaders.A_PackageLength).Trim(),
+                        EcommercePackageWeight = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PackageWeight, WorksheetColumnHeaders.A_PackageWeight).Trim(),
+                        EcommercePackageWidth = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PackageWidth, WorksheetColumnHeaders.A_PackageWidth).Trim(),
+                        EcommercePageQty = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PageQty, WorksheetColumnHeaders.A_PageQty).Trim(),
+                        EcommerceProductCategory = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ProductCategory, WorksheetColumnHeaders.A_ProductCategory).Trim(),
+                        EcommerceProductDescription = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ProductDescription, WorksheetColumnHeaders.A_ProductDescription).Trim(),
+                        EcommerceProductSubcategory = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ProductSubcategory, WorksheetColumnHeaders.A_ProductSubcategory).Trim(),
+                        EcommerceManufacturerName = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ManufacturerName, WorksheetColumnHeaders.A_ManufacturerName).Trim(),
+                        EcommerceMsrp = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Msrp, WorksheetColumnHeaders.A_Msrp).Trim(),
+                        EcommerceSize = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Size, WorksheetColumnHeaders.A_Size).Trim(),
+                    };
                     result.Add(template);
                     if (type == "Add") { return result; }
                 }
@@ -1384,8 +1404,7 @@ namespace OdinServices
             string value = price;
             if ((!string.IsNullOrEmpty(prodQty)) || (prodQty != "1"))
             {
-                decimal decValue;
-                if (decimal.TryParse(price, out decValue))
+                if (decimal.TryParse(price, out decimal decValue))
                 {
                     if (decimal.TryParse(prodQty, out decValue))
                     {
@@ -1685,8 +1704,7 @@ namespace OdinServices
             {
                 if(item.ItemId == searchValue.ToUpper())
                 {
-                    List<SearchItem> OverrideList = new List<SearchItem>();
-                    OverrideList.Add(item);
+                    List<SearchItem> OverrideList = new List<SearchItem>() { item };
                     return OverrideList;
                 }
             }
@@ -1962,6 +1980,8 @@ namespace OdinServices
             error = ValidateImagePath(var.AltImageFile3, "Image Path 4", false);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             error = ValidateImagePath(var.AltImageFile4, "Image Path 5", false);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            error = ValidateBillOfMaterials(var.ItemId, var.BillOfMaterials, itemIds, var.Status, var.ProdType);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             error = ValidateCasepack(var.CasepackHeight, var.CasepackLength, var.CasepackWeight, var.CasepackWidth, var.ProdType, "Casepack Height ");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
@@ -2367,16 +2387,27 @@ namespace OdinServices
         /// <param name="currentIds"></param>
         /// <param name="prodType"></param>
         /// <returns></returns>
-        public string ValidateBillOfMaterials(string itemId, List<ChildElement> billOfMaterials, List<string> currentIds, int prodType)
+        public string ValidateBillOfMaterials(string itemId, List<ChildElement> billOfMaterials, List<string> currentIds, string status, int prodType)
         {
             if (billOfMaterials.Count() == 0)
             {
                 return "";
             }
             List<string> BomIdList = new List<string>();
-
+            bool existingValue = false;
+            if(GlobalData.BillofMaterials.Where(p => p.ParentId == itemId).Count()>0)
+            {
+                existingValue = true;
+            }
             foreach (ChildElement billOfMaterial in billOfMaterials)
             {
+                if (status == "Update" && existingValue)
+                {
+                    if(!CheckBillofMaterial(billOfMaterial.ParentId.Trim(), billOfMaterial.ItemId.Trim()))
+                    {
+                        return "Bill of Materials contains a value that doesn't match the database.";
+                    }
+                }
                 if (!string.IsNullOrEmpty(billOfMaterial.ItemId))
                 {
                     if ((!currentIds.Contains(billOfMaterial.ItemId.Trim())) && (!GlobalData.ItemIds.Contains(billOfMaterial.ItemId.Trim())))
@@ -2384,11 +2415,15 @@ namespace OdinServices
                         return "Bill of Materials field contains an id that does not exist: " + billOfMaterial.ItemId + ".";
                     }
                 }
-                BomIdList.Add(billOfMaterial.ItemId);
-            }
-            if (BomIdList.Count != BomIdList.Distinct().Count())
-            {
-                return "Bill of Material Field can not contain multiple occurances of the same item.";
+                if (BomIdList.Contains(billOfMaterial.ItemId.Trim()))
+                {
+                    return "Bill of Material Field can not contain multiple occurances of the same item. ["+ billOfMaterial.ItemId.Trim() + "]";
+                }
+                else
+                {
+                    BomIdList.Add(billOfMaterial.ItemId.Trim());
+                }
+
             }
             return "";
         }
@@ -3101,12 +3136,11 @@ namespace OdinServices
         {
             if (!string.IsNullOrEmpty(value))
             {
-                DateTime temp;
                 if (value == "0000-00-00")
                 {
                     return "License Begin Date cannot be set to 0000-00-00.";
                 }
-                if (!DateTime.TryParse(value, out temp))
+                if (!DateTime.TryParse(value, out DateTime temp))
                 {
                     return "License Begin Date field must contain a valid date";
                 }
@@ -3972,12 +4006,11 @@ namespace OdinServices
         {
             if (!string.IsNullOrEmpty(value))
             {
-                DateTime temp;
                 if (value == "0000-00-00")
                 {
                     return "In Stock Date cannot be set to 0000-00-00.";
                 }
-                if (!DateTime.TryParse(value, out temp))
+                if (!DateTime.TryParse(value, out DateTime temp))
                 {                
                     return "In Stock Date field must contain a valid date";
                 }
@@ -4758,12 +4791,9 @@ namespace OdinServices
         /// <param name="templateRepository"></param>
         public ItemService(IWorkbookReader workbookReader, IItemRepository itemRepository, ITemplateRepository templateRepository)
         {
-            if (workbookReader == null){throw new ArgumentNullException("workbookReader");}
-            if (itemRepository == null){throw new ArgumentNullException("itemRepository");}
-            if (templateRepository == null){throw new ArgumentNullException("templateRepository");}
-            this.ItemRepository = itemRepository;
-            this.TemplateRepository = templateRepository;
-            this.WorkbookReader = workbookReader;
+            this.ItemRepository = itemRepository ?? throw new ArgumentNullException("itemRepository");
+            this.TemplateRepository = templateRepository ?? throw new ArgumentNullException("templateRepository");
+            this.WorkbookReader = workbookReader ?? throw new ArgumentNullException("workbookReader");
         }
 
         #endregion // Constructor

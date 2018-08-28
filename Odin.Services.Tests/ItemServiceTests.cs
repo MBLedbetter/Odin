@@ -198,9 +198,10 @@ namespace Odin.Services.Tests
         public void CheckAltImageUpdate_EcommerceImageUpdated_ShouldTriggerUpdateFlag()
         {
             #region Assemble
-            ItemObject item = new ItemObject();
-            item.Ecommerce_ImagePath1 = "1/2/3/img1.jpg";
-            item.Ecommerce_ImagePath2 = "1/2/3/img2.jpg";
+            ItemObject item = new ItemObject() {
+                Ecommerce_ImagePath1 = "1/2/3/img1.jpg",
+                Ecommerce_ImagePath2 = "1/2/3/img2.jpg"
+            };
             item.ResetUpdate();
             #endregion // Assemble
 
@@ -225,8 +226,10 @@ namespace Odin.Services.Tests
             #region Setup
             GlobalData.ClearValues();
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject();
-            item.ItemId = "ItemIdA";
+            ItemObject item = new ItemObject()
+            {
+                ItemId = "ItemIdA"
+            };
 
             #endregion // Setup
 
@@ -631,8 +634,10 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService ItemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject newItem = new ItemObject();
-            newItem.ItemId = "ItemIdB";
+            ItemObject newItem = new ItemObject()
+            {
+                ItemId = "ItemIdB"
+            };
 
             #endregion // Assemble
 
@@ -655,9 +660,10 @@ namespace Odin.Services.Tests
             #region Assemble
 
             ItemService ItemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject newItem = new ItemObject();
-            newItem.ItemId = "ItemIdA";
-            newItem.AccountingGroup = "test";
+            ItemObject newItem = new ItemObject() {
+                ItemId = "ItemIdA",
+                AccountingGroup = "test"
+            };
 
             #endregion // Assemble
 
@@ -1079,14 +1085,16 @@ namespace Odin.Services.Tests
             FakeWorkbookReader fakeWorkbookReader = new FakeWorkbookReader();
             TestItemRepository testItemRepository = new TestItemRepository();
             ItemService itemService = new ItemService(fakeWorkbookReader, testItemRepository, new TestTemplateRepository());
-            ItemObject item = new ItemObject();
-            item.ListPriceUsd = "2.50";
-            item.ListPriceCad = "3.50";
-            item.ProductQty = "10";
+            ItemObject item = new ItemObject() {
+                ListPriceUsd = "2.50",
+                ListPriceCad = "3.50",
+                ProductQty = "10"
+            };
 
-            ItemObject item2 = new ItemObject();
-            item2.ListPriceUsd = "2.50";
-            item2.ListPriceCad = "3.50";
+            ItemObject item2 = new ItemObject() {
+                ListPriceUsd = "2.50",
+                ListPriceCad = "3.50"
+            };
 
 
             #endregion // Set Up
@@ -2615,42 +2623,46 @@ namespace Odin.Services.Tests
             #region SetUp
             GlobalData.ClearValues();
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            List<string> List1 = new List<string>();
-            List1.Add("Stickers & Tattoos/Decals/One Color Decals");
-            List1.Add("");
-            List1.Add("");
-            List<string> List2 = new List<string>();
-            List2.Add("Stickers & Tattoos/Office & Educational/Labels");
-            List2.Add("Bookmarks/Bookmarks");
-            List2.Add("");
-            List<string> List3 = new List<string>();
-            List3.Add("Stickers & Tattoos/Stickers/Grab & Go");
-            List3.Add("");
-            List3.Add("");
-            List<string> List4 = new List<string>();
-            List4.Add("Stickers & Tattoos/Tattoos/Glow Tattoos");
-            List4.Add("Stickers & Tattoos");
-            List4.Add("Stickers & Tattoos/Tattoos");
-            List<string> List5 = new List<string>();
-            List5.Add("Bookmarks/Page Clips/Magnetic Page Clips");
-            List5.Add("");
-            List5.Add("");
-            List<string> List6 = new List<string>();
-            List6.Add("Calendars/Deluxe Wall Calendars");
-            List6.Add("Art Zone/Coloring Journals");
-            List6.Add("");
-            List<string> List7 = new List<string>();
-            List7.Add("Posters/Posters/Wall Posters");
-            List7.Add("");
-            List7.Add("");
-            List<string> List8 = new List<string>();
-            List8.Add("Art Zone/Coloring Journals");
-            List8.Add("");
-            List8.Add("");
-            List<string> List9 = new List<string>();
-            List9.Add("Writing/Ballpoint Pens/Glow Pens");
-            List9.Add("");
-            List9.Add("");
+            List<string> List1 = new List<string>(){
+                "Stickers & Tattoos/Decals/One Color Decals",
+                "",
+                ""
+            };
+            List<string> List2 = new List<string>() {
+                "Stickers & Tattoos/Office & Educational/Labels",
+                "Bookmarks/Bookmarks",
+                ""
+            };
+            List<string> List3 = new List<string>(){"Stickers & Tattoos/Stickers/Grab & Go",
+                "",
+                ""
+            };
+            List<string> List4 = new List<string>() { "Stickers & Tattoos/Tattoos/Glow Tattoos",
+                "Stickers & Tattoos",
+                "Stickers & Tattoos/Tattoos"};
+            List<string> List5 = new List<string>(){
+                "Bookmarks/Page Clips/Magnetic Page Clips",
+                "",
+                ""
+            };
+            List<string> List6 = new List<string>() {
+                "Calendars/Deluxe Wall Calendars",
+                "Art Zone/Coloring Journals",
+                ""
+            };
+            List<string> List7 = new List<string>(){"Posters/Posters/Wall Posters",
+                "",
+                ""
+            };
+        List<string> List8 = new List<string>(){"Art Zone/Coloring Journals",
+                "",
+                ""
+            };
+        List<string> List9 = new List<string>() {
+                "Writing/Ballpoint Pens/Glow Pens",
+                "",
+                ""
+            };
             #endregion // Set Up
 
             #region Act
@@ -2706,6 +2718,43 @@ namespace Odin.Services.Tests
         }
 
         /// <summary>
+        ///     This tests the ValidateBillofMaterials method with a new bill of material value for an existing item. Should throw error.
+        /// </summary>
+        [TestMethod]
+        public void ValidateBillOfMaterials_DifferentValueExists_ShouldFail()
+        {
+            #region Setup
+
+            ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+            GlobalData.BillofMaterials.Add(new ChildElement("TESTA", "TEST1"));
+            GlobalData.BillofMaterials.Add(new ChildElement("TESTB", "TEST1"));
+            List<ChildElement> childList = new List<ChildElement>() {
+                new ChildElement("TESTB", "TEST1"),
+                new ChildElement("TESTC", "TEST1")
+            };
+            List<string> currentIds = new List<string>() {
+                "TESTA",
+                "TESTB",
+                "TESTC",
+                "TEST1"
+            };
+
+            #endregion //Setup
+
+            #region Act
+
+            string result = itemValidator.ValidateBillOfMaterials("TEST1", childList, currentIds, "Update", 1);
+
+            #endregion //Act
+
+            #region Assert
+
+            Assert.AreNotEqual(result, string.Empty);
+
+            #endregion //Assert
+        }
+
+        /// <summary>
         ///     This method test the ValidateCasepackHeight method with a numeric string. This method asserts that the validation succeeds.
         /// </summary>
         [TestMethod]
@@ -2714,17 +2763,19 @@ namespace Odin.Services.Tests
             #region Setup
 
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            List<ChildElement> childList = new List<ChildElement>();
-            childList.Add(new ChildElement("TEST2", "TEST1"));
-            childList.Add(new ChildElement("TEST2", "TEST1"));
-            List<string> currentIds = new List<string>();
-            currentIds.Add("TEST2");
+            List<ChildElement> childList = new List<ChildElement>() {
+                new ChildElement("TEST2", "TEST1"),
+                new ChildElement("TEST2", "TEST1")
+            };
+            List<string> currentIds = new List<string>() {
+                "TEST2"
+            };
 
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateBillOfMaterials("TEST1", childList, currentIds, 1);
+            string result = itemValidator.ValidateBillOfMaterials("TEST1", childList, currentIds, "Add", 1);
 
             #endregion //Act
 
@@ -3628,21 +3679,24 @@ namespace Odin.Services.Tests
             GlobalData.ClearValues();
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
-            List<ChildElement> productIdTranslationList1 = new List<ChildElement>();
-            List<ChildElement> productIdTranslationList2 = new List<ChildElement>();
+            List<ChildElement> productIdTranslationList1 = new List<ChildElement>() {
+                new ChildElement("TEST3", "ST9999", 2),
+                new ChildElement("TEST4", "ST9999", 2),
+                new ChildElement("TEST4", "ST9999", 2)
+            };
+            List<ChildElement> productIdTranslationList2 = new List<ChildElement>() {
+                new ChildElement("ST1111", "FROMITEM1", 2),
+                new ChildElement("ST2222", "FROMITEM1", 2)
+            };
             List<ChildElement> emptyProductIdTranslationList = new List<ChildElement>();
 
-            List<string> CurrentIds = new List<string>();
-            CurrentIds.Add("ST1111");
-            CurrentIds.Add("ST2222");
-            CurrentIds.Add("TEST1");
-            CurrentIds.Add("TEST3");
-            CurrentIds.Add("TEST4");
-            productIdTranslationList2.Add(new ChildElement("ST1111", "FROMITEM1", 2));
-            productIdTranslationList2.Add(new ChildElement("ST2222", "FROMITEM1", 2));
-            productIdTranslationList1.Add(new ChildElement("TEST3", "ST9999", 2));
-            productIdTranslationList1.Add(new ChildElement("TEST4", "ST9999", 2));
-            productIdTranslationList1.Add(new ChildElement("TEST4", "ST9999", 2));
+            List<string> CurrentIds = new List<string>() {
+                "ST1111",
+                "ST2222",
+                "TEST1",
+                "TEST3",
+                "TEST4"
+            };
 
             #endregion // Assemble
 
@@ -3727,10 +3781,12 @@ namespace Odin.Services.Tests
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("123456789098", "RP2341"));
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000000", "RP3323"));
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000666666", "RP3329"));
-            
-            ItemObject item = new ItemObject();
-            item.ItemId = "RP2341";
-            item.Upc = "123456789098";
+
+            ItemObject item = new ItemObject() {
+                ItemId = "RP2341",
+                Upc = "123456789098"
+            };
+
             #endregion // Setup
 
             #region Act

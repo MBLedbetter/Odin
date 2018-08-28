@@ -142,12 +142,12 @@ namespace Odin.Data
                             // InsertProductIdTranslationAll(item, context);
                         }
                         if (item.BillOfMaterialsUpdate)
-                        {
-                            RemoveEnBomCompsAll(item.ItemId);
+                        {                            
                             InsertEnBomCompsAll(item);
                             InsertEnBomHeader(item, context);
                             InsertEnBomOutputs(item, context);
                             InsertSfPrdnAreaIt(item, context);
+                            
                         }
                         InsertItemUpdateRecord(item, context);
                     }
@@ -395,11 +395,14 @@ namespace Odin.Data
         {
             using (OdinContext context1 = this.contextFactory.CreateContext())
             {
-                foreach (ChildElement child in item.BillOfMaterials)
+                if (!context1.EnBomComps.Any(o => o.InvItemId.Trim() == item.ItemId.Trim()))
                 {
-                    InsertEnBomComps(item, child.ItemId, child.Qty, context1);
+                    foreach (ChildElement child in item.BillOfMaterials)
+                    {
+                        InsertEnBomComps(item, child.ItemId, child.Qty, context1);
+                    }
+                    context1.SaveChanges();
                 }
-                context1.SaveChanges();
             }
         }
 
@@ -1446,6 +1449,7 @@ namespace Odin.Data
         public void RetrieveGlobalData()
         {
             GlobalData.AccountingGroups = RetrieveAccountingtGroupList();
+            GlobalData.BillofMaterials = RetrieveBillofMaterialList();
             GlobalData.CostProfileGroups = RetrieveCostProfileGroups();
             GlobalData.CountriesOfOrigin = RetrieveCountriesOfOrigin();
             GlobalData.Customers = RetrieveCustomerIdConversionsList();
@@ -3129,6 +3133,24 @@ namespace Odin.Data
             {
                 return (from o in context.ProdGroupTbl select o.ProductGroup).ToList();
             }
+        }
+
+        /// <summary>
+        ///     Retrieves Bill of Material values from DB
+        /// </summary>
+        /// <returns>List of Accounting Group values</returns>
+        private List<ChildElement> RetrieveBillofMaterialList()
+        {
+            List<ChildElement> results = new List<ChildElement>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                List<EnBomComps> enBomComps = (from o in context.EnBomComps select o).ToList();
+                foreach (EnBomComps x in enBomComps)
+                {
+                    results.Add(new ChildElement(x.ComponentId, x.InvItemId));
+                }
+            }
+            return results;
         }
 
         /// <summary>

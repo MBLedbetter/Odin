@@ -101,7 +101,10 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding BillOfMaterialsToolTip}"
                         Width="140"
-                        VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,5,0,4" Height="26" />
+                        VerticalAlignment="Center" 
+                        Grid.ColumnSpan="2" 
+                        Margin="0,5,0,4" 
+                        Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
