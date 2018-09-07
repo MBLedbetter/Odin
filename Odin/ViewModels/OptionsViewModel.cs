@@ -1535,6 +1535,19 @@ namespace Odin.ViewModels
             }
         }
 
+        public bool SellOnAmazonSellerCentralVisibility
+        {
+            get
+            {
+                return UserOptions.SellOnAmazonSellerCentralVisibility;
+            }
+            set
+            {
+                UserOptions.SellOnAmazonSellerCentralVisibility = value;
+                OnPropertyChanged("SellOnAmazonSellerCentralVisibility");
+            }
+        }
+
         public bool SellOnFanaticsVisibility
         {
             get
@@ -1826,8 +1839,10 @@ namespace Odin.ViewModels
         /// </summary>
         public void AddOption(string optionType)
         {
-            TextPromptView textWindow = new TextPromptView();
-            textWindow.DataContext = new TextPromptViewModel();
+            TextPromptView textWindow = new TextPromptView()
+            {
+                DataContext = new TextPromptViewModel()
+            };
             textWindow.ShowDialog();
 
             if (textWindow.DialogResult==true)
@@ -1980,6 +1995,7 @@ namespace Odin.ViewModels
         {
             if (UserOptions.SellOnAllPostersVisibility  == false) { return false; }
             if (UserOptions.SellOnAmazonVisibility  == false) { return false; }
+            if (UserOptions.SellOnAmazonSellerCentralVisibility == false) { return false; }
             if (UserOptions.SellOnFanaticsVisibility  == false) { return false; }
             if (UserOptions.SellOnGuitarCenterVisibility == false) { return false; }
             if (UserOptions.SellOnHayneedleVisibility  == false) { return false; }
@@ -2283,6 +2299,7 @@ namespace Odin.ViewModels
             {
                 SellOnAllPostersVisibility = true;
                 SellOnAmazonVisibility = true;
+                SellOnAmazonSellerCentralVisibility = true;
                 SellOnFanaticsVisibility = true;
                 SellOnGuitarCenterVisibility = true;
                 SellOnHayneedleVisibility = true;
@@ -2295,6 +2312,7 @@ namespace Odin.ViewModels
             {
                 SellOnAllPostersVisibility = false;
                 SellOnAmazonVisibility = false;
+                SellOnAmazonSellerCentralVisibility = false;
                 SellOnGuitarCenterVisibility = false;
                 SellOnHayneedleVisibility = false;
                 SellOnTargetVisibility = false;
@@ -2314,8 +2332,7 @@ namespace Odin.ViewModels
         /// <param name="optionService"></param>
         public OptionsViewModel(OptionService optionService)
         {
-            if (optionService == null) { throw new ArgumentNullException("optionService"); }
-            this.OptionService = optionService;
+            this.OptionService = optionService ?? throw new ArgumentNullException("optionService");
             List<string> Permissions = this.OptionService.RetrievePermissions(GlobalData.UserName);
             if (Permissions.Count != 0)
             {

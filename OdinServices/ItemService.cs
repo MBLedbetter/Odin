@@ -142,6 +142,7 @@ namespace OdinServices
             public static string SatCode = "SAT Code";
             public static string SellOnAllPosters = "Sell On All Posters";
             public static string SellOnAmazon = "Sell On Amazon";
+            public static string SellOnAmazonSellerCentral = "Sell On Amazon Seller Central";
             public static string SellOnFanatics = "Sell On Fanatics";
             public static string SellOnGuitarCenter = "Sell On Guitar Center";
             public static string SellOnHayneedle = "Sell On Hayneedle";
@@ -738,6 +739,7 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.SatCode)) && (item.SatCode.Trim() != returnItem.SatCode.Trim())) { returnItem.SatCode = item.SatCode; }
             if ((!string.IsNullOrEmpty(item.SellOnAllPosters)) && (item.SellOnAllPosters.Trim() != returnItem.SellOnAllPosters.Trim())) { returnItem.SellOnAllPosters = item.SellOnAllPosters.Trim(); } // Sell On AllPosters
             if ((!string.IsNullOrEmpty(item.SellOnAmazon)) && (item.SellOnAmazon.Trim() != returnItem.SellOnAmazon.Trim())) { returnItem.SellOnAmazon = item.SellOnAmazon.Trim(); } // Sell On Amazon
+            if ((!string.IsNullOrEmpty(item.SellOnAmazonSellerCentral)) && (item.SellOnAmazonSellerCentral.Trim() != returnItem.SellOnAmazonSellerCentral.Trim())) { returnItem.SellOnAmazonSellerCentral = item.SellOnAmazonSellerCentral.Trim(); } // Sell On Amazon Seller Central
             if ((!string.IsNullOrEmpty(item.SellOnTarget)) && (item.SellOnTarget.Trim() != returnItem.SellOnTarget.Trim())) { returnItem.SellOnTarget = item.SellOnTarget.Trim(); } // Sell On Target
             if ((!string.IsNullOrEmpty(item.SellOnTrends)) && (item.SellOnTrends.Trim() != returnItem.SellOnTrends.Trim())) { returnItem.SellOnTrends = item.SellOnTrends.Trim(); } // Sell On Trends
             if ((!string.IsNullOrEmpty(item.SellOnFanatics)) && (item.SellOnFanatics.Trim() != returnItem.SellOnFanatics.Trim())) { returnItem.SellOnFanatics = item.SellOnFanatics.Trim(); } // Sell On Fanatics
@@ -1053,6 +1055,7 @@ namespace OdinServices
                 if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SatCode))) { item.SatCode = worksheetData.GetValue(row, WorksheetColumnHeaders.SatCode).Trim(); }
                 if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnAllPosters))) { item.SellOnAllPosters = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnAllPosters).Trim(); }
                 if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.A_AmazonActive, WorksheetColumnHeaders.SellOnAmazon))) { item.SellOnAmazon = worksheetData.GetValue(row, WorksheetColumnHeaders.A_AmazonActive, WorksheetColumnHeaders.SellOnAmazon).Trim(); }
+                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnAmazonSellerCentral))) { item.SellOnAmazonSellerCentral = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnAmazonSellerCentral).Trim(); }
                 if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnFanatics))) { item.SellOnFanatics = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnFanatics).Trim(); }
                 if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnGuitarCenter))) { item.SellOnGuitarCenter = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnGuitarCenter).Trim(); }
                 if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnHayneedle))) { item.SellOnHayneedle = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnHayneedle).Trim(); }
@@ -2087,6 +2090,8 @@ namespace OdinServices
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             error = ValidateSellOnValue(var.SellOnAmazon, "Amazon");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            error = ValidateSellOnValue(var.SellOnAmazonSellerCentral, "Amazon Seller Central");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             error = ValidateSellOnValue(var.SellOnFanatics, "Fanatics");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             error = ValidateSellOnValue(var.SellOnGuitarCenter, "Guitar Center");
@@ -2405,7 +2410,7 @@ namespace OdinServices
                 {
                     if(!CheckBillofMaterial(billOfMaterial.ParentId.Trim(), billOfMaterial.ItemId.Trim()))
                     {
-                        return "Bill of Materials contains a value that doesn't match the database.";
+                        return "Bill of Materials cannot be updated through Odin. The Bill of materials field does not match the values currently saved for this item.";
                     }
                 }
                 if (!string.IsNullOrEmpty(billOfMaterial.ItemId))

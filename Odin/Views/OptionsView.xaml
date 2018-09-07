@@ -286,131 +286,123 @@
                         />
                         <!-- Cost Profile Group -->
                         <Label
-                        Content="Cost Profile Group"
-                        Grid.Row="11"
-                        Height="26"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center" />
+                            Content="Cost Profile Group"
+                            Grid.Row="11"
+                            Height="26"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" />
                         <CheckBox
-                        Grid.Row="11"
-                        Grid.Column="1"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding CostProfileGroupVisibility}"
-                        VerticalAlignment="Center"
-                        />
+                            Grid.Row="11"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding CostProfileGroupVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- Default Actual Cost CAD -->
                         <Label
-                        Content="Default Actual Cost CAD"
-                        Grid.Row="12"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Default Actual Cost CAD"
+                            Grid.Row="12"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="12"
-                        Grid.Column="1"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding DefaultActualCostCadVisibility}"
-                        VerticalAlignment="Center"
-                        />
+                            Grid.Row="12"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding DefaultActualCostCadVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- Default Actual Cost USD -->
                         <Label
-                        Content="Default Actual Cost USD"
-                        Grid.Row="13"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center" 
-                        Height="26" />
+                            Content="Default Actual Cost USD"
+                            Grid.Row="13"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" 
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="13"
-                        Grid.Column="1"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding DefaultActualCostUsdVisibility}"
-                        VerticalAlignment="Center"
-                        />
+                            Grid.Row="13"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding DefaultActualCostUsdVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- Description -->
                         <Label
-                        Content="Description"
-                        Grid.Row="14"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Description"
+                            Grid.Row="14"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="14"
-                        Grid.Column="1"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding DescriptionVisibility}"
-                        VerticalAlignment="Center"
-                        />
+                            Grid.Row="14"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding DescriptionVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- Direct Import -->
                         <Label
                         Content="Direct Import"
-                        Grid.Row="15"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Grid.Row="15"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="15"
-                        Grid.Column="1"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding DirectImportVisibility}"
-                        VerticalAlignment="Center"
-                        />
+                            Grid.Row="15"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding DirectImportVisibility}"/>
                         <!-- Ean -->
                         <Label
-                        Content="Ean"
-                        Grid.Row="16"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Ean"
+                            Grid.Row="16"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="16"
-                        Grid.Column="1"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding EanVisibility}"
-                        VerticalAlignment="Center"
-                        />
+                            Grid.Row="16"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding EanVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- GPC -->
                         <Label
-                        Content="Gpc"
-                        Grid.Row="17"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Gpc"
+                            Grid.Row="17"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="17"
-                        Grid.Column="1"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding GpcVisibility}"
-                        VerticalAlignment="Center"
-                        />
+                            Grid.Row="17"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding GpcVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- Duty -->
                         <Label
-                        Content="Duty"
-                        Grid.Row="18"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Duty"
+                            Grid.Row="18"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="18"
-                        Grid.Column="1"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding DutyVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="18"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding DutyVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- Height -->
                         <Label
-                        Content="Height"
-                        Grid.Row="19"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Height"
+                            Grid.Row="19"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
                         Grid.Row="19"
                         Grid.Column="1"
@@ -427,201 +419,201 @@
                         VerticalAlignment="Center"
                         Height="26" />
                         <CheckBox
-                        Grid.Row="1"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding InnerpackHeightVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="1"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding InnerpackHeightVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- Innerpack Length -->
                         <Label
-                        Content="Innerpack Length"
-                        Grid.Row="2"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Innerpack Length"
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="2"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding InnerpackLengthVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="2"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding InnerpackLengthVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- Innerpack Quantity -->
                         <Label
-                        Content="Innerpack Quantity"
-                        Grid.Row="3"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Innerpack Quantity"
+                            Grid.Row="3"
+                            Grid.Column="2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="3"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding InnerpackQuantityVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="3"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding InnerpackQuantityVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- Innerpack UPC -->
                         <Label
-                        Content="Innerpack Upc"
-                        Grid.Row="4"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Innerpack Upc"
+                            Grid.Row="4"
+                            Grid.Column="2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="4"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding InnerpackUpcVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="4"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding InnerpackUpcVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- Innerpack Weight -->
                         <Label
-                        Content="Innerpack Weight"
-                        Grid.Row="5"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Innerpack Weight"
+                            Grid.Row="5"
+                            Grid.Column="2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="5"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding InnerpackUpcVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="5"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding InnerpackUpcVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- Innerpack Width -->
                         <Label
-                        Content="Innerpack Width"
-                        Grid.Row="6"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Innerpack Width"
+                            Grid.Row="6"
+                            Grid.Column="2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="6"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding InnerpackWidthVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="6"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding InnerpackWidthVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- ISBN -->
                         <Label
-                        Content="Isbn"
-                        Grid.Row="7"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Isbn"
+                            Grid.Row="7"
+                            Grid.Column="2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="7"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding IsbnVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="7"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding IsbnVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- Item Category -->
                         <Label
-                        Content="Item Category"
-                        Grid.Row="8"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Item Category"
+                            Grid.Row="8"
+                            Grid.Column="2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="8"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding ItemCategoryVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="8"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding ItemCategoryVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- Item Family -->
                         <Label
-                        Content="Item Family"
-                        Grid.Column="2"
-                        Grid.Row="9"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center" 
-                        Height="26"/>
+                            Content="Item Family"
+                            Grid.Column="2"
+                            Grid.Row="9"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" 
+                            Height="26"/>
                         <CheckBox
-                        Grid.Row="9"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding ItemFamilyVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="9"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding ItemFamilyVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- Item Group -->
                         <Label
-                        Content="Item Group"
-                        Grid.Row="10"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Item Group"
+                            Grid.Row="10"
+                            Grid.Column="2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="10"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding ItemGroupVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="10"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding ItemGroupVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- Langugage -->
                         <Label
-                        Content="Language"
-                        Grid.Row="11"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Language"
+                            Grid.Row="11"
+                            Grid.Column="2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="11"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding LanguageVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="11"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding LanguageVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- Length -->
                         <Label
-                        Content="Length"
-                        Grid.Row="12"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Length"
+                            Grid.Row="12"
+                            Grid.Column="2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="12"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding LengthVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="12"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding LengthVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- License Begin Date -->
                         <Label
-                        Content="License Begin Date"
-                        Grid.Row="13"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="License Begin Date"
+                            Grid.Row="13"
+                            Grid.Column="2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="13"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding LicenseBeginDateVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="13"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding LicenseBeginDateVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- List Price CAD -->
                         <Label
-                        Content="List Price CAD"
-                        Grid.Row="14"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center" 
-                        Height="26" />
+                            Content="List Price CAD"
+                            Grid.Row="14"
+                            Grid.Column="2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" 
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="14"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding ListPriceCadVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="14"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding ListPriceCadVisibility}"
+                            VerticalAlignment="Center"/>
                         <!-- List Price MXN -->
                         <Label
-                        Content="List Price MXN"
-                        Grid.Row="15"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center" 
-                        Height="26" />
+                            Content="List Price MXN"
+                            Grid.Row="15"
+                            Grid.Column="2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" 
+                            Height="26" />
                         <CheckBox
                         Grid.Row="15"
                         Grid.Column="3"
@@ -1303,14 +1295,14 @@
                         HorizontalAlignment="Center"
                         IsChecked="{Binding Ecommerce_ItemAliasVisibility}"
                         VerticalAlignment="Center"/>
-                    <Label
+                        <Label
                         Content="E Item Height"
                         Grid.Row="39"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Height="26" />
-                    <CheckBox
+                        <CheckBox
                         Grid.Row="39"
                         Grid.Column="1"
                         HorizontalAlignment="Center"
@@ -1531,26 +1523,26 @@
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Height="26" />
-                    <CheckBox
+                        <CheckBox
                         Grid.Row="30"
                         Grid.Column="5"
                         HorizontalAlignment="Center"
                         IsChecked="{Binding Ecommerce_SizeVisibility}"
                         VerticalAlignment="Center"/>
-                    <Label
+                        <Label
                         Content="E Upc"
                         Grid.Row="31"
                         Grid.Column="4"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Height="26" />
-                    <CheckBox
+                        <CheckBox
                         Grid.Row="31"
                         Grid.Column="5"
                         HorizontalAlignment="Center"
                         IsChecked="{Binding Ecommerce_UpcVisibility}"
                         VerticalAlignment="Center"/>
-                    <Label
+                        <Label
                         Content="Sell On Fields"
                         FontWeight="Bold"
                         Grid.Row="40"
@@ -1558,7 +1550,7 @@
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Height="26" />
-                    <CheckBox
+                        <CheckBox
                         Grid.Row="40"
                         Grid.Column="1"
                         HorizontalAlignment="Center"
@@ -1577,189 +1569,202 @@
                         HorizontalAlignment="Center"
                         IsChecked="{Binding SellOnAllPostersVisibility}"
                         VerticalAlignment="Center"/>
-                    <Label
-                        Content="Sell On Amazon"
-                        Grid.Row="42"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
-                    <CheckBox
-                        Grid.Row="42"
-                        Grid.Column="1"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding SellOnAmazonVisibility}"
-                        VerticalAlignment="Center"/>
-                    <Label
-                        Content="Sell On Fanatics"
-                        Grid.Row="43"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
-                    <CheckBox
-                        Grid.Row="43"
-                        Grid.Column="1"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding SellOnFanaticsVisibility}"
-                        VerticalAlignment="Center"/>
                         <Label
-                        Content="Sell On Guitar Center"
-                        Grid.Row="41"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Sell On Amazon"
+                            Grid.Row="42"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="41"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding SellOnGuitarCenterVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="42"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding SellOnAmazonVisibility}"
+                            VerticalAlignment="Center"/>
                         <Label
-                        Content="Sell On Hayneedle"
-                        Grid.Row="42"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Sell On Amazon SC"
+                            Grid.Row="43"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="42"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding SellOnHayneedleVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="43"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding SellOnAmazonSellerCentralVisibility}"
+                            VerticalAlignment="Center"/>
                         <Label
-                        Content="Sell On Target"
-                        Grid.Row="43"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Sell On Fanatics"
+                            Grid.Row="44"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="43"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding SellOnTargetVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="44"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding SellOnFanaticsVisibility}"
+                            VerticalAlignment="Center"/>
                         <Label
-                        Content="Sell On Trends"
-                        Grid.Row="41"
-                        Grid.Column="4"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Sell On Guitar Center"
+                            Grid.Row="41"
+                            Grid.Column="2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="41"
-                        Grid.Column="5"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding SellOnTrendsVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="41"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding SellOnGuitarCenterVisibility}"
+                            VerticalAlignment="Center"/>
                         <Label
-                        Content="Sell On Walmart"
-                        Grid.Row="42"
-                        Grid.Column="4"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Sell On Hayneedle"
+                            Grid.Row="42"
+                            Grid.Column="2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="42"
-                        Grid.Column="5"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding SellOnWalmartVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="42"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding SellOnHayneedleVisibility}"
+                            VerticalAlignment="Center"/>
                         <Label
-                        Content="Sell On Wayfair"
-                        Grid.Row="43"
-                        Grid.Column="4"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Content="Sell On Target"
+                            Grid.Row="43"
+                            Grid.Column="2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="43"
-                        Grid.Column="5"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding SellOnWayfairVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="43"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding SellOnTargetVisibility}"
+                            VerticalAlignment="Center"/>
+                        <Label
+                            Content="Sell On Trends"
+                            Grid.Row="41"
+                            Grid.Column="4"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
+                        <CheckBox
+                            Grid.Row="41"
+                            Grid.Column="5"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding SellOnTrendsVisibility}"
+                            VerticalAlignment="Center"/>
+                        <Label
+                            Content="Sell On Walmart"
+                            Grid.Row="42"
+                            Grid.Column="4"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
+                        <CheckBox
+                            Grid.Row="42"
+                            Grid.Column="5"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding SellOnWalmartVisibility}"
+                            VerticalAlignment="Center"/>
+                        <Label
+                            Content="Sell On Wayfair"
+                            Grid.Row="43"
+                            Grid.Column="4"
+                                HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
+                        <CheckBox
+                            Grid.Row="43"
+                            Grid.Column="5"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding SellOnWayfairVisibility}"
+                            VerticalAlignment="Center"/>
                         <Label
                             Content="Image Paths"
                             FontWeight="Bold"
-                        Grid.Row="44"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Grid.Row="45"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="44"
-                        Grid.Column="1"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding ImagePathVisibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="45"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding ImagePathVisibility}"
+                            VerticalAlignment="Center"/>
                         <Label
                             Content="Image Path 1"
-                        Grid.Row="45"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Grid.Row="46"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="45"
-                        Grid.Column="1"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding ImagePath1Visibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="46"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding ImagePath1Visibility}"
+                            VerticalAlignment="Center"/>
                         <Label
                             Content="Image Path 2"
-                        Grid.Row="46"
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Grid.Row="47"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="46"
-                        Grid.Column="1"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding ImagePath2Visibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="47"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding ImagePath2Visibility}"
+                            VerticalAlignment="Center"/>
                         <Label
                             Content="Image Path 3"
-                        Grid.Row="45"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Grid.Row="46"
+                            Grid.Column="2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="45"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding ImagePath3Visibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="46"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding ImagePath3Visibility}"
+                            VerticalAlignment="Center"/>
                         <Label
                             Content="Image Path 4"
-                        Grid.Row="46"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Grid.Row="47"
+                            Grid.Column="2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="46"
-                        Grid.Column="3"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding ImagePath4Visibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="47"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding ImagePath4Visibility}"
+                            VerticalAlignment="Center"/>
                         <Label
                             Content="Image Path 5"
-                        Grid.Row="45"
-                        Grid.Column="4"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="26" />
+                            Grid.Row="46"
+                            Grid.Column="4"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="26" />
                         <CheckBox
-                        Grid.Row="45"
-                        Grid.Column="5"
-                        HorizontalAlignment="Center"
-                        IsChecked="{Binding ImagePath5Visibility}"
-                        VerticalAlignment="Center"/>
+                            Grid.Row="46"
+                            Grid.Column="5"
+                            HorizontalAlignment="Center"
+                            IsChecked="{Binding ImagePath5Visibility}"
+                            VerticalAlignment="Center"/>
                     </Grid>
                 </ScrollViewer>
             </TabItem>
@@ -1924,7 +1929,7 @@
                         VerticalAlignment="Top"
                         Width="80"/>
                     <!--    End Variant Group Id Exclusions     -->
-                    
+
                 </Grid>
             </TabItem>
         </TabControl>

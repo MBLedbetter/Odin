@@ -1924,6 +1924,23 @@ namespace Odin.ViewModels
         private string _sellOnAmazonVisibility = "auto";
 
         /// <summary>
+        ///     Gets or sets the SellOnAmazonSellerCentralVisibility field
+        /// </summary>
+        public string SellOnAmazonSellerCentralVisibility
+        {
+            get
+            {
+                return _sellOnAmazonSellerCentralVisibility;
+            }
+            set
+            {
+                _sellOnAmazonSellerCentralVisibility = value;
+                OnPropertyChanged("SellOnAmazonSellerCentralVisibility");
+            }
+        }
+        private string _sellOnAmazonSellerCentralVisibility = "auto";
+
+        /// <summary>
         ///     Gets or sets the SellOnFanaticsVisibility field
         /// </summary>
         public string SellOnFanaticsVisibility
@@ -3357,6 +3374,7 @@ namespace Odin.ViewModels
             /* Sell On Visibility */
             this.SellOnAllPostersVisibility = (UserOptions.SellOnAllPostersVisibility) ? "100" : "0";
             this.SellOnAmazonVisibility = (UserOptions.SellOnAmazonVisibility) ? "100" : "0";
+            this.SellOnAmazonSellerCentralVisibility = (UserOptions.SellOnAmazonSellerCentralVisibility) ? "100" : "0";
             this.SellOnFanaticsVisibility = (UserOptions.SellOnFanaticsVisibility) ? "100" : "0";
             this.SellOnGuitarCenterVisibility = (UserOptions.SellOnGuitarCenterVisibility) ? "100" : "0";
             this.SellOnHayneedleVisibility = (UserOptions.SellOnHayneedleVisibility) ? "100" : "0";

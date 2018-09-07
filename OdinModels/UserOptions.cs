@@ -1392,6 +1392,19 @@ namespace OdinModels
         }
         private static bool _sellOnAmazonVisibility = true;
 
+        public static bool SellOnAmazonSellerCentralVisibility
+        {
+            get
+            {
+                return _sellOnAmazonSellerCentralVisibility;
+            }
+            set
+            {
+                _sellOnAmazonSellerCentralVisibility = value;
+            }
+        }
+        private static bool _sellOnAmazonSellerCentralVisibility = true;
+
         public static bool SellOnFanaticsVisibility
         {
             get

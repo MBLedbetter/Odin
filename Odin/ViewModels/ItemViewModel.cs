@@ -3672,6 +3672,77 @@ namespace Odin.ViewModels
         }
         private string _sellOnAmazonToolTip = string.Empty;
 
+
+        /// <summary>
+        ///     Gets or sets the SellOnAmazonSellerCentral
+        /// </summary>
+        public string SellOnAmazonSellerCentral
+        {
+            get
+            {
+                return this.ItemViewModelItem.SellOnAmazonSellerCentral;
+            }
+            set
+            {
+                if (this.ItemViewModelItem.SellOnAmazonSellerCentral != value)
+                {
+                    this.ItemViewModelItem.SellOnAmazonSellerCentral = value;
+                    this.SellOnAmazonSellerCentralError = ItemService.ValidateSellOnValue(value, "AmazonSellerCentral");
+                    ValidateEcommerce();
+                    OnPropertyChanged("SellOnAmazonSellerCentral");
+                }
+            }
+        }
+        public string SellOnAmazonSellerCentralBoxColor
+        {
+            get
+            {
+                return _sellOnAmazonSellerCentralBoxColor;
+            }
+            set
+            {
+                _sellOnAmazonSellerCentralBoxColor = value;
+                OnPropertyChanged("SellOnAmazonSellerCentralBoxColor");
+            }
+        }
+        private string _sellOnAmazonSellerCentralBoxColor = "White";
+        public string SellOnAmazonSellerCentralError
+        {
+            get
+            {
+                return _sellOnAmazonSellerCentralError;
+            }
+            set
+            {
+                _sellOnAmazonSellerCentralError = value;
+                if (value != "")
+                {
+                    SellOnAmazonSellerCentralToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SellOnAmazonSellerCentral");
+                }
+                else
+                {
+                    SellOnAmazonSellerCentralToolTip = ReturnToolTip("SellOnAmazonSellerCentral");
+                }
+                this.SellOnAmazonSellerCentralBoxColor = (value == "") ? "White" : "Tomato";
+                this.TabColorWebFlag = CheckWebFlagsTabColor();
+                OnPropertyChanged("SellOnAmazonSellerCentralError");
+            }
+        }
+        private string _sellOnAmazonSellerCentralError = string.Empty;
+        public string SellOnAmazonSellerCentralToolTip
+        {
+            get
+            {
+                return _sellOnAmazonSellerCentralToolTip;
+            }
+            set
+            {
+                this._sellOnAmazonSellerCentralToolTip = value;
+                OnPropertyChanged("SellOnAmazonSellerCentralToolTip");
+            }
+        }
+        private string _sellOnAmazonSellerCentralToolTip = string.Empty;
+
         /// <summary>
         ///     Gets or sets the Sell On Fanatics
         /// </summary>
@@ -8493,7 +8564,8 @@ namespace Odin.ViewModels
         private string CheckWebFlagsTabColor()
         {
             if (SellOnAllPostersBoxColor != "White") { return "Tomato"; }
-            if (SellOnAmazonBoxColor != "White") { return "Tomato";  }
+            if (SellOnAmazonBoxColor != "White") { return "Tomato"; }
+            if (SellOnAmazonSellerCentralBoxColor != "White") { return "Tomato"; }
             if (SellOnFanaticsBoxColor != "White") { return "Tomato"; }
             if (SellOnGuitarCenterBoxColor != "White") { return "Tomato"; }
             if (SellOnHayneedleBoxColor != "White") { return "Tomato"; }
@@ -8796,6 +8868,7 @@ namespace Odin.ViewModels
             this.SatCodeToolTip = ReturnToolTip("SatCode");
             this.SellOnAllPostersToolTip = ReturnToolTip("SellOnAllPosters");
             this.SellOnAmazonToolTip = ReturnToolTip("SellOnAmazon");
+            this.SellOnAmazonSellerCentralToolTip = ReturnToolTip("SellOnAmazonSellerCentral");
             this.SellOnFanaticsToolTip = ReturnToolTip("SellOnFanatics");
             this.SellOnGuitarCenterToolTip = ReturnToolTip("SellOnGuitarCenter");
             this.SellOnHayneedleToolTip = ReturnToolTip("SellOnHayneedle");
@@ -8913,6 +8986,7 @@ namespace Odin.ViewModels
             this.SatCodeError = ItemService.ValidateSatCode(var.SatCode);
             this.SellOnAllPostersError = ItemService.ValidateSellOnValue(this.SellOnAllPosters, "All Posters");
             this.SellOnAmazonError = ItemService.ValidateSellOnValue(this.SellOnAmazon, "Amazon");
+            this.SellOnAmazonSellerCentralError = ItemService.ValidateSellOnValue(this.SellOnAmazonSellerCentral, "Amazon Seller Central");
             this.SellOnFanaticsError = ItemService.ValidateSellOnValue(this.SellOnFanatics, "Fanatics");
             this.SellOnGuitarCenterError = ItemService.ValidateSellOnValue(this.SellOnGuitarCenter, "Guitar Center");
             this.SellOnHayneedleError = ItemService.ValidateSellOnValue(this.SellOnHayneedle, "Hayneedle");

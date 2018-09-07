@@ -2235,6 +2235,25 @@ namespace OdinModels
         private string _sellOnAmazon = "";
         public bool SellOnAmazonUpdate = false;
 
+        public string SellOnAmazonSellerCentral
+        {
+            get
+            {
+                return _sellOnAmazonSellerCentral;
+            }
+            set
+            {
+                if (_sellOnAmazonSellerCentral != value) { SellOnAmazonSellerCentralUpdate = true; }
+                _sellOnAmazonSellerCentral = value;
+                if (this.PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("SellOnAmazonSellerCentral"));
+                }
+            }
+        }
+        private string _sellOnAmazonSellerCentral = "";
+        public bool SellOnAmazonSellerCentralUpdate = false;
+
         public string SellOnFanatics
         {
             get
@@ -2853,6 +2872,7 @@ namespace OdinModels
             this.SatCodeUpdate = false;
             this.SellOnAllPostersUpdate = false;
             this.SellOnAmazonUpdate = false;
+            this.SellOnAmazonSellerCentralUpdate = false;
             this.SellOnFanaticsUpdate = false;
             this.SellOnGuitarCenterUpdate = false;
             this.SellOnHayneedleUpdate = false;
@@ -2995,6 +3015,7 @@ namespace OdinModels
                 this.SatCode = item.SatCode;
                 this.SellOnAllPosters = item.SellOnAllPosters;
                 this.SellOnAmazon = item.SellOnAmazon;
+                this.SellOnAmazonSellerCentral = item.SellOnAmazonSellerCentral;
                 this.SellOnFanatics = item.SellOnFanatics;
                 this.SellOnGuitarCenter = item.SellOnGuitarCenter;
                 this.SellOnHayneedle = item.SellOnHayneedle;
@@ -3127,6 +3148,7 @@ namespace OdinModels
             if (SatCodeUpdate == true) { return true; }
             if (SellOnAllPostersUpdate == true) { return true; }
             if (SellOnAmazonUpdate == true) { return true; }
+            if (SellOnAmazonSellerCentralUpdate == true) { return true; }
             if (SellOnFanaticsUpdate == true) { return true; }
             if (SellOnGuitarCenterUpdate == true) { return true; }
             if (SellOnHayneedleUpdate == true) { return true; }
@@ -3155,7 +3177,6 @@ namespace OdinModels
          /// <returns> true if any fields have been updated </returns>
         public bool EcommerceValuesUpdate()
         {
-            // if (SellOnAmazonUpdate == true) { return true; }
             if (Ecommerce_AsinUpdate == true) { return true; }
             if (Ecommerce_Bullet1Update == true) { return true; }
             if (Ecommerce_Bullet2Update == true) { return true; }
@@ -3253,6 +3274,7 @@ namespace OdinModels
         {
             if (this.SellOnAllPosters == "Y") { return true; }
             if (this.SellOnAmazon == "Y") { return true; }
+            if (this.SellOnAmazonSellerCentral == "Y") { return true; }
             if (this.SellOnFanatics == "Y") { return true; }
             if (this.SellOnGuitarCenter == "Y") { return true; }
             if (this.SellOnHayneedle == "Y") { return true; }
@@ -3270,6 +3292,7 @@ namespace OdinModels
         {
             if (this.SellOnAllPosters == "Y") { return true; }
             if (this.SellOnAmazon == "Y") { return true; }
+            if (this.SellOnAmazonSellerCentral == "Y") { return true; }
             if (this.SellOnFanatics == "Y") { return true; }
             if (this.SellOnGuitarCenter == "Y") { return true; }
             if (this.SellOnHayneedle == "Y") { return true; }
@@ -3480,6 +3503,7 @@ namespace OdinModels
         {
             if (SellOnAllPostersUpdate == true) { return true; }
             if (SellOnAmazonUpdate == true) { return true; }
+            if (SellOnAmazonSellerCentralUpdate == true) { return true; }
             if (SellOnFanaticsUpdate == true) { return true; }
             if (SellOnGuitarCenterUpdate == true) { return true; }
             if (SellOnHayneedleUpdate == true) { return true; }
@@ -3498,6 +3522,7 @@ namespace OdinModels
             if (string.IsNullOrEmpty(this.PsStatus)) { this.PsStatus = "I"; }
             if (string.IsNullOrEmpty(this.SellOnAllPosters)) { this.SellOnAllPosters="N"; }
             if (string.IsNullOrEmpty(this.SellOnAmazon)) { this.SellOnAmazon = "N"; }
+            if (string.IsNullOrEmpty(this.SellOnAmazonSellerCentral)) { this.SellOnAmazonSellerCentral = "N"; }
             if (string.IsNullOrEmpty(this.SellOnFanatics)) { this.SellOnFanatics = "N"; }
             if (string.IsNullOrEmpty(this.SellOnGuitarCenter)) { this.SellOnGuitarCenter = "N"; }
             if (string.IsNullOrEmpty(this.SellOnHayneedle)) { this.SellOnHayneedle = "N"; }

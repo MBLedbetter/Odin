@@ -1005,6 +1005,14 @@
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnAmazonSellerCentral}"
+                        Width="{Binding SellOnAmazonSellerCentralVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Amazon Seller Central"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
                         DisplayMemberBinding="{Binding SellOnFanatics}"
                         Width="{Binding SellOnFanaticsVisibility}">
                         <GridViewColumnHeader

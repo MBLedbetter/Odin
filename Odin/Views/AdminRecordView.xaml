@@ -471,12 +471,20 @@
                             Padding="5" />
                         </GridViewColumn>
                         <GridViewColumn
-                        DisplayMemberBinding="{Binding SellOnAmazon}"
-                        Width="auto">
+                            DisplayMemberBinding="{Binding SellOnAmazon}"
+                            Width="auto">
                             <GridViewColumnHeader
-                            Content="Sell On Amazon"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
+                                Content="Sell On Amazon"
+                                HorizontalContentAlignment="Left"
+                                Padding="5" />
+                        </GridViewColumn>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding SellOnAmazonSelerCentral}"
+                            Width="auto">
+                            <GridViewColumnHeader
+                                Content="Sell On Amazon Seller Central"
+                                HorizontalContentAlignment="Left"
+                                Padding="5" />
                         </GridViewColumn>
                         <GridViewColumn
                         DisplayMemberBinding="{Binding SellOnFanatics}"

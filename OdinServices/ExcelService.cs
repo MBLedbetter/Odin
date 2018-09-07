@@ -1409,6 +1409,8 @@ namespace OdinServices
                     string CADPrice = item.ListPriceCad;
                     string productFormat = DbUtil.ReplaceCharacters(item.ProductFormat);
                     string category = string.Empty;
+                    string[] imageSections = item.ImagePath.Split('\\');
+                    string imageName = imageSections[imageSections.Length - 1];
                     // Replace size placeholder with blank
                     if (item.Size == "'' x '' x ''")
                     {
@@ -1589,8 +1591,7 @@ namespace OdinServices
                     }
                     else
                     {
-                        string img = "/" + item.ItemId + ".jpg";
-                        CSV_Add_Image.Add(item.ItemId + ", " + img + ", " + img + ", " + img);
+                        CSV_Add_Image.Add(item.ItemId + ", /" + imageName + ", /" + imageName + ", /" + imageName);
                     }
                 }
 
