@@ -4720,12 +4720,9 @@ namespace OdinServices
                 {
                     return type + " " + OdinServices.Properties.Resources.Error_RequiredAmazon;
                 }
-                if (status == "Add")
+                if (value.Length > 385)
                 {
-                    if (value.Length > 385)
-                    {
-                        return type + " " + OdinServices.Properties.Resources.Error_LengthMax + "385 characters.";
-                    }
+                    return type + " " + OdinServices.Properties.Resources.Error_LengthMax + "385 characters.";
                 }
             }
             return "";
