@@ -5,13 +5,11 @@ using Odin.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using ExcelLibrary;
 using OdinModels;
 using System.ComponentModel;
-using System.Timers;
 
 namespace Odin.ViewModels
 {

@@ -139,16 +139,20 @@ namespace OdinServices
         {
             string strFilePath;
             bool createFile = true;
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Filter = "Excel Workbooks (*.xlsx)|*.xlsx";
+            SaveFileDialog dlg = new SaveFileDialog()
+            {
+                Filter = "Excel Workbooks (*.xlsx)|*.xlsx"
+            };
             if (dlg.ShowDialog() == DialogResult.Cancel)
             {
                 return;
             }
             strFilePath = dlg.FileName;
             Cursor.Show();
-            app = new Microsoft.Office.Interop.Excel.Application();
-            app.Visible = false;
+            app = new Microsoft.Office.Interop.Excel.Application()
+            {
+                Visible = false
+            };
             workbook = app.Workbooks.Add(1);
             worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets[1];
             AddHeaders(excelCells);
@@ -610,16 +614,20 @@ namespace OdinServices
             {
                 TemplateList = templateList;
             }
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Filter = "Excel Workbooks (*.xlsx)|*.xlsx";
+            SaveFileDialog dlg = new SaveFileDialog()
+            {
+                Filter = "Excel Workbooks (*.xlsx)|*.xlsx"
+            };
             if (dlg.ShowDialog() == DialogResult.Cancel)
             {
                 return;
             }
             strFilePath = dlg.FileName;
             Cursor.Show();
-            app = new Microsoft.Office.Interop.Excel.Application();
-            app.Visible = false;
+            app = new Microsoft.Office.Interop.Excel.Application()
+            {
+                Visible = false
+            };
             workbook = app.Workbooks.Add(1);
             worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets[1];
 
@@ -915,9 +923,11 @@ namespace OdinServices
                 case "Ecommerce Msrp":
                     return item.Ecommerce_Msrp;
                 case "Ecommerce Search Terms":
-                    return TrimSearchTerms(item.Ecommerce_SearchTerms, customer);
+                    return TrimSearchTerms(item.Ecommerce_GenericKeywords, customer);
                 case "Ecommerce Size":
                     return item.Ecommerce_Size;
+                case "Ecommerce Subject Keywords":
+                    return TrimSearchTerms(item.Ecommerce_SubjectKeywords, customer);
                 case "Ecommerce Upc":
                     return item.Ecommerce_Upc;
                 case "GPC":
@@ -1405,7 +1415,7 @@ namespace OdinServices
                 {
                     string newString = string.Empty;
                     string newdate = "";
-                    string USDPrice = item.ListPriceUsd;
+                    string USDPrice = item.WebsitePrice;
                     string CADPrice = item.ListPriceCad;
                     string productFormat = DbUtil.ReplaceCharacters(item.ProductFormat);
                     string category = string.Empty;

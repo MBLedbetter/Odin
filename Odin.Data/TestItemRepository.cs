@@ -796,7 +796,7 @@ namespace Odin.Data
                 Ecommerce_ProductSubcategory = "AProductSubcategoryA",
                 Ecommerce_ManufacturerName = "AManufacturerNameA",
                 Ecommerce_Msrp = "AMsrpA",
-                Ecommerce_SearchTerms = "ASearchTermsA",
+                Ecommerce_GenericKeywords = "ASearchTermsA",
                 Ecommerce_Size = "ASizeA",
                 Ecommerce_Upc = "AUpcA",
                 Gpc = "GpcA",

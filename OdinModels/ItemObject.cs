@@ -343,6 +343,28 @@ namespace OdinModels
         }
         private string _ecommerce_externalIdType = string.Empty;
         public bool Ecommerce_ExternalIdTypeUpdate = false;
+        
+        /// <summary>
+        ///     Generic Keywords (formery ecommerce search terms) for external ecommerce sites
+        /// </summary>
+        public string Ecommerce_GenericKeywords
+        {
+            get
+            {
+                return _genericKeywords;
+            }
+            set
+            {
+                if (_genericKeywords != value) { Ecommerce_GenericKeywordsUpdate = true; }
+                _genericKeywords = value;
+                if (this.PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Ecommerce_GenericKeywords"));
+                }
+            }
+        }
+        private string _genericKeywords = string.Empty;
+        public bool Ecommerce_GenericKeywordsUpdate = false;
 
         public string Ecommerce_ImagePath1
         {
@@ -760,25 +782,6 @@ namespace OdinModels
         private string _ecommerce_msrp = string.Empty;
         public bool Ecommerce_MsrpUpdate = false;
 
-        public string Ecommerce_SearchTerms
-        {
-            get
-            {
-                return _ecommerce_searchTerms;
-            }
-            set
-            {
-                if (_ecommerce_searchTerms != value) { Ecommerce_SearchTermsUpdate = true; }
-                _ecommerce_searchTerms = value;
-                if (this.PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Ecommerce_SearchTerms"));
-                }
-            }
-        }
-        private string _ecommerce_searchTerms = string.Empty;
-        public bool Ecommerce_SearchTermsUpdate = false;
-
         public string Ecommerce_Size
         {
             get
@@ -797,6 +800,28 @@ namespace OdinModels
         }
         private string _ecommerce_size = string.Empty;
         public bool Ecommere_SizeUpdate = false;
+
+        /// <summary>
+        ///     Gets or sets the Ecommerce_SubjectKeywords
+        /// </summary>
+        public string Ecommerce_SubjectKeywords
+        {
+            get
+            {
+                return _subjectKeywords;
+            }
+            set
+            {
+                if (_subjectKeywords != value) { Ecommerce_SubjectKeywordsUpdate = true; }
+                _subjectKeywords = value;
+                if (this.PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Ecommerce_SubjectKeywords"));
+                }
+            }
+        }
+        private string _subjectKeywords = string.Empty;
+        public bool Ecommerce_SubjectKeywordsUpdate = false;
 
         public string Ecommerce_Upc
         {
@@ -1163,7 +1188,7 @@ namespace OdinModels
         }
         private string _size = string.Empty;
         public bool SizeUpdate = false;
-
+        
         /// <summary>
         ///     Gets or sets the Title
         /// </summary>
@@ -2710,15 +2735,22 @@ namespace OdinModels
                 }
                 else
                 {
-                    returnValue = "http://trendsinternational.com/media/catalog/product/";
                     string[] values = value.Split('\\');
-                    int last = values.Length;
-                    value = values[last - 1];
-                    string a = (!string.IsNullOrEmpty(value.Substring(0, 1))) ? value.Substring(0, 1) + "/" : "";
-                    string b = (!string.IsNullOrEmpty(value.Substring(1, 1))) ? value.Substring(1, 1) + "/" : "";
-                    values = value.Split('.');
-                    value = value.Replace("." + values[values.Length - 1], "");
-                    returnValue += a + b + value.TrimEnd('.') + ".jpg";
+                    if (values.Length > 1)
+                    {
+                        returnValue = "http://trendsinternational.com/media/catalog/product/";
+                        int last = values.Length;
+                        value = values[last - 1];
+                        string a = (!string.IsNullOrEmpty(value.Substring(0, 1))) ? value.Substring(0, 1) + "/" : "";
+                        string b = (!string.IsNullOrEmpty(value.Substring(1, 1))) ? value.Substring(1, 1) + "/" : "";
+                        values = value.Split('.');
+                        value = value.Replace("." + values[values.Length - 1], "");
+                        returnValue += a + b + value.TrimEnd('.') + ".jpg";
+                    }
+                    else
+                    {
+                        return value;
+                    }
                 }
             }
             return returnValue;
@@ -2831,8 +2863,9 @@ namespace OdinModels
             this.Ecommerce_ProductSubcategoryUpdate = false;
             this.Ecommerce_ManufacturerNameUpdate = false;
             this.Ecommerce_MsrpUpdate = false;
-            this.Ecommerce_SearchTermsUpdate = false;
+            this.Ecommerce_GenericKeywordsUpdate = false;
             this.Ecommere_SizeUpdate = false;
+            this.Ecommerce_SubjectKeywordsUpdate = false;
             this.Ecommere_UpcUpdate = false;
             this.GpcUpdate = false;
             this.HeightUpdate = false;
@@ -2971,8 +3004,9 @@ namespace OdinModels
                 this.Ecommerce_ProductSubcategory = item.Ecommerce_ProductSubcategory;
                 this.Ecommerce_ManufacturerName = item.Ecommerce_ManufacturerName;
                 this.Ecommerce_Msrp = item.Ecommerce_Msrp;
-                this.Ecommerce_SearchTerms = item.Ecommerce_SearchTerms;
+                this.Ecommerce_GenericKeywords = item.Ecommerce_GenericKeywords;
                 this.Ecommerce_Size = item.Ecommerce_Size;
+                this.Ecommerce_SubjectKeywords = item.Ecommerce_SubjectKeywords;
                 this.Ecommerce_Upc = item.Ecommerce_Upc;
                 this.Gpc = item.Gpc;
                 this.Height = item.Height;
@@ -3028,6 +3062,7 @@ namespace OdinModels
                 this.StandardCost = item.StandardCost;
                 this.StatsCode = item.StatsCode;
                 this.Status = item.Status;
+                this.Ecommerce_SubjectKeywords = item.Ecommerce_SubjectKeywords;
                 this.TariffCode = item.TariffCode;
                 this.Territory = item.Territory;
                 this.Title = item.Title;
@@ -3107,8 +3142,9 @@ namespace OdinModels
             if (Ecommerce_ProductSubcategoryUpdate == true) { return true; }
             if (Ecommerce_ManufacturerNameUpdate == true) { return true; }
             if (Ecommerce_MsrpUpdate == true) { return true; }
-            if (Ecommerce_SearchTermsUpdate == true) { return true; }
+            if (Ecommerce_GenericKeywordsUpdate == true) { return true; }
             if (Ecommere_SizeUpdate == true) { return true; }
+            if (Ecommerce_SubjectKeywordsUpdate == true) { return true; }
             if (Ecommere_UpcUpdate == true) { return true; }
             if (GpcUpdate == true) { return true; }
             if (HeightUpdate == true) { return true; }
@@ -3160,6 +3196,7 @@ namespace OdinModels
             if (SizeUpdate == true) { return true; }
             if (StandardCostUpdate == true) { return true; }
             if (StatsCodeUpdate == true) { return true; }
+            if (Ecommerce_SubjectKeywordsUpdate == true) { return true; }
             if (TariffCodeUpdate == true) { return true; }
             if (TerritoryUpdate == true) { return true; }
             if (TitleUpdate == true) { return true; }
@@ -3187,6 +3224,7 @@ namespace OdinModels
             if (Ecommerce_CostUpdate == true) { return true; }
             if (Ecommerce_ExternalIdUpdate == true) { return true; }
             if (Ecommerce_ExternalIdTypeUpdate == true) { return true; }
+            if (Ecommerce_GenericKeywordsUpdate == true) { return true; }
             if (Ecommerce_ImagePath1Update == true) { return true; }
             if (Ecommerce_ImagePath2Update == true) { return true; }
             if (Ecommerce_ImagePath3Update == true) { return true; }
@@ -3208,8 +3246,8 @@ namespace OdinModels
             if (Ecommerce_ProductSubcategoryUpdate == true) { return true; }
             if (Ecommerce_ManufacturerNameUpdate == true) { return true; }
             if (Ecommerce_MsrpUpdate == true) { return true; }
-            if (Ecommerce_SearchTermsUpdate == true) { return true; }
             if (Ecommere_SizeUpdate == true) { return true; }
+            if (Ecommerce_SubjectKeywordsUpdate == true) { return true; }
             if (Ecommere_UpcUpdate == true) { return true; }
             if (CountryOfOriginUpdate == true) { return true; }
 
@@ -3266,7 +3304,10 @@ namespace OdinModels
         /// <returns></returns>
         public bool HasWeb()
         {
-            if(this.SellOnTrends == "Y") { return true; }
+            if(this.SellOnTrends == "Y")
+            {
+                return true;
+            }
             return false;
         }
 
@@ -3808,6 +3849,7 @@ namespace OdinModels
             this.Ecommerce_Cost = ecommerce_CostAmazon;
             this.Ecommerce_ExternalId = ecommerce_ExternalID;
             this.Ecommerce_ExternalIdType = ecommerce_ExternalIdType;
+            this.Ecommerce_GenericKeywords = ecommerce_SearchTerms;
             this.Ecommerce_ItemHeight = ecommerce_ItemHeight;
             this.Ecommerce_ItemLength = ecommerce_ItemLength;
             this.Ecommerce_ItemName = ecommerce_ItemName;
@@ -3824,8 +3866,8 @@ namespace OdinModels
             this.Ecommerce_ProductSubcategory = ecommerce_ProductSubcategory;
             this.Ecommerce_ManufacturerName = ecommerce_ManufacturerName;
             this.Ecommerce_Msrp = ecommerce_Msrp;
-            this.Ecommerce_SearchTerms = ecommerce_SearchTerms;
             this.Ecommerce_Size = ecommerce_Size;
+            this.Ecommerce_SubjectKeywords = ecommerce_SearchTerms;
             this.Ecommerce_Upc = ecommerce_Upc;
             this.Gpc = gpc;
             this.Height = height;

@@ -7964,73 +7964,73 @@ namespace Odin.ViewModels
         private string _ecommerce_MsrpToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_SearchTerms
+        ///    Ecommerce_GenericKeywords
         /// </summary>
-        public string Ecommerce_SearchTerms
+        public string Ecommerce_GenericKeywords
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_SearchTerms;
+                return this.ItemViewModelItem.Ecommerce_GenericKeywords;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_SearchTerms != value)
+                if (this.ItemViewModelItem.Ecommerce_GenericKeywords != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_SearchTerms = value;
-                    this.Ecommerce_SearchTermsError = ItemService.ValidateEcommerce_SearchTerms(value, this.ItemViewModelItem.HasEcommerce(), this.Status);
-                    OnPropertyChanged("Ecommerce_SearchTerms");
+                    this.ItemViewModelItem.Ecommerce_GenericKeywords = value;
+                    this.Ecommerce_GenericKeywordsError = ItemService.ValidateEcommerce_Keywords(value, this.ItemViewModelItem.HasEcommerce(), "Ecommerce Search Terms", this.Status);
+                    OnPropertyChanged("Ecommerce_GenericKeywords");
                 }
             }
         }
-        public string Ecommerce_SearchTermsBoxColor
+        public string Ecommerce_GenericKeywordsBoxColor
         {
             get
             {
-                return _ecommerce_SearchTermsBoxColor;
+                return _ecommerce_GenericKeywordsBoxColor;
             }
             set
             {
-                _ecommerce_SearchTermsBoxColor = value;
-                OnPropertyChanged("Ecommerce_SearchTermsBoxColor");
+                _ecommerce_GenericKeywordsBoxColor = value;
+                OnPropertyChanged("Ecommerce_GenericKeywordsBoxColor");
             }
         }
-        private string _ecommerce_SearchTermsBoxColor = "White";
-        public string Ecommerce_SearchTermsError
+        private string _ecommerce_GenericKeywordsBoxColor = "White";
+        public string Ecommerce_GenericKeywordsError
         {
             get
             {
-                return _ecommerce_SearchTermsError;
+                return _ecommerce_GenericKeywordsError;
             }
             set
             {
-                _ecommerce_SearchTermsError = value;
+                _ecommerce_GenericKeywordsError = value;
                 if (value != "")
                 {
-                    Ecommerce_SearchTermsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_SearchTermsToolTip");
+                    Ecommerce_GenericKeywordsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_GenericKeywordsToolTip");
                 }
                 else
                 {
-                    Ecommerce_SearchTermsToolTip = ReturnToolTip("Ecommerce_SearchTermsToolTip");
+                    Ecommerce_GenericKeywordsToolTip = ReturnToolTip("Ecommerce_GenericKeywordsToolTip");
                 }
-                this.Ecommerce_SearchTermsBoxColor = (value == "") ? "White" : "Tomato";
+                this.Ecommerce_GenericKeywordsBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_SearchTermsError");
+                OnPropertyChanged("Ecommerce_GenericKeywordsError");
             }
         }
-        private string _ecommerce_SearchTermsError = string.Empty;
-        public string Ecommerce_SearchTermsToolTip
+        private string _ecommerce_GenericKeywordsError = string.Empty;
+        public string Ecommerce_GenericKeywordsToolTip
         {
             get
             {
-                return _ecommerce_SearchTermsToolTip;
+                return _ecommerce_GenericKeywordsToolTip;
             }
             set
             {
-                this._ecommerce_SearchTermsToolTip = value;
-                OnPropertyChanged("Ecommerce_SearchTermsToolTip");
+                this._ecommerce_GenericKeywordsToolTip = value;
+                OnPropertyChanged("Ecommerce_GenericKeywordsToolTip");
             }
         }
-        private string _ecommerce_SearchTermsToolTip = string.Empty;
+        private string _ecommerce_GenericKeywordsToolTip = string.Empty;
 
         /// <summary>
         ///    Ecommerce_Size
@@ -8100,7 +8100,76 @@ namespace Odin.ViewModels
             }
         }
         private string _ecommerce_sizeToolTip = string.Empty;
-
+        
+        /// <summary>
+        ///    Ecommerce_SubjectKeywords
+        /// </summary>
+        public string Ecommerce_SubjectKeywords
+        {
+            get
+            {
+                return this.ItemViewModelItem.Ecommerce_SubjectKeywords;
+            }
+            set
+            {
+                if (this.ItemViewModelItem.Ecommerce_SubjectKeywords != value)
+                {
+                    this.ItemViewModelItem.Ecommerce_SubjectKeywords = value;
+                    this.Ecommerce_SubjectKeywordsError = ItemService.ValidateEcommerce_Keywords(value, false, "Ecommerce Search Terms", this.Status);
+                    OnPropertyChanged("Ecommerce_SubjectKeywords");
+                }
+            }
+        }
+        public string Ecommerce_SubjectKeywordsBoxColor
+        {
+            get
+            {
+                return _ecommerce_SubjectKeywordsBoxColor;
+            }
+            set
+            {
+                _ecommerce_SubjectKeywordsBoxColor = value;
+                OnPropertyChanged("Ecommerce_SubjectKeywordsBoxColor");
+            }
+        }
+        private string _ecommerce_SubjectKeywordsBoxColor = "White";
+        public string Ecommerce_SubjectKeywordsError
+        {
+            get
+            {
+                return _ecommerce_SubjectKeywordsError;
+            }
+            set
+            {
+                _ecommerce_SubjectKeywordsError = value;
+                if (value != "")
+                {
+                    Ecommerce_SubjectKeywordsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_SubjectKeywordsToolTip");
+                }
+                else
+                {
+                    Ecommerce_SubjectKeywordsToolTip = ReturnToolTip("Ecommerce_SubjectKeywordsToolTip");
+                }
+                this.Ecommerce_SubjectKeywordsBoxColor = (value == "") ? "White" : "Tomato";
+                this.TabColorEcommerce = CheckEcommerceTabColor();
+                OnPropertyChanged("Ecommerce_SubjectKeywordsError");
+            }
+        }
+        private string _ecommerce_SubjectKeywordsError = string.Empty;
+        public string Ecommerce_SubjectKeywordsToolTip
+        {
+            get
+            {
+                return _ecommerce_SubjectKeywordsToolTip;
+            }
+            set
+            {
+                this._ecommerce_SubjectKeywordsToolTip = value;
+                OnPropertyChanged("Ecommerce_SubjectKeywordsToolTip");
+            }
+        }
+        private string _ecommerce_SubjectKeywordsToolTip = string.Empty;
+        
         /// <summary>
         ///    Ecommerce_Upc
         /// </summary>
@@ -8456,6 +8525,7 @@ namespace Odin.ViewModels
             if (Ecommerce_CostBoxColor != "White") { return "Tomato"; }
             if (Ecommerce_ExternalIdBoxColor != "White") { return "Tomato"; }
             if (Ecommerce_ExternalIdTypeBoxColor != "White") { return "Tomato"; }
+            if (Ecommerce_GenericKeywordsBoxColor != "White") { return "Tomato"; }
             if (Ecommerce_ItemHeightBoxColor != "White") { return "Tomato"; }
             if (Ecommerce_ItemLengthBoxColor != "White") { return "Tomato"; }
             if (Ecommerce_ItemNameBoxColor != "White") { return "Tomato"; }
@@ -8472,8 +8542,8 @@ namespace Odin.ViewModels
             if (Ecommerce_ProductSubcategoryBoxColor != "White") { return "Tomato"; }
             if (Ecommerce_ManufacturerNameBoxColor != "White") { return "Tomato"; }
             if (Ecommerce_MsrpBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_SearchTermsBoxColor != "White") { return "Tomato"; }
             if (Ecommerce_SizeBoxColor != "White") { return "Tomato"; }
+            if (Ecommerce_SubjectKeywordsBoxColor != "White") { return "Tomato"; }
             if (Ecommerce_UpcBoxColor != "White") { return "Tomato"; }
             return "White";
         }
@@ -8809,6 +8879,7 @@ namespace Odin.ViewModels
             this.Ecommerce_CostToolTip = ReturnToolTip("Ecommerce_CostToolTip");
             this.Ecommerce_ExternalIdToolTip = ReturnToolTip("Ecommerce_ExternalIdToolTip");
             this.Ecommerce_ExternalIdTypeToolTip = ReturnToolTip("Ecommerce_ExternalIdTypeToolTip");
+            this.Ecommerce_GenericKeywordsToolTip = ReturnToolTip("Ecommerce_GenericKeywordsToolTip");
             this.Ecommerce_ItemHeightToolTip = ReturnToolTip("Ecommerce_ItemHeightToolTip");
             this.Ecommerce_ItemLengthToolTip = ReturnToolTip("Ecommerce_ItemLengthToolTip");
             this.Ecommerce_ItemNameToolTip = ReturnToolTip("Ecommerce_ItemNameToolTip");
@@ -8825,8 +8896,8 @@ namespace Odin.ViewModels
             this.Ecommerce_ProductSubcategoryToolTip = ReturnToolTip("Ecommerce_ProductSubcategoryToolTip");
             this.Ecommerce_ManufacturerNameToolTip = ReturnToolTip("Ecommerce_ManufacturerNameToolTip");
             this.Ecommerce_MsrpToolTip = ReturnToolTip("Ecommerce_MsrpToolTip");
-            this.Ecommerce_SearchTermsToolTip = ReturnToolTip("Ecommerce_SearchTermsToolTip");
             this.Ecommerce_SizeToolTip = ReturnToolTip("Ecommerce_SizeToolTip");
+            this.Ecommerce_SubjectKeywordsToolTip = ReturnToolTip("Ecommerce_SubjectKeywordsToolTip");
             this.Ecommerce_UpcToolTip = ReturnToolTip("Ecommerce_UpcToolTip");
             this.GpcToolTip = ReturnToolTip("Gpc");
             this.HeightToolTip = ReturnToolTip("Height");
@@ -9024,6 +9095,7 @@ namespace Odin.ViewModels
             this.Ecommerce_CostError = ItemService.ValidateEcommerce_Cost(this.Ecommerce_Cost, "", this.ItemViewModelItem.HasEcommerce());
             this.Ecommerce_ExternalIdTypeError = ItemService.ValidateEcommerce_ExternalIdType(this.Ecommerce_ExternalIdType, this.ItemViewModelItem.HasEcommerce());
             this.Ecommerce_ExternalIdError = ItemService.ValidateEcommerce_ExternalId(this.Ecommerce_ExternalId, this.Ecommerce_ExternalIdType, this.ItemViewModelItem.HasEcommerce());
+            this.Ecommerce_GenericKeywordsError = ItemService.ValidateEcommerce_Keywords(this.Ecommerce_GenericKeywords, this.ItemViewModelItem.HasEcommerce(), "Ecommerce Search Terms", this.Status);
             this.Ecommerce_ItemHeightError = ItemService.ValidateEcommerce_ItemHeight(this.Ecommerce_ItemHeight, this.ItemViewModelItem.HasEcommerce());
             this.Ecommerce_ItemLengthError = ItemService.ValidateEcommerce_ItemLength(this.Ecommerce_ItemLength, this.ItemViewModelItem.HasEcommerce());
             this.Ecommerce_ItemNameError = ItemService.ValidateEcommerce_ItemName(this.Ecommerce_ItemName, this.ItemViewModelItem.HasEcommerce());
@@ -9040,8 +9112,8 @@ namespace Odin.ViewModels
             this.Ecommerce_ProductSubcategoryError = ItemService.ValidateEcommerce_ProductSubcategory(this.Ecommerce_ProductSubcategory, this.ItemViewModelItem.HasEcommerce());
             this.Ecommerce_ManufacturerNameError = ItemService.ValidateEcommerce_ManufacturerName(this.Ecommerce_ManufacturerName, this.ItemViewModelItem.HasEcommerce());
             this.Ecommerce_MsrpError = ItemService.ValidateEcommerce_Msrp(this.Ecommerce_Msrp, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_SearchTermsError = ItemService.ValidateEcommerce_SearchTerms(this.Ecommerce_SearchTerms, this.ItemViewModelItem.HasEcommerce(), this.Status);
             this.Ecommerce_SizeError = ItemService.ValidateEcommerce_Size(this.Ecommerce_Size, this.ItemViewModelItem.HasEcommerce());
+            this.Ecommerce_SubjectKeywordsError = ItemService.ValidateEcommerce_Keywords(this.Ecommerce_SubjectKeywords, false, "Ecommerce Subject Keywords", this.Status);
             this.Ecommerce_UpcError = ItemService.ValidateEcommerce_Upc(this.Ecommerce_Upc, this.ItemId, this.Upc, this.Status, this.ItemViewModelItem.HasEcommerce());
         }
 

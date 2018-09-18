@@ -407,10 +407,10 @@ namespace Odin.Data.Tests
         }
 
         /// <summary>
-        ///     Tests InsertCustomerProductAttributesAll is properly inserting info into PS_CUSTOMER_PRODUCT_ATTRIBUTES
+        ///     Tests InsertCustomerProductAttributes is properly excluding new "N" values from PS_CUSTOMER_PRODUCT_ATTRIBUTES
         /// </summary>
         [TestMethod]
-        public void ItemRepositoryTests_InsertCustomerProductAttributesAll_ItemInfoShouldSave()
+        public void ItemRepositoryTests_InsertCustomerProductAttributes_ItemInfoShouldNotSave()
         {
             #region Assemble
 
@@ -420,25 +420,12 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            GlobalData.CustomerIdConversions.Add("ALL POSTERS", "1");
-            GlobalData.CustomerIdConversions.Add("AMAZON", "2");
-            GlobalData.CustomerIdConversions.Add("FANATICS", "3");
-            GlobalData.CustomerIdConversions.Add("HAYNEEDLE", "4");
-            GlobalData.CustomerIdConversions.Add("TARGET", "5");
-            GlobalData.CustomerIdConversions.Add("WALMART", "6");
-            GlobalData.CustomerIdConversions.Add("WAYFAIR", "7");
-            GlobalData.CustomerIdConversions.Add("GUITAR CENTER", "8");
+            GlobalData.CustomerIdConversions.Add("AMAZON SELLER CENTRAL", "9");
 
-            ItemObject item = new ItemObject {
+            ItemObject item = new ItemObject
+            {
                 ItemId = "TEST1",
-                SellOnAllPosters = "Y",
-                SellOnAmazon = "N",
-                SellOnFanatics = "Y",
-                SellOnGuitarCenter = "Y",
-                SellOnHayneedle = "N",
-                SellOnTarget = "Y",
-                SellOnWalmart = "N",
-                SellOnWayfair = "Y"
+                SellOnAmazonSellerCentral = "N"
             };
 
             #endregion // Assemble
@@ -446,7 +433,54 @@ namespace Odin.Data.Tests
             #region Act
             using (OdinContext context = OdinContextFactory.CreateContext())
             {
-                itemRepository.InsertCustomerProductAttributesAll(item, context);
+                itemRepository.InsertCustomerProductAttributes("TEST1", "9", "N", context);
+                context.SaveChanges();
+            }
+            #endregion // Act
+
+            #region Assert
+
+            bool exists = false;
+            using (OdinContext context = OdinContextFactory.CreateContext())
+            {
+                if (context.CustomerProductAttributes.Any(o => o.ProductId == "TEST1" && o.CustId == "9" && o.Setid == "SHARE"))
+                {
+                    exists = true;
+                }
+                Assert.IsFalse(exists);
+            }
+
+            #endregion // Assert
+        }
+
+
+        /// <summary>
+        ///     Tests InsertCustomerProductAttributes is properly inserting info into PS_CUSTOMER_PRODUCT_ATTRIBUTES
+        /// </summary>
+        [TestMethod]
+        public void ItemRepositoryTests_InsertCustomerProductAttributes_ItemInfoShouldSave()
+        {
+            #region Assemble
+
+            DbHelpers.ClearDatabase();
+            ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
+            ConnectionManager connectionManager = new ConnectionManager(@"(local)\SQLExpress", "Odin");
+            connectionManager.SetUseTrustedConnection(true);
+            LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
+            OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
+            GlobalData.CustomerIdConversions.Add("AMAZON SELLER CENTRAL", "9");
+
+            ItemObject item = new ItemObject {
+                ItemId = "TEST1",
+                SellOnAmazonSellerCentral = "Y"
+            };
+
+            #endregion // Assemble
+
+            #region Act
+            using (OdinContext context = OdinContextFactory.CreateContext())
+            {
+                itemRepository.InsertCustomerProductAttributes("TEST1", "9" ,"Y", context);
                 context.SaveChanges();
             }
             #endregion // Act
@@ -459,31 +493,11 @@ namespace Odin.Data.Tests
                 
                 Assert.AreEqual("SHARE", result[0].Setid);
                 Assert.AreEqual("TEST1", result[0].ProductId);
-                Assert.AreEqual("1", result[0].CustId);
                 Assert.AreEqual(0, result[0].InnerpackQty);
                 Assert.AreEqual(0, result[0].CasepackQty);
                 Assert.AreEqual("Y", result[0].SendInventory);
-
-                Assert.AreEqual("2", result[1].CustId);
-                Assert.AreEqual("N", result[1].SendInventory);
-
-                Assert.AreEqual("3", result[2].CustId);
-                Assert.AreEqual("Y", result[2].SendInventory);
-
-                Assert.AreEqual("4", result[3].CustId);
-                Assert.AreEqual("N", result[3].SendInventory);
-
-                Assert.AreEqual("5", result[4].CustId);
-                Assert.AreEqual("Y", result[4].SendInventory);
-
-                Assert.AreEqual("6", result[5].CustId);
-                Assert.AreEqual("N", result[5].SendInventory);
-
-                Assert.AreEqual("7", result[6].CustId);
-                Assert.AreEqual("Y", result[6].SendInventory);
-
-                Assert.AreEqual("8", result[7].CustId);
-                Assert.AreEqual("Y", result[7].SendInventory);
+                Assert.AreEqual("9", result[0].CustId);
+                Assert.AreEqual("Y", result[0].SendInventory);
             }
 
             #endregion // Assert
@@ -585,10 +599,11 @@ namespace Odin.Data.Tests
                 Ecommerce_ProductSubcategory = "ProductSubcategory",
                 Ecommerce_ManufacturerName = "ManufacturerName",
                 Ecommerce_Msrp = "9.99",
-                Ecommerce_SearchTerms = "SearchTerms",
+                Ecommerce_GenericKeywords = "Ecommerce_GenericKeywords",
                 Ecommerce_Size = "Size",
                 Ecommerce_Upc = "UpcOverride",
             };
+            item.ResetUpdate();
             #endregion // Assemble
 
             #region Act
@@ -638,7 +653,7 @@ namespace Odin.Data.Tests
                 Assert.AreEqual("ProductSubcategory", amazonItemAttributes.ProductSubcategory);
                 Assert.AreEqual("ManufacturerName", amazonItemAttributes.ManufacturerName);
                 Assert.AreEqual(9.99m, amazonItemAttributes.Msrp);
-                Assert.AreEqual("searchterms", amazonItemAttributes.SearchTerms);
+                Assert.AreEqual("ecommerce_generickeywords", amazonItemAttributes.GenericKeywords);
                 Assert.AreEqual("Size", amazonItemAttributes.Size);
                 Assert.AreEqual("UpcOverride", amazonItemAttributes.UpcOverride);
             }
@@ -1055,6 +1070,7 @@ namespace Odin.Data.Tests
 
             GlobalData.CustomerIdConversions.Add("ALL POSTERS", "1");
             GlobalData.CustomerIdConversions.Add("AMAZON", "2");
+            GlobalData.CustomerIdConversions.Add("AMAZON SELLER CENTRAL", "10");
             GlobalData.CustomerIdConversions.Add("FANATICS", "3");
             GlobalData.CustomerIdConversions.Add("HAYNEEDLE", "4");
             GlobalData.CustomerIdConversions.Add("TARGET", "5");
@@ -1080,6 +1096,7 @@ namespace Odin.Data.Tests
                 AltImageFile4 = "\\\\isiloncifs\\Store 2\\•CAPTURES\\Poster Captures\\3000\\3400\\3403_BRETT FAVRE.TIFF",
                 SellOnAllPosters = "Y",
                 SellOnAmazon = "Y",
+                SellOnAmazonSellerCentral = "Y",
                 SellOnFanatics = "N",
                 SellOnGuitarCenter = "N",
                 SellOnHayneedle = "N",
@@ -1118,7 +1135,8 @@ namespace Odin.Data.Tests
                 Ecommerce_ProductSubcategory = "ProductSubcategory",
                 Ecommerce_ManufacturerName = "ManufacturerName",
                 Ecommerce_Msrp = "1.99",
-                Ecommerce_SearchTerms = "SearchTerms",
+                Ecommerce_GenericKeywords = "Ecommerce_GenericKeywords",
+                Ecommerce_SubjectKeywords = "Ecommerce_SubjectKeywords",
                 Ecommerce_Size = "Size",
                 Ecommerce_Upc = "UPC",
                 AccountingGroup = "ACCOUNTING",
@@ -1204,14 +1222,16 @@ namespace Odin.Data.Tests
             #endregion // Act
 
             #region Assert
-
+            
             Assert.AreEqual("Y", newItem.SellOnAllPosters);
             Assert.AreEqual("Y", newItem.SellOnAmazon);
-            Assert.AreEqual("N", newItem.SellOnFanatics);
-            Assert.AreEqual("N", newItem.SellOnGuitarCenter);
-            Assert.AreEqual("N", newItem.SellOnHayneedle);
-            Assert.AreEqual("N", newItem.SellOnWalmart);
-            Assert.AreEqual("N", newItem.SellOnWayfair);
+            Assert.AreEqual("Y", newItem.SellOnAmazonSellerCentral);
+            Assert.AreEqual("", newItem.SellOnFanatics);
+            Assert.AreEqual("", newItem.SellOnGuitarCenter);
+            Assert.AreEqual("", newItem.SellOnHayneedle);
+            Assert.AreEqual("", newItem.SellOnTarget);
+            Assert.AreEqual("", newItem.SellOnWalmart);
+            Assert.AreEqual("", newItem.SellOnWayfair);
             Assert.AreEqual("N", newItem.SellOnTrends);
             Assert.AreEqual("ASIN", newItem.Ecommerce_Asin);
             Assert.AreEqual("Bullet1", newItem.Ecommerce_Bullet1);
@@ -1223,7 +1243,7 @@ namespace Odin.Data.Tests
             Assert.AreEqual("5.99", newItem.Ecommerce_Cost);
             Assert.AreEqual("000000000000", newItem.Ecommerce_ExternalId);
             Assert.AreEqual("UPC", newItem.Ecommerce_ExternalIdType);
-            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/I/m/ImagePath.jpg", newItem.Ecommerce_ImagePath1);
+            Assert.AreEqual("ImagePath", newItem.Ecommerce_ImagePath1);
             Assert.AreEqual("http://trendsinternational.com/media/catalog/product/I/m/ImagePath2.jpg", newItem.Ecommerce_ImagePath2);
             Assert.AreEqual("http://trendsinternational.com/media/catalog/product/I/m/ImagePath3.jpg", newItem.Ecommerce_ImagePath3);
             Assert.AreEqual("http://trendsinternational.com/media/catalog/product/I/m/ImagePath4.jpg", newItem.Ecommerce_ImagePath4);
@@ -1244,7 +1264,8 @@ namespace Odin.Data.Tests
             Assert.AreEqual("ProductSubcategory", newItem.Ecommerce_ProductSubcategory);
             Assert.AreEqual("ManufacturerName", newItem.Ecommerce_ManufacturerName);
             Assert.AreEqual("1.99", newItem.Ecommerce_Msrp);
-            Assert.AreEqual("searchterms", newItem.Ecommerce_SearchTerms);
+            Assert.AreEqual("ecommerce_generickeywords", newItem.Ecommerce_GenericKeywords);
+            Assert.AreEqual("ecommerce_subjectkeywords", newItem.Ecommerce_SubjectKeywords);
             Assert.AreEqual("Size", newItem.Ecommerce_Size);
             Assert.AreEqual("UPC", newItem.Ecommerce_Upc);
             Assert.AreEqual("ACCOUNTING", newItem.AccountingGroup);
@@ -1528,7 +1549,7 @@ namespace Odin.Data.Tests
                 Ecommerce_ProductCategory = "Ecommerce_ProductCategory",
                 Ecommerce_ProductDescription = "Ecommerce_ProductDescription",
                 Ecommerce_ProductSubcategory = "Ecommerce_ProductSubcategory",
-                Ecommerce_SearchTerms = "Ecommerce_SearchTerms",
+                Ecommerce_GenericKeywords = "Ecommerce_GenericKeywords",
                 Ecommerce_Size = "Ecommerce_Size",
                 Ecommerce_Upc = "EUpc",
                 AccountingGroup = "AGroup",
@@ -1614,6 +1635,7 @@ namespace Odin.Data.Tests
                 Weight = "Weight",
                 Width = "Width"
             };
+            item.ResetUpdate();
 
             #endregion // Assemble
 
@@ -1743,7 +1765,7 @@ namespace Odin.Data.Tests
                 Assert.AreEqual("Ecommerce_ProductSubcategory", itemUpdateRecord.AProductSubcategory);  //item.Ecommerce_ProductSubcategory
                 Assert.AreEqual("Ecommerce_ManufacturerName", itemUpdateRecord.AManufacturerName);  //item.Ecommerce_ManufacturerName
                 Assert.AreEqual("msrp", itemUpdateRecord.AMsrp);  //item.Ecommerce_Msrp
-                Assert.AreEqual("Ecommerce_SearchTerms", itemUpdateRecord.ASearchTerms);  //item.Ecommerce_SearchTerms
+                Assert.AreEqual("Ecommerce_GenericKeywords", itemUpdateRecord.AGenericKeywords);  //item.Ecommerce_GenericKeywords
                 Assert.AreEqual("Ecommerce_Size", itemUpdateRecord.ASize);  //item.Ecommerce_Size
                 Assert.AreEqual("EUpc", itemUpdateRecord.AUpc);  //item.Ecommerce_Upc
             }
@@ -2914,6 +2936,7 @@ namespace Odin.Data.Tests
             GlobalData.CustomerIdConversions.Add("WALMART", "6");
             GlobalData.CustomerIdConversions.Add("WAYFAIR", "7");
             GlobalData.CustomerIdConversions.Add("GUITAR CENTER", "9");
+            GlobalData.CustomerIdConversions.Add("AMAZON SELLER CENTRAL", "10");
 
             ItemObject item = new ItemObject() {
                 ItemId = "TEST1",
@@ -3037,10 +3060,12 @@ namespace Odin.Data.Tests
                 Ecommerce_ProductSubcategory = "PRODSUB",
                 Ecommerce_ManufacturerName = "MNAME",
                 Ecommerce_Msrp = "19.99",
-                Ecommerce_SearchTerms = "STERMS",
+                Ecommerce_GenericKeywords = "STERMS",
+                Ecommerce_SubjectKeywords = "SKEYS",
                 Ecommerce_Size = "SLIZ",
                 Ecommerce_Upc = "UOVER"
             };
+            item.ResetUpdate();
 
             #endregion // Assemble
 
@@ -3084,7 +3109,8 @@ namespace Odin.Data.Tests
             item.Ecommerce_ProductSubcategory = "ProductSubcategory";
             item.Ecommerce_ManufacturerName = "ManufacturerName";
             item.Ecommerce_Msrp = "9.99";
-            item.Ecommerce_SearchTerms = "SearchTerms";
+            item.Ecommerce_GenericKeywords = "ecommerce_generickeywords";
+            item.Ecommerce_SubjectKeywords = "ecommerce_subjectkeywords";
             item.Ecommerce_Size = "Size";
             item.Ecommerce_Upc = "UpcOverride";
             using (OdinContext context = OdinContextFactory.CreateContext())
@@ -3135,7 +3161,7 @@ namespace Odin.Data.Tests
                 Assert.AreEqual("ProductSubcategory", amazonItemAttributes.ProductSubcategory);
                 Assert.AreEqual("ManufacturerName", amazonItemAttributes.ManufacturerName);
                 Assert.AreEqual(9.99m, amazonItemAttributes.Msrp);
-                Assert.AreEqual("searchterms", amazonItemAttributes.SearchTerms);
+                Assert.AreEqual("ecommerce_generickeywords", amazonItemAttributes.GenericKeywords);
                 Assert.AreEqual("Size", amazonItemAttributes.Size);
                 Assert.AreEqual("UpcOverride", amazonItemAttributes.UpcOverride);
             }

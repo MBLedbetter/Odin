@@ -10,6 +10,7 @@ INSERT INTO ODIN_NOTIFICATIONS VALUES (6, '2018-08-08 00:00:00.000', 'Product Id
 INSERT INTO ODIN_NOTIFICATIONS VALUES (7, '2018-08-21 00:00:00.000', 'Sell On Guitar Center field has been added.')
 INSERT INTO ODIN_NOTIFICATIONS VALUES (8, '2018-08-28 00:00:00.000', 'Bill of Material values can no longer be updated once they have been inserted into the system. Orders in progress will error if this field is adjusted.')
 INSERT INTO ODIN_NOTIFICATIONS VALUES (9, '2018-09-07 00:00:00.000', 'Sell On Amazon Seller Central has been added.')
+INSERT INTO ODIN_NOTIFICATIONS VALUES (10, '2018-09-18 00:00:00.000', 'Ecommerce Subject Keywords field has been added.')
 */
 SET ANSI_NULLS ON
 GO

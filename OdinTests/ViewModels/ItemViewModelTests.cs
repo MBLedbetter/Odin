@@ -35,104 +35,106 @@ namespace OdinTests.ViewModels
             GlobalData.TariffCodes.Add("1234");
             GlobalData.Territories.Add("USA");
 
-            
-            ItemObject item = new ItemObject();
 
-            item.Status = "Add";
-            item.AccountingGroup = "DOODLE";
-            item.CasepackHeight = "8";
-            item.CasepackLength = "8";
-            item.CasepackQty = "9";
-            item.CasepackUpc = "12345678";
-            item.CasepackWidth = "8";
-            item.CasepackWeight = "8";
-            item.Category = "CALENDAR";
-            item.Color = "RED";
-            item.Copyright = "Copyright Stuff";
-            item.CostProfileGroup = "ACTUAL_FIFO";
-            item.CountryOfOrigin = "USA";
-            item.DefaultActualCostCad = "2.00";
-            item.DefaultActualCostUsd = "2.99";
-            item.Description = "description";
-            item.DirectImport = "directImport";
-            item.Ean = "ean";
-            item.Duty = "duty";
-            item.Gpc = "gpc";
-            item.Height = "1";
-            item.InnerpackHeight = "5";
-            item.InnerpackLength = "5";
-            item.InnerpackQuantity = "7";
-            item.InnerpackUpc = "12345678";
-            item.InnerpackWidth = "5";
-            item.InnerpackWeight = "5";
-            item.InStockDate = "5/17/2000";
-            item.Isbn = "isbn";
-            item.ItemCategory = "POSTER";
-            item.ItemFamily = "FLAT";
-            item.ItemGroup = "BOX";
-            item.ItemId = "RPTEST";
-            item.ItemKeywords = "itemKeywords";
-            item.Language = "ENG";
-            item.Length = "5";
-            item.License = "Disney";
-            item.LicenseBeginDate = "12/13/2016";
-            item.ListPriceCad = "4.99";
-            item.ListPriceUsd = "2.99";
-            item.ListPriceMxn = "1.99";
-            item.MetaDescription = "metaDescription";
-            item.MfgSource = "2";
-            item.Msrp = "5.99";
-            item.MsrpCad = "6.99";
-            item.ProductGroup = "Posters";
-            item.ProductLine = "Posters";
-            item.ProductFormat = "Door";
-            item.PricingGroup = "GROUP1";
-            item.ShortDescription = "A Short Description";
-            item.StandardCost = "2.99";
-            item.StatsCode = "MARCA3";
-            item.TariffCode = "1234";
-            item.Territory = "USA";
-            item.Title = "title";
-            item.Udex = "udex";
-            item.Upc = "000999888777";
-            item.WebsitePrice = "4.50";
-            item.Weight = "4";
-            item.Width = "2";
+            ItemObject item = new ItemObject()
+            {
 
-            item.Ecommerce_Asin = "asin";
-            item.Ecommerce_Bullet1 = "bullet 1111";
-            item.Ecommerce_Bullet2 = "bullet 2222";
-            item.Ecommerce_Bullet3 = "bullet 3333";
-            item.Ecommerce_Bullet4 = "bullet 4444";
-            item.Ecommerce_Bullet5 = "";
-            item.Ecommerce_Components = "components^";
-            item.Ecommerce_Cost = "2.00";
-            item.Ecommerce_ExternalId = "12345678";
-            item.Ecommerce_ExternalIdType = "UPC";
-            item.Ecommerce_ImagePath1 = "12345";
-            item.Ecommerce_ImagePath2 = "";
-            item.Ecommerce_ImagePath3 = "12345";
-            item.Ecommerce_ImagePath4 = "";
-            item.Ecommerce_ImagePath5 = "12345";
-            item.Ecommerce_ItemHeight = "3";
-            item.Ecommerce_ItemLength = "4";
-            item.Ecommerce_ItemName = "Name";
-            item.Ecommerce_ItemWeight = "4";
-            item.Ecommerce_ItemWidth = "5";
-            item.Ecommerce_ModelName = "Model Name";
-            item.Ecommerce_PackageHeight = "2.12";
-            item.Ecommerce_PackageLength = "2";
-            item.Ecommerce_PackageWeight = "33.7";
-            item.Ecommerce_PackageWidth = "24.4";
-            item.Ecommerce_PageQty = "24";
-            item.Ecommerce_ProductCategory = "pCats";
-            item.Ecommerce_ProductDescription = "pDesc this gets a lot of extra words now that the description has to have at least 100 characters in it. Why stop at 100? Why not 1,000,000,000?";
-            item.Ecommerce_ProductSubcategory = "subby";
-            item.Ecommerce_ManufacturerName = "mrName";
-            item.Ecommerce_Msrp = "12.33";
-            item.Ecommerce_SearchTerms = "search search searcharina";
-            item.Ecommerce_Size = "22'' x 22''";
-            item.Ecommerce_Upc = "123456789129";
+                Status = "Add",
+                AccountingGroup = "DOODLE",
+                CasepackHeight = "8",
+                CasepackLength = "8",
+                CasepackQty = "9",
+                CasepackUpc = "12345678",
+                CasepackWidth = "8",
+                CasepackWeight = "8",
+                Category = "CALENDAR",
+                Color = "RED",
+                Copyright = "Copyright Stuff",
+                CostProfileGroup = "ACTUAL_FIFO",
+                CountryOfOrigin = "USA",
+                DefaultActualCostCad = "2.00",
+                DefaultActualCostUsd = "2.99",
+                Description = "description",
+                DirectImport = "directImport",
+                Ean = "ean",
+                Duty = "duty",
+                Gpc = "gpc",
+                Height = "1",
+                InnerpackHeight = "5",
+                InnerpackLength = "5",
+                InnerpackQuantity = "7",
+                InnerpackUpc = "12345678",
+                InnerpackWidth = "5",
+                InnerpackWeight = "5",
+                InStockDate = "5/17/2000",
+                Isbn = "isbn",
+                ItemCategory = "POSTER",
+                ItemFamily = "FLAT",
+                ItemGroup = "BOX",
+                ItemId = "RPTEST",
+                ItemKeywords = "itemKeywords",
+                Language = "ENG",
+                Length = "5",
+                License = "Disney",
+                LicenseBeginDate = "12/13/2016",
+                ListPriceCad = "4.99",
+                ListPriceUsd = "2.99",
+                ListPriceMxn = "1.99",
+                MetaDescription = "metaDescription",
+                MfgSource = "2",
+                Msrp = "5.99",
+                MsrpCad = "6.99",
+                ProductGroup = "Posters",
+                ProductLine = "Posters",
+                ProductFormat = "Door",
+                PricingGroup = "GROUP1",
+                ShortDescription = "A Short Description",
+                StandardCost = "2.99",
+                StatsCode = "MARCA3",
+                TariffCode = "1234",
+                Territory = "USA",
+                Title = "title",
+                Udex = "udex",
+                Upc = "000999888777",
+                WebsitePrice = "4.50",
+                Weight = "4",
+                Width = "2",
+
+                Ecommerce_Asin = "asin",
+                Ecommerce_Bullet1 = "bullet 1111",
+                Ecommerce_Bullet2 = "bullet 2222",
+                Ecommerce_Bullet3 = "bullet 3333",
+                Ecommerce_Bullet4 = "bullet 4444",
+                Ecommerce_Bullet5 = "",
+                Ecommerce_Components = "components^",
+                Ecommerce_Cost = "2.00",
+                Ecommerce_ExternalId = "12345678",
+                Ecommerce_ExternalIdType = "UPC",
+                Ecommerce_ImagePath1 = "12345",
+                Ecommerce_ImagePath2 = "",
+                Ecommerce_ImagePath3 = "12345",
+                Ecommerce_ImagePath4 = "",
+                Ecommerce_ImagePath5 = "12345",
+                Ecommerce_ItemHeight = "3",
+                Ecommerce_ItemLength = "4",
+                Ecommerce_ItemName = "Name",
+                Ecommerce_ItemWeight = "4",
+                Ecommerce_ItemWidth = "5",
+                Ecommerce_ModelName = "Model Name",
+                Ecommerce_PackageHeight = "2.12",
+                Ecommerce_PackageLength = "2",
+                Ecommerce_PackageWeight = "33.7",
+                Ecommerce_PackageWidth = "24.4",
+                Ecommerce_PageQty = "24",
+                Ecommerce_ProductCategory = "pCats",
+                Ecommerce_ProductDescription = "pDesc this gets a lot of extra words now that the description has to have at least 100 characters in it. Why stop at 100? Why not 1,000,000,000?",
+                Ecommerce_ProductSubcategory = "subby",
+                Ecommerce_ManufacturerName = "mrName",
+                Ecommerce_Msrp = "12.33",
+                Ecommerce_GenericKeywords = "search search searcharina",
+                Ecommerce_Size = "22'' x 22''",
+                Ecommerce_Upc = "123456789129"
+            };
 
             #endregion // Setup
 
@@ -232,7 +234,7 @@ namespace OdinTests.ViewModels
             Assert.AreEqual("", itemViewModel.Ecommerce_ProductSubcategoryError);
             Assert.AreEqual("", itemViewModel.Ecommerce_ManufacturerNameError);
             Assert.AreEqual("", itemViewModel.Ecommerce_MsrpError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_SearchTermsError);
+            Assert.AreEqual("", itemViewModel.Ecommerce_GenericKeywordsError);
             Assert.AreEqual("", itemViewModel.Ecommerce_SizeError);
             Assert.AreEqual("", itemViewModel.Ecommerce_UpcError);
 
@@ -248,40 +250,42 @@ namespace OdinTests.ViewModels
 
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
-            ItemObject item = new ItemObject();
-            item.SellOnAmazon = "Y";
-            item.Ecommerce_Asin = "";
-            item.Ecommerce_Bullet1 = "";
-            item.Ecommerce_Bullet2 = "";
-            item.Ecommerce_Bullet3 = "";
-            item.Ecommerce_Bullet4 = "";
-            item.Ecommerce_Bullet5 = "";
-            item.Ecommerce_Components = "";
-            item.Ecommerce_Cost = "";
-            item.Ecommerce_ExternalId = "";
-            item.Ecommerce_ExternalIdType = "";
-            item.Ecommerce_ImagePath1 = "";
-            item.Ecommerce_ImagePath2 = "";
-            item.Ecommerce_ImagePath3 = "";
-            item.Ecommerce_ImagePath4 = "";
-            item.Ecommerce_ImagePath5 = "";
-            item.Ecommerce_ItemHeight = "";
-            item.Ecommerce_ItemLength = "";
-            item.Ecommerce_ItemName = "";
-            item.Ecommerce_ItemWeight = "";
-            item.Ecommerce_ItemWidth = "";
-            item.Ecommerce_ModelName = "";
-            item.Ecommerce_PackageHeight = "";
-            item.Ecommerce_PackageLength = "";
-            item.Ecommerce_PackageWeight = "";
-            item.Ecommerce_PackageWidth = "";
-            item.Ecommerce_ProductCategory = "";
-            item.Ecommerce_ProductDescription = "";
-            item.Ecommerce_ProductSubcategory = "";
-            item.Ecommerce_ManufacturerName = "";
-            item.Ecommerce_Msrp = "";
-            item.Ecommerce_SearchTerms = "";
-            item.Ecommerce_Size = "";
+            ItemObject item = new ItemObject()
+            {
+                SellOnAmazon = "Y",
+                Ecommerce_Asin = "",
+                Ecommerce_Bullet1 = "",
+                Ecommerce_Bullet2 = "",
+                Ecommerce_Bullet3 = "",
+                Ecommerce_Bullet4 = "",
+                Ecommerce_Bullet5 = "",
+                Ecommerce_Components = "",
+                Ecommerce_Cost = "",
+                Ecommerce_ExternalId = "",
+                Ecommerce_ExternalIdType = "",
+                Ecommerce_ImagePath1 = "",
+                Ecommerce_ImagePath2 = "",
+                Ecommerce_ImagePath3 = "",
+                Ecommerce_ImagePath4 = "",
+                Ecommerce_ImagePath5 = "",
+                Ecommerce_ItemHeight = "",
+                Ecommerce_ItemLength = "",
+                Ecommerce_ItemName = "",
+                Ecommerce_ItemWeight = "",
+                Ecommerce_ItemWidth = "",
+                Ecommerce_ModelName = "",
+                Ecommerce_PackageHeight = "",
+                Ecommerce_PackageLength = "",
+                Ecommerce_PackageWeight = "",
+                Ecommerce_PackageWidth = "",
+                Ecommerce_ProductCategory = "",
+                Ecommerce_ProductDescription = "",
+                Ecommerce_ProductSubcategory = "",
+                Ecommerce_ManufacturerName = "",
+                Ecommerce_Msrp = "",
+                Ecommerce_GenericKeywords = "",
+                Ecommerce_Size = ""
+            };
 
             #endregion // Setup
 
@@ -318,7 +322,7 @@ namespace OdinTests.ViewModels
             Assert.AreNotEqual("", itemViewModel.Ecommerce_ProductSubcategoryError);
             Assert.AreNotEqual("", itemViewModel.Ecommerce_ManufacturerNameError);
             Assert.AreNotEqual("", itemViewModel.Ecommerce_MsrpError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_SearchTermsError);
+            Assert.AreNotEqual("", itemViewModel.Ecommerce_GenericKeywordsError);
             Assert.AreNotEqual("", itemViewModel.Ecommerce_SizeError);
 
             #endregion // Assert
@@ -386,16 +390,20 @@ namespace OdinTests.ViewModels
             GlobalData.ClearValues();
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
-            ItemObject item1 = new ItemObject();
-            item1.Ecommerce_Bullet1 = "Bullet1";
+            ItemObject item1 = new ItemObject()
+            {
+                Ecommerce_Bullet1 = "Bullet1"
+            };
 
 
             #endregion // Setup
 
             #region Act
 
-            ItemViewModel itemViewModel1 = new ItemViewModel(item1, itemService, new List<string>());
-            itemViewModel1.SellOnAmazon = "Y";
+            ItemViewModel itemViewModel1 = new ItemViewModel(item1, itemService, new List<string>())
+            {
+                SellOnAmazon = "Y"
+            };
 
             #endregion // Act
 
@@ -411,9 +419,10 @@ namespace OdinTests.ViewModels
             #region Assign
 
             GlobalData.ClearValues();
-            ItemObject item = new ItemObject();
-            item.Ecommerce_Bullet1 = "Rickity Recked";
-            item.SellOnFanatics = "Y";
+            ItemObject item = new ItemObject() {
+                Ecommerce_Bullet1 = "Rickity Recked",
+                SellOnFanatics = "Y"
+            };
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
             ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>());
             #endregion // Assign
@@ -441,8 +450,10 @@ namespace OdinTests.ViewModels
             #region Assign
 
             GlobalData.ClearValues();
-            ItemObject item = new ItemObject();
-            item.ShortDescription = "OoOoOo BoYeE";
+            ItemObject item = new ItemObject()
+            {
+                ShortDescription = "OoOoOo BoYeE"
+            };
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
             ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>());
             #endregion // Assign
@@ -467,10 +478,11 @@ namespace OdinTests.ViewModels
         public void CheckHasEcommerceUpdate_ItemHasNoAmazon_ShouldReturnFalse()
         {
             #region Assign
-            
-            ItemObject item = new ItemObject();
-            item.SellOnAmazon = "Y";
-            item.Ecommerce_Bullet1 = "My Porcelin Horse!";
+
+            ItemObject item = new ItemObject() {
+                SellOnAmazon = "Y",
+                Ecommerce_Bullet1 = "My Porcelin Horse!"
+            };
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
             ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>());
             #endregion // Assign
@@ -524,19 +536,26 @@ namespace OdinTests.ViewModels
             #region Assign
 
             GlobalData.ClearValues();
-            ItemObject item = new ItemObject();
-            item.SellOnTrends = "Y";
-            item.ItemKeywords = "";
+            ItemObject item = new ItemObject()
+            {
+                SellOnTrends = "Y",
+                ItemKeywords = ""
+            };
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
             ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>());
-            item.SellOnTrends = "N";
-            item.ItemKeywords = "";
+            item = new ItemObject()
+            {
+                SellOnTrends = "N",
+                ItemKeywords = ""
+            };
             ItemService itemService2 = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
             ItemViewModel itemViewModel2 = new ItemViewModel(item, itemService, new List<string>());
             #endregion // Assign
 
             #region Act
+
             itemViewModel.ShortDescription = "";
+
             #endregion // Act
 
             #region Assert
@@ -553,8 +572,10 @@ namespace OdinTests.ViewModels
             #region Assign
 
             GlobalData.ClearValues();
-            ItemObject item = new ItemObject();
-            item.SellOnTrends = "Y";
+            ItemObject item = new ItemObject()
+            {
+                SellOnTrends = "Y"
+            };
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
             ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>());
             #endregion // Assign
@@ -679,7 +700,7 @@ namespace OdinTests.ViewModels
             item.Ecommerce_ProductSubcategory = "Ecommerce_ProductSubcategory";
             item.Ecommerce_ManufacturerName = "Ecommerce_ManufacturerName";
             item.Ecommerce_Msrp = "Ecommerce_Msrp";
-            item.Ecommerce_SearchTerms = "Ecommerce_SearchTerms";
+            item.Ecommerce_GenericKeywords = "Ecommerce_GenericKeywords";
             item.Ecommerce_Size = "Ecommerce_Size";
 
             #endregion // Assign
@@ -789,7 +810,7 @@ namespace OdinTests.ViewModels
             Assert.AreEqual(itemViewModel.Ecommerce_ProductSubcategory, "Ecommerce_ProductSubcategory");
             Assert.AreEqual(itemViewModel.Ecommerce_ManufacturerName, "Ecommerce_ManufacturerName");
             Assert.AreEqual(itemViewModel.Ecommerce_Msrp, "Ecommerce_Msrp");
-            Assert.AreEqual(itemViewModel.Ecommerce_SearchTerms, "Ecommerce_SearchTerms");
+            Assert.AreEqual(itemViewModel.Ecommerce_GenericKeywords, "Ecommerce_GenericKeywords");
             Assert.AreEqual(itemViewModel.Ecommerce_Size, "Ecommerce_Size");
 
             #endregion // Assert
@@ -955,18 +976,18 @@ namespace OdinTests.ViewModels
         public void ItemViewModel_PassThroughValues_ValuesShouldBeEqual()
         {
             #region Assemble
-            
-            List<ChildElement> billOfMaterials = new List<ChildElement>();
-            billOfMaterials.Add(new ChildElement("ST1111", "ST9999", 1));
-            billOfMaterials.Add(new ChildElement("ST2222", "ST9999", 2));
+
+            List<ChildElement> billOfMaterials = new List<ChildElement>() {
+            new ChildElement("ST1111", "ST9999", 1),
+            new ChildElement("ST2222", "ST9999", 2)
+                };
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            List<ChildElement> PID = new List<ChildElement>();
-            ChildElement PID1 = new ChildElement("ST1111", "ST9999", 5);
-            ChildElement PID2 = new ChildElement("ST2222", "ST9999", 1);
-            PID.Add(PID1);
-            PID.Add(PID2);
-            List<string> itemIds = new List<string>();
-            itemIds.Add("");
+            List<ChildElement> PID = new List<ChildElement>() {
+            new ChildElement("ST1111", "ST9999", 5),
+            new ChildElement("ST2222", "ST9999", 1)
+            };
+            List<string> itemIds = new List<string>() {
+                "" };
             ItemObject item = new ItemObject(
                 "Add",
                 "", 
@@ -1133,7 +1154,7 @@ namespace OdinTests.ViewModels
             Assert.AreEqual(item.Ecommerce_ProductSubcategory, newItem.Ecommerce_ProductSubcategory);
             Assert.AreEqual(item.Ecommerce_ManufacturerName, newItem.Ecommerce_ManufacturerName);
             Assert.AreEqual(item.Ecommerce_Msrp, newItem.Ecommerce_Msrp);
-            Assert.AreEqual(item.Ecommerce_SearchTerms, newItem.Ecommerce_SearchTerms);
+            Assert.AreEqual(item.Ecommerce_GenericKeywords, newItem.Ecommerce_GenericKeywords);
             Assert.AreEqual(item.Ecommerce_Size, newItem.Ecommerce_Size);
             Assert.AreEqual(item.AccountingGroup, newItem.AccountingGroup);
             Assert.AreEqual(item.ReturnBillOfMaterials(), newItem.ReturnBillOfMaterials());

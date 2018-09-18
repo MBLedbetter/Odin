@@ -307,11 +307,11 @@ namespace Odin.Services.Tests
             Assert.AreEqual("ACostA", completeItem.Ecommerce_Cost);
             Assert.AreEqual("AExternalIdA", completeItem.Ecommerce_ExternalId);
             Assert.AreEqual("AExternalIdTypeA", completeItem.Ecommerce_ExternalIdType);
-            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/I/m/ImagePathA.jpg", completeItem.Ecommerce_ImagePath1);
-            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/A/l/AltImageFile1A.jpg", completeItem.Ecommerce_ImagePath2);
-            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/A/l/AltImageFile2A.jpg", completeItem.Ecommerce_ImagePath3);
-            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/A/l/AltImageFile3A.jpg", completeItem.Ecommerce_ImagePath4);
-            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/A/l/AltImageFile4A.jpg", completeItem.Ecommerce_ImagePath5);
+            Assert.AreEqual("ImagePathA", completeItem.Ecommerce_ImagePath1);
+            Assert.AreEqual("AltImageFile1A", completeItem.Ecommerce_ImagePath2);
+            Assert.AreEqual("AltImageFile2A", completeItem.Ecommerce_ImagePath3);
+            Assert.AreEqual("AltImageFile3A", completeItem.Ecommerce_ImagePath4);
+            Assert.AreEqual("AltImageFile4A", completeItem.Ecommerce_ImagePath5);
             Assert.AreEqual("AItemHeightA", completeItem.Ecommerce_ItemHeight);
             Assert.AreEqual("AItemLengthA", completeItem.Ecommerce_ItemLength);
             Assert.AreEqual("AItemNameA", completeItem.Ecommerce_ItemName);
@@ -328,7 +328,7 @@ namespace Odin.Services.Tests
             Assert.AreEqual("AProductSubcategoryA", completeItem.Ecommerce_ProductSubcategory);
             Assert.AreEqual("AManufacturerNameA", completeItem.Ecommerce_ManufacturerName);
             Assert.AreEqual("AMsrpA", completeItem.Ecommerce_Msrp);
-            Assert.AreEqual("ASearchTermsA", completeItem.Ecommerce_SearchTerms);
+            Assert.AreEqual("ASearchTermsA", completeItem.Ecommerce_GenericKeywords);
             Assert.AreEqual("ASizeA", completeItem.Ecommerce_Size);
             Assert.AreEqual("SellOnAmazonA", completeItem.SellOnAmazon);
             Assert.AreEqual("SellOnFanaticsA", completeItem.SellOnFanatics);
@@ -2021,7 +2021,7 @@ namespace Odin.Services.Tests
             Assert.AreEqual("Ecommerce Product Subcategory", item.Ecommerce_ProductSubcategory);
             Assert.AreEqual("Ecommerce Manufacturer Name", item.Ecommerce_ManufacturerName);
             Assert.AreEqual("Ecommerce Msrp.00", item.Ecommerce_Msrp);
-            Assert.AreEqual("Ecommerce Search Terms", item.Ecommerce_SearchTerms);
+            Assert.AreEqual("Ecommerce Search Terms", item.Ecommerce_GenericKeywords);
             Assert.AreEqual("Ecommerce Size", item.Ecommerce_Size);
             Assert.AreEqual("Ecommerce Upc", item.Ecommerce_Upc);
             Assert.AreEqual("Amazon Active", item.SellOnAmazon);
@@ -2112,7 +2112,7 @@ namespace Odin.Services.Tests
             Assert.IsFalse(item.Ecommerce_ProductSubcategoryUpdate);
             Assert.IsFalse(item.Ecommerce_ManufacturerNameUpdate);
             Assert.IsFalse(item.Ecommerce_MsrpUpdate);
-            Assert.IsFalse(item.Ecommerce_SearchTermsUpdate);
+            Assert.IsFalse(item.Ecommerce_GenericKeywordsUpdate);
             Assert.IsFalse(item.Ecommere_SizeUpdate);
             Assert.IsFalse(item.Ecommere_UpcUpdate);
 
@@ -3856,7 +3856,7 @@ namespace Odin.Services.Tests
             string Ecommerce_ProductSubcategoryBlank = "22" + itemService.ValidateEcommerce_ProductSubcategory("", Ecommerce_Required);
             string Ecommerce_ManufacturerNameBlank = "23" + itemService.ValidateEcommerce_ManufacturerName("", Ecommerce_Required);
             string Ecommerce_MsrpBlank = "24" + itemService.ValidateEcommerce_Msrp("", Ecommerce_Required);
-            string Ecommerce_SearchTermsBlank = "25" + itemService.ValidateEcommerce_SearchTerms("", Ecommerce_Required, "Add");
+            string Ecommerce_SearchTermsBlank = "25" + itemService.ValidateEcommerce_Keywords("", Ecommerce_Required, "Ecommerce Search Terms", "Add");
 
             #endregion // Act
 
@@ -3928,7 +3928,7 @@ namespace Odin.Services.Tests
             string Ecommerce_ProductSubcategoryBlank = "22" + itemService.ValidateEcommerce_ProductSubcategory("", Ecommerce_Required);
             string Ecommerce_ManufacturerNameBlank = "23" + itemService.ValidateEcommerce_ManufacturerName("", Ecommerce_Required);
             string Ecommerce_MsrpBlank = "24" + itemService.ValidateEcommerce_Msrp("", Ecommerce_Required);
-            string Ecommerce_SearchTermsBlank = "25" + itemService.ValidateEcommerce_SearchTerms("", Ecommerce_Required, "Update");
+            string Ecommerce_SearchTermsBlank = "25" + itemService.ValidateEcommerce_Keywords("", Ecommerce_Required, "Ecommerce Search Terms", "Update");
 
             #endregion // Act
 
@@ -3993,6 +3993,36 @@ namespace Odin.Services.Tests
             Assert.AreEqual(result2, "");
             Assert.AreEqual(result3, "");
             Assert.AreEqual(result4, "");
+
+            #endregion // Assert
+        }
+
+        /// <summary>
+        ///     Checks that required keyword field (generic) returns error when empty and marked for web. Non-required field (subject)
+        ///     does not return an error
+        /// </summary>
+        [TestMethod]
+        public void ValidateEcommerceKeywords_HasEmptyFields_ShouldReturnErrors()
+        {
+
+            #region Assemble
+
+            GlobalData.ClearValues();
+            ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+
+            #endregion // Assemble
+
+            #region Act
+
+            string result1 = itemService.ValidateEcommerce_Keywords("", true, "Ecommerce Generic Keywords", "Add");
+            string result2 = itemService.ValidateEcommerce_Keywords("", false, "Ecommerce Subject Keywords", "Add");
+
+            #endregion // Act
+
+            #region Assert
+
+            Assert.AreNotEqual("", result1);
+            Assert.AreEqual("", result2);
 
             #endregion // Assert
         }

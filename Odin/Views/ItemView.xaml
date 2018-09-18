@@ -2483,13 +2483,13 @@
                         Width="170" />
                     <!-- Search Terms -->
                     <Label
-                        Background="{Binding Ecommerce_SearchTermsBoxColor}"
+                        Background="{Binding Ecommerce_GenericKeywordsBoxColor}"
                         Content="Search Terms"
                         Grid.Column="6"
                         Grid.Row="3"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_SearchTermsToolTip}"
+                        ToolTip="{Binding Ecommerce_GenericKeywordsToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="120"
@@ -2498,7 +2498,28 @@
                         Grid.Row="3"
                         Grid.RowSpan="4"
                         Margin="6,6,0,6"
-                        Text="{Binding Ecommerce_SearchTerms}"
+                        Text="{Binding Ecommerce_GenericKeywords}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="170" />
+                    <!-- Subject Keywords -->
+                    <Label
+                        Background="{Binding Ecommerce_SubjectKeywordsBoxColor}"
+                        Content="Subject Keywords"
+                        Grid.Column="6"
+                        Grid.Row="7"
+                        HorizontalAlignment="Left" 
+                        Margin="0,5,0,4" 
+                        ToolTip="{Binding Ecommerce_SubjectKeywordsToolTip}"
+                        VerticalAlignment="Center" />
+                    <TextBox
+                        Height="120"
+                        HorizontalAlignment="Left"
+                        Grid.Column="7"
+                        Grid.Row="7"
+                        Grid.RowSpan="4"
+                        Margin="6,6,0,6"
+                        Text="{Binding Ecommerce_SubjectKeywords}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
@@ -2507,7 +2528,7 @@
                         Background="{Binding Ecommerce_SizeBoxColor}"
                         Content="Size"
                         Grid.Column="6"
-                        Grid.Row="7"
+                        Grid.Row="11"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
                         ToolTip="{Binding Ecommerce_SizeToolTip}"
@@ -2516,7 +2537,7 @@
                         Height="23"
                         HorizontalAlignment="Left"
                         Grid.Column="7"
-                        Grid.Row="7"
+                        Grid.Row="11"
                         Margin="6,6,0,6"
                         Text="{Binding Ecommerce_Size}"
                         TextWrapping="Wrap"
@@ -2527,7 +2548,7 @@
                         Background="{Binding Ecommerce_UpcBoxColor}"
                         Content="Upc"
                         Grid.Column="6"
-                        Grid.Row="8"
+                        Grid.Row="12"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
                         ToolTip="{Binding Ecommerce_UpcToolTip}"
@@ -2536,7 +2557,7 @@
                         Height="23"
                         HorizontalAlignment="Left"
                         Grid.Column="7"
-                        Grid.Row="8"
+                        Grid.Row="12"
                         Margin="6,6,0,6"
                         Text="{Binding Ecommerce_Upc}"
                         TextWrapping="Wrap"

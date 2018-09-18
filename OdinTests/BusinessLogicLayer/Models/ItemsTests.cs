@@ -55,7 +55,7 @@ namespace OdinTests.BusinessLogicLayer.Models
 
             #endregion // Assert
         }
-        
+
         [TestMethod]
         public void ItemUpdateTest_HasUpdates_ShouldReturnTrue()
         {
@@ -225,7 +225,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             ecommerce_ProductSubcategoryItem.Ecommerce_ProductSubcategory = "1";
             ecommerce_ManufacturerNameItem.Ecommerce_ManufacturerName = "1";
             ecommerce_MsrpItem.Ecommerce_Msrp = "1";
-            ecommerce_SearchTermsItem.Ecommerce_SearchTerms = "1";
+            ecommerce_SearchTermsItem.Ecommerce_GenericKeywords = "1";
             ecommerce_SizeItem.Ecommerce_Size = "1";
             accountingGroupItem.AccountingGroup = "1";
             casepackHeightItem.CasepackHeight = "1";
@@ -306,7 +306,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             #endregion // Act
 
             #region Assert
-            
+
             Assert.IsFalse(Item.CheckUpdates());
             Assert.IsFalse(Item.EcommerceValuesUpdate());
             Assert.IsFalse(Item.BuItemsInvUpdate());
@@ -444,14 +444,16 @@ namespace OdinTests.BusinessLogicLayer.Models
             Assert.IsTrue(widthItem.InvItemsUpdate());
             #endregion // Assert
         }
-  
+
         [TestMethod]
         public void ValidateActiveField_StatusOfUpdate_ShouldSucceed()
         {
             #region SetUp
 
-            ItemObject item = new ItemObject();
-            item.Status = "Update";
+            ItemObject item = new ItemObject()
+            {
+                Status = "Update"
+            };
             Boolean isItemActive = false;
 
             #endregion // Set Up
@@ -476,58 +478,61 @@ namespace OdinTests.BusinessLogicLayer.Models
         public void ValidateCheckForWeb_DoesNotHaveWeb_ShouldSucceed()
         {
             #region SetUp
-            
+
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
-            ItemObject item = new ItemObject();
-            item.AccountingGroup = "t";
-            item.CasepackHeight = "4";
-            item.CasepackLength = "4";
-            item.CasepackQty = "4";
-            item.CasepackWidth = "4";
-            item.CasepackWeight = "4";
-            item.Color = "RED";
-            item.CountryOfOrigin = "USA";
-            item.CostProfileGroup = "T";
-            item.DefaultActualCostCad = "3";
-            item.DefaultActualCostUsd = "2";
-            item.Description = "DDD";
-            item.DirectImport = "Y";
-            item.Ean = "Y";
-            item.Gpc = "Y";
-            item.Height = "3";
-            item.InnerpackHeight = "3";
-            item.InnerpackLength = "3";
-            item.InnerpackQuantity = "3";
-            item.InnerpackWidth = "3";
-            item.InnerpackWeight = "3";
-            item.Isbn = "YT";
-            item.ItemCategory = "R";
-            item.ItemFamily = "RE";
-            item.ItemGroup = "rER";
-            item.Language = "ENG";
-            item.LicenseBeginDate = "";
-            item.ListPriceUsd = "3";
-            item.ListPriceCad = "3";
-            item.ListPriceMxn = "3";
-            item.Length = "3";
-            item.MfgSource = "BB";
-            item.Msrp = "2";
-            item.MsrpCad = "2";
-            item.ProductFormat = "F";
-            item.ProductGroup = "G";
-            item.ProductLine = "L";
-            item.PricingGroup = "PG";
-            item.SatCode = "SC1";
-            item.StatsCode = "SC";
-            item.StandardCost = "SC";
-            item.TariffCode = "11.99";
-            item.Territory = "USA";
-            item.Udex = "";
-            item.Upc = "111122223333";
-            item.WebsitePrice = "3.33";
-            item.Weight = "3";
-            item. Width = "2";
+            ItemObject item = new ItemObject()
+            {
+                AccountingGroup = "t",
+                CasepackHeight = "4",
+                CasepackLength = "4",
+                CasepackQty = "4",
+                CasepackWidth = "4",
+                CasepackWeight = "4",
+                Color = "RED",
+                CountryOfOrigin = "USA",
+                CostProfileGroup = "T",
+                DefaultActualCostCad = "3",
+                DefaultActualCostUsd = "2",
+                Description = "DDD",
+                DirectImport = "Y",
+                Ean = "Y",
+                Gpc = "Y",
+                Height = "3",
+                InnerpackHeight = "3",
+                InnerpackLength = "3",
+                InnerpackQuantity = "3",
+                InnerpackWidth = "3",
+                InnerpackWeight = "3",
+                Isbn = "YT",
+                ItemCategory = "R",
+                ItemFamily = "RE",
+                ItemGroup = "rER",
+                Language = "ENG",
+                LicenseBeginDate = "",
+                ListPriceUsd = "3",
+                ListPriceCad = "3",
+                ListPriceMxn = "3",
+                Length = "3",
+                MfgSource = "BB",
+                Msrp = "2",
+                MsrpCad = "2",
+                ProductFormat = "F",
+                ProductGroup = "G",
+                ProductLine = "L",
+                PricingGroup = "PG",
+                SatCode = "SC1",
+                StatsCode = "SC",
+                StandardCost = "SC",
+                TariffCode = "11.99",
+                Territory = "USA",
+                Udex = "",
+                Upc = "111122223333",
+                WebsitePrice = "3.33",
+                Weight = "3",
+                Width = "2"
+            };
+
             #endregion // Set Up
 
             #region Act
@@ -548,8 +553,10 @@ namespace OdinTests.BusinessLogicLayer.Models
         {
             #region SetUp
 
-            ItemObject item = new ItemObject();
-            item.Status = "Remove";
+            ItemObject item = new ItemObject()
+            {
+                Status = "Remove"
+            };
             Boolean isItemActive = false;
 
             #endregion // Set Up
@@ -582,15 +589,15 @@ namespace OdinTests.BusinessLogicLayer.Models
 
             #region Act
 
-             List<string> newList = DbUtil.ParseCategories(list);
+            List<string> newList = DbUtil.ParseCategories(list);
 
             #endregion // Act
 
             #region Assert
 
-             Assert.AreEqual("Category1", newList[0]);
-             Assert.AreEqual("Category3", newList[1]);
-             Assert.AreEqual("Category5", newList[2]);
+            Assert.AreEqual("Category1", newList[0]);
+            Assert.AreEqual("Category3", newList[1]);
+            Assert.AreEqual("Category5", newList[2]);
 
             #endregion // Assesrt
         }
@@ -603,18 +610,23 @@ namespace OdinTests.BusinessLogicLayer.Models
         {
             #region Assemble
 
-            List<ChildElement> billOfMaterials = new List<ChildElement>();
-            billOfMaterials.Add(new ChildElement("RP1234", "ITEMID", 1));
-            billOfMaterials.Add(new ChildElement("RP5678", "ITEMID", 2));
-            List<ChildElement> sameBillOfMaterials = new List<ChildElement>();
-            sameBillOfMaterials.Add(new ChildElement("RP1234", "ITEMID", 1));
-            sameBillOfMaterials.Add(new ChildElement("RP5675", "ITEMID", 2));
-            List<ChildElement> newBillOfMaterials = new List<ChildElement>();
-            newBillOfMaterials.Add(new ChildElement("RP5675", "ITEMID", 2));
-            newBillOfMaterials.Add(new ChildElement("RP1234", "ITEMID", 1));
+            List<ChildElement> billOfMaterials = new List<ChildElement>() {
+                new ChildElement("RP1234", "ITEMID", 1),
+                new ChildElement("RP5678", "ITEMID", 2)
+            };
+            List<ChildElement> sameBillOfMaterials = new List<ChildElement>() {
+                new ChildElement("RP1234", "ITEMID", 1),
+                new ChildElement("RP5675", "ITEMID", 2)
+            };
+            List<ChildElement> newBillOfMaterials = new List<ChildElement>() { 
+                new ChildElement("RP5675", "ITEMID", 2),
+                new ChildElement("RP1234", "ITEMID", 1)
+            };
 
-            ItemObject item = new ItemObject();
-            item.BillOfMaterials = billOfMaterials;
+            ItemObject item = new ItemObject()
+            {
+                BillOfMaterials = billOfMaterials
+            };
             item.ResetUpdate();
 
             #endregion
@@ -652,12 +664,14 @@ namespace OdinTests.BusinessLogicLayer.Models
         {
             #region Assemble
 
-            List<ChildElement> billOfMaterials = new List<ChildElement>();
-            billOfMaterials.Add(new ChildElement("RP1234", "ITEMID", 1));
-            billOfMaterials.Add(new ChildElement("RP5678", "ITEMID", 2));
-            List<ChildElement> pOd = new List<ChildElement>();
-            pOd.Add(new ChildElement("RP1234", "ITEMID", 1));
-            pOd.Add(new ChildElement("RP5678", "ITEMID", 2));
+            List<ChildElement> billOfMaterials = new List<ChildElement>() { 
+                new ChildElement("RP1234", "ITEMID", 1),
+                new ChildElement("RP5678", "ITEMID", 2)
+            };
+            List<ChildElement> pOd = new List<ChildElement>() {
+                new ChildElement("RP1234", "ITEMID", 1),
+                new ChildElement("RP5678", "ITEMID", 2)
+            };
             ItemObject item = new ItemObject(
                 "Update",
                 "", 
@@ -809,7 +823,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             item.Ecommerce_ProductSubcategory = item.Ecommerce_ProductSubcategory;
             item.Ecommerce_ManufacturerName = item.Ecommerce_ManufacturerName;
             item.Ecommerce_Msrp = item.Ecommerce_Msrp;
-            item.Ecommerce_SearchTerms = item.Ecommerce_SearchTerms;
+            item.Ecommerce_GenericKeywords = item.Ecommerce_GenericKeywords;
             item.Ecommerce_Size = item.Ecommerce_Size;
             item.AccountingGroup = item.AccountingGroup;
             item.BillOfMaterials = item.BillOfMaterials;
@@ -912,7 +926,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             bool Acommerce_ProductSubcategoryUpdate2 = item.Ecommerce_ProductSubcategoryUpdate;
             bool Acommerce_ManufacturerNameUpdate2 = item.Ecommerce_ManufacturerNameUpdate;
             bool Acommerce_MsrpUpdate2 = item.Ecommerce_MsrpUpdate;
-            bool Acommerce_SearchTermsUpdate2 = item.Ecommerce_SearchTermsUpdate;
+            bool Acommerce_SearchTermsUpdate2 = item.Ecommerce_GenericKeywordsUpdate;
             bool Acommerce_SizeUpdate2 = item.Ecommere_SizeUpdate;
             bool AccountingGroupUpdate2 = item.AccountingGroupUpdate;
             bool BillOfMaterialsUpdate2 = item.BillOfMaterialsUpdate;
@@ -1096,12 +1110,14 @@ namespace OdinTests.BusinessLogicLayer.Models
         {
             #region Assemble
 
-            List<ChildElement> billOfMaterials = new List<ChildElement>();
-            billOfMaterials.Add(new ChildElement("RP1234", "ITEMID", 1));
-            billOfMaterials.Add(new ChildElement("RP5678", "ITEMID", 2));
-            List<ChildElement> newBillOfMaterials = new List<ChildElement>();
-            newBillOfMaterials.Add(new ChildElement("RP5675", "ITEMID", 2));
-            newBillOfMaterials.Add(new ChildElement("RP1234", "ITEMID", 1));
+            List<ChildElement> billOfMaterials = new List<ChildElement>() { 
+                new ChildElement("RP1234", "ITEMID", 1),
+                new ChildElement("RP5678", "ITEMID", 2)
+            };
+            List<ChildElement> newBillOfMaterials = new List<ChildElement>() {
+                new ChildElement("RP5675", "ITEMID", 2),
+                new ChildElement("RP1234", "ITEMID", 1)
+            };
             ItemObject item = new ItemObject(
                 "Update",
                 "","","","",
@@ -1250,7 +1266,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             bool Acommerce_ProductSubcategoryUpdate1 = item.Ecommerce_ProductSubcategoryUpdate;
             bool Acommerce_ManufacturerNameUpdate1 = item.Ecommerce_ManufacturerNameUpdate;
             bool Acommerce_MsrpUpdate1 = item.Ecommerce_MsrpUpdate;
-            bool Acommerce_SearchTermsUpdate1 = item.Ecommerce_SearchTermsUpdate;
+            bool Acommerce_SearchTermsUpdate1 = item.Ecommerce_GenericKeywordsUpdate;
             bool Acommerce_SizeUpdate1 = item.Ecommere_SizeUpdate;
             bool AccountingGroupUpdate1 = item.AccountingGroupUpdate;
             bool BillOfMaterialsUpdate1 = item.BillOfMaterialsUpdate;
@@ -1350,7 +1366,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             item.Ecommerce_ProductSubcategory = "1";
             item.Ecommerce_ManufacturerName = "1";
             item.Ecommerce_Msrp = "1";
-            item.Ecommerce_SearchTerms = "1";
+            item.Ecommerce_GenericKeywords = "1";
             item.Ecommerce_Size = "1";
             item.AccountingGroup = "1";
             item.BillOfMaterials = newBillOfMaterials;
@@ -1453,7 +1469,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             bool Acommerce_ProductSubcategoryUpdate2 = item.Ecommerce_ProductSubcategoryUpdate;
             bool Acommerce_ManufacturerNameUpdate2 = item.Ecommerce_ManufacturerNameUpdate;
             bool Acommerce_MsrpUpdate2 = item.Ecommerce_MsrpUpdate;
-            bool Acommerce_SearchTermsUpdate2 = item.Ecommerce_SearchTermsUpdate;
+            bool Acommerce_SearchTermsUpdate2 = item.Ecommerce_GenericKeywordsUpdate;
             bool Acommerce_SizeUpdate2 = item.Ecommere_SizeUpdate;
             bool AccountingGroupUpdate2 = item.AccountingGroupUpdate;
             bool BillOfMaterialsUpdate2 = item.BillOfMaterialsUpdate;

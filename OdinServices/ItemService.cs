@@ -82,6 +82,7 @@ namespace OdinServices
             public static string Ecommerce_ManufacturerName = "Ecommerce Manufacturer Name";
             public static string Ecommerce_Msrp = "Ecommerce Msrp";
             public static string Ecommerce_SearchTerms = "Ecommerce Search Terms";
+            public static string Ecommerce_SubjectKeywords = "Ecommerce Subject Keywords";
             public static string Ecommerce_Size = "Ecommerce Size";
             public static string Ecommerce_Upc = "Ecommerce UPC";
             public static string Gpc = "Gpc";
@@ -154,6 +155,7 @@ namespace OdinServices
             public static string Size = "Size";
             public static string StatsCode = "Stats Code";
             public static string Status = "Status";
+            public static string SubjectKeywords = "Subject Keywords";
             public static string TariffCode = "Tariff Code";
             public static string Territory = "Territory";
             public static string TemplateName = "Template Name";
@@ -571,8 +573,9 @@ namespace OdinServices
             if (item.Ecommerce_ProductSubcategory.Trim() == "[CLEAR]") { item.Ecommerce_ProductSubcategory = ""; }
             if (item.Ecommerce_ManufacturerName.Trim() == "[CLEAR]") { item.Ecommerce_ManufacturerName = ""; }
             if (item.Ecommerce_Msrp.Trim() == "[CLEAR]") { item.Ecommerce_Msrp = ""; }
-            if (item.Ecommerce_SearchTerms.Trim() == "[CLEAR]") { item.Ecommerce_SearchTerms = ""; }
+            if (item.Ecommerce_GenericKeywords.Trim() == "[CLEAR]") { item.Ecommerce_GenericKeywords = ""; }
             if (item.Ecommerce_Size.Trim() == "[CLEAR]") { item.Ecommerce_Size = ""; }
+            if (item.Ecommerce_SubjectKeywords.Trim() == "[CLEAR]") { item.Ecommerce_SubjectKeywords = ""; }
             if (item.Ecommerce_Upc.Trim() == "[CLEAR]") { item.Ecommerce_Upc = ""; }
             if (item.Gpc.Trim() == "[CLEAR]") { item.Gpc = ""; }
             if (item.Height.Trim() == "[CLEAR]") { item.Height = ""; }
@@ -694,8 +697,9 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.Ecommerce_ProductSubcategory)) && (item.Ecommerce_ProductSubcategory.Trim() != returnItem.Ecommerce_ProductSubcategory.Trim())) { returnItem.Ecommerce_ProductSubcategory = item.Ecommerce_ProductSubcategory; } // Ecommerce Product Subcategory
             if ((!string.IsNullOrEmpty(item.Ecommerce_ManufacturerName)) && (item.Ecommerce_ManufacturerName.Trim() != returnItem.Ecommerce_ManufacturerName.Trim())) { returnItem.Ecommerce_ManufacturerName = item.Ecommerce_ManufacturerName; } // Ecommerce Manufacturer Name
             if ((!string.IsNullOrEmpty(item.Ecommerce_Msrp)) && (item.Ecommerce_Msrp.Trim() != returnItem.Ecommerce_Msrp.Trim())) { returnItem.Ecommerce_Msrp = item.Ecommerce_Msrp; } // Ecommerce Msrp
-            if ((!string.IsNullOrEmpty(item.Ecommerce_SearchTerms)) && (item.Ecommerce_SearchTerms.Trim() != returnItem.Ecommerce_SearchTerms.Trim())) { returnItem.Ecommerce_SearchTerms = item.Ecommerce_SearchTerms; } // Ecommerce Search Terms
+            if ((!string.IsNullOrEmpty(item.Ecommerce_GenericKeywords)) && (item.Ecommerce_GenericKeywords.Trim() != returnItem.Ecommerce_GenericKeywords.Trim())) { returnItem.Ecommerce_GenericKeywords = item.Ecommerce_GenericKeywords; } // Generic Keywords
             if ((!string.IsNullOrEmpty(item.Ecommerce_Size)) && (item.Ecommerce_Size.Trim() != returnItem.Ecommerce_Size.Trim())) { returnItem.Ecommerce_Size = item.Ecommerce_Size; } // Ecommerce Size
+            if ((!string.IsNullOrEmpty(item.Ecommerce_SubjectKeywords)) && (item.Ecommerce_SubjectKeywords.Trim() != returnItem.Ecommerce_SubjectKeywords.Trim())) { returnItem.Ecommerce_SubjectKeywords = item.Ecommerce_SubjectKeywords; } // Subject Keywords
             if ((!string.IsNullOrEmpty(item.Ecommerce_Upc)) && (item.Ecommerce_Upc.Trim() != returnItem.Ecommerce_Upc.Trim())) { returnItem.Ecommerce_Upc = item.Ecommerce_Upc; } // Ecommerce Upc
             if ((!string.IsNullOrEmpty(item.Gpc)) && (item.Gpc.Trim() != returnItem.Gpc.Trim())) { returnItem.Gpc = item.Gpc; }
             if ((!string.IsNullOrEmpty(item.Height)) && (item.Height.Trim() != returnItem.Height.Trim())) { returnItem.Height = item.Height; }
@@ -1013,8 +1017,9 @@ namespace OdinServices
                 if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ProductSubcategory, WorksheetColumnHeaders.A_ProductSubcategory))) { item.Ecommerce_ProductSubcategory = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ProductSubcategory, WorksheetColumnHeaders.A_ProductSubcategory).Trim(); }
                 if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ManufacturerName, WorksheetColumnHeaders.A_ManufacturerName))) { item.Ecommerce_ManufacturerName = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ManufacturerName, WorksheetColumnHeaders.A_ManufacturerName).Trim(); }
                 if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Msrp, WorksheetColumnHeaders.A_Msrp))) { item.Ecommerce_Msrp = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Msrp, WorksheetColumnHeaders.A_Msrp), 2); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_SearchTerms, WorksheetColumnHeaders.A_SearchTerms))) { item.Ecommerce_SearchTerms = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_SearchTerms, WorksheetColumnHeaders.A_SearchTerms).Trim(); }
+                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_SearchTerms, WorksheetColumnHeaders.A_SearchTerms))) { item.Ecommerce_GenericKeywords = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_SearchTerms, WorksheetColumnHeaders.A_SearchTerms).Trim(); }
                 if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Size, WorksheetColumnHeaders.A_Size))) { item.Ecommerce_Size = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Size, WorksheetColumnHeaders.A_Size).Trim(); }
+                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SubjectKeywords, WorksheetColumnHeaders.Ecommerce_SubjectKeywords))) { item.Ecommerce_SubjectKeywords = worksheetData.GetValue(row, WorksheetColumnHeaders.SubjectKeywords, WorksheetColumnHeaders.Ecommerce_SubjectKeywords).Trim(); }
                 if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Upc))) { item.Ecommerce_Upc = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Upc).Trim(); }
                 if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Gpc))) { item.Gpc = worksheetData.GetValue(row, WorksheetColumnHeaders.Gpc).Trim(); }
                 if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Height, WorksheetColumnHeaders.ItemHeight))) { item.Height = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.Height, WorksheetColumnHeaders.ItemHeight), 1); }
@@ -2193,7 +2198,9 @@ namespace OdinServices
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             error = ValidateEcommerce_Msrp(var.Ecommerce_Msrp, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateEcommerce_SearchTerms(var.Ecommerce_SearchTerms, var.HasEcommerce(), var.Status);
+            error = ValidateEcommerce_Keywords(var.Ecommerce_GenericKeywords, var.HasEcommerce(), "Ecommerce Search Terms", var.Status);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            error = ValidateEcommerce_Keywords(var.Ecommerce_SubjectKeywords, false, "Ecommerce Subject Keywords", var.Status);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             error = ValidateEcommerce_Size(var.Ecommerce_Size, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
@@ -4163,7 +4170,7 @@ namespace OdinServices
                 {
                     return "Website Price " + OdinServices.Properties.Resources.Error_NonNumeric;
                 }
-                if (value == "0" || value == "0.00" || value == "0.0000")
+                if (required && (value == "0" || value == "0.00" || value == "0.0000"))
                 {
                     return "Website Price must contain a value greater than 0.";
                 }
@@ -4703,21 +4710,21 @@ namespace OdinServices
         }
         
         /// <summary>
-        ///     Validates the Ecommerce_SearchTerms field. Returns error message string or "" if no error exists.
+        ///     Validates the Ecommerce_GenericKeywords field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_SearchTerms(string value, bool required, string status)
+        public string ValidateEcommerce_Keywords(string value, bool required, string type, string status)
         {
             if (required || !string.IsNullOrEmpty(value))
             {
                 if (string.IsNullOrEmpty(value) && required)
                 {
-                    return "Ecommerce Search Terms " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                    return type + " " + OdinServices.Properties.Resources.Error_RequiredAmazon;
                 }
                 if (status == "Add")
                 {
                     if (value.Length > 385)
                     {
-                        return "Ecommerce Search Terms " + OdinServices.Properties.Resources.Error_LengthMax + "385 characters.";
+                        return type + " " + OdinServices.Properties.Resources.Error_LengthMax + "385 characters.";
                     }
                 }
             }

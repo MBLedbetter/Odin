@@ -238,6 +238,34 @@ namespace Odin.Data
             InsertCmItemMethod(item, "TRUS1", context);
             InsertCmItemMethod(item, "TRCN1", context);
         }
+        
+        /// <summary>
+        ///     Insert rows into the PS_CUSTOMER_PRODUCT_ATTRIBUTES table. Set the flag for the given customer
+        ///     to allow sales of the given item.
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <param name="customerId"></param>
+        /// <param name="flag"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public void InsertCustomerProductAttributes(string itemId, string customerId, string sendInventoryFlag, OdinContext context)
+        {
+            if (sendInventoryFlag == "Y")
+            {
+                if (!context.CustomerProductAttributes.Any(o => o.ProductId == itemId && o.CustId == customerId && o.Setid == "SHARE"))
+                {
+                    context.CustomerProductAttributes.Add(new CustomerProductAttributes
+                    {
+                        Setid = "SHARE",
+                        ProductId = itemId,
+                        CustId = customerId,
+                        InnerpackQty = 0,
+                        CasepackQty = 0,
+                        SendInventory = sendInventoryFlag
+                    });
+                }
+            }
+        }
 
         /// <summary>
         ///     Runs InsertCustomerProductAttributes for each customer
@@ -325,7 +353,8 @@ namespace Odin.Data
                     ProductSubcategory = item.Ecommerce_ProductSubcategory,
                     ManufacturerName = item.Ecommerce_ManufacturerName,
                     Msrp = Convert.ToDecimal(msrp),
-                    SearchTerms = item.Ecommerce_SearchTerms.ToLower(),
+                    GenericKeywords = item.Ecommerce_GenericKeywords.ToLower(),
+                    SubjectKeywords = item.Ecommerce_SubjectKeywords.ToLower(),
                     Size = item.Ecommerce_Size,
                     UpcOverride = item.Ecommerce_Upc
                 });
@@ -766,8 +795,9 @@ namespace Odin.Data
                 AProductSubcategory = item.Ecommerce_ProductSubcategory,
                 AManufacturerName = item.Ecommerce_ManufacturerName,
                 AMsrp = item.Ecommerce_Msrp,
-                ASearchTerms = item.Ecommerce_SearchTerms,
+                AGenericKeywords = item.Ecommerce_GenericKeywords,
                 ASize = item.Ecommerce_Size,
+                ASubjectKeywords = item.Ecommerce_SubjectKeywords,
                 AUpc = item.Ecommerce_Upc
             });
         }
@@ -1582,7 +1612,8 @@ namespace Odin.Data
                     item.Language = (!string.IsNullOrEmpty(odinItem.Language)) ? DbUtil.OrderLanguage(odinItem.Language):"";
                     item.Ecommerce_ManufacturerName = (!string.IsNullOrEmpty(odinItem.EcommerceManufacturerName)) ? odinItem.EcommerceManufacturerName.Trim() : "";
                     item.Ecommerce_Msrp = (odinItem.EcommerceMsrp != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceMsrp).Trim(), 2) : "";
-                    item.Ecommerce_SearchTerms = (!string.IsNullOrEmpty(odinItem.EcommerceSearchTerms)) ? odinItem.EcommerceSearchTerms.Trim() : "";
+                    item.Ecommerce_GenericKeywords = (!string.IsNullOrEmpty(odinItem.EcommerceGenericKeywords)) ? odinItem.EcommerceGenericKeywords.Trim() : "";
+                    item.Ecommerce_SubjectKeywords = (!string.IsNullOrEmpty(odinItem.EcommerceSubjectKeywords)) ? odinItem.EcommerceSubjectKeywords.Trim() : "";
                     item.Ecommerce_Size = (!string.IsNullOrEmpty(odinItem.EcommerceSize)) ? odinItem.EcommerceSize.Trim() : "";
                     item.Ecommerce_Upc = (!string.IsNullOrEmpty(odinItem.EcommerceUpc)) ? odinItem.EcommerceUpc.Trim() : "";
                     item.Gpc = (!string.IsNullOrEmpty(odinItem.Gpc)) ? odinItem.Gpc.Trim() : "";
@@ -1868,7 +1899,8 @@ namespace Odin.Data
                     item.Ecommerce_ProductDescription = odinItemUpdateRecord.AProductDescription;
                     item.Ecommerce_ExternalIdType = odinItemUpdateRecord.AExternalIdType;
                     item.Ecommerce_ExternalId = odinItemUpdateRecord.AExternalId;
-                    item.Ecommerce_SearchTerms = odinItemUpdateRecord.ASearchTerms;
+                    item.Ecommerce_GenericKeywords = odinItemUpdateRecord.AGenericKeywords;
+                    item.Ecommerce_SubjectKeywords = odinItemUpdateRecord.ASubjectKeywords;
                     item.Ecommerce_ImagePath1 = odinItemUpdateRecord.AImageUrl1;
                     item.Ecommerce_ImagePath2 = odinItemUpdateRecord.AImageUrl2;
                     item.Ecommerce_ImagePath3 = odinItemUpdateRecord.AImageUrl3;
@@ -2112,7 +2144,8 @@ namespace Odin.Data
                 amazonItemAttributes.ProductSubcategory = item.Ecommerce_ProductSubcategory;
                 amazonItemAttributes.ManufacturerName = item.Ecommerce_ManufacturerName;
                 amazonItemAttributes.Msrp = Convert.ToDecimal(msrp);
-                amazonItemAttributes.SearchTerms = item.Ecommerce_SearchTerms.ToLower();
+                amazonItemAttributes.GenericKeywords = item.Ecommerce_GenericKeywords.ToLower();
+                amazonItemAttributes.SubjectKeywords = item.Ecommerce_SubjectKeywords.ToLower();
                 amazonItemAttributes.Size = item.Ecommerce_Size;
                 amazonItemAttributes.UpcOverride = item.Ecommerce_Upc.Trim();
             }
@@ -2670,31 +2703,6 @@ namespace Odin.Data
                     CmBook = "FIN",
                     CmProfileId = cmProfileId,
                     InvItemId = item.ItemId
-                });
-            }
-        }
-        
-        /// <summary>
-        ///     Insert rows into the PS_CUSTOMER_PRODUCT_ATTRIBUTES table. Set the flag for the given customer
-        ///     to allow sales of the given item.
-        /// </summary>
-        /// <param name="itemId"></param>
-        /// <param name="customerId"></param>
-        /// <param name="flag"></param>
-        /// <param name="transaction"></param>
-        /// <returns></returns>
-        private void InsertCustomerProductAttributes(string itemId, string customerId, string sendInventoryFlag, OdinContext context)
-        {
-            if (!context.CustomerProductAttributes.Any(o => o.ProductId == itemId && o.CustId == customerId && o.Setid == "SHARE"))
-            {
-                context.CustomerProductAttributes.Add(new CustomerProductAttributes
-                {
-                    Setid = "SHARE",
-                    ProductId = itemId,
-                    CustId = customerId,
-                    InnerpackQty = 0,
-                    CasepackQty = 0,
-                    SendInventory = sendInventoryFlag
                 });
             }
         }
