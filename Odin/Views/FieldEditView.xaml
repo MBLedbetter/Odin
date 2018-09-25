@@ -49,14 +49,14 @@
                             <GridView>
                                 <GridView.Columns>
                                     <GridViewColumn>
-                                        <GridViewColumn.Header>
-                                            <GridViewColumnHeader
-                                                Content="Category"
-                                                HorizontalContentAlignment="Left"
-                                                Height="20"
-                                                Padding="10,0,0,0"
-                                                MinWidth="380" Width="502" />
-                                        </GridViewColumn.Header>
+    <GridViewColumn.Header>
+        <GridViewColumnHeader
+            Content="Category"
+            HorizontalContentAlignment="Left"
+            Height="20"
+            Padding="10,0,0,0"
+            MinWidth="380" Width="502" />
+    </GridViewColumn.Header>
                                     </GridViewColumn>
                                 </GridView.Columns>
                             </GridView>
@@ -133,14 +133,14 @@
                             <GridView>
                                 <GridView.Columns>
                                     <GridViewColumn>
-                                        <GridViewColumn.Header>
-                                            <GridViewColumnHeader
-                                                Content="License : Property"
-                                                HorizontalContentAlignment="Left"
-                                                Height="20"
-                                                Padding="10,0,0,0"
-                                                MinWidth="380" Width="502" />
-                                        </GridViewColumn.Header>
+    <GridViewColumn.Header>
+        <GridViewColumnHeader
+            Content="License : Property"
+            HorizontalContentAlignment="Left"
+            Height="20"
+            Padding="10,0,0,0"
+            MinWidth="380" Width="502" />
+    </GridViewColumn.Header>
                                     </GridViewColumn>
                                 </GridView.Columns>
                             </GridView>
@@ -209,14 +209,14 @@
                             <GridView>
                                 <GridView.Columns>
                                     <GridViewColumn>
-                                        <GridViewColumn.Header>
-                                            <GridViewColumnHeader
-                                                Content="Meta Description"
-                                                HorizontalContentAlignment="Left"
-                                                Height="20"
-                                                Padding="10,0,0,0"
-                                                MinWidth="380" Width="502" />
-                                        </GridViewColumn.Header>
+    <GridViewColumn.Header>
+        <GridViewColumnHeader
+            Content="Meta Description"
+            HorizontalContentAlignment="Left"
+            Height="20"
+            Padding="10,0,0,0"
+            MinWidth="380" Width="502" />
+    </GridViewColumn.Header>
                                     </GridViewColumn>
                                 </GridView.Columns>
                             </GridView>
@@ -285,14 +285,14 @@
                             <GridView>
                                 <GridView.Columns>
                                     <GridViewColumn>
-                                        <GridViewColumn.Header>
-                                            <GridViewColumnHeader
-                                                Content="Territory"
-                                                HorizontalContentAlignment="Left"
-                                                Height="20"
-                                                Padding="10,0,0,0"
-                                                MinWidth="380" Width="502" />
-                                        </GridViewColumn.Header>
+    <GridViewColumn.Header>
+        <GridViewColumnHeader
+            Content="Territory"
+            HorizontalContentAlignment="Left"
+            Height="20"
+            Padding="10,0,0,0"
+            MinWidth="380" Width="502" />
+    </GridViewColumn.Header>
                                     </GridViewColumn>
                                 </GridView.Columns>
                             </GridView>

@@ -653,6 +653,49 @@ namespace Odin.Services.Tests
 
             #endregion // Assert
         }
+        
+        /// <summary>
+        ///     Retrieves template information for given template id and populates item
+        /// </summary>
+        [TestMethod]
+        public void CompleteItem_WorkbookValuesShouldOverride_ShouldReturnWorkbookValues()
+        {
+            #region Assemble
+
+            FakeWorkbookReader fakeWorkbookReader = new FakeWorkbookReader();
+            fakeWorkbookReader.ColumnHeaders.Add("ItemID");
+            fakeWorkbookReader.ColumnHeaders.Add("Sell On Amazon");
+            fakeWorkbookReader.ColumnHeaders.Add("Sell On Ecommerce");
+            fakeWorkbookReader.ColumnHeaders.Add("Sell On Fanatics");
+            fakeWorkbookReader.ColumnHeaders.Add("Sell On Guitar Center");
+            fakeWorkbookReader.AddWorksheetRow();
+            fakeWorkbookReader.AddCellValue("ItemIdA"); // Item Id
+            fakeWorkbookReader.AddCellValue("N"); // Sell On Amazon
+            fakeWorkbookReader.AddCellValue(""); // Sell On Ecommerce
+            fakeWorkbookReader.AddCellValue("Y"); // Sell On Fanatics
+            fakeWorkbookReader.AddCellValue("Y"); // Sell On Guitar Center
+            ItemService itemService = new ItemService(fakeWorkbookReader, new TestItemRepository(), new TestTemplateRepository());
+
+            #endregion // Assemble
+
+            #region Act
+
+            ObservableCollection<ItemObject> items = itemService.LoadExcelItems("Update", string.Empty);
+            ItemObject newItem = itemService.CompleteItem(items[0], 1);
+
+            #endregion // Act
+
+            #region Assert
+
+            Assert.AreEqual("ItemIdA", newItem.ItemId);
+            Assert.AreEqual("N", newItem.SellOnAmazon);
+            Assert.AreEqual("N", newItem.SellOnEcommerce);
+            Assert.AreEqual("Y", newItem.SellOnFanatics);
+            Assert.AreEqual("Y", newItem.SellOnGuitarCenter);
+            Assert.AreEqual("SellOnWalmartA", newItem.SellOnWalmart);
+
+            #endregion // Assert
+        }
 
         [TestMethod]
         public void CompleteItemTest_TestFieldUpdateCheck_UpdatedFieldShouldShowTrue()
@@ -1610,6 +1653,7 @@ namespace Odin.Services.Tests
             fakeWorkbookReader.ColumnHeaders.Add("ItemID");
             fakeWorkbookReader.ColumnHeaders.Add("PS Status");
             fakeWorkbookReader.ColumnHeaders.Add("Sell On Amazon");
+            fakeWorkbookReader.ColumnHeaders.Add("Sell On Ecommerce");
             fakeWorkbookReader.ColumnHeaders.Add("Sell On Fanatics");
             fakeWorkbookReader.ColumnHeaders.Add("Sell On Walmart");
             fakeWorkbookReader.ColumnHeaders.Add("Sell On Guitar Center");
@@ -1617,6 +1661,7 @@ namespace Odin.Services.Tests
             fakeWorkbookReader.AddCellValue("ST1234"); // Item Id
             fakeWorkbookReader.AddCellValue(""); // PS Status
             fakeWorkbookReader.AddCellValue(""); // Sell On Amazon
+            fakeWorkbookReader.AddCellValue("Y"); // Sell On Ecommerce
             fakeWorkbookReader.AddCellValue(""); // Sell On Fanatics
             fakeWorkbookReader.AddCellValue(""); // Sell On Walmart
             fakeWorkbookReader.AddCellValue(""); // Sell On Guitar Center
@@ -1628,8 +1673,7 @@ namespace Odin.Services.Tests
 
             ItemService itemService = new ItemService(fakeWorkbookReader, testItemRepository, new TestTemplateRepository());
             ObservableCollection<ItemObject> items = itemService.LoadExcelItems("Add", string.Empty);
-
-
+            
             #endregion // Act
 
             #region Assert
@@ -1646,6 +1690,7 @@ namespace Odin.Services.Tests
             Assert.AreEqual("Add", item.Status);
             Assert.AreEqual("I", item.PsStatus); // PS Status
             Assert.AreEqual("N", item.SellOnAmazon); // Sell On Amazon
+            Assert.AreEqual("Y", item.SellOnAmazon); // Sell On Ecommerce
             Assert.AreEqual("N", item.SellOnFanatics); // Sell On Fanatics
             Assert.AreEqual("N", item.SellOnGuitarCenter); // Sell On Guitar Center
             Assert.AreEqual("N", item.SellOnHayneedle); // Sell On Hayneedle
@@ -2234,8 +2279,6 @@ namespace Odin.Services.Tests
 
             #endregion // Assert
         }
-
-        
 
         [TestMethod]
         public void RetrieveExceptions_ValueAllowsException_ShouldReturnEmptyError()

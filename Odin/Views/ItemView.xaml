@@ -1569,7 +1569,7 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition
-                            Width="160" />
+                            Width="180" />
                         <ColumnDefinition 
                             Width="93"/>
                     </Grid.ColumnDefinitions>
@@ -1594,75 +1594,90 @@
                             Height="Auto" />
                         <RowDefinition
                             Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
                     </Grid.RowDefinitions>
+                    <!-- Sell On Ecommerce -->
+                    <Label
+                        Background="{Binding SellOnEcommerceBoxColor}"
+                        Content="Sell On Ecommerce Sites"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding SellOnEcommerceToolTip}"
+                        VerticalAlignment="Center" 
+                        Margin="0,4,0,5" 
+                        Height="26" />
+                    <CheckBox
+                        HorizontalAlignment="Left"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Margin="6,6,0,6"                        
+                        IsChecked="{Binding SellOnEcommerceCheck}"
+                        VerticalContentAlignment="Center"/>
                     <!-- Sell On AllPosters -->
                     <Label
                         Background="{Binding SellOnAllPostersBoxColor}"
                         Content="Sell On AllPosters"
-                        Grid.Row="0"
+                        Grid.Row="1"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SellOnAllPostersToolTip}"
                         VerticalAlignment="Center" 
                         Margin="0,4,0,5" 
                         Height="26" />
-                    <TextBox
+                    <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
-                        Grid.Row="0"
+                        Grid.Row="1"
                         Grid.RowSpan="1"
-                        Margin="6,6,0,6"
-                        Text="{Binding SellOnAllPosters}"
-                        TextWrapping="Wrap"
-                        VerticalContentAlignment="Center"
-                        Width="70" />
+                        Margin="6,6,0,6"           
+                        IsChecked="{Binding SellOnAllPostersCheck}"
+                        VerticalContentAlignment="Center"/>
                     <!-- Sell On Amazon -->
                     <Label
                         Background="{Binding SellOnAmazonBoxColor}"
                         Content="Sell On Amazon"
-                        Grid.Row="1"
+                        Grid.Row="2"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SellOnAmazonToolTip}"
                         VerticalAlignment="Center" 
                         Margin="0,4,0,5" 
                         Height="26" />
-                    <TextBox
+                    <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
-                        Grid.Row="1"
+                        Grid.Row="2"
                         Grid.RowSpan="1"
-                        Margin="6,6,0,6"
-                        Text="{Binding SellOnAmazon}"
-                        TextWrapping="Wrap"
-                        VerticalContentAlignment="Center"
-                        Width="70" />
+                        Margin="6,6,0,6"           
+                        IsChecked="{Binding SellOnAmazonCheck}"
+                        VerticalContentAlignment="Center"/>
                     <!-- Sell On Amazon -->
                     <Label
                         Background="{Binding SellOnAmazonSellerCentralBoxColor}"
                         Content="Sell On Amazon Seller Central"
-                        Grid.Row="2"
+                        Grid.Row="3"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SellOnAmazonSellerCentralToolTip}"
                         VerticalAlignment="Center" 
                         Margin="0,4,0,5" 
                         Height="26" />
-                    <TextBox
+                    <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
-                        Grid.Row="2"
+                        Grid.Row="3"
                         Grid.RowSpan="1"
-                        Margin="6,6,0,6"                        
-                        Text="{Binding SellOnAmazonSellerCentral}"
-                        TextWrapping="Wrap"
-                        VerticalContentAlignment="Center"
-                        Width="70" />
+                        Margin="6,6,0,6"           
+                        IsChecked="{Binding SellOnAmazonSellerCentralCheck}"
+                        VerticalContentAlignment="Center"/>
                     <!-- Sell On Fanatics -->
                     <Label
                         Background="{Binding SellOnFanaticsBoxColor}"
                         Content="Sell On Fanatics"
-                        Grid.Row="3"
+                        Grid.Row="4"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SellOnFanaticsToolTip}"
@@ -1670,142 +1685,128 @@
                         Margin="0,4,0,5"
                         Height="26"
                         Width="93" />
-                    <TextBox
+                    <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
-                        Grid.Row="3"
+                        Grid.Row="4"
                         Grid.RowSpan="1"
-                        Margin="6,6,0,6"
-                        Text="{Binding SellOnFanatics}"
-                        TextWrapping="Wrap"
-                        VerticalContentAlignment="Center"
-                        Width="70" />
+                        Margin="6,6,0,6"           
+                        IsChecked="{Binding SellOnFanaticsCheck}"
+                        VerticalContentAlignment="Center"/>
                     <!-- Sell On Guitar Center -->
                     <Label
                         Background="{Binding SellOnGuitarCenterBoxColor}"
                         Content="Sell On Guitar Center"
-                        Grid.Row="4"
+                        Grid.Row="5"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SellOnGuitarCenterToolTip}"
                         VerticalAlignment="Center"
                         Margin="0,4,0,5"
                         Height="26"/>
-                    <TextBox
+                    <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
-                        Grid.Row="4"
+                        Grid.Row="5"
                         Grid.RowSpan="1"
-                        Margin="6,6,0,6" 
-                        Text="{Binding SellOnGuitarCenter}"
-                        TextWrapping="Wrap"
-                        VerticalContentAlignment="Center"
-                        Width="70" />
+                        Margin="6,6,0,6"           
+                        IsChecked="{Binding SellOnGuitarCenterCheck}"
+                        VerticalContentAlignment="Center"/>
                     <!-- Sell On Hayneedle -->
                     <Label
                         Background="{Binding SellOnHayneedleBoxColor}"
                         Content="Sell On Hayneedle"
-                        Grid.Row="5"
+                        Grid.Row="6"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SellOnHayneedleToolTip}"
                         VerticalAlignment="Center"
                         Margin="0,4,0,5"
                         Height="26"/>
-                    <TextBox
+                    <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
-                        Grid.Row="5"
+                        Grid.Row="6"
                         Grid.RowSpan="1"
-                        Margin="6,6,0,6"
-                        Text="{Binding SellOnHayneedle}"
-                        TextWrapping="Wrap"
-                        VerticalContentAlignment="Center"
-                        Width="70" />
+                        Margin="6,6,0,6"           
+                        IsChecked="{Binding SellOnHayneedleCheck}"
+                        VerticalContentAlignment="Center"/>
                     <!-- Sell On Target -->
                     <Label
                         Background="{Binding SellOnTargetBoxColor}"
                         Content="Sell On Target"
-                        Grid.Row="6"
+                        Grid.Row="7"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SellOnTargetToolTip}"
                         VerticalAlignment="Center" 
                         Margin="0,4,0,5" 
                         Height="26"/>
-                    <TextBox
+                    <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
-                        Grid.Row="6"
+                        Grid.Row="7"
                         Grid.RowSpan="1"
-                        Margin="6,6,0,6"
-                        Text="{Binding SellOnTarget}"
-                        TextWrapping="Wrap"
-                        VerticalContentAlignment="Center"
-                        Width="70" />
+                        Margin="6,6,0,6"           
+                        IsChecked="{Binding SellOnTargetCheck}"
+                        VerticalContentAlignment="Center"/>
                     <!-- Sell On Trends -->
                     <Label
                         Background="{Binding SellOnTrendsBoxColor}"
                         Content="Sell On Trends"
-                        Grid.Row="7"
+                        Grid.Row="8"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SellOnTrendsToolTip}"
                         VerticalAlignment="Center" 
                         Margin="0,4,0,5" 
                         Height="26" />
-                    <TextBox
+                    <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
-                        Grid.Row="7"
+                        Grid.Row="8"
                         Grid.RowSpan="1"
-                        Margin="6,6,0,6"                        
-                        Text="{Binding SellOnTrends}"
-                        TextWrapping="Wrap"
-                        VerticalContentAlignment="Center"
-                        Width="70" />
+                        Margin="6,6,0,6"           
+                        IsChecked="{Binding SellOnTrendsCheck}"
+                        VerticalContentAlignment="Center"/>
                     <!-- Sell On Walmart -->
                     <Label
                         Background="{Binding SellOnWalmartBoxColor}"
                         Content="Sell On Walmart"
-                        Grid.Row="8"
+                        Grid.Row="9"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SellOnWalmartToolTip}"
                         VerticalAlignment="Center"
                         Margin="0,4,0,5"
                         Height="26"/>
-                    <TextBox
+                    <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
-                        Grid.Row="8"
+                        Grid.Row="9"
                         Grid.RowSpan="1"
-                        Margin="6,6,0,6"                        
-                        Text="{Binding SellOnWalmart}"
-                        TextWrapping="Wrap"
-                        VerticalContentAlignment="Center"
-                        Width="70" />
+                        Margin="6,6,0,6"           
+                        IsChecked="{Binding SellOnWalmartCheck}"
+                        VerticalContentAlignment="Center" />
                     <!-- Sell On Wayfair -->
                     <Label
                         Background="{Binding SellOnWayfairBoxColor}"
                         Content="Sell On Wayfair"
-                        Grid.Row="9"
+                        Grid.Row="10"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SellOnWayfairToolTip}"
                         VerticalAlignment="Center"
                         Margin="0,4,0,5"
                         Height="26"/>
-                    <TextBox
+                    <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
-                        Grid.Row="9"
+                        Grid.Row="10"
                         Grid.RowSpan="1"
-                        Margin="6,6,0,6"                        
-                        Text="{Binding SellOnWayfair}"
-                        TextWrapping="Wrap"
-                        VerticalContentAlignment="Center"
-                        Width="70" />
+                        Margin="6,6,0,6"           
+                        IsChecked="{Binding SellOnWayfairCheck}"
+                        VerticalContentAlignment="Center" />
                 </Grid>
             </TabItem>
             <TabItem 

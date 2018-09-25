@@ -582,6 +582,7 @@ namespace Odin.Data
                     ProdGroup = item.ProductGroup,
                     ProdLine = item.ProductLine,
                     SatCode = item.SatCode,
+                    SellOnEcommerce = item.SellOnEcommerce,
                     SellOnWeb = item.SellOnTrends,
                     Setid = "SHARE",
                     TranslateEdiProd = item.ReturnTranslateEdiProd(),
@@ -744,6 +745,7 @@ namespace Odin.Data
                 ShortDesc = item.ShortDescription,
                 SellOnAllposters = item.SellOnAllPosters,
                 SellOnAmazonSellerCentral = item.SellOnAmazonSellerCentral,
+                SellOnEcommerce = item.SellOnEcommerce,
                 SellOnFanatics = item.SellOnFanatics,
                 SellOnGuitarCenter = item.SellOnGuitarCenter,
                 SellOnHayneedle = item.SellOnHayneedle,
@@ -1544,10 +1546,6 @@ namespace Odin.Data
         /// <returns></returns>
         public ItemObject RetrieveItem(string idInput, int row)
         {
-            ItemObject item = new ItemObject
-            {
-                ItemId = idInput
-            };
             // DateTime effdt = RetrieveEffdt(idInput);
 
             using (OdinContext context = this.contextFactory.CreateContext())
@@ -1558,128 +1556,131 @@ namespace Odin.Data
                                          where o.InvItemId == idInput.Trim()
                                          select o).FirstOrDefault();
 
-                    item.AccountingGroup = (!string.IsNullOrEmpty(odinItem.AccountingGroup)) ? odinItem.AccountingGroup : "";
-                    item.AltImageFile1 = (!string.IsNullOrEmpty(odinItem.AltImageFile1)) ? odinItem.AltImageFile1 : "";
-                    item.AltImageFile2 = (!string.IsNullOrEmpty(odinItem.AltImageFile2)) ? odinItem.AltImageFile2 : "";
-                    item.AltImageFile3 = (!string.IsNullOrEmpty(odinItem.AltImageFile3)) ? odinItem.AltImageFile3 : "";
-                    item.AltImageFile4 = (!string.IsNullOrEmpty(odinItem.AltImageFile4)) ? odinItem.AltImageFile4 : "";
-                    item.BillOfMaterials = (!string.IsNullOrEmpty(odinItem.BillOfMaterials)) ? DbUtil.ParseChildElements(odinItem.InvItemId, odinItem.BillOfMaterials) : new List<ChildElement>();
-                    item.CasepackHeight = (odinItem.CasepackHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.CasepackHeight), 1) : "";
-                    item.CasepackLength = (odinItem.CasepackLength != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.CasepackLength), 1) : "";
-                    item.CasepackQty = (!string.IsNullOrEmpty(Convert.ToString(odinItem.CasepackQty))) ? Convert.ToString(odinItem.CasepackQty).Trim() : "";
-                    item.CasepackUpc = (!string.IsNullOrEmpty(odinItem.CasepackUpc)) ? odinItem.CasepackUpc.Trim() : "";
-                    item.CasepackWeight = (odinItem.CasepackWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.CasepackWeight), 1) : "";
-                    item.CasepackWidth = (odinItem.CasepackWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.CasepackWidth), 1) : "";
-                    item.Color = (!string.IsNullOrEmpty(odinItem.InvItemColor)) ? odinItem.InvItemColor.Trim() : "";
-                    item.Copyright = (!string.IsNullOrEmpty(odinItem.Copyright)) ? odinItem.Copyright.Trim() : "";
-                    item.CountryOfOrigin = (!string.IsNullOrEmpty(odinItem.CountryIstOrigin)) ? odinItem.CountryIstOrigin.Trim() : "";
-                    item.CostProfileGroup = (!string.IsNullOrEmpty(odinItem.CmGroup)) ? odinItem.CmGroup.Trim() : "";
-                    item.DefaultActualCostCad = (odinItem.DefaultActualCostCad != null) ? DbUtil.ZeroTrim(odinItem.DefaultActualCostCad.ToString(), 2):"";
-                    item.DefaultActualCostUsd = (odinItem.DefaultActualCostUsd != null) ? DbUtil.ZeroTrim(odinItem.DefaultActualCostUsd.ToString(), 2):"";
-                    item.Description = (!string.IsNullOrEmpty(odinItem.Descr60)) ? odinItem.Descr60.Trim() : "";
-                    item.DirectImport = (!string.IsNullOrEmpty(odinItem.DirectImport)) ? odinItem.DirectImport.Trim() : "";
-                    item.Duty = (!string.IsNullOrEmpty(odinItem.Duty)) ? odinItem.Duty.Trim() : "";
-                    item.Ean = (!string.IsNullOrEmpty(odinItem.Ean)) ? odinItem.Ean.Trim() : "";
-                    item.Ecommerce_Asin = (!string.IsNullOrEmpty(odinItem.EcommerceAsin)) ? odinItem.EcommerceAsin.Trim() : "";
-                    item.Ecommerce_Bullet1 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet1)) ? odinItem.EcommerceBullet1.Trim() : "";
-                    item.Ecommerce_Bullet2 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet2)) ? odinItem.EcommerceBullet2.Trim() : "";
-                    item.Ecommerce_Bullet3 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet3)) ? odinItem.EcommerceBullet3.Trim() : "";
-                    item.Ecommerce_Bullet4 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet4)) ? odinItem.EcommerceBullet4.Trim() : "";
-                    item.Ecommerce_Bullet5 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet5)) ? odinItem.EcommerceBullet5.Trim() : "";
-                    item.Ecommerce_Components = (!string.IsNullOrEmpty(odinItem.EcommerceComponents)) ? odinItem.EcommerceComponents.Trim() : "";
-                    item.Ecommerce_Cost = (odinItem.EcommerceCost != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceCost).Trim(), 2) : "";
-                    item.Ecommerce_ExternalId = (!string.IsNullOrEmpty(odinItem.EcommerceExternalId)) ? odinItem.EcommerceExternalId.Trim() : "";
-                    item.Ecommerce_ExternalIdType = (!string.IsNullOrEmpty(odinItem.EcommerceExternalIdType)) ? odinItem.EcommerceExternalIdType.Trim() : "";
-                    item.Ecommerce_ImagePath1 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl1)) ? odinItem.EcommerceImageUrl1.Trim() : "";
-                    item.Ecommerce_ImagePath2 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl2)) ? odinItem.EcommerceImageUrl2.Trim() : "";
-                    item.Ecommerce_ImagePath3 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl3)) ? odinItem.EcommerceImageUrl3.Trim() : "";
-                    item.Ecommerce_ImagePath4 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl4)) ? odinItem.EcommerceImageUrl4.Trim() : "";
-                    item.Ecommerce_ImagePath5 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl5)) ? odinItem.EcommerceImageUrl5.Trim() : "";
-                    item.Ecommerce_ItemHeight = (odinItem.EcommerceHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceHeight).Trim(), 1) : "";
-                    item.Ecommerce_ItemLength = (odinItem.EcommerceLength != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceLength).Trim(), 1) : "";
-                    item.Ecommerce_ItemName = (!string.IsNullOrEmpty(odinItem.EcommerceItemName)) ? odinItem.EcommerceItemName.Trim() : "";
-                    item.Ecommerce_ItemWeight = (odinItem.EcommerceWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceWeight).Trim(), 1) : "";
-                    item.Ecommerce_ItemWidth = (odinItem.EcommerceWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceWidth).Trim(), 1) : "";
-                    item.Ecommerce_ModelName = (!string.IsNullOrEmpty(odinItem.EcommerceModelName)) ? odinItem.EcommerceModelName.Trim() : "";
-                    item.Ecommerce_PackageHeight = (odinItem.EcommercePackageHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommercePackageHeight).Trim(), 1) : "";
-                    item.Ecommerce_PackageLength = (odinItem.EcommercePackageLength != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommercePackageLength).Trim(), 1) : "";
-                    item.Ecommerce_PackageWeight = (odinItem.EcommercePackageWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommercePackageWeight).Trim(), 1) : "";
-                    item.Ecommerce_PackageWidth = (odinItem.EcommercePackageWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommercePackageWidth).Trim(), 1) : "";
-                    item.Ecommerce_PageQty = (!string.IsNullOrEmpty(Convert.ToString(odinItem.EcommercePageCount))) ? Convert.ToString(odinItem.EcommercePageCount).Trim() : "";
-                    item.Ecommerce_ProductCategory = (!string.IsNullOrEmpty(odinItem.EcommerceProductCategory)) ? odinItem.EcommerceProductCategory.Trim() : "";
-                    item.Ecommerce_ProductDescription = (!string.IsNullOrEmpty(odinItem.EcommerceFullDescription)) ? odinItem.EcommerceFullDescription.Trim() : "";
-                    item.Ecommerce_ProductSubcategory = (!string.IsNullOrEmpty(odinItem.EcommerceProductSubcategory)) ? odinItem.EcommerceProductSubcategory.Trim() : "";
-                    item.Language = (!string.IsNullOrEmpty(odinItem.Language)) ? DbUtil.OrderLanguage(odinItem.Language):"";
-                    item.Ecommerce_ManufacturerName = (!string.IsNullOrEmpty(odinItem.EcommerceManufacturerName)) ? odinItem.EcommerceManufacturerName.Trim() : "";
-                    item.Ecommerce_Msrp = (odinItem.EcommerceMsrp != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceMsrp).Trim(), 2) : "";
-                    item.Ecommerce_GenericKeywords = (!string.IsNullOrEmpty(odinItem.EcommerceGenericKeywords)) ? odinItem.EcommerceGenericKeywords.Trim() : "";
-                    item.Ecommerce_SubjectKeywords = (!string.IsNullOrEmpty(odinItem.EcommerceSubjectKeywords)) ? odinItem.EcommerceSubjectKeywords.Trim() : "";
-                    item.Ecommerce_Size = (!string.IsNullOrEmpty(odinItem.EcommerceSize)) ? odinItem.EcommerceSize.Trim() : "";
-                    item.Ecommerce_Upc = (!string.IsNullOrEmpty(odinItem.EcommerceUpc)) ? odinItem.EcommerceUpc.Trim() : "";
-                    item.Gpc = (!string.IsNullOrEmpty(odinItem.Gpc)) ? odinItem.Gpc.Trim() : "";
-                    item.Height = (odinItem.InvItemHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemHeight), 1) : "";
-                    item.ImagePath = (!string.IsNullOrEmpty(odinItem.ImageFileName)) ? odinItem.ImageFileName.Trim() : "";
-                    item.InnerpackHeight = (odinItem.InnerpackHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InnerpackHeight), 1) : "";
-                    item.InnerpackLength = (odinItem.InnerpackLength != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InnerpackLength), 1) : "";
-                    item.InnerpackQuantity = (odinItem.InnerpackQty != null) ? Convert.ToString(odinItem.InnerpackQty).Trim() : "";
-                    item.InnerpackUpc = (!string.IsNullOrEmpty(odinItem.InnerpackUpc)) ? odinItem.InnerpackUpc.Trim() : "";
-                    item.InnerpackWidth = (odinItem.InnerpackWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InnerpackWidth), 1) : "";
-                    item.InnerpackWeight = (odinItem.InnerpackWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InnerpackWeight), 1) : "";
-                    item.InStockDate = (odinItem.InStockDate != null) ? Convert.ToString(DbUtil.StripTime(odinItem.InStockDate)) : "";
-                    item.Isbn = (!string.IsNullOrEmpty(odinItem.Isbn)) ? odinItem.Isbn.Trim() : "";
-                    item.ItemCategory = (!string.IsNullOrEmpty(odinItem.ProdCategory)) ? odinItem.ProdCategory.Trim() : "";
-                    item.ItemFamily = (!string.IsNullOrEmpty(odinItem.InvProdFamCd)) ? odinItem.InvProdFamCd.Trim() : "";
-                    item.ItemGroup = (!string.IsNullOrEmpty(odinItem.InvItemGroup)) ? odinItem.InvItemGroup.Trim() : "";
-                    item.ItemId = (!string.IsNullOrEmpty(idInput)) ? idInput : "";
-                    item.ItemKeywords = (!string.IsNullOrEmpty(odinItem.ItemKeywords)) ? odinItem.ItemKeywords.Trim() : "";
-                    item.Language = (!string.IsNullOrEmpty(odinItem.Language)) ? DbUtil.OrderLanguage(odinItem.Language) : "";
-                    item.Length = (odinItem.InvItemLength != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemLength), 1) : "";
-                    item.License = (!string.IsNullOrEmpty(odinItem.License)) ? odinItem.License.Trim() : "";
-                    item.LicenseBeginDate = (odinItem.LicenseBeginDate != null) ? Convert.ToString(DbUtil.StripTime(odinItem.LicenseBeginDate)) : "";
-                    item.ListPriceCad = (odinItem.ListPriceCad != null) ? DbUtil.ZeroTrim(odinItem.ListPriceCad.ToString(), 2) : "";
-                    item.ListPriceMxn = (odinItem.ListPriceMxn !=null ) ? DbUtil.ZeroTrim(odinItem.ListPriceMxn.ToString(), 2): "";
-                    item.ListPriceUsd = (odinItem.ListPriceUsd != null) ? DbUtil.ZeroTrim(odinItem.ListPriceUsd.ToString(), 2): "";
-                    item.MetaDescription = (!string.IsNullOrEmpty(odinItem.MetaDescription)) ? odinItem.MetaDescription.Trim() : "";
-                    item.MfgSource = (!string.IsNullOrEmpty(odinItem.MfgSource)) ? odinItem.MfgSource.Trim() : "";
-                    item.MsrpCad = (!string.IsNullOrEmpty(odinItem.MsrpCad)) ? DbUtil.ZeroTrim(odinItem.MsrpCad, 2) : "";
-                    item.MsrpMxn = (!string.IsNullOrEmpty(odinItem.MsrpMxn)) ? DbUtil.ZeroTrim(odinItem.MsrpMxn, 2) : "";
-                    item.Msrp = (!string.IsNullOrEmpty(odinItem.MsrpUsd)) ? DbUtil.ZeroTrim(odinItem.MsrpUsd, 2) : "";
-                    item.PricingGroup = (!string.IsNullOrEmpty(odinItem.PricingGroup)) ? odinItem.PricingGroup.Trim() : "";
-                    item.ProductFormat = (!string.IsNullOrEmpty(odinItem.ProdFormat)) ? odinItem.ProdFormat.Trim() : "";
-                    item.ProductGroup = (!string.IsNullOrEmpty(odinItem.ProdGroup)) ? odinItem.ProdGroup.Trim() : "";
-                    item.ProductIdTranslation = (!string.IsNullOrEmpty(odinItem.ProductIdTranslation)) ? DbUtil.ParseChildElements(odinItem.InvItemId, odinItem.ProductIdTranslation) : new List<ChildElement>();
-                    item.ProductLine = (!string.IsNullOrEmpty(odinItem.ProdLine)) ? odinItem.ProdLine.Trim() : "";
-                    item.ProductQty = (!string.IsNullOrEmpty(odinItem.ProdQty)) ? odinItem.ProdQty.Trim() : "";
-                    item.Property = (!string.IsNullOrEmpty(odinItem.Property)) ? odinItem.Property.Trim() : "";
-                    item.PrintOnDemand = (!string.IsNullOrEmpty(odinItem.PrintOnDemand)) ? odinItem.PrintOnDemand.Trim() : "";
-                    item.PsStatus = (!string.IsNullOrEmpty(odinItem.Psstatus)) ? odinItem.Psstatus.Trim() : "";
-                    item.SatCode = (!string.IsNullOrEmpty(odinItem.SatCode)) ? odinItem.SatCode.Trim() : "";
-                    item.SellOnTrends = (!string.IsNullOrEmpty(odinItem.SellOnWeb)) ? odinItem.SellOnWeb.Trim() : "";
-                    item.SellOnAllPosters = (!string.IsNullOrEmpty(odinItem.SellOnAllPosters)) ? odinItem.SellOnAllPosters.Trim() : "";
-                    item.SellOnAmazon = (!string.IsNullOrEmpty(odinItem.SellOnAmazon)) ? odinItem.SellOnAmazon.Trim() : "";
-                    item.SellOnAmazonSellerCentral = (!string.IsNullOrEmpty(odinItem.SellOnAmazonSellerCentral)) ? odinItem.SellOnAmazonSellerCentral.Trim() : "";
-                    item.SellOnFanatics = (!string.IsNullOrEmpty(odinItem.SellOnFanatics)) ? odinItem.SellOnFanatics.Trim() : "";
-                    item.SellOnGuitarCenter = (!string.IsNullOrEmpty(odinItem.SellOnGuitarCenter)) ? odinItem.SellOnGuitarCenter.Trim() : "";
-                    item.SellOnHayneedle = (!string.IsNullOrEmpty(odinItem.SellOnHayneedle)) ? odinItem.SellOnHayneedle.Trim() : "";
-                    item.SellOnTarget = (!string.IsNullOrEmpty(odinItem.SellOnTarget)) ? odinItem.SellOnTarget.Trim() : "";
-                    item.SellOnWalmart = (!string.IsNullOrEmpty(odinItem.SellOnWalmart)) ? odinItem.SellOnWalmart.Trim() : "";
-                    item.SellOnWayfair = (!string.IsNullOrEmpty(odinItem.SellOnWayfair)) ? odinItem.SellOnWayfair.Trim() : "";
-                    item.ShortDescription = (!string.IsNullOrEmpty(odinItem.ShortDesc)) ? odinItem.ShortDesc.Trim() : "";
-                    item.Size = (!string.IsNullOrEmpty(odinItem.Size)) ? odinItem.Size.Trim() : "";
-                    item.StandardCost = (odinItem.StandardCost != null) ? Convert.ToString(odinItem.StandardCost).Trim() : "";
-                    item.StatsCode = (!string.IsNullOrEmpty(odinItem.StatsCode)) ? odinItem.StatsCode.Trim() : "";
-                    item.TariffCode = (!string.IsNullOrEmpty(odinItem.HarmonizedCd)) ? odinItem.HarmonizedCd.Trim() : "";
-                    item.Territory = (!string.IsNullOrEmpty(odinItem.Territory)) ? DbUtil.OrderTerritory(odinItem.Territory) : "";
-                    item.Title = (!string.IsNullOrEmpty(odinItem.Title)) ? odinItem.Title.Trim() : "";
-                    item.Udex = (!string.IsNullOrEmpty(odinItem.Udex)) ? odinItem.Udex.Trim() : "";
-                    item.Upc = (!string.IsNullOrEmpty(odinItem.UpcId)) ? odinItem.UpcId.Trim() : "";
-                    item.WebsitePrice = (odinItem.WebsitePrice != null) ? DbUtil.ZeroTrim(odinItem.WebsitePrice.ToString(), 2) : "";
-                    item.Weight = (odinItem.InvItemWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWeight), 1) : "";
-                    item.Width = (odinItem.InvItemWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWidth), 1) : "";
-                    item.OnSite = (!string.IsNullOrEmpty(odinItem.OnSite)) ? odinItem.OnSite : "";
-                    item.Ecommerce_CountryofOrigin = (!string.IsNullOrEmpty(odinItem.CountryIstOrigin)) ? odinItem.CountryIstOrigin : "";
-                    item.Status = "Update";
-                    item.ItemRow = row;
+                    ItemObject item = new ItemObject
+                    {
+                        ItemId = idInput,
+                        AccountingGroup = (!string.IsNullOrEmpty(odinItem.AccountingGroup)) ? odinItem.AccountingGroup : "",
+                        AltImageFile1 = (!string.IsNullOrEmpty(odinItem.AltImageFile1)) ? odinItem.AltImageFile1 : "",
+                        AltImageFile2 = (!string.IsNullOrEmpty(odinItem.AltImageFile2)) ? odinItem.AltImageFile2 : "",
+                        AltImageFile3 = (!string.IsNullOrEmpty(odinItem.AltImageFile3)) ? odinItem.AltImageFile3 : "",
+                        AltImageFile4 = (!string.IsNullOrEmpty(odinItem.AltImageFile4)) ? odinItem.AltImageFile4 : "",
+                        BillOfMaterials = (!string.IsNullOrEmpty(odinItem.BillOfMaterials)) ? DbUtil.ParseChildElements(odinItem.InvItemId, odinItem.BillOfMaterials) : new List<ChildElement>(),
+                        CasepackHeight = (odinItem.CasepackHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.CasepackHeight), 1) : "",
+                        CasepackLength = (odinItem.CasepackLength != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.CasepackLength), 1) : "",
+                        CasepackQty = (!string.IsNullOrEmpty(Convert.ToString(odinItem.CasepackQty))) ? Convert.ToString(odinItem.CasepackQty).Trim() : "",
+                        CasepackUpc = (!string.IsNullOrEmpty(odinItem.CasepackUpc)) ? odinItem.CasepackUpc.Trim() : "",
+                        CasepackWeight = (odinItem.CasepackWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.CasepackWeight), 1) : "",
+                        CasepackWidth = (odinItem.CasepackWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.CasepackWidth), 1) : "",
+                        Color = (!string.IsNullOrEmpty(odinItem.InvItemColor)) ? odinItem.InvItemColor.Trim() : "",
+                        Copyright = (!string.IsNullOrEmpty(odinItem.Copyright)) ? odinItem.Copyright.Trim() : "",
+                        CountryOfOrigin = (!string.IsNullOrEmpty(odinItem.CountryIstOrigin)) ? odinItem.CountryIstOrigin.Trim() : "",
+                        CostProfileGroup = (!string.IsNullOrEmpty(odinItem.CmGroup)) ? odinItem.CmGroup.Trim() : "",
+                        DefaultActualCostCad = (odinItem.DefaultActualCostCad != null) ? DbUtil.ZeroTrim(odinItem.DefaultActualCostCad.ToString(), 2) : "",
+                        DefaultActualCostUsd = (odinItem.DefaultActualCostUsd != null) ? DbUtil.ZeroTrim(odinItem.DefaultActualCostUsd.ToString(), 2) : "",
+                        Description = (!string.IsNullOrEmpty(odinItem.Descr60)) ? odinItem.Descr60.Trim() : "",
+                        DirectImport = (!string.IsNullOrEmpty(odinItem.DirectImport)) ? odinItem.DirectImport.Trim() : "",
+                        Duty = (!string.IsNullOrEmpty(odinItem.Duty)) ? odinItem.Duty.Trim() : "",
+                        Ean = (!string.IsNullOrEmpty(odinItem.Ean)) ? odinItem.Ean.Trim() : "",
+                        Ecommerce_Asin = (!string.IsNullOrEmpty(odinItem.EcommerceAsin)) ? odinItem.EcommerceAsin.Trim() : "",
+                        Ecommerce_Bullet1 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet1)) ? odinItem.EcommerceBullet1.Trim() : "",
+                        Ecommerce_Bullet2 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet2)) ? odinItem.EcommerceBullet2.Trim() : "",
+                        Ecommerce_Bullet3 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet3)) ? odinItem.EcommerceBullet3.Trim() : "",
+                        Ecommerce_Bullet4 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet4)) ? odinItem.EcommerceBullet4.Trim() : "",
+                        Ecommerce_Bullet5 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet5)) ? odinItem.EcommerceBullet5.Trim() : "",
+                        Ecommerce_Components = (!string.IsNullOrEmpty(odinItem.EcommerceComponents)) ? odinItem.EcommerceComponents.Trim() : "",
+                        Ecommerce_Cost = (odinItem.EcommerceCost != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceCost).Trim(), 2) : "",
+                        Ecommerce_ExternalId = (!string.IsNullOrEmpty(odinItem.EcommerceExternalId)) ? odinItem.EcommerceExternalId.Trim() : "",
+                        Ecommerce_ExternalIdType = (!string.IsNullOrEmpty(odinItem.EcommerceExternalIdType)) ? odinItem.EcommerceExternalIdType.Trim() : "",
+                        Ecommerce_ImagePath1 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl1)) ? odinItem.EcommerceImageUrl1.Trim() : "",
+                        Ecommerce_ImagePath2 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl2)) ? odinItem.EcommerceImageUrl2.Trim() : "",
+                        Ecommerce_ImagePath3 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl3)) ? odinItem.EcommerceImageUrl3.Trim() : "",
+                        Ecommerce_ImagePath4 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl4)) ? odinItem.EcommerceImageUrl4.Trim() : "",
+                        Ecommerce_ImagePath5 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl5)) ? odinItem.EcommerceImageUrl5.Trim() : "",
+                        Ecommerce_ItemHeight = (odinItem.EcommerceHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceHeight).Trim(), 1) : "",
+                        Ecommerce_ItemLength = (odinItem.EcommerceLength != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceLength).Trim(), 1) : "",
+                        Ecommerce_ItemName = (!string.IsNullOrEmpty(odinItem.EcommerceItemName)) ? odinItem.EcommerceItemName.Trim() : "",
+                        Ecommerce_ItemWeight = (odinItem.EcommerceWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceWeight).Trim(), 1) : "",
+                        Ecommerce_ItemWidth = (odinItem.EcommerceWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceWidth).Trim(), 1) : "",
+                        Ecommerce_ModelName = (!string.IsNullOrEmpty(odinItem.EcommerceModelName)) ? odinItem.EcommerceModelName.Trim() : "",
+                        Ecommerce_PackageHeight = (odinItem.EcommercePackageHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommercePackageHeight).Trim(), 1) : "",
+                        Ecommerce_PackageLength = (odinItem.EcommercePackageLength != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommercePackageLength).Trim(), 1) : "",
+                        Ecommerce_PackageWeight = (odinItem.EcommercePackageWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommercePackageWeight).Trim(), 1) : "",
+                        Ecommerce_PackageWidth = (odinItem.EcommercePackageWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommercePackageWidth).Trim(), 1) : "",
+                        Ecommerce_PageQty = (!string.IsNullOrEmpty(Convert.ToString(odinItem.EcommercePageCount))) ? Convert.ToString(odinItem.EcommercePageCount).Trim() : "",
+                        Ecommerce_ProductCategory = (!string.IsNullOrEmpty(odinItem.EcommerceProductCategory)) ? odinItem.EcommerceProductCategory.Trim() : "",
+                        Ecommerce_ProductDescription = (!string.IsNullOrEmpty(odinItem.EcommerceFullDescription)) ? odinItem.EcommerceFullDescription.Trim() : "",
+                        Ecommerce_ProductSubcategory = (!string.IsNullOrEmpty(odinItem.EcommerceProductSubcategory)) ? odinItem.EcommerceProductSubcategory.Trim() : "",
+                        Ecommerce_ManufacturerName = (!string.IsNullOrEmpty(odinItem.EcommerceManufacturerName)) ? odinItem.EcommerceManufacturerName.Trim() : "",
+                        Ecommerce_Msrp = (odinItem.EcommerceMsrp != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceMsrp).Trim(), 2) : "",
+                        Ecommerce_GenericKeywords = (!string.IsNullOrEmpty(odinItem.EcommerceGenericKeywords)) ? odinItem.EcommerceGenericKeywords.Trim() : "",
+                        Ecommerce_SubjectKeywords = (!string.IsNullOrEmpty(odinItem.EcommerceSubjectKeywords)) ? odinItem.EcommerceSubjectKeywords.Trim() : "",
+                        Ecommerce_Size = (!string.IsNullOrEmpty(odinItem.EcommerceSize)) ? odinItem.EcommerceSize.Trim() : "",
+                        Ecommerce_Upc = (!string.IsNullOrEmpty(odinItem.EcommerceUpc)) ? odinItem.EcommerceUpc.Trim() : "",
+                        Gpc = (!string.IsNullOrEmpty(odinItem.Gpc)) ? odinItem.Gpc.Trim() : "",
+                        Height = (odinItem.InvItemHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemHeight), 1) : "",
+                        ImagePath = (!string.IsNullOrEmpty(odinItem.ImageFileName)) ? odinItem.ImageFileName.Trim() : "",
+                        InnerpackHeight = (odinItem.InnerpackHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InnerpackHeight), 1) : "",
+                        InnerpackLength = (odinItem.InnerpackLength != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InnerpackLength), 1) : "",
+                        InnerpackQuantity = (odinItem.InnerpackQty != null) ? Convert.ToString(odinItem.InnerpackQty).Trim() : "",
+                        InnerpackUpc = (!string.IsNullOrEmpty(odinItem.InnerpackUpc)) ? odinItem.InnerpackUpc.Trim() : "",
+                        InnerpackWidth = (odinItem.InnerpackWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InnerpackWidth), 1) : "",
+                        InnerpackWeight = (odinItem.InnerpackWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InnerpackWeight), 1) : "",
+                        InStockDate = (odinItem.InStockDate != null) ? Convert.ToString(DbUtil.StripTime(odinItem.InStockDate)) : "",
+                        Isbn = (!string.IsNullOrEmpty(odinItem.Isbn)) ? odinItem.Isbn.Trim() : "",
+                        ItemCategory = (!string.IsNullOrEmpty(odinItem.ProdCategory)) ? odinItem.ProdCategory.Trim() : "",
+                        ItemFamily = (!string.IsNullOrEmpty(odinItem.InvProdFamCd)) ? odinItem.InvProdFamCd.Trim() : "",
+                        ItemGroup = (!string.IsNullOrEmpty(odinItem.InvItemGroup)) ? odinItem.InvItemGroup.Trim() : "",
+                        ItemKeywords = (!string.IsNullOrEmpty(odinItem.ItemKeywords)) ? odinItem.ItemKeywords.Trim() : "",
+                        Language = (!string.IsNullOrEmpty(odinItem.Language)) ? DbUtil.OrderLanguage(odinItem.Language) : "",
+                        Length = (odinItem.InvItemLength != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemLength), 1) : "",
+                        License = (!string.IsNullOrEmpty(odinItem.License)) ? odinItem.License.Trim() : "",
+                        LicenseBeginDate = (odinItem.LicenseBeginDate != null) ? Convert.ToString(DbUtil.StripTime(odinItem.LicenseBeginDate)) : "",
+                        ListPriceCad = (odinItem.ListPriceCad != null) ? DbUtil.ZeroTrim(odinItem.ListPriceCad.ToString(), 2) : "",
+                        ListPriceMxn = (odinItem.ListPriceMxn != null) ? DbUtil.ZeroTrim(odinItem.ListPriceMxn.ToString(), 2) : "",
+                        ListPriceUsd = (odinItem.ListPriceUsd != null) ? DbUtil.ZeroTrim(odinItem.ListPriceUsd.ToString(), 2) : "",
+                        MetaDescription = (!string.IsNullOrEmpty(odinItem.MetaDescription)) ? odinItem.MetaDescription.Trim() : "",
+                        MfgSource = (!string.IsNullOrEmpty(odinItem.MfgSource)) ? odinItem.MfgSource.Trim() : "",
+                        MsrpCad = (!string.IsNullOrEmpty(odinItem.MsrpCad)) ? DbUtil.ZeroTrim(odinItem.MsrpCad, 2) : "",
+                        MsrpMxn = (!string.IsNullOrEmpty(odinItem.MsrpMxn)) ? DbUtil.ZeroTrim(odinItem.MsrpMxn, 2) : "",
+                        Msrp = (!string.IsNullOrEmpty(odinItem.MsrpUsd)) ? DbUtil.ZeroTrim(odinItem.MsrpUsd, 2) : "",
+                        PricingGroup = (!string.IsNullOrEmpty(odinItem.PricingGroup)) ? odinItem.PricingGroup.Trim() : "",
+                        ProductFormat = (!string.IsNullOrEmpty(odinItem.ProdFormat)) ? odinItem.ProdFormat.Trim() : "",
+                        ProductGroup = (!string.IsNullOrEmpty(odinItem.ProdGroup)) ? odinItem.ProdGroup.Trim() : "",
+                        ProductIdTranslation = (!string.IsNullOrEmpty(odinItem.ProductIdTranslation)) ? DbUtil.ParseChildElements(odinItem.InvItemId, odinItem.ProductIdTranslation) : new List<ChildElement>(),
+                        ProductLine = (!string.IsNullOrEmpty(odinItem.ProdLine)) ? odinItem.ProdLine.Trim() : "",
+                        ProductQty = (!string.IsNullOrEmpty(odinItem.ProdQty)) ? odinItem.ProdQty.Trim() : "",
+                        Property = (!string.IsNullOrEmpty(odinItem.Property)) ? odinItem.Property.Trim() : "",
+                        PrintOnDemand = (!string.IsNullOrEmpty(odinItem.PrintOnDemand)) ? odinItem.PrintOnDemand.Trim() : "",
+                        PsStatus = (!string.IsNullOrEmpty(odinItem.Psstatus)) ? odinItem.Psstatus.Trim() : "I",
+                        SatCode = (!string.IsNullOrEmpty(odinItem.SatCode)) ? odinItem.SatCode.Trim() : "",
+                        SellOnTrends = (!string.IsNullOrEmpty(odinItem.SellOnWeb)) ? odinItem.SellOnWeb : "n",
+                        SellOnAllPosters = (!string.IsNullOrEmpty(odinItem.SellOnAllPosters)) ? odinItem.SellOnAllPosters : "n",
+                        SellOnAmazon = (!string.IsNullOrEmpty(odinItem.SellOnAmazon)) ? odinItem.SellOnAmazon : "N",
+                        SellOnAmazonSellerCentral = (!string.IsNullOrEmpty(odinItem.SellOnAmazonSellerCentral)) ? odinItem.SellOnAmazonSellerCentral : "N",
+                        SellOnEcommerce = (!string.IsNullOrEmpty(odinItem.SellOnEcommerce)) ? odinItem.SellOnEcommerce : "N",
+                        SellOnFanatics = (!string.IsNullOrEmpty(odinItem.SellOnFanatics)) ? odinItem.SellOnFanatics : "N",
+                        SellOnGuitarCenter = (!string.IsNullOrEmpty(odinItem.SellOnGuitarCenter)) ? odinItem.SellOnGuitarCenter : "N",
+                        SellOnHayneedle = (!string.IsNullOrEmpty(odinItem.SellOnHayneedle)) ? odinItem.SellOnHayneedle : "N",
+                        SellOnTarget = (!string.IsNullOrEmpty(odinItem.SellOnTarget)) ? odinItem.SellOnTarget : "N",
+                        SellOnWalmart = (!string.IsNullOrEmpty(odinItem.SellOnWalmart)) ? odinItem.SellOnWalmart : "N",
+                        SellOnWayfair = (!string.IsNullOrEmpty(odinItem.SellOnWayfair)) ? odinItem.SellOnWayfair : "N",
+                        ShortDescription = (!string.IsNullOrEmpty(odinItem.ShortDesc)) ? odinItem.ShortDesc.Trim() : "",
+                        Size = (!string.IsNullOrEmpty(odinItem.Size)) ? odinItem.Size.Trim() : "",
+                        StandardCost = (odinItem.StandardCost != null) ? Convert.ToString(odinItem.StandardCost).Trim() : "",
+                        StatsCode = (!string.IsNullOrEmpty(odinItem.StatsCode)) ? odinItem.StatsCode.Trim() : "",
+                        TariffCode = (!string.IsNullOrEmpty(odinItem.HarmonizedCd)) ? odinItem.HarmonizedCd.Trim() : "",
+                        Territory = (!string.IsNullOrEmpty(odinItem.Territory)) ? DbUtil.OrderTerritory(odinItem.Territory) : "",
+                        Title = (!string.IsNullOrEmpty(odinItem.Title)) ? odinItem.Title.Trim() : "",
+                        Udex = (!string.IsNullOrEmpty(odinItem.Udex)) ? odinItem.Udex.Trim() : "",
+                        Upc = (!string.IsNullOrEmpty(odinItem.UpcId)) ? odinItem.UpcId.Trim() : "",
+                        WebsitePrice = (odinItem.WebsitePrice != null) ? DbUtil.ZeroTrim(odinItem.WebsitePrice.ToString(), 2) : "",
+                        Weight = (odinItem.InvItemWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWeight), 1) : "",
+                        Width = (odinItem.InvItemWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWidth), 1) : "",
+                        OnSite = (!string.IsNullOrEmpty(odinItem.OnSite)) ? odinItem.OnSite : "",
+                        Ecommerce_CountryofOrigin = (!string.IsNullOrEmpty(odinItem.CountryIstOrigin)) ? odinItem.CountryIstOrigin : "",
+                        Status = "Update",
+                        ItemRow = row
+                    };
                     if (!string.IsNullOrEmpty(odinItem.Category))
                     {
                         List<string> Categories = DbUtil.ParseCategories(odinItem.Category);
@@ -1702,9 +1703,13 @@ namespace Odin.Data
                         }
                     }
                     item.ResetUpdate();
+                    return item;
+                }
+                else
+                {
+                    return new ItemObject();
                 }
             }
-            return item;
         }
 
         /// <summary>
@@ -1719,8 +1724,8 @@ namespace Odin.Data
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 List<InvItems> invItems = (from o in context.InvItems
-                                           where o.InvItemId.Contains(value) || o.Descr254.Contains(value)
-                                           select o).ToList();
+       where o.InvItemId.Contains(value) || o.Descr254.Contains(value)
+       select o).ToList();
 
                 foreach (InvItems invItem in invItems)
                 {
@@ -1743,15 +1748,15 @@ namespace Odin.Data
                 if ((context.OdinItemUpdateRecords.Any()))
                 {
                     var odinItemUpdateRecords = (from o in context.OdinItemUpdateRecords
-                                                 orderby o.InputDate descending
-                                                 group o by new { o.InvItemId, o.ItemInputStatus, o.Username, o.InputDate } into g
-                                                 select new
-                                                 {
-                                                     ItemId = g.Key.InvItemId,
-                                                     Status = g.Key.ItemInputStatus,
-                                                     UserName = g.Key.Username,
-                                                     InputDate = g.Max(x => x.InputDate)
-                                                 }).ToList();
+             orderby o.InputDate descending
+             group o by new { o.InvItemId, o.ItemInputStatus, o.Username, o.InputDate } into g
+             select new
+             {
+                 ItemId = g.Key.InvItemId,
+                 Status = g.Key.ItemInputStatus,
+                 UserName = g.Key.Username,
+                 InputDate = g.Max(x => x.InputDate)
+             }).ToList();
                     foreach (var x in odinItemUpdateRecords)
                     {
                         if (!itemIds.Contains(x.ItemId))
@@ -1865,6 +1870,7 @@ namespace Odin.Data
                     item.SellOnAllPosters = odinItemUpdateRecord.SellOnAllposters;
                     item.SellOnAmazon = odinItemUpdateRecord.SellOnAmazon;
                     item.SellOnAmazonSellerCentral = odinItemUpdateRecord.SellOnAmazonSellerCentral;
+                    item.SellOnEcommerce = odinItemUpdateRecord.SellOnEcommerce;
                     item.SellOnFanatics = odinItemUpdateRecord.SellOnFanatics;
                     item.SellOnGuitarCenter = odinItemUpdateRecord.SellOnGuitarCenter;
                     item.SellOnHayneedle = odinItemUpdateRecord.SellOnHayneedle;
@@ -1985,9 +1991,9 @@ namespace Odin.Data
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 MarketplaceProductTranslations match = (from o in context.MarketplaceProductTranslations
-                                                        where o.FromProductId == parentId
-                                                        && o.ToProductId == childId
-                                                        select o).FirstOrDefault();
+                    where o.FromProductId == parentId
+                    && o.ToProductId == childId
+                    select o).FirstOrDefault();
 
                 if (match != null)
                 {
@@ -2232,6 +2238,7 @@ namespace Odin.Data
                 itemAttribEx.ProdGroup = item.ProductGroup;
                 itemAttribEx.ProdLine = item.ProductLine;
                 itemAttribEx.SatCode = item.SatCode;
+                itemAttribEx.SellOnEcommerce = item.SellOnEcommerce;
                 itemAttribEx.SellOnWeb = item.SellOnTrends;
                 itemAttribEx.TranslateEdiProd = item.ReturnTranslateEdiProd();
                 itemAttribEx.WebsitePrice = DbUtil.ToDecimal(item.WebsitePrice);

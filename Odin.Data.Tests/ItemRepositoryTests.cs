@@ -1226,12 +1226,12 @@ namespace Odin.Data.Tests
             Assert.AreEqual("Y", newItem.SellOnAllPosters);
             Assert.AreEqual("Y", newItem.SellOnAmazon);
             Assert.AreEqual("Y", newItem.SellOnAmazonSellerCentral);
-            Assert.AreEqual("", newItem.SellOnFanatics);
-            Assert.AreEqual("", newItem.SellOnGuitarCenter);
-            Assert.AreEqual("", newItem.SellOnHayneedle);
-            Assert.AreEqual("", newItem.SellOnTarget);
-            Assert.AreEqual("", newItem.SellOnWalmart);
-            Assert.AreEqual("", newItem.SellOnWayfair);
+            Assert.AreEqual("N", newItem.SellOnFanatics);
+            Assert.AreEqual("N", newItem.SellOnGuitarCenter);
+            Assert.AreEqual("N", newItem.SellOnHayneedle);
+            Assert.AreEqual("N", newItem.SellOnTarget);
+            Assert.AreEqual("N", newItem.SellOnWalmart);
+            Assert.AreEqual("N", newItem.SellOnWayfair);
             Assert.AreEqual("N", newItem.SellOnTrends);
             Assert.AreEqual("ASIN", newItem.Ecommerce_Asin);
             Assert.AreEqual("Bullet1", newItem.Ecommerce_Bullet1);

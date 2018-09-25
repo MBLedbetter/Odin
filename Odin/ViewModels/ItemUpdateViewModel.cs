@@ -188,8 +188,10 @@ namespace Odin.ViewModels
             List<string> wrongHeaders = ItemService.ValidateHeaderCollumns(fileName);
             if(wrongHeaders.Count>0)
             {
-                AlertView window = new AlertView();
-                window.DataContext = new AlertViewModel(wrongHeaders, "Alert", "The following columns did not match any existing values. Please adjust the header or remove this collumn before loading.");
+                AlertView window = new AlertView
+                {
+                    DataContext = new AlertViewModel(wrongHeaders, "Alert", "The following columns did not match any existing values. Please adjust the header or remove this collumn before loading.")
+                };
                 window.ShowDialog();
             }
         }
@@ -208,8 +210,10 @@ namespace Odin.ViewModels
             }
             if (this.AbsentIds.Count > 0)
             {
-                AlertView window = new AlertView();
-                window.DataContext = new AlertViewModel(this.AbsentIds, "Alert", "The following item ids are either duplicates in the load sheet \r\n or they have not been previously saved to the database.");
+                AlertView window = new AlertView
+                {
+                    DataContext = new AlertViewModel(this.AbsentIds, "Alert", "The following item ids are either duplicates in the load sheet \r\n or they have not been previously saved to the database.")
+                };
                 window.ShowDialog();
             }
             this.ProgressCheck = "Item Load Complete";
@@ -265,8 +269,10 @@ namespace Odin.ViewModels
         public void LoadExcelInfo()
         {
             WorkbookReader workbookReader = new WorkbookReader();
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Excel files|*.xls; *.xlsx";
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                Filter = "Excel files|*.xls; *.xlsx"
+            };
             if (dialog.ShowDialog() != true)
             {
                 return;
@@ -301,10 +307,8 @@ namespace Odin.ViewModels
 
         public ItemUpdateViewModel(ItemService itemService, ExcelService excelService)
         {
-            if (itemService == null) { throw new ArgumentNullException("itemService"); }
-            if (excelService == null) { throw new ArgumentNullException("excelService"); }
-            this.ItemService = itemService;
-            this.ExcelService = excelService;
+            this.ItemService = itemService ?? throw new ArgumentNullException("itemService");
+            this.ExcelService = excelService ?? throw new ArgumentNullException("excelService");
         }
 
         #endregion // Constructor

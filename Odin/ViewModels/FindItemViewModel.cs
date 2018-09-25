@@ -348,8 +348,10 @@ namespace Odin.ViewModels
         public void AddItemList()
         {
             Mouse.OverrideCursor = Cursors.Wait;
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Excel files|*.xls; *.xlsx";
+            OpenFileDialog dialog = new OpenFileDialog()
+            {
+                Filter = "Excel files|*.xls; *.xlsx"
+            };
             if (dialog.ShowDialog() != true)
             {
                 return;
@@ -402,14 +404,18 @@ namespace Odin.ViewModels
                             {
                                 missingItems.Add(searchItem.ItemId);
                             }
-                            AlertView window = new AlertView();
-                            window.DataContext = new AlertViewModel(missingItems, "Alert", "No results were found for the following items. Or they were duplicates");
+                            AlertView window = new AlertView()
+                            {
+                                DataContext = new AlertViewModel(missingItems, "Alert", "No results were found for the following items. Or they were duplicates")
+                            };
                             window.ShowDialog();
                         }
                         else if (searchItems.Count > 1)
                         {
-                            FindItemResultListView window = new FindItemResultListView();
-                            window.DataContext = new FindItemResultListViewModel(searchItems);
+                            FindItemResultListView window = new FindItemResultListView()
+                            {
+                                DataContext = new FindItemResultListViewModel(searchItems)
+                            };
                             List<string> itemIds = new List<string>();
                             if (window.ShowDialog() == true)
                             {
@@ -422,16 +428,16 @@ namespace Odin.ViewModels
 
                                     foreach (ItemObject CurrentItem in this.ItemList)
                                     {
-                                        if (returnedItem.ItemId == CurrentItem.ItemId)
-                                        {
-                                            exists = true;
-                                            break;
-                                        }
+    if (returnedItem.ItemId == CurrentItem.ItemId)
+    {
+        exists = true;
+        break;
+    }
                                     }
                                     if (!exists)
                                     {
-                                        itemIds.Add(returnedItem.ItemId);
-                                        this.ItemList.Add(ItemService.RetrieveItem(returnedItem.ItemId, this.ItemList.Count + 1));
+    itemIds.Add(returnedItem.ItemId);
+    this.ItemList.Add(ItemService.RetrieveItem(returnedItem.ItemId, this.ItemList.Count + 1));
                                     }
                                 }
                                 this.ItemLoadCount = this.SearchItemIds.Count;
@@ -447,8 +453,10 @@ namespace Odin.ViewModels
                         }
                         else if (searchItems.Count == 1)
                         {
-                            ObservableCollection<SearchItem> ReturnedItems = new ObservableCollection<SearchItem>();
-                            ReturnedItems.Add(searchItems[0]);
+                            ObservableCollection<SearchItem> ReturnedItems = new ObservableCollection<SearchItem>()
+                            {
+                                searchItems[0]
+                            };
 
                             foreach (SearchItem returnedItem in ReturnedItems)
                             {
@@ -457,8 +465,8 @@ namespace Odin.ViewModels
                                 {
                                     if (returnedItem.ItemId == CurrentItem.ItemId)
                                     {
-                                        exists = true;
-                                        break;
+    exists = true;
+    break;
                                     }
                                 }
                                 if (!exists)
@@ -539,8 +547,10 @@ namespace Odin.ViewModels
             this.ProgressText = "Item Load Complete";
             if(this.ItemIdAbsentList.Count>0)
             {
-                AlertView window = new AlertView();
-                window.DataContext = new AlertViewModel(this.ItemIdAbsentList, "Alert", "The following items were not found in the database.");
+                AlertView window = new AlertView()
+                {
+                    DataContext = new AlertViewModel(this.ItemIdAbsentList, "Alert", "The following items were not found in the database.")
+                };
                 window.ShowDialog();
             }
         }
@@ -600,7 +610,6 @@ namespace Odin.ViewModels
             {
                 this.SearchItemList.Add(item);
             }
-            // this.SearchItemList = SortedList;
         }
 
         /// <summary>
@@ -624,7 +633,6 @@ namespace Odin.ViewModels
             {
                 this.SearchItemList.Add(item);
             }
-            // this.SearchItemList = SortedList;
         }
 
         #endregion // Methods
@@ -639,11 +647,9 @@ namespace Odin.ViewModels
         /// <param name="workbookReader"></param>
         public FindItemViewModel(string type, ItemService itemService, WorkbookReader workbookReader)
         {
-            if (itemService == null) { throw new ArgumentNullException("itemService"); }
-            if (workbookReader == null) { throw new ArgumentNullException("workbookReader"); }
             this.BackgroundWorker = new BackgroundWorker();
-            this.ItemService = itemService;
-            this.WorkbookReader = workbookReader;
+            this.ItemService = itemService?? throw new ArgumentNullException("itemService");
+            this.WorkbookReader = workbookReader?? throw new ArgumentNullException("workbookReader");
             this.UpdateType = type;
             this.Title = type + " Items";
             this.ItemIdSearchOrder = 0;

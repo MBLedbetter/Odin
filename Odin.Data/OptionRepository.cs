@@ -96,8 +96,8 @@ namespace Odin.Data
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 foreach (OdinOptionsTable odinOptionsTable in (from o in context.OdinOptionsTable
-                                                               where o.OptionId == optionId && o.Value == value && o.UserName == username
-                                                               select o))
+                           where o.OptionId == optionId && o.Value == value && o.UserName == username
+                           select o))
                 {
                     context.OdinOptionsTable.Remove(odinOptionsTable);
                 }
@@ -113,8 +113,8 @@ namespace Odin.Data
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 foreach (OdinRolePermissions odinRolePermissions in (from o in context.OdinRolePermissions
-                                                                     where o.Permission == permission && o.Role == role
-                                                                     select o))
+                                 where o.Permission == permission && o.Role == role
+                                 select o))
                 {
                     context.OdinRolePermissions.Remove(odinRolePermissions);
                 }
@@ -130,8 +130,8 @@ namespace Odin.Data
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 foreach (OdinUserRoles odinUserRoles in (from o in context.OdinUserRoles
-                                                         where o.Username == userName && o.Role == role
-                                                         select o))
+                     where o.Username == userName && o.Role == role
+                     select o))
                 {
                     context.OdinUserRoles.Remove(odinUserRoles);
                 }
@@ -207,9 +207,9 @@ namespace Odin.Data
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 List<string> results = (from o in context.OdinOptionsTable
-                                        where o.OptionId == optionId 
-                                            && o.UserName == username
-                                        select o.Value).ToList();
+    where o.OptionId == optionId 
+        && o.UserName == username
+    select o.Value).ToList();
                 results.Sort();
                 foreach (string x in results)
                 {
@@ -347,12 +347,7 @@ namespace Odin.Data
         /// <param name="isLocalTest"></param>
         public OptionRepository(IOdinContextFactory contextFactory)
         {
-            if (contextFactory == null)
-            {
-                throw new ArgumentNullException("contextFactory");
-            }
-
-            this.contextFactory = contextFactory;
+            this.contextFactory = contextFactory?? throw new ArgumentNullException("contextFactory");
             GlobalData.NotificationNumber = RetrieveCurrentNotificationNumber();
         }
 

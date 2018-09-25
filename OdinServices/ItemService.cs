@@ -144,6 +144,7 @@ namespace OdinServices
             public static string SellOnAllPosters = "Sell On All Posters";
             public static string SellOnAmazon = "Sell On Amazon";
             public static string SellOnAmazonSellerCentral = "Sell On Amazon Seller Central";
+            public static string SellOnEcommerce = "Sell On Ecommerce";
             public static string SellOnFanatics = "Sell On Fanatics";
             public static string SellOnGuitarCenter = "Sell On Guitar Center";
             public static string SellOnHayneedle = "Sell On Hayneedle";
@@ -208,8 +209,7 @@ namespace OdinServices
             public static string A_SearchTerms = "Amazon Search Terms";
             public static string A_Size = "Amazon Size";
 
-            #endregion // public properties
-            
+            #endregion // public properties            
         }
 
         #endregion  // Enumerations
@@ -695,12 +695,12 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.Ecommerce_ProductCategory)) && (item.Ecommerce_ProductCategory.Trim() != returnItem.Ecommerce_ProductCategory.Trim())) { returnItem.Ecommerce_ProductCategory = item.Ecommerce_ProductCategory; } // Ecommerce Product Category
             if ((!string.IsNullOrEmpty(item.Ecommerce_ProductDescription)) && (item.Ecommerce_ProductDescription.Trim() != returnItem.Ecommerce_ProductDescription.Trim())) { returnItem.Ecommerce_ProductDescription = item.Ecommerce_ProductDescription; } // Ecommerce Product Description
             if ((!string.IsNullOrEmpty(item.Ecommerce_ProductSubcategory)) && (item.Ecommerce_ProductSubcategory.Trim() != returnItem.Ecommerce_ProductSubcategory.Trim())) { returnItem.Ecommerce_ProductSubcategory = item.Ecommerce_ProductSubcategory; } // Ecommerce Product Subcategory
-            if ((!string.IsNullOrEmpty(item.Ecommerce_ManufacturerName)) && (item.Ecommerce_ManufacturerName.Trim() != returnItem.Ecommerce_ManufacturerName.Trim())) { returnItem.Ecommerce_ManufacturerName = item.Ecommerce_ManufacturerName; } // Ecommerce Manufacturer Name
-            if ((!string.IsNullOrEmpty(item.Ecommerce_Msrp)) && (item.Ecommerce_Msrp.Trim() != returnItem.Ecommerce_Msrp.Trim())) { returnItem.Ecommerce_Msrp = item.Ecommerce_Msrp; } // Ecommerce Msrp
-            if ((!string.IsNullOrEmpty(item.Ecommerce_GenericKeywords)) && (item.Ecommerce_GenericKeywords.Trim() != returnItem.Ecommerce_GenericKeywords.Trim())) { returnItem.Ecommerce_GenericKeywords = item.Ecommerce_GenericKeywords; } // Generic Keywords
-            if ((!string.IsNullOrEmpty(item.Ecommerce_Size)) && (item.Ecommerce_Size.Trim() != returnItem.Ecommerce_Size.Trim())) { returnItem.Ecommerce_Size = item.Ecommerce_Size; } // Ecommerce Size
-            if ((!string.IsNullOrEmpty(item.Ecommerce_SubjectKeywords)) && (item.Ecommerce_SubjectKeywords.Trim() != returnItem.Ecommerce_SubjectKeywords.Trim())) { returnItem.Ecommerce_SubjectKeywords = item.Ecommerce_SubjectKeywords; } // Subject Keywords
-            if ((!string.IsNullOrEmpty(item.Ecommerce_Upc)) && (item.Ecommerce_Upc.Trim() != returnItem.Ecommerce_Upc.Trim())) { returnItem.Ecommerce_Upc = item.Ecommerce_Upc; } // Ecommerce Upc
+            if ((!string.IsNullOrEmpty(item.Ecommerce_ManufacturerName)) && (item.Ecommerce_ManufacturerName.Trim() != returnItem.Ecommerce_ManufacturerName.Trim())) { returnItem.Ecommerce_ManufacturerName = item.Ecommerce_ManufacturerName; } 
+            if ((!string.IsNullOrEmpty(item.Ecommerce_Msrp)) && (item.Ecommerce_Msrp.Trim() != returnItem.Ecommerce_Msrp.Trim())) { returnItem.Ecommerce_Msrp = item.Ecommerce_Msrp; }
+            if ((!string.IsNullOrEmpty(item.Ecommerce_GenericKeywords)) && (item.Ecommerce_GenericKeywords.Trim() != returnItem.Ecommerce_GenericKeywords.Trim())) { returnItem.Ecommerce_GenericKeywords = item.Ecommerce_GenericKeywords; } 
+            if ((!string.IsNullOrEmpty(item.Ecommerce_Size)) && (item.Ecommerce_Size.Trim() != returnItem.Ecommerce_Size.Trim())) { returnItem.Ecommerce_Size = item.Ecommerce_Size; } 
+            if ((!string.IsNullOrEmpty(item.Ecommerce_SubjectKeywords)) && (item.Ecommerce_SubjectKeywords.Trim() != returnItem.Ecommerce_SubjectKeywords.Trim())) { returnItem.Ecommerce_SubjectKeywords = item.Ecommerce_SubjectKeywords; } 
+            if ((!string.IsNullOrEmpty(item.Ecommerce_Upc)) && (item.Ecommerce_Upc.Trim() != returnItem.Ecommerce_Upc.Trim())) { returnItem.Ecommerce_Upc = item.Ecommerce_Upc; } 
             if ((!string.IsNullOrEmpty(item.Gpc)) && (item.Gpc.Trim() != returnItem.Gpc.Trim())) { returnItem.Gpc = item.Gpc; }
             if ((!string.IsNullOrEmpty(item.Height)) && (item.Height.Trim() != returnItem.Height.Trim())) { returnItem.Height = item.Height; }
             if ((!string.IsNullOrEmpty(item.ImagePath)) && (item.ImagePath.Trim() != returnItem.ImagePath.Trim())) { returnItem.ImagePath = item.ImagePath; }
@@ -741,16 +741,17 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.Property)) && (item.Property.Trim() != returnItem.Property.Trim())) { returnItem.Property = item.Property; }
             if ((!string.IsNullOrEmpty(item.PsStatus)) && (item.PsStatus.Trim() != returnItem.PsStatus.Trim())) { returnItem.PsStatus = item.PsStatus; }
             if ((!string.IsNullOrEmpty(item.SatCode)) && (item.SatCode.Trim() != returnItem.SatCode.Trim())) { returnItem.SatCode = item.SatCode; }
-            if ((!string.IsNullOrEmpty(item.SellOnAllPosters)) && (item.SellOnAllPosters.Trim() != returnItem.SellOnAllPosters.Trim())) { returnItem.SellOnAllPosters = item.SellOnAllPosters.Trim(); } // Sell On AllPosters
-            if ((!string.IsNullOrEmpty(item.SellOnAmazon)) && (item.SellOnAmazon.Trim() != returnItem.SellOnAmazon.Trim())) { returnItem.SellOnAmazon = item.SellOnAmazon.Trim(); } // Sell On Amazon
-            if ((!string.IsNullOrEmpty(item.SellOnAmazonSellerCentral)) && (item.SellOnAmazonSellerCentral.Trim() != returnItem.SellOnAmazonSellerCentral.Trim())) { returnItem.SellOnAmazonSellerCentral = item.SellOnAmazonSellerCentral.Trim(); } // Sell On Amazon Seller Central
-            if ((!string.IsNullOrEmpty(item.SellOnTarget)) && (item.SellOnTarget.Trim() != returnItem.SellOnTarget.Trim())) { returnItem.SellOnTarget = item.SellOnTarget.Trim(); } // Sell On Target
-            if ((!string.IsNullOrEmpty(item.SellOnTrends)) && (item.SellOnTrends.Trim() != returnItem.SellOnTrends.Trim())) { returnItem.SellOnTrends = item.SellOnTrends.Trim(); } // Sell On Trends
-            if ((!string.IsNullOrEmpty(item.SellOnFanatics)) && (item.SellOnFanatics.Trim() != returnItem.SellOnFanatics.Trim())) { returnItem.SellOnFanatics = item.SellOnFanatics.Trim(); } // Sell On Fanatics
-            if ((!string.IsNullOrEmpty(item.SellOnGuitarCenter)) && (item.SellOnGuitarCenter.Trim() != returnItem.SellOnGuitarCenter.Trim())) { returnItem.SellOnGuitarCenter = item.SellOnGuitarCenter.Trim(); } // Sell On Guitar Center
-            if ((!string.IsNullOrEmpty(item.SellOnHayneedle)) && (item.SellOnHayneedle.Trim() != returnItem.SellOnHayneedle.Trim())) { returnItem.SellOnHayneedle = item.SellOnHayneedle.Trim(); } // Sell On Hayneedle
-            if ((!string.IsNullOrEmpty(item.SellOnWalmart)) && (item.SellOnWalmart.Trim() != returnItem.SellOnWalmart.Trim())) { returnItem.SellOnWalmart = item.SellOnWalmart.Trim(); } // Sell On Walmart
-            if ((!string.IsNullOrEmpty(item.SellOnWayfair)) && (item.SellOnWayfair.Trim() != returnItem.SellOnWayfair.Trim())) { returnItem.SellOnWayfair = item.SellOnWayfair.Trim(); } // Sell On Wayfair
+            if ((!string.IsNullOrEmpty(item.SellOnAllPosters)) && (item.SellOnAllPosters.Trim() != returnItem.SellOnAllPosters.Trim())) { returnItem.SellOnAllPosters = item.SellOnAllPosters.Trim(); } 
+            if ((!string.IsNullOrEmpty(item.SellOnAmazon)) && (item.SellOnAmazon.Trim() != returnItem.SellOnAmazon.Trim())) { returnItem.SellOnAmazon = item.SellOnAmazon.Trim(); } 
+            if ((!string.IsNullOrEmpty(item.SellOnAmazonSellerCentral)) && (item.SellOnAmazonSellerCentral.Trim() != returnItem.SellOnAmazonSellerCentral.Trim())) { returnItem.SellOnAmazonSellerCentral = item.SellOnAmazonSellerCentral.Trim(); }
+            if ((!string.IsNullOrEmpty(item.SellOnTarget)) && (item.SellOnTarget.Trim() != returnItem.SellOnTarget.Trim())) { returnItem.SellOnTarget = item.SellOnTarget.Trim(); }
+            if ((!string.IsNullOrEmpty(item.SellOnTrends)) && (item.SellOnTrends.Trim() != returnItem.SellOnTrends.Trim())) { returnItem.SellOnTrends = item.SellOnTrends.Trim(); }
+            if ((!string.IsNullOrEmpty(item.SellOnEcommerce)) && (item.SellOnEcommerce.Trim() != returnItem.SellOnEcommerce.Trim())) { returnItem.SellOnEcommerce = item.SellOnEcommerce.Trim(); }
+            if ((!string.IsNullOrEmpty(item.SellOnFanatics)) && (item.SellOnFanatics.Trim() != returnItem.SellOnFanatics.Trim())) { returnItem.SellOnFanatics = item.SellOnFanatics.Trim(); } 
+            if ((!string.IsNullOrEmpty(item.SellOnGuitarCenter)) && (item.SellOnGuitarCenter.Trim() != returnItem.SellOnGuitarCenter.Trim())) { returnItem.SellOnGuitarCenter = item.SellOnGuitarCenter.Trim(); } 
+            if ((!string.IsNullOrEmpty(item.SellOnHayneedle)) && (item.SellOnHayneedle.Trim() != returnItem.SellOnHayneedle.Trim())) { returnItem.SellOnHayneedle = item.SellOnHayneedle.Trim(); } 
+            if ((!string.IsNullOrEmpty(item.SellOnWalmart)) && (item.SellOnWalmart.Trim() != returnItem.SellOnWalmart.Trim())) { returnItem.SellOnWalmart = item.SellOnWalmart.Trim(); } 
+            if ((!string.IsNullOrEmpty(item.SellOnWayfair)) && (item.SellOnWayfair.Trim() != returnItem.SellOnWayfair.Trim())) { returnItem.SellOnWayfair = item.SellOnWayfair.Trim(); } 
             if ((!string.IsNullOrEmpty(item.ShortDescription)) && (item.ShortDescription.Trim() != returnItem.ShortDescription.Trim())) { returnItem.ShortDescription = item.ShortDescription.Trim(); }
             if ((!string.IsNullOrEmpty(item.Size)) && (item.Size.Trim() != returnItem.Size.Trim())) { returnItem.Size = item.Size.Trim(); }
             if ((!string.IsNullOrEmpty(item.StandardCost)) && (item.StandardCost.Trim() != returnItem.StandardCost.Trim())) { returnItem.StandardCost = item.StandardCost.Trim(); }
@@ -933,6 +934,33 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Reads a cell from the given worksheet and returns the value
+        /// </summary>
+        /// <param name="worksheetData">worksheet being read</param>
+        /// <param name="row">data row</param>
+        /// <param name="value">header value</param>
+        /// <param name="value2">alternate header value</param>
+        /// <returns></returns>
+        public string ReadWorksheetCell(WorksheetData worksheetData, int row, string value, string value2 = null)
+        {
+            if (value2 != null)
+            {
+                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, value, value2)))
+                {
+                    return worksheetData.GetValue(row, value, value2).Trim();
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, value)))
+                {
+                    return worksheetData.GetValue(row, value).Trim();
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
         ///     Calls a window explorer with workbook reader and loads in list of spreadsheet items
         /// </summary>
         /// <param name="status">Item Status (update / add / remove)</param>
@@ -947,147 +975,146 @@ namespace OdinServices
             }
             for (int row = 0; row < worksheetData.CellData.Count; row++)
             {
-                ItemObject item = new ItemObject();
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.ItemId)))
-                {
-                    item.ItemId = worksheetData.GetValue(row, WorksheetColumnHeaders.ItemId).Trim();
-                }
-                else
+                string ItemId = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ItemId);
+
+                if (ItemId == "")
                 {
                     continue;
                 }
+                ItemObject item = new ItemObject()
+                {
+                    ItemRow = row + 1,
+                    ItemId = ItemId,
+                    AccountingGroup = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.AccountingGroup, WorksheetColumnHeaders.AcctgGroup),
+                    AltImageFile1 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ImagePath2),
+                    AltImageFile2 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ImagePath3),
+                    AltImageFile3 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ImagePath4),
+                    AltImageFile4 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ImagePath5),
+                    BillOfMaterials = ParseChildElementIds(ItemId, ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.BillOfMaterials, WorksheetColumnHeaders.BOM)),
+                    CasepackHeight = DbUtil.RoundValue4Dec(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.CasepackHeight)),
+                    CasepackLength = DbUtil.RoundValue4Dec(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.CasepackLength).Trim()),
+                    CasepackQty = DbUtil.RoundValue4Dec(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.CasepackQty, WorksheetColumnHeaders.CasepackQuantity)),
+                    CasepackUpc = DbUtil.RoundValue4Dec(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.CasepackUpc).Trim()),
+                    CasepackWidth = DbUtil.RoundValue4Dec(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.CasepackWidth).Trim()),
+                    CasepackWeight = DbUtil.RoundValue4Dec(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.CasepackWeight).Trim()),
+                    Category = DbUtil.ReplaceCharacters(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Category)),
+                    Category2 = DbUtil.ReplaceCharacters(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Category2)),
+                    Category3 = DbUtil.ReplaceCharacters(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Category3)),
+                    Color = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Color, WorksheetColumnHeaders.LabelColor),
+                    Copyright = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Copyright),
+                    CountryOfOrigin = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.CountryOfOrigin),
+                    CostProfileGroup = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.CostProfileGroup),
+                    DefaultActualCostUsd = DbUtil.RoundValue4Dec(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.DacUsd, WorksheetColumnHeaders.DefaultActualCostUsd)),
+                    DefaultActualCostCad = DbUtil.RoundValue4Dec(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.DacCad, WorksheetColumnHeaders.DefaultActualCostCad)),
+                    Description = DbUtil.ReplaceCharacters(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Description)).Trim(),
+                    DirectImport = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.DirectImport),
+                    Duty = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Duty),
+                    Ean = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ean),
+                    Ecommerce_Asin = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_Asin, WorksheetColumnHeaders.A_Asin),
+                    Ecommerce_Bullet1 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_Bullet1, WorksheetColumnHeaders.A_Bullet1),
+                    Ecommerce_Bullet2 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_Bullet2, WorksheetColumnHeaders.A_Bullet2),
+                    Ecommerce_Bullet3 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_Bullet3, WorksheetColumnHeaders.A_Bullet3),
+                    Ecommerce_Bullet4 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_Bullet4, WorksheetColumnHeaders.A_Bullet4),
+                    Ecommerce_Bullet5 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_Bullet5, WorksheetColumnHeaders.A_Bullet5),
+                    Ecommerce_Components = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_Components, WorksheetColumnHeaders.A_Components),
+                    Ecommerce_Cost = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_Cost, WorksheetColumnHeaders.A_Cost), 2),
+                    Ecommerce_ExternalId = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_ExternalId, WorksheetColumnHeaders.A_ExternalID).Trim(),
+                    Ecommerce_ExternalIdType = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_ExternalIdType, WorksheetColumnHeaders.A_ExternalIdType).Trim(),
+                    Ecommerce_ItemHeight = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_ItemHeight, WorksheetColumnHeaders.A_ItemHeight), 1),
+                    Ecommerce_ItemLength = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_ItemLength, WorksheetColumnHeaders.A_ItemLength), 1),
+                    Ecommerce_ItemName = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_ItemName, WorksheetColumnHeaders.A_ItemName).Trim(),
+                    Ecommerce_ItemWeight = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_ItemWeight, WorksheetColumnHeaders.A_ItemWeight), 1),
+                    Ecommerce_ItemWidth = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_ItemWidth, WorksheetColumnHeaders.A_ItemWidth), 1),
+                    Ecommerce_ModelName = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_ModelName, WorksheetColumnHeaders.A_ModelName).Trim(),
+                    Ecommerce_PackageHeight = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_PackageHeight, WorksheetColumnHeaders.A_PackageHeight), 1),
+                    Ecommerce_PackageLength = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_PackageLength, WorksheetColumnHeaders.A_PackageLength), 1),
+                    Ecommerce_PackageWeight = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_PackageWeight, WorksheetColumnHeaders.A_PackageWeight), 1),
+                    Ecommerce_PackageWidth = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_PackageWidth, WorksheetColumnHeaders.A_PackageWidth), 1).Trim(),
+                    Ecommerce_PageQty = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_PageQty).Trim(),
+                    Ecommerce_ProductCategory = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_ProductCategory, WorksheetColumnHeaders.A_ProductCategory),
+                    Ecommerce_ProductDescription = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_ProductDescription, WorksheetColumnHeaders.A_ProductDescription),
+                    Ecommerce_ProductSubcategory = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_ProductSubcategory, WorksheetColumnHeaders.A_ProductSubcategory),
+                    Ecommerce_ManufacturerName = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_ManufacturerName, WorksheetColumnHeaders.A_ManufacturerName),
+                    Ecommerce_Msrp = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_Msrp, WorksheetColumnHeaders.A_Msrp), 2),
+                    Ecommerce_GenericKeywords = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_SearchTerms, WorksheetColumnHeaders.A_SearchTerms),
+                    Ecommerce_Size = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_Size, WorksheetColumnHeaders.A_Size),
+                    Ecommerce_SubjectKeywords = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SubjectKeywords, WorksheetColumnHeaders.Ecommerce_SubjectKeywords),
+                    Ecommerce_Upc = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_Upc),
+                    Gpc = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Gpc),
+                    Height = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Height, WorksheetColumnHeaders.ItemHeight), 1),
+                    ImagePath = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ImagePath, WorksheetColumnHeaders.ImagePath1),
+                    InnerpackHeight = DbUtil.RoundValue4Dec(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.InnerpackHeight)),
+                    InnerpackLength = DbUtil.RoundValue4Dec(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.InnerpackLength)),
+                    InnerpackQuantity = DbUtil.RoundValue4Dec(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.InnerpackQuantity, WorksheetColumnHeaders.InnerpackQty)),
+                    InnerpackUpc = DbUtil.RoundValue4Dec(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.InnerpackUpc)),
+                    InnerpackWidth = DbUtil.RoundValue4Dec(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.InnerpackWidth)),
+                    InnerpackWeight = DbUtil.RoundValue4Dec(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.InnerpackWeight)),
+                    InStockDate = DbUtil.DateTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.InStockDate, WorksheetColumnHeaders.In_StockDate)),
+                    Isbn = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Isbn).Trim(),
+                    ItemCategory = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ItemCategory).Trim(),
+                    ItemFamily = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ItemFamily).Trim(),
+                    ItemGroup = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ItemGroup),
+                    ItemKeywords = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ItemKeywords),
+                    Language = DbUtil.OrderLanguage(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Language)),
+                    Length = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Length, WorksheetColumnHeaders.ItemLength), 1),
+                    License = RemoveSpecialChar(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.License)),
+                    LicenseBeginDate = DbUtil.DateTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.LicenseBeginDate)),
+                    ListPriceCad = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ListPriceCad, WorksheetColumnHeaders.ListPriceCadCAD), 2),
+                    ListPriceUsd = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ListPriceUsd, WorksheetColumnHeaders.ListPriceUsdUSD), 2),
+                    ListPriceMxn = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ListPriceMxn, WorksheetColumnHeaders.ListPriceMxnMXN), 2),
+                    MetaDescription = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.MetaDescription),
+                    MfgSource = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.MfgSource).Trim(),
+                    Msrp = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Msrp).Trim(),
+                    MsrpCad = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.MsrpCad).Trim(),
+                    MsrpMxn = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.MsrpMxn).Trim(),
+                    PricingGroup = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.PricingGroup, WorksheetColumnHeaders.PricingGroupProduct).Trim(),
+                    PrintOnDemand = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.PrintOnDemand).Trim(),
+                    ProductFormat = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ProductFormat).Trim(),
+                    ProductGroup = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ProductGroup).Trim(),
+                    ProductIdTranslation = ParseChildElementIds(ItemId, ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ProductIdTranslation)),
+                    ProductLine = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ProductLine).Trim(),
+                    ProductQty = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ProductQty, WorksheetColumnHeaders.ProductQuantity),
+                    Property = RemoveSpecialChar(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Property)),
+                    PsStatus = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.PsStatus).Trim(),
+                    SatCode = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SatCode).Trim(),
+                    SellOnAllPosters = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnAllPosters).Trim(),
+                    SellOnAmazon = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.A_AmazonActive, WorksheetColumnHeaders.SellOnAmazon).Trim(),
+                    SellOnAmazonSellerCentral = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnAmazonSellerCentral).Trim(),
+                    SellOnEcommerce = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnEcommerce).Trim(),
+                    SellOnFanatics = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnFanatics).Trim(),
+                    SellOnGuitarCenter = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnGuitarCenter).Trim(),
+                    SellOnHayneedle = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnHayneedle).Trim(),
+                    SellOnTarget = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnTarget).Trim(),
+                    SellOnTrends = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnTrends).Trim(),
+                    SellOnWalmart = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnWalmart).Trim(),
+                    SellOnWayfair = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnWayfair).Trim(),
+                    ShortDescription = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ShortDescription).Trim(),
+                    Size = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Size).Trim(),
+                    StandardCost = DbUtil.RoundValue4Dec(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.DacUsd, WorksheetColumnHeaders.DefaultActualCostUsd)),
+                    StatsCode = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.StatsCode).Trim(),
+                    Status = status,
+                    TariffCode = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.TariffCode).Trim(),
+                    Territory = DbUtil.OrderTerritory(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Territory)),
+                    Title = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Title).Trim(),
+                    Udex = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Udex).Trim(),
+                    Upc = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Upc).Trim(),
+                    WebsitePrice = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.WebsitePrice), 2),
+                    Weight = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Weight, WorksheetColumnHeaders.ItemWeight), 1),
+                    Width = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Width, WorksheetColumnHeaders.ItemWidth), 1)
+                };
 
-                string TemplateName = worksheetData.GetValue(row, WorksheetColumnHeaders.TemplateName, WorksheetColumnHeaders.TemplateId).Trim();
-                item.ItemRow = row + 1;
                 if (status == "Add")
                 {
+                    string TemplateName = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.TemplateName, WorksheetColumnHeaders.TemplateId);
                     if (!string.IsNullOrEmpty(TemplateName))
                     {
-                        item = SetTemplateValues(TemplateName, item);
+                        item = SetTemplateValues(TemplateName,item);
                     }
-                }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.AccountingGroup, WorksheetColumnHeaders.AcctgGroup))) { item.AccountingGroup = worksheetData.GetValue(row, WorksheetColumnHeaders.AccountingGroup, WorksheetColumnHeaders.AcctgGroup).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.ImagePath2))) { item.AltImageFile1 = worksheetData.GetValue(row, WorksheetColumnHeaders.ImagePath2).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.ImagePath3))) { item.AltImageFile2 = worksheetData.GetValue(row, WorksheetColumnHeaders.ImagePath3).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.ImagePath4))) { item.AltImageFile3 = worksheetData.GetValue(row, WorksheetColumnHeaders.ImagePath4).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.ImagePath5))) { item.AltImageFile4 = worksheetData.GetValue(row, WorksheetColumnHeaders.ImagePath5).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.BillOfMaterials, WorksheetColumnHeaders.BOM))) { item.BillOfMaterials = ParseChildElementIds(item.ItemId, worksheetData.GetValue(row, WorksheetColumnHeaders.BillOfMaterials, WorksheetColumnHeaders.BOM)); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackHeight))) { item.CasepackHeight = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackHeight).Trim()); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackLength))) { item.CasepackLength = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackLength).Trim()); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackQty, WorksheetColumnHeaders.CasepackQuantity))) { item.CasepackQty = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackQty, WorksheetColumnHeaders.CasepackQuantity)); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackUpc))) { item.CasepackUpc = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackUpc).Trim()); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackWidth))) { item.CasepackWidth = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackWidth).Trim()); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackWeight))) { item.CasepackWeight = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.CasepackWeight).Trim()); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Category))) { item.Category = DbUtil.ReplaceCharacters(worksheetData.GetValue(row, WorksheetColumnHeaders.Category).Trim()); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Category2))) { item.Category2 = DbUtil.ReplaceCharacters(worksheetData.GetValue(row, WorksheetColumnHeaders.Category2).Trim()); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Category3))) { item.Category3 = DbUtil.ReplaceCharacters(worksheetData.GetValue(row, WorksheetColumnHeaders.Category3).Trim()); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Color, WorksheetColumnHeaders.LabelColor))) { item.Color = worksheetData.GetValue(row, WorksheetColumnHeaders.Color, WorksheetColumnHeaders.LabelColor).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Copyright))) { item.Copyright = worksheetData.GetValue(row, WorksheetColumnHeaders.Copyright).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.CountryOfOrigin))) { item.CountryOfOrigin = worksheetData.GetValue(row, WorksheetColumnHeaders.CountryOfOrigin).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.CostProfileGroup))) { item.CostProfileGroup = worksheetData.GetValue(row, WorksheetColumnHeaders.CostProfileGroup).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.DacUsd, WorksheetColumnHeaders.DefaultActualCostUsd))) { item.DefaultActualCostUsd = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.DacUsd, WorksheetColumnHeaders.DefaultActualCostUsd)); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.DacCad, WorksheetColumnHeaders.DefaultActualCostCad))) { item.DefaultActualCostCad = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.DacCad, WorksheetColumnHeaders.DefaultActualCostCad)); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Description))) { item.Description = DbUtil.ReplaceCharacters(worksheetData.GetValue(row, WorksheetColumnHeaders.Description)).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.DirectImport))) { item.DirectImport = worksheetData.GetValue(row, WorksheetColumnHeaders.DirectImport).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Duty))) { item.Duty = worksheetData.GetValue(row, WorksheetColumnHeaders.Duty).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ean))) { item.Ean = worksheetData.GetValue(row, WorksheetColumnHeaders.Ean).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Asin, WorksheetColumnHeaders.A_Asin))) { item.Ecommerce_Asin = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Asin, WorksheetColumnHeaders.A_Asin).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet1, WorksheetColumnHeaders.A_Bullet1))) { item.Ecommerce_Bullet1 = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet1, WorksheetColumnHeaders.A_Bullet1).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet2, WorksheetColumnHeaders.A_Bullet2))) { item.Ecommerce_Bullet2 = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet2, WorksheetColumnHeaders.A_Bullet2).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet3, WorksheetColumnHeaders.A_Bullet3))) { item.Ecommerce_Bullet3 = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet3, WorksheetColumnHeaders.A_Bullet3).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet4, WorksheetColumnHeaders.A_Bullet4))) { item.Ecommerce_Bullet4 = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet4, WorksheetColumnHeaders.A_Bullet4).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet5, WorksheetColumnHeaders.A_Bullet5))) { item.Ecommerce_Bullet5 = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Bullet5, WorksheetColumnHeaders.A_Bullet5).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Components, WorksheetColumnHeaders.A_Components))) { item.Ecommerce_Components = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Components, WorksheetColumnHeaders.A_Components).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Cost, WorksheetColumnHeaders.A_Cost))) { item.Ecommerce_Cost = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Cost, WorksheetColumnHeaders.A_Cost), 2); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ExternalId, WorksheetColumnHeaders.A_ExternalID))) { item.Ecommerce_ExternalId = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ExternalId, WorksheetColumnHeaders.A_ExternalID).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ExternalIdType, WorksheetColumnHeaders.A_ExternalIdType))) { item.Ecommerce_ExternalIdType = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ExternalIdType, WorksheetColumnHeaders.A_ExternalIdType).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ItemHeight, WorksheetColumnHeaders.A_ItemHeight))) { item.Ecommerce_ItemHeight = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ItemHeight, WorksheetColumnHeaders.A_ItemHeight), 1); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ItemLength, WorksheetColumnHeaders.A_ItemLength))) { item.Ecommerce_ItemLength = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ItemLength, WorksheetColumnHeaders.A_ItemLength), 1); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ItemName, WorksheetColumnHeaders.A_ItemName))) { item.Ecommerce_ItemName = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ItemName, WorksheetColumnHeaders.A_ItemName).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ItemWeight, WorksheetColumnHeaders.A_ItemWeight))) { item.Ecommerce_ItemWeight = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ItemWeight, WorksheetColumnHeaders.A_ItemWeight), 1); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ItemWidth, WorksheetColumnHeaders.A_ItemWidth))) { item.Ecommerce_ItemWidth = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ItemWidth, WorksheetColumnHeaders.A_ItemWidth), 1); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ModelName, WorksheetColumnHeaders.A_ModelName))) { item.Ecommerce_ModelName = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ModelName, WorksheetColumnHeaders.A_ModelName).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PackageHeight, WorksheetColumnHeaders.A_PackageHeight))) { item.Ecommerce_PackageHeight = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PackageHeight, WorksheetColumnHeaders.A_PackageHeight), 1); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PackageLength, WorksheetColumnHeaders.A_PackageLength))) { item.Ecommerce_PackageLength = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PackageLength, WorksheetColumnHeaders.A_PackageLength), 1); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PackageWeight, WorksheetColumnHeaders.A_PackageWeight))) { item.Ecommerce_PackageWeight = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PackageWeight, WorksheetColumnHeaders.A_PackageWeight), 1); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PackageWidth, WorksheetColumnHeaders.A_PackageWidth))) { item.Ecommerce_PackageWidth = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PackageWidth, WorksheetColumnHeaders.A_PackageWidth), 1).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PageQty))) { item.Ecommerce_PageQty = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_PageQty).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ProductCategory, WorksheetColumnHeaders.A_ProductCategory))) { item.Ecommerce_ProductCategory = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ProductCategory, WorksheetColumnHeaders.A_ProductCategory).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ProductDescription, WorksheetColumnHeaders.A_ProductDescription))) { item.Ecommerce_ProductDescription = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ProductDescription, WorksheetColumnHeaders.A_ProductDescription).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ProductSubcategory, WorksheetColumnHeaders.A_ProductSubcategory))) { item.Ecommerce_ProductSubcategory = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ProductSubcategory, WorksheetColumnHeaders.A_ProductSubcategory).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ManufacturerName, WorksheetColumnHeaders.A_ManufacturerName))) { item.Ecommerce_ManufacturerName = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_ManufacturerName, WorksheetColumnHeaders.A_ManufacturerName).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Msrp, WorksheetColumnHeaders.A_Msrp))) { item.Ecommerce_Msrp = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Msrp, WorksheetColumnHeaders.A_Msrp), 2); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_SearchTerms, WorksheetColumnHeaders.A_SearchTerms))) { item.Ecommerce_GenericKeywords = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_SearchTerms, WorksheetColumnHeaders.A_SearchTerms).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Size, WorksheetColumnHeaders.A_Size))) { item.Ecommerce_Size = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Size, WorksheetColumnHeaders.A_Size).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SubjectKeywords, WorksheetColumnHeaders.Ecommerce_SubjectKeywords))) { item.Ecommerce_SubjectKeywords = worksheetData.GetValue(row, WorksheetColumnHeaders.SubjectKeywords, WorksheetColumnHeaders.Ecommerce_SubjectKeywords).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Upc))) { item.Ecommerce_Upc = worksheetData.GetValue(row, WorksheetColumnHeaders.Ecommerce_Upc).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Gpc))) { item.Gpc = worksheetData.GetValue(row, WorksheetColumnHeaders.Gpc).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Height, WorksheetColumnHeaders.ItemHeight))) { item.Height = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.Height, WorksheetColumnHeaders.ItemHeight), 1); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.ImagePath, WorksheetColumnHeaders.ImagePath1))) { item.ImagePath = worksheetData.GetValue(row, WorksheetColumnHeaders.ImagePath, WorksheetColumnHeaders.ImagePath1).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackHeight))) { DbUtil.RoundValue4Dec(item.InnerpackHeight = worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackHeight)); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackLength))) { item.InnerpackLength = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackLength)); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackQuantity, WorksheetColumnHeaders.InnerpackQty))) { item.InnerpackQuantity = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackQuantity, WorksheetColumnHeaders.InnerpackQty)); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackUpc))) { item.InnerpackUpc = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackUpc)); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackWidth))) { item.InnerpackWidth = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackWidth)); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackWeight))) { item.InnerpackWeight = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackWeight)); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.InStockDate, WorksheetColumnHeaders.In_StockDate))) { item.InStockDate = DbUtil.DateTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.InStockDate, WorksheetColumnHeaders.In_StockDate)); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Isbn))) { item.Isbn = worksheetData.GetValue(row, WorksheetColumnHeaders.Isbn).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.ItemCategory))) { item.ItemCategory = worksheetData.GetValue(row, WorksheetColumnHeaders.ItemCategory).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.ItemFamily))) { item.ItemFamily = worksheetData.GetValue(row, WorksheetColumnHeaders.ItemFamily).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.ItemGroup))) { item.ItemGroup = worksheetData.GetValue(row, WorksheetColumnHeaders.ItemGroup).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.ItemKeywords))) { item.ItemKeywords = worksheetData.GetValue(row, WorksheetColumnHeaders.ItemKeywords).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Language))) { item.Language = DbUtil.OrderLanguage(worksheetData.GetValue(row, WorksheetColumnHeaders.Language)); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Length, WorksheetColumnHeaders.ItemLength))) { item.Length = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.Length, WorksheetColumnHeaders.ItemLength), 1); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.License))) { item.License = RemoveSpecialChar(worksheetData.GetValue(row, WorksheetColumnHeaders.License)).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.LicenseBeginDate))) { item.LicenseBeginDate = DbUtil.DateTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.LicenseBeginDate)); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.ListPriceCad, WorksheetColumnHeaders.ListPriceCadCAD))) { item.ListPriceCad = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.ListPriceCad, WorksheetColumnHeaders.ListPriceCadCAD), 2); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.ListPriceUsd, WorksheetColumnHeaders.ListPriceUsdUSD))) { item.ListPriceUsd = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.ListPriceUsd, WorksheetColumnHeaders.ListPriceUsdUSD), 2); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.ListPriceMxn, WorksheetColumnHeaders.ListPriceMxnMXN))) { item.ListPriceMxn = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.ListPriceMxn, WorksheetColumnHeaders.ListPriceMxnMXN), 2); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.MetaDescription))) { item.MetaDescription = worksheetData.GetValue(row, WorksheetColumnHeaders.MetaDescription).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.MfgSource))) { item.MfgSource = worksheetData.GetValue(row, WorksheetColumnHeaders.MfgSource).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Msrp))) { item.Msrp = worksheetData.GetValue(row, WorksheetColumnHeaders.Msrp).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.MsrpCad))) { item.MsrpCad = worksheetData.GetValue(row, WorksheetColumnHeaders.MsrpCad).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.MsrpMxn))) { item.MsrpMxn = worksheetData.GetValue(row, WorksheetColumnHeaders.MsrpMxn).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.PricingGroup, WorksheetColumnHeaders.PricingGroupProduct))) { item.PricingGroup = worksheetData.GetValue(row, WorksheetColumnHeaders.PricingGroup, WorksheetColumnHeaders.PricingGroupProduct).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.PrintOnDemand))) { item.PrintOnDemand = worksheetData.GetValue(row, WorksheetColumnHeaders.PrintOnDemand).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.ProductFormat))) { item.ProductFormat = worksheetData.GetValue(row, WorksheetColumnHeaders.ProductFormat).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.ProductGroup))) { item.ProductGroup = worksheetData.GetValue(row, WorksheetColumnHeaders.ProductGroup).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.ProductIdTranslation))) { item.ProductIdTranslation = ParseChildElementIds(item.ItemId, worksheetData.GetValue(row, WorksheetColumnHeaders.ProductIdTranslation)); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.ProductLine))) { item.ProductLine = worksheetData.GetValue(row, WorksheetColumnHeaders.ProductLine).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.ProductQty, WorksheetColumnHeaders.ProductQuantity))) { item.ProductQty = worksheetData.GetValue(row, WorksheetColumnHeaders.ProductQty, WorksheetColumnHeaders.ProductQuantity).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Property))) { item.Property = RemoveSpecialChar(worksheetData.GetValue(row, WorksheetColumnHeaders.Property).Trim()); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.PsStatus))) { item.PsStatus = worksheetData.GetValue(row, WorksheetColumnHeaders.PsStatus).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SatCode))) { item.SatCode = worksheetData.GetValue(row, WorksheetColumnHeaders.SatCode).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnAllPosters))) { item.SellOnAllPosters = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnAllPosters).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.A_AmazonActive, WorksheetColumnHeaders.SellOnAmazon))) { item.SellOnAmazon = worksheetData.GetValue(row, WorksheetColumnHeaders.A_AmazonActive, WorksheetColumnHeaders.SellOnAmazon).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnAmazonSellerCentral))) { item.SellOnAmazonSellerCentral = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnAmazonSellerCentral).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnFanatics))) { item.SellOnFanatics = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnFanatics).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnGuitarCenter))) { item.SellOnGuitarCenter = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnGuitarCenter).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnHayneedle))) { item.SellOnHayneedle = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnHayneedle).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnTarget))) { item.SellOnTarget = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnTarget).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnTrends))) { item.SellOnTrends = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnTrends).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnWalmart))) { item.SellOnWalmart = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnWalmart).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnWayfair))) { item.SellOnWayfair = worksheetData.GetValue(row, WorksheetColumnHeaders.SellOnWayfair).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.ShortDescription))) { item.ShortDescription = worksheetData.GetValue(row, WorksheetColumnHeaders.ShortDescription).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Size))) { item.Size = worksheetData.GetValue(row, WorksheetColumnHeaders.Size).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.DacUsd, WorksheetColumnHeaders.DefaultActualCostUsd))) { item.StandardCost = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.DacUsd, WorksheetColumnHeaders.DefaultActualCostUsd)); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.StatsCode))) { item.StatsCode = worksheetData.GetValue(row, WorksheetColumnHeaders.StatsCode).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.TariffCode))) { item.TariffCode = worksheetData.GetValue(row, WorksheetColumnHeaders.TariffCode).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Territory))) { item.Territory = DbUtil.OrderTerritory(worksheetData.GetValue(row, WorksheetColumnHeaders.Territory)); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Title))) { item.Title = worksheetData.GetValue(row, WorksheetColumnHeaders.Title).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Udex))) { item.Udex = worksheetData.GetValue(row, WorksheetColumnHeaders.Udex).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Upc))) { item.Upc = worksheetData.GetValue(row, WorksheetColumnHeaders.Upc).Trim(); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.WebsitePrice))) { item.WebsitePrice = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.WebsitePrice), 2); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Weight, WorksheetColumnHeaders.ItemWeight))) { item.Weight = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.Weight, WorksheetColumnHeaders.ItemWeight), 1); }
-                if (!string.IsNullOrEmpty(worksheetData.GetValue(row, WorksheetColumnHeaders.Width, WorksheetColumnHeaders.ItemWidth))) { item.Width = DbUtil.ZeroTrim(worksheetData.GetValue(row, WorksheetColumnHeaders.Width, WorksheetColumnHeaders.ItemWidth), 1); }
-
-                item.Ecommerce_CountryofOrigin = RetrieveFullCountryOfOrigin(item.CountryOfOrigin);
-                item.ResetUpdate();
-                if(status == "Add")
-                {
                     item.UpdateSellOnValues();
                 }
-                item.Status = status;
+                item.Ecommerce_CountryofOrigin = RetrieveFullCountryOfOrigin(item.CountryOfOrigin);
+
+                item.ResetUpdate();
                 itemList.Add(item);
             }
             return itemList;
@@ -1237,14 +1264,17 @@ namespace OdinServices
         public List<ChildElement> ParseChildElementIds(string parentId, string productIds)
         {
             List<ChildElement> result = new List<ChildElement>();
-            if (productIds != "[CLEAR]")
+            if (!string.IsNullOrEmpty(productIds))
             {
-                string[] stringList = productIds.Split(',');
-                foreach (string i in stringList)
+                if (productIds != "[CLEAR]")
                 {
-                    if (!string.IsNullOrEmpty(i))
+                    string[] stringList = productIds.Split(',');
+                    foreach (string i in stringList)
                     {
-                        result.Add(ParseChildElementId(parentId, i));
+                        if (!string.IsNullOrEmpty(i))
+                        {
+                            result.Add(ParseChildElementId(parentId, i));
+                        }
                     }
                 }
             }
@@ -1312,9 +1342,9 @@ namespace OdinServices
             headers.Add("IMAGEPATH");
             return headers;
         }
-        
+
         /// <summary>
-        ///     Adds saved template values to the given item
+        ///     Returns items with pre-loaded template data
         /// </summary>
         /// <param name="TemplateName"></param>
         /// <param name="item"></param>
@@ -1324,79 +1354,79 @@ namespace OdinServices
             if (GlobalData.TemplateNames.Contains(TemplateName))
             {
                 Template template = RetrieveTemplate(TemplateName);
-                item.AccountingGroup = template.AccountingGroup;
-                item.CasepackHeight = template.CasepackHeight;
-                item.CasepackLength = template.CasepackLength;
-                item.CasepackQty = template.CasepackQty;
-                item.CasepackWidth = template.CasepackWidth;
-                item.CasepackWeight = template.CasepackWeight;
-                item.Category = template.Category;
-                item.Category2 = template.Category2;
-                item.Category3 = template.Category3;
-                item.Copyright = template.Copyright;
-                item.CountryOfOrigin = template.CountryOfOrigin;
-                item.CostProfileGroup = template.CostProfileGroup;
-                item.DefaultActualCostUsd = template.DefaultActualCostUsd;
-                item.DefaultActualCostCad = template.DefaultActualCostCad;
-                item.Duty = template.Duty;
-                item.Ecommerce_Bullet1 = template.EcommerceBullet1;
-                item.Ecommerce_Bullet2 = template.EcommerceBullet2;
-                item.Ecommerce_Bullet3 = template.EcommerceBullet3;
-                item.Ecommerce_Bullet4 = template.EcommerceBullet4;
-                item.Ecommerce_Bullet5 = template.EcommerceBullet5;
-                item.Ecommerce_Components = template.EcommerceComponents;
-                item.Ecommerce_Cost = template.EcommerceCost;
-                item.Ecommerce_ExternalIdType = template.EcommerceExternalIdType;
-                item.Ecommerce_ItemHeight = template.EcommerceItemHeight;
-                item.Ecommerce_ItemLength = template.EcommerceItemLength;
-                item.Ecommerce_ItemWeight = template.EcommerceItemWeight;
-                item.Ecommerce_ItemWidth = template.EcommerceItemWidth;
-                item.Ecommerce_ModelName = template.EcommerceModelName;
-                item.Ecommerce_PackageHeight = template.EcommercePackageHeight;
-                item.Ecommerce_PackageLength = template.EcommercePackageLength;
-                item.Ecommerce_PackageWeight = template.EcommercePackageWeight;
-                item.Ecommerce_PackageWidth = template.EcommercePackageWidth;
-                item.Ecommerce_PageQty = template.EcommercePageQty;
-                item.Ecommerce_ProductCategory = template.EcommerceProductCategory;
-                item.Ecommerce_ProductDescription = template.EcommerceProductDescription;
-                item.Ecommerce_ProductSubcategory = template.EcommerceProductSubcategory;
-                item.Ecommerce_ManufacturerName = template.EcommerceManufacturerName;
-                item.Ecommerce_Msrp = template.EcommerceMsrp;
-                item.Ecommerce_Size = template.EcommerceSize;
-                item.Gpc = template.Gpc;
-                item.Height = template.Height;
-                item.InnerpackHeight = template.InnerpackHeight;
-                item.InnerpackLength = template.InnerpackLength;
-                item.InnerpackQuantity = template.InnerpackQuantity;
-                item.InnerpackWidth = template.InnerpackWidth;
-                item.InnerpackWeight = template.InnerpackWeight;
-                item.ItemCategory = template.ItemCategory;
-                item.ItemFamily = template.ItemFamily;
-                item.ItemGroup = template.ItemGroup;
-                item.Length = template.Length;
-                item.ListPriceCad = template.ListPriceCad;
-                item.ListPriceUsd = template.ListPriceUsd;
-                item.ListPriceMxn = template.ListPriceMxn;
-                item.MetaDescription = template.MetaDescription;
-                item.MfgSource = template.MfgSource;
-                item.Msrp = template.Msrp;
-                item.MsrpCad = template.MsrpCad;
-                item.MsrpMxn = template.MsrpMxn;
-                item.PrintOnDemand = template.PrintOnDemand;
-                item.ProductFormat = template.ProductFormat;
-                item.ProductGroup = template.ProductGroup;
-                item.ProductLine = template.ProductLine;
-                item.ProductQty = template.ProductQty;
-                item.PricingGroup = template.PricingGroup;
-                item.PsStatus = template.PsStatus;
-                item.SatCode = template.SatCode;
-                item.Size = template.Size;
-                item.StandardCost = template.DefaultActualCostUsd;
-                item.TariffCode = template.TariffCode;
-                item.Udex = template.Udex;
-                item.WebsitePrice = template.WebsitePrice;
-                item.Weight = template.Weight;
-                item.Width = template.Width;
+                if (string.IsNullOrEmpty(item.AccountingGroup)) { item.AccountingGroup = template.AccountingGroup; }
+                if (string.IsNullOrEmpty(item.CasepackHeight)) { item.CasepackHeight = template.CasepackHeight; }
+                if (string.IsNullOrEmpty(item.CasepackLength)) { item.CasepackLength = template.CasepackLength; }
+                if (string.IsNullOrEmpty(item.CasepackQty)) { item.CasepackQty = template.CasepackQty; }
+                if (string.IsNullOrEmpty(item.CasepackWidth)) { item.CasepackWidth = template.CasepackWidth; }
+                if (string.IsNullOrEmpty(item.CasepackWeight)) { item.CasepackWeight = template.CasepackWeight; }
+                if (string.IsNullOrEmpty(item.Category)) { item.Category = template.Category; }
+                if (string.IsNullOrEmpty(item.Category2)) { item.Category2 = template.Category2; }
+                if (string.IsNullOrEmpty(item.Category3)) { item.Category3 = template.Category3; }
+                if (string.IsNullOrEmpty(item.Copyright)) { item.Copyright = template.Copyright; }
+                if (string.IsNullOrEmpty(item.CountryOfOrigin)) { item.CountryOfOrigin = template.CountryOfOrigin; }
+                if (string.IsNullOrEmpty(item.CostProfileGroup)) { item.CostProfileGroup = template.CostProfileGroup; }
+                if (string.IsNullOrEmpty(item.DefaultActualCostUsd)) { item.DefaultActualCostUsd = template.DefaultActualCostUsd; }
+                if (string.IsNullOrEmpty(item.DefaultActualCostCad)) { item.DefaultActualCostCad = template.DefaultActualCostCad; }
+                if (string.IsNullOrEmpty(item.Duty)) { item.Duty = template.Duty; }
+                if (string.IsNullOrEmpty(item.Ecommerce_Bullet1)) { item.Ecommerce_Bullet1 = template.EcommerceBullet1; }
+                if (string.IsNullOrEmpty(item.Ecommerce_Bullet2)) { item.Ecommerce_Bullet2 = template.EcommerceBullet2; }
+                if (string.IsNullOrEmpty(item.Ecommerce_Bullet3)) { item.Ecommerce_Bullet3 = template.EcommerceBullet3; }
+                if (string.IsNullOrEmpty(item.Ecommerce_Bullet4)) { item.Ecommerce_Bullet4 = template.EcommerceBullet4; }
+                if (string.IsNullOrEmpty(item.Ecommerce_Bullet5)) { item.Ecommerce_Bullet5 = template.EcommerceBullet5; }
+                if (string.IsNullOrEmpty(item.Ecommerce_Components)) { item.Ecommerce_Components = template.EcommerceComponents; }
+                if (string.IsNullOrEmpty(item.Ecommerce_Cost)) { item.Ecommerce_Cost = template.EcommerceCost; }
+                if (string.IsNullOrEmpty(item.Ecommerce_ExternalIdType)) { item.Ecommerce_ExternalIdType = template.EcommerceExternalIdType; }
+                if (string.IsNullOrEmpty(item.Ecommerce_ItemHeight)) { item.Ecommerce_ItemHeight = template.EcommerceItemHeight; }
+                if (string.IsNullOrEmpty(item.Ecommerce_ItemLength)) { item.Ecommerce_ItemLength = template.EcommerceItemLength; }
+                if (string.IsNullOrEmpty(item.Ecommerce_ItemWeight)) { item.Ecommerce_ItemWeight = template.EcommerceItemWeight; }
+                if (string.IsNullOrEmpty(item.Ecommerce_ItemWidth)) { item.Ecommerce_ItemWidth = template.EcommerceItemWidth; }
+                if (string.IsNullOrEmpty(item.Ecommerce_ModelName)) { item.Ecommerce_ModelName = template.EcommerceModelName; }
+                if (string.IsNullOrEmpty(item.Ecommerce_PackageHeight)) { item.Ecommerce_PackageHeight = template.EcommercePackageHeight; }
+                if (string.IsNullOrEmpty(item.Ecommerce_PackageLength)) { item.Ecommerce_PackageLength = template.EcommercePackageLength; }
+                if (string.IsNullOrEmpty(item.Ecommerce_PackageWeight)) { item.Ecommerce_PackageWeight = template.EcommercePackageWeight; }
+                if (string.IsNullOrEmpty(item.Ecommerce_PackageWidth)) { item.Ecommerce_PackageWidth = template.EcommercePackageWidth; }
+                if (string.IsNullOrEmpty(item.Ecommerce_PageQty)) { item.Ecommerce_PageQty = template.EcommercePageQty; }
+                if (string.IsNullOrEmpty(item.Ecommerce_ProductCategory)) { item.Ecommerce_ProductCategory = template.EcommerceProductCategory; }
+                if (string.IsNullOrEmpty(item.Ecommerce_ProductDescription)) { item.Ecommerce_ProductDescription = template.EcommerceProductDescription; }
+                if (string.IsNullOrEmpty(item.Ecommerce_ProductSubcategory)) { item.Ecommerce_ProductSubcategory = template.EcommerceProductSubcategory; }
+                if (string.IsNullOrEmpty(item.Ecommerce_ManufacturerName)) { item.Ecommerce_ManufacturerName = template.EcommerceManufacturerName; }
+                if (string.IsNullOrEmpty(item.Ecommerce_Msrp)) { item.Ecommerce_Msrp = template.EcommerceMsrp; }
+                if (string.IsNullOrEmpty(item.Ecommerce_Size)) { item.Ecommerce_Size = template.EcommerceSize; }
+                if (string.IsNullOrEmpty(item.Gpc)) { item.Gpc = template.Gpc; }
+                if (string.IsNullOrEmpty(item.Height)) { item.Height = template.Height; }
+                if (string.IsNullOrEmpty(item.InnerpackHeight)) { item.InnerpackHeight = template.InnerpackHeight; }
+                if (string.IsNullOrEmpty(item.InnerpackLength)) { item.InnerpackLength = template.InnerpackLength; }
+                if (string.IsNullOrEmpty(item.InnerpackQuantity)) { item.InnerpackQuantity = template.InnerpackQuantity; }
+                if (string.IsNullOrEmpty(item.InnerpackWidth)) { item.InnerpackWidth = template.InnerpackWidth; }
+                if (string.IsNullOrEmpty(item.InnerpackWeight)) { item.InnerpackWeight = template.InnerpackWeight; }
+                if (string.IsNullOrEmpty(item.ItemCategory)) { item.ItemCategory = template.ItemCategory; }
+                if (string.IsNullOrEmpty(item.ItemFamily)) { item.ItemFamily = template.ItemFamily; }
+                if (string.IsNullOrEmpty(item.ItemGroup)) { item.ItemGroup = template.ItemGroup; }
+                if (string.IsNullOrEmpty(item.Length)) { item.Length = template.Length; }
+                if (string.IsNullOrEmpty(item.ListPriceCad)) { item.ListPriceCad = template.ListPriceCad; }
+                if (string.IsNullOrEmpty(item.ListPriceUsd)) { item.ListPriceUsd = template.ListPriceUsd; }
+                if (string.IsNullOrEmpty(item.ListPriceMxn)) { item.ListPriceMxn = template.ListPriceMxn; }
+                if (string.IsNullOrEmpty(item.MetaDescription)) { item.MetaDescription = template.MetaDescription; }
+                if (string.IsNullOrEmpty(item.MfgSource)) { item.MfgSource = template.MfgSource; }
+                if (string.IsNullOrEmpty(item.Msrp)) { item.Msrp = template.Msrp; }
+                if (string.IsNullOrEmpty(item.MsrpCad)) { item.MsrpCad = template.MsrpCad; }
+                if (string.IsNullOrEmpty(item.MsrpMxn)) { item.MsrpMxn = template.MsrpMxn; }
+                if (string.IsNullOrEmpty(item.PrintOnDemand)) { item.PrintOnDemand = template.PrintOnDemand; }
+                if (string.IsNullOrEmpty(item.ProductFormat)) { item.ProductFormat = template.ProductFormat; }
+                if (string.IsNullOrEmpty(item.ProductGroup)) { item.ProductGroup = template.ProductGroup; }
+                if (string.IsNullOrEmpty(item.ProductLine)) { item.ProductLine = template.ProductLine; }
+                if (string.IsNullOrEmpty(item.ProductQty)) { item.ProductQty = template.ProductQty; }
+                if (string.IsNullOrEmpty(item.PricingGroup)) { item.PricingGroup = template.PricingGroup; }
+                if (string.IsNullOrEmpty(item.PsStatus)) { item.PsStatus = template.PsStatus; }
+                if (string.IsNullOrEmpty(item.SatCode)) { item.SatCode = template.SatCode; }
+                if (string.IsNullOrEmpty(item.Size)) { item.Size = template.Size; }
+                if (string.IsNullOrEmpty(item.StandardCost)) { item.StandardCost = template.DefaultActualCostUsd; }
+                if (string.IsNullOrEmpty(item.TariffCode)) { item.TariffCode = template.TariffCode; }
+                if (string.IsNullOrEmpty(item.Udex)) { item.Udex = template.Udex; }
+                if (string.IsNullOrEmpty(item.WebsitePrice)) { item.WebsitePrice = template.WebsitePrice; }
+                if (string.IsNullOrEmpty(item.Weight)) { item.Weight = template.Weight; }
+                if (string.IsNullOrEmpty(item.Width)) { item.Width = template.Width; }
             }
             return item;
         }
@@ -1791,7 +1821,6 @@ namespace OdinServices
         public ItemObject RetrieveItem(string itemId, int count)
         {
             ItemObject item = ItemRepository.RetrieveItem(itemId, count);
-            item.ResetUpdate();
             item.UpdateSellOnValues();
             return item;
         }
@@ -1963,261 +1992,378 @@ namespace OdinServices
         #region Validation Methods
 
         /// <summary>
-        ///     Validates all product fields
+        ///     Validates all fields for the given item
         /// </summary>
         /// <param name="var">ItemObj being validated</param>
         /// <returns></returns>
-        public ObservableCollection<ItemError> ValidateAllItem(ItemObject var, List<string> itemIds, bool isSubmit)
+        public ObservableCollection<ItemError> ValidateItem(ItemObject var, List<string> itemIds, bool isSubmit)
         {
-            string identifier = var.OdinIdentifier;
             ObservableCollection<ItemError> ErrorList = new ObservableCollection<ItemError>();
             if (isSubmit)
             {
                 if (var.SellOnTrends != "Y")
                 {
                     ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, "Sell On Trends must be set to Y before item can be submitted to the web.", ""));
+                    return ErrorList;
                 }
             }
             string error = string.Empty;
+
+            // Acounting Group //
             error = ValidateAccountingGroup(var.AccountingGroup, var.ProdType);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // AltImage File 1 //
             error = ValidateImagePath(var.AltImageFile1, "Image Path 2", false);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // AltImage File 2 //
             error = ValidateImagePath(var.AltImageFile2, "Image Path 3", false);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // AltImage File 3 //
             error = ValidateImagePath(var.AltImageFile3, "Image Path 4", false);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // AltImage File 4 //
             error = ValidateImagePath(var.AltImageFile4, "Image Path 5", false);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Bill Of Materials //
             error = ValidateBillOfMaterials(var.ItemId, var.BillOfMaterials, itemIds, var.Status, var.ProdType);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Casepack Height //
             error = ValidateCasepack(var.CasepackHeight, var.CasepackLength, var.CasepackWeight, var.CasepackWidth, var.ProdType, "Casepack Height ");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Casepack Length //
             error = ValidateCasepack(var.CasepackLength, var.CasepackHeight, var.CasepackWeight, var.CasepackWidth, var.ProdType, "Casepack Length ");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Casepack Weight //
             error = ValidateCasepack(var.CasepackWeight, var.CasepackLength, var.CasepackHeight, var.CasepackWidth, var.ProdType, "Casepack Weight ");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Casepack Width //
             error = ValidateCasepack(var.CasepackWidth, var.CasepackLength, var.CasepackWeight, var.CasepackHeight, var.ProdType, "Casepack Width ");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Casepack Qty //
             error = ValidateCasepackQty(var.CasepackQty, var.ProdType);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Category //
             error = ValidateCategory(var.Category, var.HasWeb());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Category 2 //
             error = ValidateCategory2(var.Category2, "2");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Category 3 //
             error = ValidateCategory2(var.Category3, "3");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // CasepackUpc //
             error = ValidatePackUpc(var.CasepackUpc, "Casepack", var.ProdType);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Color //
             error = ValidateColor(var.Color, var.ProdType);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateCountryOfOrigin(var.CountryOfOrigin, var.ListPriceUsd, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateCostProfileGroup(var.CostProfileGroup, var.MfgSource, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateDefaultActualCost(var.DefaultActualCostCad, "CAD", var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateDefaultActualCost(var.DefaultActualCostUsd, "USD", var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateDescription(var.Description, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateDirectImport(var.DirectImport, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateDuty(var.Duty, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateEan(var.Ean, var.Upc, var.ListPriceUsd, var.ProductFormat, var.ProductLine);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateGpc(var.Gpc, var.ListPriceUsd, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateHeight(var.Height, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateImagePath(var.ImagePath, "Image Path", var.ImageRequired());
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateInnerpack(var.InnerpackHeight, var.InnerpackLength, var.InnerpackWeight, var.InnerpackWidth, var.ProdType, "Innerpack Height ");
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateInnerpack(var.InnerpackLength, var.InnerpackHeight, var.InnerpackWeight, var.InnerpackWidth, var.ProdType, "Innerpack Length ");
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateInnerpack(var.InnerpackWeight, var.InnerpackLength, var.InnerpackHeight, var.InnerpackWidth, var.ProdType, "Innerpack Weight ");
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateInnerpack(var.InnerpackWidth, var.InnerpackLength, var.InnerpackWeight, var.InnerpackHeight, var.ProdType, "Innerpack Width ");
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateInnerpackQuantity(var.InnerpackQuantity, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidatePackUpc(var.InnerpackUpc, "Innerpack", var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateIsbn(var.Isbn, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateItemCategory(var.ItemCategory, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateItemFamily(var.ItemFamily, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateItemGroup(var.ItemGroup, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateItemId(var.ItemId, var.Status);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateLanguage(var.Language, var.ListPriceUsd, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateLength(var.Length, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateLicenseBeginDate(var.LicenseBeginDate, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateListPrice(var.ListPriceCad, "CAD", var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateListPrice(var.ListPriceMxn, "MXN", var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateListPrice(var.ListPriceUsd, "USD", var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateMfgSource(var.MfgSource, var.CostProfileGroup, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateMsrp(var.Msrp, var.ListPriceUsd, var.ProdType, "USD");
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateMsrp(var.MsrpCad, var.ListPriceCad, var.ProdType, "CAD");
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateMsrp(var.MsrpMxn, var.ListPriceMxn, var.ProdType, "MXN");
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateProductFormat(var.ProductGroup, var.ProductLine, var.ProductFormat,var.Upc, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateProductGroup(var.ProductGroup, var.Upc, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateProductLine(var.ProductGroup, var.ProductLine,var.Upc, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidatePricingGroup(var.PricingGroup, var.ListPriceCad, var.ListPriceUsd, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidatePrintOnDemand(var.PrintOnDemand, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateProductIdTranslation(var.ItemId, var.ProductIdTranslation, itemIds, var.ProductFormat, var.PricingGroup, var.Status, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidatePsStatus(var.PsStatus, "Item");
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, "Error", "PS Status")); }
-            error = ValidateSatCode(var.SatCode);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateSellOnValue(var.SellOnAllPosters, "AllPosters");
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateSellOnValue(var.SellOnAmazon, "Amazon");
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateSellOnValue(var.SellOnAmazonSellerCentral, "Amazon Seller Central");
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateSellOnValue(var.SellOnFanatics, "Fanatics");
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateSellOnValue(var.SellOnGuitarCenter, "Guitar Center");
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateSellOnValue(var.SellOnHayneedle, "Hayneedle");
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateSellOnValue(var.SellOnTarget, "Target");
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateSellOnValue(var.SellOnTrends, "Trends");
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateSellOnValue(var.SellOnWalmart, "Walmart");
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateSellOnValue(var.SellOnWayfair, "Wayfair");
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateStandardCost(var.StandardCost, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateStatsCode(var.StatsCode, var.ListPriceUsd, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateTariffCode(var.TariffCode, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateTerritory(var.Territory, var.ListPriceUsd, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateUdex(var.Udex, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateUpc(var.Upc,var.ItemId, var.Status, var.ListPriceUsd, var.ProductFormat, var.ProductGroup, var.ProductLine, var.Ean, var.Ecommerce_Upc, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateWebsitePrice(var.WebsitePrice, var.HasWeb());
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateWeight(var.Weight, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateWidth(var.Width, var.ProdType);
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateTitle(var.Title, var.HasWeb());
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Copyright //
             error = ValidateCopyright(var.Copyright);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateInStockDate(var.InStockDate);
+            // Country Of Origin //
+            error = ValidateCountryOfOrigin(var.CountryOfOrigin, var.ListPriceUsd, var.ProdType);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateLicense(var.License);
+            // Cost Profile Group //
+            error = ValidateCostProfileGroup(var.CostProfileGroup, var.MfgSource, var.ProdType);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateProperty(var.Property, var.License);
+            // DefaultActualCostCad //
+            error = ValidateDefaultActualCost(var.DefaultActualCostCad, "CAD", var.ProdType);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateShortDescription(var.ShortDescription);
+            // Default Actual Cost Usd //
+            error = ValidateDefaultActualCost(var.DefaultActualCostUsd, "USD", var.ProdType);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateItemKeywords(var.ItemKeywords, var.HasWeb());
+            // Description //
+            error = ValidateDescription(var.Description, var.ProdType);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            error = ValidateSize(var.Size);
+            // Direct Import //
+            error = ValidateDirectImport(var.DirectImport, var.ProdType);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
-            /* --- Ecommerce Values --- */
+            // Duty //
+            error = ValidateDuty(var.Duty, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ean //
+            error = ValidateEan(var.Ean, var.Upc, var.ListPriceUsd, var.ProductFormat, var.ProductLine);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Asin //
             error = ValidateEcommerce_Asin(var.Ecommerce_Asin);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Bullet 1 //
             error = ValidateEcommerce_Bullet(var.Ecommerce_Bullet1, "1", var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Bullet 2 //
             error = ValidateEcommerce_Bullet(var.Ecommerce_Bullet2, "2", var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Bullet 3 //
             error = ValidateEcommerce_Bullet(var.Ecommerce_Bullet3, "3", var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Bullet 4 //
             error = ValidateEcommerce_Bullet(var.Ecommerce_Bullet4, "4", false);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Bullet 5 //
             error = ValidateEcommerce_Bullet(var.Ecommerce_Bullet5, "5", false);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Components //
             error = ValidateEcommerce_Components(var.Ecommerce_Components, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Cost //
             error = ValidateEcommerce_Cost(var.Ecommerce_Cost, "", var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce External Id Type //
             error = ValidateEcommerce_ExternalIdType(var.Ecommerce_ExternalIdType, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce External Id //
             error = ValidateEcommerce_ExternalId(var.Ecommerce_ExternalId, var.Ecommerce_ExternalIdType, var.HasEcommerce());
-            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); } 
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Item Height //
             error = ValidateEcommerce_ItemHeight(var.Ecommerce_ItemHeight, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Item Length //
             error = ValidateEcommerce_ItemLength(var.Ecommerce_ItemLength, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Item Name //
             error = ValidateEcommerce_ItemName(var.Ecommerce_ItemName, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Item Weight //
             error = ValidateEcommerce_ItemWeight(var.Ecommerce_ItemWeight, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Item Width //
             error = ValidateEcommerce_ItemWidth(var.Ecommerce_ItemWidth, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Model Name //
             error = ValidateEcommerce_ModelName(var.Ecommerce_ModelName, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Package Height //
             error = ValidateEcommerce_PackageHeight(var.Ecommerce_PackageHeight, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Package Length //
             error = ValidateEcommerce_PackageLength(var.Ecommerce_PackageLength, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Package Weight //
             error = ValidateEcommerce_PackageWeight(var.Ecommerce_PackageWeight, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Package Width //
             error = ValidateEcommerce_PackageWidth(var.Ecommerce_PackageWidth, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Page Qty //
             error = ValidateEcommerce_PageQty(var.Ecommerce_PageQty);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Product Category //
             error = ValidateEcommerce_ProductCategory(var.Ecommerce_ProductCategory, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Product Description //
             error = ValidateEcommerce_ProductDescription(var.Ecommerce_ProductDescription, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Product Subcategory //
             error = ValidateEcommerce_ProductSubcategory(var.Ecommerce_ProductSubcategory, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Manufacturer Name //
             error = ValidateEcommerce_ManufacturerName(var.Ecommerce_ManufacturerName, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Msrp //
             error = ValidateEcommerce_Msrp(var.Ecommerce_Msrp, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Generic Keywords //
             error = ValidateEcommerce_Keywords(var.Ecommerce_GenericKeywords, var.HasEcommerce(), "Ecommerce Search Terms", var.Status);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Subject Keywords //
             error = ValidateEcommerce_Keywords(var.Ecommerce_SubjectKeywords, false, "Ecommerce Subject Keywords", var.Status);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Size //
             error = ValidateEcommerce_Size(var.Ecommerce_Size, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ecommerce Upc //
             error = ValidateEcommerce_Upc(var.Ecommerce_Upc, var.ItemId, var.Upc, var.Status, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Gpc //
+            error = ValidateGpc(var.Gpc, var.ListPriceUsd, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Height //
+            error = ValidateHeight(var.Height, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Image Path //
+            error = ValidateImagePath(var.ImagePath, "Image Path", var.ImageRequired());
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Innerpack Height //
+            error = ValidateInnerpack(var.InnerpackHeight, var.InnerpackLength, var.InnerpackWeight, var.InnerpackWidth, var.ProdType, "Innerpack Height ");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Innerpack Length //
+            error = ValidateInnerpack(var.InnerpackLength, var.InnerpackHeight, var.InnerpackWeight, var.InnerpackWidth, var.ProdType, "Innerpack Length ");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Innerpack Quantity //
+            error = ValidateInnerpackQuantity(var.InnerpackQuantity, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Innerpack Upc //
+            error = ValidatePackUpc(var.InnerpackUpc, "Innerpack", var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Innerpack Weight //
+            error = ValidateInnerpack(var.InnerpackWeight, var.InnerpackLength, var.InnerpackHeight, var.InnerpackWidth, var.ProdType, "Innerpack Weight ");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Innerpack Width //
+            error = ValidateInnerpack(var.InnerpackWidth, var.InnerpackLength, var.InnerpackWeight, var.InnerpackHeight, var.ProdType, "Innerpack Width ");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // In Stock Date //
+            error = ValidateInStockDate(var.InStockDate);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Isbn //
+            error = ValidateIsbn(var.Isbn, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Item Category //
+            error = ValidateItemCategory(var.ItemCategory, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Item Family //
+            error = ValidateItemFamily(var.ItemFamily, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Item Group //
+            error = ValidateItemGroup(var.ItemGroup, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Item Id //
+            error = ValidateItemId(var.ItemId, var.Status);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Item Keywords //
+            error = ValidateItemKeywords(var.ItemKeywords, var.HasWeb());
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Language //
+            error = ValidateLanguage(var.Language, var.ListPriceUsd, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Length //
+            error = ValidateLength(var.Length, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // License //
+            error = ValidateLicense(var.License);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // License Begin Date //
+            error = ValidateLicenseBeginDate(var.LicenseBeginDate, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // List Price Cad //
+            error = ValidateListPrice(var.ListPriceCad, "CAD", var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // List Price Mxn //
+            error = ValidateListPrice(var.ListPriceMxn, "MXN", var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // List Price Usd //
+            error = ValidateListPrice(var.ListPriceUsd, "USD", var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Mfg Source //
+            error = ValidateMfgSource(var.MfgSource, var.CostProfileGroup, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // List Msrp //
+            error = ValidateMsrp(var.Msrp, var.ListPriceUsd, var.ProdType, "USD");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Msrp Cad //
+            error = ValidateMsrp(var.MsrpCad, var.ListPriceCad, var.ProdType, "CAD");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Msrp Mxn //
+            error = ValidateMsrp(var.MsrpMxn, var.ListPriceMxn, var.ProdType, "MXN");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Product Format //
+            error = ValidateProductFormat(var.ProductGroup, var.ProductLine, var.ProductFormat,var.Upc, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Product Group //
+            error = ValidateProductGroup(var.ProductGroup, var.Upc, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Product Line //
+            error = ValidateProductLine(var.ProductGroup, var.ProductLine,var.Upc, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Pricing Group //
+            error = ValidatePricingGroup(var.PricingGroup, var.ListPriceCad, var.ListPriceUsd, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Print On Demand //
+            error = ValidatePrintOnDemand(var.PrintOnDemand, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Product Id Translation //
+            error = ValidateProductIdTranslation(var.ItemId, var.ProductIdTranslation, itemIds, var.ProductFormat, var.PricingGroup, var.Status, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Property //
+            error = ValidateProperty(var.Property, var.License);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Ps Status //
+            error = ValidatePsStatus(var.PsStatus, "Item");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, "Error", "PS Status")); }
+            // Sat Code //
+            error = ValidateSatCode(var.SatCode);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Sell On All Posters //
+            error = ValidateSellOnValue(var.SellOnAllPosters, "AllPosters");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Sell On Amazon //
+            error = ValidateSellOnValue(var.SellOnAmazon, "Amazon");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Sell On Amazon Seller Central //
+            error = ValidateSellOnValue(var.SellOnAmazonSellerCentral, "Amazon Seller Central");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Sell On Ecommerce //
+            error = ValidateSellOnValue(var.SellOnEcommerce, "Ecommerce");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Sell On Fanatics //
+            error = ValidateSellOnValue(var.SellOnFanatics, "Fanatics");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Sell On Guitar Center //
+            error = ValidateSellOnValue(var.SellOnGuitarCenter, "Guitar Center");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Sell On Hayneedle //
+            error = ValidateSellOnValue(var.SellOnHayneedle, "Hayneedle");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Sell On Target //
+            error = ValidateSellOnValue(var.SellOnTarget, "Target");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Sell On Trends //
+            error = ValidateSellOnValue(var.SellOnTrends, "Trends");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Sell On Walmart //
+            error = ValidateSellOnValue(var.SellOnWalmart, "Walmart");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Sell On Wayfair //
+            error = ValidateSellOnValue(var.SellOnWayfair, "Wayfair");
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Short Description //
+            error = ValidateShortDescription(var.ShortDescription);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Size //
+            error = ValidateSize(var.Size);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Standard Cost //
+            error = ValidateStandardCost(var.StandardCost, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Stats Code //
+            error = ValidateStatsCode(var.StatsCode, var.ListPriceUsd, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Tariff Code //
+            error = ValidateTariffCode(var.TariffCode, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Territory //
+            error = ValidateTerritory(var.Territory, var.ListPriceUsd, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Title //
+            error = ValidateTitle(var.Title, var.HasWeb());
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Udex //
+            error = ValidateUdex(var.Udex, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Upc //
+            error = ValidateUpc(var.Upc,var.ItemId, var.Status, var.ListPriceUsd, var.ProductFormat, var.ProductGroup, var.ProductLine, var.Ean, var.Ecommerce_Upc, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // WebsitePrice //
+            error = ValidateWebsitePrice(var.WebsitePrice, var.HasWeb());
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Weight //
+            error = ValidateWeight(var.Weight, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Width //
+            error = ValidateWidth(var.Width, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+
             return ErrorList;
         }
 
         /// <summary>
-        ///     Validates all fields of current item
+        ///     Validates all fields of current template
         /// </summary>
         /// <param name="var"></param>
         public List<string> ValidateAllTemplate(Template var, string status)
         {
             List<string> ErrorMessages = new List<string>();
-            string error = "";
-            error = ValidateTemplateId(var.TemplateId, status);
+
+            string error = ValidateTemplateId(var.TemplateId, status);
             if (error != "") { ErrorMessages.Add(error); }
             error = ValidateAccountingGroup(var.AccountingGroup, var.ProdType);
             if (error != "") { ErrorMessages.Add(error); }
@@ -2401,12 +2547,13 @@ namespace OdinServices
         /// <returns></returns>
         public string ValidateBillOfMaterials(string itemId, List<ChildElement> billOfMaterials, List<string> currentIds, string status, int prodType)
         {
+            List<string> BomIdList = new List<string>();
+            bool existingValue = false;
+
             if (billOfMaterials.Count() == 0)
             {
                 return "";
             }
-            List<string> BomIdList = new List<string>();
-            bool existingValue = false;
             if(GlobalData.BillofMaterials.Where(p => p.ParentId == itemId).Count()>0)
             {
                 existingValue = true;
@@ -2435,7 +2582,6 @@ namespace OdinServices
                 {
                     BomIdList.Add(billOfMaterial.ItemId.Trim());
                 }
-
             }
             return "";
         }
@@ -2460,22 +2606,23 @@ namespace OdinServices
                 }
                 else
                 {
-                    if (prodType!=2)
+                    if (prodType != 2)
                     {
                         return type + " cannot be left empty if the other casepack dimensional fields have values(height, weight, width, length).";
                     }
                 }
             }
-            if (value1.Length > 7)
+            else
             {
-                return type + " " + OdinServices.Properties.Resources.Error_LengthMax + "7 characters.";
-
-            }            
-            if (!DbUtil.IsNumber(value1))
-            {
-                return type + " must be a numeric value.";
+                if (value1.Length > 7)
+                {
+                    return type + " " + OdinServices.Properties.Resources.Error_LengthMax + "7 characters.";
+                }
+                if (!DbUtil.IsNumber(value1))
+                {
+                    return type + " must be a numeric value.";
+                }
             }
-            
             return "";
         }
 
@@ -2502,6 +2649,48 @@ namespace OdinServices
             return "";
         }
 
+
+        /// <summary>
+        ///     Vaidates Web Cateogry 1 field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="hasWeb"></param>
+        /// <returns></returns>
+        public string ValidateCategory(string value, bool required)
+        {
+            if (!string.IsNullOrEmpty(value) || required)
+            {
+                if (required && (string.IsNullOrEmpty(value)))
+                {
+                    return "Category " + OdinServices.Properties.Resources.Error_RequiredWeb;
+                }
+                if (!GlobalData.ReturnWebCategoryListValues().Contains(value))
+                {
+                    return "Category " + OdinServices.Properties.Resources.Error_NoMatch;
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates additional web category field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="cat"></param>
+        /// <param name="hasWeb"></param>
+        /// <returns></returns>
+        public string ValidateCategory2(string value, string cat)
+        {
+            if (!(string.IsNullOrEmpty(value)))
+            {
+                if (!GlobalData.ReturnWebCategoryListValues().Contains(value))
+                {
+                    return "Category " + cat + " " + OdinServices.Properties.Resources.Error_NoMatch;
+                }
+            }
+            return "";
+        }
+
         /// <summary>
         ///     Validates the color field. Returns error message string or "" if no error exists.
         /// </summary>
@@ -2520,31 +2709,23 @@ namespace OdinServices
             }
             return "";
         }
-
+        
         /// <summary>
-        ///     Checks that all collumn headers are valid
+        ///     Validate Copyright field. Returns error message string or "" if no error exists.
         /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns>List of incorrect collumn headers</returns>
-        public List<string> ValidateHeaderCollumns(string fileName)
+        /// <param name="value"></param>
+        /// <param name="hasWeb"></param>
+        /// <returns></returns>
+        public string ValidateCopyright(string value)
         {
-            List<string> missingHeaders = new List<string>();
-            WorksheetData worksheetData = this.WorkbookReader.ReadWorksheet(fileName);
-            if (worksheetData.CellData.Count == 0)
+            if (!string.IsNullOrEmpty(value))
             {
-                MessageBox.Show("Odin could not read any data from provided spread sheet.");
-            }
-            foreach (string column in worksheetData.ColumnHeaders)
-            {
-                if (!string.IsNullOrEmpty(column))
+                if (value.Length > 1000)
                 {
-                    if (!ReturnHeaderValues().Contains(column.ToUpper().Replace(" ", "")))
-                    {
-                        missingHeaders.Add(column);
-                    }
+                    return "Copyright value " + OdinServices.Properties.Resources.Error_LengthMax + "1000 characters.";
                 }
             }
-            return missingHeaders;
+            return "";
         }
 
         /// <summary>
@@ -2557,11 +2738,10 @@ namespace OdinServices
         public string ValidateCountryOfOrigin(string value, string listPriceUS, int prodType)
         {
             bool required = true;
-            if(prodType ==2){ required = false; }
+            if(prodType == 2){ required = false; }
 
             if (!string.IsNullOrEmpty(value) || required)
             {
-                
                 if (string.IsNullOrEmpty(value) && required)
                 {
                     if (listPriceUS == "0" || listPriceUS == "0.00" || listPriceUS == "0.0000")
@@ -2646,7 +2826,6 @@ namespace OdinServices
                 if (value.Length > 9)
                 {
                     return "Default Actual Cost " + currency + " " + OdinServices.Properties.Resources.Error_LengthMax + "9 characters.";
-
                 }
                 if (!DbUtil.IsNumber(value))
                 {
@@ -2676,7 +2855,6 @@ namespace OdinServices
                 if (value.Length > 60)
                 {
                     return "Description field " + OdinServices.Properties.Resources.Error_LengthMax + "60 characters.";
-
                 }
                 if (CheckSpecialChar(value))
                 {
@@ -2715,7 +2893,6 @@ namespace OdinServices
             if (value.Count() > 30)
             {
                 return "Duty field " + OdinServices.Properties.Resources.Error_LengthMax + "30 characters.";
-
             }
             return "";
         }
@@ -2757,1428 +2934,10 @@ namespace OdinServices
                 if (value.Length > 30)
                 {
                     return "EAN field " + OdinServices.Properties.Resources.Error_LengthMax + "30 characters.";
-
                 }
             }
             return "";
         }
-
-        /// <summary>
-        ///     Validates the GPC field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="listPriceUS">List Price Field</param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateGpc(string value, string listPriceUS, int prodType)
-        {
-            bool required = true;
-            if (prodType == 2) { required = false; }           
-            if (!string.IsNullOrEmpty(value) || required)
-            {
-                if ((string.IsNullOrEmpty(value)) && required)
-                {
-                    if (listPriceUS == "0" || listPriceUS == "0.00" || listPriceUS == "0.0000")
-                    {
-                        return "";
-                    }
-                    else
-                    {
-                        return "GPC field " + OdinServices.Properties.Resources.Error_Required;
-                    }
-                }
-                if (value.Length > 10)
-                {
-                    return "GPC field " + OdinServices.Properties.Resources.Error_LengthMax + "10 characters.";
-                }
-            }
-            return "";
-
-        }
-
-        /// <summary>
-        ///     Validates the item height field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
-        /// <returns>Error message or "" if value is valid</returns>
-        public string ValidateHeight(string value, int prodType)
-        {
-            bool required = true;
-            if (prodType == 2) { required = false; }
-
-            if (!string.IsNullOrEmpty(value) || required)
-            {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Height field " + OdinServices.Properties.Resources.Error_Required;
-                }
-                if (value.Length > 8)
-                {
-                    return "Height field " + OdinServices.Properties.Resources.Error_LengthMax + "8 characters.";
-                }
-                if (!DbUtil.IsNumber(value))
-                {
-                    return "Height field " + OdinServices.Properties.Resources.Error_NonNumeric;
-                }
-                if (Convert.ToDouble(value) < 0.00001)
-                {
-                    return "Height " + OdinServices.Properties.Resources.Error_0;
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates the Image Path fields. Returns error message string or "" if no error exists.
-        /// </summary>
-        public string ValidateImagePath(string value, string field, bool required)
-        {
-            if (required || !string.IsNullOrEmpty(value))
-            {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return field + " " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
-                if (value.Contains("'")||value.Contains("`"))
-                {
-                    return field + " cannot contain apostrophes.";
-                }
-                if (CheckSpecialChar(value))
-                {
-                    return field + " cannot contain special characters.";
-                }
-                if (value.Length > 254)
-                {
-                    return field + " " + OdinServices.Properties.Resources.Error_LengthMax + "254 characters.";
-                }
-                if (!File.Exists(value))
-                {
-                    return field + @" could not find image with given filepath: "+value;
-                }
-                return "";
-            }
-            else return "";
-        }
-
-        /// <summary>
-        ///     Validates Innerpack fields. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value1">Innerpack field being validated</param>
-        /// <param name="value2">Other Innerpack value</param>
-        /// <param name="value3">Other Innerpack value</param>
-        /// <param name="value4">Other Innerpack value</param>
-        /// <param name="prodType"></param>
-        /// <param name="type">Innerpack Field Type</param>
-        /// <returns></returns>
-        public string ValidateInnerpack(string value1, string value2, string value3, string value4, int prodType, string type)
-        {
-            bool template = false;
-            if (prodType == 2) { template = true; }
-            if (string.IsNullOrEmpty(value1))
-            {
-                if ((string.IsNullOrEmpty(value2)) && (string.IsNullOrEmpty(value3)) && (string.IsNullOrEmpty(value4)))
-                {
-                    return "";
-                }
-                else
-                {
-                    if (!template)
-                    {
-                        return type + " field cannot be empty if this item has other innerpack dimension fields filled out (height, weight, width, length).";
-                    }
-                }
-            }
-            if (value1.Length > 7)
-            {
-                return type + " " + OdinServices.Properties.Resources.Error_LengthMax + "7 characters.";
-            }
-            if (!DbUtil.IsNumber(value1))
-            {
-                return type + " " + OdinServices.Properties.Resources.Error_NonNumeric;
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates Innerpack Quantity field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateInnerpackQuantity(string value, int prodType)
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                return "";
-            }
-            if (value.Length > 7)
-            {
-                return "Innerpack Quantity " + OdinServices.Properties.Resources.Error_LengthMax + "7 characters.";
-
-            }
-            if (!DbUtil.IsNumber(value))
-            {
-                return "Innerpack Quantity " + OdinServices.Properties.Resources.Error_NonNumeric;
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates ISBN field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateIsbn(string value, int prodType)
-        {
-            if (!(string.IsNullOrEmpty(value)))
-            {
-                if (CheckSpecialChar(value))
-                {
-                    return "ISBN field " + OdinServices.Properties.Resources.Error_SpecialChars;
-                }
-                if (value.Length > 10)
-                {
-                    return "ISBN field " + OdinServices.Properties.Resources.Error_LengthMax + "10 characters.";
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates Item Category field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateItemCategory(string value, int prodType)
-        {
-            bool required = true;
-            if (prodType == 2) { required = false; }
-
-            if (!string.IsNullOrEmpty(value) || required)
-            {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Item Category " + OdinServices.Properties.Resources.Error_Required;
-                }
-                if (value.Length > 15)
-                {
-                    return "Item Category " + OdinServices.Properties.Resources.Error_LengthMax + "15 characters.";
-                }
-                if (!GlobalData.ProductCategories.Contains(value))
-                {
-                    return "Item Category " + OdinServices.Properties.Resources.Error_NoMatch;
-                }
-            }
-            return "";
-
-        }
-
-        /// <summary>
-        ///     Validates Item Family field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateItemFamily(string value, int prodType)
-        {
-            if (!(string.IsNullOrEmpty(value)))
-            {
-                if (value.Length > 18)
-                {
-                    return "Item Family " + OdinServices.Properties.Resources.Error_LengthMax + "18 characters.";
-                }
-                if ((value == "STICKER") || (value == "") || (value == "FLAT"))
-                {
-                    return "";
-                }
-                else return "Item Family contains an invalid value. (Item Family must be set to 'STICKER', 'FLAT', or left empty)";
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates Item Group field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateItemGroup(string value, int prodType)
-        {
-            bool required = true;
-            if (prodType == 2) { required = false; }
-            if (!string.IsNullOrEmpty(value) || required)
-            {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Item Group " + OdinServices.Properties.Resources.Error_Required;
-                }
-                if (value.Length > 15)
-                {
-                    return "Item Group field " + OdinServices.Properties.Resources.Error_LengthMax + "15 characters.";
-                }
-                if (!GlobalData.ItemGroups.Contains(value))
-                {
-                    return "Item Group " + OdinServices.Properties.Resources.Error_NoMatch;
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates Item Id field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="status"></param>
-        /// <returns></returns>
-        public string ValidateItemId(string value, string status)
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                return "Item Id " + OdinServices.Properties.Resources.Error_Required;
-            }
-            if ((status == "Add") || (status == ""))
-            {
-                if (value.Length > 18)
-                {
-                    return "Item Id " + OdinServices.Properties.Resources.Error_LengthMax + "18 characters.";
-
-                }
-                for (int i = 0; i < value.Length; i++)
-                {
-                    if (!((value[i] >= 'A' && value[i] <= 'Z') || (value[i] >= '0' && value[i] <= '9') || value[i] == '-'))
-                    {
-                        return "Item Id contains invalid charachters. (Only use A-Z, 0-9 and -)";
-                    }
-                }
-                if (GlobalData.ItemIds.Contains(value))
-                {
-                    return "Item Id " + OdinServices.Properties.Resources.Error_AlreadyExists;
-                }
-            }
-            else if (status == "Update")
-            {
-                if(!GlobalData.ItemIds.Contains(value))
-                {
-                    return "Item ID does not exist in peoplesoft.";
-                }
-            }
-            return "";
-
-        }
-
-        /// <summary>
-        ///     Validates Language field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="listPriceUS">Items US list price</param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateLanguage(string value, string listPriceUS, int prodType)
-        {
-            bool required = true;
-            if (prodType == 2) { required = false; }
-            if (!(string.IsNullOrEmpty(value)))
-            {
-                string[] x = value.Split('/');
-                foreach (string y in x)
-                {
-                    if (!GlobalData.Languages.Contains(y))
-                    {
-                        return "Language value " + y + OdinServices.Properties.Resources.Error_NoMatch;
-                    }
-                }
-                return "";
-            }
-            else
-            {
-                if (listPriceUS == "0" || listPriceUS == "0.00" || listPriceUS == "0.0000")
-                {
-                    return "";
-                }
-                if (required)
-                {
-                    return "Language " + OdinServices.Properties.Resources.Error_Required;
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates the item length field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
-        /// <returns>Error message or "" if value is valid</returns>
-        public string ValidateLength(string value, int prodType)
-        {
-            bool required = true;
-            if (prodType == 2) { required = false; }
-            if (!string.IsNullOrEmpty(value) || required)
-            {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Length field " + OdinServices.Properties.Resources.Error_Required;
-                }
-                if (value.Length > 8)
-                {
-                    return "Length field" + OdinServices.Properties.Resources.Error_LengthMax + "8 characters.";
-                }
-                if (!DbUtil.IsNumber(value))
-                {
-                    return "Length field " + OdinServices.Properties.Resources.Error_NonNumeric;
-                }
-                if (Convert.ToDouble(value) < 0.00001)
-                {
-                    return "Length field " + OdinServices.Properties.Resources.Error_0;
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates license begin date field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateLicenseBeginDate(string value, int prodType)
-        {
-            if (!string.IsNullOrEmpty(value))
-            {
-                if (value == "0000-00-00")
-                {
-                    return "License Begin Date cannot be set to 0000-00-00.";
-                }
-                if (!DateTime.TryParse(value, out DateTime temp))
-                {
-                    return "License Begin Date field must contain a valid date";
-                }
-                else if (Convert.ToDateTime(value).Date < Convert.ToDateTime("01/01/1753").Date)
-                {
-                    return "License Begin Date cannot be before 01/01/1753.";
-                }
-            }
-            return "";
-        }
-        
-        /// <summary>
-        ///     Validates MFG Source field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="costProfileGroup">item's cost profile group</param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateMfgSource(string value, string costProfileGroup, int prodType)
-        {
-            bool required = true;
-            if (prodType == 2) { required = false; }
-            if (!(string.IsNullOrEmpty(value)))
-            {
-                if (value == "1")
-                {
-                    if (required)
-                    {
-                        if (costProfileGroup == "MFG_ACTUAL_FIFO")
-                        {
-                            return "";
-                        }
-                        else
-                        {
-                            return "MFG Source value does not properly align with the Cost Profile Group value.";
-                        }
-                    }
-                }                
-                else if (value == "2" )
-                {
-                    if (required)
-                    {
-                        if (costProfileGroup == "ACTUAL_FIFO")
-                        {
-                            return "";
-                        }
-                        else
-                        {
-                            return "MFG Source value does not properly align with the Cost Profile Group value.";
-                        }
-                    }
-                }
-                else return "MFG Source field can only contain a value of '1' or '2'";
-            }
-            else
-            {
-                if (required)
-                {
-                    return "MFG Source " + OdinServices.Properties.Resources.Error_Required;
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates MSRP value field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="listPrice">coresponding list price</param>
-        /// <param name="prodType"></param>
-        /// <param name="type">msrp type (usd, mxn, cad)</param>
-        /// <param name="isUS">flag if usd msrp</param>
-        /// <returns></returns>
-        public string ValidateMsrp(string value, string listPrice, int prodType, string type)
-        {
-            bool required = true;
-            if (prodType == 2) { required = false; }
-            if (!string.IsNullOrEmpty(value) || required)
-            {
-                if (value.Length > 10)
-                {
-                    return "MSRP " + type + " " + OdinServices.Properties.Resources.Error_LengthMax + "10 characters.";
-                }
-                if (string.IsNullOrEmpty(value))
-                {
-                    if (listPrice == "0")
-                    {
-                        return "";
-                    }
-
-                    if (type == "USD" && required)
-                    {
-                        return "MSRP " + type + " " + OdinServices.Properties.Resources.Error_Required;
-                    }
-                }
-                if (!DbUtil.IsNumber(value))
-                {
-                    return "MSRP " + type + " " + OdinServices.Properties.Resources.Error_NonNumeric;
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validate innerpack or casepack UPC field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="packtype">innerpack or casepack</param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidatePackUpc(string value, string packtype, int prodType)
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                return "";
-            }
-            if (!DbUtil.IsNumber(value))
-            {
-                return packtype + "UPC " + OdinServices.Properties.Resources.Error_NonNumeric;
-            }
-            if ((value.Length != 8) && (value.Length != 12))
-            {
-                return packtype + "UPC has invalid length. " + packtype + " UPC must have a length of 8 or 12 characters.";
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validate item List price field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="type">(usd, mxn, cad)</param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateListPrice(string value, string type, int prodType)
-        {
-            bool required = true;
-            if (prodType == 2) { required = false; }
-            if (!string.IsNullOrEmpty(value) || required)
-            {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "List Price " + type + " " + OdinServices.Properties.Resources.Error_Required;
-                }
-                if (value.Length > 9)
-                {
-                    return "List Price " + type + " " + OdinServices.Properties.Resources.Error_LengthMax + "9 characters.";
-
-                }
-                if (!DbUtil.IsNumber(value))
-                {
-                    return "List Price " + type + " " + OdinServices.Properties.Resources.Error_NonNumeric;
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validate product format field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="productGroup">item's product group</param>
-        /// <param name="productLine">item's product line</param>
-        /// <param name="productFormat">item's product format</param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateProductFormat(string productGroup, string productLine, string productFormat, string upc, int prodType)
-        {
-            bool required = true;
-            if (prodType == 2) { required = false; }
-            if (!string.IsNullOrEmpty(productFormat) || required)
-            {
-                if (productFormat.Trim().Length > 60)
-                {
-                    return "Product Format " + OdinServices.Properties.Resources.Error_LengthMax + "60 characters.";
-
-                }
-                if (!string.IsNullOrEmpty(productFormat))
-                {
-                    if (!CheckProductFormats(productGroup, productLine, productFormat))
-                    {
-                        return "Product Format does not align with Product Line and Product Group values provided.";
-                    }
-                }
-                else
-                {
-                    if (!required)
-                    {
-                        if (!string.IsNullOrEmpty(upc))
-                        {
-                            return "Product Format is a required value when a UPC value is provided.";
-                        }
-                    }
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validate product group field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateProductGroup(string value, string upc, int prodType)
-        {
-            bool required = true;
-            if (prodType == 2) { required = false; }
-            if (!string.IsNullOrEmpty(value) || required)
-            {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Product Group " + OdinServices.Properties.Resources.Error_Required;
-                }
-                if (value.Trim().Length > 30)
-                {
-                    return "Product Group " + OdinServices.Properties.Resources.Error_LengthMax + "30 characters.";
-                }
-                if (!GlobalData.ProductGoups.Contains(value))
-                {
-                    return "Product Group " + OdinServices.Properties.Resources.Error_NoMatch;
-                }
-            }
-
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates the Product Id Translation Field field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="productTranslation"></param>
-        /// <param name="currentIds"></param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateProductIdTranslation(string itemId, List<ChildElement> productTranslations, List<string> currentIds, string productFormat, string pricingGroup, string status, int prodType)
-        {
-            if (productTranslations.Count() == 0)
-            {
-                if (productFormat.ToUpper() == "POD POSTER FRAME")
-                {
-                    return "Product Id Translations are required when the Product Format = 'POD POSTER FRAME'.";
-                }
-                else if (!string.IsNullOrEmpty(pricingGroup))
-                {
-                    if (pricingGroup.Substring(0, 3).ToUpper() == "FRP")
-                    {
-                        return "Product Id Translations are required when the Pricing Group = 'FRP'.";
-                    }
-                }
-                return "";
-            }
-            else
-            {
-                foreach (ChildElement productIdTranslation in productTranslations)
-                {
-                    if (!string.IsNullOrEmpty(productIdTranslation.ItemId))
-                    {
-                        if ((!currentIds.Contains(productIdTranslation.ItemId.Trim())) && (!GlobalData.ItemIds.Contains(productIdTranslation.ItemId.Trim())))
-                        {
-                            return "Product Id Translation field contains an id that does not exist: " + productIdTranslation.ItemId + ".";
-                        }
-                    }
-                    int count = 0;
-                    string erroredId = string.Empty;
-                    foreach (ChildElement productIdTranslation2 in productTranslations)
-                    {
-                        if ((productIdTranslation2.ItemId.Trim() == productIdTranslation.ItemId.Trim()))
-                        {
-                            count++;
-                            if(count>1)
-                            {
-                                erroredId = productIdTranslation.ItemId;
-                            }
-                        }
-                    }
-                    if(count >1)
-                    {
-                        return "Product Id Translation can not contain multiple occurances of the same item: "+ erroredId;
-                    }
-                }
-                if (status == "Update")
-                {
-                    if (!CheckExistingProductIdTranslationsMatch(productTranslations))
-                    {
-                        foreach (ChildElement productIdTranslation in productTranslations)
-                        {
-                            if (CheckItemHasOpenOrderLine(productIdTranslation.ItemId))
-                            {
-                                return "Product Id Translations: Current open orders are preventing this change from taking place.";
-                            }
-                        }
-                    }
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validate Product Line field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="productGroup">item's product group</param>
-        /// <param name="productLine">item's product line</param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateProductLine(string productGroup, string productLine, string upc, int prodType)
-        {
-            bool required = true;
-            if (prodType == 2) { required = false; }
-
-            if (!string.IsNullOrEmpty(productLine) || required)
-            {
-                if (productLine.Trim().Length > 30)
-                {
-                    return "Product Line " + OdinServices.Properties.Resources.Error_LengthMax + "30 characters.";
-                }
-
-                if (!string.IsNullOrEmpty(productGroup))
-                {
-                    if (!CheckProductLines(productGroup, productLine))
-                    {
-                        return "Product Line does not align with Product Group provided.";
-                    }
-                }
-                else
-                {
-                    if (required)
-                    {
-                        if (!string.IsNullOrEmpty(upc))
-                        {
-                            return "Product Line is a required value when a UPC is provided";
-                        }
-                    }
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validate Product Quantity field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateProductQty(string value, int prodType)
-        {
-            if (!(string.IsNullOrEmpty(value)))
-            {
-                if (!DbUtil.IsNumber(value))
-                {
-                    return "Product Quantity " + OdinServices.Properties.Resources.Error_NonNumeric;
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validate Pricing Group field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="listPriceCad">item's List Price CAD</param>
-        /// <param name="listPriceUsd">item's List Price USD</param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidatePricingGroup(string value, string listPriceCad, string listPriceUsd, int prodType)
-        {
-            bool required = true;
-            if (prodType == 2) { required = false; }
-            if (!string.IsNullOrEmpty(value) || required)
-            {
-                if (value.Length > 30)
-                {
-                    return "Pricing Group " + OdinServices.Properties.Resources.Error_LengthMax + "30 characters.";
-                }
-                if (string.IsNullOrEmpty(value))
-                {
-                    if (((listPriceUsd == "0") || (listPriceUsd == "0.0000") || (listPriceUsd == "") || (listPriceUsd == "0.00")) && ((listPriceCad == "0") || (listPriceCad == "0.0000") || (listPriceCad == "") || (listPriceCad == "0.00")))
-                    {
-                        return "";
-                    }
-                    else
-                    {
-                        return "Pricing Group field cannot be left empty if there is a List Price USD value or a List Price CAD value provided for this item.";
-                    }
-                }
-                if (!GlobalData.PricingGroups.Contains(value) && required)
-                {
-                    return "Pricing Group " + OdinServices.Properties.Resources.Error_NoMatch;
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates Print on Demand field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidatePrintOnDemand(string value, int prodType)
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                return "";
-            }
-            else
-            {
-                if (value == "Y" || value == "N")
-                {
-                    return "";
-                }
-                else return "Print On Demand " + OdinServices.Properties.Resources.Error_YorN;
-            }
-        }
-
-        /// <summary>
-        ///     Validates Peoplesoft Status field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidatePsStatus(string value, string prodType)
-        {
-            if (!string.IsNullOrEmpty(value))
-            {
-                if (!GlobalData.PsStatuses.Contains(value))
-                {
-                    return "PS Status " + OdinServices.Properties.Resources.Error_NoMatch;
-                }
-            }
-            else if (prodType == "Item")
-            {
-                return "PS Status " + OdinServices.Properties.Resources.Error_Required;
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates the SAT code value. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public string ValidateSatCode(string value)
-        {
-            if (!string.IsNullOrEmpty(value))
-            {
-                if (value.Length > 20)
-                {
-                    return "SAT Code " + OdinServices.Properties.Resources.Error_LengthMax + "20 characters.";
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Sell On field Validation field. Returns error message string or "" if no error exists.
-        /// </summary>
-        public string ValidateSellOnValue(string value, string type)
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                return "Sell On " + type + " " + OdinServices.Properties.Resources.Error_Required;
-            }
-            if ((value != "Y") && (value != "N"))
-            {
-                return "Sell On " + type + " " + OdinServices.Properties.Resources.Error_YorN;
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates Standard Cost field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="dacusd">Default Actual Cost USD</param>
-        /// <param name="daccad">Default Actual Cost CAD</param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateStandardCost(string value, int prodType)
-        {
-            bool required = true;
-            if (prodType == 2) { required = false; }
-            if (!string.IsNullOrEmpty(value) || required)
-            {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Standard Cost " + OdinServices.Properties.Resources.Error_Required;
-                }
-                if (!DbUtil.IsNumber(value))
-                {
-                    return "Standard Cost " + OdinServices.Properties.Resources.Error_NonNumeric;
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates Stats Code field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="listPriceUS">USD List Price</param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateStatsCode(string value, string listPriceUS, int prodType)
-        {
-            bool required = true;
-            if (prodType == 2) { required = false; }
-            if (!string.IsNullOrEmpty(value) || required)
-            {
-                if (string.IsNullOrEmpty(value)&&required)
-                {
-                    if (listPriceUS == "0" || listPriceUS == "0.00" || listPriceUS == "0.0000")
-                    {
-                        return "";
-                    }
-                    else
-                    {
-                        return "Stats Code " + OdinServices.Properties.Resources.Error_Required;                       
-                    }
-                }
-                if (value.Length > 30)
-                {
-                    return "Stats Code " + OdinServices.Properties.Resources.Error_LengthMax + "30 characters.";
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates Tariff Code field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateTariffCode(string value, int prodType)
-        {
-            bool required = true;
-            if (prodType == 2) { required = false; }
-            if (!string.IsNullOrEmpty(value) || required)
-            {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Tariff Code " + OdinServices.Properties.Resources.Error_Required;
-                }
-                if(!GlobalData.TariffCodes.Contains(value))
-                {
-                    return "Tariff Code " + OdinServices.Properties.Resources.Error_NoMatch;
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validate the template Id
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="status"></param>
-        /// <returns></returns>
-        public string ValidateTemplateId(string value, string status)
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                return "Template Id is empty. Please select a name before saving.";
-            }
-            if (value.Length > 255)
-            {
-                return "TemplateId " + OdinServices.Properties.Resources.Error_LengthMax + "255 characters.";
-            }
-            if (status != "Update")
-            {
-                if (GlobalData.TemplateNames.Contains(value))
-                {
-                    return "Template Id " + value + " already exists. Please select a different name.";
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates the item territory field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="listPriceUS"></param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateTerritory(string value, string listPriceUS, int prodType)
-        {
-            bool required = true;
-            if (prodType == 2) { required = false; }
-            if (!string.IsNullOrEmpty(value) || required)
-            {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    if (listPriceUS == "0" || listPriceUS == "0.00" || listPriceUS == "0.0000")
-                    {
-                        return "";
-                    }
-                    else
-                    {
-                        return "Territory " + OdinServices.Properties.Resources.Error_Required;
-                    }
-                }
-                string[] x = value.Split('/');
-                foreach (string y in x)
-                {
-                    if (!GlobalData.Territories.Contains(y.Trim()))
-                    {
-                        return "Territory value " + y + " " + OdinServices.Properties.Resources.Error_NoMatch;
-                    }
-                }
-                return "";
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates UDEX field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="group">item's Item Group</param>
-        /// <param name="listPriceUS">USD List Price</param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateUdex(string value, int prodType)
-        {
-
-            if (prodType == 0)
-            {
-                return "";
-            }
-            if(string.IsNullOrEmpty(value))
-            {
-                return "";
-            }
-            if (!(string.IsNullOrEmpty(value)))
-            {
-                if (value.Length > 30)
-                {
-                    return "Udex " + OdinServices.Properties.Resources.Error_LengthMax + "30 characters.";
-                }
-                else return "";
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates UPC field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="listpriceUsd">USD List Price</param>
-        /// <param name="prodFormat">Product Fromat</param>
-        /// <param name="ean">EAN</param>
-        /// <param name="productLine">Product Line</param>
-        /// <param name="prodType"></param>
-        /// <returns></returns>
-        public string ValidateUpc(string value, string itemId, string status, string listpriceUsd, string prodFormat, string prodGroup, string prodLine, string ean, string ecommerceUpc, int prodType)
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                if (string.IsNullOrEmpty(listpriceUsd) || !string.IsNullOrEmpty(ean))
-                {
-                    return "";
-                }
-                else if (prodLine == "Direct Medical Mail")
-                {
-                    return "";
-                }
-                else if (listpriceUsd == "0" || listpriceUsd == "0.00" || listpriceUsd == "0.0000")
-                {
-                    return "";
-                }
-                else if (GlobalData.UpcProductFormatExceptions.Contains(prodFormat.Trim()))
-                {
-                    return "";
-                }
-                else return "UPC " + OdinServices.Properties.Resources.Error_Required + " (Required if the List Price USD is set to something other than 0 or if the Ean field is left blank.)";
-            }
-            else
-            {
-                if (!DbUtil.IsNumber(value))
-                {
-                    return "UPC field " + OdinServices.Properties.Resources.Error_NonNumeric;
-                }
-                if ((value.Length != 8) && (value.Length != 12))
-                {
-                    return "UPC has an invalid length. UPC value can only have a length of 8 or 12 characters.";
-                }
-                if (string.IsNullOrEmpty(prodGroup) || string.IsNullOrEmpty(prodLine) || string.IsNullOrEmpty(prodFormat))
-                {
-                    return "Product Line, Product Group & Product Format are required values when UPC is provided.";
-                }
-                if (value == ecommerceUpc)
-                {
-                    return "Item's Upc and Ecommerce Upc cannot share the same value.";
-                }
-                List<string> matchId = CheckDuplicateUPCs(itemId, value, status);
-                if (matchId.Count > 0)
-                {
-                    string ids = "";
-                    foreach (string id in matchId)
-                    {
-                        ids += id + ", ";
-                    }
-                    return "UPC contains a duplicate ID. The following items already contain this upc or ecommerce upc: " + ids;
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates the item weight field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
-        /// <returns>Error message or "" if value is valid</returns>
-        public string ValidateWeight(string value, int prodType)
-        {
-            bool required = true;
-            if (prodType == 2) { required = false; }
-            if (!string.IsNullOrEmpty(value) || required)
-            {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Weight field " + OdinServices.Properties.Resources.Error_Required;
-                }
-                if (value.Length > 8)
-                {
-                    return "Weight field " + OdinServices.Properties.Resources.Error_LengthMax + "8 characters.";
-                }
-                if (!DbUtil.IsNumber(value))
-                {
-                    return "Weight field " + OdinServices.Properties.Resources.Error_NonNumeric;
-                }
-                if (Convert.ToDouble(value) < 0.00001)
-                {
-                    return "Weight field " + OdinServices.Properties.Resources.Error_0;
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates the item width field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
-        /// <returns>Error message or "" if value is valid</returns>
-        public string ValidateWidth(string value, int prodType)
-        {
-            bool required = true;
-            if (prodType == 2) { required = false; }
-            if (!string.IsNullOrEmpty(value) || required)
-            {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Width field " + OdinServices.Properties.Resources.Error_Required;
-                }
-                if (value.Length > 8)
-                {
-                    return "Width field " + OdinServices.Properties.Resources.Error_LengthMax + "8 characters.";
-                }
-                if (!DbUtil.IsNumber(value))
-                {
-                    return "Width field " + OdinServices.Properties.Resources.Error_NonNumeric;
-                }
-                if (Convert.ToDouble(value) < 0.00001)
-                {
-                    return "Width field " + OdinServices.Properties.Resources.Error_0;
-                }
-            }
-            return "";
-        }
-
-        /* --- Web Field Validation---- */
-
-        /// <summary>
-        ///     Vaidates Web Cateogry 1 field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="hasWeb"></param>
-        /// <returns></returns>
-        public string ValidateCategory(string value, bool required)
-        {
-            if (!string.IsNullOrEmpty(value) || required )
-            {
-                if (required && (string.IsNullOrEmpty(value)))
-                {
-                    return "Category " + OdinServices.Properties.Resources.Error_RequiredWeb;
-                }
-                if (!GlobalData.ReturnWebCategoryListValues().Contains(value))
-                {
-                    return "Category " + OdinServices.Properties.Resources.Error_NoMatch;
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates additional web category field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="cat"></param>
-        /// <param name="hasWeb"></param>
-        /// <returns></returns>
-        public string ValidateCategory2(string value, string cat)
-        {
-            if (!(string.IsNullOrEmpty(value)))
-            {
-                if (!GlobalData.ReturnWebCategoryListValues().Contains(value))
-                {
-                    return "Category " + cat + " " + OdinServices.Properties.Resources.Error_NoMatch;
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validate Copyright field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="hasWeb"></param>
-        /// <returns></returns>
-        public string ValidateCopyright(string value)
-        {
-            if (!string.IsNullOrEmpty(value))
-            {
-                if (value.Length > 1000)
-                {
-                    return "Copyright value " + OdinServices.Properties.Resources.Error_LengthMax + "1000 characters.";
-                }
-            }
-            return "";
-        }
-        
-        /// <summary>
-        ///     Validate item Keywords field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="hasWeb"></param>
-        /// <returns></returns>
-        public string ValidateItemKeywords(string value, bool required)
-        {
-            if (required || (!string.IsNullOrEmpty(value)))
-            {
-                if (required && (string.IsNullOrEmpty(value)))
-                {
-                    return "Item Keywords " + OdinServices.Properties.Resources.Error_RequiredWeb;
-                }
-                if (value.Length > 1000)
-                {
-                    return "Item Keywords " + OdinServices.Properties.Resources.Error_LengthMax + "1000 characters.";
-                }
-            }
-            return "";
-
-        }
-
-        /// <summary>
-        ///     Validate in stock date field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="hasWeb"></param>
-        /// <returns></returns>
-        public string ValidateInStockDate(string value)
-        {
-            if (!string.IsNullOrEmpty(value))
-            {
-                if (value == "0000-00-00")
-                {
-                    return "In Stock Date cannot be set to 0000-00-00.";
-                }
-                if (!DateTime.TryParse(value, out DateTime temp))
-                {                
-                    return "In Stock Date field must contain a valid date";
-                }
-                else if (Convert.ToDateTime(value).Date < Convert.ToDateTime("01/01/1753").Date)
-                {
-                    return "License Begin Date cannot be before 01/01/1753.";
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validate License field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="hasWeb"></param>
-        /// <returns></returns>
-        public string ValidateLicense(string value)
-        {
-            if (!string.IsNullOrEmpty(value))
-            {
-                if (value.Length > 255)
-                {
-                    return "License field " + OdinServices.Properties.Resources.Error_LengthMax + "255 characters.";
-                }
-                if (!GlobalData.Licenses.Contains(value))
-                {
-                    return "License field " + OdinServices.Properties.Resources.Error_NoMatch;
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates meta description field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="hasWeb"></param>
-        /// <returns></returns>
-        public string ValidateMetaDescription(string value, bool required)
-        {
-            if (!(string.IsNullOrEmpty(value)) || required)
-            {
-                if (required && (string.IsNullOrEmpty(value)))
-                {
-                    return "Meta Description " + OdinServices.Properties.Resources.Error_RequiredWeb;
-                }
-                if (!GlobalData.MetaDescriptions.Contains(value) && !CheckForProductFormat(value))
-                {
-                    return "Meta Description " + OdinServices.Properties.Resources.Error_NoMatch;
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validate Property field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="license">Item's License</param>
-        /// <param name="hasWeb"></param>
-        /// <returns></returns>
-        public string ValidateProperty(string value, string license)
-        {
-            if (!string.IsNullOrEmpty(value))
-            {
-                if (!RetrievePropertyList(license).Contains(value))
-                {
-                    return "Property field does not align with the provided item license.";
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validate Short Description field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="hasWeb"></param>
-        /// <returns></returns>
-        /// 
-        public string ValidateShortDescription(string value)
-        {
-            return "";
-        }     
-        
-        /// <summary>
-        ///     Validate Size field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="hasWeb"></param>
-        /// <returns></returns>
-        public string ValidateSize(string value)
-        {
-            if (!string.IsNullOrEmpty(value))
-            {
-                if (CheckSpecialChar(value))
-                {
-                    return "Size " + OdinServices.Properties.Resources.Error_SpecialChars;
-                }
-            }
-            return "";
-        }
-
-        /// <summary>
-        ///     Validates the Title field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="hasWeb"></param>
-        /// <returns></returns>
-        public string ValidateTitle(string value, bool required)
-        {
-            if (required || (!string.IsNullOrEmpty(value)))
-            {
-                if (required && string.IsNullOrEmpty(value))
-                {
-                    return "Title " + OdinServices.Properties.Resources.Error_RequiredWeb;                    
-                }
-                if (value.Length > 266)
-                {
-                    return "Title " + OdinServices.Properties.Resources.Error_LengthMax + "266 characters.";
-                }
-            }
-            return "";
-        }
-
-
-        /// <summary>
-        ///     Validate item website price field. Returns error message string or "" if no error exists.
-        /// </summary>
-        /// <returns></returns>
-        public string ValidateWebsitePrice(string value, bool required)
-        {
-            if (required || (!string.IsNullOrEmpty(value)))
-            {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Website Price " + OdinServices.Properties.Resources.Error_RequiredWeb;
-                }
-                if (value.Length > 9)
-                {
-                    return "Website Price " + OdinServices.Properties.Resources.Error_LengthMax + "9 characters.";
-                }
-                if (!DbUtil.IsNumber(value))
-                {
-                    return "Website Price " + OdinServices.Properties.Resources.Error_NonNumeric;
-                }
-                if (required && (value == "0" || value == "0.00" || value == "0.0000"))
-                {
-                    return "Website Price must contain a value greater than 0.";
-                }
-            }
-            return "";
-        }
-
-        /* --- Ecommerce Field Validation---- */
 
         /// <summary>
         ///  Validates the Ecommerce_Asin field. Returns error message string or "" if no error exists.
@@ -4187,11 +2946,11 @@ namespace OdinServices
         /// <returns></returns>
         public string ValidateEcommerce_Asin(string value)
         {
-            if(string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(value))
             {
                 return "";
             }
-            if(value.Count()>10)
+            if (value.Count() > 10)
             {
                 return "Amazon Asin " + OdinServices.Properties.Resources.Error_LengthMax + "10 characters.";
             }
@@ -4217,7 +2976,7 @@ namespace OdinServices
                 {
                     return "Ecommerce Bullet" + bulletNumber + " " + OdinServices.Properties.Resources.Error_LengthMax + "254 characters.";
                 }
-                if(!DbUtil.CheckMinimum(value, 10))
+                if (!DbUtil.CheckMinimum(value, 10))
                 {
                     return "Ecommerce Bullet" + bulletNumber + " " + OdinServices.Properties.Resources.Error_LengthMin + "10 characters.";
                 }
@@ -4708,7 +3467,7 @@ namespace OdinServices
             }
             else return "";
         }
-        
+
         /// <summary>
         ///     Validates the Ecommerce_GenericKeywords field. Returns error message string or "" if no error exists.
         /// </summary>
@@ -4754,9 +3513,9 @@ namespace OdinServices
         /// <returns></returns>
         public string ValidateEcommerce_Upc(string value, string itemId, string upc, string status, bool required)
         {
-            if(!string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if(value.Length != 12)
+                if (value.Length != 12)
                 {
                     return "Ecommerce UPC has an invalid length. Ecommerce UPC can only have a length of 12 characters.";
                 }
@@ -4785,6 +3544,1379 @@ namespace OdinServices
             }
             return "";
         }
+
+        /// <summary>
+        ///     Validates the GPC field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="listPriceUS">List Price Field</param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateGpc(string value, string listPriceUS, int prodType)
+        {
+            bool required = true;
+            if (prodType == 2) { required = false; }           
+            if (!string.IsNullOrEmpty(value) || required)
+            {
+                if ((string.IsNullOrEmpty(value)) && required)
+                {
+                    if (listPriceUS == "0" || listPriceUS == "0.00" || listPriceUS == "0.0000")
+                    {
+                        return "";
+                    }
+                    else
+                    {
+                        return "GPC field " + OdinServices.Properties.Resources.Error_Required;
+                    }
+                }
+                if (value.Length > 10)
+                {
+                    return "GPC field " + OdinServices.Properties.Resources.Error_LengthMax + "10 characters.";
+                }
+            }
+            return "";
+        }
+        
+        /// <summary>
+        ///     Checks that all collumn headers are valid
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns>List of incorrect collumn headers</returns>
+        public List<string> ValidateHeaderCollumns(string fileName)
+        {
+            List<string> missingHeaders = new List<string>();
+            WorksheetData worksheetData = this.WorkbookReader.ReadWorksheet(fileName);
+            if (worksheetData.CellData.Count == 0)
+            {
+                MessageBox.Show("Odin could not read any data from provided spread sheet.");
+            }
+            foreach (string column in worksheetData.ColumnHeaders)
+            {
+                if (!string.IsNullOrEmpty(column))
+                {
+                    if (!ReturnHeaderValues().Contains(column.ToUpper().Replace(" ", "")))
+                    {
+                        missingHeaders.Add(column);
+                    }
+                }
+            }
+            return missingHeaders;
+        }
+
+        /// <summary>
+        ///     Validates the item height field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="prodType"></param>
+        /// <returns>Error message or "" if value is valid</returns>
+        public string ValidateHeight(string value, int prodType)
+        {
+            bool required = true;
+            if (prodType == 2) { required = false; }
+
+            if (!string.IsNullOrEmpty(value) || required)
+            {
+                if (string.IsNullOrEmpty(value) && required)
+                {
+                    return "Height field " + OdinServices.Properties.Resources.Error_Required;
+                }
+                if (value.Length > 8)
+                {
+                    return "Height field " + OdinServices.Properties.Resources.Error_LengthMax + "8 characters.";
+                }
+                if (!DbUtil.IsNumber(value))
+                {
+                    return "Height field " + OdinServices.Properties.Resources.Error_NonNumeric;
+                }
+                if (Convert.ToDouble(value) < 0.00001)
+                {
+                    return "Height " + OdinServices.Properties.Resources.Error_0;
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates the Image Path fields. Returns error message string or "" if no error exists.
+        /// </summary>
+        public string ValidateImagePath(string value, string field, bool required)
+        {
+            if (required || !string.IsNullOrEmpty(value))
+            {
+                if (string.IsNullOrEmpty(value) && required)
+                {
+                    return field + " " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                }
+                if (value.Contains("'")||value.Contains("`"))
+                {
+                    return field + " cannot contain apostrophes.";
+                }
+                if (CheckSpecialChar(value))
+                {
+                    return field + " cannot contain special characters.";
+                }
+                if (value.Length > 254)
+                {
+                    return field + " " + OdinServices.Properties.Resources.Error_LengthMax + "254 characters.";
+                }
+                if (!File.Exists(value))
+                {
+                    return field + @" could not find image with given filepath: "+value;
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates Innerpack fields. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value1">Innerpack field being validated</param>
+        /// <param name="value2">Other Innerpack value</param>
+        /// <param name="value3">Other Innerpack value</param>
+        /// <param name="value4">Other Innerpack value</param>
+        /// <param name="prodType"></param>
+        /// <param name="type">Innerpack Field Type</param>
+        /// <returns></returns>
+        public string ValidateInnerpack(string value1, string value2, string value3, string value4, int prodType, string type)
+        {
+            bool template = false;
+            if (prodType == 2) { template = true; }
+            if (string.IsNullOrEmpty(value1))
+            {
+                if ((string.IsNullOrEmpty(value2)) && (string.IsNullOrEmpty(value3)) && (string.IsNullOrEmpty(value4)))
+                {
+                    return "";
+                }
+                else
+                {
+                    if (!template)
+                    {
+                        return type + " field cannot be empty if this item has other innerpack dimension fields filled out (height, weight, width, length).";
+                    }
+                }
+            }
+            if (value1.Length > 7)
+            {
+                return type + " " + OdinServices.Properties.Resources.Error_LengthMax + "7 characters.";
+            }
+            if (!DbUtil.IsNumber(value1))
+            {
+                return type + " " + OdinServices.Properties.Resources.Error_NonNumeric;
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates Innerpack Quantity field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateInnerpackQuantity(string value, int prodType)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return "";
+            }
+            if (value.Length > 7)
+            {
+                return "Innerpack Quantity " + OdinServices.Properties.Resources.Error_LengthMax + "7 characters.";
+            }
+            if (!DbUtil.IsNumber(value))
+            {
+                return "Innerpack Quantity " + OdinServices.Properties.Resources.Error_NonNumeric;
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validate in stock date field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="hasWeb"></param>
+        /// <returns></returns>
+        public string ValidateInStockDate(string value)
+        {
+            if (!string.IsNullOrEmpty(value))
+            {
+                if (value == "0000-00-00")
+                {
+                    return "In Stock Date cannot be set to 0000-00-00.";
+                }
+                if (!DateTime.TryParse(value, out DateTime temp))
+                {
+                    return "In Stock Date field must contain a valid date";
+                }
+                else if (Convert.ToDateTime(value).Date < Convert.ToDateTime("01/01/1753").Date)
+                {
+                    return "License Begin Date cannot be before 01/01/1753.";
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates ISBN field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateIsbn(string value, int prodType)
+        {
+            if (!(string.IsNullOrEmpty(value)))
+            {
+                if (CheckSpecialChar(value))
+                {
+                    return "ISBN field " + OdinServices.Properties.Resources.Error_SpecialChars;
+                }
+                if (value.Length > 10)
+                {
+                    return "ISBN field " + OdinServices.Properties.Resources.Error_LengthMax + "10 characters.";
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates Item Category field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateItemCategory(string value, int prodType)
+        {
+            bool required = true;
+            if (prodType == 2) { required = false; }
+
+            if (!string.IsNullOrEmpty(value) || required)
+            {
+                if (string.IsNullOrEmpty(value) && required)
+                {
+                    return "Item Category " + OdinServices.Properties.Resources.Error_Required;
+                }
+                if (value.Length > 15)
+                {
+                    return "Item Category " + OdinServices.Properties.Resources.Error_LengthMax + "15 characters.";
+                }
+                if (!GlobalData.ProductCategories.Contains(value))
+                {
+                    return "Item Category " + OdinServices.Properties.Resources.Error_NoMatch;
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates Item Family field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateItemFamily(string value, int prodType)
+        {
+            if (!(string.IsNullOrEmpty(value)))
+            {
+                if (value.Length > 18)
+                {
+                    return "Item Family " + OdinServices.Properties.Resources.Error_LengthMax + "18 characters.";
+                }
+                if ((value == "STICKER") || (value == "") || (value == "FLAT"))
+                {
+                    return "";
+                }
+                else return "Item Family contains an invalid value. (Item Family must be set to 'STICKER', 'FLAT', or left empty)";
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates Item Group field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateItemGroup(string value, int prodType)
+        {
+            bool required = true;
+            if (prodType == 2) { required = false; }
+            if (!string.IsNullOrEmpty(value) || required)
+            {
+                if (string.IsNullOrEmpty(value) && required)
+                {
+                    return "Item Group " + OdinServices.Properties.Resources.Error_Required;
+                }
+                if (value.Length > 15)
+                {
+                    return "Item Group field " + OdinServices.Properties.Resources.Error_LengthMax + "15 characters.";
+                }
+                if (!GlobalData.ItemGroups.Contains(value))
+                {
+                    return "Item Group " + OdinServices.Properties.Resources.Error_NoMatch;
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates Item Id field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
+        public string ValidateItemId(string value, string status)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return "Item Id " + OdinServices.Properties.Resources.Error_Required;
+            }
+            if ((status == "Add") || (status == ""))
+            {
+                if (value.Length > 18)
+                {
+                    return "Item Id " + OdinServices.Properties.Resources.Error_LengthMax + "18 characters.";
+                }
+                for (int i = 0; i < value.Length; i++)
+                {
+                    if (!((value[i] >= 'A' && value[i] <= 'Z') || (value[i] >= '0' && value[i] <= '9') || value[i] == '-'))
+                    {
+                        return "Item Id contains invalid charachters. (Only use A-Z, 0-9 and -)";
+                    }
+                }
+                if (GlobalData.ItemIds.Contains(value))
+                {
+                    return "Item Id " + OdinServices.Properties.Resources.Error_AlreadyExists;
+                }
+            }
+            else if (status == "Update")
+            {
+                if(!GlobalData.ItemIds.Contains(value))
+                {
+                    return "Item ID does not exist in peoplesoft.";
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validate item Keywords field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="hasWeb"></param>
+        /// <returns></returns>
+        public string ValidateItemKeywords(string value, bool required)
+        {
+            if (required || (!string.IsNullOrEmpty(value)))
+            {
+                if (required && (string.IsNullOrEmpty(value)))
+                {
+                    return "Item Keywords " + OdinServices.Properties.Resources.Error_RequiredWeb;
+                }
+                if (value.Length > 1000)
+                {
+                    return "Item Keywords " + OdinServices.Properties.Resources.Error_LengthMax + "1000 characters.";
+                }
+            }
+            return "";
+
+        }
+
+        /// <summary>
+        ///     Validates Language field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="listPriceUS">Items US list price</param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateLanguage(string value, string listPriceUS, int prodType)
+        {
+            bool required = (prodType == 2) ? false : true;
+
+            if (!(string.IsNullOrEmpty(value)))
+            {
+                string[] x = value.Split('/');
+                foreach (string y in x)
+                {
+                    if (!GlobalData.Languages.Contains(y))
+                    {
+                        return "Language value " + y + OdinServices.Properties.Resources.Error_NoMatch;
+                    }
+                }
+                return "";
+            }
+            else
+            {
+                if (listPriceUS == "0" || listPriceUS == "0.00" || listPriceUS == "0.0000")
+                {
+                    return "";
+                }
+                if (required)
+                {
+                    return "Language " + OdinServices.Properties.Resources.Error_Required;
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates the item length field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="prodType"></param>
+        /// <returns>Error message or "" if value is valid</returns>
+        public string ValidateLength(string value, int prodType)
+        {
+            bool required = (prodType == 2) ? false : true;
+
+            if (!string.IsNullOrEmpty(value) || required)
+            {
+                if (string.IsNullOrEmpty(value) && required)
+                {
+                    return "Length field " + OdinServices.Properties.Resources.Error_Required;
+                }
+                if (value.Length > 8)
+                {
+                    return "Length field" + OdinServices.Properties.Resources.Error_LengthMax + "8 characters.";
+                }
+                if (!DbUtil.IsNumber(value))
+                {
+                    return "Length field " + OdinServices.Properties.Resources.Error_NonNumeric;
+                }
+                if (Convert.ToDouble(value) < 0.00001)
+                {
+                    return "Length field " + OdinServices.Properties.Resources.Error_0;
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validate License field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="hasWeb"></param>
+        /// <returns></returns>
+        public string ValidateLicense(string value)
+        {
+            if (!string.IsNullOrEmpty(value))
+            {
+                if (value.Length > 255)
+                {
+                    return "License field " + OdinServices.Properties.Resources.Error_LengthMax + "255 characters.";
+                }
+                if (!GlobalData.Licenses.Contains(value))
+                {
+                    return "License field " + OdinServices.Properties.Resources.Error_NoMatch;
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates license begin date field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateLicenseBeginDate(string value, int prodType)
+        {
+            if (!string.IsNullOrEmpty(value))
+            {
+                if (value == "0000-00-00")
+                {
+                    return "License Begin Date cannot be set to 0000-00-00.";
+                }
+                if (!DateTime.TryParse(value, out DateTime temp))
+                {
+                    return "License Begin Date field must contain a valid date";
+                }
+                else if (Convert.ToDateTime(value).Date < Convert.ToDateTime("01/01/1753").Date)
+                {
+                    return "License Begin Date cannot be before 01/01/1753.";
+                }
+            }
+            return "";
+        }
+        
+        /// <summary>
+        ///     Validates MFG Source field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="costProfileGroup">item's cost profile group</param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateMfgSource(string value, string costProfileGroup, int prodType)
+        {
+            bool required = (prodType == 2) ? false : true;
+
+            if (!(string.IsNullOrEmpty(value)))
+            {
+                if (value == "1")
+                {
+                    if (required)
+                    {
+                        if (costProfileGroup == "MFG_ACTUAL_FIFO")
+                        {
+                            return "";
+                        }
+                        else
+                        {
+                            return "MFG Source value does not properly align with the Cost Profile Group value.";
+                        }
+                    }
+                }                
+                else if (value == "2" )
+                {
+                    if (required)
+                    {
+                        if (costProfileGroup == "ACTUAL_FIFO")
+                        {
+                            return "";
+                        }
+                        else
+                        {
+                            return "MFG Source value does not properly align with the Cost Profile Group value.";
+                        }
+                    }
+                }
+                else return "MFG Source field can only contain a value of '1' or '2'";
+            }
+            else
+            {
+                if (required)
+                {
+                    return "MFG Source " + OdinServices.Properties.Resources.Error_Required;
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates MSRP value field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="listPrice">coresponding list price</param>
+        /// <param name="prodType"></param>
+        /// <param name="type">msrp type (usd, mxn, cad)</param>
+        /// <param name="isUS">flag if usd msrp</param>
+        /// <returns></returns>
+        public string ValidateMsrp(string value, string listPrice, int prodType, string type)
+        {
+            bool required = (prodType == 2) ? false : true;
+
+            if (!string.IsNullOrEmpty(value) || required)
+            {
+                if (value.Length > 10)
+                {
+                    return "MSRP " + type + " " + OdinServices.Properties.Resources.Error_LengthMax + "10 characters.";
+                }
+                if (string.IsNullOrEmpty(value))
+                {
+                    if (listPrice == "0")
+                    {
+                        return "";
+                    }
+                    if (type == "USD" && required)
+                    {
+                        return "MSRP " + type + " " + OdinServices.Properties.Resources.Error_Required;
+                    }
+                }
+                if (!DbUtil.IsNumber(value))
+                {
+                    return "MSRP " + type + " " + OdinServices.Properties.Resources.Error_NonNumeric;
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validate innerpack or casepack UPC field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="packtype">innerpack or casepack</param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidatePackUpc(string value, string packtype, int prodType)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return "";
+            }
+            if (!DbUtil.IsNumber(value))
+            {
+                return packtype + "UPC " + OdinServices.Properties.Resources.Error_NonNumeric;
+            }
+            if ((value.Length != 8) && (value.Length != 12))
+            {
+                return packtype + "UPC has invalid length. " + packtype + " UPC must have a length of 8 or 12 characters.";
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validate item List price field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="type">(usd, mxn, cad)</param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateListPrice(string value, string type, int prodType)
+        {
+            bool required = (prodType == 2) ? false : true;
+
+            if (!string.IsNullOrEmpty(value) || required)
+            {
+                if (string.IsNullOrEmpty(value) && required)
+                {
+                    return "List Price " + type + " " + OdinServices.Properties.Resources.Error_Required;
+                }
+                if (value.Length > 9)
+                {
+                    return "List Price " + type + " " + OdinServices.Properties.Resources.Error_LengthMax + "9 characters.";
+                }
+                if (!DbUtil.IsNumber(value))
+                {
+                    return "List Price " + type + " " + OdinServices.Properties.Resources.Error_NonNumeric;
+                }
+            }
+            return "";
+        }
+        
+        /// <summary>
+        ///     Validates meta description field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="hasWeb"></param>
+        /// <returns></returns>
+        public string ValidateMetaDescription(string value, bool required)
+        {
+            if (!(string.IsNullOrEmpty(value)) || required)
+            {
+                if (required && (string.IsNullOrEmpty(value)))
+                {
+                    return "Meta Description " + OdinServices.Properties.Resources.Error_RequiredWeb;
+                }
+                if (!GlobalData.MetaDescriptions.Contains(value) && !CheckForProductFormat(value))
+                {
+                    return "Meta Description " + OdinServices.Properties.Resources.Error_NoMatch;
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validate product format field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="productGroup">item's product group</param>
+        /// <param name="productLine">item's product line</param>
+        /// <param name="productFormat">item's product format</param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateProductFormat(string productGroup, string productLine, string productFormat, string upc, int prodType)
+        {
+            bool required = (prodType == 2) ? false : true;
+
+            if (!string.IsNullOrEmpty(productFormat) || required)
+            {
+                if (productFormat.Trim().Length > 60)
+                {
+                    return "Product Format " + OdinServices.Properties.Resources.Error_LengthMax + "60 characters.";
+                }
+                if (!string.IsNullOrEmpty(productFormat))
+                {
+                    if (!CheckProductFormats(productGroup, productLine, productFormat))
+                    {
+                        return "Product Format does not align with Product Line and Product Group values provided.";
+                    }
+                }
+                else
+                {
+                    if (!required)
+                    {
+                        if (!string.IsNullOrEmpty(upc))
+                        {
+                            return "Product Format is a required value when a UPC value is provided.";
+                        }
+                    }
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validate product group field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateProductGroup(string value, string upc, int prodType)
+        {
+            bool required = (prodType == 2) ? false : true;
+
+            if (!string.IsNullOrEmpty(value) || required)
+            {
+                if (string.IsNullOrEmpty(value) && required)
+                {
+                    return "Product Group " + OdinServices.Properties.Resources.Error_Required;
+                }
+                if (value.Trim().Length > 30)
+                {
+                    return "Product Group " + OdinServices.Properties.Resources.Error_LengthMax + "30 characters.";
+                }
+                if (!GlobalData.ProductGoups.Contains(value))
+                {
+                    return "Product Group " + OdinServices.Properties.Resources.Error_NoMatch;
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates the Product Id Translation Field field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="productTranslation"></param>
+        /// <param name="currentIds"></param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateProductIdTranslation(string itemId, List<ChildElement> productTranslations, List<string> currentIds, string productFormat, string pricingGroup, string status, int prodType)
+        {
+            if (productTranslations.Count() == 0)
+            {
+                if (productFormat.ToUpper() == "POD POSTER FRAME")
+                {
+                    return "Product Id Translations are required when the Product Format = 'POD POSTER FRAME'.";
+                }
+                else if (!string.IsNullOrEmpty(pricingGroup))
+                {
+                    if (pricingGroup.Substring(0, 3).ToUpper() == "FRP")
+                    {
+                        return "Product Id Translations are required when the Pricing Group = 'FRP'.";
+                    }
+                }
+                return "";
+            }
+            else
+            {
+                foreach (ChildElement productIdTranslation in productTranslations)
+                {
+                    if (!string.IsNullOrEmpty(productIdTranslation.ItemId))
+                    {
+                        if ((!currentIds.Contains(productIdTranslation.ItemId.Trim())) && (!GlobalData.ItemIds.Contains(productIdTranslation.ItemId.Trim())))
+                        {
+                            return "Product Id Translation field contains an id that does not exist: " + productIdTranslation.ItemId + ".";
+                        }
+                    }
+                    int count = 0;
+                    string erroredId = string.Empty;
+                    foreach (ChildElement productIdTranslation2 in productTranslations)
+                    {
+                        if ((productIdTranslation2.ItemId.Trim() == productIdTranslation.ItemId.Trim()))
+                        {
+                            count++;
+                            if(count>1)
+                            {
+                                erroredId = productIdTranslation.ItemId;
+                            }
+                        }
+                    }
+                    if(count >1)
+                    {
+                        return "Product Id Translation can not contain multiple occurances of the same item: "+ erroredId;
+                    }
+                }
+                if (status == "Update")
+                {
+                    if (!CheckExistingProductIdTranslationsMatch(productTranslations))
+                    {
+                        foreach (ChildElement productIdTranslation in productTranslations)
+                        {
+                            if (CheckItemHasOpenOrderLine(productIdTranslation.ItemId))
+                            {
+                                return "Product Id Translations: Current open orders are preventing this change from taking place.";
+                            }
+                        }
+                    }
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validate Product Line field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="productGroup">item's product group</param>
+        /// <param name="productLine">item's product line</param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateProductLine(string productGroup, string productLine, string upc, int prodType)
+        {
+            bool required = (prodType == 2) ? false : true;
+
+            if (!string.IsNullOrEmpty(productLine) || required)
+            {
+                if (productLine.Trim().Length > 30)
+                {
+                    return "Product Line " + OdinServices.Properties.Resources.Error_LengthMax + "30 characters.";
+                }
+
+                if (!string.IsNullOrEmpty(productGroup))
+                {
+                    if (!CheckProductLines(productGroup, productLine))
+                    {
+                        return "Product Line does not align with Product Group provided.";
+                    }
+                }
+                else
+                {
+                    if (required)
+                    {
+                        if (!string.IsNullOrEmpty(upc))
+                        {
+                            return "Product Line is a required value when a UPC is provided";
+                        }
+                    }
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validate Product Quantity field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateProductQty(string value, int prodType)
+        {
+            if (!(string.IsNullOrEmpty(value)))
+            {
+                if (!DbUtil.IsNumber(value))
+                {
+                    return "Product Quantity " + OdinServices.Properties.Resources.Error_NonNumeric;
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validate Property field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="license">Item's License</param>
+        /// <param name="hasWeb"></param>
+        /// <returns></returns>
+        public string ValidateProperty(string value, string license)
+        {
+            if (!string.IsNullOrEmpty(value))
+            {
+                if (!RetrievePropertyList(license).Contains(value))
+                {
+                    return "Property field does not align with the provided item license.";
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validate Pricing Group field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="listPriceCad">item's List Price CAD</param>
+        /// <param name="listPriceUsd">item's List Price USD</param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidatePricingGroup(string value, string listPriceCad, string listPriceUsd, int prodType)
+        {
+
+            bool required = (prodType == 2) ? false : true;
+
+            if (!string.IsNullOrEmpty(value) || required)
+            {
+                if (value.Length > 30)
+                {
+                    return "Pricing Group " + OdinServices.Properties.Resources.Error_LengthMax + "30 characters.";
+                }
+                if (string.IsNullOrEmpty(value))
+                {
+                    if (((listPriceUsd == "0") || (listPriceUsd == "0.0000") || (listPriceUsd == "") || (listPriceUsd == "0.00")) && ((listPriceCad == "0") || (listPriceCad == "0.0000") || (listPriceCad == "") || (listPriceCad == "0.00")))
+                    {
+                        return "";
+                    }
+                    else
+                    {
+                        return "Pricing Group field cannot be left empty if there is a List Price USD value or a List Price CAD value provided for this item.";
+                    }
+                }
+                if (!GlobalData.PricingGroups.Contains(value) && required)
+                {
+                    return "Pricing Group " + OdinServices.Properties.Resources.Error_NoMatch;
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates Print on Demand field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidatePrintOnDemand(string value, int prodType)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return "";
+            }
+            else
+            {
+                if (value == "Y" || value == "N")
+                {
+                    return "";
+                }
+                else return "Print On Demand " + OdinServices.Properties.Resources.Error_YorN;
+            }
+        }
+
+        /// <summary>
+        ///     Validates Peoplesoft Status field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidatePsStatus(string value, string prodType)
+        {
+            if (!string.IsNullOrEmpty(value))
+            {
+                if (!GlobalData.PsStatuses.Contains(value))
+                {
+                    return "PS Status " + OdinServices.Properties.Resources.Error_NoMatch;
+                }
+            }
+            else if (prodType == "Item")
+            {
+                return "PS Status " + OdinServices.Properties.Resources.Error_Required;
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates the SAT code value. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public string ValidateSatCode(string value)
+        {
+            if (!string.IsNullOrEmpty(value))
+            {
+                if (value.Length > 20)
+                {
+                    return "SAT Code " + OdinServices.Properties.Resources.Error_LengthMax + "20 characters.";
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Sell On field Validation field. Returns error message string or "" if no error exists.
+        /// </summary>
+        public string ValidateSellOnValue(string value, string type)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return "Sell On " + type + " " + OdinServices.Properties.Resources.Error_Required;
+            }
+            if ((value != "Y") && (value != "N"))
+            {
+                return "Sell On " + type + " " + OdinServices.Properties.Resources.Error_YorN;
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validate Short Description field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="hasWeb"></param>
+        /// <returns></returns>
+        /// 
+        public string ValidateShortDescription(string value)
+        {
+            return "";
+        }
+
+        /// <summary>
+        ///     Validate Size field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="hasWeb"></param>
+        /// <returns></returns>
+        public string ValidateSize(string value)
+        {
+            if (!string.IsNullOrEmpty(value))
+            {
+                if (CheckSpecialChar(value))
+                {
+                    return "Size " + OdinServices.Properties.Resources.Error_SpecialChars;
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates Standard Cost field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="dacusd">Default Actual Cost USD</param>
+        /// <param name="daccad">Default Actual Cost CAD</param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateStandardCost(string value, int prodType)
+        {
+
+            bool required = (prodType == 2) ? false : true;
+
+            if (!string.IsNullOrEmpty(value) || required)
+            {
+                if (string.IsNullOrEmpty(value) && required)
+                {
+                    return "Standard Cost " + OdinServices.Properties.Resources.Error_Required;
+                }
+                if (!DbUtil.IsNumber(value))
+                {
+                    return "Standard Cost " + OdinServices.Properties.Resources.Error_NonNumeric;
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates Stats Code field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="listPriceUS">USD List Price</param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateStatsCode(string value, string listPriceUS, int prodType)
+        {
+
+            bool required = (prodType == 2) ? false : true;
+
+            if (!string.IsNullOrEmpty(value) || required)
+            {
+                if (string.IsNullOrEmpty(value)&&required)
+                {
+                    if (listPriceUS == "0" || listPriceUS == "0.00" || listPriceUS == "0.0000")
+                    {
+                        return "";
+                    }
+                    else
+                    {
+                        return "Stats Code " + OdinServices.Properties.Resources.Error_Required;                       
+                    }
+                }
+                if (value.Length > 30)
+                {
+                    return "Stats Code " + OdinServices.Properties.Resources.Error_LengthMax + "30 characters.";
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates Tariff Code field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateTariffCode(string value, int prodType)
+        {
+
+            bool required = (prodType == 2) ? false : true;
+
+            if (!string.IsNullOrEmpty(value) || required)
+            {
+                if (string.IsNullOrEmpty(value) && required)
+                {
+                    return "Tariff Code " + OdinServices.Properties.Resources.Error_Required;
+                }
+                if(!GlobalData.TariffCodes.Contains(value))
+                {
+                    return "Tariff Code " + OdinServices.Properties.Resources.Error_NoMatch;
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validate the template Id
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
+        public string ValidateTemplateId(string value, string status)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return "Template Id is empty. Please select a name before saving.";
+            }
+            if (value.Length > 255)
+            {
+                return "TemplateId " + OdinServices.Properties.Resources.Error_LengthMax + "255 characters.";
+            }
+            if (status != "Update")
+            {
+                if (GlobalData.TemplateNames.Contains(value))
+                {
+                    return "Template Id " + value + " already exists. Please select a different name.";
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates the item territory field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="listPriceUS"></param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateTerritory(string value, string listPriceUS, int prodType)
+        {
+
+            bool required = (prodType == 2) ? false : true;
+
+            if (!string.IsNullOrEmpty(value) || required)
+            {
+                if (string.IsNullOrEmpty(value) && required)
+                {
+                    if (listPriceUS == "0" || listPriceUS == "0.00" || listPriceUS == "0.0000")
+                    {
+                        return "";
+                    }
+                    else
+                    {
+                        return "Territory " + OdinServices.Properties.Resources.Error_Required;
+                    }
+                }
+                string[] x = value.Split('/');
+                foreach (string y in x)
+                {
+                    if (!GlobalData.Territories.Contains(y.Trim()))
+                    {
+                        return "Territory value " + y + " " + OdinServices.Properties.Resources.Error_NoMatch;
+                    }
+                }
+                return "";
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates the Title field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="hasWeb"></param>
+        /// <returns></returns>
+        public string ValidateTitle(string value, bool required)
+        {
+            if (required || (!string.IsNullOrEmpty(value)))
+            {
+                if (required && string.IsNullOrEmpty(value))
+                {
+                    return "Title " + OdinServices.Properties.Resources.Error_RequiredWeb;
+                }
+                if (value.Length > 266)
+                {
+                    return "Title " + OdinServices.Properties.Resources.Error_LengthMax + "266 characters.";
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates UDEX field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="group">item's Item Group</param>
+        /// <param name="listPriceUS">USD List Price</param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateUdex(string value, int prodType)
+        {
+            if (prodType == 0)
+            {
+                return "";
+            }
+            if(string.IsNullOrEmpty(value))
+            {
+                return "";
+            }
+            if (!(string.IsNullOrEmpty(value)))
+            {
+                if (value.Length > 30)
+                {
+                    return "Udex " + OdinServices.Properties.Resources.Error_LengthMax + "30 characters.";
+                }
+                else return "";
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates UPC field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="listpriceUsd">USD List Price</param>
+        /// <param name="prodFormat">Product Fromat</param>
+        /// <param name="ean">EAN</param>
+        /// <param name="productLine">Product Line</param>
+        /// <param name="prodType"></param>
+        /// <returns></returns>
+        public string ValidateUpc(string value, string itemId, string status, string listpriceUsd, string prodFormat, string prodGroup, string prodLine, string ean, string ecommerceUpc, int prodType)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                if (string.IsNullOrEmpty(listpriceUsd) || !string.IsNullOrEmpty(ean))
+                {
+                    return "";
+                }
+                else if (prodLine == "Direct Medical Mail")
+                {
+                    return "";
+                }
+                else if (listpriceUsd == "0" || listpriceUsd == "0.00" || listpriceUsd == "0.0000")
+                {
+                    return "";
+                }
+                else if (GlobalData.UpcProductFormatExceptions.Contains(prodFormat.Trim()))
+                {
+                    return "";
+                }
+                else return "UPC " + OdinServices.Properties.Resources.Error_Required + " (Required if the List Price USD is set to something other than 0 or if the Ean field is left blank.)";
+            }
+            else
+            {
+                if (!DbUtil.IsNumber(value))
+                {
+                    return "UPC field " + OdinServices.Properties.Resources.Error_NonNumeric;
+                }
+                if ((value.Length != 8) && (value.Length != 12))
+                {
+                    return "UPC has an invalid length. UPC value can only have a length of 8 or 12 characters.";
+                }
+                if (string.IsNullOrEmpty(prodGroup) || string.IsNullOrEmpty(prodLine) || string.IsNullOrEmpty(prodFormat))
+                {
+                    return "Product Line, Product Group & Product Format are required values when UPC is provided.";
+                }
+                if (value == ecommerceUpc)
+                {
+                    return "Item's Upc and Ecommerce Upc cannot share the same value.";
+                }
+                List<string> matchId = CheckDuplicateUPCs(itemId, value, status);
+                if (matchId.Count > 0)
+                {
+                    string ids = "";
+                    foreach (string id in matchId)
+                    {
+                        ids += id + ", ";
+                    }
+                    return "UPC contains a duplicate ID. The following items already contain this upc or ecommerce upc: " + ids;
+                }
+            }
+            return "";
+        }
+        
+        /// <summary>
+        ///     Validate item website price field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <returns></returns>
+        public string ValidateWebsitePrice(string value, bool required)
+        {
+            if (required || (!string.IsNullOrEmpty(value)))
+            {
+                if (string.IsNullOrEmpty(value) && required)
+                {
+                    return "Website Price " + OdinServices.Properties.Resources.Error_RequiredWeb;
+                }
+                if (value.Length > 9)
+                {
+                    return "Website Price " + OdinServices.Properties.Resources.Error_LengthMax + "9 characters.";
+                }
+                if (!DbUtil.IsNumber(value))
+                {
+                    return "Website Price " + OdinServices.Properties.Resources.Error_NonNumeric;
+                }
+                if (required && (value == "0" || value == "0.00" || value == "0.0000"))
+                {
+                    return "Website Price must contain a value greater than 0.";
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates the item weight field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="prodType"></param>
+        /// <returns>Error message or "" if value is valid</returns>
+        public string ValidateWeight(string value, int prodType)
+        {
+            bool required = (prodType == 2) ? false : true;
+
+            if (!string.IsNullOrEmpty(value) || required)
+            {
+                if (string.IsNullOrEmpty(value) && required)
+                {
+                    return "Weight field " + OdinServices.Properties.Resources.Error_Required;
+                }
+                if (value.Length > 8)
+                {
+                    return "Weight field " + OdinServices.Properties.Resources.Error_LengthMax + "8 characters.";
+                }
+                if (!DbUtil.IsNumber(value))
+                {
+                    return "Weight field " + OdinServices.Properties.Resources.Error_NonNumeric;
+                }
+                if (Convert.ToDouble(value) < 0.00001)
+                {
+                    return "Weight field " + OdinServices.Properties.Resources.Error_0;
+                }
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validates the item width field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="prodType"></param>
+        /// <returns>Error message or "" if value is valid</returns>
+        public string ValidateWidth(string value, int prodType)
+        {
+            bool required = (prodType == 2) ? false : true;
+
+            if (!string.IsNullOrEmpty(value) || required)
+            {
+                if (string.IsNullOrEmpty(value) && required)
+                {
+                    return "Width field " + OdinServices.Properties.Resources.Error_Required;
+                }
+                if (value.Length > 8)
+                {
+                    return "Width field " + OdinServices.Properties.Resources.Error_LengthMax + "8 characters.";
+                }
+                if (!DbUtil.IsNumber(value))
+                {
+                    return "Width field " + OdinServices.Properties.Resources.Error_NonNumeric;
+                }
+                if (Convert.ToDouble(value) < 0.00001)
+                {
+                    return "Width field " + OdinServices.Properties.Resources.Error_0;
+                }
+            }
+            return "";
+        }
+        
 
         #endregion // Validation Methods
         

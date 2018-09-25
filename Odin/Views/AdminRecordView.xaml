@@ -487,6 +487,14 @@
                                 Padding="5" />
                         </GridViewColumn>
                         <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnEcommerce}"
+                        Width="auto">
+                            <GridViewColumnHeader
+                            Content="Sell On Ecommerce"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                        </GridViewColumn>
+                        <GridViewColumn
                         DisplayMemberBinding="{Binding SellOnFanatics}"
                         Width="auto">
                             <GridViewColumnHeader

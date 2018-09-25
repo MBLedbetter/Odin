@@ -36,7 +36,7 @@
             SystemButtons="False" 
             Grid.ColumnSpan="3" 
             Grid.Row="0" 
-            Grid.RowSpan="2" SelectionChanged="ribbon_SelectionChanged"
+            Grid.RowSpan="2" SelectionChanged="Ribbon_SelectionChanged"
             >
             <ribbon:Ribbon.ApplicationMenu>
                 <ribbon:ApplicationMenu
@@ -552,7 +552,7 @@
                         Value="{Binding RowColor}" />
                     <EventSetter
                         Event="Control.MouseDoubleClick"
-                        Handler="itemListView_MouseDoubleClick" />
+                        Handler="ItemListView_MouseDoubleClick" />
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.View>
@@ -1009,6 +1009,22 @@
                         Width="{Binding SellOnAmazonSellerCentralVisibility}">
                         <GridViewColumnHeader
                             Content="Sell On Amazon Seller Central"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnEcommerce}"
+                        Width="{Binding SellOnEcommerceVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Ecommerce"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnEcommerce}"
+                        Width="{Binding SellOnEcommerceVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Ecommerce"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -1502,7 +1518,7 @@
                     TargetType="{x:Type ListViewItem}">
                     <EventSetter
                         Event="Control.MouseDoubleClick"
-                        Handler="errorListView_MouseDoubleClick" />
+                        Handler="ErrorListView_MouseDoubleClick" />
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.View>

@@ -37,11 +37,11 @@
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn Header=""
-                                        Width="40">
+    Width="40">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <CheckBox Margin="5, 0" 
-                                              IsChecked="{Binding IsSelected}"/>
+          IsChecked="{Binding IsSelected}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
