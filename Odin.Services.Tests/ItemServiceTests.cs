@@ -1690,7 +1690,7 @@ namespace Odin.Services.Tests
             Assert.AreEqual("Add", item.Status);
             Assert.AreEqual("I", item.PsStatus); // PS Status
             Assert.AreEqual("N", item.SellOnAmazon); // Sell On Amazon
-            Assert.AreEqual("Y", item.SellOnAmazon); // Sell On Ecommerce
+            Assert.AreEqual("Y", item.SellOnEcommerce); // Sell On Ecommerce
             Assert.AreEqual("N", item.SellOnFanatics); // Sell On Fanatics
             Assert.AreEqual("N", item.SellOnGuitarCenter); // Sell On Guitar Center
             Assert.AreEqual("N", item.SellOnHayneedle); // Sell On Hayneedle

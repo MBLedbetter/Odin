@@ -1595,8 +1595,7 @@ namespace OdinServices
                             catCount++;
                         }
                     }
-                        CSV_Add_Image.Add(item.ItemId + ", /" + imageName + ", /" + imageName + ", /" + imageName);
-                    
+                    CSV_Add_Image.Add(item.ItemId + ", /" + imageName + ", /" + imageName + ", /" + imageName);
                 }
 
                 else if (requestType == "Remove")
@@ -1636,8 +1635,6 @@ namespace OdinServices
                     }
                     File.WriteAllText(csvFilePath, sb.ToString());
                     File.WriteAllText(csvImageFilePath, sbi.ToString());
-
-
                 }
             } // End foreach (Request request in requests)
         }

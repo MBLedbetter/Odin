@@ -2283,37 +2283,37 @@ namespace OdinServices
             error = ValidateSatCode(var.SatCode);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             // Sell On All Posters //
-            error = ValidateSellOnValue(var.SellOnAllPosters, "AllPosters");
+            error = ValidateSellOnValue(var.SellOnAllPosters, var.SellOnEcommerce, "AllPosters");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             // Sell On Amazon //
-            error = ValidateSellOnValue(var.SellOnAmazon, "Amazon");
+            error = ValidateSellOnValue(var.SellOnAmazon, var.SellOnEcommerce, "Amazon");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             // Sell On Amazon Seller Central //
-            error = ValidateSellOnValue(var.SellOnAmazonSellerCentral, "Amazon Seller Central");
+            error = ValidateSellOnValue(var.SellOnAmazonSellerCentral, var.SellOnEcommerce, "Amazon Seller Central");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             // Sell On Ecommerce //
-            error = ValidateSellOnValue(var.SellOnEcommerce, "Ecommerce");
+            error = ValidateSellOnValue(var.SellOnEcommerce, null, "Ecommerce");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             // Sell On Fanatics //
-            error = ValidateSellOnValue(var.SellOnFanatics, "Fanatics");
+            error = ValidateSellOnValue(var.SellOnFanatics, var.SellOnEcommerce, "Fanatics");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             // Sell On Guitar Center //
-            error = ValidateSellOnValue(var.SellOnGuitarCenter, "Guitar Center");
+            error = ValidateSellOnValue(var.SellOnGuitarCenter, var.SellOnEcommerce, "Guitar Center");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             // Sell On Hayneedle //
-            error = ValidateSellOnValue(var.SellOnHayneedle, "Hayneedle");
+            error = ValidateSellOnValue(var.SellOnHayneedle, var.SellOnEcommerce, "Hayneedle");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             // Sell On Target //
-            error = ValidateSellOnValue(var.SellOnTarget, "Target");
+            error = ValidateSellOnValue(var.SellOnTarget, var.SellOnEcommerce, "Target");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             // Sell On Trends //
-            error = ValidateSellOnValue(var.SellOnTrends, "Trends");
+            error = ValidateSellOnValue(var.SellOnTrends, null, "Trends");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             // Sell On Walmart //
-            error = ValidateSellOnValue(var.SellOnWalmart, "Walmart");
+            error = ValidateSellOnValue(var.SellOnWalmart, var.SellOnEcommerce, "Walmart");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             // Sell On Wayfair //
-            error = ValidateSellOnValue(var.SellOnWayfair, "Wayfair");
+            error = ValidateSellOnValue(var.SellOnWayfair, var.SellOnEcommerce, "Wayfair");
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             // Short Description //
             error = ValidateShortDescription(var.ShortDescription);
@@ -4518,8 +4518,15 @@ namespace OdinServices
         /// <summary>
         ///     Sell On field Validation field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateSellOnValue(string value, string type)
+        public string ValidateSellOnValue(string value, string ecomFlag, string type)
         {
+            if (ecomFlag != null)
+            {
+                if (ecomFlag != "Y" && value == "Y")
+                {
+                    return "Sell on Ecommerce flag must be set to Y if " + type + " is set to Y.";
+                }
+            }
             if (string.IsNullOrEmpty(value))
             {
                 return "Sell On " + type + " " + OdinServices.Properties.Resources.Error_Required;
