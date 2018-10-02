@@ -49,12 +49,18 @@ namespace Odin
 
         #region Methods
               
+        public static void LoadGlobalValues()
+        {
+            OptionRepository.RetrieveGloablOptionData();
+            ItemRepository.RetrieveGlobalData();
+        }
         public static void WireUp()
         {
             ErrorLog.CreateFolder();
-            ErrorLog.LogError("", "User Log In");
             try
             {
+                
+
                 ConnectionManager connectionManager = new ConnectionManager(Odin.Properties.Settings.Default.DbServerName, Odin.Properties.Settings.Default.DbName);
                 // ConnectionManager connectionManager = new ConnectionManager(@"(local)\SQLExpress", "Odin");
                 // connectionManager.SetUseTrustedConnection(true);
@@ -66,12 +72,14 @@ namespace Odin
                 OdinContext context = OdinContextFactory.CreateContext();
                 if (!context.Database.Exists())
                 {
-                    DbSettingsView window = new DbSettingsView();
-                    window.DataContext = new DbSettingsViewModel();
+                    DbSettingsView window = new DbSettingsView()
+                    {
+                        DataContext = new DbSettingsViewModel()
+                    };
                     window.ShowDialog();
                     OdinContextFactory.CreateContext();
-                }     
-                
+                }
+
                 WorkbookReader = new WorkbookReader();
                 ItemRepository = new ItemRepository(OdinContextFactory);
                 OptionRepository = new OptionRepository(OdinContextFactory);
@@ -81,8 +89,6 @@ namespace Odin
                 OptionService = new OptionService(OptionRepository, RequestRepository);
                 ExcelService = new ExcelService(false, ItemService, OptionService, TemplateRepository, RequestRepository);
                 EmailService = new EmailService(OptionService);
-                OptionRepository.RetrieveGloablOptionData();
-                ItemRepository.RetrieveGlobalData();
             }
             catch (Exception e)
             {

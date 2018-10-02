@@ -557,7 +557,7 @@ namespace Odin.Data
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.ExternalId).HasColumnName("EXTERNAL_ID");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.ExternalIdType).HasColumnName("EXTERNAL_ID_TYPE");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.FullDescription).HasColumnName("FULL_DESCRIPTION");
-            modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.GenericKeywords).HasColumnName("SEARCH_TERMS");
+            modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.SubjectKeywords).HasColumnName("SEARCH_TERMS");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.Height).HasColumnName("HEIGHT");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.ImageUrl1).HasColumnName("IMAGE_URL_1");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.ImageUrl2).HasColumnName("IMAGE_URL_2");
@@ -578,7 +578,7 @@ namespace Odin.Data
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.ProductCategory).HasColumnName("PRODUCT_CATEGORY");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.ProductSubcategory).HasColumnName("PRODUCT_SUBCATEGORY");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.Size).HasColumnName("SIZE");
-            modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.SubjectKeywords).HasColumnName("SUBJECT_KEYWORDS");
+            modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.GenericKeywords).HasColumnName("GENERIC_KEYWORDS");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.UpcOverride).HasColumnName("UPC_OVERRIDE");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.Weight).HasColumnName("WEIGHT");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.Width).HasColumnName("WIDTH");
@@ -1453,6 +1453,7 @@ namespace Odin.Data
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.ProdGroup).HasColumnName("PROD_GROUP");
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.ProdLine).HasColumnName("PROD_LINE");
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.SatCode).HasColumnName("SAT_CODE");
+            modelBuilder.Entity<ItemAttribEx>().Property(p => p.SellOnEcommerce).HasColumnName("SELL_ON_ECOM");
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.SellOnWeb).HasColumnName("SELL_ON_WEB");
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.Setid).HasColumnName("SETID");
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.TranslateEdiProd).HasColumnName("TRANSLATE_EDI_PROD");
@@ -2044,7 +2045,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceExternalId).HasColumnName("ECOMMERCE_EXTERNAL_ID");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceExternalIdType).HasColumnName("ECOMMERCE_EXTERNAL_ID_TYPE");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceFullDescription).HasColumnName("ECOMMERCE_FULL_DESCRIPTION");
-            modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceGenericKeywords).HasColumnName("ECOMMERCE_SEARCH_TERMS");
+            modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceGenericKeywords).HasColumnName("ECOMMERCE_GENERIC_KEYWORDS");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceHeight).HasColumnName("ECOMMERCE_HEIGHT");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceImageUrl1).HasColumnName("ECOMMERCE_IMAGE_URL_1");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceImageUrl2).HasColumnName("ECOMMERCE_IMAGE_URL_2");
@@ -2064,7 +2065,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceProductCategory).HasColumnName("ECOMMERCE_PRODUCT_CATEGORY");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceProductSubcategory).HasColumnName("ECOMMERCE_PRODUCT_SUBCATEGORY");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceSize).HasColumnName("ECOMMERCE_SIZE");
-            modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceSubjectKeywords).HasColumnName("ECOMMERCE_SUBJECT_KEYWORDS");
+            modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceSubjectKeywords).HasColumnName("ECOMMERCE_SEARCH_TERMS");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceUpc).HasColumnName("ECOMMERCE_UPC");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceWeight).HasColumnName("ECOMMERCE_WEIGHT");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceWidth).HasColumnName("ECOMMERCE_WIDTH");
@@ -2116,6 +2117,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItem>().Property(p => p.SellOnAllPosters).HasColumnName("SELL_ON_ALL_POSTERS");
             modelBuilder.Entity<OdinItem>().Property(p => p.SellOnAmazon).HasColumnName("SELL_ON_AMAZON");
             modelBuilder.Entity<OdinItem>().Property(p => p.SellOnAmazonSellerCentral).HasColumnName("SELL_ON_AMAZON_SELLER_CENTRAL");
+            modelBuilder.Entity<OdinItem>().Property(p => p.SellOnEcommerce).HasColumnName("SELL_ON_ECOMMERCE");
             modelBuilder.Entity<OdinItem>().Property(p => p.SellOnFanatics).HasColumnName("SELL_ON_FANATICS");
             modelBuilder.Entity<OdinItem>().Property(p => p.SellOnGuitarCenter).HasColumnName("SELL_ON_GUITAR_CENTER");
             modelBuilder.Entity<OdinItem>().Property(p => p.SellOnHayneedle).HasColumnName("SELL_ON_HAYNEEDLE");
@@ -2293,7 +2295,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.ACost).HasColumnName("A_COST");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AExternalId).HasColumnName("A_EXTERNAL_ID");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AExternalIdType).HasColumnName("A_EXTERNAL_ID_TYPE");
-            modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AGenericKeywords).HasColumnName("A_SEARCH_TERMS");
+            modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AGenericKeywords).HasColumnName("A_GENERIC_KEYWORDS");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AImageUrl1).HasColumnName("A_IMAGE_URL_1");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AImageUrl2).HasColumnName("A_IMAGE_URL_2");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AImageUrl3).HasColumnName("A_IMAGE_URL_3");
@@ -2315,7 +2317,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AProductCategory).HasColumnName("A_PRODUCT_CATEGORY");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AProductDescription).HasColumnName("A_PRODUCT_DESCRIPTION");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AProductSubcategory).HasColumnName("A_PRODUCT_SUBCATEGORY");
-            modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.ASubjectKeywords).HasColumnName("A_SUBJECT_KEYWORDS");
+            modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.ASubjectKeywords).HasColumnName("A_SEARCH_TERMS");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.ASize).HasColumnName("A_SIZE");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AUpc).HasColumnName("A_UPC");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AccountingGroup).HasColumnName("ACCOUNTING_GROUP");
@@ -2389,6 +2391,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnAllposters).HasColumnName("SELL_ON_ALLPOSTERS");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnAmazon).HasColumnName("SELL_ON_AMAZON");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnAmazonSellerCentral).HasColumnName("SELL_ON_AMAZON_SELLER_CENTRAL");
+            modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnEcommerce).HasColumnName("SELL_ON_ECOM");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnFanatics).HasColumnName("SELL_ON_FANATICS");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnGuitarCenter).HasColumnName("SELL_ON_GUITAR_CENTER");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnHayneedle).HasColumnName("SELL_ON_HAYNEEDLE");

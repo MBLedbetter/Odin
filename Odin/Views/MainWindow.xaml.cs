@@ -20,11 +20,11 @@ namespace Odin.Views
 
         #region Event Handlers
 
-        private void itemListView_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void ItemListView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             (this.DataContext as MainWindowViewModel).EditSelectedItemCommand.Execute(null);
         }
-        private void errorListView_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void ErrorListView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             (this.DataContext as MainWindowViewModel).EditSelectedErrorCommand.Execute(null);
         }
@@ -53,17 +53,20 @@ namespace Odin.Views
         /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            App.LoadGlobalValues();
             List<string> notifications = App.OptionRepository.RetrieveNotifications("User");
             if (notifications.Count > 0)
             {
-                AlertView window = new AlertView();
-                window.DataContext = new AlertViewModel(notifications, "Alert", "The following adjustments have been made to Odin since last login.");
+                AlertView window = new AlertView()
+                {
+                    DataContext = new AlertViewModel(notifications, "Alert", "The following adjustments have been made to Odin since last login.")
+                };
                 window.ShowDialog();
                 App.OptionRepository.UpdateUserNotification();
             }
         }
 
-        private void ribbon_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void Ribbon_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
 
         }

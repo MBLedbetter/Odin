@@ -69,8 +69,8 @@ namespace Odin.Data
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 List<OdinWebsiteItemRequests> odinWebsiteItemRequests = (from o in context.OdinWebsiteItemRequests
-                                                                         orderby o.RequestId descending
-                                                                         select o).ToList();
+                                     orderby o.RequestId descending
+                                     select o).ToList();
 
                 foreach (OdinWebsiteItemRequests odinWebsiteItemRequest in odinWebsiteItemRequests)
                 {
@@ -99,8 +99,8 @@ namespace Odin.Data
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 List<OdinWebsiteItemRequests> odinWebsiteItemRequests = (from o in context.OdinWebsiteItemRequests
-                                                                         where o.RequestId == requestId
-                                                                         select o).ToList();
+                                     where o.RequestId == requestId
+                                     select o).ToList();
 
                 foreach (OdinWebsiteItemRequests odinWebsiteItemRequest in odinWebsiteItemRequests)
                 {
@@ -129,8 +129,8 @@ namespace Odin.Data
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 OdinAutoNumberControlTable odinAutoNumberControlTable = (from o in context.OdinAutoNumberControlTable
-                                                                         where o.Identifier == "WebSiteIdentifier"
-                                                                         select o).FirstOrDefault();
+                                     where o.Identifier == "WebSiteIdentifier"
+                                     select o).FirstOrDefault();
                 autoNumber = Convert.ToString(odinAutoNumberControlTable.Nextautonumber);
                 odinAutoNumberControlTable.Nextautonumber++;
                 context.SaveChanges();
@@ -149,21 +149,21 @@ namespace Odin.Data
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 List<OdinWebsiteItemRequests> odinWebsiteItemRequests = (from o in context.OdinWebsiteItemRequests
-                                                                         where o.UserName == Environment.UserName
-                                                                         select o).ToList();
+                                     where o.UserName == Environment.UserName
+                                     select o).ToList();
 
                 foreach (OdinWebsiteItemRequests x in odinWebsiteItemRequests)
                 {
                     Request request = new Request(
-                                            x.RequestId,
-                                             x.ItemId.Trim(),
-                                             x.ItemStatus.Trim(),
-                                             x.UserName.Trim(),
-                                             x.DttmSubmitted.Trim(),
-                                             x.InStockDate.Trim(),
-                                             x.Comment.Trim(),
-                                             x.RequestStatus.Trim()
-                                             );
+        x.RequestId,
+         x.ItemId.Trim(),
+         x.ItemStatus.Trim(),
+         x.UserName.Trim(),
+         x.DttmSubmitted.Trim(),
+         x.InStockDate.Trim(),
+         x.Comment.Trim(),
+         x.RequestStatus.Trim()
+         );
                     RequestList.Add(request);
                 }
             }
@@ -220,9 +220,9 @@ namespace Odin.Data
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 OdinWebsiteItemRequests odinWebsiteItemRequests = (from o in context.OdinWebsiteItemRequests
-                                                                   where o.ItemId == request.ItemId
-                                                                   && o.RequestId == request.RequestId
-                                                                   select o).FirstOrDefault();
+                               where o.ItemId == request.ItemId
+                               && o.RequestId == request.RequestId
+                               select o).FirstOrDefault();
                 if (odinWebsiteItemRequests != null)
                 {
                     odinWebsiteItemRequests.Comment = request.Comment;

@@ -1939,6 +1939,23 @@ namespace Odin.ViewModels
         private string _sellOnAmazonSellerCentralVisibility = "auto";
 
         /// <summary>
+        ///     Gets or sets the SellOnEcommerceVisibility field
+        /// </summary>
+        public string SellOnEcommerceVisibility
+        {
+            get
+            {
+                return _sellOnEcommerceVisibility;
+            }
+            set
+            {
+                _sellOnEcommerceVisibility = value;
+                OnPropertyChanged("SellOnEcommerceVisibility");
+            }
+        }
+        private string _sellOnEcommerceVisibility = "auto";
+
+        /// <summary>
         ///     Gets or sets the SellOnFanaticsVisibility field
         /// </summary>
         public string SellOnFanaticsVisibility
@@ -3021,7 +3038,6 @@ namespace Odin.ViewModels
                 }
                 foreach (ItemObject item in this.Items)
                 {
-                    item.UpdateSellOnValues();
                     ItemIds.Add(item.ItemId);
                 }
                 this.ItemErrors = new ObservableCollection<ItemError>();
@@ -3029,7 +3045,7 @@ namespace Odin.ViewModels
                 {
                     foreach (ItemObject item in this.Items)
                     {
-                        foreach (ItemError error in this.ItemService.ValidateAllItem(item, this.ItemIds, false))
+                        foreach (ItemError error in this.ItemService.ValidateItem(item, this.ItemIds, false))
                         {
                             this.ItemErrors.Add(error);
                         }
@@ -3047,18 +3063,17 @@ namespace Odin.ViewModels
             }
         }
 
+        /// <summary>
+        ///     Open TemplateViewModel and load in given template data
+        /// </summary>
         public void LoadTemplates()
         {
-
             TemplateView window = new TemplateView()
             {
                 DataContext = new TemplateViewModel(this.ItemService, "Add")
             };
             (window.DataContext as TemplateViewModel).LoadTemplateExcelInfo();
-            if (window.ShowDialog() == true)
-            {
-
-            }
+            window.ShowDialog();
         }
 
         /// <summary>
@@ -3070,22 +3085,19 @@ namespace Odin.ViewModels
             {
                 DataContext = new PermissionsViewModel(OptionService)
             };
-            if (window.ShowDialog() == true)
-            {
-
-            }
+            window.ShowDialog();
         }
-        
+
+        /// <summary>
+        ///     Opens TemplateViewModel
+        /// </summary>
         public void NewTemplate()
         {
             TemplateView window = new TemplateView()
             {
                 DataContext = new TemplateViewModel(this.ItemService, "Add")
             };
-            if (window.ShowDialog() == true)
-            {
-
-            }
+            window.ShowDialog();
         }
 
         /// <summary>
@@ -3281,7 +3293,6 @@ namespace Odin.ViewModels
                 this.PermissionSubmitItemVisibility = Permissions.Contains("WEB_SUBMIT") ? "Visible" : "Hidden";
                 this.PermissionEcommerceControlVisibility = Permissions.Contains("ECOMMERCE_CONTROL") ? "Visible" : "Hidden";
                 this.PermissionRequestNewCategoryVisibility = Permissions.Contains("ADMIN_CONTROLS") ? "Visible" : "Hidden";
-
             }
             else
             {
@@ -3373,6 +3384,7 @@ namespace Odin.ViewModels
             this.SellOnAllPostersVisibility = (UserOptions.SellOnAllPostersVisibility) ? "100" : "0";
             this.SellOnAmazonVisibility = (UserOptions.SellOnAmazonVisibility) ? "100" : "0";
             this.SellOnAmazonSellerCentralVisibility = (UserOptions.SellOnAmazonSellerCentralVisibility) ? "100" : "0";
+            this.SellOnEcommerceVisibility = (UserOptions.SellOnEcommerceVisibility) ? "100" : "0";
             this.SellOnFanaticsVisibility = (UserOptions.SellOnFanaticsVisibility) ? "100" : "0";
             this.SellOnGuitarCenterVisibility = (UserOptions.SellOnGuitarCenterVisibility) ? "100" : "0";
             this.SellOnHayneedleVisibility = (UserOptions.SellOnHayneedleVisibility) ? "100" : "0";
@@ -3449,7 +3461,7 @@ namespace Odin.ViewModels
                 {
                     foreach (ItemObject item in Items)
                     {
-                        foreach (ItemError er in ItemService.ValidateAllItem(item, this.ItemIds, true))
+                        foreach (ItemError er in ItemService.ValidateItem(item, this.ItemIds, true))
                         {
                             ItemErrors.Add(er);
                         }
@@ -3525,7 +3537,6 @@ namespace Odin.ViewModels
                                 Items = new ObservableCollection<ItemObject>(); ;
                                 SubmitStatus = false;
                                 PermissionSubmitItemVisibility = "Hidden";
-
                                 Mouse.OverrideCursor = null;
                             }
                         }
@@ -3563,10 +3574,7 @@ namespace Odin.ViewModels
             {
                 DataContext = new TemplateViewModel(this.ItemService, "Update")
             };
-            if (window.ShowDialog() == true)
-            {
-
-            }
+            window.ShowDialog();
         }
 
         /// <summary>
@@ -3665,7 +3673,7 @@ namespace Odin.ViewModels
 
             foreach(ItemObject item in items)
             {
-                foreach (ItemError error in this.ItemService.ValidateAllItem(item, itemIds, false))
+                foreach (ItemError error in this.ItemService.ValidateItem(item, itemIds, false))
                 {
                     ReturnErrors.Add(error);
                 }
@@ -3697,7 +3705,7 @@ namespace Odin.ViewModels
                     ObservableCollection<ItemError> CheckErrors = new ObservableCollection<ItemError>();
                     foreach (ItemObject item in CheckItems)
                     {
-                        foreach (ItemError error in this.ItemService.ValidateAllItem(item, this.ItemIds, false))
+                        foreach (ItemError error in this.ItemService.ValidateItem(item, this.ItemIds, false))
                         {
                             if (!CheckErrors.Contains(error))
                             {
@@ -3799,18 +3807,16 @@ namespace Odin.ViewModels
             WorkbookReader workbookReader,
             EmailService emailService)
         {
-            if (itemService == null) { throw new ArgumentNullException("itemService"); }
-            if (optionService == null) { throw new ArgumentNullException("optionService"); }
-            if (excelService == null) { throw new ArgumentNullException("excelService"); }
-            if (workbookReader == null) { throw new ArgumentNullException("workbookReader"); }
-            if (emailService == null) { throw new ArgumentNullException("emailService"); }
             try
             {
                 this.BackgroundWorker = new BackgroundWorker();
                 BackgroundWorker.WorkerSupportsCancellation = true;
                 this.UserName = GlobalData.UserName;
-                this.EmailService = emailService;
-                this.ExcelService = excelService;
+                this.EmailService = emailService ?? throw new ArgumentNullException("emailService");
+                this.ExcelService = excelService ?? throw new ArgumentNullException("excelService");
+                this.ItemService = itemService ?? throw new ArgumentNullException("itemService");
+                this.OptionService = optionService ?? throw new ArgumentNullException("optionService");
+                this.WorkbookReader = workbookReader ?? throw new ArgumentNullException("workbookReader");
                 if (!GlobalData.FtpUserexceptions.Contains(this.UserName))
                 {
                     this.FtpService = new FtpService();
@@ -3819,12 +3825,9 @@ namespace Odin.ViewModels
                 {
                     this.FtpService = null;
                 }
-                this.ItemService = itemService;
-                this.OptionService = optionService;
-                this.WorkbookReader = workbookReader;
                 SetPermisions();
                 this.SubmitStatus = false;
-                SaveStatus = false;
+                this.SaveStatus = false;
                 this.WindowTitle = SetWindowTitle();
             }
             catch

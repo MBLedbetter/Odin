@@ -208,10 +208,8 @@ namespace OdinServices
         /// <param name="optionRepository"></param>
         public OptionService(IOptionRepository optionRepository, IRequestRepository requestRepository)
         {
-            if (optionRepository == null) { throw new ArgumentNullException("optionRepository"); }
-            if (requestRepository == null) { throw new ArgumentNullException("requestRepository"); }
-            OptionRepository = optionRepository;
-            RequestRepository = requestRepository;
+            OptionRepository = optionRepository?? throw new ArgumentNullException("optionRepository");
+            RequestRepository = requestRepository?? throw new ArgumentNullException("requestRepository");
             SetCaches();
         }
 

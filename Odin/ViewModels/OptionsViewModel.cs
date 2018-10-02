@@ -1548,6 +1548,19 @@ namespace Odin.ViewModels
             }
         }
 
+        public bool SellOnEcommerceVisibility
+        {
+            get
+            {
+                return UserOptions.SellOnEcommerceVisibility;
+            }
+            set
+            {
+                UserOptions.SellOnEcommerceVisibility = value;
+                OnPropertyChanged("SellOnEcommerceVisibility");
+            }
+        }
+
         public bool SellOnFanaticsVisibility
         {
             get
@@ -1996,6 +2009,7 @@ namespace Odin.ViewModels
             if (UserOptions.SellOnAllPostersVisibility  == false) { return false; }
             if (UserOptions.SellOnAmazonVisibility  == false) { return false; }
             if (UserOptions.SellOnAmazonSellerCentralVisibility == false) { return false; }
+            if (UserOptions.SellOnEcommerceVisibility == false) { return false; }
             if (UserOptions.SellOnFanaticsVisibility  == false) { return false; }
             if (UserOptions.SellOnGuitarCenterVisibility == false) { return false; }
             if (UserOptions.SellOnHayneedleVisibility  == false) { return false; }
@@ -2300,6 +2314,7 @@ namespace Odin.ViewModels
                 SellOnAllPostersVisibility = true;
                 SellOnAmazonVisibility = true;
                 SellOnAmazonSellerCentralVisibility = true;
+                SellOnEcommerceVisibility = true;
                 SellOnFanaticsVisibility = true;
                 SellOnGuitarCenterVisibility = true;
                 SellOnHayneedleVisibility = true;

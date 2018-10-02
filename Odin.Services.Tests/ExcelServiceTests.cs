@@ -20,20 +20,30 @@ namespace OdinTests.Services
             OptionService optionService = new OptionService(new TestOptionRepository(), new TestRequestRepository());
             ExcelService excelService = new ExcelService(true, new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository()), optionService, new TestTemplateRepository(), new TestRequestRepository());
             ObservableCollection<ItemObject> items = new ObservableCollection<ItemObject>();
-            ItemObject item1 = new ItemObject();
-            item1.ItemId = "RP1234";
+            ItemObject item1 = new ItemObject()
+            {
+                ItemId = "RP1234"
+            };
             items.Add(item1);
-            ItemObject item2 = new ItemObject();
-            item2.ItemId = "RP4321";
+            ItemObject item2 = new ItemObject()
+            {
+                ItemId = "RP4321"
+            };
             items.Add(item2);
-            ItemObject item3 = new ItemObject();
-            item3.ItemId = "POD1234";
+            ItemObject item3 = new ItemObject()
+            {
+                ItemId = "POD1234"
+            };
             items.Add(item3);
-            ItemObject item4 = new ItemObject();
-            item4.ItemId = "FR4321";
+            ItemObject item4 = new ItemObject()
+            {
+                ItemId = "FR4321"
+            };
             items.Add(item4);
-            ItemObject item5 = new ItemObject();
-            item5.ItemId = "FR1234";
+            ItemObject item5 = new ItemObject()
+            {
+                ItemId = "FR1234"
+            };
             items.Add(item5);
 
             #endregion // Assemble

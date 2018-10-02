@@ -3533,22 +3533,22 @@ namespace Odin.ViewModels
         private string _satCodeToolTip = string.Empty;
 
         /// <summary>
-        ///     Gets or sets the SellOnAllPosters
+        ///     Gets or sets the SellOnAllPostersCheck
         /// </summary>
-        public string SellOnAllPosters
+        public bool SellOnAllPostersCheck
         {
             get
             {
-                return this.ItemViewModelItem.SellOnAllPosters;
+                return DbUtil.ConvertToBool(this.ItemViewModelItem.SellOnAllPosters);
             }
             set
             {
-                if (this.ItemViewModelItem.SellOnAllPosters != value)
+                if (this.ItemViewModelItem.SellOnAllPosters != DbUtil.ConvertYN(value))
                 {
-                    this.ItemViewModelItem.SellOnAllPosters = value;
-                    this.SellOnAllPostersError = ItemService.ValidateSellOnValue(value, "AllPosters");
+                    this.ItemViewModelItem.SellOnAllPosters = DbUtil.ConvertYN(value);
+                    this.SellOnAllPostersError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "AllPosters");
                     ValidateEcommerce();
-                    OnPropertyChanged("SellOnAllPosters");
+                    OnPropertyChanged("SellOnAllPostersCheck");
                 }
             }
         }
@@ -3603,22 +3603,22 @@ namespace Odin.ViewModels
         private string _sellOnAllPostersToolTip = string.Empty;
 
         /// <summary>
-        ///     Gets or sets the SellOnAmazon
+        ///     Gets or sets the SellOnAmazonCheck
         /// </summary>
-        public string SellOnAmazon
+        public bool SellOnAmazonCheck
         {
             get
             {
-                return this.ItemViewModelItem.SellOnAmazon;
+                return DbUtil.ConvertToBool(this.ItemViewModelItem.SellOnAmazon);
             }
             set
             {
-                if (this.ItemViewModelItem.SellOnAmazon != value)
+                if (this.ItemViewModelItem.SellOnAmazon != DbUtil.ConvertYN(value))
                 {
-                    this.ItemViewModelItem.SellOnAmazon = value;
-                    this.SellOnAmazonError = ItemService.ValidateSellOnValue(value, "Amazon");
+                    this.ItemViewModelItem.SellOnAmazon = DbUtil.ConvertYN(value);
+                    this.SellOnAmazonError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), DbUtil.ConvertYN(this.SellOnEcommerceCheck),"Amazon");
                     ValidateEcommerce();
-                    OnPropertyChanged("SellOnAmazon");
+                    OnPropertyChanged("SellOnAmazonCheck");
                 }
             }
         }
@@ -3674,22 +3674,22 @@ namespace Odin.ViewModels
 
 
         /// <summary>
-        ///     Gets or sets the SellOnAmazonSellerCentral
+        ///     Gets or sets the SellOnAmazonSellerCentralCheck
         /// </summary>
-        public string SellOnAmazonSellerCentral
+        public bool SellOnAmazonSellerCentralCheck
         {
             get
             {
-                return this.ItemViewModelItem.SellOnAmazonSellerCentral;
+                return DbUtil.ConvertToBool(this.ItemViewModelItem.SellOnAmazonSellerCentral);
             }
             set
             {
-                if (this.ItemViewModelItem.SellOnAmazonSellerCentral != value)
+                if (this.ItemViewModelItem.SellOnAmazonSellerCentral != DbUtil.ConvertYN(value))
                 {
-                    this.ItemViewModelItem.SellOnAmazonSellerCentral = value;
-                    this.SellOnAmazonSellerCentralError = ItemService.ValidateSellOnValue(value, "AmazonSellerCentral");
+                    this.ItemViewModelItem.SellOnAmazonSellerCentral = DbUtil.ConvertYN(value);
+                    this.SellOnAmazonSellerCentralError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "AmazonSellerCentral");
                     ValidateEcommerce();
-                    OnPropertyChanged("SellOnAmazonSellerCentral");
+                    OnPropertyChanged("SellOnAmazonSellerCentralCheck");
                 }
             }
         }
@@ -3744,22 +3744,93 @@ namespace Odin.ViewModels
         private string _sellOnAmazonSellerCentralToolTip = string.Empty;
 
         /// <summary>
-        ///     Gets or sets the Sell On Fanatics
+        ///     Gets or sets the Sell On Ecommerce
         /// </summary>
-        public string SellOnFanatics
+        public bool SellOnEcommerceCheck
         {
             get
             {
-                return this.ItemViewModelItem.SellOnFanatics;
+                return DbUtil.ConvertToBool(this.ItemViewModelItem.SellOnEcommerce);
             }
             set
             {
-                if (this.ItemViewModelItem.SellOnFanatics != value)
+                if (this.ItemViewModelItem.SellOnEcommerce != DbUtil.ConvertYN(value))
                 {
-                    this.ItemViewModelItem.SellOnFanatics = value;
-                    this.SellOnFanaticsError = ItemService.ValidateSellOnValue(value, "Fanatics");
+                    this.ItemViewModelItem.SellOnEcommerce = DbUtil.ConvertYN(value);
+                    this.SellOnEcommerceError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), null, "Ecommerce");
+                    ValidateSellOnFields();
                     ValidateEcommerce();
-                    OnPropertyChanged("SellOnFanatics");
+                    OnPropertyChanged("SellOnEcommerceCheck");
+                }
+            }
+        }
+        public string SellOnEcommerceBoxColor
+        {
+            get
+            {
+                return _sellOnEcommerceBoxColor;
+            }
+            set
+            {
+                _sellOnEcommerceBoxColor = value;
+                OnPropertyChanged("SellOnEcommerceBoxColor");
+            }
+        }
+        private string _sellOnEcommerceBoxColor = "White";
+        public string SellOnEcommerceError
+        {
+            get
+            {
+                return _sellOnEcommerceError;
+            }
+            set
+            {
+                _sellOnEcommerceError = value;
+                if (value != "")
+                {
+                    SellOnEcommerceToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SellOnEcommerce");
+                }
+                else
+                {
+                    SellOnEcommerceToolTip = ReturnToolTip("SellOnEcommerce");
+                }
+                this.SellOnEcommerceBoxColor = (value == "") ? "White" : "Tomato";
+                this.TabColorWebFlag = CheckWebFlagsTabColor();
+                OnPropertyChanged("SellOnEcommerceError");
+            }
+        }
+        private string _sellOnEcommerceError = string.Empty;
+        public string SellOnEcommerceToolTip
+        {
+            get
+            {
+                return _sellOnEcommerceToolTip;
+            }
+            set
+            {
+                this._sellOnEcommerceToolTip = value;
+                OnPropertyChanged("SellOnEcommerceToolTip");
+            }
+        }
+        private string _sellOnEcommerceToolTip = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the Sell On Fanatics
+        /// </summary>
+        public bool SellOnFanaticsCheck
+        {
+            get
+            {
+                return DbUtil.ConvertToBool(this.ItemViewModelItem.SellOnFanatics);
+            }
+            set
+            {
+                if (this.ItemViewModelItem.SellOnFanatics != DbUtil.ConvertYN(value))
+                {
+                    this.ItemViewModelItem.SellOnFanatics = DbUtil.ConvertYN(value);
+                    this.SellOnFanaticsError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Fanatics");
+                    ValidateEcommerce();
+                    OnPropertyChanged("SellOnFanaticsCheck");
                 }
             }
         }
@@ -3817,20 +3888,20 @@ namespace Odin.ViewModels
         /// <summary>
         ///     Gets or sets the Sell On GuitarCenter
         /// </summary>
-        public string SellOnGuitarCenter
+        public bool SellOnGuitarCenterCheck
         {
             get
             {
-                return this.ItemViewModelItem.SellOnGuitarCenter;
+                return DbUtil.ConvertToBool(this.ItemViewModelItem.SellOnGuitarCenter);
             }
             set
             {
-                if (this.ItemViewModelItem.SellOnGuitarCenter != value)
+                if (this.ItemViewModelItem.SellOnGuitarCenter != DbUtil.ConvertYN(value))
                 {
-                    this.ItemViewModelItem.SellOnGuitarCenter = value;
-                    this.SellOnGuitarCenterError = ItemService.ValidateSellOnValue(value, "Guitar Center");
+                    this.ItemViewModelItem.SellOnGuitarCenter = DbUtil.ConvertYN(value);
+                    this.SellOnGuitarCenterError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Guitar Center");
                     ValidateEcommerce();
-                    OnPropertyChanged("SellOnGuitarCenter");
+                    OnPropertyChanged("SellOnGuitarCenterCheck");
                 }
             }
         }
@@ -3887,20 +3958,20 @@ namespace Odin.ViewModels
         /// <summary>
         ///     Gets or sets the Sell On Hayneedle
         /// </summary>
-        public string SellOnHayneedle
+        public bool SellOnHayneedleCheck
         {
             get
             {
-                return this.ItemViewModelItem.SellOnHayneedle;
+                return DbUtil.ConvertToBool(this.ItemViewModelItem.SellOnHayneedle);
             }
             set
             {
-                if (this.ItemViewModelItem.SellOnHayneedle != value)
+                if (this.ItemViewModelItem.SellOnHayneedle != DbUtil.ConvertYN(value))
                 {
-                    this.ItemViewModelItem.SellOnHayneedle = value;
-                    this.SellOnHayneedleError = ItemService.ValidateSellOnValue(value, "Hayneedle");
+                    this.ItemViewModelItem.SellOnHayneedle = DbUtil.ConvertYN(value);
+                    this.SellOnHayneedleError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Hayneedle");
                     ValidateEcommerce();
-                    OnPropertyChanged("SellOnHayneedle");
+                    OnPropertyChanged("SellOnHayneedleCheck");
                 }
             }
         }
@@ -3957,20 +4028,20 @@ namespace Odin.ViewModels
         /// <summary>
         ///     Gets or sets the Sell On Target
         /// </summary>
-        public string SellOnTarget
+        public bool SellOnTargetCheck
         {
             get
             {
-                return this.ItemViewModelItem.SellOnTarget;
+                return DbUtil.ConvertToBool(this.ItemViewModelItem.SellOnTarget);
             }
             set
             {
-                if (this.ItemViewModelItem.SellOnTarget != value)
+                if (this.ItemViewModelItem.SellOnTarget != DbUtil.ConvertYN(value))
                 {
-                    this.ItemViewModelItem.SellOnTarget = value;
-                    this.SellOnTargetError = ItemService.ValidateSellOnValue(value, "Target");
+                    this.ItemViewModelItem.SellOnTarget = DbUtil.ConvertYN(value);
+                    this.SellOnTargetError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Target");
                     ValidateEcommerce();
-                    OnPropertyChanged("SellOnTarget");
+                    OnPropertyChanged("SellOnTargetCheck");
                 }
             }
         }
@@ -4027,23 +4098,23 @@ namespace Odin.ViewModels
         /// <summary>
         ///     Gets or sets the Sell On Trends
         /// </summary>
-        public string SellOnTrends
+        public bool SellOnTrendsCheck
         {
             get
             {
-                return this.ItemViewModelItem.SellOnTrends;
+                return DbUtil.ConvertToBool(this.ItemViewModelItem.SellOnTrends);
             }
             set
             {
-                if (this.ItemViewModelItem.SellOnTrends != value)
+                if (DbUtil.ConvertToBool(this.ItemViewModelItem.SellOnTrends) != value)
                 {
-                    this.ItemViewModelItem.SellOnTrends = value;
-                    this.SellOnTrendsError = ItemService.ValidateSellOnValue(value, "Trends");
-                    this.TitleError = ItemService.ValidateTitle(this.Title, ItemViewModelItem.HasWeb());
+                    this.ItemViewModelItem.SellOnTrends = DbUtil.ConvertYN(value);
+                    this.SellOnTrendsError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value),null, "Trends");
+                    this.TitleError = ItemService.ValidateTitle(this.Title, this.SellOnTrendsCheck);
                     this.MetaDescriptionError = ItemService.ValidateMetaDescription(this.MetaDescription, ItemViewModelItem.HasWeb());
                     this.CategoryError = ItemService.ValidateCategory(this.Category, ItemViewModelItem.HasWeb());
                     this.ItemKeywordsError = ItemService.ValidateItemKeywords(this.ItemKeywords, ItemViewModelItem.HasWeb());
-                    OnPropertyChanged("SellOnTrends");
+                    OnPropertyChanged("SellOnTrendsCheck");
                 }
             }
         }
@@ -4100,20 +4171,20 @@ namespace Odin.ViewModels
         /// <summary>
         ///     Gets or sets the Sell On Walmart
         /// </summary>
-        public string SellOnWalmart
+        public bool SellOnWalmartCheck
         {
             get
             {
-                return this.ItemViewModelItem.SellOnWalmart;
+                return DbUtil.ConvertToBool(this.ItemViewModelItem.SellOnWalmart);
             }
             set
             {
-                if (this.ItemViewModelItem.SellOnWalmart != value)
+                if (this.ItemViewModelItem.SellOnWalmart != DbUtil.ConvertYN(value))
                 {
-                    this.ItemViewModelItem.SellOnWalmart = value;
-                    this.SellOnWalmartError = ItemService.ValidateSellOnValue(value, "Walmart");
+                    this.ItemViewModelItem.SellOnWalmart = DbUtil.ConvertYN(value);
+                    this.SellOnWalmartError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Walmart");
                     ValidateEcommerce();
-                    OnPropertyChanged("SellOnWalmart");
+                    OnPropertyChanged("SellOnWalmartCheck");
                 }
             }
         }
@@ -4166,25 +4237,24 @@ namespace Odin.ViewModels
             }
         }
         private string __sellOnWalmartToolTip = string.Empty;
-
-
+        
         /// <summary>
         ///     Gets or sets the Sell On Wayfair
         /// </summary>
-        public string SellOnWayfair
+        public bool SellOnWayfairCheck
         {
             get
             {
-                return this.ItemViewModelItem.SellOnWayfair;
+                return DbUtil.ConvertToBool(this.ItemViewModelItem.SellOnWayfair);
             }
             set
             {
-                if (this.ItemViewModelItem.SellOnWayfair != value)
+                if (this.ItemViewModelItem.SellOnWayfair != DbUtil.ConvertYN(value))
                 {
-                    this.ItemViewModelItem.SellOnWayfair = value;
-                    this.SellOnWayfairError = ItemService.ValidateSellOnValue(value, "Wayfair");
+                    this.ItemViewModelItem.SellOnWayfair = DbUtil.ConvertYN(value);
+                    this.SellOnWayfairError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Wayfair");
                     ValidateEcommerce();
-                    OnPropertyChanged("SellOnWayfair");
+                    OnPropertyChanged("SellOnWayfairCheck");
                 }
             }
         }
@@ -8636,6 +8706,7 @@ namespace Odin.ViewModels
             if (SellOnAllPostersBoxColor != "White") { return "Tomato"; }
             if (SellOnAmazonBoxColor != "White") { return "Tomato"; }
             if (SellOnAmazonSellerCentralBoxColor != "White") { return "Tomato"; }
+            if (SellOnEcommerceBoxColor != "White") { return "Tomato"; }
             if (SellOnFanaticsBoxColor != "White") { return "Tomato"; }
             if (SellOnGuitarCenterBoxColor != "White") { return "Tomato"; }
             if (SellOnHayneedleBoxColor != "White") { return "Tomato"; }
@@ -8940,6 +9011,7 @@ namespace Odin.ViewModels
             this.SellOnAllPostersToolTip = ReturnToolTip("SellOnAllPosters");
             this.SellOnAmazonToolTip = ReturnToolTip("SellOnAmazon");
             this.SellOnAmazonSellerCentralToolTip = ReturnToolTip("SellOnAmazonSellerCentral");
+            this.SellOnEcommerceToolTip = ReturnToolTip("SellOnEcommerce");
             this.SellOnFanaticsToolTip = ReturnToolTip("SellOnFanatics");
             this.SellOnGuitarCenterToolTip = ReturnToolTip("SellOnGuitarCenter");
             this.SellOnHayneedleToolTip = ReturnToolTip("SellOnHayneedle");
@@ -8967,7 +9039,7 @@ namespace Odin.ViewModels
         /// <returns></returns>
         public bool SubmitItem()
         {
-            ObservableCollection<ItemError> errors = ItemService.ValidateAllItem(ItemViewModelItem, ItemIds, false);
+            ObservableCollection<ItemError> errors = ItemService.ValidateItem(ItemViewModelItem, ItemIds, false);
             
             List<string> errorMessages = new List<string>();
             if (errors.Count != 0)
@@ -9055,16 +9127,17 @@ namespace Odin.ViewModels
             this.PropertyError = ItemService.ValidateProperty(var.Property, var.License);
             this.PsStatusError = ItemService.ValidatePsStatus(var.PsStatus, "Item");
             this.SatCodeError = ItemService.ValidateSatCode(var.SatCode);
-            this.SellOnAllPostersError = ItemService.ValidateSellOnValue(this.SellOnAllPosters, "All Posters");
-            this.SellOnAmazonError = ItemService.ValidateSellOnValue(this.SellOnAmazon, "Amazon");
-            this.SellOnAmazonSellerCentralError = ItemService.ValidateSellOnValue(this.SellOnAmazonSellerCentral, "Amazon Seller Central");
-            this.SellOnFanaticsError = ItemService.ValidateSellOnValue(this.SellOnFanatics, "Fanatics");
-            this.SellOnGuitarCenterError = ItemService.ValidateSellOnValue(this.SellOnGuitarCenter, "Guitar Center");
-            this.SellOnHayneedleError = ItemService.ValidateSellOnValue(this.SellOnHayneedle, "Hayneedle");
-            this.SellOnTargetError = ItemService.ValidateSellOnValue(this.SellOnTarget, "Target");
-            this.SellOnTrendsError = ItemService.ValidateSellOnValue(this.SellOnTrends, "Trends");
-            this.SellOnWalmartError = ItemService.ValidateSellOnValue(this.SellOnWalmart, "Walmart");
-            this.SellOnWayfairError = ItemService.ValidateSellOnValue(this.SellOnWayfair, "Wayfair");
+            this.SellOnAllPostersError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnAllPostersCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "All Posters");
+            this.SellOnAmazonError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnAmazonCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Amazon");
+            this.SellOnAmazonSellerCentralError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnAmazonSellerCentralCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Amazon Seller Central");
+            this.SellOnEcommerceError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnEcommerceCheck),null, "Ecommerce");
+            this.SellOnFanaticsError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnFanaticsCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Fanatics");
+            this.SellOnGuitarCenterError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnGuitarCenterCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Guitar Center");
+            this.SellOnHayneedleError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnHayneedleCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Hayneedle");
+            this.SellOnTargetError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnTargetCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Target");
+            this.SellOnTrendsError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnTrendsCheck), null, "Trends");
+            this.SellOnWalmartError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnWalmartCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Walmart");
+            this.SellOnWayfairError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnWayfairCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Wayfair");
             this.ShortDescriptionError = ItemService.ValidateShortDescription(var.ShortDescription);
             this.SizeError = ItemService.ValidateSize(var.Size);
             this.StandardCostError = ItemService.ValidateStandardCost(var.StandardCost, var.ProdType);
@@ -9115,6 +9188,22 @@ namespace Odin.ViewModels
             this.Ecommerce_SizeError = ItemService.ValidateEcommerce_Size(this.Ecommerce_Size, this.ItemViewModelItem.HasEcommerce());
             this.Ecommerce_SubjectKeywordsError = ItemService.ValidateEcommerce_Keywords(this.Ecommerce_SubjectKeywords, false, "Ecommerce Subject Keywords", this.Status);
             this.Ecommerce_UpcError = ItemService.ValidateEcommerce_Upc(this.Ecommerce_Upc, this.ItemId, this.Upc, this.Status, this.ItemViewModelItem.HasEcommerce());
+        }
+
+        /// <summary>
+        ///     Validate the sell on fields for external ecommerce sites
+        /// </summary>
+        public void ValidateSellOnFields()
+        {
+            this.SellOnAllPostersError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnAllPostersCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "All Posters");
+            this.SellOnAmazonError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnAmazonCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Amazon");
+            this.SellOnAmazonSellerCentralError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnAmazonSellerCentralCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Amazon Seller Central");
+            this.SellOnFanaticsError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnFanaticsCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Fanatics");
+            this.SellOnGuitarCenterError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnGuitarCenterCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Guitar Center");
+            this.SellOnHayneedleError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnHayneedleCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Hayneedle");
+            this.SellOnTargetError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnTargetCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Target");
+            this.SellOnWalmartError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnWalmartCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Walmart");
+            this.SellOnWayfairError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnWayfairCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Wayfair");
         }
 
         #endregion //Methods

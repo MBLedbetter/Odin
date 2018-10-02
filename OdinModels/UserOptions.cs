@@ -1365,7 +1365,10 @@ namespace OdinModels
         #endregion // Peoplesoft Visibility Properties        
 
         #region Sell On Visibility Properties
-        
+
+        /// <summary>
+        ///     Gets or sets SellOnAllPostersVisibility
+        /// </summary>
         public static bool SellOnAllPostersVisibility
         {
             get
@@ -1379,6 +1382,9 @@ namespace OdinModels
         }
         private static bool _sellOnAllPostersVisibility = true;
 
+        /// <summary>
+        ///     Gets or sets SellOnAllPostersVisibility
+        /// </summary>
         public static bool SellOnAmazonVisibility
         {
             get
@@ -1392,6 +1398,9 @@ namespace OdinModels
         }
         private static bool _sellOnAmazonVisibility = true;
 
+        /// <summary>
+        ///     Gets or sets SellOnAmazonSellerCentralVisibility
+        /// </summary>
         public static bool SellOnAmazonSellerCentralVisibility
         {
             get
@@ -1405,6 +1414,25 @@ namespace OdinModels
         }
         private static bool _sellOnAmazonSellerCentralVisibility = true;
 
+        /// <summary>
+        ///     Gets or sets SellOnEcommerceVisibility
+        /// </summary>
+        public static bool SellOnEcommerceVisibility
+        {
+            get
+            {
+                return _sellOnEcommerceVisibility;
+            }
+            set
+            {
+                _sellOnEcommerceVisibility = value;
+            }
+        }
+        private static bool _sellOnEcommerceVisibility = true;
+
+        /// <summary>
+        ///     Gets or sets SellOnFanaticsVisibility
+        /// </summary>
         public static bool SellOnFanaticsVisibility
         {
             get
@@ -1418,6 +1446,9 @@ namespace OdinModels
         }
         private static bool _sellOnFanaticsVisibility = true;
 
+        /// <summary>
+        ///     Gets or sets SellOnGuitarCenterVisibility
+        /// </summary>
         public static bool SellOnGuitarCenterVisibility
         {
             get
@@ -1431,6 +1462,9 @@ namespace OdinModels
         }
         private static bool _sellOnGuitarCenterVisibility = true;
 
+        /// <summary>
+        ///     Gets or sets SellOnHayneedleVisibility
+        /// </summary>
         public static bool SellOnHayneedleVisibility
         {
             get
@@ -1444,6 +1478,9 @@ namespace OdinModels
         }
         private static bool _sellOnHayneedleVisibility = true;
 
+        /// <summary>
+        ///     Gets or sets SellOnTargetVisibility
+        /// </summary>
         public static bool SellOnTargetVisibility
         {
             get
@@ -1457,6 +1494,9 @@ namespace OdinModels
         }
         private static bool _sellOnTargetVisibility = true;
 
+        /// <summary>
+        ///     Gets or sets SellOnTrendsVisibility
+        /// </summary>
         public static bool SellOnTrendsVisibility
         {
             get
@@ -1470,6 +1510,9 @@ namespace OdinModels
         }
         private static bool _sellOnTrendsVisibility = true;
 
+        /// <summary>
+        ///     Gets or sets SellOnWalmartVisibility
+        /// </summary>
         public static bool SellOnWalmartVisibility
         {
             get
@@ -1483,6 +1526,9 @@ namespace OdinModels
         }
         private static bool _sellOnWalmartVisibility = true;
 
+        /// <summary>
+        ///     Gets or sets SellOnWayfairVisibility
+        /// </summary>
         public static bool SellOnWayfairVisibility
         {
             get

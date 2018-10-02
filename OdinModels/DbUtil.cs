@@ -27,26 +27,6 @@ namespace OdinModels
         }
 
         /// <summary>
-        ///     Checks 2 numeric strings to see if they have equal values.
-        /// </summary>
-        /// <param name="value1"></param>
-        /// <param name="value2"></param>
-        /// <returns></returns>
-        private static bool AreEqual(string value1, string value2)
-        {
-            if (DbUtil.IsNumber(value1) && DbUtil.IsNumber(value2))
-            {
-                decimal d1 = Convert.ToDecimal(value1);
-                decimal d2 = Convert.ToDecimal(value2);
-                if (d1 == d2)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /// <summary>
         ///     Returns msrp as decimal, if msrp (in case of CAN) is null default to US msrp
         /// </summary>
         /// <param name="msrp"></param>
@@ -59,15 +39,6 @@ namespace OdinModels
                 return Convert.ToDecimal(msrp2);
             }
             else return Convert.ToDecimal(msrp);
-        }
-
-        public static string BoolToString(bool value)
-        {
-            if (value)
-            {
-                return "Y";
-            }
-            else return "N";
         }
 
         public static string Char10(string value)
@@ -169,7 +140,21 @@ namespace OdinModels
             }
             return true;
         }
-        
+
+        /// <summary>
+        ///     Converts Y or N into bool
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static bool ConvertToBool(string value)
+        {
+            if (value.Trim().ToUpper() == "Y")
+            {
+                return true;
+            }
+            return false;
+        }
+
         /// <summary>
         ///     Converts items weight from lbs to mls
         /// </summary>
@@ -194,6 +179,20 @@ namespace OdinModels
         }
 
         /// <summary>
+        ///     Converts bool into Y or N
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string ConvertYN(bool value)
+        {
+            if(value)
+            {
+                return "Y";
+            }
+            return "N";
+        }
+
+        /// <summary>
         ///     Removes the time from the end of the datetime.
         /// </summary>
         /// <param name="date"></param>
@@ -204,18 +203,6 @@ namespace OdinModels
             return x[0];
         }
 
-        public static string FieldToString(object value)
-        {
-            if (value != DBNull.Value)
-            {
-                return value.ToString().Trim();
-            }
-            else
-            {
-                return string.Empty;
-            }
-        }
-
         /// <summary>
         ///     Checks if the value is a number (int or decimal)
         /// </summary>
@@ -224,16 +211,13 @@ namespace OdinModels
         public static bool IsNumber(string value)
         {
             bool returnValue = false;
-
-            int valueInt;
-            decimal valueDec;
-
-            if (int.TryParse(value, out valueInt))
+            
+            if (int.TryParse(value, out int valueInt))
             {
                 returnValue = true;
             }
 
-            if (decimal.TryParse(value, out valueDec))
+            if (decimal.TryParse(value, out decimal valueDec))
             {
                 returnValue = true;
             }
@@ -272,6 +256,7 @@ namespace OdinModels
         /// <returns></returns>
         public static string OrderTerritory(string value)
         {
+            if (string.IsNullOrEmpty(value)) { return ""; }
             string output = string.Empty;
             if (!string.IsNullOrEmpty(value))
             {
@@ -348,14 +333,18 @@ namespace OdinModels
         /// <returns></returns>
         public static string ReplaceCharacters(string text)
         {
-            string newValue;
-            newValue = text.Replace("“", "''");
-            newValue = text.Replace("\"", "''");
-            newValue = newValue.Replace("”", "''");
-            newValue = newValue.Replace("‘", "'");
-            newValue = newValue.Replace("’", "'");
-            newValue = newValue.Replace('–', '-');
-            return newValue;
+            if (!string.IsNullOrEmpty(text))
+            {
+                string newValue;
+                newValue = text.Replace("“", "''");
+                newValue = text.Replace("\"", "''");
+                newValue = newValue.Replace("”", "''");
+                newValue = newValue.Replace("‘", "'");
+                newValue = newValue.Replace("’", "'");
+                newValue = newValue.Replace('–', '-');
+                return newValue;
+            }
+            return text;
         }
 
         /// <summary>
@@ -375,6 +364,7 @@ namespace OdinModels
         /// <returns></returns>
         public static string RoundValue4Dec(string i)
         {
+            if (string.IsNullOrEmpty(i)) { return ""; }
             string num = "";
             string dec = "";
             if (i.Contains('.'))
@@ -389,25 +379,7 @@ namespace OdinModels
             }
             return i;
         }
-
-        /// <summary>
-        ///     Splits a comma delineated string into a list (and trims to boot)
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        private static List<string> StringToList(string value)
-        {
-            List<string> result = new List<string>();
-
-            string[] list = value.Split(',');
-
-            foreach (string listItem in list)
-            {
-                result.Add(listItem.Trim());
-            }
-            return result;
-        }
-
+        
         /// <summary>
         ///     Remove the time from datatime
         /// </summary>
@@ -475,6 +447,7 @@ namespace OdinModels
         /// <returns></returns>
         public static string ZeroTrim(string text, int zeroCount)
         {
+            if(text == "") { return text; }
             string value = text.Trim();
             if (!string.IsNullOrEmpty(value))
             {

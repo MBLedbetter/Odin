@@ -166,8 +166,8 @@ namespace OdinServices
             if (createFile)
             {
                 workbook.SaveAs(strFilePath, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                                         Type.Missing, XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing,
-                                         Type.Missing, Type.Missing, Type.Missing);
+     Type.Missing, XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing,
+     Type.Missing, Type.Missing, Type.Missing);
                 Cursor.Hide();
                 workbook.ReadOnly.Equals(false);
                 workbook.Close();
@@ -639,8 +639,8 @@ namespace OdinServices
                 row++;
             }
             workbook.SaveAs(strFilePath, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                                     Type.Missing, XlSaveAsAccessMode.xlShared, Type.Missing, Type.Missing,
-                                     Type.Missing, Type.Missing, Type.Missing);
+ Type.Missing, XlSaveAsAccessMode.xlShared, Type.Missing, Type.Missing,
+ Type.Missing, Type.Missing, Type.Missing);
             Cursor.Hide();
             MessageBox.Show("Excel Document is Complete. " + strFilePath);
         }
@@ -878,6 +878,8 @@ namespace OdinServices
                     return item.Ecommerce_ExternalId;
                 case "Ecommerce External ID Type":
                     return item.Ecommerce_ExternalIdType;
+                case "Ecommerce Generic Keywords":
+                    return TrimSearchTerms(item.Ecommerce_GenericKeywords, customer);
                 case "Ecommerce Image Path 1":
                     return SetImagePath(item.Ecommerce_ImagePath1);
                 case "Ecommerce Image Path 2":
@@ -923,7 +925,7 @@ namespace OdinServices
                 case "Ecommerce Msrp":
                     return item.Ecommerce_Msrp;
                 case "Ecommerce Search Terms":
-                    return TrimSearchTerms(item.Ecommerce_GenericKeywords, customer);
+                    return TrimSearchTerms(item.Ecommerce_SubjectKeywords, customer);
                 case "Ecommerce Size":
                     return item.Ecommerce_Size;
                 case "Ecommerce Subject Keywords":
@@ -1028,6 +1030,8 @@ namespace OdinServices
                     return item.SellOnAllPosters;
                 case "Sell On Amazon":
                     return item.SellOnAmazon;
+                case "Sell On Ecommerce":
+                    return item.SellOnEcommerce;
                 case "Sell On Fanatics":
                     return item.SellOnFanatics;
                 case "Sell On Guitar Center":
@@ -1593,16 +1597,7 @@ namespace OdinServices
                             catCount++;
                         }
                     }
-
-                    if (item.ItemId.ToUpper().Substring(0, 2) == "RP")
-                    {
-                        string img = "/" + item.ItemId.Substring(2, item.ItemId.Length - 2) + ".jpg";
-                        CSV_Add_Image.Add(item.ItemId + ", " + img + ", " + img + ", " + img);
-                    }
-                    else
-                    {
-                        CSV_Add_Image.Add(item.ItemId + ", /" + imageName + ", /" + imageName + ", /" + imageName);
-                    }
+                    CSV_Add_Image.Add(item.ItemId + ", /" + imageName + ", /" + imageName + ", /" + imageName);
                 }
 
                 else if (requestType == "Remove")
@@ -1642,8 +1637,6 @@ namespace OdinServices
                     }
                     File.WriteAllText(csvFilePath, sb.ToString());
                     File.WriteAllText(csvImageFilePath, sbi.ToString());
-
-
                 }
             } // End foreach (Request request in requests)
         }
