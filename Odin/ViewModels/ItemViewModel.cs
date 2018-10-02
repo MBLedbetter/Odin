@@ -8047,7 +8047,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Ecommerce_GenericKeywords != value)
                 {
                     this.ItemViewModelItem.Ecommerce_GenericKeywords = value;
-                    this.Ecommerce_GenericKeywordsError = ItemService.ValidateEcommerce_Keywords(value, this.ItemViewModelItem.HasEcommerce(), "Ecommerce Search Terms", this.Status);
+                    this.Ecommerce_GenericKeywordsError = ItemService.ValidateEcommerce_Keywords(value, false, "Ecommerce Generic Keywords", this.Status);
                     OnPropertyChanged("Ecommerce_GenericKeywords");
                 }
             }
@@ -8185,7 +8185,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Ecommerce_SubjectKeywords != value)
                 {
                     this.ItemViewModelItem.Ecommerce_SubjectKeywords = value;
-                    this.Ecommerce_SubjectKeywordsError = ItemService.ValidateEcommerce_Keywords(value, false, "Ecommerce Search Terms", this.Status);
+                    this.Ecommerce_SubjectKeywordsError = ItemService.ValidateEcommerce_Keywords(value, this.ItemViewModelItem.HasEcommerce(), "Ecommerce Search Terms", this.Status);
                     OnPropertyChanged("Ecommerce_SubjectKeywords");
                 }
             }
@@ -9168,7 +9168,7 @@ namespace Odin.ViewModels
             this.Ecommerce_CostError = ItemService.ValidateEcommerce_Cost(this.Ecommerce_Cost, "", this.ItemViewModelItem.HasEcommerce());
             this.Ecommerce_ExternalIdTypeError = ItemService.ValidateEcommerce_ExternalIdType(this.Ecommerce_ExternalIdType, this.ItemViewModelItem.HasEcommerce());
             this.Ecommerce_ExternalIdError = ItemService.ValidateEcommerce_ExternalId(this.Ecommerce_ExternalId, this.Ecommerce_ExternalIdType, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_GenericKeywordsError = ItemService.ValidateEcommerce_Keywords(this.Ecommerce_GenericKeywords, this.ItemViewModelItem.HasEcommerce(), "Ecommerce Search Terms", this.Status);
+            this.Ecommerce_GenericKeywordsError = ItemService.ValidateEcommerce_Keywords(this.Ecommerce_GenericKeywords, false, "Ecommerce Generic Keywords", this.Status);
             this.Ecommerce_ItemHeightError = ItemService.ValidateEcommerce_ItemHeight(this.Ecommerce_ItemHeight, this.ItemViewModelItem.HasEcommerce());
             this.Ecommerce_ItemLengthError = ItemService.ValidateEcommerce_ItemLength(this.Ecommerce_ItemLength, this.ItemViewModelItem.HasEcommerce());
             this.Ecommerce_ItemNameError = ItemService.ValidateEcommerce_ItemName(this.Ecommerce_ItemName, this.ItemViewModelItem.HasEcommerce());
@@ -9186,7 +9186,7 @@ namespace Odin.ViewModels
             this.Ecommerce_ManufacturerNameError = ItemService.ValidateEcommerce_ManufacturerName(this.Ecommerce_ManufacturerName, this.ItemViewModelItem.HasEcommerce());
             this.Ecommerce_MsrpError = ItemService.ValidateEcommerce_Msrp(this.Ecommerce_Msrp, this.ItemViewModelItem.HasEcommerce());
             this.Ecommerce_SizeError = ItemService.ValidateEcommerce_Size(this.Ecommerce_Size, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_SubjectKeywordsError = ItemService.ValidateEcommerce_Keywords(this.Ecommerce_SubjectKeywords, false, "Ecommerce Subject Keywords", this.Status);
+            this.Ecommerce_SubjectKeywordsError = ItemService.ValidateEcommerce_Keywords(this.Ecommerce_SubjectKeywords, this.ItemViewModelItem.HasEcommerce(), "Ecommerce Search Terms", this.Status);
             this.Ecommerce_UpcError = ItemService.ValidateEcommerce_Upc(this.Ecommerce_Upc, this.ItemId, this.Upc, this.Status, this.ItemViewModelItem.HasEcommerce());
         }
 

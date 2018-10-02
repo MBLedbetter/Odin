@@ -1030,6 +1030,8 @@ namespace OdinServices
                     return item.SellOnAllPosters;
                 case "Sell On Amazon":
                     return item.SellOnAmazon;
+                case "Sell On Amazon Seller Central":
+                    return item.SellOnAmazonSellerCentral;
                 case "Sell On Ecommerce":
                     return item.SellOnEcommerce;
                 case "Sell On Fanatics":

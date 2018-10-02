@@ -86,6 +86,7 @@ namespace OdinServices
             public static string Ecommerce_SubjectKeywords = "Ecommerce Subject Keywords";
             public static string Ecommerce_Size = "Ecommerce Size";
             public static string Ecommerce_Upc = "Ecommerce UPC";
+            public static string GenericKeywords = "Generic Keywords";
             public static string Gpc = "Gpc";
             public static string Height = "Height";
             public static string ImagePath = "Image Path";
@@ -1021,6 +1022,7 @@ namespace OdinServices
                     Ecommerce_Cost = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_Cost, WorksheetColumnHeaders.A_Cost), 2),
                     Ecommerce_ExternalId = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_ExternalId, WorksheetColumnHeaders.A_ExternalID).Trim(),
                     Ecommerce_ExternalIdType = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_ExternalIdType, WorksheetColumnHeaders.A_ExternalIdType).Trim(),
+                    Ecommerce_GenericKeywords = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.GenericKeywords, WorksheetColumnHeaders.Ecommerce_GenericKeywords),
                     Ecommerce_ItemHeight = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_ItemHeight, WorksheetColumnHeaders.A_ItemHeight), 1),
                     Ecommerce_ItemLength = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_ItemLength, WorksheetColumnHeaders.A_ItemLength), 1),
                     Ecommerce_ItemName = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_ItemName, WorksheetColumnHeaders.A_ItemName).Trim(),
@@ -1037,9 +1039,8 @@ namespace OdinServices
                     Ecommerce_ProductSubcategory = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_ProductSubcategory, WorksheetColumnHeaders.A_ProductSubcategory),
                     Ecommerce_ManufacturerName = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_ManufacturerName, WorksheetColumnHeaders.A_ManufacturerName),
                     Ecommerce_Msrp = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_Msrp, WorksheetColumnHeaders.A_Msrp), 2),
-                    Ecommerce_GenericKeywords = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_SearchTerms, WorksheetColumnHeaders.A_SearchTerms),
+                    Ecommerce_SubjectKeywords = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_SearchTerms, WorksheetColumnHeaders.A_SearchTerms),
                     Ecommerce_Size = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_Size, WorksheetColumnHeaders.A_Size),
-                    Ecommerce_SubjectKeywords = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SubjectKeywords, WorksheetColumnHeaders.Ecommerce_SubjectKeywords),
                     Ecommerce_Upc = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ecommerce_Upc),
                     Gpc = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Gpc),
                     Height = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Height, WorksheetColumnHeaders.ItemHeight), 1),
@@ -2164,10 +2165,10 @@ namespace OdinServices
             error = ValidateEcommerce_Msrp(var.Ecommerce_Msrp, var.HasEcommerce());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             // Ecommerce Generic Keywords //
-            error = ValidateEcommerce_Keywords(var.Ecommerce_GenericKeywords, var.HasEcommerce(), "Ecommerce Search Terms", var.Status);
+            error = ValidateEcommerce_Keywords(var.Ecommerce_GenericKeywords, false, "Ecommerce Generic Keywords", var.Status);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             // Ecommerce Subject Keywords //
-            error = ValidateEcommerce_Keywords(var.Ecommerce_SubjectKeywords, false, "Ecommerce Subject Keywords", var.Status);
+            error = ValidateEcommerce_Keywords(var.Ecommerce_SubjectKeywords, var.HasEcommerce(), "Ecommerce Search Terms", var.Status);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             // Ecommerce Size //
             error = ValidateEcommerce_Size(var.Ecommerce_Size, var.HasEcommerce());
@@ -3279,7 +3280,7 @@ namespace OdinServices
                 {
                     return "Ecommerce Msrp " + OdinServices.Properties.Resources.Error_NonNumeric;
                 }
-                if (value == "0" || value == "0.00" || value == "0.0000")
+                if ((value == "0" || value == "0.00" || value == "0.0000") && required)
                 {
                     return "Ecommerce Msrp must contain a non-zero value.";
                 }

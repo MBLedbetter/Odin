@@ -1616,10 +1616,10 @@
                         Margin="6,6,0,6"                        
                         IsChecked="{Binding SellOnEcommerceCheck}"
                         VerticalContentAlignment="Center"/>
-                    <!-- Sell On AllPosters -->
+                    <!-- Sell On All Posters -->
                     <Label
                         Background="{Binding SellOnAllPostersBoxColor}"
-                        Content="Sell On AllPosters"
+                        Content="Sell On All Posters"
                         Grid.Row="1"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
