@@ -2721,6 +2721,10 @@ namespace Odin.ViewModels
             window.ShowDialog();
         }
 
+        private void BackgroundWorkerSetCache_DoWork(object sender, DoWorkEventArgs e)
+        {
+        }
+
         private void BackgroundWorkerValidate_DoWork(object sender, DoWorkEventArgs e)
         {
             bool errors = false;
