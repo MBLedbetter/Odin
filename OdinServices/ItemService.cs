@@ -1346,6 +1346,88 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Multiplies the item price by the prodQty value and returns the new price for packs.
+        /// </summary>
+        /// <param name="price"></param>
+        /// <param name="prodQty"></param>
+        /// <returns></returns>
+        public string ReturnItemPrice(string price, string prodQty)
+        {
+            string value = price;
+            if ((!string.IsNullOrEmpty(prodQty)) || (prodQty != "1"))
+            {
+                if (decimal.TryParse(price, out decimal decValue))
+                {
+                    if (decimal.TryParse(prodQty, out decValue))
+                    {
+                        decimal prodQtyInt = Convert.ToDecimal(prodQty);
+                        if (prodQtyInt >= 1)
+                        {
+                            decimal priceInt = Convert.ToDecimal(price);
+                            decimal newValue = priceInt * prodQtyInt;
+                            value = Convert.ToString(newValue);
+                        }
+                    }
+                }
+            }
+            return value;
+        }
+        
+        /// <summary>
+        ///     Reads the categories for the product to determine what product group to assign, default to "Product"
+        /// </summary>
+        /// <param name="var"></param>
+        /// <returns></returns>
+        public string SetProductType(List<string> var)
+        {
+            foreach (string i in var)
+            {
+                if (i.Contains("Paper Craft"))
+                {
+                    return "Papercraft Product";
+                }
+                else if (i.Contains("Posters"))
+                {
+                    return "Poster Product";
+                }
+                else if (i.Contains("Stickers & Tattoos"))
+                {
+                    return "Sticker Product";
+                }
+                else if (i.Contains("Writing"))
+                {
+                    return "Writing Product";
+                }
+                else if (i.Contains("Gift Wrap"))
+                {
+                    return "Gift Wrap Product";
+                }
+                else if (i.Contains("Art Zone"))
+                {
+                    return "Art Zone Product";
+                }
+                else if (i.Contains("Bookmarks"))
+                {
+                    return "Bookmark Product";
+                }
+                else if (i.Contains("Calendars"))
+                {
+                    return "Calendar Product";
+                }
+                else if (i.Contains("Tape"))
+                {
+                    return "Tape Product";
+                }
+                else if (i.Contains("Tape Works"))
+                {
+                    return "Tape Product";
+                }
+            }
+
+            return "Product";
+        }
+
+        /// <summary>
         ///     Returns items with pre-loaded template data
         /// </summary>
         /// <param name="TemplateName"></param>
@@ -1433,88 +1515,6 @@ namespace OdinServices
             return item;
         }
 
-        /// <summary>
-        ///     Multiplies the item price by the prodQty value and returns the new price for packs.
-        /// </summary>
-        /// <param name="price"></param>
-        /// <param name="prodQty"></param>
-        /// <returns></returns>
-        public string ReturnItemPrice(string price, string prodQty)
-        {
-            string value = price;
-            if ((!string.IsNullOrEmpty(prodQty)) || (prodQty != "1"))
-            {
-                if (decimal.TryParse(price, out decimal decValue))
-                {
-                    if (decimal.TryParse(prodQty, out decValue))
-                    {
-                        decimal prodQtyInt = Convert.ToDecimal(prodQty);
-                        if (prodQtyInt >= 1)
-                        {
-                            decimal priceInt = Convert.ToDecimal(price);
-                            decimal newValue = priceInt * prodQtyInt;
-                            value = Convert.ToString(newValue);
-                        }
-                    }
-                }
-            }
-            return value;
-        }
-        
-        /// <summary>
-        ///     Reads the categories for the product to determine what product group to assign, default to "Product"
-        /// </summary>
-        /// <param name="var"></param>
-        /// <returns></returns>
-        public string SetProductType(List<string> var)
-        {
-            foreach (string i in var)
-            {
-                if (i.Contains("Paper Craft"))
-                {
-                    return "Papercraft Product";
-                }
-                else if (i.Contains("Posters"))
-                {
-                    return "Poster Product";
-                }
-                else if (i.Contains("Stickers & Tattoos"))
-                {
-                    return "Sticker Product";
-                }
-                else if (i.Contains("Writing"))
-                {
-                    return "Writing Product";
-                }
-                else if (i.Contains("Gift Wrap"))
-                {
-                    return "Gift Wrap Product";
-                }
-                else if (i.Contains("Art Zone"))
-                {
-                    return "Art Zone Product";
-                }
-                else if (i.Contains("Bookmarks"))
-                {
-                    return "Bookmark Product";
-                }
-                else if (i.Contains("Calendars"))
-                {
-                    return "Calendar Product";
-                }
-                else if (i.Contains("Tape"))
-                {
-                    return "Tape Product";
-                }
-                else if (i.Contains("Tape Works"))
-                {
-                    return "Tape Product";
-                }
-            }
-
-            return "Product";
-        }
-        
         /// <summary>
         ///     Loads in a list of templates, completes them with existing data and saves the result
         /// </summary>
@@ -1963,6 +1963,11 @@ namespace OdinServices
         public Template RetrieveTemplate(string name)
         {            
             return TemplateRepository.RetrieveTemplate(name);
+        }
+
+        public List<string> RetrieveUpdateItemReportItemIds(DateTime toDate, DateTime fromDate)
+        {
+            return ItemRepository.RetrieveUpdateReportItemIds(toDate, fromDate);
         }
 
         #endregion // Retrieval Methods

@@ -380,6 +380,14 @@ namespace Odin.Data
         /// <param name="value"></param>
         string RetrieveCategoryNameByCode(string value);
 
+        /// <summary>
+        ///     Retrieve a List of item ids that have been updated withing the given dates
+        /// </summary>
+        /// <param name="toDate"></param>
+        /// <param name="fromDate"></param>
+        /// <returns></returns>
+        List<string> RetrieveUpdateReportItemIds(DateTime toDate, DateTime fromDate);
+
         #endregion // Public Retrieval Methods
 
         #region Public Update Methods

@@ -1,0 +1,100 @@
+﻿<Window x:Class="Odin.Views.ItemUpdateReportView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Odin.Views"
+        mc:Ignorable="d"
+        Title="Item Update Report" Height="250" Width="410">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                            Width="Auto" />
+            <ColumnDefinition
+                            Width="10" />
+            <ColumnDefinition
+                            Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                            Height="50" />
+            <RowDefinition
+                            Height="Auto" />
+            <RowDefinition
+                            Height="Auto" />
+            <RowDefinition
+                            Height="Auto" />
+            <RowDefinition
+                            Height="26" />
+        </Grid.RowDefinitions>
+        <!-- Report Start -->
+        <Label
+            Content="Item Update Record Report"
+            FontSize="24"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Grid.Row="0"
+            Height="40"
+            HorizontalAlignment="Center"
+            Margin="42,6,41,5"
+            VerticalAlignment="Center" 
+            Width="312" />
+        <!-- Report Start -->
+        <Label
+            Content="Start Date"
+            FontWeight="Bold"
+            Grid.Column="0"
+            Grid.Row="1"
+            Height="26"
+            HorizontalAlignment="Left"
+            Margin="0,1,0,0"
+            VerticalAlignment="Center" 
+            Width="75" />
+        <DatePicker
+            HorizontalAlignment="Left"
+            Grid.Column="0"
+            Grid.Row="2"
+            Margin="6,6,0,6"
+            SelectedDate="{Binding ReportStartDate}"
+            ToolTip="Start date for update report"
+            VerticalContentAlignment="Center"
+            Width="180" />
+        <!-- Report End Date -->
+        <Label
+            Content="End Date"
+            FontWeight="Bold"
+            Grid.Column="2"
+            Grid.Row="1"
+            Height="26"
+            HorizontalAlignment="Center"
+            Margin="3,1,122,1" 
+            VerticalAlignment="Center"
+            Width="62" />
+        <DatePicker
+            HorizontalAlignment="Left"
+            Grid.Column="2"
+            Grid.Row="2"
+            Margin="6,6,0,6"
+            SelectedDate="{Binding ReportEndDate}"
+            ToolTip="End date for update report"
+            VerticalContentAlignment="Center"
+            Width="180" />
+        <Button
+            Command="{Binding PullReportCommand}"
+            Content="Pull Report"
+            Grid.Column="2"
+            Grid.Row="3"
+            Height="26"
+            Margin="20"
+            Width="80"/>
+        <TextBlock            
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Grid.Row="4"
+            Margin="5"
+            Text="{Binding ProgressText}"  
+            TextAlignment="Center"
+            />
+
+    </Grid>
+</Window>

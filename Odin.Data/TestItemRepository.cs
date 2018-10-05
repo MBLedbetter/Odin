@@ -1439,6 +1439,22 @@ namespace Odin.Data
             List<string> returnValues = new List<string>(new string[] {"ItemId1","ItemId2","ItemId3"});
             return returnValues;
         }
+        
+        /// <summary>
+        ///     Returns the category name associated with the given code
+        /// </summary>
+        /// <param name="value"></param>
+        public string RetrieveCategoryNameByCode(string value)
+        {
+            if (GlobalData.WebCategoryList.ContainsKey(value))
+            {
+                return GlobalData.WebCategoryList[value];
+            }
+            else
+            {
+                return "";
+            }
+        }
 
         /// <summary>
         ///     Retrieves all the Global data values
@@ -1736,6 +1752,18 @@ namespace Odin.Data
         }
 
         /// <summary>
+        ///     Retrieve a List of item ids that have been updated withing the given dates
+        /// </summary>
+        /// <param name="toDate"></param>
+        /// <param name="fromDate"></param>
+        /// <returns></returns>
+        public List<string> RetrieveUpdateReportItemIds(DateTime toDate, DateTime fromDate)
+        {
+            List<string> itemIds = new List<string>();
+            return itemIds;
+        }
+
+        /// <summary>
         ///     Returns the web category code associated with the given name
         /// </summary>
         /// <param name="value"></param>
@@ -1744,22 +1772,6 @@ namespace Odin.Data
             if (GlobalData.WebCategoryList.Values.Contains(value))
             {
                 return GlobalData.WebCategoryList.FirstOrDefault(x => x.Value == value).Key;
-            }
-            else
-            {
-                return "";
-            }
-        }
-
-        /// <summary>
-        ///     Returns the category name associated with the given code
-        /// </summary>
-        /// <param name="value"></param>
-        public string RetrieveCategoryNameByCode(string value)
-        {
-            if (GlobalData.WebCategoryList.ContainsKey(value))
-            {
-                return GlobalData.WebCategoryList[value];
             }
             else
             {

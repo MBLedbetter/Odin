@@ -159,6 +159,7 @@
     <Compile Include="ViewModels\FindItemResultListViewModel.cs" />
     <Compile Include="ViewModels\HelpViewModel.cs" />
     <Compile Include="ViewModels\ItemRequestViewModel.cs" />
+    <Compile Include="ViewModels\ItemUpdateReportViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\OptionsViewModel.cs" />
@@ -213,6 +214,9 @@
     </Compile>
     <Compile Include="Views\ItemRequestView.xaml.cs">
       <DependentUpon>ItemRequestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ItemUpdateReportView.xaml.cs">
+      <DependentUpon>ItemUpdateReportView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OptionsView.xaml.cs">
       <DependentUpon>OptionsView.xaml</DependentUpon>
@@ -300,6 +304,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ItemRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ItemUpdateReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

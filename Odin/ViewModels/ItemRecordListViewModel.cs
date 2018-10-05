@@ -327,10 +327,8 @@ namespace Odin.ViewModels
         ///     Opens the record view for the given item
         /// </summary>
         public ItemRecordListViewModel(ItemService itemService)
-        {
-
-            if (itemService == null) { throw new ArgumentNullException("itemService"); }
-            this.ItemService = itemService;
+        {            
+            this.ItemService = itemService ?? throw new ArgumentNullException("itemService");
             this.RecordList = GlobalData.ItemRecords;
             this.InputDateSorOrder = 0;
             this.ItemIdSorOrder = 0;

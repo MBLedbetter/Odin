@@ -135,19 +135,21 @@ namespace OdinServices
         /// <param name="workbookType"></param>
         /// <param name="itemsList"></param>
         /// <returns></returns>
-        public void CreateExcelSheet(ObservableCollection<ItemObject> itemsList, ObservableCollection<ExcelCell> excelCells, string customer)
+        public void CreateExcelSheet(ObservableCollection<ItemObject> itemsList, ObservableCollection<ExcelCell> excelCells, string customer, string strFilePath = null)
         {
-            string strFilePath;
             bool createFile = true;
-            SaveFileDialog dlg = new SaveFileDialog()
+            if (strFilePath == null)
             {
-                Filter = "Excel Workbooks (*.xlsx)|*.xlsx"
-            };
-            if (dlg.ShowDialog() == DialogResult.Cancel)
-            {
-                return;
+                SaveFileDialog dlg = new SaveFileDialog()
+                {
+                    Filter = "Excel Workbooks (*.xlsx)|*.xlsx"
+                };
+                if (dlg.ShowDialog() == DialogResult.Cancel)
+                {
+                    return;
+                }
+                strFilePath = dlg.FileName;
             }
-            strFilePath = dlg.FileName;
             Cursor.Show();
             app = new Microsoft.Office.Interop.Excel.Application()
             {
@@ -166,8 +168,8 @@ namespace OdinServices
             if (createFile)
             {
                 workbook.SaveAs(strFilePath, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-     Type.Missing, XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing,
-     Type.Missing, Type.Missing, Type.Missing);
+                Type.Missing, XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing,
+                Type.Missing, Type.Missing, Type.Missing);
                 Cursor.Hide();
                 workbook.ReadOnly.Equals(false);
                 workbook.Close();
@@ -503,11 +505,11 @@ namespace OdinServices
         /// <param name="workbookType"></param>
         /// <param name="itemsList"></param>
         /// <returns></returns>
-        public bool CreateItemWorkbook(string layoutName, ObservableCollection<ItemObject> itemsList)
+        public bool CreateItemWorkbook(string layoutName, ObservableCollection<ItemObject> itemsList, string filePath = null)
         {
             ObservableCollection<ExcelCell> excelCells = RetrieveExcelLayoutData(layoutName);
             string customer = RetrieveExcelLayoutCustomer(layoutName);
-            CreateExcelSheet(itemsList, excelCells, customer);
+            CreateExcelSheet(itemsList, excelCells, customer, filePath);
             return true;
         }
 

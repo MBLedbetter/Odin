@@ -74,6 +74,12 @@
                     </ribbon:ButtonDropDown>
                     <!-- "Item Records" button -->
                     <ribbon:ButtonDropDown
+                        Command="{Binding ItemUpdateReportCommand}"
+                        Header="Item Update Report"
+                        ToolTip="Pull Update Report">
+                    </ribbon:ButtonDropDown>
+                    <!-- "Item Records" button -->
+                    <ribbon:ButtonDropDown
                         Command="{Binding ItemRecordsCommand}"
                         Header="Item Records"
                         ToolTip="View item Records">

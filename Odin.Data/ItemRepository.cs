@@ -2014,6 +2014,27 @@ namespace Odin.Data
         }
 
         /// <summary>
+        ///     Retrieve a List of item ids that have been updated withing the given dates
+        /// </summary>
+        /// <param name="toDate"></param>
+        /// <param name="fromDate"></param>
+        /// <returns></returns>
+        public List<string> RetrieveUpdateReportItemIds(DateTime toDate, DateTime fromDate)
+        {
+            List<string> itemIds = new List<string>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                if ((context.OdinItemUpdateRecords.Any()))
+                {
+                    itemIds = (from o in context.OdinItemUpdateRecords
+                               where o.InputDate >= fromDate && o.InputDate <= toDate
+                               select o.InvItemId).Distinct().ToList();
+                }
+            }
+            return itemIds;
+        }
+
+        /// <summary>
         ///     Returns the web category code associated with the given name
         /// </summary>
         /// <param name="value"></param>

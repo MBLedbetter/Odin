@@ -29,7 +29,7 @@ namespace Odin.ViewModels
                 return _about;
             }
         }
-        private RelayCommand _about; 
+        private RelayCommand _about;
         public ICommand CreateEcommerceExcelCommand
         {
             get
@@ -41,7 +41,7 @@ namespace Odin.ViewModels
                 return _createEcommerceExcel;
             }
         }
-        private RelayCommand _createEcommerceExcel;        
+        private RelayCommand _createEcommerceExcel;
         public ICommand CreateFullExcelCommand
         {
             get
@@ -174,6 +174,18 @@ namespace Odin.ViewModels
             }
         }
         private RelayCommand _itemRecordsCommand;
+        public ICommand ItemUpdateReportCommand
+        {
+            get
+            {
+                if (_itemUpdateRecordCommand == null)
+                {
+                    _itemUpdateRecordCommand = new RelayCommand(param => OpenItemUpdateReportWindow());
+                }
+                return _itemUpdateRecordCommand;
+            }
+        }
+        private RelayCommand _itemUpdateRecordCommand;
         public ICommand LoadItemsCommand
         {
             get
@@ -430,7 +442,7 @@ namespace Odin.ViewModels
         #endregion // Command Properties
 
         #region Properties     
-        
+
         private BackgroundWorker BackgroundWorker { get; set; }
 
         private string BackgroundWorkerState = string.Empty;
@@ -497,7 +509,7 @@ namespace Odin.ViewModels
             }
         }
         private ObservableCollection<ItemObject> _items = new ObservableCollection<ItemObject>();
-        
+
         /// <summary>
         ///     Gets or sets the ItemService
         /// </summary>
@@ -654,7 +666,7 @@ namespace Odin.ViewModels
         ///     The item that is selected in the view that this view model is bound to.
         /// </summary>
         public ItemObject SelectedItem { get; set; }
-        
+
         /// <summary>
         ///     Bool keeps track of if items have been saved
         /// </summary>
@@ -670,7 +682,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("SubmitStatus");
             }
         }
-        private bool _submitStatus;        
+        private bool _submitStatus;
 
         /// <summary>
         ///     Gets or sets the username
@@ -707,7 +719,7 @@ namespace Odin.ViewModels
         private string _windowTitle;
 
         public WorkbookReader WorkbookReader { get; set; }
-        
+
         #region Visibility Properties
 
         /// <summary>
@@ -1731,7 +1743,7 @@ namespace Odin.ViewModels
             }
         }
         private string _copyrightVisibility = "auto";
-        
+
         /// <summary>
         ///     Gets or sets the InStockDateVisibility field
         /// </summary>
@@ -2782,7 +2794,7 @@ namespace Odin.ViewModels
             if (this.BackgroundWorkerState == "Validate")
             {
                 if (e.ProgressPercentage == this.Items.Count)
-                {                    
+                {
                     this.ProgressText = "Item Load Complete";
                 }
                 else
@@ -2830,7 +2842,7 @@ namespace Odin.ViewModels
             {
                 DataContext = new EcommercePullViewModel(this.ItemService, this.ExcelService, this.Items)
             };
-            window.ShowDialog();            
+            window.ShowDialog();
         }
 
         /*
@@ -2865,7 +2877,7 @@ namespace Odin.ViewModels
                 this.OptionService = App.OptionService;
                 this.EmailService = App.EmailService;
                 this.ExcelService = App.ExcelService;
-                this.WorkbookReader = App.WorkbookReader;                
+                this.WorkbookReader = App.WorkbookReader;
                 this.WindowTitle = SetWindowTitle();
                 ClearLists();
             }
@@ -2923,7 +2935,7 @@ namespace Odin.ViewModels
                             break;
                         }
                     }
-                    if(ItemIds.Contains((window.DataContext as ItemViewModel).ItemId))
+                    if (ItemIds.Contains((window.DataContext as ItemViewModel).ItemId))
                     {
                         ItemIds.Remove((window.DataContext as ItemViewModel).ItemId);
                     }
@@ -2933,7 +2945,7 @@ namespace Odin.ViewModels
                     string oldId = this.SelectedItem.ItemId;
 
                     SelectedItem.UpdateItem((window.DataContext as ItemViewModel).ItemViewModelItem);
-                    
+
                     for (int x = this.ItemErrors.Count - 1; x >= 0; x--)
                     {
                         if (this.ItemErrors[x].ItemIdNumber == oldId)
@@ -2975,7 +2987,7 @@ namespace Odin.ViewModels
                 else if (type == "Remove")
                 {
                     this.Items = (window.DataContext as FindItemViewModel).ItemList;
-                    foreach(ItemObject item in this.Items)
+                    foreach (ItemObject item in this.Items)
                     {
                         item.Status = "Remove";
                     }
@@ -3129,6 +3141,15 @@ namespace Odin.ViewModels
             ItemRecordListView window = new ItemRecordListView()
             {
                 DataContext = new ItemRecordListViewModel(this.ItemService)
+            };
+            window.ShowDialog();
+        }
+
+        public void OpenItemUpdateReportWindow()
+        {
+            ItemUpdateReportView window = new ItemUpdateReportView()
+            {
+                DataContext = new ItemUpdateReportViewModel(this.ItemService, this.ExcelService)
             };
             window.ShowDialog();
         }
