@@ -1507,6 +1507,7 @@ namespace Odin.Data
             GlobalData.PsStatuses = RetrievePsStatuses();
             GlobalData.RequestStatus = RetrieveRequestStatuses();
             GlobalData.SpecialCharacters = RetrieveSpecialCharacters();
+            GlobalData.StatsCodes = RetrieveStatsCodes();
             GlobalData.TariffCodes = RetrieveTariffCodeList();
             GlobalData.Territories = RetrieveTerritories();
             GlobalData.ToolTips = RetrieveToolTips();
@@ -3548,6 +3549,27 @@ namespace Odin.Data
         private List<string> RetrieveRequestStatuses()
         {
             List<string> results = new List<string>(new string[] {"Pending","Completed","Canceled","Incomplete"});
+            return results;
+        }
+
+        /// <summary>
+        ///     Retrieves all Stats Codes with Coresponding brand names
+        /// </summary>
+        /// <returns></returns>
+        private Dictionary<string, string> RetrieveStatsCodes()
+        {
+            Dictionary<string, string> results = new Dictionary<string, string>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                if (context.StatsCodes.Any())
+                {
+                    var query = (from o in context.StatsCodes select o).ToList();
+                    foreach (var x in query)
+                    {
+                        results.Add(x.StatsCode, x.BrandName);
+                    }
+                }
+            }
             return results;
         }
 

@@ -8456,6 +8456,23 @@ namespace Odin.ViewModels
             }
         }
 
+        /// <summary>
+        ///     Gets or sets a list of Stats codes for the Stats Code dropdown
+        /// </summary>
+        public List<string> StatsCodes
+        {
+            get
+            {
+                return _statsCodes;
+            }
+            set
+            {
+                _statsCodes = value;
+                OnPropertyChanged("StatsCodes");
+            }
+        }
+        private List<string> _statsCodes = new List<string>();
+
         public List<string> TariffCodes
         {
             get
@@ -8796,6 +8813,7 @@ namespace Odin.ViewModels
             {
                 this.CountriesOfOrigin.Add(x.Key);
             }
+            SetStatsCodes();
             RefreshProductLines();
             this.ProductLine = "";
             this.ProductLine = item.ProductLine;
@@ -8908,6 +8926,15 @@ namespace Odin.ViewModels
             }
             else
                 this.IsNew = false;
+        }
+
+        public void SetStatsCodes()
+        {
+            foreach(KeyValuePair<string,string> pair in GlobalData.StatsCodes)
+            {
+                this.StatsCodes.Add(pair.Key);
+            }
+            this.StatsCodes.Sort();
         }
 
         /// <summary>

@@ -3942,36 +3942,37 @@ namespace Odin.Services.Tests
             #region Assemble
 
             GlobalData.ClearValues();
+            GlobalData.EcomFlagRequirement = true;
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            bool Ecommerce_Required = true;
 
             #endregion // Assemble
 
             #region Act
-            string Ecommerce_BulletBlank = "1" + itemService.ValidateEcommerce_Bullet("", "1", Ecommerce_Required);
+
+            string Ecommerce_BulletBlank = "1" + itemService.ValidateEcommerce_Bullet("", "1", true);
             string Ecommerce_BulletBlank2 = "2" + itemService.ValidateEcommerce_Bullet("", "5", false);
-            string Ecommerce_ComponentsBlank = "3" + itemService.ValidateEcommerce_Components("", Ecommerce_Required);
-            string Ecommerce_CostBlank = "4" + itemService.ValidateEcommerce_Cost("", "", Ecommerce_Required);
-            string Ecommerce_ExternalIdTypeBlank = "6" + itemService.ValidateEcommerce_ExternalIdType("", Ecommerce_Required);
-            string Ecommerce_ExternalIdBlank = "7" + itemService.ValidateEcommerce_ExternalId("", "", Ecommerce_Required);
-            string Ecommerce_ImagePath1Blank = "8" + itemService.ValidateImagePath("", "1",Ecommerce_Required);
+            string Ecommerce_ComponentsBlank = "3" + itemService.ValidateEcommerce_Components("", true);
+            string Ecommerce_CostBlank = "4" + itemService.ValidateEcommerce_Cost("", "", true);
+            string Ecommerce_ExternalIdTypeBlank = "6" + itemService.ValidateEcommerce_ExternalIdType("", true);
+            string Ecommerce_ExternalIdBlank = "7" + itemService.ValidateEcommerce_ExternalId("", "", true);
+            string Ecommerce_ImagePath1Blank = "8" + itemService.ValidateImagePath("", "1", true);
             string Ecommerce_ImagePath5Blank = "9" + itemService.ValidateImagePath("", "5", false);
-            string Ecommerce_ItemHeightBlank = "10" + itemService.ValidateEcommerce_ItemHeight("", Ecommerce_Required);
-            string Ecommerce_ItemLengthBlank = "11" + itemService.ValidateEcommerce_ItemLength("", Ecommerce_Required);
-            string Ecommerce_ItemNameBlank = "12" + itemService.ValidateEcommerce_ItemName("", Ecommerce_Required);
-            string Ecommerce_ItemWeightBlank = "13" + itemService.ValidateEcommerce_ItemWeight("", Ecommerce_Required);
-            string Ecommerce_ItemWidthBlank = "14" + itemService.ValidateEcommerce_ItemWidth("", Ecommerce_Required);
-            string Ecommerce_ModelNameBlank = "15" + itemService.ValidateEcommerce_ModelName("", Ecommerce_Required);
-            string Ecommerce_PackageHeightBlank = "16" + itemService.ValidateEcommerce_PackageHeight("", Ecommerce_Required);
-            string Ecommerce_PackageLengthBlank = "17" + itemService.ValidateEcommerce_PackageLength("", Ecommerce_Required);
-            string Ecommerce_PackageWeightBlank = "18" + itemService.ValidateEcommerce_PackageWeight("", Ecommerce_Required);
-            string Ecommerce_PackageWidthBlank = "19" + itemService.ValidateEcommerce_PackageWidth("", Ecommerce_Required);
-            string Ecommerce_ProductCategoryBlank = "20" + itemService.ValidateEcommerce_ProductCategory("", Ecommerce_Required);
-            string Ecommerce_ProductDescriptionBlank = "21" + itemService.ValidateEcommerce_ProductDescription("", Ecommerce_Required);
-            string Ecommerce_ProductSubcategoryBlank = "22" + itemService.ValidateEcommerce_ProductSubcategory("", Ecommerce_Required);
-            string Ecommerce_ManufacturerNameBlank = "23" + itemService.ValidateEcommerce_ManufacturerName("", Ecommerce_Required);
-            string Ecommerce_MsrpBlank = "24" + itemService.ValidateEcommerce_Msrp("", Ecommerce_Required);
-            string Ecommerce_SearchTermsBlank = "25" + itemService.ValidateEcommerce_Keywords("", Ecommerce_Required, "Ecommerce Search Terms", "Update");
+            string Ecommerce_ItemHeightBlank = "10" + itemService.ValidateEcommerce_ItemHeight("", true);
+            string Ecommerce_ItemLengthBlank = "11" + itemService.ValidateEcommerce_ItemLength("", true);
+            string Ecommerce_ItemNameBlank = "12" + itemService.ValidateEcommerce_ItemName("", true);
+            string Ecommerce_ItemWeightBlank = "13" + itemService.ValidateEcommerce_ItemWeight("", true);
+            string Ecommerce_ItemWidthBlank = "14" + itemService.ValidateEcommerce_ItemWidth("", true);
+            string Ecommerce_ModelNameBlank = "15" + itemService.ValidateEcommerce_ModelName("", true);
+            string Ecommerce_PackageHeightBlank = "16" + itemService.ValidateEcommerce_PackageHeight("", true);
+            string Ecommerce_PackageLengthBlank = "17" + itemService.ValidateEcommerce_PackageLength("", true);
+            string Ecommerce_PackageWeightBlank = "18" + itemService.ValidateEcommerce_PackageWeight("", true);
+            string Ecommerce_PackageWidthBlank = "19" + itemService.ValidateEcommerce_PackageWidth("", true);
+            string Ecommerce_ProductCategoryBlank = "20" + itemService.ValidateEcommerce_ProductCategory("", true);
+            string Ecommerce_ProductDescriptionBlank = "21" + itemService.ValidateEcommerce_ProductDescription("", true);
+            string Ecommerce_ProductSubcategoryBlank = "22" + itemService.ValidateEcommerce_ProductSubcategory("", true);
+            string Ecommerce_ManufacturerNameBlank = "23" + itemService.ValidateEcommerce_ManufacturerName("", true);
+            string Ecommerce_MsrpBlank = "24" + itemService.ValidateEcommerce_Msrp("", true);
+            string Ecommerce_SearchTermsBlank = "25" + itemService.ValidateEcommerce_Keywords("", true, "Ecommerce Search Terms", "Update");
 
             #endregion // Act
 
@@ -4014,6 +4015,7 @@ namespace Odin.Services.Tests
             #region Assemble
 
             GlobalData.ClearValues();
+            GlobalData.EcomFlagRequirement = true;
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
             bool Ecommerce_Required = true;
 
@@ -4051,6 +4053,7 @@ namespace Odin.Services.Tests
             #region Assemble
 
             GlobalData.ClearValues();
+            GlobalData.EcomFlagRequirement = true;
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
             #endregion // Assemble
@@ -4078,18 +4081,16 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            bool Ecommerce_Required = true;
+            GlobalData.EcomFlagRequirement = true;
 
-            string input1 = "0";
-            string input2 = "1";
             #endregion // Assemble
 
             #region Act
 
-            string result1 = itemService.ValidateEcommerce_Msrp(input1, Ecommerce_Required);
-            string result2 = itemService.ValidateEcommerce_Msrp(input2, Ecommerce_Required);
-            string result3 = itemService.ValidateEcommerce_Msrp(input1, false);
-            string result4 = itemService.ValidateEcommerce_Msrp(input2, false);
+            string result1 = itemService.ValidateEcommerce_Msrp("0", true);
+            string result2 = itemService.ValidateEcommerce_Msrp("1", true);
+            string result3 = itemService.ValidateEcommerce_Msrp("0", false);
+            string result4 = itemService.ValidateEcommerce_Msrp("1", false);
 
             #endregion // Act
 
@@ -4097,7 +4098,7 @@ namespace Odin.Services.Tests
 
             Assert.AreNotEqual(result1, "");
             Assert.AreEqual(result2, "");
-            Assert.AreNotEqual(result3, "");
+            Assert.AreEqual(result3, "");
             Assert.AreEqual(result4, "");
 
             #endregion // Assert

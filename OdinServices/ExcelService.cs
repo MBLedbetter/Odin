@@ -1056,6 +1056,12 @@ namespace OdinServices
                     return item.Size;
                 case "Stats Code":
                     return item.StatsCode;
+                case "Stats Name":
+                    if (GlobalData.StatsCodes.ContainsKey(item.StatsCode))
+                    {
+                        return GlobalData.StatsCodes[item.StatsCode];
+                    }
+                    else return "";
                 case "Tariff Code":
                     return item.TariffCode;
                 case "Territory":

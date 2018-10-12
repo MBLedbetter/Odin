@@ -20,6 +20,7 @@ namespace OdinTests.ViewModels
             #region Setup
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
             GlobalData.ClearValues();
+            GlobalData.EcomFlagRequirement = true;
             GlobalData.AccountingGroups.Add("DOODLE");
             GlobalData.CostProfileGroups.Add("ACTUAL_FIFO");
             GlobalData.CountriesOfOrigin.Add("USA", "United States");
@@ -34,6 +35,7 @@ namespace OdinTests.ViewModels
             GlobalData.PricingGroups.Add("GROUP1");
             GlobalData.TariffCodes.Add("1234");
             GlobalData.Territories.Add("USA");
+            GlobalData.StatsCodes.Add("MARCA3", "MARCA");
 
 
             ItemObject item = new ItemObject()
@@ -247,6 +249,7 @@ namespace OdinTests.ViewModels
             #region Setup
 
             GlobalData.ClearValues();
+            GlobalData.EcomFlagRequirement = true;
 
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
@@ -419,6 +422,7 @@ namespace OdinTests.ViewModels
             #region Assign
 
             GlobalData.ClearValues();
+            GlobalData.EcomFlagRequirement = true;
             ItemObject item = new ItemObject() {
                 Ecommerce_Bullet1 = "Rickity Recked",
                 SellOnFanatics = "Y"
@@ -536,6 +540,7 @@ namespace OdinTests.ViewModels
             #region Assign
 
             GlobalData.ClearValues();
+            GlobalData.EcomFlagRequirement = true;
             ItemObject item = new ItemObject()
             {
                 SellOnTrends = "Y",
@@ -572,6 +577,7 @@ namespace OdinTests.ViewModels
             #region Assign
 
             GlobalData.ClearValues();
+            GlobalData.EcomFlagRequirement = true;
             ItemObject item = new ItemObject()
             {
                 SellOnTrends = "Y"
