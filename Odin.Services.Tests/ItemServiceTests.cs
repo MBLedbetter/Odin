@@ -2066,7 +2066,7 @@ namespace Odin.Services.Tests
             Assert.AreEqual("Ecommerce Product Subcategory", item.Ecommerce_ProductSubcategory);
             Assert.AreEqual("Ecommerce Manufacturer Name", item.Ecommerce_ManufacturerName);
             Assert.AreEqual("Ecommerce Msrp.00", item.Ecommerce_Msrp);
-            Assert.AreEqual("Ecommerce Search Terms", item.Ecommerce_GenericKeywords);
+            Assert.AreEqual("Ecommerce Search Terms", item.Ecommerce_SubjectKeywords);
             Assert.AreEqual("Ecommerce Size", item.Ecommerce_Size);
             Assert.AreEqual("Ecommerce Upc", item.Ecommerce_Upc);
             Assert.AreEqual("Amazon Active", item.SellOnAmazon);
@@ -3870,6 +3870,7 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+            GlobalData.EcomFlagRequirement = true;
             bool Ecommerce_Required = true;
 
             #endregion // Assemble

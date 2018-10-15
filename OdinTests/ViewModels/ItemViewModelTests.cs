@@ -325,7 +325,7 @@ namespace OdinTests.ViewModels
             Assert.AreNotEqual("", itemViewModel.Ecommerce_ProductSubcategoryError);
             Assert.AreNotEqual("", itemViewModel.Ecommerce_ManufacturerNameError);
             Assert.AreNotEqual("", itemViewModel.Ecommerce_MsrpError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_GenericKeywordsError);
+            Assert.AreEqual("", itemViewModel.Ecommerce_GenericKeywordsError);
             Assert.AreNotEqual("", itemViewModel.Ecommerce_SizeError);
 
             #endregion // Assert
