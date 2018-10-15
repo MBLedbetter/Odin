@@ -125,6 +125,22 @@ namespace OdinModels
         private static Dictionary<string, string> _customerIdConversions = new Dictionary<string, string>();
 
         /// <summary>
+        ///     Gets or sets the _ecomFlagRequirement
+        /// </summary>
+        public static bool EcomFlagRequirement
+        {
+            get
+            {
+                return _ecomFlagRequirement;
+            }
+            set
+            {
+                _ecomFlagRequirement = value;
+            }
+        }
+        private static bool _ecomFlagRequirement = false;
+
+        /// <summary>
         ///     List of cached External Id Type values
         /// </summary>
         public static List<string> ExternalIdTypes
@@ -447,6 +463,22 @@ namespace OdinModels
         }
         private static List<string> _specialCharacters = new List<string>();
 
+        /// <summary>
+        ///     Gets or sets list of StatsCodes and their coresponding brand names
+        /// </summary>
+        public static Dictionary<string, string> StatsCodes
+        {
+            get
+            {
+                return _statsCodes;
+            }
+            set
+            {
+                _statsCodes = value;
+            }
+        }
+        private static Dictionary<string, string> _statsCodes = new Dictionary<string, string>();
+        
         /// <summary>
         ///     Gets or sets TariffCodes
         /// </summary>

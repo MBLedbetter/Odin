@@ -2656,24 +2656,27 @@ namespace OdinServices
             return "";
         }
 
-
         /// <summary>
         ///     Vaidates Web Cateogry 1 field. Returns error message string or "" if no error exists.
         /// </summary>
         /// <param name="value"></param>
         /// <param name="hasWeb"></param>
         /// <returns></returns>
-        public string ValidateCategory(string value, bool required)
+        public string ValidateCategory(string value, bool hasWeb)
         {
-            if (!string.IsNullOrEmpty(value) || required)
+            if (!string.IsNullOrEmpty(value))
             {
-                if (required && (string.IsNullOrEmpty(value)))
-                {
-                    return "Category " + OdinServices.Properties.Resources.Error_RequiredWeb;
-                }
                 if (!GlobalData.ReturnWebCategoryListValues().Contains(value))
                 {
                     return "Category " + OdinServices.Properties.Resources.Error_NoMatch;
+                }
+            }
+
+            if (hasWeb)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Category " + OdinServices.Properties.Resources.Error_RequiredWeb;
                 }
             }
             return "";
@@ -2967,18 +2970,10 @@ namespace OdinServices
         /// <summary>
         ///     Validates the Ecommerce_Bullet Validation field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_Bullet(string value, string bulletNumber, bool required)
+        public string ValidateEcommerce_Bullet(string value, string bulletNumber, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    if (required)
-                    {
-                        return "Ecommerce Bullet" + bulletNumber + " " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                    }
-                    else return "";
-                }
                 if (value.Length > 254)
                 {
                     return "Ecommerce Bullet" + bulletNumber + " " + OdinServices.Properties.Resources.Error_LengthMax + "254 characters.";
@@ -2988,23 +2983,34 @@ namespace OdinServices
                     return "Ecommerce Bullet" + bulletNumber + " " + OdinServices.Properties.Resources.Error_LengthMin + "10 characters.";
                 }
             }
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce Bullet" + bulletNumber + " " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+
+                }
+            }
             return "";
         }
 
         /// <summary>
         ///     Validates the Ecommerce_Components field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_Components(string value, bool required)
+        public string ValidateEcommerce_Components(string value, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Ecommerce Components " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (value.Length > 100)
                 {
                     return "Ecommerce Components " + OdinServices.Properties.Resources.Error_LengthMax + "100 characters.";
+                }
+            }
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value) )
+                {
+                    return "Ecommerce Components " + OdinServices.Properties.Resources.Error_RequiredAmazon;
                 }
             }
             return "";
@@ -3013,14 +3019,10 @@ namespace OdinServices
         /// <summary>
         ///     Validates the Ecommerce_Cost field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_Cost(string value, string type, bool required)
+        public string ValidateEcommerce_Cost(string value, string type, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Ecommerce Cost " + type + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (value.Length > 9)
                 {
                     return "Ecommerce Cost " + type + OdinServices.Properties.Resources.Error_LengthMax + "9 characters.";
@@ -3030,20 +3032,23 @@ namespace OdinServices
                     return "Ecommerce Cost " + type + OdinServices.Properties.Resources.Error_NonNumeric;
                 }
             }
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce Cost " + type + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                }
+            }
             return "";
         }
 
         /// <summary>
         ///     Validates the Ecommerce_ExternalId field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_ExternalId(string value, string externalIdType, bool required)
+        public string ValidateEcommerce_ExternalId(string value, string externalIdType, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Ecommerce External Id " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (value.Length > 20)
                 {
                     return "Ecommerce External ID " + OdinServices.Properties.Resources.Error_LengthMax + "20 characters.";
@@ -3091,40 +3096,46 @@ namespace OdinServices
                     return "Invalid coresponding ExternalIdType. Odin does not recognize " + externalIdType + " as an valid External Id Type.";
                 }
             }
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce External Id " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                }
+            }
             return "";
         }
 
         /// <summary>
         ///     Validates the Ecommerce_ExternalIdType field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_ExternalIdType(string value, bool required)
+        public string ValidateEcommerce_ExternalIdType(string value, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Ecommerce External Id Type " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (!GlobalData.ExternalIdTypes.Contains(value))
                 {
                     return "Ecommerce External Id Type has an invalid value. (Accepted Values are 'UPC (12-digits)', 'ISBN', 'EAN' or 'GTIN'.";
                 }
                 return "";
             }
-            else return "";
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce External Id Type " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                }
+            }
+            return "";
         }
 
         /// <summary>
         ///     Ecommerce_ItemHeight field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_ItemHeight(string value, bool required)
+        public string ValidateEcommerce_ItemHeight(string value, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Ecommerce Height " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (value.Length > 9)
                 {
                     return "Ecommerce Height " + OdinServices.Properties.Resources.Error_LengthMax + "9 characters.";
@@ -3134,20 +3145,23 @@ namespace OdinServices
                     return "Ecommerce Height  " + OdinServices.Properties.Resources.Error_NonNumeric;
                 }
             }
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce Height " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                }
+            }
             return "";
         }
 
         /// <summary>
         ///     Ecommerce_ItemLength field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_ItemLength(string value, bool required)
+        public string ValidateEcommerce_ItemLength(string value, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Ecommerce Item Length " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (value.Length > 9)
                 {
                     return "Ecommerce Length " + OdinServices.Properties.Resources.Error_LengthMax + "9 characters.";
@@ -3157,40 +3171,45 @@ namespace OdinServices
                     return "Ecommerce Length  " + OdinServices.Properties.Resources.Error_NonNumeric;
                 }
             }
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce Item Length " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                }
+            }
             return "";
         }
 
         /// <summary>
         ///     Validates the Ecommerce_ItemName field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_ItemName(string value, bool required)
+        public string ValidateEcommerce_ItemName(string value, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Ecommerce Item Name " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (!DbUtil.CheckMaximum(value, 50))
                 {
                     return "Ecommerce Item Name " + OdinServices.Properties.Resources.Error_LengthMax + "50 characters.";
                 }
-                return "";
             }
-            else return "";
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce Item Name " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                }
+            }
+            return "";
         }
 
         /// <summary>
         ///     Validates the Ecommerce_ItemWeight field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_ItemWeight(string value, bool required)
+        public string ValidateEcommerce_ItemWeight(string value, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Ecommerce Item Weight " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (value.Length > 9)
                 {
                     return "Ecommerce Weight " + OdinServices.Properties.Resources.Error_LengthMax + "9 characters.";
@@ -3200,20 +3219,23 @@ namespace OdinServices
                     return "Ecommerce Weight  " + OdinServices.Properties.Resources.Error_NonNumeric;
                 }
             }
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce Item Weight " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                }
+            }
             return "";
         }
 
         /// <summary>
         ///     Validates the Ecommerce_ItemWidth field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_ItemWidth(string value, bool required)
+        public string ValidateEcommerce_ItemWidth(string value, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Ecommerce Item Width " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (value.Length > 9)
                 {
                     return "Ecommerce Width " + OdinServices.Properties.Resources.Error_LengthMax + "9 characters.";
@@ -3223,60 +3245,68 @@ namespace OdinServices
                     return "Ecommerce Width  " + OdinServices.Properties.Resources.Error_NonNumeric;
                 }
             }
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce Item Width " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                }
+            }
             return "";
         }
 
         /// <summary>
         ///     Validates the Ecommerce_ManufacturerName field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_ManufacturerName(string value, bool required)
+        public string ValidateEcommerce_ManufacturerName(string value, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Ecommerce Manufacturer Name " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (value.Length > 100)
                 {
                     return "Ecommerce Manufacturer Name " + OdinServices.Properties.Resources.Error_LengthMax + "100  characters.";
                 }
-                return "";
             }
-            else return "";
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce Manufacturer Name " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                }
+            }
+            return "";
         }
 
         /// <summary>
         ///     Ecommerce_ModelName field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_ModelName(string value, bool required)
+        public string ValidateEcommerce_ModelName(string value, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Ecommerce Model Name " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (value.Length > 50)
                 {
                     return "Ecommerce Model Name " + OdinServices.Properties.Resources.Error_LengthMax + "50 characters.";
                 }
                 return "";
             }
-            else return "";
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce Model Name " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                }
+            }
+            return "";
         }
 
         /// <summary>
         ///     Validates the Ecommerce_Msrp field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_Msrp(string value, bool required)
+        public string ValidateEcommerce_Msrp(string value, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Ecommerce MSRP " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (value.Length > 9)
                 {
                     return "Ecommerce MSRP " + OdinServices.Properties.Resources.Error_LengthMax + "9 characters.";
@@ -3285,7 +3315,14 @@ namespace OdinServices
                 {
                     return "Ecommerce Msrp " + OdinServices.Properties.Resources.Error_NonNumeric;
                 }
-                if ((value == "0" || value == "0.00" || value == "0.0000") && required)
+            }
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce MSRP " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                }
+                if (value == "0" || value == "0.00" || value == "0.0000")
                 {
                     return "Ecommerce Msrp must contain a non-zero value.";
                 }
@@ -3296,14 +3333,10 @@ namespace OdinServices
         /// <summary>
         ///     Validates the Ecommerce_PackageHeight field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_PackageHeight(string value, bool required)
+        public string ValidateEcommerce_PackageHeight(string value, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Ecommerce Package Height " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (value.Length > 9)
                 {
                     return "Ecommerce Package Height " + OdinServices.Properties.Resources.Error_LengthMax + "9 characters.";
@@ -3313,20 +3346,23 @@ namespace OdinServices
                     return "Ecommerce Package Height " + OdinServices.Properties.Resources.Error_NonNumeric;
                 }
             }
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce Package Height " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                }
+            }
             return "";
         }
 
         /// <summary>
         ///     Validates the Ecommerce_PackageLength field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_PackageLength(string value, bool required)
+        public string ValidateEcommerce_PackageLength(string value, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Ecommerce Package Length " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (value.Length > 9)
                 {
                     return "Ecommerce Package Length " + OdinServices.Properties.Resources.Error_LengthMax + "9 characters.";
@@ -3336,20 +3372,23 @@ namespace OdinServices
                     return "Ecommerce Package Length " + OdinServices.Properties.Resources.Error_NonNumeric;
                 }
             }
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce Package Length " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                }
+            }
             return "";
         }
 
         /// <summary>
         ///     Validates the Ecommerce_PackageWeight field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_PackageWeight(string value, bool required)
+        public string ValidateEcommerce_PackageWeight(string value, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Ecommerce Package Weight " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (value.Length > 9)
                 {
                     return "Ecommerce Package Weight " + OdinServices.Properties.Resources.Error_LengthMax + "9 characters.";
@@ -3359,20 +3398,23 @@ namespace OdinServices
                     return "Ecommerce Package Weight " + OdinServices.Properties.Resources.Error_NonNumeric;
                 }
             }
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce Package Weight " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                }
+            }
             return "";
         }
 
         /// <summary>
         ///      Validates the Ecommerce_PackageWidth field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_PackageWidth(string value, bool required)
+        public string ValidateEcommerce_PackageWidth(string value, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Ecommerce Package Width " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (value.Length > 9)
                 {
                     return "Ecommerce Package Width " + OdinServices.Properties.Resources.Error_LengthMax + "9 characters.";
@@ -3380,6 +3422,13 @@ namespace OdinServices
                 if (!DbUtil.IsNumber(value))
                 {
                     return "Ecommerce Package Width " + OdinServices.Properties.Resources.Error_NonNumeric;
+                }
+            }
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce Package Width " + OdinServices.Properties.Resources.Error_RequiredAmazon;
                 }
             }
             return "";
@@ -3411,84 +3460,92 @@ namespace OdinServices
         /// <summary>
         ///     Validates the Ecommerce_ProductCategory field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_ProductCategory(string value, bool required)
+        public string ValidateEcommerce_ProductCategory(string value, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Ecommerce Product Category " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (value.Length > 50)
                 {
                     return "Ecommerce Product Category " + OdinServices.Properties.Resources.Error_LengthMax + "50 characters.";
                 }
                 return "";
             }
-            else return "";
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce Product Category " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                }
+            }
+            return "";
         }
 
         /// <summary>
         ///     Validates the Ecommerce_ProductDescription field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_ProductDescription(string value, bool required)
+        public string ValidateEcommerce_ProductDescription(string value, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (required)
+                if (!DbUtil.CheckMinimum(value, 100))
                 {
-                    if (string.IsNullOrEmpty(value))
-                    {
-                        return "Ecommerce Product Description " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                    }
-                    if (!DbUtil.CheckMinimum(value, 100))
-                    {
-                        return "Ecommerce Product Description " + OdinServices.Properties.Resources.Error_LengthMin + "100 characters.";
-                    }
+                    return "Ecommerce Product Description " + OdinServices.Properties.Resources.Error_LengthMin + "100 characters.";
                 }
+                
                 if (value.Length > 8000)
                 {
                     return "Ecommerce Product Description " + OdinServices.Properties.Resources.Error_LengthMax + "8000 characters.";
                 }
-                return "";
             }
-            else return "";
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce Product Description " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                }
+            }
+            return "";
         }
 
         /// <summary>
         ///     Validates the Ecommerce_ProductSubcategory field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_ProductSubcategory(string value, bool required)
+        public string ValidateEcommerce_ProductSubcategory(string value, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Ecommerce Product Subcategory " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (value.Length > 50)
                 {
                     return "Ecommerce Product Subcategory " + OdinServices.Properties.Resources.Error_LengthMax + "50 characters.";
                 }
-                return "";
             }
-            else return "";
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce Product Subcategory " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                }
+            }
+            return "";
         }
 
         /// <summary>
         ///     Validates the Ecommerce_GenericKeywords field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_Keywords(string value, bool required, string type, string status)
+        public string ValidateEcommerce_Keywords(string value, bool ecommerceFlag, string type, string status)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return type + " " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (value.Length > 385)
                 {
                     return type + " " + OdinServices.Properties.Resources.Error_LengthMax + "385 characters.";
+                }
+            }
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return type + " " + OdinServices.Properties.Resources.Error_RequiredAmazon;
                 }
             }
             return "";
@@ -3497,17 +3554,20 @@ namespace OdinServices
         /// <summary>
         ///     Validates the Ecommerce_Size field. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateEcommerce_Size(string value, bool required)
+        public string ValidateEcommerce_Size(string value, bool ecommerceFlag)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Ecommerce Size " + OdinServices.Properties.Resources.Error_RequiredAmazon;
-                }
                 if (value.Length > 254)
                 {
                     return "Ecommerce Size " + OdinServices.Properties.Resources.Error_LengthMax + "254 characters.";
+                }
+            }
+            if (ecommerceFlag && GlobalData.EcomFlagRequirement)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Ecommerce Size " + OdinServices.Properties.Resources.Error_RequiredAmazon;
                 }
             }
             return "";
@@ -3518,7 +3578,7 @@ namespace OdinServices
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public string ValidateEcommerce_Upc(string value, string itemId, string upc, string status, bool required)
+        public string ValidateEcommerce_Upc(string value, string itemId, string upc, string status, bool ecommerceFlag)
         {
             if (!string.IsNullOrEmpty(value))
             {
@@ -3910,21 +3970,23 @@ namespace OdinServices
         /// <param name="value"></param>
         /// <param name="hasWeb"></param>
         /// <returns></returns>
-        public string ValidateItemKeywords(string value, bool required)
+        public string ValidateItemKeywords(string value, bool hasWeb)
         {
-            if (required || (!string.IsNullOrEmpty(value)))
+            if(!string.IsNullOrEmpty(value))
             {
-                if (required && (string.IsNullOrEmpty(value)))
-                {
-                    return "Item Keywords " + OdinServices.Properties.Resources.Error_RequiredWeb;
-                }
                 if (value.Length > 1000)
                 {
                     return "Item Keywords " + OdinServices.Properties.Resources.Error_LengthMax + "1000 characters.";
                 }
             }
+            if (hasWeb)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Item Keywords " + OdinServices.Properties.Resources.Error_RequiredWeb;
+                }
+            }
             return "";
-
         }
 
         /// <summary>
@@ -4194,18 +4256,18 @@ namespace OdinServices
         /// <param name="value"></param>
         /// <param name="hasWeb"></param>
         /// <returns></returns>
-        public string ValidateMetaDescription(string value, bool required)
+        public string ValidateMetaDescription(string value, bool hasWeb)
         {
-            if (!(string.IsNullOrEmpty(value)) || required)
+            if (!(string.IsNullOrEmpty(value)))
             {
-                if (required && (string.IsNullOrEmpty(value)))
-                {
-                    return "Meta Description " + OdinServices.Properties.Resources.Error_RequiredWeb;
-                }
                 if (!GlobalData.MetaDescriptions.Contains(value) && !CheckForProductFormat(value))
                 {
                     return "Meta Description " + OdinServices.Properties.Resources.Error_NoMatch;
                 }
+            }
+            if (hasWeb && string.IsNullOrEmpty(value))
+            {
+                return "Meta Description " + OdinServices.Properties.Resources.Error_RequiredWeb;
             }
             return "";
         }
@@ -4611,12 +4673,11 @@ namespace OdinServices
         /// <returns></returns>
         public string ValidateStatsCode(string value, string listPriceUS, int prodType)
         {
-
             bool required = (prodType == 2) ? false : true;
 
             if (!string.IsNullOrEmpty(value) || required)
             {
-                if (string.IsNullOrEmpty(value)&&required)
+                if (string.IsNullOrEmpty(value) && required)
                 {
                     if (listPriceUS == "0" || listPriceUS == "0.00" || listPriceUS == "0.0000")
                     {
@@ -4630,6 +4691,10 @@ namespace OdinServices
                 if (value.Length > 30)
                 {
                     return "Stats Code " + OdinServices.Properties.Resources.Error_LengthMax + "30 characters.";
+                }
+                if(!GlobalData.StatsCodes.ContainsKey(value))
+                {
+                    return "Stats Code does not match any values set up in the database.";
                 }
             }
             return "";
@@ -4730,17 +4795,20 @@ namespace OdinServices
         /// <param name="value"></param>
         /// <param name="hasWeb"></param>
         /// <returns></returns>
-        public string ValidateTitle(string value, bool required)
+        public string ValidateTitle(string value, bool hasWeb)
         {
-            if (required || (!string.IsNullOrEmpty(value)))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (required && string.IsNullOrEmpty(value))
-                {
-                    return "Title " + OdinServices.Properties.Resources.Error_RequiredWeb;
-                }
                 if (value.Length > 266)
                 {
                     return "Title " + OdinServices.Properties.Resources.Error_LengthMax + "266 characters.";
+                }
+            }
+            if (hasWeb)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Title " + OdinServices.Properties.Resources.Error_RequiredWeb;
                 }
             }
             return "";
@@ -4843,14 +4911,10 @@ namespace OdinServices
         ///     Validate item website price field. Returns error message string or "" if no error exists.
         /// </summary>
         /// <returns></returns>
-        public string ValidateWebsitePrice(string value, bool required)
+        public string ValidateWebsitePrice(string value, bool hasWeb)
         {
-            if (required || (!string.IsNullOrEmpty(value)))
+            if (!string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
-                {
-                    return "Website Price " + OdinServices.Properties.Resources.Error_RequiredWeb;
-                }
                 if (value.Length > 9)
                 {
                     return "Website Price " + OdinServices.Properties.Resources.Error_LengthMax + "9 characters.";
@@ -4859,7 +4923,14 @@ namespace OdinServices
                 {
                     return "Website Price " + OdinServices.Properties.Resources.Error_NonNumeric;
                 }
-                if (required && (value == "0" || value == "0.00" || value == "0.0000"))
+            }
+            if(hasWeb)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return "Website Price " + OdinServices.Properties.Resources.Error_RequiredWeb;
+                }
+                if (hasWeb && (value == "0" || value == "0.00" || value == "0.0000"))
                 {
                     return "Website Price must contain a value greater than 0.";
                 }

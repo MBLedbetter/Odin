@@ -391,6 +391,11 @@ namespace Odin.Data
         public DbSet<SfPrdnAreaIt> SfPrdnAreaIt { get; set; }
 
         /// <summary>
+        ///     Gets or sets a list of the StatsCodes lines that are in this context.
+        /// </summary>
+        public DbSet<StatsCodes> StatsCodes { get; set; }
+
+        /// <summary>
         ///     Gets or sets a list of the UomTypeInv lines that are in this context.
         /// </summary>
         public DbSet<UomTypeInv> UomTypeInv { get; set; }
@@ -520,6 +525,7 @@ namespace Odin.Data
             MapPurchItemBu(modelBuilder);
             MapPvItmCategory(modelBuilder);
             MapSfPrdnAreaIt(modelBuilder);
+            MapStatsCodes(modelBuilder);
             MapUomTypeInv(modelBuilder);
         }
 
@@ -3609,6 +3615,32 @@ namespace Odin.Data
             modelBuilder.Entity<PvItmCategory>().Property(p => p.PvPreferredCat).HasColumnName("PV_PREFERRED_CAT");
             modelBuilder.Entity<PvItmCategory>().Property(p => p.Setid).HasColumnName("SETID");
 
+        }
+
+        /// <summary>
+        ///     This method maps the StatsCodes class to the database.
+        /// </summary>
+        /// 
+        /// <param name="DbModelBuilder modelBuilder">
+        ///     The DbDbModelBuilder modelBuilder to update with the mapping.
+        /// </param>
+        private void MapStatsCodes(DbModelBuilder modelBuilder)
+        {
+            // Map the StatsCodes class to the PS_T_STATS_CODES table
+            modelBuilder.Entity<StatsCodes>()
+                .HasKey(p => new
+                {
+                    p.StatsCode
+                })
+                .ToTable("PS_T_STATS_CODES");
+
+            // Map each column
+            modelBuilder.Entity<StatsCodes>().Property(p => p.BrandName).HasColumnName("BRAND_NAME");
+            modelBuilder.Entity<StatsCodes>().Property(p => p.DttmCreated).HasColumnName("DTTM_CREATED");
+            modelBuilder.Entity<StatsCodes>().Property(p => p.DttmModified).HasColumnName("DTTM_MODIFIED");
+            modelBuilder.Entity<StatsCodes>().Property(p => p.Gln).HasColumnName("GLN");
+            modelBuilder.Entity<StatsCodes>().Property(p => p.LastMaintOprid).HasColumnName("LAST_MAINT_OPRID");
+            modelBuilder.Entity<StatsCodes>().Property(p => p.StatsCode).HasColumnName("STATS_CODE");
         }
 
         /// <summary>
