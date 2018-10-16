@@ -3773,7 +3773,8 @@ namespace Odin.ViewModels
         {
             if (!GlobalData.FtpUserexceptions.Contains(this.UserName))
             {
-                List<string> existingImages = this.FtpService.ExistingImageFiles;
+                this.FtpService = new FtpService();
+                List<string> existingImages = this.FtpService.ReturnExistingImageFiles();
                 existingImages.Sort();
                 AlertView window = new AlertView()
                 {
@@ -3842,14 +3843,6 @@ namespace Odin.ViewModels
                 this.ItemService = itemService ?? throw new ArgumentNullException("itemService");
                 this.OptionService = optionService ?? throw new ArgumentNullException("optionService");
                 this.WorkbookReader = workbookReader ?? throw new ArgumentNullException("workbookReader");
-                if (!GlobalData.FtpUserexceptions.Contains(this.UserName))
-                {
-                    this.FtpService = new FtpService();
-                }
-                else
-                {
-                    this.FtpService = null;
-                }
                 SetPermisions();
                 this.SubmitStatus = false;
                 this.SaveStatus = false;

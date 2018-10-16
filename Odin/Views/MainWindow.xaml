@@ -527,6 +527,7 @@
                         <ribbon:ButtonDropDown
                             ImagePosition="Top"
                             Command="{Binding RequestEcommerceImageListCommand}"
+                            Visibility="Hidden"
                             Header="View Existing Images"
                             ToolTip="View a list of the existing images on the web server."
                             Width="100">

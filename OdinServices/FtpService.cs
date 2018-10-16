@@ -35,12 +35,12 @@ namespace OdinServices
         /// <summary>
         ///     ftp password
         /// </summary>
-        private string ftpPassword = OdinServices.Properties.Resources.ftpPassword;
+        private readonly string FtpPassword = OdinServices.Properties.Resources.ftpPassword;
 
         /// <summary>
         ///     ftp user name
         /// </summary>
-        private string ftpUserName = OdinServices.Properties.Resources.ftpUserName;
+        private readonly string FtpUserName = OdinServices.Properties.Resources.ftpUserName;
 
         #endregion // Properties
 
@@ -73,7 +73,7 @@ namespace OdinServices
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://trendsinternational.com/trendsinternational.com/html/media/externalCaptures/");
             request.Method = WebRequestMethods.Ftp.ListDirectory;
 
-            request.Credentials = new NetworkCredential(this.ftpUserName, this.ftpPassword);
+            request.Credentials = new NetworkCredential(this.FtpUserName, this.FtpPassword);
             FtpWebResponse response = (FtpWebResponse)request.GetResponse();
             Stream responseStream = response.GetResponseStream();
             StreamReader reader = new StreamReader(responseStream);
@@ -99,7 +99,7 @@ namespace OdinServices
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://trendsinternational.com" + @"/trendsinternational.com/html/media/externalCaptures/" + fileName);
             request.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.CacheIfAvailable);
             request.Method = WebRequestMethods.Ftp.UploadFile;
-            request.Credentials = new NetworkCredential(this.ftpUserName, this.ftpPassword);
+            request.Credentials = new NetworkCredential(this.FtpUserName, this.FtpPassword);
             // Copy the contents of the file to the request stream.  
             StreamReader sourceStream = new StreamReader(filePath);
             Image img = Image.FromFile(filePath);
@@ -122,11 +122,6 @@ namespace OdinServices
             this.ExistingImageFiles = ReturnExistingImageFiles();
         }
 
-        public void ValidateImageSize(string filePath)
-        {
-
-        }
-
         #endregion // Methods
 
         #region Constructor
@@ -136,7 +131,7 @@ namespace OdinServices
         /// </summary>
         public FtpService()
         {
-            this.ExistingImageFiles = ReturnExistingImageFiles();
+            // this.ExistingImageFiles = ReturnExistingImageFiles();
         }
 
         #endregion // Constructor

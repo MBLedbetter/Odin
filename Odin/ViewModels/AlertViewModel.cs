@@ -16,11 +16,11 @@ namespace Odin.ViewModels
         {
             get
             {
-                return this._alertImage;
+                return _alertImage;
             }
             set
             {
-                this._alertImage = value;
+                _alertImage = value;
                 OnPropertyChanged("AlertImage");
             }
         }
@@ -98,6 +98,10 @@ namespace Odin.ViewModels
                     index = messageLength-1;
                     while (value[index] != ' ')
                     {
+                        if(index==0)
+                        {
+                            break;
+                        }
                         index--;
                     }
                     returnValue += value.Substring(0, index) + "\r\n    ";

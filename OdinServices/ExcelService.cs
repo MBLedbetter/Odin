@@ -105,10 +105,9 @@ namespace OdinServices
             foreach(ExcelCell cell in excelCells)
             {
                 string cellValue = RetrieveCellValue(cell.Field, item, customer);
-                // if(CheckNumberFormat(cell.Field))
-                // {
+
                 worksheet.Cells[row, columnCount].NumberFormat = "@";
-                // }
+
                 worksheet.Cells[row, columnCount] = cellValue;
 
                 columnCount++;

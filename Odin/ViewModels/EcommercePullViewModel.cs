@@ -158,6 +158,9 @@ namespace Odin.ViewModels
                 OnPropertyChanged("TemplateList");
             }
         }
+
+        public string EndDate1 { get => _endDate; set => _endDate = value; }
+
         private List<string> _templateList = new List<string>();
         
         #endregion // Properties
