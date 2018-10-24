@@ -79,9 +79,6 @@ namespace OdinServices
 
         #region Methods
 
-        /*
-         Proving ben wrong
-             */
         /// <summary>
         ///     Writes out the field name as the first row of template
         /// </summary>
@@ -2166,8 +2163,16 @@ namespace OdinServices
                     newString += "\"Use config\","; /* msrp_display_actual_price_type */
                     newString += "\"Use config\","; /* msrp_enabled */
                     newString += "\"" + title.Trim() + "\","; /* name */
-                    newString += "\"" + DateTime.Today.ToString() + "\","; /* date_added */
-                    newString += "\"" + DateTime.Today.ToString() + "\","; /* news_from_date */
+                    if (requestType == "Add")
+                    {
+                        newString += "\"" + DateTime.Today.ToString() + "\","; /* date_added */
+                        newString += "\"" + DateTime.Today.ToString() + "\","; /* news_from_date */
+                    }
+                    else
+                    {
+                        newString += ","; /* date_added */
+                        newString += ","; /* news_from_date */
+                    }
                     newString += "\"" + ItemService.RetrieveNewToDate("") + "\","; /* news_to_date */
                     newString += "\"Product Info Column\","; /* options_container */
                     newString += "\"" + ItemService.ReturnItemPrice(USDPrice.Trim(), item.ProductQty) + "\","; /* price */

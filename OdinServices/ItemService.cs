@@ -4692,10 +4692,12 @@ namespace OdinServices
                 {
                     return "Stats Code " + OdinServices.Properties.Resources.Error_LengthMax + "30 characters.";
                 }
+                
                 if(!GlobalData.StatsCodes.ContainsKey(value))
                 {
                     return "Stats Code does not match any values set up in the database.";
                 }
+                
             }
             return "";
         }
