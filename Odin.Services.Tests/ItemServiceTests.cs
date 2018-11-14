@@ -3602,6 +3602,35 @@ namespace Odin.Services.Tests
         }
 
         /// <summary>
+        ///     Tests the ecommerce item name validation. Checks that validation catches the correct name length.
+        /// </summary>
+        [TestMethod]
+        public void ValidateEcommdceItemName_ItemHasValidValue_ShouldReturnTrue()
+        {
+            #region Assemble
+
+            ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+
+            GlobalData.ClearValues();
+
+            string value1 = "ItemNameLengthIsLessThan150Characters. But is also more than 50, which it hade been limited to prior.";
+
+            #endregion // Assemble
+
+            #region Act
+
+            string result1 = itemService.ValidateEcommerce_ItemName(value1,false);
+
+            #endregion // Act
+
+            #region Assert
+            
+            Assert.AreEqual("", result1);
+
+            #endregion // Assert
+        }
+
+        /// <summary>
         ///     This method test the ValidateWidth method with a valid string. This method asserts that the validation succeeds.
         /// </summary>
         [TestMethod]

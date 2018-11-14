@@ -2188,7 +2188,7 @@ namespace OdinServices
             error = ValidateHeight(var.Height, var.ProdType);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             // Image Path //
-            error = ValidateImagePath(var.ImagePath, "Image Path", var.ImageRequired());
+            error = ValidateImagePath(var.ImagePath, "Image Path", var.HasWeb());
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             // Innerpack Height //
             error = ValidateInnerpack(var.InnerpackHeight, var.InnerpackLength, var.InnerpackWeight, var.InnerpackWidth, var.ProdType, "Innerpack Height ");
@@ -2644,6 +2644,10 @@ namespace OdinServices
             if (string.IsNullOrEmpty(value))
             {
                 return "";
+            }
+            if (value.Contains('.'))
+            {
+                return "Casepack Qty cannot be a decimal.";
             }
             if (value.Length > 7)
             {
@@ -3188,9 +3192,9 @@ namespace OdinServices
         {
             if (!string.IsNullOrEmpty(value))
             {
-                if (!DbUtil.CheckMaximum(value, 50))
+                if (!DbUtil.CheckMaximum(value, 200))
                 {
-                    return "Ecommerce Item Name " + OdinServices.Properties.Resources.Error_LengthMax + "50 characters.";
+                    return "Ecommerce Item Name " + OdinServices.Properties.Resources.Error_LengthMax + "200 characters.";
                 }
             }
             if (ecommerceFlag && GlobalData.EcomFlagRequirement)
@@ -3706,13 +3710,13 @@ namespace OdinServices
         /// <summary>
         ///     Validates the Image Path fields. Returns error message string or "" if no error exists.
         /// </summary>
-        public string ValidateImagePath(string value, string field, bool required)
+        public string ValidateImagePath(string value, string field, bool sellOnTrends)
         {
-            if (required || !string.IsNullOrEmpty(value))
+            if (sellOnTrends || !string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && required)
+                if (string.IsNullOrEmpty(value) && sellOnTrends)
                 {
-                    return field + " " + OdinServices.Properties.Resources.Error_RequiredAmazon;
+                    return field + " " + OdinServices.Properties.Resources.Error_RequiredWeb;
                 }
                 if (value.Contains("'")||value.Contains("`"))
                 {
@@ -3784,6 +3788,10 @@ namespace OdinServices
             if (string.IsNullOrEmpty(value))
             {
                 return "";
+            }
+            if (value.Contains('.'))
+            {
+                return "Innerpack Quantity cannot be a decimal.";
             }
             if (value.Length > 7)
             {
@@ -4589,6 +4597,7 @@ namespace OdinServices
         /// </summary>
         public string ValidateSellOnValue(string value, string ecomFlag, string type)
         {
+            /*
             if (ecomFlag != null)
             {
                 if (ecomFlag != "Y" && value == "Y")
@@ -4596,6 +4605,7 @@ namespace OdinServices
                     return "Sell on Ecommerce flag must be set to Y if " + type + " is set to Y.";
                 }
             }
+            */
             if (string.IsNullOrEmpty(value))
             {
                 return "Sell On " + type + " " + OdinServices.Properties.Resources.Error_Required;

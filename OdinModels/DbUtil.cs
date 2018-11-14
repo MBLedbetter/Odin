@@ -397,7 +397,14 @@ namespace OdinModels
 
         public static decimal ToDecimal(string value)
         {
-            return !string.IsNullOrEmpty(value) ? Convert.ToDecimal(value) : 0;
+            if (IsNumber(value))
+            {
+                return !string.IsNullOrEmpty(value) ? Convert.ToDecimal(value) : 0.00m;
+            }
+            else
+            {
+                return 0.00m;
+            }
         }
 
         /// <summary>

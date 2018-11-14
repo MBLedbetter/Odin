@@ -6084,7 +6084,7 @@ namespace Odin.ViewModels
                 {
                     this.ItemViewModelItem.ImagePath = value;
                     this.Ecommerce_ImagePath1 = ItemViewModelItem.Ecommerce_ImagePath1;
-                    this.ImagePathError = ItemService.ValidateImagePath(value, "Image Path", true);
+                    this.ImagePathError = ItemService.ValidateImagePath(value, "Image Path", ItemViewModelItem.HasWeb());
                     SetImages();
                     OnPropertyChanged("ImagePath");
                 }
@@ -9121,7 +9121,7 @@ namespace Odin.ViewModels
             this.EanError = ItemService.ValidateEan(var.Ean, var.Upc, var.ListPriceUsd, var.ProductFormat, var.ProductLine);
             this.GpcError = ItemService.ValidateGpc(var.Gpc, var.ListPriceUsd, var.ProdType);
             this.HeightError = ItemService.ValidateHeight(var.Height, var.ProdType);
-            this.ImagePathError = ItemService.ValidateImagePath(this.ImagePath, "ImagePath", this.ItemViewModelItem.HasEcommerce());
+            this.ImagePathError = ItemService.ValidateImagePath(this.ImagePath, "ImagePath", this.ItemViewModelItem.HasWeb());
             this.InnerpackHeightError = ItemService.ValidateInnerpack(var.InnerpackHeight, var.InnerpackLength, var.InnerpackWeight, var.InnerpackWidth, var.ProdType, "Innerpack Height");
             this.InnerpackLengthError = ItemService.ValidateInnerpack(var.InnerpackHeight, var.InnerpackLength, var.InnerpackWeight, var.InnerpackWidth, var.ProdType, "Innerpack Length");
             this.InnerpackWidthError = ItemService.ValidateInnerpack(var.InnerpackHeight, var.InnerpackLength, var.InnerpackWeight, var.InnerpackWidth, var.ProdType, "Innerpack Width");
