@@ -54,6 +54,22 @@ namespace OdinServices
         public ItemService ItemService { get; set; }
 
         /// <summary>
+        ///     Gets or sets the missing ftp files
+        /// </summary>
+        public List<string> MissingFtpFiles
+        {
+            get
+            {
+                return _missingFtpFiles;
+            }
+            set
+            {
+                _missingFtpFiles = value;
+            }
+        }
+        private List<string> _missingFtpFiles = new List<string>();
+
+        /// <summary>
         ///     Gets or sets the optionService
         /// </summary>
         public OptionService OptionService { get; set; }
@@ -122,6 +138,20 @@ namespace OdinServices
             {
                 RetrieveCellValue(cell.Field, items, customer, columnCount);
                 columnCount++;
+            }
+        }
+
+        /// <summary>
+        ///     Check if submitted file exists amongst the files on the server. Adds file name to MissingFtpFiles 
+        ///     if it doesn't exist
+        /// </summary>
+        /// <param name="fileName"></param>
+        public void CheckFtpFileExists(string fileName)
+        {
+            string[] x = fileName.Split('/');
+            if (!this.ExistingFiles.Contains(x[x.Length - 1].Trim()))
+            {
+                this.MissingFtpFiles.Add(x[x.Length - 1]);
             }
         }
 
@@ -486,6 +516,7 @@ namespace OdinServices
         /// <returns></returns>
         public bool CreateItemWorkbook(string layoutName, ObservableCollection<ItemObject> itemsList, string filePath = null)
         {
+            this.MissingFtpFiles = new List<string>();
             ObservableCollection<ExcelCell> excelCells = RetrieveExcelLayoutData(layoutName);
             string customer = RetrieveExcelLayoutCustomer(layoutName);
             CreateExcelSheet(itemsList, excelCells, customer, filePath);
@@ -1068,7 +1099,7 @@ namespace OdinServices
                         break;
                     case "Ecommerce Generic Keywords":
                         foreach (ItemObject item in items)
-                        {
+                        {                            
                             WriteCell(row, columnCount, TrimSearchTerms(item.Ecommerce_GenericKeywords, customer));
                             row++;
                         }
@@ -1076,6 +1107,7 @@ namespace OdinServices
                     case "Ecommerce Image Path 1":
                         foreach (ItemObject item in items)
                         {
+                            CheckFtpFileExists(item.Ecommerce_ImagePath1);
                             WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath1));
                             row++;
                         }
@@ -1083,6 +1115,7 @@ namespace OdinServices
                     case "Ecommerce Image Path 2":
                         foreach (ItemObject item in items)
                         {
+                            CheckFtpFileExists(item.Ecommerce_ImagePath2);
                             WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath2));
                             row++;
                         }
@@ -1090,6 +1123,7 @@ namespace OdinServices
                     case "Ecommerce Image Path 3":
                         foreach (ItemObject item in items)
                         {
+                            CheckFtpFileExists(item.Ecommerce_ImagePath3);
                             WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath3));
                             row++;
                         }
@@ -1097,6 +1131,7 @@ namespace OdinServices
                     case "Ecommerce Image Path 4":
                         foreach (ItemObject item in items)
                         {
+                            CheckFtpFileExists(item.Ecommerce_ImagePath4);
                             WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath4));
                             row++;
                         }
@@ -1104,6 +1139,7 @@ namespace OdinServices
                     case "Ecommerce Image Path 5":
                         foreach (ItemObject item in items)
                         {
+                            CheckFtpFileExists(item.Ecommerce_ImagePath5);
                             WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath5));
                             row++;
                         }
@@ -2356,7 +2392,10 @@ namespace OdinServices
         {
             if (!GlobalData.FtpUserexceptions.Contains(GlobalData.UserName))
             {
-                this.FtpService = new FtpService();
+                if (FtpService == null)
+                {
+                    this.FtpService = new FtpService();
+                }
                 this.ExistingFiles = this.FtpService.ReturnExistingImageFiles();                
             }
             else

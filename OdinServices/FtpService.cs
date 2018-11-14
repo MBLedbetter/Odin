@@ -68,7 +68,7 @@ namespace OdinServices
         /// <returns></returns>
         public List<string> ReturnExistingImageFiles()
         {
-            List<string> newNames = new List<string>();
+            List<string> rawNames = new List<string>();
 
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://trendsinternational.com/trendsinternational.com/html/media/externalCaptures/");
             request.Method = WebRequestMethods.Ftp.ListDirectory;
@@ -82,11 +82,12 @@ namespace OdinServices
             reader.Close();
             response.Close();
 
-            newNames = names.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            rawNames = names.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
-            newNames.Remove(".");
-            newNames.Remove("..");
-            return newNames;
+            rawNames.Remove(".");
+            rawNames.Remove("..");
+
+            return rawNames;
         }
 
         /// <summary>

@@ -3160,7 +3160,7 @@ namespace OdinServices
         }
 
         /// <summary>
-        ///     Ecommerce_ItemLength field. Returns error message string or "" if no error exists.
+        ///     Ecommerce_ItemLength field. Returns error message string or "" if no error exists.c
         /// </summary>
         public string ValidateEcommerce_ItemLength(string value, bool ecommerceFlag)
         {

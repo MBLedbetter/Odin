@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Odin.ViewModels
@@ -200,19 +201,30 @@ namespace Odin.ViewModels
                 {
                     ErrorLog.LogError("Odin was unable to retrieve active items from the database.", ex.ToString());
                 }
+
                 try
                 {
                     ExcelService.CreateItemWorkbook(this.Template, this.Items);
+                    if (ExcelService.MissingFtpFiles.Count > 0)
+                    {
+                        AlertView window = new AlertView()
+                        {
+                            DataContext = new AlertViewModel(ExcelService.MissingFtpFiles, "Alert", "The following images were not found in the external captures folder.")
+                        };
+                        window.ShowDialog();
+                    }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     ErrorLog.LogError("Odin was unable to retrieve the excel layout data.", ex.ToString());
-                }         
+                }
             }
             else
             {
-                AlertView window = new AlertView();
-                window.DataContext = new AlertViewModel("", "Alert", "Please select a template type.");
+                AlertView window = new AlertView()
+                {
+                    DataContext = new AlertViewModel("", "Alert", "Please select a template type.")
+                };
                 window.ShowDialog();
             }
         }
