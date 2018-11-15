@@ -386,7 +386,7 @@ namespace OdinServices
         /// <param name="filePath"></param>
         /// <returns></returns>
         public string SetImagePath(string filePath)
-        {
+        {/*
             if (!string.IsNullOrEmpty(filePath))
             {
                 if (FtpService != null)
@@ -401,7 +401,15 @@ namespace OdinServices
                     MessageBox.Show("FTP connection was unable to be made. Image Url could not be generated.");
                 }
             }
-            return filePath;
+            */
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                return ModifyAdditionalImageUrl(filePath);
+            }
+            else
+            {
+                return filePath.Replace(" ", "%20");
+            }
         }
 
         /// <summary>
