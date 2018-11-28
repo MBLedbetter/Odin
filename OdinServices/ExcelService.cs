@@ -146,13 +146,15 @@ namespace OdinServices
         ///     if it doesn't exist
         /// </summary>
         /// <param name="fileName"></param>
-        public void CheckFtpFileExists(string fileName)
+        public bool CheckFtpFileExists(string fileName)
         {
             string[] x = fileName.Split('/');
             if (!this.ExistingFiles.Contains(x[x.Length - 1].Trim()))
             {
                 this.MissingFtpFiles.Add(x[x.Length - 1]);
+                return false;
             }
+            return true;
         }
 
         /// <summary>
@@ -381,35 +383,21 @@ namespace OdinServices
         }
 
         /// <summary>
-        ///     If the file exists on externalCaptures return filepath
+        ///     If the file exists on externalCaptures return filepath otherwise returns ""
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
-        public string SetImagePath(string filePath)
-        {/*
-            if (!string.IsNullOrEmpty(filePath))
+        public string SetImagePath(string filePath, bool fileExists)
+        {
+            if (!string.IsNullOrEmpty(filePath) && fileExists)
             {
-                if (FtpService != null)
-                {
-                    if (FtpService.CheckFile(filePath))
-                    {
-                        return ModifyAdditionalImageUrl(filePath);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("FTP connection was unable to be made. Image Url could not be generated.");
-                }
+                string[] pathParts = filePath.Split('/');
+                string fileName = pathParts[pathParts.Length - 1];
+                string result = "http://trendsinternational.com/media/externalCaptures/" + fileName;
+                result = result.Replace(" ", "%20");
+                return result;
             }
-            */
-            if (!string.IsNullOrEmpty(filePath))
-            {
-                return ModifyAdditionalImageUrl(filePath);
-            }
-            else
-            {
-                return filePath.Replace(" ", "%20");
-            }
+            return "";            
         }
 
         /// <summary>
@@ -1115,40 +1103,40 @@ namespace OdinServices
                     case "Ecommerce Image Path 1":
                         foreach (ItemObject item in items)
                         {
-                            CheckFtpFileExists(item.Ecommerce_ImagePath1);
-                            WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath1));
+                            bool fileExists = CheckFtpFileExists(item.Ecommerce_ImagePath1);
+                            WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath1, fileExists));
                             row++;
                         }
                         break;
                     case "Ecommerce Image Path 2":
                         foreach (ItemObject item in items)
                         {
-                            CheckFtpFileExists(item.Ecommerce_ImagePath2);
-                            WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath2));
+                            bool fileExists = CheckFtpFileExists(item.Ecommerce_ImagePath2);
+                            WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath2, fileExists));
                             row++;
                         }
                         break;
                     case "Ecommerce Image Path 3":
                         foreach (ItemObject item in items)
                         {
-                            CheckFtpFileExists(item.Ecommerce_ImagePath3);
-                            WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath3));
+                            bool fileExists = CheckFtpFileExists(item.Ecommerce_ImagePath3);
+                            WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath3, fileExists));
                             row++;
                         }
                         break;
                     case "Ecommerce Image Path 4":
                         foreach (ItemObject item in items)
                         {
-                            CheckFtpFileExists(item.Ecommerce_ImagePath4);
-                            WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath4));
+                            bool fileExists = CheckFtpFileExists(item.Ecommerce_ImagePath4);
+                            WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath4, fileExists));
                             row++;
                         }
                         break;
                     case "Ecommerce Image Path 5":
                         foreach (ItemObject item in items)
                         {
-                            CheckFtpFileExists(item.Ecommerce_ImagePath5);
-                            WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath5));
+                            bool fileExists = CheckFtpFileExists(item.Ecommerce_ImagePath5);
+                            WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath5, fileExists));
                             row++;
                         }
                         break;
