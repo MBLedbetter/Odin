@@ -1634,6 +1634,8 @@ namespace Odin.Data
             modelBuilder.Entity<ItemWebInfo>().Property(p => p.Size).HasColumnName("SIZE");
             modelBuilder.Entity<ItemWebInfo>().Property(p => p.Territory).HasColumnName("TERRITORY");
             modelBuilder.Entity<ItemWebInfo>().Property(p => p.Title).HasColumnName("TITLE");
+            modelBuilder.Entity<ItemWebInfo>().Property(p => p.Warranty).HasColumnName("WARRANTY");
+            modelBuilder.Entity<ItemWebInfo>().Property(p => p.WarrantyCheck).HasColumnName("WARRANTY_CHECK");
 
         }
 
@@ -2139,6 +2141,8 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItem>().Property(p => p.Title).HasColumnName("TITLE");
             modelBuilder.Entity<OdinItem>().Property(p => p.Udex).HasColumnName("UDEX");
             modelBuilder.Entity<OdinItem>().Property(p => p.UpcId).HasColumnName("UPC_ID");
+            modelBuilder.Entity<OdinItem>().Property(p => p.Warranty).HasColumnName("WARRANTY");
+            modelBuilder.Entity<OdinItem>().Property(p => p.WarrantyCheck).HasColumnName("WARRANTY_CHECK");
             modelBuilder.Entity<OdinItem>().Property(p => p.WebsitePrice).HasColumnName("WEBSITE_PRICE");
         }
 
@@ -2416,6 +2420,8 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Udex).HasColumnName("UDEX");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Upc).HasColumnName("UPC");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Username).HasColumnName("USERNAME");
+            modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Warranty).HasColumnName("WARRANTY");
+            modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.WarrantyCheck).HasColumnName("WARRANTY_CHECK");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.WebsitePrice).HasColumnName("WEBSITE_PRICE");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Weight).HasColumnName("WEIGHT");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Width).HasColumnName("WIDTH");

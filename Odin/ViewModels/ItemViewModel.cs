@@ -4741,6 +4741,144 @@ namespace Odin.ViewModels
         private string _upcToolTip = string.Empty;
 
         /// <summary>
+        ///     Gets or sets the Upc value
+        /// </summary>
+        public string Warranty
+        {
+            get
+            {
+                return this.ItemViewModelItem.Warranty;
+            }
+            set
+            {
+                if (this.ItemViewModelItem.Warranty != value)
+                {
+                    this.ItemViewModelItem.Warranty = value;
+                    this.WarrantyError = ItemService.ValidateWarranty(ItemViewModelItem);
+                    OnPropertyChanged("Warranty");
+                }
+            }
+        }
+        public string WarrantyBoxColor
+        {
+            get
+            {
+                return _warrantyBoxColor;
+            }
+            set
+            {
+                _warrantyBoxColor = value;
+                OnPropertyChanged("WarrantyBoxColor");
+            }
+        }
+        private string _warrantyBoxColor = "White";
+        public string WarrantyError
+        {
+            get
+            {
+                return _warrantyError;
+            }
+            set
+            {
+                _warrantyError = value;
+                if (value != "")
+                {
+                    WarrantyToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Warranty");
+                }
+                else
+                {
+                    WarrantyToolTip = ReturnToolTip("Warranty");
+                }
+                this.WarrantyBoxColor = (value == "") ? "White" : "Tomato";
+                this.TabColorItemInfo = CheckItemInfoTabColor();
+                OnPropertyChanged("WarrantyError");
+            }
+        }
+        private string _warrantyError = string.Empty;
+        public string WarrantyToolTip
+        {
+            get
+            {
+                return _warrantyToolTip;
+            }
+            set
+            {
+                _warrantyToolTip = value;
+                OnPropertyChanged("WarrantyToolTip");
+            }
+        }
+        private string _warrantyToolTip = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the WarrantyCheck value
+        /// </summary>
+        public bool WarrantyCheck
+        {
+            get
+            {
+                return DbUtil.ConvertToBool(this.ItemViewModelItem.WarrantyCheck);
+            }
+            set
+            {
+                if (this.ItemViewModelItem.WarrantyCheck != DbUtil.ConvertYN(value))
+                {
+                    this.ItemViewModelItem.WarrantyCheck = DbUtil.ConvertYN(value);
+                    this.WarrantyCheckError = ItemService.ValidateWarrantyCheck(ItemViewModelItem);
+                    OnPropertyChanged("WarrantyCheck");
+                }
+            }
+        }
+        public string WarrantyCheckBoxColor
+        {
+            get
+            {
+                return _warrantyCheckBoxColor;
+            }
+            set
+            {
+                _warrantyCheckBoxColor = value;
+                OnPropertyChanged("WarrantyCheckBoxColor");
+            }
+        }
+        private string _warrantyCheckBoxColor = "White";
+        public string WarrantyCheckError
+        {
+            get
+            {
+                return _warrantyCheckError;
+            }
+            set
+            {
+                _warrantyCheckError = value;
+                if (value != "")
+                {
+                    WarrantyCheckToolTip = "Error: " + value + "\n\n" + ReturnToolTip("WarrantyCheck");
+                }
+                else
+                {
+                    WarrantyCheckToolTip = ReturnToolTip("WarrantyCheck");
+                }
+                this.WarrantyCheckBoxColor = (value == "") ? "White" : "Tomato";
+                this.TabColorItemInfo = CheckItemInfoTabColor();
+                OnPropertyChanged("WarrantyCheckError");
+            }
+        }
+        private string _warrantyCheckError = string.Empty;
+        public string WarrantyCheckToolTip
+        {
+            get
+            {
+                return _warrantyCheckToolTip;
+            }
+            set
+            {
+                _warrantyCheckToolTip = value;
+                OnPropertyChanged("WarrantyCheckToolTip");
+            }
+        }
+        private string _warrantyCheckToolTip = string.Empty;
+
+        /// <summary>
         ///     Gets or sets the Weight value
         /// </summary>
         public string Weight
@@ -8709,6 +8847,8 @@ namespace Odin.ViewModels
             if (TerritoryBoxColor != "White") { return "Tomato"; }
             if (UdexBoxColor != "White") { return "Tomato"; }
             if (UpcBoxColor != "White") { return "Tomato"; }
+            if (WarrantyBoxColor != "White") { return "Tomato"; }
+            if (WarrantyCheckBoxColor != "White") { return "Tomato"; }
             if (WeightBoxColor != "White") { return "Tomato"; }
             if (WidthBoxColor != "White") { return "Tomato"; }
             return "White";
@@ -9055,6 +9195,8 @@ namespace Odin.ViewModels
             this.TitleToolTip = ReturnToolTip("Title");
             this.UdexToolTip = ReturnToolTip("Udex");
             this.UpcToolTip = ReturnToolTip("Upc");
+            this.WarrantyToolTip = ReturnToolTip("Warranty");
+            this.WarrantyCheckToolTip = ReturnToolTip("WarrantyCheck");
             this.WebsitePriceToolTip = ReturnToolTip("WebsitePrice");
             this.WeightToolTip = ReturnToolTip("Weight");
             this.WidthToolTip = ReturnToolTip("Width");
@@ -9174,6 +9316,8 @@ namespace Odin.ViewModels
             this.TitleError = ItemService.ValidateTitle(var.Title, var.HasWeb());
             this.UdexError = ItemService.ValidateUdex(var.Udex, var.ProdType);
             this.UpcError = ItemService.ValidateUpc(var.Upc, this.ItemId, this.Status, var.ListPriceUsd, var.ProductFormat, var.ProductGroup, var.ProductLine, var.Ean, var.Ecommerce_Upc, var.ProdType);
+            this.WarrantyError = ItemService.ValidateWarranty(var);
+            this.WarrantyCheckError = ItemService.ValidateWarrantyCheck(var);
             this.WebsitePriceError = ItemService.ValidateWebsitePrice(var.WebsitePrice, var.HasWeb());
             this.WeightError = ItemService.ValidateWeight(var.Weight, var.ProdType);
             this.WidthError = ItemService.ValidateWidth(var.Width, var.ProdType);

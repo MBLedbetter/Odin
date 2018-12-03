@@ -1624,6 +1624,40 @@ namespace Odin.ViewModels
         private string _upcVisibility = "auto";
 
         /// <summary>
+        ///     Gets or sets the WarrantyVisibility field
+        /// </summary>
+        public string WarrantyVisibility
+        {
+            get
+            {
+                return _warrantyVisibility;
+            }
+            set
+            {
+                _warrantyVisibility = value;
+                OnPropertyChanged("WarrantyVisibility");
+            }
+        }
+        private string _warrantyVisibility = "auto";
+
+        /// <summary>
+        ///     Gets or sets the WarrantyCheckVisibility field
+        /// </summary>
+        public string WarrantyCheckVisibility
+        {
+            get
+            {
+                return _warrantyCheckVisibility;
+            }
+            set
+            {
+                _warrantyCheckVisibility = value;
+                OnPropertyChanged("WarrantyCheckVisibility");
+            }
+        }
+        private string _warrantyCheckVisibility = "auto";
+
+        /// <summary>
         ///     Gets or sets the WebsitePriceVisibility field
         /// </summary>
         public string WebsitePriceVisibility

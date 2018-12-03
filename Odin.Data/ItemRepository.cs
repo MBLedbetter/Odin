@@ -836,7 +836,9 @@ namespace Odin.Data
                     ShortDesc = item.ShortDescription,
                     Size = item.Size,
                     Title = item.Title,
-                    Territory = ""
+                    Territory = "",
+                    Warranty = item.Warranty,
+                    WarrantyCheck = item.WarrantyCheck
                 });
             }
         }
@@ -1547,8 +1549,6 @@ namespace Odin.Data
         /// <returns></returns>
         public ItemObject RetrieveItem(string idInput, int row)
         {
-            // DateTime effdt = RetrieveEffdt(idInput);
-
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 if (context.OdinItem.Any(o => o.InvItemId == idInput.Trim()))
@@ -1674,6 +1674,8 @@ namespace Odin.Data
                         Title = (!string.IsNullOrEmpty(odinItem.Title)) ? odinItem.Title.Trim() : "",
                         Udex = (!string.IsNullOrEmpty(odinItem.Udex)) ? odinItem.Udex.Trim() : "",
                         Upc = (!string.IsNullOrEmpty(odinItem.UpcId)) ? odinItem.UpcId.Trim() : "",
+                        Warranty = (!string.IsNullOrEmpty(odinItem.Warranty)) ? odinItem.Warranty.Trim() : "",
+                        WarrantyCheck = (!string.IsNullOrEmpty(odinItem.WarrantyCheck)) ? odinItem.WarrantyCheck : "N",
                         WebsitePrice = (odinItem.WebsitePrice != null) ? DbUtil.ZeroTrim(odinItem.WebsitePrice.ToString(), 2) : "",
                         Weight = (odinItem.InvItemWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWeight), 1) : "",
                         Width = (odinItem.InvItemWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWidth), 1) : "",
@@ -2298,6 +2300,8 @@ namespace Odin.Data
                 itemWebInfo.ShortDesc = item.ShortDescription;
                 itemWebInfo.Size = item.Size;
                 itemWebInfo.Title = item.Title;
+                itemWebInfo.Warranty = item.Warranty;
+                itemWebInfo.WarrantyCheck = item.WarrantyCheck;
             }
             else
             {

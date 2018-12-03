@@ -2651,7 +2651,49 @@ namespace OdinModels
             }
         }
         private string _upc = string.Empty;
-        
+
+        /// <summary>
+        ///     Gets or sets the Warranty
+        /// </summary>
+        public string Warranty
+        {
+            get
+            {
+                return _warranty;
+            }
+            set
+            {
+                if (_warranty != value) { WarrantyUpdate = true; }
+                _warranty = value;
+                if (this.PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Warranty"));
+                }
+            }
+        }
+        private string _warranty = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the WarrantyCheck
+        /// </summary>
+        public string WarrantyCheck
+        {
+            get
+            {
+                return _warrantyCheck;
+            }
+            set
+            {
+                if (_warrantyCheck != value) { WarrantyCheckUpdate = true; }
+                _warrantyCheck = value;
+                if (this.PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("WarrantyCheck"));
+                }
+            }
+        }
+        private string _warrantyCheck = string.Empty;
+
         /// <summary>
         ///     Gets or sets the WebsitePrice
         /// </summary>
@@ -2918,6 +2960,7 @@ namespace OdinModels
         ///     Category3Update update flag
         /// </summary>
         public bool Category3Update = false;
+
         /// <summary>
         ///     ColorUpdate update flag
         /// </summary>
@@ -3422,10 +3465,12 @@ namespace OdinModels
         ///     TerritoryUpdate update flag
         /// </summary>
         public bool TerritoryUpdate = false;
+
         /// <summary>
         ///     TitleUpdate update flag
         /// </summary>
         public bool TitleUpdate = false;
+
         /// <summary>
         ///     UdexUpdate update flag
         /// </summary>
@@ -3440,6 +3485,16 @@ namespace OdinModels
         ///     WebsitePriceUpdate update flag
         /// </summary>
         public bool WebsitePriceUpdate = false;
+
+        /// <summary>
+        ///     WarrantyUpdate update flag
+        /// </summary>
+        public bool WarrantyUpdate = false;
+
+        /// <summary>
+        ///     WarrantyCheckUpdate update flag
+        /// </summary>
+        public bool WarrantyCheckUpdate = false;
 
         /// <summary>
         ///     WeightUpdate update flag
@@ -3640,6 +3695,8 @@ namespace OdinModels
             this.TitleUpdate = false;
             this.UdexUpdate = false;
             this.UpcUpdate = false;
+            this.WarrantyUpdate = false;
+            this.WarrantyCheckUpdate = false;
             this.WebsitePriceUpdate = false;
             this.WeightUpdate = false;
             this.WidthUpdate = false;
@@ -3832,6 +3889,8 @@ namespace OdinModels
                 this.Title = item.Title;
                 this.Udex = item.Udex;
                 this.Upc = item.Upc;
+                this.Warranty = item.Warranty;
+                this.WarrantyCheck = item.WarrantyCheck;
                 this.WebsitePrice = item.WebsitePrice;
                 this.Weight = item.Weight;
                 this.Width = item.Width;
@@ -3967,6 +4026,8 @@ namespace OdinModels
             if (TitleUpdate == true) { return true; }
             if (UdexUpdate == true) { return true; }
             if (UpcUpdate == true) { return true; }
+            if (WarrantyUpdate == true) { return true; }
+            if (WarrantyCheckUpdate == true) { return true; }
             if (WebsitePriceUpdate == true) { return true; }
             if (WeightUpdate == true) { return true; }
             if (WidthUpdate == true) { return true; }
@@ -4076,6 +4137,11 @@ namespace OdinModels
             return false;
         }
 
+        /// <summary>
+        ///     Checks if any "Sell On" flags have been set and returns true if any
+        ///     have been flagged
+        /// </summary>
+        /// <returns></returns>
         public bool HasEcommerce()
         {
             if (this.SellOnAllPosters == "Y") { return true; }
@@ -4205,6 +4271,8 @@ namespace OdinModels
             if (ProductQtyUpdate == true) { return true; }
             if (SizeUpdate == true) { return true; }
             if (InStockDateUpdate == true) { return true; }
+            if (WarrantyUpdate == true) { return true; }
+            if (WarrantyCheckUpdate == true) { return true; }
             return false;
         }
 
@@ -4326,7 +4394,7 @@ namespace OdinModels
         /// <summary>
         ///     Set SellOn values to N for any empty fields and sets PsStatus to I if empty
         /// </summary>
-        public void UpdateSellOnValues()
+        public void UpdateFlags()
         {
             if (string.IsNullOrEmpty(this.PsStatus)) { this.PsStatus = "I"; }
             if (string.IsNullOrEmpty(this.SellOnAllPosters)) { this.SellOnAllPosters="N"; }
@@ -4340,6 +4408,7 @@ namespace OdinModels
             if (string.IsNullOrEmpty(this.SellOnWalmart)) { this.SellOnWalmart = "N"; }
             if (string.IsNullOrEmpty(this.SellOnWayfair)) { this.SellOnWayfair = "N"; }
             if (string.IsNullOrEmpty(this.PrintOnDemand)) { this.PrintOnDemand = "N"; }
+            if (string.IsNullOrEmpty(this.WarrantyCheck)) { this.WarrantyCheck = "N"; }
         }
 
         #endregion // Update Check Methods

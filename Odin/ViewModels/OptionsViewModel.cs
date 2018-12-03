@@ -1461,6 +1461,32 @@ namespace Odin.ViewModels
             }
         }
 
+        public bool WarrantyVisibility
+        {
+            get
+            {
+                return UserOptions.WarrantyVisibility;
+            }
+            set
+            {
+                UserOptions.WarrantyVisibility = value;
+                OnPropertyChanged("WarrantyVisibility");
+            }
+        }
+
+        public bool WarrantyCheckVisibility
+        {
+            get
+            {
+                return UserOptions.WarrantyCheckVisibility;
+            }
+            set
+            {
+                UserOptions.WarrantyCheckVisibility = value;
+                OnPropertyChanged("WarrantyCheckVisibility");
+            }
+        }
+
         public bool WeightVisibility
         {
             get
@@ -1930,6 +1956,8 @@ namespace Odin.ViewModels
             if (UserOptions.Ecommerce_SearchTermsVisibility == false) { return false; }
             if (UserOptions.Ecommerce_SizeVisibility == false) { return false; }
             if (UserOptions.Ecommerce_UpcVisibility == false) { return false; }
+            if (UserOptions.WarrantyVisibility == false) { return false; }
+            if (UserOptions.WarrantyCheckVisibility == false) { return false; }
             return true;
         }
 
@@ -2057,7 +2085,11 @@ namespace Odin.ViewModels
             this.SellOnVisibility = CheckSellOnFieldVisibility();
             InitiateFlag = false;
         }
-        
+
+        /// <summary>
+        ///     Flags all the b2b values to true or false
+        /// </summary>
+        /// <param name="value"></param>
         public void SetB2BFieldVisibility(bool value)
         {
             if (value)
@@ -2093,6 +2125,10 @@ namespace Odin.ViewModels
             }
         }
 
+        /// <summary>
+        ///     Flags all the ecommerce values to true or false
+        /// </summary>
+        /// <param name="value"></param>
         public void SetEcommerceFieldVisibility(bool value)
         {
             if (value)
@@ -2128,6 +2164,8 @@ namespace Odin.ViewModels
                 Ecommerce_SearchTermsVisibility = true;
                 Ecommerce_SizeVisibility = true;
                 Ecommerce_UpcVisibility = true;
+                WarrantyVisibility = true;
+                WarrantyCheckVisibility = true;
             }
             else
             {
@@ -2162,9 +2200,15 @@ namespace Odin.ViewModels
                 Ecommerce_SearchTermsVisibility = false;
                 Ecommerce_SizeVisibility = false;
                 Ecommerce_UpcVisibility = false;
+                WarrantyVisibility = false;
+                WarrantyCheckVisibility = false;
             }
         }
-        
+
+        /// <summary>
+        ///     Flags all the image path values to true or false
+        /// </summary>
+        /// <param name="value"></param>
         public void SetImagePathVisibility(bool value)
         {
             if(value)
@@ -2185,6 +2229,10 @@ namespace Odin.ViewModels
             }
         }
 
+        /// <summary>
+        ///     Flags all the peoplesoft values to true or false
+        /// </summary>
+        /// <param name="value"></param>
         public void SetPeoplesoftFieldVisibility(bool value)
         {
             if (value)
@@ -2307,6 +2355,10 @@ namespace Odin.ViewModels
             }
         }
 
+        /// <summary>
+        ///     Flags all the sell on values to true or false
+        /// </summary>
+        /// <param name="value"></param>
         public void SetSellOnFieldVisibility(bool value)
         {
             if (value)

@@ -1323,6 +1323,32 @@ namespace OdinModels
         }
         private static bool _upcVisibility = true;
 
+        public static bool WarrantyVisibility
+        {
+            get
+            {
+                return _warrantyVisibility;
+            }
+            set
+            {
+                _warrantyVisibility = value;
+            }
+        }
+        private static bool _warrantyVisibility = true;
+
+        public static bool WarrantyCheckVisibility
+        {
+            get
+            {
+                return _warrantyCheckVisibility;
+            }
+            set
+            {
+                _warrantyCheckVisibility = value;
+            }
+        }
+        private static bool _warrantyCheckVisibility = true;
+
         public static bool WebsitePriceVisibility
         {
             get

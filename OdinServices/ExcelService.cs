@@ -1774,6 +1774,20 @@ namespace OdinServices
                             row++;
                         }
                         break;
+                    case "Warranty":
+                        foreach (ItemObject item in items)
+                        {
+                            WriteCell(row, columnCount, item.Warranty);
+                            row++;
+                        }
+                        break;
+                    case "Warranty Check":
+                        foreach (ItemObject item in items)
+                        {
+                            WriteCell(row, columnCount, item.WarrantyCheck);
+                            row++;
+                        }
+                        break;
                     case "Website Price":
                         foreach (ItemObject item in items)
                         {
@@ -2185,7 +2199,14 @@ namespace OdinServices
                     newString += ","; /* color */
                     newString += ","; /* cost */
                     newString += ","; /* country_of_manufacture */
-                    newString += "\"" + newdate + "\","; /* created_at */
+                    if (requestType == "Add")
+                    {
+                        newString += "\"" + newdate + "\","; /* created_at */
+                    }
+                    else
+                    {
+                        newString += ","; /* created_at */
+                    }
                     newString += "\"0\","; /* has_options */
                     newString += "\"" + item.Height + "\","; /* height */
                     newString += "\"" + DbUtil.OrderLanguage(item.Language) + "\","; /* language */
@@ -2205,13 +2226,14 @@ namespace OdinServices
                     {
                         newString += "\"" + DateTime.Today.ToString() + "\","; /* date_added */
                         newString += "\"" + DateTime.Today.ToString() + "\","; /* news_from_date */
+                        newString += "\"" + ItemService.RetrieveNewToDate("") + "\","; /* news_to_date */
                     }
                     else
                     {
                         newString += ","; /* date_added */
                         newString += ","; /* news_from_date */
+                        newString += ","; /* news_to_date */
                     }
-                    newString += "\"" + ItemService.RetrieveNewToDate("") + "\","; /* news_to_date */
                     newString += "\"Product Info Column\","; /* options_container */
                     newString += "\"" + ItemService.ReturnItemPrice(USDPrice.Trim(), item.ProductQty) + "\","; /* price */
                     newString += "\"" + ItemService.ReturnItemPrice(CADPrice.Trim(), item.ProductQty) + "\","; /* pricecan */

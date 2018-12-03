@@ -166,6 +166,8 @@ namespace OdinServices
             public static string Title = "Title";
             public static string Udex = "Udex";
             public static string Upc = "Upc";
+            public static string Warranty = "Warranty";
+            public static string WarrantyCheck = "WarrantyCheck";
             public static string WebsitePrice = "Website Price";
             public static string Weight = "Weight";
             public static string Width = "Width";
@@ -622,6 +624,8 @@ namespace OdinServices
             if (item.Title.Trim() == "[CLEAR]"){ item.Title = ""; }
             if (item.Udex.Trim() == "[CLEAR]") { item.Udex = ""; }
             if (item.Upc.Trim() == "[CLEAR]") { item.Upc = ""; }
+            if (item.Warranty.Trim() == "[CLEAR]") { item.Warranty = ""; }
+            if (item.WarrantyCheck.Trim() == "[CLEAR]") { item.WarrantyCheck = ""; }
             if (item.WebsitePrice.Trim() == "[CLEAR]") { item.WebsitePrice = ""; }
             if (item.Weight.Trim() == "[CLEAR]") { item.Weight = ""; }
             if (item.Width.Trim() == "[CLEAR]") { item.Width = ""; }
@@ -764,12 +768,14 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.Title)) && (item.Title.Trim() != returnItem.Title.Trim())) { returnItem.Title = item.Title; }
             if ((!string.IsNullOrEmpty(item.Udex)) && (item.Udex.Trim() != returnItem.Udex.Trim())) { returnItem.Udex = item.Udex; }
             if ((!string.IsNullOrEmpty(item.Upc)) && (item.Upc.Trim() != returnItem.Upc.Trim())) { returnItem.Upc = item.Upc; }
+            if ((!string.IsNullOrEmpty(item.Warranty)) && (item.Warranty.Trim() != returnItem.Warranty.Trim())) { returnItem.Warranty = item.Upc; }
+            if ((!string.IsNullOrEmpty(item.WarrantyCheck)) && (item.WarrantyCheck.Trim() != returnItem.WarrantyCheck.Trim())) { returnItem.WarrantyCheck = item.WarrantyCheck; }
             if ((!string.IsNullOrEmpty(item.WebsitePrice)) && (item.WebsitePrice.Trim() != returnItem.WebsitePrice.Trim())) { returnItem.WebsitePrice = item.WebsitePrice; }
             if ((!string.IsNullOrEmpty(item.Weight)) && (item.Weight.Trim() != returnItem.Weight.Trim())) { returnItem.Weight = item.Weight; }
             if ((!string.IsNullOrEmpty(item.Width)) && (item.Width.Trim() != returnItem.Width.Trim())) { returnItem.Width = item.Width; }
             
             returnItem = ClearFields(returnItem);
-            returnItem.UpdateSellOnValues();
+            returnItem.UpdateFlags();
             return returnItem;
         }
         
@@ -1100,6 +1106,8 @@ namespace OdinServices
                     Title = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Title).Trim(),
                     Udex = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Udex).Trim(),
                     Upc = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Upc).Trim(),
+                    Warranty = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Warranty).Trim(),
+                    WarrantyCheck = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.WarrantyCheck).Trim(),
                     WebsitePrice = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.WebsitePrice), 2),
                     Weight = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Weight, WorksheetColumnHeaders.ItemWeight), 1),
                     Width = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Width, WorksheetColumnHeaders.ItemWidth), 1)
@@ -1112,7 +1120,7 @@ namespace OdinServices
                     {
                         item = SetTemplateValues(TemplateName,item);
                     }
-                    item.UpdateSellOnValues();
+                    item.UpdateFlags();
                 }
                 item.Ecommerce_CountryofOrigin = RetrieveFullCountryOfOrigin(item.CountryOfOrigin);
 
@@ -1823,7 +1831,7 @@ namespace OdinServices
         public ItemObject RetrieveItem(string itemId, int count)
         {
             ItemObject item = ItemRepository.RetrieveItem(itemId, count);
-            item.UpdateSellOnValues();
+            item.UpdateFlags();
             return item;
         }
 
@@ -2348,6 +2356,12 @@ namespace OdinServices
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             // Upc //
             error = ValidateUpc(var.Upc,var.ItemId, var.Status, var.ListPriceUsd, var.ProductFormat, var.ProductGroup, var.ProductLine, var.Ean, var.Ecommerce_Upc, var.ProdType);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // Warranty //
+            error = ValidateWarranty(var);
+            if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
+            // WarrantyCheck //
+            error = ValidateWarrantyCheck(var);
             if (error != "") { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, error, "")); }
             // WebsitePrice //
             error = ValidateWebsitePrice(var.WebsitePrice, var.HasWeb());
@@ -4918,7 +4932,33 @@ namespace OdinServices
             }
             return "";
         }
-        
+
+        /// <summary>
+        ///     Validate item warranty field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <returns></returns>
+        public string ValidateWarranty(ItemObject item)
+        {
+            if (item.Warranty.Length > 1000)
+            {
+                return "Warranty " + OdinServices.Properties.Resources.Error_LengthMax + "1000 characters.";
+            }
+            return "";
+        }
+
+        /// <summary>
+        ///     Validate item warranty field. Returns error message string or "" if no error exists.
+        /// </summary>
+        /// <returns></returns>
+        public string ValidateWarrantyCheck(ItemObject item)
+        {
+            if ((item.WarrantyCheck != "Y") && (item.WarrantyCheck != "N"))
+            {
+                return "Warranty Check " + OdinServices.Properties.Resources.Error_YorN;
+            }
+            return "";
+        }
+
         /// <summary>
         ///     Validate item website price field. Returns error message string or "" if no error exists.
         /// </summary>
@@ -5014,7 +5054,6 @@ namespace OdinServices
             return "";
         }
         
-
         #endregion // Validation Methods
         
         #endregion // Public Methods
