@@ -32,13 +32,13 @@ namespace OdinTests.BusinessLogicLayer.Models
             #region Act
 
 
-            item.Ecommerce_Bullet1 = "New Value";
-            item2.Ecommerce_ItemWidth = "11";
-            item3.Ecommerce_Msrp = "0.99";
-            item4.Ecommerce_ImagePath2 = "img links";
-            item6.Ecommerce_Size = "Boardom";
+            item.EcommerceBullet1 = "New Value";
+            item2.EcommerceItemWidth = "11";
+            item3.EcommerceMsrp = "0.99";
+            item4.EcommerceImagePath2 = "img links";
+            item6.EcommerceSize = "Boardom";
             item7.PricingGroup = "Elephant";
-            item8.Ecommerce_Asin = "0009876";
+            item8.EcommerceAsin = "0009876";
 
             #endregion // Act
 
@@ -71,39 +71,39 @@ namespace OdinTests.BusinessLogicLayer.Models
             ItemObject sellOnTrendsItem = new ItemObject();
             ItemObject sellOnWalmartItem = new ItemObject();
             ItemObject sellOnWayfairItem = new ItemObject();
-            ItemObject ecommerce_AsinItem = new ItemObject();
-            ItemObject ecommerce_Bullet1Item = new ItemObject();
-            ItemObject ecommerce_Bullet2Item = new ItemObject();
-            ItemObject ecommerce_Bullet3Item = new ItemObject();
-            ItemObject ecommerce_Bullet4Item = new ItemObject();
-            ItemObject ecommerce_Bullet5Item = new ItemObject();
-            ItemObject ecommerce_ComponentsItem = new ItemObject();
-            ItemObject ecommerce_CostItem = new ItemObject();
-            ItemObject ecommerce_ExternalIDItem = new ItemObject();
-            ItemObject ecommerce_ExternalIdTypeItem = new ItemObject();
-            ItemObject ecommerce_ImagePath1Item = new ItemObject();
-            ItemObject ecommerce_ImagePath2Item = new ItemObject();
-            ItemObject ecommerce_ImagePath3Item = new ItemObject();
-            ItemObject ecommerce_ImagePath4Item = new ItemObject();
-            ItemObject ecommerce_ImagePath5Item = new ItemObject();
-            ItemObject ecommerce_ItemHeightItem = new ItemObject();
-            ItemObject ecommerce_ItemLengthItem = new ItemObject();
-            ItemObject ecommerce_ItemNameItem = new ItemObject();
-            ItemObject ecommerce_ItemWeightItem = new ItemObject();
-            ItemObject ecommerce_ItemWidthItem = new ItemObject();
-            ItemObject ecommerce_ModelNameItem = new ItemObject();
-            ItemObject ecommerce_PackageHeightItem = new ItemObject();
-            ItemObject ecommerce_PackageLengthItem = new ItemObject();
-            ItemObject ecommerce_PackageWeightItem = new ItemObject();
-            ItemObject ecommerce_PackageWidthItem = new ItemObject();
-            ItemObject ecommerce_PageQtyItem = new ItemObject();
-            ItemObject ecommerce_ProductCategoryItem = new ItemObject();
-            ItemObject ecommerce_ProductDescriptionItem = new ItemObject();
-            ItemObject ecommerce_ProductSubcategoryItem = new ItemObject();
-            ItemObject ecommerce_ManufacturerNameItem = new ItemObject();
-            ItemObject ecommerce_MsrpItem = new ItemObject();
-            ItemObject ecommerce_SearchTermsItem = new ItemObject();
-            ItemObject ecommerce_SizeItem = new ItemObject();
+            ItemObject EcommerceAsinItem = new ItemObject();
+            ItemObject EcommerceBullet1Item = new ItemObject();
+            ItemObject EcommerceBullet2Item = new ItemObject();
+            ItemObject EcommerceBullet3Item = new ItemObject();
+            ItemObject EcommerceBullet4Item = new ItemObject();
+            ItemObject EcommerceBullet5Item = new ItemObject();
+            ItemObject EcommerceComponentsItem = new ItemObject();
+            ItemObject EcommerceCostItem = new ItemObject();
+            ItemObject EcommerceExternalIDItem = new ItemObject();
+            ItemObject EcommerceExternalIdTypeItem = new ItemObject();
+            ItemObject EcommerceImagePath1Item = new ItemObject();
+            ItemObject EcommerceImagePath2Item = new ItemObject();
+            ItemObject EcommerceImagePath3Item = new ItemObject();
+            ItemObject EcommerceImagePath4Item = new ItemObject();
+            ItemObject EcommerceImagePath5Item = new ItemObject();
+            ItemObject EcommerceItemHeightItem = new ItemObject();
+            ItemObject EcommerceItemLengthItem = new ItemObject();
+            ItemObject EcommerceItemNameItem = new ItemObject();
+            ItemObject EcommerceItemWeightItem = new ItemObject();
+            ItemObject EcommerceItemWidthItem = new ItemObject();
+            ItemObject EcommerceModelNameItem = new ItemObject();
+            ItemObject EcommercePackageHeightItem = new ItemObject();
+            ItemObject EcommercePackageLengthItem = new ItemObject();
+            ItemObject EcommercePackageWeightItem = new ItemObject();
+            ItemObject EcommercePackageWidthItem = new ItemObject();
+            ItemObject EcommercePageQtyItem = new ItemObject();
+            ItemObject EcommerceProductCategoryItem = new ItemObject();
+            ItemObject EcommerceProductDescriptionItem = new ItemObject();
+            ItemObject EcommerceProductSubcategoryItem = new ItemObject();
+            ItemObject EcommerceManufacturerNameItem = new ItemObject();
+            ItemObject EcommerceMsrpItem = new ItemObject();
+            ItemObject EcommerceSearchTermsItem = new ItemObject();
+            ItemObject EcommerceSizeItem = new ItemObject();
             ItemObject accountingGroupItem = new ItemObject();
             ItemObject casepackHeightItem = new ItemObject();
             ItemObject casepackLengthItem = new ItemObject();
@@ -194,39 +194,39 @@ namespace OdinTests.BusinessLogicLayer.Models
             sellOnTrendsItem.SellOnTrends = "1";
             sellOnWalmartItem.SellOnWalmart = "1";
             sellOnWayfairItem.SellOnWayfair = "1";
-            ecommerce_AsinItem.Ecommerce_Asin = "1";
-            ecommerce_Bullet1Item.Ecommerce_Bullet1 = "1";
-            ecommerce_Bullet2Item.Ecommerce_Bullet2 = "1";
-            ecommerce_Bullet3Item.Ecommerce_Bullet3 = "1";
-            ecommerce_Bullet4Item.Ecommerce_Bullet4 = "1";
-            ecommerce_Bullet5Item.Ecommerce_Bullet5 = "1";
-            ecommerce_ComponentsItem.Ecommerce_Components = "1";
-            ecommerce_CostItem.Ecommerce_Cost = "1";
-            ecommerce_ExternalIDItem.Ecommerce_ExternalId = "1";
-            ecommerce_ExternalIdTypeItem.Ecommerce_ExternalIdType = "1";
-            ecommerce_ImagePath1Item.Ecommerce_ImagePath1 = "1";
-            ecommerce_ImagePath2Item.Ecommerce_ImagePath2 = "1";
-            ecommerce_ImagePath3Item.Ecommerce_ImagePath3 = "1";
-            ecommerce_ImagePath4Item.Ecommerce_ImagePath4 = "1";
-            ecommerce_ImagePath5Item.Ecommerce_ImagePath5 = "1";
-            ecommerce_ItemHeightItem.Ecommerce_ItemHeight = "1";
-            ecommerce_ItemLengthItem.Ecommerce_ItemLength = "1";
-            ecommerce_ItemNameItem.Ecommerce_ItemName = "1";
-            ecommerce_ItemWeightItem.Ecommerce_ItemWeight = "1";
-            ecommerce_ItemWidthItem.Ecommerce_ItemWidth = "1";
-            ecommerce_ModelNameItem.Ecommerce_ModelName = "1";
-            ecommerce_PackageHeightItem.Ecommerce_PackageHeight = "1";
-            ecommerce_PackageLengthItem.Ecommerce_PackageLength = "1";
-            ecommerce_PackageWeightItem.Ecommerce_PackageWeight = "1";
-            ecommerce_PackageWidthItem.Ecommerce_PackageWidth = "1";
-            ecommerce_PageQtyItem.Ecommerce_PageQty = "1";
-            ecommerce_ProductCategoryItem.Ecommerce_ProductCategory = "1";
-            ecommerce_ProductDescriptionItem.Ecommerce_ProductDescription = "1";
-            ecommerce_ProductSubcategoryItem.Ecommerce_ProductSubcategory = "1";
-            ecommerce_ManufacturerNameItem.Ecommerce_ManufacturerName = "1";
-            ecommerce_MsrpItem.Ecommerce_Msrp = "1";
-            ecommerce_SearchTermsItem.Ecommerce_GenericKeywords = "1";
-            ecommerce_SizeItem.Ecommerce_Size = "1";
+            EcommerceAsinItem.EcommerceAsin = "1";
+            EcommerceBullet1Item.EcommerceBullet1 = "1";
+            EcommerceBullet2Item.EcommerceBullet2 = "1";
+            EcommerceBullet3Item.EcommerceBullet3 = "1";
+            EcommerceBullet4Item.EcommerceBullet4 = "1";
+            EcommerceBullet5Item.EcommerceBullet5 = "1";
+            EcommerceComponentsItem.EcommerceComponents = "1";
+            EcommerceCostItem.EcommerceCost = "1";
+            EcommerceExternalIDItem.EcommerceExternalId = "1";
+            EcommerceExternalIdTypeItem.EcommerceExternalIdType = "1";
+            EcommerceImagePath1Item.EcommerceImagePath1 = "1";
+            EcommerceImagePath2Item.EcommerceImagePath2 = "1";
+            EcommerceImagePath3Item.EcommerceImagePath3 = "1";
+            EcommerceImagePath4Item.EcommerceImagePath4 = "1";
+            EcommerceImagePath5Item.EcommerceImagePath5 = "1";
+            EcommerceItemHeightItem.EcommerceItemHeight = "1";
+            EcommerceItemLengthItem.EcommerceItemLength = "1";
+            EcommerceItemNameItem.EcommerceItemName = "1";
+            EcommerceItemWeightItem.EcommerceItemWeight = "1";
+            EcommerceItemWidthItem.EcommerceItemWidth = "1";
+            EcommerceModelNameItem.EcommerceModelName = "1";
+            EcommercePackageHeightItem.EcommercePackageHeight = "1";
+            EcommercePackageLengthItem.EcommercePackageLength = "1";
+            EcommercePackageWeightItem.EcommercePackageWeight = "1";
+            EcommercePackageWidthItem.EcommercePackageWidth = "1";
+            EcommercePageQtyItem.EcommercePageQty = "1";
+            EcommerceProductCategoryItem.EcommerceProductCategory = "1";
+            EcommerceProductDescriptionItem.EcommerceProductDescription = "1";
+            EcommerceProductSubcategoryItem.EcommerceProductSubcategory = "1";
+            EcommerceManufacturerNameItem.EcommerceManufacturerName = "1";
+            EcommerceMsrpItem.EcommerceMsrp = "1";
+            EcommerceSearchTermsItem.EcommerceGenericKeywords = "1";
+            EcommerceSizeItem.EcommerceSize = "1";
             accountingGroupItem.AccountingGroup = "1";
             casepackHeightItem.CasepackHeight = "1";
             casepackLengthItem.CasepackLength = "1";
@@ -335,39 +335,39 @@ namespace OdinTests.BusinessLogicLayer.Models
 
 
 
-            Assert.IsTrue(ecommerce_AsinItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_Bullet1Item.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_Bullet2Item.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_Bullet3Item.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_Bullet4Item.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_Bullet5Item.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_ComponentsItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_CostItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_ExternalIDItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_ExternalIdTypeItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_ImagePath1Item.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_ImagePath2Item.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_ImagePath3Item.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_ImagePath4Item.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_ImagePath5Item.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_ItemHeightItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_ItemLengthItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_ItemNameItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_ItemWeightItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_ItemWidthItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_ModelNameItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_PackageHeightItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_PackageLengthItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_PackageWeightItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_PackageWidthItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_PageQtyItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_ProductCategoryItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_ProductDescriptionItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_ProductSubcategoryItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_ManufacturerNameItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_MsrpItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_SearchTermsItem.EcommerceValuesUpdate());
-            Assert.IsTrue(ecommerce_SizeItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceAsinItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceBullet1Item.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceBullet2Item.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceBullet3Item.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceBullet4Item.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceBullet5Item.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceComponentsItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceCostItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceExternalIDItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceExternalIdTypeItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceImagePath1Item.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceImagePath2Item.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceImagePath3Item.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceImagePath4Item.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceImagePath5Item.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceItemHeightItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceItemLengthItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceItemNameItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceItemWeightItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceItemWidthItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceModelNameItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommercePackageHeightItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommercePackageLengthItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommercePackageWeightItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommercePackageWidthItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommercePageQtyItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceProductCategoryItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceProductDescriptionItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceProductSubcategoryItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceManufacturerNameItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceMsrpItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceSearchTermsItem.EcommerceValuesUpdate());
+            Assert.IsTrue(EcommerceSizeItem.EcommerceValuesUpdate());
             Assert.IsTrue(accountingGroupItem.ProdPgrpLnkUpdate());
             Assert.IsTrue(casepackHeightItem.ItemAttribExUpdate());
             Assert.IsTrue(casepackLengthItem.ItemAttribExUpdate());
@@ -700,36 +700,36 @@ namespace OdinTests.BusinessLogicLayer.Models
                 DirectImport = "directImport",
                 Duty = "duty",
                 Ean = "ean",
-                Ecommerce_Asin = "ecommerce_Asin",
-                Ecommerce_Bullet1 = "ecommerce_Bullet1",
-                Ecommerce_Bullet2 = "ecommerce_Bullet2",
-                Ecommerce_Bullet3 = "ecommerce_Bullet3",
-                Ecommerce_Bullet4 = "ecommerce_Bullet4",
-                Ecommerce_Bullet5 = "ecommerce_Bullet5",
-                Ecommerce_Components = "ecommerce_Components",
-                Ecommerce_Cost = "ecommerce_Cost",
-                Ecommerce_ExternalId = "ecommerce_ExternalID",
-                Ecommerce_ExternalIdType = "ecommerce_ExternalIdType",
-                Ecommerce_GenericKeywords = "ecommerce_GenericeKeywords",
-                Ecommerce_ItemHeight = "ecommerce_ItemHeight",
-                Ecommerce_ItemLength = "ecommerce_ItemLength",
-                Ecommerce_ItemName = "ecommerce_ItemName",
-                Ecommerce_ItemWeight = "ecommerce_ItemWeight",
-                Ecommerce_ItemWidth = "ecommerce_ItemWidth",
-                Ecommerce_ModelName = "ecommerce_ModelName",
-                Ecommerce_PackageHeight = "ecommerce_PackageHeight",
-                Ecommerce_PackageLength = "ecommerce_PackageLength",
-                Ecommerce_PackageWeight = "ecommerce_PackageWeight",
-                Ecommerce_PackageWidth = "ecommerce_PackageWidth",
-                Ecommerce_PageQty = "ecommerce_PageQty",
-                Ecommerce_ProductCategory = "ecommerce_ProductCategory",
-                Ecommerce_ProductDescription = "ecommerce_ProductDescription",
-                Ecommerce_ProductSubcategory = "ecommerce_ProductSubcategory",
-                Ecommerce_ManufacturerName = "ecommerce_ManufacturerName",
-                Ecommerce_Msrp = "ecommerce_Msrp",
-                Ecommerce_Size = "ecommerce_SearchTerms",
-                Ecommerce_SubjectKeywords = "ecommerce_Size",
-                Ecommerce_Upc = "ecommerceUpc",
+                EcommerceAsin = "EcommerceAsin",
+                EcommerceBullet1 = "EcommerceBullet1",
+                EcommerceBullet2 = "EcommerceBullet2",
+                EcommerceBullet3 = "EcommerceBullet3",
+                EcommerceBullet4 = "EcommerceBullet4",
+                EcommerceBullet5 = "EcommerceBullet5",
+                EcommerceComponents = "EcommerceComponents",
+                EcommerceCost = "EcommerceCost",
+                EcommerceExternalId = "EcommerceExternalID",
+                EcommerceExternalIdType = "EcommerceExternalIdType",
+                EcommerceGenericKeywords = "EcommerceGenericeKeywords",
+                EcommerceItemHeight = "EcommerceItemHeight",
+                EcommerceItemLength = "EcommerceItemLength",
+                EcommerceItemName = "EcommerceItemName",
+                EcommerceItemWeight = "EcommerceItemWeight",
+                EcommerceItemWidth = "EcommerceItemWidth",
+                EcommerceModelName = "EcommerceModelName",
+                EcommercePackageHeight = "EcommercePackageHeight",
+                EcommercePackageLength = "EcommercePackageLength",
+                EcommercePackageWeight = "EcommercePackageWeight",
+                EcommercePackageWidth = "EcommercePackageWidth",
+                EcommercePageQty = "EcommercePageQty",
+                EcommerceProductCategory = "EcommerceProductCategory",
+                EcommerceProductDescription = "EcommerceProductDescription",
+                EcommerceProductSubcategory = "EcommerceProductSubcategory",
+                EcommerceManufacturerName = "EcommerceManufacturerName",
+                EcommerceMsrp = "EcommerceMsrp",
+                EcommerceSize = "EcommerceSearchTerms",
+                EcommerceSubjectKeywords = "EcommerceSize",
+                EcommerceUpc = "ecommerceUpc",
                 Gpc = "gpc",
                 Height = "height",
                 ImagePath = "imagePath",
@@ -795,39 +795,39 @@ namespace OdinTests.BusinessLogicLayer.Models
 
             #region Act
 
-            item.Ecommerce_Asin = item.Ecommerce_Asin;
-            item.Ecommerce_Bullet1 = item.Ecommerce_Bullet1;
-            item.Ecommerce_Bullet2 = item.Ecommerce_Bullet2;
-            item.Ecommerce_Bullet3 = item.Ecommerce_Bullet3;
-            item.Ecommerce_Bullet4 = item.Ecommerce_Bullet4;
-            item.Ecommerce_Bullet5 = item.Ecommerce_Bullet5;
-            item.Ecommerce_Components = item.Ecommerce_Components;
-            item.Ecommerce_Cost = item.Ecommerce_Cost;
-            item.Ecommerce_ExternalId = item.Ecommerce_ExternalId;
-            item.Ecommerce_ExternalIdType = item.Ecommerce_ExternalIdType;
-            item.Ecommerce_ImagePath1 = item.Ecommerce_ImagePath1;
-            item.Ecommerce_ImagePath2 = item.Ecommerce_ImagePath2;
-            item.Ecommerce_ImagePath3 = item.Ecommerce_ImagePath3;
-            item.Ecommerce_ImagePath4 = item.Ecommerce_ImagePath4;
-            item.Ecommerce_ImagePath5 = item.Ecommerce_ImagePath5;
-            item.Ecommerce_ItemHeight = item.Ecommerce_ItemHeight;
-            item.Ecommerce_ItemLength = item.Ecommerce_ItemLength;
-            item.Ecommerce_ItemName = item.Ecommerce_ItemName;
-            item.Ecommerce_ItemWeight = item.Ecommerce_ItemWeight;
-            item.Ecommerce_ItemWidth = item.Ecommerce_ItemWidth;
-            item.Ecommerce_ModelName = item.Ecommerce_ModelName;
-            item.Ecommerce_PackageHeight = item.Ecommerce_PackageHeight;
-            item.Ecommerce_PackageLength = item.Ecommerce_PackageLength;
-            item.Ecommerce_PackageWeight = item.Ecommerce_PackageWeight;
-            item.Ecommerce_PackageWidth = item.Ecommerce_PackageWidth;
-            item.Ecommerce_PageQty = item.Ecommerce_PageQty;
-            item.Ecommerce_ProductCategory = item.Ecommerce_ProductCategory;
-            item.Ecommerce_ProductDescription = item.Ecommerce_ProductDescription;
-            item.Ecommerce_ProductSubcategory = item.Ecommerce_ProductSubcategory;
-            item.Ecommerce_ManufacturerName = item.Ecommerce_ManufacturerName;
-            item.Ecommerce_Msrp = item.Ecommerce_Msrp;
-            item.Ecommerce_GenericKeywords = item.Ecommerce_GenericKeywords;
-            item.Ecommerce_Size = item.Ecommerce_Size;
+            item.EcommerceAsin = item.EcommerceAsin;
+            item.EcommerceBullet1 = item.EcommerceBullet1;
+            item.EcommerceBullet2 = item.EcommerceBullet2;
+            item.EcommerceBullet3 = item.EcommerceBullet3;
+            item.EcommerceBullet4 = item.EcommerceBullet4;
+            item.EcommerceBullet5 = item.EcommerceBullet5;
+            item.EcommerceComponents = item.EcommerceComponents;
+            item.EcommerceCost = item.EcommerceCost;
+            item.EcommerceExternalId = item.EcommerceExternalId;
+            item.EcommerceExternalIdType = item.EcommerceExternalIdType;
+            item.EcommerceImagePath1 = item.EcommerceImagePath1;
+            item.EcommerceImagePath2 = item.EcommerceImagePath2;
+            item.EcommerceImagePath3 = item.EcommerceImagePath3;
+            item.EcommerceImagePath4 = item.EcommerceImagePath4;
+            item.EcommerceImagePath5 = item.EcommerceImagePath5;
+            item.EcommerceItemHeight = item.EcommerceItemHeight;
+            item.EcommerceItemLength = item.EcommerceItemLength;
+            item.EcommerceItemName = item.EcommerceItemName;
+            item.EcommerceItemWeight = item.EcommerceItemWeight;
+            item.EcommerceItemWidth = item.EcommerceItemWidth;
+            item.EcommerceModelName = item.EcommerceModelName;
+            item.EcommercePackageHeight = item.EcommercePackageHeight;
+            item.EcommercePackageLength = item.EcommercePackageLength;
+            item.EcommercePackageWeight = item.EcommercePackageWeight;
+            item.EcommercePackageWidth = item.EcommercePackageWidth;
+            item.EcommercePageQty = item.EcommercePageQty;
+            item.EcommerceProductCategory = item.EcommerceProductCategory;
+            item.EcommerceProductDescription = item.EcommerceProductDescription;
+            item.EcommerceProductSubcategory = item.EcommerceProductSubcategory;
+            item.EcommerceManufacturerName = item.EcommerceManufacturerName;
+            item.EcommerceMsrp = item.EcommerceMsrp;
+            item.EcommerceGenericKeywords = item.EcommerceGenericKeywords;
+            item.EcommerceSize = item.EcommerceSize;
             item.AccountingGroup = item.AccountingGroup;
             item.BillOfMaterials = item.BillOfMaterials;
             item.CasepackHeight = item.CasepackHeight;
@@ -898,38 +898,38 @@ namespace OdinTests.BusinessLogicLayer.Models
             item.Width = item.Width;
 
 
-            bool Acommerce_AsinUpdate2 = item.Ecommerce_AsinUpdate;
-            bool Acommerce_Bullet1Update2 = item.Ecommerce_Bullet1Update;
-            bool Acommerce_Bullet2Update2 = item.Ecommerce_Bullet2Update;
-            bool Acommerce_Bullet3Update2 = item.Ecommerce_Bullet3Update;
-            bool Acommerce_Bullet4Update2 = item.Ecommerce_Bullet4Update;
-            bool Acommerce_Bullet5Update2 = item.Ecommerce_Bullet5Update;
-            bool Acommerce_ComponentsUpdate2 = item.Ecommerce_ComponentsUpdate;
-            bool Acommerce_CostUpdate2 = item.Ecommerce_CostUpdate;
-            bool Acommerce_ExternalIDUpdate2 = item.Ecommerce_ExternalIdUpdate;
-            bool Acommerce_ExternalIdTypeUpdate2 = item.Ecommerce_ExternalIdTypeUpdate;
-            bool Acommerce_ImagePath1Update2 = item.Ecommerce_ImagePath1Update;
-            bool Acommerce_ImagePath2Update2 = item.Ecommerce_ImagePath2Update;
-            bool Acommerce_ImagePath3Update2 = item.Ecommerce_ImagePath3Update;
-            bool Acommerce_ImagePath4Update2 = item.Ecommerce_ImagePath4Update;
-            bool Acommerce_ImagePath5Update2 = item.Ecommerce_ImagePath5Update;
-            bool Acommerce_ItemHeightUpdate2 = item.Ecommerce_ItemHeightUpdate;
-            bool Acommerce_ItemLengthUpdate2 = item.Ecommerce_ItemLengthUpdate;
-            bool Acommerce_ItemNameUpdate2 = item.Ecommerce_ItemNameUpdate;
-            bool Acommerce_ItemWeightUpdate2 = item.Ecommerce_ItemWeightUpdate;
-            bool Acommerce_ItemWidthUpdate2 = item.Ecommerce_ItemWidthUpdate;
-            bool Acommerce_ModelNameUpdate2 = item.Ecommerce_ModelNameUpdate;
-            bool Acommerce_PackageHeightUpdate2 = item.Ecommerce_PackageHeightUpdate;
-            bool Acommerce_PackageLengthUpdate2 = item.Ecommerce_PackageLengthUpdate;
-            bool Acommerce_PackageWeightUpdate2 = item.Ecommerce_PackageWeightUpdate;
-            bool Acommerce_PackageWidthUpdate2 = item.Ecommerce_PackageWidthUpdate;
-            bool Acommerce_PageQtyUpdate2 = item.Ecommerce_PageQtyUpdate;
-            bool Acommerce_ProductCategoryUpdate2 = item.Ecommerce_ProductCategoryUpdate;
-            bool Acommerce_ProductDescriptionUpdate2 = item.Ecommerce_ProductDescriptionUpdate;
-            bool Acommerce_ProductSubcategoryUpdate2 = item.Ecommerce_ProductSubcategoryUpdate;
-            bool Acommerce_ManufacturerNameUpdate2 = item.Ecommerce_ManufacturerNameUpdate;
-            bool Acommerce_MsrpUpdate2 = item.Ecommerce_MsrpUpdate;
-            bool Acommerce_SearchTermsUpdate2 = item.Ecommerce_GenericKeywordsUpdate;
+            bool Acommerce_AsinUpdate2 = item.EcommerceAsinUpdate;
+            bool Acommerce_Bullet1Update2 = item.EcommerceBullet1Update;
+            bool Acommerce_Bullet2Update2 = item.EcommerceBullet2Update;
+            bool Acommerce_Bullet3Update2 = item.EcommerceBullet3Update;
+            bool Acommerce_Bullet4Update2 = item.EcommerceBullet4Update;
+            bool Acommerce_Bullet5Update2 = item.EcommerceBullet5Update;
+            bool Acommerce_ComponentsUpdate2 = item.EcommerceComponentsUpdate;
+            bool Acommerce_CostUpdate2 = item.EcommerceCostUpdate;
+            bool Acommerce_ExternalIDUpdate2 = item.EcommerceExternalIdUpdate;
+            bool Acommerce_ExternalIdTypeUpdate2 = item.EcommerceExternalIdTypeUpdate;
+            bool Acommerce_ImagePath1Update2 = item.EcommerceImagePath1Update;
+            bool Acommerce_ImagePath2Update2 = item.EcommerceImagePath2Update;
+            bool Acommerce_ImagePath3Update2 = item.EcommerceImagePath3Update;
+            bool Acommerce_ImagePath4Update2 = item.EcommerceImagePath4Update;
+            bool Acommerce_ImagePath5Update2 = item.EcommerceImagePath5Update;
+            bool Acommerce_ItemHeightUpdate2 = item.EcommerceItemHeightUpdate;
+            bool Acommerce_ItemLengthUpdate2 = item.EcommerceItemLengthUpdate;
+            bool Acommerce_ItemNameUpdate2 = item.EcommerceItemNameUpdate;
+            bool Acommerce_ItemWeightUpdate2 = item.EcommerceItemWeightUpdate;
+            bool Acommerce_ItemWidthUpdate2 = item.EcommerceItemWidthUpdate;
+            bool Acommerce_ModelNameUpdate2 = item.EcommerceModelNameUpdate;
+            bool Acommerce_PackageHeightUpdate2 = item.EcommercePackageHeightUpdate;
+            bool Acommerce_PackageLengthUpdate2 = item.EcommercePackageLengthUpdate;
+            bool Acommerce_PackageWeightUpdate2 = item.EcommercePackageWeightUpdate;
+            bool Acommerce_PackageWidthUpdate2 = item.EcommercePackageWidthUpdate;
+            bool Acommerce_PageQtyUpdate2 = item.EcommercePageQtyUpdate;
+            bool Acommerce_ProductCategoryUpdate2 = item.EcommerceProductCategoryUpdate;
+            bool Acommerce_ProductDescriptionUpdate2 = item.EcommerceProductDescriptionUpdate;
+            bool Acommerce_ProductSubcategoryUpdate2 = item.EcommerceProductSubcategoryUpdate;
+            bool Acommerce_ManufacturerNameUpdate2 = item.EcommerceManufacturerNameUpdate;
+            bool Acommerce_MsrpUpdate2 = item.EcommerceMsrpUpdate;
+            bool Acommerce_SearchTermsUpdate2 = item.EcommerceGenericKeywordsUpdate;
             bool Acommerce_SizeUpdate2 = item.Ecommere_SizeUpdate;
             bool AccountingGroupUpdate2 = item.AccountingGroupUpdate;
             bool BillOfMaterialsUpdate2 = item.BillOfMaterialsUpdate;
@@ -1148,36 +1148,36 @@ namespace OdinTests.BusinessLogicLayer.Models
                 DirectImport = "directImport",
                 Duty = "duty",
                 Ean = "ean",
-                Ecommerce_Asin = "ecommerce_Asin",
-                Ecommerce_Bullet1 = "ecommerce_Bullet1",
-                Ecommerce_Bullet2 = "ecommerce_Bullet2",
-                Ecommerce_Bullet3 = "ecommerce_Bullet3",
-                Ecommerce_Bullet4 = "ecommerce_Bullet4",
-                Ecommerce_Bullet5 = "ecommerce_Bullet5",
-                Ecommerce_Components = "ecommerce_Components",
-                Ecommerce_Cost = "ecommerce_Cost",
-                Ecommerce_ExternalId = "ecommerce_ExternalID",
-                Ecommerce_ExternalIdType = "ecommerce_ExternalIdType",
-                Ecommerce_GenericKeywords = "ecommerce_GenericKeywords",
-                Ecommerce_ItemHeight = "ecommerce_ItemHeight",
-                Ecommerce_ItemLength = "ecommerce_ItemLength",
-                Ecommerce_ItemName = "ecommerce_ItemName",
-                Ecommerce_ItemWeight = "ecommerce_ItemWeight",
-                Ecommerce_ItemWidth = "ecommerce_ItemWidth",
-                Ecommerce_ModelName = "ecommerce_ModelName",
-                Ecommerce_PackageHeight = "ecommerce_PackageHeight",
-                Ecommerce_PackageLength = "ecommerce_PackageLength",
-                Ecommerce_PackageWeight = "ecommerce_PackageWeight",
-                Ecommerce_PackageWidth = "ecommerce_PackageWidth",
-                Ecommerce_PageQty = "ecommerce_PageQty",
-                Ecommerce_ProductCategory = "ecommerce_ProductCategory",
-                Ecommerce_ProductDescription = "ecommerce_ProductDescription",
-                Ecommerce_ProductSubcategory = "ecommerce_ProductSubcategory",
-                Ecommerce_ManufacturerName = "ecommerce_ManufacturerName",
-                Ecommerce_Msrp = "ecommerce_Msrp",
-                Ecommerce_Size = "ecommerce_SearchTerms",
-                Ecommerce_SubjectKeywords = "ecommerce_Size",
-                Ecommerce_Upc = "ecommerceUpc",
+                EcommerceAsin = "EcommerceAsin",
+                EcommerceBullet1 = "EcommerceBullet1",
+                EcommerceBullet2 = "EcommerceBullet2",
+                EcommerceBullet3 = "EcommerceBullet3",
+                EcommerceBullet4 = "EcommerceBullet4",
+                EcommerceBullet5 = "EcommerceBullet5",
+                EcommerceComponents = "EcommerceComponents",
+                EcommerceCost = "EcommerceCost",
+                EcommerceExternalId = "EcommerceExternalID",
+                EcommerceExternalIdType = "EcommerceExternalIdType",
+                EcommerceGenericKeywords = "EcommerceGenericKeywords",
+                EcommerceItemHeight = "EcommerceItemHeight",
+                EcommerceItemLength = "EcommerceItemLength",
+                EcommerceItemName = "EcommerceItemName",
+                EcommerceItemWeight = "EcommerceItemWeight",
+                EcommerceItemWidth = "EcommerceItemWidth",
+                EcommerceModelName = "EcommerceModelName",
+                EcommercePackageHeight = "EcommercePackageHeight",
+                EcommercePackageLength = "EcommercePackageLength",
+                EcommercePackageWeight = "EcommercePackageWeight",
+                EcommercePackageWidth = "EcommercePackageWidth",
+                EcommercePageQty = "EcommercePageQty",
+                EcommerceProductCategory = "EcommerceProductCategory",
+                EcommerceProductDescription = "EcommerceProductDescription",
+                EcommerceProductSubcategory = "EcommerceProductSubcategory",
+                EcommerceManufacturerName = "EcommerceManufacturerName",
+                EcommerceMsrp = "EcommerceMsrp",
+                EcommerceSize = "EcommerceSearchTerms",
+                EcommerceSubjectKeywords = "EcommerceSize",
+                EcommerceUpc = "ecommerceUpc",
                 Gpc = "gpc",
                 Height = "height",
                 ImagePath = "imagePath",
@@ -1243,38 +1243,38 @@ namespace OdinTests.BusinessLogicLayer.Models
 
             #region Act
 
-            bool Acommerce_AsinUpdate1 = item.Ecommerce_AsinUpdate;
-            bool Acommerce_Bullet1Update1 = item.Ecommerce_Bullet1Update;
-            bool Acommerce_Bullet2Update1 = item.Ecommerce_Bullet2Update;
-            bool Acommerce_Bullet3Update1 = item.Ecommerce_Bullet3Update;
-            bool Acommerce_Bullet4Update1 = item.Ecommerce_Bullet4Update;
-            bool Acommerce_Bullet5Update1 = item.Ecommerce_Bullet5Update;
-            bool Acommerce_ComponentsUpdate1 = item.Ecommerce_ComponentsUpdate;
-            bool Acommerce_CostUpdate1 = item.Ecommerce_CostUpdate;
-            bool Acommerce_ExternalIDUpdate1 = item.Ecommerce_ExternalIdUpdate;
-            bool Acommerce_ExternalIdTypeUpdate1 = item.Ecommerce_ExternalIdTypeUpdate;
-            bool Acommerce_ImagePath1Update1 = item.Ecommerce_ImagePath1Update;
-            bool Acommerce_ImagePath2Update1 = item.Ecommerce_ImagePath2Update;
-            bool Acommerce_ImagePath3Update1 = item.Ecommerce_ImagePath3Update;
-            bool Acommerce_ImagePath4Update1 = item.Ecommerce_ImagePath4Update;
-            bool Acommerce_ImagePath5Update1 = item.Ecommerce_ImagePath5Update;
-            bool Acommerce_ItemHeightUpdate1 = item.Ecommerce_ItemHeightUpdate;
-            bool Acommerce_ItemLengthUpdate1 = item.Ecommerce_ItemLengthUpdate;
-            bool Acommerce_ItemNameUpdate1 = item.Ecommerce_ItemNameUpdate;
-            bool Acommerce_ItemWeightUpdate1 = item.Ecommerce_ItemWeightUpdate;
-            bool Acommerce_ItemWidthUpdate1 = item.Ecommerce_ItemWidthUpdate;
-            bool Acommerce_ModelNameUpdate1 = item.Ecommerce_ModelNameUpdate;
-            bool Acommerce_PackageHeightUpdate1 = item.Ecommerce_PackageHeightUpdate;
-            bool Acommerce_PackageLengthUpdate1 = item.Ecommerce_PackageLengthUpdate;
-            bool Acommerce_PackageWeightUpdate1 = item.Ecommerce_PackageWeightUpdate;
-            bool Acommerce_PackageWidthUpdate1 = item.Ecommerce_PackageWidthUpdate;
-            bool Acommerce_PageQtyUpdate1 = item.Ecommerce_PageQtyUpdate;
-            bool Acommerce_ProductCategoryUpdate1 = item.Ecommerce_ProductCategoryUpdate;
-            bool Acommerce_ProductDescriptionUpdate1 = item.Ecommerce_ProductDescriptionUpdate;
-            bool Acommerce_ProductSubcategoryUpdate1 = item.Ecommerce_ProductSubcategoryUpdate;
-            bool Acommerce_ManufacturerNameUpdate1 = item.Ecommerce_ManufacturerNameUpdate;
-            bool Acommerce_MsrpUpdate1 = item.Ecommerce_MsrpUpdate;
-            bool Acommerce_SearchTermsUpdate1 = item.Ecommerce_GenericKeywordsUpdate;
+            bool Acommerce_AsinUpdate1 = item.EcommerceAsinUpdate;
+            bool Acommerce_Bullet1Update1 = item.EcommerceBullet1Update;
+            bool Acommerce_Bullet2Update1 = item.EcommerceBullet2Update;
+            bool Acommerce_Bullet3Update1 = item.EcommerceBullet3Update;
+            bool Acommerce_Bullet4Update1 = item.EcommerceBullet4Update;
+            bool Acommerce_Bullet5Update1 = item.EcommerceBullet5Update;
+            bool Acommerce_ComponentsUpdate1 = item.EcommerceComponentsUpdate;
+            bool Acommerce_CostUpdate1 = item.EcommerceCostUpdate;
+            bool Acommerce_ExternalIDUpdate1 = item.EcommerceExternalIdUpdate;
+            bool Acommerce_ExternalIdTypeUpdate1 = item.EcommerceExternalIdTypeUpdate;
+            bool Acommerce_ImagePath1Update1 = item.EcommerceImagePath1Update;
+            bool Acommerce_ImagePath2Update1 = item.EcommerceImagePath2Update;
+            bool Acommerce_ImagePath3Update1 = item.EcommerceImagePath3Update;
+            bool Acommerce_ImagePath4Update1 = item.EcommerceImagePath4Update;
+            bool Acommerce_ImagePath5Update1 = item.EcommerceImagePath5Update;
+            bool Acommerce_ItemHeightUpdate1 = item.EcommerceItemHeightUpdate;
+            bool Acommerce_ItemLengthUpdate1 = item.EcommerceItemLengthUpdate;
+            bool Acommerce_ItemNameUpdate1 = item.EcommerceItemNameUpdate;
+            bool Acommerce_ItemWeightUpdate1 = item.EcommerceItemWeightUpdate;
+            bool Acommerce_ItemWidthUpdate1 = item.EcommerceItemWidthUpdate;
+            bool Acommerce_ModelNameUpdate1 = item.EcommerceModelNameUpdate;
+            bool Acommerce_PackageHeightUpdate1 = item.EcommercePackageHeightUpdate;
+            bool Acommerce_PackageLengthUpdate1 = item.EcommercePackageLengthUpdate;
+            bool Acommerce_PackageWeightUpdate1 = item.EcommercePackageWeightUpdate;
+            bool Acommerce_PackageWidthUpdate1 = item.EcommercePackageWidthUpdate;
+            bool Acommerce_PageQtyUpdate1 = item.EcommercePageQtyUpdate;
+            bool Acommerce_ProductCategoryUpdate1 = item.EcommerceProductCategoryUpdate;
+            bool Acommerce_ProductDescriptionUpdate1 = item.EcommerceProductDescriptionUpdate;
+            bool Acommerce_ProductSubcategoryUpdate1 = item.EcommerceProductSubcategoryUpdate;
+            bool Acommerce_ManufacturerNameUpdate1 = item.EcommerceManufacturerNameUpdate;
+            bool Acommerce_MsrpUpdate1 = item.EcommerceMsrpUpdate;
+            bool Acommerce_SearchTermsUpdate1 = item.EcommerceGenericKeywordsUpdate;
             bool Acommerce_SizeUpdate1 = item.Ecommere_SizeUpdate;
             bool AccountingGroupUpdate1 = item.AccountingGroupUpdate;
             bool BillOfMaterialsUpdate1 = item.BillOfMaterialsUpdate;
@@ -1343,39 +1343,39 @@ namespace OdinTests.BusinessLogicLayer.Models
             bool WeightUpdate1 = item.WeightUpdate;
             bool WidthUpdate1 = item.WidthUpdate; ;
 
-            item.Ecommerce_Asin = "1";
-            item.Ecommerce_Bullet1 = "1";
-            item.Ecommerce_Bullet2 = "1";
-            item.Ecommerce_Bullet3 = "1";
-            item.Ecommerce_Bullet4 = "1";
-            item.Ecommerce_Bullet5 = "1";
-            item.Ecommerce_Components = "1";
-            item.Ecommerce_Cost = "1";
-            item.Ecommerce_ExternalId = "1";
-            item.Ecommerce_ExternalIdType = "1";
-            item.Ecommerce_ImagePath1 = "1";
-            item.Ecommerce_ImagePath2 = "1";
-            item.Ecommerce_ImagePath3 = "1";
-            item.Ecommerce_ImagePath4 = "1";
-            item.Ecommerce_ImagePath5 = "1";
-            item.Ecommerce_ItemHeight = "1";
-            item.Ecommerce_ItemLength = "1";
-            item.Ecommerce_ItemName = "1";
-            item.Ecommerce_ItemWeight = "1";
-            item.Ecommerce_ItemWidth = "1";
-            item.Ecommerce_ModelName = "1";
-            item.Ecommerce_PackageHeight = "1";
-            item.Ecommerce_PackageLength = "1";
-            item.Ecommerce_PackageWeight = "1";
-            item.Ecommerce_PackageWidth = "1";
-            item.Ecommerce_PageQty = "1";
-            item.Ecommerce_ProductCategory = "1";
-            item.Ecommerce_ProductDescription = "1";
-            item.Ecommerce_ProductSubcategory = "1";
-            item.Ecommerce_ManufacturerName = "1";
-            item.Ecommerce_Msrp = "1";
-            item.Ecommerce_GenericKeywords = "1";
-            item.Ecommerce_Size = "1";
+            item.EcommerceAsin = "1";
+            item.EcommerceBullet1 = "1";
+            item.EcommerceBullet2 = "1";
+            item.EcommerceBullet3 = "1";
+            item.EcommerceBullet4 = "1";
+            item.EcommerceBullet5 = "1";
+            item.EcommerceComponents = "1";
+            item.EcommerceCost = "1";
+            item.EcommerceExternalId = "1";
+            item.EcommerceExternalIdType = "1";
+            item.EcommerceImagePath1 = "1";
+            item.EcommerceImagePath2 = "1";
+            item.EcommerceImagePath3 = "1";
+            item.EcommerceImagePath4 = "1";
+            item.EcommerceImagePath5 = "1";
+            item.EcommerceItemHeight = "1";
+            item.EcommerceItemLength = "1";
+            item.EcommerceItemName = "1";
+            item.EcommerceItemWeight = "1";
+            item.EcommerceItemWidth = "1";
+            item.EcommerceModelName = "1";
+            item.EcommercePackageHeight = "1";
+            item.EcommercePackageLength = "1";
+            item.EcommercePackageWeight = "1";
+            item.EcommercePackageWidth = "1";
+            item.EcommercePageQty = "1";
+            item.EcommerceProductCategory = "1";
+            item.EcommerceProductDescription = "1";
+            item.EcommerceProductSubcategory = "1";
+            item.EcommerceManufacturerName = "1";
+            item.EcommerceMsrp = "1";
+            item.EcommerceGenericKeywords = "1";
+            item.EcommerceSize = "1";
             item.AccountingGroup = "1";
             item.BillOfMaterials = newBillOfMaterials;
             item.CasepackHeight = "1";
@@ -1446,38 +1446,38 @@ namespace OdinTests.BusinessLogicLayer.Models
             item.Width = "1"; ;
 
 
-            bool Acommerce_AsinUpdate2 = item.Ecommerce_AsinUpdate;
-            bool Acommerce_Bullet1Update2 = item.Ecommerce_Bullet1Update;
-            bool Acommerce_Bullet2Update2 = item.Ecommerce_Bullet2Update;
-            bool Acommerce_Bullet3Update2 = item.Ecommerce_Bullet3Update;
-            bool Acommerce_Bullet4Update2 = item.Ecommerce_Bullet4Update;
-            bool Acommerce_Bullet5Update2 = item.Ecommerce_Bullet5Update;
-            bool Acommerce_ComponentsUpdate2 = item.Ecommerce_ComponentsUpdate;
-            bool Acommerce_CostUpdate2 = item.Ecommerce_CostUpdate;
-            bool Acommerce_ExternalIDUpdate2 = item.Ecommerce_ExternalIdUpdate;
-            bool Acommerce_ExternalIdTypeUpdate2 = item.Ecommerce_ExternalIdTypeUpdate;
-            bool Acommerce_ImagePath1Update2 = item.Ecommerce_ImagePath1Update;
-            bool Acommerce_ImagePath2Update2 = item.Ecommerce_ImagePath2Update;
-            bool Acommerce_ImagePath3Update2 = item.Ecommerce_ImagePath3Update;
-            bool Acommerce_ImagePath4Update2 = item.Ecommerce_ImagePath4Update;
-            bool Acommerce_ImagePath5Update2 = item.Ecommerce_ImagePath5Update;
-            bool Acommerce_ItemHeightUpdate2 = item.Ecommerce_ItemHeightUpdate;
-            bool Acommerce_ItemLengthUpdate2 = item.Ecommerce_ItemLengthUpdate;
-            bool Acommerce_ItemNameUpdate2 = item.Ecommerce_ItemNameUpdate;
-            bool Acommerce_ItemWeightUpdate2 = item.Ecommerce_ItemWeightUpdate;
-            bool Acommerce_ItemWidthUpdate2 = item.Ecommerce_ItemWidthUpdate;
-            bool Acommerce_ModelNameUpdate2 = item.Ecommerce_ModelNameUpdate;
-            bool Acommerce_PackageHeightUpdate2 = item.Ecommerce_PackageHeightUpdate;
-            bool Acommerce_PackageLengthUpdate2 = item.Ecommerce_PackageLengthUpdate;
-            bool Acommerce_PackageWeightUpdate2 = item.Ecommerce_PackageWeightUpdate;
-            bool Acommerce_PackageWidthUpdate2 = item.Ecommerce_PackageWidthUpdate;
-            bool Acommerce_PageQtyUpdate2 = item.Ecommerce_PageQtyUpdate;
-            bool Acommerce_ProductCategoryUpdate2 = item.Ecommerce_ProductCategoryUpdate;
-            bool Acommerce_ProductDescriptionUpdate2 = item.Ecommerce_ProductDescriptionUpdate;
-            bool Acommerce_ProductSubcategoryUpdate2 = item.Ecommerce_ProductSubcategoryUpdate;
-            bool Acommerce_ManufacturerNameUpdate2 = item.Ecommerce_ManufacturerNameUpdate;
-            bool Acommerce_MsrpUpdate2 = item.Ecommerce_MsrpUpdate;
-            bool Acommerce_SearchTermsUpdate2 = item.Ecommerce_GenericKeywordsUpdate;
+            bool Acommerce_AsinUpdate2 = item.EcommerceAsinUpdate;
+            bool Acommerce_Bullet1Update2 = item.EcommerceBullet1Update;
+            bool Acommerce_Bullet2Update2 = item.EcommerceBullet2Update;
+            bool Acommerce_Bullet3Update2 = item.EcommerceBullet3Update;
+            bool Acommerce_Bullet4Update2 = item.EcommerceBullet4Update;
+            bool Acommerce_Bullet5Update2 = item.EcommerceBullet5Update;
+            bool Acommerce_ComponentsUpdate2 = item.EcommerceComponentsUpdate;
+            bool Acommerce_CostUpdate2 = item.EcommerceCostUpdate;
+            bool Acommerce_ExternalIDUpdate2 = item.EcommerceExternalIdUpdate;
+            bool Acommerce_ExternalIdTypeUpdate2 = item.EcommerceExternalIdTypeUpdate;
+            bool Acommerce_ImagePath1Update2 = item.EcommerceImagePath1Update;
+            bool Acommerce_ImagePath2Update2 = item.EcommerceImagePath2Update;
+            bool Acommerce_ImagePath3Update2 = item.EcommerceImagePath3Update;
+            bool Acommerce_ImagePath4Update2 = item.EcommerceImagePath4Update;
+            bool Acommerce_ImagePath5Update2 = item.EcommerceImagePath5Update;
+            bool Acommerce_ItemHeightUpdate2 = item.EcommerceItemHeightUpdate;
+            bool Acommerce_ItemLengthUpdate2 = item.EcommerceItemLengthUpdate;
+            bool Acommerce_ItemNameUpdate2 = item.EcommerceItemNameUpdate;
+            bool Acommerce_ItemWeightUpdate2 = item.EcommerceItemWeightUpdate;
+            bool Acommerce_ItemWidthUpdate2 = item.EcommerceItemWidthUpdate;
+            bool Acommerce_ModelNameUpdate2 = item.EcommerceModelNameUpdate;
+            bool Acommerce_PackageHeightUpdate2 = item.EcommercePackageHeightUpdate;
+            bool Acommerce_PackageLengthUpdate2 = item.EcommercePackageLengthUpdate;
+            bool Acommerce_PackageWeightUpdate2 = item.EcommercePackageWeightUpdate;
+            bool Acommerce_PackageWidthUpdate2 = item.EcommercePackageWidthUpdate;
+            bool Acommerce_PageQtyUpdate2 = item.EcommercePageQtyUpdate;
+            bool Acommerce_ProductCategoryUpdate2 = item.EcommerceProductCategoryUpdate;
+            bool Acommerce_ProductDescriptionUpdate2 = item.EcommerceProductDescriptionUpdate;
+            bool Acommerce_ProductSubcategoryUpdate2 = item.EcommerceProductSubcategoryUpdate;
+            bool Acommerce_ManufacturerNameUpdate2 = item.EcommerceManufacturerNameUpdate;
+            bool Acommerce_MsrpUpdate2 = item.EcommerceMsrpUpdate;
+            bool Acommerce_SearchTermsUpdate2 = item.EcommerceGenericKeywordsUpdate;
             bool Acommerce_SizeUpdate2 = item.Ecommere_SizeUpdate;
             bool AccountingGroupUpdate2 = item.AccountingGroupUpdate;
             bool BillOfMaterialsUpdate2 = item.BillOfMaterialsUpdate;

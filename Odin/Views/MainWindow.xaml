@@ -1260,232 +1260,232 @@
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_Asin}"
-                        Width="{Binding Ecommerce_AsinVisibility}">
+                        DisplayMemberBinding="{Binding EcommerceAsin}"
+                        Width="{Binding EcommerceAsinVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce ASIN"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_Bullet1}"
-                        Width="{Binding Ecommerce_Bullet1Visibility}">
+                        DisplayMemberBinding="{Binding EcommerceBullet1}"
+                        Width="{Binding EcommerceBullet1Visibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce Bullet1"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_Bullet2}"
-                        Width="{Binding Ecommerce_Bullet2Visibility}">
+                        DisplayMemberBinding="{Binding EcommerceBullet2}"
+                        Width="{Binding EcommerceBullet2Visibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce Bullet2"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_Bullet3}"
-                        Width="{Binding Ecommerce_Bullet3Visibility}">
+                        DisplayMemberBinding="{Binding EcommerceBullet3}"
+                        Width="{Binding EcommerceBullet3Visibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce Bullet3"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_Bullet4}"
-                        Width="{Binding Ecommerce_Bullet4Visibility}">
+                        DisplayMemberBinding="{Binding EcommerceBullet4}"
+                        Width="{Binding EcommerceBullet4Visibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce Bullet4"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_Bullet5}"
-                        Width="{Binding Ecommerce_Bullet5Visibility}">
+                        DisplayMemberBinding="{Binding EcommerceBullet5}"
+                        Width="{Binding EcommerceBullet5Visibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce Bullet5"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_Components}"
-                        Width="{Binding Ecommerce_ComponentsVisibility}">
+                        DisplayMemberBinding="{Binding EcommerceComponents}"
+                        Width="{Binding EcommerceComponentsVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce Components"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_Cost}"
-                        Width="{Binding Ecommerce_CostVisibility}">
+                        DisplayMemberBinding="{Binding EcommerceCost}"
+                        Width="{Binding EcommerceCostVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce Cost"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_CountryofOrigin}"
-                        Width="{Binding Ecommerce_CountryofOriginVisibility}">
+                        DisplayMemberBinding="{Binding EcommerceCountryofOrigin}"
+                        Width="{Binding EcommerceCountryofOriginVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce Country of Origin"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_ExternalId}"
-                        Width="{Binding Ecommerce_ExternalIdVisibility}">
+                        DisplayMemberBinding="{Binding EcommerceExternalId}"
+                        Width="{Binding EcommerceExternalIdVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce ExternalID"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_ExternalIdType}"
-                        Width="{Binding Ecommerce_ExternalIdTypeVisibility}">
+                        DisplayMemberBinding="{Binding EcommerceExternalIdType}"
+                        Width="{Binding EcommerceExternalIdTypeVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce ExternalIdType"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_ItemHeight}"
-                        Width="{Binding Ecommerce_ItemHeightVisibility}">
+                        DisplayMemberBinding="{Binding EcommerceItemHeight}"
+                        Width="{Binding EcommerceItemHeightVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce ItemHeight"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_ItemLength}"
-                        Width="{Binding Ecommerce_ItemLengthVisibility}">
+                        DisplayMemberBinding="{Binding EcommerceItemLength}"
+                        Width="{Binding EcommerceItemLengthVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce ItemLength"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_ItemName}"
-                        Width="{Binding Ecommerce_ItemNameVisibility}">
+                        DisplayMemberBinding="{Binding EcommerceItemName}"
+                        Width="{Binding EcommerceItemNameVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce ItemName"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_ItemWeight}"
-                        Width="{Binding Ecommerce_ItemWeightVisibility}">
+                        DisplayMemberBinding="{Binding EcommerceItemWeight}"
+                        Width="{Binding EcommerceItemWeightVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce ItemWeight"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_ItemWidth}"
-                        Width="{Binding Ecommerce_ItemWidthVisibility}">
+                        DisplayMemberBinding="{Binding EcommerceItemWidth}"
+                        Width="{Binding EcommerceItemWidthVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce ItemWidth"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_ModelName}"
-                        Width="{Binding Ecommerce_ModelNameVisibility}">
+                        DisplayMemberBinding="{Binding EcommerceModelName}"
+                        Width="{Binding EcommerceModelNameVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce ModelName"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_PackageHeight}"
-                        Width="{Binding Ecommerce_PackageHeightVisibility}">
+                        DisplayMemberBinding="{Binding EcommercePackageHeight}"
+                        Width="{Binding EcommercePackageHeightVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce PackageHeight"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_PackageLength}"
-                        Width="{Binding Ecommerce_PackageLengthVisibility}">
+                        DisplayMemberBinding="{Binding EcommercePackageLength}"
+                        Width="{Binding EcommercePackageLengthVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce PackageLength"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_PackageWeight}"
-                        Width="{Binding Ecommerce_PackageWeightVisibility}">
+                        DisplayMemberBinding="{Binding EcommercePackageWeight}"
+                        Width="{Binding EcommercePackageWeightVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce PackageWeight"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_PackageWidth}"
-                        Width="{Binding Ecommerce_PackageWidthVisibility}">
+                        DisplayMemberBinding="{Binding EcommercePackageWidth}"
+                        Width="{Binding EcommercePackageWidthVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce PackageWidth"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_PageQty}"
-                        Width="{Binding Ecommerce_PageQtyVisibility}">
+                        DisplayMemberBinding="{Binding EcommercePageQty}"
+                        Width="{Binding EcommercePageQtyVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce Page Qty"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_ProductCategory}"
-                        Width="{Binding Ecommerce_ProductCategoryVisibility}">
+                        DisplayMemberBinding="{Binding EcommerceProductCategory}"
+                        Width="{Binding EcommerceProductCategoryVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce ProductCategory"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_ProductDescription}"
-                        Width="{Binding Ecommerce_ProductDescriptionVisibility}">
+                        DisplayMemberBinding="{Binding EcommerceProductDescription}"
+                        Width="{Binding EcommerceProductDescriptionVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce ProductDescription"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_ProductSubcategory}"
-                        Width="{Binding Ecommerce_ProductSubcategoryVisibility}">
+                        DisplayMemberBinding="{Binding EcommerceProductSubcategory}"
+                        Width="{Binding EcommerceProductSubcategoryVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce ProductSubcategory"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_ManufacturerName}"
-                        Width="{Binding Ecommerce_ManufacturerNameVisibility}">
+                        DisplayMemberBinding="{Binding EcommerceManufacturerName}"
+                        Width="{Binding EcommerceManufacturerNameVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce ManufacturerName"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_Msrp}"
-                        Width="{Binding Ecommerce_MsrpVisibility}">
+                        DisplayMemberBinding="{Binding EcommerceMsrp}"
+                        Width="{Binding EcommerceMsrpVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce Msrp"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_Size}"
-                        Width="{Binding Ecommerce_SizeVisibility}">
+                        DisplayMemberBinding="{Binding EcommerceSize}"
+                        Width="{Binding EcommerceSizeVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce Size"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Ecommerce_Upc}"
-                        Width="{Binding Ecommerce_UpcVisibility}">
+                        DisplayMemberBinding="{Binding EcommerceUpc}"
+                        Width="{Binding EcommerceUpcVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce Upc"
                             HorizontalContentAlignment="Left"

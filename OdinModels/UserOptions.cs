@@ -15,408 +15,408 @@ namespace OdinModels
 
         #region Ecommerce Visibility Properties
 
-        public static bool Ecommerce_AsinVisibility
+        public static bool EcommerceAsinVisibility
         {
             get
             {
-                return _ecommerce_asinVisibility;
+                return _EcommerceasinVisibility;
             }
             set
             {
-                _ecommerce_asinVisibility = value;
+                _EcommerceasinVisibility = value;
             }
         }
-        private static bool _ecommerce_asinVisibility = true;
+        private static bool _EcommerceasinVisibility = true;
 
-        public static bool Ecommerce_Bullet1Visibility
+        public static bool EcommerceBullet1Visibility
         {
             get
             {
-                return _ecommerce_bullet1Visibility;
+                return _Ecommercebullet1Visibility;
             }
             set
             {
-                _ecommerce_bullet1Visibility = value;
+                _Ecommercebullet1Visibility = value;
             }
         }
-        private static bool _ecommerce_bullet1Visibility = true;
+        private static bool _Ecommercebullet1Visibility = true;
 
-        public static bool Ecommerce_Bullet2Visibility
+        public static bool EcommerceBullet2Visibility
         {
             get
             {
-                return _ecommerce_bullet2Visibility;
+                return _Ecommercebullet2Visibility;
             }
             set
             {
-                _ecommerce_bullet2Visibility = value;
+                _Ecommercebullet2Visibility = value;
             }
         }
-        private static bool _ecommerce_bullet2Visibility = true;
+        private static bool _Ecommercebullet2Visibility = true;
 
-        public static bool Ecommerce_Bullet3Visibility
+        public static bool EcommerceBullet3Visibility
         {
             get
             {
-                return _ecommerce_bullet3Visibility;
+                return _Ecommercebullet3Visibility;
             }
             set
             {
-                _ecommerce_bullet3Visibility = value;               
+                _Ecommercebullet3Visibility = value;               
             }
         }
-        private static bool _ecommerce_bullet3Visibility = true;
+        private static bool _Ecommercebullet3Visibility = true;
 
-        public static bool Ecommerce_Bullet4Visibility
+        public static bool EcommerceBullet4Visibility
         {
             get
             {
-                return _ecommerce_bullet4Visibility;
+                return _Ecommercebullet4Visibility;
             }
             set
             {
-                _ecommerce_bullet4Visibility = value;
+                _Ecommercebullet4Visibility = value;
             }
         }
-        private static bool _ecommerce_bullet4Visibility = true;
+        private static bool _Ecommercebullet4Visibility = true;
 
-        public static bool Ecommerce_Bullet5Visibility
+        public static bool EcommerceBullet5Visibility
         {
             get
             {
-                return _ecommerce_bullet5Visibility;
+                return _Ecommercebullet5Visibility;
             }
             set
             {
-                _ecommerce_bullet5Visibility = value;
+                _Ecommercebullet5Visibility = value;
             }
         }
-        private static bool _ecommerce_bullet5Visibility = true;
+        private static bool _Ecommercebullet5Visibility = true;
 
-        public static bool Ecommerce_ComponentsVisibility
+        public static bool EcommerceComponentsVisibility
         {
             get
             {
-                return _ecommerce_componentsVisibility;
+                return _EcommercecomponentsVisibility;
             }
             set
             {
-                _ecommerce_componentsVisibility = value;
+                _EcommercecomponentsVisibility = value;
             }
         }
-        private static bool _ecommerce_componentsVisibility = true;
+        private static bool _EcommercecomponentsVisibility = true;
 
-        public static bool Ecommerce_CostVisibility
+        public static bool EcommerceCostVisibility
         {
             get
             {
-                return _ecommerce_costVisibility;
+                return _EcommercecostVisibility;
             }
             set
             {
-                _ecommerce_costVisibility = value;
+                _EcommercecostVisibility = value;
             }
         }
-        private static bool _ecommerce_costVisibility = true;
+        private static bool _EcommercecostVisibility = true;
 
-        public static bool Ecommerce_CountryofOriginVisibility
+        public static bool EcommerceCountryofOriginVisibility
         {
             get
             {
-                return _ecommerce_countryofOriginVisibility;
+                return _EcommercecountryofOriginVisibility;
             }
             set
             {
-                _ecommerce_countryofOriginVisibility = value;
+                _EcommercecountryofOriginVisibility = value;
             }
         }
-        private static bool _ecommerce_countryofOriginVisibility = true;
+        private static bool _EcommercecountryofOriginVisibility = true;
 
-        public static bool Ecommerce_ExternalIdVisibility
+        public static bool EcommerceExternalIdVisibility
         {
             get
             {
-                return _ecommerce_externalIDVisibility;
+                return _EcommerceexternalIDVisibility;
             }
             set
             {
-                _ecommerce_externalIDVisibility = value;
+                _EcommerceexternalIDVisibility = value;
             }
         }
-        private static bool _ecommerce_externalIDVisibility = true;
+        private static bool _EcommerceexternalIDVisibility = true;
 
-        public static bool Ecommerce_ExternalIdTypeVisibility
+        public static bool EcommerceExternalIdTypeVisibility
         {
             get
             {
-                return _ecommerce_externalIdTypeVisibility;
+                return _EcommerceexternalIdTypeVisibility;
             }
             set
             {
-                _ecommerce_externalIdTypeVisibility = value;
+                _EcommerceexternalIdTypeVisibility = value;
             }
         }
-        private static bool _ecommerce_externalIdTypeVisibility = true;
+        private static bool _EcommerceexternalIdTypeVisibility = true;
         
-        public static bool Ecommerce_ItemAliasVisibility
+        public static bool EcommerceItemAliasVisibility
         {
             get
             {
-                return _ecommerce_itemAliasVisibility;
+                return _EcommerceitemAliasVisibility;
             }
             set
             {
-                _ecommerce_itemAliasVisibility = value;
+                _EcommerceitemAliasVisibility = value;
             }
         }
-        private static bool _ecommerce_itemAliasVisibility = true;
+        private static bool _EcommerceitemAliasVisibility = true;
 
-        public static bool Ecommerce_ItemHeightVisibility
+        public static bool EcommerceItemHeightVisibility
         {
             get
             {
-                return _ecommerce_itemHeightVisibility;
+                return _EcommerceitemHeightVisibility;
             }
             set
             {
-                _ecommerce_itemHeightVisibility = value;
+                _EcommerceitemHeightVisibility = value;
             }
         }
-        private static bool _ecommerce_itemHeightVisibility = true;
+        private static bool _EcommerceitemHeightVisibility = true;
 
-        public static bool Ecommerce_ItemLengthVisibility
+        public static bool EcommerceItemLengthVisibility
         {
             get
             {
-                return _ecommerce_itemLengthVisibility;
+                return _EcommerceitemLengthVisibility;
             }
             set
             {
-                _ecommerce_itemLengthVisibility = value;
+                _EcommerceitemLengthVisibility = value;
             }
         }
-        private static bool _ecommerce_itemLengthVisibility = true;
+        private static bool _EcommerceitemLengthVisibility = true;
 
-        public static bool Ecommerce_ItemNameVisibility
+        public static bool EcommerceItemNameVisibility
         {
             get
             {
-                return _ecommerce_itemNameVisibility;
+                return _EcommerceitemNameVisibility;
             }
             set
             {
-                _ecommerce_itemNameVisibility = value;
+                _EcommerceitemNameVisibility = value;
             }
         }
-        private static bool _ecommerce_itemNameVisibility = true;
+        private static bool _EcommerceitemNameVisibility = true;
 
-        public static bool Ecommerce_ItemWeightVisibility
+        public static bool EcommerceItemWeightVisibility
         {
             get
             {
-                return _ecommerce_itemWeightVisibility;
+                return _EcommerceitemWeightVisibility;
             }
             set
             {
-                _ecommerce_itemWeightVisibility = value;
+                _EcommerceitemWeightVisibility = value;
             }
         }
-        private static bool _ecommerce_itemWeightVisibility = true;
+        private static bool _EcommerceitemWeightVisibility = true;
 
-        public static bool Ecommerce_ItemWidthVisibility
+        public static bool EcommerceItemWidthVisibility
         {
             get
             {
-                return _ecommerce_itemWidthVisibility;
+                return _EcommerceitemWidthVisibility;
             }
             set
             {
-                _ecommerce_itemWidthVisibility = value;
+                _EcommerceitemWidthVisibility = value;
             }
         }
-        private static bool _ecommerce_itemWidthVisibility = true;
+        private static bool _EcommerceitemWidthVisibility = true;
 
-        public static bool Ecommerce_ModelNameVisibility
+        public static bool EcommerceModelNameVisibility
         {
             get
             {
-                return _ecommerce_modelNameVisibility;
+                return _EcommercemodelNameVisibility;
             }
             set
             {
-                _ecommerce_modelNameVisibility = value;
+                _EcommercemodelNameVisibility = value;
             }
         }
-        private static bool _ecommerce_modelNameVisibility = true;
+        private static bool _EcommercemodelNameVisibility = true;
 
-        public static bool Ecommerce_PackageHeightVisibility
+        public static bool EcommercePackageHeightVisibility
         {
             get
             {
-                return _ecommerce_packageHeightVisibility;
+                return _EcommercepackageHeightVisibility;
             }
             set
             {
-                _ecommerce_packageHeightVisibility = value;
+                _EcommercepackageHeightVisibility = value;
             }
         }
-        private static bool _ecommerce_packageHeightVisibility = true;
+        private static bool _EcommercepackageHeightVisibility = true;
 
-        public static bool Ecommerce_PackageLengthVisibility
+        public static bool EcommercePackageLengthVisibility
         {
             get
             {
-                return _ecommerce_packageLengthVisibility;
+                return _EcommercepackageLengthVisibility;
             }
             set
             {
-                _ecommerce_packageLengthVisibility = value;
+                _EcommercepackageLengthVisibility = value;
             }
         }
-        private static bool _ecommerce_packageLengthVisibility = true;
+        private static bool _EcommercepackageLengthVisibility = true;
 
-        public static bool Ecommerce_PackageWeightVisibility
+        public static bool EcommercePackageWeightVisibility
         {
             get
             {
-                return _ecommerce_packageWeightVisibility;
+                return _EcommercepackageWeightVisibility;
             }
             set
             {
-                _ecommerce_packageWeightVisibility = value;
+                _EcommercepackageWeightVisibility = value;
             }
         }
-        private static bool _ecommerce_packageWeightVisibility = true;
+        private static bool _EcommercepackageWeightVisibility = true;
 
-        public static bool Ecommerce_PackageWidthVisibility
+        public static bool EcommercePackageWidthVisibility
         {
             get
             {
-                return _ecommerce_packageWidthVisibility;
+                return _EcommercepackageWidthVisibility;
             }
             set
             {
-                _ecommerce_packageWidthVisibility = value;
+                _EcommercepackageWidthVisibility = value;
             }
         }
-        private static bool _ecommerce_packageWidthVisibility = true;
+        private static bool _EcommercepackageWidthVisibility = true;
 
-        public static bool Ecommerce_PageQtyVisibility
+        public static bool EcommercePageQtyVisibility
         {
             get
             {
-                return _ecommerce_pageQtyVisibility;
+                return _EcommercepageQtyVisibility;
             }
             set
             {
-                _ecommerce_pageQtyVisibility = value;
+                _EcommercepageQtyVisibility = value;
             }
         }
-        private static bool _ecommerce_pageQtyVisibility = true;
+        private static bool _EcommercepageQtyVisibility = true;
 
-        public static bool Ecommerce_ProductCategoryVisibility
+        public static bool EcommerceProductCategoryVisibility
         {
             get
             {
-                return _ecommerce_productCategoryVisibility;
+                return _EcommerceproductCategoryVisibility;
             }
             set
             {
-                _ecommerce_productCategoryVisibility = value;
+                _EcommerceproductCategoryVisibility = value;
             }
         }
-        private static bool _ecommerce_productCategoryVisibility = true;
+        private static bool _EcommerceproductCategoryVisibility = true;
 
-        public static bool Ecommerce_ProductDescriptionVisibility
+        public static bool EcommerceProductDescriptionVisibility
         {
             get
             {
-                return _ecommerce_productDescriptionVisibility;
+                return _EcommerceproductDescriptionVisibility;
             }
             set
             {
-                _ecommerce_productDescriptionVisibility = value;
+                _EcommerceproductDescriptionVisibility = value;
             }
         }
-        private static bool _ecommerce_productDescriptionVisibility = true;
+        private static bool _EcommerceproductDescriptionVisibility = true;
 
-        public static bool Ecommerce_ProductSubcategoryVisibility
+        public static bool EcommerceProductSubcategoryVisibility
         {
             get
             {
-                return _ecommerce_productSubcategoryVisibility;
+                return _EcommerceproductSubcategoryVisibility;
             }
             set
             {
-                _ecommerce_productSubcategoryVisibility = value;
+                _EcommerceproductSubcategoryVisibility = value;
             }
         }
-        private static bool _ecommerce_productSubcategoryVisibility = true;
+        private static bool _EcommerceproductSubcategoryVisibility = true;
 
-        public static bool Ecommerce_ManufacturerNameVisibility
+        public static bool EcommerceManufacturerNameVisibility
         {
             get
             {
-                return _ecommerce_manufacturerNameVisibility;
+                return _EcommercemanufacturerNameVisibility;
             }
             set
             {
-                _ecommerce_manufacturerNameVisibility = value;
+                _EcommercemanufacturerNameVisibility = value;
             }
         }
-        private static bool _ecommerce_manufacturerNameVisibility = true;
+        private static bool _EcommercemanufacturerNameVisibility = true;
 
-        public static bool Ecommerce_MsrpVisibility
+        public static bool EcommerceMsrpVisibility
         {
             get
             {
-                return _ecommerce_msrpVisibility;
+                return _EcommercemsrpVisibility;
             }
             set
             {
-                _ecommerce_msrpVisibility = value;
+                _EcommercemsrpVisibility = value;
             }
         }
-        private static bool _ecommerce_msrpVisibility = true;
+        private static bool _EcommercemsrpVisibility = true;
 
-        public static bool Ecommerce_SearchTermsVisibility
+        public static bool EcommerceSearchTermsVisibility
         {
             get
             {
-                return _ecommerce_searchTermsVisibility;
+                return _EcommercesearchTermsVisibility;
             }
             set
             {
-                _ecommerce_searchTermsVisibility = value;
+                _EcommercesearchTermsVisibility = value;
             }
         }
-        private static bool _ecommerce_searchTermsVisibility = true;
+        private static bool _EcommercesearchTermsVisibility = true;
 
-        public static bool Ecommerce_SizeVisibility
+        public static bool EcommerceSizeVisibility
         {
             get
             {
-                return _ecommerce_sizeVisibility;
+                return _EcommercesizeVisibility;
             }
             set
             {
-                _ecommerce_sizeVisibility = value;
+                _EcommercesizeVisibility = value;
             }
         }
-        private static bool _ecommerce_sizeVisibility = true;
+        private static bool _EcommercesizeVisibility = true;
 
-        public static bool Ecommerce_UpcVisibility
+        public static bool EcommerceUpcVisibility
         {
             get
             {
-                return _ecommerce_upcVisibility;
+                return _EcommerceupcVisibility;
             }
             set
             {
-                _ecommerce_upcVisibility = value;
+                _EcommerceupcVisibility = value;
             }
         }
-        private static bool _ecommerce_upcVisibility = true;
+        private static bool _EcommerceupcVisibility = true;
 
         #endregion // Ecommerce Visibility Properties
 

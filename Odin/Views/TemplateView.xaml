@@ -1199,7 +1199,7 @@
                         Grid.Row="0"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_Bullet1ToolTip}"
+                        ToolTip="{Binding EcommerceBullet1ToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="46"
@@ -1220,7 +1220,7 @@
                         Grid.Row="2"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_Bullet2ToolTip}"
+                        ToolTip="{Binding EcommerceBullet2ToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="46"
@@ -1241,7 +1241,7 @@
                         Grid.Row="4"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_Bullet3ToolTip}"
+                        ToolTip="{Binding EcommerceBullet3ToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="46"
@@ -1262,7 +1262,7 @@
                         Grid.Row="6"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_Bullet4ToolTip}"
+                        ToolTip="{Binding EcommerceBullet4ToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="46"
@@ -1283,7 +1283,7 @@
                         Grid.Row="8"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_Bullet5ToolTip}"
+                        ToolTip="{Binding EcommerceBullet5ToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="46"
@@ -1304,7 +1304,7 @@
                         Grid.Row="10"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_ComponentsToolTip}"
+                        ToolTip="{Binding EcommerceComponentsToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -1324,7 +1324,7 @@
                         Grid.Row="11"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_CostToolTip}"
+                        ToolTip="{Binding EcommerceCostToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -1343,7 +1343,7 @@
                         Grid.Row="0"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding Ecommerce_ExternalIdTypeToolTip}"
+                        ToolTip="{Binding EcommerceExternalIdTypeToolTip}"
                         VerticalAlignment="Center" Margin="0,4,0,5" />
                     <ComboBox
                         HorizontalAlignment="Left"
@@ -1362,7 +1362,7 @@
                         Grid.Row="1"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_ItemHeightToolTip}"
+                        ToolTip="{Binding EcommerceItemHeightToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -1382,7 +1382,7 @@
                         Grid.Row="2"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_ItemLengthToolTip}"
+                        ToolTip="{Binding EcommerceItemLengthToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -1402,7 +1402,7 @@
                         Grid.Row="3"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_ItemWeightToolTip}"
+                        ToolTip="{Binding EcommerceItemWeightToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -1422,7 +1422,7 @@
                         Grid.Row="4"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_ItemWidthToolTip}"
+                        ToolTip="{Binding EcommerceItemWidthToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -1442,7 +1442,7 @@
                         Grid.Row="5"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_ModelNameToolTip}"
+                        ToolTip="{Binding EcommerceModelNameToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -1462,7 +1462,7 @@
                         Grid.Row="6"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_PackageHeightToolTip}"
+                        ToolTip="{Binding EcommercePackageHeightToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -1482,7 +1482,7 @@
                         Grid.Row="7"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_PackageLengthToolTip}"
+                        ToolTip="{Binding EcommercePackageLengthToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -1502,7 +1502,7 @@
                         Grid.Row="8"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_PackageWeightToolTip}"
+                        ToolTip="{Binding EcommercePackageWeightToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -1522,7 +1522,7 @@
                         Grid.Row="9"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_PackageWidthToolTip}"
+                        ToolTip="{Binding EcommercePackageWidthToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -1542,7 +1542,7 @@
                         Grid.Row="10"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_PageQtyToolTip}"
+                        ToolTip="{Binding EcommercePageQtyToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -1562,7 +1562,7 @@
                         Grid.Row="0"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_ProductCategoryToolTip}"
+                        ToolTip="{Binding EcommerceProductCategoryToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -1582,7 +1582,7 @@
                         Grid.Row="1"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_ProductDescriptionToolTip}"
+                        ToolTip="{Binding EcommerceProductDescriptionToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="120"
@@ -1603,7 +1603,7 @@
                         Grid.Row="5"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_ProductSubcategoryToolTip}"
+                        ToolTip="{Binding EcommerceProductSubcategoryToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -1623,7 +1623,7 @@
                         Grid.Row="6"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_ManufacturerNameToolTip}"
+                        ToolTip="{Binding EcommerceManufacturerNameToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -1643,7 +1643,7 @@
                         Grid.Row="7"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_MsrpToolTip}"
+                        ToolTip="{Binding EcommerceMsrpToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -1663,7 +1663,7 @@
                         Grid.Row="8"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_SizeToolTip}"
+                        ToolTip="{Binding EcommerceSizeToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"

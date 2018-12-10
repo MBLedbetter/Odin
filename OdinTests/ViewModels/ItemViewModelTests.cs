@@ -102,40 +102,40 @@ namespace OdinTests.ViewModels
                 Weight = "4",
                 Width = "2",
 
-                Ecommerce_Asin = "asin",
-                Ecommerce_Bullet1 = "bullet 1111",
-                Ecommerce_Bullet2 = "bullet 2222",
-                Ecommerce_Bullet3 = "bullet 3333",
-                Ecommerce_Bullet4 = "bullet 4444",
-                Ecommerce_Bullet5 = "",
-                Ecommerce_Components = "components^",
-                Ecommerce_Cost = "2.00",
-                Ecommerce_ExternalId = "12345678",
-                Ecommerce_ExternalIdType = "UPC",
-                Ecommerce_ImagePath1 = "12345",
-                Ecommerce_ImagePath2 = "",
-                Ecommerce_ImagePath3 = "12345",
-                Ecommerce_ImagePath4 = "",
-                Ecommerce_ImagePath5 = "12345",
-                Ecommerce_ItemHeight = "3",
-                Ecommerce_ItemLength = "4",
-                Ecommerce_ItemName = "Name",
-                Ecommerce_ItemWeight = "4",
-                Ecommerce_ItemWidth = "5",
-                Ecommerce_ModelName = "Model Name",
-                Ecommerce_PackageHeight = "2.12",
-                Ecommerce_PackageLength = "2",
-                Ecommerce_PackageWeight = "33.7",
-                Ecommerce_PackageWidth = "24.4",
-                Ecommerce_PageQty = "24",
-                Ecommerce_ProductCategory = "pCats",
-                Ecommerce_ProductDescription = "pDesc this gets a lot of extra words now that the description has to have at least 100 characters in it. Why stop at 100? Why not 1,000,000,000?",
-                Ecommerce_ProductSubcategory = "subby",
-                Ecommerce_ManufacturerName = "mrName",
-                Ecommerce_Msrp = "12.33",
-                Ecommerce_GenericKeywords = "search search searcharina",
-                Ecommerce_Size = "22'' x 22''",
-                Ecommerce_Upc = "123456789129"
+                EcommerceAsin = "asin",
+                EcommerceBullet1 = "bullet 1111",
+                EcommerceBullet2 = "bullet 2222",
+                EcommerceBullet3 = "bullet 3333",
+                EcommerceBullet4 = "bullet 4444",
+                EcommerceBullet5 = "",
+                EcommerceComponents = "components^",
+                EcommerceCost = "2.00",
+                EcommerceExternalId = "12345678",
+                EcommerceExternalIdType = "UPC",
+                EcommerceImagePath1 = "12345",
+                EcommerceImagePath2 = "",
+                EcommerceImagePath3 = "12345",
+                EcommerceImagePath4 = "",
+                EcommerceImagePath5 = "12345",
+                EcommerceItemHeight = "3",
+                EcommerceItemLength = "4",
+                EcommerceItemName = "Name",
+                EcommerceItemWeight = "4",
+                EcommerceItemWidth = "5",
+                EcommerceModelName = "Model Name",
+                EcommercePackageHeight = "2.12",
+                EcommercePackageLength = "2",
+                EcommercePackageWeight = "33.7",
+                EcommercePackageWidth = "24.4",
+                EcommercePageQty = "24",
+                EcommerceProductCategory = "pCats",
+                EcommerceProductDescription = "pDesc this gets a lot of extra words now that the description has to have at least 100 characters in it. Why stop at 100? Why not 1,000,000,000?",
+                EcommerceProductSubcategory = "subby",
+                EcommerceManufacturerName = "mrName",
+                EcommerceMsrp = "12.33",
+                EcommerceGenericKeywords = "search search searcharina",
+                EcommerceSize = "22'' x 22''",
+                EcommerceUpc = "123456789129"
             };
 
             #endregion // Setup
@@ -205,40 +205,40 @@ namespace OdinTests.ViewModels
             Assert.AreEqual("", itemViewModel.WeightError);
             Assert.AreEqual("", itemViewModel.WidthError);
 
-            Assert.AreEqual("", itemViewModel.Ecommerce_AsinError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_Bullet1Error);
-            Assert.AreEqual("", itemViewModel.Ecommerce_Bullet2Error);
-            Assert.AreEqual("", itemViewModel.Ecommerce_Bullet3Error);
-            Assert.AreEqual("", itemViewModel.Ecommerce_Bullet4Error);
-            Assert.AreEqual("", itemViewModel.Ecommerce_Bullet5Error);
-            Assert.AreEqual("", itemViewModel.Ecommerce_ComponentsError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_CostError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_ExternalIdError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_ExternalIdTypeError);
-            // Assert.AreEqual("", itemViewModel.Ecommerce_ImagePath1Error);
+            Assert.AreEqual("", itemViewModel.EcommerceAsinError);
+            Assert.AreEqual("", itemViewModel.EcommerceBullet1Error);
+            Assert.AreEqual("", itemViewModel.EcommerceBullet2Error);
+            Assert.AreEqual("", itemViewModel.EcommerceBullet3Error);
+            Assert.AreEqual("", itemViewModel.EcommerceBullet4Error);
+            Assert.AreEqual("", itemViewModel.EcommerceBullet5Error);
+            Assert.AreEqual("", itemViewModel.EcommerceComponentsError);
+            Assert.AreEqual("", itemViewModel.EcommerceCostError);
+            Assert.AreEqual("", itemViewModel.EcommerceExternalIdError);
+            Assert.AreEqual("", itemViewModel.EcommerceExternalIdTypeError);
+            // Assert.AreEqual("", itemViewModel.EcommerceImagePath1Error);
             Assert.AreEqual("", itemViewModel.AltImageFile1Error);
-            // Assert.AreEqual("", itemViewModel.Ecommerce_ImagePath3Error);
+            // Assert.AreEqual("", itemViewModel.EcommerceImagePath3Error);
             Assert.AreEqual("", itemViewModel.AltImageFile3Error);
-            // Assert.AreEqual("", itemViewModel.Ecommerce_ImagePath5Error);
-            Assert.AreEqual("", itemViewModel.Ecommerce_ItemHeightError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_ItemLengthError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_ItemNameError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_ItemWeightError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_ItemWidthError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_ModelNameError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_PackageHeightError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_PackageLengthError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_PackageWeightError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_PackageWidthError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_PageQtyError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_ProductCategoryError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_ProductDescriptionError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_ProductSubcategoryError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_ManufacturerNameError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_MsrpError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_GenericKeywordsError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_SizeError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_UpcError);
+            // Assert.AreEqual("", itemViewModel.EcommerceImagePath5Error);
+            Assert.AreEqual("", itemViewModel.EcommerceItemHeightError);
+            Assert.AreEqual("", itemViewModel.EcommerceItemLengthError);
+            Assert.AreEqual("", itemViewModel.EcommerceItemNameError);
+            Assert.AreEqual("", itemViewModel.EcommerceItemWeightError);
+            Assert.AreEqual("", itemViewModel.EcommerceItemWidthError);
+            Assert.AreEqual("", itemViewModel.EcommerceModelNameError);
+            Assert.AreEqual("", itemViewModel.EcommercePackageHeightError);
+            Assert.AreEqual("", itemViewModel.EcommercePackageLengthError);
+            Assert.AreEqual("", itemViewModel.EcommercePackageWeightError);
+            Assert.AreEqual("", itemViewModel.EcommercePackageWidthError);
+            Assert.AreEqual("", itemViewModel.EcommercePageQtyError);
+            Assert.AreEqual("", itemViewModel.EcommerceProductCategoryError);
+            Assert.AreEqual("", itemViewModel.EcommerceProductDescriptionError);
+            Assert.AreEqual("", itemViewModel.EcommerceProductSubcategoryError);
+            Assert.AreEqual("", itemViewModel.EcommerceManufacturerNameError);
+            Assert.AreEqual("", itemViewModel.EcommerceMsrpError);
+            Assert.AreEqual("", itemViewModel.EcommerceGenericKeywordsError);
+            Assert.AreEqual("", itemViewModel.EcommerceSizeError);
+            Assert.AreEqual("", itemViewModel.EcommerceUpcError);
 
             #endregion // Assert
         }
@@ -256,38 +256,38 @@ namespace OdinTests.ViewModels
             ItemObject item = new ItemObject()
             {
                 SellOnAmazon = "Y",
-                Ecommerce_Asin = "",
-                Ecommerce_Bullet1 = "",
-                Ecommerce_Bullet2 = "",
-                Ecommerce_Bullet3 = "",
-                Ecommerce_Bullet4 = "",
-                Ecommerce_Bullet5 = "",
-                Ecommerce_Components = "",
-                Ecommerce_Cost = "",
-                Ecommerce_ExternalId = "",
-                Ecommerce_ExternalIdType = "",
-                Ecommerce_ImagePath1 = "",
-                Ecommerce_ImagePath2 = "",
-                Ecommerce_ImagePath3 = "",
-                Ecommerce_ImagePath4 = "",
-                Ecommerce_ImagePath5 = "",
-                Ecommerce_ItemHeight = "",
-                Ecommerce_ItemLength = "",
-                Ecommerce_ItemName = "",
-                Ecommerce_ItemWeight = "",
-                Ecommerce_ItemWidth = "",
-                Ecommerce_ModelName = "",
-                Ecommerce_PackageHeight = "",
-                Ecommerce_PackageLength = "",
-                Ecommerce_PackageWeight = "",
-                Ecommerce_PackageWidth = "",
-                Ecommerce_ProductCategory = "",
-                Ecommerce_ProductDescription = "",
-                Ecommerce_ProductSubcategory = "",
-                Ecommerce_ManufacturerName = "",
-                Ecommerce_Msrp = "",
-                Ecommerce_GenericKeywords = "",
-                Ecommerce_Size = ""
+                EcommerceAsin = "",
+                EcommerceBullet1 = "",
+                EcommerceBullet2 = "",
+                EcommerceBullet3 = "",
+                EcommerceBullet4 = "",
+                EcommerceBullet5 = "",
+                EcommerceComponents = "",
+                EcommerceCost = "",
+                EcommerceExternalId = "",
+                EcommerceExternalIdType = "",
+                EcommerceImagePath1 = "",
+                EcommerceImagePath2 = "",
+                EcommerceImagePath3 = "",
+                EcommerceImagePath4 = "",
+                EcommerceImagePath5 = "",
+                EcommerceItemHeight = "",
+                EcommerceItemLength = "",
+                EcommerceItemName = "",
+                EcommerceItemWeight = "",
+                EcommerceItemWidth = "",
+                EcommerceModelName = "",
+                EcommercePackageHeight = "",
+                EcommercePackageLength = "",
+                EcommercePackageWeight = "",
+                EcommercePackageWidth = "",
+                EcommerceProductCategory = "",
+                EcommerceProductDescription = "",
+                EcommerceProductSubcategory = "",
+                EcommerceManufacturerName = "",
+                EcommerceMsrp = "",
+                EcommerceGenericKeywords = "",
+                EcommerceSize = ""
             };
 
             #endregion // Setup
@@ -300,33 +300,33 @@ namespace OdinTests.ViewModels
             #endregion // Act
 
             #region Assert
-            Assert.AreEqual("", itemViewModel.Ecommerce_AsinError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_Bullet1Error);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_Bullet2Error);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_Bullet3Error);
-            Assert.AreEqual("", itemViewModel.Ecommerce_Bullet4Error);
-            Assert.AreEqual("", itemViewModel.Ecommerce_Bullet5Error);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_ComponentsError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_CostError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_ExternalIdError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_ExternalIdTypeError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_ItemHeightError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_ItemLengthError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_ItemNameError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_ItemWeightError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_ItemWidthError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_ModelNameError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_PackageHeightError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_PackageLengthError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_PackageWeightError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_PackageWidthError,  "");
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_ProductCategoryError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_ProductDescriptionError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_ProductSubcategoryError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_ManufacturerNameError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_MsrpError);
-            Assert.AreEqual("", itemViewModel.Ecommerce_GenericKeywordsError);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_SizeError);
+            Assert.AreEqual("", itemViewModel.EcommerceAsinError);
+            Assert.AreNotEqual("", itemViewModel.EcommerceBullet1Error);
+            Assert.AreNotEqual("", itemViewModel.EcommerceBullet2Error);
+            Assert.AreNotEqual("", itemViewModel.EcommerceBullet3Error);
+            Assert.AreEqual("", itemViewModel.EcommerceBullet4Error);
+            Assert.AreEqual("", itemViewModel.EcommerceBullet5Error);
+            Assert.AreNotEqual("", itemViewModel.EcommerceComponentsError);
+            Assert.AreNotEqual("", itemViewModel.EcommerceCostError);
+            Assert.AreNotEqual("", itemViewModel.EcommerceExternalIdError);
+            Assert.AreNotEqual("", itemViewModel.EcommerceExternalIdTypeError);
+            Assert.AreNotEqual("", itemViewModel.EcommerceItemHeightError);
+            Assert.AreNotEqual("", itemViewModel.EcommerceItemLengthError);
+            Assert.AreNotEqual("", itemViewModel.EcommerceItemNameError);
+            Assert.AreNotEqual("", itemViewModel.EcommerceItemWeightError);
+            Assert.AreNotEqual("", itemViewModel.EcommerceItemWidthError);
+            Assert.AreNotEqual("", itemViewModel.EcommerceModelNameError);
+            Assert.AreNotEqual("", itemViewModel.EcommercePackageHeightError);
+            Assert.AreNotEqual("", itemViewModel.EcommercePackageLengthError);
+            Assert.AreNotEqual("", itemViewModel.EcommercePackageWeightError);
+            Assert.AreNotEqual("", itemViewModel.EcommercePackageWidthError,  "");
+            Assert.AreNotEqual("", itemViewModel.EcommerceProductCategoryError);
+            Assert.AreNotEqual("", itemViewModel.EcommerceProductDescriptionError);
+            Assert.AreNotEqual("", itemViewModel.EcommerceProductSubcategoryError);
+            Assert.AreNotEqual("", itemViewModel.EcommerceManufacturerNameError);
+            Assert.AreNotEqual("", itemViewModel.EcommerceMsrpError);
+            Assert.AreEqual("", itemViewModel.EcommerceGenericKeywordsError);
+            Assert.AreNotEqual("", itemViewModel.EcommerceSizeError);
 
             #endregion // Assert
         }
@@ -335,7 +335,7 @@ namespace OdinTests.ViewModels
         ///     Check amazon fields to see if they trigger the 'HasEcommerce' field. Fields with values should set 'HasEcommerce to 'Y'
         /// </summary>
         [TestMethod]
-        public void CheckHasEcommerce_ItemHasSellOnFields_ShouldReturnTrue()
+        public void CheckHasEcommerceItemHasSellOnFields_ShouldReturnTrue()
         {
             #region Setup
 
@@ -385,7 +385,7 @@ namespace OdinTests.ViewModels
         ///     Check amazon fields to see if they trigger the 'HasEcommerce' field. Fields with values should set 'HasEcommerce to 'Y'
         /// </summary>
         [TestMethod]
-        public void CheckHasEcommerce_AmazonActiveIsY_ShouldReturnTrue()
+        public void CheckHasEcommerceAmazonActiveIsY_ShouldReturnTrue()
         {
             #region Setup
 
@@ -395,7 +395,7 @@ namespace OdinTests.ViewModels
 
             ItemObject item1 = new ItemObject()
             {
-                Ecommerce_Bullet1 = "Bullet1"
+                EcommerceBullet1 = "Bullet1"
             };
 
 
@@ -424,7 +424,7 @@ namespace OdinTests.ViewModels
             GlobalData.ClearValues();
             GlobalData.EcomFlagRequirement = true;
             ItemObject item = new ItemObject() {
-                Ecommerce_Bullet1 = "Rickity Recked",
+                EcommerceBullet1 = "Rickity Recked",
                 SellOnFanatics = "Y"
             };
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
@@ -439,14 +439,14 @@ namespace OdinTests.ViewModels
             #region Assert
 
             Assert.IsTrue(itemViewModel.ItemViewModelItem.HasEcommerce());
-            Assert.AreEqual("", itemViewModel.Ecommerce_Bullet1Error);
-            Assert.AreNotEqual("", itemViewModel.Ecommerce_Bullet2Error);
+            Assert.AreEqual("", itemViewModel.EcommerceBullet1Error);
+            Assert.AreNotEqual("", itemViewModel.EcommerceBullet2Error);
 
             #endregion // Assert
         }
 
         /// <summary>
-        ///     Check Ecommerce_Required is false if no amazon fields are selected
+        ///     Check EcommerceRequired is false if no amazon fields are selected
         /// </summary>
         [TestMethod]
         public void CheckForAmazon_ItemHasNoValues_ShouldReturnFalse()
@@ -476,7 +476,7 @@ namespace OdinTests.ViewModels
         }
 
         /// <summary>
-        ///     Check Ecommerce_Required is false if no amazon fields are selected
+        ///     Check EcommerceRequired is false if no amazon fields are selected
         /// </summary>
         [TestMethod]
         public void CheckHasEcommerceUpdate_ItemHasNoAmazon_ShouldReturnFalse()
@@ -485,7 +485,7 @@ namespace OdinTests.ViewModels
 
             ItemObject item = new ItemObject() {
                 SellOnAmazon = "Y",
-                Ecommerce_Bullet1 = "My Porcelin Horse!"
+                EcommerceBullet1 = "My Porcelin Horse!"
             };
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
             ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>());
@@ -508,10 +508,10 @@ namespace OdinTests.ViewModels
         }
 
         /// <summary>
-        ///     Check Ecommerce_Required is false if no amazon fields are selected
+        ///     Check EcommerceRequired is false if no amazon fields are selected
         /// </summary>
         [TestMethod]
-        public void CheckHasEcommerce_ItemHasNoAmazon_ShouldReturnFalse()
+        public void CheckHasEcommerceItemHasNoAmazon_ShouldReturnFalse()
         {
             #region Assign
 
@@ -675,39 +675,39 @@ namespace OdinTests.ViewModels
             item.Property = "Property";
             item.NewDate = "03/02/1900";
             item.Size = "Size";
-            item.Ecommerce_Asin = "Ecommerce_Asin";
-            item.Ecommerce_Bullet1 = "Ecommerce_Bullet1";
-            item.Ecommerce_Bullet2 = "Ecommerce_Bullet2";
-            item.Ecommerce_Bullet3 = "Ecommerce_Bullet3";
-            item.Ecommerce_Bullet4 = "Ecommerce_Bullet4";
-            item.Ecommerce_Bullet5 = "Ecommerce_Bullet5";
-            item.Ecommerce_Components = "Ecommerce_Components";
-            item.Ecommerce_Cost = "Ecommerce_Cost";
-            item.Ecommerce_ExternalId = "Ecommerce_ExternalId";
-            item.Ecommerce_ExternalIdType = "Ecommerce_ExternalIdType";
-            item.Ecommerce_ImagePath1 = "Ecommerce_ImagePath1";
-            item.Ecommerce_ImagePath2 = "Ecommerce_ImagePath2";
-            item.Ecommerce_ImagePath3 = "Ecommerce_ImagePath3";
-            item.Ecommerce_ImagePath4 = "Ecommerce_ImagePath4";
-            item.Ecommerce_ImagePath5 = "Ecommerce_ImagePath5";
-            item.Ecommerce_ItemHeight = "Ecommerce_ItemHeight";
-            item.Ecommerce_ItemLength = "Ecommerce_ItemLength";
-            item.Ecommerce_ItemName = "Ecommerce_ItemName";
-            item.Ecommerce_ItemWeight = "Ecommerce_ItemWeight";
-            item.Ecommerce_ItemWidth = "Ecommerce_ItemWidth";
-            item.Ecommerce_ModelName = "Ecommerce_ModelName";
-            item.Ecommerce_PackageHeight = "Ecommerce_PackageHeight";
-            item.Ecommerce_PackageLength = "Ecommerce_PackageLength";
-            item.Ecommerce_PackageWeight = "Ecommerce_PackageWeight";
-            item.Ecommerce_PackageWidth = "Ecommerce_PackageWidth";
-            item.Ecommerce_PageQty = "Ecommerce_PageQty";
-            item.Ecommerce_ProductCategory = "Ecommerce_ProductCategory";
-            item.Ecommerce_ProductDescription = "Ecommerce_ProductDescription";
-            item.Ecommerce_ProductSubcategory = "Ecommerce_ProductSubcategory";
-            item.Ecommerce_ManufacturerName = "Ecommerce_ManufacturerName";
-            item.Ecommerce_Msrp = "Ecommerce_Msrp";
-            item.Ecommerce_GenericKeywords = "Ecommerce_GenericKeywords";
-            item.Ecommerce_Size = "Ecommerce_Size";
+            item.EcommerceAsin = "EcommerceAsin";
+            item.EcommerceBullet1 = "EcommerceBullet1";
+            item.EcommerceBullet2 = "EcommerceBullet2";
+            item.EcommerceBullet3 = "EcommerceBullet3";
+            item.EcommerceBullet4 = "EcommerceBullet4";
+            item.EcommerceBullet5 = "EcommerceBullet5";
+            item.EcommerceComponents = "EcommerceComponents";
+            item.EcommerceCost = "EcommerceCost";
+            item.EcommerceExternalId = "EcommerceExternalId";
+            item.EcommerceExternalIdType = "EcommerceExternalIdType";
+            item.EcommerceImagePath1 = "EcommerceImagePath1";
+            item.EcommerceImagePath2 = "EcommerceImagePath2";
+            item.EcommerceImagePath3 = "EcommerceImagePath3";
+            item.EcommerceImagePath4 = "EcommerceImagePath4";
+            item.EcommerceImagePath5 = "EcommerceImagePath5";
+            item.EcommerceItemHeight = "EcommerceItemHeight";
+            item.EcommerceItemLength = "EcommerceItemLength";
+            item.EcommerceItemName = "EcommerceItemName";
+            item.EcommerceItemWeight = "EcommerceItemWeight";
+            item.EcommerceItemWidth = "EcommerceItemWidth";
+            item.EcommerceModelName = "EcommerceModelName";
+            item.EcommercePackageHeight = "EcommercePackageHeight";
+            item.EcommercePackageLength = "EcommercePackageLength";
+            item.EcommercePackageWeight = "EcommercePackageWeight";
+            item.EcommercePackageWidth = "EcommercePackageWidth";
+            item.EcommercePageQty = "EcommercePageQty";
+            item.EcommerceProductCategory = "EcommerceProductCategory";
+            item.EcommerceProductDescription = "EcommerceProductDescription";
+            item.EcommerceProductSubcategory = "EcommerceProductSubcategory";
+            item.EcommerceManufacturerName = "EcommerceManufacturerName";
+            item.EcommerceMsrp = "EcommerceMsrp";
+            item.EcommerceGenericKeywords = "EcommerceGenericKeywords";
+            item.EcommerceSize = "EcommerceSize";
 
             #endregion // Assign
 
@@ -785,39 +785,39 @@ namespace OdinTests.ViewModels
             // Assert.AreEqual(itemViewModel.NewDate, "NewDate");
             Assert.AreEqual(itemViewModel.Size, "Size");
             Assert.IsTrue(itemViewModel.ItemViewModelItem.HasEcommerce());
-            Assert.AreEqual(itemViewModel.Ecommerce_Asin, "Ecommerce_Asin");
-            Assert.AreEqual(itemViewModel.Ecommerce_Bullet1, "Ecommerce_Bullet1");
-            Assert.AreEqual(itemViewModel.Ecommerce_Bullet2, "Ecommerce_Bullet2");
-            Assert.AreEqual(itemViewModel.Ecommerce_Bullet3, "Ecommerce_Bullet3");
-            Assert.AreEqual(itemViewModel.Ecommerce_Bullet4, "Ecommerce_Bullet4");
-            Assert.AreEqual(itemViewModel.Ecommerce_Bullet5, "Ecommerce_Bullet5");
-            Assert.AreEqual(itemViewModel.Ecommerce_Components, "Ecommerce_Components");
-            Assert.AreEqual(itemViewModel.Ecommerce_Cost, "Ecommerce_Cost");
-            Assert.AreEqual(itemViewModel.Ecommerce_ExternalId, "Ecommerce_ExternalId");
-            Assert.AreEqual(itemViewModel.Ecommerce_ExternalIdType, "Ecommerce_ExternalIdType");
-            Assert.AreEqual(itemViewModel.Ecommerce_ImagePath1, "Ecommerce_ImagePath1");
-            Assert.AreEqual(itemViewModel.Ecommerce_ImagePath2, "Ecommerce_ImagePath2");
-            Assert.AreEqual(itemViewModel.Ecommerce_ImagePath3, "Ecommerce_ImagePath3");
-            Assert.AreEqual(itemViewModel.Ecommerce_ImagePath4, "Ecommerce_ImagePath4");
-            Assert.AreEqual(itemViewModel.Ecommerce_ImagePath5, "Ecommerce_ImagePath5");
-            Assert.AreEqual(itemViewModel.Ecommerce_ItemHeight, "Ecommerce_ItemHeight");
-            Assert.AreEqual(itemViewModel.Ecommerce_ItemLength, "Ecommerce_ItemLength");
-            Assert.AreEqual(itemViewModel.Ecommerce_ItemName, "Ecommerce_ItemName");
-            Assert.AreEqual(itemViewModel.Ecommerce_ItemWeight, "Ecommerce_ItemWeight");
-            Assert.AreEqual(itemViewModel.Ecommerce_ItemWidth, "Ecommerce_ItemWidth");
-            Assert.AreEqual(itemViewModel.Ecommerce_ModelName, "Ecommerce_ModelName");
-            Assert.AreEqual(itemViewModel.Ecommerce_PackageHeight, "Ecommerce_PackageHeight");
-            Assert.AreEqual(itemViewModel.Ecommerce_PackageLength, "Ecommerce_PackageLength");
-            Assert.AreEqual(itemViewModel.Ecommerce_PackageWeight, "Ecommerce_PackageWeight");
-            Assert.AreEqual(itemViewModel.Ecommerce_PackageWidth, "Ecommerce_PackageWidth");
-            Assert.AreEqual(itemViewModel.Ecommerce_PageQty, "Ecommerce_PageQty");
-            Assert.AreEqual(itemViewModel.Ecommerce_ProductCategory, "Ecommerce_ProductCategory");
-            Assert.AreEqual(itemViewModel.Ecommerce_ProductDescription, "Ecommerce_ProductDescription");
-            Assert.AreEqual(itemViewModel.Ecommerce_ProductSubcategory, "Ecommerce_ProductSubcategory");
-            Assert.AreEqual(itemViewModel.Ecommerce_ManufacturerName, "Ecommerce_ManufacturerName");
-            Assert.AreEqual(itemViewModel.Ecommerce_Msrp, "Ecommerce_Msrp");
-            Assert.AreEqual(itemViewModel.Ecommerce_GenericKeywords, "Ecommerce_GenericKeywords");
-            Assert.AreEqual(itemViewModel.Ecommerce_Size, "Ecommerce_Size");
+            Assert.AreEqual(itemViewModel.EcommerceAsin, "EcommerceAsin");
+            Assert.AreEqual(itemViewModel.EcommerceBullet1, "EcommerceBullet1");
+            Assert.AreEqual(itemViewModel.EcommerceBullet2, "EcommerceBullet2");
+            Assert.AreEqual(itemViewModel.EcommerceBullet3, "EcommerceBullet3");
+            Assert.AreEqual(itemViewModel.EcommerceBullet4, "EcommerceBullet4");
+            Assert.AreEqual(itemViewModel.EcommerceBullet5, "EcommerceBullet5");
+            Assert.AreEqual(itemViewModel.EcommerceComponents, "EcommerceComponents");
+            Assert.AreEqual(itemViewModel.EcommerceCost, "EcommerceCost");
+            Assert.AreEqual(itemViewModel.EcommerceExternalId, "EcommerceExternalId");
+            Assert.AreEqual(itemViewModel.EcommerceExternalIdType, "EcommerceExternalIdType");
+            Assert.AreEqual(itemViewModel.EcommerceImagePath1, "EcommerceImagePath1");
+            Assert.AreEqual(itemViewModel.EcommerceImagePath2, "EcommerceImagePath2");
+            Assert.AreEqual(itemViewModel.EcommerceImagePath3, "EcommerceImagePath3");
+            Assert.AreEqual(itemViewModel.EcommerceImagePath4, "EcommerceImagePath4");
+            Assert.AreEqual(itemViewModel.EcommerceImagePath5, "EcommerceImagePath5");
+            Assert.AreEqual(itemViewModel.EcommerceItemHeight, "EcommerceItemHeight");
+            Assert.AreEqual(itemViewModel.EcommerceItemLength, "EcommerceItemLength");
+            Assert.AreEqual(itemViewModel.EcommerceItemName, "EcommerceItemName");
+            Assert.AreEqual(itemViewModel.EcommerceItemWeight, "EcommerceItemWeight");
+            Assert.AreEqual(itemViewModel.EcommerceItemWidth, "EcommerceItemWidth");
+            Assert.AreEqual(itemViewModel.EcommerceModelName, "EcommerceModelName");
+            Assert.AreEqual(itemViewModel.EcommercePackageHeight, "EcommercePackageHeight");
+            Assert.AreEqual(itemViewModel.EcommercePackageLength, "EcommercePackageLength");
+            Assert.AreEqual(itemViewModel.EcommercePackageWeight, "EcommercePackageWeight");
+            Assert.AreEqual(itemViewModel.EcommercePackageWidth, "EcommercePackageWidth");
+            Assert.AreEqual(itemViewModel.EcommercePageQty, "EcommercePageQty");
+            Assert.AreEqual(itemViewModel.EcommerceProductCategory, "EcommerceProductCategory");
+            Assert.AreEqual(itemViewModel.EcommerceProductDescription, "EcommerceProductDescription");
+            Assert.AreEqual(itemViewModel.EcommerceProductSubcategory, "EcommerceProductSubcategory");
+            Assert.AreEqual(itemViewModel.EcommerceManufacturerName, "EcommerceManufacturerName");
+            Assert.AreEqual(itemViewModel.EcommerceMsrp, "EcommerceMsrp");
+            Assert.AreEqual(itemViewModel.EcommerceGenericKeywords, "EcommerceGenericKeywords");
+            Assert.AreEqual(itemViewModel.EcommerceSize, "EcommerceSize");
 
             #endregion // Assert
         }
@@ -1022,36 +1022,36 @@ namespace OdinTests.ViewModels
                 DirectImport = "Y",
                 Duty = "9",
                 Ean = "EAN",
-                Ecommerce_Asin = "ASIN",
-                Ecommerce_Bullet1 = "Bullet 1",
-                Ecommerce_Bullet2 = "Bullet 2",
-                Ecommerce_Bullet3 = "Bullet 3",
-                Ecommerce_Bullet4 = "Bullet 4",
-                Ecommerce_Bullet5 = "Bullet 5",
-                Ecommerce_Components = "Components",
-                Ecommerce_Cost = "5.99",
-                Ecommerce_ExternalId = "000000000000",
-                Ecommerce_ExternalIdType = "UPC",
-                Ecommerce_GenericKeywords = "GenericeKeywords",
-                Ecommerce_ItemHeight = "5",
-                Ecommerce_ItemLength = "4",
-                Ecommerce_ItemName = "Item Name",
-                Ecommerce_ItemWeight = "9",
-                Ecommerce_ItemWidth = "5",
-                Ecommerce_ModelName = "Model Name",
-                Ecommerce_PackageHeight = "5",
-                Ecommerce_PackageLength = "4",
-                Ecommerce_PackageWeight = "1",
-                Ecommerce_PackageWidth = "2",
-                Ecommerce_PageQty = "3",
-                Ecommerce_ProductCategory = "Product Category",
-                Ecommerce_ProductDescription = "Product Description",
-                Ecommerce_ProductSubcategory = "Product Subcategory",
-                Ecommerce_ManufacturerName = "Manufacturer Name",
-                Ecommerce_Msrp = "9.99",
-                Ecommerce_Size = "8",
-                Ecommerce_SubjectKeywords = "SubjectKeywords",
-                Ecommerce_Upc = "ecommerceUpc",
+                EcommerceAsin = "ASIN",
+                EcommerceBullet1 = "Bullet 1",
+                EcommerceBullet2 = "Bullet 2",
+                EcommerceBullet3 = "Bullet 3",
+                EcommerceBullet4 = "Bullet 4",
+                EcommerceBullet5 = "Bullet 5",
+                EcommerceComponents = "Components",
+                EcommerceCost = "5.99",
+                EcommerceExternalId = "000000000000",
+                EcommerceExternalIdType = "UPC",
+                EcommerceGenericKeywords = "GenericeKeywords",
+                EcommerceItemHeight = "5",
+                EcommerceItemLength = "4",
+                EcommerceItemName = "Item Name",
+                EcommerceItemWeight = "9",
+                EcommerceItemWidth = "5",
+                EcommerceModelName = "Model Name",
+                EcommercePackageHeight = "5",
+                EcommercePackageLength = "4",
+                EcommercePackageWeight = "1",
+                EcommercePackageWidth = "2",
+                EcommercePageQty = "3",
+                EcommerceProductCategory = "Product Category",
+                EcommerceProductDescription = "Product Description",
+                EcommerceProductSubcategory = "Product Subcategory",
+                EcommerceManufacturerName = "Manufacturer Name",
+                EcommerceMsrp = "9.99",
+                EcommerceSize = "8",
+                EcommerceSubjectKeywords = "SubjectKeywords",
+                EcommerceUpc = "ecommerceUpc",
                 Gpc = "gpc",
                 Height = "2",
                 ImagePath = "imagePath",
@@ -1119,7 +1119,7 @@ namespace OdinTests.ViewModels
             #region Act
 
             ItemViewModel itemViewModel = new ItemViewModel(item, itemService, itemIds);
-            itemViewModel.ValidateAll(itemViewModel.ItemViewModelItem);
+            // itemViewModel.ValidateAll(itemViewModel.ItemViewModelItem);
             ItemObject newItem = itemViewModel.ItemViewModelItem;
 
             #endregion // Act
@@ -1132,39 +1132,39 @@ namespace OdinTests.ViewModels
             Assert.AreEqual(item.SellOnHayneedle, newItem.SellOnHayneedle);
             Assert.AreEqual(item.SellOnWalmart, newItem.SellOnWalmart);
             Assert.AreEqual(item.SellOnTrends, newItem.SellOnTrends);
-            Assert.AreEqual(item.Ecommerce_Asin, newItem.Ecommerce_Asin);
-            Assert.AreEqual(item.Ecommerce_Bullet1, newItem.Ecommerce_Bullet1);
-            Assert.AreEqual(item.Ecommerce_Bullet2, newItem.Ecommerce_Bullet2);
-            Assert.AreEqual(item.Ecommerce_Bullet3, newItem.Ecommerce_Bullet3);
-            Assert.AreEqual(item.Ecommerce_Bullet4, newItem.Ecommerce_Bullet4);
-            Assert.AreEqual(item.Ecommerce_Bullet5, newItem.Ecommerce_Bullet5);
-            Assert.AreEqual(item.Ecommerce_Components, newItem.Ecommerce_Components);
-            Assert.AreEqual(item.Ecommerce_Cost, newItem.Ecommerce_Cost);
-            Assert.AreEqual(item.Ecommerce_ExternalId, newItem.Ecommerce_ExternalId);
-            Assert.AreEqual(item.Ecommerce_ExternalIdType, newItem.Ecommerce_ExternalIdType);
-            Assert.AreEqual(item.Ecommerce_ImagePath1, newItem.Ecommerce_ImagePath1);
-            Assert.AreEqual(item.Ecommerce_ImagePath2, newItem.Ecommerce_ImagePath2);
-            Assert.AreEqual(item.Ecommerce_ImagePath3, newItem.Ecommerce_ImagePath3);
-            Assert.AreEqual(item.Ecommerce_ImagePath4, newItem.Ecommerce_ImagePath4);
-            Assert.AreEqual(item.Ecommerce_ImagePath5, newItem.Ecommerce_ImagePath5);            
-            Assert.AreEqual(item.Ecommerce_ItemHeight, newItem.Ecommerce_ItemHeight);
-            Assert.AreEqual(item.Ecommerce_ItemLength, newItem.Ecommerce_ItemLength);
-            Assert.AreEqual(item.Ecommerce_ItemName, newItem.Ecommerce_ItemName);
-            Assert.AreEqual(item.Ecommerce_ItemWeight, newItem.Ecommerce_ItemWeight);
-            Assert.AreEqual(item.Ecommerce_ItemWidth, newItem.Ecommerce_ItemWidth);
-            Assert.AreEqual(item.Ecommerce_ModelName, newItem.Ecommerce_ModelName);
-            Assert.AreEqual(item.Ecommerce_PackageHeight, newItem.Ecommerce_PackageHeight);
-            Assert.AreEqual(item.Ecommerce_PackageLength, newItem.Ecommerce_PackageLength);
-            Assert.AreEqual(item.Ecommerce_PackageWeight, newItem.Ecommerce_PackageWeight);
-            Assert.AreEqual(item.Ecommerce_PackageWidth, newItem.Ecommerce_PackageWidth);
-            Assert.AreEqual(item.Ecommerce_PageQty, newItem.Ecommerce_PageQty);
-            Assert.AreEqual(item.Ecommerce_ProductCategory, newItem.Ecommerce_ProductCategory);
-            Assert.AreEqual(item.Ecommerce_ProductDescription, newItem.Ecommerce_ProductDescription);
-            Assert.AreEqual(item.Ecommerce_ProductSubcategory, newItem.Ecommerce_ProductSubcategory);
-            Assert.AreEqual(item.Ecommerce_ManufacturerName, newItem.Ecommerce_ManufacturerName);
-            Assert.AreEqual(item.Ecommerce_Msrp, newItem.Ecommerce_Msrp);
-            Assert.AreEqual(item.Ecommerce_GenericKeywords, newItem.Ecommerce_GenericKeywords);
-            Assert.AreEqual(item.Ecommerce_Size, newItem.Ecommerce_Size);
+            Assert.AreEqual(item.EcommerceAsin, newItem.EcommerceAsin);
+            Assert.AreEqual(item.EcommerceBullet1, newItem.EcommerceBullet1);
+            Assert.AreEqual(item.EcommerceBullet2, newItem.EcommerceBullet2);
+            Assert.AreEqual(item.EcommerceBullet3, newItem.EcommerceBullet3);
+            Assert.AreEqual(item.EcommerceBullet4, newItem.EcommerceBullet4);
+            Assert.AreEqual(item.EcommerceBullet5, newItem.EcommerceBullet5);
+            Assert.AreEqual(item.EcommerceComponents, newItem.EcommerceComponents);
+            Assert.AreEqual(item.EcommerceCost, newItem.EcommerceCost);
+            Assert.AreEqual(item.EcommerceExternalId, newItem.EcommerceExternalId);
+            Assert.AreEqual(item.EcommerceExternalIdType, newItem.EcommerceExternalIdType);
+            Assert.AreEqual(item.EcommerceImagePath1, newItem.EcommerceImagePath1);
+            Assert.AreEqual(item.EcommerceImagePath2, newItem.EcommerceImagePath2);
+            Assert.AreEqual(item.EcommerceImagePath3, newItem.EcommerceImagePath3);
+            Assert.AreEqual(item.EcommerceImagePath4, newItem.EcommerceImagePath4);
+            Assert.AreEqual(item.EcommerceImagePath5, newItem.EcommerceImagePath5);            
+            Assert.AreEqual(item.EcommerceItemHeight, newItem.EcommerceItemHeight);
+            Assert.AreEqual(item.EcommerceItemLength, newItem.EcommerceItemLength);
+            Assert.AreEqual(item.EcommerceItemName, newItem.EcommerceItemName);
+            Assert.AreEqual(item.EcommerceItemWeight, newItem.EcommerceItemWeight);
+            Assert.AreEqual(item.EcommerceItemWidth, newItem.EcommerceItemWidth);
+            Assert.AreEqual(item.EcommerceModelName, newItem.EcommerceModelName);
+            Assert.AreEqual(item.EcommercePackageHeight, newItem.EcommercePackageHeight);
+            Assert.AreEqual(item.EcommercePackageLength, newItem.EcommercePackageLength);
+            Assert.AreEqual(item.EcommercePackageWeight, newItem.EcommercePackageWeight);
+            Assert.AreEqual(item.EcommercePackageWidth, newItem.EcommercePackageWidth);
+            Assert.AreEqual(item.EcommercePageQty, newItem.EcommercePageQty);
+            Assert.AreEqual(item.EcommerceProductCategory, newItem.EcommerceProductCategory);
+            Assert.AreEqual(item.EcommerceProductDescription, newItem.EcommerceProductDescription);
+            Assert.AreEqual(item.EcommerceProductSubcategory, newItem.EcommerceProductSubcategory);
+            Assert.AreEqual(item.EcommerceManufacturerName, newItem.EcommerceManufacturerName);
+            Assert.AreEqual(item.EcommerceMsrp, newItem.EcommerceMsrp);
+            Assert.AreEqual(item.EcommerceGenericKeywords, newItem.EcommerceGenericKeywords);
+            Assert.AreEqual(item.EcommerceSize, newItem.EcommerceSize);
             Assert.AreEqual(item.AccountingGroup, newItem.AccountingGroup);
             Assert.AreEqual(item.ReturnBillOfMaterials(), newItem.ReturnBillOfMaterials());
             Assert.AreEqual(item.CasepackHeight, newItem.CasepackHeight);

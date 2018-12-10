@@ -33,7 +33,7 @@ namespace Odin.Data
         /// </summary>
         /// <param name="template"></param>
         /// <returns></returns>
-        void InsertTemplate(Template template);
+        void InsertTemplate(ItemObject template);
 
         #endregion // Public Insert Methods
 
@@ -99,7 +99,7 @@ namespace Odin.Data
         ///     Retrieves a template from the db
         /// </summary>
         /// <returns></returns>
-        Template RetrieveTemplate(string templateId);
+        ItemObject RetrieveTemplate(string templateId);
 
         #endregion // Public Retrieval Methods
 
@@ -109,7 +109,7 @@ namespace Odin.Data
         ///     Updates an existing template
         /// </summary>
         /// <returns></returns>
-        void UpdateTemplate(Template template, string status);
+        void UpdateTemplate(ItemObject template, string status);
 
         #endregion // Public Update Methods
 

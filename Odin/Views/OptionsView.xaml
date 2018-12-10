@@ -1132,7 +1132,7 @@
                             Grid.Row="27"
                             Grid.Column="1"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_AsinVisibility}"
+                            IsChecked="{Binding EcommerceAsinVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Bullet 1 -->
                         <Label
@@ -1146,7 +1146,7 @@
                             Grid.Row="28"
                             Grid.Column="1"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_Bullet1Visibility}"
+                            IsChecked="{Binding EcommerceBullet1Visibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Bullet 2 -->
                         <Label
@@ -1160,7 +1160,7 @@
                             Grid.Row="29"
                             Grid.Column="1"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_Bullet2Visibility}"
+                            IsChecked="{Binding EcommerceBullet2Visibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Bullet 3 -->
                         <Label
@@ -1174,7 +1174,7 @@
                             Grid.Row="30"
                             Grid.Column="1"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_Bullet3Visibility}"
+                            IsChecked="{Binding EcommerceBullet3Visibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Bullet 4 -->
                         <Label
@@ -1188,7 +1188,7 @@
                             Grid.Row="31"
                             Grid.Column="1"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_Bullet4Visibility}"
+                            IsChecked="{Binding EcommerceBullet4Visibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Bullet 5 -->
                         <Label
@@ -1202,7 +1202,7 @@
                             Grid.Row="32"
                             Grid.Column="1"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_Bullet5Visibility}"
+                            IsChecked="{Binding EcommerceBullet5Visibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Components -->
                         <Label
@@ -1216,7 +1216,7 @@
                             Grid.Row="33"
                             Grid.Column="1"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_ComponentsVisibility}"
+                            IsChecked="{Binding EcommerceComponentsVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Cost-->
                         <Label
@@ -1230,7 +1230,7 @@
                             Grid.Row="34"
                             Grid.Column="1"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_CostVisibility}"
+                            IsChecked="{Binding EcommerceCostVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Country of Origin -->
                         <Label
@@ -1244,7 +1244,7 @@
                             Grid.Row="35"
                             Grid.Column="1"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_CountryofOriginVisibility}"
+                            IsChecked="{Binding EcommerceCountryofOriginVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce External Id -->
                         <Label
@@ -1258,7 +1258,7 @@
                             Grid.Row="36"
                             Grid.Column="1"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_ExternalIdVisibility}"
+                            IsChecked="{Binding EcommerceExternalIdVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce External Id Type -->
                         <Label
@@ -1272,7 +1272,7 @@
                             Grid.Row="37"
                             Grid.Column="1"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_ExternalIdTypeVisibility}"
+                            IsChecked="{Binding EcommerceExternalIdTypeVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Item Alias -->
                         <Label
@@ -1286,7 +1286,7 @@
                             Grid.Row="38"
                             Grid.Column="1"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_ItemAliasVisibility}"
+                            IsChecked="{Binding EcommerceItemAliasVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Item Height -->
                         <Label
@@ -1300,7 +1300,7 @@
                             Grid.Row="39"
                             Grid.Column="1"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_ItemHeightVisibility}"
+                            IsChecked="{Binding EcommerceItemHeightVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Item Length -->
                         <Label
@@ -1314,7 +1314,7 @@
                             Grid.Row="27"
                             Grid.Column="3"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_ItemLengthVisibility}"
+                            IsChecked="{Binding EcommerceItemLengthVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Item Name -->
                         <Label
@@ -1328,7 +1328,7 @@
                             Grid.Row="28"
                             Grid.Column="3"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_ItemNameVisibility}"
+                            IsChecked="{Binding EcommerceItemNameVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Item Weight-->
                         <Label
@@ -1342,7 +1342,7 @@
                             Grid.Row="29"
                             Grid.Column="3"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_ItemWeightVisibility}"
+                            IsChecked="{Binding EcommerceItemWeightVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Item Width -->
                         <Label
@@ -1356,7 +1356,7 @@
                             Grid.Row="30"
                             Grid.Column="3"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_ItemWidthVisibility}"
+                            IsChecked="{Binding EcommerceItemWidthVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Model Name -->
                         <Label
@@ -1370,7 +1370,7 @@
                             Grid.Row="31"
                             Grid.Column="3"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_ModelNameVisibility}"
+                            IsChecked="{Binding EcommerceModelNameVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Package Height -->
                         <Label
@@ -1384,7 +1384,7 @@
                             Grid.Row="32"
                             Grid.Column="3"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_PackageHeightVisibility}"
+                            IsChecked="{Binding EcommercePackageHeightVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Package Length-->
                         <Label
@@ -1398,7 +1398,7 @@
                             Grid.Row="33"
                             Grid.Column="3"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_PackageLengthVisibility}"
+                            IsChecked="{Binding EcommercePackageLengthVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Package Weight -->
                         <Label
@@ -1412,7 +1412,7 @@
                             Grid.Row="34"
                             Grid.Column="3"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_PackageWeightVisibility}"
+                            IsChecked="{Binding EcommercePackageWeightVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Package Width -->
                         <Label
@@ -1426,7 +1426,7 @@
                             Grid.Row="35"
                             Grid.Column="3"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_PackageWidthVisibility}"
+                            IsChecked="{Binding EcommercePackageWidthVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Page Qty -->
                         <Label
@@ -1440,7 +1440,7 @@
                             Grid.Row="36"
                             Grid.Column="3"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_PageQtyVisibility}"
+                            IsChecked="{Binding EcommercePageQtyVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Product Category -->
                         <Label
@@ -1454,7 +1454,7 @@
                             Grid.Row="37"
                             Grid.Column="3"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_ProductCategoryVisibility}"
+                            IsChecked="{Binding EcommerceProductCategoryVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Product Description -->
                         <Label
@@ -1468,7 +1468,7 @@
                             Grid.Row="38"
                             Grid.Column="3"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_ProductDescriptionVisibility}"
+                            IsChecked="{Binding EcommerceProductDescriptionVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Product Subcategory -->
                         <Label
@@ -1482,7 +1482,7 @@
                             Grid.Row="39"
                             Grid.Column="3"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_ProductSubcategoryVisibility}"
+                            IsChecked="{Binding EcommerceProductSubcategoryVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Manufacturer Name -->
                         <Label
@@ -1496,7 +1496,7 @@
                             Grid.Row="27"
                             Grid.Column="5"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_ManufacturerNameVisibility}"
+                            IsChecked="{Binding EcommerceManufacturerNameVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Msrp -->
                         <Label
@@ -1510,7 +1510,7 @@
                             Grid.Row="28"
                             Grid.Column="5"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_MsrpVisibility}"
+                            IsChecked="{Binding EcommerceMsrpVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Search Terms -->
                         <Label
@@ -1524,7 +1524,7 @@
                             Grid.Row="29"
                             Grid.Column="5"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_SearchTermsVisibility}"
+                            IsChecked="{Binding EcommerceSearchTermsVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Size -->
                         <Label
@@ -1538,7 +1538,7 @@
                             Grid.Row="30"
                             Grid.Column="5"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_SizeVisibility}"
+                            IsChecked="{Binding EcommerceSizeVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Ecommerce Upc -->
                         <Label
@@ -1552,7 +1552,7 @@
                             Grid.Row="31"
                             Grid.Column="5"
                             HorizontalAlignment="Center"
-                            IsChecked="{Binding Ecommerce_UpcVisibility}"
+                            IsChecked="{Binding EcommerceUpcVisibility}"
                             VerticalAlignment="Center"/>
                         <!-- Sell On Fields -->
                         <Label

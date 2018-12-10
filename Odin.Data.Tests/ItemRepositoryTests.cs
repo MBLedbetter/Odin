@@ -567,41 +567,41 @@ namespace Odin.Data.Tests
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
             ItemObject item = new ItemObject() {
                 ItemId = "TEST1",
-                Ecommerce_Asin = "Asin",
-                Ecommerce_Bullet1 = "Bullet1",
-                Ecommerce_Bullet2 = "Bullet2",
-                Ecommerce_Bullet3 = "Bullet3",
-                Ecommerce_Bullet4 = "Bullet4",
-                Ecommerce_Bullet5 = "Bullet5",
-                Ecommerce_Components = "Components",
-                Ecommerce_Cost = "5",
-                Ecommerce_CountryofOrigin = "Coo",
-                Ecommerce_ExternalId = "ExId",
-                Ecommerce_ExternalIdType = "ExIdT",
-                Ecommerce_ImagePath1 = "ImageUrl1",
-                Ecommerce_ImagePath2 = "ImageUrl2",
-                Ecommerce_ImagePath3 = "ImageUrl3",
-                Ecommerce_ImagePath4 = "ImageUrl4",
-                Ecommerce_ImagePath5 = "ImageUrl5",
-                Ecommerce_ItemHeight = "6",
-                Ecommerce_ItemLength = "1",
-                Ecommerce_ItemName = "ItemName",
-                Ecommerce_ItemWeight = "2",
-                Ecommerce_ItemWidth = "3",
-                Ecommerce_ModelName = "ModelName",
-                Ecommerce_PackageHeight = "1.1",
-                Ecommerce_PackageLength = "1.2",
-                Ecommerce_PackageWeight = "1.3",
-                Ecommerce_PackageWidth = "1.4",
-                Ecommerce_PageQty = "3",
-                Ecommerce_ProductCategory = "ProductCategory",
-                Ecommerce_ProductDescription = "FullDescription",
-                Ecommerce_ProductSubcategory = "ProductSubcategory",
-                Ecommerce_ManufacturerName = "ManufacturerName",
-                Ecommerce_Msrp = "9.99",
-                Ecommerce_GenericKeywords = "Ecommerce_GenericKeywords",
-                Ecommerce_Size = "Size",
-                Ecommerce_Upc = "UpcOverride",
+                EcommerceAsin = "Asin",
+                EcommerceBullet1 = "Bullet1",
+                EcommerceBullet2 = "Bullet2",
+                EcommerceBullet3 = "Bullet3",
+                EcommerceBullet4 = "Bullet4",
+                EcommerceBullet5 = "Bullet5",
+                EcommerceComponents = "Components",
+                EcommerceCost = "5",
+                EcommerceCountryofOrigin = "Coo",
+                EcommerceExternalId = "ExId",
+                EcommerceExternalIdType = "ExIdT",
+                EcommerceImagePath1 = "ImageUrl1",
+                EcommerceImagePath2 = "ImageUrl2",
+                EcommerceImagePath3 = "ImageUrl3",
+                EcommerceImagePath4 = "ImageUrl4",
+                EcommerceImagePath5 = "ImageUrl5",
+                EcommerceItemHeight = "6",
+                EcommerceItemLength = "1",
+                EcommerceItemName = "ItemName",
+                EcommerceItemWeight = "2",
+                EcommerceItemWidth = "3",
+                EcommerceModelName = "ModelName",
+                EcommercePackageHeight = "1.1",
+                EcommercePackageLength = "1.2",
+                EcommercePackageWeight = "1.3",
+                EcommercePackageWidth = "1.4",
+                EcommercePageQty = "3",
+                EcommerceProductCategory = "ProductCategory",
+                EcommerceProductDescription = "FullDescription",
+                EcommerceProductSubcategory = "ProductSubcategory",
+                EcommerceManufacturerName = "ManufacturerName",
+                EcommerceMsrp = "9.99",
+                EcommerceGenericKeywords = "EcommerceGenericKeywords",
+                EcommerceSize = "Size",
+                EcommerceUpc = "UpcOverride",
             };
             item.ResetUpdate();
             #endregion // Assemble
@@ -653,7 +653,7 @@ namespace Odin.Data.Tests
                 Assert.AreEqual("ProductSubcategory", amazonItemAttributes.ProductSubcategory);
                 Assert.AreEqual("ManufacturerName", amazonItemAttributes.ManufacturerName);
                 Assert.AreEqual(9.99m, amazonItemAttributes.Msrp);
-                Assert.AreEqual("ecommerce_generickeywords", amazonItemAttributes.GenericKeywords);
+                Assert.AreEqual("ecommercegenerickeywords", amazonItemAttributes.GenericKeywords);
                 Assert.AreEqual("Size", amazonItemAttributes.Size);
                 Assert.AreEqual("UpcOverride", amazonItemAttributes.UpcOverride);
             }
@@ -1104,41 +1104,41 @@ namespace Odin.Data.Tests
                 SellOnTrends = "N",
                 SellOnWalmart = "N",
                 SellOnWayfair = "N",
-                Ecommerce_Asin = "ASIN",
-                Ecommerce_Bullet1 = "Bullet1",
-                Ecommerce_Bullet2 = "Bullet2",
-                Ecommerce_Bullet3 = "Bullet3",
-                Ecommerce_Bullet4 = "Bullet4",
-                Ecommerce_Bullet5 = "Bullet5",
-                Ecommerce_Components = "Components",
-                Ecommerce_Cost = "5.99",
-                Ecommerce_ExternalId = "000000000000",
-                Ecommerce_ExternalIdType = "UPC",
-                Ecommerce_ImagePath1 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath1.jpg",
-                Ecommerce_ImagePath2 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath2.jpg",
-                Ecommerce_ImagePath3 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath3.jpg",
-                Ecommerce_ImagePath4 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath4.jpg",
-                Ecommerce_ImagePath5 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath5.jpg",
-                Ecommerce_ItemHeight = "6",
-                Ecommerce_ItemLength = "7",
-                Ecommerce_ItemName = "ItemName",
-                Ecommerce_ItemWeight = "8",
-                Ecommerce_ItemWidth = "9",
-                Ecommerce_ModelName = "Model Name",
-                Ecommerce_PackageHeight = "5",
-                Ecommerce_PackageLength = "4",
-                Ecommerce_PackageWeight = "3",
-                Ecommerce_PackageWidth = "2",
-                Ecommerce_PageQty = "5",
-                Ecommerce_ProductCategory = "ProductCategory",
-                Ecommerce_ProductDescription = "ProductDescription",
-                Ecommerce_ProductSubcategory = "ProductSubcategory",
-                Ecommerce_ManufacturerName = "ManufacturerName",
-                Ecommerce_Msrp = "1.99",
-                Ecommerce_GenericKeywords = "Ecommerce_GenericKeywords",
-                Ecommerce_SubjectKeywords = "Ecommerce_SubjectKeywords",
-                Ecommerce_Size = "Size",
-                Ecommerce_Upc = "UPC",
+                EcommerceAsin = "ASIN",
+                EcommerceBullet1 = "Bullet1",
+                EcommerceBullet2 = "Bullet2",
+                EcommerceBullet3 = "Bullet3",
+                EcommerceBullet4 = "Bullet4",
+                EcommerceBullet5 = "Bullet5",
+                EcommerceComponents = "Components",
+                EcommerceCost = "5.99",
+                EcommerceExternalId = "000000000000",
+                EcommerceExternalIdType = "UPC",
+                EcommerceImagePath1 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath1.jpg",
+                EcommerceImagePath2 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath2.jpg",
+                EcommerceImagePath3 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath3.jpg",
+                EcommerceImagePath4 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath4.jpg",
+                EcommerceImagePath5 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath5.jpg",
+                EcommerceItemHeight = "6",
+                EcommerceItemLength = "7",
+                EcommerceItemName = "ItemName",
+                EcommerceItemWeight = "8",
+                EcommerceItemWidth = "9",
+                EcommerceModelName = "Model Name",
+                EcommercePackageHeight = "5",
+                EcommercePackageLength = "4",
+                EcommercePackageWeight = "3",
+                EcommercePackageWidth = "2",
+                EcommercePageQty = "5",
+                EcommerceProductCategory = "ProductCategory",
+                EcommerceProductDescription = "ProductDescription",
+                EcommerceProductSubcategory = "ProductSubcategory",
+                EcommerceManufacturerName = "ManufacturerName",
+                EcommerceMsrp = "1.99",
+                EcommerceGenericKeywords = "EcommerceGenericKeywords",
+                EcommerceSubjectKeywords = "EcommerceSubjectKeywords",
+                EcommerceSize = "Size",
+                EcommerceUpc = "UPC",
                 AccountingGroup = "ACCOUNTING",
                 BillOfMaterials = billOfMaterials,
                 CasepackHeight = "1.",
@@ -1233,41 +1233,41 @@ namespace Odin.Data.Tests
             Assert.AreEqual("N", newItem.SellOnWalmart);
             Assert.AreEqual("N", newItem.SellOnWayfair);
             Assert.AreEqual("N", newItem.SellOnTrends);
-            Assert.AreEqual("ASIN", newItem.Ecommerce_Asin);
-            Assert.AreEqual("Bullet1", newItem.Ecommerce_Bullet1);
-            Assert.AreEqual("Bullet2", newItem.Ecommerce_Bullet2);
-            Assert.AreEqual("Bullet3", newItem.Ecommerce_Bullet3);
-            Assert.AreEqual("Bullet4", newItem.Ecommerce_Bullet4);
-            Assert.AreEqual("Bullet5", newItem.Ecommerce_Bullet5);
-            Assert.AreEqual("Components", newItem.Ecommerce_Components);
-            Assert.AreEqual("5.99", newItem.Ecommerce_Cost);
-            Assert.AreEqual("000000000000", newItem.Ecommerce_ExternalId);
-            Assert.AreEqual("UPC", newItem.Ecommerce_ExternalIdType);
-            Assert.AreEqual("ImagePath", newItem.Ecommerce_ImagePath1);
-            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/I/m/ImagePath2.jpg", newItem.Ecommerce_ImagePath2);
-            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/I/m/ImagePath3.jpg", newItem.Ecommerce_ImagePath3);
-            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/I/m/ImagePath4.jpg", newItem.Ecommerce_ImagePath4);
-            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/I/m/ImagePath5.jpg", newItem.Ecommerce_ImagePath5);
-            Assert.AreEqual("6.0", newItem.Ecommerce_ItemHeight);
-            Assert.AreEqual("7.0", newItem.Ecommerce_ItemLength);
-            Assert.AreEqual("ItemName", newItem.Ecommerce_ItemName);
-            Assert.AreEqual("8.0", newItem.Ecommerce_ItemWeight);
-            Assert.AreEqual("9.0", newItem.Ecommerce_ItemWidth);
-            Assert.AreEqual("Model Name", newItem.Ecommerce_ModelName);
-            Assert.AreEqual("5.0", newItem.Ecommerce_PackageHeight);
-            Assert.AreEqual("4.0", newItem.Ecommerce_PackageLength);
-            Assert.AreEqual("3.0", newItem.Ecommerce_PackageWeight);
-            Assert.AreEqual("2.0", newItem.Ecommerce_PackageWidth);
-            Assert.AreEqual("5", newItem.Ecommerce_PageQty);
-            Assert.AreEqual("ProductCategory", newItem.Ecommerce_ProductCategory);
-            Assert.AreEqual("ProductDescription", newItem.Ecommerce_ProductDescription);
-            Assert.AreEqual("ProductSubcategory", newItem.Ecommerce_ProductSubcategory);
-            Assert.AreEqual("ManufacturerName", newItem.Ecommerce_ManufacturerName);
-            Assert.AreEqual("1.99", newItem.Ecommerce_Msrp);
-            Assert.AreEqual("ecommerce_generickeywords", newItem.Ecommerce_GenericKeywords);
-            Assert.AreEqual("ecommerce_subjectkeywords", newItem.Ecommerce_SubjectKeywords);
-            Assert.AreEqual("Size", newItem.Ecommerce_Size);
-            Assert.AreEqual("UPC", newItem.Ecommerce_Upc);
+            Assert.AreEqual("ASIN", newItem.EcommerceAsin);
+            Assert.AreEqual("Bullet1", newItem.EcommerceBullet1);
+            Assert.AreEqual("Bullet2", newItem.EcommerceBullet2);
+            Assert.AreEqual("Bullet3", newItem.EcommerceBullet3);
+            Assert.AreEqual("Bullet4", newItem.EcommerceBullet4);
+            Assert.AreEqual("Bullet5", newItem.EcommerceBullet5);
+            Assert.AreEqual("Components", newItem.EcommerceComponents);
+            Assert.AreEqual("5.99", newItem.EcommerceCost);
+            Assert.AreEqual("000000000000", newItem.EcommerceExternalId);
+            Assert.AreEqual("UPC", newItem.EcommerceExternalIdType);
+            Assert.AreEqual("ImagePath", newItem.EcommerceImagePath1);
+            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/I/m/ImagePath2.jpg", newItem.EcommerceImagePath2);
+            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/I/m/ImagePath3.jpg", newItem.EcommerceImagePath3);
+            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/I/m/ImagePath4.jpg", newItem.EcommerceImagePath4);
+            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/I/m/ImagePath5.jpg", newItem.EcommerceImagePath5);
+            Assert.AreEqual("6.0", newItem.EcommerceItemHeight);
+            Assert.AreEqual("7.0", newItem.EcommerceItemLength);
+            Assert.AreEqual("ItemName", newItem.EcommerceItemName);
+            Assert.AreEqual("8.0", newItem.EcommerceItemWeight);
+            Assert.AreEqual("9.0", newItem.EcommerceItemWidth);
+            Assert.AreEqual("Model Name", newItem.EcommerceModelName);
+            Assert.AreEqual("5.0", newItem.EcommercePackageHeight);
+            Assert.AreEqual("4.0", newItem.EcommercePackageLength);
+            Assert.AreEqual("3.0", newItem.EcommercePackageWeight);
+            Assert.AreEqual("2.0", newItem.EcommercePackageWidth);
+            Assert.AreEqual("5", newItem.EcommercePageQty);
+            Assert.AreEqual("ProductCategory", newItem.EcommerceProductCategory);
+            Assert.AreEqual("ProductDescription", newItem.EcommerceProductDescription);
+            Assert.AreEqual("ProductSubcategory", newItem.EcommerceProductSubcategory);
+            Assert.AreEqual("ManufacturerName", newItem.EcommerceManufacturerName);
+            Assert.AreEqual("1.99", newItem.EcommerceMsrp);
+            Assert.AreEqual("ecommercegenerickeywords", newItem.EcommerceGenericKeywords);
+            Assert.AreEqual("ecommercesubjectkeywords", newItem.EcommerceSubjectKeywords);
+            Assert.AreEqual("Size", newItem.EcommerceSize);
+            Assert.AreEqual("UPC", newItem.EcommerceUpc);
             Assert.AreEqual("ACCOUNTING", newItem.AccountingGroup);
             Assert.AreEqual("ST1111, ST2222 (2)", newItem.ReturnBillOfMaterials());
             Assert.AreEqual("1.0", newItem.CasepackHeight);
@@ -1523,35 +1523,35 @@ namespace Odin.Data.Tests
             ItemObject item = new ItemObject() { 
                 ItemId = "TEST1",
                 Status = "Add",
-                Ecommerce_Asin = "Asin",
-                Ecommerce_Bullet1 = "Ecommerce_Bullet1",
-                Ecommerce_Bullet2 = "Ecommerce_Bullet2",
-                Ecommerce_Bullet3 = "Ecommerce_Bullet3",
-                Ecommerce_Bullet4 = "Ecommerce_Bullet4",
-                Ecommerce_Bullet5 = "Ecommerce_Bullet5",
-                Ecommerce_Components = "Ecommerce_Components",
-                Ecommerce_Cost = "E-Cost",
-                Ecommerce_ExternalIdType = "ExIdType",
-                Ecommerce_ExternalId = "ExternalId",
-                Ecommerce_ItemHeight = "ItemHeight",
-                Ecommerce_ItemLength = "ItemLength",
-                Ecommerce_ItemName = "Ecommerce_ItemName",
-                Ecommerce_ItemWeight = "ItemWeight",
-                Ecommerce_ItemWidth = "ItemWidth",
-                Ecommerce_ManufacturerName = "Ecommerce_ManufacturerName",
-                Ecommerce_ModelName = "Ecommerce_ModelName",
-                Ecommerce_Msrp = "msrp",
-                Ecommerce_PackageLength = "3.1",
-                Ecommerce_PackageHeight = "3.2",
-                Ecommerce_PackageWeight = "3.3",
-                Ecommerce_PackageWidth = "3.4",
-                Ecommerce_PageQty = "PQty",
-                Ecommerce_ProductCategory = "Ecommerce_ProductCategory",
-                Ecommerce_ProductDescription = "Ecommerce_ProductDescription",
-                Ecommerce_ProductSubcategory = "Ecommerce_ProductSubcategory",
-                Ecommerce_GenericKeywords = "Ecommerce_GenericKeywords",
-                Ecommerce_Size = "Ecommerce_Size",
-                Ecommerce_Upc = "EUpc",
+                EcommerceAsin = "Asin",
+                EcommerceBullet1 = "EcommerceBullet1",
+                EcommerceBullet2 = "EcommerceBullet2",
+                EcommerceBullet3 = "EcommerceBullet3",
+                EcommerceBullet4 = "EcommerceBullet4",
+                EcommerceBullet5 = "EcommerceBullet5",
+                EcommerceComponents = "EcommerceComponents",
+                EcommerceCost = "E-Cost",
+                EcommerceExternalIdType = "ExIdType",
+                EcommerceExternalId = "ExternalId",
+                EcommerceItemHeight = "ItemHeight",
+                EcommerceItemLength = "ItemLength",
+                EcommerceItemName = "EcommerceItemName",
+                EcommerceItemWeight = "ItemWeight",
+                EcommerceItemWidth = "ItemWidth",
+                EcommerceManufacturerName = "EcommerceManufacturerName",
+                EcommerceModelName = "EcommerceModelName",
+                EcommerceMsrp = "msrp",
+                EcommercePackageLength = "3.1",
+                EcommercePackageHeight = "3.2",
+                EcommercePackageWeight = "3.3",
+                EcommercePackageWidth = "3.4",
+                EcommercePageQty = "PQty",
+                EcommerceProductCategory = "EcommerceProductCategory",
+                EcommerceProductDescription = "EcommerceProductDescription",
+                EcommerceProductSubcategory = "EcommerceProductSubcategory",
+                EcommerceGenericKeywords = "EcommerceGenericKeywords",
+                EcommerceSize = "EcommerceSize",
+                EcommerceUpc = "EUpc",
                 AccountingGroup = "AGroup",
                 AltImageFile1 = "ImagePath2",
                 AltImageFile2 = "ImagePath3",
@@ -1734,40 +1734,40 @@ namespace Odin.Data.Tests
                 Assert.AreEqual("Weight", itemUpdateRecord.Weight);  //item.Weight
                 Assert.AreEqual("Width", itemUpdateRecord.Width);  //item.Width
                 Assert.AreEqual("Y", itemUpdateRecord.AAmazonActive);  //item.SellOnAmazon
-                Assert.AreEqual("Asin", itemUpdateRecord.AAsin);  //item.Ecommerce_Asin
-                Assert.AreEqual("Ecommerce_Bullet1", itemUpdateRecord.ABullet1);  //item.Ecommerce_Bullet1
-                Assert.AreEqual("Ecommerce_Bullet2", itemUpdateRecord.ABullet2);  //item.Ecommerce_Bullet2
-                Assert.AreEqual("Ecommerce_Bullet3", itemUpdateRecord.ABullet3);  //item.Ecommerce_Bullet3
-                Assert.AreEqual("Ecommerce_Bullet4", itemUpdateRecord.ABullet4);  //item.Ecommerce_Bullet4
-                Assert.AreEqual("Ecommerce_Bullet5", itemUpdateRecord.ABullet5);  //item.Ecommerce_Bullet5
-                Assert.AreEqual("Ecommerce_Components", itemUpdateRecord.AComponents);  //item.Ecommerce_Components
-                Assert.AreEqual("E-Cost", itemUpdateRecord.ACost);  //item.Ecommerce_Cost
-                Assert.AreEqual("ExIdType", itemUpdateRecord.AExternalIdType);  //item.Ecommerce_ExternalIdType
-                Assert.AreEqual("ExternalId", itemUpdateRecord.AExternalId);  //item.Ecommerce_ExternalId
-                Assert.AreEqual("ImagePath", itemUpdateRecord.ImagePath);  //item.Ecommerce_ImagePath1
-                Assert.AreEqual("ImagePath2", itemUpdateRecord.AltImageFile1);  //item.Ecommerce_ImagePath2
-                Assert.AreEqual("ImagePath3", itemUpdateRecord.AltImageFile2);  //item.Ecommerce_ImagePath3
-                Assert.AreEqual("ImagePath4", itemUpdateRecord.AltImageFile3);  //item.Ecommerce_ImagePath4
-                Assert.AreEqual("ImagePath5", itemUpdateRecord.AltImageFile4);  //item.Ecommerce_ImagePath5
-                Assert.AreEqual("ItemHeight", itemUpdateRecord.AItemHeight);  //item.Ecommerce_ItemHeight
-                Assert.AreEqual("ItemLength", itemUpdateRecord.AItemLength);  //item.Ecommerce_ItemLength
-                Assert.AreEqual("Ecommerce_ItemName", itemUpdateRecord.AItemName);  //item.Ecommerce_ItemName
-                Assert.AreEqual("ItemWeight", itemUpdateRecord.AItemWeight);  //item.Ecommerce_ItemWeight
-                Assert.AreEqual("ItemWidth", itemUpdateRecord.AItemWidth);  //item.Ecommerce_ItemWidth
-                Assert.AreEqual("Ecommerce_ModelName", itemUpdateRecord.AModelName);  //item.Ecommerce_ModelName
-                Assert.AreEqual("3.1", itemUpdateRecord.APackageLength);  //item.Ecommerce_PackageLength
-                Assert.AreEqual("3.2", itemUpdateRecord.APackageHeight);  //item.Ecommerce_PackageHeight
-                Assert.AreEqual("3.3", itemUpdateRecord.APackageWeight);  //item.Ecommerce_PackageWeight
-                Assert.AreEqual("3.4", itemUpdateRecord.APackageWidth);  //item.Ecommerce_PackageWidth
-                Assert.AreEqual("PQty", itemUpdateRecord.APageQty);  //item.Ecommerce_PageQty
-                Assert.AreEqual("Ecommerce_ProductCategory", itemUpdateRecord.AProductCategory);  //item.Ecommerce_ProductCategory
-                Assert.AreEqual("Ecommerce_ProductDescription", itemUpdateRecord.AProductDescription);  //item.Ecommerce_ProductDescription
-                Assert.AreEqual("Ecommerce_ProductSubcategory", itemUpdateRecord.AProductSubcategory);  //item.Ecommerce_ProductSubcategory
-                Assert.AreEqual("Ecommerce_ManufacturerName", itemUpdateRecord.AManufacturerName);  //item.Ecommerce_ManufacturerName
-                Assert.AreEqual("msrp", itemUpdateRecord.AMsrp);  //item.Ecommerce_Msrp
-                Assert.AreEqual("Ecommerce_GenericKeywords", itemUpdateRecord.AGenericKeywords);  //item.Ecommerce_GenericKeywords
-                Assert.AreEqual("Ecommerce_Size", itemUpdateRecord.ASize);  //item.Ecommerce_Size
-                Assert.AreEqual("EUpc", itemUpdateRecord.AUpc);  //item.Ecommerce_Upc
+                Assert.AreEqual("Asin", itemUpdateRecord.AAsin);  //item.EcommerceAsin
+                Assert.AreEqual("EcommerceBullet1", itemUpdateRecord.ABullet1);  //item.EcommerceBullet1
+                Assert.AreEqual("EcommerceBullet2", itemUpdateRecord.ABullet2);  //item.EcommerceBullet2
+                Assert.AreEqual("EcommerceBullet3", itemUpdateRecord.ABullet3);  //item.EcommerceBullet3
+                Assert.AreEqual("EcommerceBullet4", itemUpdateRecord.ABullet4);  //item.EcommerceBullet4
+                Assert.AreEqual("EcommerceBullet5", itemUpdateRecord.ABullet5);  //item.EcommerceBullet5
+                Assert.AreEqual("EcommerceComponents", itemUpdateRecord.AComponents);  //item.EcommerceComponents
+                Assert.AreEqual("E-Cost", itemUpdateRecord.ACost);  //item.EcommerceCost
+                Assert.AreEqual("ExIdType", itemUpdateRecord.AExternalIdType);  //item.EcommerceExternalIdType
+                Assert.AreEqual("ExternalId", itemUpdateRecord.AExternalId);  //item.EcommerceExternalId
+                Assert.AreEqual("ImagePath", itemUpdateRecord.ImagePath);  //item.EcommerceImagePath1
+                Assert.AreEqual("ImagePath2", itemUpdateRecord.AltImageFile1);  //item.EcommerceImagePath2
+                Assert.AreEqual("ImagePath3", itemUpdateRecord.AltImageFile2);  //item.EcommerceImagePath3
+                Assert.AreEqual("ImagePath4", itemUpdateRecord.AltImageFile3);  //item.EcommerceImagePath4
+                Assert.AreEqual("ImagePath5", itemUpdateRecord.AltImageFile4);  //item.EcommerceImagePath5
+                Assert.AreEqual("ItemHeight", itemUpdateRecord.AItemHeight);  //item.EcommerceItemHeight
+                Assert.AreEqual("ItemLength", itemUpdateRecord.AItemLength);  //item.EcommerceItemLength
+                Assert.AreEqual("EcommerceItemName", itemUpdateRecord.AItemName);  //item.EcommerceItemName
+                Assert.AreEqual("ItemWeight", itemUpdateRecord.AItemWeight);  //item.EcommerceItemWeight
+                Assert.AreEqual("ItemWidth", itemUpdateRecord.AItemWidth);  //item.EcommerceItemWidth
+                Assert.AreEqual("EcommerceModelName", itemUpdateRecord.AModelName);  //item.EcommerceModelName
+                Assert.AreEqual("3.1", itemUpdateRecord.APackageLength);  //item.EcommercePackageLength
+                Assert.AreEqual("3.2", itemUpdateRecord.APackageHeight);  //item.EcommercePackageHeight
+                Assert.AreEqual("3.3", itemUpdateRecord.APackageWeight);  //item.EcommercePackageWeight
+                Assert.AreEqual("3.4", itemUpdateRecord.APackageWidth);  //item.EcommercePackageWidth
+                Assert.AreEqual("PQty", itemUpdateRecord.APageQty);  //item.EcommercePageQty
+                Assert.AreEqual("EcommerceProductCategory", itemUpdateRecord.AProductCategory);  //item.EcommerceProductCategory
+                Assert.AreEqual("EcommerceProductDescription", itemUpdateRecord.AProductDescription);  //item.EcommerceProductDescription
+                Assert.AreEqual("EcommerceProductSubcategory", itemUpdateRecord.AProductSubcategory);  //item.EcommerceProductSubcategory
+                Assert.AreEqual("EcommerceManufacturerName", itemUpdateRecord.AManufacturerName);  //item.EcommerceManufacturerName
+                Assert.AreEqual("msrp", itemUpdateRecord.AMsrp);  //item.EcommerceMsrp
+                Assert.AreEqual("EcommerceGenericKeywords", itemUpdateRecord.AGenericKeywords);  //item.EcommerceGenericKeywords
+                Assert.AreEqual("EcommerceSize", itemUpdateRecord.ASize);  //item.EcommerceSize
+                Assert.AreEqual("EUpc", itemUpdateRecord.AUpc);  //item.EcommerceUpc
             }
 
             #endregion // Assert
@@ -3028,42 +3028,42 @@ namespace Odin.Data.Tests
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
             ItemObject item = new ItemObject() {
                 ItemId = "TEST1",
-                Ecommerce_Asin = "NISA",
-                Ecommerce_Bullet1 = "B1",
-                Ecommerce_Bullet2 = "B2",
-                Ecommerce_Bullet3 = "B3",
-                Ecommerce_Bullet4 = "B4",
-                Ecommerce_Bullet5 = "B5",
-                Ecommerce_Components = "CMPTS",
-                Ecommerce_Cost = "7",
-                Ecommerce_CountryofOrigin = "USA",
-                Ecommerce_ExternalId = "IDEX",
-                Ecommerce_ExternalIdType = "TDIXE",
-                Ecommerce_ImagePath1 = "1IMG",
-                Ecommerce_ImagePath2 = "2IMG",
-                Ecommerce_ImagePath3 = "3IMG",
-                Ecommerce_ImagePath4 = "4IMG",
-                Ecommerce_ImagePath5 = "5IMG",
-                Ecommerce_ItemHeight = "22",
-                Ecommerce_ItemLength = "12",
-                Ecommerce_ItemName = "ItemName",
-                Ecommerce_ItemWeight = "2.5",
-                Ecommerce_ItemWidth = "3.2",
-                Ecommerce_ModelName = "MName",
-                Ecommerce_PackageHeight = "2.1",
-                Ecommerce_PackageLength = "7.2",
-                Ecommerce_PackageWeight = "8.3",
-                Ecommerce_PackageWidth = "5.4",
-                Ecommerce_PageQty = "34",
-                Ecommerce_ProductCategory = "PCAT",
-                Ecommerce_ProductDescription = "FDESC",
-                Ecommerce_ProductSubcategory = "PRODSUB",
-                Ecommerce_ManufacturerName = "MNAME",
-                Ecommerce_Msrp = "19.99",
-                Ecommerce_GenericKeywords = "STERMS",
-                Ecommerce_SubjectKeywords = "SKEYS",
-                Ecommerce_Size = "SLIZ",
-                Ecommerce_Upc = "UOVER"
+                EcommerceAsin = "NISA",
+                EcommerceBullet1 = "B1",
+                EcommerceBullet2 = "B2",
+                EcommerceBullet3 = "B3",
+                EcommerceBullet4 = "B4",
+                EcommerceBullet5 = "B5",
+                EcommerceComponents = "CMPTS",
+                EcommerceCost = "7",
+                EcommerceCountryofOrigin = "USA",
+                EcommerceExternalId = "IDEX",
+                EcommerceExternalIdType = "TDIXE",
+                EcommerceImagePath1 = "1IMG",
+                EcommerceImagePath2 = "2IMG",
+                EcommerceImagePath3 = "3IMG",
+                EcommerceImagePath4 = "4IMG",
+                EcommerceImagePath5 = "5IMG",
+                EcommerceItemHeight = "22",
+                EcommerceItemLength = "12",
+                EcommerceItemName = "ItemName",
+                EcommerceItemWeight = "2.5",
+                EcommerceItemWidth = "3.2",
+                EcommerceModelName = "MName",
+                EcommercePackageHeight = "2.1",
+                EcommercePackageLength = "7.2",
+                EcommercePackageWeight = "8.3",
+                EcommercePackageWidth = "5.4",
+                EcommercePageQty = "34",
+                EcommerceProductCategory = "PCAT",
+                EcommerceProductDescription = "FDESC",
+                EcommerceProductSubcategory = "PRODSUB",
+                EcommerceManufacturerName = "MNAME",
+                EcommerceMsrp = "19.99",
+                EcommerceGenericKeywords = "STERMS",
+                EcommerceSubjectKeywords = "SKEYS",
+                EcommerceSize = "SLIZ",
+                EcommerceUpc = "UOVER"
             };
             item.ResetUpdate();
 
@@ -3077,42 +3077,42 @@ namespace Odin.Data.Tests
                 itemRepository.InsertEcommerceValues(item, context);
                 context.SaveChanges();
             }
-            item.Ecommerce_Asin = "Asin";
-            item.Ecommerce_Bullet1 = "Bullet1";
-            item.Ecommerce_Bullet2 = "Bullet2";
-            item.Ecommerce_Bullet3 = "Bullet3";
-            item.Ecommerce_Bullet4 = "Bullet4";
-            item.Ecommerce_Bullet5 = "Bullet5";
-            item.Ecommerce_Components = "Components";
-            item.Ecommerce_Cost = "5";
-            item.Ecommerce_CountryofOrigin = "Coo";
-            item.Ecommerce_ExternalId = "ExId";
-            item.Ecommerce_ExternalIdType = "ExIdT";
-            item.Ecommerce_ImagePath1 = "ImageUrl1";
-            item.Ecommerce_ImagePath2 = "ImageUrl2";
-            item.Ecommerce_ImagePath3 = "ImageUrl3";
-            item.Ecommerce_ImagePath4 = "ImageUrl4";
-            item.Ecommerce_ImagePath5 = "ImageUrl5";
-            item.Ecommerce_ItemHeight = "6";
-            item.Ecommerce_ItemLength = "1";
-            item.Ecommerce_ItemName = "ItemName";
-            item.Ecommerce_ItemWeight = "2";
-            item.Ecommerce_ItemWidth = "3";
-            item.Ecommerce_ModelName = "ModelName";
-            item.Ecommerce_PackageHeight = "1.1";
-            item.Ecommerce_PackageLength = "1.2";
-            item.Ecommerce_PackageWeight = "1.3";
-            item.Ecommerce_PackageWidth = "1.4";
-            item.Ecommerce_PageQty = "3";
-            item.Ecommerce_ProductCategory = "ProductCategory";
-            item.Ecommerce_ProductDescription = "FullDescription";
-            item.Ecommerce_ProductSubcategory = "ProductSubcategory";
-            item.Ecommerce_ManufacturerName = "ManufacturerName";
-            item.Ecommerce_Msrp = "9.99";
-            item.Ecommerce_GenericKeywords = "ecommerce_generickeywords";
-            item.Ecommerce_SubjectKeywords = "ecommerce_subjectkeywords";
-            item.Ecommerce_Size = "Size";
-            item.Ecommerce_Upc = "UpcOverride";
+            item.EcommerceAsin = "Asin";
+            item.EcommerceBullet1 = "Bullet1";
+            item.EcommerceBullet2 = "Bullet2";
+            item.EcommerceBullet3 = "Bullet3";
+            item.EcommerceBullet4 = "Bullet4";
+            item.EcommerceBullet5 = "Bullet5";
+            item.EcommerceComponents = "Components";
+            item.EcommerceCost = "5";
+            item.EcommerceCountryofOrigin = "Coo";
+            item.EcommerceExternalId = "ExId";
+            item.EcommerceExternalIdType = "ExIdT";
+            item.EcommerceImagePath1 = "ImageUrl1";
+            item.EcommerceImagePath2 = "ImageUrl2";
+            item.EcommerceImagePath3 = "ImageUrl3";
+            item.EcommerceImagePath4 = "ImageUrl4";
+            item.EcommerceImagePath5 = "ImageUrl5";
+            item.EcommerceItemHeight = "6";
+            item.EcommerceItemLength = "1";
+            item.EcommerceItemName = "ItemName";
+            item.EcommerceItemWeight = "2";
+            item.EcommerceItemWidth = "3";
+            item.EcommerceModelName = "ModelName";
+            item.EcommercePackageHeight = "1.1";
+            item.EcommercePackageLength = "1.2";
+            item.EcommercePackageWeight = "1.3";
+            item.EcommercePackageWidth = "1.4";
+            item.EcommercePageQty = "3";
+            item.EcommerceProductCategory = "ProductCategory";
+            item.EcommerceProductDescription = "FullDescription";
+            item.EcommerceProductSubcategory = "ProductSubcategory";
+            item.EcommerceManufacturerName = "ManufacturerName";
+            item.EcommerceMsrp = "9.99";
+            item.EcommerceGenericKeywords = "Ecommercegenerickeywords";
+            item.EcommerceSubjectKeywords = "Ecommercesubjectkeywords";
+            item.EcommerceSize = "Size";
+            item.EcommerceUpc = "UpcOverride";
             using (OdinContext context = OdinContextFactory.CreateContext())
             {
                 itemRepository.UpdateEcommerceValues(item, context);
@@ -3161,7 +3161,7 @@ namespace Odin.Data.Tests
                 Assert.AreEqual("ProductSubcategory", amazonItemAttributes.ProductSubcategory);
                 Assert.AreEqual("ManufacturerName", amazonItemAttributes.ManufacturerName);
                 Assert.AreEqual(9.99m, amazonItemAttributes.Msrp);
-                Assert.AreEqual("ecommerce_generickeywords", amazonItemAttributes.GenericKeywords);
+                Assert.AreEqual("ecommercegenerickeywords", amazonItemAttributes.GenericKeywords);
                 Assert.AreEqual("Size", amazonItemAttributes.Size);
                 Assert.AreEqual("UpcOverride", amazonItemAttributes.UpcOverride);
             }

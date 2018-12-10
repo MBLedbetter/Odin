@@ -16,7 +16,7 @@ namespace Odin.Services.Tests
         ///     Checks that AssignDirectImport returns valid values when proper values are assigned.
         /// </summary>
         [TestMethod]
-        public void ItemServiceTests_CreateEcommerce_ImageUrl_ShouldCreateNewFilePath()
+        public void ItemServiceTests_CreateEcommerceImageUrl_ShouldCreateNewFilePath()
         {
             #region Assemble
 
@@ -27,7 +27,7 @@ namespace Odin.Services.Tests
 
             #region Act
 
-            string result1 = item.CreateEcommerce_ImageUrl(x);
+            string result1 = item.CreateEcommerceImageUrl(x);
 
             #endregion // Act
 
@@ -199,22 +199,22 @@ namespace Odin.Services.Tests
         {
             #region Assemble
             ItemObject item = new ItemObject() {
-                Ecommerce_ImagePath1 = "1/2/3/img1.jpg",
-                Ecommerce_ImagePath2 = "1/2/3/img2.jpg"
+                EcommerceImagePath1 = "1/2/3/img1.jpg",
+                EcommerceImagePath2 = "1/2/3/img2.jpg"
             };
             item.ResetUpdate();
             #endregion // Assemble
 
             #region Act
 
-            item.Ecommerce_ImagePath1 = "1/2/3/img5.jpg";
+            item.EcommerceImagePath1 = "1/2/3/img5.jpg";
 
             #endregion // Act
 
             #region Assert
 
-            Assert.IsTrue(item.Ecommerce_ImagePath1Update);
-            Assert.IsFalse(item.Ecommerce_ImagePath2Update);
+            Assert.IsTrue(item.EcommerceImagePath1Update);
+            Assert.IsFalse(item.EcommerceImagePath2Update);
             Assert.IsFalse(item.AltImageFile1Update);
 
             #endregion // Assert
@@ -297,39 +297,39 @@ namespace Odin.Services.Tests
             Assert.AreEqual("UpcA", completeItem.Upc);
             Assert.AreEqual("WeightA", completeItem.Weight);
             Assert.AreEqual("WidthA", completeItem.Width);
-            Assert.AreEqual("AAsinA", completeItem.Ecommerce_Asin);
-            Assert.AreEqual("ABullet1A", completeItem.Ecommerce_Bullet1);
-            Assert.AreEqual("ABullet2A", completeItem.Ecommerce_Bullet2);
-            Assert.AreEqual("ABullet3A", completeItem.Ecommerce_Bullet3);
-            Assert.AreEqual("ABullet4A", completeItem.Ecommerce_Bullet4);
-            Assert.AreEqual("ABullet5A", completeItem.Ecommerce_Bullet5);
-            Assert.AreEqual("AComponentsA", completeItem.Ecommerce_Components);
-            Assert.AreEqual("ACostA", completeItem.Ecommerce_Cost);
-            Assert.AreEqual("AExternalIdA", completeItem.Ecommerce_ExternalId);
-            Assert.AreEqual("AExternalIdTypeA", completeItem.Ecommerce_ExternalIdType);
-            Assert.AreEqual("ImagePathA", completeItem.Ecommerce_ImagePath1);
-            Assert.AreEqual("AltImageFile1A", completeItem.Ecommerce_ImagePath2);
-            Assert.AreEqual("AltImageFile2A", completeItem.Ecommerce_ImagePath3);
-            Assert.AreEqual("AltImageFile3A", completeItem.Ecommerce_ImagePath4);
-            Assert.AreEqual("AltImageFile4A", completeItem.Ecommerce_ImagePath5);
-            Assert.AreEqual("AItemHeightA", completeItem.Ecommerce_ItemHeight);
-            Assert.AreEqual("AItemLengthA", completeItem.Ecommerce_ItemLength);
-            Assert.AreEqual("AItemNameA", completeItem.Ecommerce_ItemName);
-            Assert.AreEqual("AItemWeightA", completeItem.Ecommerce_ItemWeight);
-            Assert.AreEqual("AItemWidthA", completeItem.Ecommerce_ItemWidth);
-            Assert.AreEqual("AModelNameA", completeItem.Ecommerce_ModelName);
-            Assert.AreEqual("APackageHeightA", completeItem.Ecommerce_PackageHeight);
-            Assert.AreEqual("APackageLengthA", completeItem.Ecommerce_PackageLength);
-            Assert.AreEqual("APackageWeightA", completeItem.Ecommerce_PackageWeight);
-            Assert.AreEqual("APackageWidthA", completeItem.Ecommerce_PackageWidth);
-            Assert.AreEqual("APageQtyA", completeItem.Ecommerce_PageQty);
-            Assert.AreEqual("AProductCategoryA", completeItem.Ecommerce_ProductCategory);
-            Assert.AreEqual("AProductDescriptionA", completeItem.Ecommerce_ProductDescription);
-            Assert.AreEqual("AProductSubcategoryA", completeItem.Ecommerce_ProductSubcategory);
-            Assert.AreEqual("AManufacturerNameA", completeItem.Ecommerce_ManufacturerName);
-            Assert.AreEqual("AMsrpA", completeItem.Ecommerce_Msrp);
-            Assert.AreEqual("ASearchTermsA", completeItem.Ecommerce_GenericKeywords);
-            Assert.AreEqual("ASizeA", completeItem.Ecommerce_Size);
+            Assert.AreEqual("AAsinA", completeItem.EcommerceAsin);
+            Assert.AreEqual("ABullet1A", completeItem.EcommerceBullet1);
+            Assert.AreEqual("ABullet2A", completeItem.EcommerceBullet2);
+            Assert.AreEqual("ABullet3A", completeItem.EcommerceBullet3);
+            Assert.AreEqual("ABullet4A", completeItem.EcommerceBullet4);
+            Assert.AreEqual("ABullet5A", completeItem.EcommerceBullet5);
+            Assert.AreEqual("AComponentsA", completeItem.EcommerceComponents);
+            Assert.AreEqual("ACostA", completeItem.EcommerceCost);
+            Assert.AreEqual("AExternalIdA", completeItem.EcommerceExternalId);
+            Assert.AreEqual("AExternalIdTypeA", completeItem.EcommerceExternalIdType);
+            Assert.AreEqual("ImagePathA", completeItem.EcommerceImagePath1);
+            Assert.AreEqual("AltImageFile1A", completeItem.EcommerceImagePath2);
+            Assert.AreEqual("AltImageFile2A", completeItem.EcommerceImagePath3);
+            Assert.AreEqual("AltImageFile3A", completeItem.EcommerceImagePath4);
+            Assert.AreEqual("AltImageFile4A", completeItem.EcommerceImagePath5);
+            Assert.AreEqual("AItemHeightA", completeItem.EcommerceItemHeight);
+            Assert.AreEqual("AItemLengthA", completeItem.EcommerceItemLength);
+            Assert.AreEqual("AItemNameA", completeItem.EcommerceItemName);
+            Assert.AreEqual("AItemWeightA", completeItem.EcommerceItemWeight);
+            Assert.AreEqual("AItemWidthA", completeItem.EcommerceItemWidth);
+            Assert.AreEqual("AModelNameA", completeItem.EcommerceModelName);
+            Assert.AreEqual("APackageHeightA", completeItem.EcommercePackageHeight);
+            Assert.AreEqual("APackageLengthA", completeItem.EcommercePackageLength);
+            Assert.AreEqual("APackageWeightA", completeItem.EcommercePackageWeight);
+            Assert.AreEqual("APackageWidthA", completeItem.EcommercePackageWidth);
+            Assert.AreEqual("APageQtyA", completeItem.EcommercePageQty);
+            Assert.AreEqual("AProductCategoryA", completeItem.EcommerceProductCategory);
+            Assert.AreEqual("AProductDescriptionA", completeItem.EcommerceProductDescription);
+            Assert.AreEqual("AProductSubcategoryA", completeItem.EcommerceProductSubcategory);
+            Assert.AreEqual("AManufacturerNameA", completeItem.EcommerceManufacturerName);
+            Assert.AreEqual("AMsrpA", completeItem.EcommerceMsrp);
+            Assert.AreEqual("ASearchTermsA", completeItem.EcommerceGenericKeywords);
+            Assert.AreEqual("ASizeA", completeItem.EcommerceSize);
             Assert.AreEqual("SellOnAmazonA", completeItem.SellOnAmazon);
             Assert.AreEqual("SellOnFanaticsA", completeItem.SellOnFanatics);
             Assert.AreEqual("SellOnGuitarCenterA", completeItem.SellOnGuitarCenter);
@@ -729,146 +729,78 @@ namespace Odin.Services.Tests
         public void CompleteTemplate_HasUpdatedValues_EndValuesShouldMatch()
         {
             #region Assemble
-            Template template = new Template(
-                "TemplateId1",
-                "accountingGroup9",
-                "casepackHeight9",
-                "casepackLength9",
-                "casepackQty9",
-                "casepackWidth9",
-                "casepackWeight9",
-                "category9",
-                "category29",
-                "category39",
-                "copyright9",
-                "costProfileGroup9",
-                "defaultActualCostCad9",
-                "defaultActualCostUsd9",
-                "duty9",
-                "gpc9",
-                "height9",
-                "innerpackHeight9",
-                "innerpackLength9",
-                "innerpackQuantity9",
-                "innerpackWeight9",
-                "innerpackWidth9",
-                "itemCategory9",
-                "itemFamily9",
-                "itemGroup9",
-                "length9",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "");
-            Template template2 = new Template(
-                "TemplateId1",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "listPriceCad9",
-                "listPriceMxn9",
-                "listPriceUsd9",
-                "metaDescription9",
-                "mfgSource9",
-                "msrp9",
-                "msrpCad9",
-                "msrpMxn9",
-                "productFormat9",
-                "productGroup9",
-                "productLine9",
-                "productQty9",
-                "pricingGroup9",
-                "psStatus9",
-                "size9",
-                "tariffCode9",
-                "udex9",
-                "weight9",
-                "width9",
-                "ecommerceBullet19",
-                "ecommerceBullet29",
-                "ecommerceBullet39",
-                "ecommerceBullet49",
-                "ecommerceBullet59",
-                "ecommerceComponents9",
-                "ecommerceCost9",
-                "ecommerceExternalIdType9",
-                "ecommerceItemHeight9",
-                "ecommerceItemLength9",
-                "ecommerceItemWeight9",
-                "ecommerceItemWidth9",
-                "ecommerceModelName9",
-                "ecommercePackageLength9",
-                "ecommercePackageHeight9",
-                "ecommercePackageWeight9",
-                "ecommercePackageWidth9",
-                "ecommercePageQty9",
-                "ecommerceProductCategory9",
-                "ecommerceProductDescription9",
-                "ecommerceProductSubcategory9",
-                "ecommerceManufacturerName9",
-                "ecommerceMsrp9",
-                "ecommerceSize9");
+            ItemObject template = new ItemObject{
+                TemplateId = "TemplateId1",
+                AccountingGroup="accountingGroup9",
+                CasepackHeight= "casepackHeight9",
+                CasepackLength="casepackLength9",
+                CasepackQty="casepackQty9",
+                CasepackWidth = "casepackWidth9",
+                CasepackWeight="casepackWeight9",
+                Category="category9",
+                Category2="category29",
+                Category3="category39",
+                Copyright = "copyright9",
+                CostProfileGroup = "costProfileGroup9",
+                DefaultActualCostCad = "defaultActualCostCad9",
+                DefaultActualCostUsd = "defaultActualCostUsd9",
+                Duty = "duty9",
+                Gpc = "gpc9",
+                Height = "height9",
+                InnerpackHeight = "innerpackHeight9",
+                InnerpackLength = "innerpackLength9",
+                InnerpackQuantity = "innerpackQuantity9",
+                InnerpackWeight = "innerpackWeight9",
+                InnerpackWidth = "innerpackWidth9",
+                ItemCategory = "itemCategory9",
+                ItemFamily = "itemFamily9",
+                ItemGroup = "itemGroup9",
+                Length = "length9"};
+            ItemObject template2 = new ItemObject {
+                TemplateId = "TemplateId1",
+                ListPriceCad = "listPriceCad9",
+                ListPriceMxn = "listPriceMxn9",
+                ListPriceUsd = "listPriceUsd9",
+                MetaDescription = "metaDescription9",
+                MfgSource = "mfgSource9",
+                Msrp = "msrp9",
+                MsrpCad = "msrpCad9",
+                MsrpMxn = "msrpMxn9",
+                ProductFormat = "productFormat9",
+                ProductGroup = "productGroup9",
+                ProductLine = "productLine9",
+                ProductQty = "productQty9",
+                PricingGroup = "pricingGroup9",
+                PsStatus = "psStatus9",
+                Size = "size9",
+                TariffCode = "tariffCode9",
+                Udex = "udex9",
+                Weight = "weight9",
+                Width = "width9",
+                EcommerceBullet1 = "ecommerceBullet19",
+                EcommerceBullet2 = "ecommerceBullet29",
+                EcommerceBullet3 = "ecommerceBullet39",
+                EcommerceBullet4 = "ecommerceBullet49",
+                EcommerceBullet5 = "ecommerceBullet59",
+                EcommerceComponents = "ecommerceComponents9",
+                EcommerceCost="ecommerceCost9",
+                EcommerceExternalIdType="ecommerceExternalIdType9",
+                EcommerceItemHeight = "ecommerceItemHeight9",
+                EcommerceItemLength = "ecommerceItemLength9",
+                EcommerceItemWeight= "ecommerceItemWeight9",
+                EcommerceItemWidth="ecommerceItemWidth9",
+                EcommerceModelName = "ecommerceModelName9",
+                EcommercePackageLength = "ecommercePackageLength9",
+                EcommercePackageHeight = "ecommercePackageHeight9",
+                EcommercePackageWeight = "ecommercePackageWeight9",
+                EcommercePackageWidth = "ecommercePackageWidth9",
+                EcommercePageQty = "ecommercePageQty9",
+                EcommerceProductCategory = "ecommerceProductCategory9",
+                EcommerceProductDescription = "ecommerceProductDescription9",
+                EcommerceProductSubcategory = "ecommerceProductSubcategory9",
+                EcommerceManufacturerName = "ecommerceManufacturerName9",
+                EcommerceMsrp = "ecommerceMsrp9",
+                EcommerceSize = "ecommerceSize9"};
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
 
@@ -876,8 +808,8 @@ namespace Odin.Services.Tests
 
             #region Act
 
-            Template result1 = itemService.CompleteTemplate(template);
-            Template result2 = itemService.CompleteTemplate(template2);
+            ItemObject result1 = itemService.CompleteTemplate(template);
+            ItemObject result2 = itemService.CompleteTemplate(template2);
 
             #endregion // Act
 
@@ -1046,7 +978,7 @@ namespace Odin.Services.Tests
         ///     This method test the ReadItemIds function where invalid data exists in excel spreadsheet. Method should succeed.
         /// </summary>
         [TestMethod]
-        public void CreateEcommerce_ImageUrl_ValidImageUrl_ShouldReturnProperImageUrl()
+        public void CreateEcommerceImageUrl_ValidImageUrl_ShouldReturnProperImageUrl()
         {
 
             #region Setup
@@ -1058,7 +990,7 @@ namespace Odin.Services.Tests
 
             #region Act
 
-            string result = item.CreateEcommerce_ImageUrl(imgLocation);
+            string result = item.CreateEcommerceImageUrl(imgLocation);
 
             #endregion // Act
 
@@ -1239,30 +1171,30 @@ namespace Odin.Services.Tests
             Assert.AreEqual("TemplateUdex1", testItem.Udex);
             Assert.AreEqual("TemplateWeight1", testItem.Weight);
             Assert.AreEqual("TemplateWidth1", testItem.Width);
-            Assert.AreEqual("TemplateEcommerceBullet11", testItem.Ecommerce_Bullet1);
-            Assert.AreEqual("TemplateEcommerceBullet21", testItem.Ecommerce_Bullet2);
-            Assert.AreEqual("TemplateEcommerceBullet31", testItem.Ecommerce_Bullet3);
-            Assert.AreEqual("TemplateEcommerceBullet41", testItem.Ecommerce_Bullet4);
-            Assert.AreEqual("TemplateEcommerceBullet51", testItem.Ecommerce_Bullet5);
-            Assert.AreEqual("TemplateEcommerceComponents1", testItem.Ecommerce_Components);
-            Assert.AreEqual("TemplateEcommerceCost1", testItem.Ecommerce_Cost);
-            Assert.AreEqual("TemplateEcommerceExternalIdType1", testItem.Ecommerce_ExternalIdType);
-            Assert.AreEqual("TemplateEcommerceItemHeight1", testItem.Ecommerce_ItemHeight);
-            Assert.AreEqual("TemplateEcommerceItemLength1", testItem.Ecommerce_ItemLength);
-            Assert.AreEqual("TemplateEcommerceItemWeight1", testItem.Ecommerce_ItemWeight);
-            Assert.AreEqual("TemplateEcommerceItemWidth1", testItem.Ecommerce_ItemWidth);
-            Assert.AreEqual("TemplateEcommerceModelName1", testItem.Ecommerce_ModelName);
-            Assert.AreEqual("TemplateEcommercePackageLength1", testItem.Ecommerce_PackageLength);
-            Assert.AreEqual("TemplateEcommercePackageHeight1", testItem.Ecommerce_PackageHeight);
-            Assert.AreEqual("TemplateEcommercePackageWeight1", testItem.Ecommerce_PackageWeight);
-            Assert.AreEqual("TemplateEcommercePackageWidth1", testItem.Ecommerce_PackageWidth);
-            Assert.AreEqual("TemplateEcommercePageQty1", testItem.Ecommerce_PageQty);
-            Assert.AreEqual("TemplateEcommerceProductCategory1", testItem.Ecommerce_ProductCategory);
-            Assert.AreEqual("TemplateEcommerceProductDescription1", testItem.Ecommerce_ProductDescription);
-            Assert.AreEqual("TemplateEcommerceProductSubcategory1", testItem.Ecommerce_ProductSubcategory);
-            Assert.AreEqual("TemplateEcommerceManufacturerName1", testItem.Ecommerce_ManufacturerName);
-            Assert.AreEqual("TemplateEcommerceMsrp1", testItem.Ecommerce_Msrp);
-            Assert.AreEqual("TemplateEcommerceSize1", testItem.Ecommerce_Size);
+            Assert.AreEqual("TemplateEcommerceBullet11", testItem.EcommerceBullet1);
+            Assert.AreEqual("TemplateEcommerceBullet21", testItem.EcommerceBullet2);
+            Assert.AreEqual("TemplateEcommerceBullet31", testItem.EcommerceBullet3);
+            Assert.AreEqual("TemplateEcommerceBullet41", testItem.EcommerceBullet4);
+            Assert.AreEqual("TemplateEcommerceBullet51", testItem.EcommerceBullet5);
+            Assert.AreEqual("TemplateEcommerceComponents1", testItem.EcommerceComponents);
+            Assert.AreEqual("TemplateEcommerceCost1", testItem.EcommerceCost);
+            Assert.AreEqual("TemplateEcommerceExternalIdType1", testItem.EcommerceExternalIdType);
+            Assert.AreEqual("TemplateEcommerceItemHeight1", testItem.EcommerceItemHeight);
+            Assert.AreEqual("TemplateEcommerceItemLength1", testItem.EcommerceItemLength);
+            Assert.AreEqual("TemplateEcommerceItemWeight1", testItem.EcommerceItemWeight);
+            Assert.AreEqual("TemplateEcommerceItemWidth1", testItem.EcommerceItemWidth);
+            Assert.AreEqual("TemplateEcommerceModelName1", testItem.EcommerceModelName);
+            Assert.AreEqual("TemplateEcommercePackageLength1", testItem.EcommercePackageLength);
+            Assert.AreEqual("TemplateEcommercePackageHeight1", testItem.EcommercePackageHeight);
+            Assert.AreEqual("TemplateEcommercePackageWeight1", testItem.EcommercePackageWeight);
+            Assert.AreEqual("TemplateEcommercePackageWidth1", testItem.EcommercePackageWidth);
+            Assert.AreEqual("TemplateEcommercePageQty1", testItem.EcommercePageQty);
+            Assert.AreEqual("TemplateEcommerceProductCategory1", testItem.EcommerceProductCategory);
+            Assert.AreEqual("TemplateEcommerceProductDescription1", testItem.EcommerceProductDescription);
+            Assert.AreEqual("TemplateEcommerceProductSubcategory1", testItem.EcommerceProductSubcategory);
+            Assert.AreEqual("TemplateEcommerceManufacturerName1", testItem.EcommerceManufacturerName);
+            Assert.AreEqual("TemplateEcommerceMsrp1", testItem.EcommerceMsrp);
+            Assert.AreEqual("TemplateEcommerceSize1", testItem.EcommerceSize);
 
             #endregion // Assert
         }
@@ -1465,30 +1397,30 @@ namespace Odin.Services.Tests
             Assert.AreEqual("BB", testItem.Udex);
             Assert.AreEqual("BC.0", testItem.Weight);
             Assert.AreEqual("BD.0", testItem.Width);
-            Assert.AreEqual("TemplateEcommerceBullet11", testItem.Ecommerce_Bullet1);
-            Assert.AreEqual("TemplateEcommerceBullet21", testItem.Ecommerce_Bullet2);
-            Assert.AreEqual("TemplateEcommerceBullet31", testItem.Ecommerce_Bullet3);
-            Assert.AreEqual("TemplateEcommerceBullet41", testItem.Ecommerce_Bullet4);
-            Assert.AreEqual("TemplateEcommerceBullet51", testItem.Ecommerce_Bullet5);
-            Assert.AreEqual("TemplateEcommerceComponents1", testItem.Ecommerce_Components);
-            Assert.AreEqual("TemplateEcommerceCost1", testItem.Ecommerce_Cost);
-            Assert.AreEqual("TemplateEcommerceExternalIdType1", testItem.Ecommerce_ExternalIdType);
-            Assert.AreEqual("TemplateEcommerceItemHeight1", testItem.Ecommerce_ItemHeight);
-            Assert.AreEqual("TemplateEcommerceItemLength1", testItem.Ecommerce_ItemLength);
-            Assert.AreEqual("TemplateEcommerceItemWeight1", testItem.Ecommerce_ItemWeight);
-            Assert.AreEqual("TemplateEcommerceItemWidth1", testItem.Ecommerce_ItemWidth);
-            Assert.AreEqual("TemplateEcommerceModelName1", testItem.Ecommerce_ModelName);
-            Assert.AreEqual("TemplateEcommercePackageLength1", testItem.Ecommerce_PackageLength);
-            Assert.AreEqual("TemplateEcommercePackageHeight1", testItem.Ecommerce_PackageHeight);
-            Assert.AreEqual("TemplateEcommercePackageWeight1", testItem.Ecommerce_PackageWeight);
-            Assert.AreEqual("TemplateEcommercePackageWidth1", testItem.Ecommerce_PackageWidth);
-            Assert.AreEqual("TemplateEcommercePageQty1", testItem.Ecommerce_PageQty);
-            Assert.AreEqual("TemplateEcommerceProductCategory1", testItem.Ecommerce_ProductCategory);
-            Assert.AreEqual("TemplateEcommerceProductDescription1", testItem.Ecommerce_ProductDescription);
-            Assert.AreEqual("TemplateEcommerceProductSubcategory1", testItem.Ecommerce_ProductSubcategory);
-            Assert.AreEqual("TemplateEcommerceManufacturerName1", testItem.Ecommerce_ManufacturerName);
-            Assert.AreEqual("TemplateEcommerceMsrp1", testItem.Ecommerce_Msrp);
-            Assert.AreEqual("TemplateEcommerceSize1", testItem.Ecommerce_Size);
+            Assert.AreEqual("TemplateEcommerceBullet11", testItem.EcommerceBullet1);
+            Assert.AreEqual("TemplateEcommerceBullet21", testItem.EcommerceBullet2);
+            Assert.AreEqual("TemplateEcommerceBullet31", testItem.EcommerceBullet3);
+            Assert.AreEqual("TemplateEcommerceBullet41", testItem.EcommerceBullet4);
+            Assert.AreEqual("TemplateEcommerceBullet51", testItem.EcommerceBullet5);
+            Assert.AreEqual("TemplateEcommerceComponents1", testItem.EcommerceComponents);
+            Assert.AreEqual("TemplateEcommerceCost1", testItem.EcommerceCost);
+            Assert.AreEqual("TemplateEcommerceExternalIdType1", testItem.EcommerceExternalIdType);
+            Assert.AreEqual("TemplateEcommerceItemHeight1", testItem.EcommerceItemHeight);
+            Assert.AreEqual("TemplateEcommerceItemLength1", testItem.EcommerceItemLength);
+            Assert.AreEqual("TemplateEcommerceItemWeight1", testItem.EcommerceItemWeight);
+            Assert.AreEqual("TemplateEcommerceItemWidth1", testItem.EcommerceItemWidth);
+            Assert.AreEqual("TemplateEcommerceModelName1", testItem.EcommerceModelName);
+            Assert.AreEqual("TemplateEcommercePackageLength1", testItem.EcommercePackageLength);
+            Assert.AreEqual("TemplateEcommercePackageHeight1", testItem.EcommercePackageHeight);
+            Assert.AreEqual("TemplateEcommercePackageWeight1", testItem.EcommercePackageWeight);
+            Assert.AreEqual("TemplateEcommercePackageWidth1", testItem.EcommercePackageWidth);
+            Assert.AreEqual("TemplateEcommercePageQty1", testItem.EcommercePageQty);
+            Assert.AreEqual("TemplateEcommerceProductCategory1", testItem.EcommerceProductCategory);
+            Assert.AreEqual("TemplateEcommerceProductDescription1", testItem.EcommerceProductDescription);
+            Assert.AreEqual("TemplateEcommerceProductSubcategory1", testItem.EcommerceProductSubcategory);
+            Assert.AreEqual("TemplateEcommerceManufacturerName1", testItem.EcommerceManufacturerName);
+            Assert.AreEqual("TemplateEcommerceMsrp1", testItem.EcommerceMsrp);
+            Assert.AreEqual("TemplateEcommerceSize1", testItem.EcommerceSize);
 
             #endregion // Assert
         }
@@ -1613,30 +1545,30 @@ namespace Odin.Services.Tests
             Assert.AreEqual("TemplateUdex1", testItem.Udex);
             Assert.AreEqual("TemplateWeight1", testItem.Weight);
             Assert.AreEqual("TemplateWidth1", testItem.Width);
-            Assert.AreEqual("b1", testItem.Ecommerce_Bullet1);
-            Assert.AreEqual("b2", testItem.Ecommerce_Bullet2);
-            Assert.AreEqual("b3", testItem.Ecommerce_Bullet3);
-            Assert.AreEqual("b4", testItem.Ecommerce_Bullet4);
-            Assert.AreEqual("b5", testItem.Ecommerce_Bullet5);
-            Assert.AreEqual("c1", testItem.Ecommerce_Components);
-            Assert.AreEqual("c2.00", testItem.Ecommerce_Cost);
-            Assert.AreEqual("e1", testItem.Ecommerce_ExternalIdType);
-            Assert.AreEqual("i1.0", testItem.Ecommerce_ItemHeight);
-            Assert.AreEqual("i2.0", testItem.Ecommerce_ItemLength);
-            Assert.AreEqual("i3.0", testItem.Ecommerce_ItemWeight);
-            Assert.AreEqual("i4.0", testItem.Ecommerce_ItemWidth);
-            Assert.AreEqual("m1", testItem.Ecommerce_ModelName);
-            Assert.AreEqual("p1.0", testItem.Ecommerce_PackageLength);
-            Assert.AreEqual("p2.0", testItem.Ecommerce_PackageHeight);
-            Assert.AreEqual("p4.0", testItem.Ecommerce_PackageWeight);
-            Assert.AreEqual("p3.0", testItem.Ecommerce_PackageWidth);
-            Assert.AreEqual("Ecommerce Page Qtyp4", testItem.Ecommerce_PageQty);
-            Assert.AreEqual("p5", testItem.Ecommerce_ProductCategory);
-            Assert.AreEqual("p6", testItem.Ecommerce_ProductDescription);
-            Assert.AreEqual("p7", testItem.Ecommerce_ProductSubcategory);
-            Assert.AreEqual("m2", testItem.Ecommerce_ManufacturerName);
-            Assert.AreEqual("m3.00", testItem.Ecommerce_Msrp);
-            Assert.AreEqual("s1", testItem.Ecommerce_Size);
+            Assert.AreEqual("b1", testItem.EcommerceBullet1);
+            Assert.AreEqual("b2", testItem.EcommerceBullet2);
+            Assert.AreEqual("b3", testItem.EcommerceBullet3);
+            Assert.AreEqual("b4", testItem.EcommerceBullet4);
+            Assert.AreEqual("b5", testItem.EcommerceBullet5);
+            Assert.AreEqual("c1", testItem.EcommerceComponents);
+            Assert.AreEqual("c2.00", testItem.EcommerceCost);
+            Assert.AreEqual("e1", testItem.EcommerceExternalIdType);
+            Assert.AreEqual("i1.0", testItem.EcommerceItemHeight);
+            Assert.AreEqual("i2.0", testItem.EcommerceItemLength);
+            Assert.AreEqual("i3.0", testItem.EcommerceItemWeight);
+            Assert.AreEqual("i4.0", testItem.EcommerceItemWidth);
+            Assert.AreEqual("m1", testItem.EcommerceModelName);
+            Assert.AreEqual("p1.0", testItem.EcommercePackageLength);
+            Assert.AreEqual("p2.0", testItem.EcommercePackageHeight);
+            Assert.AreEqual("p4.0", testItem.EcommercePackageWeight);
+            Assert.AreEqual("p3.0", testItem.EcommercePackageWidth);
+            Assert.AreEqual("Ecommerce Page Qtyp4", testItem.EcommercePageQty);
+            Assert.AreEqual("p5", testItem.EcommerceProductCategory);
+            Assert.AreEqual("p6", testItem.EcommerceProductDescription);
+            Assert.AreEqual("p7", testItem.EcommerceProductSubcategory);
+            Assert.AreEqual("m2", testItem.EcommerceManufacturerName);
+            Assert.AreEqual("m3.00", testItem.EcommerceMsrp);
+            Assert.AreEqual("s1", testItem.EcommerceSize);
 
             #endregion // Assert
         }
@@ -2035,40 +1967,40 @@ namespace Odin.Services.Tests
             Assert.AreEqual("Title", item.Title); // Title
             Assert.AreEqual("ShortDescription", item.ShortDescription); // Short Description
             Assert.AreEqual("Size", item.Size); // Size
-            Assert.AreEqual("Ecommerce Asin", item.Ecommerce_Asin);
-            Assert.AreEqual("Ecommerce Bullet 1", item.Ecommerce_Bullet1);
-            Assert.AreEqual("Ecommerce Bullet 2", item.Ecommerce_Bullet2);
-            Assert.AreEqual("Ecommerce Bullet 3", item.Ecommerce_Bullet3);
-            Assert.AreEqual("Ecommerce Bullet 4", item.Ecommerce_Bullet4);
-            Assert.AreEqual("Ecommerce Bullet 5", item.Ecommerce_Bullet5);
-            Assert.AreEqual("Ecommerce Components", item.Ecommerce_Components);
-            Assert.AreEqual("Ecommerce Cost.00", item.Ecommerce_Cost);
-            Assert.AreEqual("Ecommerce External ID", item.Ecommerce_ExternalId);
-            Assert.AreEqual("Ecommerce External ID Type", item.Ecommerce_ExternalIdType);
+            Assert.AreEqual("Ecommerce Asin", item.EcommerceAsin);
+            Assert.AreEqual("Ecommerce Bullet 1", item.EcommerceBullet1);
+            Assert.AreEqual("Ecommerce Bullet 2", item.EcommerceBullet2);
+            Assert.AreEqual("Ecommerce Bullet 3", item.EcommerceBullet3);
+            Assert.AreEqual("Ecommerce Bullet 4", item.EcommerceBullet4);
+            Assert.AreEqual("Ecommerce Bullet 5", item.EcommerceBullet5);
+            Assert.AreEqual("Ecommerce Components", item.EcommerceComponents);
+            Assert.AreEqual("Ecommerce Cost.00", item.EcommerceCost);
+            Assert.AreEqual("Ecommerce External ID", item.EcommerceExternalId);
+            Assert.AreEqual("Ecommerce External ID Type", item.EcommerceExternalIdType);
             Assert.AreEqual("Ecommerce Image Path 1", item.ImagePath);
             Assert.AreEqual("Ecommerce Image Path 2", item.AltImageFile1);
             Assert.AreEqual("Ecommerce Image Path 3", item.AltImageFile2);
             Assert.AreEqual("Ecommerce Image Path 4", item.AltImageFile3);
             Assert.AreEqual("Ecommerce Image Path 5", item.AltImageFile4);
-            Assert.AreEqual("Ecommerce Item Height.0", item.Ecommerce_ItemHeight);
-            Assert.AreEqual("Ecommerce Item Length.0", item.Ecommerce_ItemLength);
-            Assert.AreEqual("Ecommerce Item Name", item.Ecommerce_ItemName);
-            Assert.AreEqual("Ecommerce Item Weight.0", item.Ecommerce_ItemWeight);
-            Assert.AreEqual("Ecommerce Item Width.0", item.Ecommerce_ItemWidth);
-            Assert.AreEqual("Ecommerce Model Name", item.Ecommerce_ModelName);
-            Assert.AreEqual("Ecommerce Package Height.0", item.Ecommerce_PackageHeight);
-            Assert.AreEqual("Ecommerce Package Length.0", item.Ecommerce_PackageLength);
-            Assert.AreEqual("Ecommerce Package Weight.0", item.Ecommerce_PackageWeight);
-            Assert.AreEqual("Ecommerce Package Width.0", item.Ecommerce_PackageWidth);
-            Assert.AreEqual("Ecommerce Page Qty", item.Ecommerce_PageQty);
-            Assert.AreEqual("Ecommerce Product Category", item.Ecommerce_ProductCategory);
-            Assert.AreEqual("Ecommerce Product Description", item.Ecommerce_ProductDescription);
-            Assert.AreEqual("Ecommerce Product Subcategory", item.Ecommerce_ProductSubcategory);
-            Assert.AreEqual("Ecommerce Manufacturer Name", item.Ecommerce_ManufacturerName);
-            Assert.AreEqual("Ecommerce Msrp.00", item.Ecommerce_Msrp);
-            Assert.AreEqual("Ecommerce Search Terms", item.Ecommerce_SubjectKeywords);
-            Assert.AreEqual("Ecommerce Size", item.Ecommerce_Size);
-            Assert.AreEqual("Ecommerce Upc", item.Ecommerce_Upc);
+            Assert.AreEqual("Ecommerce Item Height.0", item.EcommerceItemHeight);
+            Assert.AreEqual("Ecommerce Item Length.0", item.EcommerceItemLength);
+            Assert.AreEqual("Ecommerce Item Name", item.EcommerceItemName);
+            Assert.AreEqual("Ecommerce Item Weight.0", item.EcommerceItemWeight);
+            Assert.AreEqual("Ecommerce Item Width.0", item.EcommerceItemWidth);
+            Assert.AreEqual("Ecommerce Model Name", item.EcommerceModelName);
+            Assert.AreEqual("Ecommerce Package Height.0", item.EcommercePackageHeight);
+            Assert.AreEqual("Ecommerce Package Length.0", item.EcommercePackageLength);
+            Assert.AreEqual("Ecommerce Package Weight.0", item.EcommercePackageWeight);
+            Assert.AreEqual("Ecommerce Package Width.0", item.EcommercePackageWidth);
+            Assert.AreEqual("Ecommerce Page Qty", item.EcommercePageQty);
+            Assert.AreEqual("Ecommerce Product Category", item.EcommerceProductCategory);
+            Assert.AreEqual("Ecommerce Product Description", item.EcommerceProductDescription);
+            Assert.AreEqual("Ecommerce Product Subcategory", item.EcommerceProductSubcategory);
+            Assert.AreEqual("Ecommerce Manufacturer Name", item.EcommerceManufacturerName);
+            Assert.AreEqual("Ecommerce Msrp.00", item.EcommerceMsrp);
+            Assert.AreEqual("Ecommerce Search Terms", item.EcommerceSubjectKeywords);
+            Assert.AreEqual("Ecommerce Size", item.EcommerceSize);
+            Assert.AreEqual("Ecommerce Upc", item.EcommerceUpc);
             Assert.AreEqual("Amazon Active", item.SellOnAmazon);
 
             Assert.IsFalse(item.AccountingGroupUpdate); // Accounting Group    
@@ -2126,38 +2058,38 @@ namespace Odin.Services.Tests
             Assert.IsFalse(item.TitleUpdate); // Title
             Assert.IsFalse(item.ShortDescriptionUpdate); // Short Description
             Assert.IsFalse(item.SizeUpdate); // Size
-            Assert.IsFalse(item.Ecommerce_AsinUpdate);
-            Assert.IsFalse(item.Ecommerce_Bullet1Update);
-            Assert.IsFalse(item.Ecommerce_Bullet2Update);
-            Assert.IsFalse(item.Ecommerce_Bullet3Update);
-            Assert.IsFalse(item.Ecommerce_Bullet4Update);
-            Assert.IsFalse(item.Ecommerce_Bullet5Update);
-            Assert.IsFalse(item.Ecommerce_ComponentsUpdate);
-            Assert.IsFalse(item.Ecommerce_CostUpdate);
-            Assert.IsFalse(item.Ecommerce_ExternalIdUpdate);
-            Assert.IsFalse(item.Ecommerce_ExternalIdTypeUpdate);
-            Assert.IsFalse(item.Ecommerce_ImagePath1Update);
-            Assert.IsFalse(item.Ecommerce_ImagePath2Update);
-            Assert.IsFalse(item.Ecommerce_ImagePath3Update);
-            Assert.IsFalse(item.Ecommerce_ImagePath4Update);
-            Assert.IsFalse(item.Ecommerce_ImagePath5Update);
-            Assert.IsFalse(item.Ecommerce_ItemHeightUpdate);
-            Assert.IsFalse(item.Ecommerce_ItemLengthUpdate);
-            Assert.IsFalse(item.Ecommerce_ItemNameUpdate);
-            Assert.IsFalse(item.Ecommerce_ItemWeightUpdate);
-            Assert.IsFalse(item.Ecommerce_ItemWidthUpdate);
-            Assert.IsFalse(item.Ecommerce_ModelNameUpdate);
-            Assert.IsFalse(item.Ecommerce_PackageHeightUpdate);
-            Assert.IsFalse(item.Ecommerce_PackageLengthUpdate);
-            Assert.IsFalse(item.Ecommerce_PackageWeightUpdate);
-            Assert.IsFalse(item.Ecommerce_PackageWidthUpdate);
-            Assert.IsFalse(item.Ecommerce_PageQtyUpdate);
-            Assert.IsFalse(item.Ecommerce_ProductCategoryUpdate);
-            Assert.IsFalse(item.Ecommerce_ProductDescriptionUpdate);
-            Assert.IsFalse(item.Ecommerce_ProductSubcategoryUpdate);
-            Assert.IsFalse(item.Ecommerce_ManufacturerNameUpdate);
-            Assert.IsFalse(item.Ecommerce_MsrpUpdate);
-            Assert.IsFalse(item.Ecommerce_GenericKeywordsUpdate);
+            Assert.IsFalse(item.EcommerceAsinUpdate);
+            Assert.IsFalse(item.EcommerceBullet1Update);
+            Assert.IsFalse(item.EcommerceBullet2Update);
+            Assert.IsFalse(item.EcommerceBullet3Update);
+            Assert.IsFalse(item.EcommerceBullet4Update);
+            Assert.IsFalse(item.EcommerceBullet5Update);
+            Assert.IsFalse(item.EcommerceComponentsUpdate);
+            Assert.IsFalse(item.EcommerceCostUpdate);
+            Assert.IsFalse(item.EcommerceExternalIdUpdate);
+            Assert.IsFalse(item.EcommerceExternalIdTypeUpdate);
+            Assert.IsFalse(item.EcommerceImagePath1Update);
+            Assert.IsFalse(item.EcommerceImagePath2Update);
+            Assert.IsFalse(item.EcommerceImagePath3Update);
+            Assert.IsFalse(item.EcommerceImagePath4Update);
+            Assert.IsFalse(item.EcommerceImagePath5Update);
+            Assert.IsFalse(item.EcommerceItemHeightUpdate);
+            Assert.IsFalse(item.EcommerceItemLengthUpdate);
+            Assert.IsFalse(item.EcommerceItemNameUpdate);
+            Assert.IsFalse(item.EcommerceItemWeightUpdate);
+            Assert.IsFalse(item.EcommerceItemWidthUpdate);
+            Assert.IsFalse(item.EcommerceModelNameUpdate);
+            Assert.IsFalse(item.EcommercePackageHeightUpdate);
+            Assert.IsFalse(item.EcommercePackageLengthUpdate);
+            Assert.IsFalse(item.EcommercePackageWeightUpdate);
+            Assert.IsFalse(item.EcommercePackageWidthUpdate);
+            Assert.IsFalse(item.EcommercePageQtyUpdate);
+            Assert.IsFalse(item.EcommerceProductCategoryUpdate);
+            Assert.IsFalse(item.EcommerceProductDescriptionUpdate);
+            Assert.IsFalse(item.EcommerceProductSubcategoryUpdate);
+            Assert.IsFalse(item.EcommerceManufacturerNameUpdate);
+            Assert.IsFalse(item.EcommerceMsrpUpdate);
+            Assert.IsFalse(item.EcommerceGenericKeywordsUpdate);
             Assert.IsFalse(item.Ecommere_SizeUpdate);
             Assert.IsFalse(item.Ecommere_UpcUpdate);
 
@@ -2287,17 +2219,30 @@ namespace Odin.Services.Tests
 
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
+            ItemObject item = new ItemObject()
+            {
+                ItemId = "",
+                Upc = "",
+                Status = "",
+                ListPriceUsd = "1.00",
+                ProductFormat = "Door Sp",
+                ProductGroup = "Sticker",
+                ProductLine = "",
+                Ean = "1234",
+                EcommerceUpc = "",
+                ProdType = 1
+            };
             #endregion
 
             #region Act
 
-            string errorMessage = itemService.ValidateUpc("", "", "", "1.00", "Door Sp", "Sticker", "", "1234", "", 1);
+            ItemError errorMessage = itemService.ValidateUpc(item);
 
             #endregion // Act
 
             #region Assert
 
-            Assert.AreEqual("", errorMessage);
+            Assert.IsNull(errorMessage);
 
             #endregion // Assert
         }
@@ -2781,18 +2726,19 @@ namespace Odin.Services.Tests
                 "TESTC",
                 "TEST1"
             };
+            ItemObject item = new ItemObject { BillOfMaterials = childList, ItemId = "TEST1", Status = "Update", ProdType = 1 };
 
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateBillOfMaterials("TEST1", childList, currentIds, "Update", 1);
+            ItemError result = itemValidator.ValidateBillOfMaterials(item, currentIds);
 
             #endregion //Act
 
             #region Assert
 
-            Assert.AreNotEqual(result, string.Empty);
+            Assert.IsNotNull(result);
 
             #endregion //Assert
         }
@@ -2813,18 +2759,19 @@ namespace Odin.Services.Tests
             List<string> currentIds = new List<string>() {
                 "TEST2"
             };
+            ItemObject item = new ItemObject { BillOfMaterials = childList, ItemId = "TEST1", Status = "Add", ProdType = 1 };
 
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateBillOfMaterials("TEST1", childList, currentIds, "Add", 1);
+            ItemError result = itemValidator.ValidateBillOfMaterials(item, currentIds);
 
             #endregion //Act
 
             #region Assert
 
-            Assert.AreNotEqual(result, string.Empty);
+            Assert.IsNotNull(result);
 
             #endregion //Assert
         }
@@ -2839,18 +2786,26 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+            ItemObject item = new ItemObject
+            {
+                CasepackHeight = "11",
+                CasepackWidth = "1",
+                CasepackLength = "1",
+                CasepackWeight = "1",
+                ProdType = 1
+            };
 
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateCasepack("12", "1", "1", "1", 1, "Casepack");
+            ItemError result = itemValidator.ValidateCasepack(item, "Height");
 
             #endregion //Act
 
             #region Assert
 
-            Assert.IsTrue(result == string.Empty);
+            Assert.IsNull(result);
 
             #endregion //Assert
         }
@@ -2865,46 +2820,30 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+            ItemObject item = new ItemObject
+            {
+                CasepackWidth = "",
+                CasepackHeight = "1",
+                CasepackLength = "1",
+                CasepackWeight = "1",
+                ProdType = 1
+            };
 
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateCasepack("", "1", "2", "1", 1, "Casepack");
+            ItemError result = itemValidator.ValidateCasepack(item, "Width");
 
             #endregion //Act
 
             #region Assert
 
-            Assert.IsTrue(result != string.Empty);
+            Assert.IsNotNull(result);
 
             #endregion //Assert
         }
-        /// <summary>
-        ///     This method test the ValidateCasepackLength method with a numeric string. This method asserts that the validation succeeds.
-        /// </summary>
-        [TestMethod]
-        public void ValidateCasepackWidth_ValueIsANumber_ShouldSucceed()
-        {
-            #region Setup
 
-            GlobalData.ClearValues();
-            ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-
-            #endregion //Setup
-
-            #region Act
-
-            string result = itemValidator.ValidateCasepack("12", "1", "1", "1", 1, "Casepack");
-
-            #endregion //Act
-
-            #region Assert
-
-            Assert.AreEqual(result, "");
-
-            #endregion //Assert
-        }
         /// <summary>
         ///     This method test the ValidateCasepackWidth method with a non-numeric string. This method asserts that the validation fails.
         /// </summary>
@@ -2915,18 +2854,26 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+            ItemObject item = new ItemObject
+            {
+                CasepackWidth = "abd",
+                CasepackHeight="1",
+                CasepackLength="1",
+                CasepackWeight="1",
+                ProdType=1
+            };
 
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateCasepack("abd", "1", "4", "1", 1, "Casepack Width");
+            ItemError result = itemValidator.ValidateCasepack(item, "Width");
 
             #endregion //Act
 
             #region Assert
 
-            Assert.AreNotEqual(result, "");
+            Assert.IsNotNull(result);
 
             #endregion //Assert
         }
@@ -2937,19 +2884,22 @@ namespace Odin.Services.Tests
         public void ValidateCategory_ValueIsValidCategory_ShouldSucceed()
         {
             #region Setup
+
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            string errorMessage = "";
+            ItemObject item = new ItemObject { Category = "Category1", ProdType=1 };
+
             #endregion //Setup
 
             #region Act
 
-            errorMessage = itemValidator.ValidateCategory("Category1", true);
+            ItemError result = itemValidator.ValidateCategory(item,"1");
 
             #endregion //Act
 
             #region Assert
-            Assert.AreEqual("", errorMessage);
+
+            Assert.IsNotNull(result);
 
             #endregion //Assert
         }
@@ -2962,18 +2912,19 @@ namespace Odin.Services.Tests
             #region Setup
 
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            string errorMessage = "";
+            ItemObject item = new ItemObject { Category = "Not Category", ProdType = 1 };
+
             #endregion //Setup
 
             #region Act
 
-            errorMessage = itemValidator.ValidateCategory("Not Category", true);
+            ItemError result = itemValidator.ValidateCategory(item, "1");
 
             #endregion //Act
 
             #region Assert
 
-            Assert.IsTrue(errorMessage != "");
+            Assert.IsNotNull(result);
 
             #endregion //Assert
         }
@@ -2986,18 +2937,19 @@ namespace Odin.Services.Tests
             #region Setup
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+            ItemObject item = new ItemObject { Color="PURPLE",ProdType=1 };
 
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateColor("PURPLE", 1);
+            ItemError result = itemValidator.ValidateColor(item);
 
             #endregion //Act
 
             #region Assert
 
-            Assert.IsTrue(result == string.Empty);
+            Assert.IsNull(result);
 
             #endregion //Assert
         }
@@ -3012,17 +2964,18 @@ namespace Odin.Services.Tests
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
+            ItemObject item = new ItemObject {ProdType=1, Copyright="Copyright" };
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateCopyright("Trends");
+            ItemError result = itemValidator.ValidateCopyright(item);
 
             #endregion //Act
 
             #region Assert
 
-            Assert.AreEqual(result, "");
+            Assert.IsNull(result);
 
             #endregion //Assert
         }
@@ -3036,18 +2989,19 @@ namespace Odin.Services.Tests
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
             GlobalData.CountriesOfOrigin.Add("USA", "United States");
+            ItemObject item = new ItemObject { CountryOfOrigin = "USA", ProdType = 1 };
             
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateCountryOfOrigin("USA", "1", 1);
+            ItemError result = itemValidator.ValidateCountryOfOrigin(item);
 
             #endregion //Act
 
             #region Assert
 
-            Assert.IsTrue(result == string.Empty);
+            Assert.IsNull(result);
 
             #endregion //Assert
         }
@@ -3069,27 +3023,35 @@ namespace Odin.Services.Tests
             GlobalData.SpecialCharacters.Add("®");
             GlobalData.SpecialCharacters.Add("ñ");
             GlobalData.SpecialCharacters.Add("Á");
-            
+            ItemObject item1 = new ItemObject { Description = "Wall Calendar",ProdType=1 };
+            ItemObject item2 = new ItemObject { Description = "Wall Calendar, Your Mom", ProdType = 1 };
+            ItemObject item3 = new ItemObject { Description = "Wall Calendar™", ProdType = 1 };
+            ItemObject item4 = new ItemObject { Description = "Wall Calendar®", ProdType = 1 };
+            ItemObject item5 = new ItemObject { Description = "Wall Caleñdar", ProdType = 1 };
+            ItemObject item6 = new ItemObject { Description = "WÁll Calendar", ProdType = 1 };
+
+
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateDescription("Wall Calendar", 1);
-            string result2 = itemValidator.ValidateDescription("Wall Calendar, Your Mom", 1);
-            string result3 = itemValidator.ValidateDescription("Wall Calendar™", 1);
-            string result4 = itemValidator.ValidateDescription("Wall Calendar®", 1);
-            string result5 = itemValidator.ValidateDescription("Wall Caleñdar", 1);
-            string result6 = itemValidator.ValidateDescription("WÁll Calendar", 1);
+            ItemError result = itemValidator.ValidateDescription(item1);
+            ItemError result2 = itemValidator.ValidateDescription(item2);
+            ItemError result3 = itemValidator.ValidateDescription(item3);
+            ItemError result4 = itemValidator.ValidateDescription(item4);
+            ItemError result5 = itemValidator.ValidateDescription(item5);
+            ItemError result6 = itemValidator.ValidateDescription(item6);
 
             #endregion //Act
 
             #region Assert
-            Assert.IsFalse(result2 == string.Empty);
-            Assert.IsFalse(result3 == string.Empty);
-            Assert.IsFalse(result4 == string.Empty);
-            Assert.IsFalse(result5 == string.Empty);
-            Assert.IsFalse(result6 == string.Empty);
-            Assert.IsTrue(result == string.Empty);
+
+            Assert.IsNotNull(result2);
+            Assert.IsNotNull(result3);
+            Assert.IsNotNull(result4);
+            Assert.IsNotNull(result5);
+            Assert.IsNotNull(result6);
+            Assert.IsNull(result);
 
             #endregion //Assert
         }
@@ -3109,29 +3071,63 @@ namespace Odin.Services.Tests
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("123456789123", "RP3322"));
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000000", "RP1234"));
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000000", "RP1234WM"));
-           
-            ItemObject item = new ItemObject();
+
+            ItemObject item = new ItemObject
+            {
+                EcommerceUpc = "000000000000",
+                ItemId = "RP1239",
+                Upc = "000120000001",
+                Status = "Update",
+                ProdType = 1
+            };
+            ItemObject item2 = new ItemObject
+            {
+                EcommerceUpc = "123456789123",
+                ItemId = "RP1239",
+                Upc = "000012000001",
+                Status = "Update",
+                ProdType = 1
+            };
+            ItemObject item3 = new ItemObject
+            {
+                EcommerceUpc = "123000000000",
+                ItemId = "RP1239",
+                Upc = "000012000001",
+                Status = "Update",
+                ProdType = 1
+            };
+            ItemObject item4 = new ItemObject
+            {
+                EcommerceUpc = "000000000000",
+                ItemId = "RP1234DI",
+                Upc = "000012000001",
+                Status = "Update",
+                ProdType = 1
+            };
+
+
+
             #endregion // Setup
 
             #region Act
 
             // other item has upc (RP1234)
-            string value = itemService.ValidateEcommerce_Upc("000000000000", "RP1239", "000120000001", "Update", false);
+            ItemError value = itemService.ValidateEcommerceUpc(item);
             // other item has matching ecommerce upc (RP3322)
-            string value2 = itemService.ValidateEcommerce_Upc("123456789123", "RP1239", "000012000001", "Update", false);
+            ItemError value2 = itemService.ValidateEcommerceUpc(item2);
             // unique upc, should pass
-            string value3 = itemService.ValidateEcommerce_Upc("123000000000", "RP1239", "000012000001", "Update", false);
+            ItemError value3 = itemService.ValidateEcommerceUpc(item3);
             // matching upc but item suffix pass, should pass
-            string value4 = itemService.ValidateEcommerce_Upc("000000000000", "RP1234DI", "000012000001", "Update", false);
+            ItemError value4 = itemService.ValidateEcommerceUpc(item4);
 
             #endregion // Act
 
             #region Assert
 
-            Assert.AreNotEqual("", value);
-            Assert.AreNotEqual("", value2);
-            Assert.AreEqual("", value3);
-            Assert.AreEqual("", value4);
+            Assert.IsNotNull(value);
+            Assert.IsNotNull(value2);
+            Assert.IsNull(value3);
+            Assert.IsNull(value4);
 
             #endregion // Assert
         }
@@ -3146,18 +3142,19 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+            ItemObject item = new ItemObject { Height = "15", ProdType = 1 };
 
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateHeight("16", 1);
+            ItemError result = itemValidator.ValidateItemDimension(item, "Height");
 
             #endregion //Act
 
             #region Assert
 
-            Assert.IsTrue(result == string.Empty);
+            Assert.IsNull(result);
 
             #endregion //Assert
         }
@@ -3172,18 +3169,25 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-
+            ItemObject item = new ItemObject
+            {
+                InnerpackHeight = "16",
+                InnerpackLength="",
+                InnerpackWeight="2",
+                InnerpackWidth="1",
+                ProdType=1
+            };
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateInnerpack("16", "", "2", "1", 1, "Casepack");
+            ItemError result = itemValidator.ValidateInnerpack(item, "Height");
 
             #endregion //Act
 
             #region Assert
 
-            Assert.IsTrue(result == string.Empty);
+            Assert.IsNotNull(result);
 
             #endregion //Assert
         }
@@ -3198,18 +3202,26 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+            ItemObject item = new ItemObject
+            {
+                InnerpackHeight = "16",
+                InnerpackLength = "1",
+                InnerpackWeight = "2",
+                InnerpackWidth = "1",
+                ProdType = 1
+            };
 
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateInnerpack("16", "1", "2", "1", 1, "Casepack");
+            ItemError result = itemValidator.ValidateInnerpack(item, "Height");
 
             #endregion //Act
 
             #region Assert
 
-            Assert.IsTrue(result == string.Empty);
+            Assert.IsNull(result);
 
             #endregion //Assert
         }
@@ -3224,18 +3236,19 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+            ItemObject item = new ItemObject { InnerpackQuantity = "16", ProdType = 1 };
 
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateInnerpackQuantity("16", 1);
+            ItemError result = itemValidator.ValidateInnerpackQuantity(item);
 
             #endregion //Act
 
             #region Assert
 
-            Assert.IsTrue(result == string.Empty);
+            Assert.IsNull(result);
 
             #endregion //Assert
         }
@@ -3250,18 +3263,25 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-
+            ItemObject item = new ItemObject
+            {
+                InnerpackHeight = "16",
+                InnerpackLength = "1",
+                InnerpackWeight = "2",
+                InnerpackWidth = "1",
+                ProdType = 1
+            };
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateInnerpack("16", "1", "2", "1", 1, "Casepack");
+            ItemError result = itemValidator.ValidateInnerpack(item, "Height");
 
             #endregion //Act
 
             #region Assert
 
-            Assert.IsTrue(result == string.Empty);
+            Assert.IsNull(result);
 
             #endregion //Assert
         }
@@ -3278,18 +3298,23 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             GlobalData.ItemGroups.Add("POSTER");
-           
+            ItemObject item = new ItemObject
+            {
+                ItemGroup = "POSTER",
+                ProdType = 1
+            };
+
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateItemGroup("POSTER", 1);
+            ItemError result = itemValidator.ValidateItemGroup(item);
 
             #endregion //Act
 
             #region Assert
 
-            Assert.AreEqual(result, "");
+            Assert.IsNull(result);
 
             #endregion //Assert
         }
@@ -3306,18 +3331,24 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             GlobalData.ProductCategories.Add("POSTER");
+            ItemObject item = new ItemObject
+            {
+                ItemCategory = "POSTER",
+                ProdType = 1
+            };
+
             
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateItemCategory("POSTER", 1);
+            ItemError result = itemValidator.ValidateItemCategory(item);
 
             #endregion //Act
 
             #region Assert
 
-            Assert.AreEqual(result, "");
+            Assert.IsNull(result);
 
             #endregion //Assert
         }
@@ -3332,18 +3363,24 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            string status = "Add";
+            ItemObject item = new ItemObject
+            {
+                ItemId = "BR0P8866",
+                ProdType = 1,
+                Status = "Add"
+            };
+
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateItemId("BR0P8866", status);
+            ItemError result = itemValidator.ValidateItemId(item);
 
             #endregion //Act
 
             #region Assert
 
-            Assert.IsTrue(result == string.Empty);
+            Assert.IsNull(result);
 
             #endregion //Assert
         }
@@ -3358,18 +3395,24 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            string status = "Update";
+            ItemObject item = new ItemObject
+            {
+                ItemId = "BR0P8866",
+                ProdType = 1,
+                Status = "Update"
+            };
+
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateItemId("BR0P8866", status);
+            ItemError result = itemValidator.ValidateItemId(item);
 
             #endregion //Act
 
             #region Assert
 
-            Assert.IsTrue(result != string.Empty);
+            Assert.IsNotNull(result);
 
             #endregion //Assert
         }
@@ -3384,18 +3427,22 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-
+            ItemObject item = new ItemObject
+            {
+                Length = "12",
+                ProdType = 1
+            };
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateLength("12", 1);
+            ItemError result = itemValidator.ValidateItemDimension(item, "Length");
 
             #endregion //Act
 
             #region Assert
 
-            Assert.IsTrue(result == string.Empty);
+            Assert.IsNull(result);
 
             #endregion //Assert
         }
@@ -3410,18 +3457,23 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+            ItemObject item = new ItemObject
+            {
+                Length="abc",
+                ProdType =1
+            };
 
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateLength("abc", 1);
+            ItemError result = itemValidator.ValidateItemDimension(item, "Length");
 
             #endregion //Act
 
             #region Assert
 
-            Assert.IsTrue(result != string.Empty);
+            Assert.IsNotNull(result);
 
             #endregion //Assert
         }
@@ -3436,18 +3488,19 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+            ItemObject item = new ItemObject { PricingGroup = "", ListPriceCad = "0", ListPriceUsd = "0", ProdType = 1 };
 
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidatePricingGroup("", "0", "0", 1);
+            ItemError result = itemValidator.ValidatePricingGroup(item);
 
             #endregion //Act
 
             #region Assert
 
-            Assert.IsTrue(result == string.Empty);
+            Assert.IsNull(result);
 
             #endregion //Assert
         }
@@ -3462,18 +3515,26 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+            ItemObject item = new ItemObject
+            {
+                PricingGroup = "",
+                ListPriceCad = "0",
+                ListPriceUsd="1",
+                ProdType =1
+            };
+
 
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidatePricingGroup("", "1", "0", 1);
+            ItemError result = itemValidator.ValidatePricingGroup(item);
 
             #endregion //Act
 
             #region Assert
 
-            Assert.IsTrue(result != string.Empty);
+            Assert.IsNotNull(result);
 
             #endregion //Assert
         }
@@ -3490,28 +3551,25 @@ namespace Odin.Services.Tests
             GlobalData.PsStatuses.Add("A");
             GlobalData.PsStatuses.Add("CO");
             GlobalData.PsStatuses.Add("D");
-            GlobalData.PsStatuses.Add("I");
-            GlobalData.PsStatuses.Add("S");
-            
+            ItemObject item1 = new ItemObject { PsStatus = "A", ProdType = 1 };
+            ItemObject item2 = new ItemObject { PsStatus = "CO", ProdType = 1 };
+            ItemObject item3 = new ItemObject { PsStatus = "D", ProdType = 1 };
+
             #endregion //Setup
 
             #region Act
 
-            string result1 = itemValidator.ValidatePsStatus("A", "Item");
-            string result2 = itemValidator.ValidatePsStatus("CO", "Item");
-            string result3 = itemValidator.ValidatePsStatus("D", "Item");
-            string result4 = itemValidator.ValidatePsStatus("I", "Item");
-            string result5 = itemValidator.ValidatePsStatus("S", "Item");
+            ItemError result1 = itemValidator.ValidatePsStatus(item1);
+            ItemError result2 = itemValidator.ValidatePsStatus(item2);
+            ItemError result3 = itemValidator.ValidatePsStatus(item3);
 
             #endregion //Act
 
             #region Assert
 
-            Assert.AreEqual(result1, "");
-            Assert.AreEqual(result2, "");
-            Assert.AreEqual(result3, "");
-            Assert.AreEqual(result4, "");
-            Assert.AreEqual(result5, "");
+            Assert.IsNull(result1);
+            Assert.IsNull(result2);
+            Assert.IsNull(result3);
 
             #endregion //Assert
         }
@@ -3526,26 +3584,18 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-
+            ItemObject item = new ItemObject { PsStatus = "xx", ProdType = 1 };
             #endregion //Setup
 
             #region Act
 
-            string result1 = itemValidator.ValidatePsStatus("Never", "Item");
-            string result2 = itemValidator.ValidatePsStatus("Gonna", "Item");
-            string result3 = itemValidator.ValidatePsStatus("Give", "Item");
-            string result4 = itemValidator.ValidatePsStatus("You", "Item");
-            string result5 = itemValidator.ValidatePsStatus("Up", "Item");
+            ItemError result1 = itemValidator.ValidatePsStatus(item);
 
             #endregion //Act
 
             #region Assert
 
-            Assert.AreNotEqual(result1, "");
-            Assert.AreNotEqual(result2, "");
-            Assert.AreNotEqual(result3, "");
-            Assert.AreNotEqual(result4, "");
-            Assert.AreNotEqual(result5, "");
+            Assert.IsNotNull(result1);
 
             #endregion //Assert
         }
@@ -3559,18 +3609,20 @@ namespace Odin.Services.Tests
             #region Setup
 
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+            ItemObject item = new ItemObject { StandardCost = "001", ProdType = 1 };
+
 
             #endregion //Setup
 
             #region Act
 
-            string result = itemService.ValidateStandardCost("001", 1);
+            ItemError result = itemService.ValidateStandardCost(item);
 
             #endregion //Act
 
             #region Assert
 
-            Assert.AreEqual("", result);
+            Assert.IsNull(result);
 
             #endregion //Assert
         }
@@ -3585,18 +3637,18 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-
+            ItemObject item = new ItemObject { Width = "12", ProdType = 1 };
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateWidth("12", 1);
+            ItemError result = itemValidator.ValidateItemDimension(item, "Width");
 
             #endregion //Act
 
             #region Assert
 
-            Assert.IsTrue(result == string.Empty);
+            Assert.IsNull(result);
 
             #endregion //Assert
         }
@@ -3612,20 +3664,23 @@ namespace Odin.Services.Tests
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
             GlobalData.ClearValues();
-
-            string value1 = "ItemNameLengthIsLessThan150Characters. But is also more than 50, which it hade been limited to prior.";
+            ItemObject item = new ItemObject
+            {
+                EcommerceItemName = "ItemNameLengthIsLessThan150Characters. But is also more than 50, which it hade been limited to prior.",
+                ProdType = 1
+            };
 
             #endregion // Assemble
 
             #region Act
 
-            string result1 = itemService.ValidateEcommerce_ItemName(value1,false);
+            ItemError result1 = itemService.ValidateEcommerceItemName(item);
 
             #endregion // Act
 
             #region Assert
             
-            Assert.AreEqual("", result1);
+            Assert.IsNull(result1);
 
             #endregion // Assert
         }
@@ -3639,18 +3694,19 @@ namespace Odin.Services.Tests
             #region Setup
 
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+            ItemObject item = new ItemObject { ItemKeywords = "Bears, Seagulls, Bazooka", SellOnTrends="Y", ProdType = 1 };
 
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateItemKeywords("Bears, Seagulls, Bazooka", true);
+            ItemError result = itemValidator.ValidateItemKeywords(item);
 
             #endregion //Act
 
             #region Assert
 
-            Assert.IsTrue(result == string.Empty);
+            Assert.IsNull(result);
 
             #endregion //Assert
         }
@@ -3665,18 +3721,18 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-
+            ItemObject item = new ItemObject { ProdType = 1,InStockDate = "5/17/14" };
             #endregion //Setup
 
             #region Act
 
-            string result = itemValidator.ValidateInStockDate("5/17/14");
+            ItemError result = itemValidator.ValidateInStockDate(item);
 
             #endregion //Act
 
             #region Assert
 
-            Assert.IsTrue(result == string.Empty);
+            Assert.IsNull(result);
 
             #endregion //Assert
         }
@@ -3692,19 +3748,23 @@ namespace Odin.Services.Tests
             GlobalData.ClearValues();
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
-            ItemObject item = new ItemObject();
-            string value = "";
+            ItemObject item = new ItemObject
+            {
+                Language = "",
+                ProdType = 1,
+                ListPriceUsd = "1"
+            };
             #endregion // Setup
 
             #region Act
 
-            value = itemService.ValidateLanguage(item.Language, "1", '1');
+            ItemError result = itemService.ValidateLanguage(item);
 
             #endregion // Act
 
             #region Assert
 
-            Assert.AreNotEqual(value, "");
+            Assert.IsNotNull(result);
 
             #endregion // Assert
         }
@@ -3722,23 +3782,35 @@ namespace Odin.Services.Tests
             GlobalData.ClearValues();
             ProductFormat prodFormat = new ProductFormat("Stickers3", "y", "x");
             GlobalData.ProductFormats.Add(prodFormat);
-            
-            string value1 = "STICKERS3";
-            string value2 = "Stickers3";
+
+            ItemObject item = new ItemObject
+            {
+                ProductFormat = "STICKERS3",
+                ProductLine = "y",
+                ProductGroup="x",
+                ProdType = 1
+            };
+            ItemObject item2 = new ItemObject
+            {
+                ProductFormat = "Stickers3",
+                ProductLine = "y",
+                ProductGroup = "x",
+                ProdType = 1
+            };
 
             #endregion // Assemble
 
             #region Act
 
-            string result1 = itemService.ValidateProductFormat("x", "y", value1, "", 0);
-            string result2 = itemService.ValidateProductFormat("x", "y", value2, "", 0);
+            ItemError result1 = itemService.ValidateProductFormat(item);
+            ItemError result2 = itemService.ValidateProductFormat(item2);
 
             #endregion // Act
 
             #region Assert
 
-            Assert.AreNotEqual("", result1);
-            Assert.AreEqual("", result2);
+            Assert.IsNotNull(result1);
+            Assert.IsNull(result2);
 
             #endregion // Assert
         }
@@ -3770,25 +3842,31 @@ namespace Odin.Services.Tests
                 "TEST4"
             };
 
+            ItemObject item1 = new ItemObject { ItemId = "RP2222", ProductIdTranslation = productIdTranslationList2, ProductFormat = "POSTER", PricingGroup = "RRR", Status = "Update", ProdType = 1 };
+            ItemObject item2 = new ItemObject { ItemId = "RP2222", ProductIdTranslation = emptyProductIdTranslationList, ProductFormat = "POSTER", PricingGroup = "RRR", Status = "Update", ProdType = 1 };
+            ItemObject item3 = new ItemObject { ItemId = "RP2222", ProductIdTranslation = productIdTranslationList2, ProductFormat = "POSTER", PricingGroup = "RRR", Status = "Add", ProdType = 1 };
+            ItemObject item4 = new ItemObject { ItemId = "RP2222", ProductIdTranslation = emptyProductIdTranslationList, ProductFormat = "POSTER", PricingGroup = "RRR", Status = "Add", ProdType = 1 };
+            ItemObject item5 = new ItemObject { ItemId = "ST9999", ProductIdTranslation = productIdTranslationList1, ProductFormat = "POSTER", PricingGroup = "RRR", Status = "Add", ProdType = 1 };
+
             #endregion // Assemble
 
             #region Act
 
-            string result1 = itemService.ValidateProductIdTranslation("RP2222", productIdTranslationList2, CurrentIds, "POSTER", "RRR", "Update", 0);
-            string result2 = itemService.ValidateProductIdTranslation("RP2222", emptyProductIdTranslationList, CurrentIds, "POSTER", "RRR", "Update", 0);
-
-            string result3 = itemService.ValidateProductIdTranslation("RP2222", productIdTranslationList2, CurrentIds, "POSTER", "RRR", "Add", 0);
-            string result4 = itemService.ValidateProductIdTranslation("RP2222", emptyProductIdTranslationList, CurrentIds, "POSTER", "RRR", "Add", 0);
-            string result5 = itemService.ValidateProductIdTranslation("ST9999", productIdTranslationList1, CurrentIds, "POSTER", "RRR", "Add", 0);
+            ItemError result1 = itemService.ValidateProductIdTranslation(item1, CurrentIds);
+            ItemError result2 = itemService.ValidateProductIdTranslation(item2, CurrentIds);
+            ItemError result3 = itemService.ValidateProductIdTranslation(item3, CurrentIds);
+            ItemError result4 = itemService.ValidateProductIdTranslation(item4, CurrentIds);
+            ItemError result5 = itemService.ValidateProductIdTranslation(item5, CurrentIds);     
+            
             #endregion // Act
 
             #region Assert
             
-          Assert.AreEqual("", result1);
-            Assert.AreEqual("", result2);
-           Assert.AreEqual("", result3);
-            Assert.AreEqual("", result4);
-            Assert.AreNotEqual("", result5);
+            Assert.IsNull(result1);
+            Assert.IsNull(result2);
+            Assert.IsNull(result3);
+            Assert.IsNull(result4);
+            Assert.IsNotNull(result5);
 
             #endregion // Assert
 
@@ -3854,9 +3932,57 @@ namespace Odin.Services.Tests
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000000", "RP3323"));
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000666666", "RP3329"));
 
-            ItemObject item = new ItemObject() {
+            ItemObject item1 = new ItemObject()
+            {
                 ItemId = "RP2341",
-                Upc = "123456789098"
+                Upc = "123456789123",
+                Status = "Update",
+                ListPriceUsd = "4.00",
+                ProductFormat = "Poster",
+                ProductGroup = "Poster",
+                ProductLine = "Poster",
+                Ean = "1234",
+                EcommerceUpc = "000000666666",
+                ProdType = 1
+            };
+            ItemObject item2 = new ItemObject()
+            {
+                ItemId = "RP2341",
+                Upc = "123456789098",
+                Status = "Add",
+                ListPriceUsd = "4.00",
+                ProductFormat = "Poster",
+                ProductGroup = "Poster",
+                ProductLine = "Poster",
+                Ean = "1234",
+                EcommerceUpc = "123456789098",
+                ProdType = 1
+            };
+            ItemObject item3 = new ItemObject()
+            {
+                ItemId = "RP3323",
+                Upc = "123456789127",
+                Status = "Update",
+                ListPriceUsd = "4.00",
+                ProductFormat = "Poster",
+                ProductGroup = "Poster",
+                ProductLine = "Poster",
+                Ean = "1234",
+                EcommerceUpc = "000000666666",
+                ProdType = 1
+            };
+            ItemObject item4 = new ItemObject()
+            {
+                ItemId = "RP3323",
+                Upc = "000000000000",
+                Status = "Update",
+                ListPriceUsd = "4.00",
+                ProductFormat = "Poster",
+                ProductGroup = "Poster",
+                ProductLine = "Poster",
+                Ean = "1234",
+                EcommerceUpc = "000000000000",
+                ProdType = 1
             };
 
             #endregion // Setup
@@ -3864,23 +3990,23 @@ namespace Odin.Services.Tests
             #region Act
 
             /// Upc already assigned to another item's ecommerce Upc
-            string value = itemService.ValidateUpc("123456789123", "RP2341", "Update", "4.00", "Poster", "Poster", "Poster", "1234", "000000666666", 1);
+            ItemError value = itemService.ValidateUpc(item1);
 
             /// Upc and ecommerce match. Should fail
-            string value2 = itemService.ValidateUpc("123456789098", "RP2341", "Add", "4.00", "Poster", "Poster", "Poster", "1234", "123456789098", 1);
+            ItemError value2 = itemService.ValidateUpc(item2);
 
-            string value3 = itemService.ValidateUpc("123456789127", "RP3323", "Update", "4.00", "Poster", "Poster", "Poster", "1234", "000000666666", 1);
+            ItemError value3 = itemService.ValidateUpc(item3);
 
-            string value4 = itemService.ValidateUpc("000000000000", "RP3323", "Update", "4.00", "Poster", "Poster", "Poster", "1234", "000000000000", 1);
+            ItemError value4 = itemService.ValidateUpc(item4);
 
             #endregion // Act
 
             #region Assert
 
-            Assert.AreNotEqual("", value);
-            Assert.AreNotEqual("", value2);
-            Assert.AreEqual("", value3);
-            Assert.AreNotEqual("", value4);
+            Assert.IsNotNull(value);
+            Assert.IsNotNull(value2);
+            Assert.IsNull(value3);
+            Assert.IsNotNull(value4);
 
             #endregion // Assert
         }
@@ -3890,84 +4016,10 @@ namespace Odin.Services.Tests
         #region Ecommerce Validation Tests
 
         /// <summary>
-        ///     Test that blank values return error messages when Ecommercee fields are required.
+        ///     Check ValidateEcommerceBullet with valid and invalid values. Check for expected errors.
         /// </summary>
         [TestMethod]
-        public void ValidateRequiredEcommerceFields_HaveBlankValues_ShouldReturnErrors()
-        {
-            #region Assemble
-
-            GlobalData.ClearValues();
-            ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            GlobalData.EcomFlagRequirement = true;
-            bool Ecommerce_Required = true;
-
-            #endregion // Assemble
-
-            #region Act
-
-            string Ecommerce_BulletBlank = "1" + itemService.ValidateEcommerce_Bullet("", "1", Ecommerce_Required);
-            string Ecommerce_BulletBlank2 = "2" + itemService.ValidateEcommerce_Bullet("", "5", false);
-            string Ecommerce_ComponentsBlank = "3" + itemService.ValidateEcommerce_Components("", Ecommerce_Required);
-            string Ecommerce_CostBlank = "4" + itemService.ValidateEcommerce_Cost("", "", Ecommerce_Required);
-            string Ecommerce_ExternalIdTypeBlank = "6" + itemService.ValidateEcommerce_ExternalIdType("", Ecommerce_Required);
-            string Ecommerce_ExternalIdBlank = "7" + itemService.ValidateEcommerce_ExternalId("", "", Ecommerce_Required);
-            string Ecommerce_ImagePath1Blank = "8" + itemService.ValidateImagePath("", "1", Ecommerce_Required);
-            string Ecommerce_ImagePath5Blank = "9" + itemService.ValidateImagePath("", "5", false);
-            string Ecommerce_ItemHeightBlank = "10" + itemService.ValidateEcommerce_ItemHeight("", Ecommerce_Required);
-            string Ecommerce_ItemLengthBlank = "11" + itemService.ValidateEcommerce_ItemLength("", Ecommerce_Required);
-            string Ecommerce_ItemNameBlank = "12" + itemService.ValidateEcommerce_ItemName("", Ecommerce_Required);
-            string Ecommerce_ItemWeightBlank = "13" + itemService.ValidateEcommerce_ItemWeight("", Ecommerce_Required);
-            string Ecommerce_ItemWidthBlank = "14" + itemService.ValidateEcommerce_ItemWidth("", Ecommerce_Required);
-            string Ecommerce_ModelNameBlank = "15" + itemService.ValidateEcommerce_ModelName("", Ecommerce_Required);
-            string Ecommerce_PackageHeightBlank = "16" + itemService.ValidateEcommerce_PackageHeight("", Ecommerce_Required);
-            string Ecommerce_PackageLengthBlank = "17" + itemService.ValidateEcommerce_PackageLength("", Ecommerce_Required);
-            string Ecommerce_PackageWeightBlank = "18" + itemService.ValidateEcommerce_PackageWeight("", Ecommerce_Required);
-            string Ecommerce_PackageWidthBlank = "19" + itemService.ValidateEcommerce_PackageWidth("", Ecommerce_Required);
-            string Ecommerce_ProductCategoryBlank = "20" + itemService.ValidateEcommerce_ProductCategory("", Ecommerce_Required);
-            string Ecommerce_ProductDescriptionBlank = "21" + itemService.ValidateEcommerce_ProductDescription("", Ecommerce_Required);
-            string Ecommerce_ProductSubcategoryBlank = "22" + itemService.ValidateEcommerce_ProductSubcategory("", Ecommerce_Required);
-            string Ecommerce_ManufacturerNameBlank = "23" + itemService.ValidateEcommerce_ManufacturerName("", Ecommerce_Required);
-            string Ecommerce_MsrpBlank = "24" + itemService.ValidateEcommerce_Msrp("", Ecommerce_Required);
-            string Ecommerce_SearchTermsBlank = "25" + itemService.ValidateEcommerce_Keywords("", Ecommerce_Required, "Ecommerce Search Terms", "Add");
-
-            #endregion // Act
-
-            #region Assert
-
-            Assert.AreNotEqual(Ecommerce_BulletBlank, "1");
-            Assert.AreEqual(Ecommerce_BulletBlank2, "2");
-            Assert.AreNotEqual(Ecommerce_ComponentsBlank, "3");
-            Assert.AreNotEqual(Ecommerce_CostBlank, "4");
-            Assert.AreNotEqual(Ecommerce_ExternalIdTypeBlank, "6");
-            Assert.AreNotEqual(Ecommerce_ExternalIdBlank, "7");
-            Assert.AreNotEqual(Ecommerce_ImagePath1Blank, "8");
-            Assert.AreEqual(Ecommerce_ImagePath5Blank, "9");
-            Assert.AreNotEqual(Ecommerce_ItemHeightBlank, "10");
-            Assert.AreNotEqual(Ecommerce_ItemLengthBlank, "11");
-            Assert.AreNotEqual(Ecommerce_ItemNameBlank, "12");
-            Assert.AreNotEqual(Ecommerce_ItemWeightBlank, "13");
-            Assert.AreNotEqual(Ecommerce_ItemWidthBlank, "14");
-            Assert.AreNotEqual(Ecommerce_ModelNameBlank, "15");
-            Assert.AreNotEqual(Ecommerce_PackageHeightBlank, "16");
-            Assert.AreNotEqual(Ecommerce_PackageLengthBlank, "17");
-            Assert.AreNotEqual(Ecommerce_PackageWeightBlank, "18");
-            Assert.AreNotEqual(Ecommerce_PackageWidthBlank, "19");
-            Assert.AreNotEqual(Ecommerce_ProductCategoryBlank, "20");
-            Assert.AreNotEqual(Ecommerce_ProductDescriptionBlank, "21");
-            Assert.AreNotEqual(Ecommerce_ProductSubcategoryBlank, "22");
-            Assert.AreNotEqual(Ecommerce_ManufacturerNameBlank, "23");
-            Assert.AreNotEqual(Ecommerce_MsrpBlank, "24");
-            Assert.AreNotEqual(Ecommerce_SearchTermsBlank, "25");
-
-            #endregion // Assert
-        }
-
-        /// <summary>
-        ///     Test that a blank value will result as an error when other Ecommerce fields are entered.
-        /// </summary>
-        [TestMethod]
-        public void ValidateRequiredEcommerceFields_HasAMissingValue_ShouldReturnErrors()
+        public void ValidateEcommerceBullet_HasValidValues_ShouldPass()
         {
             #region Assemble
 
@@ -3975,99 +4027,22 @@ namespace Odin.Services.Tests
             GlobalData.EcomFlagRequirement = true;
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
+            ItemObject item1 = new ItemObject
+            {
+                EcommerceBullet1 = "Bananas Are Dope"
+            };
+
             #endregion // Assemble
 
             #region Act
 
-            string Ecommerce_BulletBlank = "1" + itemService.ValidateEcommerce_Bullet("", "1", true);
-            string Ecommerce_BulletBlank2 = "2" + itemService.ValidateEcommerce_Bullet("", "5", false);
-            string Ecommerce_ComponentsBlank = "3" + itemService.ValidateEcommerce_Components("", true);
-            string Ecommerce_CostBlank = "4" + itemService.ValidateEcommerce_Cost("", "", true);
-            string Ecommerce_ExternalIdTypeBlank = "6" + itemService.ValidateEcommerce_ExternalIdType("", true);
-            string Ecommerce_ExternalIdBlank = "7" + itemService.ValidateEcommerce_ExternalId("", "", true);
-            string Ecommerce_ImagePath1Blank = "8" + itemService.ValidateImagePath("", "1", true);
-            string Ecommerce_ImagePath5Blank = "9" + itemService.ValidateImagePath("", "5", false);
-            string Ecommerce_ItemHeightBlank = "10" + itemService.ValidateEcommerce_ItemHeight("", true);
-            string Ecommerce_ItemLengthBlank = "11" + itemService.ValidateEcommerce_ItemLength("", true);
-            string Ecommerce_ItemNameBlank = "12" + itemService.ValidateEcommerce_ItemName("", true);
-            string Ecommerce_ItemWeightBlank = "13" + itemService.ValidateEcommerce_ItemWeight("", true);
-            string Ecommerce_ItemWidthBlank = "14" + itemService.ValidateEcommerce_ItemWidth("", true);
-            string Ecommerce_ModelNameBlank = "15" + itemService.ValidateEcommerce_ModelName("", true);
-            string Ecommerce_PackageHeightBlank = "16" + itemService.ValidateEcommerce_PackageHeight("", true);
-            string Ecommerce_PackageLengthBlank = "17" + itemService.ValidateEcommerce_PackageLength("", true);
-            string Ecommerce_PackageWeightBlank = "18" + itemService.ValidateEcommerce_PackageWeight("", true);
-            string Ecommerce_PackageWidthBlank = "19" + itemService.ValidateEcommerce_PackageWidth("", true);
-            string Ecommerce_ProductCategoryBlank = "20" + itemService.ValidateEcommerce_ProductCategory("", true);
-            string Ecommerce_ProductDescriptionBlank = "21" + itemService.ValidateEcommerce_ProductDescription("", true);
-            string Ecommerce_ProductSubcategoryBlank = "22" + itemService.ValidateEcommerce_ProductSubcategory("", true);
-            string Ecommerce_ManufacturerNameBlank = "23" + itemService.ValidateEcommerce_ManufacturerName("", true);
-            string Ecommerce_MsrpBlank = "24" + itemService.ValidateEcommerce_Msrp("", true);
-            string Ecommerce_SearchTermsBlank = "25" + itemService.ValidateEcommerce_Keywords("", true, "Ecommerce Search Terms", "Update");
+            ItemError result1 = itemService.ValidateEcommerceBullet(item1, "1");
 
             #endregion // Act
 
             #region Assert
 
-            Assert.AreNotEqual(Ecommerce_BulletBlank, "1");
-            Assert.AreEqual(Ecommerce_BulletBlank2, "2");
-            Assert.AreNotEqual(Ecommerce_ComponentsBlank, "3");
-            Assert.AreNotEqual(Ecommerce_CostBlank, "4");
-            Assert.AreNotEqual(Ecommerce_ExternalIdTypeBlank, "6");
-            Assert.AreNotEqual(Ecommerce_ExternalIdBlank, "7");
-            Assert.AreNotEqual(Ecommerce_ImagePath1Blank, "8");
-            Assert.AreEqual(Ecommerce_ImagePath5Blank, "9");
-            Assert.AreNotEqual(Ecommerce_ItemHeightBlank, "10");
-            Assert.AreNotEqual(Ecommerce_ItemLengthBlank, "11");
-            Assert.AreNotEqual(Ecommerce_ItemNameBlank, "12");
-            Assert.AreNotEqual(Ecommerce_ItemWeightBlank, "13");
-            Assert.AreNotEqual(Ecommerce_ItemWidthBlank, "14");
-            Assert.AreNotEqual(Ecommerce_ModelNameBlank, "15");
-            Assert.AreNotEqual(Ecommerce_PackageHeightBlank, "16");
-            Assert.AreNotEqual(Ecommerce_PackageLengthBlank, "17");
-            Assert.AreNotEqual(Ecommerce_PackageWeightBlank, "18");
-            Assert.AreNotEqual(Ecommerce_PackageWidthBlank, "19");
-            Assert.AreNotEqual(Ecommerce_ProductCategoryBlank, "20");
-            Assert.AreNotEqual(Ecommerce_ProductDescriptionBlank, "21");
-            Assert.AreNotEqual(Ecommerce_ProductSubcategoryBlank, "22");
-            Assert.AreNotEqual(Ecommerce_ManufacturerNameBlank, "23");
-            Assert.AreNotEqual(Ecommerce_MsrpBlank, "24");
-            Assert.AreNotEqual(Ecommerce_SearchTermsBlank, "25");
-
-            #endregion // Assert
-        }
-
-        /// <summary>
-        ///     Check ValidateEcommerce_Bullet with valid and invalid values. Check for expected errors.
-        /// </summary>
-        [TestMethod]
-        public void ValidateEcommerceBullet_HasInvalidAndValidValues_ShouldReturnSomeErrors()
-        {
-            #region Assemble
-
-            GlobalData.ClearValues();
-            GlobalData.EcomFlagRequirement = true;
-            ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            bool Ecommerce_Required = true;
-
-            string input1 = "";
-            string input2 = "Bananas Are Dope";
-            #endregion // Assemble
-
-            #region Act
-
-            string result1 = itemService.ValidateEcommerce_Bullet(input1, "1", Ecommerce_Required);
-            string result2 = itemService.ValidateEcommerce_Bullet(input2, "1", Ecommerce_Required);
-            string result3 = itemService.ValidateEcommerce_Bullet(input1, "1", false);
-            string result4 = itemService.ValidateEcommerce_Bullet(input2, "1", false);
-
-            #endregion // Act
-
-            #region Assert
-
-            Assert.AreNotEqual(result1, "");
-            Assert.AreEqual(result2, "");
-            Assert.AreEqual(result3, "");
-            Assert.AreEqual(result4, "");
+            Assert.IsNull(result1);
 
             #endregion // Assert
         }
@@ -4085,20 +4060,19 @@ namespace Odin.Services.Tests
             GlobalData.ClearValues();
             GlobalData.EcomFlagRequirement = true;
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+            ItemObject item = new ItemObject { EcommerceSubjectKeywords = "Ecommerce Subject Keywords", SellOnEcommerce = "Y", Status = "Add", ProdType = 1 };
 
             #endregion // Assemble
 
             #region Act
 
-            string result1 = itemService.ValidateEcommerce_Keywords("", true, "Ecommerce Generic Keywords", "Add");
-            string result2 = itemService.ValidateEcommerce_Keywords("", false, "Ecommerce Subject Keywords", "Add");
+            ItemError result1 = itemService.ValidateEcommerceKeywords(item, "Subject");
 
             #endregion // Act
 
             #region Assert
 
-            Assert.AreNotEqual("", result1);
-            Assert.AreEqual("", result2);
+            Assert.IsNull(result1);
 
             #endregion // Assert
         }
@@ -4112,24 +4086,21 @@ namespace Odin.Services.Tests
             GlobalData.ClearValues();
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
             GlobalData.EcomFlagRequirement = true;
-
+            ItemObject item1 = new ItemObject { ProdType = 1,EcommerceMsrp ="0" };
+            ItemObject item2 = new ItemObject { ProdType = 1,EcommerceMsrp="1"};
             #endregion // Assemble
 
             #region Act
 
-            string result1 = itemService.ValidateEcommerce_Msrp("0", true);
-            string result2 = itemService.ValidateEcommerce_Msrp("1", true);
-            string result3 = itemService.ValidateEcommerce_Msrp("0", false);
-            string result4 = itemService.ValidateEcommerce_Msrp("1", false);
+            ItemError result1 = itemService.ValidateEcommerceMsrp(item1);
+            ItemError result2 = itemService.ValidateEcommerceMsrp(item2);
 
             #endregion // Act
 
             #region Assert
 
-            Assert.AreNotEqual(result1, "");
-            Assert.AreEqual(result2, "");
-            Assert.AreEqual(result3, "");
-            Assert.AreEqual(result4, "");
+            Assert.IsNotNull(result1);
+            Assert.IsNull(result2);
 
             #endregion // Assert
         }

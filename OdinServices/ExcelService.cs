@@ -208,7 +208,7 @@ namespace OdinServices
         /// </summary>
         /// <param name="template"></param>
         /// <param name="row"></param>
-        private void AddTemplateData(Template template, int row)
+        private void AddTemplateData(ItemObject template, int row)
         {
             worksheet.Cells[row, 1] = template.TemplateId; //Template ID
             worksheet.Cells[row, 2] = template.ItemGroup; //Item Group
@@ -308,11 +308,11 @@ namespace OdinServices
         {
             string result = string.Empty;
 
-            if (!string.IsNullOrEmpty(item.Ecommerce_Bullet1)) { result += "\u2022" + item.Ecommerce_Bullet1; }
-            if (!string.IsNullOrEmpty(item.Ecommerce_Bullet2)) { result += "\r\n\u2022" + item.Ecommerce_Bullet2; }
-            if (!string.IsNullOrEmpty(item.Ecommerce_Bullet3)) { result += "\r\n\u2022" + item.Ecommerce_Bullet3; }
-            if (!string.IsNullOrEmpty(item.Ecommerce_Bullet4)) { result += "\r\n\u2022" + item.Ecommerce_Bullet4; }
-            if (!string.IsNullOrEmpty(item.Ecommerce_Bullet5)) { result += "\r\n\u2022" + item.Ecommerce_Bullet5; }
+            if (!string.IsNullOrEmpty(item.EcommerceBullet1)) { result += "\u2022" + item.EcommerceBullet1; }
+            if (!string.IsNullOrEmpty(item.EcommerceBullet2)) { result += "\r\n\u2022" + item.EcommerceBullet2; }
+            if (!string.IsNullOrEmpty(item.EcommerceBullet3)) { result += "\r\n\u2022" + item.EcommerceBullet3; }
+            if (!string.IsNullOrEmpty(item.EcommerceBullet4)) { result += "\r\n\u2022" + item.EcommerceBullet4; }
+            if (!string.IsNullOrEmpty(item.EcommerceBullet5)) { result += "\r\n\u2022" + item.EcommerceBullet5; }
             return result;
         }
 
@@ -349,16 +349,16 @@ namespace OdinServices
         public string MergeBullets(ItemObject item)
         {
             string returnValue = string.Empty;
-            returnValue += item.Ecommerce_Bullet1;
-            returnValue += ", " + item.Ecommerce_Bullet2;
-            returnValue += ", " + item.Ecommerce_Bullet3;
-            if (!string.IsNullOrEmpty(item.Ecommerce_Bullet4))
+            returnValue += item.EcommerceBullet1;
+            returnValue += ", " + item.EcommerceBullet2;
+            returnValue += ", " + item.EcommerceBullet3;
+            if (!string.IsNullOrEmpty(item.EcommerceBullet4))
             {
-                returnValue += ", " + item.Ecommerce_Bullet4;
+                returnValue += ", " + item.EcommerceBullet4;
             }
-            if (!string.IsNullOrEmpty(item.Ecommerce_Bullet5))
+            if (!string.IsNullOrEmpty(item.EcommerceBullet5))
             {
-                returnValue += ", " + item.Ecommerce_Bullet5;
+                returnValue += ", " + item.EcommerceBullet5;
             }
             return returnValue;
         }
@@ -610,13 +610,13 @@ namespace OdinServices
         /// <param name="workbookType"></param>
         /// <param name="itemsList"></param>
         /// <returns></returns>
-        public void CreateTemplateWorkbook(List<Template> templateList = null)
+        public void CreateTemplateWorkbook(List<ItemObject> templateList = null)
         {
             string strFilePath;
-            List<Template> TemplateList = new List<Template>();
+            List<ItemObject> TemplateList = new List<ItemObject>();
             if (templateList == null)
             {
-                TemplateList.Add(new Template());
+                TemplateList.Add(new ItemObject());
             }
             else
             {
@@ -641,14 +641,14 @@ namespace OdinServices
 
             int row = 2;
             WriteHeaders(this.TemplateHeaders);
-            foreach (Template template in TemplateList)
+            foreach (ItemObject template in TemplateList)
             {
                 AddTemplateData(template, row);
                 row++;
             }
             workbook.SaveAs(strFilePath, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
- Type.Missing, XlSaveAsAccessMode.xlShared, Type.Missing, Type.Missing,
- Type.Missing, Type.Missing, Type.Missing);
+                Type.Missing, XlSaveAsAccessMode.xlShared, Type.Missing, Type.Missing,
+                Type.Missing, Type.Missing, Type.Missing);
             Cursor.Hide();
             MessageBox.Show("Excel Document is Complete. " + strFilePath);
         }
@@ -858,7 +858,7 @@ namespace OdinServices
                     case "Browse Keyword":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, ReturnBrowseKeyword(item.Ecommerce_ProductSubcategory));
+                            WriteCell(row, columnCount, ReturnBrowseKeyword(item.EcommerceProductSubcategory));
                             row++;
                         }
                         break;
@@ -998,7 +998,7 @@ namespace OdinServices
                     case "Ecommerce ASIN":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_Asin);
+                            WriteCell(row, columnCount, item.EcommerceAsin);
                             row++;
                         }
                         break;
@@ -1019,271 +1019,271 @@ namespace OdinServices
                     case "Ecommerce Bullet 1":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_Bullet1);
+                            WriteCell(row, columnCount, item.EcommerceBullet1);
                             row++;
                         }
                         break;
                     case "Ecommerce Bullet 2":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_Bullet2);
+                            WriteCell(row, columnCount, item.EcommerceBullet2);
                             row++;
                         }
                         break;
                     case "Ecommerce Bullet 3":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_Bullet3);
+                            WriteCell(row, columnCount, item.EcommerceBullet3);
                             row++;
                         }
                         break;
                     case "Ecommerce Bullet 4":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_Bullet4);
+                            WriteCell(row, columnCount, item.EcommerceBullet4);
                             row++;
                         }
                         break;
                     case "Ecommerce Bullet 5":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_Bullet5);
+                            WriteCell(row, columnCount, item.EcommerceBullet5);
                             row++;
                         }
                         break;
                     case "Ecommerce Components":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, ModifyComponents(item.Ecommerce_Components));
+                            WriteCell(row, columnCount, ModifyComponents(item.EcommerceComponents));
                             row++;
                         }
                         break;
                     case "Ecommerce Components Count":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, ReturnNumberOfComponents(item.Ecommerce_Components));
+                            WriteCell(row, columnCount, ReturnNumberOfComponents(item.EcommerceComponents));
                             row++;
                         }
                         break;
                     case "Ecommerce Cost":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_Cost);
+                            WriteCell(row, columnCount, item.EcommerceCost);
                             row++;
                         }
                         break;
                     case "Ecommerce Country of Origin":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_CountryofOrigin);
+                            WriteCell(row, columnCount, item.EcommerceCountryofOrigin);
                             row++;
                         }
                         break;
                     case "Ecommerce External ID":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_ExternalId);
+                            WriteCell(row, columnCount, item.EcommerceExternalId);
                             row++;
                         }
                         break;
                     case "Ecommerce External ID Type":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_ExternalIdType);
+                            WriteCell(row, columnCount, item.EcommerceExternalIdType);
                             row++;
                         }
                         break;
                     case "Ecommerce Generic Keywords":
                         foreach (ItemObject item in items)
                         {                            
-                            WriteCell(row, columnCount, TrimSearchTerms(item.Ecommerce_GenericKeywords, customer));
+                            WriteCell(row, columnCount, TrimSearchTerms(item.EcommerceGenericKeywords, customer));
                             row++;
                         }
                         break;
                     case "Ecommerce Image Path 1":
                         foreach (ItemObject item in items)
                         {
-                            bool fileExists = CheckFtpFileExists(item.Ecommerce_ImagePath1);
-                            WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath1, fileExists));
+                            bool fileExists = CheckFtpFileExists(item.EcommerceImagePath1);
+                            WriteCell(row, columnCount, SetImagePath(item.EcommerceImagePath1, fileExists));
                             row++;
                         }
                         break;
                     case "Ecommerce Image Path 2":
                         foreach (ItemObject item in items)
                         {
-                            bool fileExists = CheckFtpFileExists(item.Ecommerce_ImagePath2);
-                            WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath2, fileExists));
+                            bool fileExists = CheckFtpFileExists(item.EcommerceImagePath2);
+                            WriteCell(row, columnCount, SetImagePath(item.EcommerceImagePath2, fileExists));
                             row++;
                         }
                         break;
                     case "Ecommerce Image Path 3":
                         foreach (ItemObject item in items)
                         {
-                            bool fileExists = CheckFtpFileExists(item.Ecommerce_ImagePath3);
-                            WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath3, fileExists));
+                            bool fileExists = CheckFtpFileExists(item.EcommerceImagePath3);
+                            WriteCell(row, columnCount, SetImagePath(item.EcommerceImagePath3, fileExists));
                             row++;
                         }
                         break;
                     case "Ecommerce Image Path 4":
                         foreach (ItemObject item in items)
                         {
-                            bool fileExists = CheckFtpFileExists(item.Ecommerce_ImagePath4);
-                            WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath4, fileExists));
+                            bool fileExists = CheckFtpFileExists(item.EcommerceImagePath4);
+                            WriteCell(row, columnCount, SetImagePath(item.EcommerceImagePath4, fileExists));
                             row++;
                         }
                         break;
                     case "Ecommerce Image Path 5":
                         foreach (ItemObject item in items)
                         {
-                            bool fileExists = CheckFtpFileExists(item.Ecommerce_ImagePath5);
-                            WriteCell(row, columnCount, SetImagePath(item.Ecommerce_ImagePath5, fileExists));
+                            bool fileExists = CheckFtpFileExists(item.EcommerceImagePath5);
+                            WriteCell(row, columnCount, SetImagePath(item.EcommerceImagePath5, fileExists));
                             row++;
                         }
                         break;
                     case "Ecommerce Item Height":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_ItemHeight);
+                            WriteCell(row, columnCount, item.EcommerceItemHeight);
                             row++;
                         }
                         break;
                     case "Ecommerce Item Length":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_ItemLength);
+                            WriteCell(row, columnCount, item.EcommerceItemLength);
                             row++;
                         }
                         break;
                     case "Ecommerce Item Name":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_ItemName);
+                            WriteCell(row, columnCount, item.EcommerceItemName);
                             row++;
                         }
                         break;
                     case "Ecommerce Item Weight":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_ItemWeight);
+                            WriteCell(row, columnCount, item.EcommerceItemWeight);
                             row++;
                         }
                         break;
                     case "Ecommerce Item Weight (milliliters)":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, DbUtil.ConvertToMilliliters(item.Ecommerce_ItemWeight));
+                            WriteCell(row, columnCount, DbUtil.ConvertToMilliliters(item.EcommerceItemWeight));
                             row++;
                         }
                         break;
                     case "Ecommerce Item Width":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_ItemWidth);
+                            WriteCell(row, columnCount, item.EcommerceItemWidth);
                             row++;
                         }
                         break;
                     case "Ecommerce Model Name":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_ModelName);
+                            WriteCell(row, columnCount, item.EcommerceModelName);
                             row++;
                         }
                         break;
                     case "Ecommerce Package Height":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_PackageHeight);
+                            WriteCell(row, columnCount, item.EcommercePackageHeight);
                             row++;
                         }
                         break;
                     case "Ecommerce Package Length":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_PackageLength);
+                            WriteCell(row, columnCount, item.EcommercePackageLength);
                             row++;
                         }
                         break;
                     case "Ecommerce Package Weight":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_PackageWeight);
+                            WriteCell(row, columnCount, item.EcommercePackageWeight);
                             row++;
                         }
                         break;
                     case "Ecommerce Package Width":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_PackageWidth);
+                            WriteCell(row, columnCount, item.EcommercePackageWidth);
                             row++;
                         }
                         break;
                     case "Ecommerce Page Qty":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_PageQty);
+                            WriteCell(row, columnCount, item.EcommercePageQty);
                             row++;
                         }
                         break;
                     case "Ecommerce Product Category":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_ProductCategory);
+                            WriteCell(row, columnCount, item.EcommerceProductCategory);
                             row++;
                         }
                         break;
                     case "Ecommerce Product Description":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_ProductDescription);
+                            WriteCell(row, columnCount, item.EcommerceProductDescription);
                             row++;
                         }
                         break;
                     case "Ecommerce Product Subcategory":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_ProductSubcategory);
+                            WriteCell(row, columnCount, item.EcommerceProductSubcategory);
                             row++;
                         }
                         break;
                     case "Ecommerce Manufacturer Name":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_ManufacturerName);
+                            WriteCell(row, columnCount, item.EcommerceManufacturerName);
                             row++;
                         }
                         break;
                     case "Ecommerce Msrp":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_Msrp);
+                            WriteCell(row, columnCount, item.EcommerceMsrp);
                             row++;
                         }
                         break;
                     case "Ecommerce Search Terms":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, TrimSearchTerms(item.Ecommerce_SubjectKeywords, customer));
+                            WriteCell(row, columnCount, TrimSearchTerms(item.EcommerceSubjectKeywords, customer));
                             row++;
                         }
                         break;
                     case "Ecommerce Size":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_Size);
+                            WriteCell(row, columnCount, item.EcommerceSize);
                             row++;
                         }
                         break;
                     case "Ecommerce Subject Keywords":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, TrimSearchTerms(item.Ecommerce_SubjectKeywords, customer));
+                            WriteCell(row, columnCount, TrimSearchTerms(item.EcommerceSubjectKeywords, customer));
                             row++;
                         }
                         break;
                     case "Ecommerce Upc":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, item.Ecommerce_Upc);
+                            WriteCell(row, columnCount, item.EcommerceUpc);
                             row++;
                         }
                         break;

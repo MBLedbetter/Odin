@@ -17,6 +17,30 @@ namespace OdinModels
 
         #region Properties
 
+        /// <summary>
+        ///     Gets or sets the ErrorField
+        /// </summary>
+        public string ErrorField
+        {
+            get
+            {
+                return _errorField;
+            }
+            set
+            {
+                _errorField = value;
+
+                if (this.PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("ErrorField"));
+                }
+            }
+        }
+        private string _errorField = "";
+
+        /// <summary>
+        ///     Gets or sets the ErrorMessage
+        /// </summary>
         public string ErrorMessage
         {
             get
@@ -34,6 +58,27 @@ namespace OdinModels
             }
         }
         private string _errorMessage = "";
+
+        /// <summary>
+        ///     Gets or sets the ErrorType
+        /// </summary>
+        public string ErrorType
+        {
+            get
+            {
+                return _errorType;
+            }
+            set
+            {
+                _errorType = value;
+
+                if (this.PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("ErrorType"));
+                }
+            }
+        }
+        private string _errorType = "";
 
         /// <summary>
         ///     Gets or sets the ItemIdNumber
@@ -111,6 +156,19 @@ namespace OdinModels
 
         #endregion // Properties
 
+        #region Methods
+
+        public string ReturnErrorMessage()
+        {
+            if(this.ErrorMessage=="")
+            {
+                return "";
+            }
+            return this.ErrorField + " " + this.ErrorMessage;
+        }
+
+        #endregion // Methods
+
         #region Constructor
 
         /// <summary>
@@ -133,6 +191,7 @@ namespace OdinModels
             this.LineNumber = lineNumber;
             this.ErrorMessage = errorMessage;
         }
+
         /// <summary>
         ///     Creates an item error that keeps track of line number, message and the variable name
         /// </summary>
@@ -145,6 +204,23 @@ namespace OdinModels
             this.LineNumber = lineNumber;
             this.ErrorMessage = varName + " " + errorMessage;
             this.VarName = varName;
+        }
+
+        /// <summary>
+        ///     Creates an Item Error Object
+        /// </summary>
+        /// <param name="itemId">Item Id associated with errored field</param>
+        /// <param name="lineNumber">Line number of errored item</param>
+        /// <param name="errorMessage">Error message</param>
+        /// <param name="errorField">Field causing error</param>
+        /// <param name="errorType">Type of error</param>
+        public ItemError(string itemId, int lineNumber, string errorMessage, string errorField, string errorType = null)
+        {
+            this.ItemIdNumber = itemId;
+            this.LineNumber = lineNumber;
+            this.ErrorMessage = errorMessage;
+            this.ErrorField = errorField;
+            this.ErrorType = errorType ?? "";         
         }
 
         #endregion // Constructor

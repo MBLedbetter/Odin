@@ -1966,13 +1966,13 @@
 
                     <!-- ASIN -->
                     <Label
-                        Background="{Binding Ecommerce_AsinBoxColor}"
+                        Background="{Binding EcommerceAsinBoxColor}"
                         Content="ASIN"
                         Grid.Column="0"
                         Grid.Row="0"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_AsinToolTip}"
+                        ToolTip="{Binding EcommerceAsinToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -1981,19 +1981,19 @@
                         Grid.Row="0"
                         Grid.RowSpan="1"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_Asin}"
+                        Text="{Binding EcommerceAsin}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Bullet 1-->
                     <Label
-                        Background="{Binding Ecommerce_Bullet1BoxColor}"
+                        Background="{Binding EcommerceBullet1BoxColor}"
                         Content="Bullet 1"
                         Grid.Column="0"
                         Grid.Row="1"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_Bullet1ToolTip}"
+                        ToolTip="{Binding EcommerceBullet1ToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="58"
@@ -2002,19 +2002,19 @@
                         Grid.Row="1"
                         Grid.RowSpan="2"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_Bullet1}"
+                        Text="{Binding EcommerceBullet1}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Bullet 2-->
                     <Label
-                        Background="{Binding Ecommerce_Bullet2BoxColor}"
+                        Background="{Binding EcommerceBullet2BoxColor}"
                         Content="Bullet 2"
                         Grid.Column="0"
                         Grid.Row="3"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_Bullet2ToolTip}"
+                        ToolTip="{Binding EcommerceBullet2ToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="58"
@@ -2023,19 +2023,19 @@
                         Grid.Row="3"
                         Grid.RowSpan="2"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_Bullet2}"
+                        Text="{Binding EcommerceBullet2}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Bullet 3-->
                     <Label
-                        Background="{Binding Ecommerce_Bullet3BoxColor}"
+                        Background="{Binding EcommerceBullet3BoxColor}"
                         Content="Bullet 3"
                         Grid.Column="0"
                         Grid.Row="5"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_Bullet3ToolTip}"
+                        ToolTip="{Binding EcommerceBullet3ToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="58"
@@ -2044,19 +2044,19 @@
                         Grid.Row="5"
                         Grid.RowSpan="2"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_Bullet3}"
+                        Text="{Binding EcommerceBullet3}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Bullet 4-->
                     <Label
-                        Background="{Binding Ecommerce_Bullet4BoxColor}"
+                        Background="{Binding EcommerceBullet4BoxColor}"
                         Content="Bullet 4"
                         Grid.Column="0"
                         Grid.Row="7"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_Bullet4ToolTip}"
+                        ToolTip="{Binding EcommerceBullet4ToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="58"
@@ -2065,19 +2065,19 @@
                         Grid.Row="7"
                         Grid.RowSpan="2"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_Bullet4}"
+                        Text="{Binding EcommerceBullet4}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Bullet 5-->
                     <Label
-                        Background="{Binding Ecommerce_Bullet5BoxColor}"
+                        Background="{Binding EcommerceBullet5BoxColor}"
                         Content="Bullet 5"
                         Grid.Column="0"
                         Grid.Row="9"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_Bullet5ToolTip}"
+                        ToolTip="{Binding EcommerceBullet5ToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="58"
@@ -2086,19 +2086,19 @@
                         Grid.Row="9"
                         Grid.RowSpan="2"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_Bullet5}"
+                        Text="{Binding EcommerceBullet5}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Components -->
                     <Label
-                        Background="{Binding Ecommerce_ComponentsBoxColor}"
+                        Background="{Binding EcommerceComponentsBoxColor}"
                         Content="Components"
                         Grid.Column="0"
                         Grid.Row="11"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_ComponentsToolTip}"
+                        ToolTip="{Binding EcommerceComponentsToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2106,19 +2106,19 @@
                         Grid.Column="1"
                         Grid.Row="11"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_Components}"
+                        Text="{Binding EcommerceComponents}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Cost Amazon-->
                     <Label
-                        Background="{Binding Ecommerce_CostBoxColor}"
+                        Background="{Binding EcommerceCostBoxColor}"
                         Content="Cost"
                         Grid.Column="0"
                         Grid.Row="12"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_CostToolTip}"
+                        ToolTip="{Binding EcommerceCostToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2126,19 +2126,19 @@
                         Grid.Column="1"
                         Grid.Row="12"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_Cost}"
+                        Text="{Binding EcommerceCost}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- External Id -->
                     <Label
-                        Background="{Binding Ecommerce_ExternalIdBoxColor}"
+                        Background="{Binding EcommerceExternalIdBoxColor}"
                         Content="External ID"
                         Grid.Column="2"
                         Grid.Row="0"
                         HorizontalAlignment="Left" 
                         Margin="0,5,0,4" 
-                        ToolTip="{Binding Ecommerce_ExternalIdToolTip}"
+                        ToolTip="{Binding EcommerceExternalIdToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2146,18 +2146,18 @@
                         Grid.Column="3"
                         Grid.Row="0"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_ExternalId}"
+                        Text="{Binding EcommerceExternalId}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- External ID Type -->
                     <Label
-                        Background="{Binding Ecommerce_ExternalIdTypeBoxColor}"
+                        Background="{Binding EcommerceExternalIdTypeBoxColor}"
                         Content="External ID Type"
                         Grid.Row="1"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding Ecommerce_ExternalIdTypeToolTip}"
+                        ToolTip="{Binding EcommerceExternalIdTypeToolTip}"
                         VerticalAlignment="Center" 
                         Margin="6,6,0,6" />
                     <ComboBox
@@ -2165,19 +2165,19 @@
                         Grid.Row="1"
                         Height="23"
                         HorizontalAlignment="Left"
-                        ItemsSource="{Binding Ecommerce_ExternalIdTypeGroups}"
+                        ItemsSource="{Binding EcommerceExternalIdTypeGroups}"
                         Margin="6,6,0,6"
-                        Text="{Binding Ecommerce_ExternalIdType}"
+                        Text="{Binding EcommerceExternalIdType}"
                         Width="170"  />
                     <!-- Item Height -->
                     <Label
-                        Background="{Binding Ecommerce_ItemHeightBoxColor}"
+                        Background="{Binding EcommerceItemHeightBoxColor}"
                         Content="Item Height"
                         Grid.Column="2"
                         Grid.Row="2"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_ItemHeightToolTip}"
+                        ToolTip="{Binding EcommerceItemHeightToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2185,19 +2185,19 @@
                         Grid.Column="3"
                         Grid.Row="2"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_ItemHeight}"
+                        Text="{Binding EcommerceItemHeight}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Item Length -->
                     <Label
-                        Background="{Binding Ecommerce_ItemLengthBoxColor}"
+                        Background="{Binding EcommerceItemLengthBoxColor}"
                         Content="Item Length"
                         Grid.Column="2"
                         Grid.Row="3"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_ItemLengthToolTip}"
+                        ToolTip="{Binding EcommerceItemLengthToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2205,19 +2205,19 @@
                         Grid.Column="3"
                         Grid.Row="3"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_ItemLength}"
+                        Text="{Binding EcommerceItemLength}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Item Name -->
                     <Label
-                        Background="{Binding Ecommerce_ItemNameBoxColor}"
+                        Background="{Binding EcommerceItemNameBoxColor}"
                         Content="Item Name"
                         Grid.Column="2"
                         Grid.Row="4"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_ItemNameToolTip}"
+                        ToolTip="{Binding EcommerceItemNameToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2225,19 +2225,19 @@
                         Grid.Column="3"
                         Grid.Row="4"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_ItemName}"
+                        Text="{Binding EcommerceItemName}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Item Weight -->
                     <Label
-                        Background="{Binding Ecommerce_ItemWeightBoxColor}"
+                        Background="{Binding EcommerceItemWeightBoxColor}"
                         Content="Item Weight"
                         Grid.Column="2"
                         Grid.Row="5"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_ItemWeightToolTip}"
+                        ToolTip="{Binding EcommerceItemWeightToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2245,19 +2245,19 @@
                         Grid.Column="3"
                         Grid.Row="5"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_ItemWeight}"
+                        Text="{Binding EcommerceItemWeight}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Item Width -->
                     <Label
-                        Background="{Binding Ecommerce_ItemWidthBoxColor}"
+                        Background="{Binding EcommerceItemWidthBoxColor}"
                         Content="Item Width"
                         Grid.Column="2"
                         Grid.Row="6"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_ItemWidthToolTip}"
+                        ToolTip="{Binding EcommerceItemWidthToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2265,19 +2265,19 @@
                         Grid.Column="3"
                         Grid.Row="6"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_ItemWidth}"
+                        Text="{Binding EcommerceItemWidth}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Model Name -->
                     <Label
-                        Background="{Binding Ecommerce_ModelNameBoxColor}"
+                        Background="{Binding EcommerceModelNameBoxColor}"
                         Content="Model Name"
                         Grid.Column="2"
                         Grid.Row="7"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_ModelNameToolTip}"
+                        ToolTip="{Binding EcommerceModelNameToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2285,19 +2285,19 @@
                         Grid.Column="3"
                         Grid.Row="7"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_ModelName}"
+                        Text="{Binding EcommerceModelName}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Package Height -->
                     <Label
-                        Background="{Binding Ecommerce_PackageHeightBoxColor}"
+                        Background="{Binding EcommercePackageHeightBoxColor}"
                         Content="Package Height"
                         Grid.Column="2"
                         Grid.Row="8"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_PackageHeightToolTip}"
+                        ToolTip="{Binding EcommercePackageHeightToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2305,19 +2305,19 @@
                         Grid.Column="3"
                         Grid.Row="8"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_PackageHeight}"
+                        Text="{Binding EcommercePackageHeight}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Package Length -->
                     <Label
-                        Background="{Binding Ecommerce_PackageLengthBoxColor}"
+                        Background="{Binding EcommercePackageLengthBoxColor}"
                         Content="Package Length"
                         Grid.Column="2"
                         Grid.Row="9"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_PackageLengthToolTip}"
+                        ToolTip="{Binding EcommercePackageLengthToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2325,19 +2325,19 @@
                         Grid.Column="3"
                         Grid.Row="9"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_PackageLength}"
+                        Text="{Binding EcommercePackageLength}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Package Weight -->
                     <Label
-                        Background="{Binding Ecommerce_PackageWeightBoxColor}"
+                        Background="{Binding EcommercePackageWeightBoxColor}"
                         Content="Package Weight"
                         Grid.Column="2"
                         Grid.Row="10"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_PackageWeightToolTip}"
+                        ToolTip="{Binding EcommercePackageWeightToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2345,19 +2345,19 @@
                         Grid.Column="3"
                         Grid.Row="10"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_PackageWeight}"
+                        Text="{Binding EcommercePackageWeight}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Package Width -->
                     <Label
-                        Background="{Binding Ecommerce_PackageWidthBoxColor}"
+                        Background="{Binding EcommercePackageWidthBoxColor}"
                         Content="Package Width"
                         Grid.Column="2"
                         Grid.Row="11"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_PackageWidthToolTip}"
+                        ToolTip="{Binding EcommercePackageWidthToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2365,19 +2365,19 @@
                         Grid.Column="3"
                         Grid.Row="11"
                         Margin="6,6,0,6"            
-                        Text="{Binding Ecommerce_PackageWidth}"
+                        Text="{Binding EcommercePackageWidth}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Product Category -->
                     <Label
-                        Background="{Binding Ecommerce_ProductCategoryBoxColor}"
+                        Background="{Binding EcommerceProductCategoryBoxColor}"
                         Content="Product Category"
                         Grid.Column="2"
                         Grid.Row="12"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_ProductCategoryToolTip}"
+                        ToolTip="{Binding EcommerceProductCategoryToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2385,19 +2385,19 @@
                         Grid.Column="3"
                         Grid.Row="12"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_ProductCategory}"
+                        Text="{Binding EcommerceProductCategory}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Page Qty -->
                     <Label
-                        Background="{Binding Ecommerce_PageQtyBoxColor}"
+                        Background="{Binding EcommercePageQtyBoxColor}"
                         Content="Page Qty"
                         Grid.Column="4"
                         Grid.Row="0"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_PageQtyToolTip}"
+                        ToolTip="{Binding EcommercePageQtyToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2405,19 +2405,19 @@
                         Grid.Column="5"
                         Grid.Row="0"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_PageQty}"
+                        Text="{Binding EcommercePageQty}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Product Description -->
                     <Label
-                        Background="{Binding Ecommerce_ProductDescriptionBoxColor}"
+                        Background="{Binding EcommerceProductDescriptionBoxColor}"
                         Content="Product Description"
                         Grid.Column="4"
                         Grid.Row="1"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_ProductDescriptionToolTip}"
+                        ToolTip="{Binding EcommerceProductDescriptionToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="128"
@@ -2426,19 +2426,19 @@
                         Grid.Row="1"
                         Grid.RowSpan="4"
                         Margin="6,6,0,6"                        
-                        Text="{Binding Ecommerce_ProductDescription}"
+                        Text="{Binding EcommerceProductDescription}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Product Subcategory -->
                     <Label
-                        Background="{Binding Ecommerce_ProductSubcategoryBoxColor}"
+                        Background="{Binding EcommerceProductSubcategoryBoxColor}"
                         Content="Product Subcategory"
                         Grid.Column="4"
                         Grid.Row="5"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_ProductSubcategoryToolTip}"
+                        ToolTip="{Binding EcommerceProductSubcategoryToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2446,19 +2446,19 @@
                         Grid.Column="5"
                         Grid.Row="5"
                         Margin="6,6,0,6"
-                        Text="{Binding Ecommerce_ProductSubcategory}"
+                        Text="{Binding EcommerceProductSubcategory}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Manufacturer Name -->
                     <Label
-                        Background="{Binding Ecommerce_ManufacturerNameBoxColor}"
+                        Background="{Binding EcommerceManufacturerNameBoxColor}"
                         Content="Manufacturer Name"
                         Grid.Column="4"
                         Grid.Row="6"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_ManufacturerNameToolTip}"
+                        ToolTip="{Binding EcommerceManufacturerNameToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2466,19 +2466,19 @@
                         Grid.Column="5"
                         Grid.Row="6"
                         Margin="6,6,0,6"
-                        Text="{Binding Ecommerce_ManufacturerName}"
+                        Text="{Binding EcommerceManufacturerName}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Msrp -->
                     <Label
-                        Background="{Binding Ecommerce_MsrpBoxColor}"
+                        Background="{Binding EcommerceMsrpBoxColor}"
                         Content="Msrp"
                         Grid.Column="4"
                         Grid.Row="7"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_MsrpToolTip}"
+                        ToolTip="{Binding EcommerceMsrpToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2486,19 +2486,19 @@
                         Grid.Column="5"
                         Grid.Row="7"
                         Margin="6,6,0,6"
-                        Text="{Binding Ecommerce_Msrp}"
+                        Text="{Binding EcommerceMsrp}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Search Terms -->
                     <Label
-                        Background="{Binding Ecommerce_GenericKeywordsBoxColor}"
+                        Background="{Binding EcommerceGenericKeywordsBoxColor}"
                         Content="Generic Keywords"
                         Grid.Column="4"
                         Grid.Row="8"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_GenericKeywordsToolTip}"
+                        ToolTip="{Binding EcommerceGenericKeywordsToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="128"
@@ -2507,19 +2507,19 @@
                         Grid.Row="8"
                         Grid.RowSpan="4"
                         Margin="6,6,0,6"
-                        Text="{Binding Ecommerce_GenericKeywords}"
+                        Text="{Binding EcommerceGenericKeywords}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Subject Keywords -->
                     <Label
-                        Background="{Binding Ecommerce_SubjectKeywordsBoxColor}"
+                        Background="{Binding EcommerceSubjectKeywordsBoxColor}"
                         Content="Search Terms"
                         Grid.Column="6"
                         Grid.Row="0"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_SubjectKeywordsToolTip}"
+                        ToolTip="{Binding EcommerceSubjectKeywordsToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="128"
@@ -2528,19 +2528,19 @@
                         Grid.Row="0"
                         Grid.RowSpan="4"
                         Margin="6,6,0,6"
-                        Text="{Binding Ecommerce_SubjectKeywords}"
+                        Text="{Binding EcommerceSubjectKeywords}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Size -->
                     <Label
-                        Background="{Binding Ecommerce_SizeBoxColor}"
+                        Background="{Binding EcommerceSizeBoxColor}"
                         Content="Size"
                         Grid.Column="6"
                         Grid.Row="4"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_SizeToolTip}"
+                        ToolTip="{Binding EcommerceSizeToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2548,7 +2548,7 @@
                         Grid.Column="7"
                         Grid.Row="4"
                         Margin="6,6,0,6"
-                        Text="{Binding Ecommerce_Size}"
+                        Text="{Binding EcommerceSize}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
@@ -2594,13 +2594,13 @@
                         VerticalContentAlignment="Center" />
                     <!-- Ecommerce Upc -->
                     <Label
-                        Background="{Binding Ecommerce_UpcBoxColor}"
+                        Background="{Binding EcommerceUpcBoxColor}"
                         Content="Upc"
                         Grid.Column="6"
                         Grid.Row="10"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
-                        ToolTip="{Binding Ecommerce_UpcToolTip}"
+                        ToolTip="{Binding EcommerceUpcToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
                         Height="23"
@@ -2608,7 +2608,7 @@
                         Grid.Column="7"
                         Grid.Row="10"
                         Margin="6,6,0,6"
-                        Text="{Binding Ecommerce_Upc}"
+                        Text="{Binding EcommerceUpc}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />

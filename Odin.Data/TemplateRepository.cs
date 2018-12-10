@@ -62,7 +62,7 @@ namespace Odin.Data
         /// </summary>
         /// <param name="template"></param>
         /// <returns></returns>
-        public void InsertTemplate(Template template)
+        public void InsertTemplate(ItemObject template)
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
@@ -304,9 +304,9 @@ namespace Odin.Data
         ///     Retrieves a template from the db
         /// </summary>
         /// <returns></returns>
-        public Template RetrieveTemplate(string templateId)
+        public ItemObject RetrieveTemplate(string templateId)
         {
-            Template template = new Template();
+            ItemObject template = new ItemObject();
 
             using (OdinContext context = this.contextFactory.CreateContext())
             {
@@ -403,7 +403,7 @@ namespace Odin.Data
         ///     Updates an existing template
         /// </summary>
         /// <returns></returns>
-        public void UpdateTemplate(Template template, string status)
+        public void UpdateTemplate(ItemObject template, string status)
         {
             RemoveTemplate(template.TemplateId);
             if (status != "Remove")

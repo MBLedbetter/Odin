@@ -178,7 +178,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.AccountingGroup != value)
                 {
                     this.ItemViewModelItem.AccountingGroup = value;
-                    AccountingGroupError = ItemService.ValidateAccountingGroup(value, this.ProdType);
+                    FlagError("AcountingGroup");
                     OnPropertyChanged("AccountingGroup");
                 }
             }
@@ -244,7 +244,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.ReturnBillOfMaterials() != value)
                 {
                     this.ItemViewModelItem.BillOfMaterials = ItemService.ParseChildElementIds(this.ItemId, value);
-                    this.BillOfMaterialsError = ItemService.ValidateBillOfMaterials(this.ItemId, this.ItemViewModelItem.BillOfMaterials, this.ItemIds, this.Status, this.ProdType);
+                    FlagError("Bill of Materials");
                     OnPropertyChanged("BillOfMaterials");
                 }
             }
@@ -310,11 +310,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.CasepackHeight != value)
                 {
                     this.ItemViewModelItem.CasepackHeight = value;
-
-                    this.CasepackHeightError = ItemService.ValidateCasepack(value, this.CasepackLength, this.CasepackWidth, this.CasepackWeight, this.ProdType, "Casepack Height");
-                    this.CasepackLengthError = ItemService.ValidateCasepack(this.CasepackLength, value, this.CasepackWidth, this.CasepackWeight, this.ProdType, "Casepack Length");
-                    this.CasepackWidthError = ItemService.ValidateCasepack(this.CasepackWidth, value, this.CasepackLength, this.CasepackWeight, this.ProdType, "Casepack Width");
-                    this.CasepackWeightError = ItemService.ValidateCasepack(this.CasepackWeight, this.CasepackWidth, value, this.CasepackLength, this.ProdType, "Casepack Weight");
+                    FlagError("Casepack");
                     OnPropertyChanged("CasepackHeight");
                 }
             }
@@ -380,10 +376,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.CasepackLength != value)
                 {
                     this.ItemViewModelItem.CasepackLength = value;
-                    this.CasepackHeightError = ItemService.ValidateCasepack(this.CasepackHeight, value, this.CasepackWidth, this.CasepackWeight, this.ProdType, "Casepack Height");
-                    this.CasepackLengthError = ItemService.ValidateCasepack(value, this.CasepackHeight, this.CasepackWidth, this.CasepackWeight, this.ProdType, "Casepack Length");
-                    this.CasepackWidthError = ItemService.ValidateCasepack(this.CasepackWidth, value, this.CasepackHeight, this.CasepackWeight, this.ProdType, "Casepack Width");
-                    this.CasepackWeightError = ItemService.ValidateCasepack(this.CasepackWeight, this.CasepackWidth, value, this.CasepackHeight, this.ProdType, "Casepack Weight");
+                    FlagError("Casepack");
                     OnPropertyChanged("CasepackLength");
                 }
             }
@@ -449,7 +442,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.CasepackQty != value)
                 {
                     this.ItemViewModelItem.CasepackQty = value;
-                    this.CasepackQtyError = ItemService.ValidateCasepackQty(value, this.ProdType);
+                    FlagError("CasepackQty");
                     OnPropertyChanged("CasepackQty");
                 }
             }
@@ -515,7 +508,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.CasepackUpc != value)
                 {
                     this.ItemViewModelItem.CasepackUpc = value;
-                    this.CasepackUpcError = ItemService.ValidatePackUpc(value, "Casepack", this.ProdType);
+                    FlagError("CasepackUpc");
                     OnPropertyChanged("CasepackUpc");
                 }
             }
@@ -581,11 +574,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.CasepackWidth != value)
                 {
                     this.ItemViewModelItem.CasepackWidth = value;
-
-                    this.CasepackHeightError = ItemService.ValidateCasepack(this.CasepackHeight, this.CasepackLength, this.CasepackWidth, this.CasepackWeight, this.ProdType, "Casepack Height");
-                    this.CasepackLengthError = ItemService.ValidateCasepack(this.CasepackLength, this.CasepackHeight, value, this.CasepackWeight, this.ProdType, "Casepack Length");
-                    this.CasepackWidthError = ItemService.ValidateCasepack(value, this.CasepackHeight, this.CasepackLength, this.CasepackWeight, this.ProdType, "Casepack Width");
-                    this.CasepackWeightError = ItemService.ValidateCasepack(this.CasepackWeight, this.CasepackWidth, value, this.CasepackLength, this.ProdType, "Casepack Weight");
+                    FlagError("Casepack");
                     OnPropertyChanged("CasepackWidth");
                 }
             }
@@ -651,10 +640,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.CasepackWeight != value)
                 {
                     this.ItemViewModelItem.CasepackWeight = value;
-                    this.CasepackHeightError = ItemService.ValidateCasepack(this.CasepackHeight, this.CasepackLength, this.CasepackWidth, value, this.ProdType, "Casepack Height");
-                    this.CasepackLengthError = ItemService.ValidateCasepack(this.CasepackLength, this.CasepackHeight, this.CasepackWidth, value, this.ProdType, "Casepack Length");
-                    this.CasepackWidthError = ItemService.ValidateCasepack(this.CasepackWidth, this.CasepackHeight, this.CasepackLength,  value, this.ProdType, "Casepack Width");
-                    this.CasepackWeightError = ItemService.ValidateCasepack(value, this.CasepackWidth, this.CasepackHeight, this.CasepackLength, this.ProdType, "Casepack Weight");
+                    FlagError("Casepack");
                     OnPropertyChanged("CasepackWeight");
                 }
             }
@@ -720,7 +706,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Color != value)
                 {
                     this.ItemViewModelItem.Color = value;
-                    this.ColorError = ItemService.ValidateColor(value, ProdType);
+                    FlagError("Color");
                     OnPropertyChanged("Color");
                 }
             }
@@ -786,9 +772,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.CostProfileGroup != value)
                 {
                     this.ItemViewModelItem.CostProfileGroup = value;
-                    this.CostProfileGroupError = ItemService.ValidateCostProfileGroup(value, this.MfgSource, ProdType);
-                    this.MfgSourceError = ItemService.ValidateMfgSource(this.MfgSource, value, ProdType);
-
+                    FlagError("CostProfileGroup");
                     OnPropertyChanged("CostProfileGroup");
                 }
             }
@@ -854,8 +838,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.CountryOfOrigin != value)
                 {
                     this.ItemViewModelItem.CountryOfOrigin = value;
-                    this.ItemViewModelItem.Ecommerce_CountryofOrigin = ItemService.RetrieveFullCountryOfOrigin(value);
-                    this.CountryOfOriginError = ItemService.ValidateCountryOfOrigin(value, ListPriceUsd, ProdType);
+                    FlagError("CountryOfOrigin");
                     OnPropertyChanged("CountryOfOrigin");
                 }
             }
@@ -921,7 +904,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.DefaultActualCostUsd != value)
                 {
                     this.ItemViewModelItem.DefaultActualCostUsd = value;
-                    DefaultActualCostUsdError = ItemService.ValidateDefaultActualCost(value, "USD", ProdType);
+                    FlagError("DefaultActualCostUsd");
                     OnPropertyChanged("DefaultActualCostUsd");
                 }
             }
@@ -987,7 +970,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.DefaultActualCostCad != value)
                 {
                     this.ItemViewModelItem.DefaultActualCostCad = value;
-                    DefaultActualCostCadError = ItemService.ValidateDefaultActualCost(value, "CAD", ProdType);
+                    FlagError("DefaultActualCostCad");
                     OnPropertyChanged("DefaultActualCostCad");
                 }
             }
@@ -1053,7 +1036,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Description != value)
                 {
                     this.ItemViewModelItem.Description = DbUtil.ReplaceCharacters(value);
-                    DescriptionError = this.ItemService.ValidateDescription(DbUtil.ReplaceCharacters(value), this.ProdType);
+                    FlagError("Description");
                     OnPropertyChanged("Description");
                 }
             }
@@ -1119,7 +1102,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.DirectImport != value)
                 {
                     this.ItemViewModelItem.DirectImport = value;
-                    DirectImportError = this.ItemService.ValidateDirectImport(value, this.ProdType);
+                    FlagError("DirectImport");
                     OnPropertyChanged("DirectImport");
                 }
             }
@@ -1185,7 +1168,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Ean != value)
                 {
                     this.ItemViewModelItem.Ean = value;
-                    EanError = ItemService.ValidateEan(value, this.Upc, this.ListPriceUsd, this.ProductFormat, this.ProductLine);
+                    FlagError("Ean");
                     OnPropertyChanged("Ean");
                 }
             }
@@ -1251,7 +1234,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Duty != value)
                 {
                     this.ItemViewModelItem.Duty = value;
-                    DutyError = ItemService.ValidateDuty(value, ProdType);
+                    FlagError("Duty");
                     OnPropertyChanged("Duty");
                 }
             }
@@ -1317,7 +1300,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Gpc != value)
                 {
                     this.ItemViewModelItem.Gpc = value;
-                    GpcError = ItemService.ValidateGpc(value, ListPriceUsd, ProdType);
+                    FlagError("Gpc");
                     OnPropertyChanged("Gpc");
                 }
             }
@@ -1383,7 +1366,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Height != value)
                 {
                     this.ItemViewModelItem.Height = value;
-                    HeightError = ItemService.ValidateHeight(value, ProdType);
+                    FlagError("Height");
                     OnPropertyChanged("Height");
                 }
             }
@@ -1449,10 +1432,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.InnerpackHeight != value)
                 {
                     this.ItemViewModelItem.InnerpackHeight = value;
-                    InnerpackHeightError = ItemService.ValidateInnerpack(value, InnerpackLength, InnerpackWidth, InnerpackWeight, ProdType, "Innerpack Height");
-                    InnerpackLengthError = ItemService.ValidateInnerpack(InnerpackLength, value, InnerpackWidth, InnerpackWeight, ProdType, "Innerpack Length");
-                    InnerpackWeightError = ItemService.ValidateInnerpack(InnerpackWeight, value, InnerpackLength, InnerpackWidth, ProdType, "Innerpack Weight");
-                    InnerpackWidthError = ItemService.ValidateInnerpack(InnerpackWidth, value, InnerpackLength, InnerpackWeight, ProdType, "Innerpack Width");
+                    FlagError("Innerpack");
                     OnPropertyChanged("InnerpackHeight");
                 }
             }
@@ -1518,10 +1498,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.InnerpackLength != value)
                 {
                     this.ItemViewModelItem.InnerpackLength = value;
-                    InnerpackHeightError = ItemService.ValidateInnerpack(InnerpackHeight, value, InnerpackWidth, InnerpackWeight, ProdType, "Innerpack Height");
-                    InnerpackLengthError = ItemService.ValidateInnerpack(value, InnerpackHeight, InnerpackWidth, InnerpackWeight, ProdType, "Innerpack Length");
-                    InnerpackWeightError = ItemService.ValidateInnerpack(InnerpackWeight, value, InnerpackWidth, InnerpackHeight, ProdType, "Innerpack Weight");
-                    InnerpackWidthError = ItemService.ValidateInnerpack(InnerpackWidth, value, InnerpackHeight, InnerpackWeight, ProdType, "Innerpack Width");
+                    FlagError("Innerpack");
                     OnPropertyChanged("InnerpackLength");
                 }
             }
@@ -1587,7 +1564,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.InnerpackQuantity != value)
                 {
                     this.ItemViewModelItem.InnerpackQuantity = value;
-                    InnerpackQuantityError = ItemService.ValidateInnerpackQuantity(value, ProdType);
+                    FlagError("InnerpackQuantity");
                     OnPropertyChanged("InnerpackQuantity");
                 }
             }
@@ -1653,7 +1630,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.InnerpackUpc != value)
                 {
                     this.ItemViewModelItem.InnerpackUpc = value;
-                    InnerpackUpcError = ItemService.ValidatePackUpc(value, "Innerpack", ProdType);
+                    FlagError("InnerpackUpc");
                     OnPropertyChanged("InnerpackUpc");
                 }
             }
@@ -1719,11 +1696,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.InnerpackWeight != value)
                 {
                     this.ItemViewModelItem.InnerpackWeight = value;
-                    InnerpackLengthError = ItemService.ValidateInnerpack(InnerpackLength, value, InnerpackWidth, InnerpackHeight, ProdType, "Innerpack Length");
-                    InnerpackWidthError = ItemService.ValidateInnerpack(InnerpackWidth, value, InnerpackLength, InnerpackHeight, ProdType, "Innerpack Width");
-                    InnerpackHeightError = ItemService.ValidateInnerpack(InnerpackHeight, value, InnerpackLength, InnerpackWidth, ProdType, "Innerpack Height");
-                    InnerpackWeightError = ItemService.ValidateInnerpack(value, InnerpackWidth, InnerpackLength, InnerpackHeight, ProdType, "Innerpack Weight");
-
+                    FlagError("Innerpack");
                     OnPropertyChanged("InnerpackWeight");
                 }
             }
@@ -1789,10 +1762,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.InnerpackWidth != value)
                 {
                     this.ItemViewModelItem.InnerpackWidth = value;
-                    InnerpackLengthError = ItemService.ValidateInnerpack(InnerpackLength, value, InnerpackHeight, InnerpackWeight, ProdType, "Innerpack Length");
-                    InnerpackWidthError = ItemService.ValidateInnerpack(value, InnerpackHeight, InnerpackLength, InnerpackWeight, ProdType, "Innerpack Width");
-                    InnerpackHeightError = ItemService.ValidateInnerpack(InnerpackHeight, InnerpackLength, InnerpackWeight, value, ProdType, "Innerpack Height");
-                    InnerpackWeightError = ItemService.ValidateInnerpack(InnerpackWeight, value, InnerpackLength, InnerpackHeight, ProdType, "Innerpack Weight");
+                    FlagError("Innerpack");
                     OnPropertyChanged("InnerpackWidth");
                 }
             }
@@ -1858,7 +1828,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Isbn != value)
                 {
                     this.ItemViewModelItem.Isbn = value;
-                    IsbnError = ItemService.ValidateIsbn(value, ProdType);
+                    FlagError("Isbn");
                     OnPropertyChanged("Isbn");
                 }
             }
@@ -1924,7 +1894,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.ItemCategory != value)
                 {
                     this.ItemViewModelItem.ItemCategory = value;
-                    ItemCategoryError = ItemService.ValidateItemCategory(value, ProdType);
+                    FlagError("ItemCategory");
                     OnPropertyChanged("ItemCategory");
                 }
             }
@@ -1990,7 +1960,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.ItemFamily != value)
                 {
                     this.ItemViewModelItem.ItemFamily = value.ToUpper();
-                    ItemFamilyError = ItemService.ValidateItemFamily(value, ProdType);
+                    FlagError("ItemFamily");
                     OnPropertyChanged("ItemFamily");
                 }
             }
@@ -2056,7 +2026,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.ItemGroup != value)
                 {
                     this.ItemViewModelItem.ItemGroup = value;
-                    this.ItemGroupError = ItemService.ValidateItemGroup(value, ProdType);
+                    FlagError("ItemGroup");
                     OnPropertyChanged("ItemGroup");
                 }
             }
@@ -2122,7 +2092,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.ItemId != value)
                 {
                     this.ItemViewModelItem.ItemId = value;
-                    this.ItemIdError = ItemService.ValidateItemId(value, this.ItemViewModelItem.Status);
+                    FlagError("ItemId");
                     OnPropertyChanged("ItemId");
                 }
             }
@@ -2200,7 +2170,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Language != value)
                 {
                     this.ItemViewModelItem.Language = (DbUtil.OrderLanguage(value) == "") ? value : DbUtil.OrderLanguage(value);
-                    this.LanguageError = ItemService.ValidateLanguage(DbUtil.OrderLanguage(value), this.ListPriceUsd, ProdType);
+                    FlagError("Language");
                     OnPropertyChanged("Language");
                 }
             }
@@ -2266,7 +2236,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Length != value)
                 {
                     this.ItemViewModelItem.Length = value;
-                    this.LengthError = ItemService.ValidateLength(value, ProdType);
+                    FlagError("Length");
                     OnPropertyChanged("Length");
                 }
             }
@@ -2332,7 +2302,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.LicenseBeginDate != value)
                 {
                     this.ItemViewModelItem.LicenseBeginDate = value;
-                    this.LicenseBeginDateError = ItemService.ValidateLicenseBeginDate(value, this.ProdType);
+                    FlagError("LicenseBeginDate");
                     OnPropertyChanged("LicenseBeginDate");
                 }
             }
@@ -2401,9 +2371,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.ListPriceCad != value)
                 {
                     this.ItemViewModelItem.ListPriceCad = value;
-                    this.ListPriceCadError = ItemService.ValidateListPrice(value, "CAD", this.ProdType);
-                    this.MsrpCadError = ItemService.ValidateMsrp(this.MsrpCad, value, this.ProdType, "CAD");
-                    this.PricingGroupError = ItemService.ValidatePricingGroup(this.PricingGroup, value, this.ListPriceUsd, this.ProdType);
+                    FlagError("ListPriceCad");
                     OnPropertyChanged("ListPriceCad");
                 }
             }
@@ -2472,8 +2440,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.ListPriceMxn != value)
                 {
                     this.ItemViewModelItem.ListPriceMxn = value;
-                    this.MsrpMxnError = ItemService.ValidateMsrp(MsrpMxn, value, this.ProdType, "MXN");
-                    this.ListPriceMxnError = ItemService.ValidateListPrice(value, "MXN", this.ProdType);
+                    FlagError("ListPriceMxn");
                     OnPropertyChanged("ListPriceMxn");
                 }
             }
@@ -2542,17 +2509,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.ListPriceUsd != value)
                 {
                     this.ItemViewModelItem.ListPriceUsd = value;
-                    this.ListPriceUsdError = ItemService.ValidateListPrice(value, "USD", this.ProdType);
-                    this.ProductQtyTotal = ItemService.RetrieveB2bPrice(value, this.ProductQty);
-                    this.MsrpError = ItemService.ValidateMsrp(this.Msrp, value, this.ProdType, "USD");
-                    this.PricingGroupError = ItemService.ValidatePricingGroup(this.PricingGroup, this.ListPriceCad, value, this.ProdType);
-                    this.StatsCodeError = ItemService.ValidateStatsCode(value, this.ListPriceUsd, this.ProdType);
-                    this.CountryOfOriginError = ItemService.ValidateCountryOfOrigin(this.CountryOfOrigin, value, this.ProdType);
-                    this.LanguageError = ItemService.ValidateLanguage(DbUtil.OrderLanguage(this.Language), value, this.ProdType);
-                    this.TerritoryError = ItemService.ValidateTerritory(DbUtil.OrderTerritory(this.Territory), value, this.ProdType);
-                    this.GpcError = ItemService.ValidateGpc(value, this.ListPriceUsd, this.ProdType);
-                    this.UpcError = ItemService.ValidateUpc(this.Upc, this.ItemId, this.Status, value, this.ProductFormat, this.ProductGroup, this.ProductLine, this.Ean,this.Ecommerce_Upc, this.ProdType);
-                    ValidateEcommerce();
+                    FlagError("ListPriceUsd");
                     OnPropertyChanged("ListPriceUsd");
                 }
             }
@@ -2621,8 +2578,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.MfgSource != value)
                 {
                     this.ItemViewModelItem.MfgSource = value;
-                    this.MfgSourceError = ItemService.ValidateMfgSource(value, this.CostProfileGroup, this.ProdType);
-                    this.CostProfileGroupError = ItemService.ValidateCostProfileGroup(this.CostProfileGroup, value, this.ProdType);
+                    FlagError("MfgSource");
                     OnPropertyChanged("MfgSource");
                 }
             }
@@ -2691,7 +2647,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Msrp != value)
                 {
                     this.ItemViewModelItem.Msrp = value;
-                    this.MsrpError = ItemService.ValidateMsrp(value, this.ListPriceUsd, this.ProdType, "USD");
+                    FlagError("Msrp");
                     OnPropertyChanged("Msrp");
                 }
             }
@@ -2760,7 +2716,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.MsrpCad != value)
                 {
                     this.ItemViewModelItem.MsrpCad = value;
-                    this.MsrpCadError = ItemService.ValidateMsrp(value, this.ListPriceCad, this.ProdType, "CAD");
+                    FlagError("MsrpCad");
                     OnPropertyChanged("MsrpCad");
                 }
             }
@@ -2829,7 +2785,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.MsrpMxn != value)
                 {
                     this.ItemViewModelItem.MsrpMxn = value;
-                    this.MsrpMxnError = ItemService.ValidateMsrp(value, this.ListPriceMxn, this.ProdType, "MXN");
+                    FlagError("MsrpMxn");
                     OnPropertyChanged("MsrpMxn");
                 }
             }
@@ -2898,7 +2854,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.PricingGroup != value)
                 {
                     this.ItemViewModelItem.PricingGroup = value;
-                    this.PricingGroupError = ItemService.ValidatePricingGroup(value, this.ListPriceCad, this.ListPriceCad, this.ProdType);
+                    FlagError("PricingGroup");
                     OnPropertyChanged("PricingGroup");
                 }
             }
@@ -2967,7 +2923,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.PrintOnDemand != value)
                 {
                     this.ItemViewModelItem.PrintOnDemand = value;
-                    this.PrintOnDemandError = ItemService.ValidatePrintOnDemand(value, this.ProdType);
+                    FlagError("PrintOnDemand");
                     OnPropertyChanged("PrintOnDemand");
                 }
             }
@@ -3036,10 +2992,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.ProductFormat != value)
                 {
                     this.ItemViewModelItem.ProductFormat = value;
-                    this.ProductFormatError = ItemService.ValidateProductFormat(this.ProductGroup, this.ProductLine, value, this.Upc, this.ProdType);
-                    this.ProductIdTranslationError = ItemService.ValidateProductIdTranslation(this.ItemId, this.ItemViewModelItem.ProductIdTranslation, this.ItemIds, this.ProductFormat, this.PricingGroup, this.Status, this.ProdType);
-                    this.UpcError = ItemService.ValidateUpc(this.Upc, this.ItemId, this.Status, this.ListPriceUsd, this.ProductFormat, this.ProductGroup, this.ProductLine, this.Ean,this.Ecommerce_Upc, this.ProdType);
-                    this.EanError = ItemService.ValidateEan(value, this.Upc, this.ListPriceUsd, this.ProductFormat, this.ProductLine);
+                    FlagError("ProductFormat");
                     OnPropertyChanged("ProductFormat");
                 }
             }
@@ -3108,13 +3061,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.ProductGroup != value)
                 {
                     this.ItemViewModelItem.ProductGroup = value;
-                    RefreshProductLines();
-                    RefreshProductFormats("");
-                    this.ProductFormatError = ItemService.ValidateProductFormat(value, this.ProductLine, this.ProductFormat, this.Upc, this.ProdType);
-                    this.ProductLineError = ItemService.ValidateProductLine(value, this.ProductLine, this.Upc, this.ProdType);
-                    this.ProductGroupError = ItemService.ValidateProductGroup(value, this.Upc, this.ProdType);
-                    this.UpcError = ItemService.ValidateUpc(this.Upc, this.ItemId, this.Status, this.ListPriceUsd, this.ProductFormat, value, this.ProductLine, this.Ean, this.Ecommerce_Upc, this.ProdType);
-                    ValidateEcommerce();
+                    FlagError("ProductGroup");
                     OnPropertyChanged("ProductGroup");
                 }
             }
@@ -3182,8 +3129,8 @@ namespace Odin.ViewModels
             {
                 if (this.ItemViewModelItem.ReturnProductIdTranslations() != value)
                 {
-                    this.ItemViewModelItem.ProductIdTranslation = ItemService.ParseChildElementIds(this.ItemId, value);
-                    this.ProductIdTranslationError = ItemService.ValidateProductIdTranslation(this.ItemId, this.ItemViewModelItem.ProductIdTranslation, this.ItemIds, this.ProductFormat, this.PricingGroup, this.Status, this.ProdType);
+                    this.ItemViewModelItem.ProductIdTranslation = ItemService.ParseChildElementIds(this.ItemId, value);                    
+                    FlagError("ProductIdTranslation");
                     OnPropertyChanged("ProductIdTranslation");
                 }
             }
@@ -3252,11 +3199,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.ProductLine != value)
                 {
                     this.ItemViewModelItem.ProductLine = value;
-                    RefreshProductFormats(this.ProductLine);
-                    this.EanError = ItemService.ValidateEan(this.Ean, this.Upc, this.ListPriceUsd, this.ProductFormat, this.ProductLine);
-                    this.ProductFormatError = ItemService.ValidateProductFormat(this.ProductGroup, value, this.ProductFormat, this.Upc, this.ProdType);
-                    this.ProductLineError = ItemService.ValidateProductLine(this.ProductGroup, value, this.Upc, this.ProdType);
-                    this.UpcError = ItemService.ValidateUpc(this.Upc, this.ItemId, this.Status, this.ListPriceUsd, this.ProductFormat, this.ProductGroup, value, this.Ean, this.Ecommerce_Upc, this.ProdType);
+                    FlagError("ProductLine");
                     OnPropertyChanged("ProductLine");
                 }
             }
@@ -3325,8 +3268,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.ProductQty != value)
                 {
                     this.ItemViewModelItem.ProductQty = value;
-                    this.ProductQtyTotal = ItemService.RetrieveB2bPrice(this.ListPriceUsd, value);
-                    this.ProductQtyError = ItemService.ValidateProductQty(value, this.ProdType);
+                    FlagError("ProductQty");
                     OnPropertyChanged("ProductQty");
                 }
             }
@@ -3408,7 +3350,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.PsStatus != value)
                 {
                     this.ItemViewModelItem.PsStatus = value;
-                    this.PsStatusError = ItemService.ValidatePsStatus(value, "Item");
+                    FlagError("PsStatus");
                     OnPropertyChanged("PsStatus");
                 }
             }
@@ -3477,7 +3419,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.SatCode != value)
                 {
                     this.ItemViewModelItem.SatCode = value;
-                    this.SatCodeError = ItemService.ValidateSatCode(value);
+                    FlagError("SatCode");
                     OnPropertyChanged("SatCode");
                 }
             }
@@ -3546,8 +3488,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.SellOnAllPosters != DbUtil.ConvertYN(value))
                 {
                     this.ItemViewModelItem.SellOnAllPosters = DbUtil.ConvertYN(value);
-                    this.SellOnAllPostersError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "AllPosters");
-                    ValidateEcommerce();
+                    FlagError("SellOnAllPostersCheck");
                     OnPropertyChanged("SellOnAllPostersCheck");
                 }
             }
@@ -3616,8 +3557,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.SellOnAmazon != DbUtil.ConvertYN(value))
                 {
                     this.ItemViewModelItem.SellOnAmazon = DbUtil.ConvertYN(value);
-                    this.SellOnAmazonError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), DbUtil.ConvertYN(this.SellOnEcommerceCheck),"Amazon");
-                    ValidateEcommerce();
+                    FlagError("SellOnAmazonCheck");
                     OnPropertyChanged("SellOnAmazonCheck");
                 }
             }
@@ -3687,8 +3627,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.SellOnAmazonSellerCentral != DbUtil.ConvertYN(value))
                 {
                     this.ItemViewModelItem.SellOnAmazonSellerCentral = DbUtil.ConvertYN(value);
-                    this.SellOnAmazonSellerCentralError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "AmazonSellerCentral");
-                    ValidateEcommerce();
+                    FlagError("SellOnAmazonSellerCentralCheck");
                     OnPropertyChanged("SellOnAmazonSellerCentralCheck");
                 }
             }
@@ -3757,9 +3696,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.SellOnEcommerce != DbUtil.ConvertYN(value))
                 {
                     this.ItemViewModelItem.SellOnEcommerce = DbUtil.ConvertYN(value);
-                    this.SellOnEcommerceError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), null, "Ecommerce");
-                    ValidateSellOnFields();
-                    ValidateEcommerce();
+                    FlagError("SellOnEcommerceCheck");
                     OnPropertyChanged("SellOnEcommerceCheck");
                 }
             }
@@ -3828,8 +3765,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.SellOnFanatics != DbUtil.ConvertYN(value))
                 {
                     this.ItemViewModelItem.SellOnFanatics = DbUtil.ConvertYN(value);
-                    this.SellOnFanaticsError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Fanatics");
-                    ValidateEcommerce();
+                    FlagError("SellOnFanaticsCheck");
                     OnPropertyChanged("SellOnFanaticsCheck");
                 }
             }
@@ -3899,8 +3835,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.SellOnGuitarCenter != DbUtil.ConvertYN(value))
                 {
                     this.ItemViewModelItem.SellOnGuitarCenter = DbUtil.ConvertYN(value);
-                    this.SellOnGuitarCenterError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Guitar Center");
-                    ValidateEcommerce();
+                    FlagError("SellOnGuitarCenterCheck");
                     OnPropertyChanged("SellOnGuitarCenterCheck");
                 }
             }
@@ -3969,8 +3904,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.SellOnHayneedle != DbUtil.ConvertYN(value))
                 {
                     this.ItemViewModelItem.SellOnHayneedle = DbUtil.ConvertYN(value);
-                    this.SellOnHayneedleError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Hayneedle");
-                    ValidateEcommerce();
+                    FlagError("SellOnHayneedleCheck");
                     OnPropertyChanged("SellOnHayneedleCheck");
                 }
             }
@@ -4039,8 +3973,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.SellOnTarget != DbUtil.ConvertYN(value))
                 {
                     this.ItemViewModelItem.SellOnTarget = DbUtil.ConvertYN(value);
-                    this.SellOnTargetError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Target");
-                    ValidateEcommerce();
+                    FlagError("SellOnTargetCheck");
                     OnPropertyChanged("SellOnTargetCheck");
                 }
             }
@@ -4109,11 +4042,7 @@ namespace Odin.ViewModels
                 if (DbUtil.ConvertToBool(this.ItemViewModelItem.SellOnTrends) != value)
                 {
                     this.ItemViewModelItem.SellOnTrends = DbUtil.ConvertYN(value);
-                    this.SellOnTrendsError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value),null, "Trends");
-                    this.TitleError = ItemService.ValidateTitle(this.Title, this.SellOnTrendsCheck);
-                    this.MetaDescriptionError = ItemService.ValidateMetaDescription(this.MetaDescription, ItemViewModelItem.HasWeb());
-                    this.CategoryError = ItemService.ValidateCategory(this.Category, ItemViewModelItem.HasWeb());
-                    this.ItemKeywordsError = ItemService.ValidateItemKeywords(this.ItemKeywords, ItemViewModelItem.HasWeb());
+                    FlagError("SellOnTrendsCheck");
                     OnPropertyChanged("SellOnTrendsCheck");
                 }
             }
@@ -4182,8 +4111,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.SellOnWalmart != DbUtil.ConvertYN(value))
                 {
                     this.ItemViewModelItem.SellOnWalmart = DbUtil.ConvertYN(value);
-                    this.SellOnWalmartError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Walmart");
-                    ValidateEcommerce();
+                    FlagError("SellOnWalmartCheck");
                     OnPropertyChanged("SellOnWalmartCheck");
                 }
             }
@@ -4252,8 +4180,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.SellOnWayfair != DbUtil.ConvertYN(value))
                 {
                     this.ItemViewModelItem.SellOnWayfair = DbUtil.ConvertYN(value);
-                    this.SellOnWayfairError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(value), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Wayfair");
-                    ValidateEcommerce();
+                    FlagError("SellOnWayfairCheck");
                     OnPropertyChanged("SellOnWayfairCheck");
                 }
             }
@@ -4322,7 +4249,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.StandardCost != value)
                 {
                     this.ItemViewModelItem.StandardCost = value;
-                    this.StandardCostError = ItemService.ValidateStandardCost(value, this.ProdType);
+                    FlagError("StandardCost");
                     OnPropertyChanged("StandardCost");
                 }
             }
@@ -4391,7 +4318,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.StatsCode != value)
                 {
                     this.ItemViewModelItem.StatsCode = value;
-                    this.StatsCodeError = ItemService.ValidateStatsCode(value, this.ListPriceUsd, this.ProdType);
+                    FlagError("StatsCode");
                     OnPropertyChanged("StatsCode");
                 }
             }
@@ -4475,7 +4402,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.TariffCode != value)
                 {
                     this.ItemViewModelItem.TariffCode = value;
-                    this.TariffCodeError = ItemService.ValidateTariffCode(value, this.ProdType);
+                    FlagError("TariffCode");
                     OnPropertyChanged("TariffCode");
                 }
             }
@@ -4544,7 +4471,8 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Territory != value)
                 {
                     this.ItemViewModelItem.Territory = DbUtil.OrderTerritory(value);
-                    this.TerritoryError = ItemService.ValidateTerritory(DbUtil.OrderTerritory(value), this.ListPriceUsd, this.ProdType);
+
+                    FlagError("Territory");
                     OnPropertyChanged("Territory");
                 }
             }
@@ -4613,7 +4541,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Udex != value)
                 {
                     this.ItemViewModelItem.Udex = value;
-                    this.UdexError = ItemService.ValidateUdex(value, this.ProdType);
+                    FlagError("Udex");
                     OnPropertyChanged("Udex");
                 }
             }
@@ -4682,10 +4610,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Upc != value)
                 {
                     this.ItemViewModelItem.Upc = value;
-                    this.UpcError = ItemService.ValidateUpc(value, this.ItemId, this.Status, this.ListPriceUsd, this.ProductFormat, this.ProductGroup, this.ProductLine, this.Ean, this.Ecommerce_Upc, this.ProdType);
-                    this.ProductFormatError = ItemService.ValidateProductFormat(this.ProductGroup, this.ProductLine, this.ProductFormat, value, this.ProdType);
-                    this.ProductGroupError = ItemService.ValidateProductGroup(this.ProductGroup, value, this.ProdType);
-                    this.ProductLineError = ItemService.ValidateProductLine(this.ProductGroup, this.ProductLine, value, this.ProdType);
+                    FlagError("Upc");
                     OnPropertyChanged("Upc");
                 }
             }
@@ -4754,7 +4679,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Warranty != value)
                 {
                     this.ItemViewModelItem.Warranty = value;
-                    this.WarrantyError = ItemService.ValidateWarranty(ItemViewModelItem);
+                    FlagError("Warranty");
                     OnPropertyChanged("Warranty");
                 }
             }
@@ -4823,7 +4748,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.WarrantyCheck != DbUtil.ConvertYN(value))
                 {
                     this.ItemViewModelItem.WarrantyCheck = DbUtil.ConvertYN(value);
-                    this.WarrantyCheckError = ItemService.ValidateWarrantyCheck(ItemViewModelItem);
+                    FlagError("WarrantyCheck");
                     OnPropertyChanged("WarrantyCheck");
                 }
             }
@@ -4892,7 +4817,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Weight != value)
                 {
                     this.ItemViewModelItem.Weight = value;
-                    this.WeightError = ItemService.ValidateWeight(value, this.ProdType);
+                    FlagError("Weight");
                     OnPropertyChanged("Weight");
                 }
             }
@@ -4961,7 +4886,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Width != value)
                 {
                     this.ItemViewModelItem.Width = value;
-                    this.WidthError = ItemService.ValidateWidth(value, this.ProdType);
+                    FlagError("Width");
                     OnPropertyChanged("Width");
                 }
             }
@@ -5034,7 +4959,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Copyright != value)
                 {
                     this.ItemViewModelItem.Copyright = value;
-                    this.CopyrightError = ItemService.ValidateCopyright(value);
+                    FlagError("Copyright");
                     OnPropertyChanged("Copyright");
                 }
             }
@@ -5103,7 +5028,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.InStockDate != value)
                 {
                     this.ItemViewModelItem.InStockDate = value;
-                    this.InStockDateError = ItemService.ValidateInStockDate(value);
+                    FlagError("InStockDate");
                     OnPropertyChanged("InStockDate");
                 }
             }
@@ -5172,7 +5097,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Category != value)
                 {
                     this.ItemViewModelItem.Category = value;
-                    this.CategoryError = ItemService.ValidateCategory(value, this.ItemViewModelItem.HasWeb());
+                    FlagError("Category");
                     OnPropertyChanged("Category");
                 }
             }
@@ -5241,7 +5166,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Category2 != value)
                 {
                     this.ItemViewModelItem.Category2 = value;
-                    this.Category2Error = ItemService.ValidateCategory2(value, "2");
+                    FlagError("Category2");
                     OnPropertyChanged("Category2");
                 }
             }
@@ -5310,7 +5235,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Category3 != value)
                 {
                     this.ItemViewModelItem.Category3 = value;
-                    this.Category3Error = ItemService.ValidateCategory2(value, "3");
+                    FlagError("Category3");
                     OnPropertyChanged("Category3");
                 }
             }
@@ -5379,7 +5304,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.ItemKeywords != value)
                 {
                     this.ItemViewModelItem.ItemKeywords = value;
-                    this.ItemKeywordsError = ItemService.ValidateItemKeywords(value, this.ItemViewModelItem.HasWeb());
+                    FlagError("ItemKeywords");
                     OnPropertyChanged("ItemKeywords");
                 }
             }
@@ -5448,7 +5373,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Title != value)
                 {
                     this.ItemViewModelItem.Title = value;
-                    this.TitleError = ItemService.ValidateTitle(value, this.ItemViewModelItem.HasWeb());
+                    FlagError("Title");
                     OnPropertyChanged("Title");
                 }
             }
@@ -5517,9 +5442,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.License != value)
                 {
                     this.ItemViewModelItem.License = value;
-                    RefreshPropertyList(value);
-                    this.LicenseError = ItemService.ValidateLicense(value);
-                    this.PropertyError = ItemService.ValidateProperty(this.Property, value);
+                    FlagError("License");
                     OnPropertyChanged("License");
                 }
             }
@@ -5588,7 +5511,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.MetaDescription != value)
                 {
                     this.ItemViewModelItem.MetaDescription = value;
-                    this.MetaDescriptionError = ItemService.ValidateMetaDescription(value, this.ItemViewModelItem.HasWeb());
+                    FlagError("MetaDescription");
                     OnPropertyChanged("MetaDescription");
                 }
             }
@@ -5657,7 +5580,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Property != value)
                 {
                     this.ItemViewModelItem.Property = value;
-                    this.PropertyError = ItemService.ValidateProperty(value, this.License);
+                    FlagError("Property");
                     OnPropertyChanged("Property");
                 }
             }
@@ -5726,7 +5649,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.ShortDescription != value)
                 {
                     this.ItemViewModelItem.ShortDescription = value;
-                    this.ShortDescriptionError = ItemService.ValidateShortDescription(value);
+                    FlagError("ShortDescription");
                     OnPropertyChanged("ShortDescription");
                 }
             }
@@ -5795,7 +5718,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.Size != value)
                 {
                     this.ItemViewModelItem.Size = value;
-                    this.SizeError = ItemService.ValidateSize(value);
+                    FlagError("Size");
                     OnPropertyChanged("Size");
                 }
             }
@@ -5864,7 +5787,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.WebsitePrice != value)
                 {
                     this.ItemViewModelItem.WebsitePrice = value;
-                    this.WebsitePriceError = ItemService.ValidateWebsitePrice(value, this.ItemViewModelItem.HasWeb());
+                    FlagError("WebsitePrice");
                     OnPropertyChanged("WebsitePrice");
                 }
             }
@@ -5937,9 +5860,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.AltImageFile1 != value)
                 {
                     this.ItemViewModelItem.AltImageFile1 = value;
-                    this.Ecommerce_ImagePath2 = ItemViewModelItem.Ecommerce_ImagePath2;
-                    this.AltImageFile1Error = ItemService.ValidateImagePath(value, "Image Path 2", false);
-                    SetImages();
+                    FlagError("AltImageFile1");
                     OnPropertyChanged("AltImageFile1");
                 }
             }
@@ -6008,9 +5929,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.AltImageFile2 != value)
                 {
                     this.ItemViewModelItem.AltImageFile2 = value;
-                    this.Ecommerce_ImagePath3 = ItemViewModelItem.Ecommerce_ImagePath3;
-                    this.AltImageFile2Error = ItemService.ValidateImagePath(value, "Image Path 3", false);
-                    SetImages();
+                    FlagError("AltImageFile2");
                     OnPropertyChanged("AltImageFile2");
                 }
             }
@@ -6079,9 +5998,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.AltImageFile3 != value)
                 {
                     this.ItemViewModelItem.AltImageFile3 = value;
-                    this.Ecommerce_ImagePath4 = ItemViewModelItem.Ecommerce_ImagePath4;
-                    this.AltImageFile3Error = ItemService.ValidateImagePath(value, "Image Path 4", false);
-                    SetImages();
+                    FlagError("AltImageFile3");
                     OnPropertyChanged("AltImageFile3");
                 }
             }
@@ -6150,9 +6067,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.AltImageFile4 != value)
                 {
                     this.ItemViewModelItem.AltImageFile4 = value;
-                    this.Ecommerce_ImagePath5 = ItemViewModelItem.Ecommerce_ImagePath5;
-                    this.AltImageFile4Error = ItemService.ValidateImagePath(value, "Image Path 5", false);
-                    SetImages();
+                    FlagError("AltImageFile4");
                     OnPropertyChanged("AltImageFile4");
                 }
             }
@@ -6221,9 +6136,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.ImagePath != value)
                 {
                     this.ItemViewModelItem.ImagePath = value;
-                    this.Ecommerce_ImagePath1 = ItemViewModelItem.Ecommerce_ImagePath1;
-                    this.ImagePathError = ItemService.ValidateImagePath(value, "Image Path", ItemViewModelItem.HasWeb());
-                    SetImages();
+                    FlagError("ImagePath");
                     OnPropertyChanged("ImagePath");
                 }
             }
@@ -6283,2169 +6196,2169 @@ namespace Odin.ViewModels
         #region Ecommerce Properties
 
         /// <summary>
-        ///     Ecommerce_Asin
+        ///     EcommerceAsin
         /// </summary>
-        public string Ecommerce_Asin
+        public string EcommerceAsin
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_Asin;
+                return this.ItemViewModelItem.EcommerceAsin;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_Asin != value)
+                if (this.ItemViewModelItem.EcommerceAsin != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_Asin = value;
-                    this.Ecommerce_AsinError = ItemService.ValidateEcommerce_Asin(value);
-                    OnPropertyChanged("Ecommerce_Asin");
+                    this.ItemViewModelItem.EcommerceAsin = value;
+                    FlagError("EcommerceAsin");
+                    OnPropertyChanged("EcommerceAsin");
                 }
             }
         }
-        public string Ecommerce_AsinBoxColor
+        public string EcommerceAsinBoxColor
         {
             get
             {
-                return _ecommerce_asinBoxColor;
+                return _EcommerceasinBoxColor;
             }
             set
             {
-                _ecommerce_asinBoxColor = value;
+                _EcommerceasinBoxColor = value;
                 OnPropertyChanged("Ecomemrce_AsinBoxColor");
             }
         }
-        private string _ecommerce_asinBoxColor = "White";
-        public string Ecommerce_AsinError
+        private string _EcommerceasinBoxColor = "White";
+        public string EcommerceAsinError
         {
             get
             {
-                return _ecommerce_asinError;
+                return _EcommerceasinError;
             }
             set
             {
-                _ecommerce_asinError = value;
+                _EcommerceasinError = value;
                 if(value != "")
                 {
-                    Ecommerce_AsinToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_AsinToolTip");
+                    EcommerceAsinToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceAsinToolTip");
                 }
                 else
                 {
-                    Ecommerce_AsinToolTip = ReturnToolTip("Ecommerce_AsinToolTip");
+                    EcommerceAsinToolTip = ReturnToolTip("EcommerceAsinToolTip");
                 }
-                this.Ecommerce_AsinBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceAsinBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_AsinError");
+                OnPropertyChanged("EcommerceAsinError");
             }
         }
-        private string _ecommerce_asinError = string.Empty;
-        public string Ecommerce_AsinToolTip
+        private string _EcommerceasinError = string.Empty;
+        public string EcommerceAsinToolTip
         {
             get
             {
-                return _ecommerce_AsinToolTip;
+                return _EcommerceAsinToolTip;
             }
             set
             {
-                this._ecommerce_AsinToolTip = value;
-                OnPropertyChanged("Ecommerce_AsinToolTip");
+                this._EcommerceAsinToolTip = value;
+                OnPropertyChanged("EcommerceAsinToolTip");
             }
         }
-        private string _ecommerce_AsinToolTip = string.Empty;
+        private string _EcommerceAsinToolTip = string.Empty;
 
         /// <summary>
-        ///     Ecommerce_Bullet1
+        ///     EcommerceBullet1
         /// </summary>
-        public string Ecommerce_Bullet1
+        public string EcommerceBullet1
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_Bullet1;
+                return this.ItemViewModelItem.EcommerceBullet1;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_Bullet1 != value)
+                if (this.ItemViewModelItem.EcommerceBullet1 != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_Bullet1 = value;
-                    this.Ecommerce_Bullet1Error = ItemService.ValidateEcommerce_Bullet(value, "1", ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_Bullet1");
+                    this.ItemViewModelItem.EcommerceBullet1 = value;
+                    FlagError("EcommerceBullet1");
+                    OnPropertyChanged("EcommerceBullet1");
                 }
             }
         }
-        public string Ecommerce_Bullet1BoxColor
+        public string EcommerceBullet1BoxColor
         {
             get
             {
-                return _ecommerce_bullet1BoxColor;
+                return _Ecommercebullet1BoxColor;
             }
             set
             {
-                _ecommerce_bullet1BoxColor = value;
-                OnPropertyChanged("Ecommerce_Bullet1BoxColor");
+                _Ecommercebullet1BoxColor = value;
+                OnPropertyChanged("EcommerceBullet1BoxColor");
             }
         }
-        private string _ecommerce_bullet1BoxColor = "White";
-        public string Ecommerce_Bullet1Error
+        private string _Ecommercebullet1BoxColor = "White";
+        public string EcommerceBullet1Error
         {
             get
             {
-                return _ecommerce_bullet1Error;
+                return _Ecommercebullet1Error;
             }
             set
             {
-                _ecommerce_bullet1Error = value;
+                _Ecommercebullet1Error = value;
                 if (value != "")
                 {
-                    Ecommerce_Bullet1ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_BulletToolTip");
+                    EcommerceBullet1ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceBulletToolTip");
                 }
                 else
                 {
-                    Ecommerce_Bullet1ToolTip = ReturnToolTip("Ecommerce_BulletToolTip");
+                    EcommerceBullet1ToolTip = ReturnToolTip("EcommerceBulletToolTip");
                 }
-                this.Ecommerce_Bullet1BoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceBullet1BoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_Bullet1Error");
+                OnPropertyChanged("EcommerceBullet1Error");
             }
         }
-        private string _ecommerce_bullet1Error = string.Empty;
-        public string Ecommerce_Bullet1ToolTip
+        private string _Ecommercebullet1Error = string.Empty;
+        public string EcommerceBullet1ToolTip
         {
             get
             {
-                return _ecommerce_bullet1ToolTip;
+                return _Ecommercebullet1ToolTip;
             }
             set
             {
-                this._ecommerce_bullet1ToolTip = value;
-                OnPropertyChanged("Ecommerce_Bullet1ToolTip");
+                this._Ecommercebullet1ToolTip = value;
+                OnPropertyChanged("EcommerceBullet1ToolTip");
             }
         }
-        private string _ecommerce_bullet1ToolTip = string.Empty;
+        private string _Ecommercebullet1ToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_Bullet2
+        ///    EcommerceBullet2
         /// </summary>
-        public string Ecommerce_Bullet2
+        public string EcommerceBullet2
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_Bullet2;
+                return this.ItemViewModelItem.EcommerceBullet2;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_Bullet2 != value)
+                if (this.ItemViewModelItem.EcommerceBullet2 != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_Bullet2 = value;
-                    this.Ecommerce_Bullet2Error = ItemService.ValidateEcommerce_Bullet(value, "2", ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_Bullet2");
+                    this.ItemViewModelItem.EcommerceBullet2 = value;
+                    FlagError("EcommerceBullet2");
+                    OnPropertyChanged("EcommerceBullet2");
                 }
             }
         }
-        public string Ecommerce_Bullet2BoxColor
+        public string EcommerceBullet2BoxColor
         {
             get
             {
-                return _ecommerce_bullet2BoxColor;
+                return _Ecommercebullet2BoxColor;
             }
             set
             {
-                _ecommerce_bullet2BoxColor = value;
-                OnPropertyChanged("Ecommerce_Bullet2BoxColor");
+                _Ecommercebullet2BoxColor = value;
+                OnPropertyChanged("EcommerceBullet2BoxColor");
             }
         }
-        private string _ecommerce_bullet2BoxColor = "White";
-        public string Ecommerce_Bullet2Error
+        private string _Ecommercebullet2BoxColor = "White";
+        public string EcommerceBullet2Error
         {
             get
             {
-                return _ecommerce_bullet2Error;
+                return _Ecommercebullet2Error;
             }
             set
             {
-                _ecommerce_bullet2Error = value;
+                _Ecommercebullet2Error = value;
                 if (value != "")
                 {
-                    Ecommerce_Bullet2ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_BulletToolTip");
+                    EcommerceBullet2ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceBulletToolTip");
                 }
                 else
                 {
-                    Ecommerce_Bullet2ToolTip = ReturnToolTip("Ecommerce_BulletToolTip");
+                    EcommerceBullet2ToolTip = ReturnToolTip("EcommerceBulletToolTip");
                 }
-                this.Ecommerce_Bullet2BoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceBullet2BoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_Bullet2Error");
+                OnPropertyChanged("EcommerceBullet2Error");
             }
         }
-        private string _ecommerce_bullet2Error = string.Empty;
-        public string Ecommerce_Bullet2ToolTip
+        private string _Ecommercebullet2Error = string.Empty;
+        public string EcommerceBullet2ToolTip
         {
             get
             {
-                return _ecommerce_bullet2ToolTip;
+                return _Ecommercebullet2ToolTip;
             }
             set
             {
-                this._ecommerce_bullet2ToolTip = value;
-                OnPropertyChanged("Ecommerce_Bullet2ToolTip");
+                this._Ecommercebullet2ToolTip = value;
+                OnPropertyChanged("EcommerceBullet2ToolTip");
             }
         }
-        private string _ecommerce_bullet2ToolTip = string.Empty;
+        private string _Ecommercebullet2ToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_Bullet3
+        ///    EcommerceBullet3
         /// </summary>
-        public string Ecommerce_Bullet3
+        public string EcommerceBullet3
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_Bullet3;
+                return this.ItemViewModelItem.EcommerceBullet3;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_Bullet3 != value)
+                if (this.ItemViewModelItem.EcommerceBullet3 != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_Bullet3 = value;
-                    this.Ecommerce_Bullet3Error = ItemService.ValidateEcommerce_Bullet(value, "3", ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_Bullet3");
+                    this.ItemViewModelItem.EcommerceBullet3 = value;
+                    FlagError("EcommerceBullet2");
+                    OnPropertyChanged("EcommerceBullet3");
                 }
             }
         }
-        public string Ecommerce_Bullet3BoxColor
+        public string EcommerceBullet3BoxColor
         {
             get
             {
-                return _ecommerce_bullet3BoxColor;
+                return _Ecommercebullet3BoxColor;
             }
             set
             {
-                _ecommerce_bullet3BoxColor = value;
-                OnPropertyChanged("Ecommerce_Bullet3BoxColor");
+                _Ecommercebullet3BoxColor = value;
+                OnPropertyChanged("EcommerceBullet3BoxColor");
             }
         }
-        private string _ecommerce_bullet3BoxColor = "White";
-        public string Ecommerce_Bullet3Error
+        private string _Ecommercebullet3BoxColor = "White";
+        public string EcommerceBullet3Error
         {
             get
             {
-                return _ecommerce_bullet3Error;
+                return _Ecommercebullet3Error;
             }
             set
             {
-                _ecommerce_bullet3Error = value;
+                _Ecommercebullet3Error = value;
                 if (value != "")
                 {
-                    Ecommerce_Bullet3ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_BulletToolTip");
+                    EcommerceBullet3ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceBulletToolTip");
                 }
                 else
                 {
-                    Ecommerce_Bullet3ToolTip = ReturnToolTip("Ecommerce_BulletToolTip");
+                    EcommerceBullet3ToolTip = ReturnToolTip("EcommerceBulletToolTip");
                 }
-                this.Ecommerce_Bullet3BoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceBullet3BoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_Bullet3Error");
+                OnPropertyChanged("EcommerceBullet3Error");
             }
         }
-        private string _ecommerce_bullet3Error = string.Empty;
-        public string Ecommerce_Bullet3ToolTip
+        private string _Ecommercebullet3Error = string.Empty;
+        public string EcommerceBullet3ToolTip
         {
             get
             {
-                return _ecommerce_bullet3ToolTip;
+                return _Ecommercebullet3ToolTip;
             }
             set
             {
-                this._ecommerce_bullet3ToolTip = value;
-                OnPropertyChanged("Ecommerce_Bullet3ToolTip");
+                this._Ecommercebullet3ToolTip = value;
+                OnPropertyChanged("EcommerceBullet3ToolTip");
             }
         }
-        private string _ecommerce_bullet3ToolTip = string.Empty;
+        private string _Ecommercebullet3ToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_Bullet4
+        ///    EcommerceBullet4
         /// </summary>
-        public string Ecommerce_Bullet4
+        public string EcommerceBullet4
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_Bullet4;
+                return this.ItemViewModelItem.EcommerceBullet4;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_Bullet4 != value)
+                if (this.ItemViewModelItem.EcommerceBullet4 != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_Bullet4 = value;
-                    this.Ecommerce_Bullet4Error = ItemService.ValidateEcommerce_Bullet(value, "4", false);
-                    OnPropertyChanged("Ecommerce_Bullet4");
+                    this.ItemViewModelItem.EcommerceBullet4 = value;
+                    FlagError("EcommerceBullet4");
+                    OnPropertyChanged("EcommerceBullet4");
                 }
             }
         }
-        public string Ecommerce_Bullet4BoxColor
+        public string EcommerceBullet4BoxColor
         {
             get
             {
-                return _ecommerce_bullet4BoxColor;
+                return _Ecommercebullet4BoxColor;
             }
             set
             {
-                _ecommerce_bullet4BoxColor = value;
-                OnPropertyChanged("Ecommerce_Bullet4BoxColor");
+                _Ecommercebullet4BoxColor = value;
+                OnPropertyChanged("EcommerceBullet4BoxColor");
             }
         }
-        private string _ecommerce_bullet4BoxColor = "White";
-        public string Ecommerce_Bullet4Error
+        private string _Ecommercebullet4BoxColor = "White";
+        public string EcommerceBullet4Error
         {
             get
             {
-                return _ecommerce_bullet4Error;
+                return _Ecommercebullet4Error;
             }
             set
             {
-                _ecommerce_bullet4Error = value;
+                _Ecommercebullet4Error = value;
                 if (value != "")
                 {
-                    Ecommerce_Bullet4ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_BulletToolTip");
+                    EcommerceBullet4ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceBulletToolTip");
                 }
                 else
                 {
-                    Ecommerce_Bullet4ToolTip = ReturnToolTip("Ecommerce_BulletToolTip");
+                    EcommerceBullet4ToolTip = ReturnToolTip("EcommerceBulletToolTip");
                 }
-                this.Ecommerce_Bullet4BoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceBullet4BoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_Bullet4Error");
+                OnPropertyChanged("EcommerceBullet4Error");
             }
         }
-        private string _ecommerce_bullet4Error = string.Empty;
-        public string Ecommerce_Bullet4ToolTip
+        private string _Ecommercebullet4Error = string.Empty;
+        public string EcommerceBullet4ToolTip
         {
             get
             {
-                return _ecommerce_bullet4ToolTip;
+                return _Ecommercebullet4ToolTip;
             }
             set
             {
-                this._ecommerce_bullet4ToolTip = value;
-                OnPropertyChanged("Ecommerce_Bullet4ToolTip");
+                this._Ecommercebullet4ToolTip = value;
+                OnPropertyChanged("EcommerceBullet4ToolTip");
             }
         }
-        private string _ecommerce_bullet4ToolTip = string.Empty;
+        private string _Ecommercebullet4ToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_Bullet5
+        ///    EcommerceBullet5
         /// </summary>
-        public string Ecommerce_Bullet5
+        public string EcommerceBullet5
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_Bullet5;
+                return this.ItemViewModelItem.EcommerceBullet5;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_Bullet5 != value)
+                if (this.ItemViewModelItem.EcommerceBullet5 != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_Bullet5 = value;
-                    this.Ecommerce_Bullet5Error = ItemService.ValidateEcommerce_Bullet(value, "5", false);
-                    OnPropertyChanged("Ecommerce_Bullet5");
+                    this.ItemViewModelItem.EcommerceBullet5 = value;
+                    FlagError("EcommerceBullet5");
+                    OnPropertyChanged("EcommerceBullet5");
                 }
             }
         }
-        public string Ecommerce_Bullet5BoxColor
+        public string EcommerceBullet5BoxColor
         {
             get
             {
-                return _ecommerce_bullet5BoxColor;
+                return _Ecommercebullet5BoxColor;
             }
             set
             {
-                _ecommerce_bullet5BoxColor = value;
-                OnPropertyChanged("Ecommerce_Bullet5BoxColor");
+                _Ecommercebullet5BoxColor = value;
+                OnPropertyChanged("EcommerceBullet5BoxColor");
             }
         }
-        private string _ecommerce_bullet5BoxColor = "White";
-        public string Ecommerce_Bullet5Error
+        private string _Ecommercebullet5BoxColor = "White";
+        public string EcommerceBullet5Error
         {
             get
             {
-                return _ecommerce_bullet5Error;
+                return _Ecommercebullet5Error;
             }
             set
             {
-                _ecommerce_bullet5Error = value;
+                _Ecommercebullet5Error = value;
                 if (value != "")
                 {
-                    Ecommerce_Bullet5ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_BulletToolTip");
+                    EcommerceBullet5ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceBulletToolTip");
                 }
                 else
                 {
-                    Ecommerce_Bullet5ToolTip = ReturnToolTip("Ecommerce_BulletToolTip");
+                    EcommerceBullet5ToolTip = ReturnToolTip("EcommerceBulletToolTip");
                 }
-                this.Ecommerce_Bullet5BoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceBullet5BoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_Bullet5Error");
+                OnPropertyChanged("EcommerceBullet5Error");
             }
         }
-        private string _ecommerce_bullet5Error = string.Empty;
-        public string Ecommerce_Bullet5ToolTip
+        private string _Ecommercebullet5Error = string.Empty;
+        public string EcommerceBullet5ToolTip
         {
             get
             {
-                return _ecommerce_bullet5ToolTip;
+                return _Ecommercebullet5ToolTip;
             }
             set
             {
-                this._ecommerce_bullet5ToolTip = value;
-                OnPropertyChanged("Ecommerce_Bullet5ToolTip");
+                this._Ecommercebullet5ToolTip = value;
+                OnPropertyChanged("EcommerceBullet5ToolTip");
             }
         }
-        private string _ecommerce_bullet5ToolTip = string.Empty;
+        private string _Ecommercebullet5ToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_Components
+        ///    EcommerceComponents
         /// </summary>
-        public string Ecommerce_Components
+        public string EcommerceComponents
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_Components;
+                return this.ItemViewModelItem.EcommerceComponents;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_Components != value)
+                if (this.ItemViewModelItem.EcommerceComponents != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_Components = value;
-                    this.Ecommerce_ComponentsError = ItemService.ValidateEcommerce_Components(value, this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_Components");
+                    this.ItemViewModelItem.EcommerceComponents = value;
+                    FlagError("EcommerceComponents");
+                    OnPropertyChanged("EcommerceComponents");
                 }
             }
         }
-        public string Ecommerce_ComponentsBoxColor
+        public string EcommerceComponentsBoxColor
         {
             get
             {
-                return _ecommerce_componentsBoxColor;
+                return _EcommercecomponentsBoxColor;
             }
             set
             {
-                _ecommerce_componentsBoxColor = value;
-                OnPropertyChanged("Ecommerce_ComponentsBoxColor");
+                _EcommercecomponentsBoxColor = value;
+                OnPropertyChanged("EcommerceComponentsBoxColor");
             }
         }
-        private string _ecommerce_componentsBoxColor = "White";
-        public string Ecommerce_ComponentsError
+        private string _EcommercecomponentsBoxColor = "White";
+        public string EcommerceComponentsError
         {
             get
             {
-                return _ecommerce_componentsError;
+                return _EcommercecomponentsError;
             }
             set
             {
-                _ecommerce_componentsError = value;
+                _EcommercecomponentsError = value;
                 if (value != "")
                 {
-                    Ecommerce_ComponentsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ComponentsToolTip");
+                    EcommerceComponentsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceComponentsToolTip");
                 }
                 else
                 {
-                    Ecommerce_ComponentsToolTip = ReturnToolTip("Ecommerce_ComponentsToolTip");
+                    EcommerceComponentsToolTip = ReturnToolTip("EcommerceComponentsToolTip");
                 }
-                this.Ecommerce_ComponentsBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceComponentsBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_ComponentsError");
+                OnPropertyChanged("EcommerceComponentsError");
             }
         }
-        private string _ecommerce_componentsError = string.Empty;
-        public string Ecommerce_ComponentsToolTip
+        private string _EcommercecomponentsError = string.Empty;
+        public string EcommerceComponentsToolTip
         {
             get
             {
-                return _ecommerce_componentsToolTip;
+                return _EcommercecomponentsToolTip;
             }
             set
             {
-                this._ecommerce_componentsToolTip = value;
-                OnPropertyChanged("Ecommerce_ComponentsToolTip");
+                this._EcommercecomponentsToolTip = value;
+                OnPropertyChanged("EcommerceComponentsToolTip");
             }
         }
-        private string _ecommerce_componentsToolTip = string.Empty;
+        private string _EcommercecomponentsToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_Cost
+        ///    EcommerceCost
         /// </summary>
-        public string Ecommerce_Cost
+        public string EcommerceCost
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_Cost;
+                return this.ItemViewModelItem.EcommerceCost;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_Cost != value)
+                if (this.ItemViewModelItem.EcommerceCost != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_Cost = value;
-                    this.Ecommerce_CostError = ItemService.ValidateEcommerce_Cost(value, "",this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_Cost");
+                    this.ItemViewModelItem.EcommerceCost = value;
+                    FlagError("EcommerceCost");
+                    OnPropertyChanged("EcommerceCost");
                 }
             }
         }
-        public string Ecommerce_CostBoxColor
+        public string EcommerceCostBoxColor
         {
             get
             {
-                return _ecommerce_CostBoxColor;
+                return _EcommerceCostBoxColor;
             }
             set
             {
-                _ecommerce_CostBoxColor = value;
-                OnPropertyChanged("Ecommerce_CostBoxColor");
+                _EcommerceCostBoxColor = value;
+                OnPropertyChanged("EcommerceCostBoxColor");
             }
         }
-        private string _ecommerce_CostBoxColor = "White";
-        public string Ecommerce_CostError
+        private string _EcommerceCostBoxColor = "White";
+        public string EcommerceCostError
         {
             get
             {
-                return _ecommerce_CostError;
+                return _EcommerceCostError;
             }
             set
             {
-                _ecommerce_CostError = value;
+                _EcommerceCostError = value;
                 if (value != "")
                 {
-                    Ecommerce_CostToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_CostToolTip");
+                    EcommerceCostToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceCostToolTip");
                 }
                 else
                 {
-                    Ecommerce_CostToolTip = ReturnToolTip("Ecommerce_CostToolTip");
+                    EcommerceCostToolTip = ReturnToolTip("EcommerceCostToolTip");
                 }
-                this.Ecommerce_CostBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceCostBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_CostError");
+                OnPropertyChanged("EcommerceCostError");
             }
         }
-        private string _ecommerce_CostError = string.Empty;
-        public string Ecommerce_CostToolTip
+        private string _EcommerceCostError = string.Empty;
+        public string EcommerceCostToolTip
         {
             get
             {
-                return _ecommerce_CostToolTip;
+                return _EcommerceCostToolTip;
             }
             set
             {
-                this._ecommerce_CostToolTip = value;
-                OnPropertyChanged("Ecommerce_CostToolTip");
+                this._EcommerceCostToolTip = value;
+                OnPropertyChanged("EcommerceCostToolTip");
             }
         }
-        private string _ecommerce_CostToolTip = string.Empty;
+        private string _EcommerceCostToolTip = string.Empty;
        
         /// <summary>
-        ///    Ecommerce_ExternalId
+        ///    EcommerceExternalId
         /// </summary>
-        public string Ecommerce_ExternalId
+        public string EcommerceExternalId
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_ExternalId;
+                return this.ItemViewModelItem.EcommerceExternalId;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_ExternalId != value)
+                if (this.ItemViewModelItem.EcommerceExternalId != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_ExternalId = value;
-                    this.Ecommerce_ExternalIdError = ItemService.ValidateEcommerce_ExternalId(value, this.Ecommerce_ExternalIdType, this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_ExternalId");
+                    this.ItemViewModelItem.EcommerceExternalId = value;
+                    FlagError("EcommerceExternalId");
+                    OnPropertyChanged("EcommerceExternalId");
                 }
             }
         }
-        public string Ecommerce_ExternalIdBoxColor
+        public string EcommerceExternalIdBoxColor
         {
             get
             {
-                return _ecommerce_ExternalIDBoxColor;
+                return _EcommerceExternalIDBoxColor;
             }
             set
             {
-                _ecommerce_ExternalIDBoxColor = value;
-                OnPropertyChanged("Ecommerce_ExternalIdBoxColor");
+                _EcommerceExternalIDBoxColor = value;
+                OnPropertyChanged("EcommerceExternalIdBoxColor");
             }
         }
-        private string _ecommerce_ExternalIDBoxColor = "White";
-        public string Ecommerce_ExternalIdError
+        private string _EcommerceExternalIDBoxColor = "White";
+        public string EcommerceExternalIdError
         {
             get
             {
-                return _ecommerce_ExternalIDError;
+                return _EcommerceExternalIDError;
             }
             set
             {
-                _ecommerce_ExternalIDError = value;
+                _EcommerceExternalIDError = value;
                 if (value != "")
                 {
-                    Ecommerce_ExternalIdToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ExternalIdToolTip");
+                    EcommerceExternalIdToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceExternalIdToolTip");
                 }
                 else
                 {
-                    Ecommerce_ExternalIdToolTip = ReturnToolTip("Ecommerce_ExternalIdToolTip");
+                    EcommerceExternalIdToolTip = ReturnToolTip("EcommerceExternalIdToolTip");
                 }
-                this.Ecommerce_ExternalIdBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceExternalIdBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_ExternalIdError");
+                OnPropertyChanged("EcommerceExternalIdError");
             }
         }
-        private string _ecommerce_ExternalIDError = string.Empty;
-        public string Ecommerce_ExternalIdToolTip
+        private string _EcommerceExternalIDError = string.Empty;
+        public string EcommerceExternalIdToolTip
         {
             get
             {
-                return _ecommerce_ExternalIDToolTip;
+                return _EcommerceExternalIDToolTip;
             }
             set
             {
-                this._ecommerce_ExternalIDToolTip = value;
-                OnPropertyChanged("Ecommerce_ExternalIdToolTip");
+                this._EcommerceExternalIDToolTip = value;
+                OnPropertyChanged("EcommerceExternalIdToolTip");
             }
         }
-        private string _ecommerce_ExternalIDToolTip = string.Empty;
+        private string _EcommerceExternalIDToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_ExternalIdType
+        ///    EcommerceExternalIdType
         /// </summary>
-        public string Ecommerce_ExternalIdType
+        public string EcommerceExternalIdType
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_ExternalIdType;
+                return this.ItemViewModelItem.EcommerceExternalIdType;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_ExternalIdType != value)
+                if (this.ItemViewModelItem.EcommerceExternalIdType != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_ExternalIdType = value;
-                    this.Ecommerce_ExternalIdTypeError = ItemService.ValidateEcommerce_ExternalIdType(value, this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_ExternalIdType");
+                    this.ItemViewModelItem.EcommerceExternalIdType = value;
+                    FlagError("EcommerceExternalIdType");
+                    OnPropertyChanged("EcommerceExternalIdType");
                 }
             }
         }
-        public string Ecommerce_ExternalIdTypeBoxColor
+        public string EcommerceExternalIdTypeBoxColor
         {
             get
             {
-                return _ecommerce_ExternalIdTypeBoxColor;
+                return _EcommerceExternalIdTypeBoxColor;
             }
             set
             {
-                _ecommerce_ExternalIdTypeBoxColor = value;
-                OnPropertyChanged("Ecommerce_ExternalIdTypeBoxColor");
+                _EcommerceExternalIdTypeBoxColor = value;
+                OnPropertyChanged("EcommerceExternalIdTypeBoxColor");
             }
         }
-        private string _ecommerce_ExternalIdTypeBoxColor = "White";
-        public string Ecommerce_ExternalIdTypeError
+        private string _EcommerceExternalIdTypeBoxColor = "White";
+        public string EcommerceExternalIdTypeError
         {
             get
             {
-                return _ecommerce_ExternalIdTypeError;
+                return _EcommerceExternalIdTypeError;
             }
             set
             {
-                _ecommerce_ExternalIdTypeError = value;
+                _EcommerceExternalIdTypeError = value;
                 if (value != "")
                 {
-                    Ecommerce_ExternalIdTypeToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ExternalIdTypeToolTip");
+                    EcommerceExternalIdTypeToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceExternalIdTypeToolTip");
                 }
                 else
                 {
-                    Ecommerce_ExternalIdTypeToolTip = ReturnToolTip("Ecommerce_ExternalIdTypeToolTip");
+                    EcommerceExternalIdTypeToolTip = ReturnToolTip("EcommerceExternalIdTypeToolTip");
                 }
-                this.Ecommerce_ExternalIdTypeBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceExternalIdTypeBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_ExternalIdTypeError");
+                OnPropertyChanged("EcommerceExternalIdTypeError");
             }
         }
-        private string _ecommerce_ExternalIdTypeError = string.Empty;
-        public string Ecommerce_ExternalIdTypeToolTip
+        private string _EcommerceExternalIdTypeError = string.Empty;
+        public string EcommerceExternalIdTypeToolTip
         {
             get
             {
-                return _ecommerce_ExternalIdTypeToolTip;
+                return _EcommerceExternalIdTypeToolTip;
             }
             set
             {
-                this._ecommerce_ExternalIdTypeToolTip = value;
-                OnPropertyChanged("Ecommerce_ExternalIdTypeToolTip");
+                this._EcommerceExternalIdTypeToolTip = value;
+                OnPropertyChanged("EcommerceExternalIdTypeToolTip");
             }
         }
-        private string _ecommerce_ExternalIdTypeToolTip = string.Empty;
+        private string _EcommerceExternalIdTypeToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_ImagePath1
+        ///    EcommerceImagePath1
         /// </summary>
-        public string Ecommerce_ImagePath1
+        public string EcommerceImagePath1
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_ImagePath1;
+                return this.ItemViewModelItem.EcommerceImagePath1;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_ImagePath1 != value)
+                if (this.ItemViewModelItem.EcommerceImagePath1 != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_ImagePath1 = value;
-                    OnPropertyChanged("Ecommerce_ImagePath1");
+                    this.ItemViewModelItem.EcommerceImagePath1 = value;
+                    OnPropertyChanged("EcommerceImagePath1");
                 }
             }
         }
 
         /// <summary>
-        ///    Ecommerce_ImagePath2
+        ///    EcommerceImagePath2
         /// </summary>
-        public string Ecommerce_ImagePath2
+        public string EcommerceImagePath2
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_ImagePath2;
+                return this.ItemViewModelItem.EcommerceImagePath2;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_ImagePath2 != value)
+                if (this.ItemViewModelItem.EcommerceImagePath2 != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_ImagePath2 = value;
-                    OnPropertyChanged("Ecommerce_ImagePath2");
+                    this.ItemViewModelItem.EcommerceImagePath2 = value;
+                    OnPropertyChanged("EcommerceImagePath2");
                 }
             }
         }
 
         /// <summary>
-        ///    Ecommerce_ImagePath3
+        ///    EcommerceImagePath3
         /// </summary>
-        public string Ecommerce_ImagePath3
+        public string EcommerceImagePath3
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_ImagePath3;
+                return this.ItemViewModelItem.EcommerceImagePath3;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_ImagePath3 != value)
+                if (this.ItemViewModelItem.EcommerceImagePath3 != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_ImagePath3 = value;
-                    OnPropertyChanged("Ecommerce_ImagePath3");
+                    this.ItemViewModelItem.EcommerceImagePath3 = value;
+                    OnPropertyChanged("EcommerceImagePath3");
                 }
             }
         }
 
         /// <summary>
-        ///    Ecommerce_ImagePath4
+        ///    EcommerceImagePath4
         /// </summary>
-        public string Ecommerce_ImagePath4
+        public string EcommerceImagePath4
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_ImagePath4;
+                return this.ItemViewModelItem.EcommerceImagePath4;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_ImagePath4 != value)
+                if (this.ItemViewModelItem.EcommerceImagePath4 != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_ImagePath4 = value;
-                    OnPropertyChanged("Ecommerce_ImagePath4");
+                    this.ItemViewModelItem.EcommerceImagePath4 = value;
+                    OnPropertyChanged("EcommerceImagePath4");
                 }
             }
         }
 
         /// <summary>
-        ///    Ecommerce_ImagePath5
+        ///    EcommerceImagePath5
         /// </summary>
-        public string Ecommerce_ImagePath5
+        public string EcommerceImagePath5
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_ImagePath5;
+                return this.ItemViewModelItem.EcommerceImagePath5;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_ImagePath5 != value)
+                if (this.ItemViewModelItem.EcommerceImagePath5 != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_ImagePath5 = value;
-                    OnPropertyChanged("Ecommerce_ImagePath5");
+                    this.ItemViewModelItem.EcommerceImagePath5 = value;
+                    OnPropertyChanged("EcommerceImagePath5");
                 }
             }
         }
 
         /// <summary>
-        ///    Ecommerce_ItemHeight
+        ///    EcommerceItemHeight
         /// </summary>
-        public string Ecommerce_ItemHeight
+        public string EcommerceItemHeight
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_ItemHeight;
+                return this.ItemViewModelItem.EcommerceItemHeight;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_ItemHeight != value)
+                if (this.ItemViewModelItem.EcommerceItemHeight != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_ItemHeight = value;
-                    this.Ecommerce_ItemHeightError = ItemService.ValidateEcommerce_ItemHeight(value, this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_ItemHeight");
+                    this.ItemViewModelItem.EcommerceItemHeight = value;
+                    FlagError("EcommerceItemHeight");
+                    OnPropertyChanged("EcommerceItemHeight");
                 }
             }
         }
-        public string Ecommerce_ItemHeightBoxColor
+        public string EcommerceItemHeightBoxColor
         {
             get
             {
-                return _Ecommerce_ItemHeightBoxColor;
+                return _EcommerceItemHeightBoxColor;
             }
             set
             {
-                _Ecommerce_ItemHeightBoxColor = value;
-                OnPropertyChanged("Ecommerce_ItemHeightBoxColor");
+                _EcommerceItemHeightBoxColor = value;
+                OnPropertyChanged("EcommerceItemHeightBoxColor");
             }
         }
-        private string _Ecommerce_ItemHeightBoxColor = "White";
-        public string Ecommerce_ItemHeightError
+        private string _EcommerceItemHeightBoxColor = "White";
+        public string EcommerceItemHeightError
         {
             get
             {
-                return _ecommerce_ItemHeightError;
+                return _EcommerceItemHeightError;
             }
             set
             {
-                _ecommerce_ItemHeightError = value;
+                _EcommerceItemHeightError = value;
                 if (value != "")
                 {
-                    Ecommerce_ItemHeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ItemHeightToolTip");
+                    EcommerceItemHeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceItemHeightToolTip");
                 }
                 else
                 {
-                    Ecommerce_ItemHeightToolTip = ReturnToolTip("Ecommerce_ItemHeightToolTip");
+                    EcommerceItemHeightToolTip = ReturnToolTip("EcommerceItemHeightToolTip");
                 }
-                this.Ecommerce_ItemHeightBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceItemHeightBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_ItemHeightError");
+                OnPropertyChanged("EcommerceItemHeightError");
             }
         }
-        private string _ecommerce_ItemHeightError = string.Empty;
-        public string Ecommerce_ItemHeightToolTip
+        private string _EcommerceItemHeightError = string.Empty;
+        public string EcommerceItemHeightToolTip
         {
             get
             {
-                return _ecommerce_ItemHeightToolTip;
+                return _EcommerceItemHeightToolTip;
             }
             set
             {
-                this._ecommerce_ItemHeightToolTip = value;
-                OnPropertyChanged("Ecommerce_ItemHeightToolTip");
+                this._EcommerceItemHeightToolTip = value;
+                OnPropertyChanged("EcommerceItemHeightToolTip");
             }
         }
-        private string _ecommerce_ItemHeightToolTip = string.Empty;
+        private string _EcommerceItemHeightToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_ItemLength
+        ///    EcommerceItemLength
         /// </summary>
-        public string Ecommerce_ItemLength
+        public string EcommerceItemLength
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_ItemLength;
+                return this.ItemViewModelItem.EcommerceItemLength;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_ItemLength != value)
+                if (this.ItemViewModelItem.EcommerceItemLength != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_ItemLength = value;
-                    this.Ecommerce_ItemLengthError = ItemService.ValidateEcommerce_ItemLength(value, this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_ItemLength");
+                    this.ItemViewModelItem.EcommerceItemLength = value;
+                    FlagError("EcommerceItemLength");
+                    OnPropertyChanged("EcommerceItemLength");
                 }
             }
         }
-        public string Ecommerce_ItemLengthBoxColor
+        public string EcommerceItemLengthBoxColor
         {
             get
             {
-                return _ecommerce_ItemLengthBoxColor;
+                return _EcommerceItemLengthBoxColor;
             }
             set
             {
-                _ecommerce_ItemLengthBoxColor = value;
-                OnPropertyChanged("Ecommerce_ItemLengthBoxColor");
+                _EcommerceItemLengthBoxColor = value;
+                OnPropertyChanged("EcommerceItemLengthBoxColor");
             }
         }
-        private string _ecommerce_ItemLengthBoxColor = "White";
-        public string Ecommerce_ItemLengthError
+        private string _EcommerceItemLengthBoxColor = "White";
+        public string EcommerceItemLengthError
         {
             get
             {
-                return _ecommerce_ItemLengthError;
+                return _EcommerceItemLengthError;
             }
             set
             {
-                _ecommerce_ItemLengthError = value;
+                _EcommerceItemLengthError = value;
                 if (value != "")
                 {
-                    Ecommerce_ItemLengthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ItemLengthToolTip");
+                    EcommerceItemLengthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceItemLengthToolTip");
                 }
                 else
                 {
-                    Ecommerce_ItemLengthToolTip = ReturnToolTip("Ecommerce_ItemLengthToolTip");
+                    EcommerceItemLengthToolTip = ReturnToolTip("EcommerceItemLengthToolTip");
                 }
-                this.Ecommerce_ItemLengthBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceItemLengthBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_ItemLengthError");
+                OnPropertyChanged("EcommerceItemLengthError");
             }
         }
-        private string _ecommerce_ItemLengthError = string.Empty;
-        public string Ecommerce_ItemLengthToolTip
+        private string _EcommerceItemLengthError = string.Empty;
+        public string EcommerceItemLengthToolTip
         {
             get
             {
-                return _ecommerce_ItemLengthToolTip;
+                return _EcommerceItemLengthToolTip;
             }
             set
             {
-                this._ecommerce_ItemLengthToolTip = value;
-                OnPropertyChanged("Ecommerce_ItemLengthToolTip");
+                this._EcommerceItemLengthToolTip = value;
+                OnPropertyChanged("EcommerceItemLengthToolTip");
             }
         }
-        private string _ecommerce_ItemLengthToolTip = string.Empty;
+        private string _EcommerceItemLengthToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_ItemName
+        ///    EcommerceItemName
         /// </summary>
-        public string Ecommerce_ItemName
+        public string EcommerceItemName
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_ItemName;
+                return this.ItemViewModelItem.EcommerceItemName;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_ItemName != value)
+                if (this.ItemViewModelItem.EcommerceItemName != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_ItemName = value;
-                    this.Ecommerce_ItemNameError = ItemService.ValidateEcommerce_ItemName(value, this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_ItemName");
+                    this.ItemViewModelItem.EcommerceItemName = value;
+                    FlagError("EcommerceItemName");
+                    OnPropertyChanged("EcommerceItemName");
                 }
             }
         }
-        public string Ecommerce_ItemNameBoxColor
+        public string EcommerceItemNameBoxColor
         {
             get
             {
-                return _ecommerce_ItemNameBoxColor;
+                return _EcommerceItemNameBoxColor;
             }
             set
             {
-                _ecommerce_ItemNameBoxColor = value;
-                OnPropertyChanged("Ecommerce_ItemNameBoxColor");
+                _EcommerceItemNameBoxColor = value;
+                OnPropertyChanged("EcommerceItemNameBoxColor");
             }
         }
-        private string _ecommerce_ItemNameBoxColor = "White";
-        public string Ecommerce_ItemNameError
+        private string _EcommerceItemNameBoxColor = "White";
+        public string EcommerceItemNameError
         {
             get
             {
-                return _ecommerce_ItemNameError;
+                return _EcommerceItemNameError;
             }
             set
             {
-                _ecommerce_ItemNameError = value;
+                _EcommerceItemNameError = value;
                 if (value != "")
                 {
-                    Ecommerce_ItemNameToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ItemNameToolTip");
+                    EcommerceItemNameToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceItemNameToolTip");
                 }
                 else
                 {
-                    Ecommerce_ItemNameToolTip = ReturnToolTip("Ecommerce_ItemNameToolTip");
+                    EcommerceItemNameToolTip = ReturnToolTip("EcommerceItemNameToolTip");
                 }
-                this.Ecommerce_ItemNameBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceItemNameBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_ItemNameError");
+                OnPropertyChanged("EcommerceItemNameError");
             }
         }
-        private string _ecommerce_ItemNameError = string.Empty;
-        public string Ecommerce_ItemNameToolTip
+        private string _EcommerceItemNameError = string.Empty;
+        public string EcommerceItemNameToolTip
         {
             get
             {
-                return _ecommerce_ItemNameToolTip;
+                return _EcommerceItemNameToolTip;
             }
             set
             {
-                this._ecommerce_ItemNameToolTip = value;
-                OnPropertyChanged("Ecommerce_ItemNameToolTip");
+                this._EcommerceItemNameToolTip = value;
+                OnPropertyChanged("EcommerceItemNameToolTip");
             }
         }
-        private string _ecommerce_ItemNameToolTip = string.Empty;
+        private string _EcommerceItemNameToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_ItemWeight
+        ///    EcommerceItemWeight
         /// </summary>
-        public string Ecommerce_ItemWeight
+        public string EcommerceItemWeight
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_ItemWeight;
+                return this.ItemViewModelItem.EcommerceItemWeight;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_ItemWeight != value)
+                if (this.ItemViewModelItem.EcommerceItemWeight != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_ItemWeight = value;
-                    this.Ecommerce_ItemWeightError = ItemService.ValidateEcommerce_ItemWeight(value, this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_ItemWeight");
+                    this.ItemViewModelItem.EcommerceItemWeight = value;
+                    FlagError("EcommerceItemWeight");
+                    OnPropertyChanged("EcommerceItemWeight");
                 }
             }
         }
-        public string Ecommerce_ItemWeightBoxColor
+        public string EcommerceItemWeightBoxColor
         {
             get
             {
-                return _ecommerce_ItemWeightBoxColor;
+                return _EcommerceItemWeightBoxColor;
             }
             set
             {
-                _ecommerce_ItemWeightBoxColor = value;
-                OnPropertyChanged("Ecommerce_ItemWeightBoxColor");
+                _EcommerceItemWeightBoxColor = value;
+                OnPropertyChanged("EcommerceItemWeightBoxColor");
             }
         }
-        private string _ecommerce_ItemWeightBoxColor = "White";
-        public string Ecommerce_ItemWeightError
+        private string _EcommerceItemWeightBoxColor = "White";
+        public string EcommerceItemWeightError
         {
             get
             {
-                return _ecommerce_ItemWeightError;
+                return _EcommerceItemWeightError;
             }
             set
             {
-                _ecommerce_ItemWeightError = value;
+                _EcommerceItemWeightError = value;
                 if (value != "")
                 {
-                    Ecommerce_ItemWeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ItemWeightToolTip");
+                    EcommerceItemWeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceItemWeightToolTip");
                 }
                 else
                 {
-                    Ecommerce_ItemWeightToolTip = ReturnToolTip("Ecommerce_ItemWeightToolTip");
+                    EcommerceItemWeightToolTip = ReturnToolTip("EcommerceItemWeightToolTip");
                 }
-                this.Ecommerce_ItemWeightBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceItemWeightBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_ItemWeightError");
+                OnPropertyChanged("EcommerceItemWeightError");
             }
         }
-        private string _ecommerce_ItemWeightError = string.Empty;
-        public string Ecommerce_ItemWeightToolTip
+        private string _EcommerceItemWeightError = string.Empty;
+        public string EcommerceItemWeightToolTip
         {
             get
             {
-                return _ecommerce_ItemWeightToolTip;
+                return _EcommerceItemWeightToolTip;
             }
             set
             {
-                this._ecommerce_ItemWeightToolTip = value;
-                OnPropertyChanged("Ecommerce_ItemWeightToolTip");
+                this._EcommerceItemWeightToolTip = value;
+                OnPropertyChanged("EcommerceItemWeightToolTip");
             }
         }
-        private string _ecommerce_ItemWeightToolTip = string.Empty;
+        private string _EcommerceItemWeightToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_ItemWidth
+        ///    EcommerceItemWidth
         /// </summary>
-        public string Ecommerce_ItemWidth
+        public string EcommerceItemWidth
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_ItemWidth;
+                return this.ItemViewModelItem.EcommerceItemWidth;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_ItemWidth != value)
+                if (this.ItemViewModelItem.EcommerceItemWidth != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_ItemWidth = value;
-                    this.Ecommerce_ItemWeightError = ItemService.ValidateEcommerce_ItemWeight(value, this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_ItemWidth");
+                    this.ItemViewModelItem.EcommerceItemWidth = value;
+                    FlagError("EcommerceItemWidth");
+                    OnPropertyChanged("EcommerceItemWidth");
                 }
             }
         }
-        public string Ecommerce_ItemWidthBoxColor
+        public string EcommerceItemWidthBoxColor
         {
             get
             {
-                return _ecommerce_ItemWidthBoxColor;
+                return _EcommerceItemWidthBoxColor;
             }
             set
             {
-                _ecommerce_ItemWidthBoxColor = value;
-                OnPropertyChanged("Ecommerce_ItemWidthBoxColor");
+                _EcommerceItemWidthBoxColor = value;
+                OnPropertyChanged("EcommerceItemWidthBoxColor");
             }
         }
-        private string _ecommerce_ItemWidthBoxColor = "White";
-        public string Ecommerce_ItemWidthError
+        private string _EcommerceItemWidthBoxColor = "White";
+        public string EcommerceItemWidthError
         {
             get
             {
-                return _ecommerce_ItemWidthError;
+                return _EcommerceItemWidthError;
             }
             set
             {
-                _ecommerce_ItemWidthError = value;
+                _EcommerceItemWidthError = value;
                 if (value != "")
                 {
-                    Ecommerce_ItemWidthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ItemWidthToolTip");
+                    EcommerceItemWidthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceItemWidthToolTip");
                 }
                 else
                 {
-                    Ecommerce_ItemWidthToolTip = ReturnToolTip("Ecommerce_ItemWidthToolTip");
+                    EcommerceItemWidthToolTip = ReturnToolTip("EcommerceItemWidthToolTip");
                 }
-                this.Ecommerce_ItemWidthBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceItemWidthBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_ItemWidthError");
+                OnPropertyChanged("EcommerceItemWidthError");
             }
         }
-        private string _ecommerce_ItemWidthError = string.Empty;
-        public string Ecommerce_ItemWidthToolTip
+        private string _EcommerceItemWidthError = string.Empty;
+        public string EcommerceItemWidthToolTip
         {
             get
             {
-                return _ecommerce_ItemWidthToolTip;
+                return _EcommerceItemWidthToolTip;
             }
             set
             {
-                this._ecommerce_ItemWidthToolTip = value;
-                OnPropertyChanged("Ecommerce_ItemWidthToolTip");
+                this._EcommerceItemWidthToolTip = value;
+                OnPropertyChanged("EcommerceItemWidthToolTip");
             }
         }
-        private string _ecommerce_ItemWidthToolTip = string.Empty;
+        private string _EcommerceItemWidthToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_ModelName
+        ///    EcommerceModelName
         /// </summary>
-        public string Ecommerce_ModelName
+        public string EcommerceModelName
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_ModelName;
+                return this.ItemViewModelItem.EcommerceModelName;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_ModelName != value)
+                if (this.ItemViewModelItem.EcommerceModelName != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_ModelName = value;
-                    this.Ecommerce_ModelNameError = ItemService.ValidateEcommerce_ModelName(value, this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_ModelName");
+                    this.ItemViewModelItem.EcommerceModelName = value;
+                    FlagError("EcommerceModelName");
+                    OnPropertyChanged("EcommerceModelName");
                 }
             }
         }
-        public string Ecommerce_ModelNameBoxColor
+        public string EcommerceModelNameBoxColor
         {
             get
             {
-                return _ecommerce_ModelNameBoxColor;
+                return _EcommerceModelNameBoxColor;
             }
             set
             {
-                _ecommerce_ModelNameBoxColor = value;
-                OnPropertyChanged("Ecommerce_ModelNameBoxColor");
+                _EcommerceModelNameBoxColor = value;
+                OnPropertyChanged("EcommerceModelNameBoxColor");
             }
         }
-        private string _ecommerce_ModelNameBoxColor = "White";
-        public string Ecommerce_ModelNameError
+        private string _EcommerceModelNameBoxColor = "White";
+        public string EcommerceModelNameError
         {
             get
             {
-                return _ecommerce_ModelNameError;
+                return _EcommerceModelNameError;
             }
             set
             {
-                _ecommerce_ModelNameError = value;
+                _EcommerceModelNameError = value;
                 if (value != "")
                 {
-                    Ecommerce_ModelNameToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ModelNameToolTip");
+                    EcommerceModelNameToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceModelNameToolTip");
                 }
                 else
                 {
-                    Ecommerce_ModelNameToolTip = ReturnToolTip("Ecommerce_ModelNameToolTip");
+                    EcommerceModelNameToolTip = ReturnToolTip("EcommerceModelNameToolTip");
                 }
-                this.Ecommerce_ModelNameBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceModelNameBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_ModelNameError");
+                OnPropertyChanged("EcommerceModelNameError");
             }
         }
-        private string _ecommerce_ModelNameError = string.Empty;
-        public string Ecommerce_ModelNameToolTip
+        private string _EcommerceModelNameError = string.Empty;
+        public string EcommerceModelNameToolTip
         {
             get
             {
-                return _ecommerce_ModelNameToolTip;
+                return _EcommerceModelNameToolTip;
             }
             set
             {
-                this._ecommerce_ModelNameToolTip = value;
-                OnPropertyChanged("Ecommerce_ModelNameToolTip");
+                this._EcommerceModelNameToolTip = value;
+                OnPropertyChanged("EcommerceModelNameToolTip");
             }
         }
-        private string _ecommerce_ModelNameToolTip = string.Empty;
+        private string _EcommerceModelNameToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_PackageHeight
+        ///    EcommercePackageHeight
         /// </summary>
-        public string Ecommerce_PackageHeight
+        public string EcommercePackageHeight
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_PackageHeight;
+                return this.ItemViewModelItem.EcommercePackageHeight;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_PackageHeight != value)
+                if (this.ItemViewModelItem.EcommercePackageHeight != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_PackageHeight = value;
-                    this.Ecommerce_PackageHeightError = ItemService.ValidateEcommerce_PackageHeight(value, this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_PackageHeight");
+                    this.ItemViewModelItem.EcommercePackageHeight = value;
+                    FlagError("EcommercePackageHeight");
+                    OnPropertyChanged("EcommercePackageHeight");
                 }
             }
         }
-        public string Ecommerce_PackageHeightBoxColor
+        public string EcommercePackageHeightBoxColor
         {
             get
             {
-                return _ecommerce_PackageHeightBoxColor;
+                return _EcommercePackageHeightBoxColor;
             }
             set
             {
-                _ecommerce_PackageHeightBoxColor = value;
-                OnPropertyChanged("Ecommerce_PackageHeightBoxColor");
+                _EcommercePackageHeightBoxColor = value;
+                OnPropertyChanged("EcommercePackageHeightBoxColor");
             }
         }
-        private string _ecommerce_PackageHeightBoxColor = "White";
-        public string Ecommerce_PackageHeightError
+        private string _EcommercePackageHeightBoxColor = "White";
+        public string EcommercePackageHeightError
         {
             get
             {
-                return _ecommerce_PackageHeightError;
+                return _EcommercePackageHeightError;
             }
             set
             {
-                _ecommerce_PackageHeightError = value;
+                _EcommercePackageHeightError = value;
                 if (value != "")
                 {
-                    Ecommerce_PackageHeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_PackageHeightToolTip");
+                    EcommercePackageHeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommercePackageHeightToolTip");
                 }
                 else
                 {
-                    Ecommerce_PackageHeightToolTip = ReturnToolTip("Ecommerce_PackageHeightToolTip");
+                    EcommercePackageHeightToolTip = ReturnToolTip("EcommercePackageHeightToolTip");
                 }
-                this.Ecommerce_PackageHeightBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommercePackageHeightBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_PackageHeightError");
+                OnPropertyChanged("EcommercePackageHeightError");
             }
         }
-        private string _ecommerce_PackageHeightError = string.Empty;
-        public string Ecommerce_PackageHeightToolTip
+        private string _EcommercePackageHeightError = string.Empty;
+        public string EcommercePackageHeightToolTip
         {
             get
             {
-                return _ecommerce_PackageHeightToolTip;
+                return _EcommercePackageHeightToolTip;
             }
             set
             {
-                this._ecommerce_PackageHeightToolTip = value;
-                OnPropertyChanged("Ecommerce_PackageHeightToolTip");
+                this._EcommercePackageHeightToolTip = value;
+                OnPropertyChanged("EcommercePackageHeightToolTip");
             }
         }
-        private string _ecommerce_PackageHeightToolTip = string.Empty;
+        private string _EcommercePackageHeightToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_PackageLength
+        ///    EcommercePackageLength
         /// </summary>
-        public string Ecommerce_PackageLength
+        public string EcommercePackageLength
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_PackageLength;
+                return this.ItemViewModelItem.EcommercePackageLength;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_PackageLength != value)
+                if (this.ItemViewModelItem.EcommercePackageLength != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_PackageLength = value;
-                    this.Ecommerce_PackageLengthError = ItemService.ValidateEcommerce_PackageLength(value, this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_PackageLength");
+                    this.ItemViewModelItem.EcommercePackageLength = value;
+                    FlagError("EcommercePackageLength");
+                    OnPropertyChanged("EcommercePackageLength");
                 }
             }
         }
-        public string Ecommerce_PackageLengthBoxColor
+        public string EcommercePackageLengthBoxColor
         {
             get
             {
-                return _ecommerce_PackageLengthBoxColor;
+                return _EcommercePackageLengthBoxColor;
             }
             set
             {
-                _ecommerce_PackageLengthBoxColor = value;
-                OnPropertyChanged("Ecommerce_PackageLengthBoxColor");
+                _EcommercePackageLengthBoxColor = value;
+                OnPropertyChanged("EcommercePackageLengthBoxColor");
             }
         }
-        private string _ecommerce_PackageLengthBoxColor = "White";
-        public string Ecommerce_PackageLengthError
+        private string _EcommercePackageLengthBoxColor = "White";
+        public string EcommercePackageLengthError
         {
             get
             {
-                return _ecommerce_PackageLengthError;
+                return _EcommercePackageLengthError;
             }
             set
             {
-                _ecommerce_PackageLengthError = value;
+                _EcommercePackageLengthError = value;
                 if (value != "")
                 {
-                    Ecommerce_PackageLengthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_PackageLengthToolTip");
+                    EcommercePackageLengthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommercePackageLengthToolTip");
                 }
                 else
                 {
-                    Ecommerce_PackageLengthToolTip = ReturnToolTip("Ecommerce_PackageLengthToolTip");
+                    EcommercePackageLengthToolTip = ReturnToolTip("EcommercePackageLengthToolTip");
                 }
-                this.Ecommerce_PackageLengthBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommercePackageLengthBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_PackageLengthError");
+                OnPropertyChanged("EcommercePackageLengthError");
             }
         }
-        private string _ecommerce_PackageLengthError = string.Empty;
-        public string Ecommerce_PackageLengthToolTip
+        private string _EcommercePackageLengthError = string.Empty;
+        public string EcommercePackageLengthToolTip
         {
             get
             {
-                return _ecommerce_PackageLengthToolTip;
+                return _EcommercePackageLengthToolTip;
             }
             set
             {
-                this._ecommerce_PackageLengthToolTip = value;
-                OnPropertyChanged("Ecommerce_PackageLengthToolTip");
+                this._EcommercePackageLengthToolTip = value;
+                OnPropertyChanged("EcommercePackageLengthToolTip");
             }
         }
-        private string _ecommerce_PackageLengthToolTip = string.Empty;
+        private string _EcommercePackageLengthToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_PackageWeight
+        ///    EcommercePackageWeight
         /// </summary>
-        public string Ecommerce_PackageWeight
+        public string EcommercePackageWeight
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_PackageWeight;
+                return this.ItemViewModelItem.EcommercePackageWeight;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_PackageWeight != value)
+                if (this.ItemViewModelItem.EcommercePackageWeight != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_PackageWeight = value;
-                    this.Ecommerce_PackageWeightError = ItemService.ValidateEcommerce_PackageWeight(value, this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_PackageWeight");
+                    this.ItemViewModelItem.EcommercePackageWeight = value;
+                    FlagError("EcommercePackageWeight");
+                    OnPropertyChanged("EcommercePackageWeight");
                 }
             }
         }
-        public string Ecommerce_PackageWeightBoxColor
+        public string EcommercePackageWeightBoxColor
         {
             get
             {
-                return _ecommerce_PackageWeightBoxColor;
+                return _EcommercePackageWeightBoxColor;
             }
             set
             {
-                _ecommerce_PackageWeightBoxColor = value;
-                OnPropertyChanged("Ecommerce_PackageWeightBoxColor");
+                _EcommercePackageWeightBoxColor = value;
+                OnPropertyChanged("EcommercePackageWeightBoxColor");
             }
         }
-        private string _ecommerce_PackageWeightBoxColor = "White";
-        public string Ecommerce_PackageWeightError
+        private string _EcommercePackageWeightBoxColor = "White";
+        public string EcommercePackageWeightError
         {
             get
             {
-                return _ecommerce_PackageWeightError;
+                return _EcommercePackageWeightError;
             }
             set
             {
-                _ecommerce_PackageWeightError = value;
+                _EcommercePackageWeightError = value;
                 if (value != "")
                 {
-                    Ecommerce_PackageWeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_PackageWeightToolTip");
+                    EcommercePackageWeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommercePackageWeightToolTip");
                 }
                 else
                 {
-                    Ecommerce_PackageWeightToolTip = ReturnToolTip("Ecommerce_PackageWeightToolTip");
+                    EcommercePackageWeightToolTip = ReturnToolTip("EcommercePackageWeightToolTip");
                 }
-                this.Ecommerce_PackageWeightBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommercePackageWeightBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_PackageWeightError");
+                OnPropertyChanged("EcommercePackageWeightError");
             }
         }
-        private string _ecommerce_PackageWeightError = string.Empty;
-        public string Ecommerce_PackageWeightToolTip
+        private string _EcommercePackageWeightError = string.Empty;
+        public string EcommercePackageWeightToolTip
         {
             get
             {
-                return _ecommerce_PackageWeightToolTip;
+                return _EcommercePackageWeightToolTip;
             }
             set
             {
-                this._ecommerce_PackageWeightToolTip = value;
-                OnPropertyChanged("Ecommerce_PackageWeightToolTip");
+                this._EcommercePackageWeightToolTip = value;
+                OnPropertyChanged("EcommercePackageWeightToolTip");
             }
         }
-        private string _ecommerce_PackageWeightToolTip = string.Empty;
+        private string _EcommercePackageWeightToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_PackageWidth
+        ///    EcommercePackageWidth
         /// </summary>
-        public string Ecommerce_PackageWidth
+        public string EcommercePackageWidth
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_PackageWidth;
+                return this.ItemViewModelItem.EcommercePackageWidth;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_PackageWidth != value)
+                if (this.ItemViewModelItem.EcommercePackageWidth != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_PackageWidth = value;
-                    this.Ecommerce_PackageWidthError = ItemService.ValidateEcommerce_PackageWidth(value, ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_PackageWidth");
+                    this.ItemViewModelItem.EcommercePackageWidth = value;
+                    FlagError("EcommercePackageWidth");
+                    OnPropertyChanged("EcommercePackageWidth");
                 }
             }
         }
-        public string Ecommerce_PackageWidthBoxColor
+        public string EcommercePackageWidthBoxColor
         {
             get
             {
-                return _ecommerce_PackageWidthBoxColor;
+                return _EcommercePackageWidthBoxColor;
             }
             set
             {
-                _ecommerce_PackageWidthBoxColor = value;
-                OnPropertyChanged("Ecommerce_PackageWidthBoxColor");
+                _EcommercePackageWidthBoxColor = value;
+                OnPropertyChanged("EcommercePackageWidthBoxColor");
             }
         }
-        private string _ecommerce_PackageWidthBoxColor = "White";
-        public string Ecommerce_PackageWidthError
+        private string _EcommercePackageWidthBoxColor = "White";
+        public string EcommercePackageWidthError
         {
             get
             {
-                return _ecommerce_PackageWidthError;
+                return _EcommercePackageWidthError;
             }
             set
             {
-                _ecommerce_PackageWidthError = value;
+                _EcommercePackageWidthError = value;
                 if (value != "")
                 {
-                    Ecommerce_PackageWidthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_PackageWidthToolTip");
+                    EcommercePackageWidthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommercePackageWidthToolTip");
                 }
                 else
                 {
-                    Ecommerce_PackageWidthToolTip = ReturnToolTip("Ecommerce_PackageWidthToolTip");
+                    EcommercePackageWidthToolTip = ReturnToolTip("EcommercePackageWidthToolTip");
                 }
-                this.Ecommerce_PackageWidthBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommercePackageWidthBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_PackageWidthError");
+                OnPropertyChanged("EcommercePackageWidthError");
             }
         }
-        private string _ecommerce_PackageWidthError = string.Empty;
-        public string Ecommerce_PackageWidthToolTip
+        private string _EcommercePackageWidthError = string.Empty;
+        public string EcommercePackageWidthToolTip
         {
             get
             {
-                return _ecommerce_PackageWidthToolTip;
+                return _EcommercePackageWidthToolTip;
             }
             set
             {
-                this._ecommerce_PackageWidthToolTip = value;
-                OnPropertyChanged("Ecommerce_PackageWidthToolTip");
+                this._EcommercePackageWidthToolTip = value;
+                OnPropertyChanged("EcommercePackageWidthToolTip");
             }
         }
-        private string _ecommerce_PackageWidthToolTip = string.Empty;
+        private string _EcommercePackageWidthToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_PageQty
+        ///    EcommercePageQty
         /// </summary>
-        public string Ecommerce_PageQty
+        public string EcommercePageQty
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_PageQty;
+                return this.ItemViewModelItem.EcommercePageQty;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_PageQty != value)
+                if (this.ItemViewModelItem.EcommercePageQty != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_PageQty = value;
-                    this.Ecommerce_PageQtyError = ItemService.ValidateEcommerce_PageQty(value);
-                    OnPropertyChanged("Ecommerce_PageQty");
+                    this.ItemViewModelItem.EcommercePageQty = value;
+                    FlagError("EcommercePageQty");
+                    OnPropertyChanged("EcommercePageQty");
                 }
             }
         }
-        public string Ecommerce_PageQtyBoxColor
+        public string EcommercePageQtyBoxColor
         {
             get
             {
-                return _Ecommerce_PageQtyBoxColor;
+                return _EcommercePageQtyBoxColor;
             }
             set
             {
-                _Ecommerce_PageQtyBoxColor = value;
-                OnPropertyChanged("Ecommerce_PageQtyBoxColor");
+                _EcommercePageQtyBoxColor = value;
+                OnPropertyChanged("EcommercePageQtyBoxColor");
             }
         }
-        private string _Ecommerce_PageQtyBoxColor = "White";
-        public string Ecommerce_PageQtyError
+        private string _EcommercePageQtyBoxColor = "White";
+        public string EcommercePageQtyError
         {
             get
             {
-                return _Ecommerce_PageQtyError;
+                return _EcommercePageQtyError;
             }
             set
             {
-                _Ecommerce_PageQtyError = value;
+                _EcommercePageQtyError = value;
                 if (value != "")
                 {
-                    Ecommerce_PageQtyToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_PageQtyToolTip");
+                    EcommercePageQtyToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommercePageQtyToolTip");
                 }
                 else
                 {
-                    Ecommerce_PageQtyToolTip = ReturnToolTip("Ecommerce_PageQtyToolTip");
+                    EcommercePageQtyToolTip = ReturnToolTip("EcommercePageQtyToolTip");
                 }
-                this.Ecommerce_PageQtyBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommercePageQtyBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_PageQtyError");
+                OnPropertyChanged("EcommercePageQtyError");
             }
         }
-        private string _Ecommerce_PageQtyError = string.Empty;
-        public string Ecommerce_PageQtyToolTip
+        private string _EcommercePageQtyError = string.Empty;
+        public string EcommercePageQtyToolTip
         {
             get
             {
-                return _Ecommerce_PageQtyToolTip;
+                return _EcommercePageQtyToolTip;
             }
             set
             {
-                this._Ecommerce_PageQtyToolTip = value;
-                OnPropertyChanged("Ecommerce_PageQtyToolTip");
+                this._EcommercePageQtyToolTip = value;
+                OnPropertyChanged("EcommercePageQtyToolTip");
             }
         }
-        private string _Ecommerce_PageQtyToolTip = string.Empty;
+        private string _EcommercePageQtyToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_ProductCategory
+        ///    EcommerceProductCategory
         /// </summary>
-        public string Ecommerce_ProductCategory
+        public string EcommerceProductCategory
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_ProductCategory;
+                return this.ItemViewModelItem.EcommerceProductCategory;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_ProductCategory != value)
+                if (this.ItemViewModelItem.EcommerceProductCategory != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_ProductCategory = value;
-                    this.Ecommerce_ProductCategoryError = ItemService.ValidateEcommerce_ProductCategory(value, this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_ProductCategory");
+                    this.ItemViewModelItem.EcommerceProductCategory = value;
+                    FlagError("EcommerceProductCategory");
+                    OnPropertyChanged("EcommerceProductCategory");
                 }
             }
         }
-        public string Ecommerce_ProductCategoryBoxColor
+        public string EcommerceProductCategoryBoxColor
         {
             get
             {
-                return _ecommerce_ProductCategoryBoxColor;
+                return _EcommerceProductCategoryBoxColor;
             }
             set
             {
-                _ecommerce_ProductCategoryBoxColor = value;
-                OnPropertyChanged("Ecommerce_ProductCategoryBoxColor");
+                _EcommerceProductCategoryBoxColor = value;
+                OnPropertyChanged("EcommerceProductCategoryBoxColor");
             }
         }
-        private string _ecommerce_ProductCategoryBoxColor = "White";
-        public string Ecommerce_ProductCategoryError
+        private string _EcommerceProductCategoryBoxColor = "White";
+        public string EcommerceProductCategoryError
         {
             get
             {
-                return _ecommerce_ProductCategoryError;
+                return _EcommerceProductCategoryError;
             }
             set
             {
-                _ecommerce_ProductCategoryError = value;
+                _EcommerceProductCategoryError = value;
                 if (value != "")
                 {
-                    Ecommerce_ProductCategoryToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ProductCategoryToolTip");
+                    EcommerceProductCategoryToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceProductCategoryToolTip");
                 }
                 else
                 {
-                    Ecommerce_ProductCategoryToolTip = ReturnToolTip("Ecommerce_ProductCategoryToolTip");
+                    EcommerceProductCategoryToolTip = ReturnToolTip("EcommerceProductCategoryToolTip");
                 }
-                this.Ecommerce_ProductCategoryBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceProductCategoryBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_ProductCategoryError");
+                OnPropertyChanged("EcommerceProductCategoryError");
             }
         }
-        private string _ecommerce_ProductCategoryError = string.Empty;
-        public string Ecommerce_ProductCategoryToolTip
+        private string _EcommerceProductCategoryError = string.Empty;
+        public string EcommerceProductCategoryToolTip
         {
             get
             {
-                return _ecommerce_ProductCategoryToolTip;
+                return _EcommerceProductCategoryToolTip;
             }
             set
             {
-                this._ecommerce_ProductCategoryToolTip = value;
-                OnPropertyChanged("Ecommerce_ProductCategoryToolTip");
+                this._EcommerceProductCategoryToolTip = value;
+                OnPropertyChanged("EcommerceProductCategoryToolTip");
             }
         }
-        private string _ecommerce_ProductCategoryToolTip = string.Empty;
+        private string _EcommerceProductCategoryToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_ProductDescription
+        ///    EcommerceProductDescription
         /// </summary>
-        public string Ecommerce_ProductDescription
+        public string EcommerceProductDescription
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_ProductDescription;
+                return this.ItemViewModelItem.EcommerceProductDescription;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_ProductDescription != value)
+                if (this.ItemViewModelItem.EcommerceProductDescription != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_ProductDescription = value;
-                    this.Ecommerce_ProductDescriptionError = ItemService.ValidateEcommerce_ProductDescription(value, this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_ProductDescription");
+                    this.ItemViewModelItem.EcommerceProductDescription = value;
+                    FlagError("EcommerceProductDescription");
+                    OnPropertyChanged("EcommerceProductDescription");
                 }
             }
         }
-        public string Ecommerce_ProductDescriptionBoxColor
+        public string EcommerceProductDescriptionBoxColor
         {
             get
             {
-                return _ecommerce_ProductDescriptionBoxColor;
+                return _EcommerceProductDescriptionBoxColor;
             }
             set
             {
-                _ecommerce_ProductDescriptionBoxColor = value;
-                OnPropertyChanged("Ecommerce_ProductDescriptionBoxColor");
+                _EcommerceProductDescriptionBoxColor = value;
+                OnPropertyChanged("EcommerceProductDescriptionBoxColor");
             }
         }
-        private string _ecommerce_ProductDescriptionBoxColor = "White";
-        public string Ecommerce_ProductDescriptionError
+        private string _EcommerceProductDescriptionBoxColor = "White";
+        public string EcommerceProductDescriptionError
         {
             get
             {
-                return _ecommerce_ProductDescriptionError;
+                return _EcommerceProductDescriptionError;
             }
             set
             {
-                _ecommerce_ProductDescriptionError = value;
+                _EcommerceProductDescriptionError = value;
                 if (value != "")
                 {
-                    Ecommerce_ProductDescriptionToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ProductDescriptionToolTip");
+                    EcommerceProductDescriptionToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceProductDescriptionToolTip");
                 }
                 else
                 {
-                    Ecommerce_ProductDescriptionToolTip = ReturnToolTip("Ecommerce_ProductDescriptionToolTip");
+                    EcommerceProductDescriptionToolTip = ReturnToolTip("EcommerceProductDescriptionToolTip");
                 }
-                this.Ecommerce_ProductDescriptionBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceProductDescriptionBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_ProductDescriptionError");
+                OnPropertyChanged("EcommerceProductDescriptionError");
             }
         }
-        private string _ecommerce_ProductDescriptionError = string.Empty;
-        public string Ecommerce_ProductDescriptionToolTip
+        private string _EcommerceProductDescriptionError = string.Empty;
+        public string EcommerceProductDescriptionToolTip
         {
             get
             {
-                return _ecommerce_ProductDescriptionToolTip;
+                return _EcommerceProductDescriptionToolTip;
             }
             set
             {
-                this._ecommerce_ProductDescriptionToolTip = value;
-                OnPropertyChanged("Ecommerce_ProductDescriptionToolTip");
+                this._EcommerceProductDescriptionToolTip = value;
+                OnPropertyChanged("EcommerceProductDescriptionToolTip");
             }
         }
-        private string _ecommerce_ProductDescriptionToolTip = string.Empty;
+        private string _EcommerceProductDescriptionToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_ProductSubcategory
+        ///    EcommerceProductSubcategory
         /// </summary>
-        public string Ecommerce_ProductSubcategory
+        public string EcommerceProductSubcategory
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_ProductSubcategory;
+                return this.ItemViewModelItem.EcommerceProductSubcategory;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_ProductSubcategory != value)
+                if (this.ItemViewModelItem.EcommerceProductSubcategory != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_ProductSubcategory = value;
-                    this.Ecommerce_ProductSubcategoryError = ItemService.ValidateEcommerce_ProductSubcategory(value, this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_ProductSubcategory");
+                    this.ItemViewModelItem.EcommerceProductSubcategory = value;
+                    FlagError("EcommerceProductSubcategory");
+                    OnPropertyChanged("EcommerceProductSubcategory");
                 }
             }
         }
-        public string Ecommerce_ProductSubcategoryBoxColor
+        public string EcommerceProductSubcategoryBoxColor
         {
             get
             {
-                return _ecommerce_ProductSubcategoryBoxColor;
+                return _EcommerceProductSubcategoryBoxColor;
             }
             set
             {
-                _ecommerce_ProductSubcategoryBoxColor = value;
-                OnPropertyChanged("Ecommerce_ProductSubcategoryBoxColor");
+                _EcommerceProductSubcategoryBoxColor = value;
+                OnPropertyChanged("EcommerceProductSubcategoryBoxColor");
             }
         }
-        private string _ecommerce_ProductSubcategoryBoxColor = "White";
-        public string Ecommerce_ProductSubcategoryError
+        private string _EcommerceProductSubcategoryBoxColor = "White";
+        public string EcommerceProductSubcategoryError
         {
             get
             {
-                return _ecommerce_ProductSubcategoryError;
+                return _EcommerceProductSubcategoryError;
             }
             set
             {
-                _ecommerce_ProductSubcategoryError = value;
+                _EcommerceProductSubcategoryError = value;
                 if (value != "")
                 {
-                    Ecommerce_ProductSubcategoryToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ProductSubcategoryToolTip");
+                    EcommerceProductSubcategoryToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceProductSubcategoryToolTip");
                 }
                 else
                 {
-                    Ecommerce_ProductSubcategoryToolTip = ReturnToolTip("Ecommerce_ProductSubcategoryToolTip");
+                    EcommerceProductSubcategoryToolTip = ReturnToolTip("EcommerceProductSubcategoryToolTip");
                 }
-                this.Ecommerce_ProductSubcategoryBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceProductSubcategoryBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_ProductSubcategoryError");
+                OnPropertyChanged("EcommerceProductSubcategoryError");
             }
         }
-        private string _ecommerce_ProductSubcategoryError = string.Empty;
-        public string Ecommerce_ProductSubcategoryToolTip
+        private string _EcommerceProductSubcategoryError = string.Empty;
+        public string EcommerceProductSubcategoryToolTip
         {
             get
             {
-                return _ecommerce_ProductSubcategoryToolTip;
+                return _EcommerceProductSubcategoryToolTip;
             }
             set
             {
-                this._ecommerce_ProductSubcategoryToolTip = value;
-                OnPropertyChanged("Ecommerce_ProductSubcategoryToolTip");
+                this._EcommerceProductSubcategoryToolTip = value;
+                OnPropertyChanged("EcommerceProductSubcategoryToolTip");
             }
         }
-        private string _ecommerce_ProductSubcategoryToolTip = string.Empty;
+        private string _EcommerceProductSubcategoryToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_ManufacturerName
+        ///    EcommerceManufacturerName
         /// </summary>
-        public string Ecommerce_ManufacturerName
+        public string EcommerceManufacturerName
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_ManufacturerName;
+                return this.ItemViewModelItem.EcommerceManufacturerName;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_ManufacturerName != value)
+                if (this.ItemViewModelItem.EcommerceManufacturerName != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_ManufacturerName = value;
-                    this.Ecommerce_ManufacturerNameError = ItemService.ValidateEcommerce_ManufacturerName(value, this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_ManufacturerName");
+                    this.ItemViewModelItem.EcommerceManufacturerName = value;
+                    FlagError("EcommerceManufacturerName");
+                    OnPropertyChanged("EcommerceManufacturerName");
                 }
             }
         }
-        public string Ecommerce_ManufacturerNameBoxColor
+        public string EcommerceManufacturerNameBoxColor
         {
             get
             {
-                return _ecommerce_ManufacturerNameBoxColor;
+                return _EcommerceManufacturerNameBoxColor;
             }
             set
             {
-                _ecommerce_ManufacturerNameBoxColor = value;
-                OnPropertyChanged("Ecommerce_ManufacturerNameBoxColor");
+                _EcommerceManufacturerNameBoxColor = value;
+                OnPropertyChanged("EcommerceManufacturerNameBoxColor");
             }
         }
-        private string _ecommerce_ManufacturerNameBoxColor = "White";
-        public string Ecommerce_ManufacturerNameError
+        private string _EcommerceManufacturerNameBoxColor = "White";
+        public string EcommerceManufacturerNameError
         {
             get
             {
-                return _ecommerce_ManufacturerNameError;
+                return _EcommerceManufacturerNameError;
             }
             set
             {
-                _ecommerce_ManufacturerNameError = value;
+                _EcommerceManufacturerNameError = value;
                 if (value != "")
                 {
-                    Ecommerce_ManufacturerNameToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ManufacturerNameToolTip");
+                    EcommerceManufacturerNameToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceManufacturerNameToolTip");
                 }
                 else
                 {
-                    Ecommerce_ManufacturerNameToolTip = ReturnToolTip("Ecommerce_ManufacturerNameToolTip");
+                    EcommerceManufacturerNameToolTip = ReturnToolTip("EcommerceManufacturerNameToolTip");
                 }
-                this.Ecommerce_ManufacturerNameBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceManufacturerNameBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_ManufacturerNameError");
+                OnPropertyChanged("EcommerceManufacturerNameError");
             }
         }
-        private string _ecommerce_ManufacturerNameError = string.Empty;
-        public string Ecommerce_ManufacturerNameToolTip
+        private string _EcommerceManufacturerNameError = string.Empty;
+        public string EcommerceManufacturerNameToolTip
         {
             get
             {
-                return _ecommerce_ManufacturerNameToolTip;
+                return _EcommerceManufacturerNameToolTip;
             }
             set
             {
-                this._ecommerce_ManufacturerNameToolTip = value;
-                OnPropertyChanged("Ecommerce_ManufacturerNameToolTip");
+                this._EcommerceManufacturerNameToolTip = value;
+                OnPropertyChanged("EcommerceManufacturerNameToolTip");
             }
         }
-        private string _ecommerce_ManufacturerNameToolTip = string.Empty;
+        private string _EcommerceManufacturerNameToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_Msrp
+        ///    EcommerceMsrp
         /// </summary>
-        public string Ecommerce_Msrp
+        public string EcommerceMsrp
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_Msrp;
+                return this.ItemViewModelItem.EcommerceMsrp;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_Msrp != value)
+                if (this.ItemViewModelItem.EcommerceMsrp != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_Msrp = value;
-                    this.Ecommerce_MsrpError = ItemService.ValidateEcommerce_Msrp(value, this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_Msrp");
+                    this.ItemViewModelItem.EcommerceMsrp = value;
+                    FlagError("EcommerceMsrp");
+                    OnPropertyChanged("EcommerceMsrp");
                 }
             }
         }
-        public string Ecommerce_MsrpBoxColor
+        public string EcommerceMsrpBoxColor
         {
             get
             {
-                return _ecommerce_MsrpBoxColor;
+                return _EcommerceMsrpBoxColor;
             }
             set
             {
-                _ecommerce_MsrpBoxColor = value;
-                OnPropertyChanged("Ecommerce_MsrpBoxColor");
+                _EcommerceMsrpBoxColor = value;
+                OnPropertyChanged("EcommerceMsrpBoxColor");
             }
         }
-        private string _ecommerce_MsrpBoxColor = "White";
-        public string Ecommerce_MsrpError
+        private string _EcommerceMsrpBoxColor = "White";
+        public string EcommerceMsrpError
         {
             get
             {
-                return _ecommerce_MsrpError;
+                return _EcommerceMsrpError;
             }
             set
             {
-                _ecommerce_MsrpError = value;
+                _EcommerceMsrpError = value;
                 if (value != "")
                 {
-                    Ecommerce_MsrpToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_MsrpToolTip");
+                    EcommerceMsrpToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceMsrpToolTip");
                 }
                 else
                 {
-                    Ecommerce_MsrpToolTip = ReturnToolTip("Ecommerce_MsrpToolTip");
+                    EcommerceMsrpToolTip = ReturnToolTip("EcommerceMsrpToolTip");
                 }
-                this.Ecommerce_MsrpBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceMsrpBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_MsrpError");
+                OnPropertyChanged("EcommerceMsrpError");
             }
         }
-        private string _ecommerce_MsrpError = string.Empty;
-        public string Ecommerce_MsrpToolTip
+        private string _EcommerceMsrpError = string.Empty;
+        public string EcommerceMsrpToolTip
         {
             get
             {
-                return _ecommerce_MsrpToolTip;
+                return _EcommerceMsrpToolTip;
             }
             set
             {
-                this._ecommerce_MsrpToolTip = value;
-                OnPropertyChanged("Ecommerce_MsrpToolTip");
+                this._EcommerceMsrpToolTip = value;
+                OnPropertyChanged("EcommerceMsrpToolTip");
             }
         }
-        private string _ecommerce_MsrpToolTip = string.Empty;
+        private string _EcommerceMsrpToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_GenericKeywords
+        ///    EcommerceGenericKeywords
         /// </summary>
-        public string Ecommerce_GenericKeywords
+        public string EcommerceGenericKeywords
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_GenericKeywords;
+                return this.ItemViewModelItem.EcommerceGenericKeywords;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_GenericKeywords != value)
+                if (this.ItemViewModelItem.EcommerceGenericKeywords != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_GenericKeywords = value;
-                    this.Ecommerce_GenericKeywordsError = ItemService.ValidateEcommerce_Keywords(value, false, "Ecommerce Generic Keywords", this.Status);
-                    OnPropertyChanged("Ecommerce_GenericKeywords");
+                    this.ItemViewModelItem.EcommerceGenericKeywords = value;
+                    FlagError("EcommerceGenericKeywords");
+                    OnPropertyChanged("EcommerceGenericKeywords");
                 }
             }
         }
-        public string Ecommerce_GenericKeywordsBoxColor
+        public string EcommerceGenericKeywordsBoxColor
         {
             get
             {
-                return _ecommerce_GenericKeywordsBoxColor;
+                return _EcommerceGenericKeywordsBoxColor;
             }
             set
             {
-                _ecommerce_GenericKeywordsBoxColor = value;
-                OnPropertyChanged("Ecommerce_GenericKeywordsBoxColor");
+                _EcommerceGenericKeywordsBoxColor = value;
+                OnPropertyChanged("EcommerceGenericKeywordsBoxColor");
             }
         }
-        private string _ecommerce_GenericKeywordsBoxColor = "White";
-        public string Ecommerce_GenericKeywordsError
+        private string _EcommerceGenericKeywordsBoxColor = "White";
+        public string EcommerceGenericKeywordsError
         {
             get
             {
-                return _ecommerce_GenericKeywordsError;
+                return _EcommerceGenericKeywordsError;
             }
             set
             {
-                _ecommerce_GenericKeywordsError = value;
+                _EcommerceGenericKeywordsError = value;
                 if (value != "")
                 {
-                    Ecommerce_GenericKeywordsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_GenericKeywordsToolTip");
+                    EcommerceGenericKeywordsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceGenericKeywordsToolTip");
                 }
                 else
                 {
-                    Ecommerce_GenericKeywordsToolTip = ReturnToolTip("Ecommerce_GenericKeywordsToolTip");
+                    EcommerceGenericKeywordsToolTip = ReturnToolTip("EcommerceGenericKeywordsToolTip");
                 }
-                this.Ecommerce_GenericKeywordsBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceGenericKeywordsBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_GenericKeywordsError");
+                OnPropertyChanged("EcommerceGenericKeywordsError");
             }
         }
-        private string _ecommerce_GenericKeywordsError = string.Empty;
-        public string Ecommerce_GenericKeywordsToolTip
+        private string _EcommerceGenericKeywordsError = string.Empty;
+        public string EcommerceGenericKeywordsToolTip
         {
             get
             {
-                return _ecommerce_GenericKeywordsToolTip;
+                return _EcommerceGenericKeywordsToolTip;
             }
             set
             {
-                this._ecommerce_GenericKeywordsToolTip = value;
-                OnPropertyChanged("Ecommerce_GenericKeywordsToolTip");
+                this._EcommerceGenericKeywordsToolTip = value;
+                OnPropertyChanged("EcommerceGenericKeywordsToolTip");
             }
         }
-        private string _ecommerce_GenericKeywordsToolTip = string.Empty;
+        private string _EcommerceGenericKeywordsToolTip = string.Empty;
 
         /// <summary>
-        ///    Ecommerce_Size
+        ///    EcommerceSize
         /// </summary>
-        public string Ecommerce_Size
+        public string EcommerceSize
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_Size;
+                return this.ItemViewModelItem.EcommerceSize;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_Size != value)
+                if (this.ItemViewModelItem.EcommerceSize != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_Size = value;
-                    this.Ecommerce_SizeError = ItemService.ValidateEcommerce_Size(value, this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_Size");
+                    this.ItemViewModelItem.EcommerceSize = value;
+                    FlagError("EcommerceSize");
+                    OnPropertyChanged("EcommerceSize");
                 }
             }
         }
-        public string Ecommerce_SizeBoxColor
+        public string EcommerceSizeBoxColor
         {
             get
             {
-                return _ecommerce_sizeBoxColor;
+                return _EcommercesizeBoxColor;
             }
             set
             {
-                _ecommerce_sizeBoxColor = value;
-                OnPropertyChanged("Ecommerce_SizeBoxColor");
+                _EcommercesizeBoxColor = value;
+                OnPropertyChanged("EcommerceSizeBoxColor");
             }
         }
-        private string _ecommerce_sizeBoxColor = "White";
-        public string Ecommerce_SizeError
+        private string _EcommercesizeBoxColor = "White";
+        public string EcommerceSizeError
         {
             get
             {
-                return _ecommerce_sizeError;
+                return _EcommercesizeError;
             }
             set
             {
-                _ecommerce_sizeError = value;
+                _EcommercesizeError = value;
                 if (value != "")
                 {
-                    Ecommerce_SizeToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_SizeToolTip");
+                    EcommerceSizeToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceSizeToolTip");
                 }
                 else
                 {
-                    Ecommerce_SizeToolTip = ReturnToolTip("Ecommerce_SizeToolTip");
+                    EcommerceSizeToolTip = ReturnToolTip("EcommerceSizeToolTip");
                 }
-                this.Ecommerce_SizeBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceSizeBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_SizeError");
+                OnPropertyChanged("EcommerceSizeError");
             }
         }
-        private string _ecommerce_sizeError = string.Empty;
-        public string Ecommerce_SizeToolTip
+        private string _EcommercesizeError = string.Empty;
+        public string EcommerceSizeToolTip
         {
             get
             {
-                return _ecommerce_sizeToolTip;
+                return _EcommercesizeToolTip;
             }
             set
             {
-                this._ecommerce_sizeToolTip = value;
-                OnPropertyChanged("Ecommerce_SizeToolTip");
+                this._EcommercesizeToolTip = value;
+                OnPropertyChanged("EcommerceSizeToolTip");
             }
         }
-        private string _ecommerce_sizeToolTip = string.Empty;
+        private string _EcommercesizeToolTip = string.Empty;
         
         /// <summary>
-        ///    Ecommerce_SubjectKeywords
+        ///    EcommerceSubjectKeywords
         /// </summary>
-        public string Ecommerce_SubjectKeywords
+        public string EcommerceSubjectKeywords
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_SubjectKeywords;
+                return this.ItemViewModelItem.EcommerceSubjectKeywords;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_SubjectKeywords != value)
+                if (this.ItemViewModelItem.EcommerceSubjectKeywords != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_SubjectKeywords = value;
-                    this.Ecommerce_SubjectKeywordsError = ItemService.ValidateEcommerce_Keywords(value, this.ItemViewModelItem.HasEcommerce(), "Ecommerce Search Terms", this.Status);
-                    OnPropertyChanged("Ecommerce_SubjectKeywords");
+                    this.ItemViewModelItem.EcommerceSubjectKeywords = value;
+                    FlagError("EcommerceSubjectKeywords");
+                    OnPropertyChanged("EcommerceSubjectKeywords");
                 }
             }
         }
-        public string Ecommerce_SubjectKeywordsBoxColor
+        public string EcommerceSubjectKeywordsBoxColor
         {
             get
             {
-                return _ecommerce_SubjectKeywordsBoxColor;
+                return _EcommerceSubjectKeywordsBoxColor;
             }
             set
             {
-                _ecommerce_SubjectKeywordsBoxColor = value;
-                OnPropertyChanged("Ecommerce_SubjectKeywordsBoxColor");
+                _EcommerceSubjectKeywordsBoxColor = value;
+                OnPropertyChanged("EcommerceSubjectKeywordsBoxColor");
             }
         }
-        private string _ecommerce_SubjectKeywordsBoxColor = "White";
-        public string Ecommerce_SubjectKeywordsError
+        private string _EcommerceSubjectKeywordsBoxColor = "White";
+        public string EcommerceSubjectKeywordsError
         {
             get
             {
-                return _ecommerce_SubjectKeywordsError;
+                return _EcommerceSubjectKeywordsError;
             }
             set
             {
-                _ecommerce_SubjectKeywordsError = value;
+                _EcommerceSubjectKeywordsError = value;
                 if (value != "")
                 {
-                    Ecommerce_SubjectKeywordsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_SubjectKeywordsToolTip");
+                    EcommerceSubjectKeywordsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceSubjectKeywordsToolTip");
                 }
                 else
                 {
-                    Ecommerce_SubjectKeywordsToolTip = ReturnToolTip("Ecommerce_SubjectKeywordsToolTip");
+                    EcommerceSubjectKeywordsToolTip = ReturnToolTip("EcommerceSubjectKeywordsToolTip");
                 }
-                this.Ecommerce_SubjectKeywordsBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceSubjectKeywordsBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_SubjectKeywordsError");
+                OnPropertyChanged("EcommerceSubjectKeywordsError");
             }
         }
-        private string _ecommerce_SubjectKeywordsError = string.Empty;
-        public string Ecommerce_SubjectKeywordsToolTip
+        private string _EcommerceSubjectKeywordsError = string.Empty;
+        public string EcommerceSubjectKeywordsToolTip
         {
             get
             {
-                return _ecommerce_SubjectKeywordsToolTip;
+                return _EcommerceSubjectKeywordsToolTip;
             }
             set
             {
-                this._ecommerce_SubjectKeywordsToolTip = value;
-                OnPropertyChanged("Ecommerce_SubjectKeywordsToolTip");
+                this._EcommerceSubjectKeywordsToolTip = value;
+                OnPropertyChanged("EcommerceSubjectKeywordsToolTip");
             }
         }
-        private string _ecommerce_SubjectKeywordsToolTip = string.Empty;
+        private string _EcommerceSubjectKeywordsToolTip = string.Empty;
         
         /// <summary>
-        ///    Ecommerce_Upc
+        ///    EcommerceUpc
         /// </summary>
-        public string Ecommerce_Upc
+        public string EcommerceUpc
         {
             get
             {
-                return this.ItemViewModelItem.Ecommerce_Upc;
+                return this.ItemViewModelItem.EcommerceUpc;
             }
             set
             {
-                if (this.ItemViewModelItem.Ecommerce_Upc != value)
+                if (this.ItemViewModelItem.EcommerceUpc != value)
                 {
-                    this.ItemViewModelItem.Ecommerce_Upc = value;
-                    this.Ecommerce_UpcError = ItemService.ValidateEcommerce_Upc(value, this.ItemId, this.Upc, this.Status, this.ItemViewModelItem.HasEcommerce());
-                    OnPropertyChanged("Ecommerce_Upc");
+                    this.ItemViewModelItem.EcommerceUpc = value;
+                    FlagError("EcommerceUpc");
+                    OnPropertyChanged("EcommerceUpc");
                 }
             }
         }
-        public string Ecommerce_UpcBoxColor
+        public string EcommerceUpcBoxColor
         {
             get
             {
-                return _ecommerce_UpcBoxColor;
+                return _EcommerceUpcBoxColor;
             }
             set
             {
-                _ecommerce_UpcBoxColor = value;
-                OnPropertyChanged("Ecommerce_UpcBoxColor");
+                _EcommerceUpcBoxColor = value;
+                OnPropertyChanged("EcommerceUpcBoxColor");
             }
         }
-        private string _ecommerce_UpcBoxColor = "White";
-        public string Ecommerce_UpcError
+        private string _EcommerceUpcBoxColor = "White";
+        public string EcommerceUpcError
         {
             get
             {
-                return _ecommerce_UpcError;
+                return _EcommerceUpcError;
             }
             set
             {
-                _ecommerce_UpcError = value;
+                _EcommerceUpcError = value;
                 if (value != "")
                 {
-                    Ecommerce_UpcToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_UpcToolTip");
+                    EcommerceUpcToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceUpcToolTip");
                 }
                 else
                 {
-                    Ecommerce_UpcToolTip = ReturnToolTip("Ecommerce_UpcToolTip");
+                    EcommerceUpcToolTip = ReturnToolTip("EcommerceUpcToolTip");
                 }
-                this.Ecommerce_UpcBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceUpcBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
-                OnPropertyChanged("Ecommerce_UpcError");
+                OnPropertyChanged("EcommerceUpcError");
             }
         }
-        private string _ecommerce_UpcError = string.Empty;
-        public string Ecommerce_UpcToolTip
+        private string _EcommerceUpcError = string.Empty;
+        public string EcommerceUpcToolTip
         {
             get
             {
-                return _ecommerce_UpcToolTip;
+                return _EcommerceUpcToolTip;
             }
             set
             {
-                _ecommerce_UpcToolTip = value;
-                OnPropertyChanged("Ecommerce_UpcToolTip");
+                _EcommerceUpcToolTip = value;
+                OnPropertyChanged("EcommerceUpcToolTip");
             }
         }
-        private string _ecommerce_UpcToolTip = string.Empty;
+        private string _EcommerceUpcToolTip = string.Empty;
 
         #endregion // Ecommerce Properties
         
@@ -8480,7 +8393,7 @@ namespace Odin.ViewModels
             }
         }
 
-        public List<string> Ecommerce_ExternalIdTypeGroups
+        public List<string> EcommerceExternalIdTypeGroups
         {
             get
             {
@@ -8734,42 +8647,528 @@ namespace Odin.ViewModels
         
         #region Methods
 
+        private void AssignError(ItemError error)
+        {
+            switch (error.ErrorField)
+            {
+                case "Accounting Group":
+                    this.AccountingGroupError = error.ReturnErrorMessage();
+                    break;
+
+                case "Image Path 2":
+                    this.AltImageFile1Error = error.ReturnErrorMessage();
+                    SetImages();
+                    break;
+
+                case "AltImageFile2":
+                    this.AltImageFile2Error = error.ReturnErrorMessage();
+                    SetImages();
+                    break;
+
+                case "AltImageFile3":
+                    this.AltImageFile3Error = error.ReturnErrorMessage();
+                    SetImages();
+                    break;
+
+                case "AltImageFile4":
+                    this.AltImageFile4Error = error.ReturnErrorMessage();
+                    SetImages();
+                    break;
+
+                case "BillOfMaterials":
+                    this.BillOfMaterialsError = error.ReturnErrorMessage();
+                    break;
+
+                case "Casepack Height":
+                    this.CasepackHeightError = error.ReturnErrorMessage();
+                    break;
+
+                case "Casepack Length":
+                    this.CasepackHeightError = error.ReturnErrorMessage();
+                    break;
+
+                case "Casepack Weight":
+                    this.CasepackHeightError = error.ReturnErrorMessage();
+                    break;
+
+                case "Casepack Width":
+                    this.CasepackHeightError = error.ReturnErrorMessage();
+                    break;
+
+                case "CasepackQty":
+                    this.CasepackQtyError = error.ReturnErrorMessage();
+                    break;
+
+                case "CasepackUpc":
+                    this.CasepackUpcError = error.ReturnErrorMessage();
+                    break;
+
+                case "Category":
+                    this.CategoryError = error.ReturnErrorMessage();
+                    break;
+
+                case "Category 2":
+                    this.Category2Error = error.ReturnErrorMessage();
+                    break;
+
+                case "Category 3":
+                    this.Category3Error = error.ReturnErrorMessage();
+                    break;
+
+                case "Color":
+                    this.ColorError = error.ReturnErrorMessage();
+                    break;
+
+                case "Copyright":
+                    this.CopyrightError = error.ReturnErrorMessage();
+                    break;
+
+                case "Country Of Origin":
+                    this.CountryOfOriginError = error.ReturnErrorMessage();
+                    break;
+
+                case "Cost Profile Group":
+                    this.CostProfileGroupError = error.ReturnErrorMessage();
+                    break;
+
+                case "Default Actual Cost CAD":
+                    this.DefaultActualCostCadError = error.ReturnErrorMessage();
+                    break;
+
+                case "Default Actual Cost USD":
+                    this.DefaultActualCostUsdError = error.ReturnErrorMessage();
+                    break;
+
+                case "Description":
+                    this.DescriptionError = error.ReturnErrorMessage();
+                    break;
+
+                case "Direct Import":
+                    this.DirectImportError = error.ReturnErrorMessage();
+                    break;
+
+                case "Duty":
+                    this.DutyError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ean":
+                    this.EanError = error.ReturnErrorMessage();
+                    break;
+
+                case "EcommerceAsin":
+                    this.EcommerceAsinError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Bullet 1":
+                    this.EcommerceBullet1Error = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Bullet 2":
+                    this.EcommerceBullet2Error = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Bullet 3":
+                    this.EcommerceBullet3Error = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Bullet 4":
+                    this.EcommerceBullet4Error = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Bullet 5":
+                    this.EcommerceBullet5Error = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Components":
+                    this.EcommerceComponentsError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Cost":
+                    this.EcommerceCostError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce External Id":
+                    this.EcommerceExternalIdError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce External Id Type":
+                    this.EcommerceExternalIdTypeError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Generic Keywords":
+                    this.EcommerceGenericKeywordsError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Item Height":
+                    this.EcommerceItemWeightError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Item Length":
+                    this.EcommerceItemWeightError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Item Name":
+                    this.EcommerceItemNameError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Item Weight":
+                    this.EcommerceItemWeightError = error.ReturnErrorMessage();
+                    break;
+
+                case "EcommerceItemWidth":
+                    this.EcommerceItemWeightError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Model Name":
+                    this.EcommerceModelNameError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Package Height":
+                    this.EcommercePackageHeightError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Package Length":
+                    this.EcommercePackageLengthError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Package Weight":
+                    this.EcommercePackageWeightError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Package Width":
+                    this.EcommercePackageWidthError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Page Qty":
+                    this.EcommercePageQtyError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Product Category":
+                    this.EcommerceProductCategoryError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Product Description":
+                    this.EcommerceProductDescriptionError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Product Subcategory":
+                    this.EcommerceProductSubcategoryError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Manufacturer Name":
+                    this.EcommerceManufacturerNameError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Msrp":
+                    this.EcommerceMsrpError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommere Size":
+                    this.EcommerceSizeError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommerce Subject Keywords":
+                    this.EcommerceSubjectKeywordsError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ecommere Upc":
+                    this.EcommerceUpcError = error.ReturnErrorMessage();
+                    break;
+
+                case "Gpc":
+                    this.GpcError = error.ReturnErrorMessage();
+                    break;
+
+                case "Height":
+                    this.HeightError = error.ReturnErrorMessage();
+                    break;
+
+                case "Image Path":
+                    this.ImagePathError = error.ReturnErrorMessage();
+                    SetImages();
+                    break;
+
+                case "Innerpack Height":
+                    this.InnerpackWidthError = error.ReturnErrorMessage();
+                    break;
+
+                case "Innerpack Length":
+                    this.InnerpackWidthError = error.ReturnErrorMessage();
+                    break;
+
+                case "Innerpack Weight":
+                    this.InnerpackWidthError = error.ReturnErrorMessage();
+                    break;
+
+                case "Innerpack Width":
+                    this.InnerpackWidthError = error.ReturnErrorMessage();
+                    break;
+
+                case "Innerpack Quantity":
+                    this.InnerpackQuantityError = error.ReturnErrorMessage();
+                    break;
+
+                case "Innerpack Upc":
+                    this.InnerpackUpcError = error.ReturnErrorMessage();
+                    break;
+
+                case "In Stock Date":
+                    this.InStockDateError = error.ReturnErrorMessage();
+                    break;
+
+                case "Isbn":
+                    this.IsbnError = error.ReturnErrorMessage();
+                    break;
+
+                case "Item Category":
+                    this.ItemCategoryError = error.ReturnErrorMessage();
+                    break;
+
+                case "Item Family":
+                    this.ItemFamilyError = error.ReturnErrorMessage();
+                    break;
+
+                case "Item Group":
+                    this.ItemGroupError = error.ReturnErrorMessage();
+                    break;
+
+                case "Item Id":
+                    this.ItemIdError = error.ReturnErrorMessage();
+                    break;
+
+                case "Item Keywords":
+                    this.ItemKeywordsError = error.ReturnErrorMessage();
+                    break;
+
+                case "Language":
+                    this.LanguageError = error.ReturnErrorMessage();
+                    break;
+
+                case "Length":
+                    this.LengthError = error.ReturnErrorMessage();
+                    break;
+
+                case "LicenseBeginDate":
+                    this.LicenseBeginDateError = error.ReturnErrorMessage();
+                    break;
+
+                case "License":
+                    this.LicenseError = error.ReturnErrorMessage();
+                    break;
+
+                case "ListPriceCad":
+                    this.ListPriceCadError = error.ReturnErrorMessage();
+                    break;
+
+                case "ListPriceMxn":
+                    this.MsrpMxnError = error.ReturnErrorMessage();
+                    break;
+
+                case "ListPriceUsd":
+                    this.ListPriceUsdError = error.ReturnErrorMessage();
+                    break;
+
+                case "MetaDescription":
+                    this.MetaDescriptionError = error.ReturnErrorMessage();
+                    break;
+
+                case "MfgSource":
+                    this.MfgSourceError = error.ReturnErrorMessage();
+                    break;
+
+                case "Msrp":
+                    this.MsrpError = error.ReturnErrorMessage();
+                    break;
+
+                case "MsrpCad":
+                    this.MsrpCadError = error.ReturnErrorMessage();
+                    break;
+
+                case "MsrpMxn":
+                    this.MsrpMxnError = error.ReturnErrorMessage();
+                    break;
+
+                case "PricingGroup":
+                    this.PricingGroupError = error.ReturnErrorMessage();
+                    break;
+
+                case "PrintOnDemand":
+                    this.PrintOnDemandError = error.ReturnErrorMessage();
+                    break;
+
+                case "ProductFormat":
+                    this.ProductFormatError = error.ReturnErrorMessage();
+                    break;
+
+                case "ProductGroup":
+                    this.ProductGroupError = error.ReturnErrorMessage();
+                    break;
+
+                case "Product Id Translation":
+                    this.ProductIdTranslationError = error.ReturnErrorMessage();
+                    break;
+
+                case "Product Line":
+                    this.ProductLineError = error.ReturnErrorMessage();
+                    break;
+
+                case "Product Qty":
+                    this.ProductQtyError = error.ReturnErrorMessage();
+                    break;
+
+                case "Property":
+                    this.PropertyError = error.ReturnErrorMessage();
+                    break;
+
+                case "Ps Status":
+                    this.PsStatusError = error.ReturnErrorMessage();
+                    break;
+
+                case "SatCode":
+                    this.SatCodeError = error.ReturnErrorMessage();
+                    break;
+
+                case "Sell On All Posters":
+                    this.SellOnAllPostersError = error.ReturnErrorMessage();
+                    break;
+
+                case "Sell On Amazon":
+                    this.SellOnAmazonError = error.ReturnErrorMessage();
+                    break;
+
+                case "Sell On Amazon Seller Central":
+                    this.SellOnAmazonSellerCentralError = error.ReturnErrorMessage();
+                    break;
+
+                case "Sell On Ecommerce":
+                    this.SellOnEcommerceError = error.ReturnErrorMessage();
+                    break;
+
+                case "Sell On Fanatics":
+                    this.SellOnFanaticsError = error.ReturnErrorMessage();
+                    break;
+
+                case "Sell On Guitar Center":
+                    this.SellOnGuitarCenterError = error.ReturnErrorMessage();
+                    break;
+
+                case "Sell On Hayneedle":
+                    this.SellOnHayneedleError = error.ReturnErrorMessage();
+                    break;
+
+                case "Sell On Target":
+                    this.SellOnTargetError = error.ReturnErrorMessage();
+                    break;
+
+                case "Sell On Trends":
+                    this.SellOnTrendsError = error.ReturnErrorMessage();
+                    break;
+
+                case "Sell On Walmart":
+                    this.SellOnWalmartError = error.ReturnErrorMessage();
+                    break;
+
+                case "Sell On Wayfair":
+                    this.SellOnWayfairError = error.ReturnErrorMessage();
+                    break;
+
+                case "Short Description":
+                    this.ShortDescriptionError = error.ReturnErrorMessage();
+                    break;
+
+                case "Size":
+                    this.SizeError = error.ReturnErrorMessage();
+                    break;
+
+                case "Standard Cost":
+                    this.StandardCostError = error.ReturnErrorMessage();
+                    break;
+
+                case "Stats Code":
+                    this.StatsCodeError = error.ReturnErrorMessage();
+                    break;
+
+                case "Tariff Code":
+                    this.TariffCodeError = error.ReturnErrorMessage();
+                    break;
+
+                case "Territory":
+                    this.TerritoryError = error.ReturnErrorMessage();
+                    break;
+
+                case "Title":
+                    this.TitleError = error.ReturnErrorMessage();
+                    break;
+
+                case "Udex":
+                    this.UdexError = error.ReturnErrorMessage();
+                    break;
+
+                case "Upc":
+                    this.UpcError = error.ReturnErrorMessage();
+                    break;
+
+                case "WebsitePrice":
+                    this.WebsitePriceError = error.ReturnErrorMessage();
+                    break;
+
+                case "Warranty":
+                    this.WarrantyError = error.ReturnErrorMessage();
+                    break;
+
+                case "WarrantyCheck":
+                    this.WarrantyCheckError = error.ReturnErrorMessage();
+                    break;
+
+                case "Weight":
+                    this.WeightError = error.ReturnErrorMessage();
+                    break;
+
+                case "Width":
+                    this.WidthError = error.ReturnErrorMessage();
+                    break;
+
+                default:
+                    throw new ArgumentNullException("ItemViewModel Flag error unknown type " + error.ErrorField);
+            }
+        }
+
         /// <summary>
         ///     Check ecommerce fields for errored items. 
         /// </summary>
         /// <returns></returns>
         private string CheckEcommerceTabColor()
         {
-            if (Ecommerce_AsinBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_Bullet1BoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_Bullet2BoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_Bullet3BoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_Bullet4BoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_Bullet5BoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_ComponentsBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_CostBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_ExternalIdBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_ExternalIdTypeBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_GenericKeywordsBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_ItemHeightBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_ItemLengthBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_ItemNameBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_ItemWeightBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_ItemWidthBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_ModelNameBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_PackageHeightBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_PackageLengthBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_PackageWeightBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_PackageWidthBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_PageQtyBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_ProductCategoryBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_ProductDescriptionBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_ProductSubcategoryBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_ManufacturerNameBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_MsrpBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_SizeBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_SubjectKeywordsBoxColor != "White") { return "Tomato"; }
-            if (Ecommerce_UpcBoxColor != "White") { return "Tomato"; }
+            if (EcommerceAsinBoxColor != "White") { return "Tomato"; }
+            if (EcommerceBullet1BoxColor != "White") { return "Tomato"; }
+            if (EcommerceBullet2BoxColor != "White") { return "Tomato"; }
+            if (EcommerceBullet3BoxColor != "White") { return "Tomato"; }
+            if (EcommerceBullet4BoxColor != "White") { return "Tomato"; }
+            if (EcommerceBullet5BoxColor != "White") { return "Tomato"; }
+            if (EcommerceComponentsBoxColor != "White") { return "Tomato"; }
+            if (EcommerceCostBoxColor != "White") { return "Tomato"; }
+            if (EcommerceExternalIdBoxColor != "White") { return "Tomato"; }
+            if (EcommerceExternalIdTypeBoxColor != "White") { return "Tomato"; }
+            if (EcommerceGenericKeywordsBoxColor != "White") { return "Tomato"; }
+            if (EcommerceItemHeightBoxColor != "White") { return "Tomato"; }
+            if (EcommerceItemLengthBoxColor != "White") { return "Tomato"; }
+            if (EcommerceItemNameBoxColor != "White") { return "Tomato"; }
+            if (EcommerceItemWeightBoxColor != "White") { return "Tomato"; }
+            if (EcommerceItemWidthBoxColor != "White") { return "Tomato"; }
+            if (EcommerceModelNameBoxColor != "White") { return "Tomato"; }
+            if (EcommercePackageHeightBoxColor != "White") { return "Tomato"; }
+            if (EcommercePackageLengthBoxColor != "White") { return "Tomato"; }
+            if (EcommercePackageWeightBoxColor != "White") { return "Tomato"; }
+            if (EcommercePackageWidthBoxColor != "White") { return "Tomato"; }
+            if (EcommercePageQtyBoxColor != "White") { return "Tomato"; }
+            if (EcommerceProductCategoryBoxColor != "White") { return "Tomato"; }
+            if (EcommerceProductDescriptionBoxColor != "White") { return "Tomato"; }
+            if (EcommerceProductSubcategoryBoxColor != "White") { return "Tomato"; }
+            if (EcommerceManufacturerNameBoxColor != "White") { return "Tomato"; }
+            if (EcommerceMsrpBoxColor != "White") { return "Tomato"; }
+            if (EcommerceSizeBoxColor != "White") { return "Tomato"; }
+            if (EcommerceSubjectKeywordsBoxColor != "White") { return "Tomato"; }
+            if (EcommerceUpcBoxColor != "White") { return "Tomato"; }
             return "White";
         }
 
@@ -8894,6 +9293,514 @@ namespace Odin.ViewModels
             if (SizeBoxColor != "White") { return "Tomato"; }
             if (WebsitePriceBoxColor != "White") { return "Tomato"; }
             return "White";
+        }
+
+        /// <summary>
+        ///     Runs validation for given field and assigns error message to error fields
+        /// </summary>
+        /// <param name="field"></param>
+        private void FlagError(string field)
+        {
+            switch(field)
+            {
+                case "AccountingGroup":
+                    this.AccountingGroupError = ItemService.ValidateAccountingGroup(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "AltImageFile1":
+                    this.AltImageFile1Error = ItemService.ValidateImagePath(ItemViewModelItem, "2")?.ReturnErrorMessage()??"";
+                    SetImages();
+                    break;
+
+                case "AltImageFile2":
+                    this.AltImageFile2Error = ItemService.ValidateImagePath(ItemViewModelItem, "3")?.ReturnErrorMessage()??"";
+                    SetImages();
+                    break;
+
+                case "AltImageFile3":
+                    this.AltImageFile3Error = ItemService.ValidateImagePath(ItemViewModelItem, "4")?.ReturnErrorMessage()??"";
+                    SetImages();
+                    break;
+
+                case "AltImageFile4":
+                    this.AltImageFile4Error = ItemService.ValidateImagePath(ItemViewModelItem, "5")?.ReturnErrorMessage()??"";
+                    SetImages();
+                    break;
+
+                case "BillOfMaterials":
+                    this.BillOfMaterialsError = ItemService.ValidateBillOfMaterials(ItemViewModelItem, this.ItemIds)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Casepack":
+                    this.CasepackHeightError = ItemService.ValidateCasepack(ItemViewModelItem, "Height")?.ReturnErrorMessage()??"";
+                    this.CasepackLengthError = ItemService.ValidateCasepack(ItemViewModelItem, "Length")?.ReturnErrorMessage()??"";
+                    this.CasepackWidthError = ItemService.ValidateCasepack(ItemViewModelItem, "Width")?.ReturnErrorMessage()??"";
+                    this.CasepackWeightError = ItemService.ValidateCasepack(ItemViewModelItem, "Weight")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "CasepackQty":
+                    this.CasepackQtyError = ItemService.ValidateCasepackQty(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "CasepackUpc":
+                    this.CasepackUpcError = ItemService.ValidatePackUpc(ItemViewModelItem, "Casepack")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Category":
+                    this.CategoryError = ItemService.ValidateCategory(ItemViewModelItem, "1")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Category2":
+                    this.Category2Error = ItemService.ValidateCategory(ItemViewModelItem, "2")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Category3":
+                    this.Category3Error = ItemService.ValidateCategory(ItemViewModelItem, "3")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Color":
+                    this.ColorError = ItemService.ValidateColor(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Copyright":
+                    this.CopyrightError = ItemService.ValidateCopyright(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "CountryOfOrigin":
+                    this.ItemViewModelItem.EcommerceCountryofOrigin = ItemService.RetrieveFullCountryOfOrigin(ItemViewModelItem.CountryOfOrigin);
+                    this.CountryOfOriginError = ItemService.ValidateCountryOfOrigin(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "CostProfileGroup":
+                    this.CostProfileGroupError = ItemService.ValidateCostProfileGroup(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.MfgSourceError = ItemService.ValidateMfgSource(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "DefaultActualCostCad":
+                    this.DefaultActualCostCadError = ItemService.ValidateDefaultActualCost(ItemViewModelItem, "CAD")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "DefaultActualCostUsd":
+                    this.DefaultActualCostUsdError = ItemService.ValidateDefaultActualCost(ItemViewModelItem, "USD")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Description":
+                    this.DescriptionError = ItemService.ValidateDescription(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "DirectImport":
+                    this.DirectImportError = ItemService.ValidateDirectImport(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Duty":
+                    this.DutyError = ItemService.ValidateDuty(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Ean":
+                    this.EanError = ItemService.ValidateEan(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceAsin":
+                    this.EcommerceAsinError = ItemService.ValidateEcommerceAsin(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceBullet1":
+                    this.EcommerceBullet1Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "1")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceBullet2":
+                    this.EcommerceBullet2Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "2")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceBullet3":
+                    this.EcommerceBullet3Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "3")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceBullet4":
+                    this.EcommerceBullet4Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "4")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceBullet5":
+                    this.EcommerceBullet5Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "5")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceComponents":
+                    this.EcommerceComponentsError = ItemService.ValidateEcommerceComponents(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceCost":
+                    this.EcommerceCostError = ItemService.ValidateEcommerceCost(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceExternalId":
+                    this.EcommerceExternalIdError = ItemService.ValidateEcommerceExternalId(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceExternalIdType":
+                    this.EcommerceExternalIdTypeError = ItemService.ValidateEcommerceExternalIdType(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceGenericKeywords":
+                    this.EcommerceGenericKeywordsError = ItemService.ValidateEcommerceKeywords(ItemViewModelItem, "Generic")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceItemHeight":
+                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem,"Height")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceItemLength":
+                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Length")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceItemName":
+                    this.EcommerceItemNameError = ItemService.ValidateEcommerceItemName(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceItemWeight":
+                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Weight")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceItemWidth":
+                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Width")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceModelName":
+                    this.EcommerceModelNameError = ItemService.ValidateEcommerceModelName(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommercePackageHeight":
+                    this.EcommercePackageHeightError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Height")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommercePackageLength":
+                    this.EcommercePackageLengthError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Length")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommercePackageWeight":
+                    this.EcommercePackageWeightError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Weight")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommercePackageWidth":
+                    this.EcommercePackageWidthError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Width")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommercePageQty":
+                    this.EcommercePageQtyError = ItemService.ValidateEcommercePageQty(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceProductCategory":
+                    this.EcommerceProductCategoryError = ItemService.ValidateEcommerceProductCategory(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceProductDescription":
+                    this.EcommerceProductDescriptionError = ItemService.ValidateEcommerceProductDescription(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceProductSubcategory":
+                    this.EcommerceProductSubcategoryError = ItemService.ValidateEcommerceProductSubcategory(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceManufacturerName":
+                    this.EcommerceManufacturerNameError = ItemService.ValidateEcommerceManufacturerName(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceMsrp":
+                    this.EcommerceMsrpError = ItemService.ValidateEcommerceMsrp(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommereSize":
+                    this.EcommerceSizeError = ItemService.ValidateEcommerceSize(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceSubjectKeywords":
+                    this.EcommerceSubjectKeywordsError = ItemService.ValidateEcommerceKeywords(ItemViewModelItem, "Subject")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommereUpc":
+                    this.EcommerceUpcError = ItemService.ValidateEcommerceUpc(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Gpc":
+                    this.GpcError = ItemService.ValidateGpc(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Height":
+                    this.HeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Height")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ImagePath":
+                    this.ImagePathError = ItemService.ValidateImagePath(ItemViewModelItem, "1")?.ReturnErrorMessage()??"";
+                    SetImages();
+                    break;
+
+                case "Innerpack":
+                    this.InnerpackWidthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Width")?.ReturnErrorMessage()??"";
+                    this.InnerpackHeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Height")?.ReturnErrorMessage()??"";
+                    this.InnerpackLengthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Length")?.ReturnErrorMessage()??"";
+                    this.InnerpackWeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Weight")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "InnerpackQuantity":
+                    this.InnerpackQuantityError = ItemService.ValidateInnerpackQuantity(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "InnerpackUpc":
+                    this.InnerpackUpcError = ItemService.ValidatePackUpc(ItemViewModelItem, "Innerpack")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "InStockDate":
+                    this.InStockDateError = ItemService.ValidateInStockDate(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Isbn":
+                    this.IsbnError = ItemService.ValidateIsbn(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ItemCategory":
+                    this.ItemCategoryError = ItemService.ValidateItemCategory(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ItemFamily":
+                    this.ItemFamilyError = ItemService.ValidateItemFamily(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ItemGroup":
+                    this.ItemGroupError = ItemService.ValidateItemGroup(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+                case "ItemId":
+                    this.ItemIdError = ItemService.ValidateItemId(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ItemKeywords":
+                    this.ItemKeywordsError = ItemService.ValidateItemKeywords(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Language":
+                    this.LanguageError = ItemService.ValidateLanguage(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Length":
+                    this.LengthError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Length")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "LicenseBeginDate":
+                    this.LicenseBeginDateError = ItemService.ValidateLicenseBeginDate(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "License":
+                    RefreshPropertyList(ItemViewModelItem.License);
+                    this.LicenseError = ItemService.ValidateLicense(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.PropertyError = ItemService.ValidateProperty(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ListPriceCad":
+                    this.ListPriceCadError = ItemService.ValidateListPrice(ItemViewModelItem, "CAD")?.ReturnErrorMessage()??"";
+                    this.MsrpCadError = ItemService.ValidateMsrp(ItemViewModelItem, "CAD")?.ReturnErrorMessage()??"";
+                    this.PricingGroupError = ItemService.ValidatePricingGroup(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ListPriceMxn":
+                    this.MsrpMxnError = ItemService.ValidateMsrp(ItemViewModelItem, "MXN")?.ReturnErrorMessage()??"";
+                    this.ListPriceMxnError = ItemService.ValidateListPrice(ItemViewModelItem, "MXN")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ListPriceUsd":
+                    this.ListPriceUsdError = ItemService.ValidateListPrice(ItemViewModelItem, "USD")?.ReturnErrorMessage()??"";
+                    this.ProductQtyTotal = ItemService.RetrieveB2bPrice(ItemViewModelItem.ListPriceUsd, this.ProductQty);
+                    this.MsrpError = ItemService.ValidateMsrp(ItemViewModelItem, "USD")?.ReturnErrorMessage()??"";
+                    this.PricingGroupError = ItemService.ValidatePricingGroup(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.StatsCodeError = ItemService.ValidateStatsCode(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.CountryOfOriginError = ItemService.ValidateCountryOfOrigin(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.LanguageError = ItemService.ValidateLanguage(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.TerritoryError = ItemService.ValidateTerritory(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.GpcError = ItemService.ValidateGpc(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "MetaDescription":
+                    this.MetaDescriptionError = ItemService.ValidateMetaDescription(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "MfgSource":
+                    this.MfgSourceError = ItemService.ValidateMfgSource(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.CostProfileGroupError = ItemService.ValidateCostProfileGroup(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Msrp":
+                    this.MsrpError = ItemService.ValidateMsrp(ItemViewModelItem, "USD")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "MsrpCad":
+                    this.MsrpCadError = ItemService.ValidateMsrp(ItemViewModelItem, "CAD")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "MsrpMxn":
+                    this.MsrpMxnError = ItemService.ValidateMsrp(ItemViewModelItem, "MXN")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "PricingGroup":
+                    this.PricingGroupError = ItemService.ValidatePricingGroup(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "PrintOnDemand":
+                    this.PrintOnDemandError = ItemService.ValidatePrintOnDemand(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ProductFormat":
+                    this.ProductFormatError = ItemService.ValidateProductFormat(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.ProductIdTranslationError = ItemService.ValidateProductIdTranslation(ItemViewModelItem, this.ItemIds)?.ReturnErrorMessage()??"";
+                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.EanError = ItemService.ValidateEan(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ProductGroup":
+                    RefreshProductLines();
+                    RefreshProductFormats("");
+                    this.ProductFormatError = ItemService.ValidateProductFormat(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.ProductLineError = ItemService.ValidateProductLine(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.ProductGroupError = ItemService.ValidateProductGroup(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ProductIdTranslation":
+                    this.ProductIdTranslationError = ItemService.ValidateProductIdTranslation(ItemViewModelItem, this.ItemIds)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ProductLine":
+                    RefreshProductFormats(this.ProductLine);
+                    this.EanError = ItemService.ValidateEan(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.ProductFormatError = ItemService.ValidateProductFormat(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.ProductLineError = ItemService.ValidateProductLine(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ProductQty":
+                    this.ProductQtyTotal = ItemService.RetrieveB2bPrice(ItemViewModelItem.ListPriceUsd, ItemViewModelItem.ProductQty);
+                    this.ProductQtyError = ItemService.ValidateProductQty(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Property":
+                    this.PropertyError = ItemService.ValidateProperty(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "PsStatus":
+                    this.PsStatusError = ItemService.ValidatePsStatus(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "SatCode":
+                    this.SatCodeError = ItemService.ValidateSatCode(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "SellOnAllPostersCheck":
+                    this.SellOnAllPostersError = ItemService.ValidateSellOnValue(ItemViewModelItem, "All Posters")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "SellOnAmazonCheck":
+                    this.SellOnAmazonError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Amazon")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "SellOnAmazonSellerCentralCheck":
+                    this.SellOnAmazonSellerCentralError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Amazon Seller Central")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "SellOnEcommerceCheck":
+                    this.SellOnEcommerceError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Ecommerce")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "SellOnFanaticsCheck":
+                    this.SellOnFanaticsError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Fanatics")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "SellOnGuitarCenterCheck":
+                    this.SellOnGuitarCenterError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Guitar Center")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "SellOnHayneedleCheck":
+                    this.SellOnHayneedleError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Hayneedle")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "SellOnTargetCheck":
+                    this.SellOnTargetError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Target")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "SellOnTrendsCheck":
+                    this.TitleError = ItemService.ValidateTitle(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.MetaDescriptionError = ItemService.ValidateMetaDescription(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.CategoryError = ItemService.ValidateCategory(ItemViewModelItem, "1")?.ReturnErrorMessage()??"";
+                    this.ItemKeywordsError = ItemService.ValidateItemKeywords(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.SellOnTrendsError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Trends")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "SellOnWalmartCheck":
+                    this.SellOnWalmartError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Walmart")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "SellOnWayfairCheck":
+                    this.SellOnWayfairError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Wayfair")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ShortDescription":
+                    this.ShortDescriptionError = ItemService.ValidateShortDescription(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Size":
+                    this.SizeError = ItemService.ValidateSize(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "StandardCost":
+                    this.StandardCostError = ItemService.ValidateStandardCost(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "StatsCode":
+                    this.StatsCodeError = ItemService.ValidateStatsCode(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "TariffCode":
+                    this.TariffCodeError = ItemService.ValidateTariffCode(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Territory":
+                    this.TerritoryError = ItemService.ValidateTerritory(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Title":
+                    this.TitleError = ItemService.ValidateTitle(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Udex":
+                    this.UdexError = ItemService.ValidateUdex(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Upc":
+                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.ProductFormatError = ItemService.ValidateProductFormat(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.ProductGroupError = ItemService.ValidateProductGroup(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.ProductLineError = ItemService.ValidateProductLine(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "WebsitePrice":
+                    this.WebsitePriceError = ItemService.ValidateWebsitePrice(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Warranty":
+                    this.WarrantyError = ItemService.ValidateWarranty(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "WarrantyCheck":
+                    this.WarrantyCheckError = ItemService.ValidateWarrantyCheck(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Weight":
+                    this.WeightError = ItemService.ValidateItemDimension(ItemViewModelItem, "Weight")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Width":
+                    this.WidthError = ItemService.ValidateItemDimension(ItemViewModelItem, "Width")?.ReturnErrorMessage()??"";
+                    break;
+
+                default:
+                    throw new ArgumentNullException("ItemViewModel Flag error unknown type " + field);
+            }
         }
 
         /// <summary>
@@ -9107,36 +10014,36 @@ namespace Odin.ViewModels
             this.DirectImportToolTip = ReturnToolTip("DirectImport");
             this.DutyToolTip = ReturnToolTip("Duty");
             this.EanToolTip = ReturnToolTip("Ean");
-            this.Ecommerce_AsinToolTip = ReturnToolTip("Ecommerce_AsinToolTip");
-            this.Ecommerce_Bullet1ToolTip = ReturnToolTip("Ecommerce_BulletToolTip");
-            this.Ecommerce_Bullet2ToolTip = ReturnToolTip("Ecommerce_BulletToolTip");
-            this.Ecommerce_Bullet3ToolTip = ReturnToolTip("Ecommerce_BulletToolTip");
-            this.Ecommerce_Bullet4ToolTip = ReturnToolTip("Ecommerce_BulletToolTip");
-            this.Ecommerce_Bullet5ToolTip = ReturnToolTip("Ecommerce_BulletToolTip");
-            this.Ecommerce_ComponentsToolTip = ReturnToolTip("Ecommerce_ComponentsToolTip");
-            this.Ecommerce_CostToolTip = ReturnToolTip("Ecommerce_CostToolTip");
-            this.Ecommerce_ExternalIdToolTip = ReturnToolTip("Ecommerce_ExternalIdToolTip");
-            this.Ecommerce_ExternalIdTypeToolTip = ReturnToolTip("Ecommerce_ExternalIdTypeToolTip");
-            this.Ecommerce_GenericKeywordsToolTip = ReturnToolTip("Ecommerce_GenericKeywordsToolTip");
-            this.Ecommerce_ItemHeightToolTip = ReturnToolTip("Ecommerce_ItemHeightToolTip");
-            this.Ecommerce_ItemLengthToolTip = ReturnToolTip("Ecommerce_ItemLengthToolTip");
-            this.Ecommerce_ItemNameToolTip = ReturnToolTip("Ecommerce_ItemNameToolTip");
-            this.Ecommerce_ItemWeightToolTip = ReturnToolTip("Ecommerce_ItemWeightToolTip");
-            this.Ecommerce_ItemWidthToolTip = ReturnToolTip("Ecommerce_ItemWidthToolTip");
-            this.Ecommerce_ModelNameToolTip = ReturnToolTip("Ecommerce_ModelNameToolTip");
-            this.Ecommerce_PackageHeightToolTip = ReturnToolTip("Ecommerce_PackageHeightToolTip");
-            this.Ecommerce_PackageLengthToolTip = ReturnToolTip("Ecommerce_PackageLengthToolTip");
-            this.Ecommerce_PackageWeightToolTip = ReturnToolTip("Ecommerce_PackageWeightToolTip");
-            this.Ecommerce_PackageWidthToolTip = ReturnToolTip("Ecommerce_PackageWidthToolTip");
-            this.Ecommerce_PageQtyToolTip = ReturnToolTip("Ecommerce_PageQtyToolTip");
-            this.Ecommerce_ProductCategoryToolTip = ReturnToolTip("Ecommerce_ProductCategoryToolTip");
-            this.Ecommerce_ProductDescriptionToolTip = ReturnToolTip("Ecommerce_ProductDescriptionToolTip");
-            this.Ecommerce_ProductSubcategoryToolTip = ReturnToolTip("Ecommerce_ProductSubcategoryToolTip");
-            this.Ecommerce_ManufacturerNameToolTip = ReturnToolTip("Ecommerce_ManufacturerNameToolTip");
-            this.Ecommerce_MsrpToolTip = ReturnToolTip("Ecommerce_MsrpToolTip");
-            this.Ecommerce_SizeToolTip = ReturnToolTip("Ecommerce_SizeToolTip");
-            this.Ecommerce_SubjectKeywordsToolTip = ReturnToolTip("Ecommerce_SubjectKeywordsToolTip");
-            this.Ecommerce_UpcToolTip = ReturnToolTip("Ecommerce_UpcToolTip");
+            this.EcommerceAsinToolTip = ReturnToolTip("EcommerceAsinToolTip");
+            this.EcommerceBullet1ToolTip = ReturnToolTip("EcommerceBulletToolTip");
+            this.EcommerceBullet2ToolTip = ReturnToolTip("EcommerceBulletToolTip");
+            this.EcommerceBullet3ToolTip = ReturnToolTip("EcommerceBulletToolTip");
+            this.EcommerceBullet4ToolTip = ReturnToolTip("EcommerceBulletToolTip");
+            this.EcommerceBullet5ToolTip = ReturnToolTip("EcommerceBulletToolTip");
+            this.EcommerceComponentsToolTip = ReturnToolTip("EcommerceComponentsToolTip");
+            this.EcommerceCostToolTip = ReturnToolTip("EcommerceCostToolTip");
+            this.EcommerceExternalIdToolTip = ReturnToolTip("EcommerceExternalIdToolTip");
+            this.EcommerceExternalIdTypeToolTip = ReturnToolTip("EcommerceExternalIdTypeToolTip");
+            this.EcommerceGenericKeywordsToolTip = ReturnToolTip("EcommerceGenericKeywordsToolTip");
+            this.EcommerceItemHeightToolTip = ReturnToolTip("EcommerceItemHeightToolTip");
+            this.EcommerceItemLengthToolTip = ReturnToolTip("EcommerceItemLengthToolTip");
+            this.EcommerceItemNameToolTip = ReturnToolTip("EcommerceItemNameToolTip");
+            this.EcommerceItemWeightToolTip = ReturnToolTip("EcommerceItemWeightToolTip");
+            this.EcommerceItemWidthToolTip = ReturnToolTip("EcommerceItemWidthToolTip");
+            this.EcommerceModelNameToolTip = ReturnToolTip("EcommerceModelNameToolTip");
+            this.EcommercePackageHeightToolTip = ReturnToolTip("EcommercePackageHeightToolTip");
+            this.EcommercePackageLengthToolTip = ReturnToolTip("EcommercePackageLengthToolTip");
+            this.EcommercePackageWeightToolTip = ReturnToolTip("EcommercePackageWeightToolTip");
+            this.EcommercePackageWidthToolTip = ReturnToolTip("EcommercePackageWidthToolTip");
+            this.EcommercePageQtyToolTip = ReturnToolTip("EcommercePageQtyToolTip");
+            this.EcommerceProductCategoryToolTip = ReturnToolTip("EcommerceProductCategoryToolTip");
+            this.EcommerceProductDescriptionToolTip = ReturnToolTip("EcommerceProductDescriptionToolTip");
+            this.EcommerceProductSubcategoryToolTip = ReturnToolTip("EcommerceProductSubcategoryToolTip");
+            this.EcommerceManufacturerNameToolTip = ReturnToolTip("EcommerceManufacturerNameToolTip");
+            this.EcommerceMsrpToolTip = ReturnToolTip("EcommerceMsrpToolTip");
+            this.EcommerceSizeToolTip = ReturnToolTip("EcommerceSizeToolTip");
+            this.EcommerceSubjectKeywordsToolTip = ReturnToolTip("EcommerceSubjectKeywordsToolTip");
+            this.EcommerceUpcToolTip = ReturnToolTip("EcommerceUpcToolTip");
             this.GpcToolTip = ReturnToolTip("Gpc");
             this.HeightToolTip = ReturnToolTip("Height");
             this.ImagePathToolTip = ReturnToolTip("ImagePath");
@@ -9230,7 +10137,7 @@ namespace Odin.ViewModels
                 return true;
             }
         }
-
+        /*
         /// <summary>
         ///     Validates all fields of current item
         /// </summary>
@@ -9262,7 +10169,7 @@ namespace Odin.ViewModels
             this.DutyError = ItemService.ValidateDuty(var.Duty, var.ProdType);
             this.EanError = ItemService.ValidateEan(var.Ean, var.Upc, var.ListPriceUsd, var.ProductFormat, var.ProductLine);
             this.GpcError = ItemService.ValidateGpc(var.Gpc, var.ListPriceUsd, var.ProdType);
-            this.HeightError = ItemService.ValidateHeight(var.Height, var.ProdType);
+            this.HeightError = ItemService.ValidateItemDimension(var.Height, var.ProdType);
             this.ImagePathError = ItemService.ValidateImagePath(this.ImagePath, "ImagePath", this.ItemViewModelItem.HasWeb());
             this.InnerpackHeightError = ItemService.ValidateInnerpack(var.InnerpackHeight, var.InnerpackLength, var.InnerpackWeight, var.InnerpackWidth, var.ProdType, "Innerpack Height");
             this.InnerpackLengthError = ItemService.ValidateInnerpack(var.InnerpackHeight, var.InnerpackLength, var.InnerpackWeight, var.InnerpackWidth, var.ProdType, "Innerpack Length");
@@ -9296,17 +10203,6 @@ namespace Odin.ViewModels
             this.PropertyError = ItemService.ValidateProperty(var.Property, var.License);
             this.PsStatusError = ItemService.ValidatePsStatus(var.PsStatus, "Item");
             this.SatCodeError = ItemService.ValidateSatCode(var.SatCode);
-            this.SellOnAllPostersError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnAllPostersCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "All Posters");
-            this.SellOnAmazonError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnAmazonCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Amazon");
-            this.SellOnAmazonSellerCentralError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnAmazonSellerCentralCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Amazon Seller Central");
-            this.SellOnEcommerceError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnEcommerceCheck),null, "Ecommerce");
-            this.SellOnFanaticsError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnFanaticsCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Fanatics");
-            this.SellOnGuitarCenterError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnGuitarCenterCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Guitar Center");
-            this.SellOnHayneedleError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnHayneedleCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Hayneedle");
-            this.SellOnTargetError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnTargetCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Target");
-            this.SellOnTrendsError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnTrendsCheck), null, "Trends");
-            this.SellOnWalmartError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnWalmartCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Walmart");
-            this.SellOnWayfairError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnWayfairCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Wayfair");
             this.ShortDescriptionError = ItemService.ValidateShortDescription(var.ShortDescription);
             this.SizeError = ItemService.ValidateSize(var.Size);
             this.StandardCostError = ItemService.ValidateStandardCost(var.StandardCost, var.ProdType);
@@ -9315,50 +10211,51 @@ namespace Odin.ViewModels
             this.TerritoryError = ItemService.ValidateTerritory(var.Territory, var.ListPriceUsd, var.ProdType);
             this.TitleError = ItemService.ValidateTitle(var.Title, var.HasWeb());
             this.UdexError = ItemService.ValidateUdex(var.Udex, var.ProdType);
-            this.UpcError = ItemService.ValidateUpc(var.Upc, this.ItemId, this.Status, var.ListPriceUsd, var.ProductFormat, var.ProductGroup, var.ProductLine, var.Ean, var.Ecommerce_Upc, var.ProdType);
+            this.UpcError = ItemService.ValidateUpc(var.Upc, this.ItemId, this.Status, var.ListPriceUsd, var.ProductFormat, var.ProductGroup, var.ProductLine, var.Ean, var.EcommerceUpc, var.ProdType);
             this.WarrantyError = ItemService.ValidateWarranty(var);
             this.WarrantyCheckError = ItemService.ValidateWarrantyCheck(var);
             this.WebsitePriceError = ItemService.ValidateWebsitePrice(var.WebsitePrice, var.HasWeb());
             this.WeightError = ItemService.ValidateWeight(var.Weight, var.ProdType);
             this.WidthError = ItemService.ValidateWidth(var.Width, var.ProdType);
             ValidateEcommerce();
+            ValidateSellOnFields();
         }
-
+        */
         /// <summary>
         ///     Validate all ecommerce fields
         /// </summary>
         public void ValidateEcommerce()
         {
-            this.Ecommerce_AsinError = ItemService.ValidateEcommerce_Asin(this.Ecommerce_Asin);
-            this.Ecommerce_Bullet1Error = ItemService.ValidateEcommerce_Bullet(this.Ecommerce_Bullet1, "1", this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_Bullet2Error = ItemService.ValidateEcommerce_Bullet(this.Ecommerce_Bullet2, "2", this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_Bullet3Error = ItemService.ValidateEcommerce_Bullet(this.Ecommerce_Bullet3, "3", this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_Bullet4Error = ItemService.ValidateEcommerce_Bullet(this.Ecommerce_Bullet4, "4", false);
-            this.Ecommerce_Bullet5Error = ItemService.ValidateEcommerce_Bullet(this.Ecommerce_Bullet5, "5", false);
-            this.Ecommerce_ComponentsError = ItemService.ValidateEcommerce_Components(this.Ecommerce_Components, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_CostError = ItemService.ValidateEcommerce_Cost(this.Ecommerce_Cost, "", this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_ExternalIdTypeError = ItemService.ValidateEcommerce_ExternalIdType(this.Ecommerce_ExternalIdType, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_ExternalIdError = ItemService.ValidateEcommerce_ExternalId(this.Ecommerce_ExternalId, this.Ecommerce_ExternalIdType, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_GenericKeywordsError = ItemService.ValidateEcommerce_Keywords(this.Ecommerce_GenericKeywords, false, "Ecommerce Generic Keywords", this.Status);
-            this.Ecommerce_ItemHeightError = ItemService.ValidateEcommerce_ItemHeight(this.Ecommerce_ItemHeight, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_ItemLengthError = ItemService.ValidateEcommerce_ItemLength(this.Ecommerce_ItemLength, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_ItemNameError = ItemService.ValidateEcommerce_ItemName(this.Ecommerce_ItemName, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_ItemWeightError = ItemService.ValidateEcommerce_ItemWeight(this.Ecommerce_ItemWeight, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_ItemWidthError = ItemService.ValidateEcommerce_ItemWidth(this.Ecommerce_ItemWidth, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_ModelNameError = ItemService.ValidateEcommerce_ModelName(this.Ecommerce_ModelName, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_PackageHeightError = ItemService.ValidateEcommerce_PackageHeight(this.Ecommerce_PackageHeight, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_PackageLengthError = ItemService.ValidateEcommerce_PackageLength(this.Ecommerce_PackageLength, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_PackageWeightError = ItemService.ValidateEcommerce_PackageWeight(this.Ecommerce_PackageWeight, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_PackageWidthError = ItemService.ValidateEcommerce_PackageWidth(this.Ecommerce_PackageWidth, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_PageQtyError = ItemService.ValidateEcommerce_PageQty(this.Ecommerce_PageQty);
-            this.Ecommerce_ProductCategoryError = ItemService.ValidateEcommerce_ProductCategory(this.Ecommerce_ProductCategory, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_ProductDescriptionError = ItemService.ValidateEcommerce_ProductDescription(this.Ecommerce_ProductDescription, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_ProductSubcategoryError = ItemService.ValidateEcommerce_ProductSubcategory(this.Ecommerce_ProductSubcategory, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_ManufacturerNameError = ItemService.ValidateEcommerce_ManufacturerName(this.Ecommerce_ManufacturerName, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_MsrpError = ItemService.ValidateEcommerce_Msrp(this.Ecommerce_Msrp, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_SizeError = ItemService.ValidateEcommerce_Size(this.Ecommerce_Size, this.ItemViewModelItem.HasEcommerce());
-            this.Ecommerce_SubjectKeywordsError = ItemService.ValidateEcommerce_Keywords(this.Ecommerce_SubjectKeywords, this.ItemViewModelItem.HasEcommerce(), "Ecommerce Search Terms", this.Status);
-            this.Ecommerce_UpcError = ItemService.ValidateEcommerce_Upc(this.Ecommerce_Upc, this.ItemId, this.Upc, this.Status, this.ItemViewModelItem.HasEcommerce());
+            this.EcommerceAsinError = ItemService.ValidateEcommerceAsin(ItemViewModelItem).ReturnErrorMessage();
+            this.EcommerceBullet1Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "1").ReturnErrorMessage();
+            this.EcommerceBullet2Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "2").ReturnErrorMessage();
+            this.EcommerceBullet3Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "3").ReturnErrorMessage();
+            this.EcommerceBullet4Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "4").ReturnErrorMessage();
+            this.EcommerceBullet5Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "5").ReturnErrorMessage();
+            this.EcommerceComponentsError = ItemService.ValidateEcommerceComponents(ItemViewModelItem).ReturnErrorMessage();
+            this.EcommerceCostError = ItemService.ValidateEcommerceCost(ItemViewModelItem).ReturnErrorMessage();
+            this.EcommerceExternalIdTypeError = ItemService.ValidateEcommerceExternalIdType(ItemViewModelItem).ReturnErrorMessage();
+            this.EcommerceExternalIdError = ItemService.ValidateEcommerceExternalId(ItemViewModelItem).ReturnErrorMessage();
+            this.EcommerceGenericKeywordsError = ItemService.ValidateEcommerceKeywords(ItemViewModelItem, "Generic").ReturnErrorMessage();
+            this.EcommerceItemHeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem,"Height").ReturnErrorMessage();
+            this.EcommerceItemLengthError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Length").ReturnErrorMessage();
+            this.EcommerceItemNameError = ItemService.ValidateEcommerceItemName(ItemViewModelItem).ReturnErrorMessage();
+            this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem,"Weight").ReturnErrorMessage();
+            this.EcommerceItemWidthError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Width").ReturnErrorMessage();
+            this.EcommerceModelNameError = ItemService.ValidateEcommerceModelName(ItemViewModelItem).ReturnErrorMessage();
+            this.EcommercePackageHeightError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Height").ReturnErrorMessage();
+            this.EcommercePackageLengthError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Length").ReturnErrorMessage();
+            this.EcommercePackageWeightError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Weight").ReturnErrorMessage();
+            this.EcommercePackageWidthError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Width").ReturnErrorMessage();
+            this.EcommercePageQtyError = ItemService.ValidateEcommercePageQty(ItemViewModelItem).ReturnErrorMessage();
+            this.EcommerceProductCategoryError = ItemService.ValidateEcommerceProductCategory(ItemViewModelItem).ReturnErrorMessage();
+            this.EcommerceProductDescriptionError = ItemService.ValidateEcommerceProductDescription(ItemViewModelItem).ReturnErrorMessage();
+            this.EcommerceProductSubcategoryError = ItemService.ValidateEcommerceProductSubcategory(ItemViewModelItem).ReturnErrorMessage();
+            this.EcommerceManufacturerNameError = ItemService.ValidateEcommerceManufacturerName(ItemViewModelItem).ReturnErrorMessage();
+            this.EcommerceMsrpError = ItemService.ValidateEcommerceMsrp(ItemViewModelItem).ReturnErrorMessage();
+            this.EcommerceSizeError = ItemService.ValidateEcommerceSize(ItemViewModelItem).ReturnErrorMessage();
+            this.EcommerceSubjectKeywordsError = ItemService.ValidateEcommerceKeywords(ItemViewModelItem, "Subject").ReturnErrorMessage();
+            this.EcommerceUpcError = ItemService.ValidateEcommerceUpc(ItemViewModelItem).ReturnErrorMessage();
         }
 
         /// <summary>
@@ -9366,15 +10263,15 @@ namespace Odin.ViewModels
         /// </summary>
         public void ValidateSellOnFields()
         {
-            this.SellOnAllPostersError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnAllPostersCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "All Posters");
-            this.SellOnAmazonError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnAmazonCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Amazon");
-            this.SellOnAmazonSellerCentralError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnAmazonSellerCentralCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Amazon Seller Central");
-            this.SellOnFanaticsError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnFanaticsCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Fanatics");
-            this.SellOnGuitarCenterError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnGuitarCenterCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Guitar Center");
-            this.SellOnHayneedleError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnHayneedleCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Hayneedle");
-            this.SellOnTargetError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnTargetCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Target");
-            this.SellOnWalmartError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnWalmartCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Walmart");
-            this.SellOnWayfairError = ItemService.ValidateSellOnValue(DbUtil.ConvertYN(this.SellOnWayfairCheck), DbUtil.ConvertYN(this.SellOnEcommerceCheck), "Wayfair");
+            this.SellOnAllPostersError = ItemService.ValidateSellOnValue(ItemViewModelItem, "All Posters").ReturnErrorMessage();
+            this.SellOnAmazonError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Amazon").ReturnErrorMessage();
+            this.SellOnAmazonSellerCentralError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Amazon Seller Central").ReturnErrorMessage();
+            this.SellOnFanaticsError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Fanatics").ReturnErrorMessage();
+            this.SellOnGuitarCenterError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Guitar Center").ReturnErrorMessage();
+            this.SellOnHayneedleError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Hayneedle").ReturnErrorMessage();
+            this.SellOnTargetError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Target").ReturnErrorMessage();
+            this.SellOnWalmartError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Walmart").ReturnErrorMessage();
+            this.SellOnWayfairError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Wayfair").ReturnErrorMessage();
         }
 
         #endregion //Methods
@@ -9386,7 +10283,7 @@ namespace Odin.ViewModels
         /// </summary>
         /// <param name="itemObj"></param>
         /// <param name="itemService"></param>
-        public ItemViewModel(ItemObject itemObj, ItemService itemService, List<string> itemIds)
+        public ItemViewModel(ItemObject itemObj, ItemService itemService, List<string> itemIds, ObservableCollection<ItemError> errors = null)
         {
             if (itemService == null) { throw new ArgumentNullException("itemService"); }    
             this.ItemService = itemService ?? throw new ArgumentNullException("itemService");
@@ -9397,7 +10294,17 @@ namespace Odin.ViewModels
             SetImages();
             SetIsUpdate(itemObj.Status);            
             this.BlockInfo = true;
-            ValidateAll(this.ItemViewModelItem);
+            if (errors != null)
+            {
+                foreach (ItemError error in errors)
+                {
+                    if (error.ItemIdNumber == this.ItemViewModelItem.ItemId)
+                    {
+                        AssignError(error);
+                    }
+                }
+            }
+            // ValidateAll(this.ItemViewModelItem);
         }
 
         #endregion // Constructor

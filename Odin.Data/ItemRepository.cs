@@ -306,57 +306,57 @@ namespace Odin.Data
         {
             if (!context.AmazonItemAttributes.Any(o => o.InvItemId == item.ItemId))
             {
-                string cost = (!string.IsNullOrEmpty(item.Ecommerce_Cost)) ? item.Ecommerce_Cost : "0";
-                string height = (!string.IsNullOrEmpty(item.Ecommerce_ItemHeight)) ? item.Ecommerce_ItemHeight : "0";
-                string length = (!string.IsNullOrEmpty(item.Ecommerce_ItemLength)) ? item.Ecommerce_ItemLength : "0";
-                string weight = (!string.IsNullOrEmpty(item.Ecommerce_ItemWeight)) ? item.Ecommerce_ItemWeight : "0";
-                string width = (!string.IsNullOrEmpty(item.Ecommerce_ItemWidth)) ? item.Ecommerce_ItemWidth : "0";
-                string packageHeight = (!string.IsNullOrEmpty(item.Ecommerce_PackageHeight)) ? item.Ecommerce_PackageHeight : "0";
-                string packageLength = (!string.IsNullOrEmpty(item.Ecommerce_PackageLength)) ? item.Ecommerce_PackageLength : "0";
-                string packageWeight = (!string.IsNullOrEmpty(item.Ecommerce_PackageWeight)) ? item.Ecommerce_PackageWeight : "0";
-                string packageWidth = (!string.IsNullOrEmpty(item.Ecommerce_PackageWidth)) ? item.Ecommerce_PackageWidth : "0";
-                string pageQty = (!string.IsNullOrEmpty(item.Ecommerce_PageQty)) ? item.Ecommerce_PageQty : "0";
-                string msrp = (!string.IsNullOrEmpty(item.Ecommerce_Msrp)) ? item.Ecommerce_Msrp : "0";
+                string cost = (!string.IsNullOrEmpty(item.EcommerceCost)) ? item.EcommerceCost : "0";
+                string height = (!string.IsNullOrEmpty(item.EcommerceItemHeight)) ? item.EcommerceItemHeight : "0";
+                string length = (!string.IsNullOrEmpty(item.EcommerceItemLength)) ? item.EcommerceItemLength : "0";
+                string weight = (!string.IsNullOrEmpty(item.EcommerceItemWeight)) ? item.EcommerceItemWeight : "0";
+                string width = (!string.IsNullOrEmpty(item.EcommerceItemWidth)) ? item.EcommerceItemWidth : "0";
+                string packageHeight = (!string.IsNullOrEmpty(item.EcommercePackageHeight)) ? item.EcommercePackageHeight : "0";
+                string packageLength = (!string.IsNullOrEmpty(item.EcommercePackageLength)) ? item.EcommercePackageLength : "0";
+                string packageWeight = (!string.IsNullOrEmpty(item.EcommercePackageWeight)) ? item.EcommercePackageWeight : "0";
+                string packageWidth = (!string.IsNullOrEmpty(item.EcommercePackageWidth)) ? item.EcommercePackageWidth : "0";
+                string pageQty = (!string.IsNullOrEmpty(item.EcommercePageQty)) ? item.EcommercePageQty : "0";
+                string msrp = (!string.IsNullOrEmpty(item.EcommerceMsrp)) ? item.EcommerceMsrp : "0";
 
                 context.AmazonItemAttributes.Add(new AmazonItemAttributes
                 {
-                    Asin = item.Ecommerce_Asin,
-                    Bullet1 = item.Ecommerce_Bullet1,
-                    Bullet2 = item.Ecommerce_Bullet2,
-                    Bullet3 = item.Ecommerce_Bullet3,
-                    Bullet4 = item.Ecommerce_Bullet4,
-                    Bullet5 = item.Ecommerce_Bullet5,
-                    Components = item.Ecommerce_Components,
+                    Asin = item.EcommerceAsin,
+                    Bullet1 = item.EcommerceBullet1,
+                    Bullet2 = item.EcommerceBullet2,
+                    Bullet3 = item.EcommerceBullet3,
+                    Bullet4 = item.EcommerceBullet4,
+                    Bullet5 = item.EcommerceBullet5,
+                    Components = item.EcommerceComponents,
                     Cost = Convert.ToDecimal(cost),
-                    CountryOfOrigin = item.Ecommerce_CountryofOrigin,
-                    ExternalId = item.Ecommerce_ExternalId,
-                    ExternalIdType = item.Ecommerce_ExternalIdType,
-                    ImageUrl1 = item.Ecommerce_ImagePath1,
-                    ImageUrl2 = item.Ecommerce_ImagePath2,
-                    ImageUrl3 = item.Ecommerce_ImagePath3,
-                    ImageUrl4 = item.Ecommerce_ImagePath4,
-                    ImageUrl5 = item.Ecommerce_ImagePath5,
+                    CountryOfOrigin = item.EcommerceCountryofOrigin,
+                    ExternalId = item.EcommerceExternalId,
+                    ExternalIdType = item.EcommerceExternalIdType,
+                    ImageUrl1 = item.EcommerceImagePath1,
+                    ImageUrl2 = item.EcommerceImagePath2,
+                    ImageUrl3 = item.EcommerceImagePath3,
+                    ImageUrl4 = item.EcommerceImagePath4,
+                    ImageUrl5 = item.EcommerceImagePath5,
                     Height = Convert.ToDecimal(height),
                     InvItemId = item.ItemId,
-                    ItemName = item.Ecommerce_ItemName,
+                    ItemName = item.EcommerceItemName,
                     Length = Convert.ToDecimal(length),
                     Weight = Convert.ToDecimal(weight),
                     Width = Convert.ToDecimal(width),
-                    ModelName = item.Ecommerce_ModelName,
+                    ModelName = item.EcommerceModelName,
                     PackageHeight = Convert.ToDecimal(packageHeight),
                     PackageLength = Convert.ToDecimal(packageLength),
                     PackageWeight = Convert.ToDecimal(packageWeight),
                     PackageWidth = Convert.ToDecimal(packageWidth),
                     PageCount = Convert.ToInt16(pageQty),
-                    ProductCategory = item.Ecommerce_ProductCategory,
-                    FullDescription = item.Ecommerce_ProductDescription,
-                    ProductSubcategory = item.Ecommerce_ProductSubcategory,
-                    ManufacturerName = item.Ecommerce_ManufacturerName,
+                    ProductCategory = item.EcommerceProductCategory,
+                    FullDescription = item.EcommerceProductDescription,
+                    ProductSubcategory = item.EcommerceProductSubcategory,
+                    ManufacturerName = item.EcommerceManufacturerName,
                     Msrp = Convert.ToDecimal(msrp),
-                    GenericKeywords = item.Ecommerce_GenericKeywords.ToLower(),
-                    SubjectKeywords = item.Ecommerce_SubjectKeywords.ToLower(),
-                    Size = item.Ecommerce_Size,
-                    UpcOverride = item.Ecommerce_Upc
+                    GenericKeywords = item.EcommerceGenericKeywords.ToLower(),
+                    SubjectKeywords = item.EcommerceSubjectKeywords.ToLower(),
+                    Size = item.EcommerceSize,
+                    UpcOverride = item.EcommerceUpc
                 });
             }
         }
@@ -766,41 +766,41 @@ namespace Odin.Data
                 Weight = item.Weight,
                 Width = item.Width,
                 AAmazonActive = item.SellOnAmazon,
-                AAsin = item.Ecommerce_Asin,
-                ABullet1 = item.Ecommerce_Bullet1,
-                ABullet2 = item.Ecommerce_Bullet2,
-                ABullet3 = item.Ecommerce_Bullet3,
-                ABullet4 = item.Ecommerce_Bullet4,
-                ABullet5 = item.Ecommerce_Bullet5,
-                AComponents = item.Ecommerce_Components,
-                ACost = item.Ecommerce_Cost,
-                AExternalIdType = item.Ecommerce_ExternalIdType,
-                AExternalId = item.Ecommerce_ExternalId,
-                AImageUrl1 = item.Ecommerce_ImagePath1,
-                AImageUrl2 = item.Ecommerce_ImagePath2,
-                AImageUrl3 = item.Ecommerce_ImagePath3,
-                AImageUrl4 = item.Ecommerce_ImagePath4,
-                AImageUrl5 = item.Ecommerce_ImagePath5,
-                AItemHeight = item.Ecommerce_ItemHeight,
-                AItemLength = item.Ecommerce_ItemLength,
-                AItemName = item.Ecommerce_ItemName,
-                AItemWeight = item.Ecommerce_ItemWeight,
-                AItemWidth = item.Ecommerce_ItemWidth,
-                AModelName = item.Ecommerce_ModelName,
-                APackageLength = item.Ecommerce_PackageLength,
-                APackageHeight = item.Ecommerce_PackageHeight,
-                APackageWidth = item.Ecommerce_PackageWidth,
-                APageQty = item.Ecommerce_PageQty,
-                APackageWeight = item.Ecommerce_PackageWeight,
-                AProductCategory = item.Ecommerce_ProductCategory,
-                AProductDescription = item.Ecommerce_ProductDescription,
-                AProductSubcategory = item.Ecommerce_ProductSubcategory,
-                AManufacturerName = item.Ecommerce_ManufacturerName,
-                AMsrp = item.Ecommerce_Msrp,
-                AGenericKeywords = item.Ecommerce_GenericKeywords,
-                ASize = item.Ecommerce_Size,
-                ASubjectKeywords = item.Ecommerce_SubjectKeywords,
-                AUpc = item.Ecommerce_Upc
+                AAsin = item.EcommerceAsin,
+                ABullet1 = item.EcommerceBullet1,
+                ABullet2 = item.EcommerceBullet2,
+                ABullet3 = item.EcommerceBullet3,
+                ABullet4 = item.EcommerceBullet4,
+                ABullet5 = item.EcommerceBullet5,
+                AComponents = item.EcommerceComponents,
+                ACost = item.EcommerceCost,
+                AExternalIdType = item.EcommerceExternalIdType,
+                AExternalId = item.EcommerceExternalId,
+                AImageUrl1 = item.EcommerceImagePath1,
+                AImageUrl2 = item.EcommerceImagePath2,
+                AImageUrl3 = item.EcommerceImagePath3,
+                AImageUrl4 = item.EcommerceImagePath4,
+                AImageUrl5 = item.EcommerceImagePath5,
+                AItemHeight = item.EcommerceItemHeight,
+                AItemLength = item.EcommerceItemLength,
+                AItemName = item.EcommerceItemName,
+                AItemWeight = item.EcommerceItemWeight,
+                AItemWidth = item.EcommerceItemWidth,
+                AModelName = item.EcommerceModelName,
+                APackageLength = item.EcommercePackageLength,
+                APackageHeight = item.EcommercePackageHeight,
+                APackageWidth = item.EcommercePackageWidth,
+                APageQty = item.EcommercePageQty,
+                APackageWeight = item.EcommercePackageWeight,
+                AProductCategory = item.EcommerceProductCategory,
+                AProductDescription = item.EcommerceProductDescription,
+                AProductSubcategory = item.EcommerceProductSubcategory,
+                AManufacturerName = item.EcommerceManufacturerName,
+                AMsrp = item.EcommerceMsrp,
+                AGenericKeywords = item.EcommerceGenericKeywords,
+                ASize = item.EcommerceSize,
+                ASubjectKeywords = item.EcommerceSubjectKeywords,
+                AUpc = item.EcommerceUpc
             });
         }
 
@@ -1490,7 +1490,7 @@ namespace Odin.Data
             GlobalData.CountriesOfOrigin = RetrieveCountriesOfOrigin();
             GlobalData.Customers = RetrieveCustomerIdConversionsList();
             GlobalData.CustomerIdConversions = RetrieveCustomerIdConversionsList();
-            GlobalData.ExternalIdTypes = RetrieveEcommerce_ExternalIdTypeList();
+            GlobalData.ExternalIdTypes = RetrieveEcommerceExternalIdTypeList();
             GlobalData.ItemCategories = RetrieveItemCategories();
             GlobalData.ItemGroups = RetrieveItemGroups();
             GlobalData.ItemIds = RetrieveItemIds();
@@ -1582,41 +1582,41 @@ namespace Odin.Data
                         DirectImport = (!string.IsNullOrEmpty(odinItem.DirectImport)) ? odinItem.DirectImport.Trim() : "",
                         Duty = (!string.IsNullOrEmpty(odinItem.Duty)) ? odinItem.Duty.Trim() : "",
                         Ean = (!string.IsNullOrEmpty(odinItem.Ean)) ? odinItem.Ean.Trim() : "",
-                        Ecommerce_Asin = (!string.IsNullOrEmpty(odinItem.EcommerceAsin)) ? odinItem.EcommerceAsin.Trim() : "",
-                        Ecommerce_Bullet1 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet1)) ? odinItem.EcommerceBullet1.Trim() : "",
-                        Ecommerce_Bullet2 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet2)) ? odinItem.EcommerceBullet2.Trim() : "",
-                        Ecommerce_Bullet3 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet3)) ? odinItem.EcommerceBullet3.Trim() : "",
-                        Ecommerce_Bullet4 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet4)) ? odinItem.EcommerceBullet4.Trim() : "",
-                        Ecommerce_Bullet5 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet5)) ? odinItem.EcommerceBullet5.Trim() : "",
-                        Ecommerce_Components = (!string.IsNullOrEmpty(odinItem.EcommerceComponents)) ? odinItem.EcommerceComponents.Trim() : "",
-                        Ecommerce_Cost = (odinItem.EcommerceCost != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceCost).Trim(), 2) : "",
-                        Ecommerce_ExternalId = (!string.IsNullOrEmpty(odinItem.EcommerceExternalId)) ? odinItem.EcommerceExternalId.Trim() : "",
-                        Ecommerce_ExternalIdType = (!string.IsNullOrEmpty(odinItem.EcommerceExternalIdType)) ? odinItem.EcommerceExternalIdType.Trim() : "",
-                        Ecommerce_ImagePath1 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl1)) ? odinItem.EcommerceImageUrl1.Trim() : "",
-                        Ecommerce_ImagePath2 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl2)) ? odinItem.EcommerceImageUrl2.Trim() : "",
-                        Ecommerce_ImagePath3 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl3)) ? odinItem.EcommerceImageUrl3.Trim() : "",
-                        Ecommerce_ImagePath4 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl4)) ? odinItem.EcommerceImageUrl4.Trim() : "",
-                        Ecommerce_ImagePath5 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl5)) ? odinItem.EcommerceImageUrl5.Trim() : "",
-                        Ecommerce_ItemHeight = (odinItem.EcommerceHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceHeight).Trim(), 1) : "",
-                        Ecommerce_ItemLength = (odinItem.EcommerceLength != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceLength).Trim(), 1) : "",
-                        Ecommerce_ItemName = (!string.IsNullOrEmpty(odinItem.EcommerceItemName)) ? odinItem.EcommerceItemName.Trim() : "",
-                        Ecommerce_ItemWeight = (odinItem.EcommerceWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceWeight).Trim(), 1) : "",
-                        Ecommerce_ItemWidth = (odinItem.EcommerceWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceWidth).Trim(), 1) : "",
-                        Ecommerce_ModelName = (!string.IsNullOrEmpty(odinItem.EcommerceModelName)) ? odinItem.EcommerceModelName.Trim() : "",
-                        Ecommerce_PackageHeight = (odinItem.EcommercePackageHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommercePackageHeight).Trim(), 1) : "",
-                        Ecommerce_PackageLength = (odinItem.EcommercePackageLength != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommercePackageLength).Trim(), 1) : "",
-                        Ecommerce_PackageWeight = (odinItem.EcommercePackageWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommercePackageWeight).Trim(), 1) : "",
-                        Ecommerce_PackageWidth = (odinItem.EcommercePackageWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommercePackageWidth).Trim(), 1) : "",
-                        Ecommerce_PageQty = (!string.IsNullOrEmpty(Convert.ToString(odinItem.EcommercePageCount))) ? Convert.ToString(odinItem.EcommercePageCount).Trim() : "",
-                        Ecommerce_ProductCategory = (!string.IsNullOrEmpty(odinItem.EcommerceProductCategory)) ? odinItem.EcommerceProductCategory.Trim() : "",
-                        Ecommerce_ProductDescription = (!string.IsNullOrEmpty(odinItem.EcommerceFullDescription)) ? odinItem.EcommerceFullDescription.Trim() : "",
-                        Ecommerce_ProductSubcategory = (!string.IsNullOrEmpty(odinItem.EcommerceProductSubcategory)) ? odinItem.EcommerceProductSubcategory.Trim() : "",
-                        Ecommerce_ManufacturerName = (!string.IsNullOrEmpty(odinItem.EcommerceManufacturerName)) ? odinItem.EcommerceManufacturerName.Trim() : "",
-                        Ecommerce_Msrp = (odinItem.EcommerceMsrp != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceMsrp).Trim(), 2) : "",
-                        Ecommerce_GenericKeywords = (!string.IsNullOrEmpty(odinItem.EcommerceGenericKeywords)) ? odinItem.EcommerceGenericKeywords.Trim() : "",
-                        Ecommerce_SubjectKeywords = (!string.IsNullOrEmpty(odinItem.EcommerceSubjectKeywords)) ? odinItem.EcommerceSubjectKeywords.Trim() : "",
-                        Ecommerce_Size = (!string.IsNullOrEmpty(odinItem.EcommerceSize)) ? odinItem.EcommerceSize.Trim() : "",
-                        Ecommerce_Upc = (!string.IsNullOrEmpty(odinItem.EcommerceUpc)) ? odinItem.EcommerceUpc.Trim() : "",
+                        EcommerceAsin = (!string.IsNullOrEmpty(odinItem.EcommerceAsin)) ? odinItem.EcommerceAsin.Trim() : "",
+                        EcommerceBullet1 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet1)) ? odinItem.EcommerceBullet1.Trim() : "",
+                        EcommerceBullet2 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet2)) ? odinItem.EcommerceBullet2.Trim() : "",
+                        EcommerceBullet3 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet3)) ? odinItem.EcommerceBullet3.Trim() : "",
+                        EcommerceBullet4 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet4)) ? odinItem.EcommerceBullet4.Trim() : "",
+                        EcommerceBullet5 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet5)) ? odinItem.EcommerceBullet5.Trim() : "",
+                        EcommerceComponents = (!string.IsNullOrEmpty(odinItem.EcommerceComponents)) ? odinItem.EcommerceComponents.Trim() : "",
+                        EcommerceCost = (odinItem.EcommerceCost != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceCost).Trim(), 2) : "",
+                        EcommerceExternalId = (!string.IsNullOrEmpty(odinItem.EcommerceExternalId)) ? odinItem.EcommerceExternalId.Trim() : "",
+                        EcommerceExternalIdType = (!string.IsNullOrEmpty(odinItem.EcommerceExternalIdType)) ? odinItem.EcommerceExternalIdType.Trim() : "",
+                        EcommerceImagePath1 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl1)) ? odinItem.EcommerceImageUrl1.Trim() : "",
+                        EcommerceImagePath2 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl2)) ? odinItem.EcommerceImageUrl2.Trim() : "",
+                        EcommerceImagePath3 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl3)) ? odinItem.EcommerceImageUrl3.Trim() : "",
+                        EcommerceImagePath4 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl4)) ? odinItem.EcommerceImageUrl4.Trim() : "",
+                        EcommerceImagePath5 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl5)) ? odinItem.EcommerceImageUrl5.Trim() : "",
+                        EcommerceItemHeight = (odinItem.EcommerceHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceHeight).Trim(), 1) : "",
+                        EcommerceItemLength = (odinItem.EcommerceLength != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceLength).Trim(), 1) : "",
+                        EcommerceItemName = (!string.IsNullOrEmpty(odinItem.EcommerceItemName)) ? odinItem.EcommerceItemName.Trim() : "",
+                        EcommerceItemWeight = (odinItem.EcommerceWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceWeight).Trim(), 1) : "",
+                        EcommerceItemWidth = (odinItem.EcommerceWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceWidth).Trim(), 1) : "",
+                        EcommerceModelName = (!string.IsNullOrEmpty(odinItem.EcommerceModelName)) ? odinItem.EcommerceModelName.Trim() : "",
+                        EcommercePackageHeight = (odinItem.EcommercePackageHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommercePackageHeight).Trim(), 1) : "",
+                        EcommercePackageLength = (odinItem.EcommercePackageLength != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommercePackageLength).Trim(), 1) : "",
+                        EcommercePackageWeight = (odinItem.EcommercePackageWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommercePackageWeight).Trim(), 1) : "",
+                        EcommercePackageWidth = (odinItem.EcommercePackageWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommercePackageWidth).Trim(), 1) : "",
+                        EcommercePageQty = (!string.IsNullOrEmpty(Convert.ToString(odinItem.EcommercePageCount))) ? Convert.ToString(odinItem.EcommercePageCount).Trim() : "",
+                        EcommerceProductCategory = (!string.IsNullOrEmpty(odinItem.EcommerceProductCategory)) ? odinItem.EcommerceProductCategory.Trim() : "",
+                        EcommerceProductDescription = (!string.IsNullOrEmpty(odinItem.EcommerceFullDescription)) ? odinItem.EcommerceFullDescription.Trim() : "",
+                        EcommerceProductSubcategory = (!string.IsNullOrEmpty(odinItem.EcommerceProductSubcategory)) ? odinItem.EcommerceProductSubcategory.Trim() : "",
+                        EcommerceManufacturerName = (!string.IsNullOrEmpty(odinItem.EcommerceManufacturerName)) ? odinItem.EcommerceManufacturerName.Trim() : "",
+                        EcommerceMsrp = (odinItem.EcommerceMsrp != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceMsrp).Trim(), 2) : "",
+                        EcommerceGenericKeywords = (!string.IsNullOrEmpty(odinItem.EcommerceGenericKeywords)) ? odinItem.EcommerceGenericKeywords.Trim() : "",
+                        EcommerceSubjectKeywords = (!string.IsNullOrEmpty(odinItem.EcommerceSubjectKeywords)) ? odinItem.EcommerceSubjectKeywords.Trim() : "",
+                        EcommerceSize = (!string.IsNullOrEmpty(odinItem.EcommerceSize)) ? odinItem.EcommerceSize.Trim() : "",
+                        EcommerceUpc = (!string.IsNullOrEmpty(odinItem.EcommerceUpc)) ? odinItem.EcommerceUpc.Trim() : "",
                         Gpc = (!string.IsNullOrEmpty(odinItem.Gpc)) ? odinItem.Gpc.Trim() : "",
                         Height = (odinItem.InvItemHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemHeight), 1) : "",
                         ImagePath = (!string.IsNullOrEmpty(odinItem.ImageFileName)) ? odinItem.ImageFileName.Trim() : "",
@@ -1680,7 +1680,7 @@ namespace Odin.Data
                         Weight = (odinItem.InvItemWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWeight), 1) : "",
                         Width = (odinItem.InvItemWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWidth), 1) : "",
                         OnSite = (!string.IsNullOrEmpty(odinItem.OnSite)) ? odinItem.OnSite : "",
-                        Ecommerce_CountryofOrigin = (!string.IsNullOrEmpty(odinItem.CountryIstOrigin)) ? odinItem.CountryIstOrigin : "",
+                        EcommerceCountryofOrigin = (!string.IsNullOrEmpty(odinItem.CountryIstOrigin)) ? odinItem.CountryIstOrigin : "",
                         Status = "Update",
                         ItemRow = row
                     };
@@ -1895,41 +1895,41 @@ namespace Odin.Data
                     item.Weight = odinItemUpdateRecord.Weight;
                     item.Width = odinItemUpdateRecord.Width;
                     item.InStockDate = (!string.IsNullOrEmpty(odinItemUpdateRecord.InStockDate)) ? Convert.ToString(DbUtil.StripTime(odinItemUpdateRecord.InStockDate)) : "";
-                    item.Ecommerce_ItemName = odinItemUpdateRecord.AItemName;
-                    item.Ecommerce_ModelName = odinItemUpdateRecord.AModelName;
-                    item.Ecommerce_ProductCategory = odinItemUpdateRecord.AProductCategory;
-                    item.Ecommerce_ProductSubcategory = odinItemUpdateRecord.AProductSubcategory;
-                    item.Ecommerce_Asin = odinItemUpdateRecord.AAsin;
-                    item.Ecommerce_Bullet1 = odinItemUpdateRecord.ABullet1;
-                    item.Ecommerce_Bullet2 = odinItemUpdateRecord.ABullet2;
-                    item.Ecommerce_Bullet3 = odinItemUpdateRecord.ABullet3;
-                    item.Ecommerce_Bullet4 = odinItemUpdateRecord.ABullet4;
-                    item.Ecommerce_Bullet5 = odinItemUpdateRecord.ABullet5;
-                    item.Ecommerce_ProductDescription = odinItemUpdateRecord.AProductDescription;
-                    item.Ecommerce_ExternalIdType = odinItemUpdateRecord.AExternalIdType;
-                    item.Ecommerce_ExternalId = odinItemUpdateRecord.AExternalId;
-                    item.Ecommerce_GenericKeywords = odinItemUpdateRecord.AGenericKeywords;
-                    item.Ecommerce_SubjectKeywords = odinItemUpdateRecord.ASubjectKeywords;
-                    item.Ecommerce_ImagePath1 = odinItemUpdateRecord.AImageUrl1;
-                    item.Ecommerce_ImagePath2 = odinItemUpdateRecord.AImageUrl2;
-                    item.Ecommerce_ImagePath3 = odinItemUpdateRecord.AImageUrl3;
-                    item.Ecommerce_ImagePath4 = odinItemUpdateRecord.AImageUrl4;
-                    item.Ecommerce_ImagePath5 = odinItemUpdateRecord.AImageUrl5;
-                    item.Ecommerce_Size = odinItemUpdateRecord.ASize;
-                    item.Ecommerce_Upc = odinItemUpdateRecord.AUpc;
-                    item.Ecommerce_Cost = odinItemUpdateRecord.ACost;
-                    item.Ecommerce_Msrp = odinItemUpdateRecord.AMsrp;
-                    item.Ecommerce_ManufacturerName = odinItemUpdateRecord.AManufacturerName;
-                    item.Ecommerce_ItemLength = odinItemUpdateRecord.AItemLength;
-                    item.Ecommerce_ItemHeight = odinItemUpdateRecord.AItemHeight;
-                    item.Ecommerce_ItemWeight = odinItemUpdateRecord.AItemWeight;
-                    item.Ecommerce_ItemWidth = odinItemUpdateRecord.AItemWidth;
-                    item.Ecommerce_PackageHeight = odinItemUpdateRecord.APackageHeight;
-                    item.Ecommerce_PackageLength = odinItemUpdateRecord.APackageLength;
-                    item.Ecommerce_PackageWeight = odinItemUpdateRecord.APackageWeight;
-                    item.Ecommerce_PackageWidth = odinItemUpdateRecord.APackageWidth;
-                    item.Ecommerce_PageQty = odinItemUpdateRecord.APageQty;
-                    item.Ecommerce_Components = odinItemUpdateRecord.AComponents;
+                    item.EcommerceItemName = odinItemUpdateRecord.AItemName;
+                    item.EcommerceModelName = odinItemUpdateRecord.AModelName;
+                    item.EcommerceProductCategory = odinItemUpdateRecord.AProductCategory;
+                    item.EcommerceProductSubcategory = odinItemUpdateRecord.AProductSubcategory;
+                    item.EcommerceAsin = odinItemUpdateRecord.AAsin;
+                    item.EcommerceBullet1 = odinItemUpdateRecord.ABullet1;
+                    item.EcommerceBullet2 = odinItemUpdateRecord.ABullet2;
+                    item.EcommerceBullet3 = odinItemUpdateRecord.ABullet3;
+                    item.EcommerceBullet4 = odinItemUpdateRecord.ABullet4;
+                    item.EcommerceBullet5 = odinItemUpdateRecord.ABullet5;
+                    item.EcommerceProductDescription = odinItemUpdateRecord.AProductDescription;
+                    item.EcommerceExternalIdType = odinItemUpdateRecord.AExternalIdType;
+                    item.EcommerceExternalId = odinItemUpdateRecord.AExternalId;
+                    item.EcommerceGenericKeywords = odinItemUpdateRecord.AGenericKeywords;
+                    item.EcommerceSubjectKeywords = odinItemUpdateRecord.ASubjectKeywords;
+                    item.EcommerceImagePath1 = odinItemUpdateRecord.AImageUrl1;
+                    item.EcommerceImagePath2 = odinItemUpdateRecord.AImageUrl2;
+                    item.EcommerceImagePath3 = odinItemUpdateRecord.AImageUrl3;
+                    item.EcommerceImagePath4 = odinItemUpdateRecord.AImageUrl4;
+                    item.EcommerceImagePath5 = odinItemUpdateRecord.AImageUrl5;
+                    item.EcommerceSize = odinItemUpdateRecord.ASize;
+                    item.EcommerceUpc = odinItemUpdateRecord.AUpc;
+                    item.EcommerceCost = odinItemUpdateRecord.ACost;
+                    item.EcommerceMsrp = odinItemUpdateRecord.AMsrp;
+                    item.EcommerceManufacturerName = odinItemUpdateRecord.AManufacturerName;
+                    item.EcommerceItemLength = odinItemUpdateRecord.AItemLength;
+                    item.EcommerceItemHeight = odinItemUpdateRecord.AItemHeight;
+                    item.EcommerceItemWeight = odinItemUpdateRecord.AItemWeight;
+                    item.EcommerceItemWidth = odinItemUpdateRecord.AItemWidth;
+                    item.EcommercePackageHeight = odinItemUpdateRecord.APackageHeight;
+                    item.EcommercePackageLength = odinItemUpdateRecord.APackageLength;
+                    item.EcommercePackageWeight = odinItemUpdateRecord.APackageWeight;
+                    item.EcommercePackageWidth = odinItemUpdateRecord.APackageWidth;
+                    item.EcommercePageQty = odinItemUpdateRecord.APageQty;
+                    item.EcommerceComponents = odinItemUpdateRecord.AComponents;
 
                     item.UserName = odinItemUpdateRecord.Username;
                     item.RecordDate = Convert.ToString(odinItemUpdateRecord.InputDate);
@@ -2130,54 +2130,54 @@ namespace Odin.Data
             AmazonItemAttributes amazonItemAttributes = context.AmazonItemAttributes.SingleOrDefault(o => o.InvItemId == item.ItemId);
             if (amazonItemAttributes != null)
             {
-                string cost = (!string.IsNullOrEmpty(item.Ecommerce_Cost)) ? item.Ecommerce_Cost : "0";
-                string height = (!string.IsNullOrEmpty(item.Ecommerce_ItemHeight)) ? item.Ecommerce_ItemHeight : "0";
-                string length = (!string.IsNullOrEmpty(item.Ecommerce_ItemLength)) ? item.Ecommerce_ItemLength : "0";
-                string weight = (!string.IsNullOrEmpty(item.Ecommerce_ItemWeight)) ? item.Ecommerce_ItemWeight : "0";
-                string width = (!string.IsNullOrEmpty(item.Ecommerce_ItemWidth)) ? item.Ecommerce_ItemWidth : "0";
-                string packageHeight = (!string.IsNullOrEmpty(item.Ecommerce_PackageHeight)) ? item.Ecommerce_PackageHeight : "0";
-                string packageLength = (!string.IsNullOrEmpty(item.Ecommerce_PackageLength)) ? item.Ecommerce_PackageLength : "0";
-                string packageWeight = (!string.IsNullOrEmpty(item.Ecommerce_PackageWeight)) ? item.Ecommerce_PackageWeight : "0";
-                string packageWidth = (!string.IsNullOrEmpty(item.Ecommerce_PackageWidth)) ? item.Ecommerce_PackageWidth : "0";
-                string pageQty = (!string.IsNullOrEmpty(item.Ecommerce_PageQty)) ? item.Ecommerce_PageQty : "0";
-                string msrp = (!string.IsNullOrEmpty(item.Ecommerce_Msrp)) ? item.Ecommerce_Msrp : "0";
+                string cost = (!string.IsNullOrEmpty(item.EcommerceCost)) ? item.EcommerceCost : "0";
+                string height = (!string.IsNullOrEmpty(item.EcommerceItemHeight)) ? item.EcommerceItemHeight : "0";
+                string length = (!string.IsNullOrEmpty(item.EcommerceItemLength)) ? item.EcommerceItemLength : "0";
+                string weight = (!string.IsNullOrEmpty(item.EcommerceItemWeight)) ? item.EcommerceItemWeight : "0";
+                string width = (!string.IsNullOrEmpty(item.EcommerceItemWidth)) ? item.EcommerceItemWidth : "0";
+                string packageHeight = (!string.IsNullOrEmpty(item.EcommercePackageHeight)) ? item.EcommercePackageHeight : "0";
+                string packageLength = (!string.IsNullOrEmpty(item.EcommercePackageLength)) ? item.EcommercePackageLength : "0";
+                string packageWeight = (!string.IsNullOrEmpty(item.EcommercePackageWeight)) ? item.EcommercePackageWeight : "0";
+                string packageWidth = (!string.IsNullOrEmpty(item.EcommercePackageWidth)) ? item.EcommercePackageWidth : "0";
+                string pageQty = (!string.IsNullOrEmpty(item.EcommercePageQty)) ? item.EcommercePageQty : "0";
+                string msrp = (!string.IsNullOrEmpty(item.EcommerceMsrp)) ? item.EcommerceMsrp : "0";
 
-                amazonItemAttributes.Asin = item.Ecommerce_Asin;
-                amazonItemAttributes.Bullet1 = item.Ecommerce_Bullet1;
-                amazonItemAttributes.Bullet2 = item.Ecommerce_Bullet2;
-                amazonItemAttributes.Bullet3 = item.Ecommerce_Bullet3;
-                amazonItemAttributes.Bullet4 = item.Ecommerce_Bullet4;
-                amazonItemAttributes.Bullet5 = item.Ecommerce_Bullet5;
-                amazonItemAttributes.Components = item.Ecommerce_Components;
+                amazonItemAttributes.Asin = item.EcommerceAsin;
+                amazonItemAttributes.Bullet1 = item.EcommerceBullet1;
+                amazonItemAttributes.Bullet2 = item.EcommerceBullet2;
+                amazonItemAttributes.Bullet3 = item.EcommerceBullet3;
+                amazonItemAttributes.Bullet4 = item.EcommerceBullet4;
+                amazonItemAttributes.Bullet5 = item.EcommerceBullet5;
+                amazonItemAttributes.Components = item.EcommerceComponents;
                 amazonItemAttributes.Cost = Convert.ToDecimal(cost);
-                amazonItemAttributes.CountryOfOrigin = item.Ecommerce_CountryofOrigin;
-                amazonItemAttributes.ExternalId = item.Ecommerce_ExternalId;
-                amazonItemAttributes.ExternalIdType = item.Ecommerce_ExternalIdType;
-                amazonItemAttributes.ImageUrl1 = item.Ecommerce_ImagePath1;
-                amazonItemAttributes.ImageUrl2 = item.Ecommerce_ImagePath2;
-                amazonItemAttributes.ImageUrl3 = item.Ecommerce_ImagePath3;
-                amazonItemAttributes.ImageUrl4 = item.Ecommerce_ImagePath4;
-                amazonItemAttributes.ImageUrl5 = item.Ecommerce_ImagePath5;
+                amazonItemAttributes.CountryOfOrigin = item.EcommerceCountryofOrigin;
+                amazonItemAttributes.ExternalId = item.EcommerceExternalId;
+                amazonItemAttributes.ExternalIdType = item.EcommerceExternalIdType;
+                amazonItemAttributes.ImageUrl1 = item.EcommerceImagePath1;
+                amazonItemAttributes.ImageUrl2 = item.EcommerceImagePath2;
+                amazonItemAttributes.ImageUrl3 = item.EcommerceImagePath3;
+                amazonItemAttributes.ImageUrl4 = item.EcommerceImagePath4;
+                amazonItemAttributes.ImageUrl5 = item.EcommerceImagePath5;
                 amazonItemAttributes.Height = Convert.ToDecimal(height);
-                amazonItemAttributes.ItemName = item.Ecommerce_ItemName;
+                amazonItemAttributes.ItemName = item.EcommerceItemName;
                 amazonItemAttributes.Length = Convert.ToDecimal(length);
                 amazonItemAttributes.Weight = Convert.ToDecimal(weight);
                 amazonItemAttributes.Width = Convert.ToDecimal(width);
-                amazonItemAttributes.ModelName = item.Ecommerce_ModelName;
+                amazonItemAttributes.ModelName = item.EcommerceModelName;
                 amazonItemAttributes.PackageHeight = Convert.ToDecimal(packageHeight);
                 amazonItemAttributes.PackageLength = Convert.ToDecimal(packageLength);
                 amazonItemAttributes.PackageWeight = Convert.ToDecimal(packageWeight);
                 amazonItemAttributes.PackageWidth = Convert.ToDecimal(packageWidth);
                 amazonItemAttributes.PageCount = Convert.ToInt16(pageQty);
-                amazonItemAttributes.ProductCategory = item.Ecommerce_ProductCategory;
-                amazonItemAttributes.FullDescription = item.Ecommerce_ProductDescription;
-                amazonItemAttributes.ProductSubcategory = item.Ecommerce_ProductSubcategory;
-                amazonItemAttributes.ManufacturerName = item.Ecommerce_ManufacturerName;
+                amazonItemAttributes.ProductCategory = item.EcommerceProductCategory;
+                amazonItemAttributes.FullDescription = item.EcommerceProductDescription;
+                amazonItemAttributes.ProductSubcategory = item.EcommerceProductSubcategory;
+                amazonItemAttributes.ManufacturerName = item.EcommerceManufacturerName;
                 amazonItemAttributes.Msrp = Convert.ToDecimal(msrp);
-                amazonItemAttributes.GenericKeywords = item.Ecommerce_GenericKeywords.ToLower();
-                amazonItemAttributes.SubjectKeywords = item.Ecommerce_SubjectKeywords.ToLower();
-                amazonItemAttributes.Size = item.Ecommerce_Size;
-                amazonItemAttributes.UpcOverride = item.Ecommerce_Upc.Trim();
+                amazonItemAttributes.GenericKeywords = item.EcommerceGenericKeywords.ToLower();
+                amazonItemAttributes.SubjectKeywords = item.EcommerceSubjectKeywords.ToLower();
+                amazonItemAttributes.Size = item.EcommerceSize;
+                amazonItemAttributes.UpcOverride = item.EcommerceUpc.Trim();
             }
             else
             {
@@ -3287,7 +3287,7 @@ namespace Odin.Data
         ///     Get list of appropriate External Id types for Amazon Products
         /// </summary>
         /// <returns>List of External Id Types</returns>
-        private List<string> RetrieveEcommerce_ExternalIdTypeList()
+        private List<string> RetrieveEcommerceExternalIdTypeList()
         {
             List<string> Types = new List<string>( new string[] { "", "ISBN", "EAN", "UPC", "UPC (12-digits)"});
             return Types;

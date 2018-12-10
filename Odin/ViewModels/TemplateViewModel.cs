@@ -95,7 +95,7 @@ namespace Odin.ViewModels
         /// <summary>
         ///     Gets or sets the TemplateObject
         /// </summary>
-        public Template TemplateObject { get; set; }
+        public ItemObject TemplateObject { get; set; }
 
         /// <summary>
         ///     Gets or sets the TemplateStatus
@@ -179,7 +179,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.AccountingGroup != value)
                 {
                     this.TemplateObject.AccountingGroup = value;
-                    AccountingGroupError = ItemService.ValidateAccountingGroup(value, this.ProdType);
+                    AccountingGroupError = ItemService.ValidateAccountingGroup(TemplateObject).ReturnErrorMessage();
                     OnPropertyChanged("AccountingGroup");
                 }
             }
@@ -245,8 +245,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.CasepackHeight != value)
                 {
                     this.TemplateObject.CasepackHeight = value;
-
-                    this.CasepackHeightError = ItemService.ValidateCasepack(value, "", "", "", this.ProdType, "Casepack Height");
+                    FlagError("CasepackHeight");
                     OnPropertyChanged("CasepackHeight");
                 }
             }
@@ -312,7 +311,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.CasepackLength != value)
                 {
                     this.TemplateObject.CasepackLength = value;
-                    this.CasepackLengthError = ItemService.ValidateCasepack(value, "", "", "", this.ProdType, "Casepack Length");
+                    this.CasepackLengthError = ItemService.ValidateCasepack(this.TemplateObject, "Length").ReturnErrorMessage();
                     OnPropertyChanged("CasepackLength");
                 }
             }
@@ -382,7 +381,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.CasepackQty != value)
                 {
                     this.TemplateObject.CasepackQty = value;
-                    this.CasepackQtyError = ItemService.ValidateCasepackQty(value, this.ProdType);
+                    FlagError("CasepackQty");
                     OnPropertyChanged("CasepackQty");
                 }
             }
@@ -451,8 +450,8 @@ namespace Odin.ViewModels
             {
                 if (this.TemplateObject.CasepackWidth != value)
                 {
-                    this.TemplateObject.CasepackWidth = value;                    
-                    this.CasepackWidthError = ItemService.ValidateCasepack(value, "", "", "", this.ProdType, "Casepack Width");
+                    this.TemplateObject.CasepackWidth = value;
+                    FlagError("CasepackWidth");
                     OnPropertyChanged("CasepackWidth");
                 }
             }
@@ -522,7 +521,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.CasepackWeight != value)
                 {
                     this.TemplateObject.CasepackWeight = value;
-                    this.CasepackWeightError = ItemService.ValidateCasepack(value, "", "", "", this.ProdType,"Casepack Weight");
+                    FlagError("CasepackWeight");
                     OnPropertyChanged("CasepackWeight");
                 }
             }
@@ -592,8 +591,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.CostProfileGroup != value)
                 {
                     this.TemplateObject.CostProfileGroup = value;
-                    this.CostProfileGroupError = ItemService.ValidateCostProfileGroup(value,this.MfgSource, this.ProdType);
-                    this.MfgSourceError = ItemService.ValidateMfgSource(this.MfgSource, value, this.ProdType);
+                    FlagError("CostProfileGroup");
 
                     OnPropertyChanged("CostProfileGroup");
                 }
@@ -664,7 +662,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.CountryOfOrigin != value)
                 {
                     this.TemplateObject.CountryOfOrigin = value;
-                    this.CountryOfOriginError = ItemService.ValidateCountryOfOrigin(value, "", this.ProdType);
+                    FlagError("CountryOfOrigin");
                     OnPropertyChanged("CountryOfOrigin");
                 }
             }
@@ -734,7 +732,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.DefaultActualCostUsd != value)
                 {
                     this.TemplateObject.DefaultActualCostUsd = value;
-                    DefaultActualCostUsdError = ItemService.ValidateDefaultActualCost(value, "USD", this.ProdType);
+                    FlagError("DefaultActualCostUsd");
                     OnPropertyChanged("DefaultActualCostUsd");
                 }
             }
@@ -804,7 +802,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.DefaultActualCostCad != value)
                 {
                     this.TemplateObject.DefaultActualCostCad = value;
-                    DefaultActualCostCadError = ItemService.ValidateDefaultActualCost(value, "CAD", this.ProdType);
+                    FlagError("DefaultActualCostCad");
                     OnPropertyChanged("DefaultActualCostCad");
                 }
             }
@@ -874,7 +872,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.Duty != value)
                 {
                     this.TemplateObject.Duty = value;
-                    DutyError = ItemService.ValidateDuty(value, this.ProdType);
+                    FlagError("Duty");
                     OnPropertyChanged("Duty");
                 }
             }
@@ -944,7 +942,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.Gpc != value)
                 {
                     this.TemplateObject.Gpc = value;
-                    GpcError = ItemService.ValidateGpc(value, "", this.ProdType);
+                    FlagError("Gpc");
                     OnPropertyChanged("Gpc");
                 }
             }
@@ -1014,7 +1012,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.Height != value)
                 {
                     this.TemplateObject.Height = value;
-                    HeightError = ItemService.ValidateHeight(value, this.ProdType);
+                    FlagError("Height");
                     OnPropertyChanged("Height");
                 }
             }
@@ -1084,7 +1082,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.InnerpackHeight != value)
                 {
                     this.TemplateObject.InnerpackHeight = value;
-                    InnerpackHeightError = ItemService.ValidateInnerpack(value, "", "", "", this.ProdType, "Innerpack Height");
+                    FlagError("InnerpackHeight");
                     OnPropertyChanged("InnerpackHeight");
                 }
             }
@@ -1154,7 +1152,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.InnerpackLength != value)
                 {
                     this.TemplateObject.InnerpackLength = value;
-                    InnerpackLengthError = ItemService.ValidateInnerpack(value, "","","", this.ProdType,"Innerpack Length");
+                    FlagError("InnerpackLength");
                     OnPropertyChanged("InnerpackLength");
                 }
             }
@@ -1224,7 +1222,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.InnerpackQuantity != value)
                 {
                     this.TemplateObject.InnerpackQuantity = value;
-                    InnerpackQuantityError = ItemService.ValidateInnerpackQuantity(value, this.ProdType);
+                    FlagError("InnerpackQuantity");
                     OnPropertyChanged("InnerpackQuantity");
                 }
             }
@@ -1294,8 +1292,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.InnerpackWeight != value)
                 {
                     this.TemplateObject.InnerpackWeight = value;
-                    InnerpackWeightError = ItemService.ValidateInnerpack(value, "","","", this.ProdType, "Innerpack Weight");
-
+                    FlagError("InnerpackWeight");
                     OnPropertyChanged("InnerpackWeight");
                 }
             }
@@ -1365,8 +1362,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.InnerpackWidth != value)
                 {
                     this.TemplateObject.InnerpackWidth = value;
-                    InnerpackWidthError = ItemService.ValidateInnerpack(value, "", "", "", this.ProdType, "Innerpack Width");
-
+                    FlagError("InnerpackWidth");
                     OnPropertyChanged("InnerpackWidth");
                 }
             }
@@ -1436,7 +1432,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.ItemCategory != value)
                 {
                     this.TemplateObject.ItemCategory = value;
-                    ItemCategoryError = ItemService.ValidateItemCategory(value, this.ProdType);
+                    FlagError("ItemCategory");
                     OnPropertyChanged("ItemCategory");
                 }
             }
@@ -1506,7 +1502,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.ItemFamily != value)
                 {
                     this.TemplateObject.ItemFamily = value.ToUpper();
-                    ItemFamilyError = ItemService.ValidateItemFamily(value, this.ProdType);
+                    FlagError("ItemFamily");
                     OnPropertyChanged("ItemFamily");
                 }
             }
@@ -1576,8 +1572,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.ItemGroup != value)
                 {
                     this.TemplateObject.ItemGroup = value;
-                    // UdexError = ItemService.ValidateUdex(Udex, value, ListPriceUsd, this.ProdType);
-                    ItemGroupError = ItemService.ValidateItemGroup(value, this.ProdType);
+                    FlagError("ItemGroup");
                     OnPropertyChanged("ItemGroup");
                 }
             }
@@ -1647,7 +1642,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.Length != value)
                 {
                     this.TemplateObject.Length = value;
-                    LengthError = ItemService.ValidateLength(value, this.ProdType);
+                    FlagError("Length");
                     OnPropertyChanged("Length");
                 }
             }
@@ -1720,8 +1715,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.ListPriceCad != value)
                 {
                     this.TemplateObject.ListPriceCad = value;
-
-                    ListPriceCadError = ItemService.ValidateListPrice(value, "CAD", this.ProdType);
+                    FlagError("ListPriceCad");
                     OnPropertyChanged("ListPriceCad");
                 }
             }
@@ -1794,7 +1788,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.ListPriceMxn != value)
                 {
                     this.TemplateObject.ListPriceMxn = value;
-                    MsrpMxnError = ItemService.ValidateMsrp(value, "", this.ProdType, "MXN");
+                    FlagError("ListPriceMxn");
                     OnPropertyChanged("ListPriceMxn");
                 }
             }
@@ -1867,7 +1861,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.ListPriceUsd != value)
                 {
                     this.TemplateObject.ListPriceUsd = value;
-                    ListPriceUsdError = ItemService.ValidateListPrice(value, "USD", this.ProdType);
+                    FlagError("ListPriceUsd");
                     OnPropertyChanged("ListPriceUsd");
                 }
             }
@@ -1940,8 +1934,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.MfgSource != value)
                 {
                     this.TemplateObject.MfgSource = value;
-                    this.MfgSourceError = ItemService.ValidateMfgSource(value, this.CostProfileGroup, this.ProdType);
-                    this.CostProfileGroupError = ItemService.ValidateCostProfileGroup(this.CostProfileGroup, value, this.ProdType);
+                    FlagError("MfgSource");
                     OnPropertyChanged("MfgSource");
                 }
             }
@@ -2014,7 +2007,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.Msrp != value)
                 {
                     this.TemplateObject.Msrp = value;
-                    MsrpError = ItemService.ValidateMsrp(value, "", this.ProdType, "USD");
+                    FlagError("Msrp");
                     OnPropertyChanged("Msrp");
                 }
             }
@@ -2087,7 +2080,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.MsrpCad != value)
                 {
                     this.TemplateObject.MsrpCad = value;
-                    MsrpCadError = ItemService.ValidateMsrp(value, "", this.ProdType, "CAD");
+                    FlagError("MsrpCad");
                     OnPropertyChanged("MsrpCad");
                 }
             }
@@ -2160,7 +2153,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.MsrpMxn != value)
                 {
                     this.TemplateObject.MsrpMxn = value;
-                    MsrpMxnError = ItemService.ValidateMsrp(value, "", this.ProdType, "MXN");
+                    FlagError("MsrpMxn");
                     OnPropertyChanged("MsrpMxn");
                 }
             }
@@ -2233,7 +2226,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.PricingGroup != value)
                 {
                     this.TemplateObject.PricingGroup = value;
-                    PricingGroupError = ItemService.ValidatePricingGroup(value, "", "", this.ProdType);
+                    FlagError("PricingGroup");
                     OnPropertyChanged("PricingGroup");
                 }
             }
@@ -2306,7 +2299,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.PrintOnDemand != value)
                 {
                     this.TemplateObject.PrintOnDemand = value;
-                    PrintOnDemandError = ItemService.ValidatePrintOnDemand(value, this.ProdType);
+                    FlagError("PrintOnDemand");
                     OnPropertyChanged("PrintOnDemand");
                 }
             }
@@ -2379,8 +2372,8 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.ProductFormat != value)
                 {
                    this.TemplateObject.ProductFormat = value;
-                   ProductFormatError = ItemService.ValidateProductFormat(this.ProductGroup, this.ProductLine, value, "", this.ProdType);
-                   OnPropertyChanged("ProductFormat");
+                    FlagError("ProductFormat");
+                    OnPropertyChanged("ProductFormat");
                 }
             }
         }
@@ -2452,10 +2445,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.ProductGroup != value)
                 {
                     this.TemplateObject.ProductGroup = value;
-                    RefreshProductLines();
-                    RefreshProductFormats("");
-                    ProductGroupError = ItemService.ValidateProductGroup(value, "", this.ProdType);
-
+                    FlagError("ProductGroup");
                     OnPropertyChanged("ProductGroup");
                 }
             }
@@ -2528,8 +2518,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.ProductLine != value)
                 {
                     this.TemplateObject.ProductLine = value;
-                    RefreshProductFormats(this.ProductLine);
-                    ProductLineError = ItemService.ValidateProductLine(this.ProductGroup, value, "", this.ProdType);
+                    FlagError("ProductLine");
                     OnPropertyChanged("ProductLine");
                 }
             }
@@ -2602,9 +2591,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.ProductQty != value)
                 {
                     this.TemplateObject.ProductQty = value;
-                    // ProductQtyTotal = ItemService.RetrieveB2bPrice(ListPriceUsd, value);
-                    ProductQtyError = ItemService.ValidateProductQty(value, this.ProdType);
-
+                    FlagError("ProductQty");
                     OnPropertyChanged("ProductQty");
                 }
             }
@@ -2677,7 +2664,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.PsStatus != value)
                 {
                     this.TemplateObject.PsStatus = value;
-                    this.PsStatusError = ItemService.ValidatePsStatus(value, "Template");
+                    FlagError("PsStatus");
                     OnPropertyChanged("PsStatus");
                 }
             }
@@ -2750,7 +2737,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.SatCode != value)
                 {
                     this.TemplateObject.SatCode = value;
-                    SatCodeError = ItemService.ValidateSatCode(value);
+                    FlagError("SatCode");
                     OnPropertyChanged("SatCode");
                 }
             }
@@ -2823,7 +2810,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.TariffCode != value)
                 {
                     this.TemplateObject.TariffCode = value;
-                    TariffCodeError = ItemService.ValidateTariffCode(value, this.ProdType);
+                    FlagError("TariffCode");
                     OnPropertyChanged("TariffCode");
                 }
             }
@@ -2896,7 +2883,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.Udex != value)
                 {
                     this.TemplateObject.Udex = value;
-                    UdexError = ItemService.ValidateUdex(value, this.ProdType);
+                    FlagError("Udex");
                     OnPropertyChanged("Udex");
                 }
             }
@@ -2969,7 +2956,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.Weight != value)
                 {
                     this.TemplateObject.Weight = value;
-                    WeightError = ItemService.ValidateWeight(value, this.ProdType);
+                    FlagError("Weight");
                     OnPropertyChanged("Weight");
                 }
             }
@@ -3042,7 +3029,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.Width != value)
                 {
                     this.TemplateObject.Width = value;
-                    WidthError = ItemService.ValidateWidth(value, this.ProdType);
+                    FlagError("Width");
                     OnPropertyChanged("Width");
                 }
             }
@@ -3116,7 +3103,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.Copyright != value)
                 {
                     this.TemplateObject.Copyright = value;
-                    CopyrightError = ItemService.ValidateCopyright(value);
+                    FlagError("Copyright");
                     OnPropertyChanged("Copyright");
                 }
             }
@@ -3186,7 +3173,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.Category != value)
                 {
                     this.TemplateObject.Category = value;
-                    CategoryError = ItemService.ValidateCategory(value, false);
+                    FlagError("Category");
                     OnPropertyChanged("Category");
                 }
             }
@@ -3256,7 +3243,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.Category2 != value)
                 {
                     this.TemplateObject.Category2 = value;
-                    Category2Error = ItemService.ValidateCategory2(value, "2");
+                    FlagError("Category2");
                     OnPropertyChanged("Category2");
                 }
             }
@@ -3326,7 +3313,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.Category3 != value)
                 {
                     this.TemplateObject.Category3 = value;
-                    Category3Error = ItemService.ValidateCategory2(value, "3");
+                    FlagError("Category3");
                     OnPropertyChanged("Category3");
                 }
             }
@@ -3396,7 +3383,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.MetaDescription != value)
                 {
                     this.TemplateObject.MetaDescription = value;
-                    MetaDescriptionError = ItemService.ValidateMetaDescription(value, false);
+                    FlagError("MetaDescription");
                     OnPropertyChanged("MetaDescription");
                 }
             }
@@ -3466,7 +3453,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.Size != value)
                 {
                     this.TemplateObject.Size = value;
-                    SizeError = ItemService.ValidateSize(value);
+                    FlagError("Size");
                     OnPropertyChanged("Size");
                 }
             }
@@ -3536,7 +3523,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.WebsitePrice != value)
                 {
                     this.TemplateObject.WebsitePrice = value;
-                    WebsitePriceError = ItemService.ValidateWebsitePrice(value,false);
+                    FlagError("WebsitePrice");
                     OnPropertyChanged("WebsitePrice");
                 }
             }
@@ -3613,7 +3600,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommerceBullet1 != value)
                 {
                     this.TemplateObject.EcommerceBullet1 = value;
-                    EcommerceBullet1Error = ItemService.ValidateEcommerce_Bullet(value, "1", false);
+                    FlagError("EcommerceBullet1");
                     OnPropertyChanged("EcommerceBullet1");
                 }
             }
@@ -3642,11 +3629,11 @@ namespace Odin.ViewModels
                 _ecommercebullet1Error = value;
                 if (value != "")
                 {
-                    EcommerceBullet1ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_BulletToolTip");
+                    EcommerceBullet1ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceBulletToolTip");
                 }
                 else
                 {
-                    EcommerceBullet1ToolTip = ReturnToolTip("Ecommerce_BulletToolTip");
+                    EcommerceBullet1ToolTip = ReturnToolTip("EcommerceBulletToolTip");
                 }
                 this.EcommerceBullet1BoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -3686,7 +3673,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommerceBullet2 != value)
                 {
                     this.TemplateObject.EcommerceBullet2 = value;
-                    EcommerceBullet2Error = ItemService.ValidateEcommerce_Bullet(value, "2", false);
+                    FlagError("EcommerceBullet2");
                     OnPropertyChanged("EcommerceBullet2");
                 }
             }
@@ -3715,11 +3702,11 @@ namespace Odin.ViewModels
                 _ecommercebullet2Error = value;
                 if (value != "")
                 {
-                    EcommerceBullet2ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_BulletToolTip"); ;
+                    EcommerceBullet2ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceBulletToolTip"); ;
                 }
                 else
                 {
-                    EcommerceBullet2ToolTip = ReturnToolTip("Ecommerce_BulletToolTip"); ;
+                    EcommerceBullet2ToolTip = ReturnToolTip("EcommerceBulletToolTip"); ;
                 }
                 this.EcommerceBullet2BoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -3759,7 +3746,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommerceBullet3 != value)
                 {
                     this.TemplateObject.EcommerceBullet3 = value;
-                    EcommerceBullet3Error = ItemService.ValidateEcommerce_Bullet(value, "3",false);
+                    FlagError("EcommerceBullet3");
                     OnPropertyChanged("EcommerceBullet3");
                 }
             }
@@ -3788,11 +3775,11 @@ namespace Odin.ViewModels
                 _ecommercebullet3Error = value;
                 if (value != "")
                 {
-                    EcommerceBullet3ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_BulletToolTip");
+                    EcommerceBullet3ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceBulletToolTip");
                 }
                 else
                 {
-                    EcommerceBullet3ToolTip = ReturnToolTip("Ecommerce_BulletToolTip");
+                    EcommerceBullet3ToolTip = ReturnToolTip("EcommerceBulletToolTip");
                 }
                 this.EcommerceBullet3BoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -3832,7 +3819,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommerceBullet4 != value)
                 {
                     this.TemplateObject.EcommerceBullet4 = value;
-                    EcommerceBullet4Error = ItemService.ValidateEcommerce_Bullet(value, "4", false);
+                    FlagError("EcommerceBullet4");
                     OnPropertyChanged("EcommerceBullet4");
                 }
             }
@@ -3861,11 +3848,11 @@ namespace Odin.ViewModels
                 _ecommercebullet4Error = value;
                 if (value != "")
                 {
-                    EcommerceBullet4ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_BulletToolTip");
+                    EcommerceBullet4ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceBulletToolTip");
                 }
                 else
                 {
-                    EcommerceBullet4ToolTip = ReturnToolTip("Ecommerce_BulletToolTip");
+                    EcommerceBullet4ToolTip = ReturnToolTip("EcommerceBulletToolTip");
                 }
                 this.EcommerceBullet4BoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -3905,7 +3892,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommerceBullet5 != value)
                 {
                     this.TemplateObject.EcommerceBullet5 = value;
-                    EcommerceBullet5Error = ItemService.ValidateEcommerce_Bullet(value, "5", false);
+                    FlagError("EcommerceBullet5");
                     OnPropertyChanged("EcommerceBullet5");
                 }
             }
@@ -3934,11 +3921,11 @@ namespace Odin.ViewModels
                 _ecommercebullet5Error = value;
                 if (value != "")
                 {
-                    EcommerceBullet5ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_BulletToolTip");
+                    EcommerceBullet5ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceBulletToolTip");
                 }
                 else
                 {
-                    EcommerceBullet5ToolTip = ReturnToolTip("Ecommerce_BulletToolTip");
+                    EcommerceBullet5ToolTip = ReturnToolTip("EcommerceBulletToolTip");
                 }
                 this.EcommerceBullet5BoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -3978,7 +3965,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommerceComponents != value)
                 {
                     this.TemplateObject.EcommerceComponents = value;
-                    EcommerceComponentsError = ItemService.ValidateEcommerce_Components(value, false);
+                    FlagError("EcommerceComponents");
                     OnPropertyChanged("EcommerceComponents");
                 }
             }
@@ -4007,11 +3994,11 @@ namespace Odin.ViewModels
                 _ecommercecomponentsError = value;
                 if (value != "")
                 {
-                    EcommerceComponentsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ComponentsToolTip");
+                    EcommerceComponentsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceComponentsToolTip");
                 }
                 else
                 {
-                    EcommerceComponentsToolTip = ReturnToolTip("Ecommerce_ComponentsToolTip");
+                    EcommerceComponentsToolTip = ReturnToolTip("EcommerceComponentsToolTip");
                 }
                 this.EcommerceComponentsBoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -4051,7 +4038,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommerceCost != value)
                 {
                     this.TemplateObject.EcommerceCost = value;
-                    EcommerceCostError = ItemService.ValidateEcommerce_Cost(value, "", false);
+                    FlagError("EcommerceCost");
                     OnPropertyChanged("EcommerceCost");
                 }
             }
@@ -4080,11 +4067,11 @@ namespace Odin.ViewModels
                 _ecommerceCostError = value;
                 if (value != "")
                 {
-                    EcommerceCostToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_CostToolTip");
+                    EcommerceCostToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceCostToolTip");
                 }
                 else
                 {
-                    EcommerceCostToolTip = ReturnToolTip("Ecommerce_CostToolTip");
+                    EcommerceCostToolTip = ReturnToolTip("EcommerceCostToolTip");
                 }
                 this.EcommerceCostBoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -4124,7 +4111,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommerceExternalIdType != value)
                 {
                     this.TemplateObject.EcommerceExternalIdType = value;
-                    EcommerceExternalIdTypeError = ItemService.ValidateEcommerce_ExternalIdType(value, false);
+                    FlagError("EcommerceExternalIdType");
                     OnPropertyChanged("EcommerceExternalIdType");
                 }
             }
@@ -4153,11 +4140,11 @@ namespace Odin.ViewModels
                 _ecommerceExternalIdTypeError = value;
                 if (value != "")
                 {
-                    EcommerceExternalIdTypeToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ExternalIdTypeToolTip");
+                    EcommerceExternalIdTypeToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceExternalIdTypeToolTip");
                 }
                 else
                 {
-                    EcommerceExternalIdTypeToolTip = ReturnToolTip("Ecommerce_ExternalIdTypeToolTip");
+                    EcommerceExternalIdTypeToolTip = ReturnToolTip("EcommerceExternalIdTypeToolTip");
                 }
                 this.EcommerceExternalIdTypeBoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -4197,7 +4184,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommerceItemHeight != value)
                 {
                     this.TemplateObject.EcommerceItemHeight = value;
-                    EcommerceItemHeightError = ItemService.ValidateEcommerce_ItemHeight(value, false);
+                    FlagError("EcommerceItemHeight");
                     OnPropertyChanged("EcommerceItemHeight");
                 }
             }
@@ -4226,11 +4213,11 @@ namespace Odin.ViewModels
                 _ecommerceItemHeightError = value;
                 if (value != "")
                 {
-                    EcommerceItemHeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ItemHeightToolTip");
+                    EcommerceItemHeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceItemHeightToolTip");
                 }
                 else
                 {
-                    EcommerceItemHeightToolTip = ReturnToolTip("Ecommerce_ItemHeightToolTip");
+                    EcommerceItemHeightToolTip = ReturnToolTip("EcommerceItemHeightToolTip");
                 }
                 this.EcommerceItemHeightBoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -4270,7 +4257,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommerceItemLength != value)
                 {
                     this.TemplateObject.EcommerceItemLength = value;
-                    EcommerceItemLengthError = ItemService.ValidateEcommerce_ItemLength(value, false);
+                    FlagError("EcommerceItemLength");
                     OnPropertyChanged("EcommerceItemLength");
                 }
             }
@@ -4299,11 +4286,11 @@ namespace Odin.ViewModels
                 _ecommerceItemLengthError = value;
                 if (value != "")
                 {
-                    EcommerceItemLengthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ItemLengthToolTip");
+                    EcommerceItemLengthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceItemLengthToolTip");
                 }
                 else
                 {
-                    EcommerceItemLengthToolTip = ReturnToolTip("Ecommerce_ItemLengthToolTip");
+                    EcommerceItemLengthToolTip = ReturnToolTip("EcommerceItemLengthToolTip");
                 }
                 this.EcommerceItemLengthBoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -4343,7 +4330,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommerceItemWeight != value)
                 {
                     this.TemplateObject.EcommerceItemWeight = value;
-                    EcommerceItemWeightError = ItemService.ValidateEcommerce_ItemWeight(value, false);
+                    FlagError("EcommerceItemWeight");
                     OnPropertyChanged("EcommerceItemWeight");
                 }
             }
@@ -4372,11 +4359,11 @@ namespace Odin.ViewModels
                 _ecommerceItemWeightError = value;
                 if (value != "")
                 {
-                    EcommerceItemWeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ItemWeightToolTip");
+                    EcommerceItemWeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceItemWeightToolTip");
                 }
                 else
                 {
-                    EcommerceItemWeightToolTip = ReturnToolTip("Ecommerce_ItemWeightToolTip");
+                    EcommerceItemWeightToolTip = ReturnToolTip("EcommerceItemWeightToolTip");
                 }
                 this.EcommerceItemWeightBoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -4416,7 +4403,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommerceItemWidth != value)
                 {
                     this.TemplateObject.EcommerceItemWidth = value;
-                    EcommerceItemWidthError = ItemService.ValidateEcommerce_ItemWidth(value, false);
+                    FlagError("EcommerceItemWidth");
                     OnPropertyChanged("EcommerceItemWidth");
                 }
             }
@@ -4445,11 +4432,11 @@ namespace Odin.ViewModels
                 _ecommerceItemWidthError = value;
                 if (value != "")
                 {
-                    EcommerceItemWidthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ItemWidthToolTip");
+                    EcommerceItemWidthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceItemWidthToolTip");
                 }
                 else
                 {
-                    EcommerceItemWidthToolTip = ReturnToolTip("Ecommerce_ItemWidthToolTip");
+                    EcommerceItemWidthToolTip = ReturnToolTip("EcommerceItemWidthToolTip");
                 }
                 this.EcommerceItemWidthBoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -4489,7 +4476,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommerceModelName != value)
                 {
                     this.TemplateObject.EcommerceModelName = value;
-                    EcommerceModelNameError = ItemService.ValidateEcommerce_ModelName(value, false);
+                    FlagError("EcommerceModelName");
                     OnPropertyChanged("EcommerceModelName");
                 }
             }
@@ -4518,11 +4505,11 @@ namespace Odin.ViewModels
                 _ecommerceModelNameError = value;
                 if (value != "")
                 {
-                    EcommerceModelNameToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ModelNameToolTip");
+                    EcommerceModelNameToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceModelNameToolTip");
                 }
                 else
                 {
-                    EcommerceModelNameToolTip = ReturnToolTip("Ecommerce_ModelNameToolTip");
+                    EcommerceModelNameToolTip = ReturnToolTip("EcommerceModelNameToolTip");
                 }
                 this.EcommerceModelNameBoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -4562,7 +4549,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommercePackageHeight != value)
                 {
                     this.TemplateObject.EcommercePackageHeight = value;
-                    EcommercePackageHeightError = ItemService.ValidateEcommerce_PackageHeight(value, false);
+                    FlagError("EcommercePackageHeight");
                     OnPropertyChanged("EcommercePackageHeight");
                 }
             }
@@ -4591,11 +4578,11 @@ namespace Odin.ViewModels
                 _ecommercePackageHeightError = value;
                 if (value != "")
                 {
-                    EcommercePackageHeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_PackageHeightToolTip");
+                    EcommercePackageHeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommercePackageHeightToolTip");
                 }
                 else
                 {
-                    EcommercePackageHeightToolTip = ReturnToolTip("Ecommerce_PackageHeightToolTip");
+                    EcommercePackageHeightToolTip = ReturnToolTip("EcommercePackageHeightToolTip");
                 }
                 this.EcommercePackageHeightBoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -4635,7 +4622,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommercePackageLength != value)
                 {
                     this.TemplateObject.EcommercePackageLength = value;
-                    EcommercePackageLengthError = ItemService.ValidateEcommerce_PackageLength(value, false);
+                    FlagError("EcommercePackageLength");
                     OnPropertyChanged("EcommercePackageLength");
                 }
             }
@@ -4664,11 +4651,11 @@ namespace Odin.ViewModels
                 _ecommercePackageLengthError = value;
                 if (value != "")
                 {
-                    EcommercePackageLengthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_PackageLengthToolTip");
+                    EcommercePackageLengthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommercePackageLengthToolTip");
                 }
                 else
                 {
-                    EcommercePackageLengthToolTip = ReturnToolTip("Ecommerce_PackageLengthToolTip");
+                    EcommercePackageLengthToolTip = ReturnToolTip("EcommercePackageLengthToolTip");
                 }
                 this.EcommercePackageLengthBoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -4708,7 +4695,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommercePackageWeight != value)
                 {
                     this.TemplateObject.EcommercePackageWeight = value;
-                    EcommercePackageWeightError = ItemService.ValidateEcommerce_PackageWeight(value, false);
+                    FlagError("EcommercePackageWeight");
                     OnPropertyChanged("EcommercePackageWeight");
                 }
             }
@@ -4737,11 +4724,11 @@ namespace Odin.ViewModels
                 _ecommercePackageWeightError = value;
                 if (value != "")
                 {
-                    EcommercePackageWeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_PackageWeightToolTip");
+                    EcommercePackageWeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommercePackageWeightToolTip");
                 }
                 else
                 {
-                    EcommercePackageWeightToolTip = ReturnToolTip("Ecommerce_PackageWeightToolTip");
+                    EcommercePackageWeightToolTip = ReturnToolTip("EcommercePackageWeightToolTip");
                 }
                 this.EcommercePackageWeightBoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -4781,7 +4768,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommercePackageWidth != value)
                 {
                     this.TemplateObject.EcommercePackageWidth = value;
-                    EcommercePackageWidthError = ItemService.ValidateEcommerce_PackageWidth(value, false);
+                    FlagError("EcommercePackageWidth");
                     OnPropertyChanged("EcommercePackageWidth");
                 }
             }
@@ -4810,11 +4797,11 @@ namespace Odin.ViewModels
                 _ecommercePackageWidthError = value;
                 if (value != "")
                 {
-                    EcommercePackageWidthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_PackageWidthToolTip");
+                    EcommercePackageWidthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommercePackageWidthToolTip");
                 }
                 else
                 {
-                    EcommercePackageWidthToolTip = ReturnToolTip("Ecommerce_PackageWidthToolTip");
+                    EcommercePackageWidthToolTip = ReturnToolTip("EcommercePackageWidthToolTip");
                 }
                 this.EcommercePackageWidthBoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -4854,7 +4841,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommercePageQty != value)
                 {
                     this.TemplateObject.EcommercePageQty = value;
-                    EcommercePageQtyError = ItemService.ValidateEcommerce_PageQty(value);
+                    FlagError("EcommercePageQty");
                     OnPropertyChanged("EcommercePageQty");
                 }
             }
@@ -4883,11 +4870,11 @@ namespace Odin.ViewModels
                 _ecommercePageQtyError = value;
                 if (value != "")
                 {
-                    EcommercePageQtyToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_PageQtyToolTip");
+                    EcommercePageQtyToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommercePageQtyToolTip");
                 }
                 else
                 {
-                    EcommercePageQtyToolTip = ReturnToolTip("Ecommerce_PageQtyToolTip");
+                    EcommercePageQtyToolTip = ReturnToolTip("EcommercePageQtyToolTip");
                 }
                 this.EcommercePageQtyBoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -4927,7 +4914,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommerceProductCategory != value)
                 {
                     this.TemplateObject.EcommerceProductCategory = value;
-                    EcommerceProductCategoryError = ItemService.ValidateEcommerce_ProductCategory(value, false);
+                    FlagError("EcommerceProductCategory");
                     OnPropertyChanged("EcommerceProductCategory");
                 }
             }
@@ -4956,11 +4943,11 @@ namespace Odin.ViewModels
                 _ecommerceProductCategoryError = value;
                 if (value != "")
                 {
-                    EcommerceProductCategoryToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ProductCategoryToolTip");
+                    EcommerceProductCategoryToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceProductCategoryToolTip");
                 }
                 else
                 {
-                    EcommerceProductCategoryToolTip = ReturnToolTip("Ecommerce_ProductCategoryToolTip");
+                    EcommerceProductCategoryToolTip = ReturnToolTip("EcommerceProductCategoryToolTip");
                 }
                 this.EcommerceProductCategoryBoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -5000,7 +4987,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommerceProductDescription != value)
                 {
                     this.TemplateObject.EcommerceProductDescription = value;
-                    EcommerceProductDescriptionError = ItemService.ValidateEcommerce_ProductDescription(value, false);
+                    FlagError("EcommerceProductDescription");
                     OnPropertyChanged("EcommerceProductDescription");
                 }
             }
@@ -5029,11 +5016,11 @@ namespace Odin.ViewModels
                 _ecommerceProductDescriptionError = value;
                 if (value != "")
                 {
-                    EcommerceProductDescriptionToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ProductDescriptionToolTip");
+                    EcommerceProductDescriptionToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceProductDescriptionToolTip");
                 }
                 else
                 {
-                    EcommerceProductDescriptionToolTip = ReturnToolTip("Ecommerce_ProductDescriptionToolTip");
+                    EcommerceProductDescriptionToolTip = ReturnToolTip("EcommerceProductDescriptionToolTip");
                 }
                 this.EcommerceProductDescriptionBoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -5073,7 +5060,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommerceProductSubcategory != value)
                 {
                     this.TemplateObject.EcommerceProductSubcategory = value;
-                    EcommerceProductSubcategoryError = ItemService.ValidateEcommerce_ProductSubcategory(value, false);
+                    FlagError("EcommerceProductSubcategory");
                     OnPropertyChanged("EcommerceProductSubcategory");
                 }
             }
@@ -5102,11 +5089,11 @@ namespace Odin.ViewModels
                 _ecommerceProductSubcategoryError = value;
                 if (value != "")
                 {
-                    EcommerceProductSubcategoryToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ProductSubcategoryToolTip");
+                    EcommerceProductSubcategoryToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceProductSubcategoryToolTip");
                 }
                 else
                 {
-                    EcommerceProductSubcategoryToolTip = ReturnToolTip("Ecommerce_ProductSubcategoryToolTip");
+                    EcommerceProductSubcategoryToolTip = ReturnToolTip("EcommerceProductSubcategoryToolTip");
                 }
                 this.EcommerceProductSubcategoryBoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -5146,7 +5133,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommerceManufacturerName != value)
                 {
                     this.TemplateObject.EcommerceManufacturerName = value;
-                    EcommerceManufacturerNameError = ItemService.ValidateEcommerce_ManufacturerName(value, false);
+                    FlagError("EcommerceManufacturerName");
                     OnPropertyChanged("EcommerceManufacturerName");
                 }
             }
@@ -5175,11 +5162,11 @@ namespace Odin.ViewModels
                 _ecommerceManufacturerNameError = value;
                 if (value != "")
                 {
-                    EcommerceManufacturerNameToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_ManufacturerNameToolTip");
+                    EcommerceManufacturerNameToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceManufacturerNameToolTip");
                 }
                 else
                 {
-                    EcommerceManufacturerNameToolTip = ReturnToolTip("Ecommerce_ManufacturerNameToolTip");
+                    EcommerceManufacturerNameToolTip = ReturnToolTip("EcommerceManufacturerNameToolTip");
                 }
                 this.EcommerceManufacturerNameBoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -5219,7 +5206,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommerceMsrp != value)
                 {
                     this.TemplateObject.EcommerceMsrp = value;
-                    EcommerceMsrpError = ItemService.ValidateEcommerce_Msrp(value, false);
+                    FlagError("EcommerceMsrp");
                     OnPropertyChanged("EcommerceMsrp");
                 }
             }
@@ -5248,11 +5235,11 @@ namespace Odin.ViewModels
                 _ecommerceMsrpError = value;
                 if (value != "")
                 {
-                    EcommerceMsrpToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_MsrpToolTip");
+                    EcommerceMsrpToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceMsrpToolTip");
                 }
                 else
                 {
-                    EcommerceMsrpToolTip = ReturnToolTip("Ecommerce_MsrpToolTip");
+                    EcommerceMsrpToolTip = ReturnToolTip("EcommerceMsrpToolTip");
                 }
                 this.EcommerceMsrpBoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -5292,7 +5279,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.EcommerceSize != value)
                 {
                     this.TemplateObject.EcommerceSize = value;
-                    EcommerceSizeError = ItemService.ValidateEcommerce_Size(value, false);
+                    FlagError("EcommerceSize");
                     OnPropertyChanged("EcommerceSize");
                 }
             }
@@ -5321,11 +5308,11 @@ namespace Odin.ViewModels
                 _ecommercesizeError = value;
                 if (value != "")
                 {
-                    EcommerceSizeToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ecommerce_SizeToolTip");
+                    EcommerceSizeToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceSizeToolTip");
                 }
                 else
                 {
-                    EcommerceSizeToolTip = ReturnToolTip("Ecommerce_SizeToolTip");
+                    EcommerceSizeToolTip = ReturnToolTip("EcommerceSizeToolTip");
                 }
                 this.EcommerceSizeBoxColor = (value == "") ? "White" : "Tomato";
                 this.EcommerceTabColor = CheckEcommerceTabColor();
@@ -5587,7 +5574,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.TemplateId != value)
                 {
                     this.TemplateObject.TemplateId = value;
-                    this.TemplateIdError = ItemService.ValidateTemplateId(value, this.TemplateStatus);
+                    FlagError("TemplateId");
                     OnPropertyChanged("TemplateId");
                 }
             }
@@ -5830,10 +5817,300 @@ namespace Odin.ViewModels
         }
 
         /// <summary>
+        ///     Runs validation for given field and assigns error message to error fields
+        /// </summary>
+        /// <param name="field"></param>
+        private void FlagError(string field)
+        {
+            switch (field)
+            {
+                case "AccountingGroup":
+                    this.AccountingGroupError = ItemService.ValidateAccountingGroup(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Casepack":
+                    this.CasepackHeightError = ItemService.ValidateCasepack(TemplateObject, "Height")?.ReturnErrorMessage()??"";
+                    this.CasepackLengthError = ItemService.ValidateCasepack(TemplateObject, "Length")?.ReturnErrorMessage()??"";
+                    this.CasepackWidthError = ItemService.ValidateCasepack(TemplateObject, "Width")?.ReturnErrorMessage()??"";
+                    this.CasepackWeightError = ItemService.ValidateCasepack(TemplateObject, "Weight")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "CasepackQty":
+                    this.CasepackQtyError = ItemService.ValidateCasepackQty(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Category":
+                    this.CategoryError = ItemService.ValidateCategory(TemplateObject, "1")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Category2":
+                    this.Category2Error = ItemService.ValidateCategory(TemplateObject, "2")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Category3":
+                    this.Category3Error = ItemService.ValidateCategory(TemplateObject, "3")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Copyright":
+                    this.CopyrightError = ItemService.ValidateCopyright(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "CountryOfOrigin":
+                    this.CountryOfOriginError = ItemService.ValidateCountryOfOrigin(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "CostProfileGroup":
+                    this.CostProfileGroupError = ItemService.ValidateCostProfileGroup(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.MfgSourceError = ItemService.ValidateMfgSource(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "DefaultActualCostCad":
+                    this.DefaultActualCostCadError = ItemService.ValidateDefaultActualCost(TemplateObject, "CAD")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "DefaultActualCostUsd":
+                    this.DefaultActualCostUsdError = ItemService.ValidateDefaultActualCost(TemplateObject, "USD")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Duty":
+                    this.DutyError = ItemService.ValidateDuty(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceBullet1":
+                    this.EcommerceBullet1Error = ItemService.ValidateEcommerceBullet(TemplateObject, "1")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceBullet2":
+                    this.EcommerceBullet2Error = ItemService.ValidateEcommerceBullet(TemplateObject, "2")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceBullet3":
+                    this.EcommerceBullet3Error = ItemService.ValidateEcommerceBullet(TemplateObject, "3")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceBullet4":
+                    this.EcommerceBullet4Error = ItemService.ValidateEcommerceBullet(TemplateObject, "4")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceBullet5":
+                    this.EcommerceBullet5Error = ItemService.ValidateEcommerceBullet(TemplateObject, "5")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceComponents":
+                    this.EcommerceComponentsError = ItemService.ValidateEcommerceComponents(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceCost":
+                    this.EcommerceCostError = ItemService.ValidateEcommerceCost(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceExternalIdType":
+                    this.EcommerceExternalIdTypeError = ItemService.ValidateEcommerceExternalIdType(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceItemHeight":
+                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Height")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceItemLength":
+                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Length")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceItemWeight":
+                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Weight")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceItemWidth":
+                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Width")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceModelName":
+                    this.EcommerceModelNameError = ItemService.ValidateEcommerceModelName(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommercePackageHeight":
+                    this.EcommercePackageHeightError = ItemService.ValidateEcommercePackageDimension(TemplateObject, "Height")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommercePackageLength":
+                    this.EcommercePackageLengthError = ItemService.ValidateEcommercePackageDimension(TemplateObject, "Length")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommercePackageWeight":
+                    this.EcommercePackageWeightError = ItemService.ValidateEcommercePackageDimension(TemplateObject, "Weight")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommercePackageWidth":
+                    this.EcommercePackageWidthError = ItemService.ValidateEcommercePackageDimension(TemplateObject, "Width")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommercePageQty":
+                    this.EcommercePageQtyError = ItemService.ValidateEcommercePageQty(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceProductCategory":
+                    this.EcommerceProductCategoryError = ItemService.ValidateEcommerceProductCategory(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceProductDescription":
+                    this.EcommerceProductDescriptionError = ItemService.ValidateEcommerceProductDescription(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceProductSubcategory":
+                    this.EcommerceProductSubcategoryError = ItemService.ValidateEcommerceProductSubcategory(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceManufacturerName":
+                    this.EcommerceManufacturerNameError = ItemService.ValidateEcommerceManufacturerName(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceMsrp":
+                    this.EcommerceMsrpError = ItemService.ValidateEcommerceMsrp(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Ecommere_Size":
+                    this.EcommerceSizeError = ItemService.ValidateEcommerceSize(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Gpc":
+                    this.GpcError = ItemService.ValidateGpc(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Height":
+                    this.EcommerceItemHeightError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Height")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Innerpack":
+                    this.InnerpackWidthError = ItemService.ValidateInnerpack(TemplateObject, "Width")?.ReturnErrorMessage()??"";
+                    this.InnerpackHeightError = ItemService.ValidateInnerpack(TemplateObject, "Height")?.ReturnErrorMessage()??"";
+                    this.InnerpackLengthError = ItemService.ValidateInnerpack(TemplateObject, "Length")?.ReturnErrorMessage()??"";
+                    this.InnerpackWeightError = ItemService.ValidateInnerpack(TemplateObject, "Weight")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "InnerpackQuantity":
+                    this.InnerpackQuantityError = ItemService.ValidateInnerpackQuantity(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ItemCategory":
+                    this.ItemCategoryError = ItemService.ValidateItemCategory(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ItemFamily":
+                    this.ItemFamilyError = ItemService.ValidateItemFamily(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ItemGroup":
+                    this.ItemGroupError = ItemService.ValidateItemGroup(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Length":
+                    this.EcommerceItemLengthError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Length")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ListPriceCad":
+                    this.ListPriceCadError = ItemService.ValidateListPrice(TemplateObject, "CAD")?.ReturnErrorMessage()??"";
+                    this.MsrpCadError = ItemService.ValidateMsrp(TemplateObject, "CAD")?.ReturnErrorMessage()??"";
+                    this.PricingGroupError = ItemService.ValidatePricingGroup(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ListPriceMxn":
+                    this.MsrpMxnError = ItemService.ValidateMsrp(TemplateObject, "MXN")?.ReturnErrorMessage()??"";
+                    this.ListPriceMxnError = ItemService.ValidateListPrice(TemplateObject, "MXN")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ListPriceUsd":
+                    this.ListPriceUsdError = ItemService.ValidateListPrice(TemplateObject, "USD")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "MetaDescription":
+                    this.MetaDescriptionError = ItemService.ValidateMetaDescription(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "MfgSource":
+                    this.MfgSourceError = ItemService.ValidateMfgSource(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.CostProfileGroupError = ItemService.ValidateCostProfileGroup(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Msrp":
+                    this.MsrpError = ItemService.ValidateMsrp(TemplateObject, "USD")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "MsrpCad":
+                    this.MsrpCadError = ItemService.ValidateMsrp(TemplateObject, "CAD")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "MsrpMxn":
+                    this.MsrpMxnError = ItemService.ValidateMsrp(TemplateObject, "MXN")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "PricingGroup":
+                    this.PricingGroupError = ItemService.ValidatePricingGroup(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "PrintOnDemand":
+                    this.PrintOnDemandError = ItemService.ValidatePrintOnDemand(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ProductFormat":
+                    this.ProductFormatError = ItemService.ValidateProductFormat(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ProductGroup":
+                    RefreshProductLines();
+                    RefreshProductFormats("");
+                    this.ProductGroupError = ItemService.ValidateProductGroup(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ProductLine":
+                    RefreshProductFormats(this.ProductLine);
+                    this.ProductLineError = ItemService.ValidateProductLine(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "ProductQty":
+                    this.ProductQtyError = ItemService.ValidateProductQty(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "PsStatus":
+                    this.PsStatusError = ItemService.ValidatePsStatus(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "SatCode":
+                    this.SatCodeError = ItemService.ValidateSatCode(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Size":
+                    this.SizeError = ItemService.ValidateSize(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "TariffCode":
+                    this.TariffCodeError = ItemService.ValidateTariffCode(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Udex":
+                    this.UdexError = ItemService.ValidateUdex(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "WebsitePrice":
+                    this.WebsitePriceError = ItemService.ValidateWebsitePrice(TemplateObject)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Weight":
+                    this.WeightError = ItemService.ValidateItemDimension(TemplateObject, "Weight")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "Width":
+                    this.WidthError = ItemService.ValidateItemDimension(TemplateObject, "Width")?.ReturnErrorMessage()??"";
+                    break;
+
+                default:
+                    throw new ArgumentNullException("TemplateViewModel Flag error unknown type " + field);
+            }
+        }
+        /// <summary>
         ///     Populates the viewmodel fields with an existing item
         /// </summary>
         /// <param name="template"></param>
-        public void ImportTemplate(Template template)
+        public void ImportTemplate(ItemObject template)
         {
             this.Template = template.TemplateId;
             this.AccountingGroup = template.AccountingGroup;
@@ -5917,15 +6194,17 @@ namespace Odin.ViewModels
         {
             WorkbookReader workbookReader = new WorkbookReader();
             string idAbsentees = String.Empty;
-            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
-            dialog.Filter = "Excel files|*.xls; *.xlsx";
+            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog
+            {
+                Filter = "Excel files|*.xls; *.xlsx"
+            };
             if (dialog.ShowDialog() != true)
             {
                 return;
             }
             try
             {
-                Template template = this.ItemService.LoadTemplate(dialog.FileName,"Add")[0];
+                ItemObject template = this.ItemService.LoadTemplate(dialog.FileName,"Add")[0];
 
                 this.TemplateId = template.TemplateId;
                 this.AccountingGroup = template.AccountingGroup;
@@ -6025,7 +6304,7 @@ namespace Odin.ViewModels
             }
             if (loadTemplate)
             {
-                Template template = ItemService.RetrieveTemplate(templateName);
+                ItemObject template = ItemService.RetrieveTemplate(templateName);
                 this.AccountingGroup = template.AccountingGroup;
                 this.CasepackHeight = template.CasepackHeight;
                 this.CasepackLength = template.CasepackLength;
@@ -6163,7 +6442,10 @@ namespace Odin.ViewModels
             List<string> Errors = new List<string>();
             try
             {
-                Errors = ItemService.ValidateAllTemplate(this.TemplateObject, this.TemplateStatus);
+                foreach(ItemError error in ItemService.ValidateAllTemplate(this.TemplateObject, this.TemplateStatus))
+                {
+                    Errors.Add(error.ReturnErrorMessage());
+                }
             }
             catch (Exception ex)
             {
@@ -6249,30 +6531,30 @@ namespace Odin.ViewModels
             this.Category3ToolTip = ReturnToolTip("Category");
             this.MetaDescriptionToolTip = ReturnToolTip("MetaDescription");
             this.SizeToolTip = ReturnToolTip("Size");
-            this.EcommerceBullet1ToolTip = ReturnToolTip("Ecommerce_BulletToolTip");
-            this.EcommerceBullet2ToolTip = ReturnToolTip("Ecommerce_BulletToolTip");
-            this.EcommerceBullet3ToolTip = ReturnToolTip("Ecommerce_BulletToolTip");
-            this.EcommerceBullet4ToolTip = ReturnToolTip("Ecommerce_BulletToolTip");
-            this.EcommerceBullet5ToolTip = ReturnToolTip("Ecommerce_BulletToolTip");
-            this.EcommerceComponentsToolTip = ReturnToolTip("Ecommerce_ComponentsToolTip");
-            this.EcommerceCostToolTip = ReturnToolTip("Ecommerce_CostToolTip");
-            this.EcommerceExternalIdTypeToolTip = ReturnToolTip("Ecommerce_ExternalIdTypeToolTip");
-            this.EcommerceItemHeightToolTip = ReturnToolTip("Ecommerce_ItemHeightToolTip");
-            this.EcommerceItemLengthToolTip = ReturnToolTip("Ecommerce_ItemLengthToolTip");
-            this.EcommerceItemWeightToolTip = ReturnToolTip("Ecommerce_ItemWeightToolTip");
-            this.EcommerceItemWidthToolTip = ReturnToolTip("Ecommerce_ItemWidthToolTip");
-            this.EcommerceModelNameToolTip = ReturnToolTip("Ecommerce_ModelNameToolTip");
-            this.EcommercePackageHeightToolTip = ReturnToolTip("Ecommerce_PackageHeightToolTip");
-            this.EcommercePackageLengthToolTip = ReturnToolTip("Ecommerce_PackageLengthToolTip");
-            this.EcommercePackageWeightToolTip = ReturnToolTip("Ecommerce_PackageWeightToolTip");
-            this.EcommercePackageWidthToolTip = ReturnToolTip("Ecommerce_PackageWidthToolTip");
-            this.EcommercePageQtyToolTip = ReturnToolTip("Ecommerce_PageQtyToolTip");
-            this.EcommerceProductCategoryToolTip = ReturnToolTip("Ecommerce_ProductCategoryToolTip");
-            this.EcommerceProductDescriptionToolTip = ReturnToolTip("Ecommerce_ProductDescriptionToolTip");
-            this.EcommerceProductSubcategoryToolTip = ReturnToolTip("Ecommerce_ProductSubcategoryToolTip");
-            this.EcommerceManufacturerNameToolTip = ReturnToolTip("Ecommerce_ManufacturerNameToolTip");
-            this.EcommerceMsrpToolTip = ReturnToolTip("Ecommerce_MsrpToolTip");
-            this.EcommerceSizeToolTip = ReturnToolTip("Ecommerce_SizeToolTip");
+            this.EcommerceBullet1ToolTip = ReturnToolTip("EcommerceBulletToolTip");
+            this.EcommerceBullet2ToolTip = ReturnToolTip("EcommerceBulletToolTip");
+            this.EcommerceBullet3ToolTip = ReturnToolTip("EcommerceBulletToolTip");
+            this.EcommerceBullet4ToolTip = ReturnToolTip("EcommerceBulletToolTip");
+            this.EcommerceBullet5ToolTip = ReturnToolTip("EcommerceBulletToolTip");
+            this.EcommerceComponentsToolTip = ReturnToolTip("EcommerceComponentsToolTip");
+            this.EcommerceCostToolTip = ReturnToolTip("EcommerceCostToolTip");
+            this.EcommerceExternalIdTypeToolTip = ReturnToolTip("EcommerceExternalIdTypeToolTip");
+            this.EcommerceItemHeightToolTip = ReturnToolTip("EcommerceItemHeightToolTip");
+            this.EcommerceItemLengthToolTip = ReturnToolTip("EcommerceItemLengthToolTip");
+            this.EcommerceItemWeightToolTip = ReturnToolTip("EcommerceItemWeightToolTip");
+            this.EcommerceItemWidthToolTip = ReturnToolTip("EcommerceItemWidthToolTip");
+            this.EcommerceModelNameToolTip = ReturnToolTip("EcommerceModelNameToolTip");
+            this.EcommercePackageHeightToolTip = ReturnToolTip("EcommercePackageHeightToolTip");
+            this.EcommercePackageLengthToolTip = ReturnToolTip("EcommercePackageLengthToolTip");
+            this.EcommercePackageWeightToolTip = ReturnToolTip("EcommercePackageWeightToolTip");
+            this.EcommercePackageWidthToolTip = ReturnToolTip("EcommercePackageWidthToolTip");
+            this.EcommercePageQtyToolTip = ReturnToolTip("EcommercePageQtyToolTip");
+            this.EcommerceProductCategoryToolTip = ReturnToolTip("EcommerceProductCategoryToolTip");
+            this.EcommerceProductDescriptionToolTip = ReturnToolTip("EcommerceProductDescriptionToolTip");
+            this.EcommerceProductSubcategoryToolTip = ReturnToolTip("EcommerceProductSubcategoryToolTip");
+            this.EcommerceManufacturerNameToolTip = ReturnToolTip("EcommerceManufacturerNameToolTip");
+            this.EcommerceMsrpToolTip = ReturnToolTip("EcommerceMsrpToolTip");
+            this.EcommerceSizeToolTip = ReturnToolTip("EcommerceSizeToolTip");
             this.TemplateIdToolTip = ReturnToolTip("TemplateId");
         }
 
@@ -6305,10 +6587,10 @@ namespace Odin.ViewModels
         /// </summary>
         /// <param name="itemService"></param>
         /// <param name="templateStatus"></param>
-        public TemplateViewModel(ItemService itemService, string templateStatus, Template template = null)
+        public TemplateViewModel(ItemService itemService, string templateStatus, ItemObject template = null)
         {
             this.ItemService = itemService ?? throw new ArgumentNullException("itemService");
-            this.TemplateObject = new Template();
+            this.TemplateObject = new ItemObject();
             this.TemplateList = GlobalData.TemplateNames;
             this.TemplateStatus = templateStatus;
             SetVisibility(templateStatus);

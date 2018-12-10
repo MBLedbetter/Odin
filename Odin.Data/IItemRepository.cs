@@ -523,6 +523,5 @@ namespace Odin.Data
         #endregion // Public Update Methods
 
         #endregion // Public Methods
-
     }
 }

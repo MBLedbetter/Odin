@@ -14,12 +14,12 @@ namespace Odin.Data
         /// <summary>
         ///     Gets or sets the TestTemplateCollection
         /// </summary>
-        private ObservableCollection<Template> TestTemplateCollection
+        private ObservableCollection<ItemObject> TestTemplateCollection
         {
             get { return _testTemplateCollection; }
             set { _testTemplateCollection = value; }
         }
-        private ObservableCollection<Template> _testTemplateCollection = new ObservableCollection<Template>();
+        private ObservableCollection<ItemObject> _testTemplateCollection = new ObservableCollection<ItemObject>();
 
         #endregion // Private Test Properties
 
@@ -30,7 +30,7 @@ namespace Odin.Data
         /// </summary>
         private void SetTestTemplates()
         {
-            Template template = new Template();
+            ItemObject template = new ItemObject();
             template.TemplateId = "TemplateId1";
             template.AccountingGroup = "TemplateAccountingGroup1";
             template.CasepackHeight = "TemplateCasepackHeight1";
@@ -152,7 +152,7 @@ namespace Odin.Data
         /// </summary>
         /// <param name="template"></param>
         /// <returns></returns>
-        public void InsertTemplate(Template template)
+        public void InsertTemplate(ItemObject template)
         {
         }
 
@@ -258,16 +258,16 @@ namespace Odin.Data
         ///     Retrieves a template from the db
         /// </summary>
         /// <returns></returns>
-        public Template RetrieveTemplate(string templateId)
+        public ItemObject RetrieveTemplate(string templateId)
         {
-            foreach(Template template in this.TestTemplateCollection)
+            foreach(ItemObject template in this.TestTemplateCollection)
             {
                 if(template.TemplateId == templateId)
                 {
                     return template;
                 }
             }
-            return new Template();
+            return new ItemObject();
         }
 
         #endregion // Public Retrieval Methods
@@ -278,7 +278,7 @@ namespace Odin.Data
         ///     Updates an existing template
         /// </summary>
         /// <returns></returns>
-        public void UpdateTemplate(Template template, string status)
+        public void UpdateTemplate(ItemObject template, string status)
         {
         }
 

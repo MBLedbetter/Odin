@@ -2211,531 +2211,531 @@ namespace Odin.ViewModels
         /* Ecommerce Visibility */
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_AsinVisibility field
+        ///     Gets or sets the EcommerceAsinVisibility field
         /// </summary>
-        public string Ecommerce_AsinVisibility
+        public string EcommerceAsinVisibility
         {
             get
             {
-                return _ecommerce_AsinVisibility;
+                return _EcommerceAsinVisibility;
             }
             set
             {
-                _ecommerce_AsinVisibility = value;
-                OnPropertyChanged("Ecommerce_AsinVisibility");
+                _EcommerceAsinVisibility = value;
+                OnPropertyChanged("EcommerceAsinVisibility");
             }
         }
-        private string _ecommerce_AsinVisibility = "auto";
+        private string _EcommerceAsinVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_Bullet1Visibility field
+        ///     Gets or sets the EcommerceBullet1Visibility field
         /// </summary>
-        public string Ecommerce_Bullet1Visibility
+        public string EcommerceBullet1Visibility
         {
             get
             {
-                return _ecommerce_Bullet1Visibility;
+                return _EcommerceBullet1Visibility;
             }
             set
             {
-                _ecommerce_Bullet1Visibility = value;
-                OnPropertyChanged("Ecommerce_Bullet1Visibility");
+                _EcommerceBullet1Visibility = value;
+                OnPropertyChanged("EcommerceBullet1Visibility");
             }
         }
-        private string _ecommerce_Bullet1Visibility = "auto";
+        private string _EcommerceBullet1Visibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_Bullet2Visibility field
+        ///     Gets or sets the EcommerceBullet2Visibility field
         /// </summary>
-        public string Ecommerce_Bullet2Visibility
+        public string EcommerceBullet2Visibility
         {
             get
             {
-                return _ecommerce_Bullet2Visibility;
+                return _EcommerceBullet2Visibility;
             }
             set
             {
-                _ecommerce_Bullet2Visibility = value;
-                OnPropertyChanged("Ecommerce_Bullet2Visibility");
+                _EcommerceBullet2Visibility = value;
+                OnPropertyChanged("EcommerceBullet2Visibility");
             }
         }
-        private string _ecommerce_Bullet2Visibility = "auto";
+        private string _EcommerceBullet2Visibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_Bullet3Visibility field
+        ///     Gets or sets the EcommerceBullet3Visibility field
         /// </summary>
-        public string Ecommerce_Bullet3Visibility
+        public string EcommerceBullet3Visibility
         {
             get
             {
-                return _ecommerce_Bullet3Visibility;
+                return _EcommerceBullet3Visibility;
             }
             set
             {
-                _ecommerce_Bullet3Visibility = value;
-                OnPropertyChanged("Ecommerce_Bullet3Visibility");
+                _EcommerceBullet3Visibility = value;
+                OnPropertyChanged("EcommerceBullet3Visibility");
             }
         }
-        private string _ecommerce_Bullet3Visibility = "auto";
+        private string _EcommerceBullet3Visibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_Bullet4Visibility field
+        ///     Gets or sets the EcommerceBullet4Visibility field
         /// </summary>
-        public string Ecommerce_Bullet4Visibility
+        public string EcommerceBullet4Visibility
         {
             get
             {
-                return _ecommerce_Bullet4Visibility;
+                return _EcommerceBullet4Visibility;
             }
             set
             {
-                _ecommerce_Bullet4Visibility = value;
-                OnPropertyChanged("Ecommerce_Bullet4Visibility");
+                _EcommerceBullet4Visibility = value;
+                OnPropertyChanged("EcommerceBullet4Visibility");
             }
         }
-        private string _ecommerce_Bullet4Visibility = "auto";
+        private string _EcommerceBullet4Visibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_Bullet5Visibility field
+        ///     Gets or sets the EcommerceBullet5Visibility field
         /// </summary>
-        public string Ecommerce_Bullet5Visibility
+        public string EcommerceBullet5Visibility
         {
             get
             {
-                return _ecommerce_Bullet5Visibility;
+                return _EcommerceBullet5Visibility;
             }
             set
             {
-                _ecommerce_Bullet5Visibility = value;
-                OnPropertyChanged("Ecommerce_Bullet5Visibility");
+                _EcommerceBullet5Visibility = value;
+                OnPropertyChanged("EcommerceBullet5Visibility");
             }
         }
-        private string _ecommerce_Bullet5Visibility = "auto";
+        private string _EcommerceBullet5Visibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_ComponentsVisibility field
+        ///     Gets or sets the EcommerceComponentsVisibility field
         /// </summary>
-        public string Ecommerce_ComponentsVisibility
+        public string EcommerceComponentsVisibility
         {
             get
             {
-                return _ecommerce_ComponentsVisibility;
+                return _EcommerceComponentsVisibility;
             }
             set
             {
-                _ecommerce_ComponentsVisibility = value;
-                OnPropertyChanged("Ecommerce_ComponentsVisibility");
+                _EcommerceComponentsVisibility = value;
+                OnPropertyChanged("EcommerceComponentsVisibility");
             }
         }
-        private string _ecommerce_ComponentsVisibility = "auto";
+        private string _EcommerceComponentsVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_CostVisibility field
+        ///     Gets or sets the EcommerceCostVisibility field
         /// </summary>
-        public string Ecommerce_CostVisibility
+        public string EcommerceCostVisibility
         {
             get
             {
-                return _ecommerce_CostVisibility;
+                return _EcommerceCostVisibility;
             }
             set
             {
-                _ecommerce_CostVisibility = value;
-                OnPropertyChanged("Ecommerce_CostVisibility");
+                _EcommerceCostVisibility = value;
+                OnPropertyChanged("EcommerceCostVisibility");
             }
         }
-        private string _ecommerce_CostVisibility = "auto";
+        private string _EcommerceCostVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_CountryofOriginVisibility field
+        ///     Gets or sets the EcommerceCountryofOriginVisibility field
         /// </summary>
-        public string Ecommerce_CountryofOriginVisibility
+        public string EcommerceCountryofOriginVisibility
         {
             get
             {
-                return _ecommerce_CountryofOriginVisibility;
+                return _EcommerceCountryofOriginVisibility;
             }
             set
             {
-                _ecommerce_CountryofOriginVisibility = value;
-                OnPropertyChanged("Ecommerce_CountryofOriginVisibility");
+                _EcommerceCountryofOriginVisibility = value;
+                OnPropertyChanged("EcommerceCountryofOriginVisibility");
             }
         }
-        private string _ecommerce_CountryofOriginVisibility = "auto";
+        private string _EcommerceCountryofOriginVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_ExternalIdVisibility field
+        ///     Gets or sets the EcommerceExternalIdVisibility field
         /// </summary>
-        public string Ecommerce_ExternalIdVisibility
+        public string EcommerceExternalIdVisibility
         {
             get
             {
-                return _ecommerce_ExternalIdVisibility;
+                return _EcommerceExternalIdVisibility;
             }
             set
             {
-                _ecommerce_ExternalIdVisibility = value;
-                OnPropertyChanged("Ecommerce_ExternalIdVisibility");
+                _EcommerceExternalIdVisibility = value;
+                OnPropertyChanged("EcommerceExternalIdVisibility");
             }
         }
-        private string _ecommerce_ExternalIdVisibility = "auto";
+        private string _EcommerceExternalIdVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_ExternalIdTypeVisibility field
+        ///     Gets or sets the EcommerceExternalIdTypeVisibility field
         /// </summary>
-        public string Ecommerce_ExternalIdTypeVisibility
+        public string EcommerceExternalIdTypeVisibility
         {
             get
             {
-                return _ecommerce_ExternalIdTypeVisibility;
+                return _EcommerceExternalIdTypeVisibility;
             }
             set
             {
-                _ecommerce_ExternalIdTypeVisibility = value;
-                OnPropertyChanged("Ecommerce_ExternalIdTypeVisibility");
+                _EcommerceExternalIdTypeVisibility = value;
+                OnPropertyChanged("EcommerceExternalIdTypeVisibility");
             }
         }
-        private string _ecommerce_ExternalIdTypeVisibility = "auto";
+        private string _EcommerceExternalIdTypeVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_ItemAliasVisibility field
+        ///     Gets or sets the EcommerceItemAliasVisibility field
         /// </summary>
-        public string Ecommerce_ItemAliasVisibility
+        public string EcommerceItemAliasVisibility
         {
             get
             {
-                return _ecommerce_ItemAliasVisibility;
+                return _EcommerceItemAliasVisibility;
             }
             set
             {
-                _ecommerce_ItemAliasVisibility = value;
-                OnPropertyChanged("Ecommerce_ItemAliasVisibility");
+                _EcommerceItemAliasVisibility = value;
+                OnPropertyChanged("EcommerceItemAliasVisibility");
             }
         }
-        private string _ecommerce_ItemAliasVisibility = "auto";
+        private string _EcommerceItemAliasVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_ItemHeightVisibility field
+        ///     Gets or sets the EcommerceItemHeightVisibility field
         /// </summary>
-        public string Ecommerce_ItemHeightVisibility
+        public string EcommerceItemHeightVisibility
         {
             get
             {
-                return _ecommerce_ItemHeightVisibility;
+                return _EcommerceItemHeightVisibility;
             }
             set
             {
-                _ecommerce_ItemHeightVisibility = value;
-                OnPropertyChanged("Ecommerce_ItemHeightVisibility");
+                _EcommerceItemHeightVisibility = value;
+                OnPropertyChanged("EcommerceItemHeightVisibility");
             }
         }
-        private string _ecommerce_ItemHeightVisibility = "auto";
+        private string _EcommerceItemHeightVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_ItemLengthVisibility field
+        ///     Gets or sets the EcommerceItemLengthVisibility field
         /// </summary>
-        public string Ecommerce_ItemLengthVisibility
+        public string EcommerceItemLengthVisibility
         {
             get
             {
-                return _ecommerce_ItemLengthVisibility;
+                return _EcommerceItemLengthVisibility;
             }
             set
             {
-                _ecommerce_ItemLengthVisibility = value;
-                OnPropertyChanged("Ecommerce_ItemLengthVisibility");
+                _EcommerceItemLengthVisibility = value;
+                OnPropertyChanged("EcommerceItemLengthVisibility");
             }
         }
-        private string _ecommerce_ItemLengthVisibility = "auto";
+        private string _EcommerceItemLengthVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_ItemNameVisibility field
+        ///     Gets or sets the EcommerceItemNameVisibility field
         /// </summary>
-        public string Ecommerce_ItemNameVisibility
+        public string EcommerceItemNameVisibility
         {
             get
             {
-                return _ecommerce_ItemNameVisibility;
+                return _EcommerceItemNameVisibility;
             }
             set
             {
-                _ecommerce_ItemNameVisibility = value;
-                OnPropertyChanged("Ecommerce_ItemNameVisibility");
+                _EcommerceItemNameVisibility = value;
+                OnPropertyChanged("EcommerceItemNameVisibility");
             }
         }
-        private string _ecommerce_ItemNameVisibility = "auto";
+        private string _EcommerceItemNameVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_ItemWeightVisibility field
+        ///     Gets or sets the EcommerceItemWeightVisibility field
         /// </summary>
-        public string Ecommerce_ItemWeightVisibility
+        public string EcommerceItemWeightVisibility
         {
             get
             {
-                return _ecommerce_ItemWeightVisibility;
+                return _EcommerceItemWeightVisibility;
             }
             set
             {
-                _ecommerce_ItemWeightVisibility = value;
-                OnPropertyChanged("Ecommerce_ItemWeightVisibility");
+                _EcommerceItemWeightVisibility = value;
+                OnPropertyChanged("EcommerceItemWeightVisibility");
             }
         }
-        private string _ecommerce_ItemWeightVisibility = "auto";
+        private string _EcommerceItemWeightVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_ItemWidthVisibility field
+        ///     Gets or sets the EcommerceItemWidthVisibility field
         /// </summary>
-        public string Ecommerce_ItemWidthVisibility
+        public string EcommerceItemWidthVisibility
         {
             get
             {
-                return _ecommerce_ItemWidthVisibility;
+                return _EcommerceItemWidthVisibility;
             }
             set
             {
-                _ecommerce_ItemWidthVisibility = value;
-                OnPropertyChanged("Ecommerce_ItemWidthVisibility");
+                _EcommerceItemWidthVisibility = value;
+                OnPropertyChanged("EcommerceItemWidthVisibility");
             }
         }
-        private string _ecommerce_ItemWidthVisibility = "auto";
+        private string _EcommerceItemWidthVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_ModelNameVisibility field
+        ///     Gets or sets the EcommerceModelNameVisibility field
         /// </summary>
-        public string Ecommerce_ModelNameVisibility
+        public string EcommerceModelNameVisibility
         {
             get
             {
-                return _ecommerce_ModelNameVisibility;
+                return _EcommerceModelNameVisibility;
             }
             set
             {
-                _ecommerce_ModelNameVisibility = value;
-                OnPropertyChanged("Ecommerce_ModelNameVisibility");
+                _EcommerceModelNameVisibility = value;
+                OnPropertyChanged("EcommerceModelNameVisibility");
             }
         }
-        private string _ecommerce_ModelNameVisibility = "auto";
+        private string _EcommerceModelNameVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_PackageHeightVisibility field
+        ///     Gets or sets the EcommercePackageHeightVisibility field
         /// </summary>
-        public string Ecommerce_PackageHeightVisibility
+        public string EcommercePackageHeightVisibility
         {
             get
             {
-                return _ecommerce_PackageHeightVisibility;
+                return _EcommercePackageHeightVisibility;
             }
             set
             {
-                _ecommerce_PackageHeightVisibility = value;
-                OnPropertyChanged("Ecommerce_PackageHeightVisibility");
+                _EcommercePackageHeightVisibility = value;
+                OnPropertyChanged("EcommercePackageHeightVisibility");
             }
         }
-        private string _ecommerce_PackageHeightVisibility = "auto";
+        private string _EcommercePackageHeightVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_PackageLengthVisibility field
+        ///     Gets or sets the EcommercePackageLengthVisibility field
         /// </summary>
-        public string Ecommerce_PackageLengthVisibility
+        public string EcommercePackageLengthVisibility
         {
             get
             {
-                return _ecommerce_PackageLengthVisibility;
+                return _EcommercePackageLengthVisibility;
             }
             set
             {
-                _ecommerce_PackageLengthVisibility = value;
-                OnPropertyChanged("Ecommerce_PackageLengthVisibility");
+                _EcommercePackageLengthVisibility = value;
+                OnPropertyChanged("EcommercePackageLengthVisibility");
             }
         }
-        private string _ecommerce_PackageLengthVisibility = "auto";
+        private string _EcommercePackageLengthVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_PackageWeightVisibility field
+        ///     Gets or sets the EcommercePackageWeightVisibility field
         /// </summary>
-        public string Ecommerce_PackageWeightVisibility
+        public string EcommercePackageWeightVisibility
         {
             get
             {
-                return _ecommerce_PackageWeightVisibility;
+                return _EcommercePackageWeightVisibility;
             }
             set
             {
-                _ecommerce_PackageWeightVisibility = value;
-                OnPropertyChanged("Ecommerce_PackageWeightVisibility");
+                _EcommercePackageWeightVisibility = value;
+                OnPropertyChanged("EcommercePackageWeightVisibility");
             }
         }
-        private string _ecommerce_PackageWeightVisibility = "auto";
+        private string _EcommercePackageWeightVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_PackageWidthVisibility field
+        ///     Gets or sets the EcommercePackageWidthVisibility field
         /// </summary>
-        public string Ecommerce_PackageWidthVisibility
+        public string EcommercePackageWidthVisibility
         {
             get
             {
-                return _ecommerce_PackageWidthVisibility;
+                return _EcommercePackageWidthVisibility;
             }
             set
             {
-                _ecommerce_PackageWidthVisibility = value;
-                OnPropertyChanged("Ecommerce_PackageWidthVisibility");
+                _EcommercePackageWidthVisibility = value;
+                OnPropertyChanged("EcommercePackageWidthVisibility");
             }
         }
-        private string _ecommerce_PackageWidthVisibility = "auto";
+        private string _EcommercePackageWidthVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_PageQtyVisibility field
+        ///     Gets or sets the EcommercePageQtyVisibility field
         /// </summary>
-        public string Ecommerce_PageQtyVisibility
+        public string EcommercePageQtyVisibility
         {
             get
             {
-                return _ecommerce_PageQtyVisibility;
+                return _EcommercePageQtyVisibility;
             }
             set
             {
-                _ecommerce_PageQtyVisibility = value;
-                OnPropertyChanged("Ecommerce_PageQtyVisibility");
+                _EcommercePageQtyVisibility = value;
+                OnPropertyChanged("EcommercePageQtyVisibility");
             }
         }
-        private string _ecommerce_PageQtyVisibility = "auto";
+        private string _EcommercePageQtyVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_ProductCategoryVisibility field
+        ///     Gets or sets the EcommerceProductCategoryVisibility field
         /// </summary>
-        public string Ecommerce_ProductCategoryVisibility
+        public string EcommerceProductCategoryVisibility
         {
             get
             {
-                return _ecommerce_ProductCategoryVisibility;
+                return _EcommerceProductCategoryVisibility;
             }
             set
             {
-                _ecommerce_ProductCategoryVisibility = value;
-                OnPropertyChanged("Ecommerce_ProductCategoryVisibility");
+                _EcommerceProductCategoryVisibility = value;
+                OnPropertyChanged("EcommerceProductCategoryVisibility");
             }
         }
-        private string _ecommerce_ProductCategoryVisibility = "auto";
+        private string _EcommerceProductCategoryVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_ProductDescriptionVisibility field
+        ///     Gets or sets the EcommerceProductDescriptionVisibility field
         /// </summary>
-        public string Ecommerce_ProductDescriptionVisibility
+        public string EcommerceProductDescriptionVisibility
         {
             get
             {
-                return _ecommerce_ProductDescriptionVisibility;
+                return _EcommerceProductDescriptionVisibility;
             }
             set
             {
-                _ecommerce_ProductDescriptionVisibility = value;
-                OnPropertyChanged("Ecommerce_ProductDescriptionVisibility");
+                _EcommerceProductDescriptionVisibility = value;
+                OnPropertyChanged("EcommerceProductDescriptionVisibility");
             }
         }
-        private string _ecommerce_ProductDescriptionVisibility = "auto";
+        private string _EcommerceProductDescriptionVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_ProductSubcategoryVisibility field
+        ///     Gets or sets the EcommerceProductSubcategoryVisibility field
         /// </summary>
-        public string Ecommerce_ProductSubcategoryVisibility
+        public string EcommerceProductSubcategoryVisibility
         {
             get
             {
-                return _ecommerce_ProductSubcategoryVisibility;
+                return _EcommerceProductSubcategoryVisibility;
             }
             set
             {
-                _ecommerce_ProductSubcategoryVisibility = value;
-                OnPropertyChanged("Ecommerce_ProductSubcategoryVisibility");
+                _EcommerceProductSubcategoryVisibility = value;
+                OnPropertyChanged("EcommerceProductSubcategoryVisibility");
             }
         }
-        private string _ecommerce_ProductSubcategoryVisibility = "auto";
+        private string _EcommerceProductSubcategoryVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_ManufacturerNameVisibility field
+        ///     Gets or sets the EcommerceManufacturerNameVisibility field
         /// </summary>
-        public string Ecommerce_ManufacturerNameVisibility
+        public string EcommerceManufacturerNameVisibility
         {
             get
             {
-                return _ecommerce_ManufacturerNameVisibility;
+                return _EcommerceManufacturerNameVisibility;
             }
             set
             {
-                _ecommerce_ManufacturerNameVisibility = value;
-                OnPropertyChanged("Ecommerce_ManufacturerNameVisibility");
+                _EcommerceManufacturerNameVisibility = value;
+                OnPropertyChanged("EcommerceManufacturerNameVisibility");
             }
         }
-        private string _ecommerce_ManufacturerNameVisibility = "auto";
+        private string _EcommerceManufacturerNameVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_MsrpVisibility field
+        ///     Gets or sets the EcommerceMsrpVisibility field
         /// </summary>
-        public string Ecommerce_MsrpVisibility
+        public string EcommerceMsrpVisibility
         {
             get
             {
-                return _ecommerce_MsrpVisibility;
+                return _EcommerceMsrpVisibility;
             }
             set
             {
-                _ecommerce_MsrpVisibility = value;
-                OnPropertyChanged("Ecommerce_MsrpVisibility");
+                _EcommerceMsrpVisibility = value;
+                OnPropertyChanged("EcommerceMsrpVisibility");
             }
         }
-        private string _ecommerce_MsrpVisibility = "auto";
+        private string _EcommerceMsrpVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_SearchTermsVisibility field
+        ///     Gets or sets the EcommerceSearchTermsVisibility field
         /// </summary>
-        public string Ecommerce_SearchTermsVisibility
+        public string EcommerceSearchTermsVisibility
         {
             get
             {
-                return _ecommerce_SearchTermsVisibility;
+                return _EcommerceSearchTermsVisibility;
             }
             set
             {
-                _ecommerce_SearchTermsVisibility = value;
-                OnPropertyChanged("Ecommerce_SearchTermsVisibility");
+                _EcommerceSearchTermsVisibility = value;
+                OnPropertyChanged("EcommerceSearchTermsVisibility");
             }
         }
-        private string _ecommerce_SearchTermsVisibility = "auto";
+        private string _EcommerceSearchTermsVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_SizeVisibility field
+        ///     Gets or sets the EcommerceSizeVisibility field
         /// </summary>
-        public string Ecommerce_SizeVisibility
+        public string EcommerceSizeVisibility
         {
             get
             {
-                return _ecommerce_SizeVisibility;
+                return _EcommerceSizeVisibility;
             }
             set
             {
-                _ecommerce_SizeVisibility = value;
-                OnPropertyChanged("Ecommerce_SizeVisibility");
+                _EcommerceSizeVisibility = value;
+                OnPropertyChanged("EcommerceSizeVisibility");
             }
         }
-        private string _ecommerce_SizeVisibility = "auto";
+        private string _EcommerceSizeVisibility = "auto";
 
         /// <summary>
-        ///     Gets or sets the Ecommerce_UpcVisibility field
+        ///     Gets or sets the EcommerceUpcVisibility field
         /// </summary>
-        public string Ecommerce_UpcVisibility
+        public string EcommerceUpcVisibility
         {
             get
             {
-                return _ecommerce_UpcVisibility;
+                return _EcommerceUpcVisibility;
             }
             set
             {
-                _ecommerce_UpcVisibility = value;
-                OnPropertyChanged("Ecommerce_UpcVisibility");
+                _EcommerceUpcVisibility = value;
+                OnPropertyChanged("EcommerceUpcVisibility");
             }
         }
-        private string _ecommerce_UpcVisibility = "auto";
+        private string _EcommerceUpcVisibility = "auto";
 
         #endregion // Visibility Properties
 
@@ -2946,11 +2946,11 @@ namespace Odin.ViewModels
             ItemView window = new ItemView();
             if (item == null)
             {
-                window.DataContext = new ItemViewModel(this.SelectedItem, this.ItemService, ItemIds);
+                window.DataContext = new ItemViewModel(this.SelectedItem, this.ItemService, ItemIds, this.ItemErrors);
             }
             else
             {
-                window.DataContext = new ItemViewModel(item, this.ItemService, ItemIds);
+                window.DataContext = new ItemViewModel(item, this.ItemService, ItemIds, this.ItemErrors);
             }
             window.ShowDialog();
 
@@ -3350,7 +3350,7 @@ namespace Odin.ViewModels
                 this.PermissionAdminVisibility = Permissions.Contains("ADMIN_CONTROLS") ? "Visible" : "Hidden";
                 this.PermissionSaveItemVisibility = Permissions.Contains("SAVE_ITEMS") ? "Visible" : "Hidden";
                 this.PermissionSubmitItemVisibility = Permissions.Contains("WEB_SUBMIT") ? "Visible" : "Hidden";
-                this.PermissionEcommerceControlVisibility = Permissions.Contains("ECOMMERCE_CONTROL") ? "Visible" : "Hidden";
+                this.PermissionEcommerceControlVisibility = Permissions.Contains("EcommerceCONTROL") ? "Visible" : "Hidden";
                 this.PermissionRequestNewCategoryVisibility = Permissions.Contains("ADMIN_CONTROLS") ? "Visible" : "Hidden";
             }
             else
@@ -3458,37 +3458,37 @@ namespace Odin.ViewModels
             this.ImagePath4Visibility = (UserOptions.ImagePath4Visibility) ? "100" : "0";
             this.ImagePath5Visibility = (UserOptions.ImagePath5Visibility) ? "100" : "0";
             /* Ecommerce Visibility */
-            this.Ecommerce_AsinVisibility = (UserOptions.Ecommerce_AsinVisibility) ? "100" : "0";
-            this.Ecommerce_Bullet1Visibility = (UserOptions.Ecommerce_Bullet1Visibility) ? "100" : "0";
-            this.Ecommerce_Bullet2Visibility = (UserOptions.Ecommerce_Bullet2Visibility) ? "100" : "0";
-            this.Ecommerce_Bullet3Visibility = (UserOptions.Ecommerce_Bullet3Visibility) ? "100" : "0";
-            this.Ecommerce_Bullet4Visibility = (UserOptions.Ecommerce_Bullet4Visibility) ? "100" : "0";
-            this.Ecommerce_Bullet5Visibility = (UserOptions.Ecommerce_Bullet5Visibility) ? "100" : "0";
-            this.Ecommerce_ComponentsVisibility = (UserOptions.Ecommerce_ComponentsVisibility) ? "100" : "0";
-            this.Ecommerce_CostVisibility = (UserOptions.Ecommerce_CostVisibility) ? "100" : "0";
-            this.Ecommerce_CountryofOriginVisibility = (UserOptions.Ecommerce_CountryofOriginVisibility) ? "100" : "0";
-            this.Ecommerce_ExternalIdVisibility = (UserOptions.Ecommerce_ExternalIdVisibility) ? "100" : "0";
-            this.Ecommerce_ExternalIdTypeVisibility = (UserOptions.Ecommerce_ExternalIdTypeVisibility) ? "100" : "0";
-            this.Ecommerce_ItemAliasVisibility = (UserOptions.Ecommerce_ItemAliasVisibility) ? "100" : "0";
-            this.Ecommerce_ItemHeightVisibility = (UserOptions.Ecommerce_ItemHeightVisibility) ? "100" : "0";
-            this.Ecommerce_ItemLengthVisibility = (UserOptions.Ecommerce_ItemLengthVisibility) ? "100" : "0";
-            this.Ecommerce_ItemNameVisibility = (UserOptions.Ecommerce_ItemNameVisibility) ? "100" : "0";
-            this.Ecommerce_ItemWeightVisibility = (UserOptions.Ecommerce_ItemWeightVisibility) ? "100" : "0";
-            this.Ecommerce_ItemWidthVisibility = (UserOptions.Ecommerce_ItemWidthVisibility) ? "100" : "0";
-            this.Ecommerce_ModelNameVisibility = (UserOptions.Ecommerce_ModelNameVisibility) ? "100" : "0";
-            this.Ecommerce_PackageHeightVisibility = (UserOptions.Ecommerce_PackageHeightVisibility) ? "100" : "0";
-            this.Ecommerce_PackageLengthVisibility = (UserOptions.Ecommerce_PackageLengthVisibility) ? "100" : "0";
-            this.Ecommerce_PackageWeightVisibility = (UserOptions.Ecommerce_PackageWeightVisibility) ? "100" : "0";
-            this.Ecommerce_PackageWidthVisibility = (UserOptions.Ecommerce_PackageWidthVisibility) ? "100" : "0";
-            this.Ecommerce_PageQtyVisibility = (UserOptions.Ecommerce_PageQtyVisibility) ? "100" : "0";
-            this.Ecommerce_ProductCategoryVisibility = (UserOptions.Ecommerce_ProductCategoryVisibility) ? "100" : "0";
-            this.Ecommerce_ProductDescriptionVisibility = (UserOptions.Ecommerce_ProductDescriptionVisibility) ? "100" : "0";
-            this.Ecommerce_ProductSubcategoryVisibility = (UserOptions.Ecommerce_ProductSubcategoryVisibility) ? "100" : "0";
-            this.Ecommerce_ManufacturerNameVisibility = (UserOptions.Ecommerce_ManufacturerNameVisibility) ? "100" : "0";
-            this.Ecommerce_MsrpVisibility = (UserOptions.Ecommerce_MsrpVisibility) ? "100" : "0";
-            this.Ecommerce_SearchTermsVisibility = (UserOptions.Ecommerce_SearchTermsVisibility) ? "100" : "0";
-            this.Ecommerce_SizeVisibility = (UserOptions.Ecommerce_SizeVisibility) ? "100" : "0";
-            this.Ecommerce_UpcVisibility = (UserOptions.Ecommerce_UpcVisibility) ? "100" : "0";
+            this.EcommerceAsinVisibility = (UserOptions.EcommerceAsinVisibility) ? "100" : "0";
+            this.EcommerceBullet1Visibility = (UserOptions.EcommerceBullet1Visibility) ? "100" : "0";
+            this.EcommerceBullet2Visibility = (UserOptions.EcommerceBullet2Visibility) ? "100" : "0";
+            this.EcommerceBullet3Visibility = (UserOptions.EcommerceBullet3Visibility) ? "100" : "0";
+            this.EcommerceBullet4Visibility = (UserOptions.EcommerceBullet4Visibility) ? "100" : "0";
+            this.EcommerceBullet5Visibility = (UserOptions.EcommerceBullet5Visibility) ? "100" : "0";
+            this.EcommerceComponentsVisibility = (UserOptions.EcommerceComponentsVisibility) ? "100" : "0";
+            this.EcommerceCostVisibility = (UserOptions.EcommerceCostVisibility) ? "100" : "0";
+            this.EcommerceCountryofOriginVisibility = (UserOptions.EcommerceCountryofOriginVisibility) ? "100" : "0";
+            this.EcommerceExternalIdVisibility = (UserOptions.EcommerceExternalIdVisibility) ? "100" : "0";
+            this.EcommerceExternalIdTypeVisibility = (UserOptions.EcommerceExternalIdTypeVisibility) ? "100" : "0";
+            this.EcommerceItemAliasVisibility = (UserOptions.EcommerceItemAliasVisibility) ? "100" : "0";
+            this.EcommerceItemHeightVisibility = (UserOptions.EcommerceItemHeightVisibility) ? "100" : "0";
+            this.EcommerceItemLengthVisibility = (UserOptions.EcommerceItemLengthVisibility) ? "100" : "0";
+            this.EcommerceItemNameVisibility = (UserOptions.EcommerceItemNameVisibility) ? "100" : "0";
+            this.EcommerceItemWeightVisibility = (UserOptions.EcommerceItemWeightVisibility) ? "100" : "0";
+            this.EcommerceItemWidthVisibility = (UserOptions.EcommerceItemWidthVisibility) ? "100" : "0";
+            this.EcommerceModelNameVisibility = (UserOptions.EcommerceModelNameVisibility) ? "100" : "0";
+            this.EcommercePackageHeightVisibility = (UserOptions.EcommercePackageHeightVisibility) ? "100" : "0";
+            this.EcommercePackageLengthVisibility = (UserOptions.EcommercePackageLengthVisibility) ? "100" : "0";
+            this.EcommercePackageWeightVisibility = (UserOptions.EcommercePackageWeightVisibility) ? "100" : "0";
+            this.EcommercePackageWidthVisibility = (UserOptions.EcommercePackageWidthVisibility) ? "100" : "0";
+            this.EcommercePageQtyVisibility = (UserOptions.EcommercePageQtyVisibility) ? "100" : "0";
+            this.EcommerceProductCategoryVisibility = (UserOptions.EcommerceProductCategoryVisibility) ? "100" : "0";
+            this.EcommerceProductDescriptionVisibility = (UserOptions.EcommerceProductDescriptionVisibility) ? "100" : "0";
+            this.EcommerceProductSubcategoryVisibility = (UserOptions.EcommerceProductSubcategoryVisibility) ? "100" : "0";
+            this.EcommerceManufacturerNameVisibility = (UserOptions.EcommerceManufacturerNameVisibility) ? "100" : "0";
+            this.EcommerceMsrpVisibility = (UserOptions.EcommerceMsrpVisibility) ? "100" : "0";
+            this.EcommerceSearchTermsVisibility = (UserOptions.EcommerceSearchTermsVisibility) ? "100" : "0";
+            this.EcommerceSizeVisibility = (UserOptions.EcommerceSizeVisibility) ? "100" : "0";
+            this.EcommerceUpcVisibility = (UserOptions.EcommerceUpcVisibility) ? "100" : "0";
         }
 
         /// <summary>

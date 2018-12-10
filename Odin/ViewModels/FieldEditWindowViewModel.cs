@@ -237,10 +237,8 @@ namespace Odin.ViewModels
         /// <param name="emailService"></param>
         public FieldEditWindowViewModel(string fieldType, string fieldValue, string fieldStatus, ItemService itemService, EmailService emailService)
         {
-            if (itemService == null) { throw new ArgumentNullException("itemService"); }
-            if (emailService == null) { throw new ArgumentNullException("emailService"); }
-            ItemService = itemService;
-            EmailService = emailService;
+            ItemService = itemService ?? throw new ArgumentNullException("itemService");
+            EmailService = emailService ?? throw new ArgumentNullException("emailService");
             NewFieldValue = fieldValue;
             OriginalFieldValue = fieldValue;
             FieldStatus = fieldStatus;

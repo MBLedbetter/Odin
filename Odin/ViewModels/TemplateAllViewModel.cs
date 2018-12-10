@@ -68,12 +68,12 @@ namespace Odin.ViewModels
         /// <summary>
         ///     The current selected template
         /// </summary>
-        public Template SelectedTemplate { get; set; }
+        public ItemObject SelectedTemplate { get; set; }
 
         /// <summary>
         ///     Gets or sets the template list property
         /// </summary>
-        public List<Template> TemplateList
+        public List<ItemObject> TemplateList
         {
             get
             {
@@ -85,7 +85,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("TemplateList");
             }
         }
-        private List<Template> _templateList = new List<Template>();
+        private List<ItemObject> _templateList = new List<ItemObject>();
 
         #endregion // Properties
 
@@ -117,7 +117,7 @@ namespace Odin.ViewModels
         /// </summary>
         private void ExportSelectedItem()
         {
-            List<Template> templateList = new List<Template>();
+            List<ItemObject> templateList = new List<ItemObject>();
             templateList.Add(this.SelectedTemplate);
             ExcelService.CreateTemplateWorkbook(templateList);
 
@@ -129,7 +129,7 @@ namespace Odin.ViewModels
         private void PopulateTemplateList()
         {
             List<string> templateNames = GlobalData.TemplateNames;
-            List<Template> newTemplateList = new List<Template>();
+            List<ItemObject> newTemplateList = new List<ItemObject>();
             templateNames.Sort();
             foreach(string name in templateNames)
             {

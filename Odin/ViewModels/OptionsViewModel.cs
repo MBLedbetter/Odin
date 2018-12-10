@@ -96,406 +96,406 @@ namespace Odin.ViewModels
         }
         private bool _ecommerceFieldVisibility = true;
 
-        public bool Ecommerce_AsinVisibility
+        public bool EcommerceAsinVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_AsinVisibility;
+                return UserOptions.EcommerceAsinVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_AsinVisibility = value;
-                OnPropertyChanged("Ecommerce_AsinVisibility");
+                UserOptions.EcommerceAsinVisibility = value;
+                OnPropertyChanged("EcommerceAsinVisibility");
             }
         }
 
-        public bool Ecommerce_Bullet1Visibility
+        public bool EcommerceBullet1Visibility
         {
             get
             {
-                return UserOptions.Ecommerce_Bullet1Visibility;
+                return UserOptions.EcommerceBullet1Visibility;
             }
             set
             {
-                UserOptions.Ecommerce_Bullet1Visibility = value;
-                OnPropertyChanged("Ecommerce_Bullet1Visibility");
+                UserOptions.EcommerceBullet1Visibility = value;
+                OnPropertyChanged("EcommerceBullet1Visibility");
             }
         }
 
-        public bool Ecommerce_Bullet2Visibility
+        public bool EcommerceBullet2Visibility
         {
             get
             {
-                return UserOptions.Ecommerce_Bullet2Visibility;
+                return UserOptions.EcommerceBullet2Visibility;
             }
             set
             {
-                UserOptions.Ecommerce_Bullet2Visibility = value;
-                OnPropertyChanged("Ecommerce_Bullet2Visibility");
+                UserOptions.EcommerceBullet2Visibility = value;
+                OnPropertyChanged("EcommerceBullet2Visibility");
             }
         }
 
-        public bool Ecommerce_Bullet3Visibility
+        public bool EcommerceBullet3Visibility
         {
             get
             {
-                return UserOptions.Ecommerce_Bullet3Visibility;
+                return UserOptions.EcommerceBullet3Visibility;
             }
             set
             {
-                UserOptions.Ecommerce_Bullet3Visibility = value;
-                OnPropertyChanged("Ecommerce_Bullet3Visibility");
+                UserOptions.EcommerceBullet3Visibility = value;
+                OnPropertyChanged("EcommerceBullet3Visibility");
             }
         }
 
-        public bool Ecommerce_Bullet4Visibility
+        public bool EcommerceBullet4Visibility
         {
             get
             {
-                return UserOptions.Ecommerce_Bullet4Visibility;
+                return UserOptions.EcommerceBullet4Visibility;
             }
             set
             {
-                UserOptions.Ecommerce_Bullet4Visibility = value;
-                OnPropertyChanged("Ecommerce_Bullet4Visibility");
+                UserOptions.EcommerceBullet4Visibility = value;
+                OnPropertyChanged("EcommerceBullet4Visibility");
             }
         }
 
-        public bool Ecommerce_Bullet5Visibility
+        public bool EcommerceBullet5Visibility
         {
             get
             {
-                return UserOptions.Ecommerce_Bullet5Visibility;
+                return UserOptions.EcommerceBullet5Visibility;
             }
             set
             {
-                UserOptions.Ecommerce_Bullet5Visibility = value;
-                OnPropertyChanged("Ecommerce_Bullet5Visibility");
+                UserOptions.EcommerceBullet5Visibility = value;
+                OnPropertyChanged("EcommerceBullet5Visibility");
             }
         }
 
-        public bool Ecommerce_ComponentsVisibility
+        public bool EcommerceComponentsVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_ComponentsVisibility;
+                return UserOptions.EcommerceComponentsVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_ComponentsVisibility = value;
-                OnPropertyChanged("Ecommerce_ComponentsVisibility");
+                UserOptions.EcommerceComponentsVisibility = value;
+                OnPropertyChanged("EcommerceComponentsVisibility");
             }
         }
 
-        public bool Ecommerce_CostVisibility
+        public bool EcommerceCostVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_CostVisibility;
+                return UserOptions.EcommerceCostVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_CostVisibility = value;
-                OnPropertyChanged("Ecommerce_CostVisibility");
+                UserOptions.EcommerceCostVisibility = value;
+                OnPropertyChanged("EcommerceCostVisibility");
             }
         }
 
-        public bool Ecommerce_CountryofOriginVisibility
+        public bool EcommerceCountryofOriginVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_CountryofOriginVisibility;
+                return UserOptions.EcommerceCountryofOriginVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_CountryofOriginVisibility = value;
-                OnPropertyChanged("Ecommerce_CountryofOriginVisibility");
+                UserOptions.EcommerceCountryofOriginVisibility = value;
+                OnPropertyChanged("EcommerceCountryofOriginVisibility");
             }
         }
 
-        public bool Ecommerce_ExternalIdVisibility
+        public bool EcommerceExternalIdVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_ExternalIdVisibility;
+                return UserOptions.EcommerceExternalIdVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_ExternalIdVisibility = value;
-                OnPropertyChanged("Ecommerce_ExternalIdVisibility");
+                UserOptions.EcommerceExternalIdVisibility = value;
+                OnPropertyChanged("EcommerceExternalIdVisibility");
             }
         }
 
-        public bool Ecommerce_ExternalIdTypeVisibility
+        public bool EcommerceExternalIdTypeVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_ExternalIdTypeVisibility;
+                return UserOptions.EcommerceExternalIdTypeVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_ExternalIdTypeVisibility = value;
-                OnPropertyChanged("Ecommerce_ExternalIdTypeVisibility");
+                UserOptions.EcommerceExternalIdTypeVisibility = value;
+                OnPropertyChanged("EcommerceExternalIdTypeVisibility");
             }
         }
 
-        public bool Ecommerce_ItemAliasVisibility
+        public bool EcommerceItemAliasVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_ItemAliasVisibility;
+                return UserOptions.EcommerceItemAliasVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_ItemAliasVisibility = value;
-                OnPropertyChanged("Ecommerce_ItemAliasVisibility");
+                UserOptions.EcommerceItemAliasVisibility = value;
+                OnPropertyChanged("EcommerceItemAliasVisibility");
             }
         }
 
-        public bool Ecommerce_ItemHeightVisibility
+        public bool EcommerceItemHeightVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_ItemHeightVisibility;
+                return UserOptions.EcommerceItemHeightVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_ItemHeightVisibility = value;
-                OnPropertyChanged("Ecommerce_ItemHeightVisibility");
+                UserOptions.EcommerceItemHeightVisibility = value;
+                OnPropertyChanged("EcommerceItemHeightVisibility");
             }
         }
 
-        public bool Ecommerce_ItemLengthVisibility
+        public bool EcommerceItemLengthVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_ItemLengthVisibility;
+                return UserOptions.EcommerceItemLengthVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_ItemLengthVisibility = value;
-                OnPropertyChanged("Ecommerce_ItemLengthVisibility");
+                UserOptions.EcommerceItemLengthVisibility = value;
+                OnPropertyChanged("EcommerceItemLengthVisibility");
             }
         }
 
-        public bool Ecommerce_ItemNameVisibility
+        public bool EcommerceItemNameVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_ItemNameVisibility;
+                return UserOptions.EcommerceItemNameVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_ItemNameVisibility = value;
-                OnPropertyChanged("Ecommerce_ItemNameVisibility");
+                UserOptions.EcommerceItemNameVisibility = value;
+                OnPropertyChanged("EcommerceItemNameVisibility");
             }
         }
 
-        public bool Ecommerce_ItemWeightVisibility
+        public bool EcommerceItemWeightVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_ItemWeightVisibility;
+                return UserOptions.EcommerceItemWeightVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_ItemWeightVisibility = value;
-                OnPropertyChanged("Ecommerce_ItemWeightVisibility");
+                UserOptions.EcommerceItemWeightVisibility = value;
+                OnPropertyChanged("EcommerceItemWeightVisibility");
             }
         }
 
-        public bool Ecommerce_ItemWidthVisibility
+        public bool EcommerceItemWidthVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_ItemWidthVisibility;
+                return UserOptions.EcommerceItemWidthVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_ItemWidthVisibility = value;
-                OnPropertyChanged("Ecommerce_ItemWidthVisibility");
+                UserOptions.EcommerceItemWidthVisibility = value;
+                OnPropertyChanged("EcommerceItemWidthVisibility");
             }
         }
 
-        public bool Ecommerce_ModelNameVisibility
+        public bool EcommerceModelNameVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_ModelNameVisibility;
+                return UserOptions.EcommerceModelNameVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_ModelNameVisibility = value;
-                OnPropertyChanged("Ecommerce_ModelNameVisibility");
+                UserOptions.EcommerceModelNameVisibility = value;
+                OnPropertyChanged("EcommerceModelNameVisibility");
             }
         }
 
-        public bool Ecommerce_PackageHeightVisibility
+        public bool EcommercePackageHeightVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_PackageHeightVisibility;
+                return UserOptions.EcommercePackageHeightVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_PackageHeightVisibility = value;
-                OnPropertyChanged("Ecommerce_PackageHeightVisibility");
+                UserOptions.EcommercePackageHeightVisibility = value;
+                OnPropertyChanged("EcommercePackageHeightVisibility");
             }
         }
 
-        public bool Ecommerce_PackageLengthVisibility
+        public bool EcommercePackageLengthVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_PackageLengthVisibility;
+                return UserOptions.EcommercePackageLengthVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_PackageLengthVisibility = value;
-                OnPropertyChanged("Ecommerce_PackageLengthVisibility");
+                UserOptions.EcommercePackageLengthVisibility = value;
+                OnPropertyChanged("EcommercePackageLengthVisibility");
             }
         }
 
-        public bool Ecommerce_PackageWeightVisibility
+        public bool EcommercePackageWeightVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_PackageWeightVisibility;
+                return UserOptions.EcommercePackageWeightVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_PackageWeightVisibility = value;
-                OnPropertyChanged("Ecommerce_PackageWeightVisibility");
+                UserOptions.EcommercePackageWeightVisibility = value;
+                OnPropertyChanged("EcommercePackageWeightVisibility");
             }
         }
 
-        public bool Ecommerce_PackageWidthVisibility
+        public bool EcommercePackageWidthVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_PackageWidthVisibility;
+                return UserOptions.EcommercePackageWidthVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_PackageWidthVisibility = value;
-                OnPropertyChanged("Ecommerce_PackageWidthVisibility");
+                UserOptions.EcommercePackageWidthVisibility = value;
+                OnPropertyChanged("EcommercePackageWidthVisibility");
             }
         }
 
-        public bool Ecommerce_PageQtyVisibility
+        public bool EcommercePageQtyVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_PageQtyVisibility;
+                return UserOptions.EcommercePageQtyVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_PageQtyVisibility = value;
-                OnPropertyChanged("Ecommerce_PageQtyVisibility");
+                UserOptions.EcommercePageQtyVisibility = value;
+                OnPropertyChanged("EcommercePageQtyVisibility");
             }
         }
 
-        public bool Ecommerce_ProductCategoryVisibility
+        public bool EcommerceProductCategoryVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_ProductCategoryVisibility;
+                return UserOptions.EcommerceProductCategoryVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_ProductCategoryVisibility = value;
-                OnPropertyChanged("Ecommerce_ProductCategoryVisibility");
+                UserOptions.EcommerceProductCategoryVisibility = value;
+                OnPropertyChanged("EcommerceProductCategoryVisibility");
             }
         }
 
-        public bool Ecommerce_ProductDescriptionVisibility
+        public bool EcommerceProductDescriptionVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_ProductDescriptionVisibility;
+                return UserOptions.EcommerceProductDescriptionVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_ProductDescriptionVisibility = value;
-                OnPropertyChanged("Ecommerce_ProductDescriptionVisibility");
+                UserOptions.EcommerceProductDescriptionVisibility = value;
+                OnPropertyChanged("EcommerceProductDescriptionVisibility");
             }
         }
 
-        public bool Ecommerce_ProductSubcategoryVisibility
+        public bool EcommerceProductSubcategoryVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_ProductSubcategoryVisibility;
+                return UserOptions.EcommerceProductSubcategoryVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_ProductSubcategoryVisibility = value;
-                OnPropertyChanged("Ecommerce_ProductSubcategoryVisibility");
+                UserOptions.EcommerceProductSubcategoryVisibility = value;
+                OnPropertyChanged("EcommerceProductSubcategoryVisibility");
             }
         }
 
-        public bool Ecommerce_ManufacturerNameVisibility
+        public bool EcommerceManufacturerNameVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_ManufacturerNameVisibility;
+                return UserOptions.EcommerceManufacturerNameVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_ManufacturerNameVisibility = value;
-                OnPropertyChanged("Ecommerce_ManufacturerNameVisibility");
+                UserOptions.EcommerceManufacturerNameVisibility = value;
+                OnPropertyChanged("EcommerceManufacturerNameVisibility");
             }
         }
 
-        public bool Ecommerce_MsrpVisibility
+        public bool EcommerceMsrpVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_MsrpVisibility;
+                return UserOptions.EcommerceMsrpVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_MsrpVisibility = value;
-                OnPropertyChanged("Ecommerce_MsrpVisibility");
+                UserOptions.EcommerceMsrpVisibility = value;
+                OnPropertyChanged("EcommerceMsrpVisibility");
             }
         }
 
-        public bool Ecommerce_SearchTermsVisibility
+        public bool EcommerceSearchTermsVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_SearchTermsVisibility;
+                return UserOptions.EcommerceSearchTermsVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_SearchTermsVisibility = value;
-                OnPropertyChanged("Ecommerce_SearchTermsVisibility");
+                UserOptions.EcommerceSearchTermsVisibility = value;
+                OnPropertyChanged("EcommerceSearchTermsVisibility");
             }
         }
 
-        public bool Ecommerce_SizeVisibility
+        public bool EcommerceSizeVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_SizeVisibility;
+                return UserOptions.EcommerceSizeVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_SizeVisibility = value;
-                OnPropertyChanged("Ecommerce_SizeVisibility");
+                UserOptions.EcommerceSizeVisibility = value;
+                OnPropertyChanged("EcommerceSizeVisibility");
             }
         }
 
-        public bool Ecommerce_UpcVisibility
+        public bool EcommerceUpcVisibility
         {
             get
             {
-                return UserOptions.Ecommerce_UpcVisibility;
+                return UserOptions.EcommerceUpcVisibility;
             }
             set
             {
-                UserOptions.Ecommerce_UpcVisibility = value;
-                OnPropertyChanged("Ecommerce_UpcVisibility");
+                UserOptions.EcommerceUpcVisibility = value;
+                OnPropertyChanged("EcommerceUpcVisibility");
             }
         }
 
@@ -1925,37 +1925,37 @@ namespace Odin.ViewModels
 
         public bool CheckEcommerceFieldVisibility()
         {
-            if (UserOptions.Ecommerce_AsinVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_Bullet1Visibility == false) { return false; }
-            if (UserOptions.Ecommerce_Bullet2Visibility == false) { return false; }
-            if (UserOptions.Ecommerce_Bullet3Visibility == false) { return false; }
-            if (UserOptions.Ecommerce_Bullet4Visibility == false) { return false; }
-            if (UserOptions.Ecommerce_Bullet5Visibility == false) { return false; }
-            if (UserOptions.Ecommerce_ComponentsVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_CostVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_CountryofOriginVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_ExternalIdVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_ExternalIdTypeVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_ItemAliasVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_ItemHeightVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_ItemLengthVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_ItemNameVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_ItemWeightVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_ItemWidthVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_ModelNameVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_PackageHeightVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_PackageLengthVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_PackageWeightVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_PackageWidthVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_PageQtyVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_ProductCategoryVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_ProductDescriptionVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_ProductSubcategoryVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_ManufacturerNameVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_MsrpVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_SearchTermsVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_SizeVisibility == false) { return false; }
-            if (UserOptions.Ecommerce_UpcVisibility == false) { return false; }
+            if (UserOptions.EcommerceAsinVisibility == false) { return false; }
+            if (UserOptions.EcommerceBullet1Visibility == false) { return false; }
+            if (UserOptions.EcommerceBullet2Visibility == false) { return false; }
+            if (UserOptions.EcommerceBullet3Visibility == false) { return false; }
+            if (UserOptions.EcommerceBullet4Visibility == false) { return false; }
+            if (UserOptions.EcommerceBullet5Visibility == false) { return false; }
+            if (UserOptions.EcommerceComponentsVisibility == false) { return false; }
+            if (UserOptions.EcommerceCostVisibility == false) { return false; }
+            if (UserOptions.EcommerceCountryofOriginVisibility == false) { return false; }
+            if (UserOptions.EcommerceExternalIdVisibility == false) { return false; }
+            if (UserOptions.EcommerceExternalIdTypeVisibility == false) { return false; }
+            if (UserOptions.EcommerceItemAliasVisibility == false) { return false; }
+            if (UserOptions.EcommerceItemHeightVisibility == false) { return false; }
+            if (UserOptions.EcommerceItemLengthVisibility == false) { return false; }
+            if (UserOptions.EcommerceItemNameVisibility == false) { return false; }
+            if (UserOptions.EcommerceItemWeightVisibility == false) { return false; }
+            if (UserOptions.EcommerceItemWidthVisibility == false) { return false; }
+            if (UserOptions.EcommerceModelNameVisibility == false) { return false; }
+            if (UserOptions.EcommercePackageHeightVisibility == false) { return false; }
+            if (UserOptions.EcommercePackageLengthVisibility == false) { return false; }
+            if (UserOptions.EcommercePackageWeightVisibility == false) { return false; }
+            if (UserOptions.EcommercePackageWidthVisibility == false) { return false; }
+            if (UserOptions.EcommercePageQtyVisibility == false) { return false; }
+            if (UserOptions.EcommerceProductCategoryVisibility == false) { return false; }
+            if (UserOptions.EcommerceProductDescriptionVisibility == false) { return false; }
+            if (UserOptions.EcommerceProductSubcategoryVisibility == false) { return false; }
+            if (UserOptions.EcommerceManufacturerNameVisibility == false) { return false; }
+            if (UserOptions.EcommerceMsrpVisibility == false) { return false; }
+            if (UserOptions.EcommerceSearchTermsVisibility == false) { return false; }
+            if (UserOptions.EcommerceSizeVisibility == false) { return false; }
+            if (UserOptions.EcommerceUpcVisibility == false) { return false; }
             if (UserOptions.WarrantyVisibility == false) { return false; }
             if (UserOptions.WarrantyCheckVisibility == false) { return false; }
             return true;
@@ -2133,73 +2133,73 @@ namespace Odin.ViewModels
         {
             if (value)
             {
-                Ecommerce_AsinVisibility = true;
-                Ecommerce_Bullet1Visibility = true;
-                Ecommerce_Bullet2Visibility = true;
-                Ecommerce_Bullet3Visibility = true;
-                Ecommerce_Bullet4Visibility = true;
-                Ecommerce_Bullet5Visibility = true;
-                Ecommerce_ComponentsVisibility = true;
-                Ecommerce_CostVisibility = true;
-                Ecommerce_CountryofOriginVisibility = true;
-                Ecommerce_ExternalIdVisibility = true;
-                Ecommerce_ExternalIdTypeVisibility = true;
-                Ecommerce_ItemAliasVisibility = true;
-                Ecommerce_ItemHeightVisibility = true;
-                Ecommerce_ItemLengthVisibility = true;
-                Ecommerce_ItemNameVisibility = true;
-                Ecommerce_ItemWeightVisibility = true;
-                Ecommerce_ItemWidthVisibility = true;
-                Ecommerce_ModelNameVisibility = true;
-                Ecommerce_PackageHeightVisibility = true;
-                Ecommerce_PackageLengthVisibility = true;
-                Ecommerce_PackageWeightVisibility = true;
-                Ecommerce_PackageWidthVisibility = true;
-                Ecommerce_PageQtyVisibility = true;
-                Ecommerce_ProductCategoryVisibility = true;
-                Ecommerce_ProductDescriptionVisibility = true;
-                Ecommerce_ProductSubcategoryVisibility = true;
-                Ecommerce_ManufacturerNameVisibility = true;
-                Ecommerce_MsrpVisibility = true;
-                Ecommerce_SearchTermsVisibility = true;
-                Ecommerce_SizeVisibility = true;
-                Ecommerce_UpcVisibility = true;
+                EcommerceAsinVisibility = true;
+                EcommerceBullet1Visibility = true;
+                EcommerceBullet2Visibility = true;
+                EcommerceBullet3Visibility = true;
+                EcommerceBullet4Visibility = true;
+                EcommerceBullet5Visibility = true;
+                EcommerceComponentsVisibility = true;
+                EcommerceCostVisibility = true;
+                EcommerceCountryofOriginVisibility = true;
+                EcommerceExternalIdVisibility = true;
+                EcommerceExternalIdTypeVisibility = true;
+                EcommerceItemAliasVisibility = true;
+                EcommerceItemHeightVisibility = true;
+                EcommerceItemLengthVisibility = true;
+                EcommerceItemNameVisibility = true;
+                EcommerceItemWeightVisibility = true;
+                EcommerceItemWidthVisibility = true;
+                EcommerceModelNameVisibility = true;
+                EcommercePackageHeightVisibility = true;
+                EcommercePackageLengthVisibility = true;
+                EcommercePackageWeightVisibility = true;
+                EcommercePackageWidthVisibility = true;
+                EcommercePageQtyVisibility = true;
+                EcommerceProductCategoryVisibility = true;
+                EcommerceProductDescriptionVisibility = true;
+                EcommerceProductSubcategoryVisibility = true;
+                EcommerceManufacturerNameVisibility = true;
+                EcommerceMsrpVisibility = true;
+                EcommerceSearchTermsVisibility = true;
+                EcommerceSizeVisibility = true;
+                EcommerceUpcVisibility = true;
                 WarrantyVisibility = true;
                 WarrantyCheckVisibility = true;
             }
             else
             {
-                Ecommerce_AsinVisibility = false;
-                Ecommerce_Bullet1Visibility = false;
-                Ecommerce_Bullet2Visibility = false;
-                Ecommerce_Bullet3Visibility = false;
-                Ecommerce_Bullet4Visibility = false;
-                Ecommerce_Bullet5Visibility = false;
-                Ecommerce_ComponentsVisibility = false;
-                Ecommerce_CostVisibility = false;
-                Ecommerce_CountryofOriginVisibility = false;
-                Ecommerce_ExternalIdVisibility = false;
-                Ecommerce_ExternalIdTypeVisibility = false;
-                Ecommerce_ItemAliasVisibility = false;
-                Ecommerce_ItemHeightVisibility = false;
-                Ecommerce_ItemLengthVisibility = false;
-                Ecommerce_ItemNameVisibility = false;
-                Ecommerce_ItemWeightVisibility = false;
-                Ecommerce_ItemWidthVisibility = false;
-                Ecommerce_ModelNameVisibility = false;
-                Ecommerce_PackageHeightVisibility = false;
-                Ecommerce_PackageLengthVisibility = false;
-                Ecommerce_PackageWeightVisibility = false;
-                Ecommerce_PackageWidthVisibility = false;
-                Ecommerce_PageQtyVisibility = false;
-                Ecommerce_ProductCategoryVisibility = false;
-                Ecommerce_ProductDescriptionVisibility = false;
-                Ecommerce_ProductSubcategoryVisibility = false;
-                Ecommerce_ManufacturerNameVisibility = false;
-                Ecommerce_MsrpVisibility = false;
-                Ecommerce_SearchTermsVisibility = false;
-                Ecommerce_SizeVisibility = false;
-                Ecommerce_UpcVisibility = false;
+                EcommerceAsinVisibility = false;
+                EcommerceBullet1Visibility = false;
+                EcommerceBullet2Visibility = false;
+                EcommerceBullet3Visibility = false;
+                EcommerceBullet4Visibility = false;
+                EcommerceBullet5Visibility = false;
+                EcommerceComponentsVisibility = false;
+                EcommerceCostVisibility = false;
+                EcommerceCountryofOriginVisibility = false;
+                EcommerceExternalIdVisibility = false;
+                EcommerceExternalIdTypeVisibility = false;
+                EcommerceItemAliasVisibility = false;
+                EcommerceItemHeightVisibility = false;
+                EcommerceItemLengthVisibility = false;
+                EcommerceItemNameVisibility = false;
+                EcommerceItemWeightVisibility = false;
+                EcommerceItemWidthVisibility = false;
+                EcommerceModelNameVisibility = false;
+                EcommercePackageHeightVisibility = false;
+                EcommercePackageLengthVisibility = false;
+                EcommercePackageWeightVisibility = false;
+                EcommercePackageWidthVisibility = false;
+                EcommercePageQtyVisibility = false;
+                EcommerceProductCategoryVisibility = false;
+                EcommerceProductDescriptionVisibility = false;
+                EcommerceProductSubcategoryVisibility = false;
+                EcommerceManufacturerNameVisibility = false;
+                EcommerceMsrpVisibility = false;
+                EcommerceSearchTermsVisibility = false;
+                EcommerceSizeVisibility = false;
+                EcommerceUpcVisibility = false;
                 WarrantyVisibility = false;
                 WarrantyCheckVisibility = false;
             }
@@ -2403,7 +2403,7 @@ namespace Odin.ViewModels
             List<string> Permissions = this.OptionService.RetrievePermissions(GlobalData.UserName);
             if (Permissions.Count != 0)
             {
-                this.EcommerceVisibility = Permissions.Contains("ECOMMERCE_CONTROL") ? "Visible" : "Hidden";
+                this.EcommerceVisibility = Permissions.Contains("EcommerceCONTROL") ? "Visible" : "Hidden";
             }
             RetrieveAllOptions();
             this.HasUpdate = false;
