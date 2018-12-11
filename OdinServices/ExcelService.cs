@@ -2048,34 +2048,45 @@ namespace OdinServices
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        public string ReturnVariantAttributeName(string itemId, string customer)
+        public string ReturnVariantAttributeName(ItemObject item, string customer)
         {
-            string style = "Unframed Version";
 
-            if (itemId.Substring(0, 2) == "FR")
+            if(item.ProductFormat=="" || item.ProductFormat=="")
             {
-                if (itemId.Contains("SIL"))
+                if(item.ProductFormat=="Mount Bundle")
                 {
-                    style = "Silver Framed Version";
+                    return "Poster & Mount Bundle";
                 }
-                else if (itemId.Contains("BLK"))
+                if (item.ProductFormat == "Clip Bundle")
                 {
-                    style = "Black Framed Version";
+                    return "'Poster & Clip Bundle";
+                }
+            }
+
+            if (item.ItemId.Substring(0, 2) == "FR")
+            {
+                if (item.ItemId.Contains("SIL"))
+                {
+                    return "Silver Framed Version";
+                }
+                else if (item.ItemId.Contains("BLK"))
+                {
+                    return "Black Framed Version";
                 }
                 else
                 {
-                    style = "Framed Version";
+                    return "Framed Version";
                 }
             }
-            if (itemId.Substring(0, 3) == "POD")
+            else if (item.ItemId.Substring(0, 3) == "POD")
             {
-                style = "Premium Unframed";
                 if (customer == "Walmart")
                 {
-                    style = "Premium Unframed Version";
+                    return "Premium Unframed Version";
                 }
+                return "Premium Unframed";
             }
-            return style;
+            else return  "Unframed Version";
         }
 
         /// <summary>
