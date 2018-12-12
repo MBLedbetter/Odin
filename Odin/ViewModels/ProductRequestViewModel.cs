@@ -331,7 +331,7 @@ namespace Odin.ViewModels
                 {
                     ItemService.UpdateNewDate(request.ItemId);
 
-                    ItemObject item = new ItemObject();
+                    ItemObject item = new ItemObject(1);
                     if (requestType != "Remove")
                     {
                         item = ItemService.RetrieveItem(request.ItemId,count);

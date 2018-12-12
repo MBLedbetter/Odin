@@ -17,15 +17,15 @@ namespace OdinTests.BusinessLogicLayer.Models
         public void EcommerceValuesUpdateTest_HasUpdates_ShouldReturnTrue()
         {
             #region Assemble
-            ItemObject item = new ItemObject();
-            ItemObject item2 = new ItemObject();
-            ItemObject item3 = new ItemObject();
-            ItemObject item4 = new ItemObject();
+            ItemObject item = new ItemObject(1);
+            ItemObject item2 = new ItemObject(1);
+            ItemObject item3 = new ItemObject(1);
+            ItemObject item4 = new ItemObject(1);
             // item5 has no updates, should return false
-            ItemObject item5 = new ItemObject();
-            ItemObject item6 = new ItemObject();
-            ItemObject item7 = new ItemObject();
-            ItemObject item8 = new ItemObject();
+            ItemObject item5 = new ItemObject(1);
+            ItemObject item6 = new ItemObject(1);
+            ItemObject item7 = new ItemObject(1);
+            ItemObject item8 = new ItemObject(1);
 
             #endregion // Assemble
 
@@ -61,125 +61,125 @@ namespace OdinTests.BusinessLogicLayer.Models
         {
             #region Assemble
 
-            ItemObject Item = new ItemObject();
-            ItemObject sellOnAllPostersItem = new ItemObject();
-            ItemObject sellOnAmazonItem = new ItemObject();
-            ItemObject sellOnFanaticsItem = new ItemObject();
-            ItemObject sellOnGuitarCenterItem = new ItemObject();
-            ItemObject sellOnHayneedleItem = new ItemObject();
-            ItemObject sellOnTargetItem = new ItemObject();
-            ItemObject sellOnTrendsItem = new ItemObject();
-            ItemObject sellOnWalmartItem = new ItemObject();
-            ItemObject sellOnWayfairItem = new ItemObject();
-            ItemObject EcommerceAsinItem = new ItemObject();
-            ItemObject EcommerceBullet1Item = new ItemObject();
-            ItemObject EcommerceBullet2Item = new ItemObject();
-            ItemObject EcommerceBullet3Item = new ItemObject();
-            ItemObject EcommerceBullet4Item = new ItemObject();
-            ItemObject EcommerceBullet5Item = new ItemObject();
-            ItemObject EcommerceComponentsItem = new ItemObject();
-            ItemObject EcommerceCostItem = new ItemObject();
-            ItemObject EcommerceExternalIDItem = new ItemObject();
-            ItemObject EcommerceExternalIdTypeItem = new ItemObject();
-            ItemObject EcommerceImagePath1Item = new ItemObject();
-            ItemObject EcommerceImagePath2Item = new ItemObject();
-            ItemObject EcommerceImagePath3Item = new ItemObject();
-            ItemObject EcommerceImagePath4Item = new ItemObject();
-            ItemObject EcommerceImagePath5Item = new ItemObject();
-            ItemObject EcommerceItemHeightItem = new ItemObject();
-            ItemObject EcommerceItemLengthItem = new ItemObject();
-            ItemObject EcommerceItemNameItem = new ItemObject();
-            ItemObject EcommerceItemWeightItem = new ItemObject();
-            ItemObject EcommerceItemWidthItem = new ItemObject();
-            ItemObject EcommerceModelNameItem = new ItemObject();
-            ItemObject EcommercePackageHeightItem = new ItemObject();
-            ItemObject EcommercePackageLengthItem = new ItemObject();
-            ItemObject EcommercePackageWeightItem = new ItemObject();
-            ItemObject EcommercePackageWidthItem = new ItemObject();
-            ItemObject EcommercePageQtyItem = new ItemObject();
-            ItemObject EcommerceProductCategoryItem = new ItemObject();
-            ItemObject EcommerceProductDescriptionItem = new ItemObject();
-            ItemObject EcommerceProductSubcategoryItem = new ItemObject();
-            ItemObject EcommerceManufacturerNameItem = new ItemObject();
-            ItemObject EcommerceMsrpItem = new ItemObject();
-            ItemObject EcommerceSearchTermsItem = new ItemObject();
-            ItemObject EcommerceSizeItem = new ItemObject();
-            ItemObject accountingGroupItem = new ItemObject();
-            ItemObject casepackHeightItem = new ItemObject();
-            ItemObject casepackLengthItem = new ItemObject();
-            ItemObject casepackQtyItem = new ItemObject();
-            ItemObject casepackUpcItem = new ItemObject();
-            ItemObject casepackWidthItem = new ItemObject();
-            ItemObject casepackWeightItem = new ItemObject();
-            ItemObject categoryItem = new ItemObject();
-            ItemObject category2Item = new ItemObject();
-            ItemObject category3Item = new ItemObject();
-            ItemObject colorItem = new ItemObject();
-            ItemObject copyrightItem = new ItemObject();
-            ItemObject countryOfOriginItem = new ItemObject();
-            ItemObject costProfileGroupItem = new ItemObject();
-            ItemObject costProfileGroupItem2 = new ItemObject();
-            ItemObject defaultActualCostUsdItem = new ItemObject();
-            ItemObject defaultActualCostCadItem = new ItemObject();
-            ItemObject descriptionItem = new ItemObject();
-            ItemObject descriptionItem2 = new ItemObject();
-            ItemObject descriptionItem3 = new ItemObject();
-            ItemObject descriptionItem4 = new ItemObject();
-            ItemObject directImportItem = new ItemObject();
-            ItemObject dutyItem = new ItemObject();
-            ItemObject eanItem = new ItemObject();
-            ItemObject gpcItem = new ItemObject();
-            ItemObject heightItem = new ItemObject();
-            ItemObject innerpackHeightItem = new ItemObject();
-            ItemObject innerpackLengthItem = new ItemObject();
-            ItemObject innerpackQuantityItem = new ItemObject();
-            ItemObject innerpackUpcItem = new ItemObject();
-            ItemObject innerpackWidthItem = new ItemObject();
-            ItemObject innerpackWeightItem = new ItemObject();
-            ItemObject inStockDateItem = new ItemObject();
-            ItemObject isbnItem = new ItemObject();
-            ItemObject itemCategoryItem = new ItemObject();
-            ItemObject itemCategoryItem2 = new ItemObject();
-            ItemObject itemCategoryItem3 = new ItemObject();
-            ItemObject itemFamilyItem = new ItemObject();
-            ItemObject itemGroupItem = new ItemObject();
-            ItemObject itemIdItem = new ItemObject();
-            ItemObject itemKeywordsItem = new ItemObject();
-            ItemObject languageItem = new ItemObject();
-            ItemObject lengthItem = new ItemObject();
-            ItemObject licenseItem = new ItemObject();
-            ItemObject licenseBeginDateItem = new ItemObject();
-            ItemObject listPriceCadItem = new ItemObject();
-            ItemObject listPriceUsdItem = new ItemObject();
-            ItemObject listPriceMxnItem = new ItemObject();
-            ItemObject metaDescriptionItem = new ItemObject();
-            ItemObject mfgSourceItem = new ItemObject();
-            ItemObject msrpItem = new ItemObject();
-            ItemObject msrpCadItem = new ItemObject();
-            ItemObject msrpMxnItem = new ItemObject();
-            ItemObject productFormatItem = new ItemObject();
-            ItemObject productGroupItem = new ItemObject();
-            ItemObject productGroupItem2 = new ItemObject();
-            ItemObject productIdTranslationItem = new ItemObject();
-            ItemObject productLineItem = new ItemObject();
-            ItemObject productQtyItem = new ItemObject();
-            ItemObject propertyItem = new ItemObject();
-            ItemObject pricingGroupItem = new ItemObject();
-            ItemObject printOnDemandItem = new ItemObject();
-            ItemObject psStatusItem = new ItemObject();
-            ItemObject satCodeItem = new ItemObject();
-            ItemObject shortDescriptionItem = new ItemObject();
-            ItemObject sizeItem = new ItemObject();
-            ItemObject standardCostItem = new ItemObject();
-            ItemObject statsCodeItem = new ItemObject();
-            ItemObject tariffCodeItem = new ItemObject();
-            ItemObject territoryItem = new ItemObject();
-            ItemObject titleItem = new ItemObject();
-            ItemObject udexItem = new ItemObject();
-            ItemObject upcItem = new ItemObject();
-            ItemObject websitePriceItem = new ItemObject();
-            ItemObject weightItem = new ItemObject();
-            ItemObject widthItem = new ItemObject();
+            ItemObject Item = new ItemObject(1);
+            ItemObject sellOnAllPostersItem = new ItemObject(1);
+            ItemObject sellOnAmazonItem = new ItemObject(1);
+            ItemObject sellOnFanaticsItem = new ItemObject(1);
+            ItemObject sellOnGuitarCenterItem = new ItemObject(1);
+            ItemObject sellOnHayneedleItem = new ItemObject(1);
+            ItemObject sellOnTargetItem = new ItemObject(1);
+            ItemObject sellOnTrendsItem = new ItemObject(1);
+            ItemObject sellOnWalmartItem = new ItemObject(1);
+            ItemObject sellOnWayfairItem = new ItemObject(1);
+            ItemObject EcommerceAsinItem = new ItemObject(1);
+            ItemObject EcommerceBullet1Item = new ItemObject(1);
+            ItemObject EcommerceBullet2Item = new ItemObject(1);
+            ItemObject EcommerceBullet3Item = new ItemObject(1);
+            ItemObject EcommerceBullet4Item = new ItemObject(1);
+            ItemObject EcommerceBullet5Item = new ItemObject(1);
+            ItemObject EcommerceComponentsItem = new ItemObject(1);
+            ItemObject EcommerceCostItem = new ItemObject(1);
+            ItemObject EcommerceExternalIDItem = new ItemObject(1);
+            ItemObject EcommerceExternalIdTypeItem = new ItemObject(1);
+            ItemObject EcommerceImagePath1Item = new ItemObject(1);
+            ItemObject EcommerceImagePath2Item = new ItemObject(1);
+            ItemObject EcommerceImagePath3Item = new ItemObject(1);
+            ItemObject EcommerceImagePath4Item = new ItemObject(1);
+            ItemObject EcommerceImagePath5Item = new ItemObject(1);
+            ItemObject EcommerceItemHeightItem = new ItemObject(1);
+            ItemObject EcommerceItemLengthItem = new ItemObject(1);
+            ItemObject EcommerceItemNameItem = new ItemObject(1);
+            ItemObject EcommerceItemWeightItem = new ItemObject(1);
+            ItemObject EcommerceItemWidthItem = new ItemObject(1);
+            ItemObject EcommerceModelNameItem = new ItemObject(1);
+            ItemObject EcommercePackageHeightItem = new ItemObject(1);
+            ItemObject EcommercePackageLengthItem = new ItemObject(1);
+            ItemObject EcommercePackageWeightItem = new ItemObject(1);
+            ItemObject EcommercePackageWidthItem = new ItemObject(1);
+            ItemObject EcommercePageQtyItem = new ItemObject(1);
+            ItemObject EcommerceProductCategoryItem = new ItemObject(1);
+            ItemObject EcommerceProductDescriptionItem = new ItemObject(1);
+            ItemObject EcommerceProductSubcategoryItem = new ItemObject(1);
+            ItemObject EcommerceManufacturerNameItem = new ItemObject(1);
+            ItemObject EcommerceMsrpItem = new ItemObject(1);
+            ItemObject EcommerceSearchTermsItem = new ItemObject(1);
+            ItemObject EcommerceSizeItem = new ItemObject(1);
+            ItemObject accountingGroupItem = new ItemObject(1);
+            ItemObject casepackHeightItem = new ItemObject(1);
+            ItemObject casepackLengthItem = new ItemObject(1);
+            ItemObject casepackQtyItem = new ItemObject(1);
+            ItemObject casepackUpcItem = new ItemObject(1);
+            ItemObject casepackWidthItem = new ItemObject(1);
+            ItemObject casepackWeightItem = new ItemObject(1);
+            ItemObject categoryItem = new ItemObject(1);
+            ItemObject category2Item = new ItemObject(1);
+            ItemObject category3Item = new ItemObject(1);
+            ItemObject colorItem = new ItemObject(1);
+            ItemObject copyrightItem = new ItemObject(1);
+            ItemObject countryOfOriginItem = new ItemObject(1);
+            ItemObject costProfileGroupItem = new ItemObject(1);
+            ItemObject costProfileGroupItem2 = new ItemObject(1);
+            ItemObject defaultActualCostUsdItem = new ItemObject(1);
+            ItemObject defaultActualCostCadItem = new ItemObject(1);
+            ItemObject descriptionItem = new ItemObject(1);
+            ItemObject descriptionItem2 = new ItemObject(1);
+            ItemObject descriptionItem3 = new ItemObject(1);
+            ItemObject descriptionItem4 = new ItemObject(1);
+            ItemObject directImportItem = new ItemObject(1);
+            ItemObject dutyItem = new ItemObject(1);
+            ItemObject eanItem = new ItemObject(1);
+            ItemObject gpcItem = new ItemObject(1);
+            ItemObject heightItem = new ItemObject(1);
+            ItemObject innerpackHeightItem = new ItemObject(1);
+            ItemObject innerpackLengthItem = new ItemObject(1);
+            ItemObject innerpackQuantityItem = new ItemObject(1);
+            ItemObject innerpackUpcItem = new ItemObject(1);
+            ItemObject innerpackWidthItem = new ItemObject(1);
+            ItemObject innerpackWeightItem = new ItemObject(1);
+            ItemObject inStockDateItem = new ItemObject(1);
+            ItemObject isbnItem = new ItemObject(1);
+            ItemObject itemCategoryItem = new ItemObject(1);
+            ItemObject itemCategoryItem2 = new ItemObject(1);
+            ItemObject itemCategoryItem3 = new ItemObject(1);
+            ItemObject itemFamilyItem = new ItemObject(1);
+            ItemObject itemGroupItem = new ItemObject(1);
+            ItemObject itemIdItem = new ItemObject(1);
+            ItemObject itemKeywordsItem = new ItemObject(1);
+            ItemObject languageItem = new ItemObject(1);
+            ItemObject lengthItem = new ItemObject(1);
+            ItemObject licenseItem = new ItemObject(1);
+            ItemObject licenseBeginDateItem = new ItemObject(1);
+            ItemObject listPriceCadItem = new ItemObject(1);
+            ItemObject listPriceUsdItem = new ItemObject(1);
+            ItemObject listPriceMxnItem = new ItemObject(1);
+            ItemObject metaDescriptionItem = new ItemObject(1);
+            ItemObject mfgSourceItem = new ItemObject(1);
+            ItemObject msrpItem = new ItemObject(1);
+            ItemObject msrpCadItem = new ItemObject(1);
+            ItemObject msrpMxnItem = new ItemObject(1);
+            ItemObject productFormatItem = new ItemObject(1);
+            ItemObject productGroupItem = new ItemObject(1);
+            ItemObject productGroupItem2 = new ItemObject(1);
+            ItemObject productIdTranslationItem = new ItemObject(1);
+            ItemObject productLineItem = new ItemObject(1);
+            ItemObject productQtyItem = new ItemObject(1);
+            ItemObject propertyItem = new ItemObject(1);
+            ItemObject pricingGroupItem = new ItemObject(1);
+            ItemObject printOnDemandItem = new ItemObject(1);
+            ItemObject psStatusItem = new ItemObject(1);
+            ItemObject satCodeItem = new ItemObject(1);
+            ItemObject shortDescriptionItem = new ItemObject(1);
+            ItemObject sizeItem = new ItemObject(1);
+            ItemObject standardCostItem = new ItemObject(1);
+            ItemObject statsCodeItem = new ItemObject(1);
+            ItemObject tariffCodeItem = new ItemObject(1);
+            ItemObject territoryItem = new ItemObject(1);
+            ItemObject titleItem = new ItemObject(1);
+            ItemObject udexItem = new ItemObject(1);
+            ItemObject upcItem = new ItemObject(1);
+            ItemObject websitePriceItem = new ItemObject(1);
+            ItemObject weightItem = new ItemObject(1);
+            ItemObject widthItem = new ItemObject(1);
 
             #endregion // Assemble
 
@@ -450,7 +450,7 @@ namespace OdinTests.BusinessLogicLayer.Models
         {
             #region SetUp
 
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 Status = "Update"
             };
@@ -481,7 +481,7 @@ namespace OdinTests.BusinessLogicLayer.Models
 
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 AccountingGroup = "t",
                 CasepackHeight = "4",
@@ -553,7 +553,7 @@ namespace OdinTests.BusinessLogicLayer.Models
         {
             #region SetUp
 
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 Status = "Remove"
             };
@@ -582,7 +582,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             GlobalData.ClearValues();
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
-            ItemObject item = new ItemObject();
+            ItemObject item = new ItemObject(1);
             string list = "1,3,5";
 
             #endregion // Assemble
@@ -623,7 +623,7 @@ namespace OdinTests.BusinessLogicLayer.Models
                 new ChildElement("RP1234", "ITEMID", 1)
             };
 
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 BillOfMaterials = billOfMaterials
             };
@@ -672,7 +672,7 @@ namespace OdinTests.BusinessLogicLayer.Models
                 new ChildElement("RP1234", "ITEMID", 1),
                 new ChildElement("RP5678", "ITEMID", 2)
             };
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 Status = "Update",
                 AltImageFile1 = "",
@@ -1121,7 +1121,7 @@ namespace OdinTests.BusinessLogicLayer.Models
                 new ChildElement("RP5675", "ITEMID", 2),
                 new ChildElement("RP1234", "ITEMID", 1)
             };
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 Status = "Update",
                 AltImageFile1 = "",
                 AltImageFile2 = "",

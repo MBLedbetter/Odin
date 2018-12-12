@@ -27,7 +27,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject{
+            ItemObject item = new ItemObject(1){
             ItemId = "TEST1"};
 
             #endregion // Assemble
@@ -70,7 +70,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "TEST1"
             };
@@ -117,7 +117,8 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject {
+            ItemObject item = new ItemObject(1)
+            {
                 ItemId = "TEST1",
                 MfgSource = "MG",
                 CountryOfOrigin = "COO",
@@ -332,7 +333,7 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "TEST1"
             };
@@ -375,7 +376,7 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "TEST1"
             };
@@ -422,7 +423,7 @@ namespace Odin.Data.Tests
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
             GlobalData.CustomerIdConversions.Add("AMAZON SELLER CENTRAL", "9");
 
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "TEST1",
                 SellOnAmazonSellerCentral = "N"
@@ -470,7 +471,8 @@ namespace Odin.Data.Tests
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
             GlobalData.CustomerIdConversions.Add("AMAZON SELLER CENTRAL", "9");
 
-            ItemObject item = new ItemObject {
+            ItemObject item = new ItemObject(1)
+            {
                 ItemId = "TEST1",
                 SellOnAmazonSellerCentral = "Y"
             };
@@ -517,7 +519,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "TEST1"
             };
@@ -565,7 +567,8 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1)
+            {
                 ItemId = "TEST1",
                 EcommerceAsin = "Asin",
                 EcommerceBullet1 = "Bullet1",
@@ -676,7 +679,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "TEST1"
             };
@@ -728,7 +731,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "TEST1",
                 ItemGroup = "POSTER",
@@ -780,7 +783,8 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1)
+            {
                 ItemId = "TEST1",
                 TariffCode = "TariffCode",
                 Description = "Description",
@@ -874,7 +878,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "TEST1"
             };
@@ -928,7 +932,8 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1)
+            {
                 ItemId = "TEST1",
                 CasepackHeight = "1.1",
                 CasepackLength = "1.2",
@@ -1022,7 +1027,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "TEST1"
             };
@@ -1088,7 +1093,7 @@ namespace Odin.Data.Tests
                 new ChildElement("ST2222", "TestItem2", 1)
             };
 
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
 
                 AltImageFile1 = "\\\\isiloncifs\\Store 2\\•CAPTURES\\Poster Captures\\3000\\3400\\3403_BRETT FAVRE.TIFF",
                 AltImageFile2 = "\\\\isiloncifs\\Store 2\\•CAPTURES\\Poster Captures\\3000\\3400\\3403_BRETT FAVRE.TIFF",
@@ -1218,7 +1223,7 @@ namespace Odin.Data.Tests
             #region Act
             itemRepository.InsertAll(item,1);
             ItemObject newItem = itemRepository.RetrieveItem("TestItem2", 1);
-            // ItemObject newItem = new ItemObject();
+            // ItemObject newItem = new ItemObject(1);
             #endregion // Act
 
             #region Assert
@@ -1358,7 +1363,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
                 Language = "ENG/FRA/SPA"
             };
@@ -1400,7 +1405,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "TEST1",
                 Territory = "USA/CAN/MEX"
@@ -1445,7 +1450,7 @@ namespace Odin.Data.Tests
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
             GlobalData.WebCategoryList.Add("1", "Category1");
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
                 Active = 1,
                 Category = "Category1",
@@ -1520,7 +1525,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject() { 
+            ItemObject item = new ItemObject(1) { 
                 ItemId = "TEST1",
                 Status = "Add",
                 EcommerceAsin = "Asin",
@@ -1788,7 +1793,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
                 Description = "This is a description of more than 30 characters I hope.",
                 CostProfileGroup = "CPG",
@@ -1906,7 +1911,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "TEST1"
             };
@@ -1996,7 +2001,8 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1)
+            {
                 ItemId = "TEST1",
                 Description = "This is a description of more than 30 characters I hope.",
                 Gpc = "Gpc",
@@ -2116,7 +2122,7 @@ namespace Odin.Data.Tests
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
             string username = GlobalData.UserName;
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
                 PricingGroup = "PG"
             };
@@ -2169,7 +2175,7 @@ namespace Odin.Data.Tests
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
             string userName = GlobalData.UserName;
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
                 ListPriceCad = "5.99",
                 MsrpCad = "10.99",
@@ -2254,7 +2260,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
                 ListPriceMxn = "6"
             };
@@ -2317,7 +2323,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "TEST1"
             };
@@ -2368,7 +2374,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
                 Description = "This is a description of more than 30 characters I hope.",
                 StandardCost = "9.99"
@@ -2489,7 +2495,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject(){
+            ItemObject item = new ItemObject(1){
                 ItemId = "TEST1",
                 ItemCategory = "Category1"
             };
@@ -2534,7 +2540,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject(){
+            ItemObject item = new ItemObject(1){
                 ItemId = "TEST1"
             };
             #endregion // Assemble
@@ -2697,7 +2703,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "FROMITEM1"
             };
@@ -2748,7 +2754,7 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
                 MfgSource = "MG",
                 CountryOfOrigin = "COO",
@@ -2812,7 +2818,7 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
                 MfgSource = "MG",
                 CountryOfOrigin = "COO",
@@ -2879,7 +2885,7 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
                 CostProfileGroup = "ACTUAL_FIFO"
             };
@@ -2938,7 +2944,7 @@ namespace Odin.Data.Tests
             GlobalData.CustomerIdConversions.Add("GUITAR CENTER", "9");
             GlobalData.CustomerIdConversions.Add("AMAZON SELLER CENTRAL", "10");
 
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
                 SellOnAllPosters = "Y",
                 SellOnAmazon = "N",
@@ -3026,7 +3032,7 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
                 EcommerceAsin = "NISA",
                 EcommerceBullet1 = "B1",
@@ -3181,7 +3187,7 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
                 ItemGroup = "STICKER",
                 ItemFamily = "OUCH"
@@ -3239,7 +3245,7 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "TEST1",
                 TariffCode = "TarC",
@@ -3312,7 +3318,7 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
                 CasepackHeight = "12.1",
                 CasepackLength = "13.2",
@@ -3451,7 +3457,7 @@ namespace Odin.Data.Tests
             GlobalData.WebCategoryList.Add("4", "Category4");
             GlobalData.WebCategoryList.Add("5", "Category5");
 
-            ItemObject item = new ItemObject() { 
+            ItemObject item = new ItemObject(1) { 
                 ItemId = "TEST1",
                 Active = 0,
                 Category = "Category1",
@@ -3551,7 +3557,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
                 Description = "This is a new description of more than 30 characters I hope.",
                 CostProfileGroup = "CPG",
@@ -3619,7 +3625,7 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject();
+            ItemObject item = new ItemObject(1);
             string date = Convert.ToString(DateTime.Now.Date);
             item.ItemId = "TEST1";
 
@@ -3667,7 +3673,7 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "TEST1"
             };
@@ -3716,7 +3722,7 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
                 Description = "This is an old description of more than 30 characters I hope.",
                 Gpc = "CPG",
@@ -3788,7 +3794,7 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
                 AccountingGroup = "AG",
                 PricingGroup = "PG"
@@ -3845,7 +3851,7 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
                 ListPriceCad = "15.99",
                 MsrpCad = "11.99",
@@ -3940,7 +3946,7 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "TEST1"
             };
@@ -3997,7 +4003,7 @@ namespace Odin.Data.Tests
             DbHelpers.ClearDatabase();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "TEST1",
                 Description = "This is a new description of more than 30 characters I hope.",
@@ -4052,7 +4058,7 @@ namespace Odin.Data.Tests
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             GlobalData.ClearValues();
             OdinContextFactory OdinContextFactory = DbHelpers.GetContextFactory();
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
                 ItemCategory = "Category2"
             };

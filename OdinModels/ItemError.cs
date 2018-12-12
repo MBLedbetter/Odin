@@ -164,7 +164,7 @@ namespace OdinModels
             {
                 return "";
             }
-            return this.ErrorField + " " + this.ErrorMessage;
+            return this.VarName + " " + this.ErrorMessage;
         }
 
         #endregion // Methods
@@ -212,14 +212,14 @@ namespace OdinModels
         /// <param name="itemId">Item Id associated with errored field</param>
         /// <param name="lineNumber">Line number of errored item</param>
         /// <param name="errorMessage">Error message</param>
-        /// <param name="errorField">Field causing error</param>
+        /// <param name="varName">Field causing error</param>
         /// <param name="errorType">Type of error</param>
-        public ItemError(string itemId, int lineNumber, string errorMessage, string errorField, string errorType = null)
+        public ItemError(string itemId, int lineNumber, string errorMessage, string varName, string errorType = null)
         {
             this.ItemIdNumber = itemId;
             this.LineNumber = lineNumber;
             this.ErrorMessage = errorMessage;
-            this.ErrorField = errorField;
+            this.VarName = varName;
             this.ErrorType = errorType ?? "";         
         }
 

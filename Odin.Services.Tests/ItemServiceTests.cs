@@ -20,7 +20,7 @@ namespace Odin.Services.Tests
         {
             #region Assemble
 
-            ItemObject item = new ItemObject();
+            ItemObject item = new ItemObject(1);
             string x = @"\\isiloncifs\Store 2\•CAPTURES\Poster Captures\1000\1300 - POTC 4.4 - 3.4 Black Beard_4x6.TIFF";
             
             #endregion // Assemble
@@ -198,7 +198,7 @@ namespace Odin.Services.Tests
         public void CheckAltImageUpdate_EcommerceImageUpdated_ShouldTriggerUpdateFlag()
         {
             #region Assemble
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 EcommerceImagePath1 = "1/2/3/img1.jpg",
                 EcommerceImagePath2 = "1/2/3/img2.jpg"
             };
@@ -226,7 +226,7 @@ namespace Odin.Services.Tests
             #region Setup
             GlobalData.ClearValues();
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "ItemIdA"
             };
@@ -524,8 +524,8 @@ namespace Odin.Services.Tests
         {
             #region Setup
 
-            ItemObject item = new ItemObject();
-            ItemObject item2 = new ItemObject();
+            ItemObject item = new ItemObject(1);
+            ItemObject item2 = new ItemObject(1);
             item.ItemId = "ST5555";
             item.ItemKeywords = "Sticker, Bears";
             item.SellOnTrends = "N";
@@ -634,7 +634,7 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService ItemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject newItem = new ItemObject()
+            ItemObject newItem = new ItemObject(1)
             {
                 ItemId = "ItemIdB"
             };
@@ -703,7 +703,7 @@ namespace Odin.Services.Tests
             #region Assemble
 
             ItemService ItemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject newItem = new ItemObject() {
+            ItemObject newItem = new ItemObject(1) {
                 ItemId = "ItemIdA",
                 AccountingGroup = "test"
             };
@@ -729,7 +729,8 @@ namespace Odin.Services.Tests
         public void CompleteTemplate_HasUpdatedValues_EndValuesShouldMatch()
         {
             #region Assemble
-            ItemObject template = new ItemObject{
+            ItemObject template = new ItemObject(2)
+            {
                 TemplateId = "TemplateId1",
                 AccountingGroup="accountingGroup9",
                 CasepackHeight= "casepackHeight9",
@@ -756,7 +757,8 @@ namespace Odin.Services.Tests
                 ItemFamily = "itemFamily9",
                 ItemGroup = "itemGroup9",
                 Length = "length9"};
-            ItemObject template2 = new ItemObject {
+            ItemObject template2 = new ItemObject(2)
+            {
                 TemplateId = "TemplateId1",
                 ListPriceCad = "listPriceCad9",
                 ListPriceMxn = "listPriceMxn9",
@@ -983,7 +985,7 @@ namespace Odin.Services.Tests
 
             #region Setup
 
-            ItemObject item = new ItemObject();
+            ItemObject item = new ItemObject(1);
             string imgLocation = @"\\MACSERV\Store 2\•CAPTURES\Poster Captures\Poster Captures\10000\10000\10031 - Zelda - A Link Between Worlds.tif";
 
             #endregion // Setup
@@ -1060,13 +1062,13 @@ namespace Odin.Services.Tests
             FakeWorkbookReader fakeWorkbookReader = new FakeWorkbookReader();
             TestItemRepository testItemRepository = new TestItemRepository();
             ItemService itemService = new ItemService(fakeWorkbookReader, testItemRepository, new TestTemplateRepository());
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 ListPriceUsd = "2.50",
                 ListPriceCad = "3.50",
                 ProductQty = "10"
             };
 
-            ItemObject item2 = new ItemObject() {
+            ItemObject item2 = new ItemObject(1) {
                 ListPriceUsd = "2.50",
                 ListPriceCad = "3.50"
             };
@@ -1610,7 +1612,7 @@ namespace Odin.Services.Tests
 
             #region Assert
 
-            ItemObject item = new ItemObject();
+            ItemObject item = new ItemObject(1);
 
             Assert.AreEqual(1, items.Count);
 
@@ -1667,7 +1669,7 @@ namespace Odin.Services.Tests
 
             #region Assert
 
-            ItemObject item = new ItemObject();
+            ItemObject item = new ItemObject(1);
 
             Assert.AreEqual(1, items.Count);
 
@@ -1901,7 +1903,7 @@ namespace Odin.Services.Tests
 
             #region Assert
 
-            ItemObject item = new ItemObject();
+            ItemObject item = new ItemObject(1);
 
             Assert.AreEqual(1, items.Count);
 
@@ -2219,7 +2221,7 @@ namespace Odin.Services.Tests
 
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "",
                 Upc = "",
@@ -2230,7 +2232,7 @@ namespace Odin.Services.Tests
                 ProductLine = "",
                 Ean = "1234",
                 EcommerceUpc = "",
-                ProdType = 1
+                
             };
             #endregion
 
@@ -2535,7 +2537,7 @@ namespace Odin.Services.Tests
 
             #region Assert
 
-            ItemObject item = new ItemObject();
+            ItemObject item = new ItemObject(1);
 
             Assert.AreEqual(1, items.Count);
 
@@ -2726,7 +2728,7 @@ namespace Odin.Services.Tests
                 "TESTC",
                 "TEST1"
             };
-            ItemObject item = new ItemObject { BillOfMaterials = childList, ItemId = "TEST1", Status = "Update", ProdType = 1 };
+            ItemObject item = new ItemObject(1) { BillOfMaterials = childList, ItemId = "TEST1", Status = "Update",  };
 
             #endregion //Setup
 
@@ -2759,7 +2761,7 @@ namespace Odin.Services.Tests
             List<string> currentIds = new List<string>() {
                 "TEST2"
             };
-            ItemObject item = new ItemObject { BillOfMaterials = childList, ItemId = "TEST1", Status = "Add", ProdType = 1 };
+            ItemObject item = new ItemObject(1) { BillOfMaterials = childList, ItemId = "TEST1", Status = "Add",  };
 
             #endregion //Setup
 
@@ -2786,13 +2788,13 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
                 CasepackHeight = "11",
                 CasepackWidth = "1",
                 CasepackLength = "1",
                 CasepackWeight = "1",
-                ProdType = 1
+                
             };
 
             #endregion //Setup
@@ -2820,13 +2822,13 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
                 CasepackWidth = "",
                 CasepackHeight = "1",
                 CasepackLength = "1",
                 CasepackWeight = "1",
-                ProdType = 1
+                
             };
 
             #endregion //Setup
@@ -2854,13 +2856,13 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
                 CasepackWidth = "abd",
                 CasepackHeight="1",
                 CasepackLength="1",
                 CasepackWeight="1",
-                ProdType=1
+                
             };
 
             #endregion //Setup
@@ -2885,9 +2887,10 @@ namespace Odin.Services.Tests
         {
             #region Setup
 
-            GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject { Category = "Category1", ProdType=1 };
+            GlobalData.ClearValues();
+            GlobalData.WebCategoryList.Add("1", "Category1");
+            ItemObject item = new ItemObject(1) { Category = "Category1" };
 
             #endregion //Setup
 
@@ -2899,7 +2902,7 @@ namespace Odin.Services.Tests
 
             #region Assert
 
-            Assert.IsNotNull(result);
+            Assert.IsNull(result);
 
             #endregion //Assert
         }
@@ -2912,7 +2915,7 @@ namespace Odin.Services.Tests
             #region Setup
 
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject { Category = "Not Category", ProdType = 1 };
+            ItemObject item = new ItemObject(1) { Category = "Not Category"};
 
             #endregion //Setup
 
@@ -2937,7 +2940,7 @@ namespace Odin.Services.Tests
             #region Setup
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject { Color="PURPLE",ProdType=1 };
+            ItemObject item = new ItemObject(1) { Color="PURPLE", };
 
             #endregion //Setup
 
@@ -2964,7 +2967,7 @@ namespace Odin.Services.Tests
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
-            ItemObject item = new ItemObject {ProdType=1, Copyright="Copyright" };
+            ItemObject item = new ItemObject(1) { Copyright="Copyright" };
             #endregion //Setup
 
             #region Act
@@ -2989,7 +2992,7 @@ namespace Odin.Services.Tests
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
             GlobalData.CountriesOfOrigin.Add("USA", "United States");
-            ItemObject item = new ItemObject { CountryOfOrigin = "USA", ProdType = 1 };
+            ItemObject item = new ItemObject(1) { CountryOfOrigin = "USA",  };
             
             #endregion //Setup
 
@@ -3023,12 +3026,12 @@ namespace Odin.Services.Tests
             GlobalData.SpecialCharacters.Add("®");
             GlobalData.SpecialCharacters.Add("ñ");
             GlobalData.SpecialCharacters.Add("Á");
-            ItemObject item1 = new ItemObject { Description = "Wall Calendar",ProdType=1 };
-            ItemObject item2 = new ItemObject { Description = "Wall Calendar, Your Mom", ProdType = 1 };
-            ItemObject item3 = new ItemObject { Description = "Wall Calendar™", ProdType = 1 };
-            ItemObject item4 = new ItemObject { Description = "Wall Calendar®", ProdType = 1 };
-            ItemObject item5 = new ItemObject { Description = "Wall Caleñdar", ProdType = 1 };
-            ItemObject item6 = new ItemObject { Description = "WÁll Calendar", ProdType = 1 };
+            ItemObject item1 = new ItemObject(1) { Description = "Wall Calendar", };
+            ItemObject item2 = new ItemObject(1) { Description = "Wall Calendar, Your Mom",  };
+            ItemObject item3 = new ItemObject(1) { Description = "Wall Calendar™",  };
+            ItemObject item4 = new ItemObject(1) { Description = "Wall Calendar®",  };
+            ItemObject item5 = new ItemObject(1) { Description = "Wall Caleñdar",  };
+            ItemObject item6 = new ItemObject(1) { Description = "WÁll Calendar",  };
 
 
             #endregion //Setup
@@ -3072,37 +3075,37 @@ namespace Odin.Services.Tests
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000000", "RP1234"));
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000000", "RP1234WM"));
 
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
                 EcommerceUpc = "000000000000",
                 ItemId = "RP1239",
                 Upc = "000120000001",
-                Status = "Update",
-                ProdType = 1
+                Status = "Update"
+                
             };
-            ItemObject item2 = new ItemObject
+            ItemObject item2 = new ItemObject(1)
             {
                 EcommerceUpc = "123456789123",
                 ItemId = "RP1239",
                 Upc = "000012000001",
-                Status = "Update",
-                ProdType = 1
+                Status = "Update"
+                
             };
-            ItemObject item3 = new ItemObject
+            ItemObject item3 = new ItemObject(1)
             {
                 EcommerceUpc = "123000000000",
                 ItemId = "RP1239",
                 Upc = "000012000001",
-                Status = "Update",
-                ProdType = 1
+                Status = "Update"
+                
             };
-            ItemObject item4 = new ItemObject
+            ItemObject item4 = new ItemObject(1)
             {
                 EcommerceUpc = "000000000000",
                 ItemId = "RP1234DI",
                 Upc = "000012000001",
-                Status = "Update",
-                ProdType = 1
+                Status = "Update"
+                
             };
 
 
@@ -3142,7 +3145,7 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject { Height = "15", ProdType = 1 };
+            ItemObject item = new ItemObject(1) { Height = "15" };
 
             #endregion //Setup
 
@@ -3169,13 +3172,13 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
-                InnerpackHeight = "16",
-                InnerpackLength="",
+                InnerpackHeight = "",
+                InnerpackLength="3",
                 InnerpackWeight="2",
                 InnerpackWidth="1",
-                ProdType=1
+                
             };
             #endregion //Setup
 
@@ -3202,13 +3205,12 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
                 InnerpackHeight = "16",
                 InnerpackLength = "1",
                 InnerpackWeight = "2",
-                InnerpackWidth = "1",
-                ProdType = 1
+                InnerpackWidth = "1"                
             };
 
             #endregion //Setup
@@ -3236,7 +3238,7 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject { InnerpackQuantity = "16", ProdType = 1 };
+            ItemObject item = new ItemObject(1) { InnerpackQuantity = "16" };
 
             #endregion //Setup
 
@@ -3263,13 +3265,13 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
                 InnerpackHeight = "16",
                 InnerpackLength = "1",
                 InnerpackWeight = "2",
-                InnerpackWidth = "1",
-                ProdType = 1
+                InnerpackWidth = "1"
+                
             };
             #endregion //Setup
 
@@ -3298,10 +3300,9 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             GlobalData.ItemGroups.Add("POSTER");
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
-                ItemGroup = "POSTER",
-                ProdType = 1
+                ItemGroup = "POSTER"                
             };
 
             #endregion //Setup
@@ -3331,10 +3332,9 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             GlobalData.ProductCategories.Add("POSTER");
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
-                ItemCategory = "POSTER",
-                ProdType = 1
+                ItemCategory = "POSTER"                
             };
 
             
@@ -3363,10 +3363,9 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "BR0P8866",
-                ProdType = 1,
                 Status = "Add"
             };
 
@@ -3395,10 +3394,9 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
                 ItemId = "BR0P8866",
-                ProdType = 1,
                 Status = "Update"
             };
 
@@ -3427,10 +3425,9 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
-                Length = "12",
-                ProdType = 1
+                Length = "12"                
             };
             #endregion //Setup
 
@@ -3457,10 +3454,9 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
-                Length="abc",
-                ProdType =1
+                Length="abc"                
             };
 
             #endregion //Setup
@@ -3488,7 +3484,7 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject { PricingGroup = "", ListPriceCad = "0", ListPriceUsd = "0", ProdType = 1 };
+            ItemObject item = new ItemObject(1) { PricingGroup = "", ListPriceCad = "0", ListPriceUsd = "0" };
 
             #endregion //Setup
 
@@ -3515,12 +3511,11 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
                 PricingGroup = "",
                 ListPriceCad = "0",
-                ListPriceUsd="1",
-                ProdType =1
+                ListPriceUsd="1"                
             };
 
 
@@ -3551,9 +3546,9 @@ namespace Odin.Services.Tests
             GlobalData.PsStatuses.Add("A");
             GlobalData.PsStatuses.Add("CO");
             GlobalData.PsStatuses.Add("D");
-            ItemObject item1 = new ItemObject { PsStatus = "A", ProdType = 1 };
-            ItemObject item2 = new ItemObject { PsStatus = "CO", ProdType = 1 };
-            ItemObject item3 = new ItemObject { PsStatus = "D", ProdType = 1 };
+            ItemObject item1 = new ItemObject(1) { PsStatus = "A" };
+            ItemObject item2 = new ItemObject(1) { PsStatus = "CO" };
+            ItemObject item3 = new ItemObject(1) { PsStatus = "D" };
 
             #endregion //Setup
 
@@ -3584,7 +3579,7 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject { PsStatus = "xx", ProdType = 1 };
+            ItemObject item = new ItemObject(1) { PsStatus = "xx" };
             #endregion //Setup
 
             #region Act
@@ -3609,7 +3604,7 @@ namespace Odin.Services.Tests
             #region Setup
 
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject { StandardCost = "001", ProdType = 1 };
+            ItemObject item = new ItemObject(1) { StandardCost = "001" };
 
 
             #endregion //Setup
@@ -3637,7 +3632,7 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject { Width = "12", ProdType = 1 };
+            ItemObject item = new ItemObject(1) { Width = "12" };
             #endregion //Setup
 
             #region Act
@@ -3664,10 +3659,9 @@ namespace Odin.Services.Tests
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
             GlobalData.ClearValues();
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
-                EcommerceItemName = "ItemNameLengthIsLessThan150Characters. But is also more than 50, which it hade been limited to prior.",
-                ProdType = 1
+                EcommerceItemName = "ItemNameLengthIsLessThan150Characters. But is also more than 50, which it hade been limited to prior."                
             };
 
             #endregion // Assemble
@@ -3694,7 +3688,7 @@ namespace Odin.Services.Tests
             #region Setup
 
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject { ItemKeywords = "Bears, Seagulls, Bazooka", SellOnTrends="Y", ProdType = 1 };
+            ItemObject item = new ItemObject(1) { ItemKeywords = "Bears, Seagulls, Bazooka", SellOnTrends = "Y" };
 
             #endregion //Setup
 
@@ -3721,7 +3715,7 @@ namespace Odin.Services.Tests
 
             GlobalData.ClearValues();
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject { ProdType = 1,InStockDate = "5/17/14" };
+            ItemObject item = new ItemObject(1) { InStockDate = "5/17/14" };
             #endregion //Setup
 
             #region Act
@@ -3748,10 +3742,9 @@ namespace Odin.Services.Tests
             GlobalData.ClearValues();
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
                 Language = "",
-                ProdType = 1,
                 ListPriceUsd = "1"
             };
             #endregion // Setup
@@ -3783,19 +3776,17 @@ namespace Odin.Services.Tests
             ProductFormat prodFormat = new ProductFormat("Stickers3", "y", "x");
             GlobalData.ProductFormats.Add(prodFormat);
 
-            ItemObject item = new ItemObject
+            ItemObject item = new ItemObject(1)
             {
                 ProductFormat = "STICKERS3",
                 ProductLine = "y",
-                ProductGroup="x",
-                ProdType = 1
+                ProductGroup="x"                
             };
-            ItemObject item2 = new ItemObject
+            ItemObject item2 = new ItemObject(1)
             {
                 ProductFormat = "Stickers3",
                 ProductLine = "y",
-                ProductGroup = "x",
-                ProdType = 1
+                ProductGroup = "x"                
             };
 
             #endregion // Assemble
@@ -3842,11 +3833,11 @@ namespace Odin.Services.Tests
                 "TEST4"
             };
 
-            ItemObject item1 = new ItemObject { ItemId = "RP2222", ProductIdTranslation = productIdTranslationList2, ProductFormat = "POSTER", PricingGroup = "RRR", Status = "Update", ProdType = 1 };
-            ItemObject item2 = new ItemObject { ItemId = "RP2222", ProductIdTranslation = emptyProductIdTranslationList, ProductFormat = "POSTER", PricingGroup = "RRR", Status = "Update", ProdType = 1 };
-            ItemObject item3 = new ItemObject { ItemId = "RP2222", ProductIdTranslation = productIdTranslationList2, ProductFormat = "POSTER", PricingGroup = "RRR", Status = "Add", ProdType = 1 };
-            ItemObject item4 = new ItemObject { ItemId = "RP2222", ProductIdTranslation = emptyProductIdTranslationList, ProductFormat = "POSTER", PricingGroup = "RRR", Status = "Add", ProdType = 1 };
-            ItemObject item5 = new ItemObject { ItemId = "ST9999", ProductIdTranslation = productIdTranslationList1, ProductFormat = "POSTER", PricingGroup = "RRR", Status = "Add", ProdType = 1 };
+            ItemObject item1 = new ItemObject(1) { ItemId = "RP2222", ProductIdTranslation = productIdTranslationList2, ProductFormat = "POSTER", PricingGroup = "RRR", Status = "Update" };
+            ItemObject item2 = new ItemObject(1) { ItemId = "RP2222", ProductIdTranslation = emptyProductIdTranslationList, ProductFormat = "POSTER", PricingGroup = "RRR", Status = "Update" };
+            ItemObject item3 = new ItemObject(1) { ItemId = "RP2222", ProductIdTranslation = productIdTranslationList2, ProductFormat = "POSTER", PricingGroup = "RRR", Status = "Add" };
+            ItemObject item4 = new ItemObject(1) { ItemId = "RP2222", ProductIdTranslation = emptyProductIdTranslationList, ProductFormat = "POSTER", PricingGroup = "RRR", Status = "Add" };
+            ItemObject item5 = new ItemObject(1) { ItemId = "ST9999", ProductIdTranslation = productIdTranslationList1, ProductFormat = "POSTER", PricingGroup = "RRR", Status = "Add" };
 
             #endregion // Assemble
 
@@ -3932,7 +3923,7 @@ namespace Odin.Services.Tests
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000000", "RP3323"));
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000666666", "RP3329"));
 
-            ItemObject item1 = new ItemObject()
+            ItemObject item1 = new ItemObject(1)
             {
                 ItemId = "RP2341",
                 Upc = "123456789123",
@@ -3943,9 +3934,9 @@ namespace Odin.Services.Tests
                 ProductLine = "Poster",
                 Ean = "1234",
                 EcommerceUpc = "000000666666",
-                ProdType = 1
+                
             };
-            ItemObject item2 = new ItemObject()
+            ItemObject item2 = new ItemObject(1)
             {
                 ItemId = "RP2341",
                 Upc = "123456789098",
@@ -3956,9 +3947,9 @@ namespace Odin.Services.Tests
                 ProductLine = "Poster",
                 Ean = "1234",
                 EcommerceUpc = "123456789098",
-                ProdType = 1
+                
             };
-            ItemObject item3 = new ItemObject()
+            ItemObject item3 = new ItemObject(1)
             {
                 ItemId = "RP3323",
                 Upc = "123456789127",
@@ -3969,9 +3960,9 @@ namespace Odin.Services.Tests
                 ProductLine = "Poster",
                 Ean = "1234",
                 EcommerceUpc = "000000666666",
-                ProdType = 1
+                
             };
-            ItemObject item4 = new ItemObject()
+            ItemObject item4 = new ItemObject(1)
             {
                 ItemId = "RP3323",
                 Upc = "000000000000",
@@ -3982,7 +3973,7 @@ namespace Odin.Services.Tests
                 ProductLine = "Poster",
                 Ean = "1234",
                 EcommerceUpc = "000000000000",
-                ProdType = 1
+                
             };
 
             #endregion // Setup
@@ -4027,7 +4018,7 @@ namespace Odin.Services.Tests
             GlobalData.EcomFlagRequirement = true;
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
-            ItemObject item1 = new ItemObject
+            ItemObject item1 = new ItemObject(1)
             {
                 EcommerceBullet1 = "Bananas Are Dope"
             };
@@ -4060,7 +4051,7 @@ namespace Odin.Services.Tests
             GlobalData.ClearValues();
             GlobalData.EcomFlagRequirement = true;
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemObject item = new ItemObject { EcommerceSubjectKeywords = "Ecommerce Subject Keywords", SellOnEcommerce = "Y", Status = "Add", ProdType = 1 };
+            ItemObject item = new ItemObject(1) { EcommerceSubjectKeywords = "Ecommerce Subject Keywords", SellOnEcommerce = "Y", Status = "Add" };
 
             #endregion // Assemble
 
@@ -4078,7 +4069,7 @@ namespace Odin.Services.Tests
         }
 
         [TestMethod]
-        public void ValidateEcommerceMsrp_HasInvalidAndValidValues_ShouldReturnSomeErrors()
+        public void ValidateEcommerceMsrp_HasInValidValues_ShouldFail()
         {
 
             #region Assemble
@@ -4086,21 +4077,45 @@ namespace Odin.Services.Tests
             GlobalData.ClearValues();
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
             GlobalData.EcomFlagRequirement = true;
-            ItemObject item1 = new ItemObject { ProdType = 1,EcommerceMsrp ="0" };
-            ItemObject item2 = new ItemObject { ProdType = 1,EcommerceMsrp="1"};
+            ItemObject nonNumberItem = new ItemObject(1) { EcommerceMsrp = "abe" };
+            ItemObject tooLongNumber = new ItemObject(1) { EcommerceMsrp = "123456.0000" };
             #endregion // Assemble
 
             #region Act
 
-            ItemError result1 = itemService.ValidateEcommerceMsrp(item1);
-            ItemError result2 = itemService.ValidateEcommerceMsrp(item2);
+            ItemError result1 = itemService.ValidateEcommerceMsrp(nonNumberItem);
+            ItemError result2 = itemService.ValidateEcommerceMsrp(tooLongNumber);
 
             #endregion // Act
 
             #region Assert
 
             Assert.IsNotNull(result1);
-            Assert.IsNull(result2);
+            Assert.IsNotNull(result2);
+
+            #endregion // Assert
+        }
+        [TestMethod]
+        public void ValidateEcommerceMsrp_HasValidValues_ShouldPass()
+        {
+
+            #region Assemble
+
+            GlobalData.ClearValues();
+            ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+            GlobalData.EcomFlagRequirement = true;
+            ItemObject item1 = new ItemObject(1) { EcommerceMsrp = "1.99" };
+            #endregion // Assemble
+
+            #region Act
+
+            ItemError result1 = itemService.ValidateEcommerceMsrp(item1);
+
+            #endregion // Act
+
+            #region Assert
+
+            Assert.IsNull(result1);
 
             #endregion // Assert
         }

@@ -30,7 +30,7 @@ namespace Odin.Data
         /// </summary>
         private void SetTestTemplates()
         {
-            ItemObject template = new ItemObject();
+            ItemObject template = new ItemObject(2);
             template.TemplateId = "TemplateId1";
             template.AccountingGroup = "TemplateAccountingGroup1";
             template.CasepackHeight = "TemplateCasepackHeight1";
@@ -267,7 +267,7 @@ namespace Odin.Data
                     return template;
                 }
             }
-            return new ItemObject();
+            return new ItemObject(2);
         }
 
         #endregion // Public Retrieval Methods

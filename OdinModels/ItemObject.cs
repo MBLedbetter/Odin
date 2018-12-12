@@ -2657,7 +2657,7 @@ namespace OdinModels
                 OnPropertyChanged("ProdType");                
             }
         }
-        private int _prodType = 1;
+        private int _prodType = 0;
         
         /// <summary>
         ///     Gets or sets the RecordDate. Used for update records view.
@@ -4269,8 +4269,9 @@ namespace OdinModels
 
         #region Constructor
 
-        public ItemObject()
+        public ItemObject(int prodType)
         {
+            this.ProdType = ProdType;
         }
 
         #endregion

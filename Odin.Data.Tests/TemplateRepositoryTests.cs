@@ -125,7 +125,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject template = new ItemObject();
+            ItemObject template = new ItemObject(2);
             template.TemplateId = "TempalteId";
             template.AccountingGroup = "AG";
             template.CasepackHeight = "1";
@@ -364,9 +364,9 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject template = new ItemObject();
+            ItemObject template = new ItemObject(2);
             template.TemplateId = "TempalteId";
-            ItemObject template2 = new ItemObject();
+            ItemObject template2 = new ItemObject(2);
             template2.TemplateId = "TempalteId2";
 
             #endregion // Assemble
@@ -409,7 +409,7 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject template2 = new ItemObject();
+            ItemObject template2 = new ItemObject(2);
             template2.TemplateId = "CTempalteId";
 
             #endregion // Assemble
@@ -454,13 +454,13 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject template2 = new ItemObject();
+            ItemObject template2 = new ItemObject(2);
             template2.TemplateId = "CTempalteId";
-            ItemObject template = new ItemObject();
+            ItemObject template = new ItemObject(2);
             template.TemplateId = "ATempalteId";
-            ItemObject template3 = new ItemObject();
+            ItemObject template3 = new ItemObject(2);
             template3.TemplateId = "BTempalteId";
-            ItemObject template4 = new ItemObject();
+            ItemObject template4 = new ItemObject(2);
             template4.TemplateId = "DTempalteId";
 
             #endregion // Assemble
@@ -499,9 +499,9 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            ItemObject template2 = new ItemObject();
+            ItemObject template2 = new ItemObject(2);
             template2.TemplateId = "TempalteId2";
-            ItemObject template = new ItemObject();
+            ItemObject template = new ItemObject(2);
             template.TemplateId = "TempalteId";
             template.AccountingGroup = "AG";
             template.CasepackHeight = "1";

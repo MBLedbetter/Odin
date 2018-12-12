@@ -306,7 +306,7 @@ namespace Odin.Data
         /// <returns></returns>
         public ItemObject RetrieveTemplate(string templateId)
         {
-            ItemObject template = new ItemObject();
+            ItemObject template = new ItemObject(2);
 
             using (OdinContext context = this.contextFactory.CreateContext())
             {

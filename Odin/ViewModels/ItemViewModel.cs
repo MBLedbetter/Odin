@@ -310,7 +310,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.CasepackHeight != value)
                 {
                     this.ItemViewModelItem.CasepackHeight = value;
-                    FlagError("Casepack");
+                    FlagError("CasepackHeight");
                     OnPropertyChanged("CasepackHeight");
                 }
             }
@@ -376,7 +376,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.CasepackLength != value)
                 {
                     this.ItemViewModelItem.CasepackLength = value;
-                    FlagError("Casepack");
+                    FlagError("CasepackLength");
                     OnPropertyChanged("CasepackLength");
                 }
             }
@@ -574,7 +574,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.CasepackWidth != value)
                 {
                     this.ItemViewModelItem.CasepackWidth = value;
-                    FlagError("Casepack");
+                    FlagError("CasepackWidth");
                     OnPropertyChanged("CasepackWidth");
                 }
             }
@@ -640,7 +640,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.CasepackWeight != value)
                 {
                     this.ItemViewModelItem.CasepackWeight = value;
-                    FlagError("Casepack");
+                    FlagError("CasepackWeight");
                     OnPropertyChanged("CasepackWeight");
                 }
             }
@@ -1432,7 +1432,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.InnerpackHeight != value)
                 {
                     this.ItemViewModelItem.InnerpackHeight = value;
-                    FlagError("Innerpack");
+                    FlagError("InnerpackHeight");
                     OnPropertyChanged("InnerpackHeight");
                 }
             }
@@ -1498,7 +1498,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.InnerpackLength != value)
                 {
                     this.ItemViewModelItem.InnerpackLength = value;
-                    FlagError("Innerpack");
+                    FlagError("InnerpackLength");
                     OnPropertyChanged("InnerpackLength");
                 }
             }
@@ -1696,7 +1696,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.InnerpackWeight != value)
                 {
                     this.ItemViewModelItem.InnerpackWeight = value;
-                    FlagError("Innerpack");
+                    FlagError("InnerpackWeight");
                     OnPropertyChanged("InnerpackWeight");
                 }
             }
@@ -1762,7 +1762,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.InnerpackWidth != value)
                 {
                     this.ItemViewModelItem.InnerpackWidth = value;
-                    FlagError("Innerpack");
+                    FlagError("InnerpackWidth");
                     OnPropertyChanged("InnerpackWidth");
                 }
             }
@@ -8649,488 +8649,488 @@ namespace Odin.ViewModels
 
         private void AssignError(ItemError error)
         {
-            switch (error.ErrorField)
-            {
-                case "Accounting Group":
-                    this.AccountingGroupError = error.ReturnErrorMessage();
-                    break;
-
-                case "Image Path 2":
-                    this.AltImageFile1Error = error.ReturnErrorMessage();
-                    SetImages();
-                    break;
-
-                case "AltImageFile2":
-                    this.AltImageFile2Error = error.ReturnErrorMessage();
-                    SetImages();
-                    break;
-
-                case "AltImageFile3":
-                    this.AltImageFile3Error = error.ReturnErrorMessage();
-                    SetImages();
-                    break;
-
-                case "AltImageFile4":
-                    this.AltImageFile4Error = error.ReturnErrorMessage();
-                    SetImages();
-                    break;
-
-                case "BillOfMaterials":
-                    this.BillOfMaterialsError = error.ReturnErrorMessage();
-                    break;
-
-                case "Casepack Height":
-                    this.CasepackHeightError = error.ReturnErrorMessage();
-                    break;
-
-                case "Casepack Length":
-                    this.CasepackHeightError = error.ReturnErrorMessage();
-                    break;
-
-                case "Casepack Weight":
-                    this.CasepackHeightError = error.ReturnErrorMessage();
-                    break;
-
-                case "Casepack Width":
-                    this.CasepackHeightError = error.ReturnErrorMessage();
-                    break;
-
-                case "CasepackQty":
-                    this.CasepackQtyError = error.ReturnErrorMessage();
-                    break;
-
-                case "CasepackUpc":
-                    this.CasepackUpcError = error.ReturnErrorMessage();
-                    break;
-
-                case "Category":
-                    this.CategoryError = error.ReturnErrorMessage();
-                    break;
-
-                case "Category 2":
-                    this.Category2Error = error.ReturnErrorMessage();
-                    break;
-
-                case "Category 3":
-                    this.Category3Error = error.ReturnErrorMessage();
-                    break;
-
-                case "Color":
-                    this.ColorError = error.ReturnErrorMessage();
-                    break;
-
-                case "Copyright":
-                    this.CopyrightError = error.ReturnErrorMessage();
-                    break;
-
-                case "Country Of Origin":
-                    this.CountryOfOriginError = error.ReturnErrorMessage();
-                    break;
-
-                case "Cost Profile Group":
-                    this.CostProfileGroupError = error.ReturnErrorMessage();
-                    break;
-
-                case "Default Actual Cost CAD":
-                    this.DefaultActualCostCadError = error.ReturnErrorMessage();
-                    break;
-
-                case "Default Actual Cost USD":
-                    this.DefaultActualCostUsdError = error.ReturnErrorMessage();
-                    break;
-
-                case "Description":
-                    this.DescriptionError = error.ReturnErrorMessage();
-                    break;
-
-                case "Direct Import":
-                    this.DirectImportError = error.ReturnErrorMessage();
-                    break;
-
-                case "Duty":
-                    this.DutyError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ean":
-                    this.EanError = error.ReturnErrorMessage();
-                    break;
-
-                case "EcommerceAsin":
-                    this.EcommerceAsinError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Bullet 1":
-                    this.EcommerceBullet1Error = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Bullet 2":
-                    this.EcommerceBullet2Error = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Bullet 3":
-                    this.EcommerceBullet3Error = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Bullet 4":
-                    this.EcommerceBullet4Error = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Bullet 5":
-                    this.EcommerceBullet5Error = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Components":
-                    this.EcommerceComponentsError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Cost":
-                    this.EcommerceCostError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce External Id":
-                    this.EcommerceExternalIdError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce External Id Type":
-                    this.EcommerceExternalIdTypeError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Generic Keywords":
-                    this.EcommerceGenericKeywordsError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Item Height":
-                    this.EcommerceItemWeightError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Item Length":
-                    this.EcommerceItemWeightError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Item Name":
-                    this.EcommerceItemNameError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Item Weight":
-                    this.EcommerceItemWeightError = error.ReturnErrorMessage();
-                    break;
-
-                case "EcommerceItemWidth":
-                    this.EcommerceItemWeightError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Model Name":
-                    this.EcommerceModelNameError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Package Height":
-                    this.EcommercePackageHeightError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Package Length":
-                    this.EcommercePackageLengthError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Package Weight":
-                    this.EcommercePackageWeightError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Package Width":
-                    this.EcommercePackageWidthError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Page Qty":
-                    this.EcommercePageQtyError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Product Category":
-                    this.EcommerceProductCategoryError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Product Description":
-                    this.EcommerceProductDescriptionError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Product Subcategory":
-                    this.EcommerceProductSubcategoryError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Manufacturer Name":
-                    this.EcommerceManufacturerNameError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Msrp":
-                    this.EcommerceMsrpError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommere Size":
-                    this.EcommerceSizeError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommerce Subject Keywords":
-                    this.EcommerceSubjectKeywordsError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ecommere Upc":
-                    this.EcommerceUpcError = error.ReturnErrorMessage();
-                    break;
-
-                case "Gpc":
-                    this.GpcError = error.ReturnErrorMessage();
-                    break;
-
-                case "Height":
-                    this.HeightError = error.ReturnErrorMessage();
-                    break;
-
-                case "Image Path":
-                    this.ImagePathError = error.ReturnErrorMessage();
-                    SetImages();
-                    break;
-
-                case "Innerpack Height":
-                    this.InnerpackWidthError = error.ReturnErrorMessage();
-                    break;
-
-                case "Innerpack Length":
-                    this.InnerpackWidthError = error.ReturnErrorMessage();
-                    break;
-
-                case "Innerpack Weight":
-                    this.InnerpackWidthError = error.ReturnErrorMessage();
-                    break;
-
-                case "Innerpack Width":
-                    this.InnerpackWidthError = error.ReturnErrorMessage();
-                    break;
-
-                case "Innerpack Quantity":
-                    this.InnerpackQuantityError = error.ReturnErrorMessage();
-                    break;
-
-                case "Innerpack Upc":
-                    this.InnerpackUpcError = error.ReturnErrorMessage();
-                    break;
-
-                case "In Stock Date":
-                    this.InStockDateError = error.ReturnErrorMessage();
-                    break;
-
-                case "Isbn":
-                    this.IsbnError = error.ReturnErrorMessage();
-                    break;
-
-                case "Item Category":
-                    this.ItemCategoryError = error.ReturnErrorMessage();
-                    break;
-
-                case "Item Family":
-                    this.ItemFamilyError = error.ReturnErrorMessage();
-                    break;
-
-                case "Item Group":
-                    this.ItemGroupError = error.ReturnErrorMessage();
-                    break;
-
-                case "Item Id":
-                    this.ItemIdError = error.ReturnErrorMessage();
-                    break;
-
-                case "Item Keywords":
-                    this.ItemKeywordsError = error.ReturnErrorMessage();
-                    break;
-
-                case "Language":
-                    this.LanguageError = error.ReturnErrorMessage();
-                    break;
-
-                case "Length":
-                    this.LengthError = error.ReturnErrorMessage();
-                    break;
-
-                case "LicenseBeginDate":
-                    this.LicenseBeginDateError = error.ReturnErrorMessage();
-                    break;
-
-                case "License":
-                    this.LicenseError = error.ReturnErrorMessage();
-                    break;
-
-                case "ListPriceCad":
-                    this.ListPriceCadError = error.ReturnErrorMessage();
-                    break;
-
-                case "ListPriceMxn":
-                    this.MsrpMxnError = error.ReturnErrorMessage();
-                    break;
-
-                case "ListPriceUsd":
-                    this.ListPriceUsdError = error.ReturnErrorMessage();
-                    break;
-
-                case "MetaDescription":
-                    this.MetaDescriptionError = error.ReturnErrorMessage();
-                    break;
-
-                case "MfgSource":
-                    this.MfgSourceError = error.ReturnErrorMessage();
-                    break;
-
-                case "Msrp":
-                    this.MsrpError = error.ReturnErrorMessage();
-                    break;
-
-                case "MsrpCad":
-                    this.MsrpCadError = error.ReturnErrorMessage();
-                    break;
-
-                case "MsrpMxn":
-                    this.MsrpMxnError = error.ReturnErrorMessage();
-                    break;
-
-                case "PricingGroup":
-                    this.PricingGroupError = error.ReturnErrorMessage();
-                    break;
-
-                case "PrintOnDemand":
-                    this.PrintOnDemandError = error.ReturnErrorMessage();
-                    break;
-
-                case "ProductFormat":
-                    this.ProductFormatError = error.ReturnErrorMessage();
-                    break;
-
-                case "ProductGroup":
-                    this.ProductGroupError = error.ReturnErrorMessage();
-                    break;
-
-                case "Product Id Translation":
-                    this.ProductIdTranslationError = error.ReturnErrorMessage();
-                    break;
-
-                case "Product Line":
-                    this.ProductLineError = error.ReturnErrorMessage();
-                    break;
-
-                case "Product Qty":
-                    this.ProductQtyError = error.ReturnErrorMessage();
-                    break;
-
-                case "Property":
-                    this.PropertyError = error.ReturnErrorMessage();
-                    break;
-
-                case "Ps Status":
-                    this.PsStatusError = error.ReturnErrorMessage();
-                    break;
-
-                case "SatCode":
-                    this.SatCodeError = error.ReturnErrorMessage();
-                    break;
-
-                case "Sell On All Posters":
-                    this.SellOnAllPostersError = error.ReturnErrorMessage();
-                    break;
-
-                case "Sell On Amazon":
-                    this.SellOnAmazonError = error.ReturnErrorMessage();
-                    break;
-
-                case "Sell On Amazon Seller Central":
-                    this.SellOnAmazonSellerCentralError = error.ReturnErrorMessage();
-                    break;
-
-                case "Sell On Ecommerce":
-                    this.SellOnEcommerceError = error.ReturnErrorMessage();
-                    break;
-
-                case "Sell On Fanatics":
-                    this.SellOnFanaticsError = error.ReturnErrorMessage();
-                    break;
-
-                case "Sell On Guitar Center":
-                    this.SellOnGuitarCenterError = error.ReturnErrorMessage();
-                    break;
-
-                case "Sell On Hayneedle":
-                    this.SellOnHayneedleError = error.ReturnErrorMessage();
-                    break;
-
-                case "Sell On Target":
-                    this.SellOnTargetError = error.ReturnErrorMessage();
-                    break;
-
-                case "Sell On Trends":
-                    this.SellOnTrendsError = error.ReturnErrorMessage();
-                    break;
-
-                case "Sell On Walmart":
-                    this.SellOnWalmartError = error.ReturnErrorMessage();
-                    break;
-
-                case "Sell On Wayfair":
-                    this.SellOnWayfairError = error.ReturnErrorMessage();
-                    break;
-
-                case "Short Description":
-                    this.ShortDescriptionError = error.ReturnErrorMessage();
-                    break;
-
-                case "Size":
-                    this.SizeError = error.ReturnErrorMessage();
-                    break;
-
-                case "Standard Cost":
-                    this.StandardCostError = error.ReturnErrorMessage();
-                    break;
-
-                case "Stats Code":
-                    this.StatsCodeError = error.ReturnErrorMessage();
-                    break;
-
-                case "Tariff Code":
-                    this.TariffCodeError = error.ReturnErrorMessage();
-                    break;
-
-                case "Territory":
-                    this.TerritoryError = error.ReturnErrorMessage();
-                    break;
-
-                case "Title":
-                    this.TitleError = error.ReturnErrorMessage();
-                    break;
-
-                case "Udex":
-                    this.UdexError = error.ReturnErrorMessage();
-                    break;
-
-                case "Upc":
-                    this.UpcError = error.ReturnErrorMessage();
-                    break;
-
-                case "WebsitePrice":
-                    this.WebsitePriceError = error.ReturnErrorMessage();
-                    break;
-
-                case "Warranty":
-                    this.WarrantyError = error.ReturnErrorMessage();
-                    break;
-
-                case "WarrantyCheck":
-                    this.WarrantyCheckError = error.ReturnErrorMessage();
-                    break;
-
-                case "Weight":
-                    this.WeightError = error.ReturnErrorMessage();
-                    break;
-
-                case "Width":
-                    this.WidthError = error.ReturnErrorMessage();
-                    break;
-
-                default:
-                    throw new ArgumentNullException("ItemViewModel Flag error unknown type " + error.ErrorField);
-            }
+            switch (error.VarName)
+                {
+                    case "Accounting Group":
+                        this.AccountingGroupError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Image Path 2":
+                        this.AltImageFile1Error = error.ReturnErrorMessage();
+                        SetImages();
+                        break;
+
+                    case "Image Path 3":
+                        this.AltImageFile2Error = error.ReturnErrorMessage();
+                        SetImages();
+                        break;
+
+                    case "Image Path 4":
+                        this.AltImageFile3Error = error.ReturnErrorMessage();
+                        SetImages();
+                        break;
+
+                    case "Image Path 5":
+                        this.AltImageFile4Error = error.ReturnErrorMessage();
+                        SetImages();
+                        break;
+
+                    case "Bill Of Materials":
+                        this.BillOfMaterialsError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Casepack Height":
+                        this.CasepackHeightError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Casepack Length":
+                        this.CasepackHeightError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Casepack Weight":
+                        this.CasepackHeightError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Casepack Width":
+                        this.CasepackHeightError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Casepack Qty":
+                        this.CasepackQtyError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Casepack Upc":
+                        this.CasepackUpcError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Category":
+                        this.CategoryError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Category 2":
+                        this.Category2Error = error.ReturnErrorMessage();
+                        break;
+
+                    case "Category 3":
+                        this.Category3Error = error.ReturnErrorMessage();
+                        break;
+
+                    case "Color":
+                        this.ColorError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Copyright":
+                        this.CopyrightError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Country Of Origin":
+                        this.CountryOfOriginError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Cost Profile Group":
+                        this.CostProfileGroupError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Default Actual Cost CAD":
+                        this.DefaultActualCostCadError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Default Actual Cost USD":
+                        this.DefaultActualCostUsdError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Description":
+                        this.DescriptionError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Direct Import":
+                        this.DirectImportError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Duty":
+                        this.DutyError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ean":
+                        this.EanError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Asin":
+                        this.EcommerceAsinError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Bullet 1":
+                        this.EcommerceBullet1Error = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Bullet 2":
+                        this.EcommerceBullet2Error = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Bullet 3":
+                        this.EcommerceBullet3Error = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Bullet 4":
+                        this.EcommerceBullet4Error = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Bullet 5":
+                        this.EcommerceBullet5Error = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Components":
+                        this.EcommerceComponentsError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Cost":
+                        this.EcommerceCostError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce External Id":
+                        this.EcommerceExternalIdError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce External Id Type":
+                        this.EcommerceExternalIdTypeError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Generic Keywords":
+                        this.EcommerceGenericKeywordsError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Height":
+                        this.EcommerceItemWeightError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Length":
+                        this.EcommerceItemWeightError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Item Name":
+                        this.EcommerceItemNameError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Weight":
+                        this.EcommerceItemWeightError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Width":
+                        this.EcommerceItemWeightError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Model Name":
+                        this.EcommerceModelNameError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Package Height":
+                        this.EcommercePackageHeightError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Package Length":
+                        this.EcommercePackageLengthError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Package Weight":
+                        this.EcommercePackageWeightError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Package Width":
+                        this.EcommercePackageWidthError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Page Qty":
+                        this.EcommercePageQtyError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Product Category":
+                        this.EcommerceProductCategoryError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Product Description":
+                        this.EcommerceProductDescriptionError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Product Subcategory":
+                        this.EcommerceProductSubcategoryError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Manufacturer Name":
+                        this.EcommerceManufacturerNameError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Msrp":
+                        this.EcommerceMsrpError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Size":
+                        this.EcommerceSizeError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Subject Keywords":
+                        this.EcommerceSubjectKeywordsError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ecommerce Upc":
+                        this.EcommerceUpcError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Gpc":
+                        this.GpcError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Height":
+                        this.HeightError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Image Path 1":
+                        this.ImagePathError = error.ReturnErrorMessage();
+                        SetImages();
+                        break;
+
+                    case "Innerpack Height":
+                        this.InnerpackWidthError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Innerpack Length":
+                        this.InnerpackWidthError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Innerpack Weight":
+                        this.InnerpackWidthError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Innerpack Width":
+                        this.InnerpackWidthError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Innerpack Quantity":
+                        this.InnerpackQuantityError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Innerpack Upc":
+                        this.InnerpackUpcError = error.ReturnErrorMessage();
+                        break;
+
+                    case "In Stock Date":
+                        this.InStockDateError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Isbn":
+                        this.IsbnError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Item Category":
+                        this.ItemCategoryError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Item Family":
+                        this.ItemFamilyError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Item Group":
+                        this.ItemGroupError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Item Id":
+                        this.ItemIdError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Item Keywords":
+                        this.ItemKeywordsError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Language":
+                        this.LanguageError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Length":
+                        this.LengthError = error.ReturnErrorMessage();
+                        break;
+
+                    case "License Begin Date":
+                        this.LicenseBeginDateError = error.ReturnErrorMessage();
+                        break;
+
+                    case "License":
+                        this.LicenseError = error.ReturnErrorMessage();
+                        break;
+
+                    case "List Price CAD":
+                        this.ListPriceCadError = error.ReturnErrorMessage();
+                        break;
+
+                    case "List Price MXN":
+                        this.MsrpMxnError = error.ReturnErrorMessage();
+                        break;
+
+                    case "List Price USD":
+                        this.ListPriceUsdError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Meta Description":
+                        this.MetaDescriptionError = error.ReturnErrorMessage();
+                        break;
+
+                    case "MFG Source":
+                        this.MfgSourceError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Msrp":
+                        this.MsrpError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Msrp CAD":
+                        this.MsrpCadError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Msrp MXN":
+                        this.MsrpMxnError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Pricing Group":
+                        this.PricingGroupError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Print On Demand":
+                        this.PrintOnDemandError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Product Format":
+                        this.ProductFormatError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Product Group":
+                        this.ProductGroupError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Product Id Translation":
+                        this.ProductIdTranslationError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Product Line":
+                        this.ProductLineError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Product Qty":
+                        this.ProductQtyError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Property":
+                        this.PropertyError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Ps Status":
+                        this.PsStatusError = error.ReturnErrorMessage();
+                        break;
+
+                    case "SatCode":
+                        this.SatCodeError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Sell On All Posters":
+                        this.SellOnAllPostersError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Sell On Amazon":
+                        this.SellOnAmazonError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Sell On Amazon Seller Central":
+                        this.SellOnAmazonSellerCentralError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Sell On Ecommerce":
+                        this.SellOnEcommerceError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Sell On Fanatics":
+                        this.SellOnFanaticsError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Sell On Guitar Center":
+                        this.SellOnGuitarCenterError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Sell On Hayneedle":
+                        this.SellOnHayneedleError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Sell On Target":
+                        this.SellOnTargetError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Sell On Trends":
+                        this.SellOnTrendsError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Sell On Walmart":
+                        this.SellOnWalmartError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Sell On Wayfair":
+                        this.SellOnWayfairError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Short Description":
+                        this.ShortDescriptionError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Size":
+                        this.SizeError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Standard Cost":
+                        this.StandardCostError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Stats Code":
+                        this.StatsCodeError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Tariff Code":
+                        this.TariffCodeError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Territory":
+                        this.TerritoryError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Title":
+                        this.TitleError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Udex":
+                        this.UdexError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Upc":
+                        this.UpcError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Website Price":
+                        this.WebsitePriceError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Warranty":
+                        this.WarrantyError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Warranty Check":
+                        this.WarrantyCheckError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Weight":
+                        this.WeightError = error.ReturnErrorMessage();
+                        break;
+
+                    case "Width":
+                        this.WidthError = error.ReturnErrorMessage();
+                        break;
+
+                    default:
+                        throw new ArgumentNullException("ItemViewModel Assign error unknown type " + error.VarName);
+                }            
         }
 
         /// <summary>
@@ -9304,34 +9304,55 @@ namespace Odin.ViewModels
             switch(field)
             {
                 case "AccountingGroup":
-                    this.AccountingGroupError = ItemService.ValidateAccountingGroup(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.AccountingGroupError = ItemService.ValidateAccountingGroup(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "AltImageFile1":
-                    this.AltImageFile1Error = ItemService.ValidateImagePath(ItemViewModelItem, "2")?.ReturnErrorMessage()??"";
+                    this.AltImageFile1Error = ItemService.ValidateImagePath(ItemViewModelItem, "2")?.ReturnErrorMessage() ?? "";
                     SetImages();
                     break;
 
                 case "AltImageFile2":
-                    this.AltImageFile2Error = ItemService.ValidateImagePath(ItemViewModelItem, "3")?.ReturnErrorMessage()??"";
+                    this.AltImageFile2Error = ItemService.ValidateImagePath(ItemViewModelItem, "3")?.ReturnErrorMessage() ?? "";
                     SetImages();
                     break;
 
                 case "AltImageFile3":
-                    this.AltImageFile3Error = ItemService.ValidateImagePath(ItemViewModelItem, "4")?.ReturnErrorMessage()??"";
+                    this.AltImageFile3Error = ItemService.ValidateImagePath(ItemViewModelItem, "4")?.ReturnErrorMessage() ?? "";
                     SetImages();
                     break;
 
                 case "AltImageFile4":
-                    this.AltImageFile4Error = ItemService.ValidateImagePath(ItemViewModelItem, "5")?.ReturnErrorMessage()??"";
+                    this.AltImageFile4Error = ItemService.ValidateImagePath(ItemViewModelItem, "5")?.ReturnErrorMessage() ?? "";
                     SetImages();
                     break;
 
                 case "BillOfMaterials":
-                    this.BillOfMaterialsError = ItemService.ValidateBillOfMaterials(ItemViewModelItem, this.ItemIds)?.ReturnErrorMessage()??"";
+                    this.BillOfMaterialsError = ItemService.ValidateBillOfMaterials(ItemViewModelItem, this.ItemIds)?.ReturnErrorMessage() ?? "";
                     break;
 
-                case "Casepack":
+                case "CasepackHeight":
+                    this.CasepackHeightError = ItemService.ValidateCasepack(ItemViewModelItem, "Height")?.ReturnErrorMessage() ?? "";
+                    this.CasepackLengthError = ItemService.ValidateCasepack(ItemViewModelItem, "Length")?.ReturnErrorMessage() ?? "";
+                    this.CasepackWidthError = ItemService.ValidateCasepack(ItemViewModelItem, "Width")?.ReturnErrorMessage() ?? "";
+                    this.CasepackWeightError = ItemService.ValidateCasepack(ItemViewModelItem, "Weight")?.ReturnErrorMessage() ?? "";
+                    break;
+
+                case "CasepackLength":
+                    this.CasepackHeightError = ItemService.ValidateCasepack(ItemViewModelItem, "Height")?.ReturnErrorMessage() ?? "";
+                    this.CasepackLengthError = ItemService.ValidateCasepack(ItemViewModelItem, "Length")?.ReturnErrorMessage() ?? "";
+                    this.CasepackWidthError = ItemService.ValidateCasepack(ItemViewModelItem, "Width")?.ReturnErrorMessage() ?? "";
+                    this.CasepackWeightError = ItemService.ValidateCasepack(ItemViewModelItem, "Weight")?.ReturnErrorMessage() ?? "";
+                    break;
+
+                case "CasepackWeight":
+                    this.CasepackHeightError = ItemService.ValidateCasepack(ItemViewModelItem, "Height")?.ReturnErrorMessage() ?? "";
+                    this.CasepackLengthError = ItemService.ValidateCasepack(ItemViewModelItem, "Length")?.ReturnErrorMessage() ?? "";
+                    this.CasepackWidthError = ItemService.ValidateCasepack(ItemViewModelItem, "Width")?.ReturnErrorMessage() ?? "";
+                    this.CasepackWeightError = ItemService.ValidateCasepack(ItemViewModelItem, "Weight")?.ReturnErrorMessage() ?? "";
+                    break;
+
+                case "CasepackWidth":
                     this.CasepackHeightError = ItemService.ValidateCasepack(ItemViewModelItem, "Height")?.ReturnErrorMessage()??"";
                     this.CasepackLengthError = ItemService.ValidateCasepack(ItemViewModelItem, "Length")?.ReturnErrorMessage()??"";
                     this.CasepackWidthError = ItemService.ValidateCasepack(ItemViewModelItem, "Width")?.ReturnErrorMessage()??"";
@@ -9339,395 +9360,416 @@ namespace Odin.ViewModels
                     break;
 
                 case "CasepackQty":
-                    this.CasepackQtyError = ItemService.ValidateCasepackQty(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.CasepackQtyError = ItemService.ValidateCasepackQty(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "CasepackUpc":
-                    this.CasepackUpcError = ItemService.ValidatePackUpc(ItemViewModelItem, "Casepack")?.ReturnErrorMessage()??"";
+                    this.CasepackUpcError = ItemService.ValidatePackUpc(ItemViewModelItem, "Casepack")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "Category":
-                    this.CategoryError = ItemService.ValidateCategory(ItemViewModelItem, "1")?.ReturnErrorMessage()??"";
+                    this.CategoryError = ItemService.ValidateCategory(ItemViewModelItem, "1")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "Category2":
-                    this.Category2Error = ItemService.ValidateCategory(ItemViewModelItem, "2")?.ReturnErrorMessage()??"";
+                    this.Category2Error = ItemService.ValidateCategory(ItemViewModelItem, "2")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "Category3":
-                    this.Category3Error = ItemService.ValidateCategory(ItemViewModelItem, "3")?.ReturnErrorMessage()??"";
+                    this.Category3Error = ItemService.ValidateCategory(ItemViewModelItem, "3")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "Color":
-                    this.ColorError = ItemService.ValidateColor(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.ColorError = ItemService.ValidateColor(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "Copyright":
-                    this.CopyrightError = ItemService.ValidateCopyright(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.CopyrightError = ItemService.ValidateCopyright(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "CountryOfOrigin":
                     this.ItemViewModelItem.EcommerceCountryofOrigin = ItemService.RetrieveFullCountryOfOrigin(ItemViewModelItem.CountryOfOrigin);
-                    this.CountryOfOriginError = ItemService.ValidateCountryOfOrigin(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.CountryOfOriginError = ItemService.ValidateCountryOfOrigin(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "CostProfileGroup":
-                    this.CostProfileGroupError = ItemService.ValidateCostProfileGroup(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    this.MfgSourceError = ItemService.ValidateMfgSource(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.CostProfileGroupError = ItemService.ValidateCostProfileGroup(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.MfgSourceError = ItemService.ValidateMfgSource(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "DefaultActualCostCad":
-                    this.DefaultActualCostCadError = ItemService.ValidateDefaultActualCost(ItemViewModelItem, "CAD")?.ReturnErrorMessage()??"";
+                    this.DefaultActualCostCadError = ItemService.ValidateDefaultActualCost(ItemViewModelItem, "CAD")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "DefaultActualCostUsd":
-                    this.DefaultActualCostUsdError = ItemService.ValidateDefaultActualCost(ItemViewModelItem, "USD")?.ReturnErrorMessage()??"";
+                    this.DefaultActualCostUsdError = ItemService.ValidateDefaultActualCost(ItemViewModelItem, "USD")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "Description":
-                    this.DescriptionError = ItemService.ValidateDescription(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.DescriptionError = ItemService.ValidateDescription(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "DirectImport":
-                    this.DirectImportError = ItemService.ValidateDirectImport(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.DirectImportError = ItemService.ValidateDirectImport(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "Duty":
-                    this.DutyError = ItemService.ValidateDuty(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.DutyError = ItemService.ValidateDuty(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "Ean":
-                    this.EanError = ItemService.ValidateEan(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.EanError = ItemService.ValidateEan(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceAsin":
-                    this.EcommerceAsinError = ItemService.ValidateEcommerceAsin(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.EcommerceAsinError = ItemService.ValidateEcommerceAsin(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceBullet1":
-                    this.EcommerceBullet1Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "1")?.ReturnErrorMessage()??"";
+                    this.EcommerceBullet1Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "1")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceBullet2":
-                    this.EcommerceBullet2Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "2")?.ReturnErrorMessage()??"";
+                    this.EcommerceBullet2Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "2")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceBullet3":
-                    this.EcommerceBullet3Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "3")?.ReturnErrorMessage()??"";
+                    this.EcommerceBullet3Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "3")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceBullet4":
-                    this.EcommerceBullet4Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "4")?.ReturnErrorMessage()??"";
+                    this.EcommerceBullet4Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "4")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceBullet5":
-                    this.EcommerceBullet5Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "5")?.ReturnErrorMessage()??"";
+                    this.EcommerceBullet5Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "5")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceComponents":
-                    this.EcommerceComponentsError = ItemService.ValidateEcommerceComponents(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.EcommerceComponentsError = ItemService.ValidateEcommerceComponents(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceCost":
-                    this.EcommerceCostError = ItemService.ValidateEcommerceCost(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.EcommerceCostError = ItemService.ValidateEcommerceCost(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceExternalId":
-                    this.EcommerceExternalIdError = ItemService.ValidateEcommerceExternalId(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.EcommerceExternalIdError = ItemService.ValidateEcommerceExternalId(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceExternalIdType":
-                    this.EcommerceExternalIdTypeError = ItemService.ValidateEcommerceExternalIdType(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.EcommerceExternalIdTypeError = ItemService.ValidateEcommerceExternalIdType(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceGenericKeywords":
-                    this.EcommerceGenericKeywordsError = ItemService.ValidateEcommerceKeywords(ItemViewModelItem, "Generic")?.ReturnErrorMessage()??"";
+                    this.EcommerceGenericKeywordsError = ItemService.ValidateEcommerceKeywords(ItemViewModelItem, "Generic")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceItemHeight":
-                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem,"Height")?.ReturnErrorMessage()??"";
+                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Height")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceItemLength":
-                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Length")?.ReturnErrorMessage()??"";
+                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Length")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceItemName":
-                    this.EcommerceItemNameError = ItemService.ValidateEcommerceItemName(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.EcommerceItemNameError = ItemService.ValidateEcommerceItemName(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceItemWeight":
-                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Weight")?.ReturnErrorMessage()??"";
+                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Weight")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceItemWidth":
-                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Width")?.ReturnErrorMessage()??"";
+                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Width")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceModelName":
-                    this.EcommerceModelNameError = ItemService.ValidateEcommerceModelName(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.EcommerceModelNameError = ItemService.ValidateEcommerceModelName(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommercePackageHeight":
-                    this.EcommercePackageHeightError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Height")?.ReturnErrorMessage()??"";
+                    this.EcommercePackageHeightError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Height")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommercePackageLength":
-                    this.EcommercePackageLengthError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Length")?.ReturnErrorMessage()??"";
+                    this.EcommercePackageLengthError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Length")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommercePackageWeight":
-                    this.EcommercePackageWeightError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Weight")?.ReturnErrorMessage()??"";
+                    this.EcommercePackageWeightError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Weight")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommercePackageWidth":
-                    this.EcommercePackageWidthError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Width")?.ReturnErrorMessage()??"";
+                    this.EcommercePackageWidthError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Width")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommercePageQty":
-                    this.EcommercePageQtyError = ItemService.ValidateEcommercePageQty(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.EcommercePageQtyError = ItemService.ValidateEcommercePageQty(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceProductCategory":
-                    this.EcommerceProductCategoryError = ItemService.ValidateEcommerceProductCategory(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.EcommerceProductCategoryError = ItemService.ValidateEcommerceProductCategory(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceProductDescription":
-                    this.EcommerceProductDescriptionError = ItemService.ValidateEcommerceProductDescription(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.EcommerceProductDescriptionError = ItemService.ValidateEcommerceProductDescription(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceProductSubcategory":
-                    this.EcommerceProductSubcategoryError = ItemService.ValidateEcommerceProductSubcategory(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.EcommerceProductSubcategoryError = ItemService.ValidateEcommerceProductSubcategory(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceManufacturerName":
-                    this.EcommerceManufacturerNameError = ItemService.ValidateEcommerceManufacturerName(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.EcommerceManufacturerNameError = ItemService.ValidateEcommerceManufacturerName(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceMsrp":
-                    this.EcommerceMsrpError = ItemService.ValidateEcommerceMsrp(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.EcommerceMsrpError = ItemService.ValidateEcommerceMsrp(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommereSize":
-                    this.EcommerceSizeError = ItemService.ValidateEcommerceSize(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.EcommerceSizeError = ItemService.ValidateEcommerceSize(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceSubjectKeywords":
-                    this.EcommerceSubjectKeywordsError = ItemService.ValidateEcommerceKeywords(ItemViewModelItem, "Subject")?.ReturnErrorMessage()??"";
+                    this.EcommerceSubjectKeywordsError = ItemService.ValidateEcommerceKeywords(ItemViewModelItem, "Subject")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommereUpc":
-                    this.EcommerceUpcError = ItemService.ValidateEcommerceUpc(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.EcommerceUpcError = ItemService.ValidateEcommerceUpc(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "Gpc":
-                    this.GpcError = ItemService.ValidateGpc(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.GpcError = ItemService.ValidateGpc(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "Height":
-                    this.HeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Height")?.ReturnErrorMessage()??"";
+                    this.HeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Height")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "ImagePath":
-                    this.ImagePathError = ItemService.ValidateImagePath(ItemViewModelItem, "1")?.ReturnErrorMessage()??"";
+                    this.ImagePathError = ItemService.ValidateImagePath(ItemViewModelItem, "1")?.ReturnErrorMessage() ?? "";
                     SetImages();
                     break;
 
-                case "Innerpack":
-                    this.InnerpackWidthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Width")?.ReturnErrorMessage()??"";
-                    this.InnerpackHeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Height")?.ReturnErrorMessage()??"";
-                    this.InnerpackLengthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Length")?.ReturnErrorMessage()??"";
-                    this.InnerpackWeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Weight")?.ReturnErrorMessage()??"";
+                case "InnerpackHeight":
+                    this.InnerpackWidthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Width")?.ReturnErrorMessage() ?? "";
+                    this.InnerpackHeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Height")?.ReturnErrorMessage() ?? "";
+                    this.InnerpackLengthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Length")?.ReturnErrorMessage() ?? "";
+                    this.InnerpackWeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Weight")?.ReturnErrorMessage() ?? "";
+                    break;
+
+                case "InnerpackLength":
+                    this.InnerpackWidthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Width")?.ReturnErrorMessage() ?? "";
+                    this.InnerpackHeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Height")?.ReturnErrorMessage() ?? "";
+                    this.InnerpackLengthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Length")?.ReturnErrorMessage() ?? "";
+                    this.InnerpackWeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Weight")?.ReturnErrorMessage() ?? "";
+                    break;
+
+                case "InnerpackWeight":
+                    this.InnerpackWidthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Width")?.ReturnErrorMessage() ?? "";
+                    this.InnerpackHeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Height")?.ReturnErrorMessage() ?? "";
+                    this.InnerpackLengthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Length")?.ReturnErrorMessage() ?? "";
+                    this.InnerpackWeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Weight")?.ReturnErrorMessage() ?? "";
+                    break;
+
+                case "InnerpackWidth":
+                    this.InnerpackWidthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Width")?.ReturnErrorMessage() ?? "";
+                    this.InnerpackHeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Height")?.ReturnErrorMessage() ?? "";
+                    this.InnerpackLengthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Length")?.ReturnErrorMessage() ?? "";
+                    this.InnerpackWeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Weight")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "InnerpackQuantity":
-                    this.InnerpackQuantityError = ItemService.ValidateInnerpackQuantity(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.InnerpackQuantityError = ItemService.ValidateInnerpackQuantity(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "InnerpackUpc":
-                    this.InnerpackUpcError = ItemService.ValidatePackUpc(ItemViewModelItem, "Innerpack")?.ReturnErrorMessage()??"";
+                    this.InnerpackUpcError = ItemService.ValidatePackUpc(ItemViewModelItem, "Innerpack")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "InStockDate":
-                    this.InStockDateError = ItemService.ValidateInStockDate(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.InStockDateError = ItemService.ValidateInStockDate(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "Isbn":
-                    this.IsbnError = ItemService.ValidateIsbn(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.IsbnError = ItemService.ValidateIsbn(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "ItemCategory":
-                    this.ItemCategoryError = ItemService.ValidateItemCategory(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.ItemCategoryError = ItemService.ValidateItemCategory(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "ItemFamily":
-                    this.ItemFamilyError = ItemService.ValidateItemFamily(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.ItemFamilyError = ItemService.ValidateItemFamily(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "ItemGroup":
-                    this.ItemGroupError = ItemService.ValidateItemGroup(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.ItemGroupError = ItemService.ValidateItemGroup(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
                 case "ItemId":
-                    this.ItemIdError = ItemService.ValidateItemId(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.ItemIdError = ItemService.ValidateItemId(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "ItemKeywords":
-                    this.ItemKeywordsError = ItemService.ValidateItemKeywords(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.ItemKeywordsError = ItemService.ValidateItemKeywords(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "Language":
-                    this.LanguageError = ItemService.ValidateLanguage(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.LanguageError = ItemService.ValidateLanguage(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "Length":
-                    this.LengthError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Length")?.ReturnErrorMessage()??"";
+                    this.LengthError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Length")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "LicenseBeginDate":
-                    this.LicenseBeginDateError = ItemService.ValidateLicenseBeginDate(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.LicenseBeginDateError = ItemService.ValidateLicenseBeginDate(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "License":
                     RefreshPropertyList(ItemViewModelItem.License);
-                    this.LicenseError = ItemService.ValidateLicense(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    this.PropertyError = ItemService.ValidateProperty(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.LicenseError = ItemService.ValidateLicense(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.PropertyError = ItemService.ValidateProperty(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "ListPriceCad":
-                    this.ListPriceCadError = ItemService.ValidateListPrice(ItemViewModelItem, "CAD")?.ReturnErrorMessage()??"";
-                    this.MsrpCadError = ItemService.ValidateMsrp(ItemViewModelItem, "CAD")?.ReturnErrorMessage()??"";
-                    this.PricingGroupError = ItemService.ValidatePricingGroup(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.ListPriceCadError = ItemService.ValidateListPrice(ItemViewModelItem, "CAD")?.ReturnErrorMessage() ?? "";
+                    this.MsrpCadError = ItemService.ValidateMsrp(ItemViewModelItem, "CAD")?.ReturnErrorMessage() ?? "";
+                    this.PricingGroupError = ItemService.ValidatePricingGroup(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "ListPriceMxn":
-                    this.MsrpMxnError = ItemService.ValidateMsrp(ItemViewModelItem, "MXN")?.ReturnErrorMessage()??"";
-                    this.ListPriceMxnError = ItemService.ValidateListPrice(ItemViewModelItem, "MXN")?.ReturnErrorMessage()??"";
+                    this.MsrpMxnError = ItemService.ValidateMsrp(ItemViewModelItem, "MXN")?.ReturnErrorMessage() ?? "";
+                    this.ListPriceMxnError = ItemService.ValidateListPrice(ItemViewModelItem, "MXN")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "ListPriceUsd":
-                    this.ListPriceUsdError = ItemService.ValidateListPrice(ItemViewModelItem, "USD")?.ReturnErrorMessage()??"";
+                    this.ListPriceUsdError = ItemService.ValidateListPrice(ItemViewModelItem, "USD")?.ReturnErrorMessage() ?? "";
                     this.ProductQtyTotal = ItemService.RetrieveB2bPrice(ItemViewModelItem.ListPriceUsd, this.ProductQty);
-                    this.MsrpError = ItemService.ValidateMsrp(ItemViewModelItem, "USD")?.ReturnErrorMessage()??"";
-                    this.PricingGroupError = ItemService.ValidatePricingGroup(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    this.StatsCodeError = ItemService.ValidateStatsCode(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    this.CountryOfOriginError = ItemService.ValidateCountryOfOrigin(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    this.LanguageError = ItemService.ValidateLanguage(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    this.TerritoryError = ItemService.ValidateTerritory(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    this.GpcError = ItemService.ValidateGpc(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.MsrpError = ItemService.ValidateMsrp(ItemViewModelItem, "USD")?.ReturnErrorMessage() ?? "";
+                    this.PricingGroupError = ItemService.ValidatePricingGroup(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.StatsCodeError = ItemService.ValidateStatsCode(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.CountryOfOriginError = ItemService.ValidateCountryOfOrigin(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.LanguageError = ItemService.ValidateLanguage(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.TerritoryError = ItemService.ValidateTerritory(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.GpcError = ItemService.ValidateGpc(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "MetaDescription":
-                    this.MetaDescriptionError = ItemService.ValidateMetaDescription(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.MetaDescriptionError = ItemService.ValidateMetaDescription(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "MfgSource":
-                    this.MfgSourceError = ItemService.ValidateMfgSource(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    this.CostProfileGroupError = ItemService.ValidateCostProfileGroup(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.MfgSourceError = ItemService.ValidateMfgSource(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.CostProfileGroupError = ItemService.ValidateCostProfileGroup(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "Msrp":
-                    this.MsrpError = ItemService.ValidateMsrp(ItemViewModelItem, "USD")?.ReturnErrorMessage()??"";
+                    this.MsrpError = ItemService.ValidateMsrp(ItemViewModelItem, "USD")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "MsrpCad":
-                    this.MsrpCadError = ItemService.ValidateMsrp(ItemViewModelItem, "CAD")?.ReturnErrorMessage()??"";
+                    this.MsrpCadError = ItemService.ValidateMsrp(ItemViewModelItem, "CAD")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "MsrpMxn":
-                    this.MsrpMxnError = ItemService.ValidateMsrp(ItemViewModelItem, "MXN")?.ReturnErrorMessage()??"";
+                    this.MsrpMxnError = ItemService.ValidateMsrp(ItemViewModelItem, "MXN")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "PricingGroup":
-                    this.PricingGroupError = ItemService.ValidatePricingGroup(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.PricingGroupError = ItemService.ValidatePricingGroup(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "PrintOnDemand":
-                    this.PrintOnDemandError = ItemService.ValidatePrintOnDemand(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.PrintOnDemandError = ItemService.ValidatePrintOnDemand(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "ProductFormat":
-                    this.ProductFormatError = ItemService.ValidateProductFormat(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    this.ProductIdTranslationError = ItemService.ValidateProductIdTranslation(ItemViewModelItem, this.ItemIds)?.ReturnErrorMessage()??"";
-                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    this.EanError = ItemService.ValidateEan(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.ProductFormatError = ItemService.ValidateProductFormat(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.ProductIdTranslationError = ItemService.ValidateProductIdTranslation(ItemViewModelItem, this.ItemIds)?.ReturnErrorMessage() ?? "";
+                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.EanError = ItemService.ValidateEan(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "ProductGroup":
                     RefreshProductLines();
                     RefreshProductFormats("");
-                    this.ProductFormatError = ItemService.ValidateProductFormat(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    this.ProductLineError = ItemService.ValidateProductLine(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    this.ProductGroupError = ItemService.ValidateProductGroup(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.ProductFormatError = ItemService.ValidateProductFormat(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.ProductLineError = ItemService.ValidateProductLine(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.ProductGroupError = ItemService.ValidateProductGroup(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "ProductIdTranslation":
-                    this.ProductIdTranslationError = ItemService.ValidateProductIdTranslation(ItemViewModelItem, this.ItemIds)?.ReturnErrorMessage()??"";
+                    this.ProductIdTranslationError = ItemService.ValidateProductIdTranslation(ItemViewModelItem, this.ItemIds)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "ProductLine":
                     RefreshProductFormats(this.ProductLine);
-                    this.EanError = ItemService.ValidateEan(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    this.ProductFormatError = ItemService.ValidateProductFormat(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    this.ProductLineError = ItemService.ValidateProductLine(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.EanError = ItemService.ValidateEan(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.ProductFormatError = ItemService.ValidateProductFormat(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.ProductLineError = ItemService.ValidateProductLine(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "ProductQty":
                     this.ProductQtyTotal = ItemService.RetrieveB2bPrice(ItemViewModelItem.ListPriceUsd, ItemViewModelItem.ProductQty);
-                    this.ProductQtyError = ItemService.ValidateProductQty(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.ProductQtyError = ItemService.ValidateProductQty(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "Property":
-                    this.PropertyError = ItemService.ValidateProperty(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.PropertyError = ItemService.ValidateProperty(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "PsStatus":
-                    this.PsStatusError = ItemService.ValidatePsStatus(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.PsStatusError = ItemService.ValidatePsStatus(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "SatCode":
-                    this.SatCodeError = ItemService.ValidateSatCode(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.SatCodeError = ItemService.ValidateSatCode(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "SellOnAllPostersCheck":
-                    this.SellOnAllPostersError = ItemService.ValidateSellOnValue(ItemViewModelItem, "All Posters")?.ReturnErrorMessage()??"";
+                    this.SellOnAllPostersError = ItemService.ValidateSellOnValue(ItemViewModelItem, "All Posters")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "SellOnAmazonCheck":
-                    this.SellOnAmazonError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Amazon")?.ReturnErrorMessage()??"";
+                    this.SellOnAmazonError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Amazon")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "SellOnAmazonSellerCentralCheck":
-                    this.SellOnAmazonSellerCentralError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Amazon Seller Central")?.ReturnErrorMessage()??"";
+                    this.SellOnAmazonSellerCentralError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Amazon Seller Central")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "SellOnEcommerceCheck":
-                    this.SellOnEcommerceError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Ecommerce")?.ReturnErrorMessage()??"";
+                    this.SellOnEcommerceError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Ecommerce")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "SellOnFanaticsCheck":
-                    this.SellOnFanaticsError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Fanatics")?.ReturnErrorMessage()??"";
+                    this.SellOnFanaticsError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Fanatics")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "SellOnGuitarCenterCheck":
-                    this.SellOnGuitarCenterError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Guitar Center")?.ReturnErrorMessage()??"";
+                    this.SellOnGuitarCenterError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Guitar Center")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "SellOnHayneedleCheck":
-                    this.SellOnHayneedleError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Hayneedle")?.ReturnErrorMessage()??"";
+                    this.SellOnHayneedleError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Hayneedle")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "SellOnTargetCheck":
-                    this.SellOnTargetError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Target")?.ReturnErrorMessage()??"";
+                    this.SellOnTargetError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Target")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "SellOnTrendsCheck":
-                    this.TitleError = ItemService.ValidateTitle(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    this.MetaDescriptionError = ItemService.ValidateMetaDescription(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    this.CategoryError = ItemService.ValidateCategory(ItemViewModelItem, "1")?.ReturnErrorMessage()??"";
-                    this.ItemKeywordsError = ItemService.ValidateItemKeywords(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    this.TitleError = ItemService.ValidateTitle(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.MetaDescriptionError = ItemService.ValidateMetaDescription(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.CategoryError = ItemService.ValidateCategory(ItemViewModelItem, "1")?.ReturnErrorMessage() ?? "";
+                    this.ItemKeywordsError = ItemService.ValidateItemKeywords(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     this.SellOnTrendsError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Trends")?.ReturnErrorMessage()??"";
                     break;
 
@@ -10137,6 +10179,7 @@ namespace Odin.ViewModels
                 return true;
             }
         }
+        
         /*
         /// <summary>
         ///     Validates all fields of current item
@@ -10221,6 +10264,7 @@ namespace Odin.ViewModels
             ValidateSellOnFields();
         }
         */
+
         /// <summary>
         ///     Validate all ecommerce fields
         /// </summary>

@@ -20,27 +20,27 @@ namespace OdinTests.Services
             OptionService optionService = new OptionService(new TestOptionRepository(), new TestRequestRepository());
             ExcelService excelService = new ExcelService(true, new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository()), optionService, new TestTemplateRepository(), new TestRequestRepository());
             ObservableCollection<ItemObject> items = new ObservableCollection<ItemObject>();
-            ItemObject item1 = new ItemObject()
+            ItemObject item1 = new ItemObject(1)
             {
                 ItemId = "RP1234"
             };
             items.Add(item1);
-            ItemObject item2 = new ItemObject()
+            ItemObject item2 = new ItemObject(1)
             {
                 ItemId = "RP4321"
             };
             items.Add(item2);
-            ItemObject item3 = new ItemObject()
+            ItemObject item3 = new ItemObject(1)
             {
                 ItemId = "POD1234"
             };
             items.Add(item3);
-            ItemObject item4 = new ItemObject()
+            ItemObject item4 = new ItemObject(1)
             {
                 ItemId = "FR4321"
             };
             items.Add(item4);
-            ItemObject item5 = new ItemObject()
+            ItemObject item5 = new ItemObject(1)
             {
                 ItemId = "FR1234"
             };
@@ -116,17 +116,17 @@ namespace OdinTests.Services
 
             OptionService optionService = new OptionService(new TestOptionRepository(), new TestRequestRepository());
             ExcelService excelService = new ExcelService(true, new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository()), optionService, new TestTemplateRepository(), new TestRequestRepository());
-            string itemId1 = "RP1234";
-            string itemId2 = "FR1234";
-            string itemId3 = "POD1234";
+            ItemObject item1 = new ItemObject(1) { ItemId = "RP1234" };
+            ItemObject item2 = new ItemObject(1) { ItemId = "FR1234" };
+            ItemObject item3 = new ItemObject(1) { ItemId = "POD1234"};
 
             #endregion // Assemble
 
             #region Act
 
-            string result1 = excelService.ReturnVariantAttributeName(itemId1, "Amazon");
-            string result2 = excelService.ReturnVariantAttributeName(itemId2, "Amazon");
-            string result3 = excelService.ReturnVariantAttributeName(itemId3, "Amazon");
+            string result1 = excelService.ReturnVariantAttributeName(item1, "Amazon");
+            string result2 = excelService.ReturnVariantAttributeName(item2, "Amazon");
+            string result3 = excelService.ReturnVariantAttributeName(item3, "Amazon");
 
             #endregion // Act
 

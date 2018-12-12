@@ -179,7 +179,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.AccountingGroup != value)
                 {
                     this.TemplateObject.AccountingGroup = value;
-                    AccountingGroupError = ItemService.ValidateAccountingGroup(TemplateObject).ReturnErrorMessage();
+                    FlagError("AccountingGroup");
                     OnPropertyChanged("AccountingGroup");
                 }
             }
@@ -311,7 +311,7 @@ namespace Odin.ViewModels
                 if (this.TemplateObject.CasepackLength != value)
                 {
                     this.TemplateObject.CasepackLength = value;
-                    this.CasepackLengthError = ItemService.ValidateCasepack(this.TemplateObject, "Length").ReturnErrorMessage();
+                    FlagError("CasepackLength");
                     OnPropertyChanged("CasepackLength");
                 }
             }
@@ -592,7 +592,6 @@ namespace Odin.ViewModels
                 {
                     this.TemplateObject.CostProfileGroup = value;
                     FlagError("CostProfileGroup");
-
                     OnPropertyChanged("CostProfileGroup");
                 }
             }
@@ -2371,7 +2370,7 @@ namespace Odin.ViewModels
             {
                 if (this.TemplateObject.ProductFormat != value)
                 {
-                   this.TemplateObject.ProductFormat = value;
+                    this.TemplateObject.ProductFormat = value;
                     FlagError("ProductFormat");
                     OnPropertyChanged("ProductFormat");
                 }
@@ -5828,11 +5827,20 @@ namespace Odin.ViewModels
                     this.AccountingGroupError = ItemService.ValidateAccountingGroup(TemplateObject)?.ReturnErrorMessage()??"";
                     break;
 
-                case "Casepack":
-                    this.CasepackHeightError = ItemService.ValidateCasepack(TemplateObject, "Height")?.ReturnErrorMessage()??"";
-                    this.CasepackLengthError = ItemService.ValidateCasepack(TemplateObject, "Length")?.ReturnErrorMessage()??"";
-                    this.CasepackWidthError = ItemService.ValidateCasepack(TemplateObject, "Width")?.ReturnErrorMessage()??"";
-                    this.CasepackWeightError = ItemService.ValidateCasepack(TemplateObject, "Weight")?.ReturnErrorMessage()??"";
+                case "CasepackHeight":
+                    this.CasepackHeightError = ItemService.ValidateCasepack(TemplateObject, "Height")?.ReturnErrorMessage() ?? "";
+                    break;
+
+                case "CasepackLength":
+                    this.CasepackLengthError = ItemService.ValidateCasepack(TemplateObject, "Length")?.ReturnErrorMessage() ?? "";
+                    break;
+
+                case "CasepackWeight":
+                    this.CasepackWeightError = ItemService.ValidateCasepack(TemplateObject, "Weight")?.ReturnErrorMessage() ?? "";
+                    break;
+
+                case "CasepackWidth":
+                    this.CasepackWidthError = ItemService.ValidateCasepack(TemplateObject, "Width")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "CasepackQty":
@@ -5980,11 +5988,20 @@ namespace Odin.ViewModels
                     this.EcommerceItemHeightError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Height")?.ReturnErrorMessage()??"";
                     break;
 
-                case "Innerpack":
-                    this.InnerpackWidthError = ItemService.ValidateInnerpack(TemplateObject, "Width")?.ReturnErrorMessage()??"";
+                case "InnerpackHeight":
                     this.InnerpackHeightError = ItemService.ValidateInnerpack(TemplateObject, "Height")?.ReturnErrorMessage()??"";
-                    this.InnerpackLengthError = ItemService.ValidateInnerpack(TemplateObject, "Length")?.ReturnErrorMessage()??"";
-                    this.InnerpackWeightError = ItemService.ValidateInnerpack(TemplateObject, "Weight")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "InnerpackLength":
+                    this.InnerpackLengthError = ItemService.ValidateInnerpack(TemplateObject, "Length")?.ReturnErrorMessage() ?? "";
+                    break;
+
+                case "InnerpackWeight":
+                    this.InnerpackWeightError = ItemService.ValidateInnerpack(TemplateObject, "Weight")?.ReturnErrorMessage() ?? "";
+                    break;
+
+                case "InnerpackWidth":
+                    this.InnerpackWidthError = ItemService.ValidateInnerpack(TemplateObject, "Width")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "InnerpackQuantity":
@@ -6086,6 +6103,10 @@ namespace Odin.ViewModels
                     this.TariffCodeError = ItemService.ValidateTariffCode(TemplateObject)?.ReturnErrorMessage()??"";
                     break;
 
+                case "TemplateId":
+                    this.TemplateIdError = ItemService.ValidateTemplateId(TemplateObject)?.ReturnErrorMessage() ?? "";
+                    break;
+
                 case "Udex":
                     this.UdexError = ItemService.ValidateUdex(TemplateObject)?.ReturnErrorMessage()??"";
                     break;
@@ -6106,6 +6127,7 @@ namespace Odin.ViewModels
                     throw new ArgumentNullException("TemplateViewModel Flag error unknown type " + field);
             }
         }
+
         /// <summary>
         ///     Populates the viewmodel fields with an existing item
         /// </summary>
@@ -6173,6 +6195,7 @@ namespace Odin.ViewModels
             this.MsrpMxn = template.MsrpMxn;
             this.PrintOnDemand = template.PrintOnDemand;
             this.PricingGroup = template.PricingGroup;
+            this.ProdType = template.ProdType;
             this.ProductGroup = template.ProductGroup;
             this.ProductLine = template.ProductLine;
             this.ProductFormat = template.ProductFormat;
@@ -6266,6 +6289,7 @@ namespace Odin.ViewModels
                 this.MsrpMxn = template.MsrpMxn;
                 this.PrintOnDemand = template.PrintOnDemand;
                 this.PricingGroup = template.PricingGroup;
+                this.ProdType = template.ProdType;
                 this.ProductGroup = template.ProductGroup;
                 this.ProductLine = template.ProductLine;
                 this.ProductFormat = template.ProductFormat;
@@ -6590,7 +6614,7 @@ namespace Odin.ViewModels
         public TemplateViewModel(ItemService itemService, string templateStatus, ItemObject template = null)
         {
             this.ItemService = itemService ?? throw new ArgumentNullException("itemService");
-            this.TemplateObject = new ItemObject();
+            this.TemplateObject = new ItemObject(2);
             this.TemplateList = GlobalData.TemplateNames;
             this.TemplateStatus = templateStatus;
             SetVisibility(templateStatus);

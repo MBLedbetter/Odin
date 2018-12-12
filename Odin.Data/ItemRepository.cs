@@ -1557,7 +1557,7 @@ namespace Odin.Data
                                          where o.InvItemId == idInput.Trim()
                                          select o).FirstOrDefault();
 
-                    ItemObject item = new ItemObject
+                    ItemObject item = new ItemObject(1)
                     {
                         ItemId = idInput,
                         AccountingGroup = (!string.IsNullOrEmpty(odinItem.AccountingGroup)) ? odinItem.AccountingGroup : "",
@@ -1710,7 +1710,7 @@ namespace Odin.Data
                 }
                 else
                 {
-                    return new ItemObject();
+                    return new ItemObject(1);
                 }
             }
         }
@@ -1789,7 +1789,7 @@ namespace Odin.Data
 
                 foreach (OdinItemUpdateRecords odinItemUpdateRecord in odinItemUpdateRecords)
                 {
-                    ItemObject item = new ItemObject();
+                    ItemObject item = new ItemObject(1);
 
                     List<ChildElement> idTranslations = new List<ChildElement>();
                     if (!string.IsNullOrEmpty(odinItemUpdateRecord.ProductIdTranslation))

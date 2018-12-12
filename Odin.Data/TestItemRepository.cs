@@ -742,7 +742,7 @@ namespace Odin.Data
         /// </summary>
         private void PopulateTestItems()
         {
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 Status = "Update",
                 AltImageFile1 = "AltImageFile1A",
@@ -865,7 +865,7 @@ namespace Odin.Data
             item.ResetUpdate();
             this.TestItemCollection.Add(item);
 
-            ItemObject item2 = new ItemObject()
+            ItemObject item2 = new ItemObject(1)
             {
                 Status = "Update",
                 AltImageFile1 = "AltImageFile1B",
@@ -1530,7 +1530,7 @@ namespace Odin.Data
                     return item;
                 }
             }
-            return new ItemObject();
+            return new ItemObject(1);
         }
 
         /// <summary>
@@ -1570,7 +1570,7 @@ namespace Odin.Data
         public List<ItemObject> RetrieveItemUpdateRecords(string itemId)
         {
             List<ItemObject> items = new List<ItemObject>(new ItemObject[] {
-            new ItemObject()
+            new ItemObject(1)
             {
                 Status= "Update",
                 AltImageFile1 = "AltImageFile1",

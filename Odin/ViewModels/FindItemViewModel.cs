@@ -570,7 +570,7 @@ namespace Odin.ViewModels
             int count = 1;
             foreach (SearchItem searchItem in this.SearchItemList)
             {
-                ItemObject fullItem = new ItemObject();
+                ItemObject fullItem = new ItemObject(1);
                 if (this.UpdateType == "Remove")
                 {
                     fullItem.ItemId = searchItem.ItemId;

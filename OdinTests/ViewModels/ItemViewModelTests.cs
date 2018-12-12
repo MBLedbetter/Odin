@@ -5,6 +5,7 @@ using OdinModels;
 using OdinServices;
 using OdinTests.Helpers;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace OdinTests.ViewModels
 {
@@ -38,7 +39,7 @@ namespace OdinTests.ViewModels
             GlobalData.StatsCodes.Add("MARCA3", "MARCA");
 
 
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
 
                 Status = "Add",
@@ -242,95 +243,7 @@ namespace OdinTests.ViewModels
 
             #endregion // Assert
         }
-
-        [TestMethod]
-        public void ValidateAllEcommerceFields_ItemHasBlankFields_ShouldReturnErrors()
-        {
-            #region Setup
-
-            GlobalData.ClearValues();
-            GlobalData.EcomFlagRequirement = true;
-
-            ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-
-            ItemObject item = new ItemObject()
-            {
-                SellOnAmazon = "Y",
-                EcommerceAsin = "",
-                EcommerceBullet1 = "",
-                EcommerceBullet2 = "",
-                EcommerceBullet3 = "",
-                EcommerceBullet4 = "",
-                EcommerceBullet5 = "",
-                EcommerceComponents = "",
-                EcommerceCost = "",
-                EcommerceExternalId = "",
-                EcommerceExternalIdType = "",
-                EcommerceImagePath1 = "",
-                EcommerceImagePath2 = "",
-                EcommerceImagePath3 = "",
-                EcommerceImagePath4 = "",
-                EcommerceImagePath5 = "",
-                EcommerceItemHeight = "",
-                EcommerceItemLength = "",
-                EcommerceItemName = "",
-                EcommerceItemWeight = "",
-                EcommerceItemWidth = "",
-                EcommerceModelName = "",
-                EcommercePackageHeight = "",
-                EcommercePackageLength = "",
-                EcommercePackageWeight = "",
-                EcommercePackageWidth = "",
-                EcommerceProductCategory = "",
-                EcommerceProductDescription = "",
-                EcommerceProductSubcategory = "",
-                EcommerceManufacturerName = "",
-                EcommerceMsrp = "",
-                EcommerceGenericKeywords = "",
-                EcommerceSize = ""
-            };
-
-            #endregion // Setup
-
-            #region Act
-
-            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>());
-            itemViewModel.ValidateEcommerce();
-
-            #endregion // Act
-
-            #region Assert
-            Assert.AreEqual("", itemViewModel.EcommerceAsinError);
-            Assert.AreNotEqual("", itemViewModel.EcommerceBullet1Error);
-            Assert.AreNotEqual("", itemViewModel.EcommerceBullet2Error);
-            Assert.AreNotEqual("", itemViewModel.EcommerceBullet3Error);
-            Assert.AreEqual("", itemViewModel.EcommerceBullet4Error);
-            Assert.AreEqual("", itemViewModel.EcommerceBullet5Error);
-            Assert.AreNotEqual("", itemViewModel.EcommerceComponentsError);
-            Assert.AreNotEqual("", itemViewModel.EcommerceCostError);
-            Assert.AreNotEqual("", itemViewModel.EcommerceExternalIdError);
-            Assert.AreNotEqual("", itemViewModel.EcommerceExternalIdTypeError);
-            Assert.AreNotEqual("", itemViewModel.EcommerceItemHeightError);
-            Assert.AreNotEqual("", itemViewModel.EcommerceItemLengthError);
-            Assert.AreNotEqual("", itemViewModel.EcommerceItemNameError);
-            Assert.AreNotEqual("", itemViewModel.EcommerceItemWeightError);
-            Assert.AreNotEqual("", itemViewModel.EcommerceItemWidthError);
-            Assert.AreNotEqual("", itemViewModel.EcommerceModelNameError);
-            Assert.AreNotEqual("", itemViewModel.EcommercePackageHeightError);
-            Assert.AreNotEqual("", itemViewModel.EcommercePackageLengthError);
-            Assert.AreNotEqual("", itemViewModel.EcommercePackageWeightError);
-            Assert.AreNotEqual("", itemViewModel.EcommercePackageWidthError,  "");
-            Assert.AreNotEqual("", itemViewModel.EcommerceProductCategoryError);
-            Assert.AreNotEqual("", itemViewModel.EcommerceProductDescriptionError);
-            Assert.AreNotEqual("", itemViewModel.EcommerceProductSubcategoryError);
-            Assert.AreNotEqual("", itemViewModel.EcommerceManufacturerNameError);
-            Assert.AreNotEqual("", itemViewModel.EcommerceMsrpError);
-            Assert.AreEqual("", itemViewModel.EcommerceGenericKeywordsError);
-            Assert.AreNotEqual("", itemViewModel.EcommerceSizeError);
-
-            #endregion // Assert
-        }
-
+        
         /// <summary>
         ///     Check amazon fields to see if they trigger the 'HasEcommerce' field. Fields with values should set 'HasEcommerce to 'Y'
         /// </summary>
@@ -343,12 +256,12 @@ namespace OdinTests.ViewModels
             GlobalData.ClearValues();
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
-            ItemObject item1 = new ItemObject();
-            ItemObject item2 = new ItemObject();
-            ItemObject item3 = new ItemObject();
-            ItemObject item4 = new ItemObject();
-            ItemObject item5 = new ItemObject();
-            ItemObject item6 = new ItemObject();
+            ItemObject item1 = new ItemObject(1);
+            ItemObject item2 = new ItemObject(1);
+            ItemObject item3 = new ItemObject(1);
+            ItemObject item4 = new ItemObject(1);
+            ItemObject item5 = new ItemObject(1);
+            ItemObject item6 = new ItemObject(1);
             item1.SellOnAmazon = "Y";
             item2.SellOnWalmart = "Y";
             item3.SellOnFanatics = "Y";
@@ -393,7 +306,7 @@ namespace OdinTests.ViewModels
             GlobalData.ClearValues();
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
-            ItemObject item1 = new ItemObject()
+            ItemObject item1 = new ItemObject(1)
             {
                 EcommerceBullet1 = "Bullet1"
             };
@@ -422,13 +335,16 @@ namespace OdinTests.ViewModels
             #region Assign
 
             GlobalData.ClearValues();
-            GlobalData.EcomFlagRequirement = true;
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 EcommerceBullet1 = "Rickity Recked",
-                SellOnFanatics = "Y"
+                SellOnEcommerce = "Y"
             };
+            
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>());
+            ObservableCollection<ItemError> errorList = itemService.ValidateItem(item, new List<string>(), false);
+            GlobalData.EcomFlagRequirement = true;
+            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>(), errorList);
+
             #endregion // Assign
 
             #region Act
@@ -454,7 +370,7 @@ namespace OdinTests.ViewModels
             #region Assign
 
             GlobalData.ClearValues();
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 ShortDescription = "OoOoOo BoYeE"
             };
@@ -483,7 +399,7 @@ namespace OdinTests.ViewModels
         {
             #region Assign
 
-            ItemObject item = new ItemObject() {
+            ItemObject item = new ItemObject(1) {
                 SellOnAmazon = "Y",
                 EcommerceBullet1 = "My Porcelin Horse!"
             };
@@ -516,7 +432,7 @@ namespace OdinTests.ViewModels
             #region Assign
 
             GlobalData.ClearValues();
-            ItemObject item = new ItemObject();
+            ItemObject item = new ItemObject(1);
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
             ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>());
             #endregion // Assign
@@ -541,20 +457,22 @@ namespace OdinTests.ViewModels
 
             GlobalData.ClearValues();
             GlobalData.EcomFlagRequirement = true;
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 SellOnTrends = "Y",
                 ItemKeywords = ""
             };
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>());
-            item = new ItemObject()
+            ObservableCollection<ItemError> errorList = itemService.ValidateItem(item, new List<string>(), false);
+            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>(), errorList);
+            item = new ItemObject(1)
             {
                 SellOnTrends = "N",
                 ItemKeywords = ""
             };
             ItemService itemService2 = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemViewModel itemViewModel2 = new ItemViewModel(item, itemService, new List<string>());
+            errorList = itemService.ValidateItem(item, new List<string>(), false);
+            ItemViewModel itemViewModel2 = new ItemViewModel(item, itemService, new List<string>(), errorList);
             #endregion // Assign
 
             #region Act
@@ -578,12 +496,14 @@ namespace OdinTests.ViewModels
 
             GlobalData.ClearValues();
             GlobalData.EcomFlagRequirement = true;
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 SellOnTrends = "Y"
             };
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>());
+            ObservableCollection<ItemError> errorList = itemService.ValidateItem(item, new List<string>(), false);
+            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>(), errorList);
+
             #endregion // Assign
 
             #region Act
@@ -606,7 +526,7 @@ namespace OdinTests.ViewModels
             #region Assign
 
             GlobalData.ClearValues();
-            ItemObject item = new ItemObject();
+            ItemObject item = new ItemObject(1);
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
             item.AccountingGroup = "AccountingGroup";
@@ -830,7 +750,7 @@ namespace OdinTests.ViewModels
         {
             #region Assign
             
-            ItemObject item = new ItemObject();
+            ItemObject item = new ItemObject(1);
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
             item.AccountingGroup = "AccountingGroup";
@@ -994,7 +914,7 @@ namespace OdinTests.ViewModels
             };
             List<string> itemIds = new List<string>() {
                 "" };
-            ItemObject item = new ItemObject()
+            ItemObject item = new ItemObject(1)
             {
                 Status = "Add",
                 AltImageFile1 = "",

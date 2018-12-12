@@ -616,7 +616,7 @@ namespace OdinServices
             List<ItemObject> TemplateList = new List<ItemObject>();
             if (templateList == null)
             {
-                TemplateList.Add(new ItemObject());
+                TemplateList.Add(new ItemObject(2));
             }
             else
             {
@@ -1763,7 +1763,7 @@ namespace OdinServices
                     case "Variant Attribute Name":
                         foreach (ItemObject item in items)
                         {
-                            WriteCell(row, columnCount, ReturnVariantAttributeName(item.ItemId, customer));
+                            WriteCell(row, columnCount, ReturnVariantAttributeName(item, customer));
                             row++;
                         }
                         break;
