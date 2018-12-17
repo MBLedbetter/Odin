@@ -5254,8 +5254,7 @@ namespace OdinServices
         /// <param name="prodType"></param>
         /// <returns></returns>
         public ItemError ValidatePricingGroup(ItemObject var)
-        {
-
+        { 
             bool required = (var.ProdType == 2) ? false : true;
 
             if (!string.IsNullOrEmpty(var.PricingGroup) || required)
