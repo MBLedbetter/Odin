@@ -3256,7 +3256,7 @@ namespace OdinServices
             }
             if (var.HasEcommerce() && GlobalData.EcomFlagRequirement)
             {
-                if (string.IsNullOrEmpty(value) && ecomRequired)
+                if (string.IsNullOrEmpty(value) && ecomRequired && var.ProdType != 2)
                 {
                     return new ItemError(
                         var.ItemId,
@@ -4179,7 +4179,7 @@ namespace OdinServices
                         OdinServices.Properties.Resources.Error_LengthMax + "254 characters.",
                         "Image Path " + imageNumber);
                 }
-                if (!File.Exists(value))
+                if (!File.Exists(value) && required)
                 {
                     return new ItemError(
                         var.ItemId,

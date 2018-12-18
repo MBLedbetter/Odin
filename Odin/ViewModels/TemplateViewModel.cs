@@ -6482,7 +6482,6 @@ namespace Odin.ViewModels
         /// <returns></returns>
         public bool SaveTemplate()
         {
-            MessageBox.Show(TemplateObject.ProdType.ToString());
             List<string> Errors = new List<string>();
             try
             {

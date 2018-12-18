@@ -2834,13 +2834,14 @@
                 Click="CancelButton_Click" />
             <Button
                 Height="26"
-                Margin="10"
+                Margin="10,0,0,0"
                 Width="80"
                 Content="Remove"
                 Click="RemoveButton_Click" />
             <Button
                 Height="26"
                 Width="80"
+                Margin="10,0,0,0"
                 Content="Submit"
                 Click="SubmitButton_Click" />
 

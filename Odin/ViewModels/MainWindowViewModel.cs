@@ -3350,7 +3350,7 @@ namespace Odin.ViewModels
                 this.PermissionAdminVisibility = Permissions.Contains("ADMIN_CONTROLS") ? "Visible" : "Hidden";
                 this.PermissionSaveItemVisibility = Permissions.Contains("SAVE_ITEMS") ? "Visible" : "Hidden";
                 this.PermissionSubmitItemVisibility = Permissions.Contains("WEB_SUBMIT") ? "Visible" : "Hidden";
-                this.PermissionEcommerceControlVisibility = Permissions.Contains("EcommerceCONTROL") ? "Visible" : "Hidden";
+                this.PermissionEcommerceControlVisibility = Permissions.Contains("ECOMMERCE_CONTROL") ? "Visible" : "Hidden";
                 this.PermissionRequestNewCategoryVisibility = Permissions.Contains("ADMIN_CONTROLS") ? "Visible" : "Hidden";
             }
             else
