@@ -1321,12 +1321,13 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition
                             Width="Auto" />
-                        <ColumnDefinition Width="310"/>
+                        <ColumnDefinition Width="293"/>
+                        <ColumnDefinition Width="18"/>
                         <ColumnDefinition
                             Width="20" />
                         <ColumnDefinition
                             Width="112" />
-                        <ColumnDefinition Width="19"/>
+                        <ColumnDefinition Width="20"/>
                         <ColumnDefinition Width="376"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
@@ -1388,7 +1389,7 @@
                         ItemsSource="{Binding WebCategoryList}"
                         Margin="6,6,0,6"
                         Text="{Binding Category}"
-                        Width="300"  />
+                        Width="300" Grid.ColumnSpan="2"  />
                     <!-- Category2 -->
                     <Label
                         Background="{Binding Category2BoxColor}"
@@ -1407,7 +1408,7 @@
                         ItemsSource="{Binding WebCategoryList}"
                         Margin="6,6,0,6"
                         Text="{Binding Category2}"
-                        Width="300"  />
+                        Width="300" Grid.ColumnSpan="2"  />
 
                     <!-- Category3 -->
                     <Label
@@ -1419,7 +1420,7 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding Category3ToolTip}"
                         VerticalAlignment="Center" 
-                        Margin="6,6,0,6"        
+                        Margin="6,8,0,8"        
                         Width="68" />
                     <ComboBox     
                         Height="26"
@@ -1427,9 +1428,9 @@
                         Grid.Column="1"
                         Grid.Row="2"
                         ItemsSource="{Binding WebCategoryList}"
-                        Margin="6,6,0,6"
+                        Margin="6,8,0,8"
                         Text="{Binding Category3}"
-                        Width="300" />
+                        Width="300" Grid.ColumnSpan="2" />
                     <!-- Copywright -->
                     <Label
                         Background="{Binding CopyrightBoxColor}"
@@ -1439,11 +1440,11 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding CopyrightToolTip}"
                         VerticalAlignment="Center"
-                        Margin="6,6,0,6" Height="26" Width="62" />
+                        Margin="6,16,0,16" Height="26" Width="62" />
                     <TextBox
                         Height="128"
                         HorizontalAlignment="Left"
-                        Margin="6,6,0,6"
+                        Margin="6,12,0,12"
                         Grid.Row="3"
                         Grid.RowSpan="4"
                         TextWrapping="Wrap"
@@ -1452,7 +1453,7 @@
                         Text="{Binding Copyright}"
                         VerticalContentAlignment="Center"
                         Width="300" 
-                        Grid.ColumnSpan="1" />
+                        Grid.ColumnSpan="2" />
                     <!-- In Stock Date-->
                     <Label
                         Background="{Binding InStockDateBoxColor}"
@@ -1471,7 +1472,7 @@
                         Grid.Column="1"
                         SelectedDate="{Binding InStockDate}"
                         VerticalContentAlignment="Center"
-                        Width="300" />
+                        Width="300" Grid.ColumnSpan="2" />
                     <!-- Item Keywords -->
                     <Label
                         Background="{Binding ItemKeywordsBoxColor}"
@@ -1481,7 +1482,7 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ItemKeywordsToolTip}"
                         VerticalAlignment="Center" 
-                        Margin="6,6,0,6" Height="26" Width="88" />
+                        Margin="6,19,0,18.5" Height="26" Width="88" />
                     <TextBox
                         Height="128"
                         HorizontalAlignment="Left"
@@ -1492,7 +1493,7 @@
                         Grid.Column="1"
                         Text="{Binding ItemKeywords}"
                         VerticalContentAlignment="Top"
-                        Width="300" Grid.ColumnSpan="1" />
+                        Width="300" Grid.ColumnSpan="2" />
                     <!-- License -->
                     <Label
                         Background="{Binding LicenseBoxColor}"
@@ -1511,7 +1512,7 @@
                         ItemsSource="{Binding Licenses}"
                         Margin="6,6,0,6"
                         Text="{Binding License}"
-                        Width="300"/>
+                        Width="300" Grid.ColumnSpan="2"/>
                     <!-- Meta Description -->
                     <Label
                         Background="{Binding MetaDescriptionBoxColor}"
@@ -1531,7 +1532,7 @@
                         ItemsSource="{Binding MetaDescriptions}"
                         Margin="6,6,0,6"
                         Text="{Binding MetaDescription}"
-                        Width="300" />
+                        Width="300" Grid.ColumnSpan="2" />
                     <!-- Product Qty -->
                     <Label
                         Background="{Binding ProductQtyBoxColor}"
@@ -1554,12 +1555,12 @@
                         IsEnabled="{Binding IsNew}"
                         Text="{Binding ProductQty}"
                         VerticalContentAlignment="Top"
-                        Width="300" Grid.ColumnSpan="1" />
+                        Width="300" Grid.ColumnSpan="2" />
                     <!-- Product Qty Total -->
                     <Label
                         Content="Product Qty Total"
                         Grid.Row="0"
-                        Grid.Column="3"
+                        Grid.Column="4"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center" 
                         Margin="6,6,0,6" Height="26" Width="102" />
@@ -1570,7 +1571,7 @@
                         Grid.Row="0"
                         TextWrapping="Wrap"
                         MaxLength="1000"
-                        Grid.Column="5"
+                        Grid.Column="6"
                         Text="{Binding ProductQtyTotal}"
                         IsEnabled="False"
                         VerticalContentAlignment="Top"
@@ -1581,14 +1582,14 @@
                         Background="{Binding PropertyBoxColor}"
                         Content="Property"
                         Grid.Row="1"
-                        Grid.Column="3"
+                        Grid.Column="4"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding PropertyToolTip}"
                         VerticalAlignment="Center" 
                         Margin="6,6,0,6" Height="26" Width="55" />
                     <ComboBox
                         HorizontalAlignment="Left"
-                        Grid.Column="5"
+                        Grid.Column="6"
                         Grid.Row="1"
                         ItemsSource="{Binding PropertyList}"
                         Margin="6,6,0,6"
@@ -1599,11 +1600,11 @@
                         Background="{Binding ShortDescriptionBoxColor}"
                         Content="Short Description"
                         Grid.Row="2"
-                        Grid.Column="3"
+                        Grid.Column="4"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ShortDescriptionToolTip}"
                         VerticalAlignment="Center" 
-                        Margin="6,6,0,6" Height="26" Width="102" />
+                        Margin="6,8,0,8" Height="26" Width="102" />
                     <TextBox
                         Height="128"
                         HorizontalAlignment="Left"
@@ -1612,7 +1613,7 @@
                         Grid.RowSpan="4"
                         TextWrapping="Wrap"
                         MaxLength="1000"
-                        Grid.Column="5"
+                        Grid.Column="6"
                         Text="{Binding ShortDescription}"
                         VerticalContentAlignment="Top"
                         Width="300" Grid.ColumnSpan="1" />
@@ -1621,19 +1622,19 @@
                         Background="{Binding SizeBoxColor}"
                         Content="Size"
                         Grid.Row="6"
-                        Grid.Column="3"
+                        Grid.Column="4"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SizeToolTip}"
                         VerticalAlignment="Center" 
-                        Margin="6,6,0,6" Height="26" Width="31" />
+                        Margin="6,14,0,14" Height="26" Width="31" />
                     <TextBox
                         Height="26"
                         HorizontalAlignment="Left"
-                        Margin="6,6,0,6"
+                        Margin="6,14,0,14"
                         Grid.Row="6"
                         TextWrapping="Wrap"
                         MaxLength="1000"
-                        Grid.Column="5"
+                        Grid.Column="6"
                         Text="{Binding Size}"
                         VerticalContentAlignment="Top"
                         Width="300" Grid.ColumnSpan="1" />
@@ -1642,7 +1643,7 @@
                         Background="{Binding TitleBoxColor}"
                         Content="Title"
                         Grid.Row="7"
-                        Grid.Column="3"
+                        Grid.Column="4"
                         Height="26"         
                         HorizontalAlignment="Left"
                         ToolTip="{Binding TitleToolTip}"
@@ -1656,7 +1657,7 @@
                         Grid.Row="7"
                         TextWrapping="Wrap"
                         MaxLength="1000"
-                        Grid.Column="5"
+                        Grid.Column="6"
                         Text="{Binding Title}"
                         VerticalContentAlignment="Top"
                         Width="300" Grid.ColumnSpan="1" />
@@ -1665,10 +1666,10 @@
                         Background="{Binding WebsitePriceBoxColor}"
                         Content="Website Price"
                         Grid.Row="8"
-                        Grid.Column="3"
+                        Grid.Column="4"
                         Height="26"         
                         HorizontalAlignment="Left"
-                        Margin="6,6,0,6"
+                        Margin="6,19,0,18.5"
                         ToolTip="{Binding WebsitePriceToolTip}"
                         VerticalAlignment="Center" Width="102"/>
                     <TextBox
@@ -1677,11 +1678,11 @@
                         Grid.Row="8"
                         TextWrapping="Wrap"
                         MaxLength="1000"
-                        Grid.Column="5"
+                        Grid.Column="6"
                         Text="{Binding WebsitePrice}"
                         VerticalContentAlignment="Top"
                         Width="300" 
-                        Margin="6,6,0,6"/>
+                        Margin="6,19,0,18.5"/>
                 </Grid>
             </TabItem>
             <TabItem

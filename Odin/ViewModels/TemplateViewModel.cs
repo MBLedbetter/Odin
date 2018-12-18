@@ -5352,6 +5352,79 @@ namespace Odin.ViewModels
         }
         private string _ecommercesizeToolTip = string.Empty;
 
+        /// <summary>
+        ///     Gets or sets the Warranty value
+        /// </summary>
+        public string Warranty
+        {
+            get
+            {
+                if (this.TemplateObject.Warranty != string.Empty)
+                {
+                    return this.TemplateObject.Warranty.ToString();
+                }
+                else return "";
+            }
+            set
+            {
+                if (this.TemplateObject.Warranty != value)
+                {
+                    this.TemplateObject.Warranty = value;
+                    FlagError("Warranty");
+                    OnPropertyChanged("Warranty");
+                }
+            }
+        }
+        public string WarrantyBoxColor
+        {
+            get
+            {
+                return _warrantyBoxColor;
+            }
+            set
+            {
+                _warrantyBoxColor = value;
+                OnPropertyChanged("WarrantyBoxColor");
+            }
+        }
+        private string _warrantyBoxColor = "White";
+        public string WarrantyError
+        {
+            get
+            {
+                return _warrantyError;
+            }
+            set
+            {
+                _warrantyError = value;
+                if (value != "")
+                {
+                    WarrantyToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Warranty");
+                }
+                else
+                {
+                    WarrantyToolTip = ReturnToolTip("Warranty");
+                }
+                this.WarrantyBoxColor = (value == "") ? "White" : "Tomato";
+                this.ItemInfoTabColor = CheckItemInfoTabColor();
+                OnPropertyChanged("WarrantyError");
+            }
+        }
+        private string _warrantyError = string.Empty;
+        public string WarrantyToolTip
+        {
+            get
+            {
+                return _warrantyToolTip;
+            }
+            set
+            {
+                this._warrantyToolTip = value;
+                OnPropertyChanged("WarrantyToolTip");
+            }
+        }
+        private string _warrantyToolTip = string.Empty;
+
         #endregion // Ecommerce Properties
 
         #region ComboBox Properties
@@ -5686,6 +5759,7 @@ namespace Odin.ViewModels
             if (EcommerceManufacturerNameBoxColor != "White") { return "Tomato"; }
             if (EcommerceMsrpBoxColor != "White") { return "Tomato"; }
             if (EcommerceSizeBoxColor != "White") { return "Tomato"; }
+            if (WarrantyBoxColor != "White") { return "Tomato"; }
             return "White";
         }
 
@@ -5765,6 +5839,7 @@ namespace Odin.ViewModels
             if (!string.IsNullOrEmpty(this.EcommerceManufacturerName)) { return false; }
             if (!string.IsNullOrEmpty(this.EcommerceMsrp)) { return false; }
             if (!string.IsNullOrEmpty(this.EcommerceSize)) { return false; }
+            if (!string.IsNullOrEmpty(this.Warranty)) { return false; }
             return true;
         }
 
@@ -6130,6 +6205,10 @@ namespace Odin.ViewModels
                     this.UdexError = ItemService.ValidateUdex(TemplateObject)?.ReturnErrorMessage()??"";
                     break;
 
+                case "Warranty":
+                    this.WarrantyError = ItemService.ValidateWarranty(TemplateObject)?.ReturnErrorMessage() ?? "";
+                    break;
+
                 case "WebsitePrice":
                     this.WebsitePriceError = ItemService.ValidateWebsitePrice(TemplateObject)?.ReturnErrorMessage()??"";
                     break;
@@ -6224,6 +6303,7 @@ namespace Odin.ViewModels
             this.Size = template.Size;
             this.TariffCode = template.TariffCode;
             this.Udex = template.Udex;
+            this.Warranty = template.Warranty;
             this.WebsitePrice = template.WebsitePrice;
             this.Weight = template.Weight;
             this.Width = template.Width;
@@ -6319,6 +6399,7 @@ namespace Odin.ViewModels
                 this.TariffCode = template.TariffCode;
                 this.Udex = template.Udex;
                 this.WebsitePrice = template.WebsitePrice;
+                this.Warranty = template.Warranty;
                 this.Weight = template.Weight;
                 this.Width = template.Width;
             }
@@ -6418,6 +6499,7 @@ namespace Odin.ViewModels
                 this.TariffCode = template.TariffCode;
                 this.Udex = template.Udex;
                 this.WebsitePrice = template.WebsitePrice;
+                this.Warranty = template.Warranty;
                 this.Weight = template.Weight;
                 this.Width = template.Width;
             }

@@ -874,6 +874,7 @@ namespace OdinServices
                 if (string.IsNullOrEmpty(template.TariffCode)) { template.TariffCode = oldTemplate.TariffCode; }
                 if (string.IsNullOrEmpty(template.Udex)) { template.Udex = oldTemplate.Udex; }
                 if (string.IsNullOrEmpty(template.WebsitePrice)) { template.WebsitePrice = oldTemplate.WebsitePrice; }
+                if (string.IsNullOrEmpty(template.Warranty)) { template.Warranty = oldTemplate.Warranty; }
                 if (string.IsNullOrEmpty(template.Weight)) { template.Weight = oldTemplate.Weight; }
                 if (string.IsNullOrEmpty(template.Width)) { template.Width = oldTemplate.Width; }
             
@@ -1533,6 +1534,7 @@ namespace OdinServices
                 if (string.IsNullOrEmpty(item.StandardCost)) { item.StandardCost = template.DefaultActualCostUsd; }
                 if (string.IsNullOrEmpty(item.TariffCode)) { item.TariffCode = template.TariffCode; }
                 if (string.IsNullOrEmpty(item.Udex)) { item.Udex = template.Udex; }
+                if (string.IsNullOrEmpty(item.Warranty)) { item.Warranty = template.Warranty; }
                 if (string.IsNullOrEmpty(item.WebsitePrice)) { item.WebsitePrice = template.WebsitePrice; }
                 if (string.IsNullOrEmpty(item.Weight)) { item.Weight = template.Weight; }
                 if (string.IsNullOrEmpty(item.Width)) { item.Width = template.Width; }

@@ -9020,7 +9020,7 @@ namespace Odin.ViewModels
                         this.PropertyError = error.ReturnErrorMessage();
                         break;
 
-                    case "Ps Status":
+                    case "PS Status":
                         this.PsStatusError = error.ReturnErrorMessage();
                         break;
 

@@ -141,7 +141,8 @@ namespace Odin.Data
                     EcommerceProductSubcategory = template.EcommerceProductSubcategory,
                     EcommerceManufacturerName = template.EcommerceManufacturerName,
                     EcommerceMsrp = template.EcommerceMsrp,
-                    EcommerceSize = template.EcommerceSize
+                    EcommerceSize = template.EcommerceSize,
+                    Warranty = template.Warranty
                 });
                 context.SaveChanges();
             }
@@ -386,6 +387,7 @@ namespace Odin.Data
                     template.EcommerceManufacturerName = (!string.IsNullOrEmpty(x.EcommerceManufacturerName)) ? x.EcommerceManufacturerName : "";
                     template.EcommerceMsrp = (!string.IsNullOrEmpty(x.EcommerceMsrp)) ? x.EcommerceMsrp : "";
                     template.EcommerceSize = (!string.IsNullOrEmpty(x.EcommerceSize)) ? x.EcommerceSize : "";
+                    template.Warranty = (!string.IsNullOrEmpty(x.Warranty)) ? x.Warranty : "";
                 }
                 else
                 {

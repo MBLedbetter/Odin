@@ -2270,6 +2270,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.TemplateId).HasColumnName("TEMPLATE_ID");
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.Udex).HasColumnName("UDEX");
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.Username).HasColumnName("USERNAME");
+            modelBuilder.Entity<OdinItemTemplates>().Property(p => p.Warranty).HasColumnName("WARRANTY");
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.WebsitePrice).HasColumnName("WEBSITE_PRICE");
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.Weight).HasColumnName("WEIGHT");
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.Width).HasColumnName("WIDTH");
