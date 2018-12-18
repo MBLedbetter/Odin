@@ -95,16 +95,35 @@ namespace Odin.ViewModels
         /// <summary>
         ///     Gets or sets the TemplateObject
         /// </summary>
-        public ItemObject TemplateObject { get; set; }
+        public ItemObject TemplateObject
+        {
+            get { return _templateObject; }
+            set { _templateObject = value; }
+        }
+        private ItemObject _templateObject = new ItemObject(2);
 
         /// <summary>
         ///     Gets or sets the TemplateStatus
         /// </summary>
-        public string TemplateStatus { get; set; }
+        public string TemplateStatus
+        {
+            get
+            {
+                return this.TemplateObject.Status;
+            }
+            set
+            {
+                if (this.TemplateObject.Status != value)
+                {
+                    this.TemplateObject.Status = value;
+                    OnPropertyChanged("TemplateStatus");
+                }
+            }
+        }
 
-        /// <summary>
-        ///     Dictionary of tool tips
-        /// </summary>
+    /// <summary>
+    ///     Dictionary of tool tips
+    /// </summary>
         Dictionary<string, string> ToolTips
         {
             get
@@ -6463,6 +6482,7 @@ namespace Odin.ViewModels
         /// <returns></returns>
         public bool SaveTemplate()
         {
+            MessageBox.Show(TemplateObject.ProdType.ToString());
             List<string> Errors = new List<string>();
             try
             {
@@ -6477,8 +6497,10 @@ namespace Odin.ViewModels
             }
             if (Errors.Count != 0)
             {
-                AlertView window = new AlertView();
-                window.DataContext = new AlertViewModel(Errors, "Alert", "");
+                AlertView window = new AlertView()
+                {
+                    DataContext = new AlertViewModel(Errors, "Alert", "")
+                };
                 window.ShowDialog();
                 return false;
             }
@@ -6499,6 +6521,7 @@ namespace Odin.ViewModels
                 ErrorLog.LogError("Odin was unable to save the template.", ex.ToString());
             }
             this.TemplateList = GlobalData.TemplateNames;
+            this.TemplateStatus = "Update";
             return true;
         }
 
@@ -6614,9 +6637,8 @@ namespace Odin.ViewModels
         public TemplateViewModel(ItemService itemService, string templateStatus, ItemObject template = null)
         {
             this.ItemService = itemService ?? throw new ArgumentNullException("itemService");
-            this.TemplateObject = new ItemObject(2);
             this.TemplateList = GlobalData.TemplateNames;
-            this.TemplateStatus = templateStatus;
+            this.TemplateObject.Status = templateStatus;
             SetVisibility(templateStatus);
             SetToolTips();
             if (template != null)

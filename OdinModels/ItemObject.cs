@@ -4271,7 +4271,7 @@ namespace OdinModels
 
         public ItemObject(int prodType)
         {
-            this.ProdType = ProdType;
+            this.ProdType = prodType;
         }
 
         #endregion

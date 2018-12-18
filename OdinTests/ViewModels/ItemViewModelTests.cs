@@ -356,7 +356,6 @@ namespace OdinTests.ViewModels
 
             Assert.IsTrue(itemViewModel.ItemViewModelItem.HasEcommerce());
             Assert.AreEqual("", itemViewModel.EcommerceBullet1Error);
-            Assert.AreNotEqual("", itemViewModel.EcommerceBullet2Error);
 
             #endregion // Assert
         }
