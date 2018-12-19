@@ -241,10 +241,8 @@ namespace Odin.ViewModels
         /// <param name="items"></param>
         public EcommercePullViewModel(ItemService itemService, ExcelService excelService, ObservableCollection<ItemObject> items = null)
         {
-            if (itemService == null) { throw new ArgumentNullException("itemService"); }
-            if (excelService == null) { throw new ArgumentNullException("excelService"); }
-            this.ExcelService = excelService;
-            this.ItemService = itemService;
+            this.ExcelService = excelService ?? throw new ArgumentNullException("excelService");
+            this.ItemService = itemService ?? throw new ArgumentNullException("itemService");
             if (items.Count > 0)
             {
                 this.Items = items;
@@ -261,6 +259,7 @@ namespace Odin.ViewModels
                 {
                     this.TemplateList.Add(layout.Name);
                 }
+                this.TemplateList.Sort();
             }
             catch (Exception ex)
             {

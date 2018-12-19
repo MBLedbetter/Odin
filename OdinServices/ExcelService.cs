@@ -148,11 +148,14 @@ namespace OdinServices
         /// <param name="fileName"></param>
         public bool CheckFtpFileExists(string fileName)
         {
-            string[] x = fileName.Split('/');
-            if (!this.ExistingFiles.Contains(x[x.Length - 1].Trim()))
+            if (!string.IsNullOrEmpty(fileName))
             {
-                this.MissingFtpFiles.Add(x[x.Length - 1]);
-                return false;
+                string[] x = fileName.Split('/');
+                if (!this.ExistingFiles.Contains(x[x.Length - 1].Trim()))
+                {
+                    this.MissingFtpFiles.Add(x[x.Length - 1]);
+                    return false;
+                }
             }
             return true;
         }
@@ -800,1005 +803,1017 @@ namespace OdinServices
         public void RetrieveCellValue(string fieldName, ObservableCollection<ItemObject> items, string customer, int columnCount)
         {
             int row = 2;
-            // this is used for custom text columns //
-            if (fieldName.Substring(0, 1) == "\"")
+            if (!string.IsNullOrEmpty(fieldName))
+            {
+                // this is used for custom text columns //
+                if (fieldName.Substring(0, 1) == "\"")
+                {
+                    foreach (ItemObject item in items)
+                    {
+                        WriteCell(row, columnCount, fieldName.Replace("\"", ""));
+                        row++;
+                    }
+                }
+
+                else
+                {
+                    switch (fieldName)
+                    {
+                        case "-EMPTY-":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, "");
+                                row++;
+                            }
+                            break;
+                        case "Acctg Group (Product)":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.AccountingGroup);
+                                row++;
+                            }
+                            break;
+                        case "Bill Of Materials":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.ReturnBillOfMaterials());
+                                row++;
+                            }
+                            break;
+                        case "Batteries Needed":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, "");
+                                row++;
+                            }
+                            break;
+                        case "Battery Cell Type":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, ReturnBatteryCellType(item.PricingGroup));
+                                row++;
+                            }
+                            break;
+                        case "Brand Name":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, ReturnBrandName(item.ProductLine));
+                                row++;
+                            }
+                            break;
+                        case "Browse Keyword":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, ReturnBrowseKeyword(item.EcommerceProductSubcategory));
+                                row++;
+                            }
+                            break;
+                        case "Casepack Height":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.CasepackHeight);
+                                row++;
+                            }
+                            break;
+                        case "Casepack Length":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.CasepackLength);
+                                row++;
+                            }
+                            break;
+                        case "Casepack Weight":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.CasepackWeight);
+                                row++;
+                            }
+                            break;
+                        case "Casepack Width":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.CasepackWidth);
+                                row++;
+                            }
+                            break;
+                        case "Casepack Qty":
+                            foreach (ItemObject item in items)
+                            {
+                                if (!string.IsNullOrEmpty(item.CasepackQty))
+                                {
+                                    WriteCell(row, columnCount, item.CasepackQty);
+                                }
+                                else
+                                {
+                                    WriteCell(row, columnCount, "0");
+                                }
+                                row++;
+                            }
+                            break;
+                        case "Category":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Category);
+                                row++;
+                            }
+                            break;
+                        case "Category2":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Category2);
+                                row++;
+                            }
+                            break;
+                        case "Category3":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Category3);
+                                row++;
+                            }
+                            break;
+                        case "Copyright":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Copyright);
+                                row++;
+                            }
+                            break;
+                        case "Cost Profile Group":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.CostProfileGroup);
+                                row++;
+                            }
+                            break;
+                        case "Country of Origin":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.CountryOfOrigin);
+                                row++;
+                            }
+                            break;
+                        case "Country of Origin Full":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, ItemService.RetrieveFullCountryOfOrigin(item.CountryOfOrigin));
+                                row++;
+                            }
+                            break;
+                        case "Country of Origin - Country Code":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, ItemService.RetrieveFullCountryOfOrigin(item.CountryOfOrigin) + " - " + item.CountryOfOrigin);
+                                row++;
+                            }
+                            break;
+                        case "Default Actual Cost CAD":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.DefaultActualCostCad);
+                                row++;
+                            }
+                            break;
+                        case "Default Actual Cost USD":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.DefaultActualCostUsd);
+                                row++;
+                            }
+                            break;
+                        case "Description":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Description);
+                                row++;
+                            }
+                            break;
+                        case "Direct Import":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.DirectImport);
+                                row++;
+                            }
+                            break;
+                        case "EAN":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Ean);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce ASIN":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceAsin);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Bullet ALL":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, MergeBullets(item));
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Bullet ALL Bulleted":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, ModifyBulletedCopy(item));
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Bullet 1":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceBullet1);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Bullet 2":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceBullet2);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Bullet 3":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceBullet3);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Bullet 4":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceBullet4);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Bullet 5":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceBullet5);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Components":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, ModifyComponents(item.EcommerceComponents));
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Components Count":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, ReturnNumberOfComponents(item.EcommerceComponents));
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Cost":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceCost);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Country of Origin":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceCountryofOrigin);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce External ID":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceExternalId);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce External ID Type":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceExternalIdType);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Generic Keywords":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, TrimSearchTerms(item.EcommerceGenericKeywords, customer));
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Image Path 1":
+                            foreach (ItemObject item in items)
+                            {
+                                bool fileExists = CheckFtpFileExists(item.EcommerceImagePath1);
+                                WriteCell(row, columnCount, SetImagePath(item.EcommerceImagePath1, fileExists));
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Image Path 2":
+                            foreach (ItemObject item in items)
+                            {
+                                bool fileExists = CheckFtpFileExists(item.EcommerceImagePath2);
+                                WriteCell(row, columnCount, SetImagePath(item.EcommerceImagePath2, fileExists));
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Image Path 3":
+                            foreach (ItemObject item in items)
+                            {
+                                bool fileExists = CheckFtpFileExists(item.EcommerceImagePath3);
+                                WriteCell(row, columnCount, SetImagePath(item.EcommerceImagePath3, fileExists));
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Image Path 4":
+                            foreach (ItemObject item in items)
+                            {
+                                bool fileExists = CheckFtpFileExists(item.EcommerceImagePath4);
+                                WriteCell(row, columnCount, SetImagePath(item.EcommerceImagePath4, fileExists));
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Image Path 5":
+                            foreach (ItemObject item in items)
+                            {
+                                bool fileExists = CheckFtpFileExists(item.EcommerceImagePath5);
+                                WriteCell(row, columnCount, SetImagePath(item.EcommerceImagePath5, fileExists));
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Item Height":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceItemHeight);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Item Length":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceItemLength);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Item Name":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceItemName);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Item Weight":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceItemWeight);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Item Weight (milliliters)":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, DbUtil.ConvertToMilliliters(item.EcommerceItemWeight));
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Item Width":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceItemWidth);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Model Name":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceModelName);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Package Height":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommercePackageHeight);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Package Length":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommercePackageLength);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Package Weight":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommercePackageWeight);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Package Width":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommercePackageWidth);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Page Qty":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommercePageQty);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Product Category":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceProductCategory);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Product Description":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceProductDescription);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Product Subcategory":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceProductSubcategory);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Manufacturer Name":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceManufacturerName);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Msrp":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceMsrp);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Search Terms":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, TrimSearchTerms(item.EcommerceSubjectKeywords, customer));
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Size":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceSize);
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Subject Keywords":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, TrimSearchTerms(item.EcommerceSubjectKeywords, customer));
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Upc":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceUpc);
+                                row++;
+                            }
+                            break;
+                        case "GPC":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Gpc);
+                                row++;
+                            }
+                            break;
+                        case "Image Path":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.ImagePath);
+                                row++;
+                            }
+                            break;
+                        case "Image Path 1":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.ImagePath);
+                                row++;
+                            }
+                            break;
+                        case "Image Path 2":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.AltImageFile1);
+                                row++;
+                            }
+                            break;
+                        case "Image Path 3":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.AltImageFile2);
+                                row++;
+                            }
+                            break;
+                        case "Image Path 4":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.AltImageFile3);
+                                row++;
+                            }
+                            break;
+                        case "Image Path 5":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.AltImageFile4);
+                                row++;
+                            }
+                            break;
+                        case "In Stock Date":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.InStockDate);
+                                row++;
+                            }
+                            break;
+                        case "Innerpack Height":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.InnerpackHeight);
+                                row++;
+                            }
+                            break;
+                        case "Innerpack Length":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.InnerpackLength);
+                                row++;
+                            }
+                            break;
+                        case "Innerpack Weight":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.InnerpackWeight);
+                                row++;
+                            }
+                            break;
+                        case "Innerpack Width":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.InnerpackWidth);
+                                row++;
+                            }
+                            break;
+                        case "Innerpack Qty":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.InnerpackQuantity);
+                                row++;
+                            }
+                            break;
+                        case "ISBN":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Isbn);
+                                row++;
+                            }
+                            break;
+                        case "Item Category":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.ItemCategory);
+                                row++;
+                            }
+                            break;
+                        case "Item Family":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.ItemFamily);
+                                row++;
+                            }
+                            break;
+                        case "Item Group":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.ItemGroup);
+                                row++;
+                            }
+                            break;
+                        case "Item Height":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Height);
+                                row++;
+                            }
+                            break;
+                        case "Item Keywords":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.ItemKeywords);
+                                row++;
+                            }
+                            break;
+                        case "Item ID":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.ItemId);
+                                row++;
+                            }
+                            break;
+                        case "Item ID + EC":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.ItemId + "EC");
+                                row++;
+                            }
+                            break;
+                        case "Item Length":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Length);
+                                row++;
+                            }
+                            break;
+                        case "Item Weight":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Weight);
+                                row++;
+                            }
+                            break;
+                        case "Item Width":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Width);
+                                row++;
+                            }
+                            break;
+                        case "Label Color":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Color);
+                                row++;
+                            }
+                            break;
+                        case "Language":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Language);
+                                row++;
+                            }
+                            break;
+                        case "License":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.License);
+                                row++;
+                            }
+                            break;
+                        case "License Begin Date":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.LicenseBeginDate);
+                                row++;
+                            }
+                            break;
+                        case "List Price (CAD)":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.ListPriceCad);
+                                row++;
+                            }
+                            break;
+                        case "List Price (MXN)":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.ListPriceMxn);
+                                row++;
+                            }
+                            break;
+                        case "List Price (USD)":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.ListPriceUsd);
+                                row++;
+                            }
+                            break;
+                        case "Meta Description":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.MetaDescription);
+                                row++;
+                            }
+                            break;
+                        case "Mfg Source":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.MfgSource);
+                                row++;
+                            }
+                            break;
+                        case "MSRP":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Msrp);
+                                row++;
+                            }
+                            break;
+                        case "MSRP CAD":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.MsrpCad);
+                                row++;
+                            }
+                            break;
+                        case "MSRP MXN":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.MsrpMxn);
+                                row++;
+                            }
+                            break;
+                        case "Price Group (Product)":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.PricingGroup);
+                                row++;
+                            }
+                            break;
+                        case "Print On Demand":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.PrintOnDemand);
+                                row++;
+                            }
+                            break;
+                        case "Product Format":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.ProductFormat);
+                                row++;
+                            }
+                            break;
+                        case "Product Group":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.ProductGroup);
+                                row++;
+                            }
+                            break;
+                        case "Product ID":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.ItemId);
+                                row++;
+                            }
+                            break;
+                        case "Product Id Translation":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.ReturnProductIdTranslations());
+                                row++;
+                            }
+                            break;
+                        case "Product Line":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.ProductLine);
+                                row++;
+                            }
+                            break;
+                        case "Product Qty":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.ProductQty);
+                                row++;
+                            }
+                            break;
+                        case "Property":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Property);
+                                row++;
+                            }
+                            break;
+                        case "PS Status":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.PsStatus);
+                                row++;
+                            }
+                            break;
+                        case "SAT Code":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.SatCode);
+                                row++;
+                            }
+                            break;
+                        case "Sell On All Posters":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.SellOnAllPosters);
+                                row++;
+                            }
+                            break;
+                        case "Sell On Amazon":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.SellOnAmazon);
+                                row++;
+                            }
+                            break;
+                        case "Sell On Amazon Seller Central":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.SellOnAmazonSellerCentral);
+                                row++;
+                            }
+                            break;
+                        case "Sell On Ecommerce":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.SellOnEcommerce);
+                                row++;
+                            }
+                            break;
+                        case "Sell On Fanatics":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.SellOnFanatics);
+                                row++;
+                            }
+                            break;
+                        case "Sell On Guitar Center":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.SellOnGuitarCenter);
+                                row++;
+                            }
+                            break;
+                        case "Sell On Hayneedle":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.SellOnHayneedle);
+                                row++;
+                            }
+                            break;
+                        case "Sell On Target":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.SellOnTarget);
+                                row++;
+                            }
+                            break;
+                        case "Sell On Trends":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.SellOnTrends);
+                                row++;
+                            }
+                            break;
+                        case "Sell On Walmart":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.SellOnWalmart);
+                                row++;
+                            }
+                            break;
+                        case "Sell On Wayfair":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.SellOnWayfair);
+                                row++;
+                            }
+                            break;
+                        case "Short Description":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.ShortDescription);
+                                row++;
+                            }
+                            break;
+                        case "Size":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Size);
+                                row++;
+                            }
+                            break;
+                        case "Stats Code":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.StatsCode);
+                                row++;
+                            }
+                            break;
+                        case "Stats Name":
+                            foreach (ItemObject item in items)
+                            {
+                                if (GlobalData.StatsCodes.ContainsKey(item.StatsCode))
+                                {
+                                    WriteCell(row, columnCount, GlobalData.StatsCodes[item.StatsCode]);
+                                }
+                                else WriteCell(row, columnCount, "");
+                                row++;
+                            }
+                            break;
+                        case "Tariff Code":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.TariffCode);
+                                row++;
+                            }
+                            break;
+                        case "Territory":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Territory);
+                                row++;
+                            }
+                            break;
+                        case "Title":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Title);
+                                row++;
+                            }
+                            break;
+                        case "UDEX":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Udex);
+                                row++;
+                            }
+                            break;
+                        case "UPC":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Upc);
+                                row++;
+                            }
+                            break;
+                        case "Variant Attribute Name":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, ReturnVariantAttributeName(item, customer));
+                                row++;
+                            }
+                            break;
+                        case "Variant Group Id":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, ReturnVariantGroupId(item.ItemId));
+                                row++;
+                            }
+                            break;
+                        case "Warranty":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Warranty);
+                                row++;
+                            }
+                            break;
+                        case "Warranty Check":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.WarrantyCheck);
+                                row++;
+                            }
+                            break;
+                        case "Website Price":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.WebsitePrice);
+                                row++;
+                            }
+                            break;
+                    }
+                }
+            }
+            // this was added to avoid errors when empty custom value was added //
+            else
             {
                 foreach (ItemObject item in items)
                 {
-                    WriteCell(row, columnCount, fieldName.Replace("\"", ""));
+                    WriteCell(row, columnCount, "");
                     row++;
                 }
             }
-            else
-            {
-                switch (fieldName)
-                {
-                    case "-EMPTY-":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, "");
-                            row++;
-                        }
-                        break;
-                    case "Acctg Group (Product)":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.AccountingGroup);
-                            row++;
-                        }
-                        break;
-                    case "Bill Of Materials":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.ReturnBillOfMaterials());
-                            row++;
-                        }
-                        break;
-                    case "Batteries Needed":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, "");
-                            row++;
-                        }
-                        break;
-                    case "Battery Cell Type":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, ReturnBatteryCellType(item.PricingGroup));
-                            row++;
-                        }
-                        break;
-                    case "Brand Name":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, ReturnBrandName(item.ProductLine));
-                            row++;
-                        }
-                        break;
-                    case "Browse Keyword":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, ReturnBrowseKeyword(item.EcommerceProductSubcategory));
-                            row++;
-                        }
-                        break;
-                    case "Casepack Height":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.CasepackHeight);
-                            row++;
-                        }
-                        break;
-                    case "Casepack Length":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.CasepackLength);
-                            row++;
-                        }
-                        break;
-                    case "Casepack Weight":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.CasepackWeight);
-                            row++;
-                        }
-                        break;
-                    case "Casepack Width":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.CasepackWidth);
-                            row++;
-                        }
-                        break;
-                    case "Casepack Qty":
-                        foreach (ItemObject item in items)
-                        {
-                            if (!string.IsNullOrEmpty(item.CasepackQty))
-                            {
-                                WriteCell(row, columnCount, item.CasepackQty);
-                            }
-                            else
-                            {
-                                WriteCell(row, columnCount, "0");
-                            }
-                            row++;
-                        }
-                        break;
-                    case "Category":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Category);
-                            row++;
-                        }
-                        break;
-                    case "Category2":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Category2);
-                            row++;
-                        }
-                        break;
-                    case "Category3":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Category3);
-                            row++;
-                        }
-                        break;
-                    case "Copyright":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Copyright);
-                            row++;
-                        }
-                        break;
-                    case "Cost Profile Group":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.CostProfileGroup);
-                            row++;
-                        }
-                        break;
-                    case "Country of Origin":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.CountryOfOrigin);
-                            row++;
-                        }
-                        break;
-                    case "Country of Origin Full":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, ItemService.RetrieveFullCountryOfOrigin(item.CountryOfOrigin));
-                            row++;
-                        }
-                        break;
-                    case "Country of Origin - Country Code":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, ItemService.RetrieveFullCountryOfOrigin(item.CountryOfOrigin) + " - " + item.CountryOfOrigin);
-                            row++;
-                        }
-                        break;
-                    case "Default Actual Cost CAD":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.DefaultActualCostCad);
-                            row++;
-                        }
-                        break;
-                    case "Default Actual Cost USD":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.DefaultActualCostUsd);
-                            row++;
-                        }
-                        break;
-                    case "Description":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Description);
-                            row++;
-                        }
-                        break;
-                    case "Direct Import":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.DirectImport);
-                            row++;
-                        }
-                        break;
-                    case "EAN":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Ean);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce ASIN":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceAsin);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Bullet ALL":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, MergeBullets(item));
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Bullet ALL Bulleted":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, ModifyBulletedCopy(item));
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Bullet 1":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceBullet1);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Bullet 2":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceBullet2);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Bullet 3":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceBullet3);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Bullet 4":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceBullet4);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Bullet 5":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceBullet5);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Components":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, ModifyComponents(item.EcommerceComponents));
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Components Count":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, ReturnNumberOfComponents(item.EcommerceComponents));
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Cost":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceCost);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Country of Origin":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceCountryofOrigin);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce External ID":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceExternalId);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce External ID Type":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceExternalIdType);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Generic Keywords":
-                        foreach (ItemObject item in items)
-                        {                            
-                            WriteCell(row, columnCount, TrimSearchTerms(item.EcommerceGenericKeywords, customer));
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Image Path 1":
-                        foreach (ItemObject item in items)
-                        {
-                            bool fileExists = CheckFtpFileExists(item.EcommerceImagePath1);
-                            WriteCell(row, columnCount, SetImagePath(item.EcommerceImagePath1, fileExists));
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Image Path 2":
-                        foreach (ItemObject item in items)
-                        {
-                            bool fileExists = CheckFtpFileExists(item.EcommerceImagePath2);
-                            WriteCell(row, columnCount, SetImagePath(item.EcommerceImagePath2, fileExists));
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Image Path 3":
-                        foreach (ItemObject item in items)
-                        {
-                            bool fileExists = CheckFtpFileExists(item.EcommerceImagePath3);
-                            WriteCell(row, columnCount, SetImagePath(item.EcommerceImagePath3, fileExists));
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Image Path 4":
-                        foreach (ItemObject item in items)
-                        {
-                            bool fileExists = CheckFtpFileExists(item.EcommerceImagePath4);
-                            WriteCell(row, columnCount, SetImagePath(item.EcommerceImagePath4, fileExists));
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Image Path 5":
-                        foreach (ItemObject item in items)
-                        {
-                            bool fileExists = CheckFtpFileExists(item.EcommerceImagePath5);
-                            WriteCell(row, columnCount, SetImagePath(item.EcommerceImagePath5, fileExists));
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Item Height":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceItemHeight);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Item Length":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceItemLength);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Item Name":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceItemName);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Item Weight":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceItemWeight);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Item Weight (milliliters)":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, DbUtil.ConvertToMilliliters(item.EcommerceItemWeight));
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Item Width":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceItemWidth);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Model Name":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceModelName);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Package Height":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommercePackageHeight);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Package Length":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommercePackageLength);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Package Weight":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommercePackageWeight);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Package Width":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommercePackageWidth);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Page Qty":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommercePageQty);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Product Category":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceProductCategory);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Product Description":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceProductDescription);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Product Subcategory":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceProductSubcategory);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Manufacturer Name":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceManufacturerName);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Msrp":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceMsrp);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Search Terms":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, TrimSearchTerms(item.EcommerceSubjectKeywords, customer));
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Size":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceSize);
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Subject Keywords":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, TrimSearchTerms(item.EcommerceSubjectKeywords, customer));
-                            row++;
-                        }
-                        break;
-                    case "Ecommerce Upc":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.EcommerceUpc);
-                            row++;
-                        }
-                        break;
-                    case "GPC":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Gpc);
-                            row++;
-                        }
-                        break;
-                    case "Image Path":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.ImagePath);
-                            row++;
-                        }
-                        break;
-                    case "Image Path 1":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.ImagePath);
-                            row++;
-                        }
-                        break;
-                    case "Image Path 2":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.AltImageFile1);
-                            row++;
-                        }
-                        break;
-                    case "Image Path 3":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.AltImageFile2);
-                            row++;
-                        }
-                        break;
-                    case "Image Path 4":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.AltImageFile3);
-                            row++;
-                        }
-                        break;
-                    case "Image Path 5":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.AltImageFile4);
-                            row++;
-                        }
-                        break;
-                    case "In Stock Date":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.InStockDate);
-                            row++;
-                        }
-                        break;
-                    case "Innerpack Height":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.InnerpackHeight);
-                            row++;
-                        }
-                        break;
-                    case "Innerpack Length":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.InnerpackLength);
-                            row++;
-                        }
-                        break;
-                    case "Innerpack Weight":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.InnerpackWeight);
-                            row++;
-                        }
-                        break;
-                    case "Innerpack Width":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.InnerpackWidth);
-                            row++;
-                        }
-                        break;
-                    case "Innerpack Qty":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.InnerpackQuantity);
-                            row++;
-                        }
-                        break;
-                    case "ISBN":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Isbn);
-                            row++;
-                        }
-                        break;
-                    case "Item Category":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.ItemCategory);
-                            row++;
-                        }
-                        break;
-                    case "Item Family":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.ItemFamily);
-                            row++;
-                        }
-                        break;
-                    case "Item Group":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.ItemGroup);
-                            row++;
-                        }
-                        break;
-                    case "Item Height":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Height);
-                            row++;
-                        }
-                        break;
-                    case "Item Keywords":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.ItemKeywords);
-                            row++;
-                        }
-                        break;
-                    case "Item ID":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.ItemId);
-                            row++;
-                        }
-                        break;
-                    case "Item ID + EC":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.ItemId + "EC");
-                            row++;
-                        }
-                        break;
-                    case "Item Length":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Length);
-                            row++;
-                        }
-                        break;
-                    case "Item Weight":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Weight);
-                            row++;
-                        }
-                        break;
-                    case "Item Width":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Width);
-                            row++;
-                        }
-                        break;
-                    case "Label Color":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Color);
-                            row++;
-                        }
-                        break;
-                    case "Language":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Language);
-                            row++;
-                        }
-                        break;
-                    case "License":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.License);
-                            row++;
-                        }
-                        break;
-                    case "License Begin Date":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.LicenseBeginDate);
-                            row++;
-                        }
-                        break;
-                    case "List Price (CAD)":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.ListPriceCad);
-                            row++;
-                        }
-                        break;
-                    case "List Price (MXN)":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.ListPriceMxn);
-                            row++;
-                        }
-                        break;
-                    case "List Price (USD)":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.ListPriceUsd);
-                            row++;
-                        }
-                        break;
-                    case "Meta Description":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.MetaDescription);
-                            row++;
-                        }
-                        break;
-                    case "Mfg Source":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.MfgSource);
-                            row++;
-                        }
-                        break;
-                    case "MSRP":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Msrp);
-                            row++;
-                        }
-                        break;
-                    case "MSRP CAD":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.MsrpCad);
-                            row++;
-                        }
-                        break;
-                    case "MSRP MXN":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.MsrpMxn);
-                            row++;
-                        }
-                        break;
-                    case "Price Group (Product)":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.PricingGroup);
-                            row++;
-                        }
-                        break;
-                    case "Print On Demand":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.PrintOnDemand);
-                            row++;
-                        }
-                        break;
-                    case "Product Format":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.ProductFormat);
-                            row++;
-                        }
-                        break;
-                    case "Product Group":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.ProductGroup);
-                            row++;
-                        }
-                        break;
-                    case "Product ID":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.ItemId);
-                            row++;
-                        }
-                        break;
-                    case "Product Id Translation":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.ReturnProductIdTranslations());
-                            row++;
-                        }
-                        break;
-                    case "Product Line":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.ProductLine);
-                            row++;
-                        }
-                        break;
-                    case "Product Qty":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.ProductQty);
-                            row++;
-                        }
-                        break;
-                    case "Property":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Property);
-                            row++;
-                        }
-                        break;
-                    case "PS Status":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.PsStatus);
-                            row++;
-                        }
-                        break;
-                    case "SAT Code":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.SatCode);
-                            row++;
-                        }
-                        break;
-                    case "Sell On All Posters":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.SellOnAllPosters);
-                            row++;
-                        }
-                        break;
-                    case "Sell On Amazon":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.SellOnAmazon);
-                            row++;
-                        }
-                        break;
-                    case "Sell On Amazon Seller Central":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.SellOnAmazonSellerCentral);
-                            row++;
-                        }
-                        break;
-                    case "Sell On Ecommerce":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.SellOnEcommerce);
-                            row++;
-                        }
-                        break;
-                    case "Sell On Fanatics":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.SellOnFanatics);
-                            row++;
-                        }
-                        break;
-                    case "Sell On Guitar Center":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.SellOnGuitarCenter);
-                            row++;
-                        }
-                        break;
-                    case "Sell On Hayneedle":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.SellOnHayneedle);
-                            row++;
-                        }
-                        break;
-                    case "Sell On Target":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.SellOnTarget);
-                            row++;
-                        }
-                        break;
-                    case "Sell On Trends":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.SellOnTrends);
-                            row++;
-                        }
-                        break;
-                    case "Sell On Walmart":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.SellOnWalmart);
-                            row++;
-                        }
-                        break;
-                    case "Sell On Wayfair":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.SellOnWayfair);
-                            row++;
-                        }
-                        break;
-                    case "Short Description":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.ShortDescription);
-                            row++;
-                        }
-                        break;
-                    case "Size":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Size);
-                            row++;
-                        }
-                        break;
-                    case "Stats Code":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.StatsCode);
-                            row++;
-                        }
-                        break;
-                    case "Stats Name":
-                        foreach (ItemObject item in items)
-                        {
-                            if (GlobalData.StatsCodes.ContainsKey(item.StatsCode))
-                            {
-                                WriteCell(row, columnCount, GlobalData.StatsCodes[item.StatsCode]);
-                            }
-                            else WriteCell(row, columnCount, "");
-                            row++;
-                        }
-                        break;
-                    case "Tariff Code":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.TariffCode);
-                            row++;
-                        }
-                        break;
-                    case "Territory":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Territory);
-                            row++;
-                        }
-                        break;
-                    case "Title":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Title);
-                            row++;
-                        }
-                        break;
-                    case "UDEX":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Udex);
-                            row++;
-                        }
-                        break;
-                    case "UPC":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Upc);
-                            row++;
-                        }
-                        break;
-                    case "Variant Attribute Name":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, ReturnVariantAttributeName(item, customer));
-                            row++;
-                        }
-                        break;
-                    case "Variant Group Id":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, ReturnVariantGroupId(item.ItemId));
-                            row++;
-                        }
-                        break;
-                    case "Warranty":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.Warranty);
-                            row++;
-                        }
-                        break;
-                    case "Warranty Check":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.WarrantyCheck);
-                            row++;
-                        }
-                        break;
-                    case "Website Price":
-                        foreach (ItemObject item in items)
-                        {
-                            WriteCell(row, columnCount, item.WebsitePrice);
-                            row++;
-                        }
-                        break;
-                }
-            }
         }
-
         /// <summary>
         ///     Retrieves the coresponding layout id for the given layout
         /// </summary>
