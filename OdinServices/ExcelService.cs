@@ -2065,8 +2065,7 @@ namespace OdinServices
         /// <returns></returns>
         public string ReturnVariantAttributeName(ItemObject item, string customer)
         {
-
-            if(item.ProductFormat=="" || item.ProductFormat=="")
+            if(item.ProductFormat== "Mount Bundle" || item.ProductFormat== "Clip Bundle")
             {
                 if(item.ProductFormat=="Mount Bundle")
                 {
@@ -2182,190 +2181,46 @@ namespace OdinServices
             {
                 if ((requestType == "Add") || (requestType == "Update"))
                 {
-                    string newString = string.Empty;
-                    string newdate = "";
-                    string USDPrice = item.WebsitePrice;
-                    string CADPrice = item.ListPriceCad;
-                    string productFormat = DbUtil.ReplaceCharacters(item.ProductFormat);
-                    string category = string.Empty;
                     string[] imageSections = item.ImagePath.Split('\\');
                     string imageName = imageSections[imageSections.Length - 1];
-                    // Replace size placeholder with blank
-                    if (item.Size == "'' x '' x ''")
-                    {
-                        item.Size = "";
-                    }
-
                     List<string> cats = this.NewCategories(item.Category, item.Category2, item.Category3);
-                    if (!string.IsNullOrEmpty(item.NewDate))
-                    {
-                        DateTime dt = Convert.ToDateTime(item.NewDate);
-                        newdate = dt.Month.ToString() + "/" + dt.Day.ToString() + "/" + dt.Year.ToString() + " 12:00";
-                    }
-                    else
-                    {
-                        DateTime dt = DateTime.Now;
-                        newdate = dt.Month.ToString() + "/" + dt.Day.ToString() + "/" + dt.Year.ToString() + " 12:00";
 
-                    }
-                    string inStockDate = string.IsNullOrEmpty(item.InStockDate) ? newdate : item.InStockDate;
-                    //remove zeros at the end of dimensions
-                    string length = item.Length;
-                    string format = DbUtil.ReplaceCharacters(item.ProductFormat).Trim();
-                    // string title = string.IsNullOrEmpty(item.Title) ? item.Description.Replace(item.MetaDescription, "") : item.Title;
-                    string title = DbUtil.ReplaceQuotes(item.Title);
-                    string metaDescription = DbUtil.ReplaceQuotes(item.MetaDescription);
-                    newString += "\"" + item.ItemId.Trim() + "\","; /* "sku" */
-                    newString += "default,"; /* "_store" */
-                    newString += "\"" + ItemService.SetProductType(cats) + "\","; /* "_attribute_set" */
-                    newString += "\"simple\","; /* _type */
-                    newString += ",";/* _category */
-                    newString += "\"Default Category\","; /* _root_category */
-                    newString += "\"base\","; /* _product_websites */
-                    newString += ","; /* color */
-                    newString += ","; /* cost */
-                    newString += ","; /* country_of_manufacture */
-                    if (requestType == "Add")
+                    // If item is being setup on US store
+                    if (item.Territory.Contains("USA") || item.Territory.Contains("WW"))
                     {
-                        newString += "\"" + newdate + "\","; /* created_at */
+                        string newString = WriteMagentoMainLine(item, "USA", requestType);
+                        CSV_Add.Add(newString);
+
+                        // If item is also being setup on canadian store
+                        if (item.Territory.Contains("CAN") || item.Territory.Contains("WW"))
+                        {
+                            string secondaryLine = WriteMagentoSecondaryLine(item, "CAN", requestType);
+                            CSV_Add.Add(secondaryLine);
+                        }
+                        else
+                        {
+                            string canPrice = "";
+                            canPrice += ","; /* "sku" */
+                            canPrice += ","; /* "_store" */
+                            canPrice += ","; /* "_attribute_set" */
+                            canPrice += ","; /* _type */
+                            canPrice += "\"All Products\",";/* _category */
+                            canPrice += "\"Default Category\""; /* _root_category */
+                            CSV_Add.Add(canPrice);
+                        }
                     }
-                    else
+                    // If item is only being setup on canadian store
+                    else if (item.Territory.Contains("CAN"))
                     {
-                        newString += ","; /* created_at */
-                    }
-                    newString += "\"0\","; /* has_options */
-                    newString += "\"" + item.Height + "\","; /* height */
-                    newString += "\"" + DbUtil.OrderLanguage(item.Language) + "\","; /* language */
-                    newString += "\"" + item.Copyright + "\","; /* legal */
-                    newString += "\"" + item.License.Trim() + "\","; /* license */
-                    newString += "\"" + ReturnProperty(item.License.Trim(), item.Property.Trim()) + "\","; /* property */
-                    newString += ","; /* "license_end_date" */
-                    newString += "\"" + metaDescription.Trim() + "\","; /* meta_description */
-                    newString += "\"" + ModifyKeywords(item.ItemId, item.ItemKeywords).Trim() + "\","; /* meta_keyword */
-                    newString += "\"" + title.Trim() + "\","; /* meta_title */
-                    newString += "\"" + item.Msrp.Trim() + "\","; /* msrp */
-                    newString += "\"" + item.MsrpCad.Trim() + "\","; /* msrpcan */
-                    newString += "\"Use config\","; /* msrp_display_actual_price_type */
-                    newString += "\"Use config\","; /* msrp_enabled */
-                    newString += "\"" + title.Trim() + "\","; /* name */
-                    if (requestType == "Add")
-                    {
-                        newString += "\"" + DateTime.Today.ToString() + "\","; /* date_added */
-                        newString += "\"" + DateTime.Today.ToString() + "\","; /* news_from_date */
-                        newString += "\"" + ItemService.RetrieveNewToDate("") + "\","; /* news_to_date */
-                    }
-                    else
-                    {
-                        newString += ","; /* date_added */
-                        newString += ","; /* news_from_date */
-                        newString += ","; /* news_to_date */
-                    }
-                    newString += "\"Product Info Column\","; /* options_container */
-                    newString += "\"" + ItemService.ReturnItemPrice(USDPrice.Trim(), item.ProductQty) + "\","; /* price */
-                    newString += "\"" + ItemService.ReturnItemPrice(CADPrice.Trim(), item.ProductQty) + "\","; /* pricecan */
-                    newString += "\"0\","; /* required_options */
-                    newString += "\"" + item.ShortDescription.Trim() + "\","; /* short_description */
-                    newString += "\"1\","; /* status */
-                    newString += "\"0\","; /* tax_class_id */
-                    newString += "\"" + DbUtil.OrderTerritory(item.Territory.Trim()) + "\","; /* territory */
-                    newString += "\"" + item.Upc.Trim() + "\","; /* upc */
-                    newString += ","; /* updated_at */
-                    newString += "\"" + item.ItemId.Trim() + "\","; /* url_key */
-                    newString += "\"" + item.ItemId.Trim() + ".html\","; /* url_path */
-                    newString += "\"4\",";/* visibility */
-                    newString += "\"" + item.Weight.Trim() + "\","; /* weight */
-                    newString += "\"" + item.Width + "\","; /* width */
-                    newString += "\"" + item.Size.Replace("\"", "''").Trim() + "\","; /* size */
-                    newString += "\"0\","; /* min_qty */
-                    newString += "\"" + item.ProductQty.Trim() + "\",";  /* pack_qty */
-                    newString += "\"1\","; /* use_config_min_qty */
-                    newString += "\"0\","; /* is_qty_decimal */
-                    newString += "\"0\","; /* backorders */
-                    newString += "\"1\","; /* use_config_backorders */
-                    newString += "\"1\","; /* min_sale_qty */
-                    newString += "\"1\","; /* use_config_min_sale_qty */
-                    newString += "\"0\","; /* max_sale_qty */
-                    newString += "\"1\","; /* use_config_min_qty */
-                    newString += "\"0\","; /* is_in_stock */
-                    newString += "\"1\","; /* "notify_stock_qty" */
-                    newString += "\"1\","; /* "use_config_notify_stock_qty" */
-                    newString += "\"0\","; /* "manage_stock" */
-                    newString += "\"1\","; /* "use_config_manage_stock" */
-                    newString += "\"1\","; /* "stock_status_changed_auto" */
-                    newString += "\"1\","; /* "use_config_qty_increments" */
-                    newString += "\"0\","; /* qty_increments */
-                    newString += "\"1\",";/* use_config_enable_qty_inc */
-                    newString += "\"0\","; /* enable_qty_increments */
-                    newString += "\"0\","; /*is_decimal_divided */
-                    newString += "\"\","; /*_links_related_sku */
-                    newString += "\"0\","; /*_links_related_position */
-                    newString += "\"88\","; /* _media_attribute_id */
-                    newString += "\"2\","; /* _media_position */
-                    newString += "\"0\","; /* _media_is_disabled */
-                    if (item.OnSite != "Y")
-                    {
-                        newString += "\"0\","; /* qty */
-                        newString += "\"" + "1/1/1970" + "\""; /* "license_begin_date" */
-                    }
-                    CSV_Add.Add(newString);
-                    if (item.Territory.Contains("CAN") || item.Territory.Contains("WW"))
-                    {
-                        string canPrice = "";
-                        canPrice += ","; /* "sku" */
-                        canPrice += "\"can_view\","; /* "_store" */
-                        canPrice += ","; /* "_attribute_set" */
-                        canPrice += "\"simple\","; /* _type */
-                        canPrice += "\"All Products\",";/* _category */
-                        canPrice += "\"Default Category\","; /* _root_category */
-                        canPrice += "\"can_website\","; /* _product_websites */
-                        canPrice += ","; /* color */
-                        canPrice += ","; /* cost */
-                        canPrice += ","; /* country_of_manufacture */
-                        canPrice += ","; /* created_at */
-                        canPrice += ","; /* has_options */
-                        canPrice += ","; /* height */
-                        canPrice += ","; /* language */
-                        canPrice += ","; /* legal */
-                        canPrice += ","; /* license */
-                        canPrice += ","; /* property */
-                        canPrice += ","; /* license_end_date */
-                        canPrice += ","; /* meta_description */
-                        canPrice += ","; /* meta_keyword */
-                        canPrice += ","; /* meta_title */
-                        canPrice += "\"" + item.MsrpCad.Trim() + "\","; /* msrp */
-                        canPrice += ","; /* msrpcan */
-                        canPrice += ","; /* msrp_display_actual_price_type */
-                        canPrice += ","; /* msrp_enabled */
-                        canPrice += ","; /* name */
-                        canPrice += ","; /* date_added */
-                        canPrice += ","; /* news_from_date */
-                        canPrice += ","; /* news_to_date */
-                        canPrice += ","; /* options_container */
-                        canPrice += "\"" + ItemService.ReturnItemPrice(CADPrice.Trim(), item.ProductQty) + "\","; /* price */
-                        canPrice += "\"" + ItemService.ReturnItemPrice(CADPrice.Trim(), item.ProductQty) + "\","; /* pricecan */
-                        canPrice += "\"0\","; /* required_options */
-                        canPrice += "\"" + item.ShortDescription.Trim() + "\","; /* short_description */
-                        canPrice += "\"1\","; /* status */
-                        canPrice += "\"4\","; /* tax_class_id */
-                        CSV_Add.Add(canPrice);
-                    }
-                    else
-                    {
-                        string canPrice = "";
-                        canPrice += ","; /* "sku" */
-                        canPrice += ","; /* "_store" */
-                        canPrice += ","; /* "_attribute_set" */
-                        canPrice += ","; /* _type */
-                        canPrice += "\"All Products\",";/* _category */
-                        canPrice += "\"Default Category\""; /* _root_category */
-                        CSV_Add.Add(canPrice);
+                        string newString = WriteMagentoMainLine(item, "CAN", requestType);
+                        CSV_Add.Add(newString);
                     }
                     if (cats.Count > 0)
                     {
-                        int catCount = 0;
-                        while (catCount < cats.Count)
+                        int count = 0;
+                        while (count < cats.Count)
                         {
-                            string meow = cats[catCount].Replace("\"", "\'\'");
+                            string meow = cats[count].Replace("\"", "\'\'");
                             string catString = "";
                             catString += ","; /* "sku" */
                             catString += ","; /* "_store" */
@@ -2375,7 +2230,7 @@ namespace OdinServices
                             catString += "\"Default Category\","; /* _root_category */
 
                             CSV_Add.Add(catString);
-                            catCount++;
+                            count++;
                         }
                     }
                     CSV_Add_Image.Add(item.ItemId + ", /" + imageName + ", /" + imageName + ", /" + imageName);
@@ -2420,6 +2275,203 @@ namespace OdinServices
                     File.WriteAllText(csvImageFilePath, sbi.ToString());
                 }
             } // End foreach (Request request in requests)
+        }
+
+        public string WriteMagentoMainLine(ItemObject item, string territory, string requestType)
+        {
+            string result = string.Empty;
+            string newdate = string.Empty;
+            string store = string.Empty;
+            string website = string.Empty;
+            string msrp = string.Empty;
+            string price = string.Empty;
+            if (territory == "USA")
+            {
+                store = "default,"; /* "_store" */
+                website = "\"base\","; /* _product_websites */
+                msrp = "\"" + item.Msrp.Trim() + "\","; /* msrp */
+                price = "\"" + ItemService.ReturnItemPrice(item.WebsitePrice.Trim(), item.ProductQty) + "\","; /* price */
+            }
+            else if(territory == "CAN")
+            {
+                store = "\"can_view\","; /* "_store" */
+                website = "\"can_website\","; /* _product_websites */
+                msrp = "\"" + item.MsrpCad.Trim() + "\","; /* msrp */;
+                price = "\"" + ItemService.ReturnItemPrice(item.ListPriceCad.Trim(), item.ProductQty) + "\","; /* price */
+            }
+
+
+            List<string> cats = this.NewCategories(item.Category, item.Category2, item.Category3);
+            // Replace size placeholder with blank
+            if (item.Size == "'' x '' x ''")
+            {
+                item.Size = "";
+            }
+
+            if (!string.IsNullOrEmpty(item.NewDate))
+            {
+                DateTime dt = Convert.ToDateTime(item.NewDate);
+                newdate = dt.Month.ToString() + "/" + dt.Day.ToString() + "/" + dt.Year.ToString() + " 12:00";
+            }
+            else
+            {
+                DateTime dt = DateTime.Now;
+                newdate = dt.Month.ToString() + "/" + dt.Day.ToString() + "/" + dt.Year.ToString() + " 12:00";
+
+            }
+            string inStockDate = string.IsNullOrEmpty(item.InStockDate) ? newdate : item.InStockDate;
+            //remove zeros at the end of dimensions
+            string format = DbUtil.ReplaceCharacters(item.ProductFormat).Trim();
+            string title = DbUtil.ReplaceQuotes(item.Title);
+            string metaDescription = DbUtil.ReplaceQuotes(item.MetaDescription);
+
+            result += "\"" + item.ItemId.Trim() + "\","; /* "sku" */
+            result += store; /* "_store" */
+            result += "\"" + ItemService.SetProductType(cats) + "\","; /* "_attribute_set" */
+            result += "\"simple\","; /* _type */
+            result += ",";/* _category */
+            result += "\"Default Category\","; /* _root_category */
+            result += website; /* _product_websites */
+            result += ","; /* color */
+            result += ","; /* cost */
+            result += ","; /* country_of_manufacture */
+            if (requestType == "Add")
+            {
+                result += "\"" + newdate + "\","; /* created_at */
+            }
+            else
+            {
+                result += ","; /* created_at */
+            }
+            result += "\"0\","; /* has_options */
+            result += "\"" + item.Height + "\","; /* height */
+            result += "\"" + DbUtil.OrderLanguage(item.Language) + "\","; /* language */
+            result += "\"" + item.Copyright + "\","; /* legal */
+            result += "\"" + item.License.Trim() + "\","; /* license */
+            result += "\"" + ReturnProperty(item.License.Trim(), item.Property.Trim()) + "\","; /* property */
+            result += ","; /* "license_end_date" */
+            result += "\"" + metaDescription.Trim() + "\","; /* meta_description */
+            result += "\"" + ModifyKeywords(item.ItemId, item.ItemKeywords).Trim() + "\","; /* meta_keyword */
+            result += "\"" + title.Trim() + "\","; /* meta_title */
+            result += msrp; /* msrp */
+            result += "\"" + item.MsrpCad.Trim() + "\","; /* msrpcan */
+            result += "\"Use config\","; /* msrp_display_actual_price_type */
+            result += "\"Use config\","; /* msrp_enabled */
+            result += "\"" + title.Trim() + "\","; /* name */
+            if (requestType == "Add")
+            {
+                result += "\"" + DateTime.Today.ToString() + "\","; /* date_added */
+                result += "\"" + DateTime.Today.ToString() + "\","; /* news_from_date */
+                result += "\"" + ItemService.RetrieveNewToDate("") + "\","; /* news_to_date */
+            }
+            else
+            {
+                result += ","; /* date_added */
+                result += ","; /* news_from_date */
+                result += ","; /* news_to_date */
+            }
+            result += "\"Product Info Column\","; /* options_container */
+            result += price; /* price */
+            result += "\"" + ItemService.ReturnItemPrice(item.ListPriceCad.Trim(), item.ProductQty) + "\","; /* pricecan */
+            result += "\"0\","; /* required_options */
+            result += "\"" + item.ShortDescription.Trim() + "\","; /* short_description */
+            result += "\"1\","; /* status */
+            result += "\"0\","; /* tax_class_id */
+            result += "\"" + DbUtil.OrderTerritory(item.Territory.Trim()) + "\","; /* territory */
+            result += "\"" + item.Upc.Trim() + "\","; /* upc */
+            result += ","; /* updated_at */
+            result += "\"" + item.ItemId.Trim() + "\","; /* url_key */
+            result += "\"" + item.ItemId.Trim() + ".html\","; /* url_path */
+            result += "\"4\",";/* visibility */
+            result += "\"" + item.Weight.Trim() + "\","; /* weight */
+            result += "\"" + item.Width + "\","; /* width */
+            result += "\"" + item.Size.Replace("\"", "''").Trim() + "\","; /* size */
+            result += "\"0\","; /* min_qty */
+            result += "\"" + item.ProductQty.Trim() + "\",";  /* pack_qty */
+            result += "\"1\","; /* use_config_min_qty */
+            result += "\"0\","; /* is_qty_decimal */
+            result += "\"0\","; /* backorders */
+            result += "\"1\","; /* use_config_backorders */
+            result += "\"1\","; /* min_sale_qty */
+            result += "\"1\","; /* use_config_min_sale_qty */
+            result += "\"0\","; /* max_sale_qty */
+            result += "\"1\","; /* use_config_min_qty */
+            result += "\"0\","; /* is_in_stock */
+            result += "\"1\","; /* "notify_stock_qty" */
+            result += "\"1\","; /* "use_config_notify_stock_qty" */
+            result += "\"0\","; /* "manage_stock" */
+            result += "\"1\","; /* "use_config_manage_stock" */
+            result += "\"1\","; /* "stock_status_changed_auto" */
+            result += "\"1\","; /* "use_config_qty_increments" */
+            result += "\"0\","; /* qty_increments */
+            result += "\"1\",";/* use_config_enable_qty_inc */
+            result += "\"0\","; /* enable_qty_increments */
+            result += "\"0\","; /*is_decimal_divided */
+            result += "\"\","; /*_links_related_sku */
+            result += "\"0\","; /*_links_related_position */
+            result += "\"88\","; /* _media_attribute_id */
+            result += "\"2\","; /* _media_position */
+            result += "\"0\","; /* _media_is_disabled */
+            if (item.OnSite != "Y")
+            {
+                result += "\"0\","; /* qty */
+                result += "\"" + "1/1/1970" + "\""; /* "license_begin_date" */
+            }
+            return result;
+        }
+
+        public string WriteMagentoSecondaryLine(ItemObject item, string territory, string requestType)
+        {
+            string result = string.Empty;
+            string newdate = string.Empty;
+            string store = string.Empty;
+            string website = string.Empty;
+            string msrp = string.Empty;
+            string price = string.Empty;
+             if (territory == "CAN")
+            {
+                store = "\"can_view\","; /* "_store" */
+                website = "\"can_website\","; /* _product_websites */
+                msrp = "\"" + item.MsrpCad.Trim() + "\","; /* msrp */;
+                price = "\"" + ItemService.ReturnItemPrice(item.ListPriceCad.Trim(), item.ProductQty) + "\","; /* price */
+            }
+            result += ","; /* "sku" */
+            result += store; /* "_store" */
+            result += ","; /* "_attribute_set" */
+            result += "\"simple\","; /* _type */
+            result += "\"All Products\",";/* _category */
+            result += "\"Default Category\","; /* _root_category */
+            result += website; /* _product_websites */
+            result += ","; /* color */
+            result += ","; /* cost */
+            result += ","; /* country_of_manufacture */
+            result += ","; /* created_at */
+            result += ","; /* has_options */
+            result += ","; /* height */
+            result += ","; /* language */
+            result += ","; /* legal */
+            result += ","; /* license */
+            result += ","; /* property */
+            result += ","; /* license_end_date */
+            result += ","; /* meta_description */
+            result += ","; /* meta_keyword */
+            result += ","; /* meta_title */
+            result += msrp; /* msrp */
+            result += ","; /* msrpcan */
+            result += ","; /* msrp_display_actual_price_type */
+            result += ","; /* msrp_enabled */
+            result += ","; /* name */
+            result += ","; /* date_added */
+            result += ","; /* news_from_date */
+            result += ","; /* news_to_date */
+            result += ","; /* options_container */
+            result += price; /* price */
+            result += "\"" + ItemService.ReturnItemPrice(item.ListPriceCad.Trim(), item.ProductQty) + "\","; /* pricecan */
+            result += "\"0\","; /* required_options */
+            result += "\"" + item.ShortDescription.Trim() + "\","; /* short_description */
+            result += "\"1\","; /* status */
+            result += "\"4\","; /* tax_class_id */
+            return result;
         }
 
         #endregion // Methods
