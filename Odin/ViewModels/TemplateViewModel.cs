@@ -6070,7 +6070,7 @@ namespace Odin.ViewModels
                     this.EcommerceMsrpError = ItemService.ValidateEcommerceMsrp(TemplateObject)?.ReturnErrorMessage()??"";
                     break;
 
-                case "Ecommere_Size":
+                case "EcommerceSize":
                     this.EcommerceSizeError = ItemService.ValidateEcommerceSize(TemplateObject)?.ReturnErrorMessage()??"";
                     break;
 
