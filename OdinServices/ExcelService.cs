@@ -2175,6 +2175,7 @@ namespace OdinServices
             List<string> CSV_Add_Image = new List<string>();
             List<string> CSV_REMOVE = new List<string>();
             CSV_Add.Add(CreateMagentoHeaders());
+
             CSV_REMOVE.Add("sku,status");
             CSV_Add_Image.Add("sku, image, thumbnail, small_image");
             foreach (ItemObject item in itemList)

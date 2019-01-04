@@ -158,6 +158,10 @@ namespace OdinModels
 
         #region Methods
 
+        /// <summary>
+        ///     
+        /// </summary>
+        /// <returns></returns>
         public string ReturnErrorMessage()
         {
             if(this.ErrorMessage=="")

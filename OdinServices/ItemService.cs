@@ -4578,7 +4578,7 @@ namespace OdinServices
                         "Item Keywords");
                 }
             }
-            if (var.SellOnTrends=="Y")
+            if (var.HasWeb())
             {
                 if (string.IsNullOrEmpty(var.ItemKeywords))
                 {
@@ -5650,7 +5650,7 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             OdinServices.Properties.Resources.Error_Required,
-                            "Item Keywords");
+                            "Territory");
                     }
                 }
                 string[] x = value.Split('/');
@@ -5662,7 +5662,7 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Value " + y + " " + OdinServices.Properties.Resources.Error_NoMatch,
-                            "Item Keywords");
+                            "Territory");
                     }
                 }
             }
@@ -5895,7 +5895,7 @@ namespace OdinServices
                         OdinServices.Properties.Resources.Error_RequiredWeb,
                         "Website Price");
                 }
-                if (var.HasWeb() && (!CheckGreaterThanZero(var.WebsitePrice)))
+                if (!CheckGreaterThanZero(var.WebsitePrice) && var.ProductGroup != "Display")
                 {
                     return new ItemError(
                         var.ItemId,
