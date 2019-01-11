@@ -8976,15 +8976,15 @@ namespace Odin.ViewModels
                         this.MfgSourceError = error.ReturnErrorMessage();
                         break;
 
-                    case "Msrp":
+                    case "MSRP":
                         this.MsrpError = error.ReturnErrorMessage();
                         break;
 
-                    case "Msrp CAD":
+                    case "MSRP CAD":
                         this.MsrpCadError = error.ReturnErrorMessage();
                         break;
 
-                    case "Msrp MXN":
+                    case "MSRP MXN":
                         this.MsrpMxnError = error.ReturnErrorMessage();
                         break;
 

@@ -759,6 +759,7 @@ namespace OdinServices
             this.TemplateHeaders.Add("Ecommerce Package Length");
             this.TemplateHeaders.Add("Ecommerce Package Weight");
             this.TemplateHeaders.Add("Ecommerce Package Width");
+            this.TemplateHeaders.Add("Ecommerce Page Qty");
             this.TemplateHeaders.Add("Ecommerce Product Category");
             this.TemplateHeaders.Add("Ecommerce Product Description");
             this.TemplateHeaders.Add("Ecommerce Product Subcategory");

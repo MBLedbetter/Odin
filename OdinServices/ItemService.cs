@@ -4790,16 +4790,20 @@ namespace OdinServices
         {
             bool required = (var.ProdType == 2) ? false : true;
             string value = string.Empty;
+            string name = string.Empty;
             switch (type)
             {
                 case "CAD":
                     value = var.MsrpCad;
+                    name = "MSRP CAD";
                     break;
                 case "MXN":
                     value = var.MsrpMxn;
+                    name = "MSRP MXN";
                     break;
                 case "USD":
                     value = var.Msrp;
+                    name = "MSRP";
                     break;
                 default:
                     throw new ArgumentNullException("ValidateMsrp unknown type " + type);
@@ -4813,7 +4817,7 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "10 characters.",
-                        "MSRP " + type);
+                        name);
                 }
                 if (string.IsNullOrEmpty(value))
                 {
@@ -4827,7 +4831,7 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             OdinServices.Properties.Resources.Error_Required,
-                            "MSRP " + type);
+                            name);
                     }
                 }
                 if (!DbUtil.IsNumber(value))
@@ -4836,7 +4840,7 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NonNumeric,
-                        "MSRP " + type);
+                        name);
                 }
             }
             return null;
