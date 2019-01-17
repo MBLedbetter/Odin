@@ -27,6 +27,22 @@ namespace OdinModels
         private static List<string> _accountingGroups = new List<string>();
 
         /// <summary>
+        ///     Gets or sets Asins
+        /// </summary>
+        public static Dictionary<string, string> Asins
+        {
+            get
+            {
+                return _asins;
+            }
+            set
+            {
+                _asins = value;
+            }
+        }
+        private static Dictionary<string, string> _asins = new Dictionary<string, string>();
+
+        /// <summary>
         ///     Existing Bill of materials
         /// </summary>
         public static List<ChildElement> BillofMaterials

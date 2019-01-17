@@ -1485,6 +1485,7 @@ namespace Odin.Data
         public void RetrieveGlobalData()
         {
             GlobalData.AccountingGroups = RetrieveAccountingtGroupList();
+            GlobalData.Asins = RetrieveAsinList();
             GlobalData.BillofMaterials = RetrieveBillofMaterialList();
             GlobalData.CostProfileGroups = RetrieveCostProfileGroups();
             GlobalData.CountriesOfOrigin = RetrieveCountriesOfOrigin();
@@ -3182,6 +3183,33 @@ namespace Odin.Data
         }
 
         /// <summary>
+        ///     Retrieves dictionary of itemId key and ASIN value
+        /// </summary>
+        /// <returns>ItemId/ASIN Dictionary</returns>
+        private Dictionary<string, string> RetrieveAsinList()
+        {
+            Dictionary<string, string> results = new Dictionary<string, string>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                foreach (AmazonItemAttributes x in (from o in context.AmazonItemAttributes select o))
+                {
+                    if (!string.IsNullOrEmpty(x.Asin))
+                    {
+                        if(results.ContainsKey(x.Asin))
+                        {
+                            results[x.Asin] = results[x.Asin] + ", " + x.InvItemId;
+                        }
+                        else
+                        {
+                            results.Add(x.Asin, x.InvItemId);
+                        }
+                    }
+                }
+                return results;
+            }
+        }
+
+        /// <summary>
         ///     Retrieves Bill of Material values from DB
         /// </summary>
         /// <returns>List of Accounting Group values</returns>
@@ -3190,8 +3218,7 @@ namespace Odin.Data
             List<ChildElement> results = new List<ChildElement>();
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                List<EnBomComps> enBomComps = (from o in context.EnBomComps select o).ToList();
-                foreach (EnBomComps x in enBomComps)
+                foreach (EnBomComps x in (from o in context.EnBomComps select o))
                 {
                     results.Add(new ChildElement(x.ComponentId, x.InvItemId));
                 }

@@ -3202,7 +3202,29 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_LengthMax + "10 characters.",
-                    "Amazon Asin");
+                    "Ecommerce Asin");
+            }
+            if(GlobalData.Asins.ContainsKey(var.EcommerceAsin))
+            {
+                if(GlobalData.Asins[var.EcommerceAsin] != var.ItemId)
+                {
+                    if(GlobalData.Asins[var.EcommerceAsin].Contains(','))
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            "Multiple items contain this ASIN: " + GlobalData.Asins[var.EcommerceAsin] + ". Please fix duplicates before saving.",
+                            "Ecommerce Asin");
+                    }
+                    else
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            "Another item already contains this ASIN: "+ GlobalData.Asins[var.EcommerceAsin],
+                            "Ecommerce Asin");
+                    }
+                }
             }
             return null;
         }
