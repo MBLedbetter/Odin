@@ -314,6 +314,19 @@ namespace OdinModels
         }
         private static bool _EcommercepageQtyVisibility = true;
 
+        public static bool EcommerceParentAsinVisibility
+        {
+            get
+            {
+                return _ecommerceParentAsinVisibility;
+            }
+            set
+            {
+                _ecommerceParentAsinVisibility = value;
+            }
+        }
+        private static bool _ecommerceParentAsinVisibility = true;
+
         public static bool EcommerceProductCategoryVisibility
         {
             get

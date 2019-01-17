@@ -77,6 +77,7 @@ namespace OdinServices
             public static string EcommercePackageWeight = "Ecommerce Package Weight";
             public static string EcommercePackageWidth = "Ecommerce Package Width";
             public static string EcommercePageQty = "Ecommerce Page Qty";
+            public static string EcommerceParentAsin = "Ecommerce Parent Asin";
             public static string EcommerceProductCategory = "Ecommerce Product Category";
             public static string EcommerceProductDescription = "Ecommerce Product Description";
             public static string EcommerceProductSubcategory = "Ecommerce Product Subcategory";
@@ -589,6 +590,7 @@ namespace OdinServices
             if (item.EcommercePackageWeight.Trim() == "[CLEAR]") { item.EcommercePackageWeight = ""; }
             if (item.EcommercePackageWidth.Trim() == "[CLEAR]") { item.EcommercePackageWidth = ""; }
             if (item.EcommercePageQty.Trim() == "[CLEAR]") { item.EcommercePageQty = ""; }
+            if (item.EcommerceParentAsin.Trim() == "[CLEAR]") { item.EcommerceParentAsin = ""; }
             if (item.EcommerceProductCategory.Trim() == "[CLEAR]") { item.EcommerceProductCategory = ""; }
             if (item.EcommerceProductDescription.Trim() == "[CLEAR]") { item.EcommerceProductDescription = ""; }
             if (item.EcommerceProductSubcategory.Trim() == "[CLEAR]") { item.EcommerceProductSubcategory = ""; }
@@ -715,6 +717,7 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.EcommercePackageWeight)) && (item.EcommercePackageWeight.Trim() != returnItem.EcommercePackageWeight.Trim())) { returnItem.EcommercePackageWeight = item.EcommercePackageWeight; } // Ecommerce Package Weight
             if ((!string.IsNullOrEmpty(item.EcommercePackageWidth)) && (item.EcommercePackageWidth.Trim() != returnItem.EcommercePackageWidth.Trim())) { returnItem.EcommercePackageWidth = item.EcommercePackageWidth; } // Ecommerce Package Width
             if ((!string.IsNullOrEmpty(item.EcommercePageQty)) && (item.EcommercePageQty.Trim() != returnItem.EcommercePageQty.Trim())) { returnItem.EcommercePageQty = item.EcommercePageQty; } // Ecommerce Page Qty
+            if ((!string.IsNullOrEmpty(item.EcommerceParentAsin)) && (item.EcommerceParentAsin.Trim() != returnItem.EcommerceParentAsin.Trim())) { returnItem.EcommerceParentAsin = item.EcommerceParentAsin; } // Ecommerce Parent Asin
             if ((!string.IsNullOrEmpty(item.EcommerceProductCategory)) && (item.EcommerceProductCategory.Trim() != returnItem.EcommerceProductCategory.Trim())) { returnItem.EcommerceProductCategory = item.EcommerceProductCategory; } // Ecommerce Product Category
             if ((!string.IsNullOrEmpty(item.EcommerceProductDescription)) && (item.EcommerceProductDescription.Trim() != returnItem.EcommerceProductDescription.Trim())) { returnItem.EcommerceProductDescription = item.EcommerceProductDescription; } // Ecommerce Product Description
             if ((!string.IsNullOrEmpty(item.EcommerceProductSubcategory)) && (item.EcommerceProductSubcategory.Trim() != returnItem.EcommerceProductSubcategory.Trim())) { returnItem.EcommerceProductSubcategory = item.EcommerceProductSubcategory; } // Ecommerce Product Subcategory
@@ -1058,6 +1061,7 @@ namespace OdinServices
                     EcommercePackageWeight = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommercePackageWeight, WorksheetColumnHeaders.A_PackageWeight), 1),
                     EcommercePackageWidth = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommercePackageWidth, WorksheetColumnHeaders.A_PackageWidth), 1).Trim(),
                     EcommercePageQty = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommercePageQty).Trim(),
+                    EcommerceParentAsin = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceParentAsin).Trim(),
                     EcommerceProductCategory = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceProductCategory, WorksheetColumnHeaders.A_ProductCategory),
                     EcommerceProductDescription = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceProductDescription, WorksheetColumnHeaders.A_ProductDescription),
                     EcommerceProductSubcategory = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceProductSubcategory, WorksheetColumnHeaders.A_ProductSubcategory),
@@ -2181,6 +2185,9 @@ namespace OdinServices
             // Ecommerce Page Qty //
             validationError =ValidateEcommercePageQty(var);
             if (validationError != null) { ErrorList.Add(validationError); }
+            // Ecommerce Parent Asin //
+            validationError = ValidateEcommerceParentAsin(var);
+            if (validationError != null) { ErrorList.Add(validationError); }
             // Ecommerce Product Category //
             validationError =ValidateEcommerceProductCategory(var);
             if (validationError != null) { ErrorList.Add(validationError); }
@@ -2531,6 +2538,8 @@ namespace OdinServices
             validationError = ValidateEcommercePackageDimension(var, "Width");
             if (validationError != null) { ErrorMessages.Add(validationError); }
             validationError = ValidateEcommercePageQty(var);
+            if (validationError != null) { ErrorMessages.Add(validationError); }
+            validationError = ValidateEcommerceParentAsin(var);
             if (validationError != null) { ErrorMessages.Add(validationError); }
             validationError = ValidateEcommerceProductCategory(var);
             if (validationError != null) { ErrorMessages.Add(validationError); }
@@ -3229,6 +3238,7 @@ namespace OdinServices
             return null;
         }
 
+
         /// <summary>
         ///     Validates the EcommerceBullet Validation field. Returns ItemError or null if no error exists.
         /// </summary>
@@ -3771,6 +3781,28 @@ namespace OdinServices
                         OdinServices.Properties.Resources.Error_NonNumeric,
                         "Ecommerce Page Qty");
                 }
+            }
+            return null;
+        }
+
+        /// <summary>
+        ///  Validates the EcommerceParentAsin field. Returns ItemError or null if no error exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public ItemError ValidateEcommerceParentAsin(ItemObject var)
+        {
+            if (string.IsNullOrEmpty(var.EcommerceParentAsin))
+            {
+                return null;
+            }
+            if (var.EcommerceParentAsin.Count() > 10)
+            {
+                return new ItemError(
+                    var.ItemId,
+                    var.ItemRow,
+                    OdinServices.Properties.Resources.Error_LengthMax + "10 characters.",
+                    "Ecommerce Parent Asin");
             }
             return null;
         }

@@ -7740,6 +7740,75 @@ namespace Odin.ViewModels
         private string _EcommercePageQtyToolTip = string.Empty;
 
         /// <summary>
+        ///    EcommerceParentAsin
+        /// </summary>
+        public string EcommerceParentAsin
+        {
+            get
+            {
+                return this.ItemViewModelItem.EcommerceParentAsin;
+            }
+            set
+            {
+                if (this.ItemViewModelItem.EcommerceParentAsin != value)
+                {
+                    this.ItemViewModelItem.EcommerceParentAsin = value;
+                    FlagError("EcommerceParentAsin");
+                    OnPropertyChanged("EcommerceParentAsin");
+                }
+            }
+        }
+        public string EcommerceParentAsinBoxColor
+        {
+            get
+            {
+                return _ecommerceParentAsinBoxColor;
+            }
+            set
+            {
+                _ecommerceParentAsinBoxColor = value;
+                OnPropertyChanged("EcommerceParentAsinBoxColor");
+            }
+        }
+        private string _ecommerceParentAsinBoxColor = "White";
+        public string EcommerceParentAsinError
+        {
+            get
+            {
+                return _ecommerceParentAsinError;
+            }
+            set
+            {
+                _ecommerceParentAsinError = value;
+                if (value != "")
+                {
+                    EcommerceParentAsinToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceParentAsinToolTip");
+                }
+                else
+                {
+                    EcommerceParentAsinToolTip = ReturnToolTip("EcommerceParentAsinToolTip");
+                }
+                this.EcommerceParentAsinBoxColor = (value == "") ? "White" : "Tomato";
+                this.TabColorEcommerce = CheckEcommerceTabColor();
+                OnPropertyChanged("EcommerceParentAsinError");
+            }
+        }
+        private string _ecommerceParentAsinError = string.Empty;
+        public string EcommerceParentAsinToolTip
+        {
+            get
+            {
+                return _ecommerceParentAsinToolTip;
+            }
+            set
+            {
+                this._ecommerceParentAsinToolTip = value;
+                OnPropertyChanged("EcommerceParentAsinToolTip");
+            }
+        }
+        private string _ecommerceParentAsinToolTip = string.Empty;
+
+        /// <summary>
         ///    EcommerceProductCategory
         /// </summary>
         public string EcommerceProductCategory
@@ -8843,9 +8912,13 @@ namespace Odin.ViewModels
                         this.EcommercePageQtyError = error.ReturnErrorMessage();
                         break;
 
-                    case "Ecommerce Product Category":
-                        this.EcommerceProductCategoryError = error.ReturnErrorMessage();
+                    case "Ecommerce Parent Asin":
+                        this.EcommerceParentAsinError = error.ReturnErrorMessage();
                         break;
+
+                    case "Ecommerce Product Category":
+                            this.EcommerceProductCategoryError = error.ReturnErrorMessage();
+                            break;
 
                     case "Ecommerce Product Description":
                         this.EcommerceProductDescriptionError = error.ReturnErrorMessage();
@@ -9161,6 +9234,7 @@ namespace Odin.ViewModels
             if (EcommercePackageWeightBoxColor != "White") { return "Tomato"; }
             if (EcommercePackageWidthBoxColor != "White") { return "Tomato"; }
             if (EcommercePageQtyBoxColor != "White") { return "Tomato"; }
+            if (EcommerceParentAsinBoxColor != "White") { return "Tomato"; }
             if (EcommerceProductCategoryBoxColor != "White") { return "Tomato"; }
             if (EcommerceProductDescriptionBoxColor != "White") { return "Tomato"; }
             if (EcommerceProductSubcategoryBoxColor != "White") { return "Tomato"; }
@@ -9507,6 +9581,10 @@ namespace Odin.ViewModels
 
                 case "EcommercePageQty":
                     this.EcommercePageQtyError = ItemService.ValidateEcommercePageQty(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    break;
+
+                case "EcommerceParentAsin":
+                    this.EcommerceParentAsinError = ItemService.ValidateEcommerceParentAsin(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceProductCategory":
@@ -10078,6 +10156,7 @@ namespace Odin.ViewModels
             this.EcommercePackageWeightToolTip = ReturnToolTip("EcommercePackageWeightToolTip");
             this.EcommercePackageWidthToolTip = ReturnToolTip("EcommercePackageWidthToolTip");
             this.EcommercePageQtyToolTip = ReturnToolTip("EcommercePageQtyToolTip");
+            this.EcommerceParentAsinToolTip = ReturnToolTip("EcommerceParentAsinToolTip");
             this.EcommerceProductCategoryToolTip = ReturnToolTip("EcommerceProductCategoryToolTip");
             this.EcommerceProductDescriptionToolTip = ReturnToolTip("EcommerceProductDescriptionToolTip");
             this.EcommerceProductSubcategoryToolTip = ReturnToolTip("EcommerceProductSubcategoryToolTip");
@@ -10292,6 +10371,7 @@ namespace Odin.ViewModels
             this.EcommercePackageWeightError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Weight").ReturnErrorMessage();
             this.EcommercePackageWidthError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Width").ReturnErrorMessage();
             this.EcommercePageQtyError = ItemService.ValidateEcommercePageQty(ItemViewModelItem).ReturnErrorMessage();
+            this.EcommerceParentAsinError = ItemService.ValidateEcommerceParentAsin(ItemViewModelItem).ReturnErrorMessage();
             this.EcommerceProductCategoryError = ItemService.ValidateEcommerceProductCategory(ItemViewModelItem).ReturnErrorMessage();
             this.EcommerceProductDescriptionError = ItemService.ValidateEcommerceProductDescription(ItemViewModelItem).ReturnErrorMessage();
             this.EcommerceProductSubcategoryError = ItemService.ValidateEcommerceProductSubcategory(ItemViewModelItem).ReturnErrorMessage();

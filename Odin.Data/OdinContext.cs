@@ -581,6 +581,7 @@ namespace Odin.Data
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.PackageWeight).HasColumnName("PACKAGE_WEIGHT");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.PackageWidth).HasColumnName("PACKAGE_WIDTH");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.PageCount).HasColumnName("PAGE_COUNT");
+            modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.ParentAsin).HasColumnName("PARENT_ASIN");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.ProductCategory).HasColumnName("PRODUCT_CATEGORY");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.ProductSubcategory).HasColumnName("PRODUCT_SUBCATEGORY");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.Size).HasColumnName("SIZE");
@@ -2070,6 +2071,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommercePackageWeight).HasColumnName("ECOMMERCE_PACKAGE_WEIGHT");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommercePackageWidth).HasColumnName("ECOMMERCE_PACKAGE_WIDTH");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommercePageCount).HasColumnName("ECOMMERCE_PAGE_COUNT");
+            modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceParentAsin).HasColumnName("ECOMMERCE_PARENT_ASIN");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceProductCategory).HasColumnName("ECOMMERCE_PRODUCT_CATEGORY");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceProductSubcategory).HasColumnName("ECOMMERCE_PRODUCT_SUBCATEGORY");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceSize).HasColumnName("ECOMMERCE_SIZE");
@@ -2325,6 +2327,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.APackageWeight).HasColumnName("A_PACKAGE_WEIGHT");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.APackageWidth).HasColumnName("A_PACKAGE_WIDTH");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.APageQty).HasColumnName("A_PAGE_QTY");
+            modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AParentAsin).HasColumnName("A_PARENT_ASIN");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AProductCategory).HasColumnName("A_PRODUCT_CATEGORY");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AProductDescription).HasColumnName("A_PRODUCT_DESCRIPTION");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AProductSubcategory).HasColumnName("A_PRODUCT_SUBCATEGORY");

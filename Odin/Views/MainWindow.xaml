@@ -1436,6 +1436,14 @@
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
+                        DisplayMemberBinding="{Binding EcommerceParentAsin}"
+                        Width="{Binding EcommerceParentAsinVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce Parent Asin"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
                         DisplayMemberBinding="{Binding EcommerceProductCategory}"
                         Width="{Binding EcommerceProductCategoryVisibility}">
                         <GridViewColumnHeader

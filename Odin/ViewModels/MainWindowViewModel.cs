@@ -2602,6 +2602,23 @@ namespace Odin.ViewModels
         private string _EcommercePageQtyVisibility = "auto";
 
         /// <summary>
+        ///     Gets or sets the EcommerceParentAsinVisibility field
+        /// </summary>
+        public string EcommerceParentAsinVisibility
+        {
+            get
+            {
+                return _ecommerceParentAsinVisibility;
+            }
+            set
+            {
+                _ecommerceParentAsinVisibility = value;
+                OnPropertyChanged("EcommerceParentAsinVisibility");
+            }
+        }
+        private string _ecommerceParentAsinVisibility = "auto";
+
+        /// <summary>
         ///     Gets or sets the EcommerceProductCategoryVisibility field
         /// </summary>
         public string EcommerceProductCategoryVisibility
@@ -3481,6 +3498,7 @@ namespace Odin.ViewModels
             this.EcommercePackageWeightVisibility = (UserOptions.EcommercePackageWeightVisibility) ? "100" : "0";
             this.EcommercePackageWidthVisibility = (UserOptions.EcommercePackageWidthVisibility) ? "100" : "0";
             this.EcommercePageQtyVisibility = (UserOptions.EcommercePageQtyVisibility) ? "100" : "0";
+            this.EcommerceParentAsinVisibility = (UserOptions.EcommerceParentAsinVisibility) ? "100" : "0";
             this.EcommerceProductCategoryVisibility = (UserOptions.EcommerceProductCategoryVisibility) ? "100" : "0";
             this.EcommerceProductDescriptionVisibility = (UserOptions.EcommerceProductDescriptionVisibility) ? "100" : "0";
             this.EcommerceProductSubcategoryVisibility = (UserOptions.EcommerceProductSubcategoryVisibility) ? "100" : "0";

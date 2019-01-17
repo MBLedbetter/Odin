@@ -395,6 +395,19 @@ namespace Odin.ViewModels
             }
         }
 
+        public bool EcommerceParentAsinVisibility
+        {
+            get
+            {
+                return UserOptions.EcommerceParentAsinVisibility;
+            }
+            set
+            {
+                UserOptions.EcommerceParentAsinVisibility = value;
+                OnPropertyChanged("EcommerceParentAsinVisibility");
+            }
+        }
+
         public bool EcommerceProductCategoryVisibility
         {
             get
@@ -1948,6 +1961,7 @@ namespace Odin.ViewModels
             if (UserOptions.EcommercePackageWeightVisibility == false) { return false; }
             if (UserOptions.EcommercePackageWidthVisibility == false) { return false; }
             if (UserOptions.EcommercePageQtyVisibility == false) { return false; }
+            if (UserOptions.EcommerceParentAsinVisibility == false) { return false; }
             if (UserOptions.EcommerceProductCategoryVisibility == false) { return false; }
             if (UserOptions.EcommerceProductDescriptionVisibility == false) { return false; }
             if (UserOptions.EcommerceProductSubcategoryVisibility == false) { return false; }
@@ -2156,6 +2170,7 @@ namespace Odin.ViewModels
                 EcommercePackageWeightVisibility = true;
                 EcommercePackageWidthVisibility = true;
                 EcommercePageQtyVisibility = true;
+                EcommerceParentAsinVisibility = true;
                 EcommerceProductCategoryVisibility = true;
                 EcommerceProductDescriptionVisibility = true;
                 EcommerceProductSubcategoryVisibility = true;
@@ -2192,6 +2207,7 @@ namespace Odin.ViewModels
                 EcommercePackageWeightVisibility = false;
                 EcommercePackageWidthVisibility = false;
                 EcommercePageQtyVisibility = false;
+                EcommerceParentAsinVisibility = false;
                 EcommerceProductCategoryVisibility = false;
                 EcommerceProductDescriptionVisibility = false;
                 EcommerceProductSubcategoryVisibility = false;

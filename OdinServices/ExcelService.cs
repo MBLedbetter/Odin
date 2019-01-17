@@ -1231,6 +1231,13 @@ namespace OdinServices
                                 row++;
                             }
                             break;
+                        case "Ecommerce Parent Asin":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceParentAsin);
+                                row++;
+                            }
+                            break;
                         case "Ecommerce Product Category":
                             foreach (ItemObject item in items)
                             {

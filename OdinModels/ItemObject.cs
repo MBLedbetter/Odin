@@ -1159,13 +1159,28 @@ namespace OdinModels
             {
                 if (_ecommercepageQty != value) { EcommercePageQtyUpdate = true; }
                 _ecommercepageQty = value;
-                OnPropertyChanged
-                
-                    ("EcommercePageQty");
-                
+                OnPropertyChanged("EcommercePageQty");                
             }
         }
         private string _ecommercepageQty = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the EcommerceParentAsin
+        /// </summary>
+        public string EcommerceParentAsin
+        {
+            get
+            {
+                return _ecommerceParentAsin;
+            }
+            set
+            {
+                if (_ecommerceParentAsin != value) { EcommerceParentAsinUpdate = true; }
+                _ecommerceParentAsin = value;
+                OnPropertyChanged("EcommerceParentAsin");
+            }
+        }
+        private string _ecommerceParentAsin = string.Empty;
 
         /// <summary>
         ///     Gets or sets the EcommerceProductCategory
@@ -1283,12 +1298,9 @@ namespace OdinModels
             }
             set
             {
-                if (_ecommercesize != value) { Ecommere_SizeUpdate = true; }
+                if (_ecommercesize != value) { EcommerceSizeUpdate = true; }
                 _ecommercesize = value;
-                OnPropertyChanged
-                
-                    ("EcommerceSize");
-                
+                OnPropertyChanged("EcommerceSize");                
             }
         }
         private string _ecommercesize = string.Empty;
@@ -1325,12 +1337,9 @@ namespace OdinModels
             }
             set
             {
-                if (_ecommerceupc != value) { Ecommere_UpcUpdate = true; }
+                if (_ecommerceupc != value) { EcommerceUpcUpdate = true; }
                 _ecommerceupc = value;
-                OnPropertyChanged
-                
-                    ("EcommerceUpc");
-                
+                OnPropertyChanged("EcommerceUpc");                
             }
         }
         private string _ecommerceupc = string.Empty;
@@ -2969,9 +2978,19 @@ namespace OdinModels
         public bool EcommerceItemWidthUpdate = false;
 
         /// <summary>
+        ///     EcommerceManufacturerNameUpdate update flag
+        /// </summary>
+        public bool EcommerceManufacturerNameUpdate = false;
+
+        /// <summary>
         ///     EcommerceModelNameUpdate update flag
         /// </summary>
         public bool EcommerceModelNameUpdate = false;
+
+        /// <summary>
+        ///     EcommerceMsrpUpdate update flag
+        /// </summary>
+        public bool EcommerceMsrpUpdate = false;
 
         /// <summary>
         ///     EcommercePackageHeightUpdate update flag
@@ -2999,6 +3018,11 @@ namespace OdinModels
         public bool EcommercePageQtyUpdate = false;
 
         /// <summary>
+        ///     EcommerceParentAsin update flag
+        /// </summary>
+        public bool EcommerceParentAsinUpdate = false;
+
+        /// <summary>
         ///     EcommerceProductCategoryUpdate update flag
         /// </summary>
         public bool EcommerceProductCategoryUpdate = false;
@@ -3014,19 +3038,9 @@ namespace OdinModels
         public bool EcommerceProductSubcategoryUpdate = false;
 
         /// <summary>
-        ///     EcommerceManufacturerNameUpdate update flag
-        /// </summary>
-        public bool EcommerceManufacturerNameUpdate = false;
-
-        /// <summary>
-        ///     EcommerceMsrpUpdate update flag
-        /// </summary>
-        public bool EcommerceMsrpUpdate = false;
-
-        /// <summary>
         ///     Ecommere_SizeUpdate update flag
         /// </summary>
-        public bool Ecommere_SizeUpdate = false;
+        public bool EcommerceSizeUpdate = false;
 
         /// <summary>
         ///     EcommerceSubjectKeywordsUpdate update flag
@@ -3036,7 +3050,7 @@ namespace OdinModels
         /// <summary>
         ///     Ecommere_UpcUpdate update flag
         /// </summary>
-        public bool Ecommere_UpcUpdate = false;
+        public bool EcommerceUpcUpdate = false;
 
         /// <summary>
         ///     GpcUpdate update flag
@@ -3482,15 +3496,16 @@ namespace OdinModels
             this.EcommercePackageWeightUpdate = false;
             this.EcommercePackageWidthUpdate = false;
             this.EcommercePageQtyUpdate = false;
+            this.EcommerceParentAsinUpdate = false;
             this.EcommerceProductCategoryUpdate = false;
             this.EcommerceProductDescriptionUpdate = false;
             this.EcommerceProductSubcategoryUpdate = false;
             this.EcommerceManufacturerNameUpdate = false;
             this.EcommerceMsrpUpdate = false;
             this.EcommerceGenericKeywordsUpdate = false;
-            this.Ecommere_SizeUpdate = false;
+            this.EcommerceSizeUpdate = false;
             this.EcommerceSubjectKeywordsUpdate = false;
-            this.Ecommere_UpcUpdate = false;
+            this.EcommerceUpcUpdate = false;
             this.GpcUpdate = false;
             this.HeightUpdate = false;
             this.ImagePathUpdate = false;
@@ -3671,6 +3686,7 @@ namespace OdinModels
                 this.EcommercePackageWeight = item.EcommercePackageWeight;
                 this.EcommercePackageWidth = item.EcommercePackageWidth;
                 this.EcommercePageQty = item.EcommercePageQty;
+                this.EcommerceParentAsin = item.EcommerceParentAsin;
                 this.EcommerceProductCategory = item.EcommerceProductCategory;
                 this.EcommerceProductDescription = item.EcommerceProductDescription;
                 this.EcommerceProductSubcategory = item.EcommerceProductSubcategory;
@@ -3812,15 +3828,16 @@ namespace OdinModels
             if (EcommercePackageWeightUpdate == true) { return true; }
             if (EcommercePackageWidthUpdate == true) { return true; }
             if (EcommercePageQtyUpdate == true) { return true; }
+            if (EcommerceParentAsinUpdate == true) { return true; }
             if (EcommerceProductCategoryUpdate == true) { return true; }
             if (EcommerceProductDescriptionUpdate == true) { return true; }
             if (EcommerceProductSubcategoryUpdate == true) { return true; }
             if (EcommerceManufacturerNameUpdate == true) { return true; }
             if (EcommerceMsrpUpdate == true) { return true; }
             if (EcommerceGenericKeywordsUpdate == true) { return true; }
-            if (Ecommere_SizeUpdate == true) { return true; }
+            if (EcommerceSizeUpdate == true) { return true; }
             if (EcommerceSubjectKeywordsUpdate == true) { return true; }
-            if (Ecommere_UpcUpdate == true) { return true; }
+            if (EcommerceUpcUpdate == true) { return true; }
             if (GpcUpdate == true) { return true; }
             if (HeightUpdate == true) { return true; }
             if (ImagePathUpdate == true) { return true; }
@@ -3919,14 +3936,15 @@ namespace OdinModels
             if (EcommercePackageWeightUpdate == true) { return true; }
             if (EcommercePackageWidthUpdate == true) { return true; }
             if (EcommercePageQtyUpdate == true) { return true; }
+            if (EcommerceParentAsinUpdate == true) { return true; }
             if (EcommerceProductCategoryUpdate == true) { return true; }
             if (EcommerceProductDescriptionUpdate == true) { return true; }
             if (EcommerceProductSubcategoryUpdate == true) { return true; }
             if (EcommerceManufacturerNameUpdate == true) { return true; }
             if (EcommerceMsrpUpdate == true) { return true; }
-            if (Ecommere_SizeUpdate == true) { return true; }
+            if (EcommerceSizeUpdate == true) { return true; }
             if (EcommerceSubjectKeywordsUpdate == true) { return true; }
-            if (Ecommere_UpcUpdate == true) { return true; }
+            if (EcommerceUpcUpdate == true) { return true; }
             if (CountryOfOriginUpdate == true) { return true; }
 
             return false;

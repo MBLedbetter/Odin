@@ -1135,6 +1135,7 @@ namespace Odin.Data.Tests
                 EcommercePackageWeight = "3",
                 EcommercePackageWidth = "2",
                 EcommercePageQty = "5",
+                EcommerceParentAsin = "5qwercven",
                 EcommerceProductCategory = "ProductCategory",
                 EcommerceProductDescription = "ProductDescription",
                 EcommerceProductSubcategory = "ProductSubcategory",

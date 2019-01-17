@@ -348,6 +348,7 @@ namespace Odin.Data
                     PackageWeight = Convert.ToDecimal(packageWeight),
                     PackageWidth = Convert.ToDecimal(packageWidth),
                     PageCount = Convert.ToInt16(pageQty),
+                    ParentAsin = item.EcommerceParentAsin,
                     ProductCategory = item.EcommerceProductCategory,
                     FullDescription = item.EcommerceProductDescription,
                     ProductSubcategory = item.EcommerceProductSubcategory,
@@ -791,6 +792,7 @@ namespace Odin.Data
                 APackageHeight = item.EcommercePackageHeight,
                 APackageWidth = item.EcommercePackageWidth,
                 APageQty = item.EcommercePageQty,
+                AParentAsin = item.EcommerceParentAsin,
                 APackageWeight = item.EcommercePackageWeight,
                 AProductCategory = item.EcommerceProductCategory,
                 AProductDescription = item.EcommerceProductDescription,
@@ -1609,6 +1611,7 @@ namespace Odin.Data
                         EcommercePackageWeight = (odinItem.EcommercePackageWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommercePackageWeight).Trim(), 1) : "",
                         EcommercePackageWidth = (odinItem.EcommercePackageWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommercePackageWidth).Trim(), 1) : "",
                         EcommercePageQty = (!string.IsNullOrEmpty(Convert.ToString(odinItem.EcommercePageCount))) ? Convert.ToString(odinItem.EcommercePageCount).Trim() : "",
+                        EcommerceParentAsin = (!string.IsNullOrEmpty(odinItem.EcommerceParentAsin)) ? odinItem.EcommerceParentAsin.Trim() : "",
                         EcommerceProductCategory = (!string.IsNullOrEmpty(odinItem.EcommerceProductCategory)) ? odinItem.EcommerceProductCategory.Trim() : "",
                         EcommerceProductDescription = (!string.IsNullOrEmpty(odinItem.EcommerceFullDescription)) ? odinItem.EcommerceFullDescription.Trim() : "",
                         EcommerceProductSubcategory = (!string.IsNullOrEmpty(odinItem.EcommerceProductSubcategory)) ? odinItem.EcommerceProductSubcategory.Trim() : "",
@@ -1930,6 +1933,7 @@ namespace Odin.Data
                     item.EcommercePackageWeight = odinItemUpdateRecord.APackageWeight;
                     item.EcommercePackageWidth = odinItemUpdateRecord.APackageWidth;
                     item.EcommercePageQty = odinItemUpdateRecord.APageQty;
+                    item.EcommerceParentAsin = odinItemUpdateRecord.AParentAsin;
                     item.EcommerceComponents = odinItemUpdateRecord.AComponents;
 
                     item.UserName = odinItemUpdateRecord.Username;
@@ -2170,6 +2174,7 @@ namespace Odin.Data
                 amazonItemAttributes.PackageWeight = Convert.ToDecimal(packageWeight);
                 amazonItemAttributes.PackageWidth = Convert.ToDecimal(packageWidth);
                 amazonItemAttributes.PageCount = Convert.ToInt16(pageQty);
+                amazonItemAttributes.ParentAsin = item.EcommerceParentAsin;
                 amazonItemAttributes.ProductCategory = item.EcommerceProductCategory;
                 amazonItemAttributes.FullDescription = item.EcommerceProductDescription;
                 amazonItemAttributes.ProductSubcategory = item.EcommerceProductSubcategory;

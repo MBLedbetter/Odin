@@ -2092,8 +2092,8 @@ namespace Odin.Services.Tests
             Assert.IsFalse(item.EcommerceManufacturerNameUpdate);
             Assert.IsFalse(item.EcommerceMsrpUpdate);
             Assert.IsFalse(item.EcommerceGenericKeywordsUpdate);
-            Assert.IsFalse(item.Ecommere_SizeUpdate);
-            Assert.IsFalse(item.Ecommere_UpcUpdate);
+            Assert.IsFalse(item.EcommerceSizeUpdate);
+            Assert.IsFalse(item.EcommerceUpcUpdate);
 
             #endregion // Assert
         }

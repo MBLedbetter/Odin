@@ -930,7 +930,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             bool Acommerce_ManufacturerNameUpdate2 = item.EcommerceManufacturerNameUpdate;
             bool Acommerce_MsrpUpdate2 = item.EcommerceMsrpUpdate;
             bool Acommerce_SearchTermsUpdate2 = item.EcommerceGenericKeywordsUpdate;
-            bool Acommerce_SizeUpdate2 = item.Ecommere_SizeUpdate;
+            bool Acommerce_SizeUpdate2 = item.EcommerceSizeUpdate;
             bool AccountingGroupUpdate2 = item.AccountingGroupUpdate;
             bool BillOfMaterialsUpdate2 = item.BillOfMaterialsUpdate;
             bool CasepackHeightUpdate2 = item.CasepackHeightUpdate;
@@ -1275,7 +1275,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             bool Acommerce_ManufacturerNameUpdate1 = item.EcommerceManufacturerNameUpdate;
             bool Acommerce_MsrpUpdate1 = item.EcommerceMsrpUpdate;
             bool Acommerce_SearchTermsUpdate1 = item.EcommerceGenericKeywordsUpdate;
-            bool Acommerce_SizeUpdate1 = item.Ecommere_SizeUpdate;
+            bool Acommerce_SizeUpdate1 = item.EcommerceSizeUpdate;
             bool AccountingGroupUpdate1 = item.AccountingGroupUpdate;
             bool BillOfMaterialsUpdate1 = item.BillOfMaterialsUpdate;
             bool CasepackHeightUpdate1 = item.CasepackHeightUpdate;
@@ -1478,7 +1478,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             bool Acommerce_ManufacturerNameUpdate2 = item.EcommerceManufacturerNameUpdate;
             bool Acommerce_MsrpUpdate2 = item.EcommerceMsrpUpdate;
             bool Acommerce_SearchTermsUpdate2 = item.EcommerceGenericKeywordsUpdate;
-            bool Acommerce_SizeUpdate2 = item.Ecommere_SizeUpdate;
+            bool Acommerce_SizeUpdate2 = item.EcommerceSizeUpdate;
             bool AccountingGroupUpdate2 = item.AccountingGroupUpdate;
             bool BillOfMaterialsUpdate2 = item.BillOfMaterialsUpdate;
             bool CasepackHeightUpdate2 = item.CasepackHeightUpdate;
