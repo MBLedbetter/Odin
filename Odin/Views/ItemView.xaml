@@ -95,7 +95,7 @@
                         Width="180" />
                     <!-- Bill of Materials -->
                     <Label
-                        Background="{Binding BillofMaterialsBoxColor}"
+                        Background="{Binding BillOfMaterialsBoxColor}"
                         Content="Bill of Materials"
                         Grid.Row="1"
                         Grid.Column="0"

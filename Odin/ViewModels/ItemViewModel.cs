@@ -8718,7 +8718,7 @@ namespace Odin.ViewModels
 
         private void AssignError(ItemError error)
         {
-            switch (error.VarName)
+            switch (error.VarName.Trim())
                 {
                     case "Accounting Group":
                         this.AccountingGroupError = error.ReturnErrorMessage();
@@ -8744,7 +8744,7 @@ namespace Odin.ViewModels
                         SetImages();
                         break;
 
-                    case "Bill Of Materials":
+                    case "Bill of Materials":
                         this.BillOfMaterialsError = error.ReturnErrorMessage();
                         break;
 

@@ -1497,13 +1497,11 @@ namespace Odin.Data
             GlobalData.ItemCategories = RetrieveItemCategories();
             GlobalData.ItemGroups = RetrieveItemGroups();
             GlobalData.ItemIds = RetrieveItemIds();
-            // GlobalData.ItemRecords = RetrieveItemRecords();
             GlobalData.Languages = RetrieveLanguages();
             GlobalData.Licenses = RetrieveLicenseList();
             GlobalData.MetaDescriptions = RetrieveMetaDescriptionList();
             GlobalData.ProductCategories = RetrieveProductCategories();
             GlobalData.ProductFormats = RetrieveProductFormatList();
-            // GlobalData.ProductFormatsFiltered = RetrieveProductFormatList();
             GlobalData.ProductGoups = RetrieveProductGroupList();
             GlobalData.ProductLines = RetrieveProductLines();
             GlobalData.Properties = RetrieveProperties();
