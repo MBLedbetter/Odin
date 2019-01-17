@@ -2337,7 +2337,7 @@ namespace OdinServices
             result += ","; /* color */
             result += ","; /* cost */
             result += ","; /* country_of_manufacture */
-            if (requestType == "Add")
+            if (item.OnSite == "Y")
             {
                 result += "\"" + newdate + "\","; /* created_at */
             }
@@ -2360,7 +2360,7 @@ namespace OdinServices
             result += "\"Use config\","; /* msrp_display_actual_price_type */
             result += "\"Use config\","; /* msrp_enabled */
             result += "\"" + title.Trim() + "\","; /* name */
-            if (requestType == "Add")
+            if (item.OnSite == "Y")
             {
                 result += "\"" + DateTime.Today.ToString() + "\","; /* date_added */
                 result += "\"" + DateTime.Today.ToString() + "\","; /* news_from_date */
@@ -2430,7 +2430,7 @@ namespace OdinServices
             string website = string.Empty;
             string msrp = string.Empty;
             string price = string.Empty;
-             if (territory == "CAN")
+            if (territory == "CAN")
             {
                 store = "\"can_view\","; /* "_store" */
                 website = "\"can_website\","; /* _product_websites */

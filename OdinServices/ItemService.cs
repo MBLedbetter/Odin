@@ -1557,7 +1557,7 @@ namespace OdinServices
                 if (GlobalData.TemplateNames.Contains(template.TemplateId))
                 {
                     newTemplates.Add(CompleteTemplate(template));
-                    foreach (ItemError error in ValidateAllTemplate(template, "Add"))
+                    foreach (ItemError error in ValidateAllTemplate(template, "Update"))
                     {
                         errors.Add(error.ReturnErrorMessage());
                     }
@@ -1574,10 +1574,10 @@ namespace OdinServices
                     }
                     else
                     {
-                        string errorMessage = "The spreadsheet contains a template Id odin does not recognized.";
+                        string errorMessage = "The spreadsheet contains a template Id that Odin does not recognize : " + template.TemplateId;
                         if (!errors.Contains(errorMessage))
                         {
-                            errors.Add("The spreadsheet contains a template Id odin does not recognized.");
+                            errors.Add(errorMessage);
                         }                        
                     }
                 }
