@@ -2360,7 +2360,7 @@ namespace OdinServices
             result += "\"Use config\","; /* msrp_display_actual_price_type */
             result += "\"Use config\","; /* msrp_enabled */
             result += "\"" + title.Trim() + "\","; /* name */
-            if (item.OnSite == "Y")
+            if (item.OnSite == "N")
             {
                 result += "\"" + DateTime.Today.ToString() + "\","; /* date_added */
                 result += "\"" + DateTime.Today.ToString() + "\","; /* news_from_date */
