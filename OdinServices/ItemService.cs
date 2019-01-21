@@ -2037,7 +2037,7 @@ namespace OdinServices
             {
                 if (var.SellOnTrends != "Y")
                 {
-                    ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, "Sell On Trends must be set to Y before item can be submitted to the web.", ""));
+                    ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, "Sell On Trends must be set to Y before item can be submitted to the web.", "Sell On Trends"));
                     return ErrorList;
                 }
             }

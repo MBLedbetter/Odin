@@ -37,7 +37,7 @@ namespace OdinModels
                 }
                 _accountingGroup = value;
                 OnPropertyChanged("AccountingGroup");
-                
+
 
             }
         }
@@ -113,9 +113,9 @@ namespace OdinModels
                 this.EcommerceImagePath4 = CreateEcommerceImageUrl(value);
                 _altImageFile3 = value;
                 OnPropertyChanged
-                
+
                     ("AltImageFile3");
-                
+
             }
         }
         private string _altImageFile3 = string.Empty;
@@ -135,9 +135,9 @@ namespace OdinModels
                 this.EcommerceImagePath5 = CreateEcommerceImageUrl(value);
                 _altImageFile4 = value;
                 OnPropertyChanged
-                
+
                     ("AltImageFile4");
-                
+
             }
         }
         private string _altImageFile4 = string.Empty;
@@ -157,9 +157,9 @@ namespace OdinModels
                 _billOfMaterials = value;
                 BillOfMaterialsString = ReturnBillOfMaterials();
                 OnPropertyChanged
-                
+
                     ("BillOfMaterials");
-                
+
             }
         }
         private List<ChildElement> _billOfMaterials = new List<ChildElement>();
@@ -177,9 +177,9 @@ namespace OdinModels
             {
                 _billOfMaterialsString = value;
                 OnPropertyChanged
-                
+
                     ("BillOfMaterialsString");
-                
+
             }
         }
         private string _billOfMaterialsString = string.Empty;
@@ -198,9 +198,9 @@ namespace OdinModels
                 if (_casepackHeight != value) { CasepackHeightUpdate = true; }
                 _casepackHeight = value;
                 OnPropertyChanged
-                
+
                     ("CasepackHeight");
-               
+
             }
         }
         private string _casepackHeight = string.Empty;
@@ -219,10 +219,10 @@ namespace OdinModels
                 if (_casepackLength != value) { CasepackLengthUpdate = true; }
                 _casepackLength = value;
                 OnPropertyChanged
-                
+
                     ("CasepackLength")
                     ;
-                
+
             }
         }
         private string _casepackLength = string.Empty;
@@ -240,7 +240,7 @@ namespace OdinModels
             {
                 if (_casepackQty != value) { CasepackQtyUpdate = true; }
                 _casepackQty = value;
-                OnPropertyChanged("CasepackQty");                
+                OnPropertyChanged("CasepackQty");
             }
         }
         private string _casepackQty = string.Empty;
@@ -258,7 +258,7 @@ namespace OdinModels
             {
                 if (_casepackUpc != value) { CasepackUpcUpdate = true; }
                 _casepackUpc = value;
-                OnPropertyChanged("CasepackUpc");                
+                OnPropertyChanged("CasepackUpc");
             }
         }
         private string _casepackUpc = string.Empty;
@@ -277,9 +277,9 @@ namespace OdinModels
                 if (_casepackWidth != value) { CasepackWidthUpdate = true; }
                 _casepackWidth = value;
                 OnPropertyChanged
-                
+
                     ("CasepackWidth");
-                
+
             }
         }
         private string _casepackWidth = string.Empty;
@@ -298,11 +298,11 @@ namespace OdinModels
                 if (_casepackWeight != value) { CasepackWeightUpdate = true; }
                 _casepackWeight = value;
                 OnPropertyChanged("CasepackWeight");
-                
+
             }
         }
         private string _casepackWeight = string.Empty;
-        
+
         /// <summary>
         ///     Gets or sets the Category
         /// </summary>
@@ -317,9 +317,9 @@ namespace OdinModels
                 if (_category != value) { CategoryUpdate = true; }
                 _category = value;
                 OnPropertyChanged
-                
+
                     ("Category");
-                
+
             }
         }
         private string _category = string.Empty;
@@ -338,9 +338,9 @@ namespace OdinModels
                 if (_category2 != value) { Category2Update = true; }
                 _category2 = value;
                 OnPropertyChanged
-                
+
                     ("Category2");
-                
+
             }
         }
         private string _category2 = string.Empty;
@@ -359,9 +359,9 @@ namespace OdinModels
                 if (_category3 != value) { Category3Update = true; }
                 _category3 = value;
                 OnPropertyChanged
-                
+
                     ("Category3");
-                
+
             }
         }
         private string _category3 = string.Empty;
@@ -380,13 +380,13 @@ namespace OdinModels
                 if (_color != value) { ColorUpdate = true; }
                 _color = value;
                 OnPropertyChanged
-                
+
                     ("Color");
-                
+
             }
         }
         private string _color = string.Empty;
-        
+
         /// <summary>
         ///     Gets or sets the CombinedCategories
         /// </summary>
@@ -400,9 +400,9 @@ namespace OdinModels
             {
                 _combinedCategories = value;
                 OnPropertyChanged
-                
+
                     ("CombinedCategories");
-                
+
             }
         }
         private string _combinedCategories = string.Empty;
@@ -421,9 +421,9 @@ namespace OdinModels
                 if (_copyright != value) { CopyrightUpdate = true; }
                 _copyright = value;
                 OnPropertyChanged
-                
+
                     ("Copyright");
-                
+
             }
         }
         private string _copyright = string.Empty;
@@ -441,7 +441,7 @@ namespace OdinModels
             {
                 if (_costProfileGroup != value) { CostProfileGroupUpdate = true; }
                 _costProfileGroup = value;
-                OnPropertyChanged("CostProfileGroup");                
+                OnPropertyChanged("CostProfileGroup");
             }
         }
         private string _costProfileGroup = string.Empty;
@@ -459,7 +459,7 @@ namespace OdinModels
             {
                 if (_countryOfOrigin != value) { CountryOfOriginUpdate = true; }
                 _countryOfOrigin = value;
-                OnPropertyChanged("CountryOfOrigin");                
+                OnPropertyChanged("CountryOfOrigin");
             }
         }
         private string _countryOfOrigin = string.Empty;
@@ -478,7 +478,7 @@ namespace OdinModels
                 if (_defaultActualCostCad != value) { DefaultActualCostCadUpdate = true; }
                 _defaultActualCostCad = value;
                 OnPropertyChanged("DefaultActualCostCad");
-                
+
             }
         }
         private string _defaultActualCostCad = string.Empty;
@@ -497,9 +497,9 @@ namespace OdinModels
                 if (_defaultActualCostUsd != value) { DefaultActualCostUsdUpdate = true; }
                 _defaultActualCostUsd = value;
                 OnPropertyChanged
-                
+
                     ("DefaultActualCostUsd");
-                
+
             }
         }
         private string _defaultActualCostUsd = string.Empty;
@@ -518,9 +518,9 @@ namespace OdinModels
                 if (_description != value) { DescriptionUpdate = true; }
                 _description = value;
                 OnPropertyChanged
-                
+
                     ("Description");
-                
+
             }
         }
         private string _description = string.Empty;
@@ -539,9 +539,9 @@ namespace OdinModels
                 if (_directImport != value) { DirectImportUpdate = true; }
                 _directImport = value;
                 OnPropertyChanged
-                
+
                     ("DirectImport");
-                
+
             }
         }
         private string _directImport = string.Empty;
@@ -560,9 +560,9 @@ namespace OdinModels
                 if (_duty != value) { DutyUpdate = true; }
                 _duty = value;
                 OnPropertyChanged
-                
+
                     ("Duty");
-                
+
             }
         }
         private string _duty = string.Empty;
@@ -581,13 +581,13 @@ namespace OdinModels
                 if (_ean != value) { EanUpdate = true; }
                 _ean = value;
                 OnPropertyChanged
-                
+
                     ("Ean");
-                
+
             }
         }
         private string _ean = string.Empty;
-        
+
         /// <summary>
         ///     Gets or sets the EcommerceAsin
         /// </summary>
@@ -602,9 +602,9 @@ namespace OdinModels
                 if (_ecommerceasin != value) { EcommerceAsinUpdate = true; }
                 _ecommerceasin = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceAsin");
-                
+
             }
         }
         private string _ecommerceasin = string.Empty;
@@ -623,9 +623,9 @@ namespace OdinModels
                 if (_ecommercebullet1 != value) { EcommerceBullet1Update = true; }
                 _ecommercebullet1 = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceBullet1");
-                
+
             }
         }
         private string _ecommercebullet1 = string.Empty;
@@ -644,9 +644,9 @@ namespace OdinModels
                 if (_ecommercebullet2 != value) { EcommerceBullet2Update = true; }
                 _ecommercebullet2 = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceBullet2");
-                
+
             }
         }
         private string _ecommercebullet2 = string.Empty;
@@ -665,10 +665,10 @@ namespace OdinModels
                 if (_ecommercebullet3 != value) { EcommerceBullet3Update = true; }
                 _ecommercebullet3 = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceBullet3");
-                }
-            
+            }
+
         }
         private string _ecommercebullet3 = string.Empty;
 
@@ -685,8 +685,8 @@ namespace OdinModels
             {
                 if (_ecommercebullet4 != value) { EcommerceBullet4Update = true; }
                 _ecommercebullet4 = value;
-                OnPropertyChanged ("EcommerceBullet4");
-                
+                OnPropertyChanged("EcommerceBullet4");
+
             }
         }
         private string _ecommercebullet4 = string.Empty;
@@ -705,7 +705,7 @@ namespace OdinModels
                 if (_ecommercebullet5 != value) { EcommerceBullet5Update = true; }
                 _ecommercebullet5 = value;
                 OnPropertyChanged("EcommerceBullet5");
-                
+
             }
         }
         private string _ecommercebullet5 = string.Empty;
@@ -724,9 +724,9 @@ namespace OdinModels
                 if (_ecommercecomponents != value) { EcommerceComponentsUpdate = true; }
                 _ecommercecomponents = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceComponents");
-                
+
             }
         }
         private string _ecommercecomponents = string.Empty;
@@ -745,9 +745,9 @@ namespace OdinModels
                 if (_ecommercecost != value) { EcommerceCostUpdate = true; }
                 _ecommercecost = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceCost");
-                
+
             }
         }
         private string _ecommercecost = string.Empty;
@@ -766,9 +766,9 @@ namespace OdinModels
                 if (_ecommercecountryofOrigin != value) { EcommerceCountryofOriginUpdate = true; }
                 _ecommercecountryofOrigin = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceCountryofOrigin");
-                
+
             }
         }
         private string _ecommercecountryofOrigin = string.Empty;
@@ -787,9 +787,9 @@ namespace OdinModels
                 if (_ecommerceexternalID != value) { EcommerceExternalIdUpdate = true; }
                 _ecommerceexternalID = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceExternalId");
-                
+
             }
         }
         private string _ecommerceexternalID = string.Empty;
@@ -808,9 +808,9 @@ namespace OdinModels
                 if (_ecommerceexternalIdType != value) { EcommerceExternalIdTypeUpdate = true; }
                 _ecommerceexternalIdType = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceExternalIdType");
-                
+
             }
         }
         private string _ecommerceexternalIdType = string.Empty;
@@ -829,9 +829,9 @@ namespace OdinModels
                 if (_genericKeywords != value) { EcommerceGenericKeywordsUpdate = true; }
                 _genericKeywords = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceGenericKeywords");
-                
+
             }
         }
         private string _genericKeywords = string.Empty;
@@ -849,9 +849,9 @@ namespace OdinModels
             {
                 if (_ecommerceimagePath1 != value) { EcommerceImagePath1Update = true; }
                 _ecommerceimagePath1 = value;
-                OnPropertyChanged                
+                OnPropertyChanged
                     ("EcommerceImagePath1");
-                
+
             }
         }
         private string _ecommerceimagePath1 = string.Empty;
@@ -870,9 +870,9 @@ namespace OdinModels
                 if (_ecommerceimagePath2 != value) { EcommerceImagePath2Update = true; }
                 _ecommerceimagePath2 = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceImagePath2");
-                
+
             }
         }
         private string _ecommerceimagePath2 = string.Empty;
@@ -890,9 +890,9 @@ namespace OdinModels
             {
                 if (_ecommerceimagePath3 != value) { EcommerceImagePath3Update = true; }
                 _ecommerceimagePath3 = value;
-                OnPropertyChanged                
+                OnPropertyChanged
                     ("EcommerceImagePath3");
-                
+
             }
         }
         private string _ecommerceimagePath3 = string.Empty;
@@ -911,9 +911,9 @@ namespace OdinModels
                 if (_ecommerceimagePath4 != value) { EcommerceImagePath4Update = true; }
                 _ecommerceimagePath4 = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceImagePath4");
-                
+
             }
         }
         private string _ecommerceimagePath4 = string.Empty;
@@ -931,9 +931,9 @@ namespace OdinModels
             {
                 if (_ecommerceimagePath5 != value) { EcommerceImagePath5Update = true; }
                 _ecommerceimagePath5 = value;
-                OnPropertyChanged                
+                OnPropertyChanged
                     ("EcommerceImagePath5");
-                
+
             }
         }
         private string _ecommerceimagePath5 = string.Empty;
@@ -951,9 +951,9 @@ namespace OdinModels
             {
                 if (_ecommerceitemHeight != value) { EcommerceItemHeightUpdate = true; }
                 _ecommerceitemHeight = value;
-                OnPropertyChanged                
+                OnPropertyChanged
                     ("EcommerceItemHeight");
-                
+
             }
         }
         private string _ecommerceitemHeight = string.Empty;
@@ -972,9 +972,9 @@ namespace OdinModels
                 if (_ecommerceitemLength != value) { EcommerceItemLengthUpdate = true; }
                 _ecommerceitemLength = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceItemLength");
-                
+
             }
         }
         private string _ecommerceitemLength = string.Empty;
@@ -992,9 +992,9 @@ namespace OdinModels
             {
                 if (_ecommerceitemName != value) { EcommerceItemNameUpdate = true; }
                 _ecommerceitemName = value;
-                OnPropertyChanged                
+                OnPropertyChanged
                     ("EcommerceItemName");
-                
+
             }
         }
         private string _ecommerceitemName = string.Empty;
@@ -1013,9 +1013,9 @@ namespace OdinModels
                 if (_ecommerceitemWeight != value) { EcommerceItemWeightUpdate = true; }
                 _ecommerceitemWeight = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceItemWeight");
-                
+
             }
         }
         private string _ecommerceitemWeight = string.Empty;
@@ -1034,9 +1034,9 @@ namespace OdinModels
                 if (_ecommerceitemWidth != value) { EcommerceItemWidthUpdate = true; }
                 _ecommerceitemWidth = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceItemWidth");
-                
+
             }
         }
         private string _ecommerceitemWidth = string.Empty;
@@ -1055,9 +1055,9 @@ namespace OdinModels
                 if (_ecommercemodelName != value) { EcommerceModelNameUpdate = true; }
                 _ecommercemodelName = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceModelName");
-                
+
             }
         }
         private string _ecommercemodelName = string.Empty;
@@ -1076,9 +1076,9 @@ namespace OdinModels
                 if (_ecommercepackageHeight != value) { EcommercePackageHeightUpdate = true; }
                 _ecommercepackageHeight = value;
                 OnPropertyChanged
-                
+
                     ("EcommercePackageHeight");
-                
+
             }
         }
         private string _ecommercepackageHeight = string.Empty;
@@ -1097,9 +1097,9 @@ namespace OdinModels
                 if (_ecommercepackageLength != value) { EcommercePackageLengthUpdate = true; }
                 _ecommercepackageLength = value;
                 OnPropertyChanged
-                
+
                     ("EcommercePackageLength");
-                
+
             }
         }
         private string _ecommercepackageLength = string.Empty;
@@ -1118,9 +1118,9 @@ namespace OdinModels
                 if (_ecommercepackageWeight != value) { EcommercePackageWeightUpdate = true; }
                 _ecommercepackageWeight = value;
                 OnPropertyChanged
-                
+
                     ("EcommercePackageWeight");
-                
+
             }
         }
         private string _ecommercepackageWeight = string.Empty;
@@ -1139,9 +1139,9 @@ namespace OdinModels
                 if (_ecommercepackageWidth != value) { EcommercePackageWidthUpdate = true; }
                 _ecommercepackageWidth = value;
                 OnPropertyChanged
-                
+
                     ("EcommercePackageWidth");
-                
+
             }
         }
         private string _ecommercepackageWidth = string.Empty;
@@ -1160,9 +1160,9 @@ namespace OdinModels
                 if (_ecommercepageQty != value) { EcommercePageQtyUpdate = true; }
                 _ecommercepageQty = value;
                 OnPropertyChanged
-                
+
                     ("EcommercePageQty");
-                
+
             }
         }
         private string _ecommercepageQty = string.Empty;
@@ -1181,9 +1181,9 @@ namespace OdinModels
                 if (_ecommerceproductCategory != value) { EcommerceProductCategoryUpdate = true; }
                 _ecommerceproductCategory = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceProductCategory");
-                
+
             }
         }
         private string _ecommerceproductCategory = string.Empty;
@@ -1202,9 +1202,9 @@ namespace OdinModels
                 if (_ecommerceproductDescription != value) { EcommerceProductDescriptionUpdate = true; }
                 _ecommerceproductDescription = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceProductDescription");
-                
+
             }
         }
         private string _ecommerceproductDescription = string.Empty;
@@ -1223,9 +1223,9 @@ namespace OdinModels
                 if (_ecommerceproductSubcategory != value) { EcommerceProductSubcategoryUpdate = true; }
                 _ecommerceproductSubcategory = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceProductSubcategory");
-                
+
             }
         }
         private string _ecommerceproductSubcategory = string.Empty;
@@ -1244,9 +1244,9 @@ namespace OdinModels
                 if (_ecommercemanufacturerName != value) { EcommerceManufacturerNameUpdate = true; }
                 _ecommercemanufacturerName = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceManufacturerName");
-                
+
             }
         }
         private string _ecommercemanufacturerName = string.Empty;
@@ -1265,9 +1265,9 @@ namespace OdinModels
                 if (_ecommercemsrp != value) { EcommerceMsrpUpdate = true; }
                 _ecommercemsrp = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceMsrp");
-                
+
             }
         }
         private string _ecommercemsrp = string.Empty;
@@ -1286,9 +1286,9 @@ namespace OdinModels
                 if (_ecommercesize != value) { Ecommere_SizeUpdate = true; }
                 _ecommercesize = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceSize");
-                
+
             }
         }
         private string _ecommercesize = string.Empty;
@@ -1307,9 +1307,9 @@ namespace OdinModels
                 if (_subjectKeywords != value) { EcommerceSubjectKeywordsUpdate = true; }
                 _subjectKeywords = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceSubjectKeywords");
-                
+
             }
         }
         private string _subjectKeywords = string.Empty;
@@ -1328,9 +1328,9 @@ namespace OdinModels
                 if (_ecommerceupc != value) { Ecommere_UpcUpdate = true; }
                 _ecommerceupc = value;
                 OnPropertyChanged
-                
+
                     ("EcommerceUpc");
-                
+
             }
         }
         private string _ecommerceupc = string.Empty;
@@ -1349,7 +1349,7 @@ namespace OdinModels
                 if (_gpc != value) { GpcUpdate = true; }
                 _gpc = value;
                 OnPropertyChanged("Gpc");
-                
+
             }
         }
         private string _gpc = string.Empty;
@@ -1369,7 +1369,7 @@ namespace OdinModels
                 _height = value;
                 OnPropertyChanged
                     ("Height");
-                
+
             }
         }
         private string _height = string.Empty;
@@ -1389,7 +1389,7 @@ namespace OdinModels
                 this.EcommerceImagePath1 = CreateEcommerceImageUrl(value);
                 _imagePath = value;
                 OnPropertyChanged("ImagePath");
-                
+
             }
         }
         private string _imagePath = string.Empty;
@@ -1409,7 +1409,7 @@ namespace OdinModels
                 _innerpackHeight = value;
                 OnPropertyChanged
                     ("InnerpackHeight");
-                
+
             }
         }
         private string _innerpackHeight = string.Empty;
@@ -1428,9 +1428,9 @@ namespace OdinModels
                 if (_innerpackLength != value) { InnerpackLengthUpdate = true; }
                 _innerpackLength = value;
                 OnPropertyChanged
-                
+
                     ("InnerpackLength");
-                
+
             }
         }
         private string _innerpackLength = string.Empty;
@@ -1450,7 +1450,7 @@ namespace OdinModels
                 _innerpackQuantity = value;
                 OnPropertyChanged
                     ("InnerpackQuantity");
-                
+
             }
         }
         private string _innerpackQuantity = string.Empty;
@@ -1469,9 +1469,9 @@ namespace OdinModels
                 if (_innerpackUpc != value) { InnerpackUpcUpdate = true; }
                 _innerpackUpc = value;
                 OnPropertyChanged
-                
+
                     ("InnerpackUpc");
-                
+
             }
         }
         private string _innerpackUpc = string.Empty;
@@ -1490,9 +1490,9 @@ namespace OdinModels
                 if (_innerpackWidth != value) { InnerpackWidthUpdate = true; }
                 _innerpackWidth = value;
                 OnPropertyChanged
-                
+
                     ("InnerpackWidth");
-                
+
             }
         }
         private string _innerpackWidth = string.Empty;
@@ -1511,9 +1511,9 @@ namespace OdinModels
                 if (_innerpackWeight != value) { InnerpackWeightUpdate = true; }
                 _innerpackWeight = value;
                 OnPropertyChanged
-                
+
                     ("InnerpackWeight");
-                
+
             }
         }
         private string _innerpackWeight = string.Empty;
@@ -1531,9 +1531,9 @@ namespace OdinModels
             {
                 if (_inStockDate != value) { InStockDateUpdate = true; }
                 _inStockDate = value;
-                OnPropertyChanged                
+                OnPropertyChanged
                     ("InStockDate");
-                
+
             }
         }
         private string _inStockDate = string.Empty;
@@ -1552,9 +1552,9 @@ namespace OdinModels
                 if (_isbn != value) { IsbnUpdate = true; }
                 _isbn = value;
                 OnPropertyChanged
-                
+
                     ("Isbn");
-                
+
             }
         }
         private string _isbn = string.Empty;
@@ -1572,9 +1572,9 @@ namespace OdinModels
             {
                 if (_itemCategory != value) { ItemCategoryUpdate = true; }
                 _itemCategory = value;
-                OnPropertyChanged                
+                OnPropertyChanged
                     ("ItemCategory");
-                
+
             }
         }
         private string _itemCategory = string.Empty;
@@ -1593,9 +1593,9 @@ namespace OdinModels
                 if (_itemFamily != value) { ItemFamilyUpdate = true; }
                 _itemFamily = value;
                 OnPropertyChanged
-                
+
                     ("ItemFamily");
-                
+
             }
         }
         private string _itemFamily = string.Empty;
@@ -1613,9 +1613,9 @@ namespace OdinModels
             {
                 if (_itemGroup != value) { ItemGroupUpdate = true; }
                 _itemGroup = value;
-                OnPropertyChanged                
+                OnPropertyChanged
                     ("ItemGroup");
-                
+
             }
         }
         private string _itemGroup = string.Empty;
@@ -1633,9 +1633,9 @@ namespace OdinModels
             {
                 _itemId = value;
                 OnPropertyChanged
-                
+
                     ("ItemId");
-                
+
             }
         }
         private string _itemId = string.Empty;
@@ -1654,9 +1654,9 @@ namespace OdinModels
                 if (_itemKeywords != value) { ItemKeywordsUpdate = true; }
                 _itemKeywords = value;
                 OnPropertyChanged
-                
+
                     ("ItemKeywords");
-                
+
             }
         }
         private string _itemKeywords = string.Empty;
@@ -1675,9 +1675,9 @@ namespace OdinModels
                 if (_language != value) { LanguageUpdate = true; }
                 _language = value;
                 OnPropertyChanged
-                
+
                     ("Language");
-                
+
             }
         }
         private string _language = string.Empty;
@@ -1696,13 +1696,13 @@ namespace OdinModels
                 if (_length != value) { LengthUpdate = true; }
                 _length = value;
                 OnPropertyChanged
-                
+
                     ("Length");
-                
+
             }
         }
         private string _length = string.Empty;
-        
+
         /// <summary>
         ///     Gets or sets the License
         /// </summary>
@@ -1717,9 +1717,9 @@ namespace OdinModels
                 if (_license != value) { LicenseUpdate = true; }
                 _license = value;
                 OnPropertyChanged
-                
+
                     ("License");
-                
+
             }
         }
         private string _license = string.Empty;
@@ -1738,9 +1738,9 @@ namespace OdinModels
                 if (_licenseBeginDate != value) { LicenseBeginDateUpdate = true; }
                 _licenseBeginDate = value;
                 OnPropertyChanged
-                
+
                     ("LicenseBeginDate");
-                
+
             }
         }
         private string _licenseBeginDate = string.Empty;
@@ -1759,9 +1759,9 @@ namespace OdinModels
                 if (_listPriceCad != value) { ListPriceCadUpdate = true; }
                 _listPriceCad = value;
                 OnPropertyChanged
-                
+
                     ("ListPriceCad");
-                
+
             }
         }
         private string _listPriceCad = string.Empty;
@@ -1779,9 +1779,9 @@ namespace OdinModels
             {
                 if (_listPriceMxn != value) { ListPriceMxnUpdate = true; }
                 _listPriceMxn = value;
-                OnPropertyChanged                
+                OnPropertyChanged
                     ("ListPriceMxn");
-                
+
             }
         }
         private string _listPriceMxn = string.Empty;
@@ -1799,7 +1799,7 @@ namespace OdinModels
             {
                 if (_listPriceUsd != value) { ListPriceUsdUpdate = true; }
                 _listPriceUsd = value;
-                OnPropertyChanged("ListPriceUsd");                
+                OnPropertyChanged("ListPriceUsd");
             }
         }
         private string _listPriceUsd = string.Empty;
@@ -1817,7 +1817,7 @@ namespace OdinModels
             {
                 if (_metaDescription != value) { MetaDescriptionUpdate = true; }
                 _metaDescription = value;
-                OnPropertyChanged("MetaDescription");                
+                OnPropertyChanged("MetaDescription");
             }
         }
         private string _metaDescription = string.Empty;
@@ -1853,7 +1853,7 @@ namespace OdinModels
             {
                 if (_msrp != value) { MsrpUpdate = true; }
                 _msrp = value;
-                OnPropertyChanged("Msrp");                
+                OnPropertyChanged("Msrp");
             }
         }
         private string _msrp = string.Empty;
@@ -1871,7 +1871,7 @@ namespace OdinModels
             {
                 if (_msrpCad != value) { MsrpCadUpdate = true; }
                 _msrpCad = value;
-                OnPropertyChanged("MsrpCad");                
+                OnPropertyChanged("MsrpCad");
             }
         }
         private string _msrpCad = string.Empty;
@@ -1889,7 +1889,7 @@ namespace OdinModels
             {
                 if (_msrpMxn != value) { MsrpMxnUpdate = true; }
                 _msrpMxn = value;
-                OnPropertyChanged("MsrpMxn");                
+                OnPropertyChanged("MsrpMxn");
             }
         }
         private string _msrpMxn = string.Empty;
@@ -1907,7 +1907,7 @@ namespace OdinModels
             set
             {
                 _onSite = value;
-                OnPropertyChanged("OnSite");                
+                OnPropertyChanged("OnSite");
             }
         }
         private string _onSite = string.Empty;
@@ -1925,7 +1925,7 @@ namespace OdinModels
             {
                 if (_pricingGroup != value) { PricingGroupUpdate = true; }
                 _pricingGroup = value;
-                OnPropertyChanged("PricingGroup");                
+                OnPropertyChanged("PricingGroup");
             }
         }
         private string _pricingGroup = string.Empty;
@@ -1979,7 +1979,7 @@ namespace OdinModels
             {
                 if (_productGroup != value) { ProductGroupUpdate = true; }
                 _productGroup = value;
-                OnPropertyChanged ("ProductGroup");
+                OnPropertyChanged("ProductGroup");
             }
         }
         private string _productGroup = string.Empty;
@@ -2034,7 +2034,7 @@ namespace OdinModels
                 if (_productLine != value) { ProductLineUpdate = true; }
                 _productLine = value;
                 OnPropertyChanged("ProductLine");
-                            }
+            }
         }
         private string _productLine = string.Empty;
 
@@ -2053,7 +2053,7 @@ namespace OdinModels
                 _productQty = value;
 
                 OnPropertyChanged("ProductQty");
-                
+
             }
         }
         private string _productQty = string.Empty;
@@ -2072,7 +2072,7 @@ namespace OdinModels
                 if (_property != value) { PropertyUpdate = true; }
                 _property = value;
                 OnPropertyChanged("Property");
-                
+
             }
         }
         private string _property = string.Empty;
@@ -2091,7 +2091,7 @@ namespace OdinModels
                 if (_psStatus != value) { PsStatusUpdate = true; }
                 _psStatus = value;
                 OnPropertyChanged("PsStatus");
-                
+
             }
         }
         private string _psStatus = string.Empty;
@@ -2110,7 +2110,7 @@ namespace OdinModels
                 if (_satCode != value) { SatCodeUpdate = true; }
                 _satCode = value;
                 OnPropertyChanged("SatCode");
-                
+
             }
         }
         private string _satCode = string.Empty;
@@ -2129,7 +2129,7 @@ namespace OdinModels
                 if (_sellOnAttributes != value) { SellOnAttributesUpdate = true; }
                 _sellOnAttributes = value;
                 OnPropertyChanged("SellOnAttributes");
-                
+
             }
         }
         private List<string> _sellOnAttributes = new List<string>();
@@ -2147,7 +2147,7 @@ namespace OdinModels
             {
                 if (_sellOnAllPosters != value) { SellOnAllPostersUpdate = true; }
                 _sellOnAllPosters = value;
-                OnPropertyChanged("SellOnAllPosters");                
+                OnPropertyChanged("SellOnAllPosters");
             }
         }
         private string _sellOnAllPosters = "";
@@ -2164,10 +2164,10 @@ namespace OdinModels
             set
             {
                 if (_sellOnAmazon != value) { SellOnAmazonUpdate = true; }
-                _sellOnAmazon = value;                
+                _sellOnAmazon = value;
                 OnPropertyChanged("SellOnAmazon");
-                }
-            }        
+            }
+        }
         private string _sellOnAmazon = "";
 
         /// <summary>
@@ -2183,11 +2183,11 @@ namespace OdinModels
             {
                 if (_sellOnAmazonSellerCentral != value) { SellOnAmazonSellerCentralUpdate = true; }
                 _sellOnAmazonSellerCentral = value;
-                OnPropertyChanged("SellOnAmazonSellerCentral");                
+                OnPropertyChanged("SellOnAmazonSellerCentral");
             }
         }
         private string _sellOnAmazonSellerCentral = "";
-        
+
         /// <summary>
         ///     Gets or sets the SellOnEcommerce field
         /// </summary>
@@ -2201,7 +2201,7 @@ namespace OdinModels
             {
                 if (_sellOnEcommerce != value) { SellOnEcommerceUpdate = true; }
                 _sellOnEcommerce = value;
-                OnPropertyChanged("SellOnEcommerce");                
+                OnPropertyChanged("SellOnEcommerce");
             }
         }
         private string _sellOnEcommerce = "";
@@ -2237,7 +2237,7 @@ namespace OdinModels
             {
                 if (_sellOnGuitarCenter != value) { SellOnGuitarCenterUpdate = true; }
                 _sellOnGuitarCenter = value;
-                OnPropertyChanged("SellOnGuitarCenter");                
+                OnPropertyChanged("SellOnGuitarCenter");
             }
         }
         private string _sellOnGuitarCenter = "";
@@ -2256,7 +2256,7 @@ namespace OdinModels
                 if (_sellOnHayneedle != value) { SellOnHayneedleUpdate = true; }
                 _sellOnHayneedle = value;
                 OnPropertyChanged("SellOnHayneedle");
-                            }
+            }
         }
         private string _sellOnHayneedle = "";
 
@@ -2274,7 +2274,7 @@ namespace OdinModels
                 if (_sellOnTarget != value) { SellOnTargetUpdate = true; }
                 _sellOnTarget = value;
                 OnPropertyChanged("SellOnTarget");
-                
+
             }
         }
         private string _sellOnTarget = "";
@@ -2292,7 +2292,7 @@ namespace OdinModels
             {
                 if (_sellOnTrends != value) { SellOnTrendsUpdate = true; }
                 _sellOnTrends = value;
-                OnPropertyChanged("SellOnTrends");                
+                OnPropertyChanged("SellOnTrends");
             }
         }
         private string _sellOnTrends = "";
@@ -2311,7 +2311,7 @@ namespace OdinModels
                 if (_sellOnWalmart != value) { SellOnWalmartUpdate = true; }
                 _sellOnWalmart = value;
                 OnPropertyChanged("SellOnWalmart");
-                
+
             }
         }
         private string _sellOnWalmart = "";
@@ -2330,7 +2330,7 @@ namespace OdinModels
                 if (_sellOnWayfair != value) { SellOnWayfairUpdate = true; }
                 _sellOnWayfair = value;
                 OnPropertyChanged("SellOnWayfair");
-                
+
             }
         }
         private string _sellOnWayfair = "";
@@ -2348,8 +2348,8 @@ namespace OdinModels
             {
                 if (_shortDescription != value) { ShortDescriptionUpdate = true; }
                 _shortDescription = value;
-                OnPropertyChanged ("ShortDescription");
-                
+                OnPropertyChanged("ShortDescription");
+
             }
         }
         private string _shortDescription = string.Empty;
@@ -2368,7 +2368,7 @@ namespace OdinModels
                 if (_size != value) { SizeUpdate = true; }
                 _size = value;
                 OnPropertyChanged("Size");
-                
+
             }
         }
         private string _size = string.Empty;
@@ -2386,7 +2386,7 @@ namespace OdinModels
             {
                 if (_standardCost != value) { StandardCostUpdate = true; }
                 _standardCost = value;
-                OnPropertyChanged("StandardCost");                
+                OnPropertyChanged("StandardCost");
             }
         }
         private string _standardCost = string.Empty;
@@ -2404,8 +2404,8 @@ namespace OdinModels
             {
                 if (_statsCode != value) { StatsCodeUpdate = true; }
                 _statsCode = value;
-                 OnPropertyChanged("StatsCode");
-                
+                OnPropertyChanged("StatsCode");
+
             }
         }
         private string _statsCode = string.Empty;
@@ -2424,7 +2424,7 @@ namespace OdinModels
                 if (_tariffCode != value) { TariffCodeUpdate = true; }
                 _tariffCode = value;
                 OnPropertyChanged("TariffCode");
-                
+
             }
         }
         private string _tariffCode = string.Empty;
@@ -2463,11 +2463,11 @@ namespace OdinModels
                 if (_territory != value) { TerritoryUpdate = true; }
                 _territory = value;
                 OnPropertyChanged("Territory");
-                }
-            
+            }
+
         }
         private string _territory = string.Empty;
-        
+
         /// <summary>
         ///     Gets or sets the Title
         /// </summary>
@@ -2482,7 +2482,7 @@ namespace OdinModels
                 if (_title != value) { TitleUpdate = true; }
                 _title = value;
                 OnPropertyChanged("Title");
-                
+
             }
         }
         private string _title = string.Empty;
@@ -2501,8 +2501,8 @@ namespace OdinModels
                 if (_udex != value) { UdexUpdate = true; }
                 _udex = value;
                 OnPropertyChanged("Udex");
-                }
-            
+            }
+
         }
         private string _udex = string.Empty;
 
@@ -2520,7 +2520,7 @@ namespace OdinModels
                 if (_upc != value) { UpcUpdate = true; }
                 _upc = value;
                 OnPropertyChanged("Upc");
-                
+
             }
         }
         private string _upc = string.Empty;
@@ -2539,7 +2539,7 @@ namespace OdinModels
                 if (_warranty != value) { WarrantyUpdate = true; }
                 _warranty = value;
                 OnPropertyChanged("Warranty");
-                
+
             }
         }
         private string _warranty = string.Empty;
@@ -2558,7 +2558,7 @@ namespace OdinModels
                 if (_warrantyCheck != value) { WarrantyCheckUpdate = true; }
                 _warrantyCheck = value;
                 OnPropertyChanged("WarrantyCheck");
-                
+
             }
         }
         private string _warrantyCheck = string.Empty;
@@ -2576,7 +2576,7 @@ namespace OdinModels
             {
                 if (_websitePrice != value) { WebsitePriceUpdate = true; }
                 _websitePrice = value;
-                OnPropertyChanged("WebsitePrice");                
+                OnPropertyChanged("WebsitePrice");
             }
         }
         private string _websitePrice = string.Empty;
@@ -2594,7 +2594,7 @@ namespace OdinModels
             {
                 if (_weight != value) { WeightUpdate = true; }
                 _weight = value;
-                OnPropertyChanged("Weight");                
+                OnPropertyChanged("Weight");
             }
         }
         private string _weight = string.Empty;
@@ -2613,7 +2613,7 @@ namespace OdinModels
                 if (_width != value) { WidthUpdate = true; }
                 _width = value;
                 OnPropertyChanged("Width");
-                
+
             }
         }
         private string _width = string.Empty;
@@ -2635,11 +2635,11 @@ namespace OdinModels
             {
                 _itemRow = value;
                 OnPropertyChanged("ItemRow");
-                
+
             }
         }
         private int _itemRow;
-        
+
         public string NewDate { get; set; }
 
         /// <summary>
@@ -2654,11 +2654,11 @@ namespace OdinModels
             set
             {
                 _prodType = value;
-                OnPropertyChanged("ProdType");                
+                OnPropertyChanged("ProdType");
             }
         }
         private int _prodType = 0;
-        
+
         /// <summary>
         ///     Gets or sets the RecordDate. Used for update records view.
         /// </summary>
@@ -2672,7 +2672,7 @@ namespace OdinModels
             {
                 _recordDate = value;
                 OnPropertyChanged("RecordDate");
-                
+
             }
         }
         private string _recordDate = string.Empty;
@@ -2690,7 +2690,7 @@ namespace OdinModels
             {
                 _rowColor = value;
                 OnPropertyChanged("RowColor");
-                
+
             }
         }
         private string _rowColor = "White";
@@ -2706,7 +2706,7 @@ namespace OdinModels
                 _status = value;
                 if ((value == "Add") || (value == "Update")) { this.Active = 1; }
                 else { this.Active = 0; }
-                OnPropertyChanged("Status");                
+                OnPropertyChanged("Status");
             }
         }
         private string _status = string.Empty;
@@ -2724,7 +2724,7 @@ namespace OdinModels
             {
                 _userName = value;
                 OnPropertyChanged("UserName");
-                
+
             }
         }
         private string _userName = string.Empty;
@@ -2732,7 +2732,7 @@ namespace OdinModels
         #endregion // Odin Properties
 
         #region Update Flags
-        
+
         /// <summary>
         ///     AccountingGroupUpdate update flag
         /// </summary>
@@ -3358,7 +3358,7 @@ namespace OdinModels
         #endregion // Properties
 
         #region Methods
-        
+
         /// <summary>
         ///     Creates a clone of this object
         /// </summary>
@@ -3367,7 +3367,7 @@ namespace OdinModels
         {
             return MemberwiseClone();
         }
-        
+
         /// <summary>
         ///     Combines the product Id and qty from a product Id Translation object into a single string
         /// </summary>
@@ -3746,7 +3746,7 @@ namespace OdinModels
                 this.WebsitePrice = item.WebsitePrice;
                 this.Weight = item.Weight;
                 this.Width = item.Width;
-                if(item.Status!="Add")
+                if (item.Status != "Add")
                 {
                     this.Status = "Update";
                 }
@@ -3754,7 +3754,7 @@ namespace OdinModels
         }
 
         #region Update Check Methods
-        
+
         /// <summary>
         ///     Check field updates. If item has updated field return true.
         /// </summary>
@@ -3885,11 +3885,11 @@ namespace OdinModels
             if (WidthUpdate == true) { return true; }
             return false;
         }
-        
+
         /// <summary>
-         ///    Check fields for amazon table to see if any have been updated.
-         /// </summary>
-         /// <returns> true if any fields have been updated </returns>
+        ///    Check fields for amazon table to see if any have been updated.
+        /// </summary>
+        /// <returns> true if any fields have been updated </returns>
         public bool EcommerceValuesUpdate()
         {
             if (EcommerceAsinUpdate == true) { return true; }
@@ -3982,7 +3982,7 @@ namespace OdinModels
         /// <returns></returns>
         public bool HasWeb()
         {
-            if(this.SellOnTrends == "Y")
+            if (this.SellOnTrends == "Y")
             {
                 return true;
             }
@@ -4249,7 +4249,7 @@ namespace OdinModels
         public void UpdateFlags()
         {
             if (string.IsNullOrEmpty(this.PsStatus)) { this.PsStatus = "I"; }
-            if (string.IsNullOrEmpty(this.SellOnAllPosters)) { this.SellOnAllPosters="N"; }
+            if (string.IsNullOrEmpty(this.SellOnAllPosters)) { this.SellOnAllPosters = "N"; }
             if (string.IsNullOrEmpty(this.SellOnAmazon)) { this.SellOnAmazon = "N"; }
             if (string.IsNullOrEmpty(this.SellOnAmazonSellerCentral)) { this.SellOnAmazonSellerCentral = "N"; }
             if (string.IsNullOrEmpty(this.SellOnEcommerce)) { this.SellOnEcommerce = "N"; }
