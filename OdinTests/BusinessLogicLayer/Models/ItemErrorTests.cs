@@ -7,63 +7,6 @@ namespace OdinTests.BusinessLogicLayer.Models
     [TestClass]
     public class ItemErrorTests
     {
-        /// <summary>
-        ///     This method test the SelectItem function with a valid error Message. Method should succeed.
-        /// </summary>
-        [TestMethod]
-        public void ItemError_ValueIsAValidMessage_ShouldSucceed()
-        {
-
-        #region SetUp
-
-            string errorMessage = "Invalid input";
-            ItemError itemError = new ItemError("RP123", errorMessage);
-
-        #endregion // Set Up
-
-        #region Act
-
-            string returnedMessage = itemError.ErrorMessage;
-
-        #endregion // Act
-
-        #region Assert
-
-            Assert.AreEqual(returnedMessage, "Invalid input");
-
-        #endregion // Assert
-
-        }
-
-        /// <summary>
-        ///     This method test the SelectItem function with a valid row number and error Message. Method should succeed.
-        /// </summary>
-        [TestMethod]
-        public void ItemError_ValueIsAValidRowAndMessage_ShouldSucceed()
-        {
-
-            #region SetUp
-
-            string errorMessage = "Invalid input";
-            ItemError itemError = new ItemError("RP123", 1, errorMessage);
-
-            #endregion // Set Up
-
-            #region Act
-
-            int returnedRow = itemError.LineNumber;
-            string returnedMessage = itemError.ErrorMessage;
-
-            #endregion // Act
-
-            #region Assert
-
-            Assert.AreEqual(returnedMessage, "Invalid input");
-            Assert.AreEqual(returnedRow, 1);
-
-            #endregion // Assert
-
-        }
 
         /// <summary>
         ///     This method test the SelectItem function with a valid row number, field name and error Message. Method should succeed.

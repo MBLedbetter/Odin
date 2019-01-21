@@ -3541,11 +3541,17 @@ namespace Odin.ViewModels
                         foreach (ItemError er in ItemService.ValidateItem(item, this.ItemIds, true))
                         {
                             ItemErrors.Add(er);
-                        }
+                        }                    
+                        /*
                         if(item.SellOnTrends!="Y")
                         {
-                            ItemErrors.Add(new ItemError(item.ItemId, "Sell on Trends must be set to 'Y' before an item can be submitted."));
-                        }
+                            ItemErrors.Add(new ItemError(
+                                item.ItemId,
+                                item.ItemRow, 
+                                "Sell on Trends must be set to 'Y' before an item can be submitted.", 
+                                "Sell On Trends"));
+                        }           
+                        */             
                     }
                 }
                 if ((ItemErrors.Count == 0) || (Items[0].Status == "Remove"))

@@ -176,27 +176,6 @@ namespace OdinModels
         #region Constructor
 
         /// <summary>
-        ///     Creates an Item error that keeps track of the error message
-        /// </summary>
-        /// <param name="errorMessage">Error message</param>
-        public ItemError(string itemId, string errorMessage)
-        {
-            this.ItemIdNumber = itemId;
-            this.ErrorMessage = errorMessage;
-        }
-        /// <summary>
-        ///     Creates an ItemError that keeps track of the row and error message
-        /// </summary>
-        /// <param name="lineNumber">row the error occurs on</param>
-        /// <param name="errorMessage">error message</param>
-        public ItemError(string itemId, int lineNumber, string errorMessage)
-        {
-            this.ItemIdNumber = itemId;
-            this.LineNumber = lineNumber;
-            this.ErrorMessage = errorMessage;
-        }
-
-        /// <summary>
         ///     Creates an item error that keeps track of line number, message and the variable name
         /// </summary>
         /// <param name="lineNumber">row error occurs on</param>
