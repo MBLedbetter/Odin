@@ -2622,7 +2622,7 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Field cannot be updated through Odin. The Bill of materials field does not match the values currently saved for this item.",
-                            "Bill of Material");
+                            "Bill Of Materials");
                     }
                 }
                 if (!string.IsNullOrEmpty(billOfMaterial.ItemId))
@@ -2633,7 +2633,7 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Field contains an id that does not exist: " + billOfMaterial.ItemId + ".",
-                            "Bill of Material");
+                            "Bill Of Materials");
                     }
                 }
                 if (BomIdList.Contains(billOfMaterial.ItemId.Trim()))
@@ -2642,7 +2642,7 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Field can not contain multiple occurances of the same item. ["+ billOfMaterial.ItemId.Trim() + "]",
-                        "Bill of Material");
+                        "Bill Of Materials");
                 }
                 else
                 {
