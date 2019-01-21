@@ -9104,7 +9104,7 @@ namespace Odin.ViewModels
                         this.UdexError = error.ReturnErrorMessage();
                         break;
 
-                    case "Upc":
+                    case "UPC":
                         this.UpcError = error.ReturnErrorMessage();
                         break;
 
