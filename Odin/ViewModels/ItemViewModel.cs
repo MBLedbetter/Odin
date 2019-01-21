@@ -244,7 +244,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.ReturnBillOfMaterials() != value)
                 {
                     this.ItemViewModelItem.BillOfMaterials = ItemService.ParseChildElementIds(this.ItemId, value);
-                    FlagError("BillOfMaterials");
+                    FlagError("Bill of Materials");
                     OnPropertyChanged("BillOfMaterials");
                 }
             }
