@@ -93,7 +93,7 @@
                         Width="180" />
                     <!-- Bill of Materials -->
                     <Label
-                        Background="{Binding BillOfMaterialsBoxColor}"
+                        Background="{Binding BillofMaterialsBoxColor}"
                         Content="Bill of Materials"
                         Grid.Row="1"
                         Grid.Column="0"
@@ -116,37 +116,29 @@
                         Text="{Binding BillOfMaterials}"
                         VerticalContentAlignment="Center"
                         Width="180" />
+                    <!-- Casepack Height -->
                     <Label
-                        FontWeight="Bold"
-                        BorderBrush="LightSteelBlue"
-                        BorderThickness="2"
                         Background="AliceBlue"
-                        Grid.Column="0"
-                        Grid.Row="3"
-                        Grid.RowSpan="7"
-                        Height="266"
-                        HorizontalAlignment="Left"
-                        Padding="10"
-                        VerticalAlignment="Center" Grid.ColumnSpan="3" Width="332"/>
-                    <Label
-                        FontWeight="Bold"
-                        Content="Casepack"
                         BorderBrush="LightSteelBlue"
                         BorderThickness="2"
-                        Background="LightSteelBlue"
+                        Content="Casepack"
+                        FontWeight="Bold"
+                        colo
                         Grid.Column="0"
                         Grid.Row="3"
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Center" Grid.ColumnSpan="3" Margin="0,0,0,4" Width="332" Height="34"/>
+                        VerticalAlignment="Center"
+                        Width="332" Grid.ColumnSpan="3" Height="260" Margin="0,6,0,0" Grid.RowSpan="7"  />
                     <!-- Casepack Height -->
                     <Label
                         Background="{Binding CasepackHeightBoxColor}"
                         Content="Casepack Height"
                         Grid.Column="0"
                         Grid.Row="4"
-                        HorizontalAlignment="Right"                        
+                        HorizontalAlignment="Right"
                         ToolTip="{Binding CasepackHeightToolTip}"
                         VerticalAlignment="Center"
+                        Margin="6,6,0,6" 
                         Height="26" />
                     <TextBox
                         HorizontalAlignment="Left"
@@ -168,6 +160,7 @@
                         HorizontalAlignment="Right"
                         ToolTip="{Binding CasepackLengthToolTip}"
                         VerticalAlignment="Center"
+                        Margin="6,6,0,6" 
                         Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
@@ -188,7 +181,8 @@
                         Grid.Row="6"
                         HorizontalAlignment="Right"
                         ToolTip="{Binding CasepackQtyToolTip}"
-                        VerticalAlignment="Center"
+                        VerticalAlignment="Center"                        
+                        Margin="6,6,0,6" 
                         Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
@@ -210,6 +204,7 @@
                         HorizontalAlignment="Right"
                         ToolTip="{Binding CasepackUpcToolTip}"
                         VerticalAlignment="Center"
+                        Margin="6,6,0,6" 
                         Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
@@ -231,6 +226,7 @@
                         HorizontalAlignment="Right"
                         ToolTip="{Binding CasepackWeightToolTip}"
                         VerticalAlignment="Center"
+                        Margin="6,6,0,6" 
                         Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
@@ -249,13 +245,13 @@
                         Content="Casepack Width"
                         Grid.Column="0"
                         Grid.Row="9"
-                        HorizontalAlignment="Right"
+                        HorizontalAlignment="Left"
                         ToolTip="{Binding CasepackWidthToolTip}"
                         VerticalAlignment="Center"
-                        Height="26"
-                        Width="104"  />
+                        Width="140"
+                        Margin="6,6,0,6" Height="26" />
                     <TextBox
-                                          IsEnabled="{Binding BlockInfo}"
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
                         Grid.Row="9"
@@ -264,9 +260,7 @@
                         Grid.Column="2"
                         Text="{Binding CasepackWidth}"
                         VerticalContentAlignment="Center"
-                        Width="162"   
-                    />
-
+                        Width="174" />
                     <!-- Color -->
                     <Label
                         Background="{Binding ColorBoxColor}"
@@ -290,7 +284,6 @@
                         Text="{Binding Color}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-
                     <!-- Country of Origin -->
                     <Label
                         Background="{Binding CountryOfOriginBoxColor}"
@@ -312,7 +305,6 @@
                         ItemsSource="{Binding CountriesOfOrigin}"
                         Text="{Binding CountryOfOrigin}"
                         Width="180" />
-          
                     <!-- Cost Profile Group -->
                     <Label
                         Background="{Binding CostProfileGroupBoxColor}"
@@ -334,11 +326,9 @@
                         Margin="6,6,0,6"
                         Text="{Binding CostProfileGroup}"
                         Width="180" />
-          
                     <!-- Default Actual Cost CAD -->
-
                     <Label
-                                        Background="{Binding DefaultActualCostCadBoxColor}"
+                        Background="{Binding DefaultActualCostCadBoxColor}"
                         Content="Default Actual Cost CAD"
                         Grid.Row="12"
                         Grid.Column="0"
@@ -347,9 +337,8 @@
                         Width="140"
                         VerticalAlignment="Center" Grid.ColumnSpan="2"
                         Margin="6,6,0,6" Height="26" />
-
                     <TextBox
-                                          IsEnabled="{Binding BlockInfo}"
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
                         Grid.Row="12"
@@ -359,10 +348,9 @@
                         Text="{Binding DefaultActualCostCad}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                     Actual Cost USD -->
-          
-                                        Background="{Binding DefaultActualCostUsdBoxColor}"
+                    <!-- Default Actual Cost USD -->
+                    <Label
+                        Background="{Binding DefaultActualCostUsdBoxColor}"
                         Content="Default Actual Cost USD"
                         Grid.Row="13"
                         Grid.Column="0"
@@ -371,9 +359,8 @@
                         Width="140"
                         VerticalAlignment="Center" Grid.ColumnSpan="2" 
                         Margin="6,6,0,6" Height="26" />
-
                     <TextBox
-                                          IsEnabled="{Binding BlockInfo}"
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
                         Grid.Row="13"
@@ -383,10 +370,9 @@
                         Text="{Binding DefaultActualCostUsd}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    tion -->
-          
-                                        Background="{Binding DescriptionBoxColor}"
+                    <!-- Description -->
+                    <Label
+                        Background="{Binding DescriptionBoxColor}"
                         Content="Description"
                         Grid.Row="14"
                         Grid.Column="0"
@@ -395,9 +381,8 @@
                         Width="140"
                         VerticalAlignment="Center" Grid.ColumnSpan="2" 
                         Margin="6,6,0,6" Height="26" />
-
                     <TextBox
-                                          IsEnabled="{Binding BlockInfo}"
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
                         Grid.Row="14"
@@ -408,9 +393,7 @@
                         Text="{Binding Description}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-
                     <!-- Direct Import -->
-
                     <Label
                         Content="Direct Import"
                         Grid.Row="16"
@@ -419,7 +402,6 @@
                         Width="140"
                         VerticalAlignment="Center" Grid.ColumnSpan="2" 
                         Margin="6,6,0,6" Height="26" />
-
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
@@ -431,8 +413,7 @@
                         Text="{Binding DirectImport}"
                         VerticalContentAlignment="Center"
                         Width="23" />
-
-
+                    <!-- Duty -->
                     <Label
                         Content="Duty"
                         Background="{Binding DutyBoxColor}"
@@ -443,7 +424,6 @@
                         VerticalAlignment="Center"
                         Width="130" 
                         Margin="6,6,0,6" Height="26" Grid.ColumnSpan="2" />
-
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
@@ -466,9 +446,8 @@
                         Width="140"
                         VerticalAlignment="Center" Grid.ColumnSpan="2" 
                         Margin="6,6,0,6" Height="26" />
-
                     <TextBox
-                                          IsEnabled="{Binding BlockInfo}"
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
                         Grid.Row="0"
@@ -478,10 +457,9 @@
                         Text="{Binding Ean}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    
-          <Label
-                                        Content="Gpc"
+                    <!-- GPC -->
+                    <Label
+                        Content="Gpc"
                         Background="{Binding GpcBoxColor}"
                         Grid.Row="1"
                         Grid.Column="3"
@@ -490,9 +468,8 @@
                         VerticalAlignment="Center"
                         Width="120"
                         Margin="6,6,0,6" Height="26" />
-
                     <TextBox
-                                          IsEnabled="{Binding BlockInfo}"
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
                         Grid.Row="1"
@@ -502,385 +479,256 @@
                         Text="{Binding Gpc}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-<<<<<<< HEAD
-          
-                    -->
-          
-                                        Content="Item Height"Item                      Background="{Binding HeightBoxColor}"
-                        Grid.Row="12"
-       1                Grid.Column="3"
-=======
                     <!-- Height -->
                     <Label
-                        Content="Height"
+                        Content="Item Height"
                         Background="{Binding HeightBoxColor}"
-                        Grid.Row="2"
+                        Grid.Row="12"
                         Grid.Column="3"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         HorizontalAlignment="Left"
                         ToolTip="{Binding HeightToolTip}"
                         VerticalAlignment="Center"
                         Width="120" 
                         Margin="6,6,0,6"
                         Height="26" />
-          
-                                          IsEnabled="{Binding BlockInfo}"
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
                         Grid.Row="12"
-       1                TextWrapping="Wrap"
-=======
-                        Grid.Row="2"
                         TextWrapping="Wrap"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         MaxLength="60"
                         Grid.Column="4"
                         Text="{Binding Height}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    ck Height -->
-          
-                                        Content="Innerpack Height"
+                    <!-- Innerpack Height -->
+                    <Label
+                        Content="Innerpack Height"
                         Background="{Binding InnerpackHeightBoxColor}"
-<<<<<<< HEAD
                         Grid.Row="2"
-        2               Grid.Column="3"
-=======
-                        Grid.Row="3"
                         Grid.Column="3"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         HorizontalAlignment="Left"
                         ToolTip="{Binding InnerpackHeightToolTip}"
                         VerticalAlignment="Center"
                         Width="120" 
                         Margin="6,6,0,6"
                         Height="26" />
-          
-                                          IsEnabled="{Binding BlockInfo}"
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
                         Grid.Row="2"
-        2               TextWrapping="Wrap"
-=======
-                        Grid.Row="3"
                         TextWrapping="Wrap"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         MaxLength="60"
                         Grid.Column="4"
                         Text="{Binding InnerpackHeight}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    ck Length -->
-          
-                                        Content="Innerpack Length"
+                    <!-- Innerpack Length -->
+                    <Label
+                        Content="Innerpack Length"
                         Background="{Binding InnerpackLengthBoxColor}"
-<<<<<<< HEAD
                         Grid.Row="3"
-        3               Grid.Column="3"
-=======
-                        Grid.Row="4"
                         Grid.Column="3"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         HorizontalAlignment="Left"
                         ToolTip="{Binding InnerpackLengthToolTip}"
                         VerticalAlignment="Center"
                         Width="120" 
                         Margin="6,6,0,6"
                         Height="26" />
-          
-                                          IsEnabled="{Binding BlockInfo}"
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
                         Grid.Row="3"
-        3               TextWrapping="Wrap"
-=======
-                        Grid.Row="4"
                         TextWrapping="Wrap"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         MaxLength="60"
                         Grid.Column="4"
                         Text="{Binding InnerpackLength}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    ck Quantity -->
-          
-                                        Content="Innerpack Quantity"
+                    <!-- Innerpack Quantity -->
+                    <Label
+                        Content="Innerpack Quantity"
                         Background="{Binding InnerpackQuantityBoxColor}"
-<<<<<<< HEAD
                         Grid.Row="4"
-        4               Grid.Column="3"
-=======
-                        Grid.Row="5"
                         Grid.Column="3"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         HorizontalAlignment="Left"
                         ToolTip="{Binding InnerpackQuantityToolTip}"
                         VerticalAlignment="Center"
                         Width="120"
                         Margin="6,6,0,6"
                         Height="26" />
-          
-                                          IsEnabled="{Binding BlockInfo}"
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
                         Grid.Row="4"
-        4               TextWrapping="Wrap"
-=======
-                        Grid.Row="5"
                         TextWrapping="Wrap"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         MaxLength="60"
                         Grid.Column="4"
                         Text="{Binding InnerpackQuantity}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    ck UPC -->
-          
-                                        Content="Innerpack Upc"
+                    <!-- Innerpack UPC -->
+                    <Label
+                        Content="Innerpack Upc"
                         Background="{Binding InnerpackUpcBoxColor}"
-<<<<<<< HEAD
                         Grid.Row="5"
-        5               Grid.Column="3"
-=======
-                        Grid.Row="6"
                         Grid.Column="3"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         HorizontalAlignment="Left"
                         ToolTip="{Binding InnerpackUpcToolTip}"
                         VerticalAlignment="Center"
                         Width="120" 
                         Margin="6,6,0,6"
                         Height="26" />
-          
-                                          IsEnabled="{Binding BlockInfo}"
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
                         Grid.Row="5"
-        5               TextWrapping="Wrap"
-=======
-                        Grid.Row="6"
                         TextWrapping="Wrap"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         MaxLength="60"
                         Grid.Column="4"
                         Text="{Binding InnerpackUpc}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    ck Weight -->
-          
-                                        Content="Innerpack Weight"
+                    <!-- Innerpack Weight -->
+                    <Label
+                        Content="Innerpack Weight"
                         Background="{Binding InnerpackWeightBoxColor}"
-<<<<<<< HEAD
                         Grid.Row="6"
-        6               Grid.Column="3"
-=======
-                        Grid.Row="7"
                         Grid.Column="3"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         HorizontalAlignment="Left"
                         ToolTip="{Binding InnerpackWeightToolTip}"
                         VerticalAlignment="Center"
                         Width="120" 
                         Margin="6,6,0,6"
                         Height="26" />
-          
-                                          IsEnabled="{Binding BlockInfo}"
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
                         Grid.Row="6"
-        6               TextWrapping="Wrap"
-=======
-                        Grid.Row="7"
                         TextWrapping="Wrap"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         MaxLength="60"
                         Grid.Column="4"
                         Text="{Binding InnerpackWeight}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    ck Width -->
-          
-                                        Content="Innerpack Width"
+                    <!-- Innerpack Width -->
+                    <Label
+                        Content="Innerpack Width"
                         Background="{Binding InnerpackWidthBoxColor}"
-<<<<<<< HEAD
                         Grid.Row="7"
-        7               Grid.Column="3"
-=======
-                        Grid.Row="8"
                         Grid.Column="3"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         HorizontalAlignment="Left"
                         ToolTip="{Binding InnerpackWidthToolTip}"
                         VerticalAlignment="Center"
                         Width="120" 
                         Margin="6,6,0,6"
                         Height="26" />
-          
-                                          IsEnabled="{Binding BlockInfo}"
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
                         Grid.Row="7"
-        7               TextWrapping="Wrap"
-=======
-                        Grid.Row="8"
                         TextWrapping="Wrap"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         MaxLength="60"
                         Grid.Column="4"
                         Text="{Binding InnerpackWidth}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    >
-          
-                                        Content="Isbn"
+                    <!-- ISBN -->
+                    <Label
+                        Content="Isbn"
                         Background="{Binding IsbnBoxColor}"
-<<<<<<< HEAD
                         Grid.Row="8"
-        8               Grid.Column="3"
-=======
-                        Grid.Row="9"
                         Grid.Column="3"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         HorizontalAlignment="Left"
                         ToolTip="{Binding IsbnToolTip}"
                         VerticalAlignment="Center"
                         Width="120" 
                         Margin="6,6,0,6"
                         Height="26" />
-          
-                                          IsEnabled="{Binding BlockInfo}"
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
                         Grid.Row="8"
-        8               TextWrapping="Wrap"
-=======
-                        Grid.Row="9"
                         TextWrapping="Wrap"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         MaxLength="60"
                         Grid.Column="4"
                         Text="{Binding Isbn}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    tegory -->
-          
-                                        Content="Item Category"
+                    <!-- Item Category -->
+                    <Label
+                        Content="Item Category"
                         Background="{Binding ItemCategoryBoxColor}"
-<<<<<<< HEAD
                         Grid.Row="9"
-        9               Width="120"
-=======
-                        Grid.Row="10"
                         Width="120"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         Grid.Column="3"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ItemCategoryToolTip}"
                         VerticalAlignment="Center" 
                         Margin="6,6,0,6" Height="26" />
-<<<<<<< HEAD
-          
-                                           Margin="6,6,0,6"
-                        Grid.Row="9"
-        9               Grid.Column="4"
-=======
                     <ComboBox
                         Margin="6,6,0,6"
-                        Grid.Row="10"
+                        Grid.Row="9"
                         Grid.Column="4"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         HorizontalAlignment="Left"
                         IsEnabled="{Binding BlockInfo}"
                         ItemsSource="{Binding ProductCategories}"
                         Text="{Binding ItemCategory}"
                         Width="180" />
-          
-                    mily -->
-          
-                                        Background="{Binding ItemFamilyBoxColor}"
+                    <!-- Item Family -->
+                    <Label
+                        Background="{Binding ItemFamilyBoxColor}"
                         Content="Item Family"
                         Grid.Column="3"
-<<<<<<< HEAD
                         Grid.Row="10"
-        0               HorizontalAlignment="Left"
-=======
-                        Grid.Row="11"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         ToolTip="{Binding ItemFamilyToolTip}"
                         VerticalAlignment="Center" 
                         Margin="6,6,0,6"
                         Height="26" Width="71" />
-          
-                                          IsEnabled="{Binding BlockInfo}"
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
                         Grid.Row="10"
-        0               TextWrapping="Wrap"
-=======
-                        Grid.Row="11"
                         TextWrapping="Wrap"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         MaxLength="60"
                         Grid.Column="4"
                         Text="{Binding ItemFamily}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    oup -->
-          
-                                        Content="Item Group"
+                    <!-- Item Group -->
+                    <Label
+                        Content="Item Group"
                         Background="{Binding ItemGroupBoxColor}"
-<<<<<<< HEAD
                         Grid.Row="11"
-        1               Width="120"
-=======
-                        Grid.Row="12"
                         Width="120"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         Grid.Column="3"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ItemGroupToolTip}"
                         VerticalAlignment="Center" 
                         Margin="6,6,0,6"
                         Height="26" />
-<<<<<<< HEAD
-          
-                                           Grid.Column="4"
-                        Grid.Row="11"
-        1               HorizontalAlignment="Left"
-=======
                     <ComboBox
                         Grid.Column="4"
-                        Grid.Row="12"
+                        Grid.Row="11"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         IsEnabled="{Binding BlockInfo}"
                         ItemsSource="{Binding ItemGroups}"
                         Margin="6,6,0,6"
                         Text="{Binding ItemGroup}"
                         Width="180" />
-          
-                    -->
-          
-                                        Content="Item ID"
+                    <!-- Item ID-->
+                    <Label
+                        Content="Item ID"
                         Background="{Binding ItemIdBoxColor}"
                         Grid.Row="13"
                         Grid.Column="3"
@@ -890,8 +738,8 @@
                         Width="120" 
                         Margin="6,6,0,6"
                         Height="26" />
-          
-                                          Name="ItemIdBox"
+                    <TextBox
+                        Name="ItemIdBox"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
                         Grid.Row="13"
@@ -902,90 +750,41 @@
                         Text="{Binding ItemId}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    ge -->
-          
-                                        Content="Language"
+                    <!-- Langugage -->
+                    <Label
+                        Content="Language"
                         Background="{Binding LanguageBoxColor}"
-<<<<<<< HEAD
-                        Grid.Row="17"
-        7               Grid.Column="3"
-=======
                         Grid.Row="14"
                         Grid.Column="3"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         HorizontalAlignment="Left"
                         ToolTip="{Binding LanguageToolTip}"
                         VerticalAlignment="Center"
                         Width="120" 
                         Margin="6,6,0,6" Height="26" />
-<<<<<<< HEAD
-          
-                                           Grid.Column="4"
-                        Grid.Row="17"
-        7               HorizontalAlignment="Left"
-=======
                     <ComboBox
                         Grid.Column="4"
                         Grid.Row="14"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         ItemsSource="{Binding Languages}"
                         Margin="6,6,0,6"
                         Text="{Binding Language}"
                         Width="180" />
-<<<<<<< HEAD
-          
-                    -->
-          
-                                        Content="Item Length"Item                      Background="{Binding LengthBoxColor}"
-                        Grid.Row="14"
-        4               Grid.Column="3"
-=======
                     <!-- Length -->
                     <Label
                         Content="Length"
                         Background="{Binding LengthBoxColor}"
                         Grid.Row="15"
                         Grid.Column="3"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         HorizontalAlignment="Left"
                         ToolTip="{Binding LengthToolTip}"
                         VerticalAlignment="Center"
                         Width="120"
                         Margin="6,6,0,6"
                         Height="26" />
-          
-                                          IsEnabled="{Binding BlockInfo}"
-                        HorizontalAlignment="Left"
-                        Margin="6,6,0,6"
-<<<<<<< HEAD
-                        Grid.Row="14"
-        4               TextWrapping="Wrap"
-                        MaxLength="60"
-                        Grid.Column="4"
-                        Text="{Binding Length}"
-                        VerticalContentAlignment="Center"
-                        Width="180" />
-          
-                    <!-- Item Weight -->
-                    <Label
-                        Background="{Binding WeightBoxColor}"
-                        Content="Item Weight"
-                        Grid.Column="3"
-                        Grid.Row="15"
-                        HorizontalAlignment="Left"
-                        ToolTip="{Binding WeightToolTip}"
-                        VerticalAlignment="Center" 
-                        Width="120" 
-                        Margin="6,6,0,6"
-                        Height="26"/>
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-=======
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         Grid.Row="15"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -993,443 +792,286 @@
                         Text="{Binding Length}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-                     Begin Date -->
-          
-                                        Content="License Begin Date"
+                    <!-- License Begin Date -->
+                    <Label
+                        Content="License Begin Date"
                         Background="{Binding LicenseBeginDateBoxColor}"
-<<<<<<< HEAD
-                        Grid.Row="0"
-        0               Grid.Column="5"
-        5               Width="120"
-=======
                         Grid.Row="16"
                         Grid.Column="3"
                         Width="120"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         HorizontalAlignment="Left"
                         ToolTip="{Binding LicenseBeginDateToolTip}"
                         VerticalAlignment="Center"
                         Margin="6,6,0,6"
                         Height="26" />
-          
-                    
+                    <DatePicker
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
-                        Grid.Row="0"
-        0               Grid.Column="6"
-        6               SelectedDate="{Binding LicenseBeginDate}"
-=======
                         Grid.Row="16"
                         Grid.Column="4"
                         SelectedDate="{Binding LicenseBeginDate}"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    ice CAD -->
-          
-                                        Width="120"
+                    <!-- List Price CAD -->
+                    <Label
+                        Width="120"
                         Content="List Price (CAD)"
                         Background="{Binding ListPriceCadBoxColor}"
-<<<<<<< HEAD
-                        Grid.Row="1"
-        1               Grid.Column="5"
-        5               HorizontalAlignment="Left"
-=======
                         Grid.Row="17"
                         Grid.Column="3"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         ToolTip="{Binding ListPriceCadToolTip}"
                         VerticalAlignment="Center"
                         Margin="6,6,0,6"
                         Height="26" />
-          
-                                          IsEnabled="{Binding BlockInfo}"
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
-                        Grid.Row="1"
-        1               TextWrapping="Wrap"
-                        MaxLength="60"
-                        Grid.Column="6"
-        6               Text="{Binding ListPriceCad}"
-=======
                         Grid.Row="17"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="4"
                         Text="{Binding ListPriceCad}"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    ice MXN -->
-          
-                                        Width="120"
+                    <!-- List Price MXN -->
+                    <Label
+                        Width="120"
                         Content="List Price (MXN)"
                         Background="{Binding ListPriceMxnBoxColor}"
-<<<<<<< HEAD
-                        Grid.Row="2"
-        2               Grid.Column="5"
-=======
                         Grid.Row="0"
                         Grid.Column="5"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ListPriceMxnToolTip}"
                         VerticalAlignment="Center"
                         Margin="6,6,0,6"
                         Height="26" />
-          
-                                          IsEnabled="{Binding BlockInfo}"
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
-                        Grid.Row="2"
-        2               TextWrapping="Wrap"
-=======
                         Grid.Row="0"
                         TextWrapping="Wrap"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         MaxLength="60"
                         Grid.Column="6"
                         Text="{Binding ListPriceMxn}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    ceUSD -->
-          
-                                        Background="{Binding ListPriceUsdBoxColor}"
+                    <!-- ListPriceUSD -->
+                    <Label
+                        Background="{Binding ListPriceUsdBoxColor}"
                         Content="List Price (USD)"
                         Grid.Column="5"
-<<<<<<< HEAD
-                        Grid.Row="3"
-        3               HorizontalAlignment="Left"
-=======
                         Grid.Row="1"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         ToolTip="{Binding ListPriceUsdToolTip}"
                         VerticalAlignment="Center"
                         Width="120"
                         Margin="6,6,0,6"
                         Height="26" />
-          
-                                          IsEnabled="{Binding BlockInfo}"
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
-                        Grid.Row="3"
-        3               TextWrapping="Wrap"
-=======
                         Grid.Row="1"
                         TextWrapping="Wrap"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         MaxLength="60"
                         Grid.Column="6"
                         Text="{Binding ListPriceUsd}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    ce -->
-          
-                                        Background="{Binding MfgSourceBoxColor}"
+                    <!-- MfgSource -->
+                    <Label
+                        Background="{Binding MfgSourceBoxColor}"
                         Content="Mfg Source"
                         Grid.Column="5"
-<<<<<<< HEAD
-                        Grid.Row="4"
-        4               HorizontalAlignment="Left"
-=======
                         Grid.Row="2"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         ToolTip="{Binding MfgSourceToolTip}"
                         VerticalAlignment="Center"
                         Width="120"
                         Margin="6,6,0,6"
                         Height="26" />
-          
-                                          IsEnabled="{Binding BlockInfo}"
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
-                        Grid.Row="4"
-        4               TextWrapping="Wrap"
-=======
                         Grid.Row="2"
                         TextWrapping="Wrap"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         MaxLength="60"
                         Grid.Column="6"
                         Text="{Binding MfgSource}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    >
-          
-                                        Background="{Binding MsrpBoxColor}"
+                    <!-- Msrp -->
+                    <Label
+                        Background="{Binding MsrpBoxColor}"
                         Content="Msrp USD"
                         Grid.Column="5"
-<<<<<<< HEAD
-                        Grid.Row="5"
-        5               HorizontalAlignment="Left"
-=======
                         Grid.Row="3"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         ToolTip="{Binding MsrpToolTip}"
                         VerticalAlignment="Center"
                         Width="120"
                         Margin="6,6,0,6"
                         Height="26" />
-          
-                                          HorizontalAlignment="Left"
+                    <TextBox
+                        HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
-                        Grid.Row="5"
-        5               TextWrapping="Wrap"
-=======
                         Grid.Row="3"
                         TextWrapping="Wrap"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         MaxLength="60"
                         Grid.Column="6"
                         Text="{Binding Msrp}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                     -->
-          
-                                        Background="{Binding MsrpCadBoxColor}"
+                    <!-- MsrpCad -->
+                    <Label
+                        Background="{Binding MsrpCadBoxColor}"
                         Content="Msrp CAD"
                         Grid.Column="5"
-<<<<<<< HEAD
-                        Grid.Row="6"
-        6               HorizontalAlignment="Left"
-=======
                         Grid.Row="4"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         ToolTip="{Binding MsrpCadToolTip}"
                         VerticalAlignment="Center"
                         Width="120"
                         Margin="6,6,0,6"
                         Height="26" />
-          
-                                          HorizontalAlignment="Left"
+                    <TextBox
+                        HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
-                        Grid.Row="6"
-        6               TextWrapping="Wrap"
-=======
                         Grid.Row="4"
                         TextWrapping="Wrap"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         MaxLength="60"
                         Grid.Column="6"
                         Text="{Binding MsrpCad}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                     -->
-          
-                                        Background="{Binding MsrpMxnBoxColor}"
+                    <!-- MsrpMxn -->
+                    <Label
+                        Background="{Binding MsrpMxnBoxColor}"
                         Content="Msrp MXN"
                         Grid.Column="5"
-<<<<<<< HEAD
-                        Grid.Row="7"
-        7               HorizontalAlignment="Left"
-=======
                         Grid.Row="5"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         ToolTip="{Binding MsrpMxnToolTip}"
                         VerticalAlignment="Center"
                         Width="120" 
                         Margin="6,6,0,6"
                         Height="26" />
-          
-                                          HorizontalAlignment="Left"
+                    <TextBox
+                        HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
-                        Grid.Row="7"
-        7               TextWrapping="Wrap"
-=======
                         Grid.Row="5"
                         TextWrapping="Wrap"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         MaxLength="60"
                         Grid.Column="6"
                         Text="{Binding MsrpMxn}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                     Group -->
-          
-                                        Background="{Binding PricingGroupBoxColor}"
+                    <!-- Pricing Group -->
+                    <Label
+                        Background="{Binding PricingGroupBoxColor}"
                         Content="Pricing Group"
                         Grid.Column="5"
-<<<<<<< HEAD
-                        Grid.Row="8"
-        8               HorizontalAlignment="Left"
-=======
                         Grid.Row="6"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         ToolTip="{Binding PricingGroupToolTip}"
                         VerticalAlignment="Center"
                         Width="110"
                         Margin="6,6,0,6"
                         Height="26" />
-<<<<<<< HEAD
-          
-                                           Grid.Column="6"
-                        Grid.Row="8"
-        8               HorizontalAlignment="Left"
-=======
                     <ComboBox
                         Grid.Column="6"
                         Grid.Row="6"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         IsEnabled="{Binding BlockInfo}"
                         ItemsSource="{Binding PricingGroups}"
                         Margin="6,6,0,6"
                         Text="{Binding PricingGroup}"
                         Width="180" />
-          
-                    n Demand -->
-          
-                                        Background="{Binding PrintOnDemandBoxColor}"
+                    <!-- Print On Demand -->
+                    <Label
+                        Background="{Binding PrintOnDemandBoxColor}"
                         Content="Print On Demand"
                         Grid.Column="5"
-<<<<<<< HEAD
-                        Grid.Row="9"
-        9               HorizontalAlignment="Left"
-=======
                         Grid.Row="7"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         ToolTip="{Binding PrintOnDemandToolTip}"
                         VerticalAlignment="Center"
                         Width="120" 
                         Margin="6,6,0,6"
                         Height="26" />
-          
-                                          HorizontalAlignment="Left"
+                    <TextBox
+                        HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
-                        Grid.Row="9"
-        9               TextWrapping="Wrap"
-=======
                         Grid.Row="7"
                         TextWrapping="Wrap"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         MaxLength="60"
                         Grid.Column="6"
                         Text="{Binding PrintOnDemand}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                     Format -->
-          
-                                        Background="{Binding ProductFormatBoxColor}"
+                    <!-- Product Format -->
+                    <Label
+                        Background="{Binding ProductFormatBoxColor}"
                         Content="Product Format"
                         Grid.Column="5"
-<<<<<<< HEAD
-                        Grid.Row="10"
-       10               HorizontalAlignment="Left"
-=======
                         Grid.Row="8"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         ToolTip="{Binding ProductFormatToolTip}"
                         VerticalAlignment="Center"
                         Width="110"
                         Margin="6,6,0,6"
                         Height="26" />
-<<<<<<< HEAD
-          
-                                           Grid.Column="6"
-                        Grid.Row="10"
-       10               HorizontalAlignment="Left"
-=======
                     <ComboBox
                         Grid.Column="6"
                         Grid.Row="8"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         IsEnabled="{Binding BlockInfo}"
                         ItemsSource="{Binding ProductFormats}"
                         Margin="6,6,0,6"
                         Text="{Binding ProductFormat}"
                         Width="180" />
-          
-                     Group -->
-          
-                                        Background="{Binding ProductGroupBoxColor}"
+                    <!-- Product Group -->
+                    <Label
+                        Background="{Binding ProductGroupBoxColor}"
                         Content="Product Group"
-<<<<<<< HEAD
-                        Grid.Row="11"
-       11               Grid.Column="5"
-=======
                         Grid.Row="9"
                         Grid.Column="5"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ProductGroupToolTip}"
                         VerticalAlignment="Center"
                         Width="110" 
                         Margin="6,6,0,6"
                         Height="26" />
-<<<<<<< HEAD
-          
-                                           Grid.Column="6"
-                        Grid.Row="11"
-       11               HorizontalAlignment="Left"
-=======
                     <ComboBox
                         Grid.Column="6"
                         Grid.Row="9"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         IsEnabled="{Binding BlockInfo}"
                         ItemsSource="{Binding ProductGroups}"
                         Margin="6,6,0,6"
                         Text="{Binding ProductGroup}"
                         Width="180" />
-          
-                    IdTranslation -->
-          
-                                        Background="{Binding ProductIdTranslationBoxColor}"
+                    <!-- ProductIdTranslation -->
+                    <Label
+                        Background="{Binding ProductIdTranslationBoxColor}"
                         Content="Product Id Translation"
-<<<<<<< HEAD
-                        Grid.Row="12"
-        2               Grid.Column="5"
-=======
                         Grid.Row="10"
                         Grid.Column="5"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ProductIdTranslationToolTip}"
                         Width="140"
                         VerticalAlignment="Center" 
                         Margin="6,6,0,6"
                         Height="26" />
-<<<<<<< HEAD
-          
-                                          Grid.Column="6"
-                        Grid.Row="12"
-        2               Grid.RowSpan="2"
-=======
                     <TextBox
                         Grid.Column="6"
                         Grid.Row="10"
                         Grid.RowSpan="2"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         HorizontalAlignment="Left"
                         IsEnabled="{Binding IsNew}"
                         Margin="6,6,0,6"
@@ -1437,301 +1079,184 @@
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                     Line -->
-          
-                                        Background="{Binding ProductLineBoxColor}"
+                    <!-- Product Line -->
+                    <Label
+                        Background="{Binding ProductLineBoxColor}"
                         Content="Product Line"
                         Grid.Column="5"
-<<<<<<< HEAD
-                        Grid.Row="14"
-        4               HorizontalAlignment="Left"
-=======
                         Grid.Row="12"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         ToolTip="{Binding ProductLineToolTip}"
                         VerticalAlignment="Center"
                         Width="110"
                         Margin="6,6,0,6"
                         Height="26" />
-<<<<<<< HEAD
-          
-                                           Grid.Column="6"
-                        Grid.Row="14"
-        4               HorizontalAlignment="Left"
-=======
                     <ComboBox
                         Grid.Column="6"
                         Grid.Row="12"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         IsEnabled="{Binding BlockInfo}"
                         ItemsSource="{Binding ProductLines}"
                         Margin="6,6,0,6"
                         Text="{Binding ProductLine}"
                         Width="180" />
-          
-                    us -->
-          
-                                        Background="{Binding PsStatusBoxColor}"
+                    <!-- PS Status -->
+                    <Label
+                        Background="{Binding PsStatusBoxColor}"
                         Content="PS Status"
                         Grid.Column="5"
-<<<<<<< HEAD
-                        Grid.Row="15"
-        5               HorizontalAlignment="Left"
-=======
                         Grid.Row="13"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         ToolTip="{Binding PsStatusToolTip}"
                         VerticalAlignment="Center"
                         Width="110"
                         Margin="6,6,0,6"
                         Height="26" />
-<<<<<<< HEAD
-          
-                                           Grid.Column="6"
-                        Grid.Row="15"
-        5               HorizontalAlignment="Left"
-=======
                     <ComboBox
                         Grid.Column="6"
                         Grid.Row="13"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         IsEnabled="{Binding BlockInfo}"
                         ItemsSource="{Binding PsStatuses}"
                         Margin="6,6,0,6"
                         Text="{Binding PsStatus}"
                         Width="180" />
-          
-                    e -->
-          
-                                        Background="{Binding SatCodeBoxColor}"
+                    <!-- SAT Code -->
+                    <Label
+                        Background="{Binding SatCodeBoxColor}"
                         Content="SAT Code"
                         Grid.Column="5"
-<<<<<<< HEAD
-                        Grid.Row="16"
-        6               HorizontalAlignment="Left"
-=======
                         Grid.Row="14"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         ToolTip="{Binding SatCodeToolTip}"
                         VerticalAlignment="Center"
                         Width="110"
                         Margin="6,6,0,6"
                         Height="26"/>
-          
-                                          IsEnabled="{Binding BlockInfo}"
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
-                        Grid.Row="16"
-        6               TextWrapping="Wrap"
-=======
                         Grid.Row="14"
                         TextWrapping="Wrap"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         MaxLength="60"
                         Grid.Column="6"
                         Text="{Binding SatCode}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    ode -->
-          
-                                        Background="{Binding StatsCodeBoxColor}"
+                    <!-- Stats Code -->
+                    <Label
+                        Background="{Binding StatsCodeBoxColor}"
                         Content="Stats Code"
                         Grid.Column="5"
-<<<<<<< HEAD
-                        Grid.Row="17"
-        7               HorizontalAlignment="Left"
-=======
                         Grid.Row="15"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         ToolTip="{Binding StatsCodeToolTip}"
                         VerticalAlignment="Center"
                         Width="110" 
                         Margin="6,6,0,6"
                         Height="26"/>
-<<<<<<< HEAD
-          
-                                           Grid.Column="6"
-                        Grid.Row="17"
-        7               HorizontalAlignment="Left"
-=======
                     <ComboBox
                         Grid.Column="6"
                         Grid.Row="15"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         IsEnabled="{Binding BlockInfo}"
                         ItemsSource="{Binding StatsCodes}"
                         Margin="6,6,0,6"
                         Text="{Binding StatsCode}"
                         Width="180" />
-          
-                    d Cost -->
-          
-                                        Background="{Binding StandardCostBoxColor}"
+                    <!-- Standard Cost -->
+                    <Label
+                        Background="{Binding StandardCostBoxColor}"
                         Content="Standard Cost"
-<<<<<<< HEAD
-                        Grid.Column="7"
-        7               Grid.Row="0"
-        0               HorizontalAlignment="Left"
-=======
                         Grid.Column="5"
                         Grid.Row="16"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         ToolTip="{Binding StandardCostToolTip}"
                         VerticalAlignment="Center"
                         Width="110" 
                         Margin="6,6,0,6"
                         Height="26"/>
-          
-                                          HorizontalAlignment="Left"
+                    <TextBox
+                        HorizontalAlignment="Left"
                         IsEnabled="{Binding BlockInfo}"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
-                        Grid.Row="0"
-        0               TextWrapping="Wrap"
-                        MaxLength="60"
-                        Grid.Column="8"
-        8               Text="{Binding StandardCost}"
-=======
                         Grid.Row="16"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="6"
                         Text="{Binding StandardCost}"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    Code -->
-          
-                                        Background="{Binding TariffCodeBoxColor}"
+                    <!-- Tariff Code -->
+                    <Label
+                        Background="{Binding TariffCodeBoxColor}"
                         Content="Tariff Code"
-<<<<<<< HEAD
-                        Grid.Row="1"
-        1               Grid.Column="7"
-        7               Width="110"
-=======
                         Grid.Row="17"
                         Grid.Column="5"
                         Width="110"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         HorizontalAlignment="Left"
                         ToolTip="{Binding TariffCodeToolTip}"
                         VerticalAlignment="Center"
                         Margin="6,6,0,6"
                         Height="26" />
-<<<<<<< HEAD
-          
-                                           Grid.Column="8"
-        8               Grid.Row="1"
-=======
                     <ComboBox
                         Grid.Column="6"
                         Grid.Row="17"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         HorizontalAlignment="Left"
                         IsEnabled="{Binding BlockInfo}"
                         ItemsSource="{Binding TariffCodes}"
                         Margin="6,6,0,6"
                         Text="{Binding TariffCode}"
                         Width="180" />
-          
-                    ry -->
-          
-                                        Background="{Binding TerritoryBoxColor}"
+                    <!-- Territory -->
+                    <Label
+                        Background="{Binding TerritoryBoxColor}"
                         Content="Territory"
                         Grid.Column="7"
-<<<<<<< HEAD
-                        Grid.Row="2"
-        2               HorizontalAlignment="Left"
-=======
                         Grid.Row="0"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         ToolTip="{Binding TerritoryToolTip}"
                         VerticalAlignment="Center"
                         Width="110"
                         Margin="6,6,0,6"
                         Height="26"/>
-<<<<<<< HEAD
-          
-                                           Grid.Column="8"
-                        Grid.Row="2"
-        2               HorizontalAlignment="Left"
-=======
                     <ComboBox
                         Grid.Column="8"
                         Grid.Row="0"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         ItemsSource="{Binding Territories}"
                         Margin="6,6,0,6"
                         Text="{Binding Territory}"
                         Width="180" />
-          
-                    >
-          
-                                        Background="{Binding UdexBoxColor}"
+                    <!-- UDEX -->
+                    <Label
+                        Background="{Binding UdexBoxColor}"
                         Content="UDEX"
                         Grid.Column="7"
-<<<<<<< HEAD
-                        Grid.Row="3"
-        3               HorizontalAlignment="Left"
-=======
                         Grid.Row="1"
                         HorizontalAlignment="Left"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         ToolTip="{Binding UdexToolTip}"
                         VerticalAlignment="Center"
                         Width="110" 
                         Margin="6,6,0,6"
                         Height="26"/>
-          
-                                          IsEnabled="{Binding BlockInfo}"
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-<<<<<<< HEAD
-                        Grid.Row="3"
-        3               TextWrapping="Wrap"
-=======
                         Grid.Row="1"
                         TextWrapping="Wrap"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         MaxLength="60"
                         Grid.Column="8"
                         Text="{Binding Udex}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-          
-                    
-          
-                                        Background="{Binding UpcBoxColor}"
+                    <!-- UPC -->
+                    <Label
+                        Background="{Binding UpcBoxColor}"
                         Content="UPC"
                         Grid.Column="7"
-<<<<<<< HEAD
-                        Grid.Row="4"
-        4               HorizontalAlignment="Left"
-                        ToolTip="{Binding UpcToolTip}"
-                        VerticalAlignment="Center" 
-                        Margin="6,6,0,6"
-                        Height="26" />
-          
-                                          IsEnabled="{Binding BlockInfo}"
-                        HorizontalAlignment="Left"
-                        Margin="6,6,0,6"
-                        Grid.Row="4"
-        4               TextWrapping="Wrap"
-=======
                         Grid.Row="2"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding UpcToolTip}"
@@ -1745,16 +1270,11 @@
                         Margin="6,6,0,6"
                         Grid.Row="2"
                         TextWrapping="Wrap"
->>>>>>> parent of 09851c1... item dimensions relocated on views
                         MaxLength="60"
                         Grid.Column="8"
                         Text="{Binding Upc}"
                         VerticalContentAlignment="Center"
                         Width="180" />
-<<<<<<< HEAD
-          
-                         </TabItem>
-=======
                     <!-- Weight -->
                     <Label
                         Background="{Binding WeightBoxColor}"
@@ -1803,7 +1323,6 @@
                         Width="180" />
                 </Grid>
             </TabItem>
->>>>>>> parent of 09851c1... item dimensions relocated on views
             <TabItem
                 Background="{Binding TabColorWebInfo}"
                 Header="      Web Info      " 
@@ -2630,7 +2149,7 @@
                         Grid.Column="2"
                         Grid.Row="0"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6"      
+                        Margin="0,5,0,4" 
                         ToolTip="{Binding EcommerceExternalIdToolTip}"
                         VerticalAlignment="Center" />
                     <TextBox
@@ -2896,15 +2415,15 @@
                         Height="26"
                         HorizontalAlignment="Left"
                         Grid.Column="5"
-                        Grid.Row="0"
+                        Grid.Row="1"
                         Margin="6,6,0,6"                        
                         Text="{Binding EcommercePageQty}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="170" />
-                    <!-- Parent ASIN -->
+                    <!-- Ecommerce Parent Asin -->
                     <Label
-                        Background="{Binding EcommerceParentAsinColor}"
+                        Background="{Binding EcommerceParentAsinBoxColor}"
                         Content="Parent Asin"
                         Grid.Column="4"
                         Grid.Row="1"
@@ -2916,7 +2435,7 @@
                         Height="26"
                         HorizontalAlignment="Left"
                         Grid.Column="5"
-                        Grid.Row="1"
+                        Grid.Row="0"
                         Margin="6,6,0,6"                        
                         Text="{Binding EcommerceParentAsin}"
                         TextWrapping="Wrap"
