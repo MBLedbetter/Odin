@@ -9004,7 +9004,7 @@ namespace Odin.ViewModels
                         this.ProductGroupError = error.ReturnErrorMessage();
                         break;
 
-                    case "Product Id Translation":
+                    case "Product Id Translations":
                         this.ProductIdTranslationError = error.ReturnErrorMessage();
                         break;
 
