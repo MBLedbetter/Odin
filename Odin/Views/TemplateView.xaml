@@ -76,7 +76,8 @@
             Grid.ColumnSpan="7"
             Grid.RowSpan="3"
             Height="698" 
-            VerticalAlignment="Top" Margin="0,38,0,0">
+            VerticalAlignment="Top" 
+            Margin="0,38,0,0">
             <TabItem
                 Background="{Binding ItemInfoTabColor}"
                 Header="      Item Info      ">
@@ -147,6 +148,17 @@
                         ItemsSource="{Binding AccountingGroupList}"
                         Text="{Binding AccountingGroup}"
                         Width="180" />
+                    <Label
+                        Background="{Binding CasepackHeightBoxColor}"
+                        Content="Casepack Height"
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Height="26"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding CasepackHeightToolTip}"
+                        VerticalAlignment="Center"
+                        Width="140" 
+                        Margin="6,6,0,6"/>
                     <!-- Casepack Height -->
                     <Label
                         Background="{Binding CasepackHeightBoxColor}"
@@ -159,7 +171,7 @@
                         VerticalAlignment="Center"
                         Width="140" 
                         Margin="6,6,0,6"/>
-                    <TextBox
+                    <TextBox 
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
                         Height="26"
@@ -170,7 +182,7 @@
                         IsEnabled="true"
                         Text="{Binding CasepackHeight}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="180"/>
                     <!-- Casepack Length -->
                     <Label
                         Background="{Binding CasepackLengthBoxColor}"
