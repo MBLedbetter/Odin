@@ -552,6 +552,8 @@ namespace Odin.Data
             if (!context.ItemAttribEx.Any(o => o.InvItemId == item.ItemId && o.Setid == "SHARE"))
             {
                 DateTime licenseBeginDate = !(string.IsNullOrEmpty(item.LicenseBeginDate)) ? Convert.ToDateTime(item.LicenseBeginDate) : new DateTime(1900, 01, 01);
+                Decimal websitePrice = !(string.IsNullOrEmpty(item.WebsitePrice)) ? DbUtil.ToDecimal(item.WebsitePrice) : 0.00m;
+
                 context.ItemAttribEx.Add(new ItemAttribEx
                 {
                     AltImageFile1 = item.AltImageFile1,
@@ -586,7 +588,7 @@ namespace Odin.Data
                     SellOnWeb = item.SellOnTrends,
                     Setid = "SHARE",
                     TranslateEdiProd = item.ReturnTranslateEdiProd(),
-                    WebsitePrice = DbUtil.ToDecimal(item.WebsitePrice)
+                    WebsitePrice = websitePrice
                 });
             }
         }

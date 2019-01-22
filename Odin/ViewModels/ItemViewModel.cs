@@ -178,7 +178,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.AccountingGroup != value)
                 {
                     this.ItemViewModelItem.AccountingGroup = value;
-                    FlagError("AcountingGroup");
+                    FlagError("AccountingGroup");
                     OnPropertyChanged("AccountingGroup");
                 }
             }
