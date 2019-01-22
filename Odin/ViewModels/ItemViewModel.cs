@@ -327,7 +327,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("CasepackHeightBoxColor");
             }
         }
-        private string _casepackHeightBoxColor = "White";
+        private string _casepackHeightBoxColor = "AliceBlue";
         public string CasepackHeightError
         {
             get
@@ -345,7 +345,7 @@ namespace Odin.ViewModels
                 {
                     CasepackHeightToolTip = ReturnToolTip("CasepackDimension");
                 }
-                this.CasepackHeightBoxColor = (value == "") ? "White" : "Tomato";
+                this.CasepackHeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CasepackHeightError");
             }
@@ -393,7 +393,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("CasepackLengthBoxColor");
             }
         }
-        private string _casepackLengthBoxColor = "White";
+        private string _casepackLengthBoxColor = "AliceBlue";
         public string CasepackLengthError
         {
             get
@@ -411,7 +411,7 @@ namespace Odin.ViewModels
                 {
                     CasepackLengthToolTip = ReturnToolTip("CasepackDimension");
                 }
-                this.CasepackLengthBoxColor = (value == "") ? "White" : "Tomato";
+                this.CasepackLengthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CasepackLengthError");
             }
@@ -459,7 +459,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("CasepackQtyBoxColor");
             }
         }
-        private string _casepackQtyBoxColor = "White";
+        private string _casepackQtyBoxColor = "AliceBlue";
         public string CasepackQtyError
         {
             get
@@ -477,7 +477,7 @@ namespace Odin.ViewModels
                 {
                     CasepackQtyToolTip = ReturnToolTip("CasepackQty");
                 }
-                this.CasepackQtyBoxColor = (value == "") ? "White" : "Tomato";
+                this.CasepackQtyBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CasepackQtyError");
             }
@@ -525,7 +525,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("CasepackUpcBoxColor");
             }
         }
-        private string _casepackUpcBoxColor = "White";
+        private string _casepackUpcBoxColor = "AliceBlue";
         public string CasepackUpcError
         {
             get
@@ -543,7 +543,7 @@ namespace Odin.ViewModels
                 {
                     CasepackUpcToolTip = ReturnToolTip("CasepackUpc");
                 }
-                this.CasepackUpcBoxColor = (value == "") ? "White" : "Tomato";
+                this.CasepackUpcBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CasepackUpcError");
             }
@@ -591,7 +591,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("CasepackWidthBoxColor");
             }
         }
-        private string _casepackWidthBoxColor = "White";
+        private string _casepackWidthBoxColor = "AliceBlue";
         public string CasepackWidthError
         {
             get
@@ -609,7 +609,7 @@ namespace Odin.ViewModels
                 {
                     CasepackWidthToolTip = ReturnToolTip("CasepackDimension");
                 }
-                this.CasepackWidthBoxColor = (value == "") ? "White" : "Tomato";
+                this.CasepackWidthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CasepackWidthErrorMsg");
             }
@@ -657,7 +657,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("CasepackWeightBoxColor");
             }
         }
-        private string _casepackWeightBoxColor = "White";
+        private string _casepackWeightBoxColor = "AliceBlue";
         public string CasepackWeightError
         {
             get
@@ -675,7 +675,7 @@ namespace Odin.ViewModels
                 {
                     CasepackWeightToolTip = ReturnToolTip("CasepackDimension");
                 }
-                this.CasepackWeightBoxColor = (value == "") ? "White" : "Tomato";
+                this.CasepackWeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CasepackWeightError");
             }
@@ -921,7 +921,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("DefaultActualCostUsdBoxColor");
             }
         }
-        private string _defaultActualCostUsdBoxColor = "White";
+        private string _defaultActualCostUsdBoxColor = "AliceBlue";
         public string DefaultActualCostUsdError
         {
             get
@@ -939,7 +939,7 @@ namespace Odin.ViewModels
                 {
                     DefaultActualCostUsdToolTip = ReturnToolTip("DefaultActualCost");
                 }
-                this.DefaultActualCostUsdBoxColor = (value == "") ? "White" : "Tomato";
+                this.DefaultActualCostUsdBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("DefaultActualCostUsdError");
             }
@@ -987,7 +987,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("DefaultActualCostCadBoxColor");
             }
         }
-        private string _defaultActualCostCadBoxColor = "White";
+        private string _defaultActualCostCadBoxColor = "AliceBlue";
         public string DefaultActualCostCadError
         {
             get
@@ -1005,7 +1005,7 @@ namespace Odin.ViewModels
                 {
                     DefaultActualCostCadToolTip = ReturnToolTip("DefaultActualCost");
                 }
-                this.DefaultActualCostCadBoxColor = (value == "") ? "White" : "Tomato";
+                this.DefaultActualCostCadBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("DefaultActualCostCadError");
             }
@@ -1383,7 +1383,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("HeightBoxColor");
             }
         }
-        private string _heightBoxColor = "White";
+        private string _heightBoxColor = "AliceBlue";
         public string HeightError
         {
             get
@@ -1401,7 +1401,7 @@ namespace Odin.ViewModels
                 {
                     HeightToolTip = ReturnToolTip("Height");
                 }
-                this.HeightBoxColor = (value == "") ? "White" : "Tomato";
+                this.HeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("HeightError");
             }
@@ -1449,7 +1449,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("InnerpackHeightBoxColor");
             }
         }
-        private string _innerpackHeightBoxColor = "White";
+        private string _innerpackHeightBoxColor = "AliceBlue";
         public string InnerpackHeightError
         {
             get
@@ -1467,7 +1467,7 @@ namespace Odin.ViewModels
                 {
                     InnerpackHeightToolTip = ReturnToolTip("InnerpackDimension");
                 }
-                this.InnerpackHeightBoxColor = (value == "") ? "White" : "Tomato";
+                this.InnerpackHeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("InnerpackHeightError");
             }
@@ -1515,7 +1515,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("InnerpackLengthBoxColor");
             }
         }
-        private string _innerpackLengthBoxColor = "White";
+        private string _innerpackLengthBoxColor = "AliceBlue";
         public string InnerpackLengthError
         {
             get
@@ -1533,7 +1533,7 @@ namespace Odin.ViewModels
                 {
                     InnerpackLengthToolTip = ReturnToolTip("InnerpackDimension");
                 }
-                this.InnerpackLengthBoxColor = (value == "") ? "White" : "Tomato";
+                this.InnerpackLengthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("InnerpackLengthError");
             }
@@ -1581,7 +1581,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("InnerpackQuantityBoxColor");
             }
         }
-        private string _innerpackQuantityBoxColor = "White";
+        private string _innerpackQuantityBoxColor = "AliceBlue";
         public string InnerpackQuantityError
         {
             get
@@ -1599,7 +1599,7 @@ namespace Odin.ViewModels
                 {
                     InnerpackQuantityToolTip = ReturnToolTip("InnerpackQuantity");
                 }
-                this.InnerpackQuantityBoxColor = (value == "") ? "White" : "Tomato";
+                this.InnerpackQuantityBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("InnerpackQuantityError");
             }
@@ -1647,7 +1647,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("InnerpackUpcBoxColor");
             }
         }
-        private string _innerpackUpcBoxColor = "White";
+        private string _innerpackUpcBoxColor = "AliceBlue";
         public string InnerpackUpcError
         {
             get
@@ -1665,7 +1665,7 @@ namespace Odin.ViewModels
                 {
                     InnerpackUpcToolTip = ReturnToolTip("InnerpackUpc");
                 }
-                this.InnerpackUpcBoxColor = (value == "") ? "White" : "Tomato";
+                this.InnerpackUpcBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("InnerpackUpcError");
             }
@@ -1713,7 +1713,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("InnerpackWeightBoxColor");
             }
         }
-        private string _innerpackWeightBoxColor = "White";
+        private string _innerpackWeightBoxColor = "AliceBlue";
         public string InnerpackWeightError
         {
             get
@@ -1731,7 +1731,7 @@ namespace Odin.ViewModels
                 {
                     InnerpackWeightToolTip = ReturnToolTip("InnerpackDimension");
                 }
-                this.InnerpackWeightBoxColor = (value == "") ? "White" : "Tomato";
+                this.InnerpackWeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("InnerpackWeightError");
             }
@@ -1779,7 +1779,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("InnerpackWidthBoxColor");
             }
         }
-        private string _innerpackWidthBoxColor = "White";
+        private string _innerpackWidthBoxColor = "AliceBlue";
         public string InnerpackWidthError
         {
             get
@@ -1797,7 +1797,7 @@ namespace Odin.ViewModels
                 {
                     InnerpackWidthToolTip = ReturnToolTip("InnerpackDimension");
                 }
-                this.InnerpackWidthBoxColor = (value == "") ? "White" : "Tomato";
+                this.InnerpackWidthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("InnerpackWidthError");
             }
@@ -2253,7 +2253,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("LengthBoxColor");
             }
         }
-        private string _lengthBoxColor = "White";
+        private string _lengthBoxColor = "AliceBlue";
         public string LengthError
         {
             get
@@ -2271,7 +2271,7 @@ namespace Odin.ViewModels
                 {
                     LengthToolTip = ReturnToolTip("Length");
                 }
-                this.LengthBoxColor = (value == "") ? "White" : "Tomato";
+                this.LengthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("LengthError");
             }
@@ -2388,7 +2388,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("ListPriceCadBoxColor");
             }
         }
-        private string _listPriceCadBoxColor = "White";
+        private string _listPriceCadBoxColor = "AliceBlue";
         public string ListPriceCadError
         {
             get
@@ -2406,7 +2406,7 @@ namespace Odin.ViewModels
                 {
                     ListPriceCadToolTip = ReturnToolTip("ListPrice");
                 }
-                this._listPriceCadBoxColor = (value == "") ? "White" : "Tomato";
+                this._listPriceCadBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ListPriceCadError");
             }
@@ -2457,7 +2457,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("ListPriceMxnBoxColor");
             }
         }
-        private string _listPriceMxnBoxColor = "White";
+        private string _listPriceMxnBoxColor = "WhAliceBlueite";
         public string ListPriceMxnError
         {
             get
@@ -2475,7 +2475,7 @@ namespace Odin.ViewModels
                 {
                     ListPriceMxnToolTip = ReturnToolTip("ListPrice");
                 }
-                this.ListPriceMxnBoxColor = (value == "") ? "White" : "Tomato";
+                this.ListPriceMxnBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ListPriceMxnError");
             }
@@ -2526,7 +2526,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("ListPriceUsdBoxColor");
             }
         }
-        private string _listPriceUsdBoxColor = "White";
+        private string _listPriceUsdBoxColor = "AliceBlue";
         public string ListPriceUsdError
         {
             get
@@ -2544,7 +2544,7 @@ namespace Odin.ViewModels
                 {
                     ListPriceUsdToolTip = ReturnToolTip("ListPrice");
                 }
-                this.ListPriceUsdBoxColor = (value == "") ? "White" : "Tomato";
+                this.ListPriceUsdBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ListPriceUsdError");
             }
@@ -2664,7 +2664,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("MsrpBoxColor");
             }
         }
-        private string _msrpBoxColor = "White";
+        private string _msrpBoxColor = "AliceBlue";
         public string MsrpError
         {
             get
@@ -2682,7 +2682,7 @@ namespace Odin.ViewModels
                 {
                     MsrpToolTip = ReturnToolTip("Msrp");
                 }
-                this.MsrpBoxColor = (value == "") ? "White" : "Tomato";
+                this.MsrpBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("MsrpError");
             }
@@ -2733,7 +2733,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("MsrpCadBoxColor");
             }
         }
-        private string _msrpCadBoxColor = "White";
+        private string _msrpCadBoxColor = "AliceBlue";
         public string MsrpCadError
         {
             get
@@ -2751,7 +2751,7 @@ namespace Odin.ViewModels
                 {
                     MsrpCadToolTip = ReturnToolTip("Msrp");
                 }
-                this.MsrpCadBoxColor = (value == "") ? "White" : "Tomato";
+                this.MsrpCadBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("MsrpCadError");
             }
@@ -2802,7 +2802,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("MsrpMxnBoxColor");
             }
         }
-        private string _msrpMxnBoxColor = "White";
+        private string _msrpMxnBoxColor = "AliceBlue";
         public string MsrpMxnError
         {
             get
@@ -2820,7 +2820,7 @@ namespace Odin.ViewModels
                 {
                     MsrpMxnToolTip = ReturnToolTip("Msrp");
                 }
-                this.MsrpMxnBoxColor = (value == "") ? "White" : "Tomato";
+                this.MsrpMxnBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("MsrpMxnError");
             }
@@ -4834,7 +4834,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("WeightBoxColor");
             }
         }
-        private string _weightBoxColor = "White";
+        private string _weightBoxColor = "AliceBlue";
         public string WeightError
         {
             get
@@ -4852,7 +4852,7 @@ namespace Odin.ViewModels
                 {
                     WeightToolTip = ReturnToolTip("Weight");
                 }
-                this.WeightBoxColor = (value == "") ? "White" : "Tomato";
+                this.WeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("WeightError");
             }
@@ -4903,7 +4903,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("WidthBoxColor");
             }
         }
-        private string _widthBoxColor = "White";
+        private string _widthBoxColor = "AliceBlue";
         public string WidthError
         {
             get
@@ -4921,7 +4921,7 @@ namespace Odin.ViewModels
                 {
                     WidthToolTip = ReturnToolTip("Width");
                 }
-                this.WidthBoxColor = (value == "") ? "White" : "Tomato";
+                this.WidthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("WidthError");
             }
@@ -6295,7 +6295,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceBullet1BoxColor");
             }
         }
-        private string _Ecommercebullet1BoxColor = "White";
+        private string _Ecommercebullet1BoxColor = "AliceBlue";
         public string EcommerceBullet1Error
         {
             get
@@ -6313,7 +6313,7 @@ namespace Odin.ViewModels
                 {
                     EcommerceBullet1ToolTip = ReturnToolTip("EcommerceBulletToolTip");
                 }
-                this.EcommerceBullet1BoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceBullet1BoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceBullet1Error");
             }
@@ -6364,7 +6364,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceBullet2BoxColor");
             }
         }
-        private string _Ecommercebullet2BoxColor = "White";
+        private string _Ecommercebullet2BoxColor = "AliceBlue";
         public string EcommerceBullet2Error
         {
             get
@@ -6382,7 +6382,7 @@ namespace Odin.ViewModels
                 {
                     EcommerceBullet2ToolTip = ReturnToolTip("EcommerceBulletToolTip");
                 }
-                this.EcommerceBullet2BoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceBullet2BoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceBullet2Error");
             }
@@ -6433,7 +6433,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceBullet3BoxColor");
             }
         }
-        private string _Ecommercebullet3BoxColor = "White";
+        private string _Ecommercebullet3BoxColor = "AliceBlue";
         public string EcommerceBullet3Error
         {
             get
@@ -6451,7 +6451,7 @@ namespace Odin.ViewModels
                 {
                     EcommerceBullet3ToolTip = ReturnToolTip("EcommerceBulletToolTip");
                 }
-                this.EcommerceBullet3BoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceBullet3BoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceBullet3Error");
             }
@@ -6502,7 +6502,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceBullet4BoxColor");
             }
         }
-        private string _Ecommercebullet4BoxColor = "White";
+        private string _Ecommercebullet4BoxColor = "AliceBlue";
         public string EcommerceBullet4Error
         {
             get
@@ -6520,7 +6520,7 @@ namespace Odin.ViewModels
                 {
                     EcommerceBullet4ToolTip = ReturnToolTip("EcommerceBulletToolTip");
                 }
-                this.EcommerceBullet4BoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceBullet4BoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceBullet4Error");
             }
@@ -6571,7 +6571,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceBullet5BoxColor");
             }
         }
-        private string _Ecommercebullet5BoxColor = "White";
+        private string _Ecommercebullet5BoxColor = "AliceBlue";
         public string EcommerceBullet5Error
         {
             get
@@ -6589,7 +6589,7 @@ namespace Odin.ViewModels
                 {
                     EcommerceBullet5ToolTip = ReturnToolTip("EcommerceBulletToolTip");
                 }
-                this.EcommerceBullet5BoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceBullet5BoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceBullet5Error");
             }
@@ -7011,7 +7011,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceItemHeightBoxColor");
             }
         }
-        private string _EcommerceItemHeightBoxColor = "White";
+        private string _EcommerceItemHeightBoxColor = "AliceBlue";
         public string EcommerceItemHeightError
         {
             get
@@ -7029,7 +7029,7 @@ namespace Odin.ViewModels
                 {
                     EcommerceItemHeightToolTip = ReturnToolTip("EcommerceItemHeightToolTip");
                 }
-                this.EcommerceItemHeightBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceItemHeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceItemHeightError");
             }
@@ -7080,7 +7080,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceItemLengthBoxColor");
             }
         }
-        private string _EcommerceItemLengthBoxColor = "White";
+        private string _EcommerceItemLengthBoxColor = "AliceBlue";
         public string EcommerceItemLengthError
         {
             get
@@ -7098,7 +7098,7 @@ namespace Odin.ViewModels
                 {
                     EcommerceItemLengthToolTip = ReturnToolTip("EcommerceItemLengthToolTip");
                 }
-                this.EcommerceItemLengthBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceItemLengthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceItemLengthError");
             }
@@ -7149,7 +7149,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceItemNameBoxColor");
             }
         }
-        private string _EcommerceItemNameBoxColor = "White";
+        private string _EcommerceItemNameBoxColor = "AliceBlue";
         public string EcommerceItemNameError
         {
             get
@@ -7167,7 +7167,7 @@ namespace Odin.ViewModels
                 {
                     EcommerceItemNameToolTip = ReturnToolTip("EcommerceItemNameToolTip");
                 }
-                this.EcommerceItemNameBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceItemNameBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceItemNameError");
             }
@@ -7218,7 +7218,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceItemWeightBoxColor");
             }
         }
-        private string _EcommerceItemWeightBoxColor = "White";
+        private string _EcommerceItemWeightBoxColor = "AliceBlue";
         public string EcommerceItemWeightError
         {
             get
@@ -7236,7 +7236,7 @@ namespace Odin.ViewModels
                 {
                     EcommerceItemWeightToolTip = ReturnToolTip("EcommerceItemWeightToolTip");
                 }
-                this.EcommerceItemWeightBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceItemWeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceItemWeightError");
             }
@@ -7287,7 +7287,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceItemWidthBoxColor");
             }
         }
-        private string _EcommerceItemWidthBoxColor = "White";
+        private string _EcommerceItemWidthBoxColor = "AliceBlue";
         public string EcommerceItemWidthError
         {
             get
@@ -7305,7 +7305,7 @@ namespace Odin.ViewModels
                 {
                     EcommerceItemWidthToolTip = ReturnToolTip("EcommerceItemWidthToolTip");
                 }
-                this.EcommerceItemWidthBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceItemWidthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceItemWidthError");
             }
@@ -7425,7 +7425,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommercePackageHeightBoxColor");
             }
         }
-        private string _EcommercePackageHeightBoxColor = "White";
+        private string _EcommercePackageHeightBoxColor = "AliceBlue";
         public string EcommercePackageHeightError
         {
             get
@@ -7443,7 +7443,7 @@ namespace Odin.ViewModels
                 {
                     EcommercePackageHeightToolTip = ReturnToolTip("EcommercePackageHeightToolTip");
                 }
-                this.EcommercePackageHeightBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommercePackageHeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommercePackageHeightError");
             }
@@ -7494,7 +7494,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommercePackageLengthBoxColor");
             }
         }
-        private string _EcommercePackageLengthBoxColor = "White";
+        private string _EcommercePackageLengthBoxColor = "AliceBlue";
         public string EcommercePackageLengthError
         {
             get
@@ -7512,7 +7512,7 @@ namespace Odin.ViewModels
                 {
                     EcommercePackageLengthToolTip = ReturnToolTip("EcommercePackageLengthToolTip");
                 }
-                this.EcommercePackageLengthBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommercePackageLengthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommercePackageLengthError");
             }
@@ -7563,7 +7563,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommercePackageWeightBoxColor");
             }
         }
-        private string _EcommercePackageWeightBoxColor = "White";
+        private string _EcommercePackageWeightBoxColor = "AliceBlue";
         public string EcommercePackageWeightError
         {
             get
@@ -7581,7 +7581,7 @@ namespace Odin.ViewModels
                 {
                     EcommercePackageWeightToolTip = ReturnToolTip("EcommercePackageWeightToolTip");
                 }
-                this.EcommercePackageWeightBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommercePackageWeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommercePackageWeightError");
             }
@@ -7632,7 +7632,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommercePackageWidthBoxColor");
             }
         }
-        private string _EcommercePackageWidthBoxColor = "White";
+        private string _EcommercePackageWidthBoxColor = "AliceBlue";
         public string EcommercePackageWidthError
         {
             get
@@ -7650,7 +7650,7 @@ namespace Odin.ViewModels
                 {
                     EcommercePackageWidthToolTip = ReturnToolTip("EcommercePackageWidthToolTip");
                 }
-                this.EcommercePackageWidthBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommercePackageWidthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommercePackageWidthError");
             }
