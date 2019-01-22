@@ -268,7 +268,7 @@ namespace Odin.DbTableModels
         ///     Gets or sets ECOMMERCE_PARENT_ASIN
         /// </summary>
         public string EcommerceParentAsin { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets EcommercePRODUCT_CATEGORY
         /// </summary>
