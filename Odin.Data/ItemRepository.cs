@@ -1,9 +1,9 @@
-﻿using Odin.DbTableModels;
-using OdinModels;
+﻿using OdinModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data;
+using Odin.DbTableModels;
 
 namespace Odin.Data
 {

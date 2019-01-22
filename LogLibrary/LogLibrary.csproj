@@ -79,10 +79,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Desktop\Odin.DbTableModels\Odin.DbTableModels.csproj">
-      <Project>{8fb2afaf-75a9-45ef-8f8d-b79464a39086}</Project>
-      <Name>Odin.DbTableModels</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OdinModels\OdinModels.csproj">
       <Project>{00bde998-721e-483a-94a4-3a7fe5dd7260}</Project>
       <Name>OdinModels</Name>
