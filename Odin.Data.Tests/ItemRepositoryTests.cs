@@ -2,9 +2,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using System.Collections.Generic;
-using Odin.DbTableModels;
 using LogLibrary;
 using OdinModels;
+using Odin.DbTableModels;
 
 namespace Odin.Data.Tests
 {

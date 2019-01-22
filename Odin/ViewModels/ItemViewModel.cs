@@ -178,7 +178,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.AccountingGroup != value)
                 {
                     this.ItemViewModelItem.AccountingGroup = value;
-                    FlagError("AcountingGroup");
+                    FlagError("AccountingGroup");
                     OnPropertyChanged("AccountingGroup");
                 }
             }
@@ -9077,7 +9077,7 @@ namespace Odin.ViewModels
                         this.ProductGroupError = error.ReturnErrorMessage();
                         break;
 
-                    case "Product Id Translation":
+                    case "Product Id Translations":
                         this.ProductIdTranslationError = error.ReturnErrorMessage();
                         break;
 

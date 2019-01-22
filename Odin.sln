@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Odin", "Odin\Odin.csproj", "{79ABD6F3-BFC2-479F-B48D-7E52BBF9E1C7}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -18,8 +18,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OdinModels", "OdinModels\Od
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OdinServices", "OdinServices\OdinServices.csproj", "{CBD691E8-81E8-43DC-9BEB-9B9673E4B6ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Odin.DbTableModels", "..\..\..\..\Desktop\Odin.DbTableModels\Odin.DbTableModels.csproj", "{8FB2AFAF-75A9-45EF-8F8D-B79464A39086}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Odin.Data", "Odin.Data\Odin.Data.csproj", "{CF739E41-E669-4B29-9F08-1C3940373234}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Odin.Data.Tests", "Odin.Data.Tests\Odin.Data.Tests.csproj", "{D375D4D6-D16E-4C59-BF24-5779D334BEE7}"
@@ -27,6 +25,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogLibrary", "LogLibrary\LogLibrary.csproj", "{A5ABC176-4A7F-4342-9574-036252ACC235}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Odin.Services.Tests", "Odin.Services.Tests\Odin.Services.Tests.csproj", "{686A6B5A-EA92-483C-82C3-3DA760174614}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Odin.DbTableModels", "Odin.DbTableModels\Odin.DbTableModels.csproj", "{8FB2AFAF-75A9-45EF-8F8D-B79464A39086}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,6 @@ Global
 		{CBD691E8-81E8-43DC-9BEB-9B9673E4B6ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBD691E8-81E8-43DC-9BEB-9B9673E4B6ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBD691E8-81E8-43DC-9BEB-9B9673E4B6ED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8FB2AFAF-75A9-45EF-8F8D-B79464A39086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8FB2AFAF-75A9-45EF-8F8D-B79464A39086}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8FB2AFAF-75A9-45EF-8F8D-B79464A39086}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8FB2AFAF-75A9-45EF-8F8D-B79464A39086}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CF739E41-E669-4B29-9F08-1C3940373234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CF739E41-E669-4B29-9F08-1C3940373234}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF739E41-E669-4B29-9F08-1C3940373234}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -78,8 +74,15 @@ Global
 		{686A6B5A-EA92-483C-82C3-3DA760174614}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{686A6B5A-EA92-483C-82C3-3DA760174614}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{686A6B5A-EA92-483C-82C3-3DA760174614}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FB2AFAF-75A9-45EF-8F8D-B79464A39086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FB2AFAF-75A9-45EF-8F8D-B79464A39086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FB2AFAF-75A9-45EF-8F8D-B79464A39086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FB2AFAF-75A9-45EF-8F8D-B79464A39086}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A71E58C0-D25A-4F28-8351-395F6D102D9C}
 	EndGlobalSection
 EndGlobal

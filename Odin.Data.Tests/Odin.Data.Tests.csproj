@@ -74,10 +74,6 @@
     <Compile Include="TemplateRepositoryTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Desktop\Odin.DbTableModels\Odin.DbTableModels.csproj">
-      <Project>{8FB2AFAF-75A9-45EF-8F8D-B79464A39086}</Project>
-      <Name>Odin.DbTableModels</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LogLibrary\LogLibrary.csproj">
       <Project>{A5ABC176-4A7F-4342-9574-036252ACC235}</Project>
       <Name>LogLibrary</Name>
@@ -85,6 +81,10 @@
     <ProjectReference Include="..\Odin.Data\Odin.Data.csproj">
       <Project>{cf739e41-e669-4b29-9f08-1c3940373234}</Project>
       <Name>Odin.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Odin.DbTableModels\Odin.DbTableModels.csproj">
+      <Project>{8fb2afaf-75a9-45ef-8f8d-b79464a39086}</Project>
+      <Name>Odin.DbTableModels</Name>
     </ProjectReference>
     <ProjectReference Include="..\OdinModels\OdinModels.csproj">
       <Project>{00bde998-721e-483a-94a4-3a7fe5dd7260}</Project>

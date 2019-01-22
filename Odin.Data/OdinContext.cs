@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Data.Entity;
-using Odin.DbTableModels;
 using LogLibrary;
 using System.ComponentModel.DataAnnotations.Schema;
+using Odin.DbTableModels;
 
 namespace Odin.Data
 {

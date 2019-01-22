@@ -2047,7 +2047,7 @@ namespace OdinServices
             }
             string error = string.Empty;
             ItemError validationError = null;
-            // Acounting Group //
+            // Accounting Group //
             validationError = ValidateAccountingGroup(var);
             if (validationError != null) { ErrorList.Add(validationError); }
             // AltImage File 1 //
