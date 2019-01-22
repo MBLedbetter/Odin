@@ -7149,7 +7149,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceItemNameBoxColor");
             }
         }
-        private string _EcommerceItemNameBoxColor = "AliceBlue";
+        private string _EcommerceItemNameBoxColor = "White";
         public string EcommerceItemNameError
         {
             get
@@ -7167,7 +7167,7 @@ namespace Odin.ViewModels
                 {
                     EcommerceItemNameToolTip = ReturnToolTip("EcommerceItemNameToolTip");
                 }
-                this.EcommerceItemNameBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.EcommerceItemNameBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceItemNameError");
             }
@@ -9212,37 +9212,37 @@ namespace Odin.ViewModels
         /// <returns></returns>
         private string CheckEcommerceTabColor()
         {
-            if (EcommerceAsinBoxColor != "White") { return "Tomato"; }
-            if (EcommerceBullet1BoxColor != "White") { return "Tomato"; }
-            if (EcommerceBullet2BoxColor != "White") { return "Tomato"; }
-            if (EcommerceBullet3BoxColor != "White") { return "Tomato"; }
-            if (EcommerceBullet4BoxColor != "White") { return "Tomato"; }
-            if (EcommerceBullet5BoxColor != "White") { return "Tomato"; }
-            if (EcommerceComponentsBoxColor != "White") { return "Tomato"; }
-            if (EcommerceCostBoxColor != "White") { return "Tomato"; }
-            if (EcommerceExternalIdBoxColor != "White") { return "Tomato"; }
-            if (EcommerceExternalIdTypeBoxColor != "White") { return "Tomato"; }
-            if (EcommerceGenericKeywordsBoxColor != "White") { return "Tomato"; }
-            if (EcommerceItemHeightBoxColor != "White") { return "Tomato"; }
-            if (EcommerceItemLengthBoxColor != "White") { return "Tomato"; }
-            if (EcommerceItemNameBoxColor != "White") { return "Tomato"; }
-            if (EcommerceItemWeightBoxColor != "White") { return "Tomato"; }
-            if (EcommerceItemWidthBoxColor != "White") { return "Tomato"; }
-            if (EcommerceModelNameBoxColor != "White") { return "Tomato"; }
-            if (EcommercePackageHeightBoxColor != "White") { return "Tomato"; }
-            if (EcommercePackageLengthBoxColor != "White") { return "Tomato"; }
-            if (EcommercePackageWeightBoxColor != "White") { return "Tomato"; }
-            if (EcommercePackageWidthBoxColor != "White") { return "Tomato"; }
-            if (EcommercePageQtyBoxColor != "White") { return "Tomato"; }
-            if (EcommerceParentAsinBoxColor != "White") { return "Tomato"; }
-            if (EcommerceProductCategoryBoxColor != "White") { return "Tomato"; }
-            if (EcommerceProductDescriptionBoxColor != "White") { return "Tomato"; }
-            if (EcommerceProductSubcategoryBoxColor != "White") { return "Tomato"; }
-            if (EcommerceManufacturerNameBoxColor != "White") { return "Tomato"; }
-            if (EcommerceMsrpBoxColor != "White") { return "Tomato"; }
-            if (EcommerceSizeBoxColor != "White") { return "Tomato"; }
-            if (EcommerceSubjectKeywordsBoxColor != "White") { return "Tomato"; }
-            if (EcommerceUpcBoxColor != "White") { return "Tomato"; }
+            if (EcommerceAsinBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceBullet1BoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceBullet2BoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceBullet3BoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceBullet4BoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceBullet5BoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceComponentsBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceCostBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceExternalIdBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceExternalIdTypeBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceGenericKeywordsBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceItemHeightBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceItemLengthBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceItemNameBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceItemWeightBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceItemWidthBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceModelNameBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommercePackageHeightBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommercePackageLengthBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommercePackageWeightBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommercePackageWidthBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommercePageQtyBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceParentAsinBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceProductCategoryBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceProductDescriptionBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceProductSubcategoryBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceManufacturerNameBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceMsrpBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceSizeBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceSubjectKeywordsBoxColor == "Tomato") { return "Tomato"; }
+            if (EcommerceUpcBoxColor == "Tomato") { return "Tomato"; }
             return "White";
         }
 
@@ -9266,64 +9266,64 @@ namespace Odin.ViewModels
         /// <returns>'Tomato' if errors exist, 'White' if no errors exist</returns>
         private string CheckItemInfoTabColor()
         {
-            if (AccountingGroupBoxColor != "White") { return "Tomato"; }
-            if (BillOfMaterialsBoxColor != "White") { return "Tomato"; }
-            if (CasepackHeightBoxColor != "White") { return "Tomato"; }
-            if (CasepackLengthBoxColor != "White") { return "Tomato"; }
-            if (CasepackQtyBoxColor != "White") { return "Tomato"; }
-            if (CasepackUpcBoxColor != "White") { return "Tomato"; }
-            if (CasepackWidthBoxColor != "White") { return "Tomato"; }
-            if (CasepackWeightBoxColor != "White") { return "Tomato"; }
-            if (ColorBoxColor != "White") { return "Tomato"; }
-            if (CostProfileGroupBoxColor != "White") { return "Tomato"; }
-            if (CountryOfOriginBoxColor != "White") { return "Tomato"; }
-            if (DefaultActualCostUsdBoxColor != "White") { return "Tomato"; }
-            if (DefaultActualCostCadBoxColor != "White") { return "Tomato"; }
-            if (DescriptionBoxColor != "White") { return "Tomato"; }
-            if (EanBoxColor != "White") { return "Tomato"; }
-            if (DutyBoxColor != "White") { return "Tomato"; }
-            if (GpcBoxColor != "White") { return "Tomato"; }
-            if (HeightBoxColor != "White") { return "Tomato"; }
-            if (InnerpackHeightBoxColor != "White") { return "Tomato"; }
-            if (InnerpackLengthBoxColor != "White") { return "Tomato"; }
-            if (InnerpackQuantityBoxColor != "White") { return "Tomato"; }
-            if (InnerpackUpcBoxColor != "White") { return "Tomato"; }
-            if (InnerpackWeightBoxColor != "White") { return "Tomato"; }
-            if (InnerpackWidthBoxColor != "White") { return "Tomato"; }
-            if (IsbnBoxColor != "White") { return "Tomato"; }
-            if (ItemCategoryBoxColor != "White") { return "Tomato"; }
-            if (ItemFamilyBoxColor != "White") { return "Tomato"; }
-            if (ItemGroupBoxColor != "White") { return "Tomato"; }
-            if (ItemIdBoxColor != "White") { return "Tomato"; }
-            if (LanguageBoxColor != "White") { return "Tomato"; }
-            if (LengthBoxColor != "White") { return "Tomato"; }
-            if (LicenseBeginDateBoxColor != "White") { return "Tomato"; }
-            if (ListPriceCadBoxColor != "White") { return "Tomato"; }
-            if (ListPriceMxnBoxColor != "White") { return "Tomato"; }
-            if (ListPriceUsdBoxColor != "White") { return "Tomato"; }
-            if (MfgSourceBoxColor != "White") { return "Tomato"; }
-            if (MsrpBoxColor != "White") { return "Tomato"; }
-            if (MsrpCadBoxColor != "White") { return "Tomato"; }
-            if (MsrpMxnBoxColor != "White") { return "Tomato"; }
-            if (PricingGroupBoxColor != "White") { return "Tomato"; }
-            if (PrintOnDemandBoxColor != "White") { return "Tomato"; }
-            if (ProductFormatBoxColor != "White") { return "Tomato"; }
-            if (ProductGroupBoxColor != "White") { return "Tomato"; }
-            if (ProductIdTranslationBoxColor != "White") { return "Tomato"; }
-            if (ProductLineBoxColor != "White") { return "Tomato"; }
-            if (ProductQtyBoxColor != "White") { return "Tomato"; }
-            if (PsStatusBoxColor != "White") { return "Tomato"; }
-            if (SatCodeBoxColor != "White") { return "Tomato"; }
-            if (StandardCostBoxColor != "White") { return "Tomato"; }
-            if (StatsCodeBoxColor != "White") { return "Tomato"; }
-            if (TariffCodeBoxColor != "White") { return "Tomato"; }
-            if (TerritoryBoxColor != "White") { return "Tomato"; }
-            if (UdexBoxColor != "White") { return "Tomato"; }
-            if (UpcBoxColor != "White") { return "Tomato"; }
-            if (WarrantyBoxColor != "White") { return "Tomato"; }
-            if (WarrantyCheckBoxColor != "White") { return "Tomato"; }
-            if (WeightBoxColor != "White") { return "Tomato"; }
-            if (WidthBoxColor != "White") { return "Tomato"; }
+            if (AccountingGroupBoxColor == "Tomato") { return "Tomato"; }
+            if (BillOfMaterialsBoxColor == "Tomato") { return "Tomato"; }
+            if (CasepackHeightBoxColor == "Tomato") { return "Tomato"; }
+            if (CasepackLengthBoxColor == "Tomato") { return "Tomato"; }
+            if (CasepackQtyBoxColor == "Tomato") { return "Tomato"; }
+            if (CasepackUpcBoxColor == "Tomato") { return "Tomato"; }
+            if (CasepackWidthBoxColor == "Tomato") { return "Tomato"; }
+            if (CasepackWeightBoxColor == "Tomato") { return "Tomato"; }
+            if (ColorBoxColor == "Tomato") { return "Tomato"; }
+            if (CostProfileGroupBoxColor == "Tomato") { return "Tomato"; }
+            if (CountryOfOriginBoxColor == "Tomato") { return "Tomato"; }
+            if (DefaultActualCostUsdBoxColor == "Tomato") { return "Tomato"; }
+            if (DefaultActualCostCadBoxColor == "Tomato") { return "Tomato"; }
+            if (DescriptionBoxColor == "Tomato") { return "Tomato"; }
+            if (EanBoxColor == "Tomato") { return "Tomato"; }
+            if (DutyBoxColor == "Tomato") { return "Tomato"; }
+            if (GpcBoxColor == "Tomato") { return "Tomato"; }
+            if (HeightBoxColor == "Tomato") { return "Tomato"; }
+            if (InnerpackHeightBoxColor == "Tomato") { return "Tomato"; }
+            if (InnerpackLengthBoxColor == "Tomato") { return "Tomato"; }
+            if (InnerpackQuantityBoxColor == "Tomato") { return "Tomato"; }
+            if (InnerpackUpcBoxColor == "Tomato") { return "Tomato"; }
+            if (InnerpackWeightBoxColor == "Tomato") { return "Tomato"; }
+            if (InnerpackWidthBoxColor == "Tomato") { return "Tomato"; }
+            if (IsbnBoxColor == "Tomato") { return "Tomato"; }
+            if (ItemCategoryBoxColor == "Tomato") { return "Tomato"; }
+            if (ItemFamilyBoxColor == "Tomato") { return "Tomato"; }
+            if (ItemGroupBoxColor == "Tomato") { return "Tomato"; }
+            if (ItemIdBoxColor == "Tomato") { return "Tomato"; }
+            if (LanguageBoxColor == "Tomato") { return "Tomato"; }
+            if (LengthBoxColor == "Tomato") { return "Tomato"; }
+            if (LicenseBeginDateBoxColor == "Tomato") { return "Tomato"; }
+            if (ListPriceCadBoxColor == "Tomato") { return "Tomato"; }
+            if (ListPriceMxnBoxColor == "Tomato") { return "Tomato"; }
+            if (ListPriceUsdBoxColor == "Tomato") { return "Tomato"; }
+            if (MfgSourceBoxColor == "Tomato") { return "Tomato"; }
+            if (MsrpBoxColor == "Tomato") { return "Tomato"; }
+            if (MsrpCadBoxColor == "Tomato") { return "Tomato"; }
+            if (MsrpMxnBoxColor == "Tomato") { return "Tomato"; }
+            if (PricingGroupBoxColor == "Tomato") { return "Tomato"; }
+            if (PrintOnDemandBoxColor == "Tomato") { return "Tomato"; }
+            if (ProductFormatBoxColor == "Tomato") { return "Tomato"; }
+            if (ProductGroupBoxColor == "Tomato") { return "Tomato"; }
+            if (ProductIdTranslationBoxColor == "Tomato") { return "Tomato"; }
+            if (ProductLineBoxColor == "Tomato") { return "Tomato"; }
+            if (ProductQtyBoxColor == "Tomato") { return "Tomato"; }
+            if (PsStatusBoxColor == "Tomato") { return "Tomato"; }
+            if (SatCodeBoxColor == "Tomato") { return "Tomato"; }
+            if (StandardCostBoxColor == "Tomato") { return "Tomato"; }
+            if (StatsCodeBoxColor == "Tomato") { return "Tomato"; }
+            if (TariffCodeBoxColor == "Tomato") { return "Tomato"; }
+            if (TerritoryBoxColor == "Tomato") { return "Tomato"; }
+            if (UdexBoxColor == "Tomato") { return "Tomato"; }
+            if (UpcBoxColor == "Tomato") { return "Tomato"; }
+            if (WarrantyBoxColor == "Tomato") { return "Tomato"; }
+            if (WarrantyCheckBoxColor == "Tomato") { return "Tomato"; }
+            if (WeightBoxColor == "Tomato") { return "Tomato"; }
+            if (WidthBoxColor == "Tomato") { return "Tomato"; }
             return "White";
         }
 

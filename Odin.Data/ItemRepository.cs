@@ -1489,7 +1489,7 @@ namespace Odin.Data
         public void RetrieveGlobalData()
         {
             GlobalData.AccountingGroups = RetrieveAccountingtGroupList();
-            // GlobalData.Asins = RetrieveAsinList();
+            GlobalData.Asins = RetrieveAsinList();
             GlobalData.BillofMaterials = RetrieveBillofMaterialList();
             GlobalData.CostProfileGroups = RetrieveCostProfileGroups();
             GlobalData.CountriesOfOrigin = RetrieveCountriesOfOrigin();

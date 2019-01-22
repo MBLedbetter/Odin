@@ -660,6 +660,30 @@
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
+                        DisplayMemberBinding="{Binding Category}"
+                        Width="{Binding CategoryVisibility}">
+                        <GridViewColumnHeader
+                            Content="Category"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Category2}"
+                        Width="{Binding Category2Visibility}">
+                        <GridViewColumnHeader
+                            Content="Category 2"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Category3}"
+                        Width="{Binding Category3Visibility}">
+                        <GridViewColumnHeader
+                            Content="Category 3"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
                         DisplayMemberBinding="{Binding Color}"
                         Width="{Binding ColorVisibility}">
                         <GridViewColumnHeader
@@ -668,10 +692,10 @@
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding CountryOfOrigin}"
-                        Width="{Binding CountryOfOriginVisibility}">
+                        DisplayMemberBinding="{Binding Copyright}"
+                        Width="{Binding CopyrightVisibility}">
                         <GridViewColumnHeader
-                            Content="Country of Origin"
+                            Content="Copyright"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -680,6 +704,14 @@
                         Width="{Binding CostProfileGroupVisibility}">
                         <GridViewColumnHeader
                             Content="Cost Profile Group"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding CountryOfOrigin}"
+                        Width="{Binding CountryOfOriginVisibility}">
+                        <GridViewColumnHeader
+                            Content="Country of Origin"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -720,542 +752,6 @@
                         Width="{Binding EanVisibility}">
                         <GridViewColumnHeader
                             Content="EAN"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding Gpc}"
-                        Width="{Binding GpcVisibility}">
-                        <GridViewColumnHeader
-                            Content="GPC"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding Height}"
-                        Width="{Binding HeightVisibility}">
-                        <GridViewColumnHeader
-                            Content="Height"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding ImagePath}"
-                        Width="{Binding ImagePath1Visibility}">
-                        <GridViewColumnHeader
-                            Content="Image Path"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding AltImageFile1}"
-                        Width="{Binding ImagePath2Visibility}">
-                        <GridViewColumnHeader
-                            Content="Image Path 2"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding AltImageFile2}"
-                        Width="{Binding ImagePath3Visibility}">
-                        <GridViewColumnHeader
-                            Content="Image Path 3"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding AltImageFile3}"
-                        Width="{Binding ImagePath4Visibility}">
-                        <GridViewColumnHeader
-                            Content="Image Path 4"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding AltImageFile4}"
-                        Width="{Binding ImagePath5Visibility}">
-                        <GridViewColumnHeader
-                            Content="Image Path 5"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding InnerpackHeight}"
-                        Width="{Binding InnerpackHeightVisibility}">
-                        <GridViewColumnHeader
-                            Content="Innerpack Height"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding InnerpackLength}"
-                        Width="{Binding InnerpackLengthVisibility}">
-                        <GridViewColumnHeader
-                            Content="Innerpack Length"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding InnerpackQuantity}"
-                        Width="{Binding InnerpackQuantityVisibility}">
-                        <GridViewColumnHeader
-                            Content="Innerpack Quantity"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding InnerpackWeight}"
-                        Width="{Binding InnerpackWeightVisibility}">
-                        <GridViewColumnHeader
-                            Content="Innerpack Weight"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding InnerpackWidth}"
-                        Width="{Binding InnerpackWidthVisibility}">
-                        <GridViewColumnHeader
-                            Content="Innerpack Width"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding Isbn}"
-                        Width="{Binding IsbnVisibility}">
-                        <GridViewColumnHeader
-                            Content="Isbn"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding ItemCategory}"
-                        Width="{Binding ItemCategoryVisibility}">
-                        <GridViewColumnHeader
-                            Content="Item Category"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding ItemFamily}"
-                        Width="{Binding ItemFamilyVisibility}">
-                        <GridViewColumnHeader
-                            Content="Item Family"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding ItemGroup}"
-                        Width="{Binding ItemGroupVisibility}">
-                        <GridViewColumnHeader
-                            Content="Item Group"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding Language}"
-                        Width="{Binding LanguageVisibility}">
-                        <GridViewColumnHeader
-                            Content="Language"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding Length}"
-                        Width="{Binding LengthVisibility}">
-                        <GridViewColumnHeader
-                            Content="Item Length"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding LicenseBeginDate}"
-                        Width="{Binding LicenseBeginDateVisibility}">
-                        <GridViewColumnHeader
-                            Content="License Begin Date"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding ListPriceCad}"
-                        Width="{Binding ListPriceCadVisibility}">
-                        <GridViewColumnHeader
-                            Content="List Price CAD"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding ListPriceMxn}"
-                        Width="{Binding ListPriceMxnVisibility}">
-                        <GridViewColumnHeader
-                            Content="List Price MXN"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding ListPriceUsd}"
-                        Width="{Binding ListPriceUsdVisibility}">
-                        <GridViewColumnHeader
-                            Content="List Price USD"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding MfgSource}"
-                        Width="{Binding MfgSourceVisibility}">
-                        <GridViewColumnHeader
-                            Content="MFG Source"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding Msrp}"
-                        Width="{Binding MsrpVisibility}">
-                        <GridViewColumnHeader
-                            Content="Msrp"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding MsrpCad}"
-                        Width="{Binding MsrpCadVisibility}">
-                        <GridViewColumnHeader
-                            Content="MsrpCad"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding MsrpMxn}"
-                        Width="{Binding MsrpMxnVisibility}">
-                        <GridViewColumnHeader
-                            Content="MsrpMxn"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding ProductFormat}"
-                        Width="{Binding ProductFormatVisibility}">
-                        <GridViewColumnHeader
-                            Content="Product Format"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding ProductGroup}"
-                        Width="{Binding ProductGroupVisibility}">
-                        <GridViewColumnHeader
-                            Content="ProductGroup"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding ProductIdTranslationString}"
-                        Width="{Binding ProductIdTranslationVisibility}">
-                        <GridViewColumnHeader
-                            Content="Product Id Translation"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding ProductLine}"
-                        Width="{Binding ProductLineVisibility}">
-                        <GridViewColumnHeader
-                            Content="Product Line"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding PricingGroup}"
-                        Width="{Binding PricingGroupVisibility}">
-                        <GridViewColumnHeader
-                            Content="Price Group (Product)"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding PrintOnDemand}"
-                        Width="{Binding PrintOnDemandVisibility}">
-                        <GridViewColumnHeader
-                            Content="Print On Demand"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding PsStatus}"
-                        Width="{Binding PsStatusVisibility}">
-                        <GridViewColumnHeader
-                            Content="PS Status"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding SatCode}"
-                        Width="{Binding SatCodeVisibility}">
-                        <GridViewColumnHeader
-                            Content="SAT Code"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding SellOnAllPosters}"
-                        Width="{Binding SellOnAllPostersVisibility}">
-                        <GridViewColumnHeader
-                            Content="Sell On All Posters"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding SellOnAmazon}"
-                        Width="{Binding SellOnAmazonVisibility}">
-                        <GridViewColumnHeader
-                            Content="Sell On Amazon"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding SellOnAmazonSellerCentral}"
-                        Width="{Binding SellOnAmazonSellerCentralVisibility}">
-                        <GridViewColumnHeader
-                            Content="Sell On Amazon Seller Central"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding SellOnEcommerce}"
-                        Width="{Binding SellOnEcommerceVisibility}">
-                        <GridViewColumnHeader
-                            Content="Sell On Ecommerce"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding SellOnEcommerce}"
-                        Width="{Binding SellOnEcommerceVisibility}">
-                        <GridViewColumnHeader
-                            Content="Sell On Ecommerce"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding SellOnFanatics}"
-                        Width="{Binding SellOnFanaticsVisibility}">
-                        <GridViewColumnHeader
-                            Content="Sell On Fanatics"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding SellOnGuitarCenter}"
-                        Width="{Binding SellOnGuitarCenterVisibility}">
-                        <GridViewColumnHeader
-                            Content="Sell On Guitar Center"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding SellOnHayneedle}"
-                        Width="{Binding SellOnHayneedleVisibility}">
-                        <GridViewColumnHeader
-                            Content="Sell On Hayneedle"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding SellOnTarget}"
-                        Width="{Binding SellOnTargetVisibility}">
-                        <GridViewColumnHeader
-                            Content="Sell On Target"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding SellOnTrends}"
-                        Width="{Binding SellOnTrendsVisibility}">
-                        <GridViewColumnHeader
-                            Content="Sell On Trends"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding SellOnWalmart}"
-                        Width="{Binding SellOnWalmartVisibility}">
-                        <GridViewColumnHeader
-                            Content="Sell On Walmart"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding SellOnWayfair}"
-                        Width="{Binding SellOnWayfairVisibility}">
-                        <GridViewColumnHeader
-                            Content="Sell On Wayfair"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding StatsCode}"
-                        Width="{Binding StatsCodeVisibility}">
-                        <GridViewColumnHeader
-                            Content="Stats Code"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding StandardCost}"
-                        Width="{Binding StandardCostVisibility}">
-                        <GridViewColumnHeader
-                            Content="Default Actual Cost"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding TariffCode}"
-                        Width="{Binding TariffCodeVisibility}">
-                        <GridViewColumnHeader
-                            Content="Tariff Code"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding Territory}"
-                        Width="{Binding TerritoryVisibility}">
-                        <GridViewColumnHeader
-                            Content="Territory"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding Udex}"
-                        Width="{Binding UdexVisibility}">
-                        <GridViewColumnHeader
-                            Content="UDEX"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding Upc}"
-                        Width="{Binding UpcVisibility}">
-                        <GridViewColumnHeader
-                            Content="UPC"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding WebsitePrice}"
-                        Width="{Binding WebsitePriceVisibility}">
-                        <GridViewColumnHeader
-                            Content="Website Price"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding Weight}"
-                        Width="{Binding WeightVisibility}">
-                        <GridViewColumnHeader
-                            Content="Item Weight"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding Width}"
-                        Width="{Binding WidthVisibility}">
-                        <GridViewColumnHeader
-                            Content="Item Width"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding Category}"
-                        Width="{Binding CategoryVisibility}">
-                        <GridViewColumnHeader
-                            Content="Category"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding Category2}"
-                        Width="{Binding Category2Visibility}">
-                        <GridViewColumnHeader
-                            Content="Category 2"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding Category3}"
-                        Width="{Binding Category3Visibility}">
-                        <GridViewColumnHeader
-                            Content="Category 3"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding ItemKeywords}"
-                        Width="{Binding ItemKeywordsVisibility}">
-                        <GridViewColumnHeader
-                            Content="Item Keywords"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding InStockDate}"
-                        Width="{Binding InStockDateVisibility}">
-                        <GridViewColumnHeader
-                            Content="In Stock Date"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding Copyright}"
-                        Width="{Binding CopyrightVisibility}">
-                        <GridViewColumnHeader
-                            Content="Copyright"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding MetaDescription}"
-                        Width="{Binding MetaDescriptionVisibility}">
-                        <GridViewColumnHeader
-                            Content="Meta Description"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding License}"
-                        Width="{Binding LicenseVisibility}">
-                        <GridViewColumnHeader
-                            Content="License"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding Property}"
-                        Width="{Binding PropertyVisibility}">
-                        <GridViewColumnHeader
-                            Content="Property"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding ShortDescription}"
-                        Width="{Binding ShortDescriptionVisibility}">
-                        <GridViewColumnHeader
-                            Content="ShortDescription"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding Size}"
-                        Width="{Binding SizeVisibility}">
-                        <GridViewColumnHeader
-                            Content="Size"
-                            HorizontalContentAlignment="Left"
-                            Padding="5" />
-                    </GridViewColumn>
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding ProductQty}"
-                        Width="{Binding ProductQtyVisibility}">
-                        <GridViewColumnHeader
-                            Content="Product Qty"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -1496,6 +992,502 @@
                         Width="{Binding EcommerceUpcVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce Upc"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Gpc}"
+                        Width="{Binding GpcVisibility}">
+                        <GridViewColumnHeader
+                            Content="GPC"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ImagePath}"
+                        Width="{Binding ImagePath1Visibility}">
+                        <GridViewColumnHeader
+                            Content="Image Path"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding AltImageFile1}"
+                        Width="{Binding ImagePath2Visibility}">
+                        <GridViewColumnHeader
+                            Content="Image Path 2"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding AltImageFile2}"
+                        Width="{Binding ImagePath3Visibility}">
+                        <GridViewColumnHeader
+                            Content="Image Path 3"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding AltImageFile3}"
+                        Width="{Binding ImagePath4Visibility}">
+                        <GridViewColumnHeader
+                            Content="Image Path 4"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding AltImageFile4}"
+                        Width="{Binding ImagePath5Visibility}">
+                        <GridViewColumnHeader
+                            Content="Image Path 5"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding InStockDate}"
+                        Width="{Binding InStockDateVisibility}">
+                        <GridViewColumnHeader
+                            Content="In Stock Date"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding InnerpackHeight}"
+                        Width="{Binding InnerpackHeightVisibility}">
+                        <GridViewColumnHeader
+                            Content="Innerpack Height"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding InnerpackLength}"
+                        Width="{Binding InnerpackLengthVisibility}">
+                        <GridViewColumnHeader
+                            Content="Innerpack Length"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding InnerpackQuantity}"
+                        Width="{Binding InnerpackQuantityVisibility}">
+                        <GridViewColumnHeader
+                            Content="Innerpack Quantity"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding InnerpackWeight}"
+                        Width="{Binding InnerpackWeightVisibility}">
+                        <GridViewColumnHeader
+                            Content="Innerpack Weight"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding InnerpackWidth}"
+                        Width="{Binding InnerpackWidthVisibility}">
+                        <GridViewColumnHeader
+                            Content="Innerpack Width"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Isbn}"
+                        Width="{Binding IsbnVisibility}">
+                        <GridViewColumnHeader
+                            Content="Isbn"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ItemCategory}"
+                        Width="{Binding ItemCategoryVisibility}">
+                        <GridViewColumnHeader
+                            Content="Item Category"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ItemFamily}"
+                        Width="{Binding ItemFamilyVisibility}">
+                        <GridViewColumnHeader
+                            Content="Item Family"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ItemGroup}"
+                        Width="{Binding ItemGroupVisibility}">
+                        <GridViewColumnHeader
+                            Content="Item Group"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Height}"
+                        Width="{Binding HeightVisibility}">
+                        <GridViewColumnHeader
+                            Content="Item Height"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ItemKeywords}"
+                        Width="{Binding ItemKeywordsVisibility}">
+                        <GridViewColumnHeader
+                            Content="Item Keywords"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Length}"
+                        Width="{Binding LengthVisibility}">
+                        <GridViewColumnHeader
+                            Content="Item Length"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Weight}"
+                        Width="{Binding WeightVisibility}">
+                        <GridViewColumnHeader
+                            Content="Item Weight"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Width}"
+                        Width="{Binding WidthVisibility}">
+                        <GridViewColumnHeader
+                            Content="Item Width"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Language}"
+                        Width="{Binding LanguageVisibility}">
+                        <GridViewColumnHeader
+                            Content="Language"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding License}"
+                        Width="{Binding LicenseVisibility}">
+                        <GridViewColumnHeader
+                            Content="License"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding LicenseBeginDate}"
+                        Width="{Binding LicenseBeginDateVisibility}">
+                        <GridViewColumnHeader
+                            Content="License Begin Date"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ListPriceCad}"
+                        Width="{Binding ListPriceCadVisibility}">
+                        <GridViewColumnHeader
+                            Content="List Price CAD"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ListPriceMxn}"
+                        Width="{Binding ListPriceMxnVisibility}">
+                        <GridViewColumnHeader
+                            Content="List Price MXN"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ListPriceUsd}"
+                        Width="{Binding ListPriceUsdVisibility}">
+                        <GridViewColumnHeader
+                            Content="List Price USD"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding MetaDescription}"
+                        Width="{Binding MetaDescriptionVisibility}">
+                        <GridViewColumnHeader
+                            Content="Meta Description"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding MfgSource}"
+                        Width="{Binding MfgSourceVisibility}">
+                        <GridViewColumnHeader
+                            Content="MFG Source"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Msrp}"
+                        Width="{Binding MsrpVisibility}">
+                        <GridViewColumnHeader
+                            Content="Msrp"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding MsrpCad}"
+                        Width="{Binding MsrpCadVisibility}">
+                        <GridViewColumnHeader
+                            Content="MsrpCad"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding MsrpMxn}"
+                        Width="{Binding MsrpMxnVisibility}">
+                        <GridViewColumnHeader
+                            Content="MsrpMxn"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ProductFormat}"
+                        Width="{Binding ProductFormatVisibility}">
+                        <GridViewColumnHeader
+                            Content="Product Format"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ProductGroup}"
+                        Width="{Binding ProductGroupVisibility}">
+                        <GridViewColumnHeader
+                            Content="ProductGroup"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ProductIdTranslationString}"
+                        Width="{Binding ProductIdTranslationVisibility}">
+                        <GridViewColumnHeader
+                            Content="Product Id Translation"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ProductLine}"
+                        Width="{Binding ProductLineVisibility}">
+                        <GridViewColumnHeader
+                            Content="Product Line"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ProductQty}"
+                        Width="{Binding ProductQtyVisibility}">
+                        <GridViewColumnHeader
+                            Content="Product Qty"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Property}"
+                        Width="{Binding PropertyVisibility}">
+                        <GridViewColumnHeader
+                            Content="Property"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding PricingGroup}"
+                        Width="{Binding PricingGroupVisibility}">
+                        <GridViewColumnHeader
+                            Content="Price Group (Product)"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding PrintOnDemand}"
+                        Width="{Binding PrintOnDemandVisibility}">
+                        <GridViewColumnHeader
+                            Content="Print On Demand"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding PsStatus}"
+                        Width="{Binding PsStatusVisibility}">
+                        <GridViewColumnHeader
+                            Content="PS Status"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SatCode}"
+                        Width="{Binding SatCodeVisibility}">
+                        <GridViewColumnHeader
+                            Content="SAT Code"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnAllPosters}"
+                        Width="{Binding SellOnAllPostersVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On All Posters"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnAmazon}"
+                        Width="{Binding SellOnAmazonVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Amazon"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnAmazonSellerCentral}"
+                        Width="{Binding SellOnAmazonSellerCentralVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Amazon Seller Central"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnEcommerce}"
+                        Width="{Binding SellOnEcommerceVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Ecommerce"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnFanatics}"
+                        Width="{Binding SellOnFanaticsVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Fanatics"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnGuitarCenter}"
+                        Width="{Binding SellOnGuitarCenterVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Guitar Center"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnHayneedle}"
+                        Width="{Binding SellOnHayneedleVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Hayneedle"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnTarget}"
+                        Width="{Binding SellOnTargetVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Target"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnTrends}"
+                        Width="{Binding SellOnTrendsVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Trends"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnWalmart}"
+                        Width="{Binding SellOnWalmartVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Walmart"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnWayfair}"
+                        Width="{Binding SellOnWayfairVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Wayfair"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding ShortDescription}"
+                        Width="{Binding ShortDescriptionVisibility}">
+                        <GridViewColumnHeader
+                            Content="Short Description"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Size}"
+                        Width="{Binding SizeVisibility}">
+                        <GridViewColumnHeader
+                            Content="Size"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding StatsCode}"
+                        Width="{Binding StatsCodeVisibility}">
+                        <GridViewColumnHeader
+                            Content="Stats Code"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding StandardCost}"
+                        Width="{Binding StandardCostVisibility}">
+                        <GridViewColumnHeader
+                            Content="Default Actual Cost"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding TariffCode}"
+                        Width="{Binding TariffCodeVisibility}">
+                        <GridViewColumnHeader
+                            Content="Tariff Code"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Territory}"
+                        Width="{Binding TerritoryVisibility}">
+                        <GridViewColumnHeader
+                            Content="Territory"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Udex}"
+                        Width="{Binding UdexVisibility}">
+                        <GridViewColumnHeader
+                            Content="UDEX"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Upc}"
+                        Width="{Binding UpcVisibility}">
+                        <GridViewColumnHeader
+                            Content="UPC"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding WebsitePrice}"
+                        Width="{Binding WebsitePriceVisibility}">
+                        <GridViewColumnHeader
+                            Content="Website Price"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>

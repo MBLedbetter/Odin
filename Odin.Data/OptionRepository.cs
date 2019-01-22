@@ -205,9 +205,9 @@ namespace Odin.Data
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 List<string> results = (from o in context.OdinOptionsTable
-    where o.OptionId == optionId 
-        && o.UserName == username
-    select o.Value).ToList();
+                                        where o.OptionId == optionId
+                                            && o.UserName == username
+                                        select o.Value).ToList();
                 results.Sort();
                 foreach (string x in results)
                 {
