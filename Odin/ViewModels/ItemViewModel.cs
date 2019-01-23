@@ -8820,7 +8820,7 @@ namespace Odin.ViewModels
                         this.DutyError = error.ReturnErrorMessage();
                         break;
 
-                    case "Ean":
+                    case "EAN":
                         this.EanError = error.ReturnErrorMessage();
                         break;
 
@@ -8917,8 +8917,8 @@ namespace Odin.ViewModels
                         break;
 
                     case "Ecommerce Product Category":
-                            this.EcommerceProductCategoryError = error.ReturnErrorMessage();
-                            break;
+                        this.EcommerceProductCategoryError = error.ReturnErrorMessage();
+                        break;
 
                     case "Ecommerce Product Description":
                         this.EcommerceProductDescriptionError = error.ReturnErrorMessage();
@@ -8948,7 +8948,7 @@ namespace Odin.ViewModels
                         this.EcommerceUpcError = error.ReturnErrorMessage();
                         break;
 
-                    case "Gpc":
+                    case "GPC":
                         this.GpcError = error.ReturnErrorMessage();
                         break;
 
@@ -8981,7 +8981,7 @@ namespace Odin.ViewModels
                         this.InnerpackQuantityError = error.ReturnErrorMessage();
                         break;
 
-                    case "Innerpack Upc":
+                    case "Innerpack UPC":
                         this.InnerpackUpcError = error.ReturnErrorMessage();
                         break;
 
@@ -8989,7 +8989,7 @@ namespace Odin.ViewModels
                         this.InStockDateError = error.ReturnErrorMessage();
                         break;
 
-                    case "Isbn":
+                    case "ISBN":
                         this.IsbnError = error.ReturnErrorMessage();
                         break;
 
@@ -9097,7 +9097,7 @@ namespace Odin.ViewModels
                         this.PsStatusError = error.ReturnErrorMessage();
                         break;
 
-                    case "SatCode":
+                    case "SAT Code":
                         this.SatCodeError = error.ReturnErrorMessage();
                         break;
 
@@ -9252,11 +9252,11 @@ namespace Odin.ViewModels
         /// <returns></returns>
         private string CheckImagePathTabColor()
         {
-            if (ImagePathBoxColor != "White") { return "Tomato"; }
-            if (AltImageFile1BoxColor != "White") { return "Tomato"; }
-            if (AltImageFile2BoxColor != "White") { return "Tomato"; }
-            if (AltImageFile3BoxColor != "White") { return "Tomato"; }
-            if (AltImageFile4BoxColor != "White") { return "Tomato"; }
+            if (ImagePathBoxColor == "Tomato") { return "Tomato"; }
+            if (AltImageFile1BoxColor == "Tomato") { return "Tomato"; }
+            if (AltImageFile2BoxColor == "Tomato") { return "Tomato"; }
+            if (AltImageFile3BoxColor == "Tomato") { return "Tomato"; }
+            if (AltImageFile4BoxColor == "Tomato") { return "Tomato"; }
             return "White";
         }
 
@@ -9333,17 +9333,17 @@ namespace Odin.ViewModels
         /// <returns></returns>
         private string CheckWebFlagsTabColor()
         {
-            if (SellOnAllPostersBoxColor != "White") { return "Tomato"; }
-            if (SellOnAmazonBoxColor != "White") { return "Tomato"; }
-            if (SellOnAmazonSellerCentralBoxColor != "White") { return "Tomato"; }
-            if (SellOnEcommerceBoxColor != "White") { return "Tomato"; }
-            if (SellOnFanaticsBoxColor != "White") { return "Tomato"; }
-            if (SellOnGuitarCenterBoxColor != "White") { return "Tomato"; }
-            if (SellOnHayneedleBoxColor != "White") { return "Tomato"; }
-            if (SellOnTargetBoxColor != "White") { return "Tomato"; }
-            if (SellOnTrendsBoxColor != "White") { return "Tomato"; }
-            if (SellOnWalmartBoxColor != "White") { return "Tomato"; }
-            if (SellOnWayfairBoxColor != "White") { return "Tomato"; }
+            if (SellOnAllPostersBoxColor == "Tomato") { return "Tomato"; }
+            if (SellOnAmazonBoxColor == "Tomato") { return "Tomato"; }
+            if (SellOnAmazonSellerCentralBoxColor == "Tomato") { return "Tomato"; }
+            if (SellOnEcommerceBoxColor == "Tomato") { return "Tomato"; }
+            if (SellOnFanaticsBoxColor == "Tomato") { return "Tomato"; }
+            if (SellOnGuitarCenterBoxColor == "Tomato") { return "Tomato"; }
+            if (SellOnHayneedleBoxColor == "Tomato") { return "Tomato"; }
+            if (SellOnTargetBoxColor == "Tomato") { return "Tomato"; }
+            if (SellOnTrendsBoxColor == "Tomato") { return "Tomato"; }
+            if (SellOnWalmartBoxColor == "Tomato") { return "Tomato"; }
+            if (SellOnWayfairBoxColor == "Tomato") { return "Tomato"; }
             return "White";
         }
 
@@ -9353,19 +9353,19 @@ namespace Odin.ViewModels
         /// <returns></returns>
         private string CheckWebInfoTabColor()
         {
-            if (CopyrightBoxColor != "White") { return "Tomato"; }
-            if (InStockDateBoxColor != "White") { return "Tomato"; }
-            if (CategoryBoxColor != "White") { return "Tomato"; }
-            if (Category2BoxColor != "White") { return "Tomato"; }
-            if (Category3BoxColor != "White") { return "Tomato"; }
-            if (ItemKeywordsBoxColor != "White") { return "Tomato"; }
-            if (TitleBoxColor != "White") { return "Tomato"; }
-            if (LicenseBoxColor != "White") { return "Tomato"; }
-            if (MetaDescriptionBoxColor != "White") { return "Tomato"; }
-            if (PropertyBoxColor != "White") { return "Tomato"; }
-            if (ShortDescriptionBoxColor != "White") { return "Tomato"; }
-            if (SizeBoxColor != "White") { return "Tomato"; }
-            if (WebsitePriceBoxColor != "White") { return "Tomato"; }
+            if (CopyrightBoxColor == "Tomato") { return "Tomato"; }
+            if (InStockDateBoxColor == "Tomato") { return "Tomato"; }
+            if (CategoryBoxColor == "Tomato") { return "Tomato"; }
+            if (Category2BoxColor == "Tomato") { return "Tomato"; }
+            if (Category3BoxColor == "Tomato") { return "Tomato"; }
+            if (ItemKeywordsBoxColor == "Tomato") { return "Tomato"; }
+            if (TitleBoxColor == "Tomato") { return "Tomato"; }
+            if (LicenseBoxColor == "Tomato") { return "Tomato"; }
+            if (MetaDescriptionBoxColor == "Tomato") { return "Tomato"; }
+            if (PropertyBoxColor == "Tomato") { return "Tomato"; }
+            if (ShortDescriptionBoxColor == "Tomato") { return "Tomato"; }
+            if (SizeBoxColor == "Tomato") { return "Tomato"; }
+            if (WebsitePriceBoxColor == "Tomato") { return "Tomato"; }
             return "White";
         }
 

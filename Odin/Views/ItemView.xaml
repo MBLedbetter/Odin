@@ -83,7 +83,7 @@
                         Background="{Binding AccountingGroupBoxColor}"
                         Content="Accounting Group"
                         ToolTip="{Binding AccountingGroupToolTip}"
-                        Width="140"
+                        Width="134"
                         Grid.Row="0"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
@@ -108,21 +108,23 @@
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding BillOfMaterialsToolTip}"
-                        Width="140"
+                        Width="134"
                         VerticalAlignment="Center" 
                         Margin="6,6,0,6"
-                        Height="26" Grid.ColumnSpan="2" />
+                        Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
                         Grid.Row="1"
                         TextWrapping="Wrap"
+                        MaxHeight="64"
                         MaxLength="60"
                         Grid.Column="1"
                         Grid.RowSpan="2"
                         Text="{Binding BillOfMaterials}"
                         VerticalContentAlignment="Center"
+                        VerticalScrollBarVisibility="Auto"
                         Width="170" />
                     <!-- Casepack Height -->
                     <Label
@@ -147,12 +149,13 @@
                         ToolTip="{Binding CasepackHeightToolTip}"
                         VerticalAlignment="Center"
                         Margin="6,6,0,6" 
-                        Height="26" Width="98" />
+                        Height="26" Width="134" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
                         Grid.Row="4"
                         TextWrapping="Wrap"
+                        MaxHeight="26"
                         MaxLength="60"
                         Grid.Column="1"
                         IsEnabled="true"
@@ -169,11 +172,12 @@
                         ToolTip="{Binding CasepackLengthToolTip}"
                         VerticalAlignment="Center"
                         Margin="6,6,0,6" 
-                        Height="26" Width="100" />
+                        Height="26" Width="134" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Grid.Row="5"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -191,11 +195,12 @@
                         ToolTip="{Binding CasepackQtyToolTip}"
                         VerticalAlignment="Center"                        
                         Margin="6,6,0,6" 
-                        Height="26" Width="108"/>
+                        Height="26" Width="134"/>
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Grid.Row="6"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -213,11 +218,12 @@
                         ToolTip="{Binding CasepackUpcToolTip}"
                         VerticalAlignment="Center"
                         Margin="6,6,0,6" 
-                        Height="26" Width="84" />
+                        Height="26" Width="134" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Grid.Row="7"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -235,11 +241,12 @@
                         ToolTip="{Binding CasepackWeightToolTip}"
                         VerticalAlignment="Center"
                         Margin="6,6,0,6" 
-                        Height="26" Width="101" />
+                        Height="26" Width="134" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Grid.Row="8"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -256,11 +263,12 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding CasepackWidthToolTip}"
                         VerticalAlignment="Center"
-                        Margin="6,8,0,7" Height="26" Width="95" />
+                        Margin="6,6,0,6" Height="26" Width="134" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Grid.Row="9"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -277,13 +285,14 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ColorToolTip}"
                         VerticalAlignment="Center"
-                        Width="140" 
-                        Margin="6,7,0,7"
-                        Height="26" Grid.ColumnSpan="2" />
+                        Width="134" 
+                        Margin="6,6,0,6"
+                        Height="26" />
                     <TextBox
                         IsEnabled="true"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Grid.Row="10"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -296,13 +305,13 @@
                         Background="{Binding CountryOfOriginBoxColor}"
                         Content="Country of Origin"
                         Grid.Row="11"
-                        Width="140"
+                        Width="134"
                         Height="26"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding CountryOfOriginToolTip}"
                         VerticalAlignment="Center" 
-                        Margin="6,9,0,9" Grid.ColumnSpan="2" />
+                        Margin="6,6,0,6" />
                     <ComboBox
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
@@ -317,13 +326,13 @@
                         Background="{Binding CostProfileGroupBoxColor}"
                         Content="Cost Profile Group"
                         Grid.Row="12"
-                        Width="140"
+                        Width="134"
                         Height="26"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding CostProfileGroupToolTip}"
                         VerticalAlignment="Center" 
-                        Margin="6,7,0,6" Grid.ColumnSpan="2" />
+                        Margin="6,6,0,6" />
                     <ComboBox
                         Grid.Row="12"
                         Grid.Column="1"
@@ -362,6 +371,7 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Grid.Row="14"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -382,6 +392,7 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Grid.Row="15"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -397,9 +408,9 @@
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding DescriptionToolTip}"
-                        Width="140"
+                        Width="134"
                         VerticalAlignment="Center" 
-                        Margin="6,6,0,6" Height="26" Grid.ColumnSpan="2" />
+                        Margin="6,6,0,6" Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
@@ -407,6 +418,8 @@
                         Grid.Row="16"
                         TextWrapping="Wrap"
                         MaxLength="60"
+                        VerticalScrollBarVisibility="Auto"
+                        MaxHeight="64"
                         Grid.Column="1"
                         Grid.RowSpan="2"
                         Text="{Binding Description}"
@@ -418,9 +431,9 @@
                         Grid.Row="18"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
-                        Width="140"
+                        Width="134"
                         VerticalAlignment="Center" 
-                        Margin="6,6,0,6" Height="26" Grid.ColumnSpan="2" />
+                        Margin="6,6,0,6" Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
@@ -442,7 +455,7 @@
                         ToolTip="{Binding DutyToolTip}"
                         VerticalAlignment="Center"
                         Margin="6,6,0,6"
-                        Height="26" Width="109" />
+                        Height="26" Width="119" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
@@ -450,6 +463,7 @@
                         Height="26"
                         Grid.Row="0"
                         TextWrapping="Wrap"
+                        MaxHeight="26"
                         MaxLength="60" 
                         Grid.Column="3"
                         Text="{Binding Duty}"
@@ -463,8 +477,8 @@
                         Grid.Column="2"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding EanToolTip}"
-                        Width="140"
-                        VerticalAlignment="Center" Grid.ColumnSpan="2" 
+                        Width="119"
+                        VerticalAlignment="Center" 
                         Margin="6,6,0,6" Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
@@ -472,6 +486,7 @@
                         Margin="6,6,0,6"
                         Grid.Row="1"
                         TextWrapping="Wrap"
+                        MaxHeight="26"
                         MaxLength="60"
                         Grid.Column="3"
                         Text="{Binding Ean}"
@@ -486,14 +501,15 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding GpcToolTip}"
                         VerticalAlignment="Center"
-                        Width="120"
-                        Margin="6,6,0,6" Height="26" Grid.ColumnSpan="2" />
+                        Width="119"
+                        Margin="6,6,0,6" Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
                         Grid.Row="2"
                         TextWrapping="Wrap"
+                        MaxHeight="26"
                         MaxLength="60"
                         Grid.Column="3"
                         Text="{Binding Gpc}"
@@ -529,6 +545,7 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Grid.Row="4"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -552,6 +569,7 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Grid.Row="5"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -575,6 +593,7 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Grid.Row="6"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -598,6 +617,7 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Grid.Row="7"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -621,6 +641,7 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Grid.Row="8"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -644,6 +665,7 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Grid.Row="9"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -667,6 +689,7 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Grid.Row="10"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -724,6 +747,7 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Grid.Row="13"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -747,6 +771,7 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Grid.Row="14"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -770,6 +795,7 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Grid.Row="15"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -792,6 +818,7 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Grid.Row="16"
                         TextWrapping="Wrap"
                         MaxLength="60"
@@ -815,6 +842,7 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Height="26"
                         Grid.Row="17"
                         TextWrapping="Wrap"
@@ -828,13 +856,13 @@
                         Content="Item Group"
                         Background="{Binding ItemGroupBoxColor}"
                         Grid.Row="0"
-                        Width="120"
+                        Width="119"
                         Grid.Column="4"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ItemGroupToolTip}"
                         VerticalAlignment="Center" 
                         Margin="6,6,0,6"
-                        Height="26" Grid.ColumnSpan="2" />
+                        Height="26" />
                     <ComboBox
                         Grid.Column="5"
                         Grid.Row="0"
@@ -862,6 +890,7 @@
                         Margin="6,6,0,6"
                         Grid.Row="1"
                         TextWrapping="Wrap"
+                        MaxHeight="26"
                         MaxLength="18"
                         IsEnabled="{Binding IsNew}"
                         Grid.Column="5"
@@ -893,11 +922,11 @@
                         Background="{Binding LicenseBeginDateBoxColor}"
                         Grid.Row="3"
                         Grid.Column="4"
-                        Width="125"
+                        Width="120"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding LicenseBeginDateToolTip}"
                         VerticalAlignment="Center"
-                        Margin="1,6,0,6"
+                        Margin="6,6,0,6"
                         Height="26" Grid.ColumnSpan="2" />
                     <DatePicker
                         IsEnabled="{Binding BlockInfo}"
@@ -940,6 +969,7 @@
                         Margin="6,6,0,6"
                         Grid.Row="5"
                         TextWrapping="Wrap"
+                        MaxHeight="26"
                         MaxLength="60"
                         Grid.Column="5"
                         Text="{Binding ListPriceCad}"
@@ -963,6 +993,7 @@
                         Margin="6,6,0,6"
                         Grid.Row="6"
                         TextWrapping="Wrap"
+                        MaxHeight="26"
                         MaxLength="60"
                         Grid.Column="5"
                         Text="{Binding ListPriceMxn}"
@@ -986,6 +1017,7 @@
                         Margin="6,6,0,6"
                         Grid.Row="7"
                         TextWrapping="Wrap"
+                        MaxHeight="26"
                         MaxLength="60"
                         Grid.Column="5"
                         Text="{Binding ListPriceUsd}"
@@ -1009,6 +1041,7 @@
                         Margin="6,6,0,6"
                         Grid.Row="8"
                         TextWrapping="Wrap"
+                        MaxHeight="26"
                         MaxLength="60"
                         Grid.Column="5"
                         Text="{Binding MfgSource}"
@@ -1045,6 +1078,7 @@
                         Margin="6,6,0,6"
                         Grid.Row="10"
                         TextWrapping="Wrap"
+                        MaxHeight="26"
                         MaxLength="60"
                         Grid.Column="5"
                         Text="{Binding Msrp}"
@@ -1067,6 +1101,7 @@
                         Margin="6,6,0,6"
                         Grid.Row="11"
                         TextWrapping="Wrap"
+                        MaxHeight="26"
                         MaxLength="60"
                         Grid.Column="5"
                         Text="{Binding MsrpCad}"
@@ -1089,6 +1124,7 @@
                         Margin="6,6,0,6"
                         Grid.Row="12"
                         TextWrapping="Wrap"
+                        MaxHeight="26"
                         MaxLength="60"
                         Grid.Column="5"
                         Text="{Binding MsrpMxn}"
@@ -1103,7 +1139,7 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding PricingGroupToolTip}"
                         VerticalAlignment="Center"
-                        Width="110"
+                        Width="119"
                         Margin="6,6,0,6"
                         Height="26" />
                     <ComboBox
@@ -1132,6 +1168,7 @@
                         Margin="6,6,0,6"
                         Grid.Row="14"
                         TextWrapping="Wrap"
+                        MaxHeight="26"
                         MaxLength="60"
                         Grid.Column="5"
                         Text="{Binding PrintOnDemand}"
@@ -1146,8 +1183,8 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ProductFormatToolTip}"
                         VerticalAlignment="Center"
-                        Width="110"
-                        Margin="6,7,0,6"
+                        Width="119"
+                        Margin="6,6,0,6"
                         Height="26" />
                     <ComboBox
                         Grid.Column="5"
@@ -1167,7 +1204,7 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ProductGroupToolTip}"
                         VerticalAlignment="Center"
-                        Width="110" 
+                        Width="119" 
                         Margin="6,6,0,6"
                         Height="26" />
                     <ComboBox
@@ -1188,8 +1225,8 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ProductLineToolTip}"
                         VerticalAlignment="Center"
-                        Width="110"
-                        Margin="6,8,0,8"
+                        Width="119"
+                        Margin="6,6,0,6"
                         Height="26" />
                     <ComboBox
                         Grid.Column="5"
@@ -1208,10 +1245,10 @@
                         Grid.Column="6"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ProductIdTranslationToolTip}"
-                        Width="109"
+                        Width="119"
                         VerticalAlignment="Top" 
                         TextWrapping="WrapWithOverflow"
-                        Margin="6,6,0,6"                        
+                        Margin="6,6,0,0"                        
                         Height="36" >
                         Product Id Translation
                     </TextBlock>
@@ -1222,9 +1259,11 @@
                         HorizontalAlignment="Left"
                         IsEnabled="{Binding IsNew}"
                         Margin="6,6,0,6"
+                        MaxHeight="64"
                         Text="{Binding ProductIdTranslation}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
+                        VerticalScrollBarVisibility="Auto"
                         Width="170" />
                     <!-- PS Status -->
                     <Label
@@ -1256,7 +1295,7 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SatCodeToolTip}"
                         VerticalAlignment="Center"
-                        Width="110"
+                        Width="119"
                         Margin="6,6,0,6"
                         Height="26"/>
                     <TextBox
@@ -1279,7 +1318,7 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding StatsCodeToolTip}"
                         VerticalAlignment="Center"
-                        Width="110" 
+                        Width="119" 
                         Margin="6,6,0,6"
                         Height="26"/>
                     <ComboBox
@@ -1300,7 +1339,7 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding StandardCostToolTip}"
                         VerticalAlignment="Center"
-                        Width="110" 
+                        Width="119" 
                         Margin="6,6,0,6"
                         Height="26"/>
                     <TextBox
@@ -1345,7 +1384,7 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding TerritoryToolTip}"
                         VerticalAlignment="Center"
-                        Width="110"
+                        Width="119"
                         Height="26"/>
                     <ComboBox
                         Grid.Column="7"
@@ -1364,7 +1403,7 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding UdexToolTip}"
                         VerticalAlignment="Center"
-                        Width="110" 
+                        Width="119" 
                         Margin="6,6,0,6"
                         Height="26"/>
                     <TextBox
@@ -1387,9 +1426,9 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding UpcToolTip}"
                         VerticalAlignment="Center" 
-                        Margin="6,8,0,7"
+                        Margin="6,6,0,6"
                         Height="26" 
-                        Width="32" />
+                        Width="119" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
@@ -1412,10 +1451,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition
                             Width="Auto" />
-                        <ColumnDefinition Width="293"/>
-                        <ColumnDefinition Width="18"/>
-                        <ColumnDefinition
-                            Width="20" />
+                        <ColumnDefinition Width="335"/>
                         <ColumnDefinition
                             Width="112" />
                         <ColumnDefinition Width="20"/>
@@ -1469,7 +1505,7 @@
                         Grid.Column="0"
                         Grid.Row="0"
                         HorizontalAlignment="Left"
-                        Margin="6,6,0,6"
+                        Margin="6,6,0,7"
                         ToolTip="{Binding CategoryToolTip}"
                         VerticalAlignment="Center" Height="26" Width="68" />
                     <ComboBox                        
@@ -1478,9 +1514,9 @@
                         Height="26"
                         HorizontalAlignment="Left"
                         ItemsSource="{Binding WebCategoryList}"
-                        Margin="6,6,0,6"
+                        Margin="6,6,0,7"
                         Text="{Binding Category}"
-                        Width="300" Grid.ColumnSpan="2"  />
+                        Width="300"  />
                     <!-- Category2 -->
                     <Label
                         Background="{Binding Category2BoxColor}"
@@ -1499,7 +1535,7 @@
                         ItemsSource="{Binding WebCategoryList}"
                         Margin="6,6,0,6"
                         Text="{Binding Category2}"
-                        Width="300" Grid.ColumnSpan="2"  />
+                        Width="300"  />
 
                     <!-- Category3 -->
                     <Label
@@ -1521,7 +1557,7 @@
                         ItemsSource="{Binding WebCategoryList}"
                         Margin="6,8,0,8"
                         Text="{Binding Category3}"
-                        Width="300" Grid.ColumnSpan="2" />
+                        Width="300" />
                     <!-- Copywright -->
                     <Label
                         Background="{Binding CopyrightBoxColor}"
@@ -1531,7 +1567,7 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding CopyrightToolTip}"
                         VerticalAlignment="Center"
-                        Margin="6,16,0,16" Height="26" Width="62" />
+                        Margin="6,23,0,24" Height="26" Width="62" />
                     <TextBox
                         Height="128"
                         HorizontalAlignment="Left"
@@ -1539,12 +1575,13 @@
                         Grid.Row="3"
                         Grid.RowSpan="4"
                         TextWrapping="Wrap"
+                        MaxHeight="128"
                         MaxLength="1000"
                         Grid.Column="1"
                         Text="{Binding Copyright}"
                         VerticalContentAlignment="Center"
-                        Width="300" 
-                        Grid.ColumnSpan="2" />
+                        VerticalScrollBarVisibility="Auto"
+                        Width="300" />
                     <!-- In Stock Date-->
                     <Label
                         Background="{Binding InStockDateBoxColor}"
@@ -1563,7 +1600,7 @@
                         Grid.Column="1"
                         SelectedDate="{Binding InStockDate}"
                         VerticalContentAlignment="Center"
-                        Width="300" Grid.ColumnSpan="2" />
+                        Width="300" />
                     <!-- Item Keywords -->
                     <Label
                         Background="{Binding ItemKeywordsBoxColor}"
@@ -1573,18 +1610,19 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ItemKeywordsToolTip}"
                         VerticalAlignment="Center" 
-                        Margin="6,19,0,18.5" Height="26" Width="88" />
+                        Margin="6,36,0,35" Height="26" Width="88" />
                     <TextBox
                         Height="128"
                         HorizontalAlignment="Left"
-                        Margin="6,6,0,6"
+                        Margin="6,6,0,5"
                         Grid.Row="8"
                         Grid.RowSpan="4"
                         TextWrapping="Wrap"
                         Grid.Column="1"
                         Text="{Binding ItemKeywords}"
                         VerticalContentAlignment="Top"
-                        Width="300" Grid.ColumnSpan="2" />
+                        VerticalScrollBarVisibility="Auto"
+                        Width="300" />
                     <!-- License -->
                     <Label
                         Background="{Binding LicenseBoxColor}"
@@ -1603,7 +1641,7 @@
                         ItemsSource="{Binding Licenses}"
                         Margin="6,6,0,6"
                         Text="{Binding License}"
-                        Width="300" Grid.ColumnSpan="2"/>
+                        Width="300"/>
                     <!-- Meta Description -->
                     <Label
                         Background="{Binding MetaDescriptionBoxColor}"
@@ -1623,7 +1661,7 @@
                         ItemsSource="{Binding MetaDescriptions}"
                         Margin="6,6,0,6"
                         Text="{Binding MetaDescription}"
-                        Width="300" Grid.ColumnSpan="2" />
+                        Width="300" />
                     <!-- Product Qty -->
                     <Label
                         Background="{Binding ProductQtyBoxColor}"
@@ -1641,28 +1679,28 @@
                         Margin="6,6,0,6"
                         Grid.Row="14"
                         TextWrapping="Wrap"
-                        MaxLength="1000"
+                        MaxHeight="26"
                         Grid.Column="1"
                         IsEnabled="{Binding IsNew}"
                         Text="{Binding ProductQty}"
                         VerticalContentAlignment="Top"
-                        Width="300" Grid.ColumnSpan="2" />
+                        Width="300" />
                     <!-- Product Qty Total -->
                     <Label
                         Content="Product Qty Total"
                         Grid.Row="0"
-                        Grid.Column="4"
+                        Grid.Column="2"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center" 
-                        Margin="6,6,0,6" Height="26" Width="102" />
+                        Margin="6,6,0,7" Height="26" Width="102" />
                     <TextBox
                         Height="26"
                         HorizontalAlignment="Left"
-                        Margin="6,6,0,6"
+                        Margin="6,6,0,7"
                         Grid.Row="0"
                         TextWrapping="Wrap"
-                        MaxLength="1000"
-                        Grid.Column="6"
+                        MaxHeight="26"
+                        Grid.Column="4"
                         Text="{Binding ProductQtyTotal}"
                         IsEnabled="False"
                         VerticalContentAlignment="Top"
@@ -1673,14 +1711,14 @@
                         Background="{Binding PropertyBoxColor}"
                         Content="Property"
                         Grid.Row="1"
-                        Grid.Column="4"
+                        Grid.Column="2"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding PropertyToolTip}"
                         VerticalAlignment="Center" 
                         Margin="6,6,0,6" Height="26" Width="55" />
                     <ComboBox
                         HorizontalAlignment="Left"
-                        Grid.Column="6"
+                        Grid.Column="4"
                         Grid.Row="1"
                         ItemsSource="{Binding PropertyList}"
                         Margin="6,6,0,6"
@@ -1691,40 +1729,42 @@
                         Background="{Binding ShortDescriptionBoxColor}"
                         Content="Short Description"
                         Grid.Row="2"
-                        Grid.Column="4"
+                        Grid.Column="2"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ShortDescriptionToolTip}"
                         VerticalAlignment="Center" 
                         Margin="6,8,0,8" Height="26" Width="102" />
                     <TextBox
                         HorizontalAlignment="Left"
-                        Margin="6,6,0,10"
+                        Margin="6,6,0,0"
                         Grid.Row="2"
-                        Grid.RowSpan="4"
+                        Grid.RowSpan="3"
                         TextWrapping="Wrap"
+                        MaxHeight="128"
                         MaxLength="1000"
-                        Grid.Column="6"
+                        Grid.Column="4"
                         Text="{Binding ShortDescription}"
                         VerticalContentAlignment="Top"
-                        Width="300" Grid.ColumnSpan="1" />
+                        VerticalScrollBarVisibility="Auto"
+                        Width="300" />
                     <!-- Size -->
                     <Label
                         Background="{Binding SizeBoxColor}"
                         Content="Size"
                         Grid.Row="6"
-                        Grid.Column="4"
+                        Grid.Column="2"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SizeToolTip}"
                         VerticalAlignment="Center" 
-                        Margin="6,14,0,14" Height="26" Width="31" />
+                        Margin="6,22,0,21" Height="26" Width="31" />
                     <TextBox
                         Height="26"
                         HorizontalAlignment="Left"
-                        Margin="6,14,0,14"
+                        Margin="6,22,0,21"
                         Grid.Row="6"
                         TextWrapping="Wrap"
-                        MaxLength="1000"
-                        Grid.Column="6"
+                        MaxHeight="26"
+                        Grid.Column="4"
                         Text="{Binding Size}"
                         VerticalContentAlignment="Top"
                         Width="300" Grid.ColumnSpan="1" />
@@ -1733,7 +1773,7 @@
                         Background="{Binding TitleBoxColor}"
                         Content="Title"
                         Grid.Row="7"
-                        Grid.Column="4"
+                        Grid.Column="2"
                         Height="26"         
                         HorizontalAlignment="Left"
                         ToolTip="{Binding TitleToolTip}"
@@ -1746,8 +1786,8 @@
                         Margin="6,6,0,6"
                         Grid.Row="7"
                         TextWrapping="Wrap"
-                        MaxLength="1000"
-                        Grid.Column="6"
+                        MaxHeight="26"
+                        Grid.Column="4"
                         Text="{Binding Title}"
                         VerticalContentAlignment="Top"
                         Width="300" Grid.ColumnSpan="1" />
@@ -1756,10 +1796,10 @@
                         Background="{Binding WebsitePriceBoxColor}"
                         Content="Website Price"
                         Grid.Row="8"
-                        Grid.Column="4"
+                        Grid.Column="2"
                         Height="26"         
                         HorizontalAlignment="Left"
-                        Margin="6,19,0,18.5"
+                        Margin="6,36,0,35"
                         ToolTip="{Binding WebsitePriceToolTip}"
                         VerticalAlignment="Center" Width="102"/>
                     <TextBox
@@ -1767,12 +1807,12 @@
                         HorizontalAlignment="Left"
                         Grid.Row="8"
                         TextWrapping="Wrap"
-                        MaxLength="1000"
-                        Grid.Column="6"
+                        MaxHeight="26"
+                        Grid.Column="4"
                         Text="{Binding WebsitePrice}"
                         VerticalContentAlignment="Top"
                         Width="300" 
-                        Margin="6,19,0,18.5"/>
+                        Margin="6,36,0,35"/>
                 </Grid>
             </TabItem>
             <TabItem
@@ -2066,13 +2106,16 @@
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
                         ToolTip="{Binding EcommerceAsinToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="36" />
+                        VerticalAlignment="Center" 
+                        Height="26" 
+                        Width="105" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
                         Grid.Row="0"
                         Grid.RowSpan="1"
-                        Margin="6,6,0,6"                        
+                        Margin="6,6,0,6"        
+                        MaxHeight="26"                
                         Text="{Binding EcommerceAsin}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2098,16 +2141,18 @@
                         HorizontalAlignment="Left" 
                         Margin="10,6,0,7"
                         ToolTip="{Binding EcommerceBullet1ToolTip}"
-                        VerticalAlignment="Center" Width="91" Height="26" />
+                        VerticalAlignment="Center" Width="101" Height="26" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
                         Grid.Row="2"
                         Grid.RowSpan="2"
-                        Margin="6,10,0,10"                        
+                        Margin="6,6,0,6"                        
                         Text="{Binding EcommerceBullet1}"
                         TextWrapping="Wrap"
+                        MaxHeight="64"
                         VerticalContentAlignment="Center"
+                        VerticalScrollBarVisibility="Auto"
                         Width="160" />
                     <!-- Bullet 2-->
                     <Label
@@ -2124,10 +2169,12 @@
                         Grid.Column="1"
                         Grid.Row="4"
                         Grid.RowSpan="2"
-                        Margin="6,10,0,10"                        
+                        Margin="6,6,0,6"      
+                        MaxHeight="64"                  
                         Text="{Binding EcommerceBullet2}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
+                        VerticalScrollBarVisibility="Auto"
                         Width="160" />
                     <!-- Bullet 3-->
                     <Label
@@ -2144,10 +2191,12 @@
                         Grid.Column="1"
                         Grid.Row="6"
                         Grid.RowSpan="2"
-                        Margin="6,9,0,10"                        
+                        Margin="6,6,0,6"       
+                        MaxHeight="64"                 
                         Text="{Binding EcommerceBullet3}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
+                        VerticalScrollBarVisibility="Auto"
                         Width="160" />
                     <!-- Bullet 4-->
                     <Label
@@ -2164,10 +2213,12 @@
                         Grid.Column="1"
                         Grid.Row="8"
                         Grid.RowSpan="2"
-                        Margin="6,10,0,9"                        
+                        Margin="6,6,0,6"        
+                        MaxHeight="64"                
                         Text="{Binding EcommerceBullet4}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
+                        VerticalScrollBarVisibility="Auto"
                         Width="160" />
                     <!-- Bullet 5-->
                     <Label
@@ -2184,10 +2235,12 @@
                         Grid.Column="1"
                         Grid.Row="10"
                         Grid.RowSpan="2"
-                        Margin="6,10,0,10"                        
+                        Margin="6,6,0,6"           
+                        MaxHeight="64"             
                         Text="{Binding EcommerceBullet5}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
+                        VerticalScrollBarVisibility="Auto"
                         Width="160" />
                     <!-- Components -->
                     <Label
@@ -2198,12 +2251,13 @@
                         HorizontalAlignment="Left" 
                         Margin="6,7,0,6"
                         ToolTip="{Binding EcommerceComponentsToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="78" />
+                        VerticalAlignment="Center" Height="26" Width="105" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
                         Grid.Row="12"
-                        Margin="6,7,0,6"                        
+                        Margin="6,7,0,6"   
+                        MaxHeight="26"                     
                         Text="{Binding EcommerceComponents}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2217,12 +2271,13 @@
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,7"
                         ToolTip="{Binding EcommerceCostToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="34" />
+                        VerticalAlignment="Center" Height="26" Width="105" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
                         Grid.Row="13"
-                        Margin="6,6,0,7"                        
+                        Margin="6,6,0,7"  
+                        MaxHeight="26"                      
                         Text="{Binding EcommerceCost}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2236,12 +2291,13 @@
                         HorizontalAlignment="Left"  
                         Margin="6,6,0,6"
                         ToolTip="{Binding EcommerceExternalIdToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="67" />
+                        VerticalAlignment="Center" Height="26" Width="125" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
                         Grid.Row="0"
-                        Margin="6,6,0,6"                        
+                        Margin="6,6,0,6"  
+                        MaxHeight="26"                      
                         Text="{Binding EcommerceExternalId}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2255,13 +2311,14 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding EcommerceExternalIdTypeToolTip}"
                         VerticalAlignment="Center" 
-                        Margin="6,6,0,6" Height="26" Width="95" />
+                        Margin="6,6,0,6" Height="26" Width="125" />
                     <ComboBox
                         Grid.Column="3"
                         Grid.Row="1"
                         HorizontalAlignment="Left"
                         ItemsSource="{Binding EcommerceExternalIdTypeGroups}"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Text="{Binding EcommerceExternalIdType}"
                         Width="160"  />
                     <!-- Package Dimensions -->
@@ -2287,12 +2344,13 @@
                         HorizontalAlignment="Left" 
                         Margin="10,7,0,6"
                         ToolTip="{Binding EcommerceItemHeightToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="111" />
+                        VerticalAlignment="Center" Height="26" Width="121" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
                         Grid.Row="3"
-                        Margin="6,7,0,6"                        
+                        Margin="6,7,0,6"      
+                        MaxHeight="26"                  
                         Text="{Binding EcommerceItemHeight}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2306,12 +2364,13 @@
                         HorizontalAlignment="Left" 
                         Margin="10,6,0,7"
                         ToolTip="{Binding EcommerceItemLengthToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="111" />
+                        VerticalAlignment="Center" Height="26" Width="121" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
                         Grid.Row="4"
-                        Margin="6,6,0,7"                        
+                        Margin="6,6,0,7"           
+                        MaxHeight="26"             
                         Text="{Binding EcommerceItemLength}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2325,12 +2384,13 @@
                         HorizontalAlignment="Left" 
                         Margin="6,7,0,6"
                         ToolTip="{Binding EcommerceItemNameToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="115" />
+                        VerticalAlignment="Center" Height="26" Width="125" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
                         Grid.Row="7"
-                        Margin="6,7,0,6"                        
+                        Margin="6,7,0,6"       
+                        MaxHeight="26"                 
                         Text="{Binding EcommerceItemName}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2344,12 +2404,13 @@
                         HorizontalAlignment="Left" 
                         Margin="10,7,0,6"
                         ToolTip="{Binding EcommerceItemWeightToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="111" />
+                        VerticalAlignment="Center" Height="26" Width="121" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
                         Grid.Row="5"
-                        Margin="6,7,0,6"                        
+                        Margin="6,7,0,6"    
+                        MaxHeight="26"                    
                         Text="{Binding EcommerceItemWeight}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2361,14 +2422,15 @@
                         Grid.Column="2"
                         Grid.Row="6"
                         HorizontalAlignment="Left" 
-                        Margin="10,6,0,6"
+                        Margin="10,6,0,7"
                         ToolTip="{Binding EcommerceItemWidthToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="111" />
+                        VerticalAlignment="Center" Height="26" Width="121" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
                         Grid.Row="6"
-                        Margin="6,6,0,6"                        
+                        Margin="6,6,0,6"             
+                        MaxHeight="26"           
                         Text="{Binding EcommerceItemWidth}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2382,12 +2444,13 @@
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
                         ToolTip="{Binding EcommerceModelNameToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="79" />
+                        VerticalAlignment="Center" Height="26" Width="125" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
                         Grid.Row="8"
-                        Margin="6,6,0,6"                        
+                        Margin="6,6,0,6"      
+                        MaxHeight="26"                  
                         Text="{Binding EcommerceModelName}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2413,14 +2476,15 @@
                         Grid.Column="2"
                         Grid.Row="10"
                         HorizontalAlignment="Left" 
-                        Margin="6,7,0,6"
+                        Margin="10,7,0,6"
                         ToolTip="{Binding EcommercePackageHeightToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="92" />
+                        VerticalAlignment="Center" Height="26" Width="121" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
                         Grid.Row="10"
-                        Margin="6,7,0,6"                        
+                        Margin="6,7,0,6"    
+                        MaxHeight="26"                    
                         Text="{Binding EcommercePackageHeight}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2432,14 +2496,15 @@
                         Grid.Column="2"
                         Grid.Row="11"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,7"
+                        Margin="10,6,0,7"
                         ToolTip="{Binding EcommercePackageLengthToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="93" />
+                        VerticalAlignment="Center" Height="26" Width="121" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
                         Grid.Row="11"
-                        Margin="6,6,0,7"                        
+                        Margin="6,6,0,7"        
+                        MaxHeight="26"                
                         Text="{Binding EcommercePackageLength}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2451,14 +2516,15 @@
                         Grid.Column="2"
                         Grid.Row="12"
                         HorizontalAlignment="Left" 
-                        Margin="6,7,0,6"
+                        Margin="10,7,0,6"
                         ToolTip="{Binding EcommercePackageWeightToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="95" />
+                        VerticalAlignment="Center" Height="26" Width="121" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
                         Grid.Row="12"
-                        Margin="6,7,0,6"                        
+                        Margin="6,7,0,6"     
+                        MaxHeight="26"                   
                         Text="{Binding EcommercePackageWeight}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2470,14 +2536,15 @@
                         Grid.Column="2"
                         Grid.Row="13"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,7"
+                        Margin="10,6,0,7"
                         ToolTip="{Binding EcommercePackageWidthToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="89" />
+                        VerticalAlignment="Center" Height="26" Width="121" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
                         Grid.Row="13"
-                        Margin="6,6,0,7"            
+                        Margin="6,6,0,7"        
+                        MaxHeight="26"    
                         Text="{Binding EcommercePackageWidth}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2491,12 +2558,13 @@
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
                         ToolTip="{Binding EcommerceProductCategoryToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="103" />
+                        VerticalAlignment="Center" Height="26" Width="125" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
                         Grid.Row="14"
-                        Margin="6,6,0,6"                        
+                        Margin="6,6,0,6"    
+                        MaxHeight="26"                    
                         Text="{Binding EcommerceProductCategory}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2510,12 +2578,13 @@
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
                         ToolTip="{Binding EcommercePageQtyToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="58" />
+                        VerticalAlignment="Center" Height="26" Width="171" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="5"
                         Grid.Row="0"
-                        Margin="6,6,0,6"                        
+                        Margin="6,6,0,6"          
+                        MaxHeight="26"              
                         Text="{Binding EcommercePageQty}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2529,12 +2598,13 @@
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
                         ToolTip="{Binding EcommerceParentAsinToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="70" />
+                        VerticalAlignment="Center" Height="26" Width="171" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="5"
                         Grid.Row="1"
-                        Margin="6,6,0,6"                        
+                        Margin="6,6,0,6"     
+                        MaxHeight="26"                   
                         Text="{Binding EcommerceParentAsin}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2548,16 +2618,18 @@
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,7"
                         ToolTip="{Binding EcommerceProductDescriptionToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="115" />
+                        VerticalAlignment="Center" Height="26" Width="172" Grid.ColumnSpan="2" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="5"
                         Grid.Row="2"
                         Grid.RowSpan="4"
-                        Margin="6,14,0,14"                        
+                        Margin="6,6,0,6"                        
                         Text="{Binding EcommerceProductDescription}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
+                        VerticalScrollBarVisibility="Auto"
+                        MaxHeight="144"
                         Width="160" />
                     <!-- Product Subcategory -->
                     <Label
@@ -2568,12 +2640,13 @@
                         HorizontalAlignment="Left" 
                         Margin="6,7,0,6"
                         ToolTip="{Binding EcommerceProductSubcategoryToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="161" />
+                        VerticalAlignment="Center" Height="26" Width="171" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="5"
                         Grid.Row="6"
                         Margin="6,7,0,6"
+                        MaxHeight="26"
                         Text="{Binding EcommerceProductSubcategory}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2585,14 +2658,15 @@
                         Grid.Column="4"
                         Grid.Row="7"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6"
+                        Margin="6,7,0,6"
                         ToolTip="{Binding EcommerceManufacturerNameToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="116" />
+                        VerticalAlignment="Center" Height="26" Width="171" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="5"
                         Grid.Row="7"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Text="{Binding EcommerceManufacturerName}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2606,12 +2680,13 @@
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
                         ToolTip="{Binding EcommerceMsrpToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="37" />
+                        VerticalAlignment="Center" Height="26" Width="171" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="5"
                         Grid.Row="8"
                         Margin="6,6,0,6"
+                        MaxHeight="26"
                         Text="{Binding EcommerceMsrp}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2625,16 +2700,18 @@
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,7"
                         ToolTip="{Binding EcommerceGenericKeywordsToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="104" />
+                        VerticalAlignment="Center" Height="26" Width="171" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="5"
                         Grid.Row="9"
                         Grid.RowSpan="4"
-                        Margin="6,14,0,14"
+                        Margin="6,6,0,6"
+                        MaxHeight="144"
                         Text="{Binding EcommerceGenericKeywords}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
+                        VerticalScrollBarVisibility="Auto"
                         Width="160" />
                     <!-- Subject Keywords -->
                     <Label
@@ -2645,16 +2722,18 @@
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,6"
                         ToolTip="{Binding EcommerceSubjectKeywordsToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="80" />
+                        VerticalAlignment="Center" Height="26" Width="116" Grid.ColumnSpan="2" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="7"
                         Grid.Row="0"
                         Grid.RowSpan="4"
-                        Margin="6,13,0,13"
+                        Margin="6,6,0,6"
+                        MaxHeight="144"
                         Text="{Binding EcommerceSubjectKeywords}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
+                        VerticalScrollBarVisibility="Auto"
                         Width="160" />
                     <!-- Size -->
                     <Label
@@ -2665,12 +2744,13 @@
                         HorizontalAlignment="Left" 
                         Margin="6,6,0,7"
                         ToolTip="{Binding EcommerceSizeToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="31" />
+                        VerticalAlignment="Center" Height="26" Width="116" Grid.ColumnSpan="2" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="7"
                         Grid.Row="4"
                         Margin="6,6,0,7"
+                        MaxHeight="26"
                         Text="{Binding EcommerceSize}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -2684,16 +2764,18 @@
                         HorizontalAlignment="Left" 
                         Margin="6,7,0,6"
                         ToolTip="{Binding WarrantyToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="58" />
+                        VerticalAlignment="Center" Height="26" Width="116" Grid.ColumnSpan="2" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="7"
                         Grid.Row="5"
                         Grid.RowSpan="4"
-                        Margin="6,13,0,13"
+                        Margin="6,6,0,6"
+                        MaxHeight="144"
                         Text="{Binding Warranty}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
+                        VerticalScrollBarVisibility="Auto"
                         Width="160" />
 
                     <!-- Sell On Wayfair -->
@@ -2706,7 +2788,7 @@
                         ToolTip="{Binding  WarrantyCheckToolTip}"
                         VerticalAlignment="Center"
                         Margin="6,6,0,7"
-                        Height="26" Width="109"/>
+                        Height="26" Width="116" Grid.ColumnSpan="2"/>
                     <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="7"
@@ -2723,12 +2805,13 @@
                         HorizontalAlignment="Left" 
                         Margin="6,7,0,6"
                         ToolTip="{Binding EcommerceUpcToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="31" />
+                        VerticalAlignment="Center" Height="26" Width="116" Grid.ColumnSpan="2" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="7"
                         Grid.Row="10"
                         Margin="6,7,0,6"
+                        MaxHeight="26"
                         Text="{Binding EcommerceUpc}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
