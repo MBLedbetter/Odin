@@ -8944,7 +8944,7 @@ namespace Odin.ViewModels
                         this.EcommerceSubjectKeywordsError = error.ReturnErrorMessage();
                         break;
 
-                    case "Ecommerce Upc":
+                    case "Ecommerce UPC":
                         this.EcommerceUpcError = error.ReturnErrorMessage();
                         break;
 
