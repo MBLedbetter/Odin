@@ -8753,15 +8753,15 @@ namespace Odin.ViewModels
                         break;
 
                     case "Casepack Length":
-                        this.CasepackHeightError = error.ReturnErrorMessage();
+                        this.CasepackLengthError = error.ReturnErrorMessage();
                         break;
 
                     case "Casepack Weight":
-                        this.CasepackHeightError = error.ReturnErrorMessage();
+                        this.CasepackWeightError = error.ReturnErrorMessage();
                         break;
 
                     case "Casepack Width":
-                        this.CasepackHeightError = error.ReturnErrorMessage();
+                        this.CasepackWidthError = error.ReturnErrorMessage();
                         break;
 
                     case "Casepack Qty":
@@ -8869,11 +8869,11 @@ namespace Odin.ViewModels
                         break;
 
                     case "Ecommerce Height":
-                        this.EcommerceItemWeightError = error.ReturnErrorMessage();
+                        this.EcommerceItemHeightError = error.ReturnErrorMessage();
                         break;
 
                     case "Ecommerce Length":
-                        this.EcommerceItemWeightError = error.ReturnErrorMessage();
+                        this.EcommerceItemLengthError = error.ReturnErrorMessage();
                         break;
 
                     case "Ecommerce Item Name":
@@ -8885,7 +8885,7 @@ namespace Odin.ViewModels
                         break;
 
                     case "Ecommerce Width":
-                        this.EcommerceItemWeightError = error.ReturnErrorMessage();
+                        this.EcommerceItemWidthError = error.ReturnErrorMessage();
                         break;
 
                     case "Ecommerce Model Name":
@@ -8962,15 +8962,15 @@ namespace Odin.ViewModels
                         break;
 
                     case "Innerpack Height":
-                        this.InnerpackWidthError = error.ReturnErrorMessage();
+                        this.InnerpackHeightError = error.ReturnErrorMessage();
                         break;
 
                     case "Innerpack Length":
-                        this.InnerpackWidthError = error.ReturnErrorMessage();
+                        this.InnerpackLengthError = error.ReturnErrorMessage();
                         break;
 
                     case "Innerpack Weight":
-                        this.InnerpackWidthError = error.ReturnErrorMessage();
+                        this.InnerpackWeightError = error.ReturnErrorMessage();
                         break;
 
                     case "Innerpack Width":
@@ -9034,7 +9034,7 @@ namespace Odin.ViewModels
                         break;
 
                     case "List Price MXN":
-                        this.MsrpMxnError = error.ReturnErrorMessage();
+                        this.ListPriceMxnError = error.ReturnErrorMessage();
                         break;
 
                     case "List Price USD":
