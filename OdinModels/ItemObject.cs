@@ -4276,6 +4276,7 @@ namespace OdinModels
             if (string.IsNullOrEmpty(this.SellOnGuitarCenter)) { this.SellOnGuitarCenter = "N"; }
             if (string.IsNullOrEmpty(this.SellOnHayneedle)) { this.SellOnHayneedle = "N"; }
             if (string.IsNullOrEmpty(this.SellOnTarget)) { this.SellOnTarget = "N"; }
+            if (string.IsNullOrEmpty(this.SellOnTrends)) { this.SellOnTrends = "N"; }
             if (string.IsNullOrEmpty(this.SellOnWalmart)) { this.SellOnWalmart = "N"; }
             if (string.IsNullOrEmpty(this.SellOnWayfair)) { this.SellOnWayfair = "N"; }
             if (string.IsNullOrEmpty(this.PrintOnDemand)) { this.PrintOnDemand = "N"; }
