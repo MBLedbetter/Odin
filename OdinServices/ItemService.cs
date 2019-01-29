@@ -4963,6 +4963,7 @@ namespace OdinServices
                     break;
                 case "CAD":
                     value = var.ListPriceCad;
+                    MessageBox.Show(value);
                     break;
                 case "MXN":
                     value = var.ListPriceMxn;
