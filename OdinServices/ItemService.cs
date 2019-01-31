@@ -1966,6 +1966,7 @@ namespace OdinServices
         public List<string> RetrievePropertyList(string license)
         {
             List<string> properties = new List<string>();
+            properties.Add("");
             if (!string.IsNullOrEmpty(license))
             {
                 foreach (KeyValuePair<string, string> x in GlobalData.Properties)
