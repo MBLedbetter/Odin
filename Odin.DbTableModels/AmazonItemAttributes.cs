@@ -117,6 +117,11 @@ namespace Odin.DbTableModels
         ///     Gets or sets ITEM_NAME
         /// </summary>
         public string ItemName { get; set; }
+        
+        /// <summary>
+        ///     Gets or sets ITEM_TYPE_KEYWORDS
+        /// </summary>
+        public string ItemTypeKeywords { get; set; }
 
         /// <summary>
         ///     Gets or sets LENGTH

@@ -136,6 +136,11 @@ namespace Odin.DbTableModels
         public string EcommerceItemLength { get; set; }
 
         /// <summary>
+        ///     Gets or sets ECOMMERCE_ITEM_TYPE_KEYWORDS
+        /// </summary>
+        public string EcommerceItemTypeKeywords { get; set; }
+
+        /// <summary>
         ///     Gets or sets EcommerceITEM_WEIGHT
         /// </summary>
         public string EcommerceItemWeight { get; set; }

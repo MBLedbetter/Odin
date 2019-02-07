@@ -1493,6 +1493,7 @@ namespace OdinServices
                 if (string.IsNullOrEmpty(item.EcommerceExternalIdType)) { item.EcommerceExternalIdType = template.EcommerceExternalIdType; }
                 if (string.IsNullOrEmpty(item.EcommerceItemHeight)) { item.EcommerceItemHeight = template.EcommerceItemHeight; }
                 if (string.IsNullOrEmpty(item.EcommerceItemLength)) { item.EcommerceItemLength = template.EcommerceItemLength; }
+                if (string.IsNullOrEmpty(item.EcommerceItemTypeKeywords)) { item.EcommerceItemTypeKeywords = template.EcommerceItemTypeKeywords; }
                 if (string.IsNullOrEmpty(item.EcommerceItemWeight)) { item.EcommerceItemWeight = template.EcommerceItemWeight; }
                 if (string.IsNullOrEmpty(item.EcommerceItemWidth)) { item.EcommerceItemWidth = template.EcommerceItemWidth; }
                 if (string.IsNullOrEmpty(item.EcommerceModelName)) { item.EcommerceModelName = template.EcommerceModelName; }
@@ -2528,6 +2529,8 @@ namespace OdinServices
             if (validationError != null) { ErrorMessages.Add(validationError); }
             validationError = ValidateEcommerceItemDimension(var, "Height");
             if (validationError != null) { ErrorMessages.Add(validationError); }
+            validationError = ValidateEcommerceItemTypeKeywords(var);
+            if (validationError != null) { ErrorMessages.Add(validationError); }
             validationError = ValidateEcommerceModelName(var);
             if (validationError != null) { ErrorMessages.Add(validationError); }
             validationError = ValidateEcommercePackageDimension(var, "Height");
@@ -3558,7 +3561,27 @@ namespace OdinServices
             }
             return null;
         }
-        
+
+        /// <summary>
+        ///     Validates Item Type Keywords field. Returns an ItemError or null if no error exists.
+        /// </summary>
+        public ItemError ValidateEcommerceItemTypeKeywords(ItemObject var)
+        {
+            string value = string.Empty;
+            if (!string.IsNullOrEmpty(value))
+            {
+                if (value.Length > 500)
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        OdinServices.Properties.Resources.Error_LengthMax + "500 characters.",
+                        "Ecommerce Item Type Keywords");
+                }
+            }
+            return null;
+        }
+
         /// <summary>
         ///     Validates the EcommerceItemName field. Returns ItemError or null if no error exists.
         /// </summary>

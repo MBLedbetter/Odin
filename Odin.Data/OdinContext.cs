@@ -572,6 +572,7 @@ namespace Odin.Data
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.ImageUrl5).HasColumnName("IMAGE_URL_5");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.InvItemId).HasColumnName("INV_ITEM_ID");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.ItemName).HasColumnName("ITEM_NAME");
+            modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.ItemTypeKeywords).HasColumnName("ITEM_TYPE_KEYWORDS");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.Length).HasColumnName("LENGTH");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.ManufacturerName).HasColumnName("MANUFACTURER_NAME");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.ModelName).HasColumnName("MODEL_NAME");
@@ -2062,6 +2063,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceImageUrl4).HasColumnName("ECOMMERCE_IMAGE_URL_4");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceImageUrl5).HasColumnName("ECOMMERCE_IMAGE_URL_5");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceItemName).HasColumnName("ECOMMERCE_ITEM_NAME");
+            modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceItemTypeKeywords).HasColumnName("ECOMMERCE_ITEM_TYPE_KEYWORDS");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceLength).HasColumnName("ECOMMERCE_LENGTH");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceManufacturerName).HasColumnName("ECOMMERCE_MANUFACTURER_NAME");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceModelName).HasColumnName("ECOMMERCE_MODEL_NAME");
@@ -2219,6 +2221,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.EcommerceExternalIdType).HasColumnName("ECOMMERCE_EXTERNAL_ID_TYPE");
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.EcommerceItemHeight).HasColumnName("ECOMMERCE_ITEM_HEIGHT");
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.EcommerceItemLength).HasColumnName("ECOMMERCE_ITEM_LENGTH");
+            modelBuilder.Entity<OdinItemTemplates>().Property(p => p.EcommerceItemTypeKeywords).HasColumnName("ECOMMERCE_ITEM_TYPE_KEYWORDS");
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.EcommerceItemWeight).HasColumnName("ECOMMERCE_ITEM_WEIGHT");
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.EcommerceItemWidth).HasColumnName("ECOMMERCE_ITEM_WIDTH");
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.EcommerceManufacturerName).HasColumnName("ECOMMERCE_MANUFACTURER_NAME");
@@ -2317,6 +2320,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AItemHeight).HasColumnName("A_ITEM_HEIGHT");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AItemLength).HasColumnName("A_ITEM_LENGTH");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AItemName).HasColumnName("A_ITEM_NAME");
+            modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AItemTypeKeywords).HasColumnName("A_ITEM_TYPE_KEYWORDS");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AItemWeight).HasColumnName("A_ITEM_WEIGHT");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AItemWidth).HasColumnName("A_ITEM_WIDTH");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.AManufacturerName).HasColumnName("A_MANUFACTURER_NAME");

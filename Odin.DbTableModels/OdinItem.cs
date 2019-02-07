@@ -220,6 +220,11 @@ namespace Odin.DbTableModels
         public string EcommerceItemName { get; set; }
 
         /// <summary>
+        ///     Gets or sets ECOMMERCE_ITEM_TYPE_KEYWORDS
+        /// </summary>
+        public string EcommerceItemTypeKeywords { get; set; }
+
+        /// <summary>
         ///     Gets or sets EcommerceLENGTH
         /// </summary>
         public decimal? EcommerceLength { get; set; }
