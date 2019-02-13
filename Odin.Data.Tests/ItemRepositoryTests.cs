@@ -589,6 +589,7 @@ namespace Odin.Data.Tests
                 EcommerceItemHeight = "6",
                 EcommerceItemLength = "1",
                 EcommerceItemName = "ItemName",
+                EcommerceItemTypeKeywords = "EcommerceItemTypeKeywords",
                 EcommerceItemWeight = "2",
                 EcommerceItemWidth = "3",
                 EcommerceModelName = "ModelName",
@@ -1127,6 +1128,7 @@ namespace Odin.Data.Tests
                 EcommerceItemHeight = "6",
                 EcommerceItemLength = "7",
                 EcommerceItemName = "ItemName",
+                EcommerceItemTypeKeywords = "EcommerceItemTypeKeywords",
                 EcommerceItemWeight = "8",
                 EcommerceItemWidth = "9",
                 EcommerceModelName = "Model Name",
@@ -1257,6 +1259,7 @@ namespace Odin.Data.Tests
             Assert.AreEqual("6.0", newItem.EcommerceItemHeight);
             Assert.AreEqual("7.0", newItem.EcommerceItemLength);
             Assert.AreEqual("ItemName", newItem.EcommerceItemName);
+            Assert.AreEqual("EcommerceItemTypeKeywords", newItem.EcommerceItemTypeKeywords);
             Assert.AreEqual("8.0", newItem.EcommerceItemWeight);
             Assert.AreEqual("9.0", newItem.EcommerceItemWidth);
             Assert.AreEqual("Model Name", newItem.EcommerceModelName);
@@ -1542,6 +1545,7 @@ namespace Odin.Data.Tests
                 EcommerceItemHeight = "ItemHeight",
                 EcommerceItemLength = "ItemLength",
                 EcommerceItemName = "EcommerceItemName",
+                EcommerceItemTypeKeywords = "EcommerceItemTypeKeywords",
                 EcommerceItemWeight = "ItemWeight",
                 EcommerceItemWidth = "ItemWidth",
                 EcommerceManufacturerName = "EcommerceManufacturerName",
@@ -1758,6 +1762,7 @@ namespace Odin.Data.Tests
                 Assert.AreEqual("ItemHeight", itemUpdateRecord.AItemHeight);  //item.EcommerceItemHeight
                 Assert.AreEqual("ItemLength", itemUpdateRecord.AItemLength);  //item.EcommerceItemLength
                 Assert.AreEqual("EcommerceItemName", itemUpdateRecord.AItemName);  //item.EcommerceItemName
+                Assert.AreEqual("EcommerceItemTypeKeywords", itemUpdateRecord.AItemTypeKeywords);  //item.EcommerceTypeKeywords
                 Assert.AreEqual("ItemWeight", itemUpdateRecord.AItemWeight);  //item.EcommerceItemWeight
                 Assert.AreEqual("ItemWidth", itemUpdateRecord.AItemWidth);  //item.EcommerceItemWidth
                 Assert.AreEqual("EcommerceModelName", itemUpdateRecord.AModelName);  //item.EcommerceModelName
@@ -3054,6 +3059,7 @@ namespace Odin.Data.Tests
                 EcommerceItemHeight = "22",
                 EcommerceItemLength = "12",
                 EcommerceItemName = "ItemName",
+                EcommerceItemTypeKeywords = "EcommerceItemTypeKeywords",
                 EcommerceItemWeight = "2.5",
                 EcommerceItemWidth = "3.2",
                 EcommerceModelName = "MName",
@@ -3103,6 +3109,7 @@ namespace Odin.Data.Tests
             item.EcommerceItemHeight = "6";
             item.EcommerceItemLength = "1";
             item.EcommerceItemName = "ItemName";
+            item.EcommerceItemTypeKeywords = "EcommerceItemTypeKeywords";
             item.EcommerceItemWeight = "2";
             item.EcommerceItemWidth = "3";
             item.EcommerceModelName = "ModelName";

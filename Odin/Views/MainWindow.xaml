@@ -839,7 +839,7 @@
                         DisplayMemberBinding="{Binding EcommerceExternalIdType}"
                         Width="{Binding EcommerceExternalIdTypeVisibility}">
                         <GridViewColumnHeader
-                            Content="Ecommerce ExternalIdType"
+                            Content="Ecommerce External Id Type"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -847,7 +847,7 @@
                         DisplayMemberBinding="{Binding EcommerceItemHeight}"
                         Width="{Binding EcommerceItemHeightVisibility}">
                         <GridViewColumnHeader
-                            Content="Ecommerce ItemHeight"
+                            Content="Ecommerce Item Height"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -855,7 +855,7 @@
                         DisplayMemberBinding="{Binding EcommerceItemLength}"
                         Width="{Binding EcommerceItemLengthVisibility}">
                         <GridViewColumnHeader
-                            Content="Ecommerce ItemLength"
+                            Content="Ecommerce Item Length"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -863,7 +863,15 @@
                         DisplayMemberBinding="{Binding EcommerceItemName}"
                         Width="{Binding EcommerceItemNameVisibility}">
                         <GridViewColumnHeader
-                            Content="Ecommerce ItemName"
+                            Content="Ecommerce Item Name"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding EcommerceItemTypeKeywords}"
+                        Width="{Binding EcommerceItemTypeKeywordsVisibility}">
+                        <GridViewColumnHeader
+                            Content="Ecommerce Item Type Keywords"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -871,7 +879,7 @@
                         DisplayMemberBinding="{Binding EcommerceItemWeight}"
                         Width="{Binding EcommerceItemWeightVisibility}">
                         <GridViewColumnHeader
-                            Content="Ecommerce ItemWeight"
+                            Content="Ecommerce Item Weight"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -879,7 +887,7 @@
                         DisplayMemberBinding="{Binding EcommerceItemWidth}"
                         Width="{Binding EcommerceItemWidthVisibility}">
                         <GridViewColumnHeader
-                            Content="Ecommerce ItemWidth"
+                            Content="Ecommerce Item Width"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -887,7 +895,7 @@
                         DisplayMemberBinding="{Binding EcommerceModelName}"
                         Width="{Binding EcommerceModelNameVisibility}">
                         <GridViewColumnHeader
-                            Content="Ecommerce ModelName"
+                            Content="Ecommerce Model Name"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -895,7 +903,7 @@
                         DisplayMemberBinding="{Binding EcommercePackageHeight}"
                         Width="{Binding EcommercePackageHeightVisibility}">
                         <GridViewColumnHeader
-                            Content="Ecommerce PackageHeight"
+                            Content="Ecommerce Package Height"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -903,7 +911,7 @@
                         DisplayMemberBinding="{Binding EcommercePackageLength}"
                         Width="{Binding EcommercePackageLengthVisibility}">
                         <GridViewColumnHeader
-                            Content="Ecommerce PackageLength"
+                            Content="Ecommerce Package Length"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -911,7 +919,7 @@
                         DisplayMemberBinding="{Binding EcommercePackageWeight}"
                         Width="{Binding EcommercePackageWeightVisibility}">
                         <GridViewColumnHeader
-                            Content="Ecommerce PackageWeight"
+                            Content="Ecommerce Package Weight"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -943,7 +951,7 @@
                         DisplayMemberBinding="{Binding EcommerceProductCategory}"
                         Width="{Binding EcommerceProductCategoryVisibility}">
                         <GridViewColumnHeader
-                            Content="Ecommerce ProductCategory"
+                            Content="Ecommerce Product Category"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -951,7 +959,7 @@
                         DisplayMemberBinding="{Binding EcommerceProductDescription}"
                         Width="{Binding EcommerceProductDescriptionVisibility}">
                         <GridViewColumnHeader
-                            Content="Ecommerce ProductDescription"
+                            Content="Ecommerce Product Description"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -959,7 +967,7 @@
                         DisplayMemberBinding="{Binding EcommerceProductSubcategory}"
                         Width="{Binding EcommerceProductSubcategoryVisibility}">
                         <GridViewColumnHeader
-                            Content="Ecommerce ProductSubcategory"
+                            Content="Ecommerce Product Subcategory"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -967,7 +975,7 @@
                         DisplayMemberBinding="{Binding EcommerceManufacturerName}"
                         Width="{Binding EcommerceManufacturerNameVisibility}">
                         <GridViewColumnHeader
-                            Content="Ecommerce ManufacturerName"
+                            Content="Ecommerce Manufacturer Name"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>

@@ -284,12 +284,12 @@ namespace OdinTests.ViewModels
             #endregion // Act
 
             #region Assert
-            Assert.AreEqual(true, itemViewModel1.ItemViewModelItem.HasEcommerce());
-            Assert.AreEqual(true, itemViewModel2.ItemViewModelItem.HasEcommerce());
-            Assert.AreEqual(true, itemViewModel3.ItemViewModelItem.HasEcommerce());
-            Assert.AreEqual(false, itemViewModel4.ItemViewModelItem.HasEcommerce());
-            Assert.AreEqual(false, itemViewModel5.ItemViewModelItem.HasEcommerce());
-            Assert.AreEqual(true, itemViewModel6.ItemViewModelItem.HasEcommerce());
+            Assert.AreEqual(true, itemViewModel1.ItemViewModelItem.HasEcommerce);
+            Assert.AreEqual(true, itemViewModel2.ItemViewModelItem.HasEcommerce);
+            Assert.AreEqual(true, itemViewModel3.ItemViewModelItem.HasEcommerce);
+            Assert.AreEqual(false, itemViewModel4.ItemViewModelItem.HasEcommerce);
+            Assert.AreEqual(false, itemViewModel5.ItemViewModelItem.HasEcommerce);
+            Assert.AreEqual(true, itemViewModel6.ItemViewModelItem.HasEcommerce);
 
             #endregion // Assert
         }
@@ -324,7 +324,7 @@ namespace OdinTests.ViewModels
             #endregion // Act
 
             #region Assert
-            Assert.IsTrue(itemViewModel1.ItemViewModelItem.HasEcommerce());
+            Assert.IsTrue(itemViewModel1.ItemViewModelItem.HasEcommerce);
 
             #endregion // Assert
         }
@@ -354,7 +354,7 @@ namespace OdinTests.ViewModels
 
             #region Assert
 
-            Assert.IsTrue(itemViewModel.ItemViewModelItem.HasEcommerce());
+            Assert.IsTrue(itemViewModel.ItemViewModelItem.HasEcommerce);
             Assert.AreEqual("", itemViewModel.EcommerceBullet1Error);
 
             #endregion // Assert
@@ -379,7 +379,7 @@ namespace OdinTests.ViewModels
 
             #region Act
 
-            bool result = itemViewModel.ItemViewModelItem.HasEcommerce();
+            bool result = itemViewModel.ItemViewModelItem.HasEcommerce;
 
             #endregion // Act
 
@@ -408,9 +408,9 @@ namespace OdinTests.ViewModels
 
             #region Act
 
-            bool result1 = itemViewModel.ItemViewModelItem.HasEcommerce();
+            bool result1 = itemViewModel.ItemViewModelItem.HasEcommerce;
             itemViewModel.SellOnAmazonCheck = false;
-            bool result2 = itemViewModel.ItemViewModelItem.HasEcommerce();
+            bool result2 = itemViewModel.ItemViewModelItem.HasEcommerce;
 
             #endregion // Act
 
@@ -438,7 +438,7 @@ namespace OdinTests.ViewModels
 
             #region Act
 
-            bool result1 = itemViewModel.ItemViewModelItem.HasEcommerce();
+            bool result1 = itemViewModel.ItemViewModelItem.HasEcommerce;
 
             #endregion // Act
 
@@ -703,7 +703,7 @@ namespace OdinTests.ViewModels
             Assert.AreEqual(itemViewModel.Property, "Property");
             // Assert.AreEqual(itemViewModel.NewDate, "NewDate");
             Assert.AreEqual(itemViewModel.Size, "Size");
-            Assert.IsTrue(itemViewModel.ItemViewModelItem.HasEcommerce());
+            Assert.IsTrue(itemViewModel.ItemViewModelItem.HasEcommerce);
             Assert.AreEqual(itemViewModel.EcommerceAsin, "EcommerceAsin");
             Assert.AreEqual(itemViewModel.EcommerceBullet1, "EcommerceBullet1");
             Assert.AreEqual(itemViewModel.EcommerceBullet2, "EcommerceBullet2");
@@ -892,7 +892,7 @@ namespace OdinTests.ViewModels
             Assert.AreEqual(itemViewModel.WebsitePrice, "WebsitePrice");
             Assert.AreEqual(itemViewModel.Weight, "Weight");
             Assert.AreEqual(itemViewModel.Width, "Width");
-            Assert.IsFalse(itemViewModel.ItemViewModelItem.HasEcommerce());
+            Assert.IsFalse(itemViewModel.ItemViewModelItem.HasEcommerce);
 
             #endregion // Assert
         }

@@ -3,18 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:app="clr-namespace:Odin"
         Title="{Binding WindowTitle}" 
-        Height="780" 
+        Height="820" 
         Width="1023"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="74" />
-            <ColumnDefinition Width="66"/>
-            <ColumnDefinition Width="139" />
-            <ColumnDefinition Width="47"/>
-            <ColumnDefinition Width="140" />
-            <ColumnDefinition Width="118*" />
-            <ColumnDefinition Width="65*"/>
+            <ColumnDefinition Width="1015" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition
@@ -29,7 +23,6 @@
             Background="{Binding TemplateBoxColor}"
             Content="Template Name"
             Grid.Column="0"
-            Grid.ColumnSpan="2"
             Grid.Row="0"
             HorizontalAlignment="Left"
             Margin="0,7"
@@ -38,24 +31,22 @@
             VerticalAlignment="Center"  />
         <TextBox
             HorizontalAlignment="Left"
-            Margin="6,8,0,8"
-            Height="26"
+            Margin="146,8,0,6"
+            Height="25"
             Grid.Row="0"
             TextWrapping="Wrap"
             MaxLength="60"
-            Grid.Column="2"
             IsEnabled="true"
             Text="{Binding TemplateId}"
             VerticalContentAlignment="Center"
             Visibility="{Binding UpdateVisibility}"
-            Width="180" Grid.ColumnSpan="2" />
+            Width="180" />
         <!-- Template Name -->
         <Label
             Content="Clone Template"
-            Grid.Column="4"
             Grid.Row="0"
             HorizontalAlignment="Left"
-            Margin="27,8,0,7"
+            Margin="353,8,0,7"
             ToolTip="{Binding TemplateCloneToolTip}"
             Visibility="{Binding UpdateVisibility}"
             VerticalAlignment="Center"
@@ -63,18 +54,16 @@
         <ComboBox
             HorizontalAlignment="Left"
             IsEnabled="{Binding BlockInfo}"
-            Margin="6,8,0,8"
-            Height="26"
+            Margin="6,8,0,6"
+            Height="25"
             Grid.Row="0"
             Grid.Column="{Binding TemplateListColumn}"
             Text="{Binding Template}"
             ItemsSource="{Binding TemplateList}"
-            Width="180" 
-            Grid.ColumnSpan="3" />
+            Width="180" />
         <TabControl
             Grid.Column="0"
-            Grid.ColumnSpan="7"
-            Grid.RowSpan="3"
+            Grid.RowSpan="2"
             Height="698" 
             VerticalAlignment="Top" 
             Margin="0,38,0,0">
@@ -84,48 +73,56 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition 
-                            Width="Auto" />
+                            MinWidth="150" />
                         <ColumnDefinition
-                            Width="Auto" />
+                            MinWidth="180" />
                         <ColumnDefinition
-                            Width="Auto" />
+                            MinWidth="150" />
                         <ColumnDefinition
-                            Width="Auto" />
+                            MinWidth="180" />
                         <ColumnDefinition
-                            Width="Auto" />
-                        <ColumnDefinition Width="*" />
+                            MinWidth="150" />
+                        <ColumnDefinition
+                            MinWidth="180" />
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition
-                            Height="Auto" />
+                            Height="36" />
                         <RowDefinition
-                            Height="Auto" />
+                            Height="36" />
                         <RowDefinition
-                            Height="Auto" />
+                            Height="36" />
                         <RowDefinition
-                            Height="Auto" />
+                            Height="36" />
                         <RowDefinition
-                            Height="Auto" />
+                            Height="36" />
                         <RowDefinition
-                            Height="Auto" />
+                            Height="36" />
                         <RowDefinition
-                            Height="Auto" />
+                            Height="36" />
                         <RowDefinition
-                            Height="Auto" />
+                            Height="36" />
                         <RowDefinition
-                            Height="Auto" />
+                            Height="36" />
                         <RowDefinition
-                            Height="Auto" />
+                            Height="36" />
                         <RowDefinition
-                            Height="Auto" />
+                            Height="36" />
                         <RowDefinition
-                            Height="Auto" />
+                            Height="36" />
                         <RowDefinition
-                            Height="Auto" />
+                            Height="36" />
                         <RowDefinition
-                            Height="Auto" />
+                            Height="36" />
                         <RowDefinition
-                            Height="Auto" />
+                            Height="36" />
+                        <RowDefinition
+                            Height="36" />
+                        <RowDefinition
+                            Height="36" />
+                        <RowDefinition
+                            Height="36" />
                     </Grid.RowDefinitions>
                     <!-- Accounting Group -->
                     <Label
@@ -137,35 +134,38 @@
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center" 
-                        Margin="6,6,0,6"/>
+                        Margin="6,6,0,6" 
+                        Height="26"/>
                     <ComboBox
                         HorizontalAlignment="Left"
                         IsEnabled="{Binding BlockInfo}"
                         Margin="6,6,0,6"
-                        Height="26"
                         Grid.Row="0"
                         Grid.Column="1"
                         ItemsSource="{Binding AccountingGroupList}"
                         Text="{Binding AccountingGroup}"
-                        Width="180" />
+                        Width="170" />
+
+                    <!-- Casepack -->
                     <Label
-                        Background="{Binding CasepackHeightBoxColor}"
-                        Content="Casepack Height"
+                        Content="Casepack"
+                        Background="AliceBlue"
+                        BorderBrush="LightSteelBlue"
+                        BorderThickness="2"
+                        FontWeight="Bold"
+                        Foreground="SteelBlue"
                         Grid.Column="0"
                         Grid.Row="1"
-                        Height="26"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding CasepackHeightToolTip}"
                         VerticalAlignment="Center"
-                        Width="140" 
-                        Margin="6,6,0,6"/>
+                        Width="325" Grid.ColumnSpan="2" Height="217"  Grid.RowSpan="7" Margin="0,6,0,36"  />
                     <!-- Casepack Height -->
                     <Label
                         Background="{Binding CasepackHeightBoxColor}"
                         Content="Casepack Height"
                         Grid.Column="0"
-                        Grid.Row="1"
-                        Height="26"
+                        Grid.Row="2"
+                        Height="25"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding CasepackHeightToolTip}"
                         VerticalAlignment="Center"
@@ -174,22 +174,21 @@
                     <TextBox 
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="1"
+                        Grid.Row="2"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="1"
                         IsEnabled="true"
                         Text="{Binding CasepackHeight}"
                         VerticalContentAlignment="Center"
-                        Width="180"/>
+                        Width="164"/>
                     <!-- Casepack Length -->
                     <Label
                         Background="{Binding CasepackLengthBoxColor}"
                         Content="Casepack Length"
                         Grid.Column="0"
-                        Grid.Row="2"
-                        Height="26"
+                        Grid.Row="3"
+                        Height="25"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding CasepackLengthToolTip}"
                         VerticalAlignment="Center"
@@ -198,21 +197,20 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="2"
+                        Grid.Row="3"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="1"
                         Text="{Binding CasepackLength}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
                     <!-- Casepack Quantity -->
                     <Label
                         Background="{Binding CasepackQtyBoxColor}"
                         Content="Casepack Quantity"
                         Grid.Column="0"
-                        Grid.Row="3"
-                        Height="26"
+                        Grid.Row="4"
+                        Height="25"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding CasepackQtyToolTip}"
                         VerticalAlignment="Center"
@@ -222,21 +220,20 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="3"
+                        Grid.Row="4"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="1"
                         Text="{Binding CasepackQty}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
                     <!-- Casepack Weight -->
                     <Label
                         Background="{Binding CasepackWeightBoxColor}"
                         Content="Casepack Weight"
                         Grid.Column="0"
-                        Grid.Row="4"
-                        Height="26"
+                        Grid.Row="5"
+                        Height="25"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding CasepackWeightToolTip}"
                         VerticalAlignment="Center"
@@ -246,44 +243,42 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="4"
+                        Grid.Row="5"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="1"
                         Text="{Binding CasepackWeight}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
                     <!-- Casepack Width -->
                     <Label
                         Background="{Binding CasepackWidthBoxColor}"
                         Content="Casepack Width"
                         Grid.Column="0"
-                        Grid.Row="5"
+                        Grid.Row="6"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding CasepackWidthToolTip}"
                         VerticalAlignment="Center"
                         Width="140" 
-                        Margin="6,6,0,6" />
+                        Margin="6,7,0,6" Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="5"
+                        Grid.Row="6"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="1"
                         Text="{Binding CasepackWidth}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
                     <!-- Cost Profile Group -->
                     <Label
                         Background="{Binding CostProfileGroupBoxColor}"
                         Content="Cost Profile Group"
-                        Grid.Row="6"
+                        Grid.Row="7"
                         Width="140"
-                        Height="26"
+                        Height="25"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding CostProfileGroupToolTip}"
@@ -293,526 +288,615 @@
                         HorizontalAlignment="Left"
                         IsEnabled="{Binding BlockInfo}"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="6"
+                        Grid.Row="7"
                         Grid.Column="1"
                         ItemsSource="{Binding CostProfileGroupList}"
                         Text="{Binding CostProfileGroup}"
-                        Width="180" />
+                        Width="164" />
+                    <!-- Default Actual Cost-->
+                    <Label
+                        Content="Default Actual Cost"
+                        Background="AliceBlue"
+                        BorderBrush="LightSteelBlue"
+                        BorderThickness="2"
+                        FontWeight="Bold"
+                        Foreground="SteelBlue"
+                        Grid.Column="0"
+                        Grid.Row="8"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Width="325" Grid.ColumnSpan="2" Height="111"  Grid.RowSpan="3"  />
                     <!-- Default Actual Cost CAD -->
                     <Label
                         Background="{Binding DefaultActualCostCadBoxColor}"
                         Content="Default Actual Cost CAD"
-                        Grid.Row="7"
+                        Grid.Row="9"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding DefaultActualCostCadToolTip}"
                         Width="140"
                         VerticalAlignment="Center" 
-                        Margin="6,6,0,6"/>
+                        Margin="6,7,0,6" Height="26"/>
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="7"
+                        Grid.Row="9"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="1"
                         Text="{Binding DefaultActualCostCad}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
                     <!-- Default Actual Cost USD -->
                     <Label
                         Background="{Binding DefaultActualCostUsdBoxColor}"
                         Content="Default Actual Cost USD"
-                        Grid.Row="8"
+                        Grid.Row="10"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding DefaultActualCostUsdToolTip}"
                         Width="140"
                         VerticalAlignment="Center" 
-                        Margin="6,6,0,6" />
+                        Margin="6,6,0,6" Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="8"
+                        Grid.Row="10"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="1"
                         Text="{Binding DefaultActualCostUsd}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
                     <!-- GPC -->
                     <Label
                         Content="Gpc"
                         Background="{Binding GpcBoxColor}"
-                        Grid.Row="9"
+                        Grid.Row="11"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding GpcToolTip}"
                         VerticalAlignment="Center"
-                        Width="120" 
-                        Margin="6,6,0,6"/>
+                        Width="134" 
+                        Margin="6,6,0,5" Height="26"/>
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="9"
+                        Grid.Row="11"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="1"
                         Text="{Binding Gpc}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="170" />
                     <!-- Duty -->
                     <Label
                         Content="Duty"
                         Background="{Binding DutyBoxColor}"
-                        Grid.Row="10"
+                        Grid.Row="12"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding DutyToolTip}"
                         VerticalAlignment="Center"
-                        Width="120" 
-                        Margin="6,6,0,6" />
+                        Width="134" 
+                        Margin="6,6,0,5" Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="10"
+                        Grid.Row="12"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="1"
                         Text="{Binding Duty}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
-                    <!-- Height -->
+                        Width="170" />
+                    <!-- Innerpack -->
                     <Label
-                        Content="Height"
-                        Background="{Binding HeightBoxColor}"
-                        Grid.Row="11"
-                        Grid.Column="0"
+                        Content="Innerpack"
+                        Background="AliceBlue"
+                        BorderBrush="LightSteelBlue"
+                        BorderThickness="2"
+                        FontWeight="Bold"
+                        Foreground="SteelBlue"
+                        Grid.Column="2"
+                        Grid.Row="0"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding HeightToolTip}"
                         VerticalAlignment="Center"
-                        Width="120"
-                        Margin="6,6,0,6" />
-                    <TextBox
-                        IsEnabled="{Binding BlockInfo}"
-                        HorizontalAlignment="Left"
-                        Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="11"
-                        TextWrapping="Wrap"
-                        MaxLength="60"
-                        Grid.Column="1"
-                        Text="{Binding Height}"
-                        VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="326" Grid.ColumnSpan="2" Height="216"  Grid.RowSpan="6" Margin="0,6,0,0"  />
                     <!-- Innerpack Height -->
                     <Label
                         Content="Innerpack Height"
                         Background="{Binding InnerpackHeightBoxColor}"
-                        Grid.Row="12"
-                        Grid.Column="0"
+                        Grid.Row="1"
+                        Grid.Column="2"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding InnerpackHeightToolTip}"
                         VerticalAlignment="Center"
-                        Width="120" 
-                        Margin="6,6,0,6" />
+                        Width="134" 
+                        Margin="6,6,0,5" 
+                        Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         Name="InnerpackHeightTxt"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="12"
+                        Grid.Row="1"
                         TextWrapping="Wrap"
                         MaxLength="60"
-                        Grid.Column="1"
+                        Grid.Column="3"
                         Text="{Binding InnerpackHeight}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
                     <!-- Innerpack Length -->
                     <Label
                         Content="Innerpack Length"
                         Background="{Binding InnerpackLengthBoxColor}"
-                        Grid.Row="13"
-                        Grid.Column="0"
+                        Grid.Row="2"
+                        Grid.Column="2"
                         HorizontalAlignment="Left"
+                        Margin="6,5,0,6"
                         ToolTip="{Binding InnerpackLengthToolTip}"
                         VerticalAlignment="Center"
-                        Width="120" 
-                        Margin="6,6,0,6" />
+                        Width="134" 
+                        Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="13"
+                        Grid.Row="2"
                         TextWrapping="Wrap"
                         MaxLength="60"
-                        Grid.Column="1"
+                        Grid.Column="3"
                         Text="{Binding InnerpackLength}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
                     <!-- Innerpack Quantity -->
                     <Label
                         Content="Innerpack Quantity"
                         Background="{Binding InnerpackQuantityBoxColor}"
-                        Grid.Row="0"
+                        Grid.Row="3"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding InnerpackQuantityToolTip}"
                         VerticalAlignment="Center"
-                        Width="120" 
-                        Margin="6,6,0,6" />
+                        Width="134" 
+                        Margin="6,6,0,5" Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="0"
+                        Grid.Row="3"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="3"
                         Text="{Binding InnerpackQuantity}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
                     <!-- Innerpack Weight -->
                     <Label
                         Content="Innerpack Weight"
                         Background="{Binding InnerpackWeightBoxColor}"
-                        Grid.Row="1"
+                        Grid.Row="4"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding InnerpackWeightToolTip}"
                         VerticalAlignment="Center"
-                        Width="120" 
-                        Margin="6,6,0,6" />
+                        Width="134" 
+                        Margin="6,6,0,5" Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="1"
+                        Grid.Row="4"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="3"
                         Text="{Binding InnerpackWeight}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
                     <!-- Innerpack Width -->
                     <Label
                         Content="Innerpack Width"
                         Background="{Binding InnerpackWidthBoxColor}"
-                        Grid.Row="2"
+                        Grid.Row="5"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding InnerpackWidthToolTip}"
                         VerticalAlignment="Center"
-                        Width="120" 
-                        Margin="6,6,0,6" />
+                        Width="134" 
+                        Margin="6,6,0,5" Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="2"
+                        Grid.Row="5"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="3"
                         Text="{Binding InnerpackWidth}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
                     <!-- Item Category -->
                     <Label
                         Content="Item Category"
                         Background="{Binding ItemCategoryBoxColor}"
-                        Grid.Row="3"
-                        Width="120"
+                        Grid.Row="6"
+                        Width="134"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ItemCategoryToolTip}"
                         VerticalAlignment="Center" 
-                        Margin="6,6,0,6"/>
+                        Margin="6,6,0,5" Height="26"/>
                     <ComboBox
                         HorizontalAlignment="Left"
                         IsEnabled="{Binding BlockInfo}"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="3"
+                        Grid.Row="6"
                         Grid.Column="3"
                         ItemsSource="{Binding ItemCategories}"
                         Text="{Binding ItemCategory}"
-                        Width="180" />
-                    <!-- Item Family -->
+                        Width="164" />
+                    <!-- Item Dimensions -->
                     <Label
-                        Background="{Binding ItemFamilyBoxColor}"
-                        Content="Item Family"
+                        Content="Item Dimensions"
+                        Background="AliceBlue"
+                        BorderBrush="LightSteelBlue"
+                        BorderThickness="2"
+                        FontWeight="Bold"
+                        Foreground="SteelBlue"
                         Grid.Column="2"
-                        Grid.Row="4"
+                        Grid.Row="7"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding ItemFamilyToolTip}"
-                        VerticalAlignment="Center" 
-                        Margin="6,6,0,6" />
+                        VerticalAlignment="Center"
+                        Width="326" Grid.ColumnSpan="2" Height="186"  Grid.RowSpan="6" Margin="0,0,0,36"  />
+                    <!-- Item Height -->
+                    <Label
+                        Content="Item Height"
+                        Background="{Binding HeightBoxColor}"
+                        Grid.Row="8"
+                        Grid.Column="2"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding HeightToolTip}"
+                        VerticalAlignment="Center"
+                        Width="134"
+                        Margin="6,6,0,5" Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="4"
+                        Grid.Row="8"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="3"
-                        Text="{Binding ItemFamily}"
+                        Text="{Binding Height}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
-                    <!-- Item Group -->
+                        Width="164" />
+                    <!-- Item Length -->
                     <Label
-                        Content="Item Group"
-                        Background="{Binding ItemGroupBoxColor}"
-                        Grid.Row="5"
-                        Width="120"
-                        Grid.Column="2"
-                        HorizontalAlignment="Left"
-                        ToolTip="{Binding ItemGroupToolTip}"
-                        VerticalAlignment="Center" 
-                        Margin="6,6,0,6" />
-                    <ComboBox
-                        HorizontalAlignment="Left"
-                        Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="5"
-                        Grid.Column="3"
-                        IsEnabled="{Binding BlockInfo}"
-                        ItemsSource="{Binding ItemGroups}"
-                        Text="{Binding ItemGroup}"
-                        Width="180" />
-                    <!-- Length -->
-                    <Label
-                        Content="Length"
+                        Content="Item Length"
                         Background="{Binding LengthBoxColor}"
-                        Grid.Row="6"
+                        Grid.Row="9"
                         Grid.Column="2"
+                        Height="26" 
                         HorizontalAlignment="Left"
                         ToolTip="{Binding LengthToolTip}"
                         VerticalAlignment="Center"
-                        Width="120" 
-                        Margin="6,6,0,6" />
+                        Width="134" 
+                        Margin="6,6,0,5" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="6"
+                        Grid.Row="9"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="3"
                         Text="{Binding Length}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
-                    <!-- List Price CAD -->
+                        Width="164" />
+                    <!-- Item Weight -->
                     <Label
-                        Width="120"
-                        Content="List Price (CAD)"
-                        Background="{Binding ListPriceCadBoxColor}"
-                        Grid.Row="7"
+                        Background="{Binding WeightBoxColor}"
+                        Content="Item Weight"
                         Grid.Column="2"
+                        Grid.Row="10"
+                        Height="26"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding ListPriceCadToolTip}"
+                        Margin="6,6,0,5"
+                        ToolTip="{Binding WeightToolTip}"
                         VerticalAlignment="Center" 
-                        Margin="6,6,0,6" />
+                        Width="134" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="7"
+                        Grid.Row="10"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="3"
+                        Text="{Binding Weight}"
+                        VerticalContentAlignment="Center"
+                        Width="164" />
+                    <!-- Item Width -->
+                    <Label
+                        Background="{Binding WidthBoxColor}"
+                        Content="Item Width"
+                        Grid.Column="2"
+                        Grid.Row="11"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding WidthToolTip}"
+                        VerticalAlignment="Center" 
+                        Margin="6,6,0,6" 
+                        Height="26" Width="134" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Grid.Row="11"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="3"
+                        Text="{Binding Width}"
+                        VerticalContentAlignment="Center"
+                        Width="164" />
+                    <!-- Item Family -->
+                    <Label
+                        Background="{Binding ItemFamilyBoxColor}"
+                        Content="Item Family"
+                        Grid.Column="2"
+                        Grid.Row="12"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding ItemFamilyToolTip}"
+                        VerticalAlignment="Center" 
+                        Margin="6,6,0,5" Height="26" Width="134" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Grid.Row="12"
+                        TextWrapping="Wrap"
+                        MaxLength="60"
+                        Grid.Column="3"
+                        Text="{Binding ItemFamily}"
+                        VerticalContentAlignment="Center"
+                        Width="164" />
+                    <!-- Item Group -->
+                    <Label
+                        Content="Item Group"
+                        Background="{Binding ItemGroupBoxColor}"
+                        Grid.Row="13"
+                        Width="134"
+                        Grid.Column="2"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding ItemGroupToolTip}"
+                        VerticalAlignment="Center" 
+                        Margin="6,6,0,5" Height="26" />
+                    <ComboBox
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Grid.Row="13"
+                        Grid.Column="3"
+                        IsEnabled="{Binding BlockInfo}"
+                        ItemsSource="{Binding ItemGroups}"
+                        Text="{Binding ItemGroup}"
+                        Width="164" />
+                    <!-- List Price -->
+                    <Label
+                        Content="List Price"
+                        Background="AliceBlue"
+                        BorderBrush="LightSteelBlue"
+                        BorderThickness="2"
+                        FontWeight="Bold"
+                        Foreground="SteelBlue"
+                        Grid.Column="2"
+                        Grid.Row="14"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Width="326" Grid.ColumnSpan="2" Height="148"  Grid.RowSpan="4"  />
+                    <!-- List Price CAD -->
+                    <Label
+                        Width="134"
+                        Content="List Price (CAD)"
+                        Background="{Binding ListPriceCadBoxColor}"
+                        Grid.Row="15"
+                        Grid.Column="2"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding ListPriceCadToolTip}"
+                        VerticalAlignment="Center" 
+                        Margin="6,6,0,5" Height="26" />
+                    <TextBox
+                        IsEnabled="{Binding BlockInfo}"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Grid.Row="15"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="3"
                         Text="{Binding ListPriceCad}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
                     <!-- List Price MXN -->
                     <Label
-                        Width="120"
+                        Width="134"
                         Content="List Price (MXN)"
                         Background="{Binding ListPriceMxnBoxColor}"
-                        Grid.Row="8"
+                        Grid.Row="16"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ListPriceMxnToolTip}"
                         VerticalAlignment="Center" 
-                        Margin="6,6,0,6" />
+                        Margin="6,6,0,5" Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="8"
+                        Grid.Row="16"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="3"
                         Text="{Binding ListPriceMxn}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
                     <!-- ListPriceUSD -->
                     <Label
                         Background="{Binding ListPriceUsdBoxColor}"
                         Content="List Price (USD)"
                         Grid.Column="2"
-                        Grid.Row="9"
+                        Grid.Row="17"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ListPriceUsdToolTip}"
                         VerticalAlignment="Center"
-                        Width="120" 
-                        Margin="6,6,0,6" />
+                        Width="134" 
+                        Margin="6,6,0,5" Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="9"
+                        Grid.Row="17"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="3"
                         Text="{Binding ListPriceUsd}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
                     <!-- MfgSource -->
                     <Label
                         Background="{Binding MfgSourceBoxColor}"
                         Content="MfgSource"
-                        Grid.Column="2"
-                        Grid.Row="10"
+                        Grid.Column="4"
+                        Grid.Row="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding MfgSourceToolTip}"
                         VerticalAlignment="Center"
-                        Width="120" 
-                        Margin="6,6,0,6" />
+                        Width="134" 
+                        Margin="6,6,0,5" Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="10"
+                        Grid.Row="0"
                         TextWrapping="Wrap"
                         MaxLength="60"
-                        Grid.Column="3"
+                        Grid.Column="5"
                         Text="{Binding MfgSource}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
+                    <!-- MSRP-->
+                    <Label
+                        Content="MSRP"
+                        Background="AliceBlue"
+                        BorderBrush="LightSteelBlue"
+                        BorderThickness="2"
+                        FontWeight="Bold"
+                        Foreground="SteelBlue"
+                        Grid.Column="4"
+                        Grid.Row="1"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Width="330" Grid.ColumnSpan="2" Height="148"  Grid.RowSpan="4"  />
                     <!-- Msrp -->
                     <Label
                         Background="{Binding MsrpBoxColor}"
                         Content="Msrp USD"
-                        Grid.Column="2"
-                        Grid.Row="11"
+                        Grid.Column="4"
+                        Grid.Row="2"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding MsrpToolTip}"
                         VerticalAlignment="Center"
-                        Width="120" 
-                        Margin="6,6,0,6"/>
+                        Width="134" 
+                        Margin="6,6,0,5" Height="26"/>
                     <TextBox
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="11"
+                        Grid.Row="2"
                         TextWrapping="Wrap"
                         MaxLength="60"
-                        Grid.Column="3"
+                        Grid.Column="5"
                         Text="{Binding Msrp}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
                     <!-- MsrpCad -->
                     <Label
                         Background="{Binding MsrpCadBoxColor}"
                         Content="Msrp CAD"
-                        Grid.Column="2"
-                        Grid.Row="12"
+                        Grid.Column="4"
+                        Grid.Row="3"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding MsrpCadToolTip}"
                         VerticalAlignment="Center"
-                        Width="120" 
-                        Margin="6,6,0,6"/>
+                        Width="134" 
+                        Margin="6,6,0,5" Height="26"/>
                     <TextBox
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Column="3"
-                        Grid.Row="12"
+                        Grid.Column="5"
+                        Grid.Row="3"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Text="{Binding MsrpCad}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
                     <!-- MsrpMxn -->
                     <Label
                         Background="{Binding MsrpMxnBoxColor}"
                         Content="Msrp MXN"
                         Grid.Column="4"
-                        Grid.Row="0"
+                        Grid.Row="4"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding MsrpMxnToolTip}"
                         VerticalAlignment="Center"
-                        Width="120" 
-                        Margin="6,6,0,6"/>
+                        Width="134" 
+                        Margin="6,6,0,5" Height="26"/>
                     <TextBox
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="0"
+                        Grid.Row="4"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="5"
                         Text="{Binding MsrpMxn}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
                     <!-- Pricing Group -->
                     <Label
                         Background="{Binding PricingGroupBoxColor}"
                         Content="Pricing Group"
                         Grid.Column="4"
-                        Grid.Row="1"
+                        Grid.Row="5"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding PricingGroupToolTip}"
                         VerticalAlignment="Center"
-                        Width="110" 
-                        Margin="6,6,0,6" />
+                        Width="134" 
+                        Margin="6,6,0,5" Height="26" />
                     <ComboBox
                         HorizontalAlignment="Left"
                         IsEnabled="{Binding BlockInfo}"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="1"
+                        Grid.Row="5"
                         Grid.Column="5"
                         ItemsSource="{Binding PricingGroups}"
                         Text="{Binding PricingGroup}"
-                        Width="180" />
+                        Width="159" />
                     <!-- Print On Demand -->
                     <Label
                         Background="{Binding PrintOnDemandBoxColor}"
                         Content="Print On Demand"
                         Grid.Column="4"
-                        Grid.Row="2"
+                        Grid.Row="6"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding PrintOnDemandToolTip}"
                         VerticalAlignment="Center"
-                        Width="110" 
-                        Margin="6,6,0,6" />
+                        Width="134" 
+                        Margin="6,6,0,5" Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="2"
+                        Grid.Row="6"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="5"
@@ -824,82 +908,78 @@
                         Background="{Binding ProductFormatBoxColor}"
                         Content="Product Format"
                         Grid.Column="4"
-                        Grid.Row="3"
+                        Grid.Row="7"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ProductFormatToolTip}"
                         VerticalAlignment="Center"
-                        Width="110" 
-                        Margin="6,6,0,6" />
+                        Width="134" 
+                        Margin="6,6,0,5" Height="26" />
                     <ComboBox
                         HorizontalAlignment="Left"
                         IsEnabled="{Binding BlockInfo}"
                         Margin="6,6,0,6"
-                        Height="26"
                         ItemsSource="{Binding ProductFormats}"
-                        Grid.Row="3"
+                        Grid.Row="7"
                         Grid.Column="5"
                         Text="{Binding ProductFormat}"
-                        Width="180" />
+                        Width="164" />
                     <!-- Product Group -->
                     <Label
                         Background="{Binding ProductGroupBoxColor}"
                         Content="Product Group"
-                        Grid.Row="4"
+                        Grid.Row="8"
                         Grid.Column="4"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ProductGroupToolTip}"
                         VerticalAlignment="Center"
-                        Width="110" 
-                        Margin="6,6,0,6" />
+                        Width="134" 
+                        Margin="6,6,0,5" Height="26" />
                     <ComboBox
                         HorizontalAlignment="Left"
                         IsEnabled="{Binding BlockInfo}"
                         Margin="6,6,0,6"
-                        Height="26"
                         ItemsSource="{Binding ProductGroups}"
-                        Grid.Row="4"
+                        Grid.Row="8"
                         Grid.Column="5"
                         Text="{Binding ProductGroup}"
-                        Width="180" />
+                        Width="164" />
                     <!-- Product Line -->
                     <Label
                         Background="{Binding ProductLineBoxColor}"
                         Content="Product Line"
                         Grid.Column="4"
-                        Grid.Row="5"
+                        Grid.Row="9"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ProductLineToolTip}"
                         VerticalAlignment="Center"
-                        Width="110" 
-                        Margin="6,6,0,6" />
+                        Width="134" 
+                        Margin="6,6,0,5" Height="26" />
                     <ComboBox
                         HorizontalAlignment="Left"
                         IsEnabled="{Binding BlockInfo}"
                         Margin="6,6,0,6"
-                        Height="26"
                         ItemsSource="{Binding ProductLines}"
-                        Grid.Row="5"
+                        Grid.Row="9"
                         Grid.Column="5"
                         Text="{Binding ProductLine}"
-                        Width="180" />
+                        Width="164" />
 
                     <!-- PS Status -->
                     <Label
                         Background="{Binding PsStatusBoxColor}"
                         Content="PS Status"
                         Grid.Column="4"
-                        Grid.Row="6"
+                        Grid.Row="10"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding PsStatusToolTip}"
                         VerticalAlignment="Center"
-                        Width="110" 
-                        Margin="6,6,0,6" />
+                        Width="134" 
+                        Margin="6,6,0,5" Height="26" />
                     <ComboBox
                         HorizontalAlignment="Left"
                         IsEnabled="{Binding BlockInfo}"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="6"
+                        Grid.Row="10"
                         Grid.Column="5"
                         ItemsSource="{Binding PsStatuses}"
                         Text="{Binding PsStatus}"
@@ -909,112 +989,65 @@
                         Background="{Binding SatCodeBoxColor}"
                         Content="SAT Code"
                         Grid.Column="4"
-                        Grid.Row="7"
+                        Grid.Row="11"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SatCodeToolTip}"
                         VerticalAlignment="Center"
-                        Width="110" 
-                        Margin="6,6,0,6"/>
+                        Width="134" 
+                        Margin="6,6,0,5" Height="26"/>
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="7"
+                        Grid.Row="11"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="5"
                         Text="{Binding SatCode}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
                     <!-- Tariff Code -->
                     <Label
                         Background="{Binding TariffCodeBoxColor}"
                         Content="Tariff Code"
-                        Grid.Row="8"
+                        Grid.Row="12"
                         Grid.Column="4"
-                        Width="110"
+                        Width="134"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding TariffCodeToolTip}"
                         VerticalAlignment="Center"
-                        Margin="6,6,0,6" />
+                        Margin="6,6,0,5" Height="26" />
                     <ComboBox
                         HorizontalAlignment="Left"
                         IsEnabled="{Binding BlockInfo}"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="8"
+                        Grid.Row="12"
                         Grid.Column="5"
                         ItemsSource="{Binding TariffCodes}"
                         Text="{Binding TariffCode}"
-                        Width="180" />
+                        Width="164" />
                     <!-- UDEX -->
                     <Label
                         Background="{Binding UdexBoxColor}"
                         Content="UDEX"
                         Grid.Column="4"
-                        Grid.Row="9"
+                        Grid.Row="13"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding UdexToolTip}"
                         VerticalAlignment="Center"
-                        Width="110" 
-                        Margin="6,6,0,6"/>
+                        Width="134" 
+                        Margin="6,6,0,5" Height="26"/>
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="9"
+                        Grid.Row="13"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="5"
                         Text="{Binding Udex}"
                         VerticalContentAlignment="Center"
-                        Width="180" />
-                    <!-- Weight -->
-                    <Label
-                        Background="{Binding WeightBoxColor}"
-                        Content="Weight"
-                        Grid.Column="4"
-                        Grid.Row="10"
-                        HorizontalAlignment="Left"
-                        ToolTip="{Binding WeightToolTip}"
-                        VerticalAlignment="Center" 
-                        Width="120" Margin="0,5"/>
-                    <TextBox
-                        IsEnabled="{Binding BlockInfo}"
-                        HorizontalAlignment="Left"
-                        Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="10"
-                        TextWrapping="Wrap"
-                        MaxLength="60"
-                        Grid.Column="5"
-                        Text="{Binding Weight}"
-                        VerticalContentAlignment="Center"
-                        Width="180" />
-                    <!-- Width -->
-                    <Label
-                        Background="{Binding WidthBoxColor}"
-                        Content="Width"
-                        Grid.Column="4"
-                        Grid.Row="11"
-                        HorizontalAlignment="Left"
-                        ToolTip="{Binding WidthToolTip}"
-                        VerticalAlignment="Center" 
-                        Margin="6,6,0,6" />
-                    <TextBox
-                        IsEnabled="{Binding BlockInfo}"
-                        HorizontalAlignment="Left"
-                        Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="11"
-                        TextWrapping="Wrap"
-                        MaxLength="60"
-                        Grid.Column="5"
-                        Text="{Binding Width}"
-                        VerticalContentAlignment="Center"
-                        Width="180" />
+                        Width="164" />
                 </Grid>
             </TabItem>
             <TabItem
@@ -1055,7 +1088,7 @@
                     <ComboBox
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
+                        Height="25"
                         Grid.Row="0"
                         Grid.Column="1"
                         ItemsSource="{Binding WebCategoryList}"
@@ -1075,7 +1108,7 @@
                     <ComboBox
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
+                        Height="25"
                         Grid.Row="1"
                         ItemsSource="{Binding WebCategoryList}"
                         Grid.Column="1"
@@ -1095,7 +1128,7 @@
                     <ComboBox
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
+                        Height="25"
                         Grid.Row="2"
                         ItemsSource="{Binding WebCategoryList}"
                         Grid.Column="1"
@@ -1134,7 +1167,7 @@
                     <ComboBox
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
+                        Height="25"
                         Grid.Row="0"
                         Grid.Column="3"
                         ItemsSource="{Binding MetaDescriptions}"
@@ -1153,7 +1186,7 @@
                     <TextBox
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
+                        Height="25"
                         Grid.Row="1"
                         TextWrapping="Wrap"
                         MaxLength="1000"
@@ -1173,7 +1206,7 @@
                     <TextBox
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
+                        Height="25"
                         Grid.Row="2"
                         TextWrapping="Wrap"
                         Grid.Column="3"
@@ -1192,7 +1225,7 @@
                     <TextBox
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
+                        Height="25"
                         Grid.Row="3"
                         TextWrapping="Wrap"
                         MaxLength="1000"
@@ -1210,193 +1243,212 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="110"/>
                         <ColumnDefinition Width="180"/>
-                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="130"/>
                         <ColumnDefinition Width="180"/>
-                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="140"/>
                         <ColumnDefinition Width="180"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
                     </Grid.RowDefinitions>
 
+                    <!-- Bullets -->
+                    <Label
+                        Content="Bullets"
+                        Background="AliceBlue"
+                        BorderBrush="LightSteelBlue"
+                        BorderThickness="2"
+                        FontWeight="Bold"
+                        Foreground="SteelBlue"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Width="288" Grid.ColumnSpan="2" Height="407"  Grid.RowSpan="11"  />
                     <!-- Bullet 1-->
                     <Label
                         Background="{Binding EcommerceBullet1BoxColor}"
                         Content="Bullet 1"
                         Grid.Column="0"
-                        Grid.Row="0"
+                        Grid.Row="1"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommerceBullet1ToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Width="101" />
                     <TextBox
-                        Height="58"
                         HorizontalAlignment="Left"
                         Grid.Column="1"
-                        Grid.Row="0"
+                        Grid.Row="1"
                         Grid.RowSpan="2"
-                        Margin="6,6,0,6"                        
+                        Margin="6,8,0,8"                        
                         Text="{Binding EcommerceBullet1}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
-                        Width="170" />
+                        Width="165" />
                     <!-- Bullet 2-->
                     <Label
                         Background="{Binding EcommerceBullet2BoxColor}"
                         Content="Bullet 2"
                         Grid.Column="0"
-                        Grid.Row="2"
+                        Grid.Row="3"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommerceBullet2ToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Width="101" Margin="0,5,0,6" />
                     <TextBox
-                        Height="58"
                         HorizontalAlignment="Left"
                         Grid.Column="1"
-                        Grid.Row="2"
+                        Grid.Row="3"
                         Grid.RowSpan="2"
-                        Margin="6,6,0,6"                        
+                        Margin="6,8,0,8"                        
                         Text="{Binding EcommerceBullet2}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
-                        Width="170" />
+                        Width="165" />
                     <!-- Bullet 3-->
                     <Label
                         Background="{Binding EcommerceBullet3BoxColor}"
                         Content="Bullet 3"
                         Grid.Column="0"
-                        Grid.Row="4"
+                        Grid.Row="5"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommerceBullet3ToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Width="105" />
                     <TextBox
-                        Height="58"
                         HorizontalAlignment="Left"
                         Grid.Column="1"
-                        Grid.Row="4"
+                        Grid.Row="5"
                         Grid.RowSpan="2"
-                        Margin="6,6,0,6"                        
+                        Margin="6,8,0,8"                        
                         Text="{Binding EcommerceBullet3}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
-                        Width="170" />
+                        Width="165" />
                     <!-- Bullet 4-->
                     <Label
                         Background="{Binding EcommerceBullet4BoxColor}"
                         Content="Bullet 4"
                         Grid.Column="0"
-                        Grid.Row="6"
+                        Grid.Row="7"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommerceBullet4ToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Width="101" Margin="0,5,0,6" />
                     <TextBox
-                        Height="58"
                         HorizontalAlignment="Left"
                         Grid.Column="1"
-                        Grid.Row="6"
+                        Grid.Row="7"
                         Grid.RowSpan="2"
-                        Margin="6,6,0,6"                        
+                        Margin="6,8,0,8"                        
                         Text="{Binding EcommerceBullet4}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
-                        Width="170" />
+                        Width="165" />
                     <!-- Bullet 5-->
                     <Label
                         Background="{Binding EcommerceBullet5BoxColor}"
                         Content="Bullet 5"
                         Grid.Column="0"
-                        Grid.Row="8"
+                        Grid.Row="9"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommerceBullet5ToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Width="101" Margin="0,5,0,6" />
                     <TextBox
-                        Height="58"
                         HorizontalAlignment="Left"
                         Grid.Column="1"
-                        Grid.Row="8"
+                        Grid.Row="9"
                         Grid.RowSpan="2"
-                        Margin="6,6,0,6"                        
+                        Margin="6,8,0,8"                        
                         Text="{Binding EcommerceBullet5}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
-                        Width="170" />
+                        Width="165" />
                     <!-- Components -->
                     <Label
                         Background="{Binding EcommerceComponentsBoxColor}"
                         Content="Components"
                         Grid.Column="0"
-                        Grid.Row="10"
+                        Grid.Row="11"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommerceComponentsToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Width="101" Margin="0,5,0,6" />
                     <TextBox
-                        Height="26"
                         HorizontalAlignment="Left"
                         Grid.Column="1"
-                        Grid.Row="10"
+                        Grid.Row="11"
                         Margin="6,6,0,6"                        
                         Text="{Binding EcommerceComponents}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
-                        Width="170" />
-                    <!-- Cost Amazon-->
+                        Width="165" />
+                    <!-- Cost -->
                     <Label
                         Background="{Binding EcommerceCostBoxColor}"
                         Content="Cost"
                         Grid.Column="0"
-                        Grid.Row="11"
+                        Grid.Row="12"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommerceCostToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Width="101" Margin="0,6,0,5" />
                     <TextBox
-                        Height="26"
                         HorizontalAlignment="Left"
                         Grid.Column="1"
-                        Grid.Row="11"
+                        Grid.Row="12"
                         Margin="6,6,0,6"                        
                         Text="{Binding EcommerceCost}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
-                        Width="170" />
+                        Width="165" />
                     <!-- External ID Type -->
                     <Label
                         Background="{Binding EcommerceExternalIdTypeBoxColor}"
                         Content="External ID Type"
-                        Grid.Row="0"
-                        Grid.Column="2"
+                        Grid.Row="13"
+                        Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding EcommerceExternalIdTypeToolTip}"
-                        VerticalAlignment="Center" Margin="0,4,0,5" />
+                        VerticalAlignment="Center"
+                        Width="101" />
                     <ComboBox
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Height="26"
-                        Grid.Row="0"
-                        Grid.Column="3"
+                        Grid.Row="13"
+                        Grid.Column="1"
                         ItemsSource="{Binding EcommerceExternalIdTypeGroups}"
                         Text="{Binding EcommerceExternalIdType}"
-                        Width="170"  />
+                        Width="165"  />
+                    <!-- Item Dimensions -->
+                    <Label
+                        Content="Item Dimensions"
+                        Background="AliceBlue"
+                        BorderBrush="LightSteelBlue"
+                        BorderThickness="2"
+                        FontWeight="Bold"
+                        Foreground="SteelBlue"
+                        Grid.Column="2"
+                        Grid.Row="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Width="307" Grid.ColumnSpan="2" Height="185"  Grid.RowSpan="5"  />
                     <!-- Item Height -->
                     <Label
                         Background="{Binding EcommerceItemHeightBoxColor}"
@@ -1404,11 +1456,10 @@
                         Grid.Column="2"
                         Grid.Row="1"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommerceItemHeightToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Width="115" />
                     <TextBox
-                        Height="26"
                         HorizontalAlignment="Left"
                         Grid.Column="3"
                         Grid.Row="1"
@@ -1416,7 +1467,7 @@
                         Text="{Binding EcommerceItemHeight}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
-                        Width="170" />
+                        Width="165" />
                     <!-- Item Length -->
                     <Label
                         Background="{Binding EcommerceItemLengthBoxColor}"
@@ -1424,11 +1475,10 @@
                         Grid.Column="2"
                         Grid.Row="2"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommerceItemLengthToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center" 
+                        Width="115" />
                     <TextBox
-                        Height="26"
                         HorizontalAlignment="Left"
                         Grid.Column="3"
                         Grid.Row="2"
@@ -1436,7 +1486,7 @@
                         Text="{Binding EcommerceItemLength}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
-                        Width="170" />
+                        Width="165" />
                     <!-- Item Weight -->
                     <Label
                         Background="{Binding EcommerceItemWeightBoxColor}"
@@ -1444,11 +1494,10 @@
                         Grid.Column="2"
                         Grid.Row="3"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommerceItemWeightToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center" 
+                        Width="115" />
                     <TextBox
-                        Height="26"
                         HorizontalAlignment="Left"
                         Grid.Column="3"
                         Grid.Row="3"
@@ -1456,7 +1505,7 @@
                         Text="{Binding EcommerceItemWeight}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
-                        Width="170" />
+                        Width="165" />
                     <!-- Item Width -->
                     <Label
                         Background="{Binding EcommerceItemWidthBoxColor}"
@@ -1464,11 +1513,10 @@
                         Grid.Column="2"
                         Grid.Row="4"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommerceItemWidthToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center" 
+                        Width="115" />
                     <TextBox
-                        Height="26"
                         HorizontalAlignment="Left"
                         Grid.Column="3"
                         Grid.Row="4"
@@ -1476,122 +1524,145 @@
                         Text="{Binding EcommerceItemWidth}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
-                        Width="170" />
+                        Width="165" />
+                    <!-- Model Name -->
+                    <Label
+                        Background="{Binding EcommerceItemTypeKeywordsBoxColor}"
+                        Content="Item Type Keywords"
+                        Grid.Column="2"
+                        Grid.Row="5"
+                        HorizontalAlignment="Left" 
+                        ToolTip="{Binding EcommerceItemTypeKeywordsToolTip}"
+                        VerticalAlignment="Center" 
+                        Width="115"/>
+                    <TextBox
+                        HorizontalAlignment="Left"
+                        Grid.Column="3"
+                        Grid.Row="5"
+                        Margin="6,6,0,6"                        
+                        Text="{Binding EcommerceItemTypeKeywords}"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        Width="165" />
                     <!-- Model Name -->
                     <Label
                         Background="{Binding EcommerceModelNameBoxColor}"
                         Content="Model Name"
                         Grid.Column="2"
-                        Grid.Row="5"
+                        Grid.Row="6"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommerceModelNameToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Width="115" />
                     <TextBox
-                        Height="26"
                         HorizontalAlignment="Left"
                         Grid.Column="3"
-                        Grid.Row="5"
+                        Grid.Row="6"
                         Margin="6,6,0,6"                        
                         Text="{Binding EcommerceModelName}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
-                        Width="170" />
+                        Width="165" />
+                    <!-- Package Dimensions -->
+                    <Label
+                        Content="Package Dimensions"
+                        Background="AliceBlue"
+                        BorderBrush="LightSteelBlue"
+                        BorderThickness="2"
+                        FontWeight="Bold"
+                        Foreground="SteelBlue"
+                        Grid.Column="2"
+                        Grid.Row="7"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Width="307" Grid.ColumnSpan="2" Height="185"  Grid.RowSpan="5"  />
                     <!-- Package Height -->
                     <Label
                         Background="{Binding EcommercePackageHeightBoxColor}"
                         Content="Package Height"
                         Grid.Column="2"
-                        Grid.Row="6"
+                        Grid.Row="8"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommercePackageHeightToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center" Width="115" />
                     <TextBox
-                        Height="26"
                         HorizontalAlignment="Left"
                         Grid.Column="3"
-                        Grid.Row="6"
+                        Grid.Row="8"
                         Margin="6,6,0,6"                        
                         Text="{Binding EcommercePackageHeight}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
-                        Width="170" />
+                        Width="165" />
                     <!-- Package Length -->
                     <Label
                         Background="{Binding EcommercePackageLengthBoxColor}"
                         Content="Package Length"
                         Grid.Column="2"
-                        Grid.Row="7"
+                        Grid.Row="9"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommercePackageLengthToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center" Width="115" />
                     <TextBox
-                        Height="26"
                         HorizontalAlignment="Left"
                         Grid.Column="3"
-                        Grid.Row="7"
+                        Grid.Row="9"
                         Margin="6,6,0,6"                        
                         Text="{Binding EcommercePackageLength}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
-                        Width="170" />
+                        Width="165" />
                     <!-- Package Weight -->
                     <Label
                         Background="{Binding EcommercePackageWeightBoxColor}"
                         Content="Package Weight"
                         Grid.Column="2"
-                        Grid.Row="8"
+                        Grid.Row="10"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommercePackageWeightToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center" Width="115" />
                     <TextBox
-                        Height="26"
                         HorizontalAlignment="Left"
                         Grid.Column="3"
-                        Grid.Row="8"
+                        Grid.Row="10"
                         Margin="6,6,0,6"                        
                         Text="{Binding EcommercePackageWeight}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
-                        Width="170" />
+                        Width="165" />
                     <!-- Package Width -->
                     <Label
                         Background="{Binding EcommercePackageWidthBoxColor}"
                         Content="Package Width"
                         Grid.Column="2"
-                        Grid.Row="9"
+                        Grid.Row="11"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommercePackageWidthToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center" 
+                        Width="115"/>
                     <TextBox
-                        Height="26"
                         HorizontalAlignment="Left"
                         Grid.Column="3"
-                        Grid.Row="9"
+                        Grid.Row="11"
                         Margin="6,6,0,6"                        
                         Text="{Binding EcommercePackageWidth}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
-                        Width="170" />
+                        Width="165" />
                     <!-- Package Width -->
                     <Label
                         Background="{Binding EcommercePageQtyBoxColor}"
                         Content="Page Qty"
                         Grid.Column="2"
-                        Grid.Row="10"
+                        Grid.Row="12"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommercePageQtyToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center" 
+                        Width="115" />
                     <TextBox
-                        Height="26"
                         HorizontalAlignment="Left"
                         Grid.Column="3"
-                        Grid.Row="10"
+                        Grid.Row="12"
                         Margin="6,6,0,6"                        
                         Text="{Binding EcommercePageQty}"
                         TextWrapping="Wrap"
@@ -1602,16 +1673,15 @@
                         Background="{Binding EcommerceProductCategoryBoxColor}"
                         Content="Product Category"
                         Grid.Column="2"
-                        Grid.Row="11"
+                        Grid.Row="13"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommerceProductCategoryToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"  
+                        Width="115" />
                     <TextBox
-                        Height="26"
                         HorizontalAlignment="Left"
                         Grid.Column="3"
-                        Grid.Row="11"
+                        Grid.Row="13"
                         Margin="6,6,0,6"                        
                         Text="{Binding EcommerceProductCategory}"
                         TextWrapping="Wrap"
@@ -1624,15 +1694,14 @@
                         Grid.Column="4"
                         Grid.Row="0"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
-                        ToolTip="{Binding EcommerceProductDescriptionToolTip}"/>
+                        ToolTip="{Binding EcommerceProductDescriptionToolTip}" 
+                        Width="124"/>
                     <TextBox
-                        Height="128"
                         HorizontalAlignment="Left"
                         Grid.Column="5"
                         Grid.Row="0"
                         Grid.RowSpan="4"
-                        Margin="6,6,0,6"                        
+                        Margin="6,10,0,10"                        
                         Text="{Binding EcommerceProductDescription}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -1644,11 +1713,10 @@
                         Grid.Column="4"
                         Grid.Row="4"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommerceProductSubcategoryToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Width="124" />
                     <TextBox
-                        Height="26"
                         HorizontalAlignment="Left"
                         Grid.Column="5"
                         Grid.Row="4"
@@ -1664,11 +1732,10 @@
                         Grid.Column="4"
                         Grid.Row="5"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommerceManufacturerNameToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Width="124" />
                     <TextBox
-                        Height="26"
                         HorizontalAlignment="Left"
                         Grid.Column="5"
                         Grid.Row="5"
@@ -1684,11 +1751,10 @@
                         Grid.Column="4"
                         Grid.Row="6"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommerceMsrpToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Width="124" />
                     <TextBox
-                        Height="26"
                         HorizontalAlignment="Left"
                         Grid.Column="5"
                         Grid.Row="6"
@@ -1704,11 +1770,10 @@
                         Grid.Column="4"
                         Grid.Row="7"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
                         ToolTip="{Binding EcommerceSizeToolTip}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Width="124" />
                     <TextBox
-                        Height="26"
                         HorizontalAlignment="Left"
                         Grid.Column="5"
                         Grid.Row="7"
@@ -1724,15 +1789,14 @@
                         Grid.Column="4"
                         Grid.Row="8"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,6" 
-                        ToolTip="{Binding WarrantyToolTip}"/>
+                        ToolTip="{Binding WarrantyToolTip}" 
+                        Width="124"/>
                     <TextBox
-                        Height="128"
                         HorizontalAlignment="Left"
                         Grid.Column="5"
                         Grid.Row="8"
                         Grid.RowSpan="4"
-                        Margin="6,6,0,6"                        
+                        Margin="6,10,0,10"                        
                         Text="{Binding Warranty}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
@@ -1745,24 +1809,23 @@
         <StackPanel
             FlowDirection="RightToLeft"
             Grid.Row="2"
-            Grid.ColumnSpan="7"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Bottom"
             Orientation="Horizontal">
             <Button
-                Height="26"
+                Height="25"
                 Margin="10"
                 Width="80"
                 Content="Exit"
                 Click="CancelButton_Click" />
             <Button
-                Height="26"
+                Height="25"
                 Margin="10"
                 Width="80"
                 Content="Save"
                 Command="{Binding SaveCommand}" />
             <Button
-                Height="26"
+                Height="25"
                 Margin="10"
                 Width="80"
                 Content="Remove"

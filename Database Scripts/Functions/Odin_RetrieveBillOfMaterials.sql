@@ -14,6 +14,7 @@ BEGIN
     SELECT @output = COALESCE(@output + ', ', '') + COMPONENT_ID +'&'+CONVERT(varchar(18), QTY_PER)
     FROM PS_EN_BOM_COMPS
     WHERE INV_ITEM_ID = @itemId
+	AND BUSINESS_UNIT = 'TRUS1'
 
     return @output
 END

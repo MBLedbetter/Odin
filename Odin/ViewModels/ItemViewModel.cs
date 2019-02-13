@@ -7188,6 +7188,75 @@ namespace Odin.ViewModels
         private string _EcommerceItemNameToolTip = string.Empty;
 
         /// <summary>
+        ///    EcommerceItemTypeKeywords
+        /// </summary>
+        public string EcommerceItemTypeKeywords
+        {
+            get
+            {
+                return this.ItemViewModelItem.EcommerceItemTypeKeywords;
+            }
+            set
+            {
+                if (this.ItemViewModelItem.EcommerceItemTypeKeywords != value)
+                {
+                    this.ItemViewModelItem.EcommerceItemTypeKeywords = value;
+                    FlagError("EcommerceItemTypeKeywords");
+                    OnPropertyChanged("EcommerceItemTypeKeywords");
+                }
+            }
+        }
+        public string EcommerceItemTypeKeywordsBoxColor
+        {
+            get
+            {
+                return _EcommerceItemTypeKeywordsBoxColor;
+            }
+            set
+            {
+                _EcommerceItemTypeKeywordsBoxColor = value;
+                OnPropertyChanged("EcommerceItemTypeKeywordsBoxColor");
+            }
+        }
+        private string _EcommerceItemTypeKeywordsBoxColor = "White";
+        public string EcommerceItemTypeKeywordsError
+        {
+            get
+            {
+                return _EcommerceItemTypeKeywordsError;
+            }
+            set
+            {
+                _EcommerceItemTypeKeywordsError = value;
+                if (value != "")
+                {
+                    EcommerceItemTypeKeywordsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceItemTypeKeywordsToolTip");
+                }
+                else
+                {
+                    EcommerceItemTypeKeywordsToolTip = ReturnToolTip("EcommerceItemTypeKeywordsToolTip");
+                }
+                this.EcommerceItemTypeKeywordsBoxColor = (value == "") ? "White" : "Tomato";
+                this.TabColorEcommerce = CheckEcommerceTabColor();
+                OnPropertyChanged("EcommerceItemTypeKeywordsError");
+            }
+        }
+        private string _EcommerceItemTypeKeywordsError = string.Empty;
+        public string EcommerceItemTypeKeywordsToolTip
+        {
+            get
+            {
+                return _EcommerceItemTypeKeywordsToolTip;
+            }
+            set
+            {
+                this._EcommerceItemTypeKeywordsToolTip = value;
+                OnPropertyChanged("EcommerceItemTypeKeywordsToolTip");
+            }
+        }
+        private string _EcommerceItemTypeKeywordsToolTip = string.Empty;
+
+        /// <summary>
         ///    EcommerceItemWeight
         /// </summary>
         public string EcommerceItemWeight
@@ -8880,6 +8949,10 @@ namespace Odin.ViewModels
                         this.EcommerceItemNameError = error.ReturnErrorMessage();
                         break;
 
+                    case "Ecommerce Item Type Keywords":
+                        this.EcommerceItemTypeKeywords = error.ReturnErrorMessage();
+                        break;
+
                     case "Ecommerce Weight":
                         this.EcommerceItemWeightError = error.ReturnErrorMessage();
                         break;
@@ -9212,37 +9285,38 @@ namespace Odin.ViewModels
         /// <returns></returns>
         private string CheckEcommerceTabColor()
         {
-            if (EcommerceAsinBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceBullet1BoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceBullet2BoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceBullet3BoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceBullet4BoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceBullet5BoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceComponentsBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceCostBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceExternalIdBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceExternalIdTypeBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceGenericKeywordsBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceItemHeightBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceItemLengthBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceItemNameBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceItemWeightBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceItemWidthBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceModelNameBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommercePackageHeightBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommercePackageLengthBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommercePackageWeightBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommercePackageWidthBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommercePageQtyBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceParentAsinBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceProductCategoryBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceProductDescriptionBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceProductSubcategoryBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceManufacturerNameBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceMsrpBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceSizeBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceSubjectKeywordsBoxColor == "Tomato") { return "Tomato"; }
-            if (EcommerceUpcBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceAsinBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceBullet1BoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceBullet2BoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceBullet3BoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceBullet4BoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceBullet5BoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceComponentsBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceCostBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceExternalIdBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceExternalIdTypeBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceGenericKeywordsBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceItemHeightBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceItemLengthBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceItemNameBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceItemTypeKeywordsBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceItemWeightBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceItemWidthBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceModelNameBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommercePackageHeightBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommercePackageLengthBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommercePackageWeightBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommercePackageWidthBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommercePageQtyBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceParentAsinBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceProductCategoryBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceProductDescriptionBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceProductSubcategoryBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceManufacturerNameBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceMsrpBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceSizeBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceSubjectKeywordsBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceUpcBoxColor == "Tomato") { return "Tomato"; }
             return "White";
         }
 
@@ -9540,15 +9614,19 @@ namespace Odin.ViewModels
                     break;
 
                 case "EcommerceItemHeight":
-                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Height")?.ReturnErrorMessage() ?? "";
+                    this.EcommerceItemHeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Height")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceItemLength":
-                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Length")?.ReturnErrorMessage() ?? "";
+                    this.EcommerceItemLengthError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Length")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceItemName":
                     this.EcommerceItemNameError = ItemService.ValidateEcommerceItemName(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    break;
+
+                case "EcommerceItemTypeKeywords":
+                    this.EcommerceItemTypeKeywordsError = ItemService.ValidateEcommerceItemTypeKeywords(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceItemWeight":
@@ -9556,7 +9634,7 @@ namespace Odin.ViewModels
                     break;
 
                 case "EcommerceItemWidth":
-                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Width")?.ReturnErrorMessage() ?? "";
+                    this.EcommerceItemWidthError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Width")?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceModelName":
@@ -10134,37 +10212,38 @@ namespace Odin.ViewModels
             this.DirectImportToolTip = ReturnToolTip("DirectImport");
             this.DutyToolTip = ReturnToolTip("Duty");
             this.EanToolTip = ReturnToolTip("Ean");
-            this.EcommerceAsinToolTip = ReturnToolTip("EcommerceAsinToolTip");
-            this.EcommerceBullet1ToolTip = ReturnToolTip("EcommerceBulletToolTip");
-            this.EcommerceBullet2ToolTip = ReturnToolTip("EcommerceBulletToolTip");
-            this.EcommerceBullet3ToolTip = ReturnToolTip("EcommerceBulletToolTip");
-            this.EcommerceBullet4ToolTip = ReturnToolTip("EcommerceBulletToolTip");
-            this.EcommerceBullet5ToolTip = ReturnToolTip("EcommerceBulletToolTip");
-            this.EcommerceComponentsToolTip = ReturnToolTip("EcommerceComponentsToolTip");
-            this.EcommerceCostToolTip = ReturnToolTip("EcommerceCostToolTip");
-            this.EcommerceExternalIdToolTip = ReturnToolTip("EcommerceExternalIdToolTip");
-            this.EcommerceExternalIdTypeToolTip = ReturnToolTip("EcommerceExternalIdTypeToolTip");
-            this.EcommerceGenericKeywordsToolTip = ReturnToolTip("EcommerceGenericKeywordsToolTip");
-            this.EcommerceItemHeightToolTip = ReturnToolTip("EcommerceItemHeightToolTip");
-            this.EcommerceItemLengthToolTip = ReturnToolTip("EcommerceItemLengthToolTip");
-            this.EcommerceItemNameToolTip = ReturnToolTip("EcommerceItemNameToolTip");
-            this.EcommerceItemWeightToolTip = ReturnToolTip("EcommerceItemWeightToolTip");
-            this.EcommerceItemWidthToolTip = ReturnToolTip("EcommerceItemWidthToolTip");
-            this.EcommerceModelNameToolTip = ReturnToolTip("EcommerceModelNameToolTip");
-            this.EcommercePackageHeightToolTip = ReturnToolTip("EcommercePackageHeightToolTip");
-            this.EcommercePackageLengthToolTip = ReturnToolTip("EcommercePackageLengthToolTip");
-            this.EcommercePackageWeightToolTip = ReturnToolTip("EcommercePackageWeightToolTip");
-            this.EcommercePackageWidthToolTip = ReturnToolTip("EcommercePackageWidthToolTip");
-            this.EcommercePageQtyToolTip = ReturnToolTip("EcommercePageQtyToolTip");
-            this.EcommerceParentAsinToolTip = ReturnToolTip("EcommerceParentAsinToolTip");
-            this.EcommerceProductCategoryToolTip = ReturnToolTip("EcommerceProductCategoryToolTip");
-            this.EcommerceProductDescriptionToolTip = ReturnToolTip("EcommerceProductDescriptionToolTip");
-            this.EcommerceProductSubcategoryToolTip = ReturnToolTip("EcommerceProductSubcategoryToolTip");
-            this.EcommerceManufacturerNameToolTip = ReturnToolTip("EcommerceManufacturerNameToolTip");
-            this.EcommerceMsrpToolTip = ReturnToolTip("EcommerceMsrpToolTip");
-            this.EcommerceSizeToolTip = ReturnToolTip("EcommerceSizeToolTip");
-            this.EcommerceSubjectKeywordsToolTip = ReturnToolTip("EcommerceSubjectKeywordsToolTip");
-            this.EcommerceUpcToolTip = ReturnToolTip("EcommerceUpcToolTip");
+            this.EcommerceAsinToolTip = ReturnToolTip("EcommerceAsin");
+            this.EcommerceBullet1ToolTip = ReturnToolTip("EcommerceBullet");
+            this.EcommerceBullet2ToolTip = ReturnToolTip("EcommerceBullet");
+            this.EcommerceBullet3ToolTip = ReturnToolTip("EcommerceBullet");
+            this.EcommerceBullet4ToolTip = ReturnToolTip("EcommerceBullet");
+            this.EcommerceBullet5ToolTip = ReturnToolTip("EcommerceBullet");
+            this.EcommerceComponentsToolTip = ReturnToolTip("EcommerceComponents");
+            this.EcommerceCostToolTip = ReturnToolTip("EcommerceCost");
+            this.EcommerceExternalIdToolTip = ReturnToolTip("EcommerceExternalId");
+            this.EcommerceExternalIdTypeToolTip = ReturnToolTip("EcommerceExternalIdType");
+            this.EcommerceGenericKeywordsToolTip = ReturnToolTip("EcommerceGenericKeywords");
+            this.EcommerceItemHeightToolTip = ReturnToolTip("EcommerceItemHeight");
+            this.EcommerceItemLengthToolTip = ReturnToolTip("EcommerceItemLength");
+            this.EcommerceItemNameToolTip = ReturnToolTip("EcommerceItemName");
+            this.EcommerceItemTypeKeywordsToolTip = ReturnToolTip("EcommerceItemTypeKeywords");
+            this.EcommerceItemWeightToolTip = ReturnToolTip("EcommerceItemWeight");
+            this.EcommerceItemWidthToolTip = ReturnToolTip("EcommerceItemWidth");
+            this.EcommerceModelNameToolTip = ReturnToolTip("EcommerceModelName");
+            this.EcommercePackageHeightToolTip = ReturnToolTip("EcommercePackageHeight");
+            this.EcommercePackageLengthToolTip = ReturnToolTip("EcommercePackageLength");
+            this.EcommercePackageWeightToolTip = ReturnToolTip("EcommercePackageWeight");
+            this.EcommercePackageWidthToolTip = ReturnToolTip("EcommercePackageWidth");
+            this.EcommercePageQtyToolTip = ReturnToolTip("EcommercePageQty");
+            this.EcommerceParentAsinToolTip = ReturnToolTip("EcommerceParentAsin");
+            this.EcommerceProductCategoryToolTip = ReturnToolTip("EcommerceProductCategory");
+            this.EcommerceProductDescriptionToolTip = ReturnToolTip("EcommerceProductDescription");
+            this.EcommerceProductSubcategoryToolTip = ReturnToolTip("EcommerceProductSubcategory");
+            this.EcommerceManufacturerNameToolTip = ReturnToolTip("EcommerceManufacturerName");
+            this.EcommerceMsrpToolTip = ReturnToolTip("EcommerceMsrp");
+            this.EcommerceSizeToolTip = ReturnToolTip("EcommerceSize");
+            this.EcommerceSubjectKeywordsToolTip = ReturnToolTip("EcommerceSubjectKeywords");
+            this.EcommerceUpcToolTip = ReturnToolTip("EcommerceUpc");
             this.GpcToolTip = ReturnToolTip("Gpc");
             this.HeightToolTip = ReturnToolTip("Height");
             this.ImagePathToolTip = ReturnToolTip("ImagePath");
@@ -10259,91 +10338,6 @@ namespace Odin.ViewModels
             }
         }
         
-        /*
-        /// <summary>
-        ///     Validates all fields of current item
-        /// </summary>
-        /// <param name="var"></param>
-        public void ValidateAll(ItemObject var)
-        {
-            this.AccountingGroupError = ItemService.ValidateAccountingGroup(AccountingGroup, var.ProdType);
-            this.AltImageFile1Error = ItemService.ValidateImagePath(this.AltImageFile1, "Image Path 2", false);
-            this.AltImageFile2Error = ItemService.ValidateImagePath(this.AltImageFile2, "Image Path 3", false);
-            this.AltImageFile3Error = ItemService.ValidateImagePath(this.AltImageFile3, "Image Path 4", false);
-            this.AltImageFile4Error = ItemService.ValidateImagePath(this.AltImageFile4, "Image Path 5", false);
-            this.BillOfMaterialsError = ItemService.ValidateBillOfMaterials(var.ItemId, var.BillOfMaterials, this.ItemIds, var.Status, var.ProdType);
-            this.CasepackHeightError = ItemService.ValidateCasepack(var.CasepackHeight, var.CasepackLength, var.CasepackWeight, var.CasepackWidth, var.ProdType, "Casepack Height");
-            this.CasepackLengthError = ItemService.ValidateCasepack(var.CasepackHeight, var.CasepackLength, var.CasepackWeight, var.CasepackWidth, var.ProdType, "Casepack Length");
-            this.CasepackWeightError = ItemService.ValidateCasepack(var.CasepackHeight, var.CasepackLength, var.CasepackWeight, var.CasepackWidth, var.ProdType, "Casepack Weight");
-            this.CasepackWidthError = ItemService.ValidateCasepack(var.CasepackHeight, var.CasepackLength, var.CasepackWeight, var.CasepackWidth, var.ProdType, "Casepack Width");
-            this.CasepackQtyError = ItemService.ValidateCasepackQty(var.CasepackQty, var.ProdType);
-            this.CasepackUpcError = ItemService.ValidatePackUpc(var.CasepackUpc, "Casepack", var.ProdType);
-            this.CategoryError = ItemService.ValidateCategory(var.Category, var.HasWeb());
-            this.Category2Error = ItemService.ValidateCategory2(var.Category2, "2");
-            this.Category3Error = ItemService.ValidateCategory2(var.Category3, "3");
-            this.ColorError = ItemService.ValidateColor(var.Color, var.ProdType);
-            this.CopyrightError = ItemService.ValidateCopyright(var.Copyright);
-            this.CountryOfOriginError = ItemService.ValidateCountryOfOrigin(var.CountryOfOrigin, var.ListPriceUsd, var.ProdType);
-            this.CostProfileGroupError = ItemService.ValidateCostProfileGroup(var.CostProfileGroup, var.MfgSource, var.ProdType);
-            this.DefaultActualCostCadError = ItemService.ValidateDefaultActualCost(var.DefaultActualCostCad, "CAD", var.ProdType);
-            this.DefaultActualCostUsdError = ItemService.ValidateDefaultActualCost(var.DefaultActualCostUsd, "USD", var.ProdType);
-            this.DescriptionError = ItemService.ValidateDescription(var.Description, var.ProdType);
-            this.DutyError = ItemService.ValidateDuty(var.Duty, var.ProdType);
-            this.EanError = ItemService.ValidateEan(var.Ean, var.Upc, var.ListPriceUsd, var.ProductFormat, var.ProductLine);
-            this.GpcError = ItemService.ValidateGpc(var.Gpc, var.ListPriceUsd, var.ProdType);
-            this.HeightError = ItemService.ValidateItemDimension(var.Height, var.ProdType);
-            this.ImagePathError = ItemService.ValidateImagePath(this.ImagePath, "ImagePath", this.ItemViewModelItem.HasWeb());
-            this.InnerpackHeightError = ItemService.ValidateInnerpack(var.InnerpackHeight, var.InnerpackLength, var.InnerpackWeight, var.InnerpackWidth, var.ProdType, "Innerpack Height");
-            this.InnerpackLengthError = ItemService.ValidateInnerpack(var.InnerpackHeight, var.InnerpackLength, var.InnerpackWeight, var.InnerpackWidth, var.ProdType, "Innerpack Length");
-            this.InnerpackWidthError = ItemService.ValidateInnerpack(var.InnerpackHeight, var.InnerpackLength, var.InnerpackWeight, var.InnerpackWidth, var.ProdType, "Innerpack Width");
-            this.InnerpackWeightError = ItemService.ValidateInnerpack(var.InnerpackHeight, var.InnerpackLength, var.InnerpackWeight, var.InnerpackWidth, var.ProdType, "Innerpack Weight");
-            this.InnerpackUpcError = ItemService.ValidatePackUpc(var.InnerpackUpc, "Innerpack", var.ProdType);
-            this.InnerpackQuantityError = ItemService.ValidateInnerpackQuantity(var.InnerpackQuantity, var.ProdType);
-            this.InStockDateError = ItemService.ValidateInStockDate(var.InStockDate);
-            this.IsbnError = ItemService.ValidateIsbn(var.Isbn, var.ProdType);
-            this.ItemCategoryError = ItemService.ValidateItemCategory(var.ItemCategory, var.ProdType);
-            this.ItemFamilyError = ItemService.ValidateItemFamily(var.ItemFamily, var.ProdType);
-            this.ItemGroupError = ItemService.ValidateItemGroup(var.ItemGroup, var.ProdType);
-            this.ItemIdError = ItemService.ValidateItemId(var.ItemId, var.Status);
-            this.ItemKeywordsError = ItemService.ValidateItemKeywords(var.ItemKeywords, var.HasWeb());
-            this.LanguageError = ItemService.ValidateLanguage(var.Language, var.ListPriceUsd, var.ProdType);
-            this.LengthError = ItemService.ValidateLength(var.Length, var.ProdType);
-            this.LicenseBeginDateError = ItemService.ValidateLicenseBeginDate(var.LicenseBeginDate, var.ProdType);
-            this.LicenseError = ItemService.ValidateLicense(var.License);
-            this.ListPriceCadError = ItemService.ValidateListPrice(var.ListPriceCad, "CAD", var.ProdType);
-            this.ListPriceMxnError = ItemService.ValidateListPrice(var.ListPriceMxn, "MXN", var.ProdType);
-            this.ListPriceUsdError = ItemService.ValidateListPrice(var.ListPriceUsd, "USD", var.ProdType);
-            this.MfgSourceError = ItemService.ValidateMfgSource(var.MfgSource, var.CostProfileGroup, var.ProdType);
-            this.MsrpError = ItemService.ValidateMsrp(var.Msrp, var.ListPriceUsd, var.ProdType, "USD");
-            this.MsrpCadError = ItemService.ValidateMsrp(var.MsrpCad, var.ListPriceCad, var.ProdType, "CAD");
-            this.MsrpMxnError = ItemService.ValidateMsrp(var.MsrpMxn, var.ListPriceMxn, var.ProdType, "MXN");
-            this.ProductFormatError = ItemService.ValidateProductFormat(var.ProductGroup, var.ProductLine, var.ProductFormat, var.Upc, var.ProdType);
-            this.ProductGroupError = ItemService.ValidateProductGroup(var.ProductGroup,var.Upc, var.ProdType);
-            this.ProductLineError = ItemService.ValidateProductLine(var.ProductGroup, var.ProductLine, var.Upc, var.ProdType);
-            this.PricingGroupError = ItemService.ValidatePricingGroup(var.PricingGroup, var.ListPriceCad, var.ListPriceUsd, var.ProdType);
-            this.PrintOnDemandError = ItemService.ValidatePrintOnDemand(var.PrintOnDemand, var.ProdType);
-            this.PropertyError = ItemService.ValidateProperty(var.Property, var.License);
-            this.PsStatusError = ItemService.ValidatePsStatus(var.PsStatus, "Item");
-            this.SatCodeError = ItemService.ValidateSatCode(var.SatCode);
-            this.ShortDescriptionError = ItemService.ValidateShortDescription(var.ShortDescription);
-            this.SizeError = ItemService.ValidateSize(var.Size);
-            this.StandardCostError = ItemService.ValidateStandardCost(var.StandardCost, var.ProdType);
-            this.StatsCodeError = ItemService.ValidateStatsCode(var.StatsCode, var.ListPriceUsd, var.ProdType);
-            this.TariffCodeError = ItemService.ValidateTariffCode(var.TariffCode, var.ProdType);
-            this.TerritoryError = ItemService.ValidateTerritory(var.Territory, var.ListPriceUsd, var.ProdType);
-            this.TitleError = ItemService.ValidateTitle(var.Title, var.HasWeb());
-            this.UdexError = ItemService.ValidateUdex(var.Udex, var.ProdType);
-            this.UpcError = ItemService.ValidateUpc(var.Upc, this.ItemId, this.Status, var.ListPriceUsd, var.ProductFormat, var.ProductGroup, var.ProductLine, var.Ean, var.EcommerceUpc, var.ProdType);
-            this.WarrantyError = ItemService.ValidateWarranty(var);
-            this.WarrantyCheckError = ItemService.ValidateWarrantyCheck(var);
-            this.WebsitePriceError = ItemService.ValidateWebsitePrice(var.WebsitePrice, var.HasWeb());
-            this.WeightError = ItemService.ValidateWeight(var.Weight, var.ProdType);
-            this.WidthError = ItemService.ValidateWidth(var.Width, var.ProdType);
-            ValidateEcommerce();
-            ValidateSellOnFields();
-        }
-        */
-
         /// <summary>
         ///     Validate all ecommerce fields
         /// </summary>
@@ -10363,6 +10357,7 @@ namespace Odin.ViewModels
             this.EcommerceItemHeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem,"Height").ReturnErrorMessage();
             this.EcommerceItemLengthError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Length").ReturnErrorMessage();
             this.EcommerceItemNameError = ItemService.ValidateEcommerceItemName(ItemViewModelItem).ReturnErrorMessage();
+            this.EcommerceItemTypeKeywords = ItemService.ValidateEcommerceItemTypeKeywords(ItemViewModelItem).ReturnErrorMessage();
             this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem,"Weight").ReturnErrorMessage();
             this.EcommerceItemWidthError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Width").ReturnErrorMessage();
             this.EcommerceModelNameError = ItemService.ValidateEcommerceModelName(ItemViewModelItem).ReturnErrorMessage();

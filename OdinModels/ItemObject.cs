@@ -1000,6 +1000,25 @@ namespace OdinModels
         private string _ecommerceitemName = string.Empty;
 
         /// <summary>
+        ///     Gets or sets the EcommerceItemTypeKeywords
+        /// </summary>
+        public string EcommerceItemTypeKeywords
+        {
+            get
+            {
+                return _ecommerceItemTypeKeywords;
+            }
+            set
+            {
+                if (_ecommerceItemTypeKeywords != value) { EcommerceItemTypeKeywordsUpdate = true; }
+                _ecommerceItemTypeKeywords = value;
+                OnPropertyChanged("EcommerceItemTypeKeywords");
+
+            }
+        }
+        private string _ecommerceItemTypeKeywords = string.Empty;
+
+        /// <summary>
         ///     Gets or sets the EcommerceItemWeight
         /// </summary>
         public string EcommerceItemWeight
@@ -1012,10 +1031,7 @@ namespace OdinModels
             {
                 if (_ecommerceitemWeight != value) { EcommerceItemWeightUpdate = true; }
                 _ecommerceitemWeight = value;
-                OnPropertyChanged
-
-                    ("EcommerceItemWeight");
-
+                OnPropertyChanged("EcommerceItemWeight");
             }
         }
         private string _ecommerceitemWeight = string.Empty;
@@ -2744,6 +2760,481 @@ namespace OdinModels
         #region Update Flags
 
         /// <summary>
+        ///     Check field updates. If item has updated field return true.
+        /// </summary>
+        /// <returns>True if any fields have been updated</returns>
+        public bool HasUpdate
+        {
+            get
+            {
+                if (this.BuItemsInvUpdate ||
+                    this.EcommerceValuesUpdate ||
+                    this.CmItemMethodUpdate ||
+                    this.EnBomCompsUpdate ||
+                    this.FxdBinLocInvUpdate ||
+                    this.InvItemsUpdate ||
+                    this.ItemAttribExUpdate ||
+                    this.ItemLanguageUpdate ||
+                    this.ItemWebInfoUpdate ||
+                    this.MasterItemUpdate ||
+                    this.ProdItemUpdate ||
+                    this.ProdPgrpLnkUpdate ||
+                    this.ProdPriceBuUpdate ||
+                    this.ProdPriceUpdate ||
+                    this.PurchItemAttrUpdate ||
+                    this.PvItmCategoryUpdate ||
+                    this.SellOnFlagUpdate)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///    Update flag for fields stored in AmazonItemAttributes
+        /// </summary>
+        public bool EcommerceValuesUpdate
+        {
+            get
+            {
+                if (this.EcommerceAsinUpdate ||
+                    this.EcommerceBullet1Update ||
+                    this.EcommerceBullet2Update ||
+                    this.EcommerceBullet3Update ||
+                    this.EcommerceBullet4Update ||
+                    this.EcommerceBullet5Update ||
+                    this.EcommerceComponentsUpdate ||
+                    this.EcommerceCostUpdate ||
+                    this.EcommerceExternalIdUpdate ||
+                    this.EcommerceExternalIdTypeUpdate ||
+                    this.EcommerceGenericKeywordsUpdate ||
+                    this.EcommerceImagePath1Update ||
+                    this.EcommerceImagePath2Update ||
+                    this.EcommerceImagePath3Update ||
+                    this.EcommerceImagePath4Update ||
+                    this.EcommerceImagePath5Update ||
+                    this.EcommerceItemHeightUpdate ||
+                    this.EcommerceItemLengthUpdate ||
+                    this.EcommerceItemNameUpdate ||
+                    this.EcommerceItemTypeKeywordsUpdate ||
+                    this.EcommerceItemWeightUpdate ||
+                    this.EcommerceItemWidthUpdate ||
+                    this.EcommerceModelNameUpdate ||
+                    this.EcommercePackageHeightUpdate ||
+                    this.EcommercePackageLengthUpdate ||
+                    this.EcommercePackageWeightUpdate ||
+                    this.EcommercePackageWidthUpdate ||
+                    this.EcommercePageQtyUpdate ||
+                    this.EcommerceParentAsinUpdate ||
+                    this.EcommerceProductCategoryUpdate ||
+                    this.EcommerceProductDescriptionUpdate ||
+                    this.EcommerceProductSubcategoryUpdate ||
+                    this.EcommerceManufacturerNameUpdate ||
+                    this.EcommerceMsrpUpdate ||
+                    this.EcommerceSizeUpdate ||
+                    this.EcommerceSubjectKeywordsUpdate ||
+                    this.EcommerceUpcUpdate)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///     Update flag for fields stored in BuItemsInv
+        /// </summary>
+        public bool BuItemsInvUpdate
+        {
+            get
+            {
+                if (this.CountryOfOriginUpdate ||
+                    this.MfgSourceUpdate ||
+                    this.DefaultActualCostCadUpdate ||
+                    this.DefaultActualCostUsdUpdate)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///    Update flag for fields stored in CmItemMethod
+        /// </summary>
+        public bool CmItemMethodUpdate
+        {
+            get
+            {
+                if (this.CostProfileGroupUpdate)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///    Update flag for fields stored in EnBomCompsUpdate
+        /// </summary>
+        /// <returns></returns>
+        public bool EnBomCompsUpdate
+        {
+            get
+            {
+                if (this.BillOfMaterialsUpdate)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///    Update flag for fields stored in FxdbinlocInv
+        /// </summary>
+        public bool FxdBinLocInvUpdate
+        {
+            get
+            {
+                if (this.ItemFamilyUpdate ||
+                    this.ItemGroupUpdate)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///     Flag for if item is marked to be sold on web (SellOnTrends == 'Y')
+        /// </summary>
+        /// <returns></returns>
+        public bool HasWeb
+        {
+            get
+            {
+                if (this.SellOnTrends == "Y")
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///     Flag for if item is marked to be sold on any ecommerce site
+        /// </summary>
+        /// <returns></returns>
+        public bool HasEcommerce
+        {
+            get
+            {
+                if (this.SellOnAllPosters == "Y" ||
+                    this.SellOnAmazon == "Y" ||
+                    this.SellOnAmazonSellerCentral == "Y" ||
+                    this.SellOnEcommerce == "Y" ||
+                    this.SellOnFanatics == "Y" ||
+                    this.SellOnGuitarCenter == "Y" ||
+                    this.SellOnHayneedle == "Y" ||
+                    this.SellOnTarget == "Y" ||
+                    this.SellOnWalmart == "Y" ||
+                    this.SellOnWayfair == "Y")
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///     Update flag for fields stored in InvItems
+        /// </summary>
+        /// <returns></returns>
+        public bool InvItemsUpdate
+        {
+            get
+            {
+                if (this.TariffCodeUpdate ||
+                this.ColorUpdate ||
+                this.HeightUpdate ||
+                this.LengthUpdate ||
+                this.DescriptionUpdate ||
+                this.WeightUpdate ||
+                this.WidthUpdate ||
+                this.UpcUpdate)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///     Update flag for fields stored in ItemAttribEx
+        /// </summary>
+        /// <returns></returns>
+        public bool ItemAttribExUpdate
+        {
+            get
+            {
+                if (this.AltImageFile1Update ||
+                    this.AltImageFile2Update ||
+                    this.AltImageFile3Update ||
+                    this.AltImageFile4Update ||
+                    this.CasepackHeightUpdate ||
+                    this.CasepackLengthUpdate ||
+                    this.CasepackQtyUpdate ||
+                    this.CasepackUpcUpdate ||
+                    this.CasepackWeightUpdate ||
+                    this.CasepackWidthUpdate ||
+                    this.DirectImportUpdate ||
+                    this.ImagePathUpdate ||
+                    this.InnerpackHeightUpdate ||
+                    this.InnerpackLengthUpdate ||
+                    this.InnerpackQuantityUpdate ||
+                    this.InnerpackUpcUpdate ||
+                    this.InnerpackWeightUpdate ||
+                    this.InnerpackWidthUpdate ||
+                    this.LicenseBeginDateUpdate ||
+                    this.PrintOnDemandUpdate ||
+                    this.ProductFormatUpdate ||
+                    this.ProductLineUpdate ||
+                    this.ProductGroupUpdate ||
+                    this.InnerpackWidthUpdate ||
+                    this.SatCodeUpdate ||
+                    this.SellOnEcommerceUpdate ||
+                    this.SellOnTrendsUpdate ||
+                    this.WebsitePriceUpdate)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///    Update flag for fields stored in ItemLanguage
+        /// </summary>
+        public bool ItemLanguageUpdate
+        {
+            get
+            {
+                if (this.LanguageUpdate)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///    Update flag for fields stored in ItemTerritory
+        /// </summary>
+        public bool ItemTerritoryUpdate
+        {
+            get
+            {
+                if (this.TerritoryUpdate)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///    Update flag for fields stored in ItemWebInfo
+        /// </summary>
+        /// <returns></returns>
+        public bool ItemWebInfoUpdate
+        {
+            get
+            {
+                if (this.ItemKeywordsUpdate ||
+                    this.CategoryUpdate ||
+                    this.Category2Update ||
+                    this.Category3Update ||
+                    this.PropertyUpdate ||
+                    this.CopyrightUpdate ||
+                    this.TitleUpdate ||
+                    this.LicenseUpdate ||
+                    this.ShortDescriptionUpdate ||
+                    this.MetaDescriptionUpdate ||
+                    this.ProductQtyUpdate ||
+                    this.SizeUpdate ||
+                    this.InStockDateUpdate ||
+                    this.WarrantyUpdate ||
+                    this.WarrantyCheckUpdate)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///    Update flag for fields stored in ItemWebInfo
+        /// </summary>
+        public bool MasterItemUpdate
+        {
+            get
+            {
+                if (this.ItemCategoryUpdate ||
+                    this.CostProfileGroupUpdate ||
+                    this.DescriptionUpdate ||
+                    this.ItemGroupUpdate ||
+                    this.PsStatusUpdate ||
+                    this.ItemFamilyUpdate)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///    Update flag for fields stored in ProdItem
+        /// </summary>
+        public bool ProdItemUpdate
+        {
+            get
+            {
+                if (this.ItemCategoryUpdate ||
+                    this.StatsCodeUpdate ||
+                    this.DescriptionUpdate ||
+                    this.IsbnUpdate ||
+                    this.EanUpdate ||
+                    this.UdexUpdate ||
+                    this.GpcUpdate)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///    Update flag for fields stored in ProdPgrpLnk
+        /// </summary>
+        public bool ProdPgrpLnkUpdate
+        {
+            get
+            {
+                if (this.AccountingGroupUpdate ||
+                    this.PricingGroupUpdate)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///    Update flag for fields stored in ProdPriceBu
+        /// </summary>
+        /// <returns></returns>
+        public bool ProdPriceBuUpdate
+        {
+            get
+            {
+                if (this.ProductGroupUpdate ||
+                    this.ListPriceCadUpdate ||
+                    this.ListPriceUsdUpdate ||
+                    this.ListPriceMxnUpdate ||
+                    this.MsrpUpdate ||
+                    this.MsrpCadUpdate ||
+                    this.MsrpMxnUpdate)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///    Check fields for Prod Price table to see if any have been updated.
+        /// </summary>
+        public bool ProdPriceUpdate
+        {
+            get
+            {
+                if (this.ProductGroupUpdate ||
+                        this.ListPriceCadUpdate ||
+                        this.ListPriceUsdUpdate ||
+                        this.ListPriceMxnUpdate ||
+                        this.MsrpUpdate ||
+                        this.MsrpCadUpdate ||
+                        this.MsrpMxnUpdate)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///    Update flag for fields stored in PurchItemAttr
+        /// </summary>
+        public bool PurchItemAttrUpdate
+        {
+            get
+            {
+                if (this.DescriptionUpdate ||
+                    this.StandardCostUpdate)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///    Update flag for fields stored in PvItmCategory
+        /// </summary>
+        public bool PvItmCategoryUpdate
+        {
+            get
+            {
+                if (this.ItemCategoryUpdate)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///    Update flag for fields stored in CustomerProductAttributes
+        /// </summary>
+        public bool SellOnFlagUpdate
+        {
+            get
+            {
+                if (this.SellOnAllPostersUpdate ||
+                    this.SellOnAmazonUpdate ||
+                    this.SellOnAmazonSellerCentralUpdate ||
+                    this.SellOnFanaticsUpdate ||
+                    this.SellOnGuitarCenterUpdate ||
+                    this.SellOnHayneedleUpdate ||
+                    this.SellOnTargetUpdate ||
+                    this.SellOnWalmartUpdate ||
+                    this.SellOnWayfairUpdate)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
         ///     AccountingGroupUpdate update flag
         /// </summary>
         public bool AccountingGroupUpdate = false;
@@ -2967,6 +3458,11 @@ namespace OdinModels
         ///     EcommerceItemNameUpdate update flag
         /// </summary>
         public bool EcommerceItemNameUpdate = false;
+
+        /// <summary>
+        ///     EcommerceItemTypeKeywordsUpdate update flag
+        /// </summary>
+        public bool EcommerceItemTypeKeywordsUpdate = false;
 
         /// <summary>
         ///     EcommerceItemWeightUpdate update flag
@@ -3489,6 +3985,7 @@ namespace OdinModels
             this.EcommerceItemHeightUpdate = false;
             this.EcommerceItemLengthUpdate = false;
             this.EcommerceItemNameUpdate = false;
+            this.EcommerceItemTypeKeywordsUpdate = false;
             this.EcommerceItemWeightUpdate = false;
             this.EcommerceItemWidthUpdate = false;
             this.EcommerceModelNameUpdate = false;
@@ -3634,7 +4131,7 @@ namespace OdinModels
         /// <param name="item"></param>
         public void UpdateItem(ItemObject item)
         {
-            if (item.CheckUpdates())
+            if (item.HasUpdate)
             {
                 this.AltImageFile1 = item.AltImageFile1;
                 this.AltImageFile2 = item.AltImageFile2;
@@ -3679,6 +4176,7 @@ namespace OdinModels
                 this.EcommerceItemHeight = item.EcommerceItemHeight;
                 this.EcommerceItemLength = item.EcommerceItemLength;
                 this.EcommerceItemName = item.EcommerceItemName;
+                this.EcommerceItemTypeKeywords = item.EcommerceItemTypeKeywords;
                 this.EcommerceItemWeight = item.EcommerceItemWeight;
                 this.EcommerceItemWidth = item.EcommerceItemWidth;
                 this.EcommerceModelName = item.EcommerceModelName;
@@ -3769,503 +4267,11 @@ namespace OdinModels
                 }
             }
         }
-
-        #region Update Check Methods
-
-        /// <summary>
-        ///     Check field updates. If item has updated field return true.
-        /// </summary>
-        /// <returns>True if any fields have been updated</returns>
-        public bool CheckUpdates()
-        {
-            if (AccountingGroupUpdate == true) { return true; }
-            if (AltImageFile1Update == true) { return true; }
-            if (AltImageFile2Update == true) { return true; }
-            if (AltImageFile3Update == true) { return true; }
-            if (AltImageFile4Update == true) { return true; }
-            if (BillOfMaterialsUpdate == true) { return true; }
-            if (CasepackHeightUpdate == true) { return true; }
-            if (CasepackLengthUpdate == true) { return true; }
-            if (CasepackQtyUpdate == true) { return true; }
-            if (CasepackUpcUpdate == true) { return true; }
-            if (CasepackWidthUpdate == true) { return true; }
-            if (CasepackWeightUpdate == true) { return true; }
-            if (CategoryUpdate == true) { return true; }
-            if (Category2Update == true) { return true; }
-            if (Category3Update == true) { return true; }
-            if (ColorUpdate == true) { return true; }
-            if (CopyrightUpdate == true) { return true; }
-            if (CountryOfOriginUpdate == true) { return true; }
-            if (CostProfileGroupUpdate == true) { return true; }
-            if (DefaultActualCostUsdUpdate == true) { return true; }
-            if (DefaultActualCostCadUpdate == true) { return true; }
-            if (DescriptionUpdate == true) { return true; }
-            if (DirectImportUpdate == true) { return true; }
-            if (DutyUpdate == true) { return true; }
-            if (EanUpdate == true) { return true; }
-            if (EcommerceAsinUpdate == true) { return true; }
-            if (EcommerceBullet1Update == true) { return true; }
-            if (EcommerceBullet2Update == true) { return true; }
-            if (EcommerceBullet3Update == true) { return true; }
-            if (EcommerceBullet4Update == true) { return true; }
-            if (EcommerceBullet5Update == true) { return true; }
-            if (EcommerceComponentsUpdate == true) { return true; }
-            if (EcommerceCostUpdate == true) { return true; }
-            if (EcommerceExternalIdUpdate == true) { return true; }
-            if (EcommerceExternalIdTypeUpdate == true) { return true; }
-            if (EcommerceImagePath1Update == true) { return true; }
-            if (EcommerceImagePath2Update == true) { return true; }
-            if (EcommerceImagePath3Update == true) { return true; }
-            if (EcommerceImagePath4Update == true) { return true; }
-            if (EcommerceImagePath5Update == true) { return true; }
-            if (EcommerceItemHeightUpdate == true) { return true; }
-            if (EcommerceItemLengthUpdate == true) { return true; }
-            if (EcommerceItemNameUpdate == true) { return true; }
-            if (EcommerceItemWeightUpdate == true) { return true; }
-            if (EcommerceItemWidthUpdate == true) { return true; }
-            if (EcommerceModelNameUpdate == true) { return true; }
-            if (EcommercePackageHeightUpdate == true) { return true; }
-            if (EcommercePackageLengthUpdate == true) { return true; }
-            if (EcommercePackageWeightUpdate == true) { return true; }
-            if (EcommercePackageWidthUpdate == true) { return true; }
-            if (EcommercePageQtyUpdate == true) { return true; }
-            if (EcommerceParentAsinUpdate == true) { return true; }
-            if (EcommerceProductCategoryUpdate == true) { return true; }
-            if (EcommerceProductDescriptionUpdate == true) { return true; }
-            if (EcommerceProductSubcategoryUpdate == true) { return true; }
-            if (EcommerceManufacturerNameUpdate == true) { return true; }
-            if (EcommerceMsrpUpdate == true) { return true; }
-            if (EcommerceGenericKeywordsUpdate == true) { return true; }
-            if (EcommerceSizeUpdate == true) { return true; }
-            if (EcommerceSubjectKeywordsUpdate == true) { return true; }
-            if (EcommerceUpcUpdate == true) { return true; }
-            if (GpcUpdate == true) { return true; }
-            if (HeightUpdate == true) { return true; }
-            if (ImagePathUpdate == true) { return true; }
-            if (InStockDateUpdate == true) { return true; }
-            if (InnerpackHeightUpdate == true) { return true; }
-            if (InnerpackLengthUpdate == true) { return true; }
-            if (InnerpackQuantityUpdate == true) { return true; }
-            if (InnerpackUpcUpdate == true) { return true; }
-            if (InnerpackWidthUpdate == true) { return true; }
-            if (InnerpackWeightUpdate == true) { return true; }
-            if (IsbnUpdate == true) { return true; }
-            if (ItemCategoryUpdate == true) { return true; }
-            if (ItemFamilyUpdate == true) { return true; }
-            if (ItemGroupUpdate == true) { return true; }
-            if (ItemKeywordsUpdate == true) { return true; }
-            if (LanguageUpdate == true) { return true; }
-            if (LengthUpdate == true) { return true; }
-            if (LicenseUpdate == true) { return true; }
-            if (LicenseBeginDateUpdate == true) { return true; }
-            if (ListPriceCadUpdate == true) { return true; }
-            if (ListPriceUsdUpdate == true) { return true; }
-            if (ListPriceMxnUpdate == true) { return true; }
-            if (MetaDescriptionUpdate == true) { return true; }
-            if (MfgSourceUpdate == true) { return true; }
-            if (MsrpUpdate == true) { return true; }
-            if (MsrpCadUpdate == true) { return true; }
-            if (MsrpMxnUpdate == true) { return true; }
-            if (ProductFormatUpdate == true) { return true; }
-            if (ProductGroupUpdate == true) { return true; }
-            if (ProductIdTranslationUpdate == true) { return true; }
-            if (ProductLineUpdate == true) { return true; }
-            if (ProductQtyUpdate == true) { return true; }
-            if (PricingGroupUpdate == true) { return true; }
-            if (PrintOnDemandUpdate == true) { return true; }
-            if (PsStatusUpdate == true) { return true; }
-            if (SatCodeUpdate == true) { return true; }
-            if (SellOnAllPostersUpdate == true) { return true; }
-            if (SellOnAmazonUpdate == true) { return true; }
-            if (SellOnAmazonSellerCentralUpdate == true) { return true; }
-            if (SellOnEcommerceUpdate == true) { return true; }
-            if (SellOnFanaticsUpdate == true) { return true; }
-            if (SellOnGuitarCenterUpdate == true) { return true; }
-            if (SellOnHayneedleUpdate == true) { return true; }
-            if (SellOnTargetUpdate == true) { return true; }
-            if (SellOnTrendsUpdate == true) { return true; }
-            if (SellOnWalmartUpdate == true) { return true; }
-            if (SellOnWayfairUpdate == true) { return true; }
-            if (ShortDescriptionUpdate == true) { return true; }
-            if (SizeUpdate == true) { return true; }
-            if (StandardCostUpdate == true) { return true; }
-            if (StatsCodeUpdate == true) { return true; }
-            if (EcommerceSubjectKeywordsUpdate == true) { return true; }
-            if (TariffCodeUpdate == true) { return true; }
-            if (TerritoryUpdate == true) { return true; }
-            if (TitleUpdate == true) { return true; }
-            if (UdexUpdate == true) { return true; }
-            if (UpcUpdate == true) { return true; }
-            if (WarrantyUpdate == true) { return true; }
-            if (WarrantyCheckUpdate == true) { return true; }
-            if (WebsitePriceUpdate == true) { return true; }
-            if (WeightUpdate == true) { return true; }
-            if (WidthUpdate == true) { return true; }
-            return false;
-        }
-
-        /// <summary>
-        ///    Check fields for amazon table to see if any have been updated.
-        /// </summary>
-        /// <returns> true if any fields have been updated </returns>
-        public bool EcommerceValuesUpdate()
-        {
-            if (EcommerceAsinUpdate == true) { return true; }
-            if (EcommerceBullet1Update == true) { return true; }
-            if (EcommerceBullet2Update == true) { return true; }
-            if (EcommerceBullet3Update == true) { return true; }
-            if (EcommerceBullet4Update == true) { return true; }
-            if (EcommerceBullet5Update == true) { return true; }
-            if (EcommerceComponentsUpdate == true) { return true; }
-            if (EcommerceCostUpdate == true) { return true; }
-            if (EcommerceExternalIdUpdate == true) { return true; }
-            if (EcommerceExternalIdTypeUpdate == true) { return true; }
-            if (EcommerceGenericKeywordsUpdate == true) { return true; }
-            if (EcommerceImagePath1Update == true) { return true; }
-            if (EcommerceImagePath2Update == true) { return true; }
-            if (EcommerceImagePath3Update == true) { return true; }
-            if (EcommerceImagePath4Update == true) { return true; }
-            if (EcommerceImagePath5Update == true) { return true; }
-            if (EcommerceItemHeightUpdate == true) { return true; }
-            if (EcommerceItemLengthUpdate == true) { return true; }
-            if (EcommerceItemNameUpdate == true) { return true; }
-            if (EcommerceItemWeightUpdate == true) { return true; }
-            if (EcommerceItemWidthUpdate == true) { return true; }
-            if (EcommerceModelNameUpdate == true) { return true; }
-            if (EcommercePackageHeightUpdate == true) { return true; }
-            if (EcommercePackageLengthUpdate == true) { return true; }
-            if (EcommercePackageWeightUpdate == true) { return true; }
-            if (EcommercePackageWidthUpdate == true) { return true; }
-            if (EcommercePageQtyUpdate == true) { return true; }
-            if (EcommerceParentAsinUpdate == true) { return true; }
-            if (EcommerceProductCategoryUpdate == true) { return true; }
-            if (EcommerceProductDescriptionUpdate == true) { return true; }
-            if (EcommerceProductSubcategoryUpdate == true) { return true; }
-            if (EcommerceManufacturerNameUpdate == true) { return true; }
-            if (EcommerceMsrpUpdate == true) { return true; }
-            if (EcommerceSizeUpdate == true) { return true; }
-            if (EcommerceSubjectKeywordsUpdate == true) { return true; }
-            if (EcommerceUpcUpdate == true) { return true; }
-            if (CountryOfOriginUpdate == true) { return true; }
-
-            return false;
-        }
-
-        /// <summary>
-        ///    Check fields for BuItemsInv table to see if any have been updated.
-        /// </summary>
-        /// <returns></returns>
-        public bool BuItemsInvUpdate()
-        {
-            if (CountryOfOriginUpdate == true) { return true; }
-            if (MfgSourceUpdate == true) { return true; }
-            if (DefaultActualCostCadUpdate == true) { return true; }
-            if (DefaultActualCostUsdUpdate == true) { return true; }
-            return false;
-        }
-
-        /// <summary>
-        ///    Check fields for CmItemMethod table to see if any have been updated.
-        /// </summary>
-        /// <returns></returns>
-        public bool CmItemMethodUpdate()
-        {
-            if (CostProfileGroupUpdate == true) { return true; }
-            return false;
-        }
-
-        /// <summary>
-        ///    Check fields for PS_EN_BOM_COMPS table to see if any have been updated.
-        /// </summary>
-        /// <returns></returns>
-        public bool EnBomCompsUpdate()
-        {
-            if (BillOfMaterialsUpdate == true) { return true; }
-            return false;
-        }
-
-        /// <summary>
-        ///    Check fields for fxdbinlocInv table to see if any have been updated.
-        /// </summary>
-        /// <returns></returns>
-        public bool FxdBinLocInvUpdate()
-        {
-            if (this.ItemFamilyUpdate == true) { return true; }
-            if (this.ItemGroupUpdate == true) { return true; }
-            return false;
-        }
-
-        /// <summary>
-        ///     Checks web flags. Returns true if set to 'Y'
-        /// </summary>
-        /// <returns></returns>
-        public bool HasWeb()
-        {
-            if (this.SellOnTrends == "Y")
-            {
-                return true;
-            }
-            return false;
-        }
-
-        /// <summary>
-        ///     Checks if any "Sell On" flags have been set and returns true if any
-        ///     have been flagged
-        /// </summary>
-        /// <returns></returns>
-        public bool HasEcommerce()
-        {
-            if (this.SellOnAllPosters == "Y") { return true; }
-            if (this.SellOnAmazon == "Y") { return true; }
-            if (this.SellOnAmazonSellerCentral == "Y") { return true; }
-            if (this.SellOnEcommerce == "Y") { return true; }
-            if (this.SellOnFanatics == "Y") { return true; }
-            if (this.SellOnGuitarCenter == "Y") { return true; }
-            if (this.SellOnHayneedle == "Y") { return true; }
-            if (this.SellOnTarget == "Y") { return true; }
-            if (this.SellOnWalmart == "Y") { return true; }
-            if (this.SellOnWayfair == "Y") { return true; }
-            return false;
-        }
-
-        /// <summary>
-        ///     Checks to see if item is cleared to be sold on any web platform
-        /// </summary>
-        /// <returns>true if flags are set</returns>
-        public bool ImageRequired()
-        {
-            if (this.SellOnAllPosters == "Y") { return true; }
-            if (this.SellOnAmazon == "Y") { return true; }
-            if (this.SellOnAmazonSellerCentral == "Y") { return true; }
-            if (this.SellOnEcommerce == "Y") { return true; }
-            if (this.SellOnFanatics == "Y") { return true; }
-            if (this.SellOnGuitarCenter == "Y") { return true; }
-            if (this.SellOnHayneedle == "Y") { return true; }
-            if (this.SellOnTarget == "Y") { return true; }
-            if (this.SellOnTrends == "Y") { return true; }
-            if (this.SellOnWalmart == "Y") { return true; }
-            if (this.SellOnWayfair == "Y") { return true; }
-            return false;
-        }
-
-        /// <summary>
-        ///    Check fields for inv items table to see if any have been updated.
-        /// </summary>
-        /// <returns></returns>
-        public bool InvItemsUpdate()
-        {
-            if (TariffCodeUpdate == true) { return true; }
-            if (ColorUpdate == true) { return true; }
-            if (HeightUpdate == true) { return true; }
-            if (LengthUpdate == true) { return true; }
-            if (DescriptionUpdate == true) { return true; }
-            if (WeightUpdate == true) { return true; }
-            if (WidthUpdate == true) { return true; }
-            if (UpcUpdate == true) { return true; }
-
-            return false;
-        }
-
-        /// <summary>
-        ///     Check field for ItemAttribEx table to see if any have been updated
-        /// </summary>
-        /// <returns></returns>
-        public bool ItemAttribExUpdate()
-        {
-            if (ImagePathUpdate == true) { return true; }
-            if (AltImageFile1Update == true) { return true; }
-            if (AltImageFile2Update == true) { return true; }
-            if (AltImageFile3Update == true) { return true; }
-            if (AltImageFile4Update == true) { return true; }
-            if (CasepackHeightUpdate == true) { return true; }
-            if (CasepackLengthUpdate == true) { return true; }
-            if (CasepackQtyUpdate == true) { return true; }
-            if (CasepackUpcUpdate == true) { return true; }
-            if (CasepackWeightUpdate == true) { return true; }
-            if (CasepackWidthUpdate == true) { return true; }
-            if (DirectImportUpdate == true) { return true; }
-            if (InnerpackHeightUpdate == true) { return true; }
-            if (InnerpackLengthUpdate == true) { return true; }
-            if (InnerpackQuantityUpdate == true) { return true; }
-            if (InnerpackUpcUpdate == true) { return true; }
-            if (InnerpackWeightUpdate == true) { return true; }
-            if (InnerpackWidthUpdate == true) { return true; }
-            if (LicenseBeginDateUpdate == true) { return true; }
-            if (PrintOnDemandUpdate == true) { return true; }
-            if (ProductFormatUpdate == true) { return true; }
-            if (ProductLineUpdate == true) { return true; }
-            if (ProductGroupUpdate == true) { return true; }
-            if (InnerpackWidthUpdate == true) { return true; }
-            if (SatCodeUpdate == true) { return true; }
-            if (SellOnEcommerceUpdate == true) { return true; }
-            if (SellOnTrendsUpdate == true) { return true; }
-            if (WebsitePriceUpdate == true) { return true; }
-            return false;
-        }
-
-        /// <summary>
-        ///    Check fields for language table to see if any have been updated.
-        /// </summary>
-        /// <returns></returns>
-        public bool ItemLanguageUpdate()
-        {
-            if (LanguageUpdate == true) { return true; }
-            return false;
-        }
-
-        /// <summary>
-        ///    Check fields for territory table to see if any have been updated.
-        /// </summary>
-        /// <returns></returns>
-        public bool ItemTerritoryUpdate()
-        {
-            if (TerritoryUpdate == true) { return true; }
-            return false;
-        }
-
-        /// <summary>
-        ///    Check fields for web info table to see if any have been updated.
-        /// </summary>
-        /// <returns></returns>
-        public bool ItemWebInfoUpdate()
-        {
-            if (ItemKeywordsUpdate == true) { return true; }
-            if (CategoryUpdate == true) { return true; }
-            if (Category2Update == true) { return true; }
-            if (Category3Update == true) { return true; }
-            if (PropertyUpdate == true) { return true; }
-            if (CopyrightUpdate == true) { return true; }
-            if (TitleUpdate == true) { return true; }
-            if (LicenseUpdate == true) { return true; }
-            if (ShortDescriptionUpdate == true) { return true; }
-            if (MetaDescriptionUpdate == true) { return true; }
-            if (ProductQtyUpdate == true) { return true; }
-            if (SizeUpdate == true) { return true; }
-            if (InStockDateUpdate == true) { return true; }
-            if (WarrantyUpdate == true) { return true; }
-            if (WarrantyCheckUpdate == true) { return true; }
-            return false;
-        }
-
-        /// <summary>
-        ///    Check fields for master item table to see if any have been updated.
-        /// </summary>
-        /// <returns></returns>
-        public bool MasterItemUpdate()
-        {
-            if (ItemCategoryUpdate == true) { return true; }
-            if (CostProfileGroupUpdate == true) { return true; }
-            if (DescriptionUpdate == true) { return true; }
-            if (ItemGroupUpdate == true) { return true; }
-            if (PsStatusUpdate == true) { return true; }
-            if (ItemFamilyUpdate == true) { return true; }
-
-            return false;
-        }
-
-        /// <summary>
-        ///    Check fields for prod Item table to see if any have been updated.
-        /// </summary>
-        /// <returns></returns>
-        public bool ProdItemUpdate()
-        {
-            if (ItemCategoryUpdate == true) { return true; }
-            if (StatsCodeUpdate == true) { return true; }
-            if (DescriptionUpdate == true) { return true; }
-            if (IsbnUpdate == true) { return true; }
-            if (EanUpdate == true) { return true; }
-            if (UdexUpdate == true) { return true; }
-            if (GpcUpdate == true) { return true; }
-            return false;
-        }
-
-        /// <summary>
-        ///    Check fields for ProdPgrpLnk table to see if any have been updated.
-        /// </summary>
-        /// <returns></returns>
-        public bool ProdPgrpLnkUpdate()
-        {
-            if (AccountingGroupUpdate == true) { return true; }
-            if (PricingGroupUpdate == true) { return true; }
-            return false;
-        }
-
-        /// <summary>
-        ///    Check fields for Prod Price table to see if any have been updated.
-        /// </summary>
-        /// <returns></returns>
-        public bool ProdPriceBuUpdate()
-        {
-            if (ProductGroupUpdate == true) { return true; }
-            if (ListPriceCadUpdate == true) { return true; }
-            if (ListPriceUsdUpdate == true) { return true; }
-            if (ListPriceMxnUpdate == true) { return true; }
-            if (MsrpUpdate == true) { return true; }
-            if (MsrpCadUpdate == true) { return true; }
-            if (MsrpMxnUpdate == true) { return true; }
-            return false;
-        }
-
-        /// <summary>
-        ///    Check fields for Prod Price table to see if any have been updated.
-        /// </summary>
-        /// <returns></returns>
-        public bool ProdPriceUpdate()
-        {
-            if (ProductGroupUpdate == true) { return true; }
-            if (ListPriceCadUpdate == true) { return true; }
-            if (ListPriceUsdUpdate == true) { return true; }
-            if (ListPriceMxnUpdate == true) { return true; }
-            if (MsrpUpdate == true) { return true; }
-            if (MsrpCadUpdate == true) { return true; }
-            if (MsrpMxnUpdate == true) { return true; }
-            return false;
-        }
-
-        /// <summary>
-        ///    Check fields for PurchItemAttr table to see if any have been updated.
-        /// </summary>
-        /// <returns></returns>
-        public bool PurchItemAttrUpdate()
-        {
-            if (DescriptionUpdate == true) { return true; }
-            if (StandardCostUpdate == true) { return true; }
-            return false;
-        }
-
-        /// <summary>
-        ///    Check fields for PvItmCategory table to see if any have been updated.
-        /// </summary>
-        /// <returns></returns>
-        public bool PvItmCategoryUpdate()
-        {
-            if (ItemCategoryUpdate == true) { return true; }
-            return false;
-        }
-
-        /// <summary>
-        ///    Check sell on flags to see if any have been updated.
-        /// </summary>
-        /// <returns></returns>
-        public bool SellOnFlagUpdate()
-        {
-            if (SellOnAllPostersUpdate == true) { return true; }
-            if (SellOnAmazonUpdate == true) { return true; }
-            if (SellOnAmazonSellerCentralUpdate == true) { return true; }
-            if (SellOnFanaticsUpdate == true) { return true; }
-            if (SellOnGuitarCenterUpdate == true) { return true; }
-            if (SellOnHayneedleUpdate == true) { return true; }
-            if (SellOnTargetUpdate == true) { return true; }
-            if (SellOnWalmartUpdate == true) { return true; }
-            if (SellOnWayfairUpdate == true) { return true; }
-            if (PrintOnDemandUpdate == true) { return true; }
-            return false;
-        }
-
+        
         /// <summary>
         ///     Set SellOn values to N for any empty fields and sets PsStatus to I if empty
         /// </summary>
-        public void UpdateFlags()
+        public void SetFlagDefaults()
         {
             if (string.IsNullOrEmpty(this.PsStatus)) { this.PsStatus = "I"; }
             if (string.IsNullOrEmpty(this.SellOnAllPosters)) { this.SellOnAllPosters = "N"; }
@@ -4282,8 +4288,7 @@ namespace OdinModels
             if (string.IsNullOrEmpty(this.PrintOnDemand)) { this.PrintOnDemand = "N"; }
             if (string.IsNullOrEmpty(this.WarrantyCheck)) { this.WarrantyCheck = "N"; }
         }
-
-        #endregion // Update Check Methods
+        
 
         #endregion //Methods
 

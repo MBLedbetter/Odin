@@ -68,7 +68,7 @@ namespace Odin.Data
         /// <returns></returns>
         public void InsertAll(ItemObject item, int count)
         {
-            if (item.Status == "Add" || item.CheckUpdates())
+            if (item.Status == "Add" || item.HasUpdate)
             {
                 using (OdinContext context = this.contextFactory.CreateContext())
                 {
@@ -114,25 +114,25 @@ namespace Odin.Data
                         }
                         InsertItemUpdateRecord(item, context);
                     }
-                    else if (item.CheckUpdates())
+                    else if (item.HasUpdate)
                     {
-                        if (item.BuItemsInvUpdate()) { UpdateBuItemsInvAll(item, context); }
-                        if (item.CmItemMethodUpdate()) { UpdateCmItemMethodAll(item, context); }
-                        if (item.SellOnFlagUpdate()) { UpdateCustomerProductAttributesAll(item, context); }
-                        if (item.EcommerceValuesUpdate()) { UpdateEcommerceValues(item, context); }
-                        if (item.FxdBinLocInvUpdate()) { UpdateFxdBinLocInvAll(item); }
-                        if (item.InvItemsUpdate()) { UpdateInvItems(item, context); }
-                        if (item.ItemAttribExUpdate()) { UpdateItemAttribEx(item, context); }
-                        if (item.ItemLanguageUpdate()) { InsertItemLanguageAll(item); }
-                        if (item.ItemTerritoryUpdate()) { InsertItemTerritoryAll(item); }
-                        if (item.ItemWebInfoUpdate()) { UpdateItemWebInfo(item, context); }
-                        if (item.MasterItemUpdate()) { UpdateMasterItemTbl(item, context); }
-                        if (item.ProdItemUpdate()) { UpdateProdItem(item, context); }
-                        if (item.ProdPgrpLnkUpdate()) { UpdateProdPgrpLnkAll(item); }
-                        if (item.ProdPriceUpdate()) { UpdateProdPriceAll(item, context); }
-                        if (item.ProdPriceBuUpdate()) { UpdateProdPriceBuAll(item, context); }
-                        if (item.PurchItemAttrUpdate()) { UpdatePurchItemAttr(item, context); }
-                        if (item.PvItmCategoryUpdate()) { UpdatePvItmCategory(item); }
+                        if (item.BuItemsInvUpdate) { UpdateBuItemsInvAll(item, context); }
+                        if (item.CmItemMethodUpdate) { UpdateCmItemMethodAll(item, context); }
+                        if (item.SellOnFlagUpdate) { UpdateCustomerProductAttributesAll(item, context); }
+                        if (item.EcommerceValuesUpdate) { UpdateEcommerceValues(item, context); }
+                        if (item.FxdBinLocInvUpdate) { UpdateFxdBinLocInvAll(item); }
+                        if (item.InvItemsUpdate) { UpdateInvItems(item, context); }
+                        if (item.ItemAttribExUpdate) { UpdateItemAttribEx(item, context); }
+                        if (item.ItemLanguageUpdate) { InsertItemLanguageAll(item); }
+                        if (item.ItemTerritoryUpdate) { InsertItemTerritoryAll(item); }
+                        if (item.ItemWebInfoUpdate) { UpdateItemWebInfo(item, context); }
+                        if (item.MasterItemUpdate) { UpdateMasterItemTbl(item, context); }
+                        if (item.ProdItemUpdate) { UpdateProdItem(item, context); }
+                        if (item.ProdPgrpLnkUpdate) { UpdateProdPgrpLnkAll(item); }
+                        if (item.ProdPriceUpdate) { UpdateProdPriceAll(item, context); }
+                        if (item.ProdPriceBuUpdate) { UpdateProdPriceBuAll(item, context); }
+                        if (item.PurchItemAttrUpdate) { UpdatePurchItemAttr(item, context); }
+                        if (item.PvItmCategoryUpdate) { UpdatePvItmCategory(item); }
                         /*
                         if (item.ProductIdTranslationUpdate)
                         {
@@ -339,6 +339,7 @@ namespace Odin.Data
                     Height = Convert.ToDecimal(height),
                     InvItemId = item.ItemId,
                     ItemName = item.EcommerceItemName,
+                    ItemTypeKeywords = item.EcommerceItemTypeKeywords,
                     Length = Convert.ToDecimal(length),
                     Weight = Convert.ToDecimal(weight),
                     Width = Convert.ToDecimal(width),
@@ -450,7 +451,7 @@ namespace Odin.Data
         }
 
         /// <summary>
-        /// Insert item info(TariffCode, ItemColor, ItemHeight, ItemLength, ItemId, Description, ItemWeight, ItemWidth, Upc) and username to PS_INV_ITEMS
+        ///     Insert item info(TariffCode, ItemColor, ItemHeight, ItemLength, ItemId, Description, ItemWeight, ItemWidth, Upc) and username to PS_INV_ITEMS
         /// </summary>
         public void InsertInvItems(ItemObject item, OdinContext context)
         {
@@ -786,7 +787,8 @@ namespace Odin.Data
                 AImageUrl5 = item.EcommerceImagePath5,
                 AItemHeight = item.EcommerceItemHeight,
                 AItemLength = item.EcommerceItemLength,
-                AItemName = item.EcommerceItemName,
+                AItemName = item.EcommerceItemName,                
+                AItemTypeKeywords = item.EcommerceItemTypeKeywords,
                 AItemWeight = item.EcommerceItemWeight,
                 AItemWidth = item.EcommerceItemWidth,
                 AModelName = item.EcommerceModelName,
@@ -1603,6 +1605,7 @@ namespace Odin.Data
                         EcommerceItemHeight = (odinItem.EcommerceHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceHeight).Trim(), 1) : "",
                         EcommerceItemLength = (odinItem.EcommerceLength != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceLength).Trim(), 1) : "",
                         EcommerceItemName = (!string.IsNullOrEmpty(odinItem.EcommerceItemName)) ? odinItem.EcommerceItemName.Trim() : "",
+                        EcommerceItemTypeKeywords = (!string.IsNullOrEmpty(odinItem.EcommerceItemTypeKeywords)) ? odinItem.EcommerceItemTypeKeywords.Trim() : "",
                         EcommerceItemWeight = (odinItem.EcommerceWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceWeight).Trim(), 1) : "",
                         EcommerceItemWidth = (odinItem.EcommerceWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceWidth).Trim(), 1) : "",
                         EcommerceModelName = (!string.IsNullOrEmpty(odinItem.EcommerceModelName)) ? odinItem.EcommerceModelName.Trim() : "",
@@ -1731,8 +1734,8 @@ namespace Odin.Data
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 List<InvItems> invItems = (from o in context.InvItems
-       where o.InvItemId.Contains(value) || o.Descr254.Contains(value)
-       select o).ToList();
+                                           where o.InvItemId.Contains(value) || o.Descr254.Contains(value)
+                                           select o).ToList();
 
                 foreach (InvItems invItem in invItems)
                 {
@@ -1755,15 +1758,15 @@ namespace Odin.Data
                 if ((context.OdinItemUpdateRecords.Any()))
                 {
                     var odinItemUpdateRecords = (from o in context.OdinItemUpdateRecords
-             orderby o.InputDate descending
-             group o by new { o.InvItemId, o.ItemInputStatus, o.Username, o.InputDate } into g
-             select new
-             {
-                 ItemId = g.Key.InvItemId,
-                 Status = g.Key.ItemInputStatus,
-                 UserName = g.Key.Username,
-                 InputDate = g.Max(x => x.InputDate)
-             }).ToList();
+                                                 orderby o.InputDate descending
+                                                 group o by new { o.InvItemId, o.ItemInputStatus, o.Username, o.InputDate } into g
+                                                 select new
+                                                 {
+                                                     ItemId = g.Key.InvItemId,
+                                                     Status = g.Key.ItemInputStatus,
+                                                     UserName = g.Key.Username,
+                                                     InputDate = g.Max(x => x.InputDate)
+                                                 }).ToList();
                     foreach (var x in odinItemUpdateRecords)
                     {
                         if (!itemIds.Contains(x.ItemId))
@@ -1900,6 +1903,7 @@ namespace Odin.Data
                     item.Width = odinItemUpdateRecord.Width;
                     item.InStockDate = (!string.IsNullOrEmpty(odinItemUpdateRecord.InStockDate)) ? Convert.ToString(DbUtil.StripTime(odinItemUpdateRecord.InStockDate)) : "";
                     item.EcommerceItemName = odinItemUpdateRecord.AItemName;
+                    item.EcommerceItemTypeKeywords = odinItemUpdateRecord.AItemTypeKeywords;
                     item.EcommerceModelName = odinItemUpdateRecord.AModelName;
                     item.EcommerceProductCategory = odinItemUpdateRecord.AProductCategory;
                     item.EcommerceProductSubcategory = odinItemUpdateRecord.AProductSubcategory;
@@ -1926,6 +1930,7 @@ namespace Odin.Data
                     item.EcommerceManufacturerName = odinItemUpdateRecord.AManufacturerName;
                     item.EcommerceItemLength = odinItemUpdateRecord.AItemLength;
                     item.EcommerceItemHeight = odinItemUpdateRecord.AItemHeight;
+                    item.EcommerceItemTypeKeywords = odinItemUpdateRecord.AItemTypeKeywords;
                     item.EcommerceItemWeight = odinItemUpdateRecord.AItemWeight;
                     item.EcommerceItemWidth = odinItemUpdateRecord.AItemWidth;
                     item.EcommercePackageHeight = odinItemUpdateRecord.APackageHeight;
@@ -2165,6 +2170,7 @@ namespace Odin.Data
                 amazonItemAttributes.ImageUrl5 = item.EcommerceImagePath5;
                 amazonItemAttributes.Height = Convert.ToDecimal(height);
                 amazonItemAttributes.ItemName = item.EcommerceItemName;
+                amazonItemAttributes.ItemTypeKeywords = item.EcommerceItemTypeKeywords;
                 amazonItemAttributes.Length = Convert.ToDecimal(length);
                 amazonItemAttributes.Weight = Convert.ToDecimal(weight);
                 amazonItemAttributes.Width = Convert.ToDecimal(width);
@@ -3194,6 +3200,7 @@ namespace Odin.Data
         private Dictionary<string, string> RetrieveAsinList()
         {
             Dictionary<string, string> results = new Dictionary<string, string>();
+            
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 foreach (AmazonItemAttributes x in (from o in context.AmazonItemAttributes select o))
@@ -3210,8 +3217,9 @@ namespace Odin.Data
                         }
                     }
                 }
-                return results;
             }
+            
+            return results;
         }
 
         /// <summary>

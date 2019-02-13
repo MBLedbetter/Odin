@@ -69,6 +69,7 @@ namespace OdinServices
             public static string EcommerceItemHeight = "Ecommerce Item Height";
             public static string EcommerceItemLength = "Ecommerce Item Length";
             public static string EcommerceItemName = "Ecommerce Item Name";
+            public static string EcommerceItemTypeKeywords = "Ecommerce Item Type Keywords";
             public static string EcommerceItemWeight = "Ecommerce Item Weight";
             public static string EcommerceItemWidth = "Ecommerce Item Width";
             public static string EcommerceModelName = "Ecommerce Model Name";
@@ -582,6 +583,7 @@ namespace OdinServices
             if (item.EcommerceItemHeight.Trim() == "[CLEAR]") { item.EcommerceItemHeight = ""; }
             if (item.EcommerceItemLength.Trim() == "[CLEAR]") { item.EcommerceItemLength = ""; }
             if (item.EcommerceItemName.Trim() == "[CLEAR]") { item.EcommerceItemName = ""; }
+            if (item.EcommerceItemTypeKeywords.Trim() == "[CLEAR]") { item.EcommerceItemTypeKeywords = ""; }
             if (item.EcommerceItemWeight.Trim() == "[CLEAR]") { item.EcommerceItemWeight = ""; }
             if (item.EcommerceItemWidth.Trim() == "[CLEAR]") { item.EcommerceItemWidth = ""; }
             if (item.EcommerceModelName.Trim() == "[CLEAR]") { item.EcommerceModelName = ""; }
@@ -709,6 +711,7 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.EcommerceItemHeight)) && (item.EcommerceItemHeight.Trim() != returnItem.EcommerceItemHeight.Trim())) { returnItem.EcommerceItemHeight = item.EcommerceItemHeight; } // Ecommerce Item Height
             if ((!string.IsNullOrEmpty(item.EcommerceItemLength)) && (item.EcommerceItemLength.Trim() != returnItem.EcommerceItemLength.Trim())) { returnItem.EcommerceItemLength = item.EcommerceItemLength; } // Ecommerce Item Length
             if ((!string.IsNullOrEmpty(item.EcommerceItemName)) && (item.EcommerceItemName.Trim() != returnItem.EcommerceItemName.Trim())) { returnItem.EcommerceItemName = item.EcommerceItemName; } // Ecommerce Item Name
+            if ((!string.IsNullOrEmpty(item.EcommerceItemTypeKeywords)) && (item.EcommerceItemTypeKeywords.Trim() != returnItem.EcommerceItemTypeKeywords.Trim())) { returnItem.EcommerceItemTypeKeywords = item.EcommerceItemTypeKeywords; } // Ecommerce Item Type Keywords
             if ((!string.IsNullOrEmpty(item.EcommerceItemWeight)) && (item.EcommerceItemWeight.Trim() != returnItem.EcommerceItemWeight.Trim())) { returnItem.EcommerceItemWeight = item.EcommerceItemWeight; } // Ecommerce Item Weight
             if ((!string.IsNullOrEmpty(item.EcommerceItemWidth)) && (item.EcommerceItemWidth.Trim() != returnItem.EcommerceItemWidth.Trim())) { returnItem.EcommerceItemWidth = item.EcommerceItemWidth; } // Ecommerce Item Width
             if ((!string.IsNullOrEmpty(item.EcommerceModelName)) && (item.EcommerceModelName.Trim() != returnItem.EcommerceModelName.Trim())) { returnItem.EcommerceModelName = item.EcommerceModelName; } // Ecommerce Model Name
@@ -795,7 +798,7 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.Width)) && (item.Width.Trim() != returnItem.Width.Trim())) { returnItem.Width = item.Width; }
             
             returnItem = ClearFields(returnItem);
-            returnItem.UpdateFlags();
+            returnItem.SetFlagDefaults();
             return returnItem;
         }
         
@@ -832,6 +835,7 @@ namespace OdinServices
                 if (string.IsNullOrEmpty(template.EcommerceExternalIdType)) { template.EcommerceExternalIdType = oldTemplate.EcommerceExternalIdType; }
                 if (string.IsNullOrEmpty(template.EcommerceItemHeight)) { template.EcommerceItemHeight = oldTemplate.EcommerceItemHeight; }
                 if (string.IsNullOrEmpty(template.EcommerceItemLength)) { template.EcommerceItemLength = oldTemplate.EcommerceItemLength; }
+                if (string.IsNullOrEmpty(template.EcommerceItemTypeKeywords)) { template.EcommerceItemTypeKeywords = oldTemplate.EcommerceItemTypeKeywords; }
                 if (string.IsNullOrEmpty(template.EcommerceItemWeight)) { template.EcommerceItemWeight = oldTemplate.EcommerceItemWeight; }
                 if (string.IsNullOrEmpty(template.EcommerceItemWidth)) { template.EcommerceItemWidth = oldTemplate.EcommerceItemWidth; }
                 if (string.IsNullOrEmpty(template.EcommerceModelName)) { template.EcommerceModelName = oldTemplate.EcommerceModelName; }
@@ -1053,6 +1057,7 @@ namespace OdinServices
                     EcommerceItemHeight = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceItemHeight, WorksheetColumnHeaders.A_ItemHeight), 1),
                     EcommerceItemLength = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceItemLength, WorksheetColumnHeaders.A_ItemLength), 1),
                     EcommerceItemName = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceItemName, WorksheetColumnHeaders.A_ItemName).Trim(),
+                    EcommerceItemTypeKeywords = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceItemTypeKeywords).Trim(),
                     EcommerceItemWeight = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceItemWeight, WorksheetColumnHeaders.A_ItemWeight), 1),
                     EcommerceItemWidth = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceItemWidth, WorksheetColumnHeaders.A_ItemWidth), 1),
                     EcommerceModelName = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceModelName, WorksheetColumnHeaders.A_ModelName).Trim(),
@@ -1142,7 +1147,7 @@ namespace OdinServices
                     {
                         item = SetTemplateValues(TemplateName,item);
                     }
-                    item.UpdateFlags();
+                    item.SetFlagDefaults();
                 }
                 item.EcommerceCountryofOrigin = RetrieveFullCountryOfOrigin(item.CountryOfOrigin);
 
@@ -1226,6 +1231,7 @@ namespace OdinServices
                         EcommerceExternalIdType = worksheetData.GetValue(row, WorksheetColumnHeaders.EcommerceExternalIdType, WorksheetColumnHeaders.A_ExternalIdType).Trim(),
                         EcommerceItemHeight = worksheetData.GetValue(row, WorksheetColumnHeaders.EcommerceItemHeight, WorksheetColumnHeaders.A_ItemHeight).Trim(),
                         EcommerceItemLength = worksheetData.GetValue(row, WorksheetColumnHeaders.EcommerceItemLength, WorksheetColumnHeaders.A_ItemLength).Trim(),
+                        EcommerceItemTypeKeywords = worksheetData.GetValue(row, WorksheetColumnHeaders.EcommerceItemTypeKeywords).Trim(),
                         EcommerceItemWeight = worksheetData.GetValue(row, WorksheetColumnHeaders.EcommerceItemWeight, WorksheetColumnHeaders.A_ItemWeight).Trim(),
                         EcommerceItemWidth = worksheetData.GetValue(row, WorksheetColumnHeaders.EcommerceItemWidth, WorksheetColumnHeaders.A_ItemWidth).Trim(),
                         EcommerceModelName = worksheetData.GetValue(row, WorksheetColumnHeaders.EcommerceModelName, WorksheetColumnHeaders.A_ModelName).Trim(),
@@ -1855,7 +1861,7 @@ namespace OdinServices
         public ItemObject RetrieveItem(string itemId, int count)
         {
             ItemObject item = ItemRepository.RetrieveItem(itemId, count);
-            item.UpdateFlags();
+            item.SetFlagDefaults();
             return item;
         }
 
@@ -2162,6 +2168,9 @@ namespace OdinServices
             if (validationError != null) { ErrorList.Add(validationError); }
             // Ecommerce Item Name //
             validationError =ValidateEcommerceItemName(var);
+            if (validationError != null) { ErrorList.Add(validationError); }
+            // Ecommerce Item Type Keywords //
+            validationError = ValidateEcommerceItemTypeKeywords(var);
             if (validationError != null) { ErrorList.Add(validationError); }
             // Ecommerce Item Weight //
             validationError = ValidateEcommerceItemDimension(var, "Weight");
@@ -2504,7 +2513,6 @@ namespace OdinServices
             if (validationError != null) { ErrorMessages.Add(validationError); }
             validationError = ValidateSize(var);
             if (validationError != null) { ErrorMessages.Add(validationError); }
-
             validationError = ValidateEcommerceBullet(var, "1");
             if (validationError != null) { ErrorMessages.Add(validationError); }
             validationError = ValidateEcommerceBullet(var, "2");
@@ -2635,8 +2643,7 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Field cannot be updated through Odin. The Bill of materials field does not match the values currently saved for this item.",
-                            "Bill Of Materials");
-
+                            "Bill of Materials");
                     }
                 }
                 if (!string.IsNullOrEmpty(billOfMaterial.ItemId))
@@ -2647,7 +2654,7 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Field contains an id that does not exist: " + billOfMaterial.ItemId + ".",
-                            "Bill Of Materials");
+                            "Bill of Materials");
                     }
                 }
                 if (BomIdList.Contains(billOfMaterial.ItemId.Trim()))
@@ -2656,7 +2663,7 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Field can not contain multiple occurances of the same item. ["+ billOfMaterial.ItemId.Trim() + "]",
-                        "Bill Of Materials");
+                        "Bill of Materials");
                 }
                 else
                 {
@@ -2669,12 +2676,8 @@ namespace OdinServices
         /// <summary>
         ///     Validates the Casepack field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value1">Field being validated</param>
-        /// <param name="value2">Other Casepack Field</param>
-        /// <param name="value3">Other Casepack Field</param>
-        /// <param name="value4">Other Casepack Field</param>
-        /// <param name="prodType"></param>
-        /// <param name="type">Casepack type being validated</param>
+        /// <param name="var">Item Object</param>
+        /// <param name="type">Casepack type: Height, Length, Weight, Width</param>
         /// <returns></returns>
         public ItemError ValidateCasepack(ItemObject var, string type)
         {
@@ -2755,8 +2758,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates Casepack Qty field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateCasepackQty(ItemObject var)
         {
@@ -2792,10 +2794,10 @@ namespace OdinServices
         }
 
         /// <summary>
-        ///     Vaidates Web Cateogry 1 field. Returns ItemError or null if no error exists.
+        ///     Vaidates Web Cateogry field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="hasWeb"></param>
+        /// <param name="value">Item Obejct</param>
+        /// <param name="categoryNumber">Category Number as string</param>
         /// <returns></returns>
         public ItemError ValidateCategory(ItemObject var, string categoryNumber)
         {
@@ -2832,7 +2834,7 @@ namespace OdinServices
                 }
             }
 
-            if (var.HasWeb() && webRequired)
+            if (var.HasWeb && webRequired)
             {
                 if (string.IsNullOrEmpty(value))
                 {
@@ -2849,8 +2851,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates the color field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Obejct</param>
         /// <returns></returns>
         public ItemError ValidateColor(ItemObject var)
         {
@@ -2898,9 +2899,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates the Country of Origin field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="listPriceUS"></param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateCountryOfOrigin(ItemObject var)
         {
@@ -2956,9 +2955,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates the Cost Profile Group field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="mfgSource">Items MFG Source</param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateCostProfileGroup(ItemObject var)
         {
@@ -3004,11 +3001,8 @@ namespace OdinServices
         /// <summary>
         ///     Validates Default Actual Cost field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="daccad2"></param>
-        /// <param name="standardcost"></param>
-        /// <param name="currency"></param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
+        /// <param name="currency">Default Actual Cost Type: USD, CAD, MXN</param>
         /// <returns></returns>
         public ItemError ValidateDefaultActualCost(ItemObject var, string currency)
         {
@@ -3063,8 +3057,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates Description field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateDescription(ItemObject var)
         {
@@ -3105,8 +3098,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates the Direct Import Field
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateDirectImport(ItemObject var)
         {
@@ -3146,9 +3138,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates the EAN field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="upc">item's UPC value</param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateEan(ItemObject var) 
         {            
@@ -3202,7 +3192,7 @@ namespace OdinServices
         /// <summary>
         ///  Validates the EcommerceAsin field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateEcommerceAsin(ItemObject var)
         {
@@ -3247,6 +3237,8 @@ namespace OdinServices
         /// <summary>
         ///     Validates the EcommerceBullet Validation field. Returns ItemError or null if no error exists.
         /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
         public ItemError ValidateEcommerceBullet(ItemObject var, string bulletNumber)
         {
             string value = string.Empty;
@@ -3293,7 +3285,7 @@ namespace OdinServices
                         "Ecommerce Bullet " + bulletNumber);
                 }
             }
-            if (var.HasEcommerce() && GlobalData.EcomFlagRequirement)
+            if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
             {
                 if (string.IsNullOrEmpty(value) && ecomRequired && var.ProdType != 2)
                 {
@@ -3310,6 +3302,8 @@ namespace OdinServices
         /// <summary>
         ///     Validates the EcommerceComponents field. Returns ItemError or null if no error exists.
         /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
         public ItemError ValidateEcommerceComponents(ItemObject var)
         {
             if (!string.IsNullOrEmpty(var.EcommerceComponents))
@@ -3323,7 +3317,7 @@ namespace OdinServices
                         "Ecommerce Components");
                 }
             }
-            if (var.HasEcommerce() && GlobalData.EcomFlagRequirement)
+            if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
             {
                 if (string.IsNullOrEmpty(var.EcommerceComponents) )
                 {
@@ -3340,6 +3334,8 @@ namespace OdinServices
         /// <summary>
         ///     Validates the EcommerceCost field. Returns ItemError or null if no error exists.
         /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
         public ItemError ValidateEcommerceCost(ItemObject var)
         {
             if (!string.IsNullOrEmpty(var.EcommerceCost))
@@ -3361,7 +3357,7 @@ namespace OdinServices
                         "Ecommerce Cost");
                 }
             }
-            if (var.HasEcommerce() && GlobalData.EcomFlagRequirement)
+            if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
             {
                 if (string.IsNullOrEmpty(var.EcommerceCost))
                 {
@@ -3378,6 +3374,8 @@ namespace OdinServices
         /// <summary>
         ///     Validates the EcommerceExternalId field. Returns ItemError or null if no error exists.
         /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
         public ItemError ValidateEcommerceExternalId(ItemObject var)
         {
             if (!string.IsNullOrEmpty(var.EcommerceExternalId))
@@ -3461,7 +3459,7 @@ namespace OdinServices
                         "Ecommerce External Id");
                 }
             }
-            if (var.HasEcommerce() && GlobalData.EcomFlagRequirement)
+            if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
             {
                 if (string.IsNullOrEmpty(var.EcommerceExternalId))
                 {
@@ -3478,6 +3476,8 @@ namespace OdinServices
         /// <summary>
         ///     Validates the EcommerceExternalIdType field. Returns ItemError or null if no error exists.
         /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
         public ItemError ValidateEcommerceExternalIdType(ItemObject var)
         {
             if (!string.IsNullOrEmpty(var.EcommerceExternalIdType))
@@ -3492,7 +3492,7 @@ namespace OdinServices
                 }
                 return null;
             }
-            if (var.HasEcommerce() && GlobalData.EcomFlagRequirement)
+            if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
             {
                 if (string.IsNullOrEmpty(var.EcommerceExternalIdType))
                 {
@@ -3509,6 +3509,8 @@ namespace OdinServices
         /// <summary>
         ///     EcommerceItemHeight field. Returns ItemError or null if no error exists.
         /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
         public ItemError ValidateEcommerceItemDimension(ItemObject var, string type)
         {
             string value = string.Empty;
@@ -3548,7 +3550,7 @@ namespace OdinServices
                         "Ecommerce " + type);
                 }
             }
-            if (var.HasEcommerce() && GlobalData.EcomFlagRequirement)
+            if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
             {
                 if (string.IsNullOrEmpty(value))
                 {
@@ -3585,6 +3587,8 @@ namespace OdinServices
         /// <summary>
         ///     Validates the EcommerceItemName field. Returns ItemError or null if no error exists.
         /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
         public ItemError ValidateEcommerceItemName(ItemObject var)
         {
             if (!string.IsNullOrEmpty(var.EcommerceItemName))
@@ -3598,7 +3602,7 @@ namespace OdinServices
                         "Ecommerce Item Name");
                 }
             }
-            if (var.HasEcommerce() && GlobalData.EcomFlagRequirement)
+            if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
             {
                 if (string.IsNullOrEmpty(var.EcommerceItemName))
                 {
@@ -3611,10 +3615,12 @@ namespace OdinServices
             }
             return null;
         }
-        
+
         /// <summary>
         ///     Validates the EcommerceManufacturerName field. Returns ItemError or null if no error exists.
         /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
         public ItemError ValidateEcommerceManufacturerName(ItemObject var)
         {
             if (!string.IsNullOrEmpty(var.EcommerceManufacturerName))
@@ -3628,7 +3634,7 @@ namespace OdinServices
                         "Ecommerce Manufacturer Name");
                 }
             }
-            if (var.HasEcommerce() && GlobalData.EcomFlagRequirement)
+            if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
             {
                 if (string.IsNullOrEmpty(var.EcommerceManufacturerName))
                 {
@@ -3645,6 +3651,8 @@ namespace OdinServices
         /// <summary>
         ///     EcommerceModelName field. Returns ItemError or null if no error exists.
         /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
         public ItemError ValidateEcommerceModelName(ItemObject var)
         {
             if (!string.IsNullOrEmpty(var.EcommerceModelName))
@@ -3659,7 +3667,7 @@ namespace OdinServices
                 }
                 return null;
             }
-            if (var.HasEcommerce() && GlobalData.EcomFlagRequirement)
+            if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
             {
                 if (string.IsNullOrEmpty(var.EcommerceModelName))
                 {
@@ -3676,6 +3684,8 @@ namespace OdinServices
         /// <summary>
         ///     Validates the EcommerceMsrp field. Returns ItemError or null if no error exists.
         /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
         public ItemError ValidateEcommerceMsrp(ItemObject var)
         {
             if (!string.IsNullOrEmpty(var.EcommerceMsrp))
@@ -3697,7 +3707,7 @@ namespace OdinServices
                         "Ecommerce Msrp");
                 }
             }
-            if (var.HasEcommerce() && GlobalData.EcomFlagRequirement)
+            if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
             {
                 if (string.IsNullOrEmpty(var.EcommerceMsrp))
                 {
@@ -3718,10 +3728,12 @@ namespace OdinServices
             }
             return null;
         }
-        
+
         /// <summary>
         ///      Validates the EcommercePackageWidth field. Returns ItemError or null if no error exists.
         /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
         public ItemError ValidateEcommercePackageDimension(ItemObject var, string type)
         {
             string value = string.Empty;
@@ -3761,7 +3773,7 @@ namespace OdinServices
                         "Ecommerce Package " + type);
                 }
             }
-            if (var.HasEcommerce() && GlobalData.EcomFlagRequirement)
+            if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
             {
                 if (string.IsNullOrEmpty(value))
                 {
@@ -3778,6 +3790,8 @@ namespace OdinServices
         /// <summary>
         ///      Validates the EcommercePageQty field. Returns ItemError or null if no error exists.
         /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
         public ItemError ValidateEcommercePageQty(ItemObject var)
         {
             if (!string.IsNullOrEmpty(var.EcommercePageQty))
@@ -3811,7 +3825,7 @@ namespace OdinServices
         }
 
         /// <summary>
-        ///  Validates the EcommerceParentAsin field. Returns ItemError or null if no error exists.
+        ///     Validates the EcommerceParentAsin field. Returns ItemError or null if no error exists.
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -3835,6 +3849,8 @@ namespace OdinServices
         /// <summary>
         ///     Validates the EcommerceProductCategory field. Returns ItemError or null if no error exists.
         /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
         public ItemError ValidateEcommerceProductCategory(ItemObject var)
         {
             if (!string.IsNullOrEmpty(var.EcommerceProductCategory))
@@ -3849,7 +3865,7 @@ namespace OdinServices
                 }
                 return null;
             }
-            if (var.HasEcommerce() && GlobalData.EcomFlagRequirement)
+            if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
             {
                 if (string.IsNullOrEmpty(var.EcommerceProductCategory))
                 {
@@ -3866,6 +3882,8 @@ namespace OdinServices
         /// <summary>
         ///     Validates the EcommerceProductDescription field. Returns ItemError or null if no error exists.
         /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
         public ItemError ValidateEcommerceProductDescription(ItemObject var)
         {
             if (!string.IsNullOrEmpty(var.EcommerceProductDescription))
@@ -3888,7 +3906,7 @@ namespace OdinServices
                         "Ecommerce Product Description");
                 }
             }
-            if (var.HasEcommerce() && GlobalData.EcomFlagRequirement)
+            if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
             {
                 if (string.IsNullOrEmpty(var.EcommerceProductDescription))
                 {
@@ -3905,6 +3923,8 @@ namespace OdinServices
         /// <summary>
         ///     Validates the EcommerceProductSubcategory field. Returns ItemError or null if no error exists.
         /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
         public ItemError ValidateEcommerceProductSubcategory(ItemObject var)
         {
             if (!string.IsNullOrEmpty(var.EcommerceProductSubcategory))
@@ -3918,7 +3938,7 @@ namespace OdinServices
                         "Ecommerce Product Subcategory");
                 }
             }
-            if (var.HasEcommerce() && GlobalData.EcomFlagRequirement)
+            if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
             {
                 if (string.IsNullOrEmpty(var.EcommerceProductSubcategory))
                 {
@@ -3935,6 +3955,8 @@ namespace OdinServices
         /// <summary>
         ///     Validates the EcommerceGenericKeywords field. Returns ItemError or null if no error exists.
         /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
         public ItemError ValidateEcommerceKeywords(ItemObject var, string type)
         {
             string value = string.Empty;
@@ -3962,7 +3984,7 @@ namespace OdinServices
                         "Ecommerce " + type + " Keywords");
                 }
             }
-            if (var.HasEcommerce() && GlobalData.EcomFlagRequirement)
+            if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
             {
                 if (string.IsNullOrEmpty(value) && ecommerceRequired)
                 {
@@ -3979,6 +4001,8 @@ namespace OdinServices
         /// <summary>
         ///     Validates the EcommerceSize field. Returns ItemError or null if no error exists.
         /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
         public ItemError ValidateEcommerceSize(ItemObject var)
         {
             if (!string.IsNullOrEmpty(var.EcommerceSize))
@@ -3992,7 +4016,7 @@ namespace OdinServices
                         "Ecommerce Size");
                 }
             }
-            if (var.HasEcommerce() && GlobalData.EcomFlagRequirement)
+            if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
             {
                 if (string.IsNullOrEmpty(var.EcommerceSize))
                 {
@@ -4009,7 +4033,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates the Ecommerce Upc field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateEcommerceUpc(ItemObject var)
         {
@@ -4068,9 +4092,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates the GPC field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="listPriceUS">List Price Field</param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateGpc(ItemObject var)
         {
@@ -4134,8 +4156,8 @@ namespace OdinServices
         /// <summary>
         ///     Validates the item height field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
+        /// <param name="type">Item Dimension type: Height, Length, Weight, Width</param>
         /// <returns>Error message or "" if value is valid</returns>
         public ItemError ValidateItemDimension(ItemObject var, string type)
         {
@@ -4201,6 +4223,8 @@ namespace OdinServices
         /// <summary>
         ///     Validates the Image Path fields. Returns ItemError or null if no error exists.
         /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <param name="imageNumber">Image number as string</param>
         public ItemError ValidateImagePath(ItemObject var, string imageNumber)
         {
             string value = string.Empty;
@@ -4275,12 +4299,8 @@ namespace OdinServices
         /// <summary>
         ///     Validates Innerpack fields. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value1">Innerpack field being validated</param>
-        /// <param name="value2">Other Innerpack value</param>
-        /// <param name="value3">Other Innerpack value</param>
-        /// <param name="value4">Other Innerpack value</param>
-        /// <param name="prodType"></param>
-        /// <param name="type">Innerpack Field Type</param>
+        /// <param name="var">Item Object</param>
+        /// <param name="var"> Innerpack type: Height, Length, Weight, Width</param>
         /// <returns></returns>
         public ItemError ValidateInnerpack(ItemObject var, string type)
         {
@@ -4359,8 +4379,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates Innerpack Quantity field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateInnerpackQuantity(ItemObject var)
         {
@@ -4398,8 +4417,7 @@ namespace OdinServices
         /// <summary>
         ///     Validate in stock date field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="hasWeb"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateInStockDate(ItemObject var)
         {
@@ -4436,8 +4454,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates ISBN field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateIsbn(ItemObject var)
         {
@@ -4466,8 +4483,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates Item Category field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateItemCategory(ItemObject var)
         {
@@ -4507,8 +4523,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates Item Family field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateItemFamily(ItemObject var)
         {
@@ -4541,8 +4556,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates Item Group field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateItemGroup(ItemObject var)
         {
@@ -4581,8 +4595,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates Item Id field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="status"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateItemId(ItemObject var)
         {
@@ -4641,8 +4654,7 @@ namespace OdinServices
         /// <summary>
         ///     Validate item Keywords field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="hasWeb"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateItemKeywords(ItemObject var)
         {
@@ -4657,7 +4669,7 @@ namespace OdinServices
                         "Item Keywords");
                 }
             }
-            if (var.HasWeb())
+            if (var.HasWeb)
             {
                 if (string.IsNullOrEmpty(var.ItemKeywords))
                 {
@@ -4674,9 +4686,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates Language field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="listPriceUS">Items US list price</param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateLanguage(ItemObject var)
         {
@@ -4719,8 +4729,7 @@ namespace OdinServices
         /// <summary>
         ///     Validate License field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="hasWeb"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateLicense(ItemObject var)
         {
@@ -4749,8 +4758,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates license begin date field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateLicenseBeginDate(ItemObject var)
         {
@@ -4783,13 +4791,11 @@ namespace OdinServices
             }
             return null;
         }
-        
+
         /// <summary>
         ///     Validates MFG Source field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="costProfileGroup">item's cost profile group</param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateMfgSource(ItemObject var)
         {
@@ -4859,11 +4865,8 @@ namespace OdinServices
         /// <summary>
         ///     Validates MSRP value field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="listPrice">coresponding list price</param>
-        /// <param name="prodType"></param>
-        /// <param name="type">msrp type (usd, mxn, cad)</param>
-        /// <param name="isUS">flag if usd msrp</param>
+        /// <param name="var">Item Object</param>
+        /// <param name="type">CAD, USD OR MXN</param>
         /// <returns></returns>
         public ItemError ValidateMsrp(ItemObject var, string type)
         {
@@ -4928,9 +4931,8 @@ namespace OdinServices
         /// <summary>
         ///     Validate innerpack or casepack UPC field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="packtype">innerpack or casepack</param>
-        /// <param name="prodType"></param>
+        /// <param name="value">Item Object</param>
+        /// <param name="packtype">Innerpack or Casepack</param>
         /// <returns></returns>
         public ItemError ValidatePackUpc(ItemObject var, string type)
         {
@@ -4972,9 +4974,8 @@ namespace OdinServices
         /// <summary>
         ///     Validate item List price field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="type">(usd, mxn, cad)</param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
+        /// <param name="type">USD, MXN OR CAD</param>
         /// <returns></returns>
         public ItemError ValidateListPrice(ItemObject var, string currency)
         {
@@ -5024,12 +5025,11 @@ namespace OdinServices
             }
             return null;
         }
-        
+
         /// <summary>
         ///     Validates meta description field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="hasWeb"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateMetaDescription(ItemObject var)
         {
@@ -5044,7 +5044,7 @@ namespace OdinServices
                         "Meta Description");
                 }
             }
-            if (var.HasWeb() && string.IsNullOrEmpty(var.MetaDescription))
+            if (var.HasWeb && string.IsNullOrEmpty(var.MetaDescription))
             {
                 return new ItemError(
                     var.ItemId,
@@ -5058,10 +5058,7 @@ namespace OdinServices
         /// <summary>
         ///     Validate product format field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="productGroup">item's product group</param>
-        /// <param name="productLine">item's product line</param>
-        /// <param name="productFormat">item's product format</param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateProductFormat(ItemObject var)
         {
@@ -5084,8 +5081,7 @@ namespace OdinServices
                         var.ItemRow,
                         "Value does not align with Product Line and Product Group values provided.",
                         "Product Format");
-                }
-                
+                }                
             }
             else
             {
@@ -5107,8 +5103,7 @@ namespace OdinServices
         /// <summary>
         ///     Validate product group field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateProductGroup(ItemObject var)
         {
@@ -5147,9 +5142,8 @@ namespace OdinServices
         /// <summary>
         ///     Validates the Product Id Translation Field field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="productTranslation"></param>
-        /// <param name="currentIds"></param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
+        /// <param name="currentIds">List of Ids currently in Odin</param>
         /// <returns></returns>
         public ItemError ValidateProductIdTranslation(ItemObject var, List<string> currentIds)
         {
@@ -5237,9 +5231,7 @@ namespace OdinServices
         /// <summary>
         ///     Validate Product Line field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="productGroup">item's product group</param>
-        /// <param name="productLine">item's product line</param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateProductLine(ItemObject var)
         {
@@ -5288,8 +5280,7 @@ namespace OdinServices
         /// <summary>
         ///     Validate Product Quantity field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateProductQty(ItemObject var)
         {
@@ -5310,9 +5301,7 @@ namespace OdinServices
         /// <summary>
         ///     Validate Property field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="license">Item's License</param>
-        /// <param name="hasWeb"></param>
+        /// <param name="value">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateProperty(ItemObject var)
         {
@@ -5333,10 +5322,7 @@ namespace OdinServices
         /// <summary>
         ///     Validate Pricing Group field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="listPriceCad">item's List Price CAD</param>
-        /// <param name="listPriceUsd">item's List Price USD</param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidatePricingGroup(ItemObject var)
         { 
@@ -5382,8 +5368,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates Print on Demand field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
+        /// <param name="value">Item Object</param>
         /// <returns></returns>
         public ItemError ValidatePrintOnDemand(ItemObject var)
         {
@@ -5409,8 +5394,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates Peoplesoft Status field. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="prodType"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidatePsStatus(ItemObject var)
         {
@@ -5439,7 +5423,7 @@ namespace OdinServices
         /// <summary>
         ///     Validates the SAT code value. Returns ItemError or null if no error exists.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="var">Item Object</param>
         /// <returns></returns>
         public ItemError ValidateSatCode(ItemObject var)
         {
@@ -5460,6 +5444,8 @@ namespace OdinServices
         /// <summary>
         ///     Sell On field Validation field. Returns ItemError or null if no error exists.
         /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <param name="type"> sell on type</param>
         public ItemError ValidateSellOnValue(ItemObject var, string type)
         {
             string value = string.Empty;
@@ -5525,7 +5511,6 @@ namespace OdinServices
         ///     Validate Short Description field. Returns ItemError or null if no error exists.
         /// </summary>
         /// <param name="value"></param>
-        /// <param name="hasWeb"></param>
         /// <returns></returns>
         /// 
         public ItemError ValidateShortDescription(ItemObject var)
@@ -5537,7 +5522,6 @@ namespace OdinServices
         ///     Validate Size field. Returns ItemError or null if no error exists.
         /// </summary>
         /// <param name="value"></param>
-        /// <param name="hasWeb"></param>
         /// <returns></returns>
         public ItemError ValidateSize(ItemObject var)
         {
@@ -5559,9 +5543,6 @@ namespace OdinServices
         ///     Validates Standard Cost field. Returns ItemError or null if no error exists.
         /// </summary>
         /// <param name="value"></param>
-        /// <param name="dacusd">Default Actual Cost USD</param>
-        /// <param name="daccad">Default Actual Cost CAD</param>
-        /// <param name="prodType"></param>
         /// <returns></returns>
         public ItemError ValidateStandardCost(ItemObject var)
         {
@@ -5593,8 +5574,6 @@ namespace OdinServices
         ///     Validates Stats Code field. Returns ItemError or null if no error exists.
         /// </summary>
         /// <param name="value"></param>
-        /// <param name="listPriceUS">USD List Price</param>
-        /// <param name="prodType"></param>
         /// <returns></returns>
         public ItemError ValidateStatsCode(ItemObject var)
         {
@@ -5641,7 +5620,6 @@ namespace OdinServices
         ///     Validates Tariff Code field. Returns ItemError or null if no error exists.
         /// </summary>
         /// <param name="value"></param>
-        /// <param name="prodType"></param>
         /// <returns></returns>
         public ItemError ValidateTariffCode(ItemObject var)
         {
@@ -5673,7 +5651,6 @@ namespace OdinServices
         ///     Validate the template Id
         /// </summary>
         /// <param name="value"></param>
-        /// <param name="status"></param>
         /// <returns></returns>
         public ItemError ValidateTemplateId(ItemObject var)
         {
@@ -5711,8 +5688,6 @@ namespace OdinServices
         ///     Validates the item territory field. Returns ItemError or null if no error exists.
         /// </summary>
         /// <param name="value"></param>
-        /// <param name="listPriceUS"></param>
-        /// <param name="prodType"></param>
         /// <returns></returns>
         public ItemError ValidateTerritory(ItemObject var)
         {
@@ -5756,7 +5731,6 @@ namespace OdinServices
         ///     Validates the Title field. Returns ItemError or null if no error exists.
         /// </summary>
         /// <param name="value"></param>
-        /// <param name="hasWeb"></param>
         /// <returns></returns>
         public ItemError ValidateTitle(ItemObject var)
         {
@@ -5771,7 +5745,7 @@ namespace OdinServices
                         "Title");
                 }
             }
-            if (var.HasWeb())
+            if (var.HasWeb)
             {
                 if (string.IsNullOrEmpty(var.Title))
                 {
@@ -5968,7 +5942,7 @@ namespace OdinServices
                         "Website Price");
                 }
             }
-            if(var.HasWeb())
+            if(var.HasWeb)
             {
                 if (string.IsNullOrEmpty(var.WebsitePrice))
                 {

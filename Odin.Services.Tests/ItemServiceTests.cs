@@ -543,9 +543,9 @@ namespace Odin.Services.Tests
 
             #region Assert
 
-            Assert.IsFalse(item.HasWeb());
+            Assert.IsFalse(item.HasWeb);
             Assert.AreEqual("N", item.SellOnTrends);
-            Assert.IsTrue(item2.HasWeb());
+            Assert.IsTrue(item2.HasWeb);
 
             #endregion // Assert
         }

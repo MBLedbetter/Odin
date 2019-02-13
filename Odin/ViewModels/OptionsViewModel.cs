@@ -291,6 +291,19 @@ namespace Odin.ViewModels
             }
         }
 
+        public bool EcommerceItemTypeKeywordsVisibility
+        {
+            get
+            {
+                return UserOptions.EcommerceItemTypeKeywordsVisibility;
+            }
+            set
+            {
+                UserOptions.EcommerceItemTypeKeywordsVisibility = value;
+                OnPropertyChanged("EcommerceItemTypeKeywordsVisibility");
+            }
+        }
+
         public bool EcommerceItemWeightVisibility
         {
             get
@@ -1953,6 +1966,7 @@ namespace Odin.ViewModels
             if (UserOptions.EcommerceItemHeightVisibility == false) { return false; }
             if (UserOptions.EcommerceItemLengthVisibility == false) { return false; }
             if (UserOptions.EcommerceItemNameVisibility == false) { return false; }
+            if (UserOptions.EcommerceItemTypeKeywordsVisibility == false) { return false; }
             if (UserOptions.EcommerceItemWeightVisibility == false) { return false; }
             if (UserOptions.EcommerceItemWidthVisibility == false) { return false; }
             if (UserOptions.EcommerceModelNameVisibility == false) { return false; }
@@ -2108,34 +2122,34 @@ namespace Odin.ViewModels
         {
             if (value)
             {
-                CategoryVisibility = true;
-                Category2Visibility = true;
-                Category3Visibility = true;
-                CopyrightVisibility = true;
-                InStockDateVisibility = true;
-                ItemKeywordsVisibility = true;
-                LicenseVisibility = true;
-                MetaDescriptionVisibility = true;
-                PropertyVisibility = true;
-                ShortDescriptionVisibility = true;
-                SizeVisibility = true;
-                TitleVisibility = true;
-                WebsitePriceVisibility = true;
+                this.CategoryVisibility = true;
+                this.Category2Visibility = true;
+                this.Category3Visibility = true;
+                this.CopyrightVisibility = true;
+                this.InStockDateVisibility = true;
+                this.ItemKeywordsVisibility = true;
+                this.LicenseVisibility = true;
+                this.MetaDescriptionVisibility = true;
+                this.PropertyVisibility = true;
+                this.ShortDescriptionVisibility = true;
+                this.SizeVisibility = true;
+                this.TitleVisibility = true;
+                this.WebsitePriceVisibility = true;
             }
             else
             {
-                CategoryVisibility = false;
-                Category2Visibility = false;
-                Category3Visibility = false;
-                CopyrightVisibility = false;
-                InStockDateVisibility = false;
-                ItemKeywordsVisibility = false;
-                LicenseVisibility = false;
-                MetaDescriptionVisibility = false;
-                PropertyVisibility = false;
-                ShortDescriptionVisibility = false;
-                SizeVisibility = false;
-                WebsitePriceVisibility = false;
+                this.CategoryVisibility = false;
+                this.Category2Visibility = false;
+                this.Category3Visibility = false;
+                this.CopyrightVisibility = false;
+                this.InStockDateVisibility = false;
+                this.ItemKeywordsVisibility = false;
+                this.LicenseVisibility = false;
+                this.MetaDescriptionVisibility = false;
+                this.PropertyVisibility = false;
+                this.ShortDescriptionVisibility = false;
+                this.SizeVisibility = false;
+                this.WebsitePriceVisibility = false;
             }
         }
 
@@ -2147,77 +2161,78 @@ namespace Odin.ViewModels
         {
             if (value)
             {
-                EcommerceAsinVisibility = true;
-                EcommerceBullet1Visibility = true;
-                EcommerceBullet2Visibility = true;
-                EcommerceBullet3Visibility = true;
-                EcommerceBullet4Visibility = true;
-                EcommerceBullet5Visibility = true;
-                EcommerceComponentsVisibility = true;
-                EcommerceCostVisibility = true;
-                EcommerceCountryofOriginVisibility = true;
-                EcommerceExternalIdVisibility = true;
-                EcommerceExternalIdTypeVisibility = true;
-                EcommerceItemAliasVisibility = true;
-                EcommerceItemHeightVisibility = true;
-                EcommerceItemLengthVisibility = true;
-                EcommerceItemNameVisibility = true;
-                EcommerceItemWeightVisibility = true;
-                EcommerceItemWidthVisibility = true;
-                EcommerceModelNameVisibility = true;
-                EcommercePackageHeightVisibility = true;
-                EcommercePackageLengthVisibility = true;
-                EcommercePackageWeightVisibility = true;
-                EcommercePackageWidthVisibility = true;
-                EcommercePageQtyVisibility = true;
-                EcommerceParentAsinVisibility = true;
-                EcommerceProductCategoryVisibility = true;
-                EcommerceProductDescriptionVisibility = true;
-                EcommerceProductSubcategoryVisibility = true;
-                EcommerceManufacturerNameVisibility = true;
-                EcommerceMsrpVisibility = true;
-                EcommerceSearchTermsVisibility = true;
-                EcommerceSizeVisibility = true;
-                EcommerceUpcVisibility = true;
-                WarrantyVisibility = true;
-                WarrantyCheckVisibility = true;
+                this.EcommerceAsinVisibility = true;
+                this.EcommerceBullet1Visibility = true;
+                this.EcommerceBullet2Visibility = true;
+                this.EcommerceBullet3Visibility = true;
+                this.EcommerceBullet4Visibility = true;
+                this.EcommerceBullet5Visibility = true;
+                this.EcommerceComponentsVisibility = true;
+                this.EcommerceCostVisibility = true;
+                this.EcommerceCountryofOriginVisibility = true;
+                this.EcommerceExternalIdVisibility = true;
+                this.EcommerceExternalIdTypeVisibility = true;
+                this.EcommerceItemAliasVisibility = true;
+                this.EcommerceItemHeightVisibility = true;
+                this.EcommerceItemLengthVisibility = true;
+                this.EcommerceItemNameVisibility = true;
+                this.EcommerceItemTypeKeywordsVisibility = true;
+                this.EcommerceItemWeightVisibility = true;
+                this.EcommerceItemWidthVisibility = true;
+                this.EcommerceModelNameVisibility = true;
+                this.EcommercePackageHeightVisibility = true;
+                this.EcommercePackageLengthVisibility = true;
+                this.EcommercePackageWeightVisibility = true;
+                this.EcommercePackageWidthVisibility = true;
+                this.EcommercePageQtyVisibility = true;
+                this.EcommerceParentAsinVisibility = true;
+                this.EcommerceProductCategoryVisibility = true;
+                this.EcommerceProductDescriptionVisibility = true;
+                this.EcommerceProductSubcategoryVisibility = true;
+                this.EcommerceManufacturerNameVisibility = true;
+                this.EcommerceMsrpVisibility = true;
+                this.EcommerceSearchTermsVisibility = true;
+                this.EcommerceSizeVisibility = true;
+                this.EcommerceUpcVisibility = true;
+                this.WarrantyVisibility = true;
+                this.WarrantyCheckVisibility = true;
             }
             else
             {
-                EcommerceAsinVisibility = false;
-                EcommerceBullet1Visibility = false;
-                EcommerceBullet2Visibility = false;
-                EcommerceBullet3Visibility = false;
-                EcommerceBullet4Visibility = false;
-                EcommerceBullet5Visibility = false;
-                EcommerceComponentsVisibility = false;
-                EcommerceCostVisibility = false;
-                EcommerceCountryofOriginVisibility = false;
-                EcommerceExternalIdVisibility = false;
-                EcommerceExternalIdTypeVisibility = false;
-                EcommerceItemAliasVisibility = false;
-                EcommerceItemHeightVisibility = false;
-                EcommerceItemLengthVisibility = false;
-                EcommerceItemNameVisibility = false;
-                EcommerceItemWeightVisibility = false;
-                EcommerceItemWidthVisibility = false;
-                EcommerceModelNameVisibility = false;
-                EcommercePackageHeightVisibility = false;
-                EcommercePackageLengthVisibility = false;
-                EcommercePackageWeightVisibility = false;
-                EcommercePackageWidthVisibility = false;
-                EcommercePageQtyVisibility = false;
-                EcommerceParentAsinVisibility = false;
-                EcommerceProductCategoryVisibility = false;
-                EcommerceProductDescriptionVisibility = false;
-                EcommerceProductSubcategoryVisibility = false;
-                EcommerceManufacturerNameVisibility = false;
-                EcommerceMsrpVisibility = false;
-                EcommerceSearchTermsVisibility = false;
-                EcommerceSizeVisibility = false;
-                EcommerceUpcVisibility = false;
-                WarrantyVisibility = false;
-                WarrantyCheckVisibility = false;
+                this.EcommerceAsinVisibility = false;
+                this.EcommerceBullet1Visibility = false;
+                this.EcommerceBullet2Visibility = false;
+                this.EcommerceBullet3Visibility = false;
+                this.EcommerceBullet4Visibility = false;
+                this.EcommerceBullet5Visibility = false;
+                this.EcommerceComponentsVisibility = false;
+                this.EcommerceCostVisibility = false;
+                this.EcommerceCountryofOriginVisibility = false;
+                this.EcommerceExternalIdVisibility = false;
+                this.EcommerceExternalIdTypeVisibility = false;
+                this.EcommerceItemAliasVisibility = false;
+                this.EcommerceItemHeightVisibility = false;
+                this.EcommerceItemLengthVisibility = false;
+                this.EcommerceItemNameVisibility = false;
+                this.EcommerceItemWeightVisibility = false;
+                this.EcommerceItemWidthVisibility = false;
+                this.EcommerceModelNameVisibility = false;
+                this.EcommercePackageHeightVisibility = false;
+                this.EcommercePackageLengthVisibility = false;
+                this.EcommercePackageWeightVisibility = false;
+                this.EcommercePackageWidthVisibility = false;
+                this.EcommercePageQtyVisibility = false;
+                this.EcommerceParentAsinVisibility = false;
+                this.EcommerceProductCategoryVisibility = false;
+                this.EcommerceProductDescriptionVisibility = false;
+                this.EcommerceProductSubcategoryVisibility = false;
+                this.EcommerceManufacturerNameVisibility = false;
+                this.EcommerceMsrpVisibility = false;
+                this.EcommerceSearchTermsVisibility = false;
+                this.EcommerceSizeVisibility = false;
+                this.EcommerceUpcVisibility = false;
+                this.WarrantyVisibility = false;
+                this.WarrantyCheckVisibility = false;
             }
         }
 
@@ -2229,19 +2244,19 @@ namespace Odin.ViewModels
         {
             if(value)
             {
-                ImagePath1Visibility = true;
-                ImagePath2Visibility = true;
-                ImagePath3Visibility = true;
-                ImagePath4Visibility = true;
-                ImagePath5Visibility = true;
+                this.ImagePath1Visibility = true;
+                this.ImagePath2Visibility = true;
+                this.ImagePath3Visibility = true;
+                this.ImagePath4Visibility = true;
+                this.ImagePath5Visibility = true;
             }
             else
             {
-                ImagePath1Visibility = false;
-                ImagePath2Visibility = false;
-                ImagePath3Visibility = false;
-                ImagePath4Visibility = false;
-                ImagePath5Visibility = false;
+                this.ImagePath1Visibility = false;
+                this.ImagePath2Visibility = false;
+                this.ImagePath3Visibility = false;
+                this.ImagePath4Visibility = false;
+                this.ImagePath5Visibility = false;
             }
         }
 
@@ -2253,121 +2268,121 @@ namespace Odin.ViewModels
         {
             if (value)
             {
-                AccountingGroupVisibility = true;
-                BillOfMaterialsVisibility = true;
-                CasepackHeightVisibility = true;
-                CasepackLengthVisibility = true;
-                CasepackQtyVisibility = true;
-                CasepackUpcVisibility = true;
-                CasepackWidthVisibility = true;
-                CasepackWeightVisibility = true;
-                ColorVisibility = true;
-                CountryOfOriginVisibility = true;
-                CostProfileGroupVisibility = true;
-                DefaultActualCostCadVisibility = true;
-                DefaultActualCostUsdVisibility = true;
-                DescriptionVisibility = true;
-                DirectImportVisibility = true;
-                DutyVisibility = true;
-                EanVisibility = true;
-                GpcVisibility = true;
-                HeightVisibility = true;
-                InnerpackHeightVisibility = true;
-                InnerpackLengthVisibility = true;
-                InnerpackQuantityVisibility = true;
-                InnerpackUpcVisibility = true;
-                InnerpackWidthVisibility = true;
-                InnerpackWeightVisibility = true;
-                IsbnVisibility = true;
-                ItemCategoryVisibility = true;
-                ItemFamilyVisibility = true;
-                ItemGroupVisibility = true;
-                LanguageVisibility = true;
-                LengthVisibility = true;
-                LicenseBeginDateVisibility = true;
-                ListPriceCadVisibility = true;
-                ListPriceMxnVisibility = true;
-                ListPriceUsdVisibility = true;
-                MfgSourceVisibility = true;
-                MsrpVisibility = true;
-                MsrpCadVisibility = true;
-                MsrpMxnVisibility = true;
-                PricingGroupVisibility = true;
-                PrintOnDemandVisibility = true;
-                ProductFormatVisibility = true;
-                ProductGroupVisibility = true;
-                ProductIdTranslationVisibility = true;
-                ProductLineVisibility = true;
-                ProductQtyVisibility = true;
-                PsStatusVisibility = true;
-                SatCodeVisibility = true;
-                StandardCostVisibility = true;
-                StatsCodeVisibility = true;
-                TariffCodeVisibility = true;
-                TerritoryVisibility = true;
-                UdexVisibility = true;
-                UpcVisibility = true;
-                WeightVisibility = true;
-                WidthVisibility = true;
+                this.AccountingGroupVisibility = true;
+                this.BillOfMaterialsVisibility = true;
+                this.CasepackHeightVisibility = true;
+                this.CasepackLengthVisibility = true;
+                this.CasepackQtyVisibility = true;
+                this.CasepackUpcVisibility = true;
+                this.CasepackWidthVisibility = true;
+                this.CasepackWeightVisibility = true;
+                this.ColorVisibility = true;
+                this.CountryOfOriginVisibility = true;
+                this.CostProfileGroupVisibility = true;
+                this.DefaultActualCostCadVisibility = true;
+                this.DefaultActualCostUsdVisibility = true;
+                this.DescriptionVisibility = true;
+                this.DirectImportVisibility = true;
+                this.DutyVisibility = true;
+                this.EanVisibility = true;
+                this.GpcVisibility = true;
+                this.HeightVisibility = true;
+                this.InnerpackHeightVisibility = true;
+                this.InnerpackLengthVisibility = true;
+                this.InnerpackQuantityVisibility = true;
+                this.InnerpackUpcVisibility = true;
+                this.InnerpackWidthVisibility = true;
+                this.InnerpackWeightVisibility = true;
+                this.IsbnVisibility = true;
+                this.ItemCategoryVisibility = true;
+                this.ItemFamilyVisibility = true;
+                this.ItemGroupVisibility = true;
+                this.LanguageVisibility = true;
+                this.LengthVisibility = true;
+                this.LicenseBeginDateVisibility = true;
+                this.ListPriceCadVisibility = true;
+                this.ListPriceMxnVisibility = true;
+                this.ListPriceUsdVisibility = true;
+                this.MfgSourceVisibility = true;
+                this.MsrpVisibility = true;
+                this.MsrpCadVisibility = true;
+                this.MsrpMxnVisibility = true;
+                this.PricingGroupVisibility = true;
+                this.PrintOnDemandVisibility = true;
+                this.ProductFormatVisibility = true;
+                this.ProductGroupVisibility = true;
+                this.ProductIdTranslationVisibility = true;
+                this.ProductLineVisibility = true;
+                this.ProductQtyVisibility = true;
+                this.PsStatusVisibility = true;
+                this.SatCodeVisibility = true;
+                this.StandardCostVisibility = true;
+                this.StatsCodeVisibility = true;
+                this.TariffCodeVisibility = true;
+                this.TerritoryVisibility = true;
+                this.UdexVisibility = true;
+                this.UpcVisibility = true;
+                this.WeightVisibility = true;
+                this.WidthVisibility = true;
             }
             else
             {
-                AccountingGroupVisibility = false;
-                BillOfMaterialsVisibility = false;
-                CasepackHeightVisibility = false;
-                CasepackLengthVisibility = false;
-                CasepackQtyVisibility = false;
-                CasepackUpcVisibility = false;
-                CasepackWidthVisibility = false;
-                CasepackWeightVisibility = false;
-                ColorVisibility = false;
-                CountryOfOriginVisibility = false;
-                CostProfileGroupVisibility = false;
-                DefaultActualCostCadVisibility = false;
-                DefaultActualCostUsdVisibility = false;
-                DescriptionVisibility = false;
-                DirectImportVisibility = false;
-                DutyVisibility = false;
-                EanVisibility = false;
-                GpcVisibility = false;
-                HeightVisibility = false;
-                InnerpackHeightVisibility = false;
-                InnerpackLengthVisibility = false;
-                InnerpackQuantityVisibility = false;
-                InnerpackUpcVisibility = false;
-                InnerpackWidthVisibility = false;
-                InnerpackWeightVisibility = false;
-                IsbnVisibility = false;
-                ItemCategoryVisibility = false;
-                ItemFamilyVisibility = false;
-                ItemGroupVisibility = false;
-                LanguageVisibility = false;
-                LengthVisibility = false;
-                LicenseBeginDateVisibility = false;
-                ListPriceCadVisibility = false;
-                ListPriceMxnVisibility = false;
-                ListPriceUsdVisibility = false;
-                MfgSourceVisibility = false;
-                MsrpVisibility = false;
-                MsrpCadVisibility = false;
-                MsrpMxnVisibility = false;
-                PricingGroupVisibility = false;
-                PrintOnDemandVisibility = false;
-                ProductFormatVisibility = false;
-                ProductGroupVisibility = false;
-                ProductIdTranslationVisibility = false;
-                ProductLineVisibility = false;
-                ProductQtyVisibility = false;
-                PsStatusVisibility = false;
-                SatCodeVisibility = false;
-                StandardCostVisibility = false;
-                StatsCodeVisibility = false;
-                TariffCodeVisibility = false;
-                TerritoryVisibility = false;
-                UdexVisibility = false;
-                UpcVisibility = false;
-                WeightVisibility = false;
-                WidthVisibility = false;
+                this.AccountingGroupVisibility = false;
+                this.BillOfMaterialsVisibility = false;
+                this.CasepackHeightVisibility = false;
+                this.CasepackLengthVisibility = false;
+                this.CasepackQtyVisibility = false;
+                this.CasepackUpcVisibility = false;
+                this.CasepackWidthVisibility = false;
+                this.CasepackWeightVisibility = false;
+                this.ColorVisibility = false;
+                this.CountryOfOriginVisibility = false;
+                this.CostProfileGroupVisibility = false;
+                this.DefaultActualCostCadVisibility = false;
+                this.DefaultActualCostUsdVisibility = false;
+                this.DescriptionVisibility = false;
+                this.DirectImportVisibility = false;
+                this.DutyVisibility = false;
+                this.EanVisibility = false;
+                this.GpcVisibility = false;
+                this.HeightVisibility = false;
+                this.InnerpackHeightVisibility = false;
+                this.InnerpackLengthVisibility = false;
+                this.InnerpackQuantityVisibility = false;
+                this.InnerpackUpcVisibility = false;
+                this.InnerpackWidthVisibility = false;
+                this.InnerpackWeightVisibility = false;
+                this.IsbnVisibility = false;
+                this.ItemCategoryVisibility = false;
+                this.ItemFamilyVisibility = false;
+                this.ItemGroupVisibility = false;
+                this.LanguageVisibility = false;
+                this.LengthVisibility = false;
+                this.LicenseBeginDateVisibility = false;
+                this.ListPriceCadVisibility = false;
+                this.ListPriceMxnVisibility = false;
+                this.ListPriceUsdVisibility = false;
+                this.MfgSourceVisibility = false;
+                this.MsrpVisibility = false;
+                this.MsrpCadVisibility = false;
+                this.MsrpMxnVisibility = false;
+                this.PricingGroupVisibility = false;
+                this.PrintOnDemandVisibility = false;
+                this.ProductFormatVisibility = false;
+                this.ProductGroupVisibility = false;
+                this.ProductIdTranslationVisibility = false;
+                this.ProductLineVisibility = false;
+                this.ProductQtyVisibility = false;
+                this.PsStatusVisibility = false;
+                this.SatCodeVisibility = false;
+                this.StandardCostVisibility = false;
+                this.StatsCodeVisibility = false;
+                this.TariffCodeVisibility = false;
+                this.TerritoryVisibility = false;
+                this.UdexVisibility = false;
+                this.UpcVisibility = false;
+                this.WeightVisibility = false;
+                this.WidthVisibility = false;
             }
         }
 
@@ -2379,29 +2394,29 @@ namespace Odin.ViewModels
         {
             if (value)
             {
-                SellOnAllPostersVisibility = true;
-                SellOnAmazonVisibility = true;
-                SellOnAmazonSellerCentralVisibility = true;
-                SellOnEcommerceVisibility = true;
-                SellOnFanaticsVisibility = true;
-                SellOnGuitarCenterVisibility = true;
-                SellOnHayneedleVisibility = true;
-                SellOnTargetVisibility = true;
-                SellOnTrendsVisibility = true;
-                SellOnWalmartVisibility = true;
-                SellOnWayfairVisibility = true;
+                this.SellOnAllPostersVisibility = true;
+                this.SellOnAmazonVisibility = true;
+                this.SellOnAmazonSellerCentralVisibility = true;
+                this.SellOnEcommerceVisibility = true;
+                this.SellOnFanaticsVisibility = true;
+                this.SellOnGuitarCenterVisibility = true;
+                this.SellOnHayneedleVisibility = true;
+                this.SellOnTargetVisibility = true;
+                this.SellOnTrendsVisibility = true;
+                this.SellOnWalmartVisibility = true;
+                this.SellOnWayfairVisibility = true;
             }
             else
             {
-                SellOnAllPostersVisibility = false;
-                SellOnAmazonVisibility = false;
-                SellOnAmazonSellerCentralVisibility = false;
-                SellOnGuitarCenterVisibility = false;
-                SellOnHayneedleVisibility = false;
-                SellOnTargetVisibility = false;
-                SellOnTrendsVisibility = false;
-                SellOnWalmartVisibility = false;
-                SellOnWayfairVisibility = false;
+                this.SellOnAllPostersVisibility = false;
+                this.SellOnAmazonVisibility = false;
+                this.SellOnAmazonSellerCentralVisibility = false;
+                this.SellOnGuitarCenterVisibility = false;
+                this.SellOnHayneedleVisibility = false;
+                this.SellOnTargetVisibility = false;
+                this.SellOnTrendsVisibility = false;
+                this.SellOnWalmartVisibility = false;
+                this.SellOnWayfairVisibility = false;
             }
         }
 

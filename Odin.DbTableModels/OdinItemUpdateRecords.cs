@@ -109,12 +109,12 @@ namespace Odin.DbTableModels
         ///     Gets or sets A_ITEM_NAME
         /// </summary>
         public string AItemName { get; set; }
-
+               
         /// <summary>
         ///     Gets or sets A_ITEM_TYPE_KEYWORDS
         /// </summary>
         public string AItemTypeKeywords { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets A_ITEM_WEIGHT
         /// </summary>

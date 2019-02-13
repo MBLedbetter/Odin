@@ -210,6 +210,19 @@ namespace OdinModels
         }
         private static bool _EcommerceitemNameVisibility = true;
 
+        public static bool EcommerceItemTypeKeywordsVisibility
+        {
+            get
+            {
+                return _ecommerceItemTypeKeywordsVisibility;
+            }
+            set
+            {
+                _ecommerceItemTypeKeywordsVisibility = value;
+            }
+        }
+        private static bool _ecommerceItemTypeKeywordsVisibility = true;
+
         public static bool EcommerceItemWeightVisibility
         {
             get

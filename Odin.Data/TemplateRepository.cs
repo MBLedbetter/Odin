@@ -128,6 +128,7 @@ namespace Odin.Data
                     EcommerceExternalIdType = template.EcommerceExternalIdType,
                     EcommerceItemHeight = template.EcommerceItemHeight,
                     EcommerceItemLength = template.EcommerceItemLength,
+                    EcommerceItemTypeKeywords = template.EcommerceItemTypeKeywords,
                     EcommerceItemWeight = template.EcommerceItemWeight,
                     EcommerceItemWidth = template.EcommerceItemWidth,
                     EcommerceModelName = template.EcommerceModelName,
@@ -372,6 +373,7 @@ namespace Odin.Data
                     template.EcommerceCost = (!string.IsNullOrEmpty(x.EcommerceCost)) ? x.EcommerceCost : "";
                     template.EcommerceExternalIdType = (!string.IsNullOrEmpty(x.EcommerceExternalIdType)) ? x.EcommerceExternalIdType : "";
                     template.EcommerceItemHeight = (!string.IsNullOrEmpty(x.EcommerceItemHeight)) ? x.EcommerceItemHeight : "";
+                    template.EcommerceItemTypeKeywords = (!string.IsNullOrEmpty(x.EcommerceItemTypeKeywords)) ? x.EcommerceItemTypeKeywords : "";
                     template.EcommerceItemLength = (!string.IsNullOrEmpty(x.EcommerceItemLength)) ? x.EcommerceItemLength : "";
                     template.EcommerceItemWeight = (!string.IsNullOrEmpty(x.EcommerceItemWeight)) ? x.EcommerceItemWeight : "";
                     template.EcommerceItemWidth = (!string.IsNullOrEmpty(x.EcommerceItemWidth)) ? x.EcommerceItemWidth : "";

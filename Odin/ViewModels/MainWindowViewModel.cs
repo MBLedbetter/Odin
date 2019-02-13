@@ -2466,6 +2466,23 @@ namespace Odin.ViewModels
         private string _EcommerceItemNameVisibility = "auto";
 
         /// <summary>
+        ///     Gets or sets the EcommerceItemTypeKeywordsVisibility field
+        /// </summary>
+        public string EcommerceItemTypeKeywordsVisibility
+        {
+            get
+            {
+                return _EcommerceItemTypeKeywordsVisibility;
+            }
+            set
+            {
+                _EcommerceItemTypeKeywordsVisibility = value;
+                OnPropertyChanged("EcommerceItemTypeKeywordsVisibility");
+            }
+        }
+        private string _EcommerceItemTypeKeywordsVisibility = "auto";
+
+        /// <summary>
         ///     Gets or sets the EcommerceItemWeightVisibility field
         /// </summary>
         public string EcommerceItemWeightVisibility
@@ -3490,6 +3507,7 @@ namespace Odin.ViewModels
             this.EcommerceItemHeightVisibility = (UserOptions.EcommerceItemHeightVisibility) ? "100" : "0";
             this.EcommerceItemLengthVisibility = (UserOptions.EcommerceItemLengthVisibility) ? "100" : "0";
             this.EcommerceItemNameVisibility = (UserOptions.EcommerceItemNameVisibility) ? "100" : "0";
+            this.EcommerceItemTypeKeywordsVisibility = (UserOptions.EcommerceItemTypeKeywordsVisibility) ? "100" : "0";
             this.EcommerceItemWeightVisibility = (UserOptions.EcommerceItemWeightVisibility) ? "100" : "0";
             this.EcommerceItemWidthVisibility = (UserOptions.EcommerceItemWidthVisibility) ? "100" : "0";
             this.EcommerceModelNameVisibility = (UserOptions.EcommerceModelNameVisibility) ? "100" : "0";

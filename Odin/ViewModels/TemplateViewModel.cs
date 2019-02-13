@@ -4329,7 +4329,80 @@ namespace Odin.ViewModels
             }
         }
         private string _ecommerceItemLengthToolTip = string.Empty;
-        
+
+        /// <summary>
+        ///    EcommerceItemTypeKeywords
+        /// </summary>
+        public string EcommerceItemTypeKeywords
+        {
+            get
+            {
+                if (this.TemplateObject.EcommerceItemTypeKeywords != string.Empty)
+                {
+                    return this.TemplateObject.EcommerceItemTypeKeywords;
+                }
+                else return "";
+            }
+            set
+            {
+                if (this.TemplateObject.EcommerceItemTypeKeywords != value)
+                {
+                    this.TemplateObject.EcommerceItemTypeKeywords = value;
+                    FlagError("EcommerceItemTypeKeywords");
+                    OnPropertyChanged("EcommerceItemTypeKeywords");
+                }
+            }
+        }
+        public string EcommerceItemTypeKeywordsBoxColor
+        {
+            get
+            {
+                return _ecommerceItemTypeKeywordsBoxColor;
+            }
+            set
+            {
+                _ecommerceItemTypeKeywordsBoxColor = value;
+                OnPropertyChanged("EcommerceItemTypeKeywordsBoxColor");
+            }
+        }
+        private string _ecommerceItemTypeKeywordsBoxColor = "White";
+        public string EcommerceItemTypeKeywordsError
+        {
+            get
+            {
+                return _ecommerceItemTypeKeywordsError;
+            }
+            set
+            {
+                _ecommerceItemTypeKeywordsError = value;
+                if (value != "")
+                {
+                    EcommerceItemTypeKeywordsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceItemTypeKeywordsToolTip");
+                }
+                else
+                {
+                    EcommerceItemTypeKeywordsToolTip = ReturnToolTip("EcommerceItemTypeKeywordsToolTip");
+                }
+                this.EcommerceItemTypeKeywordsBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceTabColor = CheckEcommerceTabColor();
+                OnPropertyChanged("EcommerceItemTypeKeywordsError");
+            }
+        }
+        private string _ecommerceItemTypeKeywordsError = string.Empty;
+        public string EcommerceItemTypeKeywordsToolTip
+        {
+            get
+            {
+                return _ecommerceItemTypeKeywordsToolTip;
+            }
+            set
+            {
+                this._ecommerceItemTypeKeywordsToolTip = value;
+                OnPropertyChanged("EcommerceItemTypeKeywordsToolTip");
+            }
+        }
+        private string _ecommerceItemTypeKeywordsToolTip = string.Empty;
+
         /// <summary>
         ///    EcommerceItemWeight
         /// </summary>
@@ -5735,31 +5808,32 @@ namespace Odin.ViewModels
         /// <returns>White or Tomato</returns>
         private string CheckEcommerceTabColor()
         {
-            if (EcommerceBullet1BoxColor != "White") { return "Tomato"; }
-            if (EcommerceBullet2BoxColor != "White") { return "Tomato"; }
-            if (EcommerceBullet3BoxColor != "White") { return "Tomato"; }
-            if (EcommerceBullet4BoxColor != "White") { return "Tomato"; }
-            if (EcommerceBullet5BoxColor != "White") { return "Tomato"; }
-            if (EcommerceComponentsBoxColor != "White") { return "Tomato"; }
-            if (EcommerceCostBoxColor != "White") { return "Tomato"; }
-            if (EcommerceExternalIdTypeBoxColor != "White") { return "Tomato"; }
-            if (EcommerceItemHeightBoxColor != "White") { return "Tomato"; }
-            if (EcommerceItemLengthBoxColor != "White") { return "Tomato"; }
-            if (EcommerceItemWeightBoxColor != "White") { return "Tomato"; }
-            if (EcommerceItemWidthBoxColor != "White") { return "Tomato"; }
-            if (EcommerceModelNameBoxColor != "White") { return "Tomato"; }
-            if (EcommercePackageHeightBoxColor != "White") { return "Tomato"; }
-            if (EcommercePackageLengthBoxColor != "White") { return "Tomato"; }
-            if (EcommercePackageWeightBoxColor != "White") { return "Tomato"; }
-            if (EcommercePackageWidthBoxColor != "White") { return "Tomato"; }
-            if (EcommercePageQtyBoxColor != "White") { return "Tomato"; }
-            if (EcommerceProductCategoryBoxColor != "White") { return "Tomato"; }
-            if (EcommerceProductDescriptionBoxColor != "White") { return "Tomato"; }
-            if (EcommerceProductSubcategoryBoxColor != "White") { return "Tomato"; }
-            if (EcommerceManufacturerNameBoxColor != "White") { return "Tomato"; }
-            if (EcommerceMsrpBoxColor != "White") { return "Tomato"; }
-            if (EcommerceSizeBoxColor != "White") { return "Tomato"; }
-            if (WarrantyBoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceBullet1BoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceBullet2BoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceBullet3BoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceBullet4BoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceBullet5BoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceComponentsBoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceCostBoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceExternalIdTypeBoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceItemHeightBoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceItemTypeKeywordsBoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceItemLengthBoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceItemWeightBoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceItemWidthBoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceModelNameBoxColor != "White") { return "Tomato"; }
+            if (this.EcommercePackageHeightBoxColor != "White") { return "Tomato"; }
+            if (this.EcommercePackageLengthBoxColor != "White") { return "Tomato"; }
+            if (this.EcommercePackageWeightBoxColor != "White") { return "Tomato"; }
+            if (this.EcommercePackageWidthBoxColor != "White") { return "Tomato"; }
+            if (this.EcommercePageQtyBoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceProductCategoryBoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceProductDescriptionBoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceProductSubcategoryBoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceManufacturerNameBoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceMsrpBoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceSizeBoxColor != "White") { return "Tomato"; }
+            if (this.WarrantyBoxColor != "White") { return "Tomato"; }
             return "White";
         }
 
@@ -6016,6 +6090,10 @@ namespace Odin.ViewModels
 
                 case "EcommerceItemLength":
                     this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Length")?.ReturnErrorMessage()??"";
+                    break;
+
+                case "EcommerceItemTypeKeywords":
+                    this.EcommerceItemTypeKeywordsError = ItemService.ValidateEcommerceItemTypeKeywords(TemplateObject)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "EcommerceItemWeight":
@@ -6454,6 +6532,7 @@ namespace Odin.ViewModels
                 this.EcommerceExternalIdType = template.EcommerceExternalIdType;
                 this.EcommerceItemHeight = template.EcommerceItemHeight;
                 this.EcommerceItemLength = template.EcommerceItemLength;
+                this.EcommerceItemTypeKeywords = template.EcommerceItemTypeKeywords;
                 this.EcommerceItemWeight = template.EcommerceItemWeight;
                 this.EcommerceItemWidth = template.EcommerceItemWidth;
                 this.EcommerceModelName = template.EcommerceModelName;
@@ -6669,6 +6748,7 @@ namespace Odin.ViewModels
             this.EcommerceExternalIdTypeToolTip = ReturnToolTip("EcommerceExternalIdTypeToolTip");
             this.EcommerceItemHeightToolTip = ReturnToolTip("EcommerceItemHeightToolTip");
             this.EcommerceItemLengthToolTip = ReturnToolTip("EcommerceItemLengthToolTip");
+            this.EcommerceItemTypeKeywordsToolTip = ReturnToolTip("EcommerceItemTypeKeywordsToolTip");
             this.EcommerceItemWeightToolTip = ReturnToolTip("EcommerceItemWeightToolTip");
             this.EcommerceItemWidthToolTip = ReturnToolTip("EcommerceItemWidthToolTip");
             this.EcommerceModelNameToolTip = ReturnToolTip("EcommerceModelNameToolTip");
