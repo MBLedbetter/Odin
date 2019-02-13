@@ -2698,7 +2698,7 @@
                         Background="{Binding EcommerceGenericKeywordsBoxColor}"
                         Content="Generic Keywords"
                         Grid.Column="4"
-                        Grid.Row="10"
+                        Grid.Row="8"
                         HorizontalAlignment="Left" 
                         Margin="6,4,0,6"
                         ToolTip="{Binding EcommerceGenericKeywordsToolTip}"
@@ -2706,7 +2706,7 @@
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="5"
-                        Grid.Row="10"
+                        Grid.Row="8"
                         Grid.RowSpan="4"
                         Margin="6,6,0,6"
                         MaxHeight="144"
