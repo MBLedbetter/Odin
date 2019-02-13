@@ -281,7 +281,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("CasepackHeightBoxColor");
             }
         }
-        private string _casepackHeightBoxColor = "White";
+        private string _casepackHeightBoxColor = "AliceBlue";
         public string CasepackHeightError
         {
             get
@@ -347,7 +347,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("CasepackLengthBoxColor");
             }
         }
-        private string _casepackLengthBoxColor = "White";
+        private string _casepackLengthBoxColor = "AliceBlue";
         public string CasepackLengthError
         {
             get
@@ -417,7 +417,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("CasepackQtyBoxColor");
             }
         }
-        private string _casepackQtyBoxColor = "White";
+        private string _casepackQtyBoxColor = "AliceBlue";
         public string CasepackQtyError
         {
             get
@@ -487,7 +487,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("CasepackWidthBoxColor");
             }
         }
-        private string _casepackWidthBoxColor = "White";
+        private string _casepackWidthBoxColor = "AliceBlue";
         public string CasepackWidthError
         {
             get
@@ -557,7 +557,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("CasepackWeightBoxColor");
             }
         }
-        private string _casepackWeightBoxColor = "White";
+        private string _casepackWeightBoxColor = "AliceBlue";
         public string CasepackWeightError
         {
             get
@@ -767,7 +767,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("DefaultActualCostUsdBoxColor");
             }
         }
-        private string _defaultActualCostUsdBoxColor = "White";
+        private string _defaultActualCostUsdBoxColor = "AliceBlue";
         public string DefaultActualCostUsdError
         {
             get
@@ -837,7 +837,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("DefaultActualCostCadBoxColor");
             }
         }
-        private string _defaultActualCostCadBoxColor = "White";
+        private string _defaultActualCostCadBoxColor = "AliceBlue";
         public string DefaultActualCostCadError
         {
             get
@@ -1047,7 +1047,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("HeightBoxColor");
             }
         }
-        private string _heightBoxColor = "White";
+        private string _heightBoxColor = "AliceBlue";
         public string HeightError
         {
             get
@@ -1117,7 +1117,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("InnerpackHeightBoxColor");
             }
         }
-        private string _innerpackHeightBoxColor = "White";
+        private string _innerpackHeightBoxColor = "AliceBlue";
         public string InnerpackHeightError
         {
             get
@@ -1187,7 +1187,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("InnerpackLengthBoxColor");
             }
         }
-        private string _innerpackLengthBoxColor = "White";
+        private string _innerpackLengthBoxColor = "AliceBlue";
         public string InnerpackLengthError
         {
             get
@@ -1257,7 +1257,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("InnerpackQuantityBoxColor");
             }
         }
-        private string _innerpackQuantityBoxColor = "White";
+        private string _innerpackQuantityBoxColor = "AliceBlue";
         public string InnerpackQuantityError
         {
             get
@@ -1327,7 +1327,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("InnerpackWeightBoxColor");
             }
         }
-        private string _innerpackWeightBoxColor = "White";
+        private string _innerpackWeightBoxColor = "AliceBlue";
         public string InnerpackWeightError
         {
             get
@@ -1397,7 +1397,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("InnerpackWidthBoxColor");
             }
         }
-        private string _innerpackWidthBoxColor = "White";
+        private string _innerpackWidthBoxColor = "AliceBlue";
         public string InnerpackWidthError
         {
             get
@@ -1677,7 +1677,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("LengthBoxColor");
             }
         }
-        private string _lengthBoxColor = "White";
+        private string _lengthBoxColor = "AliceBlue";
         public string LengthError
         {
             get
@@ -1750,7 +1750,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("ListPriceCadBoxColor");
             }
         }
-        private string _listPriceCadBoxColor = "White";
+        private string _listPriceCadBoxColor = "AliceBlue";
         public string ListPriceCadError
         {
             get
@@ -1823,7 +1823,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("ListPriceMxnBoxColor");
             }
         }
-        private string _listPriceMxnBoxColor = "White";
+        private string _listPriceMxnBoxColor = "AliceBlue";
         public string ListPriceMxnError
         {
             get
@@ -1896,7 +1896,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("ListPriceUsdBoxColor");
             }
         }
-        private string _listPriceUsdBoxColor = "White";
+        private string _listPriceUsdBoxColor = "AliceBlue";
         public string ListPriceUsdError
         {
             get
@@ -2042,7 +2042,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("MsrpBoxColor");
             }
         }
-        private string _msrpBoxColor = "White";
+        private string _msrpBoxColor = "AliceBlue";
         public string MsrpError
         {
             get
@@ -2115,7 +2115,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("MsrpCadBoxColor");
             }
         }
-        private string _msrpCadBoxColor = "White";
+        private string _msrpCadBoxColor = "AliceBlue";
         public string MsrpCadError
         {
             get
@@ -2188,7 +2188,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("MsrpMxnBoxColor");
             }
         }
-        private string _msrpMxnBoxColor = "White";
+        private string _msrpMxnBoxColor = "AliceBlue";
         public string MsrpMxnError
         {
             get
@@ -3635,7 +3635,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceBullet1BoxColor");
             }
         }
-        private string _ecommercebullet1BoxColor = "White";
+        private string _ecommercebullet1BoxColor = "AliceBlue";
         public string EcommerceBullet1Error
         {
             get
@@ -3708,7 +3708,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceBullet2BoxColor");
             }
         }
-        private string _ecommercebullet2BoxColor = "White";
+        private string _ecommercebullet2BoxColor = "AliceBlue";
         public string EcommerceBullet2Error
         {
             get
@@ -3781,7 +3781,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceBullet3BoxColor");
             }
         }
-        private string _ecommercebullet3BoxColor = "White";
+        private string _ecommercebullet3BoxColor = "AliceBlue";
         public string EcommerceBullet3Error
         {
             get
@@ -3854,7 +3854,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceBullet4BoxColor");
             }
         }
-        private string _ecommercebullet4BoxColor = "White";
+        private string _ecommercebullet4BoxColor = "AliceBlue";
         public string EcommerceBullet4Error
         {
             get
@@ -3927,7 +3927,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceBullet5BoxColor");
             }
         }
-        private string _ecommercebullet5BoxColor = "White";
+        private string _ecommercebullet5BoxColor = "AliceBlue";
         public string EcommerceBullet5Error
         {
             get
@@ -4219,7 +4219,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceItemHeightBoxColor");
             }
         }
-        private string _EcommerceItemHeightBoxColor = "White";
+        private string _EcommerceItemHeightBoxColor = "AliceBlue";
         public string EcommerceItemHeightError
         {
             get
@@ -4292,7 +4292,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceItemLengthBoxColor");
             }
         }
-        private string _ecommerceItemLengthBoxColor = "White";
+        private string _ecommerceItemLengthBoxColor = "AliceBlue";
         public string EcommerceItemLengthError
         {
             get
@@ -4438,7 +4438,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceItemWeightBoxColor");
             }
         }
-        private string _ecommerceItemWeightBoxColor = "White";
+        private string _ecommerceItemWeightBoxColor = "AliceBlue";
         public string EcommerceItemWeightError
         {
             get
@@ -4511,7 +4511,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommerceItemWidthBoxColor");
             }
         }
-        private string _ecommerceItemWidthBoxColor = "White";
+        private string _ecommerceItemWidthBoxColor = "AliceBlue";
         public string EcommerceItemWidthError
         {
             get
@@ -4657,7 +4657,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommercePackageHeightBoxColor");
             }
         }
-        private string _ecommercePackageHeightBoxColor = "White";
+        private string _ecommercePackageHeightBoxColor = "AliceBlue";
         public string EcommercePackageHeightError
         {
             get
@@ -4730,7 +4730,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommercePackageLengthBoxColor");
             }
         }
-        private string _ecommercePackageLengthBoxColor = "White";
+        private string _ecommercePackageLengthBoxColor = "AliceBlue";
         public string EcommercePackageLengthError
         {
             get
@@ -4803,7 +4803,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommercePackageWeightBoxColor");
             }
         }
-        private string _ecommercePackageWeightBoxColor = "White";
+        private string _ecommercePackageWeightBoxColor = "AliceBlue";
         public string EcommercePackageWeightError
         {
             get
@@ -4876,7 +4876,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("EcommercePackageWidthBoxColor");
             }
         }
-        private string _ecommercePackageWidthBoxColor = "White";
+        private string _ecommercePackageWidthBoxColor = "AliceBlue";
         public string EcommercePackageWidthError
         {
             get
@@ -5808,32 +5808,32 @@ namespace Odin.ViewModels
         /// <returns>White or Tomato</returns>
         private string CheckEcommerceTabColor()
         {
-            if (this.EcommerceBullet1BoxColor != "White") { return "Tomato"; }
-            if (this.EcommerceBullet2BoxColor != "White") { return "Tomato"; }
-            if (this.EcommerceBullet3BoxColor != "White") { return "Tomato"; }
-            if (this.EcommerceBullet4BoxColor != "White") { return "Tomato"; }
-            if (this.EcommerceBullet5BoxColor != "White") { return "Tomato"; }
-            if (this.EcommerceComponentsBoxColor != "White") { return "Tomato"; }
-            if (this.EcommerceCostBoxColor != "White") { return "Tomato"; }
-            if (this.EcommerceExternalIdTypeBoxColor != "White") { return "Tomato"; }
-            if (this.EcommerceItemHeightBoxColor != "White") { return "Tomato"; }
-            if (this.EcommerceItemTypeKeywordsBoxColor != "White") { return "Tomato"; }
-            if (this.EcommerceItemLengthBoxColor != "White") { return "Tomato"; }
-            if (this.EcommerceItemWeightBoxColor != "White") { return "Tomato"; }
-            if (this.EcommerceItemWidthBoxColor != "White") { return "Tomato"; }
-            if (this.EcommerceModelNameBoxColor != "White") { return "Tomato"; }
-            if (this.EcommercePackageHeightBoxColor != "White") { return "Tomato"; }
-            if (this.EcommercePackageLengthBoxColor != "White") { return "Tomato"; }
-            if (this.EcommercePackageWeightBoxColor != "White") { return "Tomato"; }
-            if (this.EcommercePackageWidthBoxColor != "White") { return "Tomato"; }
-            if (this.EcommercePageQtyBoxColor != "White") { return "Tomato"; }
-            if (this.EcommerceProductCategoryBoxColor != "White") { return "Tomato"; }
-            if (this.EcommerceProductDescriptionBoxColor != "White") { return "Tomato"; }
-            if (this.EcommerceProductSubcategoryBoxColor != "White") { return "Tomato"; }
-            if (this.EcommerceManufacturerNameBoxColor != "White") { return "Tomato"; }
-            if (this.EcommerceMsrpBoxColor != "White") { return "Tomato"; }
-            if (this.EcommerceSizeBoxColor != "White") { return "Tomato"; }
-            if (this.WarrantyBoxColor != "White") { return "Tomato"; }
+            if (this.EcommerceBullet1BoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceBullet2BoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceBullet3BoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceBullet4BoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceBullet5BoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceComponentsBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceCostBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceExternalIdTypeBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceItemHeightBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceItemTypeKeywordsBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceItemLengthBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceItemWeightBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceItemWidthBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceModelNameBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommercePackageHeightBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommercePackageLengthBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommercePackageWeightBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommercePackageWidthBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommercePageQtyBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceProductCategoryBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceProductDescriptionBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceProductSubcategoryBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceManufacturerNameBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceMsrpBoxColor == "Tomato") { return "Tomato"; }
+            if (this.EcommerceSizeBoxColor == "Tomato") { return "Tomato"; }
+            if (this.WarrantyBoxColor == "Tomato") { return "Tomato"; }
             return "White";
         }
 
@@ -5899,6 +5899,7 @@ namespace Odin.ViewModels
             if (!string.IsNullOrEmpty(this.EcommerceExternalIdType)) { return false; }
             if (!string.IsNullOrEmpty(this.EcommerceItemHeight)) { return false; }
             if (!string.IsNullOrEmpty(this.EcommerceItemLength)) { return false; }
+            if (!string.IsNullOrEmpty(this.EcommerceItemTypeKeywords)) { return false; }
             if (!string.IsNullOrEmpty(this.EcommerceItemWeight)) { return false; }
             if (!string.IsNullOrEmpty(this.EcommerceItemWidth)) { return false; }
             if (!string.IsNullOrEmpty(this.EcommerceModelName)) { return false; }
@@ -5924,46 +5925,46 @@ namespace Odin.ViewModels
         /// <returns>White or Tomato</returns>
         private string CheckItemInfoTabColor()
         {
-            if (AccountingGroupBoxColor != "White") { return "Tomato"; }
-            if (CasepackHeightBoxColor != "White") { return "Tomato"; }
-            if (CasepackLengthBoxColor != "White") { return "Tomato"; }
-            if (CasepackQtyBoxColor != "White") { return "Tomato"; }
-            if (CasepackWidthBoxColor != "White") { return "Tomato"; }
-            if (CasepackWeightBoxColor != "White") { return "Tomato"; }
-            if (CostProfileGroupBoxColor != "White") { return "Tomato"; }
-            if (CountryOfOriginBoxColor != "White") { return "Tomato"; }
-            if (DefaultActualCostUsdBoxColor != "White") { return "Tomato"; }
-            if (DefaultActualCostCadBoxColor != "White") { return "Tomato"; }
-            if (DutyBoxColor != "White") { return "Tomato"; }
-            if (GpcBoxColor != "White") { return "Tomato"; }
-            if (HeightBoxColor != "White") { return "Tomato"; }
-            if (InnerpackHeightBoxColor != "White") { return "Tomato"; }
-            if (InnerpackLengthBoxColor != "White") { return "Tomato"; }
-            if (InnerpackQuantityBoxColor != "White") { return "Tomato"; }
-            if (InnerpackWeightBoxColor != "White") { return "Tomato"; }
-            if (InnerpackWidthBoxColor != "White") { return "Tomato"; }
-            if (ItemCategoryBoxColor != "White") { return "Tomato"; }
-            if (ItemFamilyBoxColor != "White") { return "Tomato"; }
-            if (ItemGroupBoxColor != "White") { return "Tomato"; }
-            if (LengthBoxColor != "White") { return "Tomato"; }
-            if (ListPriceCadBoxColor != "White") { return "Tomato"; }
-            if (ListPriceMxnBoxColor != "White") { return "Tomato"; }
-            if (ListPriceUsdBoxColor != "White") { return "Tomato"; }
-            if (MfgSourceBoxColor != "White") { return "Tomato"; }
-            if (MsrpBoxColor != "White") { return "Tomato"; }
-            if (MsrpCadBoxColor != "White") { return "Tomato"; }
-            if (MsrpMxnBoxColor != "White") { return "Tomato"; }
-            if (PricingGroupBoxColor != "White") { return "Tomato"; }
-            if (ProductFormatBoxColor != "White") { return "Tomato"; }
-            if (ProductGroupBoxColor != "White") { return "Tomato"; }
-            if (ProductLineBoxColor != "White") { return "Tomato"; }
-            if (ProductQtyBoxColor != "White") { return "Tomato"; }
-            if (PsStatusBoxColor != "White") { return "Tomato"; }
-            if (SatCodeBoxColor != "White") { return "Tomato"; }
-            if (TariffCodeBoxColor != "White") { return "Tomato"; }
-            if (UdexBoxColor != "White") { return "Tomato"; }
-            if (WeightBoxColor != "White") { return "Tomato"; }
-            if (WidthBoxColor != "White") { return "Tomato"; }
+            if (AccountingGroupBoxColor == "Tomato") { return "Tomato"; }
+            if (CasepackHeightBoxColor == "Tomato") { return "Tomato"; }
+            if (CasepackLengthBoxColor == "Tomato") { return "Tomato"; }
+            if (CasepackQtyBoxColor == "Tomato") { return "Tomato"; }
+            if (CasepackWidthBoxColor == "Tomato") { return "Tomato"; }
+            if (CasepackWeightBoxColor == "Tomato") { return "Tomato"; }
+            if (CostProfileGroupBoxColor == "Tomato") { return "Tomato"; }
+            if (CountryOfOriginBoxColor == "Tomato") { return "Tomato"; }
+            if (DefaultActualCostUsdBoxColor == "Tomato") { return "Tomato"; }
+            if (DefaultActualCostCadBoxColor == "Tomato") { return "Tomato"; }
+            if (DutyBoxColor == "Tomato") { return "Tomato"; }
+            if (GpcBoxColor == "Tomato") { return "Tomato"; }
+            if (HeightBoxColor == "Tomato") { return "Tomato"; }
+            if (InnerpackHeightBoxColor == "Tomato") { return "Tomato"; }
+            if (InnerpackLengthBoxColor == "Tomato") { return "Tomato"; }
+            if (InnerpackQuantityBoxColor == "Tomato") { return "Tomato"; }
+            if (InnerpackWeightBoxColor == "Tomato") { return "Tomato"; }
+            if (InnerpackWidthBoxColor == "Tomato") { return "Tomato"; }
+            if (ItemCategoryBoxColor == "Tomato") { return "Tomato"; }
+            if (ItemFamilyBoxColor == "Tomato") { return "Tomato"; }
+            if (ItemGroupBoxColor == "Tomato") { return "Tomato"; }
+            if (LengthBoxColor == "Tomato") { return "Tomato"; }
+            if (ListPriceCadBoxColor == "Tomato") { return "Tomato"; }
+            if (ListPriceMxnBoxColor == "Tomato") { return "Tomato"; }
+            if (ListPriceUsdBoxColor == "Tomato") { return "Tomato"; }
+            if (MfgSourceBoxColor == "Tomato") { return "Tomato"; }
+            if (MsrpBoxColor == "Tomato") { return "Tomato"; }
+            if (MsrpCadBoxColor == "Tomato") { return "Tomato"; }
+            if (MsrpMxnBoxColor == "Tomato") { return "Tomato"; }
+            if (PricingGroupBoxColor == "Tomato") { return "Tomato"; }
+            if (ProductFormatBoxColor == "Tomato") { return "Tomato"; }
+            if (ProductGroupBoxColor == "Tomato") { return "Tomato"; }
+            if (ProductLineBoxColor == "Tomato") { return "Tomato"; }
+            if (ProductQtyBoxColor == "Tomato") { return "Tomato"; }
+            if (PsStatusBoxColor == "Tomato") { return "Tomato"; }
+            if (SatCodeBoxColor == "Tomato") { return "Tomato"; }
+            if (TariffCodeBoxColor == "Tomato") { return "Tomato"; }
+            if (UdexBoxColor == "Tomato") { return "Tomato"; }
+            if (WeightBoxColor == "Tomato") { return "Tomato"; }
+            if (WidthBoxColor == "Tomato") { return "Tomato"; }
             return "White";
         }
 
@@ -5973,13 +5974,13 @@ namespace Odin.ViewModels
         /// <returns></returns>
         private string CheckWebInfoTabColor()
         {
-            if (CopyrightBoxColor != "White") { return "Tomato"; }
-            if (CategoryBoxColor != "White") { return "Tomato"; }
-            if (Category2BoxColor != "White") { return "Tomato"; }
-            if (Category3BoxColor != "White") { return "Tomato"; }
-            if (MetaDescriptionBoxColor != "White") { return "Tomato"; }
-            if (SizeBoxColor != "White") { return "Tomato"; }
-            if (WebsitePriceBoxColor != "White") { return "Tomato"; }
+            if (CopyrightBoxColor == "Tomato") { return "Tomato"; }
+            if (CategoryBoxColor == "Tomato") { return "Tomato"; }
+            if (Category2BoxColor == "Tomato") { return "Tomato"; }
+            if (Category3BoxColor == "Tomato") { return "Tomato"; }
+            if (MetaDescriptionBoxColor == "Tomato") { return "Tomato"; }
+            if (SizeBoxColor == "Tomato") { return "Tomato"; }
+            if (WebsitePriceBoxColor == "Tomato") { return "Tomato"; }
             return "White";
         }
 
