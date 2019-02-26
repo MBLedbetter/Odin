@@ -6337,6 +6337,7 @@ namespace Odin.ViewModels
             this.EcommerceExternalIdType = template.EcommerceExternalIdType;
             this.EcommerceItemHeight = template.EcommerceItemHeight;
             this.EcommerceItemLength = template.EcommerceItemLength;
+            this.EcommerceItemTypeKeywords = template.EcommerceItemTypeKeywords;
             this.EcommerceItemWeight = template.EcommerceItemWeight;
             this.EcommerceItemWidth = template.EcommerceItemWidth;
             this.EcommerceModelName = template.EcommerceModelName;
@@ -6432,6 +6433,7 @@ namespace Odin.ViewModels
                 this.EcommerceExternalIdType = template.EcommerceExternalIdType;
                 this.EcommerceItemHeight = template.EcommerceItemHeight;
                 this.EcommerceItemLength = template.EcommerceItemLength;
+                this.EcommerceItemTypeKeywords = template.EcommerceItemTypeKeywords;
                 this.EcommerceItemWeight = template.EcommerceItemWeight;
                 this.EcommerceItemWidth = template.EcommerceItemWidth;
                 this.EcommerceModelName = template.EcommerceModelName;

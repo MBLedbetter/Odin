@@ -358,6 +358,29 @@ namespace OdinModels
         }
 
         /// <summary>
+        ///     Rounds values to 2 decimal places
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public static string RoundValue2Dec(string i)
+        {
+            if (string.IsNullOrEmpty(i)) { return ""; }
+            string num = "";
+            string dec = "";
+            if (i.Contains('.'))
+            {
+                string[] split = i.Split('.');
+                num = split[0];
+                if (split[1].Count() > 2)
+                {
+                    dec = split[1].Substring(0, 2);
+                    return num + "." + dec;
+                }
+            }
+            return i;
+        }
+
+        /// <summary>
         ///     Rounds values to 4 decimal places
         /// </summary>
         /// <param name="i"></param>

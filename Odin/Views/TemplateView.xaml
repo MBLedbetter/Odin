@@ -8,7 +8,8 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1015" />
+            <ColumnDefinition Width="453.5" />
+            <ColumnDefinition Width="561.5"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition
@@ -50,11 +51,11 @@
             ToolTip="{Binding TemplateCloneToolTip}"
             Visibility="{Binding UpdateVisibility}"
             VerticalAlignment="Center"
-            Width="113"  />
+            Width="113" Grid.ColumnSpan="2"  />
         <ComboBox
             HorizontalAlignment="Left"
             IsEnabled="{Binding BlockInfo}"
-            Margin="6,8,0,6"
+            Margin="146,7,0,8"
             Height="25"
             Grid.Row="0"
             Grid.Column="{Binding TemplateListColumn}"
@@ -66,7 +67,7 @@
             Grid.RowSpan="2"
             Height="698" 
             VerticalAlignment="Top" 
-            Margin="0,38,0,0">
+            Margin="0,38,0,0" Grid.ColumnSpan="2">
             <TabItem
                 Background="{Binding ItemInfoTabColor}"
                 Header="      Item Info      ">
@@ -158,7 +159,7 @@
                         Grid.Row="1"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Width="325" Grid.ColumnSpan="2" Height="217"  Grid.RowSpan="7" Margin="0,6,0,36"  />
+                        Width="325" Grid.ColumnSpan="2" Height="214"  Grid.RowSpan="6" Margin="0,6,0,2"  />
                     <!-- Casepack Height -->
                     <Label
                         Background="{Binding CasepackHeightBoxColor}"
@@ -307,7 +308,7 @@
                         Grid.Row="8"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Width="325" Grid.ColumnSpan="2" Height="111"  Grid.RowSpan="3"  />
+                        Width="325" Grid.ColumnSpan="2" Height="103"  Grid.RowSpan="3" Margin="0,6,0,2"  />
                     <!-- Default Actual Cost CAD -->
                     <Label
                         Background="{Binding DefaultActualCostCadBoxColor}"
@@ -555,7 +556,7 @@
                         Grid.Row="7"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Width="326" Grid.ColumnSpan="2" Height="186"  Grid.RowSpan="6" Margin="0,0,0,36"  />
+                        Width="326" Grid.ColumnSpan="2" Height="177"  Grid.RowSpan="5" Margin="0,6,0,2"  />
                     <!-- Item Height -->
                     <Label
                         Content="Item Height"
@@ -700,7 +701,7 @@
                         Grid.Row="14"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Width="326" Grid.ColumnSpan="2" Height="148"  Grid.RowSpan="4"  />
+                        Width="326" Grid.ColumnSpan="2" Height="136"  Grid.RowSpan="4" Margin="0,10,0,2"  />
                     <!-- List Price CAD -->
                     <Label
                         Width="134"
@@ -803,7 +804,7 @@
                         Grid.Row="1"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Width="330" Grid.ColumnSpan="2" Height="148"  Grid.RowSpan="4"  />
+                        Width="330" Grid.ColumnSpan="2" Height="140"  Grid.RowSpan="4" Margin="0,6,0,2"  />
                     <!-- Msrp -->
                     <Label
                         Background="{Binding MsrpBoxColor}"
@@ -1285,7 +1286,7 @@
                         Grid.Row="0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Width="288" Grid.ColumnSpan="2" Height="407"  Grid.RowSpan="11"  />
+                        Width="288" Grid.ColumnSpan="2" Height="402"  Grid.RowSpan="11" Margin="0,3,0,2"  />
                     <!-- Bullet 1-->
                     <Label
                         Background="{Binding EcommerceBullet1BoxColor}"
@@ -1459,7 +1460,7 @@
                         Grid.Row="0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Width="307" Grid.ColumnSpan="2" Height="185"  Grid.RowSpan="5"  />
+                        Width="307" Grid.ColumnSpan="2" Height="181"  Grid.RowSpan="5" Margin="0,3,0,1"  />
                     <!-- Item Height -->
                     <Label
                         Background="{Binding EcommerceItemHeightBoxColor}"
@@ -1586,7 +1587,7 @@
                         Grid.Row="7"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Width="307" Grid.ColumnSpan="2" Height="185"  Grid.RowSpan="5"  />
+                        Width="307" Grid.ColumnSpan="2" Height="182"  Grid.RowSpan="5" Margin="0,2,0,1"  />
                     <!-- Package Height -->
                     <Label
                         Background="{Binding EcommercePackageHeightBoxColor}"
@@ -1827,7 +1828,7 @@
             Grid.Row="2"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Bottom"
-            Orientation="Horizontal">
+            Orientation="Horizontal" Grid.ColumnSpan="2">
             <Button
                 Height="25"
                 Margin="10"
