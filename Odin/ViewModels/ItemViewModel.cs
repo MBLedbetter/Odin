@@ -50,13 +50,41 @@ namespace Odin.ViewModels
         #region Odin Properties
                               
         public bool BlockInfo { get; set; }
-        
-        public bool IsNew { get; set; }
+
+        public string IsEnabled
+        {
+            get
+            {
+                if(this.Status == "Add")
+                {
+                    return "True";
+                }
+                else
+                {
+                    return "False";
+                }
+            }
+        }
 
         /// <summary>
         ///     List of itemIds in mainwindow
         /// </summary>
         public List<string> ItemIds { get; set; }
+
+        /// <summary>
+        ///     Gets the permissionAdminVisibility. Shows or web override fields.
+        /// </summary>
+        public string PermissionAdminVisibility
+        {
+            get
+            {
+                if (GlobalData.UserPermissions.Contains("ADMIN_CONTROLS"))
+                {
+                    return "Visible";
+                }
+                else return "Hidden";
+            }
+        }
 
         /// <summary>
         ///  Check to distinguish between items and kits 1 == item & 0 == kit
@@ -8499,7 +8527,218 @@ namespace Odin.ViewModels
         private string _EcommerceUpcToolTip = string.Empty;
 
         #endregion // Ecommerce Properties
+
+        #region Override Properties
         
+        /// <summary>
+        ///     Gets or sets the item keywords
+        /// </summary>
+        public string ItemKeywordsOverride
+        {
+            get
+            {
+                return this.ItemViewModelItem.ItemKeywordsOverride;
+            }
+            set
+            {
+                if (this.ItemViewModelItem.ItemKeywordsOverride != value)
+                {
+                    this.ItemViewModelItem.ItemKeywordsOverride = value;
+                    FlagError("ItemKeywordsOverride");
+                    OnPropertyChanged("ItemKeywordsOverride");
+                }
+            }
+        }
+        public string ItemKeywordsOverrideBoxColor
+        {
+            get
+            {
+                return _ItemKeywordsOverrideBoxColor;
+            }
+            set
+            {
+                _ItemKeywordsOverrideBoxColor = value;
+                OnPropertyChanged("ItemKeywordsOverrideBoxColor");
+            }
+        }
+        private string _ItemKeywordsOverrideBoxColor = "White";
+        public string ItemKeywordsOverrideError
+        {
+            get
+            {
+                return _ItemKeywordsOverrideError;
+            }
+            set
+            {
+                _ItemKeywordsOverrideError = value;
+                if (value != "")
+                {
+                    ItemKeywordsOverrideToolTip = "Error: " + value + "\n\n" + ReturnToolTip("ItemKeywordsOverride");
+                }
+                else
+                {
+                    ItemKeywordsOverrideToolTip = ReturnToolTip("ItemKeywordsOverride");
+                }
+                this.ItemKeywordsOverrideBoxColor = (value == "") ? "White" : "Tomato";
+                this.TabColorWebInfo = CheckWebInfoTabColor();
+                OnPropertyChanged("ItemKeywordsOverrideError");
+            }
+        }
+        private string _ItemKeywordsOverrideError = string.Empty;
+        public string ItemKeywordsOverrideToolTip
+        {
+            get
+            {
+                return _ItemKeywordsOverrideErrorToolTip;
+            }
+            set
+            {
+                this._ItemKeywordsOverrideErrorToolTip = value;
+                OnPropertyChanged("ItemKeywordsOverrideToolTip");
+            }
+        }
+        private string _ItemKeywordsOverrideErrorToolTip = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the TitleOverride
+        /// </summary>
+        public string TitleOverride
+        {
+            get
+            {
+                return this.ItemViewModelItem.TitleOverride;
+            }
+            set
+            {
+                if (this.ItemViewModelItem.TitleOverride != value)
+                {
+                    this.ItemViewModelItem.TitleOverride = value;
+                    FlagError("TitleOverride");
+                    OnPropertyChanged("TitleOverride");
+                }
+            }
+        }
+        public string TitleOverrideBoxColor
+        {
+            get
+            {
+                return _TitleOverrideBoxColor;
+            }
+            set
+            {
+                _TitleOverrideBoxColor = value;
+                OnPropertyChanged("TitleOverrideBoxColor");
+            }
+        }
+        private string _TitleOverrideBoxColor = "White";
+        public string TitleOverrideError
+        {
+            get
+            {
+                return _TitleOverrideError;
+            }
+            set
+            {
+                _TitleOverrideError = value;
+                if (value != "")
+                {
+                    TitleOverrideToolTip = "Error: " + value + "\n\n" + ReturnToolTip("TitleOverride");
+                }
+                else
+                {
+                    TitleOverrideToolTip = ReturnToolTip("TitleOverride");
+                }
+                this.TitleOverrideBoxColor = (value == "") ? "White" : "Tomato";
+                this.TabColorWebInfo = CheckWebInfoTabColor();
+                OnPropertyChanged("TitleOverrideError");
+            }
+        }
+        private string _TitleOverrideError = string.Empty;
+        public string TitleOverrideToolTip
+        {
+            get
+            {
+                return _TitleOverrideToolTip;
+            }
+            set
+            {
+                this._TitleOverrideToolTip = value;
+                OnPropertyChanged("TitleOverrideToolTip");
+            }
+        }
+        private string _TitleOverrideToolTip = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the WebsitePriceOverride
+        /// </summary>
+        public string WebsitePriceOverride
+        {
+            get
+            {
+                return this.ItemViewModelItem.WebsitePriceOverride;
+            }
+            set
+            {
+                if (this.ItemViewModelItem.WebsitePriceOverride != value)
+                {
+                    this.ItemViewModelItem.WebsitePriceOverride = value;
+                    FlagError("WebsitePriceOverride");
+                    OnPropertyChanged("WebsitePriceOverride");
+                }
+            }
+        }
+        public string WebsitePriceOverrideBoxColor
+        {
+            get
+            {
+                return _WebsitePriceOverrideBoxColor;
+            }
+            set
+            {
+                _WebsitePriceOverrideBoxColor = value;
+                OnPropertyChanged("WebsitePriceOverrideBoxColor");
+            }
+        }
+        private string _WebsitePriceOverrideBoxColor = "White";
+        public string WebsitePriceOverrideError
+        {
+            get
+            {
+                return _WebsitePriceOverrideError;
+            }
+            set
+            {
+                _WebsitePriceOverrideError = value;
+                if (value != "")
+                {
+                    WebsitePriceOverrideToolTip = "Error: " + value + "\n\n" + ReturnToolTip("WebsitePriceOverride");
+                }
+                else
+                {
+                    WebsitePriceOverrideToolTip = ReturnToolTip("WebsitePriceOverride");
+                }
+                this.WebsitePriceOverrideBoxColor = (value == "") ? "White" : "Tomato";
+                this.TabColorWebInfo = CheckWebInfoTabColor();
+                OnPropertyChanged("WebsitePriceOverrideError");
+            }
+        }
+        private string _WebsitePriceOverrideError = string.Empty;
+        public string WebsitePriceOverrideToolTip
+        {
+            get
+            {
+                return _WebsitePriceOverrideToolTip;
+            }
+            set
+            {
+                this._WebsitePriceOverrideToolTip = value;
+                OnPropertyChanged("WebsitePriceOverrideToolTip");
+            }
+        }
+        private string _WebsitePriceOverrideToolTip = string.Empty;
+
+        #endregion // B2B Properties
+
         #region ComboBox Properties
 
         public List<string> AccountingGroupsList
@@ -10158,21 +10397,7 @@ namespace Odin.ViewModels
                 ErrorLog.LogError("Odin could not load 1 or more image files.", ex.ToString());
             }
         }
-
-        /// <summary>
-        ///     Sets 'IsNew' field
-        /// </summary>
-        /// <param name="value"></param>
-        private void SetIsUpdate(string value)
-        {
-            if (value == "Add")
-            {
-                this.IsNew = true;
-            }
-            else
-                this.IsNew = false;
-        }
-
+        
         public void SetStatsCodes()
         {
             foreach(KeyValuePair<string,string> pair in GlobalData.StatsCodes)
@@ -10404,14 +10629,12 @@ namespace Odin.ViewModels
         /// <param name="itemService"></param>
         public ItemViewModel(ItemObject itemObj, ItemService itemService, List<string> itemIds, ObservableCollection<ItemError> errors = null)
         {
-            if (itemService == null) { throw new ArgumentNullException("itemService"); }    
             this.ItemService = itemService ?? throw new ArgumentNullException("itemService");
             this.ItemIds = itemIds;
             this.ItemViewModelItem = (itemObj.Clone() as ItemObject);
             SetOptions(itemObj);
             SetToolTips();
             SetImages();
-            SetIsUpdate(itemObj.Status);            
             this.BlockInfo = true;
             if (errors != null)
             {

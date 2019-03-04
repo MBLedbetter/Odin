@@ -100,7 +100,10 @@ namespace Odin.Data
                         InsertPurchItemAttr(item, context);
                         InsertPvItmCategory(item, context);
                         InsertUomTypeInvAll(item, context);
-
+                        if (item.ItemOverrideUpdate)
+                        {
+                            InsertOdinItemOverrideInfo(item, context);
+                        }
                         if (item.ProductIdTranslation.Count > 0)
                         {
                             InsertProductIdTranslationAll(item, context);
@@ -124,6 +127,7 @@ namespace Odin.Data
                         if (item.InvItemsUpdate) { UpdateInvItems(item, context); }
                         if (item.ItemAttribExUpdate) { UpdateItemAttribEx(item, context); }
                         if (item.ItemLanguageUpdate) { InsertItemLanguageAll(item); }
+                        if (item.ItemOverrideUpdate) { UpdateOdinItemOverrideInfo(item, context); }
                         if (item.ItemTerritoryUpdate) { InsertItemTerritoryAll(item); }
                         if (item.ItemWebInfoUpdate) { UpdateItemWebInfo(item, context); }
                         if (item.MasterItemUpdate) { UpdateMasterItemTbl(item, context); }
@@ -845,6 +849,23 @@ namespace Odin.Data
                     Territory = "",
                     Warranty = item.Warranty,
                     WarrantyCheck = item.WarrantyCheck
+                });
+            }
+        }
+
+        /// <summary>
+        ///     Insert item info  into ODIN_ITEM_OVERRIDE_INFO
+        /// </summary>
+        public void InsertOdinItemOverrideInfo(ItemObject item, OdinContext context)
+        {
+            if (!context.OdinItemOverrideInfo.Any(o => o.ItemId == item.ItemId))
+            {
+                context.OdinItemOverrideInfo.Add(new OdinItemOverrideInfo
+                {
+                    ItemId = item.ItemId,
+                    ItemKeywords = item.ItemKeywordsOverride,
+                    Title = item.TitleOverride,
+                    WebsitePrice = item.WebsitePriceOverride,
                 });
             }
         }
@@ -2279,6 +2300,28 @@ namespace Odin.Data
                 itemAttribEx.TranslateEdiProd = item.ReturnTranslateEdiProd();
                 itemAttribEx.WebsitePrice = DbUtil.ToDecimal(item.WebsitePrice);
 
+            }
+        }
+
+        /// <summary>
+        ///     Updates the values in ODIN_ITEM_OVERRIDE_INFO
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public void UpdateOdinItemOverrideInfo(ItemObject item, OdinContext context)
+        {
+            OdinItemOverrideInfo odinItemOverrideInfo = context.OdinItemOverrideInfo.SingleOrDefault(o => o.ItemId == item.ItemId);
+
+            if (odinItemOverrideInfo != null)
+            {
+                odinItemOverrideInfo.ItemKeywords = item.ItemKeywordsOverride;
+                odinItemOverrideInfo.Title = item.TitleOverride;
+                odinItemOverrideInfo.WebsitePrice = item.WebsitePriceOverride;
+            }
+            else
+            {
+                InsertOdinItemOverrideInfo(item, context);
             }
         }
 

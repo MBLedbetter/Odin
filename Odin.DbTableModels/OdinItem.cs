@@ -415,6 +415,11 @@ namespace Odin.DbTableModels
         public string ItemKeywords { get; set; }
 
         /// <summary>
+        ///     Gets or sets ITEM_KEYWORDS_OVERRIDE
+        /// </summary>
+        public string ItemKeywordsOverride { get; set; }
+
+        /// <summary>
         ///     Gets or sets LANGUAGE
         /// </summary>
         public string Language { get; set; }
@@ -624,6 +629,11 @@ namespace Odin.DbTableModels
         public string Title { get; set; }
 
         /// <summary>
+        ///     Gets or sets TITLE_OVERRIDE
+        /// </summary>
+        public string TitleOverride { get; set; }
+
+        /// <summary>
         ///     Gets or sets UDEX
         /// </summary>
         public string Udex { get; set; }
@@ -647,6 +657,11 @@ namespace Odin.DbTableModels
         ///     Gets or sets WEBSITE_PRICE
         /// </summary>
         public string WebsitePrice { get; set; }
+
+        /// <summary>
+        ///     Gets or sets WEBSITE_PRICE_OVERRIDE
+        /// </summary>
+        public string WebsitePriceOverride { get; set; }
 
         #endregion // Public Properties
     }

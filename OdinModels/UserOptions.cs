@@ -529,6 +529,15 @@ namespace OdinModels
         private static bool _inStockDateVisibility = true;
 
         /// <summary>
+        ///     Gets or sets the Item Keywords Override visibility
+        /// </summary>
+        public static bool ItemKeywordsOverrideVisibility
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         ///     Gets or sets the ItemKeywords
         /// </summary>
         public static bool ItemKeywordsVisibility
@@ -655,6 +664,15 @@ namespace OdinModels
             }
         }
         private static bool _titleVisibility = true;
+        
+        /// <summary>
+        ///     Gets or sets the Title Override visibility
+        /// </summary>
+        public static bool TitleOverrideVisibility
+        {
+            get;
+            set;
+        }
 
         #endregion // B2B Visibility Properties
 
@@ -1375,6 +1393,12 @@ namespace OdinModels
         }
         private static bool _warrantyCheckVisibility = true;
 
+        public static bool WebsitePriceOverrideVisibility
+        {
+            get;
+            set;
+        }
+
         public static bool WebsitePriceVisibility
         {
             get
@@ -1668,8 +1692,5 @@ namespace OdinModels
 
         #endregion // Public Properties
 
-        #region Constructor
-
-        #endregion // Constructor
     }
 }

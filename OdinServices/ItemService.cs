@@ -113,6 +113,7 @@ namespace OdinServices
             public static string ItemGroup = "Item Group";
             public static string ItemId = "Item Id";
             public static string ItemKeywords = "Item Keywords";
+            public static string ItemKeywordsOverride = "Item Keywords Override";
             public static string ItemLength = "Item Length";
             public static string ItemWeight = "Item Weight";
             public static string ItemWidth = "Item Width";
@@ -166,11 +167,13 @@ namespace OdinServices
             public static string TemplateName = "Template Name";
             public static string TemplateId = "Template ID";
             public static string Title = "Title";
+            public static string TitleOverride = "Title Override";
             public static string Udex = "Udex";
             public static string Upc = "Upc";
             public static string Warranty = "Warranty";
             public static string WarrantyCheck = "WarrantyCheck";
             public static string WebsitePrice = "Website Price";
+            public static string WebsitePriceOverride = "Website Price Override";
             public static string Weight = "Weight";
             public static string Width = "Width";
 
@@ -1014,6 +1017,7 @@ namespace OdinServices
                 {
                     continue;
                 }
+
                 ItemObject item = new ItemObject(1)
                 {
                     ItemRow = row + 1,
@@ -1106,7 +1110,6 @@ namespace OdinServices
                     PrintOnDemand = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.PrintOnDemand).Trim(),
                     ProductFormat = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ProductFormat).Trim(),
                     ProductGroup = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ProductGroup).Trim(),
-                    ProductIdTranslation = ParseChildElementIds(ItemId, ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ProductIdTranslation)),
                     ProductLine = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ProductLine).Trim(),
                     ProductQty = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ProductQty, WorksheetColumnHeaders.ProductQuantity),
                     Property = RemoveSpecialChar(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Property)),
@@ -1139,7 +1142,16 @@ namespace OdinServices
                     Weight = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Weight, WorksheetColumnHeaders.ItemWeight), 1),
                     Width = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Width, WorksheetColumnHeaders.ItemWidth), 1)
                 };
-
+                if (status == "Add")
+                {
+                    item.ProductIdTranslation = ParseChildElementIds(ItemId, ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ProductIdTranslation));
+                }
+                if (GlobalData.UserPermissions.Contains("ADMIN_CONTROLS"))
+                {
+                    item.ItemKeywordsOverride = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ItemKeywordsOverride).Trim();
+                    item.TitleOverride = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.TitleOverride).Trim();
+                    item.WebsitePriceOverride = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.WebsitePriceOverride).Trim();
+                }
                 if (status == "Add")
                 {
                     string TemplateName = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.TemplateName, WorksheetColumnHeaders.TemplateId);

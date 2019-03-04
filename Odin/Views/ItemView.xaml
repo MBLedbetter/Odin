@@ -1242,14 +1242,15 @@
                         Background="{Binding ProductIdTranslationBoxColor}"
                         Grid.Row="0"
                         Grid.RowSpan="2"
-                        Grid.Column="6"
+                        Grid.Column="6"               
+                        Height="36" 
                         HorizontalAlignment="Left"
+                        IsEnabled="{Binding IsEnabled}"
+                        Margin="6,6,0,0"          
+                        TextWrapping="WrapWithOverflow"
                         ToolTip="{Binding ProductIdTranslationToolTip}"
                         Width="119"
-                        VerticalAlignment="Top" 
-                        TextWrapping="WrapWithOverflow"
-                        Margin="6,6,0,0"                        
-                        Height="36" >
+                        VerticalAlignment="Top">
                         Product Id Translation
                     </TextBlock>
                     <TextBox
@@ -1257,7 +1258,7 @@
                         Grid.Row="0"
                         Grid.RowSpan="2"
                         HorizontalAlignment="Left"
-                        IsEnabled="{Binding IsNew}"
+                        IsEnabled="{Binding IsEnabled}"
                         Margin="6,6,0,6"
                         MaxHeight="64"
                         Text="{Binding ProductIdTranslation}"
@@ -3019,6 +3020,123 @@
                         Grid.Column="6"
                         Grid.Row="6"
                         Source="{Binding Image5}"/>
+                </Grid>
+            </TabItem>
+            <TabItem
+                Background="{Binding TabColorWebOverrideInfo}"
+                Header="      Web Override      " 
+                Height="22" 
+                VerticalAlignment="Bottom"
+                Visibility="{Binding PermissionAdminVisibility}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="Auto" />
+                        <ColumnDefinition Width="335"/>
+                        <ColumnDefinition
+                            Width="112" />
+                        <ColumnDefinition Width="398"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="36" />
+                        <RowDefinition
+                            Height="36" />
+                        <RowDefinition
+                            Height="36" />
+                        <RowDefinition
+                            Height="36" />
+                        <RowDefinition
+                            Height="36" />
+                        <RowDefinition
+                            Height="36" />
+                        <RowDefinition
+                            Height="36" />
+                        <RowDefinition
+                            Height="36" />
+                        <RowDefinition
+                            Height="36" />
+                        <RowDefinition
+                            Height="36" />
+                        <RowDefinition
+                            Height="36" />
+                        <RowDefinition
+                            Height="36" />
+                        <RowDefinition
+                            Height="36" />
+                        <RowDefinition
+                            Height="36" />
+                        <RowDefinition
+                            Height="36" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Item Keywords -->
+                    <Label
+                        Background="{Binding ItemKeywordsOverrideBoxColor}"
+                        Content="Item Keywords"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding ItemKeywordsToolTip}"
+                        VerticalAlignment="Center" 
+                        Margin="6,6,0,6" Height="26" Width="92" />
+                    <TextBox
+                        Height="128"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6"
+                        Grid.Row="0"
+                        Grid.RowSpan="4"
+                        TextWrapping="Wrap"
+                        Grid.Column="1"
+                        Text="{Binding ItemKeywordsOverride}"
+                        VerticalContentAlignment="Top"
+                        VerticalScrollBarVisibility="Auto"
+                        Width="300" />
+                    <!-- Title -->
+                    <Label
+                        Background="{Binding TitleOverrideBoxColor}"
+                        Content="Title"
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Height="26"         
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding TitleOverrideToolTip}"
+                        VerticalAlignment="Center" 
+                        Margin="6,5,0,5" 
+                        Width="102" />
+                    <TextBox
+                        Height="26"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,6" 
+                        Grid.Row="4"
+                        TextWrapping="Wrap"
+                        MaxHeight="26"
+                        Grid.Column="1"
+                        Text="{Binding TitleOverride}"
+                        VerticalContentAlignment="Top"
+                        Width="300"/>
+                    <!-- Website Price -->
+                    <Label
+                        Background="{Binding WebsitePriceOverrideBoxColor}"
+                        Content="Website Price"
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Height="26"         
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,4"
+                        ToolTip="{Binding WebsitePriceOverrideToolTip}"
+                        VerticalAlignment="Center" Width="102"/>
+                    <TextBox
+                        Height="26"
+                        HorizontalAlignment="Left"
+                        Grid.Row="5"
+                        TextWrapping="Wrap"
+                        MaxHeight="26"
+                        Grid.Column="1"
+                        Text="{Binding WebsitePriceOverride}"
+                        VerticalContentAlignment="Top"
+                        Width="300" 
+                        Margin="6,6,0,6" />
                 </Grid>
             </TabItem>
         </TabControl>

@@ -521,38 +521,34 @@ namespace Odin.ViewModels
         public OptionService OptionService { get; set; }
 
         /// <summary>
-        ///     Gets or sets the permissionAdminVisibility. Shows or hides admin controls.
+        ///     Gets the permissionAdminVisibility. Shows or hides admin controls.
         /// </summary>
         public string PermissionAdminVisibility
         {
             get
             {
-                return _permissionAdminVisibility;
-            }
-            set
-            {
-                _permissionAdminVisibility = value;
-                OnPropertyChanged("PermissionAdminVisibility");
+                if (GlobalData.UserPermissions.Contains("ADMIN_CONTROLS"))
+                {
+                    return "Visible";
+                }
+                else return "Hidden";
             }
         }
-        private string _permissionAdminVisibility = "Hidden";
 
         /// <summary>
-        ///     Gets or sets the PermissionEcommerceControlVisibility. Shows or hides ecommerce controls.
+        ///     Gets the PermissionEcommerceControlVisibility. Shows or hides ecommerce controls.
         /// </summary>
         public string PermissionEcommerceControlVisibility
         {
             get
             {
-                return _permissionEcommerceControlVisibility;
-            }
-            set
-            {
-                _permissionEcommerceControlVisibility = value;
-                OnPropertyChanged("PermissionEcommerceControlVisibility");
+                if (GlobalData.UserPermissions.Contains("ECOMMERCE_CONTROL"))
+                {
+                    return "Visible";
+                }
+                else return "Hidden";
             }
         }
-        private string _permissionEcommerceControlVisibility = "Hidden";
 
         /// <summary>
         ///     Gets or sets the PermissionRequestNewCategoryVisibility. Shows or hides the request new category button.
@@ -561,49 +557,43 @@ namespace Odin.ViewModels
         {
             get
             {
-                return _permissionRequestNewCategoryVisibility;
-            }
-            set
-            {
-                _permissionRequestNewCategoryVisibility = value;
-                OnPropertyChanged("PermissionRequestNewCategoryVisibility");
+                if (GlobalData.UserPermissions.Contains("ADMIN_CONTROLS"))
+                {
+                    return "Visible";
+                }
+                else return "Hidden";
             }
         }
-        private string _permissionRequestNewCategoryVisibility = "Hidden";
 
         /// <summary>
-        ///     Gets or sets the PermissionSaveItemVisibility. Shows or hides save button.
+        ///     Gets the PermissionSaveItemVisibility. Shows or hides save button.
         /// </summary>
         public string PermissionSaveItemVisibility
         {
             get
             {
-                return _permissionSaveItemVisibility;
-            }
-            set
-            {
-                _permissionSaveItemVisibility = value;
-                OnPropertyChanged("PermissionSaveItemVisibility");
+                if (GlobalData.UserPermissions.Contains("SAVE_ITEMS"))
+                {
+                    return "Visible";
+                }
+                else return "Hidden";
             }
         }
-        private string _permissionSaveItemVisibility = "Hidden";
 
         /// <summary>
-        ///     Gets or sets the PermissionSubmitItemVisibility. Shows or hides the submit button.
+        ///     Gets the PermissionSubmitItemVisibility. Shows or hides the submit button.
         /// </summary>
         public string PermissionSubmitItemVisibility
         {
             get
             {
-                return _permissionSubmitItemVisibility;
-            }
-            set
-            {
-                _permissionSubmitItemVisibility = value;
-                OnPropertyChanged("PermissionSubmitItemVisibility");
+                if (GlobalData.UserPermissions.Contains("WEB_SUBMIT"))
+                {
+                    return "Visible";
+                }
+                else return "Hidden";
             }
         }
-        private string _permissionSubmitItemVisibility = "Hidden";
 
         /// <summary>
         ///     Gets or sets the PermissionTest. Shows or hides whatever is currently being tested. 
@@ -1660,6 +1650,21 @@ namespace Odin.ViewModels
         /// <summary>
         ///     Gets or sets the WebsitePriceVisibility field
         /// </summary>
+        public string WebsitePriceOverrideVisibility
+        {
+            get
+            {
+                if (UserOptions.WebsitePriceOverrideVisibility)
+                {
+                    return "100";
+                }
+                else return "0";
+            }
+        }
+
+        /// <summary>
+        ///     Gets or sets the WebsitePriceVisibility field
+        /// </summary>
         public string WebsitePriceVisibility
         {
             get
@@ -1813,6 +1818,21 @@ namespace Odin.ViewModels
         private string _itemKeywordsVisibility = "auto";
 
         /// <summary>
+        ///     Gets the ItemKeywordsVisibility field
+        /// </summary>
+        public string ItemKeywordsOverrideVisibility
+        {
+            get
+            {
+                if (UserOptions.ItemKeywordsOverrideVisibility)
+                {
+                    return "100";
+                }
+                else return "0";
+            }
+        }
+
+        /// <summary>
         ///     Gets or sets the LicenseVisibility field
         /// </summary>
         public string LicenseVisibility
@@ -1931,6 +1951,21 @@ namespace Odin.ViewModels
         }
         private string _titleVisibility = "auto";
 
+        /// <summary>
+        ///     Gets the TitleVisibility field
+        /// </summary>
+        public string TitleOverrideVisibility
+        {
+            get
+            {
+                if (UserOptions.TitleOverrideVisibility)
+                {
+                    return "100";
+                }
+                else return "0";
+            }
+        }
+        
         /* Sell On Visibility */
 
         /// <summary>
@@ -3372,34 +3407,6 @@ namespace Odin.ViewModels
             Mouse.OverrideCursor = null;
         }
 
-        /// <summary>
-        ///     Sets tool visibility permisions , if user does not exist in permissions table adds user
-        /// </summary>
-        public void SetPermisions()
-        {
-            List<string> Permissions = this.OptionService.RetrievePermissions(this.UserName);
-
-            if (Permissions.Count != 0)
-            {
-                this.PermissionAdminVisibility = Permissions.Contains("ADMIN_CONTROLS") ? "Visible" : "Hidden";
-                this.PermissionSaveItemVisibility = Permissions.Contains("SAVE_ITEMS") ? "Visible" : "Hidden";
-                this.PermissionSubmitItemVisibility = Permissions.Contains("WEB_SUBMIT") ? "Visible" : "Hidden";
-                this.PermissionEcommerceControlVisibility = Permissions.Contains("ECOMMERCE_CONTROL") ? "Visible" : "Hidden";
-                this.PermissionRequestNewCategoryVisibility = Permissions.Contains("ADMIN_CONTROLS") ? "Visible" : "Hidden";
-            }
-            else
-            {
-                try
-                {
-                    this.OptionService.InsertUserRole(GlobalData.UserName, "NEW");
-                }
-                catch (Exception ex)
-                {
-                    ErrorLog.LogError("Odin was unable to retrieve user settings.", ex.ToString());
-                }
-            }
-        }
-
         public void SetListVisibilty()
         {
             /* Peoplesoft Visibility */
@@ -3525,8 +3532,130 @@ namespace Odin.ViewModels
             this.EcommerceSearchTermsVisibility = (UserOptions.EcommerceSearchTermsVisibility) ? "100" : "0";
             this.EcommerceSizeVisibility = (UserOptions.EcommerceSizeVisibility) ? "100" : "0";
             this.EcommerceUpcVisibility = (UserOptions.EcommerceUpcVisibility) ? "100" : "0";
+
         }
 
+        private void SetUserOptionsDefaults()
+        {
+            UserOptions.AccountingGroupVisibility = true;
+            UserOptions.BillOfMaterialsVisibility = true;
+            UserOptions.CasepackHeightVisibility = true;
+            UserOptions.CasepackLengthVisibility = true;
+            UserOptions.CasepackQtyVisibility = true;
+            UserOptions.CasepackUpcVisibility = true;
+            UserOptions.CasepackWidthVisibility = true;
+            UserOptions.CasepackWeightVisibility = true;
+            UserOptions.ColorVisibility = true;
+            UserOptions.CountryOfOriginVisibility = true;
+            UserOptions.CostProfileGroupVisibility = true;
+            UserOptions.DefaultActualCostCadVisibility = true;
+            UserOptions.DefaultActualCostUsdVisibility = true;
+            UserOptions.DescriptionVisibility = true;
+            UserOptions.DirectImportVisibility = true;
+            UserOptions.DutyVisibility = true;
+            UserOptions.EanVisibility = true;
+            UserOptions.GpcVisibility = true;
+            UserOptions.HeightVisibility = true;
+            UserOptions.InnerpackHeightVisibility = true;
+            UserOptions.InnerpackLengthVisibility = true;
+            UserOptions.InnerpackQuantityVisibility = true;
+            UserOptions.InnerpackUpcVisibility = true;
+            UserOptions.InnerpackWidthVisibility = true;
+            UserOptions.InnerpackWeightVisibility = true;
+            UserOptions.IsbnVisibility = true;
+            UserOptions.ItemCategoryVisibility = true;
+            UserOptions.ItemFamilyVisibility = true;
+            UserOptions.ItemGroupVisibility = true;
+            UserOptions.LanguageVisibility = true;
+            UserOptions.LengthVisibility = true;
+            UserOptions.ListPriceCadVisibility = true;
+            UserOptions.ListPriceMxnVisibility = true;
+            UserOptions.ListPriceUsdVisibility = true;
+            UserOptions.MfgSourceVisibility = true;
+            UserOptions.MsrpVisibility = true;
+            UserOptions.MsrpCadVisibility = true;
+            UserOptions.MsrpMxnVisibility = true;
+            UserOptions.PricingGroupVisibility = true;
+            UserOptions.PrintOnDemandVisibility = true;
+            UserOptions.ProductFormatVisibility = true;
+            UserOptions.ProductGroupVisibility = true;
+            UserOptions.ProductIdTranslationVisibility = true;
+            UserOptions.ProductLineVisibility = true;
+            UserOptions.ProductQtyVisibility = true;
+            UserOptions.PsStatusVisibility = true;
+            UserOptions.SatCodeVisibility = true;
+            UserOptions.StandardCostVisibility = true;
+            UserOptions.StatsCodeVisibility = true;
+            UserOptions.TariffCodeVisibility = true;
+            UserOptions.TerritoryVisibility = true;
+            UserOptions.UdexVisibility = true;
+            UserOptions.UpcVisibility = true;
+            UserOptions.WebsitePriceVisibility = true;
+            UserOptions.WeightVisibility = true;
+            UserOptions.WidthVisibility = true;
+            UserOptions.CategoryVisibility = true;
+            UserOptions.Category2Visibility = true;
+            UserOptions.Category3Visibility = true;
+            UserOptions.CopyrightVisibility = true;
+            UserOptions.InStockDateVisibility = true;
+            UserOptions.ItemKeywordsVisibility = true;
+            UserOptions.LicenseVisibility = true;
+            UserOptions.LicenseBeginDateVisibility = true;
+            UserOptions.MetaDescriptionVisibility = true;
+            UserOptions.PropertyVisibility = true;
+            UserOptions.ShortDescriptionVisibility = true;
+            UserOptions.SizeVisibility = true;
+            UserOptions.TitleVisibility = true;
+            UserOptions.SellOnAllPostersVisibility = true;
+            UserOptions.SellOnAmazonVisibility = true;
+            UserOptions.SellOnAmazonSellerCentralVisibility = true;
+            UserOptions.SellOnEcommerceVisibility = true;
+            UserOptions.SellOnFanaticsVisibility = true;
+            UserOptions.SellOnGuitarCenterVisibility = true;
+            UserOptions.SellOnHayneedleVisibility = true;
+            UserOptions.SellOnTargetVisibility = true;
+            UserOptions.SellOnTrendsVisibility = true;
+            UserOptions.SellOnWalmartVisibility = true;
+            UserOptions.SellOnWayfairVisibility = true;
+            UserOptions.ImagePath1Visibility = true;
+            UserOptions.ImagePath2Visibility = true;
+            UserOptions.ImagePath3Visibility = true;
+            UserOptions.ImagePath4Visibility = true;
+            UserOptions.ImagePath5Visibility = true;
+            UserOptions.EcommerceAsinVisibility = true;
+            UserOptions.EcommerceBullet1Visibility = true;
+            UserOptions.EcommerceBullet2Visibility = true;
+            UserOptions.EcommerceBullet3Visibility = true;
+            UserOptions.EcommerceBullet4Visibility = true;
+            UserOptions.EcommerceBullet5Visibility = true;
+            UserOptions.EcommerceComponentsVisibility = true;
+            UserOptions.EcommerceCostVisibility = true;
+            UserOptions.EcommerceCountryofOriginVisibility = true;
+            UserOptions.EcommerceExternalIdVisibility = true;
+            UserOptions.EcommerceExternalIdTypeVisibility = true;
+            UserOptions.EcommerceItemAliasVisibility = true;
+            UserOptions.EcommerceItemHeightVisibility = true;
+            UserOptions.EcommerceItemLengthVisibility = true;
+            UserOptions.EcommerceItemNameVisibility = true;
+            UserOptions.EcommerceItemTypeKeywordsVisibility = true;
+            UserOptions.EcommerceItemWeightVisibility = true;
+            UserOptions.EcommerceItemWidthVisibility = true;
+            UserOptions.EcommerceModelNameVisibility = true;
+            UserOptions.EcommercePackageHeightVisibility = true;
+            UserOptions.EcommercePackageLengthVisibility = true;
+            UserOptions.EcommercePackageWeightVisibility = true;
+            UserOptions.EcommercePackageWidthVisibility = true;
+            UserOptions.EcommercePageQtyVisibility = true;
+            UserOptions.EcommerceParentAsinVisibility = true;
+            UserOptions.EcommerceProductCategoryVisibility = true;
+            UserOptions.EcommerceProductDescriptionVisibility = true;
+            UserOptions.EcommerceProductSubcategoryVisibility = true;
+            UserOptions.EcommerceManufacturerNameVisibility = true;
+            UserOptions.EcommerceMsrpVisibility = true;
+            UserOptions.EcommerceSearchTermsVisibility = true;
+            UserOptions.EcommerceSizeVisibility = true;
+            UserOptions.EcommerceUpcVisibility = true;
+        }
         /// <summary>
         ///     Sets the window title for mainwindowview. Makes distinction between production and development
         /// </summary>
@@ -3919,7 +4048,7 @@ namespace Odin.ViewModels
                 this.ItemService = itemService ?? throw new ArgumentNullException("itemService");
                 this.OptionService = optionService ?? throw new ArgumentNullException("optionService");
                 this.WorkbookReader = workbookReader ?? throw new ArgumentNullException("workbookReader");
-                SetPermisions();
+                SetUserOptionsDefaults();
                 this.SubmitStatus = false;
                 this.SaveStatus = false;
                 this.WindowTitle = SetWindowTitle();

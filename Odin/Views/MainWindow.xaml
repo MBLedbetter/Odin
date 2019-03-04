@@ -193,7 +193,7 @@
                             ImagePosition="Top"
                             Command="{Binding UpdateProductsCommand}"
                             Header="Update Products"
-                            ToolTip="Add website info or update products already in peoplesoft by uploading an excell spreadsheet."
+                            ToolTip="Add website info or update products already in peoplesoft by uploading an excel spreadsheet."
                             Width="120">
                             <ribbon:ButtonDropDown.Image>
                                 <Image
@@ -223,7 +223,7 @@
                         <ribbon:ButtonDropDown
                             ImagePosition="Top"
                             Click="CreateFullExcel_Click" 
-                            Header="Create Full Excelll Sheet"
+                            Header="Create Full Excel Sheet"
                             ToolTip="Get products that already exist in peoplesoft by providing a list of item Ids."
                             Width="100">
                             <ribbon:ButtonDropDown.Image>
@@ -314,8 +314,8 @@
                         <ribbon:ButtonDropDown
                             ImagePosition="Top"
                             Command="{Binding CreateFullTemplateCommand}"
-                            Header="Create Blank Template Excell"
-                            ToolTip="Create an empty template excell sheet."
+                            Header="Create Blank Template Excel"
+                            ToolTip="Create an empty template excel sheet."
                             Width="100">
                             <ribbon:ButtonDropDown.Image>
                                 <Image
@@ -1148,6 +1148,14 @@
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
+                        DisplayMemberBinding="{Binding ItemKeywordsOverride}"
+                        Width="{Binding ItemKeywordsOverrideVisibility}">
+                        <GridViewColumnHeader
+                            Content="Item Keywords Override"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
                         DisplayMemberBinding="{Binding Length}"
                         Width="{Binding LengthVisibility}">
                         <GridViewColumnHeader
@@ -1476,6 +1484,22 @@
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
+                        DisplayMemberBinding="{Binding Title}"
+                        Width="{Binding TitleVisibility}">
+                        <GridViewColumnHeader
+                            Content="Title"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding TitleOverride}"
+                        Width="{Binding TitleOverrideVisibility}">
+                        <GridViewColumnHeader
+                            Content="Title Override"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
                         DisplayMemberBinding="{Binding Udex}"
                         Width="{Binding UdexVisibility}">
                         <GridViewColumnHeader
@@ -1496,6 +1520,14 @@
                         Width="{Binding WebsitePriceVisibility}">
                         <GridViewColumnHeader
                             Content="Website Price"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding WebsitePriceOverride}"
+                        Width="{Binding WebsitePriceOverrideVisibility}">
+                        <GridViewColumnHeader
+                            Content="Website Price Override"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>

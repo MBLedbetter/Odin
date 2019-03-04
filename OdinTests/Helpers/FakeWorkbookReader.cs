@@ -13,7 +13,7 @@ namespace OdinTests.Helpers
 
         public List<string> ColumnHeaders { get; private set; }
 
-        public List<List<string>> ExcellData { get; private set; }
+        public List<List<string>> ExcelData { get; private set; }
 
         #endregion // Public Properties
 
@@ -26,12 +26,12 @@ namespace OdinTests.Helpers
             {
                 worksheetData.ColumnHeaders.Add(this.ColumnHeaders[i]);
             }
-            for (int row = 0; row < ExcellData.Count(); row++)
+            for (int row = 0; row < ExcelData.Count(); row++)
             {
                 worksheetData.CellData.Add(new List<string>());
-                for (int column = 0; column < ExcellData[row].Count(); column++)
+                for (int column = 0; column < ExcelData[row].Count(); column++)
                 {
-                    worksheetData.CellData[worksheetData.CellData.Count - 1].Add(ExcellData[row][column]);
+                    worksheetData.CellData[worksheetData.CellData.Count - 1].Add(ExcelData[row][column]);
                 }
             }
             return worksheetData;
@@ -39,12 +39,12 @@ namespace OdinTests.Helpers
 
         public void AddWorksheetRow() 
         {
-            this.ExcellData.Add(new List<string>());        
+            this.ExcelData.Add(new List<string>());        
         }
 
         public void AddCellValue(string value)
         {
-            this.ExcellData[ExcellData.Count - 1].Add(value);
+            this.ExcelData[ExcelData.Count - 1].Add(value);
         }
 
         #endregion // Methods
@@ -54,7 +54,7 @@ namespace OdinTests.Helpers
         public FakeWorkbookReader()
         {
             this.ColumnHeaders = new List<string>();
-            this.ExcellData = new List<List<string>>();
+            this.ExcelData = new List<List<string>>();
         }
 
         #endregion // Constructor

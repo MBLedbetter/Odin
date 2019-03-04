@@ -201,6 +201,11 @@ namespace Odin.Data
         public DbSet<OdinFieldValues> OdinFieldValues { get; set; }
 
         /// <summary>
+        ///     Gets or sets a list of the OdinItemOverrideInfo lines that are in this context.
+        /// </summary>
+        public DbSet<OdinItemOverrideInfo> OdinItemOverrideInfo { get; set; }
+
+        /// <summary>
         ///     Gets or sets a list of the OdinGlobalKeys lines that are in this context.
         /// </summary>
         public DbSet<OdinGlobalKeys> OdinGlobalKeys { get; set; }
@@ -491,6 +496,7 @@ namespace Odin.Data
             MapOdinGlobalKeys(modelBuilder);
             MapOdinItem(modelBuilder);
             MapOdinItemExceptions(modelBuilder);
+            MapOdinItemOverrideInfo(modelBuilder);
             MapOdinItemTemplates(modelBuilder);
             MapOdinItemUpdateRecords(modelBuilder);
             MapOdinLanguage(modelBuilder);
@@ -2101,6 +2107,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItem>().Property(p => p.InvProdFamCd).HasColumnName("INV_PROD_FAM_CD");
             modelBuilder.Entity<OdinItem>().Property(p => p.Isbn).HasColumnName("ISBN");
             modelBuilder.Entity<OdinItem>().Property(p => p.ItemKeywords).HasColumnName("ITEM_KEYWORDS");
+            modelBuilder.Entity<OdinItem>().Property(p => p.ItemKeywordsOverride).HasColumnName("ITEM_KEYWORDS_OVERRIDE");
             modelBuilder.Entity<OdinItem>().Property(p => p.Language).HasColumnName("LANGUAGE").IsOptional();
             modelBuilder.Entity<OdinItem>().Property(p => p.License).HasColumnName("LICENSE");
             modelBuilder.Entity<OdinItem>().Property(p => p.LicenseBeginDate).HasColumnName("LICENSE_BEGIN_DATE");
@@ -2143,10 +2150,12 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItem>().Property(p => p.StatsCode).HasColumnName("STATS_CODE");
             modelBuilder.Entity<OdinItem>().Property(p => p.Territory).HasColumnName("TERRITORY");
             modelBuilder.Entity<OdinItem>().Property(p => p.Title).HasColumnName("TITLE");
+            modelBuilder.Entity<OdinItem>().Property(p => p.TitleOverride).HasColumnName("TITLE_OVERRIDE");
             modelBuilder.Entity<OdinItem>().Property(p => p.Udex).HasColumnName("UDEX");
             modelBuilder.Entity<OdinItem>().Property(p => p.UpcId).HasColumnName("UPC_ID");
             modelBuilder.Entity<OdinItem>().Property(p => p.Warranty).HasColumnName("WARRANTY");
             modelBuilder.Entity<OdinItem>().Property(p => p.WarrantyCheck).HasColumnName("WARRANTY_CHECK");
+            modelBuilder.Entity<OdinItem>().Property(p => p.WebsitePriceOverride).HasColumnName("WEBSITE_PRICE_OVERRIDE");
             modelBuilder.Entity<OdinItem>().Property(p => p.WebsitePrice).HasColumnName("WEBSITE_PRICE");
         }
 
@@ -2178,6 +2187,31 @@ namespace Odin.Data
 
         }
 
+        /// <summary>
+        ///             This method maps the OdinItemOverrideInfo class to the database.
+        /// </summary>
+        /// 
+        /// <param name="DbModelBuilder modelBuilder">
+        ///             The DbDbModelBuilder modelBuilder to update with the mapping.
+        /// </param>
+        private void MapOdinItemOverrideInfo(DbModelBuilder modelBuilder)
+        {
+            // Map the OdinItemExceptions class to the ODIN_ITEM_OVERRIDE_INFO table
+            modelBuilder.Entity<OdinItemOverrideInfo>()
+                .HasKey(p => new
+                {
+                    p.ItemId
+                })
+                .ToTable("ODIN_ITEM_OVERRIDE_INFO");
+
+            // Map each column
+            modelBuilder.Entity<OdinItemOverrideInfo>().Property(p => p.ItemId).HasColumnName("INV_ITEM_ID");
+            modelBuilder.Entity<OdinItemOverrideInfo>().Property(p => p.ItemKeywords).HasColumnName("ITEM_KEYWORDS");
+            modelBuilder.Entity<OdinItemOverrideInfo>().Property(p => p.Title).HasColumnName("TITLE");
+            modelBuilder.Entity<OdinItemOverrideInfo>().Property(p => p.WebsitePrice).HasColumnName("WEBSITE_PRICE");
+
+        }
+        
         /// <summary>
         ///             This method maps the OdinItemTemplates class to the database.
         /// </summary>

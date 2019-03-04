@@ -1679,13 +1679,31 @@ namespace OdinModels
             {
                 if (_itemKeywords != value) { ItemKeywordsUpdate = true; }
                 _itemKeywords = value;
+                OnPropertyChanged("ItemKeywordsOverride");
+            }
+        }
+        private string _itemKeywords = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the ItemKeywordsOverride
+        /// </summary>
+        public string ItemKeywordsOverride
+        {
+            get
+            {
+                return _itemKeywordsOverride;
+            }
+            set
+            {
+                if (_itemKeywordsOverride != value) { ItemKeywordsOverrideUpdate = true; }
+                _itemKeywordsOverride = value;
                 OnPropertyChanged
 
                     ("ItemKeywords");
 
             }
         }
-        private string _itemKeywords = string.Empty;
+        private string _itemKeywordsOverride = string.Empty;
 
         /// <summary>
         ///     Gets or sets the Language
@@ -2514,6 +2532,25 @@ namespace OdinModels
         private string _title = string.Empty;
 
         /// <summary>
+        ///     Gets or sets the TitleOverride
+        /// </summary>
+        public string TitleOverride
+        {
+            get
+            {
+                return _titleOverride;
+            }
+            set
+            {
+                if (_titleOverride != value) { TitleOverrideUpdate = true; }
+                _titleOverride = value;
+                OnPropertyChanged("TitleOverride");
+
+            }
+        }
+        private string _titleOverride = string.Empty;
+
+        /// <summary>
         ///     Gets or sets the Udex
         /// </summary>
         public string Udex
@@ -2606,6 +2643,24 @@ namespace OdinModels
             }
         }
         private string _websitePrice = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the WebsitePriceOverride
+        /// </summary>
+        public string WebsitePriceOverride
+        {
+            get
+            {
+                return _websitePriceOverride;
+            }
+            set
+            {
+                if (_websitePriceOverride != value) { WebsitePriceOverrideUpdate = true; }
+                _websitePriceOverride = value;
+                OnPropertyChanged("WebsitePriceOverride");
+            }
+        }
+        private string _websitePriceOverride = string.Empty;
 
         /// <summary>
         ///     Gets or sets the Weight
@@ -3025,6 +3080,23 @@ namespace OdinModels
             get
             {
                 if (this.LanguageUpdate)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
+        ///    Update flag for fields stored in ItemOverrideInfo
+        /// </summary>
+        public bool ItemOverrideUpdate
+        {
+            get
+            {
+                if (this.ItemKeywordsOverrideUpdate ||
+                    this.TitleOverrideUpdate||
+                    this.WebsitePriceOverrideUpdate)
                 {
                     return true;
                 }
@@ -3625,6 +3697,11 @@ namespace OdinModels
         public bool ItemKeywordsUpdate = false;
 
         /// <summary>
+        ///     ItemKeywordsOverrideUpdate update flag
+        /// </summary>
+        public bool ItemKeywordsOverrideUpdate = false;
+
+        /// <summary>
         ///     LanguageUpdate update flag
         /// </summary>
         public bool LanguageUpdate = false;
@@ -3830,6 +3907,11 @@ namespace OdinModels
         public bool TitleUpdate = false;
 
         /// <summary>
+        ///     TitleOverrideUpdate update flag
+        /// </summary>
+        public bool TitleOverrideUpdate = false;
+
+        /// <summary>
         ///     UdexUpdate update flag
         /// </summary>
         public bool UdexUpdate = false;
@@ -3840,11 +3922,6 @@ namespace OdinModels
         public bool UpcUpdate = false;
 
         /// <summary>
-        ///     WebsitePriceUpdate update flag
-        /// </summary>
-        public bool WebsitePriceUpdate = false;
-
-        /// <summary>
         ///     WarrantyUpdate update flag
         /// </summary>
         public bool WarrantyUpdate = false;
@@ -3853,6 +3930,16 @@ namespace OdinModels
         ///     WarrantyCheckUpdate update flag
         /// </summary>
         public bool WarrantyCheckUpdate = false;
+
+        /// <summary>
+        ///     WebsitePriceUpdate update flag
+        /// </summary>
+        public bool WebsitePriceUpdate = false;
+
+        /// <summary>
+        ///     WebsitePriceOverrideUpdate update flag
+        /// </summary>
+        public bool WebsitePriceOverrideUpdate = false;
 
         /// <summary>
         ///     WeightUpdate update flag
@@ -4018,6 +4105,7 @@ namespace OdinModels
             this.ItemCategoryUpdate = false;
             this.ItemFamilyUpdate = false;
             this.ItemGroupUpdate = false;
+            this.ItemKeywordsOverrideUpdate = false;
             this.ItemKeywordsUpdate = false;
             this.LanguageUpdate = false;
             this.LengthUpdate = false;
@@ -4057,11 +4145,13 @@ namespace OdinModels
             this.StatsCodeUpdate = false;
             this.TariffCodeUpdate = false;
             this.TerritoryUpdate = false;
+            this.TitleOverrideUpdate = false;
             this.TitleUpdate = false;
             this.UdexUpdate = false;
             this.UpcUpdate = false;
             this.WarrantyUpdate = false;
             this.WarrantyCheckUpdate = false;
+            this.WebsitePriceOverrideUpdate = false;
             this.WebsitePriceUpdate = false;
             this.WeightUpdate = false;
             this.WidthUpdate = false;
@@ -4210,6 +4300,7 @@ namespace OdinModels
                 this.ItemFamily = item.ItemFamily;
                 this.ItemGroup = item.ItemGroup;
                 this.ItemId = item.ItemId;
+                this.ItemKeywordsOverride = item.ItemKeywordsOverride;
                 this.ItemKeywords = item.ItemKeywords;
                 this.Language = item.Language;
                 this.Length = item.Length;
@@ -4254,11 +4345,13 @@ namespace OdinModels
                 this.TariffCode = item.TariffCode;
                 this.Territory = item.Territory;
                 this.Title = item.Title;
+                this.TitleOverride = item.TitleOverride;
                 this.Udex = item.Udex;
                 this.Upc = item.Upc;
                 this.Warranty = item.Warranty;
                 this.WarrantyCheck = item.WarrantyCheck;
                 this.WebsitePrice = item.WebsitePrice;
+                this.WebsitePriceOverride = item.WebsitePriceOverride;
                 this.Weight = item.Weight;
                 this.Width = item.Width;
                 if (item.Status != "Add")

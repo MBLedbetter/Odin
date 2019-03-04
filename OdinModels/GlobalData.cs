@@ -8,7 +8,16 @@ namespace OdinModels
 {
     public static class GlobalData
     {
-        #region Properties
+        #region Public Properties
+
+        #region Permissions
+
+        public static List<string> UserPermissions
+        {
+            get;set;
+        }
+
+        #endregion // Permissions
 
         /// <summary>
         ///     Gets or sets AccountingGroups
@@ -667,7 +676,7 @@ namespace OdinModels
         }
         private static Dictionary<string, string> _webCategoryList = new Dictionary<string, string>();
 
-        #endregion // Properties
+        #endregion // Public Properties
 
         #region Methods
 
