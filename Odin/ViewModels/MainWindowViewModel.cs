@@ -3543,6 +3543,7 @@ namespace Odin.ViewModels
             UserOptions.LengthVisibility = true;
             UserOptions.ListPriceCadVisibility = true;
             UserOptions.ListPriceMxnVisibility = true;
+
             UserOptions.ListPriceUsdVisibility = true;
             UserOptions.MfgSourceVisibility = true;
             UserOptions.MsrpVisibility = true;
@@ -3629,6 +3630,7 @@ namespace Odin.ViewModels
             UserOptions.EcommerceSizeVisibility = true;
             UserOptions.EcommerceUpcVisibility = true;
         }
+
         /// <summary>
         ///     Sets the window title for mainwindowview. Makes distinction between production and development
         /// </summary>
