@@ -14,6 +14,7 @@ namespace Odin.Views
         public MainWindow()
         {
             App.WireUp();
+            App.LoadGlobalValues();
             InitializeComponent();
             this.DataContext = new MainWindowViewModel(App.ItemService, App.OptionService, App.ExcelService, App.WorkbookReader, App.EmailService);
         }
@@ -53,7 +54,6 @@ namespace Odin.Views
         /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            App.LoadGlobalValues();
             List<string> notifications = App.OptionRepository.RetrieveNotifications("User");
             if (notifications.Count > 0)
             {

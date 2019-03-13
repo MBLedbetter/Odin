@@ -14,8 +14,16 @@ namespace OdinModels
 
         public static List<string> UserPermissions
         {
-            get;set;
+            get
+            {
+                return _userPermissions;
+            }
+            set
+            {
+                _userPermissions = value;
+            }
         }
+        private static List<string> _userPermissions = new List<string>();
 
         #endregion // Permissions
 
@@ -293,6 +301,23 @@ namespace OdinModels
 
         }
         private static List<string> _licenses = new List<string>();
+
+
+        /// <summary>
+        ///     List of all item ids currently loaded in Odin
+        /// </summary>
+        public static List<string> LocalItemIds
+        {
+            get
+            {
+                return _localItemIds;
+            }
+            set
+            {
+                _localItemIds = value;
+            }
+        }
+        private static List<string> _localItemIds = new List<string>();
 
         /// <summary>
         ///     Gets or sets MetaDescriptions
@@ -698,6 +723,7 @@ namespace OdinModels
             ItemRecords.Clear();
             Languages.Clear();
             Licenses.Clear();
+            LocalItemIds.Clear();
             MetaDescriptions.Clear();
             PricingGroups.Clear();
             ProductCategories.Clear();

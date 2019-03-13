@@ -2054,7 +2054,7 @@ namespace OdinServices
         /// </summary>
         /// <param name="var">ItemObj being validated</param>
         /// <returns></returns>
-        public ObservableCollection<ItemError> ValidateItem(ItemObject var, List<string> itemIds, bool isSubmit)
+        public ObservableCollection<ItemError> ValidateItem(ItemObject var, bool isSubmit)
         {
             ObservableCollection<ItemError> ErrorList = new ObservableCollection<ItemError>();
             if (isSubmit)
@@ -2083,7 +2083,7 @@ namespace OdinServices
             validationError =ValidateImagePath(var, "5");
             if (validationError != null) { ErrorList.Add(validationError); }
             // Bill Of Materials //
-            validationError =ValidateBillOfMaterials(var, itemIds);
+            validationError =ValidateBillOfMaterials(var);
             if (validationError != null) { ErrorList.Add(validationError); }
             // Casepack Height //
             validationError =ValidateCasepack(var, "Height");
@@ -2335,7 +2335,7 @@ namespace OdinServices
             validationError =ValidatePrintOnDemand(var);
             if (validationError != null) { ErrorList.Add(validationError); }
             // Product Id Translation //
-            validationError =ValidateProductIdTranslation(var, itemIds);
+            validationError =ValidateProductIdTranslation(var);
             if (validationError != null) { ErrorList.Add(validationError); }
             // Property //
             validationError =ValidateProperty(var);
@@ -2632,7 +2632,7 @@ namespace OdinServices
         /// <param name="currentIds"></param>
         /// <param name="prodType"></param>
         /// <returns></returns>
-        public ItemError ValidateBillOfMaterials(ItemObject var, List<string> currentIds)
+        public ItemError ValidateBillOfMaterials(ItemObject var)
         {
             List<string> BomIdList = new List<string>();
             bool existingValue = false;
@@ -2660,7 +2660,7 @@ namespace OdinServices
                 }
                 if (!string.IsNullOrEmpty(billOfMaterial.ItemId))
                 {
-                    if ((!currentIds.Contains(billOfMaterial.ItemId.Trim())) && (!GlobalData.ItemIds.Contains(billOfMaterial.ItemId.Trim())))
+                    if ((!GlobalData.LocalItemIds.Contains(billOfMaterial.ItemId.Trim())) && (!GlobalData.ItemIds.Contains(billOfMaterial.ItemId.Trim())))
                     {
                         return new ItemError(
                             var.ItemId,
@@ -5157,7 +5157,7 @@ namespace OdinServices
         /// <param name="var">Item Object</param>
         /// <param name="currentIds">List of Ids currently in Odin</param>
         /// <returns></returns>
-        public ItemError ValidateProductIdTranslation(ItemObject var, List<string> currentIds)
+        public ItemError ValidateProductIdTranslation(ItemObject var)
         {
             if (var.ProductIdTranslation.Count() == 0)
             {
@@ -5188,7 +5188,7 @@ namespace OdinServices
                 {
                     if (!string.IsNullOrEmpty(productIdTranslation.ItemId))
                     {
-                        if ((!currentIds.Contains(productIdTranslation.ItemId.Trim())) && (!GlobalData.ItemIds.Contains(productIdTranslation.ItemId.Trim())))
+                        if ((!GlobalData.LocalItemIds.Contains(productIdTranslation.ItemId.Trim())) && (!GlobalData.ItemIds.Contains(productIdTranslation.ItemId.Trim())))
                         {
                             return new ItemError(
                                 var.ItemId,

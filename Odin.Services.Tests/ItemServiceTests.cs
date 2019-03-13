@@ -2722,7 +2722,7 @@ namespace Odin.Services.Tests
                 new ChildElement("TESTB", "TEST1"),
                 new ChildElement("TESTC", "TEST1")
             };
-            List<string> currentIds = new List<string>() {
+            GlobalData.LocalItemIds = new List<string>() {
                 "TESTA",
                 "TESTB",
                 "TESTC",
@@ -2734,7 +2734,7 @@ namespace Odin.Services.Tests
 
             #region Act
 
-            ItemError result = itemValidator.ValidateBillOfMaterials(item, currentIds);
+            ItemError result = itemValidator.ValidateBillOfMaterials(item);
 
             #endregion //Act
 
@@ -2758,7 +2758,7 @@ namespace Odin.Services.Tests
                 new ChildElement("TEST2", "TEST1"),
                 new ChildElement("TEST2", "TEST1")
             };
-            List<string> currentIds = new List<string>() {
+            GlobalData.LocalItemIds = new List<string>() {
                 "TEST2"
             };
             ItemObject item = new ItemObject(1) { BillOfMaterials = childList, ItemId = "TEST1", Status = "Add",  };
@@ -2767,7 +2767,7 @@ namespace Odin.Services.Tests
 
             #region Act
 
-            ItemError result = itemValidator.ValidateBillOfMaterials(item, currentIds);
+            ItemError result = itemValidator.ValidateBillOfMaterials(item);
 
             #endregion //Act
 
@@ -3825,7 +3825,7 @@ namespace Odin.Services.Tests
             };
             List<ChildElement> emptyProductIdTranslationList = new List<ChildElement>();
 
-            List<string> CurrentIds = new List<string>() {
+            GlobalData.LocalItemIds = new List<string>() {
                 "ST1111",
                 "ST2222",
                 "TEST1",
@@ -3843,11 +3843,11 @@ namespace Odin.Services.Tests
 
             #region Act
 
-            ItemError result1 = itemService.ValidateProductIdTranslation(item1, CurrentIds);
-            ItemError result2 = itemService.ValidateProductIdTranslation(item2, CurrentIds);
-            ItemError result3 = itemService.ValidateProductIdTranslation(item3, CurrentIds);
-            ItemError result4 = itemService.ValidateProductIdTranslation(item4, CurrentIds);
-            ItemError result5 = itemService.ValidateProductIdTranslation(item5, CurrentIds);     
+            ItemError result1 = itemService.ValidateProductIdTranslation(item1);
+            ItemError result2 = itemService.ValidateProductIdTranslation(item2);
+            ItemError result3 = itemService.ValidateProductIdTranslation(item3);
+            ItemError result4 = itemService.ValidateProductIdTranslation(item4);
+            ItemError result5 = itemService.ValidateProductIdTranslation(item5);     
             
             #endregion // Act
 

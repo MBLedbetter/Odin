@@ -774,7 +774,23 @@ namespace OdinServices
             }
             return result;
         }
-        
+
+        /// <summary>
+        ///     Returns the image names for all the additional image fields
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public string FormatAdditionalImages(ItemObject item)
+        {
+            string result = string.Empty;
+            result += (!string.IsNullOrEmpty(item.AltImageFile1)) ? item.ReturnImageName(2) + "," : "";
+            result += (!string.IsNullOrEmpty(item.AltImageFile2)) ? item.ReturnImageName(3) + "," : "";
+            result += (!string.IsNullOrEmpty(item.AltImageFile3)) ? item.ReturnImageName(4) + "," : "";
+            result += (!string.IsNullOrEmpty(item.AltImageFile4)) ? item.ReturnImageName(5) + "," : "";
+            if(result != string.Empty) { return result.TrimEnd(','); }
+            return result;
+        }
+
         /// <summary>
         ///     Retrieves categories and creates a comma seperated string
         /// </summary>
@@ -2456,14 +2472,14 @@ namespace OdinServices
                     string imageName = imageSections[imageSections.Length - 1];
                     List<string> cats = this.NewCategories(item.Category, item.Category2, item.Category3);
 
-                    string newString = WriteMagentoMainLine(item, "USA", requestType);
+                    string newString = WriteMagento2MainLine(item);
                     CSV_Add.Add(newString);                        
                     
                 }                
                 
                 if (CSV_Add.Count > 1)
                 {
-                    string csvFilePath = desktop + @"\Request-" + "-" + requestId + "_Au_New.csv";
+                    string csvFilePath = desktop + @"\Request-" + "-" + requestId + "_Add.csv";
                     string delimiter = ",";
                     StringBuilder sb = new StringBuilder();
                     StringBuilder sbl = new StringBuilder();
@@ -2677,13 +2693,13 @@ namespace OdinServices
             result += "\"" + title + "\","; /* meta_title */
             result += "\"" + itemKeywords + "\","; /* meta_keywords */
             result += "\"" + title + "\","; /* meta_description */
-            result += ","; /* base_image */
+            result += "\"" + item.ReturnImageName(1) + "\","; /* base_image */
             result += ","; /* base_image_label */
-            result += ","; /* small_image */
+            result += "\"" + item.ReturnImageName(1) + "\","; /* small_image */
             result += ","; /* small_image_label */
-            result += ","; /* thumbnail_image */
+            result += "\"" + item.ReturnImageName(1) + "\","; /* thumbnail_image */
             result += ","; /* thumbnail_image_label */
-            result += ","; /* swatch_image */
+            result += "\"" + item.ReturnImageName(1) + "\","; /* swatch_image */
             result += ","; /* swatch_image_label */
             result += ","; /* created_at */
             result += ","; /* updated_at */
@@ -2730,7 +2746,7 @@ namespace OdinServices
             result += ","; /* crosssell_position */
             result += ","; /* upsell_skus */
             result += ","; /* upsell_position */
-            result += ","; /* additional_images */
+            result += "\"" + FormatAdditionalImages(item) + "\","; /* additional_images */
             result += ","; /* additional_image_labels */
             result += ","; /* hide_from_product_page */
             result += ","; /* custom_options */

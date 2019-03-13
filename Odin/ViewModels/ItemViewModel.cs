@@ -69,7 +69,7 @@ namespace Odin.ViewModels
         /// <summary>
         ///     List of itemIds in mainwindow
         /// </summary>
-        public List<string> ItemIds { get; set; }
+        //public List<string> ItemIds { get; set; }
 
         /// <summary>
         ///     Gets the permissionAdminVisibility. Shows or web override fields.
@@ -9715,7 +9715,7 @@ namespace Odin.ViewModels
                     break;
 
                 case "BillOfMaterials":
-                    this.BillOfMaterialsError = ItemService.ValidateBillOfMaterials(ItemViewModelItem, this.ItemIds)?.ReturnErrorMessage() ?? "";
+                    this.BillOfMaterialsError = ItemService.ValidateBillOfMaterials(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "CasepackHeight":
@@ -10012,6 +10012,9 @@ namespace Odin.ViewModels
                     this.ItemKeywordsError = ItemService.ValidateItemKeywords(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
+                case "ItemKeywordsOverride":
+                    break;
+
                 case "Language":
                     this.LanguageError = ItemService.ValidateLanguage(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
@@ -10085,7 +10088,7 @@ namespace Odin.ViewModels
 
                 case "ProductFormat":
                     this.ProductFormatError = ItemService.ValidateProductFormat(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
-                    this.ProductIdTranslationError = ItemService.ValidateProductIdTranslation(ItemViewModelItem, this.ItemIds)?.ReturnErrorMessage() ?? "";
+                    this.ProductIdTranslationError = ItemService.ValidateProductIdTranslation(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     this.EanError = ItemService.ValidateEan(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
@@ -10100,7 +10103,7 @@ namespace Odin.ViewModels
                     break;
 
                 case "ProductIdTranslation":
-                    this.ProductIdTranslationError = ItemService.ValidateProductIdTranslation(ItemViewModelItem, this.ItemIds)?.ReturnErrorMessage() ?? "";
+                    this.ProductIdTranslationError = ItemService.ValidateProductIdTranslation(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "ProductLine":
@@ -10204,6 +10207,9 @@ namespace Odin.ViewModels
                     this.TitleError = ItemService.ValidateTitle(ItemViewModelItem)?.ReturnErrorMessage()??"";
                     break;
 
+                case "TitleOverride":
+                    break;
+
                 case "Udex":
                     this.UdexError = ItemService.ValidateUdex(ItemViewModelItem)?.ReturnErrorMessage()??"";
                     break;
@@ -10215,16 +10221,19 @@ namespace Odin.ViewModels
                     this.ProductLineError = ItemService.ValidateProductLine(ItemViewModelItem)?.ReturnErrorMessage()??"";
                     break;
 
-                case "WebsitePrice":
-                    this.WebsitePriceError = ItemService.ValidateWebsitePrice(ItemViewModelItem)?.ReturnErrorMessage()??"";
-                    break;
-
                 case "Warranty":
                     this.WarrantyError = ItemService.ValidateWarranty(ItemViewModelItem)?.ReturnErrorMessage()??"";
                     break;
 
                 case "WarrantyCheck":
                     this.WarrantyCheckError = ItemService.ValidateWarrantyCheck(ItemViewModelItem)?.ReturnErrorMessage()??"";
+                    break;
+
+                case "WebsitePrice":
+                    this.WebsitePriceError = ItemService.ValidateWebsitePrice(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    break;
+
+                case "WebsitePriceOverride":
                     break;
 
                 case "Weight":
@@ -10540,7 +10549,7 @@ namespace Odin.ViewModels
         /// <returns></returns>
         public bool SubmitItem()
         {
-            ObservableCollection<ItemError> errors = ItemService.ValidateItem(ItemViewModelItem, ItemIds, false);
+            ObservableCollection<ItemError> errors = ItemService.ValidateItem(ItemViewModelItem, false);
             
             List<string> errorMessages = new List<string>();
             if (errors.Count != 0)
@@ -10627,10 +10636,9 @@ namespace Odin.ViewModels
         /// </summary>
         /// <param name="itemObj"></param>
         /// <param name="itemService"></param>
-        public ItemViewModel(ItemObject itemObj, ItemService itemService, List<string> itemIds, ObservableCollection<ItemError> errors = null)
+        public ItemViewModel(ItemObject itemObj, ItemService itemService, ObservableCollection<ItemError> errors = null)
         {
             this.ItemService = itemService ?? throw new ArgumentNullException("itemService");
-            this.ItemIds = itemIds;
             this.ItemViewModelItem = (itemObj.Clone() as ItemObject);
             SetOptions(itemObj);
             SetToolTips();

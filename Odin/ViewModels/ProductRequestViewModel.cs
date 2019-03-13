@@ -50,6 +50,22 @@ namespace Odin.ViewModels
         private RelayCommand _createCSVCommand;
 
         /// <summary>
+        ///     Create CSV button triggered command
+        /// </summary>
+        public ICommand CreateCSV2Command
+        {
+            get
+            {
+                if (_createCSV2Command == null)
+                {
+                    _createCSV2Command = new RelayCommand(param => CreateCSV2File());
+                }
+                return _createCSV2Command;
+            }
+        }
+        private RelayCommand _createCSV2Command;
+
+        /// <summary>
         ///     Pull Images button triggered command
         /// </summary>
         public ICommand PullImagesCommand
@@ -347,6 +363,45 @@ namespace Odin.ViewModels
                     count++;
                 }
                 ExcelService.WriteMagentoCsv(itemList, requestId, requestType);
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Please select a Request");
+            }
+
+        }
+
+        /// <summary>
+        ///     Creates a CSV file to the desktop for the currently selected request
+        /// </summary>
+        public void CreateCSV2File()
+        {
+            if (SelectedRequestlingList.Count > 0)
+            {
+                string requestId = SelectedRequestlingList[0].RequestId.ToString();
+                string requestType = SelectedRequestlingList[0].ItemStatus.ToString();
+                ObservableCollection<ItemObject> itemList = new ObservableCollection<ItemObject>();
+                int count = 1;
+                foreach (Request request in SelectedRequestlingList)
+                {
+                    ItemService.UpdateNewDate(request.ItemId);
+
+                    ItemObject item = new ItemObject(1);
+                    if (requestType != "Remove")
+                    {
+                        item = ItemService.RetrieveItem(request.ItemId, count);
+
+                    }
+                    else
+                    {
+                        item.ItemId = request.ItemId;
+                    }
+                    // item.ItemStatus = request.ItemStatus;
+                    item.Status = request.ItemStatus;
+                    itemList.Add(item);
+                    count++;
+                }
+                ExcelService.WriteMagento2Csv(itemList, requestId, requestType);
             }
             else
             {

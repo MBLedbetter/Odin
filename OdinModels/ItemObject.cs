@@ -4179,6 +4179,55 @@ namespace OdinModels
         }
 
         /// <summary>
+        ///     Returns only the file name from the image path number given
+        /// </summary>
+        /// <param name="imageNumber"></param>
+        /// <returns></returns>
+        public string ReturnImageName(int imageNumber)
+        {
+            string value = string.Empty;
+            switch (imageNumber)
+            {
+                case 1:
+                    if (!string.IsNullOrEmpty(this.ImagePath))
+                    {
+                        value = this.ImagePath;
+                    }
+                    break;
+                case 2:
+                    if (!string.IsNullOrEmpty(this.AltImageFile1))
+                    {
+                        value = this.AltImageFile1;
+                    }
+                    break;
+                case 3:
+                    if (!string.IsNullOrEmpty(this.AltImageFile2))
+                    {
+                        value = this.AltImageFile2;
+                    }
+                    break;
+                case 4:
+                    if (!string.IsNullOrEmpty(this.AltImageFile3))
+                    {
+                        value = this.AltImageFile3;
+                    }
+                    break;
+                case 5:
+                    if (!string.IsNullOrEmpty(this.AltImageFile4))
+                    {
+                        value = this.AltImageFile4;
+                    }
+                    break;
+            }
+            if (value != string.Empty)
+            {
+                string[] words = value.Split('\\');
+                return words[words.Length - 1];
+            }
+            else return "";
+        }
+
+        /// <summary>
         ///     Returns Product Id Translations as a string
         /// </summary>
         /// <returns></returns>

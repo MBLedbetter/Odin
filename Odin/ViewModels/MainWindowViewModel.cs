@@ -484,16 +484,6 @@ namespace Odin.ViewModels
         private ObservableCollection<ItemError> _itemErrors = new ObservableCollection<ItemError>();
 
         /// <summary>
-        ///     List of all current ItemIds being viewed in Odin.
-        /// </summary>
-        public List<string> ItemIds
-        {
-            get { return _itemIds; }
-            set { _itemIds = value; }
-        }
-        private List<string> _itemIds = new List<string>();
-
-        /// <summary>
         ///		List of items loaded into MainWindowViewModel
         /// </summary>
         public ObservableCollection<ItemObject> Items
@@ -673,24 +663,7 @@ namespace Odin.ViewModels
             }
         }
         private bool _submitStatus;
-
-        /// <summary>
-        ///     Gets or sets the username
-        /// </summary>
-        public string UserName
-        {
-            get
-            {
-                return _username;
-            }
-            set
-            {
-                _username = value;
-                OnPropertyChanged("UserName");
-            }
-        }
-        private string _username = "";
-
+         
         /// <summary>
         ///     Display Title for top bar of main window view
         /// </summary>
@@ -2847,7 +2820,7 @@ namespace Odin.ViewModels
                         if (item.Status != "Saved")
                         {
                             ItemService.InsertItem(item, count);
-                            this.ItemIds.Add(item.ItemId);
+                            GlobalData.LocalItemIds.Add(item.ItemId);
                         }
                         item.Status = "Saved";
                         item.RowColor = "LightGreen";
@@ -2937,7 +2910,7 @@ namespace Odin.ViewModels
         {
             this.Items = new ObservableCollection<ItemObject>();
             this.ItemErrors = new ObservableCollection<ItemError>();
-            this.ItemIds = new List<string>();
+            GlobalData.LocalItemIds = new List<string>();
         }
 
         /// <summary>
@@ -3015,11 +2988,11 @@ namespace Odin.ViewModels
             ItemView window = new ItemView();
             if (item == null)
             {
-                window.DataContext = new ItemViewModel(this.SelectedItem, this.ItemService, ItemIds, this.ItemErrors);
+                window.DataContext = new ItemViewModel(this.SelectedItem, this.ItemService, this.ItemErrors);
             }
             else
             {
-                window.DataContext = new ItemViewModel(item, this.ItemService, ItemIds, this.ItemErrors);
+                window.DataContext = new ItemViewModel(item, this.ItemService, this.ItemErrors);
             }
             window.ShowDialog();
 
@@ -3042,9 +3015,9 @@ namespace Odin.ViewModels
                             break;
                         }
                     }
-                    if (ItemIds.Contains((window.DataContext as ItemViewModel).ItemId))
+                    if (GlobalData.LocalItemIds.Contains((window.DataContext as ItemViewModel).ItemId))
                     {
-                        ItemIds.Remove((window.DataContext as ItemViewModel).ItemId);
+                        GlobalData.LocalItemIds.Remove((window.DataContext as ItemViewModel).ItemId);
                     }
                 }
                 else if (!((window.DataContext as ItemViewModel).Remove))
@@ -3157,14 +3130,14 @@ namespace Odin.ViewModels
                 }
                 foreach (ItemObject item in this.Items)
                 {
-                    ItemIds.Add(item.ItemId);
+                    GlobalData.LocalItemIds.Add(item.ItemId);
                 }
                 this.ItemErrors = new ObservableCollection<ItemError>();
                 try
                 {
                     foreach (ItemObject item in this.Items)
                     {
-                        foreach (ItemError error in this.ItemService.ValidateItem(item, this.ItemIds, false))
+                        foreach (ItemError error in this.ItemService.ValidateItem(item, false))
                         {
                             this.ItemErrors.Add(error);
                         }
@@ -3321,7 +3294,7 @@ namespace Odin.ViewModels
         /// </summary>
         public void SubmitEcommerceImages()
         {
-            if (this.FtpService == null && !GlobalData.FtpUserexceptions.Contains(this.UserName))
+            if (this.FtpService == null && !GlobalData.FtpUserexceptions.Contains(GlobalData.UserName))
             {
                 this.FtpService = new FtpService();
             }
@@ -3665,11 +3638,11 @@ namespace Odin.ViewModels
             string result = "Odin";
             if(Odin.Properties.Settings.Default.DbName=="FS88PRD")
             {
-                result += " - " + this.UserName;
+                result += " - " + GlobalData.UserName;
             }
             else if (Odin.Properties.Settings.Default.DbName == "FS88DEV")
             {
-                result += " : Development - " + this.UserName;
+                result += " : Development - " + GlobalData.UserName;
             }
             return result;
         }
@@ -3685,7 +3658,7 @@ namespace Odin.ViewModels
                 {
                     foreach (ItemObject item in Items)
                     {
-                        foreach (ItemError er in ItemService.ValidateItem(item, this.ItemIds, true))
+                        foreach (ItemError er in ItemService.ValidateItem(item, true))
                         {
                             ItemErrors.Add(er);
                         }                    
@@ -3703,7 +3676,7 @@ namespace Odin.ViewModels
                 }
                 if ((ItemErrors.Count == 0) || (Items[0].Status == "Remove"))
                 {
-                    string Comment = string.Empty;
+                    string comment = string.Empty;
                     if (Items[0].Status == "Remove")
                     {
                         ExcelService.SubmitRequest(Items, "Remove", "");
@@ -3735,16 +3708,15 @@ namespace Odin.ViewModels
                                 window.ShowDialog();
                                 if (window.DialogResult == true)
                                 {
-                                    Comment = (window.DataContext as CommentBoxViewModel).Comment;
+                                    comment = (window.DataContext as CommentBoxViewModel).Comment;
                                 }
                                 Mouse.OverrideCursor = Cursors.Wait;
-                                ExcelService.SubmitRequest(Items, "Add", Comment);
-                                EmailService.sendPendingRequestEmail(GlobalData.UserName, Comment, ExcelService.ReturnRequestNum());
+                                ExcelService.SubmitRequest(Items, "Add", comment);
+                                EmailService.sendPendingRequestEmail(GlobalData.UserName, comment, ExcelService.ReturnRequestNum());
                                 Mouse.OverrideCursor = null;
                                 MessageBox.Show("Items Submitted Successfully");
-                                Items = new ObservableCollection<ItemObject>(); ;
-                                SubmitStatus = false;
-                                PermissionSubmitItemVisibility = "Hidden";
+                                Items = new ObservableCollection<ItemObject>();
+                                this.SubmitStatus = false;
                                 Mouse.OverrideCursor = null;
                             }
                             else
@@ -3754,19 +3726,16 @@ namespace Odin.ViewModels
                                     DataContext = new CommentBoxViewModel()
                                 };
                                 window.ShowDialog();
-
                                 if (window.DialogResult == true)
                                 {
-                                    Comment = (window.DataContext as CommentBoxViewModel).Comment;
+                                    comment = (window.DataContext as CommentBoxViewModel).Comment;
                                 }
-
                                 Mouse.OverrideCursor = Cursors.Wait;
-                                ExcelService.SubmitRequest(Items, "Update", Comment);
-                                EmailService.sendPendingRequestEmail(GlobalData.UserName, Comment, ExcelService.ReturnRequestNum());
+                                ExcelService.SubmitRequest(Items, "Update", comment);
+                                EmailService.sendPendingRequestEmail(GlobalData.UserName, comment, ExcelService.ReturnRequestNum());
                                 MessageBox.Show("Items Submitted Successfully");
-                                Items = new ObservableCollection<ItemObject>(); ;
-                                SubmitStatus = false;
-                                PermissionSubmitItemVisibility = "Hidden";
+                                Items = new ObservableCollection<ItemObject>();
+                                this.SubmitStatus = false;
                                 Mouse.OverrideCursor = null;
                             }
                         }
@@ -3903,7 +3872,7 @@ namespace Odin.ViewModels
 
             foreach(ItemObject item in items)
             {
-                foreach (ItemError error in this.ItemService.ValidateItem(item, itemIds, false))
+                foreach (ItemError error in this.ItemService.ValidateItem(item, false))
                 {
                     ReturnErrors.Add(error);
                 }
@@ -3935,7 +3904,7 @@ namespace Odin.ViewModels
                     ObservableCollection<ItemError> CheckErrors = new ObservableCollection<ItemError>();
                     foreach (ItemObject item in CheckItems)
                     {
-                        foreach (ItemError error in this.ItemService.ValidateItem(item, this.ItemIds, false))
+                        foreach (ItemError error in this.ItemService.ValidateItem(item, false))
                         {
                             if (!CheckErrors.Contains(error))
                             {
@@ -3976,7 +3945,7 @@ namespace Odin.ViewModels
         /// </summary>
         public void ViewEcommerceImageList()
         {
-            if (!GlobalData.FtpUserexceptions.Contains(this.UserName))
+            if (!GlobalData.FtpUserexceptions.Contains(GlobalData.UserName))
             {
                 this.FtpService = new FtpService();
                 List<string> existingImages = this.FtpService.ReturnExistingImageFiles();
@@ -4042,7 +4011,6 @@ namespace Odin.ViewModels
             {
                 this.BackgroundWorker = new BackgroundWorker();
                 BackgroundWorker.WorkerSupportsCancellation = true;
-                this.UserName = GlobalData.UserName;
                 this.EmailService = emailService ?? throw new ArgumentNullException("emailService");
                 this.ExcelService = excelService ?? throw new ArgumentNullException("excelService");
                 this.ItemService = itemService ?? throw new ArgumentNullException("itemService");

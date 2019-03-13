@@ -143,7 +143,7 @@ namespace OdinTests.ViewModels
 
             #region Act
 
-            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>());
+            ItemViewModel itemViewModel = new ItemViewModel(item, itemService);
 
             #endregion // Act
 
@@ -274,12 +274,12 @@ namespace OdinTests.ViewModels
 
             #region Act
 
-            ItemViewModel itemViewModel1 = new ItemViewModel(item1, itemService, new List<string>());
-            ItemViewModel itemViewModel2 = new ItemViewModel(item2, itemService, new List<string>());
-            ItemViewModel itemViewModel3 = new ItemViewModel(item3, itemService, new List<string>());
-            ItemViewModel itemViewModel4 = new ItemViewModel(item4, itemService, new List<string>());
-            ItemViewModel itemViewModel5 = new ItemViewModel(item5, itemService, new List<string>());
-            ItemViewModel itemViewModel6 = new ItemViewModel(item6, itemService, new List<string>());
+            ItemViewModel itemViewModel1 = new ItemViewModel(item1, itemService);
+            ItemViewModel itemViewModel2 = new ItemViewModel(item2, itemService);
+            ItemViewModel itemViewModel3 = new ItemViewModel(item3, itemService);
+            ItemViewModel itemViewModel4 = new ItemViewModel(item4, itemService);
+            ItemViewModel itemViewModel5 = new ItemViewModel(item5, itemService);
+            ItemViewModel itemViewModel6 = new ItemViewModel(item6, itemService);
 
             #endregion // Act
 
@@ -316,7 +316,7 @@ namespace OdinTests.ViewModels
 
             #region Act
 
-            ItemViewModel itemViewModel1 = new ItemViewModel(item1, itemService, new List<string>())
+            ItemViewModel itemViewModel1 = new ItemViewModel(item1, itemService)
             {
                 SellOnAmazonCheck = true
             };
@@ -341,9 +341,9 @@ namespace OdinTests.ViewModels
             };
             
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ObservableCollection<ItemError> errorList = itemService.ValidateItem(item, new List<string>(), false);
+            ObservableCollection<ItemError> errorList = itemService.ValidateItem(item, false);
             GlobalData.EcomFlagRequirement = true;
-            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>(), errorList);
+            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, errorList);
 
             #endregion // Assign
 
@@ -374,7 +374,7 @@ namespace OdinTests.ViewModels
                 ShortDescription = "OoOoOo BoYeE"
             };
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>());
+            ItemViewModel itemViewModel = new ItemViewModel(item, itemService);
             #endregion // Assign
 
             #region Act
@@ -403,7 +403,7 @@ namespace OdinTests.ViewModels
                 EcommerceBullet1 = "My Porcelin Horse!"
             };
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>());
+            ItemViewModel itemViewModel = new ItemViewModel(item, itemService);
             #endregion // Assign
 
             #region Act
@@ -433,7 +433,7 @@ namespace OdinTests.ViewModels
             GlobalData.ClearValues();
             ItemObject item = new ItemObject(1);
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>());
+            ItemViewModel itemViewModel = new ItemViewModel(item, itemService);
             #endregion // Assign
 
             #region Act
@@ -462,16 +462,16 @@ namespace OdinTests.ViewModels
                 ItemKeywords = ""
             };
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ObservableCollection<ItemError> errorList = itemService.ValidateItem(item, new List<string>(), false);
-            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>(), errorList);
+            ObservableCollection<ItemError> errorList = itemService.ValidateItem(item, false);
+            ItemViewModel itemViewModel = new ItemViewModel(item, itemService,  errorList);
             item = new ItemObject(1)
             {
                 SellOnTrends = "N",
                 ItemKeywords = ""
             };
             ItemService itemService2 = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            errorList = itemService.ValidateItem(item, new List<string>(), false);
-            ItemViewModel itemViewModel2 = new ItemViewModel(item, itemService, new List<string>(), errorList);
+            errorList = itemService.ValidateItem(item, false);
+            ItemViewModel itemViewModel2 = new ItemViewModel(item, itemService, errorList);
             #endregion // Assign
 
             #region Act
@@ -500,8 +500,8 @@ namespace OdinTests.ViewModels
                 SellOnTrends = "Y"
             };
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ObservableCollection<ItemError> errorList = itemService.ValidateItem(item, new List<string>(), false);
-            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>(), errorList);
+            ObservableCollection<ItemError> errorList = itemService.ValidateItem(item, false);
+            ItemViewModel itemViewModel = new ItemViewModel(item, itemService,  errorList);
 
             #endregion // Assign
 
@@ -632,7 +632,7 @@ namespace OdinTests.ViewModels
 
             #region Act
 
-            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>());
+            ItemViewModel itemViewModel = new ItemViewModel(item, itemService);
 
             #endregion // Act
 
@@ -822,7 +822,7 @@ namespace OdinTests.ViewModels
 
             #region Act
 
-            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, new List<string>());
+            ItemViewModel itemViewModel = new ItemViewModel(item, itemService);
 
             #endregion // Act
 
@@ -1037,7 +1037,7 @@ namespace OdinTests.ViewModels
 
             #region Act
 
-            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, itemIds);
+            ItemViewModel itemViewModel = new ItemViewModel(item, itemService);
             // itemViewModel.ValidateAll(itemViewModel.ItemViewModelItem);
             ItemObject newItem = itemViewModel.ItemViewModelItem;
 

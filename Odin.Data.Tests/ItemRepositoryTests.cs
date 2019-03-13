@@ -464,6 +464,7 @@ namespace Odin.Data.Tests
             #region Assemble
 
             DbHelpers.ClearDatabase();
+            GlobalData.ClearValues();
             ItemRepository itemRepository = new ItemRepository(DbHelpers.GetContextFactory());
             ConnectionManager connectionManager = new ConnectionManager(@"(local)\SQLExpress", "Odin");
             connectionManager.SetUseTrustedConnection(true);
