@@ -298,7 +298,7 @@ namespace OdinServices
         {
             string[] pathParts = value.Split('/');
             string fileName = pathParts[pathParts.Length - 1];
-            string result = "http://trendsinternational.com/media/externalCaptures/" + fileName;
+            string result = "https://trendsinternational.com/media/externalCaptures/" + fileName;
             result = result.Replace(" ", "%20");
             return result;
         }
