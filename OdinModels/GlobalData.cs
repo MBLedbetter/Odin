@@ -302,7 +302,6 @@ namespace OdinModels
         }
         private static List<string> _licenses = new List<string>();
 
-
         /// <summary>
         ///     List of all item ids currently loaded in Odin
         /// </summary>

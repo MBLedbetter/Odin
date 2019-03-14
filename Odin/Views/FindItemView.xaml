@@ -4,152 +4,305 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="{Binding Title}"
     Height="357.053"
-    MaxWidth="500"
-    Width="500">
-    <Grid Margin="0,0,2,0">
+    MaxWidth="540"
+    Width="540">
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition
-                Width="120" />
-            <ColumnDefinition
-                Width="*" />
-            <ColumnDefinition
-                Width="120" />
-            <ColumnDefinition
-                Width="120" />
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition
-                Height="26" />
-            <RowDefinition
-                Height="26" />
-            <RowDefinition
-                Height="26" />
-            <RowDefinition
-                Height="24" />
-            <RowDefinition
-                Height="*" />
-            <RowDefinition
-                Height="50" />
-            <RowDefinition
-                Height="20" />
-        </Grid.RowDefinitions>
+        <TabControl
+            VerticalAlignment="Top" Height="316">
+            <TabItem
+                Background="{Binding TabColorItemInfo}"
+                Header="   Search by Item Id   ">
+                <Grid Margin="0,0,2,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="120" />
+                        <ColumnDefinition
+                            Width="*" />
+                        <ColumnDefinition
+                            Width="120" />
+                        <ColumnDefinition
+                            Width="120" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="10" />
+                        <RowDefinition
+                            Height="32" />
+                        <RowDefinition
+                            Height="10" />
+                        <RowDefinition
+                            Height="24" />
+                        <RowDefinition
+                            Height="*" />
+                        <RowDefinition
+                            Height="50" />
+                        <RowDefinition
+                            Height="20" />
+                    </Grid.RowDefinitions>
 
-        <!-- Item ID-->
-        <Label
-            Content="Search For Item Id:"
-            Grid.Row="1"
-            Grid.Column="0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center" />
-        <TextBox
-            HorizontalAlignment="Left"
-            Height="23"
-            Grid.Column="1"
-            Grid.ColumnSpan="2"
-            Grid.Row="1"
-            TextWrapping="Wrap"
-            Text="{Binding Path=SearchInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"             
-            VerticalContentAlignment="Center"
-            Width="232" Margin="13,2,0,2">
-            <TextBox.InputBindings>
-                <KeyBinding Key="Enter" Command="{Binding EnterKeyCommand}"/>
-            </TextBox.InputBindings>
-        </TextBox>
-        <Button
-            Command="{Binding FindItemCommand}"
-            Content="Find Item"            
-            Grid.Column="3"
-            Grid.Row="1"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Width="105"
-            Height="24"
-            IsEnabled="{Binding ButtonVisibility}" />
-        <Button
-            Content="Add Excel List"
-            Grid.Column="3"
-            Grid.Row="4"
-            HorizontalAlignment="Left"
-            Margin="10,10,0,0"
-            VerticalAlignment="Top"
-            Width="105"
-            Command="{Binding AddListCommand}"
-            Height="25" 
-            IsEnabled="{Binding ButtonVisibility}" />
-        <Button
-            Height="26"
-            Grid.Column="3"
-            Grid.Row="5"
-            Content="Cancel"
-            Click="CancelButton_Click"
-            Margin="10"/>
-        <Button
-            Height="26"
-            Grid.Column="2"
-            Grid.Row="5"
-            Content="Submit"
-            Click="SubmitButton_Click"
-            VerticalAlignment="Top"
-            IsEnabled="{Binding SubmitButtonVisibility}" 
-            Margin="10"/>
-
-        <Label
-            Grid.Row="3"
-            Grid.Column="0"
-            Content="Selected Items :"
-            Margin="10,0" />
-        <ListView
-            SelectedItem="{Binding SelectedItem}"
-            Grid.Column="0"
-            Grid.ColumnSpan="3"
-            Grid.Row="4"
-            HorizontalAlignment="Left"
-            ItemsSource="{Binding ItemList}"
-            Margin="10,10,0,0"
-            MinHeight="125"
-            MinWidth="352"
-            VerticalAlignment="Top">
-            <ListView.View>
-                <GridView>
-                    <GridView.Columns>
-                        <GridViewColumn
-                            DisplayMemberBinding="{Binding ItemId}"
-                            Width="80">
-                            <GridViewColumn.Header>
-                                <GridViewColumnHeader
-                                    Content="Item Id"
-                                    HorizontalContentAlignment="Left"
-                                    Height="20"
-                                    Padding="10,0,0,0"
-                                    Click="ItemId_Column_Click" />
-                            </GridViewColumn.Header>
-                        </GridViewColumn>
-                        <GridViewColumn
-                            DisplayMemberBinding="{Binding Description}"
-                            Width="380">
-                            <GridViewColumn.Header>
-                                <GridViewColumnHeader
-                                    Click="Description_Column_Click"
-                                    Content="Description"
-                                    HorizontalContentAlignment="Left"
-                                    Height="20"
-                                    Padding="10,0,0,0" />
-                            </GridViewColumn.Header>
-                        </GridViewColumn>
-                    </GridView.Columns>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <TextBlock
-            Grid.Column="1"
-            Grid.ColumnSpan="2"
-            Grid.Row="4"
-            Text="{Binding ProgressText}"
-            TextAlignment="Center"
-            Height="20"
-            >
-            
-        </TextBlock>
-
+                    <Label
+                        Content="Search For Item Id:"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center" Margin="10,3,0,3" />
+                    <TextBox
+                        HorizontalAlignment="Left"
+                        Height="23"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        TextWrapping="Wrap"
+                        Text="{Binding Path=ItemIdSearchInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"             
+                        VerticalContentAlignment="Center"
+                        Width="232" Margin="13,2,0,2">
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Enter" Command="{Binding EnterKeyCommand}"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+                    <Button
+                        Command="{Binding FindItemCommand}"
+                        Content="Find Item"            
+                        Grid.Column="3"
+                        Grid.Row="1"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Width="105"
+                        Height="24"
+                        IsEnabled="{Binding ButtonVisibility}" Margin="5,4,0,0" />
+                    <Button
+                        Content="Add Excel List"
+                        Grid.Column="3"
+                        Grid.Row="4"
+                        HorizontalAlignment="Left"
+                        Margin="10,10,0,0"
+                        VerticalAlignment="Top"
+                        Width="105"
+                        Command="{Binding AddListCommand}"
+                        Height="25" 
+                        IsEnabled="{Binding ButtonVisibility}" />
+                    <Button
+                        Height="26"
+                        Grid.Column="3"
+                        Grid.Row="5"
+                        Content="Cancel"
+                        Click="CancelButton_Click"
+                        Margin="10"/>
+                    <Button
+                        Height="26"
+                        Grid.Column="2"
+                        Grid.Row="5"
+                        Content="Submit"
+                        Click="SubmitButton_Click"
+                        VerticalAlignment="Top"
+                        IsEnabled="{Binding SubmitButtonVisibility}" 
+                        Margin="10"/>
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Content="Selected Items :"
+                        Margin="10,0" />
+                    <ListView
+                        SelectedItem="{Binding SelectedItem}"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Grid.Row="4"
+                        HorizontalAlignment="Left"
+                        ItemsSource="{Binding ItemList}"
+                        Margin="10,10,0,0"
+                        MinHeight="125"
+                        MinWidth="352"
+                        VerticalAlignment="Top">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn
+                                    DisplayMemberBinding="{Binding ItemId}"
+                                    Width="80">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader
+                                            Content="Item Id"
+                                            HorizontalContentAlignment="Left"
+                                            Height="20"
+                                            Padding="10,0,0,0"
+                                            Click="ItemId_Column_Click" />
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn
+                                    DisplayMemberBinding="{Binding Description}"
+                                    Width="380">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader
+                                            Click="Description_Column_Click"
+                                            Content="Description"
+                                            HorizontalContentAlignment="Left"
+                                            Height="20"
+                                            Padding="10,0,0,0" />
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <TextBlock
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="4"
+                        Text="{Binding ProgressText}"
+                        TextAlignment="Center"
+                        Height="20"/>
+                </Grid>
+            </TabItem>
+            <TabItem
+                Background="{Binding TabColorItemInfo}"
+                Header="   Search by Field   ">
+                <Grid Margin="0,0,2,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="98" />
+                        <ColumnDefinition />
+                        <ColumnDefinition
+                            Width="61" />
+                        <ColumnDefinition
+                            Width="210" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="12" />
+                        <RowDefinition
+                            Height="32" />
+                        <RowDefinition
+                            Height="20" />
+                        <RowDefinition
+                            Height="24" />
+                        <RowDefinition
+                            Height="*" />
+                        <RowDefinition
+                            Height="40" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Content="Search By:"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Height="26" 
+                        HorizontalAlignment="Left"
+                        Margin="10,3,0,3" 
+                        VerticalAlignment="Center" 
+                        Width="64" />
+                    <ComboBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalAlignment="Left"
+                        IsEnabled="{Binding BlockInfo}"
+                        ItemsSource="{Binding SearchByFields}"
+                        Margin="6,3,0,3"
+                        Text="{Binding SearchByField}"
+                        Width="148" />
+                    <Label
+                        Content="Value:"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Height="26" 
+                        HorizontalAlignment="Left"
+                        Margin="10,3,0,3" 
+                        VerticalAlignment="Center" 
+                        Width="50" />
+                    <ComboBox
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        HorizontalAlignment="Left"
+                        IsEnabled="{Binding BlockInfo}"
+                        ItemsSource="{Binding SearchByFieldValues}"
+                        Margin="6,3,0,3"
+                        Text="{Binding SearchByFieldValue}"
+                        Width="194" />
+                    <Button
+                        Command="{Binding FindItemCommand}"
+                        Content="Find Items"            
+                        Grid.Column="3"
+                        Grid.Row="2"
+                        Grid.RowSpan="2"
+                        Height="24"
+                        HorizontalAlignment="Left"
+                        IsEnabled="{Binding ButtonVisibility}" 
+                        Margin="5,10,0,0" 
+                        VerticalAlignment="Top"
+                        Width="195" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Content="Selected Items :" Margin="10,0,0,0" />
+                    <ListView
+                        SelectedItem="{Binding SelectedItem}"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        Grid.Row="4"
+                        Height="125" 
+                        HorizontalAlignment="Left"
+                        ItemsSource="{Binding ItemList}"
+                        Margin="10,10,0,0"
+                        MinHeight="125"
+                        MinWidth="352"
+                        VerticalAlignment="Top" 
+                        Width="504">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn
+                                DisplayMemberBinding="{Binding ItemId}"
+                                Width="80">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader
+                                        Content="Item Id"
+                                        HorizontalContentAlignment="Left"
+                                        Height="20"
+                                        Padding="10,0,0,0"
+                                        Click="ItemId_Column_Click" />
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn
+                                DisplayMemberBinding="{Binding Description}"
+                                Width="380">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader
+                                        Click="Description_Column_Click"
+                                        Content="Description"
+                                        HorizontalContentAlignment="Left"
+                                        Height="20"
+                                        Padding="10,0,0,0" />
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button
+                        Height="26"
+                        Grid.Column="3"
+                        Grid.Row="5"
+                        Content="Submit"
+                        Click="SubmitButton_Click"
+                        VerticalAlignment="Top"
+                        IsEnabled="{Binding SubmitButtonVisibility}" 
+                        Margin="20,7,100,0" RenderTransformOrigin="2.44,0.386"/>
+                    <Button
+                        Click="CancelButton_Click"
+                        Content="Cancel"
+                        Grid.Column="3"
+                        Grid.Row="5"
+                        Margin="115,7,5,7"/>
+                    <TextBlock
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="4"
+                        Text="{Binding ProgressText}"
+                        TextAlignment="Center" 
+                        Margin="0,58,0,57"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

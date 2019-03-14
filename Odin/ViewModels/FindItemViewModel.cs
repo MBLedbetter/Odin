@@ -8,7 +8,6 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Input;
 using System.ComponentModel;
 
@@ -244,24 +243,76 @@ namespace Odin.ViewModels
         private string _progressText = string.Empty;
 
         /// <summary>
-        ///     Item id input field
+        ///     Gets or sets the Search By Field Combobox value
         /// </summary>
-        public string SearchInput
+        public string SearchByField
         {
             get
             {
-                return _searchInput;
+                return _searchByField;
             }
             set
             {
-                if (_searchInput != value.Trim().ToUpper())
+                _searchByField = value;
+                SetSearchByFieldValue(value);
+                OnPropertyChanged("SearchByField");
+            }
+        }
+        private string _searchByField = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the Search By Fields Combobox values
+        /// </summary>
+        public List<string> SearchByFields
+        {
+            get
+            {
+                return _searchByFields;
+            }
+            set
+            {
+                _searchByFields = value;
+                OnPropertyChanged("SearchByFields");
+            }
+        }
+        private List<string> _searchByFields = new List<string>();
+
+        /// <summary>
+        ///     Gets or sets the Search By Field value Combobox values
+        /// </summary>
+        public List<string> SearchByFieldValue
+        {
+            get
+            {
+                return _searchByFieldValue;
+            }
+            set
+            {
+                _searchByFieldValue = value;
+                OnPropertyChanged("SearchByFieldValue");
+            }
+        }
+        private List<string> _searchByFieldValue = new List<string>();
+
+        /// <summary>
+        ///     Item id input field
+        /// </summary>
+        public string ItemIdSearchInput
+        {
+            get
+            {
+                return _itemIdSearchInput;
+            }
+            set
+            {
+                if (_itemIdSearchInput != value.Trim().ToUpper())
                 {
-                    _searchInput = value.Trim().ToUpper();
-                    OnPropertyChanged("ItemIdInput");
+                    _itemIdSearchInput = value.Trim().ToUpper();
+                    OnPropertyChanged("ItemIdSearchInput");
                 }
             }
         }
-        private string _searchInput = string.Empty;
+        private string _itemIdSearchInput = string.Empty;
 
         /// <summary>
         ///     Gets or sets the SearchItemIds
@@ -390,13 +441,13 @@ namespace Odin.ViewModels
         /// </summary>
         public void FindItem()
         {
-            if (!(string.IsNullOrEmpty(this.SearchInput)))
+            if (!(string.IsNullOrEmpty(this.ItemIdSearchInput)))
             {
-                if (this.SearchInput.Length > 1)
+                if (this.ItemIdSearchInput.Length > 1)
                 {
                     try
                     {
-                        List<SearchItem> searchItems = ItemService.RetrieveFindItemSearchResults(this.SearchInput);
+                        List<SearchItem> searchItems = ItemService.RetrieveFindItemSearchResults(this.ItemIdSearchInput);
                         if (searchItems.Count() == 0)
                         {
                             List<string> missingItems = new List<string>();
@@ -589,6 +640,57 @@ namespace Odin.ViewModels
             return ReturnList;
         }
 
+
+
+        public List<string> SetSearchByFields()
+        {
+            List<string> values = new List<string>()
+            {
+                "Item Category",
+                "Product Format",
+                "Product Group",
+                "Product Line",
+                "Item Group",
+                "Stats Code",
+                "Tariff Code"
+            };
+
+            return values;
+        }
+
+        public void SetSearchByFieldValue(string value)
+        {
+            switch(value)
+            {
+                case "Item Category":
+                    this.SearchByFieldValue = ItemService.RetrieveItemCategoryNames();
+                    break;
+
+                case "Product Format":
+
+                    break;
+
+                case "Product Group":
+                    this.SearchByFieldValue = GlobalData.ProductGoups;
+                    break;
+
+                case "Product Line":
+
+                    break;
+                case "Item Group":
+                    this.SearchByFieldValue = GlobalData.ItemGroups;
+                    break;
+
+                case "Stats Code":
+                    this.SearchByFieldValue = ItemService.RetrieveStatsCodes();
+                    break;
+
+                case "Tariff Code":
+                    this.SearchByFieldValue = GlobalData.TariffCodes;
+                    break;
+            }
+        }
+
         /// <summary>
         ///     Sorts List by Item Ids
         /// </summary>
@@ -651,6 +753,7 @@ namespace Odin.ViewModels
             this.ItemService = itemService?? throw new ArgumentNullException("itemService");
             this.WorkbookReader = workbookReader?? throw new ArgumentNullException("workbookReader");
             this.UpdateType = type;
+            this.SearchByFields = SetSearchByFields();
             this.Title = type + " Items";
             this.ItemIdSearchOrder = 0;
             this.DescriptionIdSearchOrder = 0;

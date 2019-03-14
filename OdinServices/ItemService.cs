@@ -1878,6 +1878,17 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Retrieves a List of all Item Category Names from global data
+        /// </summary>
+        /// <returns></returns>
+        public List<string> RetrieveItemCategoryNames()
+        {
+            List<string> result = GlobalData.ItemCategories.Keys.ToList();
+            result.Sort();
+            return result;
+        }
+
+        /// <summary>
         ///     Retrieves a list of most recent ItemRecords from ODIN_ITEM_UPDATE_RECORDS
         /// </summary>
         /// <returns></returns>
@@ -1978,6 +1989,11 @@ namespace OdinServices
             return productLines;
         }
 
+        public List<string> RetrieveProductLinesAll()
+        {
+            List<string> result = GlobalData.ProductLines.GroupBy(x => x.Value).Select(g => g.First()).ToList();
+        }
+
         /// <summary>
         ///     Retrieve Property fields from the Global Data. With the key of given license. Empty License returns all properties.
         /// </summary>
@@ -2007,6 +2023,17 @@ namespace OdinServices
             return properties;
         }
         
+        /// <summary>
+        ///     Retrieves a List of all stats codes values in global data
+        /// </summary>
+        /// <returns></returns>
+        public List<string> RetrieveStatsCodes()
+        {
+            List<string> result = GlobalData.StatsCodes.Keys.ToList();
+            result.Sort();
+            return result;
+        }
+
         /// <summary>
         ///     Retrieves a template from the db
         /// </summary>

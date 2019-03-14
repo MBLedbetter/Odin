@@ -10409,11 +10409,7 @@ namespace Odin.ViewModels
         
         public void SetStatsCodes()
         {
-            foreach(KeyValuePair<string,string> pair in GlobalData.StatsCodes)
-            {
-                this.StatsCodes.Add(pair.Key);
-            }
-            this.StatsCodes.Sort();
+            this.StatsCodes = ItemService.RetrieveStatsCodes();
         }
 
         /// <summary>
