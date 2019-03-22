@@ -1971,6 +1971,16 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Retrive all distinct product format values
+        /// </summary>
+        /// <returns></returns>
+        public List<string> RetrieveProductFormatsAll()
+        {
+            List<string> result = GlobalData.ProductFormats.Select(c => c.Format).Distinct().ToList();
+            result.Sort();
+            return result;
+        }
+        /// <summary>
         ///     Retrieve Product Line fields from the Global Data 
         ///     that corespond to the give product group
         /// </summary>
@@ -1989,10 +1999,17 @@ namespace OdinServices
             return productLines;
         }
 
+        /// <summary>
+        ///     Retrive all distinct product line values
+        /// </summary>
+        /// <returns></returns>
         public List<string> RetrieveProductLinesAll()
         {
-            List<string> result = GlobalData.ProductLines.GroupBy(x => x.Value).Select(g => g.First()).ToList();
+            List<string> result = (from o in GlobalData.ProductLines select o.Value).Distinct().ToList();
+            result.Sort();
+            return result;
         }
+        
 
         /// <summary>
         ///     Retrieve Property fields from the Global Data. With the key of given license. Empty License returns all properties.

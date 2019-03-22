@@ -38,17 +38,8 @@ namespace Odin.Data
         /// </param>
         public OdinContextFactory(IConnectionManager connectionManager, ILogServiceFactory logServiceFactory)
         {
-            if (connectionManager == null)
-            {
-                throw new ArgumentNullException("connectionManager");
-            }
-            if (logServiceFactory == null)
-            {
-                throw new ArgumentNullException("logServiceFactory");
-            }
-
-            this.connectionManager = connectionManager;
-            this.logServiceFactory = logServiceFactory;
+            this.connectionManager = connectionManager ?? throw new ArgumentNullException("connectionManager");
+            this.logServiceFactory = logServiceFactory ?? throw new ArgumentNullException("logServiceFactory");
         }
 
         #endregion  // Constructors

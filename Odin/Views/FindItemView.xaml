@@ -158,6 +158,7 @@
             </TabItem>
             <TabItem
                 Background="{Binding TabColorItemInfo}"
+                
                 Header="   Search by Field   ">
                 <Grid Margin="0,0,2,0">
                     <Grid.ColumnDefinitions>
@@ -165,7 +166,7 @@
                             Width="98" />
                         <ColumnDefinition />
                         <ColumnDefinition
-                            Width="61" />
+                            Width="52" />
                         <ColumnDefinition
                             Width="210" />
                     </Grid.ColumnDefinitions>
@@ -209,7 +210,7 @@
                         HorizontalAlignment="Left"
                         Margin="10,3,0,3" 
                         VerticalAlignment="Center" 
-                        Width="50" />
+                        Width="50" Grid.ColumnSpan="2" />
                     <ComboBox
                         Grid.Row="1"
                         Grid.Column="3"

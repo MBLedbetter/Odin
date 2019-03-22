@@ -49,7 +49,7 @@ namespace Odin.ViewModels
             {
                 if (_findItem == null)
                 {
-                    _findItem = new RelayCommand(param => FindItem());
+                    _findItem = new RelayCommand(param => FindItemById());
                 }
                 return _findItem;
             }
@@ -280,19 +280,19 @@ namespace Odin.ViewModels
         /// <summary>
         ///     Gets or sets the Search By Field value Combobox values
         /// </summary>
-        public List<string> SearchByFieldValue
+        public List<string> SearchByFieldValues
         {
             get
             {
-                return _searchByFieldValue;
+                return _searchByFieldValues;
             }
             set
             {
-                _searchByFieldValue = value;
-                OnPropertyChanged("SearchByFieldValue");
+                _searchByFieldValues = value;
+                OnPropertyChanged("SearchByFieldValues");
             }
         }
-        private List<string> _searchByFieldValue = new List<string>();
+        private List<string> _searchByFieldValues = new List<string>();
 
         /// <summary>
         ///     Item id input field
@@ -433,13 +433,13 @@ namespace Odin.ViewModels
         /// </summary>
         public void EnterKey()
         {
-            FindItem();
+            FindItemById();
         }
 
         /// <summary>
         ///     Add item id input to the list of items to update.
         /// </summary>
-        public void FindItem()
+        public void FindItemById()
         {
             if (!(string.IsNullOrEmpty(this.ItemIdSearchInput)))
             {
@@ -639,9 +639,7 @@ namespace Odin.ViewModels
             }
             return ReturnList;
         }
-
-
-
+                
         public List<string> SetSearchByFields()
         {
             List<string> values = new List<string>()
@@ -663,30 +661,31 @@ namespace Odin.ViewModels
             switch(value)
             {
                 case "Item Category":
-                    this.SearchByFieldValue = ItemService.RetrieveItemCategoryNames();
+                    this.SearchByFieldValues = ItemService.RetrieveItemCategoryNames();
                     break;
 
                 case "Product Format":
-
+                    this.SearchByFieldValues = ItemService.RetrieveProductFormatsAll();
                     break;
 
                 case "Product Group":
-                    this.SearchByFieldValue = GlobalData.ProductGoups;
+                    this.SearchByFieldValues = GlobalData.ProductGoups;
                     break;
 
                 case "Product Line":
-
+                    this.SearchByFieldValues = ItemService.RetrieveProductLinesAll();
                     break;
+
                 case "Item Group":
-                    this.SearchByFieldValue = GlobalData.ItemGroups;
+                    this.SearchByFieldValues = GlobalData.ItemGroups;
                     break;
 
                 case "Stats Code":
-                    this.SearchByFieldValue = ItemService.RetrieveStatsCodes();
+                    this.SearchByFieldValues = ItemService.RetrieveStatsCodes();
                     break;
 
                 case "Tariff Code":
-                    this.SearchByFieldValue = GlobalData.TariffCodes;
+                    this.SearchByFieldValues = GlobalData.TariffCodes;
                     break;
             }
         }
