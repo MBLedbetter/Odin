@@ -1334,7 +1334,15 @@ namespace OdinServices
                         case "Ecommerce Item Name + Item Group":
                             foreach (ItemObject item in items)
                             {
-                                WriteCell(row, columnCount, item.EcommerceItemName + " " + DbUtil.UppercaseFirst(item.ItemGroup));
+                                WriteCell(row, columnCount, item.EcommerceItemName + " " + DbUtil.UppercaseFirst(item.ItemGroup)
+                                    );
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Item Type Keywords":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceItemTypeKeywords);
                                 row++;
                             }
                             break;
