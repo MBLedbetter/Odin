@@ -66,7 +66,7 @@ namespace Odin.Services.Tests
 
             #endregion // Assert
         }
-
+        
         /// <summary>
         ///     Checks that AssignDirectImport returns valid values when proper values are assigned.
         /// </summary>
