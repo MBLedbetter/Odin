@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:app="clr-namespace:Odin"
         Title="{Binding WindowTitle}" 
-        Height="820" 
-        Width="1023"
+        Height="680" 
+        Width="1320"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -67,25 +67,28 @@
             Width="180" />
         <TabControl
             Grid.Column="0"
-            Grid.RowSpan="2"
-            Height="698" 
+            Height="546" 
             VerticalAlignment="Top" 
-            Margin="0,38,0,0" Grid.ColumnSpan="4">
+            Margin="0,0,-283,0" Grid.ColumnSpan="4" Grid.Row="1">
             <TabItem
                 Background="{Binding ItemInfoTabColor}"
                 Header="      Item Info      ">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition 
-                            MinWidth="150" />
+                            MinWidth="125" />
                         <ColumnDefinition
                             MinWidth="180" />
                         <ColumnDefinition
-                            MinWidth="150" />
+                            MinWidth="125" />
                         <ColumnDefinition
                             MinWidth="180" />
                         <ColumnDefinition
-                            MinWidth="150" />
+                            MinWidth="125" />
+                        <ColumnDefinition
+                            MinWidth="180" />
+                        <ColumnDefinition
+                            MinWidth="125" />
                         <ColumnDefinition
                             MinWidth="180" />
                         <ColumnDefinition />
@@ -162,19 +165,19 @@
                         Grid.Row="1"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Width="325" Grid.ColumnSpan="2" Height="214"  Grid.RowSpan="6" Margin="0,6,0,2"  />
+                        Width="314" Grid.ColumnSpan="2" Height="213"  Grid.RowSpan="6" Margin="6,3,0,0"  />
                     <!-- Casepack Height -->
                     <Label
                         Background="{Binding CasepackHeightBoxColor}"
                         Content="Casepack Height"
                         Grid.Column="0"
                         Grid.Row="2"
-                        Height="25"
+                        Height="24"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding CasepackHeightToolTip}"
                         VerticalAlignment="Center"
-                        Width="140" 
-                        Margin="6,0"/>
+                        Width="124" 
+                        Margin="10,6,0,6"/>
                     <TextBox 
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
@@ -192,12 +195,12 @@
                         Content="Casepack Length"
                         Grid.Column="0"
                         Grid.Row="3"
-                        Height="25"
+                        Height="24"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding CasepackLengthToolTip}"
                         VerticalAlignment="Center"
-                        Width="140"
-                        Margin="6,0"/>
+                        Width="124"
+                        Margin="10,6,0,6"/>
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
@@ -215,12 +218,12 @@
                         Content="Casepack Quantity"
                         Grid.Column="0"
                         Grid.Row="4"
-                        Height="25"
+                        Height="24"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding CasepackQtyToolTip}"
                         VerticalAlignment="Center"
-                        Width="140" 
-                        Margin="6,0"/>
+                        Width="124" 
+                        Margin="10,6,0,6"/>
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
@@ -238,12 +241,12 @@
                         Content="Casepack Weight"
                         Grid.Column="0"
                         Grid.Row="5"
-                        Height="25"
+                        Height="24"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding CasepackWeightToolTip}"
                         VerticalAlignment="Center"
-                        Width="140" 
-                        Margin="6,0" />
+                        Width="124" 
+                        Margin="10,6,0,6" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
@@ -264,8 +267,8 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding CasepackWidthToolTip}"
                         VerticalAlignment="Center"
-                        Width="140" 
-                        Margin="6,0"
+                        Width="124" 
+                        Margin="10,5,0,5"
                         Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
@@ -311,7 +314,7 @@
                         Grid.Row="8"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Width="325" Grid.ColumnSpan="2" Height="103"  Grid.RowSpan="3" Margin="0,6,0,2"  />
+                        Width="314" Grid.ColumnSpan="2" Height="102"  Grid.RowSpan="3" Margin="6,6,0,0"  />
                     <!-- Default Actual Cost CAD -->
                     <Label
                         Background="{Binding DefaultActualCostCadBoxColor}"
@@ -320,9 +323,9 @@
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding DefaultActualCostCadToolTip}"
-                        Width="140"
+                        Width="134"
                         VerticalAlignment="Center" 
-                        Margin="6,0" Height="26"/>
+                        Margin="10,5,0,5" Height="26"/>
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
@@ -342,9 +345,9 @@
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding DefaultActualCostUsdToolTip}"
-                        Width="140"
+                        Width="134"
                         VerticalAlignment="Center" 
-                        Margin="6,0"
+                        Margin="10,5,0,5"
                         Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
@@ -413,7 +416,7 @@
                         Grid.Row="0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Width="326" Grid.ColumnSpan="2" Height="216"  Grid.RowSpan="6" Margin="0,6,0,0"  />
+                        Width="308" Grid.ColumnSpan="2" Height="213"  Grid.RowSpan="6" Margin="6,3,0,0"  />
                     <!-- Innerpack Height -->
                     <Label
                         Content="Innerpack Height"
@@ -423,8 +426,8 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding InnerpackHeightToolTip}"
                         VerticalAlignment="Center"
-                        Width="134" 
-                        Margin="6,6,0,5" 
+                        Width="119" 
+                        Margin="10,6,0,4" 
                         Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
@@ -445,10 +448,10 @@
                         Grid.Row="2"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
-                        Margin="6,5,0,6"
+                        Margin="10,4,0,6"
                         ToolTip="{Binding InnerpackLengthToolTip}"
                         VerticalAlignment="Center"
-                        Width="134" 
+                        Width="119" 
                         Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
@@ -470,8 +473,8 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding InnerpackQuantityToolTip}"
                         VerticalAlignment="Center"
-                        Width="134" 
-                        Margin="6,6,0,5" Height="26" />
+                        Width="119" 
+                        Margin="10,6,0,4" Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
@@ -492,8 +495,8 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding InnerpackWeightToolTip}"
                         VerticalAlignment="Center"
-                        Width="134" 
-                        Margin="6,6,0,5" Height="26" />
+                        Width="119" 
+                        Margin="10,6,0,4" Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
@@ -514,8 +517,8 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding InnerpackWidthToolTip}"
                         VerticalAlignment="Center"
-                        Width="134" 
-                        Margin="6,6,0,5" Height="26" />
+                        Width="119" 
+                        Margin="10,6,0,4" Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
@@ -559,7 +562,7 @@
                         Grid.Row="7"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Width="326" Grid.ColumnSpan="2" Height="177"  Grid.RowSpan="5" Margin="0,6,0,2"  />
+                        Width="308" Grid.ColumnSpan="2" Height="175"  Grid.RowSpan="5" Margin="6,5,0,0"  />
                     <!-- Item Height -->
                     <Label
                         Content="Item Height"
@@ -569,8 +572,8 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding HeightToolTip}"
                         VerticalAlignment="Center"
-                        Width="134"
-                        Margin="6,0"
+                        Width="119"
+                        Margin="10,5,0,5"
                         Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
@@ -593,8 +596,8 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding LengthToolTip}"
                         VerticalAlignment="Center"
-                        Width="134" 
-                        Margin="6,0" />
+                        Width="119" 
+                        Margin="10,5,0,5" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
@@ -614,10 +617,10 @@
                         Grid.Row="10"
                         Height="26"
                         HorizontalAlignment="Left"
-                        Margin="6,0"
+                        Margin="10,5,0,5"
                         ToolTip="{Binding WeightToolTip}"
                         VerticalAlignment="Center" 
-                        Width="134" />
+                        Width="119" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
@@ -638,8 +641,8 @@
                         HorizontalAlignment="Left"
                         ToolTip="{Binding WidthToolTip}"
                         VerticalAlignment="Center" 
-                        Margin="6,0"
-                        Width="134" />
+                        Margin="10,5,0,5"
+                        Width="119" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
@@ -700,54 +703,54 @@
                         BorderThickness="2"
                         FontWeight="Bold"
                         Foreground="SteelBlue"
-                        Grid.Column="2"
-                        Grid.Row="14"
+                        Grid.Column="4"
+                        Grid.Row="0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Width="326" Grid.ColumnSpan="2" Height="136"  Grid.RowSpan="4" Margin="0,10,0,2"  />
+                        Width="300" Grid.ColumnSpan="2" Height="141"  Grid.RowSpan="4" Margin="6,3,0,0"  />
                     <!-- List Price CAD -->
                     <Label
-                        Width="134"
+                        Width="111"
                         Content="List Price (CAD)"
                         Background="{Binding ListPriceCadBoxColor}"
-                        Grid.Row="15"
-                        Grid.Column="2"
+                        Grid.Row="1"
+                        Grid.Column="4"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ListPriceCadToolTip}"
                         VerticalAlignment="Center" 
-                        Margin="6,0"
+                        Margin="10,5,0,5"
                         Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Grid.Row="15"
+                        Grid.Row="1"
                         TextWrapping="Wrap"
                         MaxLength="60"
-                        Grid.Column="3"
+                        Grid.Column="5"
                         Text="{Binding ListPriceCad}"
                         VerticalContentAlignment="Center"
                         Width="164" />
                     <!-- List Price MXN -->
                     <Label
-                        Width="134"
+                        Width="111"
                         Content="List Price (MXN)"
                         Background="{Binding ListPriceMxnBoxColor}"
-                        Grid.Row="16"
-                        Grid.Column="2"
+                        Grid.Row="2"
+                        Grid.Column="4"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ListPriceMxnToolTip}"
                         VerticalAlignment="Center" 
-                        Margin="6,0"
+                        Margin="10,5,0,5"
                         Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Grid.Row="16"
+                        Grid.Row="2"
                         TextWrapping="Wrap"
                         MaxLength="60"
-                        Grid.Column="3"
+                        Grid.Column="5"
                         Text="{Binding ListPriceMxn}"
                         VerticalContentAlignment="Center"
                         Width="164" />
@@ -755,21 +758,21 @@
                     <Label
                         Background="{Binding ListPriceUsdBoxColor}"
                         Content="List Price (USD)"
-                        Grid.Column="2"
-                        Grid.Row="17"
+                        Grid.Column="4"
+                        Grid.Row="3"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ListPriceUsdToolTip}"
                         VerticalAlignment="Center"
-                        Width="134" 
-                        Margin="6,0" Height="26" />
+                        Width="111" 
+                        Margin="10,5,0,5" Height="26" />
                     <TextBox
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Grid.Row="17"
+                        Grid.Row="3"
                         TextWrapping="Wrap"
                         MaxLength="60"
-                        Grid.Column="3"
+                        Grid.Column="5"
                         Text="{Binding ListPriceUsd}"
                         VerticalContentAlignment="Center"
                         Width="164" />
@@ -778,7 +781,7 @@
                         Background="{Binding MfgSourceBoxColor}"
                         Content="MfgSource"
                         Grid.Column="4"
-                        Grid.Row="0"
+                        Grid.Row="4"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding MfgSourceToolTip}"
                         VerticalAlignment="Center"
@@ -788,7 +791,7 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Grid.Row="0"
+                        Grid.Row="4"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="5"
@@ -804,25 +807,25 @@
                         FontWeight="Bold"
                         Foreground="SteelBlue"
                         Grid.Column="4"
-                        Grid.Row="1"
+                        Grid.Row="5"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Width="330" Grid.ColumnSpan="2" Height="140"  Grid.RowSpan="4" Margin="0,6,0,2"  />
+                        Width="300" Grid.ColumnSpan="2" Height="138"  Grid.RowSpan="4" Margin="6,6,0,0"  />
                     <!-- Msrp -->
                     <Label
                         Background="{Binding MsrpBoxColor}"
                         Content="Msrp USD"
                         Grid.Column="4"
-                        Grid.Row="2"
+                        Grid.Row="6"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding MsrpToolTip}"
                         VerticalAlignment="Center"
-                        Width="134" 
-                        Margin="6,0"/>
+                        Width="111" 
+                        Margin="10,5,0,5"/>
                     <TextBox
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Grid.Row="2"
+                        Grid.Row="6"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="5"
@@ -834,17 +837,17 @@
                         Background="{Binding MsrpCadBoxColor}"
                         Content="Msrp CAD"
                         Grid.Column="4"
-                        Grid.Row="3"
+                        Grid.Row="7"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding MsrpCadToolTip}"
                         VerticalAlignment="Center"
-                        Width="134" 
-                        Margin="6,0"/>
+                        Width="111" 
+                        Margin="10,5,0,5"/>
                     <TextBox
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
                         Grid.Column="5"
-                        Grid.Row="3"
+                        Grid.Row="7"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Text="{Binding MsrpCad}"
@@ -855,16 +858,16 @@
                         Background="{Binding MsrpMxnBoxColor}"
                         Content="Msrp MXN"
                         Grid.Column="4"
-                        Grid.Row="4"
+                        Grid.Row="8"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding MsrpMxnToolTip}"
                         VerticalAlignment="Center"
-                        Width="134" 
-                        Margin="6,0"/>
+                        Width="111" 
+                        Margin="10,5,0,5"/>
                     <TextBox
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Grid.Row="4"
+                        Grid.Row="8"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="5"
@@ -876,7 +879,7 @@
                         Background="{Binding PricingGroupBoxColor}"
                         Content="Pricing Group"
                         Grid.Column="4"
-                        Grid.Row="5"
+                        Grid.Row="9"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding PricingGroupToolTip}"
                         VerticalAlignment="Center"
@@ -886,7 +889,7 @@
                         HorizontalAlignment="Left"
                         IsEnabled="{Binding BlockInfo}"
                         Margin="6,6,0,6"
-                        Grid.Row="5"
+                        Grid.Row="9"
                         Grid.Column="5"
                         ItemsSource="{Binding PricingGroups}"
                         Text="{Binding PricingGroup}"
@@ -896,7 +899,7 @@
                         Background="{Binding PrintOnDemandBoxColor}"
                         Content="Print On Demand"
                         Grid.Column="4"
-                        Grid.Row="6"
+                        Grid.Row="10"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding PrintOnDemandToolTip}"
                         VerticalAlignment="Center"
@@ -906,7 +909,7 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Grid.Row="6"
+                        Grid.Row="10"
                         TextWrapping="Wrap"
                         MaxLength="60"
                         Grid.Column="5"
@@ -918,7 +921,7 @@
                         Background="{Binding ProductFormatBoxColor}"
                         Content="Product Format"
                         Grid.Column="4"
-                        Grid.Row="7"
+                        Grid.Row="11"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ProductFormatToolTip}"
                         VerticalAlignment="Center"
@@ -929,7 +932,7 @@
                         IsEnabled="{Binding BlockInfo}"
                         Margin="6,6,0,6"
                         ItemsSource="{Binding ProductFormats}"
-                        Grid.Row="7"
+                        Grid.Row="11"
                         Grid.Column="5"
                         Text="{Binding ProductFormat}"
                         Width="164" />
@@ -937,7 +940,7 @@
                     <Label
                         Background="{Binding ProductGroupBoxColor}"
                         Content="Product Group"
-                        Grid.Row="8"
+                        Grid.Row="12"
                         Grid.Column="4"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ProductGroupToolTip}"
@@ -949,7 +952,7 @@
                         IsEnabled="{Binding BlockInfo}"
                         Margin="6,6,0,6"
                         ItemsSource="{Binding ProductGroups}"
-                        Grid.Row="8"
+                        Grid.Row="12"
                         Grid.Column="5"
                         Text="{Binding ProductGroup}"
                         Width="164" />
@@ -958,18 +961,19 @@
                         Background="{Binding ProductLineBoxColor}"
                         Content="Product Line"
                         Grid.Column="4"
-                        Grid.Row="9"
+                        Grid.Row="13"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding ProductLineToolTip}"
                         VerticalAlignment="Center"
                         Width="134" 
-                        Margin="6,6,0,5" Height="26" />
+                        Margin="6,6,0,5" 
+                        Height="26" />
                     <ComboBox
                         HorizontalAlignment="Left"
                         IsEnabled="{Binding BlockInfo}"
                         Margin="6,6,0,6"
                         ItemsSource="{Binding ProductLines}"
-                        Grid.Row="9"
+                        Grid.Row="13"
                         Grid.Column="5"
                         Text="{Binding ProductLine}"
                         Width="164" />
@@ -978,8 +982,8 @@
                     <Label
                         Background="{Binding PsStatusBoxColor}"
                         Content="PS Status"
-                        Grid.Column="4"
-                        Grid.Row="10"
+                        Grid.Column="6"
+                        Grid.Row="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding PsStatusToolTip}"
                         VerticalAlignment="Center"
@@ -989,8 +993,8 @@
                         HorizontalAlignment="Left"
                         IsEnabled="{Binding BlockInfo}"
                         Margin="6,6,0,6"
-                        Grid.Row="10"
-                        Grid.Column="5"
+                        Grid.Row="0"
+                        Grid.Column="7"
                         ItemsSource="{Binding PsStatuses}"
                         Text="{Binding PsStatus}"
                         Width="80" />
@@ -998,8 +1002,8 @@
                     <Label
                         Background="{Binding SatCodeBoxColor}"
                         Content="SAT Code"
-                        Grid.Column="4"
-                        Grid.Row="11"
+                        Grid.Column="6"
+                        Grid.Row="1"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SatCodeToolTip}"
                         VerticalAlignment="Center"
@@ -1009,10 +1013,10 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Grid.Row="11"
+                        Grid.Row="1"
                         TextWrapping="Wrap"
                         MaxLength="60"
-                        Grid.Column="5"
+                        Grid.Column="7"
                         Text="{Binding SatCode}"
                         VerticalContentAlignment="Center"
                         Width="164" />
@@ -1020,8 +1024,8 @@
                     <Label
                         Background="{Binding TariffCodeBoxColor}"
                         Content="Tariff Code"
-                        Grid.Row="12"
-                        Grid.Column="4"
+                        Grid.Row="2"
+                        Grid.Column="6"
                         Width="134"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding TariffCodeToolTip}"
@@ -1031,8 +1035,8 @@
                         HorizontalAlignment="Left"
                         IsEnabled="{Binding BlockInfo}"
                         Margin="6,6,0,6"
-                        Grid.Row="12"
-                        Grid.Column="5"
+                        Grid.Row="2"
+                        Grid.Column="7"
                         ItemsSource="{Binding TariffCodes}"
                         Text="{Binding TariffCode}"
                         Width="164" />
@@ -1040,8 +1044,8 @@
                     <Label
                         Background="{Binding UdexBoxColor}"
                         Content="UDEX"
-                        Grid.Column="4"
-                        Grid.Row="13"
+                        Grid.Column="6"
+                        Grid.Row="3"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding UdexToolTip}"
                         VerticalAlignment="Center"
@@ -1051,10 +1055,10 @@
                         IsEnabled="{Binding BlockInfo}"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Grid.Row="13"
+                        Grid.Row="3"
                         TextWrapping="Wrap"
                         MaxLength="60"
-                        Grid.Column="5"
+                        Grid.Column="7"
                         Text="{Binding Udex}"
                         VerticalContentAlignment="Center"
                         Width="164" />
@@ -1289,7 +1293,7 @@
                         Grid.Row="0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Width="288" Grid.ColumnSpan="2" Height="402"  Grid.RowSpan="11" Margin="0,3,0,2"  />
+                        Width="288" Grid.ColumnSpan="2" Height="396"  Grid.RowSpan="11"  />
                     <!-- Bullet 1-->
                     <Label
                         Background="{Binding EcommerceBullet1BoxColor}"
@@ -1463,7 +1467,7 @@
                         Grid.Row="0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Width="307" Grid.ColumnSpan="2" Height="181"  Grid.RowSpan="5" Margin="0,3,0,1"  />
+                        Width="307" Grid.ColumnSpan="2" Height="180"  Grid.RowSpan="5"  />
                     <!-- Item Height -->
                     <Label
                         Background="{Binding EcommerceItemHeightBoxColor}"
@@ -1590,7 +1594,7 @@
                         Grid.Row="7"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Width="307" Grid.ColumnSpan="2" Height="182"  Grid.RowSpan="5" Margin="0,2,0,1"  />
+                        Width="307" Grid.ColumnSpan="2" Height="180"  Grid.RowSpan="5"  />
                     <!-- Package Height -->
                     <Label
                         Background="{Binding EcommercePackageHeightBoxColor}"
@@ -1831,7 +1835,7 @@
             Grid.Row="2"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Bottom"
-            Orientation="Horizontal" Grid.ColumnSpan="4" Height="45">
+            Orientation="Horizontal" Grid.ColumnSpan="4" Height="45" Margin="0,0,-285,0">
             <Button
                 Height="25"
                 Margin="10"
