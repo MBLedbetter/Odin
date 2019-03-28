@@ -90,7 +90,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("TemplateListColumn");
             }
         }
-        private string _templateListColumn = "5";
+        private string _templateListColumn = "4";
 
         /// <summary>
         ///     Gets or sets the TemplateObject
@@ -6779,13 +6779,13 @@ namespace Odin.ViewModels
             {
                 this.UpdateVisibility = "Visible";
                 this.WindowTitle = "Add New Template";
-                this.TemplateListColumn = "5";
+                this.TemplateListColumn = "3";
             }
             else
             {
                 this.UpdateVisibility = "Hidden";
                 this.WindowTitle = "Update Template";
-                this.TemplateListColumn = "2";
+                this.TemplateListColumn = "1";
             }
         }
 

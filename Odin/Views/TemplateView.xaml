@@ -8,8 +8,10 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="453.5" />
-            <ColumnDefinition Width="561.5"/>
+            <ColumnDefinition Width="118" />
+            <ColumnDefinition Width="201"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="596"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition
@@ -29,11 +31,10 @@
             Margin="0,7"
             ToolTip="{Binding TemplateToolTip}"
             Width="140"
-            VerticalAlignment="Center"  />
+            VerticalAlignment="Center" Height="26" Grid.ColumnSpan="2"  />
         <TextBox
             HorizontalAlignment="Left"
-            Margin="146,8,0,6"
-            Height="25"
+            Margin="9,4,0,10"
             Grid.Row="0"
             TextWrapping="Wrap"
             MaxLength="60"
@@ -41,22 +42,24 @@
             Text="{Binding TemplateId}"
             VerticalContentAlignment="Center"
             Visibility="{Binding UpdateVisibility}"
-            Width="180" />
+            Width="180" Grid.Column="1" />
         <!-- Template Name -->
         <Label
             Content="Clone Template"
             Grid.Row="0"
             HorizontalAlignment="Left"
-            Margin="353,8,0,7"
+            Margin="1,8,0,7"
             ToolTip="{Binding TemplateCloneToolTip}"
             Visibility="{Binding UpdateVisibility}"
             VerticalAlignment="Center"
-            Width="113" Grid.ColumnSpan="2"  />
+            Width="113"
+            Grid.Column="2" 
+            Height="25" 
+            Grid.ColumnSpan="2"  />
         <ComboBox
             HorizontalAlignment="Left"
             IsEnabled="{Binding BlockInfo}"
-            Margin="146,7,0,8"
-            Height="25"
+            Margin="9,7,0,8"
             Grid.Row="0"
             Grid.Column="{Binding TemplateListColumn}"
             Text="{Binding Template}"
@@ -67,7 +70,7 @@
             Grid.RowSpan="2"
             Height="698" 
             VerticalAlignment="Top" 
-            Margin="0,38,0,0" Grid.ColumnSpan="2">
+            Margin="0,38,0,0" Grid.ColumnSpan="4">
             <TabItem
                 Background="{Binding ItemInfoTabColor}"
                 Header="      Item Info      ">
@@ -1828,7 +1831,7 @@
             Grid.Row="2"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Bottom"
-            Orientation="Horizontal" Grid.ColumnSpan="2">
+            Orientation="Horizontal" Grid.ColumnSpan="4" Height="45">
             <Button
                 Height="25"
                 Margin="10"
