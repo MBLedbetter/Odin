@@ -266,7 +266,10 @@ namespace Odin.Data
                 List<OdinExcelLayoutIds> odinExcelLayoutIds = (from o in context.OdinExcelLayoutIds select o).ToList();
                 foreach (OdinExcelLayoutIds x in odinExcelLayoutIds)
                 {
-                    excelLayouts.Add(new Layout(x.LayoutName, x.LayoutId, x.Customer, x.ProductType));
+                    if (!string.IsNullOrEmpty(x.LayoutName))
+                    {
+                        excelLayouts.Add(new Layout(x.LayoutName, x.LayoutId, x.Customer, x.ProductType));
+                    }
                 }
             }
             return excelLayouts;

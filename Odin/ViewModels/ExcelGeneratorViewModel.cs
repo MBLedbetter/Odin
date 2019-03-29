@@ -441,7 +441,10 @@ namespace Odin.ViewModels
             {
                 foreach (Layout layout in ExcelService.RetrieveExcelLayouts())
                 {
-                    excelNames.Add(layout.Name);
+                    if (layout.Name.Substring(0, 2) != "**" || GlobalData.UserRoles.Contains("ADMIN"))
+                    {
+                        excelNames.Add(layout.Name);
+                    }
                 }
             }
             catch (Exception ex)

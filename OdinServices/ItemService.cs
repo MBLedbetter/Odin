@@ -1017,7 +1017,7 @@ namespace OdinServices
                 {
                     continue;
                 }
-
+                GlobalData.LocalItemIds.Add(ItemId);
                 ItemObject item = new ItemObject(1)
                 {
                     ItemRow = row + 1,
