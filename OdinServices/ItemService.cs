@@ -2654,7 +2654,7 @@ namespace OdinServices
                         return new ItemError(
                             var.ItemId,
                             var.ItemRow,
-                            "Field cannot be updated through Odin. The Bill of materials field does not match the values currently saved for this item.",
+                            "Field cannot be updated through Odin. The Bill of materials field does not match the values currently saved for this item. Once established Bill of Materials can only be updated through peoplesoft.",
                             "Bill of Materials");
                     }
                 }
@@ -2665,7 +2665,7 @@ namespace OdinServices
                         return new ItemError(
                             var.ItemId,
                             var.ItemRow,
-                            "Field contains an id that does not exist: " + billOfMaterial.ItemId + ".",
+                            "Field contains an id that does not exist: " + billOfMaterial.ItemId + ". These items must exist in the database before they can be used as a bill of material.",
                             "Bill of Materials");
                     }
                 }
@@ -2674,7 +2674,7 @@ namespace OdinServices
                     return new ItemError(
                         var.ItemId,
                         var.ItemRow,
-                        "Field can not contain multiple occurances of the same item. ["+ billOfMaterial.ItemId.Trim() + "]",
+                        "Field can not contain multiple occurances of the same item. ["+ billOfMaterial.ItemId.Trim() + "]. Please remove duplicates.",
                         "Bill of Materials");
                 }
                 else
