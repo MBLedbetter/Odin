@@ -305,13 +305,12 @@ namespace OdinServices
         public List<string> CheckDuplicateUPCs(string itemId, string upc, string itemStatus)
         {
             List<string> result = new List<string>();
-            string[] suffixes = new string[] { "WM", "MI", "TG", "DI" };
             string slimItemId = itemId;
             List<string> existingIds = new List<string>();
             if (itemId.Length>2)
             {
                 string idSuffix = itemId.Substring(itemId.Length - 2);
-                if (suffixes.Contains(idSuffix))
+                if (GlobalData.ItemIdSuffixes.Contains(idSuffix))
                 {
                     slimItemId = itemId.Substring(0, itemId.Length - 2);
                 }

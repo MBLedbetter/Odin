@@ -201,6 +201,11 @@ namespace Odin.Data
         public DbSet<OdinFieldValues> OdinFieldValues { get; set; }
 
         /// <summary>
+        ///     Gets or sets a list of the OdinItemidSuffixes lines that are in this context.
+        /// </summary>
+        public DbSet<OdinItemIdSuffixes> OdinItemIdSuffixes { get; set; }
+
+        /// <summary>
         ///     Gets or sets a list of the OdinItemOverrideInfo lines that are in this context.
         /// </summary>
         public DbSet<OdinItemOverrideInfo> OdinItemOverrideInfo { get; set; }
@@ -496,6 +501,7 @@ namespace Odin.Data
             MapOdinGlobalKeys(modelBuilder);
             MapOdinItem(modelBuilder);
             MapOdinItemExceptions(modelBuilder);
+            MapOdinItemIdSuffixes(modelBuilder);
             MapOdinItemOverrideInfo(modelBuilder);
             MapOdinItemTemplates(modelBuilder);
             MapOdinItemUpdateRecords(modelBuilder);
@@ -2185,6 +2191,29 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItemExceptions>().Property(p => p.ExceptionValue).HasColumnName("EXCEPTION_VALUE");
             modelBuilder.Entity<OdinItemExceptions>().Property(p => p.Field).HasColumnName("FIELD");
 
+        }
+
+
+        /// <summary>
+        ///             This method maps the OdinItem class to the database.
+        /// </summary>
+        /// 
+        /// <param name="DbModelBuilder modelBuilder">
+        ///             The DbDbModelBuilder modelBuilder to update with the mapping.
+        /// </param>
+        private void MapOdinItemIdSuffixes(DbModelBuilder modelBuilder)
+        {
+            // Map the OdinItem class to the ODIN_ITEM_VW table
+            modelBuilder.Entity<OdinItemIdSuffixes>()
+                .HasKey(p => new
+                {
+                    p.FieldValue
+                })
+                .ToTable("ODIN_ITEMID_SUFFIXES");
+
+            // Map each column
+            modelBuilder.Entity<OdinItemIdSuffixes>().Property(p => p.Desc).HasColumnName("DESC");
+            modelBuilder.Entity<OdinItemIdSuffixes>().Property(p => p.FieldValue).HasColumnName("FIELD_VALUE");
         }
 
         /// <summary>

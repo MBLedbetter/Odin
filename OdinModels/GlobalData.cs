@@ -254,6 +254,22 @@ namespace OdinModels
         private static List<string> _itemIds = new List<string>();
 
         /// <summary>
+        ///     List of item id suffixes
+        /// </summary>
+        public static List<string> ItemIdSuffixes
+        {
+            get
+            {
+                return _itemIdSuffixes;
+            }
+            set
+            {
+                _itemIdSuffixes = value;
+            }
+        }
+        private static List<string> _itemIdSuffixes = new List<string>();
+
+        /// <summary>
         ///     List of most recent record for all items
         /// </summary>
         public static List<ItemRecord> ItemRecords

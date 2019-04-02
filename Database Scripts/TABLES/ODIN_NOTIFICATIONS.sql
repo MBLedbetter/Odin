@@ -16,7 +16,7 @@ INSERT INTO ODIN_NOTIFICATIONS VALUES (11, '2018-09-18 00:00:00.000', 'Sell On E
 INSERT INTO ODIN_NOTIFICATIONS VALUES (12, '2018-12-18 00:00:00.000', 'Warranty and Warranty Check Fields have been added to Odin.')
 INSERT INTO ODIN_NOTIFICATIONS VALUES (13, '2019-01-23 00:00:00.000', '1. Ecommerce Parent ASIN field has been added. 2. ASIN validation has been updated to require unique values (some items have duplicate values that may cause errors). 3. Item window has been adjusted slightly. 4. Bug causing certain item errors to cause Odin to crash have been fixed.')
 INSERT INTO ODIN_NOTIFICATIONS VALUES (14, '2019-03-25 00:00:00.000', 'Ecommerce Item Type Keywords field has been added.')
-
+INSERT INTO ODIN_NOTIFICATIONS VALUES (15, '2019-04-02 00:00:00.000', 'New header menu added. All exiting buttons can be found here as well. Just laying down the framework for future Odin additions.')
 */
 SET ANSI_NULLS ON
 GO
