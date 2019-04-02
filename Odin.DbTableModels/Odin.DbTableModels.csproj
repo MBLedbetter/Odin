@@ -81,6 +81,7 @@
     <Compile Include="OdinGlobalKeys.cs" />
     <Compile Include="OdinItem.cs" />
     <Compile Include="OdinItemExceptions.cs" />
+    <Compile Include="OdinItemIdSuffixes.cs" />
     <Compile Include="OdinItemOverrideInfo.cs" />
     <Compile Include="OdinItemTemplates.cs" />
     <Compile Include="OdinItemUpdateRecords.cs" />
