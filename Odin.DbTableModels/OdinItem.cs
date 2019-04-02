@@ -583,6 +583,12 @@ namespace Odin.DbTableModels
         ///     Gets or sets SELL_ON_TARGET
         /// </summary>
         public string SellOnTarget { get; set; }
+
+        /// <summary>
+        ///     Gets or sets SELL_ON_TRS
+        /// </summary>
+        public string SellOnTrs { get; set; }
+
         /// <summary>
         ///     Gets or sets SELL_ON_WALMART
         /// </summary>

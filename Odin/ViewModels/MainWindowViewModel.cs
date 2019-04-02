@@ -2096,6 +2096,23 @@ namespace Odin.ViewModels
         private string _sellOnTrendsVisibility = "auto";
 
         /// <summary>
+        ///     Gets or sets the SellOnTrsVisibility field
+        /// </summary>
+        public string SellOnTrsVisibility
+        {
+            get
+            {
+                return _sellOnTrsVisibility;
+            }
+            set
+            {
+                _sellOnTrsVisibility = value;
+                OnPropertyChanged("SellOnTrsVisibility");
+            }
+        }
+        private string _sellOnTrsVisibility = "auto";
+
+        /// <summary>
         ///     Gets or sets the SellOnWalmartVisibility field
         /// </summary>
         public string SellOnWalmartVisibility
@@ -3462,6 +3479,7 @@ namespace Odin.ViewModels
             this.SellOnHayneedleVisibility = (UserOptions.SellOnHayneedleVisibility) ? "100" : "0";
             this.SellOnTargetVisibility = (UserOptions.SellOnTargetVisibility) ? "100" : "0";
             this.SellOnTrendsVisibility = (UserOptions.SellOnTrendsVisibility) ? "100" : "0";
+            this.SellOnTrsVisibility = (UserOptions.SellOnTrsVisibility) ? "100" : "0";
             this.SellOnWalmartVisibility = (UserOptions.SellOnWalmartVisibility) ? "100" : "0";
             this.SellOnWayfairVisibility = (UserOptions.SellOnWayfairVisibility) ? "100" : "0";
             /* Image Path Visibility */
@@ -3588,6 +3606,7 @@ namespace Odin.ViewModels
             UserOptions.SellOnHayneedleVisibility = true;
             UserOptions.SellOnTargetVisibility = true;
             UserOptions.SellOnTrendsVisibility = true;
+            UserOptions.SellOnTrsVisibility = true;
             UserOptions.SellOnWalmartVisibility = true;
             UserOptions.SellOnWayfairVisibility = true;
             UserOptions.ImagePath1Visibility = true;

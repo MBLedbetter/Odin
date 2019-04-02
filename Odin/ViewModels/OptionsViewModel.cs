@@ -1678,6 +1678,19 @@ namespace Odin.ViewModels
             }
         }
 
+        public bool SellOnTrsVisibility
+        {
+            get
+            {
+                return UserOptions.SellOnTrsVisibility;
+            }
+            set
+            {
+                UserOptions.SellOnTrsVisibility = value;
+                OnPropertyChanged("SellOnTrsVisibility");
+            }
+        }
+
         public bool SellOnWalmartVisibility
         {
             get
@@ -2071,6 +2084,7 @@ namespace Odin.ViewModels
             if (UserOptions.SellOnHayneedleVisibility  == false) { return false; }
             if (UserOptions.SellOnTargetVisibility  == false) { return false; }
             if (UserOptions.SellOnTrendsVisibility  == false) { return false; }
+            if (UserOptions.SellOnTrsVisibility == false) { return false; }
             if (UserOptions.SellOnWalmartVisibility  == false) { return false; }
             if (UserOptions.SellOnWayfairVisibility  == false) { return false; }
             return true;
@@ -2403,6 +2417,7 @@ namespace Odin.ViewModels
                 this.SellOnHayneedleVisibility = true;
                 this.SellOnTargetVisibility = true;
                 this.SellOnTrendsVisibility = true;
+                this.SellOnTrsVisibility = true;
                 this.SellOnWalmartVisibility = true;
                 this.SellOnWayfairVisibility = true;
             }
@@ -2415,6 +2430,7 @@ namespace Odin.ViewModels
                 this.SellOnHayneedleVisibility = false;
                 this.SellOnTargetVisibility = false;
                 this.SellOnTrendsVisibility = false;
+                this.SellOnTrsVisibility = false;
                 this.SellOnWalmartVisibility = false;
                 this.SellOnWayfairVisibility = false;
             }

@@ -1513,6 +1513,14 @@
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnTrs}"
+                        Width="{Binding SellOnTrsVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Target"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
                         DisplayMemberBinding="{Binding SellOnWalmart}"
                         Width="{Binding SellOnWalmartVisibility}">
                         <GridViewColumnHeader

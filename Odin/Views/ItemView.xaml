@@ -1959,8 +1959,8 @@
                     <Label
                         Background="{Binding SellOnHayneedleBoxColor}"
                         Content="Sell On Hayneedle"
-                        Grid.Row="1"
-                        Grid.Column="2"
+                        Grid.Row="6"
+                        Grid.Column="0"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SellOnHayneedleToolTip}"
                         VerticalAlignment="Center"
@@ -1968,8 +1968,8 @@
                         Height="26"/>
                     <CheckBox
                         HorizontalAlignment="Left"
-                        Grid.Column="3"
-                        Grid.Row="1"
+                        Grid.Column="1"
+                        Grid.Row="6"
                         Grid.RowSpan="1"
                         Margin="6,6,0,6"           
                         IsChecked="{Binding SellOnHayneedleCheck}"
@@ -1978,7 +1978,7 @@
                     <Label
                         Background="{Binding SellOnTargetBoxColor}"
                         Content="Sell On Target"
-                        Grid.Row="2"
+                        Grid.Row="0"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SellOnTargetToolTip}"
@@ -1988,7 +1988,7 @@
                     <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
-                        Grid.Row="2"
+                        Grid.Row="0"
                         Margin="6,6,0,6"           
                         IsChecked="{Binding SellOnTargetCheck}"
                         VerticalContentAlignment="Center"/>
@@ -1996,7 +1996,7 @@
                     <Label
                         Background="{Binding SellOnTrendsBoxColor}"
                         Content="Sell On Trends"
-                        Grid.Row="3"
+                        Grid.Row="1"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SellOnTrendsToolTip}"
@@ -2006,15 +2006,33 @@
                     <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
-                        Grid.Row="3"
+                        Grid.Row="1"
                         Margin="6,6,0,6"           
                         IsChecked="{Binding SellOnTrendsCheck}"
+                        VerticalContentAlignment="Center"/>
+                    <!-- Sell On Trends -->
+                    <Label
+                        Background="{Binding SellOnTrsBoxColor}"
+                        Content="Sell On Trs"
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        HorizontalAlignment="Left"
+                        ToolTip="{Binding SellOnTrsToolTip}"
+                        VerticalAlignment="Center" 
+                        Margin="6,6,0,6"
+                        Height="26" />
+                    <CheckBox
+                        HorizontalAlignment="Left"
+                        Grid.Column="3"
+                        Grid.Row="2"
+                        Margin="6,6,0,6"           
+                        IsChecked="{Binding SellOnTrsCheck}"
                         VerticalContentAlignment="Center"/>
                     <!-- Sell On Walmart -->
                     <Label
                         Background="{Binding SellOnWalmartBoxColor}"
                         Content="Sell On Walmart"
-                        Grid.Row="4"
+                        Grid.Row="3"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SellOnWalmartToolTip}"
@@ -2024,7 +2042,7 @@
                     <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="4"
-                        Grid.Row="4"
+                        Grid.Row="3"
                         Grid.RowSpan="1"
                         Margin="6,6,0,6"           
                         IsChecked="{Binding SellOnWalmartCheck}"
@@ -2033,7 +2051,7 @@
                     <Label
                         Background="{Binding SellOnWayfairBoxColor}"
                         Content="Sell On Wayfair"
-                        Grid.Row="5"
+                        Grid.Row="4"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
                         ToolTip="{Binding SellOnWayfairToolTip}"
@@ -2043,7 +2061,7 @@
                     <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
-                        Grid.Row="5"
+                        Grid.Row="4"
                         Margin="6,6,0,6"           
                         IsChecked="{Binding SellOnWayfairCheck}"
                         VerticalContentAlignment="Center" />

@@ -535,6 +535,14 @@
                             Padding="5" />
                         </GridViewColumn>
                         <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnTrs}"
+                        Width="auto">
+                            <GridViewColumnHeader
+                            Content="Sell On Trs"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                        </GridViewColumn>
+                        <GridViewColumn
                         DisplayMemberBinding="{Binding SellOnWalmart}"
                         Width="auto">
                             <GridViewColumnHeader

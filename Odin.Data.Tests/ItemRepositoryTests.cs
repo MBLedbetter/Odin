@@ -1084,6 +1084,7 @@ namespace Odin.Data.Tests
             GlobalData.CustomerIdConversions.Add("WALMART", "6");
             GlobalData.CustomerIdConversions.Add("WAYFAIR", "8");
             GlobalData.CustomerIdConversions.Add("GUITAR CENTER", "9");
+            GlobalData.CustomerIdConversions.Add("TRS", "10");
 
             List<ChildElement> billOfMaterials = new List<ChildElement>() {
                 new ChildElement("ST1111", "TestItem2", 1),

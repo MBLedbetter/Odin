@@ -286,6 +286,7 @@ namespace Odin.Data
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("GUITAR CENTER"), item.SellOnGuitarCenter, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HAYNEEDLE"), item.SellOnHayneedle, context) ;
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TARGET"), item.SellOnTarget, context);
+            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TRS"), item.SellOnTrs, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("WALMART"), item.SellOnWalmart, context) ;
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("WAYFAIR"), item.SellOnWayfair, context);            
         }
@@ -3332,17 +3333,7 @@ namespace Odin.Data
         /// <returns></returns>
         private string RetrieveCustomerId(string value)
         {
-            return GlobalData.CustomerIdConversions[value];
-            
-            /*
-            foreach (KeyValuePair<string, string> x in GlobalData.CustomerIdConversions)
-            {
-                if (x.Key == value)
-                {
-                    return x.Value;
-                }
-            }
-            */
+            return GlobalData.CustomerIdConversions[value];            
         }
 
         /// <summary>
