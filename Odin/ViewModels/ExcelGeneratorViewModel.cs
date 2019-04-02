@@ -178,8 +178,15 @@ namespace Odin.ViewModels
         /// </summary>
         public List<string> ExcelLists
         {
-            get { return _excelLists; }
-            set { _excelLists = value; OnPropertyChanged("ExcelLists"); }
+            get
+            {
+                return _excelLists;
+            }
+            set
+            {
+                _excelLists = value;
+                OnPropertyChanged("ExcelLists");
+            }
         }
         private List<string> _excelLists = new List<string>();
 
@@ -188,7 +195,10 @@ namespace Odin.ViewModels
         /// </summary>
         public string ExcelLayout
         {
-            get { return _excelLayout; }
+            get
+            {
+                return _excelLayout;
+            }
             set
             {
                 if (this.ExcelLayout != value)
@@ -199,7 +209,7 @@ namespace Odin.ViewModels
                 }
             }
         }
-        private string _excelLayout = string.Empty;
+        private string _excelLayout = " - NEW - ";
 
         /// <summary>
         ///     List of field options for field list
@@ -216,10 +226,17 @@ namespace Odin.ViewModels
         /// </summary>
         public string IsNew
         {
-            get { return _isNew; }
-            set { _isNew = value; OnPropertyChanged("IsNew"); }
+            get
+            {
+                return _isNew;
+            }
+            set
+            {
+                _isNew = value;
+                OnPropertyChanged("IsNew");
+            }
         }
-        private string _isNew = "False";
+        private string _isNew = "True";
 
         /// <summary>
         ///     Gets or sets the ItemService
@@ -286,10 +303,13 @@ namespace Odin.ViewModels
         public void AddFieldToExcelColumns()
         {
             string field = this.SelectedField;
+
             if (this.SelectedField == "-TEXT-")
             {
-                TextPromptView textWindow = new TextPromptView();
-                textWindow.DataContext = new TextPromptViewModel();
+                TextPromptView textWindow = new TextPromptView
+                {
+                    DataContext = new TextPromptViewModel()
+                };
                 textWindow.ShowDialog();
                 if (textWindow.DialogResult == true)
                 {
@@ -297,7 +317,14 @@ namespace Odin.ViewModels
                 }
                 else return;
             }
-            ExcelCell newCell = new ExcelCell(this.ExcelId, this.ExcelColumns.Count + 1, field, "", this.ExcelCustomer, ExcelService.ReturnColumLetter(this.ExcelColumns.Count + 1));
+
+            ExcelCell newCell = new ExcelCell(
+                this.ExcelId, 
+                this.ExcelColumns.Count + 1, 
+                field, "", 
+                this.ExcelCustomer, 
+                ExcelService.ReturnColumLetter(this.ExcelColumns.Count + 1));
+
             this.ExcelColumns.Add(newCell);
         }
 
@@ -306,11 +333,9 @@ namespace Odin.ViewModels
         /// </summary>
         public void ExcelGeneratorStartUp()
         {
-            this.ExcelLists = RetrieveExcelLayoutNames();
-            this.ExcelLayout = "-NEW-";
-            this.IsNew = "True";
-            this.Fields = RetrieveFieldValues();
-            this.CustomerList = RetrieveExcelCustomers();
+            this.ExcelLists = ExcelService.RetrieveExcelLayoutNames();
+            this.Fields = ExcelService.RetrieveFieldValues();
+            this.CustomerList = ExcelService.RetrieveExcelCustomers();
             this.ProductTypeList = GlobalData.ProductGoups;
         }
 
@@ -415,64 +440,7 @@ namespace Odin.ViewModels
 
             this.ExcelColumns = newExcelColumns;
         }
-        
-        /// <summary>
-        ///     Retrieve a list of customers
-        /// </summary>
-        public List<string> RetrieveExcelCustomers()
-        {
-            List<string> customers = new List<string>();
-            foreach(KeyValuePair<string,string>cust in GlobalData.Customers)
-            {
-                customers.Add(cust.Key);
-            }
-            customers.Sort();
-            return customers;
-        }
-
-        /// <summary>
-        ///     Retrieves a list of all existing layout names. Includes New
-        /// </summary>
-        /// <returns></returns>
-        public List<string> RetrieveExcelLayoutNames()
-        {
-            List<string> excelNames = new List<string>();
-            try
-            {
-                foreach (Layout layout in ExcelService.RetrieveExcelLayouts())
-                {
-                    excelNames.Add(layout.Name);
-                }
-            }
-            catch (Exception ex)
-            {
-                ErrorLog.LogError("Odin was unable to retrieve the excel layout name from the database.", ex.ToString());
-            }
-            excelNames.Sort();
-            excelNames.Insert(0, "-NEW-");
-            return excelNames;
-        }
-
-        /// <summary>
-        ///     Retrieves a list of all available field values. Includes empty
-        /// </summary>
-        /// <returns></returns>
-        public List<string> RetrieveFieldValues()
-        {
-            List<string> fields = new List<string>();
-            try
-            {
-                fields = ExcelService.RetrieveFieldValues();
-            }
-            catch (Exception ex)
-            {
-                ErrorLog.LogError("Odin was unable to retrieve the field data.", ex.ToString());
-            }
-            fields.Insert(0, "-TEXT-");
-            fields.Insert(0, "- EMPTY -");
-            return fields;
-        }
-        
+                        
         /// <summary>
         ///     Removes the given layout information from EXCEL_
         /// </summary>
@@ -484,7 +452,7 @@ namespace Odin.ViewModels
                 try
                 {
                     ExcelService.RemoveExcelLayout(this.ExcelId);
-                    this.ExcelLists = RetrieveExcelLayoutNames();
+                    this.ExcelLists = ExcelService.RetrieveExcelLayoutNames();
                     MessageBox.Show("Layout Removed.");
                 }
                 catch (Exception ex)
@@ -545,7 +513,7 @@ namespace Odin.ViewModels
                 {
                     MessageBox.Show("Excel Layout Saved.");
                 }
-                RetrieveExcelLayoutNames();
+                this.ExcelLists = ExcelService.RetrieveExcelLayoutNames();
             }
         }
 

@@ -304,13 +304,12 @@ namespace OdinServices
         public List<string> CheckDuplicateUPCs(string itemId, string upc, string itemStatus)
         {
             List<string> result = new List<string>();
-            string[] suffixes = new string[] { "WM", "MI", "TG", "DI" };
             string slimItemId = itemId;
             List<string> existingIds = new List<string>();
             if (itemId.Length>2)
             {
                 string idSuffix = itemId.Substring(itemId.Length - 2);
-                if (suffixes.Contains(idSuffix))
+                if (GlobalData.ItemIdSuffixes.Contains(idSuffix))
                 {
                     slimItemId = itemId.Substring(0, itemId.Length - 2);
                 }
@@ -1017,7 +1016,7 @@ namespace OdinServices
                 {
                     continue;
                 }
-
+                GlobalData.LocalItemIds.Add(ItemId);
                 ItemObject item = new ItemObject(1)
                 {
                     ItemRow = row + 1,
@@ -2654,7 +2653,7 @@ namespace OdinServices
                         return new ItemError(
                             var.ItemId,
                             var.ItemRow,
-                            "Field cannot be updated through Odin. The Bill of materials field does not match the values currently saved for this item.",
+                            "Field cannot be updated through Odin. The Bill of materials field does not match the values currently saved for this item. Once established Bill of Materials can only be updated through peoplesoft.",
                             "Bill of Materials");
                     }
                 }
@@ -2665,7 +2664,7 @@ namespace OdinServices
                         return new ItemError(
                             var.ItemId,
                             var.ItemRow,
-                            "Field contains an id that does not exist: " + billOfMaterial.ItemId + ".",
+                            "Field contains an id that does not exist: " + billOfMaterial.ItemId + ". These items must exist in the database before they can be used as a bill of material.",
                             "Bill of Materials");
                     }
                 }
@@ -2674,7 +2673,7 @@ namespace OdinServices
                     return new ItemError(
                         var.ItemId,
                         var.ItemRow,
-                        "Field can not contain multiple occurances of the same item. ["+ billOfMaterial.ItemId.Trim() + "]",
+                        "Field can not contain multiple occurances of the same item. ["+ billOfMaterial.ItemId.Trim() + "]. Please remove duplicates.",
                         "Bill of Materials");
                 }
                 else

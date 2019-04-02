@@ -1522,6 +1522,7 @@ namespace Odin.Data
             GlobalData.ItemCategories = RetrieveItemCategories();
             GlobalData.ItemGroups = RetrieveItemGroups();
             GlobalData.ItemIds = RetrieveItemIds();
+            GlobalData.ItemIdSuffixes = RetrieveItemIdSuffixes();
             GlobalData.Languages = RetrieveLanguages();
             GlobalData.Licenses = RetrieveLicenseList();
             GlobalData.MetaDescriptions = RetrieveMetaDescriptionList();
@@ -3441,7 +3442,19 @@ namespace Odin.Data
                 return (from o in context.ItemAttribEx select o.InvItemId).ToList();
             }
         }
-                
+
+        /// <summary>
+        ///     Retrieves a list of all item id suffixes
+        /// </summary>
+        /// <returns>List of item id suffixes</returns>
+        private List<string> RetrieveItemIdSuffixes()
+        {
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                return (from o in context.OdinItemIdSuffixes select o.FieldValue).ToList();
+            }
+        }
+
         /// <summary>
         ///     Retrieve list of available languages
         /// </summary>

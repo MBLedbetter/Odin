@@ -1843,7 +1843,7 @@
                     <!-- Sell On Ecommerce -->
                     <Label
                         Background="{Binding SellOnEcommerceBoxColor}"
-                        Content="Sell On Ecommerce Sites"
+                        Content="Sell On Ecommerce"
                         Grid.Row="0"
                         Grid.Column="0"
                         HorizontalAlignment="Left"

@@ -2820,7 +2820,10 @@ namespace Odin.ViewModels
                         if (item.Status != "Saved")
                         {
                             ItemService.InsertItem(item, count);
-                            GlobalData.LocalItemIds.Add(item.ItemId);
+                            if (!GlobalData.ItemIds.Contains(item.ItemId))
+                            {
+                                GlobalData.ItemIds.Add(item.ItemId);
+                            }
                         }
                         item.Status = "Saved";
                         item.RowColor = "LightGreen";
@@ -3127,10 +3130,6 @@ namespace Odin.ViewModels
                 catch (Exception ex)
                 {
                     ErrorLog.LogError("Odin was unable to load the excel items.", ex.ToString());
-                }
-                foreach (ItemObject item in this.Items)
-                {
-                    GlobalData.LocalItemIds.Add(item.ItemId);
                 }
                 this.ItemErrors = new ObservableCollection<ItemError>();
                 try
@@ -3902,26 +3901,26 @@ namespace Odin.ViewModels
             {
                 if (CheckCollumnHeaders(dialog.FileName))
                 {
-                    ObservableCollection<ItemObject> CheckItems = ItemService.LoadExcelItems("Add", dialog.FileName);
-                    ObservableCollection<ItemError> CheckErrors = new ObservableCollection<ItemError>();
-                    foreach (ItemObject item in CheckItems)
+                    ObservableCollection<ItemObject> checkItems = ItemService.LoadExcelItems("Add", dialog.FileName);
+                    ObservableCollection<ItemError> checkErrors = new ObservableCollection<ItemError>();
+                    foreach (ItemObject item in checkItems)
                     {
                         foreach (ItemError error in this.ItemService.ValidateItem(item, false))
                         {
-                            if (!CheckErrors.Contains(error))
+                            if (!checkErrors.Contains(error))
                             {
-                                CheckErrors.Add(error);
+                                checkErrors.Add(error);
                             }
                         }
                     }
-                    if (CheckErrors.Count == 0)
+                    if (checkErrors.Count == 0)
                     {
                         MessageBox.Show("Everything is A-OK!");
                     }
                     else
                     {
                         List<string> errorMessages = new List<string>();
-                        foreach (ItemError error in CheckErrors)
+                        foreach (ItemError error in checkErrors)
                         {
                             error.LineNumber = error.LineNumber++;
                             errorMessages.Add("Row: " + error.LineNumber + " Error: " + error.ErrorMessage + "\r\n");
@@ -3932,6 +3931,10 @@ namespace Odin.ViewModels
                             DataContext = new AlertViewModel(errorMessages, "Alert", "The following errors were found in the given spreadsheet.")
                         };
                         window.ShowDialog();
+                    }
+                    foreach(ItemObject item in checkItems)
+                    {
+                        GlobalData.LocalItemIds.Remove(item.ItemId);
                     }
                 }
             }

@@ -18,6 +18,8 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition
+                Height="20" />
+            <RowDefinition
                 Height="150" />
             <RowDefinition
                 Height="100*" />
@@ -30,12 +32,124 @@
             <RowDefinition
                 Height="30" />
         </Grid.RowDefinitions>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top" Grid.Row="0" Margin="0,0,-678,0">
+                <MenuItem Header="_File">
+                    <MenuItem 
+                        Header="Clear Table" 
+                        Command="{Binding FormRefreshCommand}"
+                        ToolTip="Remove all loaded products from table."/>
+                    <MenuItem Header="Update Report" 
+                        Command="{Binding ItemUpdateReportCommand}"
+                        ToolTip="Pull date range report of updated items."/>
+                    <MenuItem Header="Item Records" 
+                        Command="{Binding ItemRecordsCommand}"
+                        ToolTip="View last user to update items." />
+                    <MenuItem Header="Notification History"
+                        Command="{Binding UpdateHistoryCommand}"
+                        ToolTip="View Odin update notification history." />
+                    <MenuItem Header="Options"
+                        Command="{Binding OptionsCommand}"
+                        ToolTip="User Options."  />
+                    <MenuItem Header="Change DB Settings"
+                        Command="{Binding DBSettingsCommand}"
+                        ToolTip="Switch between development and production databases."  />
+                </MenuItem>
+                <MenuItem Header="Items">
+                    <MenuItem 
+                        Header="_Load New" 
+                        Command="{Binding LoadItemsCommand}"
+                        ToolTip="Upload a list of new products into Odin."/>
+                    <MenuItem 
+                        Header="_Search"
+                        Command="{Binding FindItemCommand}"
+                        ToolTip="Find and pull down existing items into Odin." />
+                    <MenuItem 
+                        Header="_Remove Items"
+                            Command="{Binding DeleteItemCommand}"
+                            ToolTip="Upload a list of items to be removed from the website." />
+                    <MenuItem 
+                        Header="_Update Existing"
+                        Command="{Binding UpdateProductsCommand}"
+                        ToolTip="Update existing products by uploading an excel spreadsheet." />
+                    <MenuItem 
+                        Header="_Validate Spreadsheet"
+                        Command="{Binding ValidateSpreadsheetCommand}"
+                        ToolTip="Validate a spreadsheet without loading the items into Odin" />
+                    <MenuItem 
+                        Header="_Export Items"
+                        Click="CreateFullExcel_Click" 
+                        ToolTip="Export current items to an excel sheet."/>
+                </MenuItem>
+                <MenuItem Header="Templates">
+                    <MenuItem 
+                        Header="_New"
+                        Command="{Binding NewTemplateCommand}"
+                        ToolTip="Create a New Default Template"/>
+                    <MenuItem 
+                        Header="_Load New" 
+                        Command="{Binding LoadTemplateCommand}"
+                        ToolTip="Create a New Default Template"/>
+                    <MenuItem 
+                        Header="_Edit Existing"
+                        Command="{Binding UpdateTemplateCommand}"
+                        ToolTip="Update an Existing Template" />
+                    <MenuItem 
+                        Header="_Export Blank" 
+                        Command="{Binding CreateFullTemplateCommand}"
+                        ToolTip="Create an empty template excel sheet."/>
+                    <MenuItem 
+                        Header="_View Existing"
+                        Command="{Binding TemplateAllCommand}"
+                        ToolTip="Opens a window displaying all existing templates" />
+                </MenuItem>
+                <MenuItem Header="Submissions">
+                    <MenuItem 
+                        Header="View Submissions" 
+                        Command="{Binding ViewSubmissionsCommand}"
+                        ToolTip="Review your past web submissions."/>
+                </MenuItem>
+                <MenuItem 
+                    Header="Admin Control"
+                    Visibility="{Binding PermissionAdminVisibility}">
+                    <MenuItem 
+                        Header="_View Submissions"
+                        Command="{Binding ViewSubmissionsAdminCommand}"
+                        ToolTip="Use to view submissions." />
+                    <MenuItem 
+                        Header="Fields" 
+                        Command="{Binding ManageFieldCommand}"
+                        ToolTip="Manage Field Options."/>
+                    <MenuItem 
+                        Header="Permissions" 
+                        Command="{Binding ManagePermisionCommand}"
+                        ToolTip="Manage user permisions."/>
+                    <MenuItem 
+                        Header="Update Records" 
+                        Command="{Binding FindItemUpdateRecordCommand}"
+                        ToolTip="Find a list of updates made to an item"/>
+                </MenuItem>
+                <MenuItem 
+                    Header="Ecommerce Manager"
+                    Visibility="{Binding PermissionEcommerceControlVisibility}">
+                    <MenuItem 
+                        Header="Export Items Excel" 
+                        Command="{Binding CreateEcommerceExcelCommand}"
+                        ToolTip="Create Ecommerce excel sheet with current items."/>
+                    <MenuItem Header="Pull Date Range" />
+                    <MenuItem Header="Excel Generator" />
+                    <MenuItem Header="Submit Images" />
+                </MenuItem>
+            </Menu>
+            <TextBox AcceptsReturn="True" />
+        </DockPanel>
+
         <ribbon:Ribbon
             LicenseKey="DAD80300DA22"
             x:Name="ribbon"
             SystemButtons="False" 
             Grid.ColumnSpan="3" 
-            Grid.Row="0" 
+            Grid.Row="1" 
             Grid.RowSpan="2" SelectionChanged="Ribbon_SelectionChanged"
             >
             <ribbon:Ribbon.ApplicationMenu>
@@ -123,20 +237,6 @@
                         Header="New Items"
                         HorizontalContentAlignment="Stretch">
                         <!-- Load Items Button-->
-                        <!--ribbon:ButtonDropDown
-                            ImagePosition="Top"
-                            Command="{Binding CreateNewItemCommand}"
-                            Header="Create New Item"
-                            ToolTip="Creates a New Item"
-                            Width="100">
-                            <ribbon:ButtonDropDown.Image>
-                                <Image
-                                    Source="/odin;component/Resources/Images/Upload.png"
-                                    Height="32"
-                                    Width="32" />
-                            </ribbon:ButtonDropDown.Image>
-                        </-->
-                        <!-- Load Items Button-->
                         <ribbon:ButtonDropDown
                             ImagePosition="Top"
                             Command="{Binding LoadItemsCommand}"
@@ -163,13 +263,6 @@
                                     Width="32" />
                             </ribbon:ButtonDropDown.Image>
                         </ribbon:ButtonDropDown>
-                        <!--ribbon:ButtonDropDown
-                            Command="{Binding RequestNewCategoryCommand}"
-                            Header="Request New Category"
-                            ToolTip="Request a new category"
-                            Visibility="{Binding RequestNewCategoryVisibility}"
-                            Width="120">
-                        </-->
 
                     </ribbon:RibbonBar>
                     <ribbon:RibbonBar
@@ -550,7 +643,7 @@
             Background="White"
             Grid.ColumnSpan="3" 
             Margin="0,145,0,5" 
-            Grid.RowSpan="2">
+            Grid.RowSpan="3">
             <ListView.ItemContainerStyle>
                 <Style
                     TargetType="{x:Type ListViewItem}">
@@ -1534,7 +1627,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <GridSplitter Grid.Row="2" 
+        <GridSplitter Grid.Row="3" 
                       Height="5" 
                       HorizontalAlignment="Stretch" 
                       Grid.ColumnSpan="3" />
@@ -1543,7 +1636,7 @@
             SelectedItem="{Binding SelectedError}"
             IsSynchronizedWithCurrentItem="True"
             ItemsSource="{Binding ItemErrors}"
-            Grid.Row="3"
+            Grid.Row="4"
             Margin="0" Grid.ColumnSpan="3" 
             >
             <ListView.Background>
@@ -1601,7 +1694,7 @@
             Content="Save Items to Peoplesoft"
             IsEnabled="{Binding SaveStatus}"
             HorizontalAlignment="Right"
-            Grid.Row="4"
+            Grid.Row="5"
             Margin="0,5,5,0"
             Height="30"
             Visibility="{Binding PermissionSaveItemVisibility}"
@@ -1615,7 +1708,7 @@
             Content="Submit Website Request"
             HorizontalAlignment="Right"
             Height="30"
-            Grid.Row="4"
+            Grid.Row="5"
             Margin="0,5,150,0"
             VerticalAlignment="Top"
             Width="141"
@@ -1624,7 +1717,7 @@
         <TextBlock            
             Grid.Column="0"
             Grid.ColumnSpan="3"
-            Grid.Row="5"
+            Grid.Row="6"
             Margin="5"
             Text="{Binding ProgressText}"  
             TextAlignment="Center"
