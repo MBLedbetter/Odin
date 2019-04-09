@@ -17,7 +17,7 @@ namespace Odin.ViewModels
     {
 
         #region Command Properties
-
+        
         public ICommand AboutCommand
         {
             get
@@ -282,6 +282,19 @@ namespace Odin.ViewModels
             }
         }
         private RelayCommand _createAllAmazonItems;
+        public ICommand RemoveSelectedItemCommand
+        {
+            get
+            {
+                if (_removeSelectedItem == null)
+                {
+                    _removeSelectedItem = new RelayCommand(param => RemoveItem());
+                }
+                return _removeSelectedItem;
+            }
+        }
+        private RelayCommand _removeSelectedItem;
+
         public ICommand RequestEcommerceImageListCommand
         {
             get
@@ -2801,7 +2814,7 @@ namespace Odin.ViewModels
         #endregion // Properties
 
         #region Methods
-
+        
         /// <summary>
         ///     Creates and displays the About window
         /// </summary>
@@ -3016,25 +3029,7 @@ namespace Odin.ViewModels
             {
                 if ((window.DataContext as ItemViewModel).Remove)
                 {
-                    for (int x = this.ItemErrors.Count - 1; x >= 0; x--)
-                    {
-                        if (this.ItemErrors[x].ItemIdNumber == (window.DataContext as ItemViewModel).ItemId)
-                        {
-                            this.ItemErrors.Remove(this.ItemErrors[x]);
-                        }
-                    }
-                    foreach (ItemObject collectionItem in Items)
-                    {
-                        if (collectionItem.ItemId == (window.DataContext as ItemViewModel).ItemId)
-                        {
-                            this.Items.Remove(collectionItem);
-                            break;
-                        }
-                    }
-                    if (GlobalData.LocalItemIds.Contains((window.DataContext as ItemViewModel).ItemId))
-                    {
-                        GlobalData.LocalItemIds.Remove((window.DataContext as ItemViewModel).ItemId);
-                    }
+                    RemoveItem((window.DataContext as ItemViewModel).ItemId);
                 }
                 else if (!((window.DataContext as ItemViewModel).Remove))
                 {
@@ -3051,6 +3046,40 @@ namespace Odin.ViewModels
                     }
                 }
             }
+        }
+
+        /// <summary>
+        ///     Remove the given item from the list, error list and local itemid list
+        /// </summary>
+        /// <param name="itemId"></param>
+        public void RemoveItem(string itemId = null)
+        {
+            if (itemId == null)
+            {
+                itemId = this.SelectedItem.ItemId;
+            }
+            MessageBox.Show(itemId);
+            
+            for (int x = this.ItemErrors.Count - 1; x >= 0; x--)
+            {
+                if (this.ItemErrors[x].ItemIdNumber == (itemId))
+                {
+                    this.ItemErrors.Remove(this.ItemErrors[x]);
+                }
+            }
+            foreach (ItemObject collectionItem in Items)
+            {
+                if (collectionItem.ItemId == (itemId))
+                {
+                    this.Items.Remove(collectionItem);
+                    break;
+                }
+            }
+            if (GlobalData.LocalItemIds.Contains(itemId))
+            {
+                GlobalData.LocalItemIds.Remove(itemId);
+            }
+            
         }
 
         /// <summary>

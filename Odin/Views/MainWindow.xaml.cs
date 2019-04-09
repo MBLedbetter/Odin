@@ -34,7 +34,6 @@ namespace Odin.Views
         {
             (this.DataContext as MainWindowViewModel).SubmitItemsCommand.Execute(null);
         }
-
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             (this.DataContext as MainWindowViewModel).SaveItemsCommand.Execute(null);

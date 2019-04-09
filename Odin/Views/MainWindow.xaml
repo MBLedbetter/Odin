@@ -644,6 +644,16 @@
             Grid.ColumnSpan="3" 
             Margin="0,145,0,5" 
             Grid.RowSpan="3">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Edit Item"
+                        Command="{Binding EditSelectedItemCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}" />
+                    <MenuItem Header="Remove Item"
+                        Command="{Binding RemoveSelectedItemCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}" />
+                </ContextMenu>
+            </ListView.ContextMenu>
             <ListView.ItemContainerStyle>
                 <Style
                     TargetType="{x:Type ListViewItem}">
