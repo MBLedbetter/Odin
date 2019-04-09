@@ -442,6 +442,8 @@ namespace Odin.Services.Tests
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000004", "RP4444DI"));
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000005", "RP9999"));
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000006", "RP8888"));
+            GlobalData.ItemIdSuffixes.Add("DI");
+            GlobalData.ItemIdSuffixes.Add("TG");
 
             #endregion // Assemble
 
@@ -3074,6 +3076,7 @@ namespace Odin.Services.Tests
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("123456789123", "RP3322"));
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000000", "RP1234"));
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000000", "RP1234WM"));
+            GlobalData.ItemIdSuffixes.Add("DI");
 
             ItemObject item = new ItemObject(1)
             {

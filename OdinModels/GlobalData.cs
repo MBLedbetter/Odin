@@ -736,6 +736,7 @@ namespace OdinModels
             ItemCategories.Clear();
             ItemGroups.Clear();
             ItemIds.Clear();
+            ItemIdSuffixes.Clear();
             ItemRecords.Clear();
             Languages.Clear();
             Licenses.Clear();
