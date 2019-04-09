@@ -181,6 +181,23 @@ namespace Odin.ViewModels
         private string _webFlagTabColor = "White";
 
         /// <summary>
+        ///     Gets or sets the Title
+        /// </summary>
+        public string ViewTitle
+        {
+            get
+            {
+                return _viewTitle;
+            }
+            set
+            {
+                _viewTitle = value;
+                OnPropertyChanged("ViewTitle");
+            }
+        }
+        private string _viewTitle = "Edit Item Content";
+
+        /// <summary>
         ///     Dictionary of tool tips
         /// </summary>
         Dictionary<string,string> ToolTips
@@ -10719,6 +10736,7 @@ namespace Odin.ViewModels
         {
             this.ItemService = itemService ?? throw new ArgumentNullException("itemService");
             this.ItemViewModelItem = (itemObj.Clone() as ItemObject);
+            this.ViewTitle = itemObj.ItemId + "   :   " + itemObj.Description;
             SetOptions(itemObj);
             SetToolTips();
             SetImages();
