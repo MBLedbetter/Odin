@@ -1789,9 +1789,9 @@ namespace OdinServices
         /// </summary>
         /// <param name="searchValue"></param>
         /// <returns></returns>
-        public List<SearchItem> RetrieveFindItemSearchResults(string searchValue)
+        public List<SearchItem> RetrieveFindItemSearchResults(string searchValue, bool includeDisabled)
         {
-            List<SearchItem> SearchItemResults = ItemRepository.RetrieveItemSearchResults(searchValue);
+            List<SearchItem> SearchItemResults = ItemRepository.RetrieveItemSearchResults(searchValue, includeDisabled);
             foreach(SearchItem item in SearchItemResults)
             {
                 if(item.ItemId == searchValue.ToUpper())
@@ -1982,6 +1982,7 @@ namespace OdinServices
             result.Sort();
             return result;
         }
+
         /// <summary>
         ///     Retrieve Product Line fields from the Global Data 
         ///     that corespond to the give product group
@@ -2010,8 +2011,7 @@ namespace OdinServices
             List<string> result = (from o in GlobalData.ProductLines select o.Value).Distinct().ToList();
             result.Sort();
             return result;
-        }
-        
+        }        
 
         /// <summary>
         ///     Retrieve Property fields from the Global Data. With the key of given license. Empty License returns all properties.
@@ -2041,7 +2041,84 @@ namespace OdinServices
             properties.Sort();
             return properties;
         }
-        
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Item Category
+        /// </summary>
+        /// <param name="itemCategory">Item Category search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByItemCategory(string itemCategory, bool includeDisabled = false)
+        {
+            return ItemRepository.RetreiveSearchItemByItemCategory(itemCategory, includeDisabled);
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Item Group
+        /// </summary>
+        /// <param name="itemGroup">Item Group search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByItemGroup(string itemGroup, bool includeDisabled = false)
+        {
+            return ItemRepository.RetreiveSearchItemByItemGroup(itemGroup, includeDisabled);
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Format
+        /// </summary>
+        /// <param name="productFormat">Product Format search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByProductFormat(string productFormat, bool includeDisabled = false)
+        {
+            return ItemRepository.RetreiveSearchItemByProductFormat(productFormat, includeDisabled);
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Group
+        /// </summary>
+        /// <param name="productGroup">Product Group search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByProductGroup(string productGroup, bool includeDisabled = false)
+        {
+            return ItemRepository.RetreiveSearchItemByProductGroup(productGroup, includeDisabled);
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Line
+        /// </summary>
+        /// <param name="productLine">Product Line search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByProductLine(string productLine, bool includeDisabled = false)
+        {
+            return ItemRepository.RetreiveSearchItemByProductLine(productLine, includeDisabled);
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Stats Code
+        /// </summary>
+        /// <param name="statsCode">Stats Code search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByStatsCode(string statsCode, bool includeDisabled = false)
+        {
+            return ItemRepository.RetreiveSearchItemByStatsCode(statsCode, includeDisabled);
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Tariff Code
+        /// </summary>
+        /// <param name="tariffCode">Tariff Code search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByTariffCode(string tariffCode, bool includeDisabled = false)
+        {
+            return ItemRepository.RetreiveSearchItemByTariffCode(tariffCode, includeDisabled);
+        }
+
         /// <summary>
         ///     Retrieves a List of all stats codes values in global data
         /// </summary>

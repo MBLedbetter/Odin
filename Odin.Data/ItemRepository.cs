@@ -1755,19 +1755,28 @@ namespace Odin.Data
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public List<SearchItem> RetrieveItemSearchResults(string value)
+        public List<SearchItem> RetrieveItemSearchResults(string value, bool includeDisabled)
         {
             List<SearchItem> returnSearchItemList = new List<SearchItem>();
 
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                List<InvItems> invItems = (from o in context.InvItems
-                                           where o.InvItemId.Contains(value) || o.Descr254.Contains(value)
-                                           select o).ToList();
+                var searchItems = (from o in context.MasterItemTbl
+                                                where o.InvItemId.Contains(value) || o.Descr.Contains(value)
+                                                group o by new { o.InvItemId, o.ItemFieldC2, o.Descr} into g
+                                                select new
+                                                {
+                                                    ItemId = g.Key.InvItemId,
+                                                    Status = g.Key.ItemFieldC2,
+                                                    Description = g.Key.Descr
+                                                }).ToList();
 
-                foreach (InvItems invItem in invItems)
+                foreach (var searchItem in searchItems)
                 {
-                    returnSearchItemList.Add(new SearchItem(invItem.InvItemId, invItem.Descr254));
+                    if(searchItem.Status != "D" || includeDisabled)
+                    { 
+                        returnSearchItemList.Add(new SearchItem(searchItem.ItemId, searchItem.Description, searchItem.Status));
+                    }
                 }
             }
             return returnSearchItemList;
@@ -2054,6 +2063,239 @@ namespace Odin.Data
         }
 
         /// <summary>
+        ///     Retrieves a List of SearchItems based on their Item Category
+        /// </summary>
+        /// <param name="itemCategory">Item Category search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByItemCategory(string itemCategory, bool includeDisabled)
+        {
+            string categoryId = RetriveCategoryId(itemCategory);
+            
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                var searchItems = (from o in context.MasterItemTbl
+                                   where o.CategoryId == categoryId
+                                   group o by new { o.InvItemId, o.ItemFieldC2, o.Descr} into g
+                                   select new
+                                   {
+                                       ItemId = g.Key.InvItemId,
+                                       Status = g.Key.ItemFieldC2,
+                                       Description = g.Key.Descr
+                                   }).ToList();
+
+                foreach (var searchItem in searchItems)
+                {
+                    if(searchItem.Status != "D" || includeDisabled)
+                    { 
+                        returnSearchItemList.Add(new SearchItem(searchItem.ItemId, searchItem.Description, searchItem.Status));
+                    }
+                }
+            }
+            return returnSearchItemList;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Item Group
+        /// </summary>
+        /// <param name="itemGroup">Item Group search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByItemGroup(string itemGroup, bool includeDisabled)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                var searchItems = (from o in context.MasterItemTbl
+                                   where o.InvItemGroup == itemGroup
+                                   group o by new { o.InvItemId, o.ItemFieldC2, o.Descr } into g
+                                   select new
+                                   {
+                                       ItemId = g.Key.InvItemId,
+                                       Status = g.Key.ItemFieldC2,
+                                       Description = g.Key.Descr
+                                   }).ToList();
+
+                foreach (var searchItem in searchItems)
+                {
+                    if (searchItem.Status != "D" || includeDisabled)
+                    {
+                        returnSearchItemList.Add(new SearchItem(searchItem.ItemId, searchItem.Description, searchItem.Status));
+                    }
+                }
+            }
+            return returnSearchItemList;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Format
+        /// </summary>
+        /// <param name="productFormat">Product Format search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByProductFormat(string productFormat, bool includeDisabled)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                var searchItems = (from a in context.ItemAttribEx
+                                   join b in context.MasterItemTbl on a.InvItemId equals b.InvItemId
+                                   where a.ProdFormat == productFormat
+                                   group b by new { b.InvItemId, b.ItemFieldC2, b.Descr } into g
+                                   select new
+                                   {
+                                       ItemId = g.Key.InvItemId,
+                                       Status = g.Key.ItemFieldC2,
+                                       Description = g.Key.Descr
+                                   }).ToList();
+
+                foreach (var searchItem in searchItems)
+                {
+                    if (searchItem.Status != "D" || includeDisabled)
+                    {
+                        returnSearchItemList.Add(new SearchItem(searchItem.ItemId, searchItem.Description, searchItem.Status));
+                    }
+                }
+            }
+            return returnSearchItemList;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Group
+        /// </summary>
+        /// <param name="productGroup">Product Group search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByProductGroup(string productGroup, bool includeDisabled)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                var searchItems = (from a in context.ItemAttribEx
+                                   join b in context.MasterItemTbl on a.InvItemId equals b.InvItemId
+                                   where a.ProdGroup == productGroup
+                                   group b by new { b.InvItemId, b.ItemFieldC2, b.Descr } into g
+                                   select new
+                                   {
+                                       ItemId = g.Key.InvItemId,
+                                       Status = g.Key.ItemFieldC2,
+                                       Description = g.Key.Descr
+                                   }).ToList();
+
+                foreach (var searchItem in searchItems)
+                {
+                    if (searchItem.Status != "D" || includeDisabled)
+                    {
+                        returnSearchItemList.Add(new SearchItem(searchItem.ItemId, searchItem.Description, searchItem.Status));
+                    }
+                }
+            }
+            return returnSearchItemList;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Line
+        /// </summary>
+        /// <param name="productLine">Product Line search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByProductLine(string productLine, bool includeDisabled)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                var searchItems = (from a in context.ItemAttribEx
+                                   join b in context.MasterItemTbl on a.InvItemId equals b.InvItemId
+                                   where a.ProdLine == productLine
+                                   group b by new { b.InvItemId, b.ItemFieldC2, b.Descr } into g
+                                   select new
+                                   {
+                                       ItemId = g.Key.InvItemId,
+                                       Status = g.Key.ItemFieldC2,
+                                       Description = g.Key.Descr
+                                   }).ToList();
+
+                foreach (var searchItem in searchItems)
+                {
+                    if (searchItem.Status != "D" || includeDisabled)
+                    {
+                        returnSearchItemList.Add(new SearchItem(searchItem.ItemId, searchItem.Description, searchItem.Status));
+                    }
+                }
+            }
+            return returnSearchItemList;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Stats Code
+        /// </summary>
+        /// <param name="statsCode">Stats Code search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByStatsCode(string statsCode, bool includeDisabled)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                var searchItems = (from a in context.ProdItem
+                                   join b in context.MasterItemTbl on a.ProductId equals b.InvItemId
+                                   where a.ProdFieldC30B == statsCode
+                                   group b by new { b.InvItemId, b.ItemFieldC2, b.Descr } into g
+                                   select new
+                                   {
+                                       ItemId = g.Key.InvItemId,
+                                       Status = g.Key.ItemFieldC2,
+                                       Description = g.Key.Descr
+                                   }).ToList();
+
+                foreach (var searchItem in searchItems)
+                {
+                    if (searchItem.Status != "D" || includeDisabled)
+                    {
+                        returnSearchItemList.Add(new SearchItem(searchItem.ItemId, searchItem.Description, searchItem.Status));
+                    }
+                }
+            }
+            return returnSearchItemList;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Tariff Code
+        /// </summary>
+        /// <param name="tariffCode">Tariff Code search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByTariffCode(string tariffCode, bool includeDisabled = false)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                var searchItems = (from a in context.InvItems
+                                   join b in context.MasterItemTbl on a.InvItemId equals b.InvItemId
+                                   where a.HarmonizedCd == tariffCode
+                                   group b by new { b.InvItemId, b.ItemFieldC2, b.Descr } into g
+                                   select new
+                                   {
+                                       ItemId = g.Key.InvItemId,
+                                       Status = g.Key.ItemFieldC2,
+                                       Description = g.Key.Descr
+                                   }).ToList();
+
+                foreach (var searchItem in searchItems)
+                {
+                    if (searchItem.Status != "D" || includeDisabled)
+                    {
+                        returnSearchItemList.Add(new SearchItem(searchItem.ItemId, searchItem.Description, searchItem.Status));
+                    }
+                }
+            }
+            return returnSearchItemList;
+        }
+
+        /// <summary>
         ///     Retrieve a List of item ids that have been updated withing the given dates
         /// </summary>
         /// <param name="toDate"></param>
@@ -2306,7 +2548,6 @@ namespace Odin.Data
                 itemAttribEx.SellOnWeb = item.SellOnTrends;
                 itemAttribEx.TranslateEdiProd = item.ReturnTranslateEdiProd();
                 itemAttribEx.WebsitePrice = DbUtil.ToDecimal(item.WebsitePrice);
-
             }
         }
 

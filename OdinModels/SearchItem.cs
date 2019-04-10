@@ -66,10 +66,36 @@ namespace OdinModels
         }
         private bool _isSelected = false;
 
+        /// <summary>
+        ///     Gets or sets the search items Status
+        /// </summary>
+        public string Status
+        {
+            get
+            {
+                return _status;
+            }
+            set
+            {
+                _status = value;
+            }
+        }
+        private string _status = string.Empty;
+
         #endregion // Properties
 
         #region Constructor
 
+        /// <summary>
+        ///     Constructs a search item object with supplied fields for item Id, description, status
+        /// </summary>
+        public SearchItem(string itemId, string description, string status)
+        {
+            this.ItemId = itemId;
+            this.Description = description;
+            this.IsSelected = false;
+            this.Status = status;
+        }
         /// <summary>
         ///     Constructs a search item object with supplied fields for item Id and description
         /// </summary>

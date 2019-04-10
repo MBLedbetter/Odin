@@ -325,7 +325,7 @@ namespace Odin.Data
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        List<SearchItem> RetrieveItemSearchResults(string value);
+        List<SearchItem> RetrieveItemSearchResults(string value, bool includeDisabled);
 
         /// <summary>
         ///     Retrieve a list of Item Objects relating to update records for the given item id
@@ -367,7 +367,63 @@ namespace Odin.Data
         /// </summary>
         /// <returns></returns>
         string RetrieveSaveProgress();
-        
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Item Category
+        /// </summary>
+        /// <param name="itemCategory">Item Category search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        List<SearchItem> RetreiveSearchItemByItemCategory(string itemCategory, bool includeDisabled = false);
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Item Group
+        /// </summary>
+        /// <param name="itemGroup">Item Group search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        List<SearchItem> RetreiveSearchItemByItemGroup(string itemGroup, bool includeDisabled = false);
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Format
+        /// </summary>
+        /// <param name="productFormat">Product Format search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        List<SearchItem> RetreiveSearchItemByProductFormat(string productFormat, bool includeDisabled = false);
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Group
+        /// </summary>
+        /// <param name="productGroup">Product Group search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        List<SearchItem> RetreiveSearchItemByProductGroup(string productGroup, bool includeDisabled = false);
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Line
+        /// </summary>
+        /// <param name="productLine">Product Line search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        List<SearchItem> RetreiveSearchItemByProductLine(string productLine, bool includeDisabled = false);
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Stats Code
+        /// </summary>
+        /// <param name="statsCode">Stats Code search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        List<SearchItem> RetreiveSearchItemByStatsCode(string statsCode, bool includeDisabled = false);
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Tariff Code
+        /// </summary>
+        /// <param name="tariffCode">Tariff Code search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        List<SearchItem> RetreiveSearchItemByTariffCode(string tariffCode, bool includeDisabled = false);
+
         /// <summary>
         ///     Returns the web category code associated with the given name
         /// </summary>
