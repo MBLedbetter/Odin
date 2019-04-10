@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Odin.DbTableModels
 {
@@ -583,6 +580,12 @@ namespace Odin.DbTableModels
         ///     Gets or sets SELL_ON_TARGET
         /// </summary>
         public string SellOnTarget { get; set; }
+
+        /// <summary>
+        ///     Gets or sets SELL_ON_TRS
+        /// </summary>
+        public string SellOnTrs { get; set; }
+
         /// <summary>
         ///     Gets or sets SELL_ON_WALMART
         /// </summary>

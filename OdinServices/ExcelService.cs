@@ -287,8 +287,34 @@ namespace OdinServices
 
         #endregion // Add data methods
 
+        #region Insert Methods
+
+        /// <summary>
+        ///     Establish connection and run InsertExcelLayoutColumn foreach cell in list
+        /// </summary>
+        /// <param name="cellList"></param>
+        /// <returns></returns>
+        public void InsertExcelLayoutColumns(ObservableCollection<ExcelCell> cellList)
+        {
+            TemplateRepository.InsertExcelLayoutColumns(cellList);
+        }
+
+        /// <summary>
+        ///     Inserts a column data into ODIN_EXCEL_LAYOUT_IDS
+        /// </summary>
+        /// <param name="layoutName"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public void InsertExcelLayout(string layoutName, string customer, string productType)
+        {
+            TemplateRepository.InsertExcelLayout(layoutName, customer, productType);
+            RetrieveExcelLayouts();
+        }
+
+        #endregion // Insert Methods
+
         #region Modifier Methods
-        
+
         /// <summary>
         ///     Converts the existing image path to reflect the location of additional images
         /// </summary>
@@ -481,32 +507,7 @@ namespace OdinServices
         }
 
         #endregion // Modifier Methods
-
-        #region Insert Methods
-
-        /// <summary>
-        ///     Establish connection and run InsertExcelLayoutColumn foreach cell in list
-        /// </summary>
-        /// <param name="cellList"></param>
-        /// <returns></returns>
-        public void InsertExcelLayoutColumns(ObservableCollection<ExcelCell> cellList)
-        {
-            TemplateRepository.InsertExcelLayoutColumns(cellList);
-        }
-
-        /// <summary>
-        ///     Inserts a column data into ODIN_EXCEL_LAYOUT_IDS
-        /// </summary>
-        /// <param name="layoutName"></param>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public void InsertExcelLayout(string layoutName, string customer, string productType)
-        {
-            TemplateRepository.InsertExcelLayout(layoutName, customer, productType);
-            RetrieveExcelLayouts();
-        }
-
-        #endregion // Insert Methods
+        
 
         /// <summary>
         ///     Create a excell documents for a given list of items
@@ -1331,6 +1332,20 @@ namespace OdinServices
                                 row++;
                             }
                             break;
+                        case "Ecommerce Item Name + Item Group":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceItemName + " " + DbUtil.UppercaseFirst(item.ItemGroup));
+                                row++;
+                            }
+                            break;
+                        case "Ecommerce Item Type Keywords":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.EcommerceItemTypeKeywords);
+                                row++;
+                            }
+                            break;
                         case "Ecommerce Item Weight":
                             foreach (ItemObject item in items)
                             {
@@ -1987,6 +2002,20 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Retrieve a list of sorted customers
+        /// </summary>
+        public List<string> RetrieveExcelCustomers()
+        {
+            List<string> customers = new List<string>();
+            foreach (KeyValuePair<string, string> cust in GlobalData.Customers)
+            {
+                customers.Add(cust.Key);
+            }
+            customers.Sort();
+            return customers;
+        }
+
+        /// <summary>
         ///     Retrieves the coresponding layout id for the given layout
         /// </summary>
         /// <param name="layoutName"></param>
@@ -2051,12 +2080,41 @@ namespace OdinServices
         }
 
         /// <summary>
-        ///     Retrieves a sorted list of available field values
+        ///     Retrieves a list of all existing layout names. Filters out templates based on Admin & ** (for universal excel sheets)
+        /// </summary>
+        /// <returns></returns>
+        public List<string> RetrieveExcelLayoutNames()
+        {
+            List<string> excelNames = new List<string>();
+            try
+            {
+                foreach (Layout layout in RetrieveExcelLayouts())
+                {
+                    if (layout.Name.Substring(0, 2) != "**" || GlobalData.UserRoles.Contains("ADMIN"))
+                    {
+                        excelNames.Add(layout.Name);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLog.LogError("Odin was unable to retrieve the excel layout name from the database.", ex.ToString());
+            }
+            excelNames.Sort();
+            excelNames.Insert(0, "-NEW-");
+            return excelNames;
+        }
+
+        /// <summary>
+        ///     Retrieves a sorted list of available field values. Adds "-TEXT-" & "- EMPTY - "
         /// </summary>
         /// <returns></returns>
         public List<string> RetrieveFieldValues()
         {
-            return TemplateRepository.RetrieveFieldValues();
+            List<string> values =  TemplateRepository.RetrieveFieldValues();
+            values.Insert(0, "-TEXT-");
+            values.Insert(0, "- EMPTY -");
+            return values;
         }
 
         /// <summary>

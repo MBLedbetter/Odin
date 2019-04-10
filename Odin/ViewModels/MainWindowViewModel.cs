@@ -17,7 +17,7 @@ namespace Odin.ViewModels
     {
 
         #region Command Properties
-
+        
         public ICommand AboutCommand
         {
             get
@@ -282,6 +282,19 @@ namespace Odin.ViewModels
             }
         }
         private RelayCommand _createAllAmazonItems;
+        public ICommand RemoveSelectedItemCommand
+        {
+            get
+            {
+                if (_removeSelectedItem == null)
+                {
+                    _removeSelectedItem = new RelayCommand(param => RemoveItem());
+                }
+                return _removeSelectedItem;
+            }
+        }
+        private RelayCommand _removeSelectedItem;
+
         public ICommand RequestEcommerceImageListCommand
         {
             get
@@ -2096,6 +2109,23 @@ namespace Odin.ViewModels
         private string _sellOnTrendsVisibility = "auto";
 
         /// <summary>
+        ///     Gets or sets the SellOnTrsVisibility field
+        /// </summary>
+        public string SellOnTrsVisibility
+        {
+            get
+            {
+                return _sellOnTrsVisibility;
+            }
+            set
+            {
+                _sellOnTrsVisibility = value;
+                OnPropertyChanged("SellOnTrsVisibility");
+            }
+        }
+        private string _sellOnTrsVisibility = "auto";
+
+        /// <summary>
         ///     Gets or sets the SellOnWalmartVisibility field
         /// </summary>
         public string SellOnWalmartVisibility
@@ -2784,7 +2814,7 @@ namespace Odin.ViewModels
         #endregion // Properties
 
         #region Methods
-
+        
         /// <summary>
         ///     Creates and displays the About window
         /// </summary>
@@ -2796,11 +2826,7 @@ namespace Odin.ViewModels
             };
             window.ShowDialog();
         }
-
-        private void BackgroundWorkerSetCache_DoWork(object sender, DoWorkEventArgs e)
-        {
-        }
-
+        
         private void BackgroundWorkerValidate_DoWork(object sender, DoWorkEventArgs e)
         {
             bool errors = false;
@@ -2820,7 +2846,10 @@ namespace Odin.ViewModels
                         if (item.Status != "Saved")
                         {
                             ItemService.InsertItem(item, count);
-                            GlobalData.LocalItemIds.Add(item.ItemId);
+                            if (!GlobalData.ItemIds.Contains(item.ItemId))
+                            {
+                                GlobalData.ItemIds.Add(item.ItemId);
+                            }
                         }
                         item.Status = "Saved";
                         item.RowColor = "LightGreen";
@@ -3000,25 +3029,7 @@ namespace Odin.ViewModels
             {
                 if ((window.DataContext as ItemViewModel).Remove)
                 {
-                    for (int x = this.ItemErrors.Count - 1; x >= 0; x--)
-                    {
-                        if (this.ItemErrors[x].ItemIdNumber == (window.DataContext as ItemViewModel).ItemId)
-                        {
-                            this.ItemErrors.Remove(this.ItemErrors[x]);
-                        }
-                    }
-                    foreach (ItemObject collectionItem in Items)
-                    {
-                        if (collectionItem.ItemId == (window.DataContext as ItemViewModel).ItemId)
-                        {
-                            this.Items.Remove(collectionItem);
-                            break;
-                        }
-                    }
-                    if (GlobalData.LocalItemIds.Contains((window.DataContext as ItemViewModel).ItemId))
-                    {
-                        GlobalData.LocalItemIds.Remove((window.DataContext as ItemViewModel).ItemId);
-                    }
+                    RemoveItem((window.DataContext as ItemViewModel).ItemId);
                 }
                 else if (!((window.DataContext as ItemViewModel).Remove))
                 {
@@ -3035,6 +3046,40 @@ namespace Odin.ViewModels
                     }
                 }
             }
+        }
+
+        /// <summary>
+        ///     Remove the given item from the list, error list and local itemid list
+        /// </summary>
+        /// <param name="itemId"></param>
+        public void RemoveItem(string itemId = null)
+        {
+            if (itemId == null)
+            {
+                itemId = this.SelectedItem.ItemId;
+            }
+            MessageBox.Show(itemId);
+            
+            for (int x = this.ItemErrors.Count - 1; x >= 0; x--)
+            {
+                if (this.ItemErrors[x].ItemIdNumber == (itemId))
+                {
+                    this.ItemErrors.Remove(this.ItemErrors[x]);
+                }
+            }
+            foreach (ItemObject collectionItem in Items)
+            {
+                if (collectionItem.ItemId == (itemId))
+                {
+                    this.Items.Remove(collectionItem);
+                    break;
+                }
+            }
+            if (GlobalData.LocalItemIds.Contains(itemId))
+            {
+                GlobalData.LocalItemIds.Remove(itemId);
+            }
+            
         }
 
         /// <summary>
@@ -3127,10 +3172,6 @@ namespace Odin.ViewModels
                 catch (Exception ex)
                 {
                     ErrorLog.LogError("Odin was unable to load the excel items.", ex.ToString());
-                }
-                foreach (ItemObject item in this.Items)
-                {
-                    GlobalData.LocalItemIds.Add(item.ItemId);
                 }
                 this.ItemErrors = new ObservableCollection<ItemError>();
                 try
@@ -3463,6 +3504,7 @@ namespace Odin.ViewModels
             this.SellOnHayneedleVisibility = (UserOptions.SellOnHayneedleVisibility) ? "100" : "0";
             this.SellOnTargetVisibility = (UserOptions.SellOnTargetVisibility) ? "100" : "0";
             this.SellOnTrendsVisibility = (UserOptions.SellOnTrendsVisibility) ? "100" : "0";
+            this.SellOnTrsVisibility = (UserOptions.SellOnTrsVisibility) ? "100" : "0";
             this.SellOnWalmartVisibility = (UserOptions.SellOnWalmartVisibility) ? "100" : "0";
             this.SellOnWayfairVisibility = (UserOptions.SellOnWayfairVisibility) ? "100" : "0";
             /* Image Path Visibility */
@@ -3589,6 +3631,7 @@ namespace Odin.ViewModels
             UserOptions.SellOnHayneedleVisibility = true;
             UserOptions.SellOnTargetVisibility = true;
             UserOptions.SellOnTrendsVisibility = true;
+            UserOptions.SellOnTrsVisibility = true;
             UserOptions.SellOnWalmartVisibility = true;
             UserOptions.SellOnWayfairVisibility = true;
             UserOptions.ImagePath1Visibility = true;
@@ -3902,26 +3945,26 @@ namespace Odin.ViewModels
             {
                 if (CheckCollumnHeaders(dialog.FileName))
                 {
-                    ObservableCollection<ItemObject> CheckItems = ItemService.LoadExcelItems("Add", dialog.FileName);
-                    ObservableCollection<ItemError> CheckErrors = new ObservableCollection<ItemError>();
-                    foreach (ItemObject item in CheckItems)
+                    ObservableCollection<ItemObject> checkItems = ItemService.LoadExcelItems("Add", dialog.FileName);
+                    ObservableCollection<ItemError> checkErrors = new ObservableCollection<ItemError>();
+                    foreach (ItemObject item in checkItems)
                     {
                         foreach (ItemError error in this.ItemService.ValidateItem(item, false))
                         {
-                            if (!CheckErrors.Contains(error))
+                            if (!checkErrors.Contains(error))
                             {
-                                CheckErrors.Add(error);
+                                checkErrors.Add(error);
                             }
                         }
                     }
-                    if (CheckErrors.Count == 0)
+                    if (checkErrors.Count == 0)
                     {
                         MessageBox.Show("Everything is A-OK!");
                     }
                     else
                     {
                         List<string> errorMessages = new List<string>();
-                        foreach (ItemError error in CheckErrors)
+                        foreach (ItemError error in checkErrors)
                         {
                             error.LineNumber = error.LineNumber++;
                             errorMessages.Add("Row: " + error.LineNumber + " Error: " + error.ErrorMessage + "\r\n");
@@ -3932,6 +3975,10 @@ namespace Odin.ViewModels
                             DataContext = new AlertViewModel(errorMessages, "Alert", "The following errors were found in the given spreadsheet.")
                         };
                         window.ShowDialog();
+                    }
+                    foreach(ItemObject item in checkItems)
+                    {
+                        GlobalData.LocalItemIds.Remove(item.ItemId);
                     }
                 }
             }

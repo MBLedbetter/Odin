@@ -201,6 +201,11 @@ namespace Odin.Data
         public DbSet<OdinFieldValues> OdinFieldValues { get; set; }
 
         /// <summary>
+        ///     Gets or sets a list of the OdinItemidSuffixes lines that are in this context.
+        /// </summary>
+        public DbSet<OdinItemIdSuffixes> OdinItemIdSuffixes { get; set; }
+
+        /// <summary>
         ///     Gets or sets a list of the OdinItemOverrideInfo lines that are in this context.
         /// </summary>
         public DbSet<OdinItemOverrideInfo> OdinItemOverrideInfo { get; set; }
@@ -496,6 +501,7 @@ namespace Odin.Data
             MapOdinGlobalKeys(modelBuilder);
             MapOdinItem(modelBuilder);
             MapOdinItemExceptions(modelBuilder);
+            MapOdinItemIdSuffixes(modelBuilder);
             MapOdinItemOverrideInfo(modelBuilder);
             MapOdinItemTemplates(modelBuilder);
             MapOdinItemUpdateRecords(modelBuilder);
@@ -2141,6 +2147,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItem>().Property(p => p.SellOnGuitarCenter).HasColumnName("SELL_ON_GUITAR_CENTER");
             modelBuilder.Entity<OdinItem>().Property(p => p.SellOnHayneedle).HasColumnName("SELL_ON_HAYNEEDLE");
             modelBuilder.Entity<OdinItem>().Property(p => p.SellOnTarget).HasColumnName("SELL_ON_TARGET");
+            modelBuilder.Entity<OdinItem>().Property(p => p.SellOnTrs).HasColumnName("SELL_ON_TRS");
             modelBuilder.Entity<OdinItem>().Property(p => p.SellOnWalmart).HasColumnName("SELL_ON_WALMART");
             modelBuilder.Entity<OdinItem>().Property(p => p.SellOnWayfair).HasColumnName("SELL_ON_WAYFAIR");
             modelBuilder.Entity<OdinItem>().Property(p => p.SellOnWeb).HasColumnName("SELL_ON_WEB");
@@ -2185,6 +2192,29 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItemExceptions>().Property(p => p.ExceptionValue).HasColumnName("EXCEPTION_VALUE");
             modelBuilder.Entity<OdinItemExceptions>().Property(p => p.Field).HasColumnName("FIELD");
 
+        }
+
+
+        /// <summary>
+        ///             This method maps the OdinItem class to the database.
+        /// </summary>
+        /// 
+        /// <param name="DbModelBuilder modelBuilder">
+        ///             The DbDbModelBuilder modelBuilder to update with the mapping.
+        /// </param>
+        private void MapOdinItemIdSuffixes(DbModelBuilder modelBuilder)
+        {
+            // Map the OdinItem class to the ODIN_ITEM_VW table
+            modelBuilder.Entity<OdinItemIdSuffixes>()
+                .HasKey(p => new
+                {
+                    p.FieldValue
+                })
+                .ToTable("ODIN_ITEMID_SUFFIXES");
+
+            // Map each column
+            modelBuilder.Entity<OdinItemIdSuffixes>().Property(p => p.Desc).HasColumnName("DESC");
+            modelBuilder.Entity<OdinItemIdSuffixes>().Property(p => p.FieldValue).HasColumnName("FIELD_VALUE");
         }
 
         /// <summary>
@@ -2449,6 +2479,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnHayneedle).HasColumnName("SELL_ON_HAYNEEDLE");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnJet).HasColumnName("SELL_ON_JET");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnTarget).HasColumnName("SELL_ON_TARGET");
+            modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnTrs).HasColumnName("SELL_ON_TRS");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnWalmart).HasColumnName("SELL_ON_WALMART");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnWayfair).HasColumnName("SELL_ON_WAYFAIR");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnWeb).HasColumnName("SELL_ON_WEB");

@@ -2340,6 +2340,24 @@ namespace OdinModels
             }
         }
         private string _sellOnTrends = "";
+        
+        /// <summary>
+        ///     Gets or sets the SellOnTrs
+        /// </summary>
+        public string SellOnTrs
+        {
+            get
+            {
+                return _sellOnTrs;
+            }
+            set
+            {
+                if (_sellOnTrs != value) { SellOnTrsUpdate = true; }
+                _sellOnTrs = value;
+                OnPropertyChanged("SellOnTrs");
+            }
+        }
+        private string _sellOnTrs = "";
 
         /// <summary>
         ///     Gets or sets the SellOnWalmart
@@ -3860,6 +3878,11 @@ namespace OdinModels
         ///     SellOnTrendsUpdate update flag
         /// </summary>
         public bool SellOnTrendsUpdate = false;
+
+        /// <summary>
+        ///     SellOnTrsUpdate update flag
+        /// </summary>
+        public bool SellOnTrsUpdate = false;
 
         /// <summary>
         ///     SellOnWalmartUpdate update flag

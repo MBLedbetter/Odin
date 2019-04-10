@@ -155,6 +155,7 @@ namespace OdinServices
             public static string SellOnHayneedle = "Sell On Hayneedle";
             public static string SellOnTarget = "Sell On Target";
             public static string SellOnTrends = "Sell On Trends";
+            public static string SellOnTrs = "Sell On Trs";
             public static string SellOnWalmart = "Sell On Walmart";
             public static string SellOnWayfair = "Sell On Wayfair";
             public static string ShortDescription = "Short Description";
@@ -304,13 +305,12 @@ namespace OdinServices
         public List<string> CheckDuplicateUPCs(string itemId, string upc, string itemStatus)
         {
             List<string> result = new List<string>();
-            string[] suffixes = new string[] { "WM", "MI", "TG", "DI" };
             string slimItemId = itemId;
             List<string> existingIds = new List<string>();
             if (itemId.Length>2)
             {
                 string idSuffix = itemId.Substring(itemId.Length - 2);
-                if (suffixes.Contains(idSuffix))
+                if (GlobalData.ItemIdSuffixes.Contains(idSuffix))
                 {
                     slimItemId = itemId.Substring(0, itemId.Length - 2);
                 }
@@ -778,6 +778,7 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.SellOnAmazonSellerCentral)) && (item.SellOnAmazonSellerCentral.Trim() != returnItem.SellOnAmazonSellerCentral.Trim())) { returnItem.SellOnAmazonSellerCentral = item.SellOnAmazonSellerCentral.Trim(); }
             if ((!string.IsNullOrEmpty(item.SellOnTarget)) && (item.SellOnTarget.Trim() != returnItem.SellOnTarget.Trim())) { returnItem.SellOnTarget = item.SellOnTarget.Trim(); }
             if ((!string.IsNullOrEmpty(item.SellOnTrends)) && (item.SellOnTrends.Trim() != returnItem.SellOnTrends.Trim())) { returnItem.SellOnTrends = item.SellOnTrends.Trim(); }
+            if ((!string.IsNullOrEmpty(item.SellOnTrs)) && (item.SellOnTrs.Trim() != returnItem.SellOnTrs.Trim())) { returnItem.SellOnTrs = item.SellOnTrs.Trim(); }
             if ((!string.IsNullOrEmpty(item.SellOnEcommerce)) && (item.SellOnEcommerce.Trim() != returnItem.SellOnEcommerce.Trim())) { returnItem.SellOnEcommerce = item.SellOnEcommerce.Trim(); }
             if ((!string.IsNullOrEmpty(item.SellOnFanatics)) && (item.SellOnFanatics.Trim() != returnItem.SellOnFanatics.Trim())) { returnItem.SellOnFanatics = item.SellOnFanatics.Trim(); } 
             if ((!string.IsNullOrEmpty(item.SellOnGuitarCenter)) && (item.SellOnGuitarCenter.Trim() != returnItem.SellOnGuitarCenter.Trim())) { returnItem.SellOnGuitarCenter = item.SellOnGuitarCenter.Trim(); } 
@@ -1017,7 +1018,7 @@ namespace OdinServices
                 {
                     continue;
                 }
-
+                GlobalData.LocalItemIds.Add(ItemId);
                 ItemObject item = new ItemObject(1)
                 {
                     ItemRow = row + 1,
@@ -1124,6 +1125,7 @@ namespace OdinServices
                     SellOnHayneedle = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnHayneedle).Trim(),
                     SellOnTarget = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnTarget).Trim(),
                     SellOnTrends = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnTrends).Trim(),
+                    SellOnTrs = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnTrs).Trim(),
                     SellOnWalmart = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnWalmart).Trim(),
                     SellOnWayfair = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnWayfair).Trim(),
                     ShortDescription = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ShortDescription).Trim(),
@@ -2417,6 +2419,9 @@ namespace OdinServices
             // Sell On Trends //
             validationError =ValidateSellOnValue(var, "Trends");
             if (validationError != null) { ErrorList.Add(validationError); }
+            // Sell On Trs //
+            validationError = ValidateSellOnValue(var, "Trs");
+            if (validationError != null) { ErrorList.Add(validationError); }
             // Sell On Walmart //
             validationError =ValidateSellOnValue(var, "Walmart");
             if (validationError != null) { ErrorList.Add(validationError); }
@@ -2698,7 +2703,7 @@ namespace OdinServices
                         return new ItemError(
                             var.ItemId,
                             var.ItemRow,
-                            "Field cannot be updated through Odin. The Bill of materials field does not match the values currently saved for this item.",
+                            "Field cannot be updated through Odin. The Bill of materials field does not match the values currently saved for this item. Once established Bill of Materials can only be updated through peoplesoft.",
                             "Bill of Materials");
                     }
                 }
@@ -2709,7 +2714,7 @@ namespace OdinServices
                         return new ItemError(
                             var.ItemId,
                             var.ItemRow,
-                            "Field contains an id that does not exist: " + billOfMaterial.ItemId + ".",
+                            "Field contains an id that does not exist: " + billOfMaterial.ItemId + ". These items must exist in the database before they can be used as a bill of material.",
                             "Bill of Materials");
                     }
                 }
@@ -2718,7 +2723,7 @@ namespace OdinServices
                     return new ItemError(
                         var.ItemId,
                         var.ItemRow,
-                        "Field can not contain multiple occurances of the same item. ["+ billOfMaterial.ItemId.Trim() + "]",
+                        "Field can not contain multiple occurances of the same item. ["+ billOfMaterial.ItemId.Trim() + "]. Please remove duplicates.",
                         "Bill of Materials");
                 }
                 else
@@ -5505,6 +5510,7 @@ namespace OdinServices
         public ItemError ValidateSellOnValue(ItemObject var, string type)
         {
             string value = string.Empty;
+            bool checkItemId = false;
             switch (type)
             {
                 case "All Posters":
@@ -5534,6 +5540,10 @@ namespace OdinServices
                 case "Trends":
                     value = var.SellOnTrends;
                     break;
+                case "Trs":
+                    value = var.SellOnTrs;
+                    checkItemId = true;
+                    break;
                 case "Walmart":
                     value = var.SellOnWalmart;
                     break;
@@ -5559,6 +5569,17 @@ namespace OdinServices
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_YorN,
                     "Sell On " + type);
+            }
+            if(checkItemId)
+            {
+                if(var.ItemId.Contains("-"))
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Item's being sold on TRS cannot contain a '-' in the itemId.",
+                        "Sell On " + type);
+                }
             }
             return null;
         }

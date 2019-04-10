@@ -286,6 +286,7 @@ namespace Odin.Data
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("GUITAR CENTER"), item.SellOnGuitarCenter, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HAYNEEDLE"), item.SellOnHayneedle, context) ;
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TARGET"), item.SellOnTarget, context);
+            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TRS"), item.SellOnTrs, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("WALMART"), item.SellOnWalmart, context) ;
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("WAYFAIR"), item.SellOnWayfair, context);            
         }
@@ -759,6 +760,7 @@ namespace Odin.Data
                 SellOnHayneedle = item.SellOnHayneedle,
                 SellOnTarget = item.SellOnTarget,
                 SellOnWeb = item.SellOnTrends,
+                SellOnTrs = item.SellOnTrs,
                 SellOnWalmart = item.SellOnWalmart,
                 SellOnWayfair = item.SellOnWayfair,
                 SellOnJet = "",
@@ -1522,6 +1524,7 @@ namespace Odin.Data
             GlobalData.ItemCategories = RetrieveItemCategories();
             GlobalData.ItemGroups = RetrieveItemGroups();
             GlobalData.ItemIds = RetrieveItemIds();
+            GlobalData.ItemIdSuffixes = RetrieveItemIdSuffixes();
             GlobalData.Languages = RetrieveLanguages();
             GlobalData.Licenses = RetrieveLicenseList();
             GlobalData.MetaDescriptions = RetrieveMetaDescriptionList();
@@ -1692,6 +1695,7 @@ namespace Odin.Data
                         SellOnGuitarCenter = (!string.IsNullOrEmpty(odinItem.SellOnGuitarCenter)) ? odinItem.SellOnGuitarCenter : "N",
                         SellOnHayneedle = (!string.IsNullOrEmpty(odinItem.SellOnHayneedle)) ? odinItem.SellOnHayneedle : "N",
                         SellOnTarget = (!string.IsNullOrEmpty(odinItem.SellOnTarget)) ? odinItem.SellOnTarget : "N",
+                        SellOnTrs = (!string.IsNullOrEmpty(odinItem.SellOnTrs)) ? odinItem.SellOnTrs : "N",
                         SellOnWalmart = (!string.IsNullOrEmpty(odinItem.SellOnWalmart)) ? odinItem.SellOnWalmart : "N",
                         SellOnWayfair = (!string.IsNullOrEmpty(odinItem.SellOnWayfair)) ? odinItem.SellOnWayfair : "N",
                         ShortDescription = (!string.IsNullOrEmpty(odinItem.ShortDesc)) ? odinItem.ShortDesc.Trim() : "",
@@ -3332,17 +3336,7 @@ namespace Odin.Data
         /// <returns></returns>
         private string RetrieveCustomerId(string value)
         {
-            return GlobalData.CustomerIdConversions[value];
-            
-            /*
-            foreach (KeyValuePair<string, string> x in GlobalData.CustomerIdConversions)
-            {
-                if (x.Key == value)
-                {
-                    return x.Value;
-                }
-            }
-            */
+            return GlobalData.CustomerIdConversions[value];            
         }
 
         /// <summary>
@@ -3441,7 +3435,19 @@ namespace Odin.Data
                 return (from o in context.ItemAttribEx select o.InvItemId).ToList();
             }
         }
-                
+
+        /// <summary>
+        ///     Retrieves a list of all item id suffixes
+        /// </summary>
+        /// <returns>List of item id suffixes</returns>
+        private List<string> RetrieveItemIdSuffixes()
+        {
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                return (from o in context.OdinItemIdSuffixes select o.FieldValue).ToList();
+            }
+        }
+
         /// <summary>
         ///     Retrieve list of available languages
         /// </summary>

@@ -1587,6 +1587,22 @@ namespace OdinModels
         private static bool _sellOnTrendsVisibility = true;
 
         /// <summary>
+        ///     Gets or sets SellOnTrsVisibility
+        /// </summary>
+        public static bool SellOnTrsVisibility
+        {
+            get
+            {
+                return _sellOnTrsVisibility;
+            }
+            set
+            {
+                _sellOnTrsVisibility = value;
+            }
+        }
+        private static bool _sellOnTrsVisibility = true;
+
+        /// <summary>
         ///     Gets or sets SellOnWalmartVisibility
         /// </summary>
         public static bool SellOnWalmartVisibility

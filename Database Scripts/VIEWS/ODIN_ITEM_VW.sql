@@ -14,6 +14,7 @@ CREATE VIEW ODIN_ITEM_VW AS
            dbo.Odin_RetrieveSellOnFlag(MASTER_ITEM_TBL.INV_ITEM_ID, 'GUITAR CENTER') AS SELL_ON_GUITAR_CENTER,
            dbo.Odin_RetrieveSellOnFlag(MASTER_ITEM_TBL.INV_ITEM_ID, 'HAYNEEDLE') AS SELL_ON_HAYNEEDLE,
            dbo.Odin_RetrieveSellOnFlag(MASTER_ITEM_TBL.INV_ITEM_ID, 'TARGET') AS SELL_ON_TARGET,
+           dbo.Odin_RetrieveSellOnFlag(MASTER_ITEM_TBL.INV_ITEM_ID, 'TRS') AS SELL_ON_TRS,
            dbo.Odin_RetrieveSellOnFlag(MASTER_ITEM_TBL.INV_ITEM_ID, 'WALMART') AS SELL_ON_WALMART,
            dbo.Odin_RetrieveSellOnFlag(MASTER_ITEM_TBL.INV_ITEM_ID, 'WAYFAIR') AS SELL_ON_WAYFAIR,
 		   dbo.Odin_RetrieveItemLanguages(MASTER_ITEM_TBL.INV_ITEM_ID) AS [LANGUAGE],
