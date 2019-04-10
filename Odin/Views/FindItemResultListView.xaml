@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Odin.Views"
         mc:Ignorable="d"
-        Title="FindItemResultListView" Height="302.239" Width="451.493">
+        Title="FindItemResultListView" Height="313.297" Width="451.493">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition
