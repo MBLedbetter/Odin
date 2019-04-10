@@ -2953,22 +2953,7 @@ namespace Odin.ViewModels
             };
             window.ShowDialog();
         }
-
-        /*
-        /// <summary>
-        ///     Displays the progression of the item saving process
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="e"></param>
-        public void DisplayTimeEvent(object source, ElapsedEventArgs e)
-        {
-            string count = ItemService.ReturnSaveStatus();
-            int num = Convert.ToInt32(count)-1;
-            this.Items[num].RowColor = "LightSkyBlue";
-            this.ProgressText = "Saving item " + count + " of " + this.Items.Count.ToString();
-        }
-        */
-
+        
         /// <summary>
         ///     Opens DbSetting View / View Model
         /// </summary>
@@ -3047,41 +3032,7 @@ namespace Odin.ViewModels
                 }
             }
         }
-
-        /// <summary>
-        ///     Remove the given item from the list, error list and local itemid list
-        /// </summary>
-        /// <param name="itemId"></param>
-        public void RemoveItem(string itemId = null)
-        {
-            if (itemId == null)
-            {
-                itemId = this.SelectedItem.ItemId;
-            }
-            MessageBox.Show(itemId);
-            
-            for (int x = this.ItemErrors.Count - 1; x >= 0; x--)
-            {
-                if (this.ItemErrors[x].ItemIdNumber == (itemId))
-                {
-                    this.ItemErrors.Remove(this.ItemErrors[x]);
-                }
-            }
-            foreach (ItemObject collectionItem in Items)
-            {
-                if (collectionItem.ItemId == (itemId))
-                {
-                    this.Items.Remove(collectionItem);
-                    break;
-                }
-            }
-            if (GlobalData.LocalItemIds.Contains(itemId))
-            {
-                GlobalData.LocalItemIds.Remove(itemId);
-            }
-            
-        }
-
+        
         /// <summary>
         ///     Function that retrieves item information from the Peoplesoft Database
         /// </summary>
@@ -3328,6 +3279,61 @@ namespace Odin.ViewModels
                 DataContext = new AlertViewModel(notificationList, "", "")
             };
             window.ShowDialog();
+        }
+
+        /// <summary>
+        ///     Remove the given item from the list, error list and local itemid list
+        /// </summary>
+        /// <param name="itemId"></param>
+        public void RemoveItem(string itemId = null)
+        {
+            if (itemId == null)
+            {
+                itemId = this.SelectedItem.ItemId;
+            }
+
+            for (int x = this.ItemErrors.Count - 1; x >= 0; x--)
+            {
+                if (this.ItemErrors[x].ItemIdNumber == (itemId))
+                {
+                    this.ItemErrors.Remove(this.ItemErrors[x]);
+                }
+            }
+            foreach (ItemObject collectionItem in Items)
+            {
+                if (collectionItem.ItemId == (itemId))
+                {
+                    this.Items.Remove(collectionItem);
+                    break;
+                }
+            }
+            if (GlobalData.LocalItemIds.Contains(itemId))
+            {
+                GlobalData.LocalItemIds.Remove(itemId);
+            }
+            ReorderRows();
+        }
+
+        /// <summary>
+        ///     Reorders the row numbers of all items and errors. Used when an item is removed from item list
+        /// </summary>
+        public void ReorderRows()
+        {
+            for (int x = 0; x < this.Items.Count; x++)
+            {
+                if(this.Items[x].ItemRow!= x+1)
+                {
+                    this.Items[x].ItemRow = x + 1;
+
+                    foreach (ItemError itemError in this.ItemErrors)
+                    {
+                        if(itemError.ItemIdNumber == this.Items[x].ItemId)
+                        {
+                            itemError.LineNumber = x + 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>

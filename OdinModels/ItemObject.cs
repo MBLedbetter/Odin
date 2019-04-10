@@ -4406,6 +4406,7 @@ namespace OdinModels
                 this.SellOnHayneedle = item.SellOnHayneedle;
                 this.SellOnTarget = item.SellOnTarget;
                 this.SellOnTrends = item.SellOnTrends;
+                this.SellOnTrs = item.SellOnTrs;
                 this.SellOnWalmart = item.SellOnWalmart;
                 this.SellOnWayfair = item.SellOnWayfair;
                 this.ShortDescription = item.ShortDescription;
