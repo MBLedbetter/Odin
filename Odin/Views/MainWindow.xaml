@@ -61,7 +61,7 @@
                         Command="{Binding LoadItemsCommand}"
                         ToolTip="Upload a list of new products into Odin."/>
                     <MenuItem 
-                        Header="_Search"
+                        Header="_Find Items"
                         Command="{Binding FindItemCommand}"
                         ToolTip="Find and pull down existing items into Odin." />
                     <MenuItem 

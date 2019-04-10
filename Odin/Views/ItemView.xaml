@@ -102,7 +102,7 @@
                         Width="170" />
                     <!-- Bill of Materials -->
                     <Label
-                        Background="{Binding BillofMaterialsBoxColor}"
+                        Background="{Binding BillOfMaterialsBoxColor}"
                         Content="Bill of Materials"
                         Grid.Row="1"
                         Grid.Column="0"
@@ -892,7 +892,7 @@
                         TextWrapping="Wrap"
                         MaxHeight="26"
                         MaxLength="18"
-                        IsEnabled="{Binding IsNew}"
+                        IsEnabled="{Binding IsEnabled}"
                         Grid.Column="5"
                         Text="{Binding ItemId}"
                         VerticalContentAlignment="Center"
@@ -1661,7 +1661,7 @@
                         Grid.Row="14"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
-                        IsEnabled="{Binding IsUpdate}"
+                        IsEnabled="{Binding IsEnabled}"
                         ToolTip="{Binding ProductQtyToolTip}"
                         VerticalAlignment="Center" 
                         Margin="6,5,0,5" Height="26" Width="74" />
@@ -1673,7 +1673,7 @@
                         TextWrapping="Wrap"
                         MaxHeight="26"
                         Grid.Column="1"
-                        IsEnabled="{Binding IsNew}"
+                        IsEnabled="{Binding IsEnabled}"
                         Text="{Binding ProductQty}"
                         VerticalContentAlignment="Top"
                         Width="300" />
@@ -3041,7 +3041,6 @@
                 </Grid>
             </TabItem>
             <TabItem
-                Background="{Binding TabColorWebOverrideInfo}"
                 Header="      Web Override      " 
                 Height="22" 
                 VerticalAlignment="Bottom"

@@ -51,6 +51,9 @@ namespace Odin.ViewModels
                               
         public bool BlockInfo { get; set; }
 
+        /// <summary>
+        ///     Returns True if product is new, False if it is an update
+        /// </summary>
         public string IsEnabled
         {
             get
@@ -65,11 +68,6 @@ namespace Odin.ViewModels
                 }
             }
         }
-
-        /// <summary>
-        ///     List of itemIds in mainwindow
-        /// </summary>
-        //public List<string> ItemIds { get; set; }
 
         /// <summary>
         ///     Gets the permissionAdminVisibility. Shows or web override fields.
@@ -4047,11 +4045,11 @@ namespace Odin.ViewModels
                 _sellOnTargetError = value;
                 if (value != "")
                 {
-                    SellOnTargetErrorToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SellOnTarget");
+                    SellOnTargetToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SellOnTarget");
                 }
                 else
                 {
-                    SellOnTargetErrorToolTip = ReturnToolTip("SellOnTarget");
+                    SellOnTargetToolTip = ReturnToolTip("SellOnTarget");
                 }
                 this.SellOnTargetBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorWebFlag = CheckWebFlagsTabColor();
@@ -4059,7 +4057,7 @@ namespace Odin.ViewModels
             }
         }
         private string _sellOnTargetError = string.Empty;
-        public string SellOnTargetErrorToolTip
+        public string SellOnTargetToolTip
         {
             get
             {
@@ -4185,11 +4183,11 @@ namespace Odin.ViewModels
                 _sellOnTrsError = value;
                 if (value != "")
                 {
-                    SellOnTrsErrorToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SellOnTrs");
+                    SellOnTrsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SellOnTrs");
                 }
                 else
                 {
-                    SellOnTrsErrorToolTip = ReturnToolTip("SellOnTrs");
+                    SellOnTrsToolTip = ReturnToolTip("SellOnTrs");
                 }
                 this.SellOnTrsBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorWebFlag = CheckWebFlagsTabColor();
@@ -4197,7 +4195,7 @@ namespace Odin.ViewModels
             }
         }
         private string _sellOnTrsError = string.Empty;
-        public string SellOnTrsErrorToolTip
+        public string SellOnTrsToolTip
         {
             get
             {
@@ -10617,9 +10615,9 @@ namespace Odin.ViewModels
             this.SellOnFanaticsToolTip = ReturnToolTip("SellOnFanatics");
             this.SellOnGuitarCenterToolTip = ReturnToolTip("SellOnGuitarCenter");
             this.SellOnHayneedleToolTip = ReturnToolTip("SellOnHayneedle");
-            this.SellOnTargetErrorToolTip = ReturnToolTip("SellOnTarget");
+            this.SellOnTargetToolTip = ReturnToolTip("SellOnTarget");
             this.SellOnTrendsToolTip = ReturnToolTip("SellOnTrends");
-            this.SellOnTrsErrorToolTip = ReturnToolTip("SellOnTrs");
+            this.SellOnTrsToolTip = ReturnToolTip("SellOnTrs");
             this.SellOnWalmartToolTip = ReturnToolTip("SellOnWalmart");
             this.SellOnWayfairToolTip = ReturnToolTip("SellOnWayfair");
             this.ShortDescriptionToolTip = ReturnToolTip("ShortDescription");
