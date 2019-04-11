@@ -12,9 +12,7 @@
     <Grid
         Background="LightGray">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="139*" />
-            <ColumnDefinition Width="236*"/>
-            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition
@@ -32,7 +30,7 @@
             <RowDefinition
                 Height="30" />
         </Grid.RowDefinitions>
-        <DockPanel>
+        <DockPanel Margin="0,0,679,0">
             <Menu DockPanel.Dock="Top" Grid.Row="0" Margin="0,0,-678,0">
                 <MenuItem Header="_File">
                     <MenuItem 
@@ -148,7 +146,6 @@
             LicenseKey="DAD80300DA22"
             x:Name="ribbon"
             SystemButtons="False" 
-            Grid.ColumnSpan="3" 
             Grid.Row="1" 
             Grid.RowSpan="2" SelectionChanged="Ribbon_SelectionChanged"
             >
@@ -640,10 +637,9 @@
             SelectedItem="{Binding SelectedItem}"
             IsSynchronizedWithCurrentItem="True"
             ItemsSource="{Binding Items}"
-            Background="White"
-            Grid.ColumnSpan="3" 
-            Margin="0,145,0,5" 
-            Grid.RowSpan="3">
+            Background="White" 
+            Margin="0,125,0,5" 
+            Grid.RowSpan="2" Grid.Row="1">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Edit Item"
@@ -1650,15 +1646,13 @@
         </ListView>
         <GridSplitter Grid.Row="3" 
                       Height="5" 
-                      HorizontalAlignment="Stretch" 
-                      Grid.ColumnSpan="3" />
+                      HorizontalAlignment="Stretch" />
         <!-- list of errors-->
         <ListView
             SelectedItem="{Binding SelectedError}"
             IsSynchronizedWithCurrentItem="True"
             ItemsSource="{Binding ItemErrors}"
-            Grid.Row="4"
-            Margin="0" Grid.ColumnSpan="3" 
+            Grid.Row="4" 
             >
             <ListView.Background>
                 <LinearGradientBrush
@@ -1721,8 +1715,7 @@
             Visibility="{Binding PermissionSaveItemVisibility}"
             VerticalAlignment="Top"
             Width="140"
-            Click="SaveButton_Click" 
-            Grid.Column="2"/>
+            Click="SaveButton_Click"/>
         <Button
             IsEnabled="{Binding SubmitStatus}"
             Visibility="{Binding PermissionSubmitItemVisibility}"
@@ -1730,14 +1723,12 @@
             HorizontalAlignment="Right"
             Height="30"
             Grid.Row="5"
-            Margin="0,5,150,0"
+            Margin="0,5,149,0"
             VerticalAlignment="Top"
             Width="141"
-            Click="SubmitButton_Click"
-            Grid.ColumnSpan="2" Grid.Column="1"/>
+            Click="SubmitButton_Click"/>
         <TextBlock            
             Grid.Column="0"
-            Grid.ColumnSpan="3"
             Grid.Row="6"
             Margin="5"
             Text="{Binding ProgressText}"  

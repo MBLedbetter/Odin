@@ -165,7 +165,6 @@
             </TabItem>
             <TabItem
                 Background="{Binding TabColorItemInfo}"
-                
                 Header="   Search by Field   ">
                 <Grid Margin="0,0,2,0">
                     <Grid.ColumnDefinitions>

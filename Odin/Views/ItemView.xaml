@@ -2185,10 +2185,12 @@
                         Content="Bullet 3"
                         Grid.Column="0"
                         Grid.Row="6"
+                        Height="26" 
                         HorizontalAlignment="Left" 
                         Margin="10,6,0,4"
                         ToolTip="{Binding EcommerceBullet3ToolTip}"
-                        VerticalAlignment="Center" Width="101" Height="26" />
+                        VerticalAlignment="Center" 
+                        Width="101"/>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -3157,7 +3159,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
-
         <StackPanel
             Height="43"
             FlowDirection="RightToLeft"

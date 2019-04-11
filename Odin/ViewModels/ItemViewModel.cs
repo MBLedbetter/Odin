@@ -194,18 +194,7 @@ namespace Odin.ViewModels
             }
         }
         private string _viewTitle = "Edit Item Content";
-
-        /// <summary>
-        ///     Dictionary of tool tips
-        /// </summary>
-        Dictionary<string,string> ToolTips
-        {
-            get
-            {
-                return GlobalData.ToolTips;
-            }
-        }
-        
+                
         #endregion // Odin Properties
 
         #region Peoplesoft Properties
@@ -10381,9 +10370,9 @@ namespace Odin.ViewModels
         /// <returns></returns>
         public string ReturnToolTip(string value)
         {
-            if (this.ToolTips.ContainsKey(value))
+            if (GlobalData.ToolTips.ContainsKey(value))
             {
-                return this.ToolTips[value];
+                return GlobalData.ToolTips[value];
             }
             return "";
         }
