@@ -237,14 +237,6 @@ namespace Odin.ViewModels
             set
             {
                 _accountingGroupError = value;
-                if (value != "")
-                {
-                    AccountingGroupToolTip = "Error: " + value + "\n\n" + ReturnToolTip("AccountingGroup");
-                }
-                else
-                {
-                    AccountingGroupToolTip = ReturnToolTip("AccountingGroup");
-                }
                 this.AccountingGroupBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("AccountingGroupError");
@@ -303,14 +295,6 @@ namespace Odin.ViewModels
             set
             {
                 _billOfMaterialsError = value;
-                if (value != "")
-                {
-                    BillOfMaterialsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("BillOfMaterials");
-                }
-                else
-                {
-                    BillOfMaterialsToolTip = ReturnToolTip("BillOfMaterials");
-                }
                 this.BillOfMaterialsBoxColor = (value == "") ? "White" : "Tomato";
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("BillOfMaterialsError");
