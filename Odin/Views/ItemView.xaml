@@ -3129,9 +3129,36 @@
                         Grid.Row="0"
                         HorizontalAlignment="Left"
                         Padding="3"
-                        ToolTip="{Binding CategoryToolTip}"
                         VerticalAlignment="Center"
                         Width="100">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Category 1" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding CategoryToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding CategoryError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
                         Category 1
                     </TextBox>
                     <ComboBox                        
@@ -3147,14 +3174,42 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding Category2BoxColor}"
-                        Text="Category 2"
                         Grid.Column="0"
                         Grid.Row="1"
                         HorizontalAlignment="Left"
                         Padding="3"
-                        ToolTip="{Binding Category2ToolTip}"
                         VerticalAlignment="Center"
-                        Width="100" />
+                        Width="100">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Category 2" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding Category2ToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding Category2Error}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Category 2
+                    </TextBox>
                     <ComboBox                        
                         Grid.Column="1"
                         Grid.Row="1"     
@@ -3169,14 +3224,42 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding Category3BoxColor}"
-                        Text="Category 3"
                         Grid.Row="2"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         Padding="3"
-                        ToolTip="{Binding Category3ToolTip}"
                         VerticalAlignment="Center"     
-                        Width="100" />
+                        Width="100">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Category 3" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding Category3ToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding Category3Error}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Category 3
+                    </TextBox>
                     <ComboBox     
                         Height="26"
                         HorizontalAlignment="Left"
@@ -3190,14 +3273,42 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding CopyrightBoxColor}"
-                        Text="Copyright"
                         Grid.Row="3"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         Padding="3"
-                        ToolTip="{Binding CopyrightToolTip}"
                         VerticalAlignment="Center"
-                        Width="100" />
+                        Width="100">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Copyright" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding CopyrightToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding CopyrightError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Copyright
+                    </TextBox>
                     <TextBox
                         Height="128"
                         HorizontalAlignment="Left"
@@ -3216,14 +3327,42 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding InStockDateBoxColor}"
-                        Text="In Stock Date"
                         Grid.Row="7"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         Padding="3"
-                        ToolTip="{Binding InStockDateToolTip}"
                         VerticalAlignment="Center" 
-                        Width="100" />
+                        Width="100">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="In Stock Date" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding InStockDateToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding InStockDateError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        In Stock Date
+                    </TextBox>
                     <DatePicker
                         Height="26"
                         HorizontalAlignment="Left"
@@ -3237,14 +3376,42 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding ItemKeywordsBoxColor}"
-                        Text="Item Keywords"
                         Grid.Row="8"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         Padding="3"
-                        ToolTip="{Binding ItemKeywordsToolTip}"
                         VerticalAlignment="Center" 
-                        Width="100" />
+                        Width="100">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Item Keywords" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding ItemKeywordsToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding ItemKeywordsError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Item Keywords
+                    </TextBox>
                     <TextBox
                         Height="128"
                         HorizontalAlignment="Left"
@@ -3261,14 +3428,42 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding LicenseBoxColor}"
-                        Text="License"
                         Grid.Row="12"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         Padding="3"
-                        ToolTip="{Binding LicenseToolTip}"
                         VerticalAlignment="Center" 
-                        Width="100" />
+                        Width="100">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="License" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding LicenseToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding LicenseError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        License
+                    </TextBox>
                     <ComboBox
                         Height="26"
                         HorizontalAlignment="Left"
@@ -3282,14 +3477,42 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding MetaDescriptionBoxColor}"
-                        Text="Meta Description"
                         Grid.Row="13"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding MetaDescriptionToolTip}"
                         Padding="3"
                         VerticalAlignment="Center" 
-                        Width="100" />
+                        Width="100" >
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="MEta Description" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding MetaDescriptionToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding MetaDescriptionError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Meta Description
+                    </TextBox>
                     <ComboBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -3303,15 +3526,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding ProductQtyBoxColor}"
-                        Text="Product Qty"
                         Grid.Row="14"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         IsEnabled="{Binding IsEnabled}"
                         Padding="3"
-                        ToolTip="{Binding ProductQtyToolTip}"
                         VerticalAlignment="Center" 
-                        Width="100" />
+                        Width="100">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Product Qty" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding ProductQtyToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding ProductQtyError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Product Qty
+                    </TextBox>
                     <TextBox
                         Height="26"
                         HorizontalAlignment="Left"
@@ -3327,13 +3578,36 @@
                     <!-- Product Qty Total -->
                     <TextBox
                         BorderThickness="0"
-                        Text="Product Qty Total"
                         Grid.Row="0"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center" 
                         Padding="3"
-                        Width="100" />
+                        Width="100">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Product Qty Total" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding ProductQtyTotalToolTip}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Product Qty Total
+                    </TextBox>
                     <TextBox
                         Height="26"
                         HorizontalAlignment="Left"
@@ -3351,14 +3625,42 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding PropertyBoxColor}"
-                        Text="Property"
                         Grid.Row="1"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding PropertyToolTip}"
                         VerticalAlignment="Center" 
                         Padding="3"
-                        Width="100" />
+                        Width="100">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Property" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding PropertyToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding PropertyError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Property
+                    </TextBox>
                     <ComboBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
@@ -3371,14 +3673,42 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding ShortDescriptionBoxColor}"
-                        Text="Short Description"
                         Grid.Row="2"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding ShortDescriptionToolTip}"
                         VerticalAlignment="Center" 
                         Padding="3"
-                        Width="100"/>
+                        Width="100">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Short Description" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding ShortDescriptionToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding ShortDescriptionError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Short Description
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6" 
@@ -3396,14 +3726,42 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding SizeBoxColor}"
-                        Text="Size"
                         Grid.Row="5"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding SizeToolTip}"
                         VerticalAlignment="Center" 
                         Padding="3"
-                        Width="100" />
+                        Width="100">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Size" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding SizeToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding SizeError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Size
+                    </TextBox>
                     <TextBox
                         Height="26"
                         HorizontalAlignment="Left"
@@ -3419,15 +3777,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding TitleBoxColor}"
-                        Text="Title"
                         Grid.Row="6"
                         Grid.Column="2"
                         Height="26"         
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding TitleToolTip}"
                         VerticalAlignment="Center" 
                         Padding="3"
-                        Width="100"/>
+                        Width="100">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Title" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding TitleToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding TitleError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Title
+                    </TextBox>
                     <TextBox
                         Height="26"
                         HorizontalAlignment="Left"
@@ -3443,15 +3829,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding WebsitePriceBoxColor}"
-                        Text="Website Price"
                         Grid.Row="7"
                         Grid.Column="2"
                         Height="26"         
                         HorizontalAlignment="Left"
                         Padding="3"
                         Width="100"
-                        ToolTip="{Binding WebsitePriceToolTip}"
-                        VerticalAlignment="Center"/>
+                        VerticalAlignment="Center">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Website Price" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding WebsitePriceToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding WebsitePriceError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Website Price
+                    </TextBox>
                     <TextBox
                         Height="26"
                         HorizontalAlignment="Left"
@@ -3504,10 +3918,37 @@
                         Grid.Row="0"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding SellOnEcommerceToolTip}"
                         VerticalAlignment="Center" 
                         Padding="3"
                         Width="170">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Sell On Ecommerce" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding SellOnEcommerceToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding SellOnEcommerceError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
                         Sell On Ecommerce
                     </TextBox>
                     <CheckBox
@@ -3525,10 +3966,37 @@
                         Grid.Row="1"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding SellOnAllPostersToolTip}"
                         VerticalAlignment="Center"  
                         Padding="3"
                         Width="170">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Sell On All Posters" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding SellOnAllPosterToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding SellOnAllPostersError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
                         Sell On All Posters
                     </TextBox>
                     <CheckBox
@@ -3543,14 +4011,42 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding SellOnAmazonBoxColor}"
-                        Text="Sell On Amazon"
                         Grid.Row="2"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding SellOnAmazonToolTip}"
                         VerticalAlignment="Center"  
                         Padding="3"
-                        Width="170" />
+                        Width="170">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Sell On Amazon" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding SellOnAmazonToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding SellOnAmazonError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Sell On Amazon
+                    </TextBox>
                     <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -3566,10 +4062,39 @@
                         Grid.Row="3"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding SellOnAmazonSellerCentralToolTip}"
                         VerticalAlignment="Center"  
                         Padding="3"
-                        Width="170">Sell On Amazon Seller Central</TextBox>
+                        Width="170">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Sell On Amazon Seller Central" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding SellOnAmazonSellerCentralToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding SellOnAmazonSellerCentralError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Sell On Amazon Seller Central
+                    </TextBox>
                     <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -3585,10 +4110,37 @@
                         Grid.Row="4"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding SellOnFanaticsToolTip}"
                         VerticalAlignment="Center" 
                         Padding="3"
                         Width="170">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Sell On Fanatics" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding SellOnFanaticsToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding SellOnFanaticsError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
                         Sell On Fanatics
                     </TextBox>
                     <CheckBox
@@ -3606,10 +4158,37 @@
                         Grid.Row="5"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding SellOnGuitarCenterToolTip}"
                         VerticalAlignment="Center"
                         Padding="3"
                         Width="170">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Sell On Guitar Center" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding SellOnGuitarCenterToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding SellOnGuitarCenterError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
                         Sell On Guitar Center
                     </TextBox>
                     <CheckBox
@@ -3627,10 +4206,37 @@
                         Grid.Row="6"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding SellOnHayneedleToolTip}"
                         VerticalAlignment="Center" 
                         Padding="3"
                         Width="170">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Sell On Hayneedle" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding SellOnHayneedleToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding SellOnHayneedleError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
                         Sell On Hayneedle
                     </TextBox>
                     <CheckBox
@@ -3648,10 +4254,37 @@
                         Grid.Row="1"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding SellOnTargetToolTip}"
                         VerticalAlignment="Center"  
                         Padding="3"
                         Width="170">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Sell On Target" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding SellOnTargetToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding SellOnTargetError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
                         Sell On Target
                     </TextBox>
                     <CheckBox
@@ -3668,10 +4301,37 @@
                         Grid.Row="2"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding SellOnTrendsToolTip}"
                         VerticalAlignment="Center"  
                         Padding="3"
                         Width="170">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Sell On Trends" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding SellOnTrendsToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding SellOnTrendsError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
                         Sell On Trends
                     </TextBox>
                     <CheckBox
@@ -3688,10 +4348,37 @@
                         Grid.Row="3"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding SellOnTrsToolTip}"
                         VerticalAlignment="Center"  
                         Padding="3"
                         Width="170">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Sell On Trs" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding SellOnTrsToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding SellOnTrsError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
                         Sell On Trs
                     </TextBox>
                     <CheckBox
@@ -3708,10 +4395,37 @@
                         Grid.Row="4"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding SellOnWalmartToolTip}"
                         VerticalAlignment="Center" 
                         Padding="3"
                         Width="170">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Sell On Walmart" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding SellOnWalmartToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding SellOnWalmartError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
                         Sell On Walmart
                     </TextBox>
                     <CheckBox
@@ -3729,10 +4443,37 @@
                         Grid.Row="5"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding SellOnWayfairToolTip}"
                         VerticalAlignment="Center" 
                         Padding="3"
                         Width="170">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Sell On Wayfair" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding SellOnWayfairToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding SellOnWayfairError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
                         Sell On Wayfair
                     </TextBox>
                     <CheckBox
@@ -3781,15 +4522,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceAsinBoxColor}"
-                        Text="ASIN"
                         Grid.Column="0"
                         Grid.Row="0"
                         HorizontalAlignment="Left" 
-                        Margin="10,5,0,5"
-                        ToolTip="{Binding EcommerceAsinToolTip}"
+                        Padding="3"
                         VerticalAlignment="Center" 
-                        Height="26" 
-                        Width="78" />
+                        Width="90" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce ASIN" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceAsinToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceAsinError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        ASIN
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -3813,17 +4582,51 @@
                         Grid.Row="1"
                         HorizontalAlignment="Left" 
                         Margin="6,0,0,0"
-                        VerticalAlignment="Center" Grid.ColumnSpan="2" Height="396" Grid.RowSpan="11" Width="276" />
+                        VerticalAlignment="Center" 
+                        Grid.ColumnSpan="2" 
+                        Height="396" 
+                        Grid.RowSpan="11" 
+                        Width="276" />
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceBullet1BoxColor}"
-                        Text="Bullet 1"
                         Grid.Column="0"
                         Grid.Row="2"
                         HorizontalAlignment="Left" 
-                        Margin="10,4,0,6"
-                        ToolTip="{Binding EcommerceBullet1ToolTip}"
-                        VerticalAlignment="Center" Width="91" Height="26" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="90" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Bullet 1" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceBullet1ToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceBullet1Error}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Bullet 1
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -3840,13 +4643,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceBullet2BoxColor}"
-                        Text="Bullet 2"
                         Grid.Column="0"
                         Grid.Row="4"
                         HorizontalAlignment="Left" 
-                        Margin="10,4,0,6"
-                        ToolTip="{Binding EcommerceBullet2ToolTip}"
-                        VerticalAlignment="Center" Width="91" Height="26" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="90" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Bullet 2" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceBullet2ToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceBullet2Error}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Bullet 2
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -3863,15 +4696,44 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceBullet3BoxColor}"
-                        Text="Bullet 3"
                         Grid.Column="0"
                         Grid.Row="6"
                         Height="26" 
                         HorizontalAlignment="Left" 
-                        Margin="10,6,0,4"
-                        ToolTip="{Binding EcommerceBullet3ToolTip}"
+                        Padding="3"
                         VerticalAlignment="Center" 
-                        Width="91"/>
+                        Width="90" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Bullet 3" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceBullet3ToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceBullet3Error}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Bullet 3
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -3888,13 +4750,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceBullet4BoxColor}"
-                        Text="Bullet 4"
                         Grid.Column="0"
                         Grid.Row="8"
                         HorizontalAlignment="Left" 
-                        Margin="10,5,0,5"
-                        ToolTip="{Binding EcommerceBullet4ToolTip}"
-                        VerticalAlignment="Center" Width="91" Height="26" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="90" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Bullet 4" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceBullet4ToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceBullet4Error}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Bullet 4
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -3911,13 +4803,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceBullet5BoxColor}"
-                        Text="Bullet 5"
                         Grid.Column="0"
                         Grid.Row="10"
                         HorizontalAlignment="Left" 
-                        Margin="10,6,0,4"
-                        ToolTip="{Binding EcommerceBullet5ToolTip}"
-                        VerticalAlignment="Center" Width="91" Height="26" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="90" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Bullet 5" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceBullet5ToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceBullet5Error}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Bullet 5
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -3934,13 +4856,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceComponentsBoxColor}"
-                        Text="Components"
                         Grid.Column="0"
                         Grid.Row="12"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,4"
-                        ToolTip="{Binding EcommerceComponentsToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="95" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="90" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Components" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceComponentsToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceComponentsError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Components
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -3955,13 +4907,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceCostBoxColor}"
-                        Text="Cost"
                         Grid.Column="0"
                         Grid.Row="13"
                         HorizontalAlignment="Left" 
-                        Margin="6,4,0,6"
-                        ToolTip="{Binding EcommerceCostToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="95" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="90" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Cost" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceCostToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceCostError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Cost
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -3976,13 +4958,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceExternalIdBoxColor}"
-                        Text="External ID"
                         Grid.Column="0"
                         Grid.Row="14"
                         HorizontalAlignment="Left"  
-                        Margin="6,5,0,5"
-                        ToolTip="{Binding EcommerceExternalIdToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="95" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="90" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce External Id" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceExternalIdToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceExternalIdError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        External ID
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -3997,13 +5009,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceExternalIdTypeBoxColor}"
-                        Text="External ID Type"
                         Grid.Row="15"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding EcommerceExternalIdTypeToolTip}"
+                        Padding="3"
                         VerticalAlignment="Center" 
-                        Margin="6,5,0,5" Height="26" Width="95" />
+                        Width="101" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce External Id Type" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceExternalIdTypeToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceExternalIdTypeError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        External ID Type
+                    </TextBox>
                     <ComboBox
                         Grid.Column="1"
                         Grid.Row="15"
@@ -4030,13 +5072,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceItemHeightBoxColor}"
-                        Text="Item Height"
                         Grid.Column="2"
                         Grid.Row="1"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,4"
-                        ToolTip="{Binding EcommerceItemHeightToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="121" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="120" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Item Height" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceItemHeightToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceItemHeightError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Item Height
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
@@ -4051,13 +5123,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceItemLengthBoxColor}"
-                        Text="Item Length"
                         Grid.Column="2"
                         Grid.Row="2"
                         HorizontalAlignment="Left" 
-                        Margin="6,4,0,6"
-                        ToolTip="{Binding EcommerceItemLengthToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="121" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="120" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Item Length" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceItemLengthToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceItemLengthError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Item Length
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
@@ -4072,13 +5174,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceItemNameBoxColor}"
-                        Text="Item Name"
                         Grid.Column="2"
                         Grid.Row="5"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,4"
-                        ToolTip="{Binding EcommerceItemNameToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="125" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="120" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Item Name" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceItemNameToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceItemNameError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Item Name
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
@@ -4093,13 +5225,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceItemTypeKeywordsBoxColor}"
-                        Text="Item Type Keywords"
                         Grid.Column="2"
                         Grid.Row="6"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,4"
-                        ToolTip="{Binding EcommerceItemTypeKeywordsToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="125" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="120" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Item Type Keywords" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceItemTypeKeywordsToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceItemTypeKeywordsError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Item Type Keywords
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
@@ -4114,13 +5276,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceItemWeightBoxColor}"
-                        Text="Item Weight"
                         Grid.Column="2"
                         Grid.Row="3"
                         HorizontalAlignment="Left" 
-                        Margin="6,5,0,5"
-                        ToolTip="{Binding EcommerceItemWeightToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="121" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="120" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Item Weight" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceItemWeightToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceItemWeightError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Item Weight
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
@@ -4135,13 +5327,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceItemWidthBoxColor}"
-                        Text="Item Width"
                         Grid.Column="2"
                         Grid.Row="4"
                         HorizontalAlignment="Left" 
-                        Margin="6,4,0,6"
-                        ToolTip="{Binding EcommerceItemWidthToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="121" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="120" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Item Width" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceItemWidthToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceItemWidthError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Item Width
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
@@ -4156,13 +5378,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceManufacturerNameBoxColor}"
-                        Text="Manufacturer Name"
                         Grid.Column="2"
                         Grid.Row="7"
                         HorizontalAlignment="Left" 
-                        Margin="6,5,0,5"
-                        ToolTip="{Binding EcommerceManufacturerNameToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="135" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="120" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Manufacturer Name" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceManufacturerNameToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceManufacturerNameError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Manufacturer Name
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
@@ -4177,13 +5429,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceModelNameBoxColor}"
-                        Text="Model Name"
                         Grid.Column="2"
                         Grid.Row="8"
                         HorizontalAlignment="Left" 
-                        Margin="10,6,0,4"
-                        ToolTip="{Binding EcommerceModelNameToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="125" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="120" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Model Name" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceModelNameToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceModelNameError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Model Name
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
@@ -4198,13 +5480,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceMsrpBoxColor}"
-                        Text="Msrp"
                         Grid.Column="2"
                         Grid.Row="9"
-                        HorizontalAlignment="Left" 
-                        Margin="10,5,0,5"
-                        ToolTip="{Binding EcommerceMsrpToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="121" />
+                        HorizontalAlignment="Left"
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="120" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce MSRP" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceMsrpToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceMsrpError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        MSRP
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
@@ -4227,18 +5539,51 @@
                         Grid.ColumnSpan="2"
                         Grid.Row="10"
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Center" Height="180" Grid.RowSpan="5" Width="322" />
+                        VerticalAlignment="Center" 
+                        Height="180" 
+                        Grid.RowSpan="5" 
+                        Width="322" />
                     <!-- Package Height -->
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommercePackageHeightBoxColor}"
-                        Text="Package Height"
                         Grid.Column="2"
                         Grid.Row="11"
                         HorizontalAlignment="Left" 
-                        Margin="10,6,0,4"
-                        ToolTip="{Binding EcommercePackageHeightToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="121" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="120" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Package Height" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommercePackageHeightToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommercePackageHeightError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Package Height
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
@@ -4253,13 +5598,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommercePackageLengthBoxColor}"
-                        Text="Package Length"
                         Grid.Column="2"
                         Grid.Row="12"
                         HorizontalAlignment="Left" 
-                        Margin="10,4,0,6"
-                        ToolTip="{Binding EcommercePackageLengthToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="121" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="120" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Package Length" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommercePackageLengthToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommercePackageLengthError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Package Length
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
@@ -4274,13 +5649,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommercePackageWeightBoxColor}"
-                        Text="Package Weight"
                         Grid.Column="2"
                         Grid.Row="13"
                         HorizontalAlignment="Left" 
-                        Margin="10,6,0,4"
-                        ToolTip="{Binding EcommercePackageWeightToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="121" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="120" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Package Weight" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommercePackageWeightToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommercePackageWeightError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Package Weight
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
@@ -4295,13 +5700,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommercePackageWidthBoxColor}"
-                        Text="Package Width"
                         Grid.Column="2"
                         Grid.Row="14"
                         HorizontalAlignment="Left" 
-                        Margin="10,5,0,5"
-                        ToolTip="{Binding EcommercePackageWidthToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="121" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="120" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Package Width" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommercePackageWidthToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommercePackageWidthError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Package Width
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
@@ -4316,13 +5751,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceProductCategoryBoxColor}"
-                        Text="Product Category"
                         Grid.Column="4"
                         Grid.Row="0"
                         HorizontalAlignment="Left" 
-                        Margin="6,5,0,5"
-                        ToolTip="{Binding EcommerceProductCategoryToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="125" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="120" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Product Category" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceProductCategoryToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceProductCategoryError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Product Category
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="5"
@@ -4337,13 +5802,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommercePageQtyBoxColor}"
-                        Text="Page Qty"
                         Grid.Column="4"
                         Grid.Row="1"
                         HorizontalAlignment="Left" 
-                        Margin="6,5,0,5"
-                        ToolTip="{Binding EcommercePageQtyToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="161" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="120" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Page Qty" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommercePageQtyToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommercePageQtyError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Page Qty
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="5"
@@ -4358,13 +5853,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceParentAsinBoxColor}"
-                        Text="Parent Asin"
                         Grid.Column="4"
                         Grid.Row="2"
                         HorizontalAlignment="Left" 
-                        Margin="6,5,0,5"
-                        ToolTip="{Binding EcommerceParentAsinToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="161" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="120" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Parent Asin" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceParentAsinToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceParentAsinError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Parent Asin
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="5"
@@ -4379,13 +5904,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceProductDescriptionBoxColor}"
-                        Text="Product Description"
                         Grid.Column="4"
                         Grid.Row="3"
                         HorizontalAlignment="Left" 
-                        Margin="6,5,0,5"
-                        ToolTip="{Binding EcommerceProductDescriptionToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="161" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="120" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Product Description" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceProductDescriptionToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceProductDescriptionError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                            Product Description
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="5"
@@ -4402,13 +5957,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceProductSubcategoryBoxColor}"
-                        Text="Product Subcategory"
                         Grid.Column="4"
                         Grid.Row="7"
                         HorizontalAlignment="Left" 
-                        Margin="6,5,0,5"
-                        ToolTip="{Binding EcommerceProductSubcategoryToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="171" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="120" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Product Subcategory" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceProductSubcategoryToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceProductSubcategoryError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Product Subcategory
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="5"
@@ -4423,13 +6008,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceGenericKeywordsBoxColor}"
-                        Text="Generic Keywords"
                         Grid.Column="4"
                         Grid.Row="8"
                         HorizontalAlignment="Left" 
-                        Margin="6,4,0,6"
-                        ToolTip="{Binding EcommerceGenericKeywordsToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="171" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="120" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Generic Keywords" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceGenericKeywordsToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceGenericKeywordsError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Generic Keywords
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="5"
@@ -4446,13 +6061,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceSubjectKeywordsBoxColor}"
-                        Text="Search Terms"
                         Grid.Column="6"
                         Grid.Row="0"
                         HorizontalAlignment="Left" 
-                        Margin="6,5,0,5"
-                        ToolTip="{Binding EcommerceSubjectKeywordsToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="115" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="110" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Search Terms" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceSearchTermsToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceSearchTermsError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Search Terms
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="7"
@@ -4469,13 +6114,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceSizeBoxColor}"
-                        Text="Size"
                         Grid.Column="6"
                         Grid.Row="4"
                         HorizontalAlignment="Left" 
-                        Margin="6,4,0,6"
-                        ToolTip="{Binding EcommerceSizeToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="115" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="110" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce Size" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceSizeToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceSizeError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Size
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="7"
@@ -4490,13 +6165,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding WarrantyBoxColor}"
-                        Text="Warranty"
                         Grid.Column="6"
                         Grid.Row="5"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,4"
-                        ToolTip="{Binding WarrantyToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="115" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="110" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Warranty" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding WarrantyToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding WarrantyError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Warranty
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="7"
@@ -4514,14 +6219,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding  WarrantyCheckBoxColor}"
-                        Text="Warranty Required"
                         Grid.Row="9"
                         Grid.Column="6"
                         HorizontalAlignment="Left"
-                        ToolTip="{Binding  WarrantyCheckToolTip}"
-                        VerticalAlignment="Center"
-                        Margin="6,4,0,6"
-                        Height="26" Width="115"/>
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="110" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Warranty Required" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding WarrantyRequiredToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding WarrantyRequiredError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Warranty Required
+                    </TextBox>
                     <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="7"
@@ -4533,13 +6267,43 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding EcommerceUpcBoxColor}"
-                        Text="Upc"
                         Grid.Column="6"
                         Grid.Row="10"
                         HorizontalAlignment="Left" 
-                        Margin="6,6,0,4"
-                        ToolTip="{Binding EcommerceUpcToolTip}"
-                        VerticalAlignment="Center" Height="26" Width="115" />
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="110" 
+                        Margin="10,6,0,8">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Ecommerce UPC" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding EcommerceUpcToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding EcommerceUpcError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Upc
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="7"
@@ -4568,15 +6332,15 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition
-                            Height="Auto" />
+                            Height="38" />
                         <RowDefinition
-                            Height="Auto" />
+                            Height="38" />
                         <RowDefinition
-                            Height="Auto" />
+                            Height="38" />
                         <RowDefinition
-                            Height="Auto" />
+                            Height="38" />
                         <RowDefinition
-                            Height="Auto" />
+                            Height="38" />
                         <RowDefinition
                             Height="Auto" />
                         <RowDefinition
@@ -4586,14 +6350,42 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding ImagePathBoxColor}"
-                        Text="Image Path"
                         Grid.Row="0"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
+                        Padding="3"
                         VerticalAlignment="Center" 
-                        Margin="6,6,0,6"
-                        ToolTip="{Binding ImagePathToolTip}"
-                        Height="26" />
+                        Width="140">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Image Path" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding ImagePathToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding ImagePathError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Image Path
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -4608,14 +6400,42 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding AltImageFile1BoxColor}"
-                        Text="Image Path 2"
                         Grid.Row="1"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
+                        Padding="3"
                         VerticalAlignment="Center" 
-                        Margin="6,6,0,6"
-                        ToolTip="{Binding AltImageFile1ToolTip}"
-                        Height="26" />
+                        Width="140">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Image Path 2" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding AltImageFile1ToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding AltImageFile1Error}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Image Path 2
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -4630,15 +6450,42 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding AltImageFile2BoxColor}"
-                        Text="Image Path 3"
                         Grid.Row="2"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
-                        Margin="6,6,0,6"
-                        ToolTip="{Binding AltImageFile2ToolTip}"
-                        Height="26" 
+                        Padding="3"
                         VerticalAlignment="Center" 
-                        Width="93" />
+                        Width="140">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Image Path 3" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding AltImageFile2ToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding AltImageFile2Error}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Image Path 3
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -4653,14 +6500,42 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding AltImageFile3BoxColor}"
-                        Text="Image Path 4"
                         Grid.Row="3"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Margin="6,6,0,6"
-                        ToolTip="{Binding AltImageFile3ToolTip}"
-                        Height="26"/>
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="140">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Image Path 4" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding AltImageFile3ToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding AltImageFile3Error}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Image Path 4
+                    </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -4676,14 +6551,42 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding AltImageFile4BoxColor}"
-                        Text="Image Path 5"
                         Grid.Row="4"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
+                        Padding="3"
                         VerticalAlignment="Center" 
-                        Margin="6,6,0,6"
-                        ToolTip="{Binding AltImageFile4ToolTip}"
-                        Height="26"/>
+                        Width="140">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="Image Path 5" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding AltImageFile4ToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding AltImageFile4Error}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        Image Path 5
+                    </TextBox>
                     <TextBox
                         Grid.Column="1"
                         Grid.ColumnSpan="5"
