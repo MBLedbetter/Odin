@@ -237,7 +237,7 @@ namespace Odin.ViewModels
             set
             {
                 _accountingGroupError = value;
-                this.AccountingGroupBoxColor = (value == "") ? "White" : "Tomato";
+                this.AccountingGroupBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("AccountingGroupError");
             }
@@ -295,7 +295,7 @@ namespace Odin.ViewModels
             set
             {
                 _billOfMaterialsError = value;
-                this.BillOfMaterialsBoxColor = (value == "") ? "White" : "Tomato";
+                this.BillOfMaterialsBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("BillOfMaterialsError");
             }
@@ -353,15 +353,7 @@ namespace Odin.ViewModels
             set
             {
                 _casepackHeightError = value;
-                if (value != "")
-                {
-                    CasepackHeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("CasepackDimension");
-                }
-                else
-                {
-                    CasepackHeightToolTip = ReturnToolTip("CasepackDimension");
-                }
-                this.CasepackHeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.CasepackHeightBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CasepackHeightError");
             }
@@ -419,15 +411,7 @@ namespace Odin.ViewModels
             set
             {
                 _casepackLength = value;
-                if (value != "")
-                {
-                    CasepackLengthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("CasepackDimension");
-                }
-                else
-                {
-                    CasepackLengthToolTip = ReturnToolTip("CasepackDimension");
-                }
-                this.CasepackLengthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.CasepackLengthBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CasepackLengthError");
             }
@@ -485,15 +469,7 @@ namespace Odin.ViewModels
             set
             {
                 _casepackQtyError = value;
-                if (value != "")
-                {
-                    CasepackQtyToolTip = "Error: " + value + "\n\n" + ReturnToolTip("CasepackQty");
-                }
-                else
-                {
-                    CasepackQtyToolTip = ReturnToolTip("CasepackQty");
-                }
-                this.CasepackQtyBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.CasepackQtyBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CasepackQtyError");
             }
@@ -551,15 +527,7 @@ namespace Odin.ViewModels
             set
             {
                 _casepackUpcError = value;
-                if (value != "")
-                {
-                    CasepackUpcToolTip = "Error: " + value + "\n\n" + ReturnToolTip("CasepackUpc");
-                }
-                else
-                {
-                    CasepackUpcToolTip = ReturnToolTip("CasepackUpc");
-                }
-                this.CasepackUpcBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.CasepackUpcBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CasepackUpcError");
             }
@@ -617,15 +585,7 @@ namespace Odin.ViewModels
             set
             {
                 _casepackWidthError = value;
-                if (value != "")
-                {
-                    CasepackWidthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("CasepackDimension");
-                }
-                else
-                {
-                    CasepackWidthToolTip = ReturnToolTip("CasepackDimension");
-                }
-                this.CasepackWidthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.CasepackWidthBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CasepackWidthErrorMsg");
             }
@@ -683,15 +643,7 @@ namespace Odin.ViewModels
             set
             {
                 _casepackWeightError = value;
-                if (value != "")
-                {
-                    CasepackWeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("CasepackDimension");
-                }
-                else
-                {
-                    CasepackWeightToolTip = ReturnToolTip("CasepackDimension");
-                }
-                this.CasepackWeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.CasepackWeightBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CasepackWeightError");
             }
@@ -749,15 +701,7 @@ namespace Odin.ViewModels
             set
             {
                 _colorError = value;
-                if (value != "")
-                {
-                    ColorToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Color");
-                }
-                else
-                {
-                    ColorToolTip = ReturnToolTip("Color");
-                }
-                this.ColorBoxColor = (value == "") ? "White" : "Tomato";
+                this.ColorBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ColorError");
             }
@@ -815,15 +759,7 @@ namespace Odin.ViewModels
             set
             {
                 _costProfileGroupError = value;
-                if (value != "")
-                {
-                    CostProfileGroupToolTip = "Error: " + value + "\n\n" + ReturnToolTip("CostProfileGroup");
-                }
-                else
-                {
-                    CostProfileGroupToolTip = ReturnToolTip("CostProfileGroup");
-                }
-                this.CostProfileGroupBoxColor = (value == "") ? "White" : "Tomato";
+                this.CostProfileGroupBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CostProfileGroupError");
             }
@@ -881,15 +817,7 @@ namespace Odin.ViewModels
             set
             {
                 _countryOfOriginError = value;
-                if (value != "")
-                {
-                    CountryOfOriginToolTip = "Error: " + value + "\n\n" + ReturnToolTip("CountryOfOrigin");
-                }
-                else
-                {
-                    CountryOfOriginToolTip = ReturnToolTip("CountryOfOrigin");
-                }
-                this.CountryOfOriginBoxColor = (value == "") ? "White" : "Tomato";
+                this.CountryOfOriginBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CountryOfOriginError");
             }
@@ -947,15 +875,7 @@ namespace Odin.ViewModels
             set
             {
                 _defaultActualCostUsdError = value;
-                if (value != "")
-                {
-                    DefaultActualCostUsdToolTip = "Error: " + value + "\n\n" + ReturnToolTip("DefaultActualCost");
-                }
-                else
-                {
-                    DefaultActualCostUsdToolTip = ReturnToolTip("DefaultActualCost");
-                }
-                this.DefaultActualCostUsdBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.DefaultActualCostUsdBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("DefaultActualCostUsdError");
             }
@@ -1013,15 +933,7 @@ namespace Odin.ViewModels
             set
             {
                 _defaultActualCostCadError = value;
-                if (value != "")
-                {
-                    DefaultActualCostCadToolTip = "Error: " + value + "\n\n" + ReturnToolTip("DefaultActualCost");
-                }
-                else
-                {
-                    DefaultActualCostCadToolTip = ReturnToolTip("DefaultActualCost");
-                }
-                this.DefaultActualCostCadBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.DefaultActualCostCadBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("DefaultActualCostCadError");
             }
@@ -1079,15 +991,7 @@ namespace Odin.ViewModels
             set
             {
                 _descriptionError = value;
-                if (value != "")
-                {
-                    DescriptionToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Description");
-                }
-                else
-                {
-                    DescriptionToolTip = ReturnToolTip("Description");
-                }
-                this.DescriptionBoxColor = (value == "") ? "White" : "Tomato";
+                this.DescriptionBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("DescriptionError");
             }
@@ -1145,15 +1049,7 @@ namespace Odin.ViewModels
             set
             {
                 _directImportError = value;
-                if (value != "")
-                {
-                    DirectImportToolTip = "Error: " + value + "\n\n" + ReturnToolTip("DirectImport");
-                }
-                else
-                {
-                    DirectImportToolTip = ReturnToolTip("Description");
-                }
-                this.DirectImportBoxColor = (value == "") ? "White" : "Tomato";
+                this.DirectImportBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("DirectImportError");
             }
@@ -1211,15 +1107,7 @@ namespace Odin.ViewModels
             set
             {
                 _eanError = value;
-                if (value != "")
-                {
-                    EanToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Ean");
-                }
-                else
-                {
-                    EanToolTip = ReturnToolTip("Ean");
-                }
-                this.EanBoxColor = (value == "") ? "White" : "Tomato";
+                this.EanBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("EanError");
             }
@@ -1277,15 +1165,7 @@ namespace Odin.ViewModels
             set
             {
                 _dutyError = value;
-                if (value != "")
-                {
-                    DutyToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Duty");
-                }
-                else
-                {
-                    DutyToolTip = ReturnToolTip("Duty");
-                }
-                this.DutyBoxColor = (value == "") ? "White" : "Tomato";
+                this.DutyBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("DutyError");
             }
@@ -1343,15 +1223,7 @@ namespace Odin.ViewModels
             set
             {
                 _gpcError = value;
-                if (value != "")
-                {
-                    GpcToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Gpc");
-                }
-                else
-                {
-                    GpcToolTip = ReturnToolTip("Gpc");
-                }
-                this.GpcBoxColor = (value == "") ? "White" : "Tomato";
+                this.GpcBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("GpcError");
             }
@@ -1409,15 +1281,7 @@ namespace Odin.ViewModels
             set
             {
                 _heightError = value;
-                if (value != "")
-                {
-                    HeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Height");
-                }
-                else
-                {
-                    HeightToolTip = ReturnToolTip("Height");
-                }
-                this.HeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.HeightBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("HeightError");
             }
@@ -1475,15 +1339,7 @@ namespace Odin.ViewModels
             set
             {
                 _innerpackHeightError = value;
-                if (value != "")
-                {
-                    InnerpackHeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("InnerpackDimension");
-                }
-                else
-                {
-                    InnerpackHeightToolTip = ReturnToolTip("InnerpackDimension");
-                }
-                this.InnerpackHeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.InnerpackHeightBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("InnerpackHeightError");
             }
@@ -1541,15 +1397,7 @@ namespace Odin.ViewModels
             set
             {
                 _innerpackLengthError = value;
-                if (value != "")
-                {
-                    InnerpackLengthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("InnerpackDimension");
-                }
-                else
-                {
-                    InnerpackLengthToolTip = ReturnToolTip("InnerpackDimension");
-                }
-                this.InnerpackLengthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.InnerpackLengthBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("InnerpackLengthError");
             }
@@ -1607,15 +1455,7 @@ namespace Odin.ViewModels
             set
             {
                 _innerpackQuantityError = value;
-                if (value != "")
-                {
-                    InnerpackQuantityToolTip = "Error: " + value + "\n\n" + ReturnToolTip("InnerpackQuantity");
-                }
-                else
-                {
-                    InnerpackQuantityToolTip = ReturnToolTip("InnerpackQuantity");
-                }
-                this.InnerpackQuantityBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.InnerpackQuantityBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("InnerpackQuantityError");
             }
@@ -1673,15 +1513,7 @@ namespace Odin.ViewModels
             set
             {
                 _innerpackUpcError = value;
-                if (value != "")
-                {
-                    InnerpackUpcToolTip = "Error: " + value + "\n\n" + ReturnToolTip("InnerpackUpc");
-                }
-                else
-                {
-                    InnerpackUpcToolTip = ReturnToolTip("InnerpackUpc");
-                }
-                this.InnerpackUpcBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.InnerpackUpcBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("InnerpackUpcError");
             }
@@ -1739,15 +1571,7 @@ namespace Odin.ViewModels
             set
             {
                 _innerpackWeightError = value;
-                if (value != "")
-                {
-                    InnerpackWeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("InnerpackDimension");
-                }
-                else
-                {
-                    InnerpackWeightToolTip = ReturnToolTip("InnerpackDimension");
-                }
-                this.InnerpackWeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.InnerpackWeightBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("InnerpackWeightError");
             }
@@ -1805,15 +1629,7 @@ namespace Odin.ViewModels
             set
             {
                 _innperpackWidthError = value;
-                if (value != "")
-                {
-                    InnerpackWidthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("InnerpackDimension");
-                }
-                else
-                {
-                    InnerpackWidthToolTip = ReturnToolTip("InnerpackDimension");
-                }
-                this.InnerpackWidthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.InnerpackWidthBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("InnerpackWidthError");
             }
@@ -1871,15 +1687,7 @@ namespace Odin.ViewModels
             set
             {
                 _isbnError = value;
-                if (value != "")
-                {
-                    IsbnToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Isbn");
-                }
-                else
-                {
-                    IsbnToolTip = ReturnToolTip("Isbn");
-                }
-                this.IsbnBoxColor = (value == "") ? "White" : "Tomato";
+                this.IsbnBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("IsbnErrorMsg");
             }
@@ -1937,15 +1745,7 @@ namespace Odin.ViewModels
             set
             {
                 _itemCategoryError = value;
-                if (value != "")
-                {
-                    ItemCategoryToolTip = "Error: " + value + "\n\n" + ReturnToolTip("ItemCategory");
-                }
-                else
-                {
-                    ItemCategoryToolTip = ReturnToolTip("ItemCategory");
-                }
-                this.ItemCategoryBoxColor = (value == "") ? "White" : "Tomato";
+                this.ItemCategoryBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ItemCategoryError");
             }
@@ -2003,15 +1803,7 @@ namespace Odin.ViewModels
             set
             {
                 _itemFamilyError = value;
-                if (value != "")
-                {
-                    ItemFamilyToolTip = "Error: " + value + "\n\n" + ReturnToolTip("ItemFamily");
-                }
-                else
-                {
-                    ItemFamilyToolTip = ReturnToolTip("ItemFamily");
-                }
-                this.ItemFamilyBoxColor = (value == "") ? "White" : "Tomato";
+                this.ItemFamilyBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ItemFamilyErrorMsg");
             }
@@ -2069,15 +1861,7 @@ namespace Odin.ViewModels
             set
             {
                 _itemGroupError = value;
-                if (value != "")
-                {
-                    ItemGroupToolTip = "Error: " + value + "\n\n" + ReturnToolTip("ItemGroup");
-                }
-                else
-                {
-                    ItemGroupToolTip = ReturnToolTip("ItemGroup");
-                }
-                this.ItemGroupBoxColor = (value == "") ? "White" : "Tomato";
+                this.ItemGroupBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ItemGroupError");
             }
@@ -2135,15 +1919,7 @@ namespace Odin.ViewModels
             set
             {
                 _itemIdError = value;
-                if (value != "")
-                {
-                    ItemIdToolTip = "Error: " + value + "\n\n" + ReturnToolTip("ItemId");
-                }
-                else
-                {
-                    ItemIdToolTip = ReturnToolTip("ItemId");
-                }
-                this.ItemIdBoxColor = (value == "") ? "White" : "Tomato";
+                this.ItemIdBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ItemIdError");
             }
@@ -2213,15 +1989,7 @@ namespace Odin.ViewModels
             set
             {
                 _languageError = value;
-                if (value != "")
-                {
-                    LanguageToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Language");
-                }
-                else
-                {
-                    LanguageToolTip = ReturnToolTip("Language");
-                }
-                this.LanguageBoxColor = (value == "") ? "White" : "Tomato";
+                this.LanguageBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("LanguageError");
             }
@@ -2279,15 +2047,7 @@ namespace Odin.ViewModels
             set
             {
                 _lengthError = value;
-                if (value != "")
-                {
-                    LengthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Length");
-                }
-                else
-                {
-                    LengthToolTip = ReturnToolTip("Length");
-                }
-                this.LengthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.LengthBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("LengthError");
             }
@@ -2345,15 +2105,7 @@ namespace Odin.ViewModels
             set
             {
                 _licenseBeginDateError = value;
-                if (value != "")
-                {
-                    LicenseBeginDateToolTip = "Error: " + value + "\n\n" + ReturnToolTip("LicenseBeginDate");
-                }
-                else
-                {
-                    LicenseBeginDateToolTip = ReturnToolTip("LicenseBeginDate");
-                }
-                this.LicenseBeginDateBoxColor = (value == "") ? "White" : "Tomato";
+                this.LicenseBeginDateBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("LicenseBeginDateError");
             }
@@ -2414,15 +2166,7 @@ namespace Odin.ViewModels
             set
             {
                 _listPriceCadError = value;
-                if (value != "")
-                {
-                    ListPriceCadToolTip = "Error: " + value + "\n\n" + ReturnToolTip("ListPrice");
-                }
-                else
-                {
-                    ListPriceCadToolTip = ReturnToolTip("ListPrice");
-                }
-                this._listPriceCadBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this._listPriceCadBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ListPriceCadError");
             }
@@ -2483,15 +2227,7 @@ namespace Odin.ViewModels
             set
             {
                 _listPriceMxnError = value;
-                if (value != "")
-                {
-                    ListPriceMxnToolTip = "Error: " + value + "\n\n" + ReturnToolTip("ListPrice");
-                }
-                else
-                {
-                    ListPriceMxnToolTip = ReturnToolTip("ListPrice");
-                }
-                this.ListPriceMxnBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.ListPriceMxnBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ListPriceMxnError");
             }
@@ -2552,15 +2288,7 @@ namespace Odin.ViewModels
             set
             {
                 _listPriceUsdError = value;
-                if (value != "")
-                {
-                    ListPriceUsdToolTip = "Error: " + value + "\n\n" + ReturnToolTip("ListPrice");
-                }
-                else
-                {
-                    ListPriceUsdToolTip = ReturnToolTip("ListPrice");
-                }
-                this.ListPriceUsdBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.ListPriceUsdBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ListPriceUsdError");
             }
@@ -2621,15 +2349,7 @@ namespace Odin.ViewModels
             set
             {
                 _mfgSourceError = value;
-                if (value != "")
-                {
-                    MfgSourceToolTip = "Error: " + value + "\n\n" + ReturnToolTip("MfgSource");
-                }
-                else
-                {
-                    MfgSourceToolTip = ReturnToolTip("MfgSource");
-                }
-                this.MfgSourceBoxColor = (value == "") ? "White" : "Tomato";
+                this.MfgSourceBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("MfgSourceError");
             }
@@ -2690,15 +2410,7 @@ namespace Odin.ViewModels
             set
             {
                 _msrpError = value;
-                if (value != "")
-                {
-                    MsrpToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Msrp");
-                }
-                else
-                {
-                    MsrpToolTip = ReturnToolTip("Msrp");
-                }
-                this.MsrpBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.MsrpBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("MsrpError");
             }
@@ -2759,15 +2471,7 @@ namespace Odin.ViewModels
             set
             {
                 _msrpCadError = value;
-                if (value != "")
-                {
-                    MsrpCadToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Msrp");
-                }
-                else
-                {
-                    MsrpCadToolTip = ReturnToolTip("Msrp");
-                }
-                this.MsrpCadBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.MsrpCadBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("MsrpCadError");
             }
@@ -2828,15 +2532,7 @@ namespace Odin.ViewModels
             set
             {
                 _msrpMxnError = value;
-                if (value != "")
-                {
-                    MsrpMxnToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Msrp");
-                }
-                else
-                {
-                    MsrpMxnToolTip = ReturnToolTip("Msrp");
-                }
-                this.MsrpMxnBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.MsrpMxnBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("MsrpMxnError");
             }
@@ -2897,15 +2593,7 @@ namespace Odin.ViewModels
             set
             {
                 _pricingGroupError = value;
-                if (value != "")
-                {
-                    PricingGroupToolTip = "Error: " + value + "\n\n" + ReturnToolTip("PricingGroup");
-                }
-                else
-                {
-                    PricingGroupToolTip = ReturnToolTip("PricingGroup");
-                }
-                this.PricingGroupBoxColor = (value == "") ? "White" : "Tomato";
+                this.PricingGroupBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("PricingGroupError");
             }
@@ -2966,15 +2654,7 @@ namespace Odin.ViewModels
             set
             {
                 _printOnDemandError = value;
-                if (value != "")
-                {
-                    PrintOnDemandToolTip = "Error: " + value + "\n\n" + ReturnToolTip("PrintOnDemand");
-                }
-                else
-                {
-                    PrintOnDemandToolTip = ReturnToolTip("PrintOnDemand");
-                }
-                this.PrintOnDemandBoxColor = (value == "") ? "White" : "Tomato";
+                this.PrintOnDemandBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("PrintOnDemandError");
             }
@@ -3035,15 +2715,7 @@ namespace Odin.ViewModels
             set
             {
                 _productFormatError = value;
-                if (value != "")
-                {
-                    ProductFormatToolTip = "Error: " + value + "\n\n" + ReturnToolTip("ProductFormat");
-                }
-                else
-                {
-                    ProductFormatToolTip = ReturnToolTip("ProductFormat");
-                }
-                this.ProductFormatBoxColor = (value == "") ? "White" : "Tomato";
+                this.ProductFormatBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ProductFormatError");
             }
@@ -3104,15 +2776,7 @@ namespace Odin.ViewModels
             set
             {
                 _productGroupError = value;
-                if (value != "")
-                {
-                    ProductGroupToolTip = "Error: " + value + "\n\n" + ReturnToolTip("ProductGroup");
-                }
-                else
-                {
-                    ProductGroupToolTip = ReturnToolTip("ProductGroup");
-                }
-                this.ProductGroupBoxColor = (value == "") ? "White" : "Tomato";
+                this.ProductGroupBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ProductGroupError");
             }
@@ -3173,15 +2837,7 @@ namespace Odin.ViewModels
             set
             {
                 _productIdTranslationError = value;
-                if (value != "")
-                {
-                    ProductIdTranslationToolTip = "Error: " + value + "\n\n" + ReturnToolTip("ProductIdTranslation");
-                }
-                else
-                {
-                    ProductIdTranslationToolTip = ReturnToolTip("ProductIdTranslation");
-                }
-                this.ProductIdTranslationBoxColor = (value == "") ? "White" : "Tomato";
+                this.ProductIdTranslationBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ProductIdTranslationError");
             }
@@ -3242,15 +2898,7 @@ namespace Odin.ViewModels
             set
             {
                 _productLineError = value;
-                if (value != "")
-                {
-                    ProductLineToolTip = "Error: " + value + "\n\n" + ReturnToolTip("ProductLine");
-                }
-                else
-                {
-                    ProductLineToolTip = ReturnToolTip("ProductLine");
-                }
-                this.ProductLineBoxColor = (value == "") ? "White" : "Tomato";
+                this.ProductLineBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ProductLineError");
             }
@@ -3311,15 +2959,7 @@ namespace Odin.ViewModels
             set
             {
                 _productQtyError = value;
-                if (value != "")
-                {
-                    ProductQtyToolTip = "Error: " + value + "\n\n" + ReturnToolTip("ProductQty");
-                }
-                else
-                {
-                    ProductQtyToolTip = ReturnToolTip("ProductQty");
-                }
-                this.ProductQtyBoxColor = (value == "") ? "White" : "Tomato";
+                this.ProductQtyBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ProductQtyError");
             }
@@ -3393,15 +3033,7 @@ namespace Odin.ViewModels
             set
             {
                 _psStatusError = value;
-                if (value != "")
-                {
-                    PsStatusToolTip = "Error: " + value + "\n\n" + ReturnToolTip("PsStatus");
-                }
-                else
-                {
-                    PsStatusToolTip = ReturnToolTip("PsStatus");
-                }
-                this.PsStatusBoxColor = (value == "") ? "White" : "Tomato";
+                this.PsStatusBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("PsStatusError");
             }
@@ -3462,15 +3094,7 @@ namespace Odin.ViewModels
             set
             {
                 _satCodeError = value;
-                if (value != "")
-                {
-                    SatCodeToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SatCode");
-                }
-                else
-                {
-                    SatCodeToolTip = ReturnToolTip("SatCode");
-                }
-                this.SatCodeBoxColor = (value == "") ? "White" : "Tomato";
+                this.SatCodeBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("SatCodeError");
             }
@@ -3531,15 +3155,7 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnAllPostersError = value;
-                if (value != "")
-                {
-                    SellOnAllPostersToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SellOnAllPosters");
-                }
-                else
-                {
-                    SellOnAllPostersToolTip = ReturnToolTip("SellOnAllPosters");
-                }
-                this.SellOnAllPostersBoxColor = (value == "") ? "White" : "Tomato";
+                this.SellOnAllPostersBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnAllPostersError");
             }
@@ -3600,15 +3216,7 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnAmazonError = value;
-                if (value != "")
-                {
-                    SellOnAmazonToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SellOnAmazon");
-                }
-                else
-                {
-                    SellOnAmazonToolTip = ReturnToolTip("SellOnAmazon");
-                }
-                this.SellOnAmazonBoxColor = (value == "") ? "White" : "Tomato";
+                this.SellOnAmazonBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnAmazonError");
             }
@@ -3670,15 +3278,7 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnAmazonSellerCentralError = value;
-                if (value != "")
-                {
-                    SellOnAmazonSellerCentralToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SellOnAmazonSellerCentral");
-                }
-                else
-                {
-                    SellOnAmazonSellerCentralToolTip = ReturnToolTip("SellOnAmazonSellerCentral");
-                }
-                this.SellOnAmazonSellerCentralBoxColor = (value == "") ? "White" : "Tomato";
+                this.SellOnAmazonSellerCentralBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnAmazonSellerCentralError");
             }
@@ -3739,15 +3339,7 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnEcommerceError = value;
-                if (value != "")
-                {
-                    SellOnEcommerceToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SellOnEcommerce");
-                }
-                else
-                {
-                    SellOnEcommerceToolTip = ReturnToolTip("SellOnEcommerce");
-                }
-                this.SellOnEcommerceBoxColor = (value == "") ? "White" : "Tomato";
+                this.SellOnEcommerceBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnEcommerceError");
             }
@@ -3808,15 +3400,7 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnFanaticsError = value;
-                if (value != "")
-                {
-                    SellOnFanaticsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SellOnFanatics");
-                }
-                else
-                {
-                    SellOnFanaticsToolTip = ReturnToolTip("SellOnFanatics");
-                }
-                this.SellOnFanaticsBoxColor = (value == "") ? "White" : "Tomato";
+                this.SellOnFanaticsBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnFanaticsError");
             }
@@ -3878,15 +3462,7 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnGuitarCenterError = value;
-                if (value != "")
-                {
-                    SellOnGuitarCenterToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SellOnGuitarCenter");
-                }
-                else
-                {
-                    SellOnGuitarCenterToolTip = ReturnToolTip("SellOnGuitarCenter");
-                }
-                this.SellOnGuitarCenterBoxColor = (value == "") ? "White" : "Tomato";
+                this.SellOnGuitarCenterBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnGuitarCenterError");
             }
@@ -3947,15 +3523,7 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnHayneedleError = value;
-                if (value != "")
-                {
-                    SellOnHayneedleToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SellOnHayneedle");
-                }
-                else
-                {
-                    SellOnHayneedleToolTip = ReturnToolTip("SellOnHayneedle");
-                }
-                this.SellOnHayneedleBoxColor = (value == "") ? "White" : "Tomato";
+                this.SellOnHayneedleBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnHayneedleError");
             }
@@ -4016,15 +3584,7 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnTargetError = value;
-                if (value != "")
-                {
-                    SellOnTargetToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SellOnTarget");
-                }
-                else
-                {
-                    SellOnTargetToolTip = ReturnToolTip("SellOnTarget");
-                }
-                this.SellOnTargetBoxColor = (value == "") ? "White" : "Tomato";
+                this.SellOnTargetBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnTargetsErrorError");
             }
@@ -4085,15 +3645,7 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnTrendsError = value;
-                if (value != "")
-                {
-                    SellOnTrendsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SellOnTrends");
-                }
-                else
-                {
-                    SellOnTrendsToolTip = ReturnToolTip("SellOnTrends");
-                }
-                this.SellOnTrendsBoxColor = (value == "") ? "White" : "Tomato";
+                this.SellOnTrendsBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnTrendsError");
             }
@@ -4154,15 +3706,7 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnTrsError = value;
-                if (value != "")
-                {
-                    SellOnTrsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SellOnTrs");
-                }
-                else
-                {
-                    SellOnTrsToolTip = ReturnToolTip("SellOnTrs");
-                }
-                this.SellOnTrsBoxColor = (value == "") ? "White" : "Tomato";
+                this.SellOnTrsBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnTrssErrorError");
             }
@@ -4223,15 +3767,7 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnWalmartError = value;
-                if (value != "")
-                {
-                    SellOnWalmartToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SellOnWalmart");
-                }
-                else
-                {
-                    SellOnWalmartToolTip = ReturnToolTip("SellOnWalmart");
-                }
-                this.SellOnWalmartBoxColor = (value == "") ? "White" : "Tomato";
+                this.SellOnWalmartBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnWalmartError");
             }
@@ -4292,15 +3828,7 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnWayfairError = value;
-                if (value != "")
-                {
-                    SellOnWayfairToolTip = "Error: " + value + "\n\n" + ReturnToolTip("SellOnWayfair");
-                }
-                else
-                {
-                    SellOnWayfairToolTip = ReturnToolTip("SellOnWayfair");
-                }
-                this.SellOnWayfairBoxColor = (value == "") ? "White" : "Tomato";
+                this.SellOnWayfairBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnWayfairError");
             }
@@ -4361,15 +3889,7 @@ namespace Odin.ViewModels
             set
             {
                 _standardCostError = value;
-                if (value != "")
-                {
-                    StandardCostToolTip = "Error: " + value + "\n\n" + ReturnToolTip("StandardCost");
-                }
-                else
-                {
-                    StandardCostToolTip = ReturnToolTip("StandardCost");
-                }
-                this.StandardCostBoxColor = (value == "") ? "White" : "Tomato";
+                this.StandardCostBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("StandardCostError");
             }
@@ -4430,15 +3950,7 @@ namespace Odin.ViewModels
             set
             {
                 _statsCodeError = value;
-                if (value != "")
-                {
-                    StatsCodeToolTip = "Error: " + value + "\n\n" + ReturnToolTip("StatsCode");
-                }
-                else
-                {
-                    StatsCodeToolTip = ReturnToolTip("StatsCode");
-                }
-                this.StatsCodeBoxColor = (value == "") ? "White" : "Tomato";
+                this.StatsCodeBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("StatsCodeError");
             }
@@ -4514,15 +4026,7 @@ namespace Odin.ViewModels
             set
             {
                 _tariffCodeError = value;
-                if (value != "")
-                {
-                    TariffCodeToolTip = "Error: " + value + "\n\n" + ReturnToolTip("TariffCode");
-                }
-                else
-                {
-                    TariffCodeToolTip = ReturnToolTip("TariffCode");
-                }
-                this.TariffCodeBoxColor = (value == "") ? "White" : "Tomato";
+                this.TariffCodeBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("TariffCodeError");
             }
@@ -4584,15 +4088,7 @@ namespace Odin.ViewModels
             set
             {
                 _territoryError = value;
-                if (value != "")
-                {
-                    TerritoryToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Territory");
-                }
-                else
-                {
-                    TerritoryToolTip = ReturnToolTip("Territory");
-                }
-                this.TerritoryBoxColor = (value == "") ? "White" : "Tomato";
+                this.TerritoryBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("TerritoryError");
             }
@@ -4653,15 +4149,7 @@ namespace Odin.ViewModels
             set
             {
                 _udexError = value;
-                if (value != "")
-                {
-                    UdexToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Udex");
-                }
-                else
-                {
-                    UdexToolTip = ReturnToolTip("Udex");
-                }
-                this.UdexBoxColor = (value == "") ? "White" : "Tomato";
+                this.UdexBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("UdexError");
             }
@@ -4722,15 +4210,7 @@ namespace Odin.ViewModels
             set
             {
                 _upcError = value;
-                if (value != "")
-                {
-                    UpcToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Upc");
-                }
-                else
-                {
-                    UpcToolTip = ReturnToolTip("Upc");
-                }
-                this.UpcBoxColor = (value == "") ? "White" : "Tomato";
+                this.UpcBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("UpcError");
             }
@@ -4791,15 +4271,7 @@ namespace Odin.ViewModels
             set
             {
                 _warrantyError = value;
-                if (value != "")
-                {
-                    WarrantyToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Warranty");
-                }
-                else
-                {
-                    WarrantyToolTip = ReturnToolTip("Warranty");
-                }
-                this.WarrantyBoxColor = (value == "") ? "White" : "Tomato";
+                this.WarrantyBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("WarrantyError");
             }
@@ -4860,15 +4332,7 @@ namespace Odin.ViewModels
             set
             {
                 _warrantyCheckError = value;
-                if (value != "")
-                {
-                    WarrantyCheckToolTip = "Error: " + value + "\n\n" + ReturnToolTip("WarrantyCheck");
-                }
-                else
-                {
-                    WarrantyCheckToolTip = ReturnToolTip("WarrantyCheck");
-                }
-                this.WarrantyCheckBoxColor = (value == "") ? "White" : "Tomato";
+                this.WarrantyCheckBoxColor =  ReturnErrorColor(value);
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("WarrantyCheckError");
             }
@@ -4929,15 +4393,7 @@ namespace Odin.ViewModels
             set
             {
                 _weightError = value;
-                if (value != "")
-                {
-                    WeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Weight");
-                }
-                else
-                {
-                    WeightToolTip = ReturnToolTip("Weight");
-                }
-                this.WeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.WeightBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("WeightError");
             }
@@ -4998,15 +4454,7 @@ namespace Odin.ViewModels
             set
             {
                 _widthError = value;
-                if (value != "")
-                {
-                    WidthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Width");
-                }
-                else
-                {
-                    WidthToolTip = ReturnToolTip("Width");
-                }
-                this.WidthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.WidthBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("WidthError");
             }
@@ -5071,15 +4519,7 @@ namespace Odin.ViewModels
             set
             {
                 _copyrightError = value;
-                if (value != "")
-                {
-                    CopyrightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Copyright");
-                }
-                else
-                {
-                    CopyrightToolTip = ReturnToolTip("Copyright");
-                }
-                this.CopyrightBoxColor = (value == "") ? "White" : "Tomato";
+                this.CopyrightBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("CopyrightError");
             }
@@ -5140,15 +4580,7 @@ namespace Odin.ViewModels
             set
             {
                 _inStockDateError = value;
-                if (value != "")
-                {
-                    InStockDateToolTip = "Error: " + value + "\n\n" + ReturnToolTip("InStockDate");
-                }
-                else
-                {
-                    InStockDateToolTip = ReturnToolTip("InStockDate");
-                }
-                this.InStockDateBoxColor = (value == "") ? "White" : "Tomato";
+                this.InStockDateBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("InStockDateError");
             }
@@ -5209,15 +4641,7 @@ namespace Odin.ViewModels
             set
             {
                 _categoryError = value;
-                if (value != "")
-                {
-                    CategoryToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Category");
-                }
-                else
-                {
-                    CategoryToolTip = ReturnToolTip("Category");
-                }
-                this.CategoryBoxColor = (value == "") ? "White" : "Tomato";
+                this.CategoryBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("CategoryError");
             }
@@ -5278,15 +4702,7 @@ namespace Odin.ViewModels
             set
             {
                 _category2Error = value;
-                if (value != "")
-                {
-                    Category2ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Category");
-                }
-                else
-                {
-                    Category2ToolTip = ReturnToolTip("Category");
-                }
-                this.Category2BoxColor = (value == "") ? "White" : "Tomato";
+                this.Category2BoxColor =  ReturnErrorColor(value);
                 this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("Category2Error");
             }
@@ -5347,15 +4763,7 @@ namespace Odin.ViewModels
             set
             {
                 _category3Error = value;
-                if (value != "")
-                {
-                    Category3ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Category");
-                }
-                else
-                {
-                    Category3ToolTip = ReturnToolTip("Category");
-                }
-                this.Category3BoxColor = (value == "") ? "White" : "Tomato";
+                this.Category3BoxColor =  ReturnErrorColor(value);
                 this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("Category3Error");
             }
@@ -5416,15 +4824,7 @@ namespace Odin.ViewModels
             set
             {
                 _itemKeywordsError = value;
-                if (value != "")
-                {
-                    ItemKeywordsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("ItemKeywords");
-                }
-                else
-                {
-                    ItemKeywordsToolTip = ReturnToolTip("ItemKeywords");
-                }
-                this.ItemKeywordsBoxColor = (value == "") ? "White" : "Tomato";
+                this.ItemKeywordsBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("ItemKeywordsError");
             }
@@ -5485,15 +4885,7 @@ namespace Odin.ViewModels
             set
             {
                 _titleError = value;
-                if (value != "")
-                {
-                    TitleToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Title");
-                }
-                else
-                {
-                    TitleToolTip = ReturnToolTip("Title");
-                }
-                this.TitleBoxColor = (value == "") ? "White" : "Tomato";
+                this.TitleBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("TitleError");
             }
@@ -5554,15 +4946,7 @@ namespace Odin.ViewModels
             set
             {
                 _licenseError = value;
-                if (value != "")
-                {
-                    LicenseToolTip = "Error: " + value + "\n\n" + ReturnToolTip("License");
-                }
-                else
-                {
-                    LicenseToolTip = ReturnToolTip("License");
-                }
-                this.LicenseBoxColor = (value == "") ? "White" : "Tomato";
+                this.LicenseBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("LicenseError");
             }
@@ -5623,15 +5007,7 @@ namespace Odin.ViewModels
             set
             {
                 _metaDescriptionError = value;
-                if (value != "")
-                {
-                    MetaDescriptionToolTip = "Error: " + value + "\n\n" + ReturnToolTip("MetaDescription");
-                }
-                else
-                {
-                    MetaDescriptionToolTip = ReturnToolTip("MetaDescription");
-                }
-                this.MetaDescriptionBoxColor = (value == "") ? "White" : "Tomato";
+                this.MetaDescriptionBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("MetaDescriptionError");
             }
@@ -5692,15 +5068,7 @@ namespace Odin.ViewModels
             set
             {
                 _propertyError = value;
-                if (value != "")
-                {
-                    PropertyToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Property");
-                }
-                else
-                {
-                    PropertyToolTip = ReturnToolTip("Property");
-                }
-                this.PropertyBoxColor = (value == "") ? "White" : "Tomato";
+                this.PropertyBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("PropertyError");
             }
@@ -5761,15 +5129,7 @@ namespace Odin.ViewModels
             set
             {
                 _shortDescriptionError = value;
-                if (value != "")
-                {
-                    ShortDescriptionToolTip = "Error: " + value + "\n\n" + ReturnToolTip("ShortDescription");
-                }
-                else
-                {
-                    ShortDescriptionToolTip = ReturnToolTip("ShortDescription");
-                }
-                this.ShortDescriptionBoxColor = (value == "") ? "White" : "Tomato";
+                this.ShortDescriptionBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("ShortDescriptionError");
             }
@@ -5830,15 +5190,7 @@ namespace Odin.ViewModels
             set
             {
                 _sizeError = value;
-                if (value != "")
-                {
-                    SizeToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Size");
-                }
-                else
-                {
-                    SizeToolTip = ReturnToolTip("Size");
-                }
-                this.SizeBoxColor = (value == "") ? "White" : "Tomato";
+                this.SizeBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("SizeError");
             }
@@ -5899,15 +5251,7 @@ namespace Odin.ViewModels
             set
             {
                 _websitePriceError = value;
-                if (value != "")
-                {
-                    WebsitePriceToolTip = "Error: " + value + "\n\n" + ReturnToolTip("WebsitePrice");
-                }
-                else
-                {
-                    WebsitePriceToolTip = ReturnToolTip("WebsitePrice");
-                }
-                this.WebsitePriceBoxColor = (value == "") ? "White" : "Tomato";
+                this.WebsitePriceBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("WebsitePriceError");
             }
@@ -5972,15 +5316,7 @@ namespace Odin.ViewModels
             set
             {
                 _AltImageFile1Error = value;
-                if (value != "")
-                {
-                    AltImageFile1ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("AltImageFile1ToolTip");
-                }
-                else
-                {
-                    AltImageFile1ToolTip = ReturnToolTip("AltImageFile1ToolTip");
-                }
-                this.AltImageFile1BoxColor = (value == "") ? "White" : "Tomato";
+                this.AltImageFile1BoxColor =  ReturnErrorColor(value);
                 this.TabColorImagePath = CheckImagePathTabColor();
                 OnPropertyChanged("AltImageFile1Error");
             }
@@ -6041,15 +5377,7 @@ namespace Odin.ViewModels
             set
             {
                 _AltImageFile2Error = value;
-                if (value != "")
-                {
-                    AltImageFile2ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("AltImageFile2ToolTip");
-                }
-                else
-                {
-                    AltImageFile2ToolTip = ReturnToolTip("AltImageFile2ToolTip");
-                }
-                this.AltImageFile2BoxColor = (value == "") ? "White" : "Tomato";
+                this.AltImageFile2BoxColor =  ReturnErrorColor(value);
                 this.TabColorImagePath = CheckImagePathTabColor();
                 OnPropertyChanged("AltImageFile2Error");
             }
@@ -6110,15 +5438,7 @@ namespace Odin.ViewModels
             set
             {
                 _AltImageFile3Error = value;
-                if (value != "")
-                {
-                    AltImageFile3ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("AltImageFile3ToolTip");
-                }
-                else
-                {
-                    AltImageFile3ToolTip = ReturnToolTip("AltImageFile3ToolTip");
-                }
-                this.AltImageFile3BoxColor = (value == "") ? "White" : "Tomato";
+                this.AltImageFile3BoxColor =  ReturnErrorColor(value);
                 this.TabColorImagePath = CheckImagePathTabColor();
                 OnPropertyChanged("AltImageFile3Error");
             }
@@ -6179,15 +5499,7 @@ namespace Odin.ViewModels
             set
             {
                 _AltImageFile4Error = value;
-                if (value != "")
-                {
-                    AltImageFile4ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("AltImageFile4ToolTip");
-                }
-                else
-                {
-                    AltImageFile4ToolTip = ReturnToolTip("AltImageFile4ToolTip");
-                }
-                this.AltImageFile4BoxColor = (value == "") ? "White" : "Tomato";
+                this.AltImageFile4BoxColor =  ReturnErrorColor(value);
                 this.TabColorImagePath = CheckImagePathTabColor();
                 OnPropertyChanged("AltImageFile4Error");
             }
@@ -6248,15 +5560,7 @@ namespace Odin.ViewModels
             set
             {
                 _ImagePathError = value;
-                if (value != "")
-                {
-                    ImagePathToolTip = "Error: " + value + "\n\n" + ReturnToolTip("ImagePathToolTip");
-                }
-                else
-                {
-                    ImagePathToolTip = ReturnToolTip("ImagePathToolTip");
-                }
-                this.ImagePathBoxColor = (value == "") ? "White" : "Tomato";
+                this.ImagePathBoxColor =  ReturnErrorColor(value);
                 this.TabColorImagePath = CheckImagePathTabColor();
                 OnPropertyChanged("ImagePathError");
             }
@@ -6321,15 +5625,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceasinError = value;
-                if(value != "")
-                {
-                    EcommerceAsinToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceAsinToolTip");
-                }
-                else
-                {
-                    EcommerceAsinToolTip = ReturnToolTip("EcommerceAsinToolTip");
-                }
-                this.EcommerceAsinBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceAsinBoxColor =  ReturnErrorColor(value);
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceAsinError");
             }
@@ -6390,15 +5686,7 @@ namespace Odin.ViewModels
             set
             {
                 _Ecommercebullet1Error = value;
-                if (value != "")
-                {
-                    EcommerceBullet1ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceBulletToolTip");
-                }
-                else
-                {
-                    EcommerceBullet1ToolTip = ReturnToolTip("EcommerceBulletToolTip");
-                }
-                this.EcommerceBullet1BoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.EcommerceBullet1BoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceBullet1Error");
             }
@@ -6459,15 +5747,7 @@ namespace Odin.ViewModels
             set
             {
                 _Ecommercebullet2Error = value;
-                if (value != "")
-                {
-                    EcommerceBullet2ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceBulletToolTip");
-                }
-                else
-                {
-                    EcommerceBullet2ToolTip = ReturnToolTip("EcommerceBulletToolTip");
-                }
-                this.EcommerceBullet2BoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.EcommerceBullet2BoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceBullet2Error");
             }
@@ -6528,15 +5808,7 @@ namespace Odin.ViewModels
             set
             {
                 _Ecommercebullet3Error = value;
-                if (value != "")
-                {
-                    EcommerceBullet3ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceBulletToolTip");
-                }
-                else
-                {
-                    EcommerceBullet3ToolTip = ReturnToolTip("EcommerceBulletToolTip");
-                }
-                this.EcommerceBullet3BoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.EcommerceBullet3BoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceBullet3Error");
             }
@@ -6597,15 +5869,7 @@ namespace Odin.ViewModels
             set
             {
                 _Ecommercebullet4Error = value;
-                if (value != "")
-                {
-                    EcommerceBullet4ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceBulletToolTip");
-                }
-                else
-                {
-                    EcommerceBullet4ToolTip = ReturnToolTip("EcommerceBulletToolTip");
-                }
-                this.EcommerceBullet4BoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.EcommerceBullet4BoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceBullet4Error");
             }
@@ -6666,15 +5930,7 @@ namespace Odin.ViewModels
             set
             {
                 _Ecommercebullet5Error = value;
-                if (value != "")
-                {
-                    EcommerceBullet5ToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceBulletToolTip");
-                }
-                else
-                {
-                    EcommerceBullet5ToolTip = ReturnToolTip("EcommerceBulletToolTip");
-                }
-                this.EcommerceBullet5BoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.EcommerceBullet5BoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceBullet5Error");
             }
@@ -6735,15 +5991,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommercecomponentsError = value;
-                if (value != "")
-                {
-                    EcommerceComponentsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceComponentsToolTip");
-                }
-                else
-                {
-                    EcommerceComponentsToolTip = ReturnToolTip("EcommerceComponentsToolTip");
-                }
-                this.EcommerceComponentsBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceComponentsBoxColor =  ReturnErrorColor(value);
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceComponentsError");
             }
@@ -6804,15 +6052,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceCostError = value;
-                if (value != "")
-                {
-                    EcommerceCostToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceCostToolTip");
-                }
-                else
-                {
-                    EcommerceCostToolTip = ReturnToolTip("EcommerceCostToolTip");
-                }
-                this.EcommerceCostBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceCostBoxColor =  ReturnErrorColor(value);
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceCostError");
             }
@@ -6873,15 +6113,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceExternalIDError = value;
-                if (value != "")
-                {
-                    EcommerceExternalIdToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceExternalIdToolTip");
-                }
-                else
-                {
-                    EcommerceExternalIdToolTip = ReturnToolTip("EcommerceExternalIdToolTip");
-                }
-                this.EcommerceExternalIdBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceExternalIdBoxColor =  ReturnErrorColor(value);
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceExternalIdError");
             }
@@ -6942,15 +6174,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceExternalIdTypeError = value;
-                if (value != "")
-                {
-                    EcommerceExternalIdTypeToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceExternalIdTypeToolTip");
-                }
-                else
-                {
-                    EcommerceExternalIdTypeToolTip = ReturnToolTip("EcommerceExternalIdTypeToolTip");
-                }
-                this.EcommerceExternalIdTypeBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceExternalIdTypeBoxColor =  ReturnErrorColor(value);
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceExternalIdTypeError");
             }
@@ -7106,15 +6330,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceItemHeightError = value;
-                if (value != "")
-                {
-                    EcommerceItemHeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceItemHeightToolTip");
-                }
-                else
-                {
-                    EcommerceItemHeightToolTip = ReturnToolTip("EcommerceItemHeightToolTip");
-                }
-                this.EcommerceItemHeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.EcommerceItemHeightBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceItemHeightError");
             }
@@ -7175,15 +6391,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceItemLengthError = value;
-                if (value != "")
-                {
-                    EcommerceItemLengthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceItemLengthToolTip");
-                }
-                else
-                {
-                    EcommerceItemLengthToolTip = ReturnToolTip("EcommerceItemLengthToolTip");
-                }
-                this.EcommerceItemLengthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.EcommerceItemLengthBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceItemLengthError");
             }
@@ -7244,15 +6452,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceItemNameError = value;
-                if (value != "")
-                {
-                    EcommerceItemNameToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceItemNameToolTip");
-                }
-                else
-                {
-                    EcommerceItemNameToolTip = ReturnToolTip("EcommerceItemNameToolTip");
-                }
-                this.EcommerceItemNameBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceItemNameBoxColor =  ReturnErrorColor(value);
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceItemNameError");
             }
@@ -7313,15 +6513,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceItemTypeKeywordsError = value;
-                if (value != "")
-                {
-                    EcommerceItemTypeKeywordsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceItemTypeKeywordsToolTip");
-                }
-                else
-                {
-                    EcommerceItemTypeKeywordsToolTip = ReturnToolTip("EcommerceItemTypeKeywordsToolTip");
-                }
-                this.EcommerceItemTypeKeywordsBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceItemTypeKeywordsBoxColor =  ReturnErrorColor(value);
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceItemTypeKeywordsError");
             }
@@ -7382,15 +6574,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceItemWeightError = value;
-                if (value != "")
-                {
-                    EcommerceItemWeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceItemWeightToolTip");
-                }
-                else
-                {
-                    EcommerceItemWeightToolTip = ReturnToolTip("EcommerceItemWeightToolTip");
-                }
-                this.EcommerceItemWeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.EcommerceItemWeightBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceItemWeightError");
             }
@@ -7451,15 +6635,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceItemWidthError = value;
-                if (value != "")
-                {
-                    EcommerceItemWidthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceItemWidthToolTip");
-                }
-                else
-                {
-                    EcommerceItemWidthToolTip = ReturnToolTip("EcommerceItemWidthToolTip");
-                }
-                this.EcommerceItemWidthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.EcommerceItemWidthBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceItemWidthError");
             }
@@ -7520,15 +6696,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceModelNameError = value;
-                if (value != "")
-                {
-                    EcommerceModelNameToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceModelNameToolTip");
-                }
-                else
-                {
-                    EcommerceModelNameToolTip = ReturnToolTip("EcommerceModelNameToolTip");
-                }
-                this.EcommerceModelNameBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceModelNameBoxColor =  ReturnErrorColor(value);
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceModelNameError");
             }
@@ -7589,15 +6757,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommercePackageHeightError = value;
-                if (value != "")
-                {
-                    EcommercePackageHeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommercePackageHeightToolTip");
-                }
-                else
-                {
-                    EcommercePackageHeightToolTip = ReturnToolTip("EcommercePackageHeightToolTip");
-                }
-                this.EcommercePackageHeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.EcommercePackageHeightBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommercePackageHeightError");
             }
@@ -7658,15 +6818,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommercePackageLengthError = value;
-                if (value != "")
-                {
-                    EcommercePackageLengthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommercePackageLengthToolTip");
-                }
-                else
-                {
-                    EcommercePackageLengthToolTip = ReturnToolTip("EcommercePackageLengthToolTip");
-                }
-                this.EcommercePackageLengthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.EcommercePackageLengthBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommercePackageLengthError");
             }
@@ -7727,15 +6879,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommercePackageWeightError = value;
-                if (value != "")
-                {
-                    EcommercePackageWeightToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommercePackageWeightToolTip");
-                }
-                else
-                {
-                    EcommercePackageWeightToolTip = ReturnToolTip("EcommercePackageWeightToolTip");
-                }
-                this.EcommercePackageWeightBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.EcommercePackageWeightBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommercePackageWeightError");
             }
@@ -7796,15 +6940,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommercePackageWidthError = value;
-                if (value != "")
-                {
-                    EcommercePackageWidthToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommercePackageWidthToolTip");
-                }
-                else
-                {
-                    EcommercePackageWidthToolTip = ReturnToolTip("EcommercePackageWidthToolTip");
-                }
-                this.EcommercePackageWidthBoxColor = (value == "") ? "AliceBlue" : "Tomato";
+                this.EcommercePackageWidthBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommercePackageWidthError");
             }
@@ -7865,15 +7001,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommercePageQtyError = value;
-                if (value != "")
-                {
-                    EcommercePageQtyToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommercePageQtyToolTip");
-                }
-                else
-                {
-                    EcommercePageQtyToolTip = ReturnToolTip("EcommercePageQtyToolTip");
-                }
-                this.EcommercePageQtyBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommercePageQtyBoxColor =  ReturnErrorColor(value);
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommercePageQtyError");
             }
@@ -7934,15 +7062,7 @@ namespace Odin.ViewModels
             set
             {
                 _ecommerceParentAsinError = value;
-                if (value != "")
-                {
-                    EcommerceParentAsinToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceParentAsinToolTip");
-                }
-                else
-                {
-                    EcommerceParentAsinToolTip = ReturnToolTip("EcommerceParentAsinToolTip");
-                }
-                this.EcommerceParentAsinBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceParentAsinBoxColor =  ReturnErrorColor(value);
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceParentAsinError");
             }
@@ -8003,15 +7123,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceProductCategoryError = value;
-                if (value != "")
-                {
-                    EcommerceProductCategoryToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceProductCategoryToolTip");
-                }
-                else
-                {
-                    EcommerceProductCategoryToolTip = ReturnToolTip("EcommerceProductCategoryToolTip");
-                }
-                this.EcommerceProductCategoryBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceProductCategoryBoxColor =  ReturnErrorColor(value);
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceProductCategoryError");
             }
@@ -8072,15 +7184,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceProductDescriptionError = value;
-                if (value != "")
-                {
-                    EcommerceProductDescriptionToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceProductDescriptionToolTip");
-                }
-                else
-                {
-                    EcommerceProductDescriptionToolTip = ReturnToolTip("EcommerceProductDescriptionToolTip");
-                }
-                this.EcommerceProductDescriptionBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceProductDescriptionBoxColor =  ReturnErrorColor(value);
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceProductDescriptionError");
             }
@@ -8141,15 +7245,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceProductSubcategoryError = value;
-                if (value != "")
-                {
-                    EcommerceProductSubcategoryToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceProductSubcategoryToolTip");
-                }
-                else
-                {
-                    EcommerceProductSubcategoryToolTip = ReturnToolTip("EcommerceProductSubcategoryToolTip");
-                }
-                this.EcommerceProductSubcategoryBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceProductSubcategoryBoxColor =  ReturnErrorColor(value);
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceProductSubcategoryError");
             }
@@ -8210,15 +7306,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceManufacturerNameError = value;
-                if (value != "")
-                {
-                    EcommerceManufacturerNameToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceManufacturerNameToolTip");
-                }
-                else
-                {
-                    EcommerceManufacturerNameToolTip = ReturnToolTip("EcommerceManufacturerNameToolTip");
-                }
-                this.EcommerceManufacturerNameBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceManufacturerNameBoxColor =  ReturnErrorColor(value);
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceManufacturerNameError");
             }
@@ -8279,15 +7367,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceMsrpError = value;
-                if (value != "")
-                {
-                    EcommerceMsrpToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceMsrpToolTip");
-                }
-                else
-                {
-                    EcommerceMsrpToolTip = ReturnToolTip("EcommerceMsrpToolTip");
-                }
-                this.EcommerceMsrpBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceMsrpBoxColor =  ReturnErrorColor(value);
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceMsrpError");
             }
@@ -8348,15 +7428,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceGenericKeywordsError = value;
-                if (value != "")
-                {
-                    EcommerceGenericKeywordsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceGenericKeywordsToolTip");
-                }
-                else
-                {
-                    EcommerceGenericKeywordsToolTip = ReturnToolTip("EcommerceGenericKeywordsToolTip");
-                }
-                this.EcommerceGenericKeywordsBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceGenericKeywordsBoxColor =  ReturnErrorColor(value);
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceGenericKeywordsError");
             }
@@ -8417,15 +7489,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommercesizeError = value;
-                if (value != "")
-                {
-                    EcommerceSizeToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceSizeToolTip");
-                }
-                else
-                {
-                    EcommerceSizeToolTip = ReturnToolTip("EcommerceSizeToolTip");
-                }
-                this.EcommerceSizeBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceSizeBoxColor =  ReturnErrorColor(value);
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceSizeError");
             }
@@ -8486,15 +7550,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceSubjectKeywordsError = value;
-                if (value != "")
-                {
-                    EcommerceSubjectKeywordsToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceSubjectKeywordsToolTip");
-                }
-                else
-                {
-                    EcommerceSubjectKeywordsToolTip = ReturnToolTip("EcommerceSubjectKeywordsToolTip");
-                }
-                this.EcommerceSubjectKeywordsBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceSubjectKeywordsBoxColor =  ReturnErrorColor(value);
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceSubjectKeywordsError");
             }
@@ -8555,15 +7611,7 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceUpcError = value;
-                if (value != "")
-                {
-                    EcommerceUpcToolTip = "Error: " + value + "\n\n" + ReturnToolTip("EcommerceUpcToolTip");
-                }
-                else
-                {
-                    EcommerceUpcToolTip = ReturnToolTip("EcommerceUpcToolTip");
-                }
-                this.EcommerceUpcBoxColor = (value == "") ? "White" : "Tomato";
+                this.EcommerceUpcBoxColor =  ReturnErrorColor(value);
                 this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceUpcError");
             }
@@ -8628,15 +7676,7 @@ namespace Odin.ViewModels
             set
             {
                 _ItemKeywordsOverrideError = value;
-                if (value != "")
-                {
-                    ItemKeywordsOverrideToolTip = "Error: " + value + "\n\n" + ReturnToolTip("ItemKeywordsOverride");
-                }
-                else
-                {
-                    ItemKeywordsOverrideToolTip = ReturnToolTip("ItemKeywordsOverride");
-                }
-                this.ItemKeywordsOverrideBoxColor = (value == "") ? "White" : "Tomato";
+                this.ItemKeywordsOverrideBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("ItemKeywordsOverrideError");
             }
@@ -8697,15 +7737,7 @@ namespace Odin.ViewModels
             set
             {
                 _TitleOverrideError = value;
-                if (value != "")
-                {
-                    TitleOverrideToolTip = "Error: " + value + "\n\n" + ReturnToolTip("TitleOverride");
-                }
-                else
-                {
-                    TitleOverrideToolTip = ReturnToolTip("TitleOverride");
-                }
-                this.TitleOverrideBoxColor = (value == "") ? "White" : "Tomato";
+                this.TitleOverrideBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("TitleOverrideError");
             }
@@ -8766,15 +7798,7 @@ namespace Odin.ViewModels
             set
             {
                 _WebsitePriceOverrideError = value;
-                if (value != "")
-                {
-                    WebsitePriceOverrideToolTip = "Error: " + value + "\n\n" + ReturnToolTip("WebsitePriceOverride");
-                }
-                else
-                {
-                    WebsitePriceOverrideToolTip = ReturnToolTip("WebsitePriceOverride");
-                }
-                this.WebsitePriceOverrideBoxColor = (value == "") ? "White" : "Tomato";
+                this.WebsitePriceOverrideBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("WebsitePriceOverrideError");
             }
@@ -10345,6 +9369,29 @@ namespace Odin.ViewModels
         public void RemoveItem()
         {
             this.Remove = true;
+        }
+
+        /// <summary>
+        ///     Returns the error color depending on the error message
+        /// </summary>
+        /// <param name="value">error message</param>
+        /// <param name="baseColor">base color if something other than default white</param>
+        /// <returns>Either White / baseColor if no error exists or Tomato if error does exist</returns>
+        public string ReturnErrorColor(string value, string baseColor = null)
+        {
+            if (value == "")
+            {
+                if (baseColor != null)
+                {
+                    return "White";
+                }
+                else
+                {
+                    return baseColor;
+                }
+            }
+            else
+                return "Tomato";
         }
 
         /// <summary>
