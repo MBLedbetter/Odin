@@ -2731,7 +2731,7 @@ namespace OdinServices
 
             result += "\"" + item.ItemId.Trim() + "\","; /* "sku" */
             result += ","; /* "store_view_code" */
-            result += "\"" + ItemService.SetProductType(cats) + "\","; /* "attribute_set_code" */
+            result += "\"" + "Default" + "\","; /* "attribute_set_code" */
             result += "\"simple\","; /* product_type */
             result += "\"" + FormatMagento2Categories(item) + "\","; /* categories */
             result += "\"base\","; /* product_websites */
@@ -2777,7 +2777,7 @@ namespace OdinServices
             result += ","; /* msrp_display_actual_price_type */
             result += "\"" + "United States" + "\","; ; /* country_of_manufacture */
             result += "\"" + FormatAdditionalAttributes(item) + "\","; /* additional_attributes */
-            result += ","; /* qty */
+            result += "\"" + "0" + "\","; /* qty */
             result += "\"" + "0" + "\","; /* out_of_stock_qty */
             result += "\"" + "1" + "\","; /* use_config_min_qty */
             result += "\"" + "0" + "\","; /* is_qty_decimal */
