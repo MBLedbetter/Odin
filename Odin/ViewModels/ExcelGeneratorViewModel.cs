@@ -534,7 +534,10 @@ namespace Odin.ViewModels
                 }
                 else return;
             }
-            this.SelectedExcelColumn.Field = field;
+            if (field != null)
+            {
+                this.SelectedExcelColumn.Field = field;
+            }
             RenumberExcelColumns();
 
         }
