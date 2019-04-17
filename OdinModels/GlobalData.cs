@@ -286,6 +286,22 @@ namespace OdinModels
         private static List<ItemRecord> _itemRecords = new List<ItemRecord>();
 
         /// <summary>
+        ///     List of item type suffixes
+        /// </summary>
+        public static List<KeyValuePair<string, string>> ItemTypeSuffixes
+        {
+            get
+            {
+                return _itemTypeSuffixes;
+            }
+            set
+            {
+                _itemTypeSuffixes = value;
+            }
+        }
+        private static List<KeyValuePair<string, string>> _itemTypeSuffixes = new List<KeyValuePair<string, string>>();
+
+        /// <summary>
         ///     Language dropdown values
         /// </summary>
         public static List<string> Languages

@@ -412,6 +412,49 @@ namespace OdinServices
             return value;
         }
 
+        public string SetCustomOptions(ItemObject item)
+        {
+            string result = string.Empty;
+
+            foreach (string itemId in item.RelatedProducts)
+            {
+                if (itemId.Contains("SIL22X34") || itemId.Contains("BLK22X34") || itemId.Contains("POD"))
+                {
+                    result += "name = Frame,";
+                    result += "type = drop_down,";
+                    result += "required = 0,";
+                    result += "price_type =fixed,";
+                    result += "file_extension =,";
+                    result += "image_size_x = 0,";
+                    result += "image_size_y = 0,";
+                    if (itemId.Contains("SIL22X34"))
+                    {
+                        result += "price = 40.0000,";
+                        result += "sku = SIL22X34,";
+                        result += "option_title = Silver Frame";
+                    }
+                    else if (itemId.Contains("BLK22X34"))
+                    {
+                        result += "price = 40.0000,";
+                        result += "sku = BLK22X34,";
+                        result += "option_title = Black Frame";
+                    }
+                    else if (itemId.Contains("POD"))
+                    {
+                        result += "price = 10.0000,";
+                        result += "sku = PREMIUM,";
+                        result += "option_title = Premium Print";
+                    }
+                    result += "|";
+                }
+            }
+            if (!string.IsNullOrEmpty(result))
+            {
+                result = result.Remove(result.Length - 1);
+            }
+            return result;
+        }
+
         /// <summary>
         ///     If the file exists on externalCaptures return filepath otherwise returns ""
         /// </summary>
@@ -2738,7 +2781,6 @@ namespace OdinServices
             result += "\"" + item.Title.Trim() + "\","; /* name */
             result += ","; /* description */
             result += ","; /* short_description */
-
             result += "\"" + item.Weight.Trim() + "\","; /* weight */
             result += "\"" + "1" + "\","; /* product_online */
             result += "\"" + "Taxable Goods" + "\","; /* tax_class_name */
@@ -2807,7 +2849,7 @@ namespace OdinServices
             result += "\"" + FormatAdditionalImages(item) + "\","; /* additional_images */
             result += ","; /* additional_image_labels */
             result += ","; /* hide_from_product_page */
-            result += ","; /* custom_options */
+            result += "\"" + SetCustomOptions(item) + "\","; /* custom_options */
             result += ","; /* bundle_price_type */
             result += ","; /* bundle_sku_type */
             result += ","; /* bundle_price_view */

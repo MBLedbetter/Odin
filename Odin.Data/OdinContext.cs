@@ -231,6 +231,11 @@ namespace Odin.Data
         public DbSet<OdinItemTemplates> OdinItemTemplates { get; set; }
 
         /// <summary>
+        ///     Gets or sets a list of the OdinItemTypeSuffixes lines that are in this context.
+        /// </summary>
+        public DbSet<OdinItemTypeSuffixes> OdinItemTypeSuffixes { get; set; }
+
+        /// <summary>
         ///     Gets or sets a list of the OdinItemUpdateRecords lines that are in this context.
         /// </summary>
         public DbSet<OdinItemUpdateRecords> OdinItemUpdateRecords { get; set; }
@@ -284,7 +289,7 @@ namespace Odin.Data
         ///     Gets or sets a list of the OdinToolTips lines that are in this context.
         /// </summary>
         public DbSet<OdinToolTips> OdinToolTips { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets a list of the OdinUserExceptions lines that are in this context.
         /// </summary>
@@ -504,6 +509,7 @@ namespace Odin.Data
             MapOdinItemIdSuffixes(modelBuilder);
             MapOdinItemOverrideInfo(modelBuilder);
             MapOdinItemTemplates(modelBuilder);
+            MapOdinItemTypeSuffixes(modelBuilder);
             MapOdinItemUpdateRecords(modelBuilder);
             MapOdinLanguage(modelBuilder);
             MapOdinMetaDescription(modelBuilder);
@@ -2343,6 +2349,30 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.WebsitePrice).HasColumnName("WEBSITE_PRICE");
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.Weight).HasColumnName("WEIGHT");
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.Width).HasColumnName("WIDTH");
+
+        }
+
+        /// <summary>
+        ///             This method maps the OdinItemTypeSuffixes class to the database.
+        /// </summary>
+        /// 
+        /// <param name="DbModelBuilder modelBuilder">
+        ///             The DbDbModelBuilder modelBuilder to update with the mapping.
+        /// </param>
+        private void MapOdinItemTypeSuffixes(DbModelBuilder modelBuilder)
+        {
+            // Map the OdinItemTypeSuffixes class to the ODIN_ITEM_TYPE_SUFFIXES table
+            modelBuilder.Entity<OdinItemTypeSuffixes>()
+                .HasKey(p => new
+                {
+                    p.Type,
+                    p.FieldValue
+                })
+                .ToTable("ODIN_ITEM_TYPE_SUFFIXES");
+
+            // Map each column
+            modelBuilder.Entity<OdinItemTypeSuffixes>().Property(p => p.FieldValue).HasColumnName("FIELD_VALUE");
+            modelBuilder.Entity<OdinItemTypeSuffixes>().Property(p => p.Type).HasColumnName("TYPE");
 
         }
 

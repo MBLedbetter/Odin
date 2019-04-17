@@ -84,6 +84,7 @@
     <Compile Include="OdinItemIdSuffixes.cs" />
     <Compile Include="OdinItemOverrideInfo.cs" />
     <Compile Include="OdinItemTemplates.cs" />
+    <Compile Include="OdinItemTypeSuffixes.cs" />
     <Compile Include="OdinItemUpdateRecords.cs" />
     <Compile Include="OdinLanguage.cs" />
     <Compile Include="OdinLicenseStats.cs" />

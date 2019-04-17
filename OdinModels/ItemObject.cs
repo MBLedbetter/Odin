@@ -2777,6 +2777,24 @@ namespace OdinModels
         private string _recordDate = string.Empty;
 
         /// <summary>
+        ///     List of related products
+        /// </summary>
+        public List<string> RelatedProducts
+        {
+            get
+            {
+                return _relatedProducts;
+            }
+            set
+            {
+                _relatedProducts = value;
+                OnPropertyChanged("RelatedProducts");
+
+            }
+        }
+        private List<string> _relatedProducts = new List<string>();
+
+        /// <summary>
         ///     Gets or sets the RowColor. Used for listview display.
         /// </summary>
         public string RowColor
@@ -4455,7 +4473,6 @@ namespace OdinModels
             if (string.IsNullOrEmpty(this.WarrantyCheck)) { this.WarrantyCheck = "N"; }
         }
         
-
         #endregion //Methods
 
         #region Constructor

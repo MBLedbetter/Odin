@@ -1525,6 +1525,7 @@ namespace Odin.Data
             GlobalData.ItemGroups = RetrieveItemGroups();
             GlobalData.ItemIds = RetrieveItemIds();
             GlobalData.ItemIdSuffixes = RetrieveItemIdSuffixes();
+            GlobalData.ItemTypeSuffixes = RetrieveItemTypeSuffixes();
             GlobalData.Languages = RetrieveLanguages();
             GlobalData.Licenses = RetrieveLicenseList();
             GlobalData.MetaDescriptions = RetrieveMetaDescriptionList();
@@ -1751,38 +1752,6 @@ namespace Odin.Data
         }
 
         /// <summary>
-        ///     Retrieves a list of search item values
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public List<SearchItem> RetrieveItemSearchResults(string value, bool includeDisabled)
-        {
-            List<SearchItem> returnSearchItemList = new List<SearchItem>();
-
-            using (OdinContext context = this.contextFactory.CreateContext())
-            {
-                var searchItems = (from o in context.MasterItemTbl
-                                                where o.InvItemId.Contains(value) || o.Descr.Contains(value)
-                                                group o by new { o.InvItemId, o.ItemFieldC2, o.Descr} into g
-                                                select new
-                                                {
-                                                    ItemId = g.Key.InvItemId,
-                                                    Status = g.Key.ItemFieldC2,
-                                                    Description = g.Key.Descr
-                                                }).ToList();
-
-                foreach (var searchItem in searchItems)
-                {
-                    if(searchItem.Status != "D" || includeDisabled)
-                    { 
-                        returnSearchItemList.Add(new SearchItem(searchItem.ItemId, searchItem.Description, searchItem.Status));
-                    }
-                }
-            }
-            return returnSearchItemList;
-        }
-
-        /// <summary>
         ///     Retrieves a list of user records
         /// </summary>
         /// <returns>List of user records</returns>
@@ -1817,6 +1786,38 @@ namespace Odin.Data
             return records;
         }
 
+        /// <summary>
+        ///     Retrieves a list of search item values
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public List<SearchItem> RetrieveItemSearchResults(string value, bool includeDisabled)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                var searchItems = (from o in context.MasterItemTbl
+                                                where o.InvItemId.Contains(value) || o.Descr.Contains(value)
+                                                group o by new { o.InvItemId, o.ItemFieldC2, o.Descr} into g
+                                                select new
+                                                {
+                                                    ItemId = g.Key.InvItemId,
+                                                    Status = g.Key.ItemFieldC2,
+                                                    Description = g.Key.Descr
+                                                }).ToList();
+
+                foreach (var searchItem in searchItems)
+                {
+                    if(searchItem.Status != "D" || includeDisabled)
+                    { 
+                        returnSearchItemList.Add(new SearchItem(searchItem.ItemId, searchItem.Description, searchItem.Status));
+                    }
+                }
+            }
+            return returnSearchItemList;
+        }
+        
         /// <summary>
         ///     Retrieve a list of Item Objects relating to update records for the given item id
         /// </summary>
@@ -3687,6 +3688,27 @@ namespace Odin.Data
             {
                 return (from o in context.OdinItemIdSuffixes select o.FieldValue).ToList();
             }
+        }
+
+        /// <summary>
+        ///     Retrieves a List of the item type suffixes and type
+        /// </summary>
+        /// <returns></returns>
+        private List<KeyValuePair<string, string>> RetrieveItemTypeSuffixes()
+        {
+            List<KeyValuePair<string, string>> results = new List<KeyValuePair<string, string>>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                if ((context.OdinItemTypeSuffixes.Any()))
+                {
+                    var dataset = context.OdinItemTypeSuffixes.Select(x => new { x.FieldValue, x.Type }).ToList();
+                    foreach (var x in dataset)
+                    {
+                        results.Add(new KeyValuePair<string, string> (x.FieldValue, x.Type));
+                    }
+                }
+            }
+            return results;
         }
 
         /// <summary>

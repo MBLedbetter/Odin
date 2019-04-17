@@ -1875,6 +1875,7 @@ namespace OdinServices
         public ItemObject RetrieveItem(string itemId, int count)
         {
             ItemObject item = ItemRepository.RetrieveItem(itemId, count);
+            item.RelatedProducts = RetrieveRelatedProducts(item.ItemId);
             item.SetFlagDefaults();
             return item;
         }
@@ -2040,6 +2041,40 @@ namespace OdinServices
             }
             properties.Sort();
             return properties;
+        }
+
+        /// <summary>
+        ///     Retrieves the related item ids for the given itemId. ItemIds with 
+        ///     the same numerical value, but with different prefixes / suffixes
+        ///     are considered 'related'. Only works for posters currently.
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns> List of itemIds </returns>
+        public List<string> RetrieveRelatedProducts(string itemId)
+        {
+            List<string> results = new List<string>();
+            if (itemId.Contains("RP"))
+            {
+                string idCore = itemId.Replace("RP","");
+                foreach (KeyValuePair<string, string> x in GlobalData.ItemTypeSuffixes)
+                {
+                    if (x.Value == "PRE")
+                    {
+                        if(GlobalData.ItemIds.Contains(x.Key+idCore))
+                        {
+                            results.Add(x.Key + idCore);
+                        }
+                    }
+                    else if (x.Value == "SUF")
+                    {
+                        if (GlobalData.ItemIds.Contains(idCore+x.Key))
+                        {
+                            results.Add(idCore + x.Key);
+                        }
+                    }
+                }
+            }
+            return results;
         }
 
         /// <summary>
