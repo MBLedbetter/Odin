@@ -2969,7 +2969,7 @@ namespace Odin.Data.Tests
                 SellOnFanatics = "Y",
                 SellOnGuitarCenter = "Y",
                 SellOnHayneedle = "N",
-                SellOnHouzz = "N",
+                // SellOnHouzz = "N",
                 SellOnTarget = "Y",
                 SellOnTrs = "N",
                 SellOnWalmart = "N",
@@ -2990,7 +2990,7 @@ namespace Odin.Data.Tests
             item.SellOnFanatics = "N";
             item.SellOnGuitarCenter = "N";
             item.SellOnHayneedle = "Y";
-            item.SellOnHouzz = "Y";
+            // item.SellOnHouzz = "Y";
             item.SellOnTarget = "N";
             item.SellOnTrs = "N";
             item.SellOnWalmart = "Y";
