@@ -577,6 +577,11 @@ namespace Odin.DbTableModels
         public string SellOnHayneedle { get; set; }
 
         /// <summary>
+        ///     Gets or sets SELL_ON_HOUZZ
+        /// </summary>
+        public string SellOnHouzz { get; set; }
+
+        /// <summary>
         ///     Gets or sets SELL_ON_TARGET
         /// </summary>
         public string SellOnTarget { get; set; }

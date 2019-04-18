@@ -284,7 +284,8 @@ namespace Odin.Data
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("AMAZON SELLER CENTRAL"), item.SellOnAmazonSellerCentral, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("FANATICS"), item.SellOnFanatics, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("GUITAR CENTER"), item.SellOnGuitarCenter, context);
-            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HAYNEEDLE"), item.SellOnHayneedle, context) ;
+            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HAYNEEDLE"), item.SellOnHayneedle, context);
+            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HOUZZ"), item.SellOnHouzz, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TARGET"), item.SellOnTarget, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TRS"), item.SellOnTrs, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("WALMART"), item.SellOnWalmart, context) ;
@@ -758,6 +759,7 @@ namespace Odin.Data
                 SellOnFanatics = item.SellOnFanatics,
                 SellOnGuitarCenter = item.SellOnGuitarCenter,
                 SellOnHayneedle = item.SellOnHayneedle,
+                SellOnHouzz = item.SellOnHouzz,
                 SellOnTarget = item.SellOnTarget,
                 SellOnWeb = item.SellOnTrends,
                 SellOnTrs = item.SellOnTrs,
@@ -1695,6 +1697,7 @@ namespace Odin.Data
                         SellOnFanatics = (!string.IsNullOrEmpty(odinItem.SellOnFanatics)) ? odinItem.SellOnFanatics : "N",
                         SellOnGuitarCenter = (!string.IsNullOrEmpty(odinItem.SellOnGuitarCenter)) ? odinItem.SellOnGuitarCenter : "N",
                         SellOnHayneedle = (!string.IsNullOrEmpty(odinItem.SellOnHayneedle)) ? odinItem.SellOnHayneedle : "N",
+                        SellOnHouzz = (!string.IsNullOrEmpty(odinItem.SellOnHouzz)) ? odinItem.SellOnHouzz : "N",
                         SellOnTarget = (!string.IsNullOrEmpty(odinItem.SellOnTarget)) ? odinItem.SellOnTarget : "N",
                         SellOnTrs = (!string.IsNullOrEmpty(odinItem.SellOnTrs)) ? odinItem.SellOnTrs : "N",
                         SellOnWalmart = (!string.IsNullOrEmpty(odinItem.SellOnWalmart)) ? odinItem.SellOnWalmart : "N",
@@ -1922,6 +1925,7 @@ namespace Odin.Data
                     item.SellOnFanatics = odinItemUpdateRecord.SellOnFanatics;
                     item.SellOnGuitarCenter = odinItemUpdateRecord.SellOnGuitarCenter;
                     item.SellOnHayneedle = odinItemUpdateRecord.SellOnHayneedle;
+                    item.SellOnHouzz = odinItemUpdateRecord.SellOnHouzz;
                     item.SellOnTarget = odinItemUpdateRecord.SellOnTarget;
                     item.SellOnWalmart = odinItemUpdateRecord.SellOnWalmart;
                     item.SellOnWayfair = odinItemUpdateRecord.SellOnWayfair;
@@ -2395,6 +2399,7 @@ namespace Odin.Data
             UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("FANATICS"), item.SellOnFanatics, context);
             UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("GUITAR CENTER"), item.SellOnGuitarCenter, context);
             UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HAYNEEDLE"), item.SellOnHayneedle, context);
+            UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HOUZZ"), item.SellOnHouzz, context);
             UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TARGET"), item.SellOnTarget, context);
             UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("WALMART"), item.SellOnWalmart, context);
             UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("WAYFAIR"), item.SellOnWayfair, context);

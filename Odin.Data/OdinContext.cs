@@ -2152,6 +2152,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItem>().Property(p => p.SellOnFanatics).HasColumnName("SELL_ON_FANATICS");
             modelBuilder.Entity<OdinItem>().Property(p => p.SellOnGuitarCenter).HasColumnName("SELL_ON_GUITAR_CENTER");
             modelBuilder.Entity<OdinItem>().Property(p => p.SellOnHayneedle).HasColumnName("SELL_ON_HAYNEEDLE");
+            modelBuilder.Entity<OdinItem>().Property(p => p.SellOnHouzz).HasColumnName("SELL_ON_HOUZZ");
             modelBuilder.Entity<OdinItem>().Property(p => p.SellOnTarget).HasColumnName("SELL_ON_TARGET");
             modelBuilder.Entity<OdinItem>().Property(p => p.SellOnTrs).HasColumnName("SELL_ON_TRS");
             modelBuilder.Entity<OdinItem>().Property(p => p.SellOnWalmart).HasColumnName("SELL_ON_WALMART");
@@ -2507,6 +2508,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnFanatics).HasColumnName("SELL_ON_FANATICS");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnGuitarCenter).HasColumnName("SELL_ON_GUITAR_CENTER");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnHayneedle).HasColumnName("SELL_ON_HAYNEEDLE");
+            modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnHouzz).HasColumnName("SELL_ON_HOUZZ");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnJet).HasColumnName("SELL_ON_JET");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnTarget).HasColumnName("SELL_ON_TARGET");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.SellOnTrs).HasColumnName("SELL_ON_TRS");

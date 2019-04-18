@@ -1900,6 +1900,13 @@ namespace OdinServices
                                 row++;
                             }
                             break;
+                        case "Sell On Houzz":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.SellOnHouzz);
+                                row++;
+                            }
+                            break;
                         case "Sell On Target":
                             foreach (ItemObject item in items)
                             {

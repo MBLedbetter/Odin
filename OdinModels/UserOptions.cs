@@ -1555,6 +1555,22 @@ namespace OdinModels
         private static bool _sellOnHayneedleVisibility = true;
 
         /// <summary>
+        ///     Gets or sets SellOnHouzzVisibility
+        /// </summary>
+        public static bool SellOnHouzzVisibility
+        {
+            get
+            {
+                return _sellOnHouzzVisibility;
+            }
+            set
+            {
+                _sellOnHouzzVisibility = value;
+            }
+        }
+        private static bool _sellOnHouzzVisibility = true;
+
+        /// <summary>
         ///     Gets or sets SellOnTargetVisibility
         /// </summary>
         public static bool SellOnTargetVisibility

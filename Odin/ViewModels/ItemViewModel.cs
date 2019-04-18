@@ -3544,6 +3544,67 @@ namespace Odin.ViewModels
         private string _sellOnHayneedleToolTip = string.Empty;
 
         /// <summary>
+        ///     Gets or sets the Sell On Houzz
+        /// </summary>
+        public bool SellOnHouzzCheck
+        {
+            get
+            {
+                return DbUtil.ConvertToBool(this.ItemViewModelItem.SellOnHouzz);
+            }
+            set
+            {
+                if (this.ItemViewModelItem.SellOnHouzz != DbUtil.ConvertYN(value))
+                {
+                    this.ItemViewModelItem.SellOnHouzz = DbUtil.ConvertYN(value);
+                    FlagError("SellOnHouzzCheck");
+                    OnPropertyChanged("SellOnHouzzCheck");
+                }
+            }
+        }
+        public string SellOnHouzzBoxColor
+        {
+            get
+            {
+                return _sellOnHouzzBoxColor;
+            }
+            set
+            {
+                _sellOnHouzzBoxColor = value;
+                OnPropertyChanged("SellOnHouzzBoxColor");
+            }
+        }
+        private string _sellOnHouzzBoxColor = "White";
+        public string SellOnHouzzError
+        {
+            get
+            {
+                return _sellOnHouzzError;
+            }
+            set
+            {
+                _sellOnHouzzError = value;
+                this.SellOnHouzzBoxColor = ReturnErrorColor(value);
+                this.TabColorWebFlag = CheckWebFlagsTabColor();
+                OnPropertyChanged("SellOnHouzzError");
+            }
+        }
+        private string _sellOnHouzzError = string.Empty;
+        public string SellOnHouzzToolTip
+        {
+            get
+            {
+                return _sellOnHouzzToolTip;
+            }
+            set
+            {
+                this._sellOnHouzzToolTip = value;
+                OnPropertyChanged("SellOnHouzzToolTip");
+            }
+        }
+        private string _sellOnHouzzToolTip = string.Empty;
+
+        /// <summary>
         ///     Gets or sets the Sell On Target
         /// </summary>
         public bool SellOnTargetCheck
@@ -8522,6 +8583,10 @@ namespace Odin.ViewModels
                     this.SellOnHayneedleError = error.ReturnErrorMessage();
                     break;
 
+                case "Sell On Houzz":
+                    this.SellOnHouzzError = error.ReturnErrorMessage();
+                    break;
+
                 case "Sell On Target":
                     this.SellOnTargetError = error.ReturnErrorMessage();
                     break;
@@ -8737,6 +8802,7 @@ namespace Odin.ViewModels
             if (SellOnFanaticsBoxColor == "Tomato") { return "Tomato"; }
             if (SellOnGuitarCenterBoxColor == "Tomato") { return "Tomato"; }
             if (SellOnHayneedleBoxColor == "Tomato") { return "Tomato"; }
+            if (SellOnHouzzBoxColor == "Tomato") { return "Tomato"; }
             if (SellOnTargetBoxColor == "Tomato") { return "Tomato"; }
             if (SellOnTrendsBoxColor == "Tomato") { return "Tomato"; }
             if (SellOnTrsBoxColor == "Tomato") { return "Tomato"; }
@@ -9244,6 +9310,10 @@ namespace Odin.ViewModels
                     this.SellOnHayneedleError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Hayneedle")?.ReturnErrorMessage() ?? "";
                     break;
 
+                case "SellOnHouzzCheck":
+                    this.SellOnHouzzError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Houzz")?.ReturnErrorMessage() ?? "";
+                    break;
+
                 case "SellOnTargetCheck":
                     this.SellOnTargetError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Target")?.ReturnErrorMessage() ?? "";
                     break;
@@ -9631,6 +9701,7 @@ namespace Odin.ViewModels
             this.SellOnFanaticsToolTip = ReturnToolTip("SellOnFanatics");
             this.SellOnGuitarCenterToolTip = ReturnToolTip("SellOnGuitarCenter");
             this.SellOnHayneedleToolTip = ReturnToolTip("SellOnHayneedle");
+            this.SellOnHouzzToolTip = ReturnToolTip("SellOnHouzz");
             this.SellOnTargetToolTip = ReturnToolTip("SellOnTarget");
             this.SellOnTrendsToolTip = ReturnToolTip("SellOnTrends");
             this.SellOnTrsToolTip = ReturnToolTip("SellOnTrs");
@@ -9731,6 +9802,7 @@ namespace Odin.ViewModels
             this.SellOnFanaticsError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Fanatics").ReturnErrorMessage();
             this.SellOnGuitarCenterError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Guitar Center").ReturnErrorMessage();
             this.SellOnHayneedleError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Hayneedle").ReturnErrorMessage();
+            this.SellOnHouzzError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Houzz").ReturnErrorMessage();
             this.SellOnTargetError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Target").ReturnErrorMessage();
             this.SellOnTrsError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Trs").ReturnErrorMessage();
             this.SellOnWalmartError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Walmart").ReturnErrorMessage();

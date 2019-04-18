@@ -2075,6 +2075,23 @@ namespace Odin.ViewModels
         private string _sellOnHayneedleVisibility = "auto";
 
         /// <summary>
+        ///     Gets or sets the SellOnHouzzVisibility field
+        /// </summary>
+        public string SellOnHouzzVisibility
+        {
+            get
+            {
+                return _sellOnHouzzVisibility;
+            }
+            set
+            {
+                _sellOnHouzzVisibility = value;
+                OnPropertyChanged("SellOnHouzzVisibility");
+            }
+        }
+        private string _sellOnHouzzVisibility = "auto";
+
+        /// <summary>
         ///     Gets or sets the SellOnTargetVisibility field
         /// </summary>
         public string SellOnTargetVisibility
@@ -3508,6 +3525,7 @@ namespace Odin.ViewModels
             this.SellOnFanaticsVisibility = (UserOptions.SellOnFanaticsVisibility) ? "100" : "0";
             this.SellOnGuitarCenterVisibility = (UserOptions.SellOnGuitarCenterVisibility) ? "100" : "0";
             this.SellOnHayneedleVisibility = (UserOptions.SellOnHayneedleVisibility) ? "100" : "0";
+            this.SellOnHouzzVisibility = (UserOptions.SellOnHouzzVisibility) ? "100" : "0";
             this.SellOnTargetVisibility = (UserOptions.SellOnTargetVisibility) ? "100" : "0";
             this.SellOnTrendsVisibility = (UserOptions.SellOnTrendsVisibility) ? "100" : "0";
             this.SellOnTrsVisibility = (UserOptions.SellOnTrsVisibility) ? "100" : "0";
@@ -3635,6 +3653,7 @@ namespace Odin.ViewModels
             UserOptions.SellOnFanaticsVisibility = true;
             UserOptions.SellOnGuitarCenterVisibility = true;
             UserOptions.SellOnHayneedleVisibility = true;
+            UserOptions.SellOnHouzzVisibility = true;
             UserOptions.SellOnTargetVisibility = true;
             UserOptions.SellOnTrendsVisibility = true;
             UserOptions.SellOnTrsVisibility = true;

@@ -1652,6 +1652,19 @@ namespace Odin.ViewModels
             }
         }
 
+        public bool SellOnHouzzVisibility
+        {
+            get
+            {
+                return UserOptions.SellOnHouzzVisibility;
+            }
+            set
+            {
+                UserOptions.SellOnHouzzVisibility = value;
+                OnPropertyChanged("SellOnHouzzVisibility");
+            }
+        }
+
         public bool SellOnTargetVisibility
         {
             get
@@ -2082,6 +2095,7 @@ namespace Odin.ViewModels
             if (UserOptions.SellOnFanaticsVisibility  == false) { return false; }
             if (UserOptions.SellOnGuitarCenterVisibility == false) { return false; }
             if (UserOptions.SellOnHayneedleVisibility  == false) { return false; }
+            if (UserOptions.SellOnHouzzVisibility == false) { return false; }
             if (UserOptions.SellOnTargetVisibility  == false) { return false; }
             if (UserOptions.SellOnTrendsVisibility  == false) { return false; }
             if (UserOptions.SellOnTrsVisibility == false) { return false; }
@@ -2415,6 +2429,7 @@ namespace Odin.ViewModels
                 this.SellOnFanaticsVisibility = true;
                 this.SellOnGuitarCenterVisibility = true;
                 this.SellOnHayneedleVisibility = true;
+                this.SellOnHouzzVisibility = true;
                 this.SellOnTargetVisibility = true;
                 this.SellOnTrendsVisibility = true;
                 this.SellOnTrsVisibility = true;
@@ -2428,6 +2443,7 @@ namespace Odin.ViewModels
                 this.SellOnAmazonSellerCentralVisibility = false;
                 this.SellOnGuitarCenterVisibility = false;
                 this.SellOnHayneedleVisibility = false;
+                this.SellOnHouzzVisibility = false;
                 this.SellOnTargetVisibility = false;
                 this.SellOnTrendsVisibility = false;
                 this.SellOnTrsVisibility = false;

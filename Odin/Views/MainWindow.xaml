@@ -1506,6 +1506,14 @@
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnHouzz}"
+                        Width="{Binding SellOnHouzzVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Houzz"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
                         DisplayMemberBinding="{Binding SellOnTarget}"
                         Width="{Binding SellOnTargetVisibility}">
                         <GridViewColumnHeader

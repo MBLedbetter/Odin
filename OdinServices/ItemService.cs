@@ -153,6 +153,7 @@ namespace OdinServices
             public static string SellOnFanatics = "Sell On Fanatics";
             public static string SellOnGuitarCenter = "Sell On Guitar Center";
             public static string SellOnHayneedle = "Sell On Hayneedle";
+            public static string SellOnHouzz = "Sell On Houzz";
             public static string SellOnTarget = "Sell On Target";
             public static string SellOnTrends = "Sell On Trends";
             public static string SellOnTrs = "Sell On Trs";
@@ -782,7 +783,8 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.SellOnEcommerce)) && (item.SellOnEcommerce.Trim() != returnItem.SellOnEcommerce.Trim())) { returnItem.SellOnEcommerce = item.SellOnEcommerce.Trim(); }
             if ((!string.IsNullOrEmpty(item.SellOnFanatics)) && (item.SellOnFanatics.Trim() != returnItem.SellOnFanatics.Trim())) { returnItem.SellOnFanatics = item.SellOnFanatics.Trim(); } 
             if ((!string.IsNullOrEmpty(item.SellOnGuitarCenter)) && (item.SellOnGuitarCenter.Trim() != returnItem.SellOnGuitarCenter.Trim())) { returnItem.SellOnGuitarCenter = item.SellOnGuitarCenter.Trim(); } 
-            if ((!string.IsNullOrEmpty(item.SellOnHayneedle)) && (item.SellOnHayneedle.Trim() != returnItem.SellOnHayneedle.Trim())) { returnItem.SellOnHayneedle = item.SellOnHayneedle.Trim(); } 
+            if ((!string.IsNullOrEmpty(item.SellOnHayneedle)) && (item.SellOnHayneedle.Trim() != returnItem.SellOnHayneedle.Trim())) { returnItem.SellOnHayneedle = item.SellOnHayneedle.Trim(); }
+            if ((!string.IsNullOrEmpty(item.SellOnHouzz)) && (item.SellOnHouzz.Trim() != returnItem.SellOnHouzz.Trim())) { returnItem.SellOnHouzz = item.SellOnHouzz.Trim(); }
             if ((!string.IsNullOrEmpty(item.SellOnWalmart)) && (item.SellOnWalmart.Trim() != returnItem.SellOnWalmart.Trim())) { returnItem.SellOnWalmart = item.SellOnWalmart.Trim(); } 
             if ((!string.IsNullOrEmpty(item.SellOnWayfair)) && (item.SellOnWayfair.Trim() != returnItem.SellOnWayfair.Trim())) { returnItem.SellOnWayfair = item.SellOnWayfair.Trim(); } 
             if ((!string.IsNullOrEmpty(item.ShortDescription)) && (item.ShortDescription.Trim() != returnItem.ShortDescription.Trim())) { returnItem.ShortDescription = item.ShortDescription.Trim(); }
@@ -1123,6 +1125,7 @@ namespace OdinServices
                     SellOnFanatics = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnFanatics).Trim(),
                     SellOnGuitarCenter = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnGuitarCenter).Trim(),
                     SellOnHayneedle = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnHayneedle).Trim(),
+                    SellOnHouzz = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnHouzz).Trim(),
                     SellOnTarget = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnTarget).Trim(),
                     SellOnTrends = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnTrends).Trim(),
                     SellOnTrs = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnTrs).Trim(),
@@ -2524,6 +2527,9 @@ namespace OdinServices
             if (validationError != null) { ErrorList.Add(validationError); }
             // Sell On Hayneedle //
             validationError =ValidateSellOnValue(var, "Hayneedle");
+            if (validationError != null) { ErrorList.Add(validationError); }
+            // Sell On Houzz //
+            validationError = ValidateSellOnValue(var, "Houzz");
             if (validationError != null) { ErrorList.Add(validationError); }
             // Sell On Target //
             validationError =ValidateSellOnValue(var, "Target");
@@ -5645,6 +5651,9 @@ namespace OdinServices
                     break;
                 case "Hayneedle":
                     value = var.SellOnHayneedle;
+                    break;
+                case "Houzz":
+                    value = var.SellOnHouzz;
                     break;
                 case "Target":
                     value = var.SellOnTarget;
