@@ -4362,7 +4362,7 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding SellOnTargetBoxColor}"
-                        Grid.Row="1"
+                        Grid.Row="2"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"  
@@ -4401,7 +4401,7 @@
                     <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
-                        Grid.Row="1"
+                        Grid.Row="2"
                         Margin="6,6,0,6"           
                         IsChecked="{Binding SellOnTargetCheck}"
                         VerticalContentAlignment="Center"/>
@@ -4409,7 +4409,7 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding SellOnTrendsBoxColor}"
-                        Grid.Row="2"
+                        Grid.Row="3"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"  
@@ -4448,7 +4448,7 @@
                     <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
-                        Grid.Row="2"
+                        Grid.Row="3"
                         Margin="6,6,0,6"           
                         IsChecked="{Binding SellOnTrendsCheck}"
                         VerticalContentAlignment="Center"/>
@@ -4456,7 +4456,7 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding SellOnTrsBoxColor}"
-                        Grid.Row="3"
+                        Grid.Row="1"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"  
@@ -4495,7 +4495,7 @@
                     <CheckBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
-                        Grid.Row="3"
+                        Grid.Row="1"
                         Margin="6,6,0,6"           
                         IsChecked="{Binding SellOnTrsCheck}"
                         VerticalContentAlignment="Center"/>

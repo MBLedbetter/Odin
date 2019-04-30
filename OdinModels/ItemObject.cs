@@ -3066,6 +3066,7 @@ namespace OdinModels
                     this.SellOnHayneedle == "Y" ||
                     this.SellOnHouzz == "Y" ||
                     this.SellOnTarget == "Y" ||
+                    this.SellOnTrs == "Y" ||
                     this.SellOnWalmart == "Y" ||
                     this.SellOnWayfair == "Y")
                 {
@@ -4226,6 +4227,7 @@ namespace OdinModels
             this.SellOnHouzzUpdate = false;
             this.SellOnWalmartUpdate = false;
             this.SellOnWayfairUpdate = false;
+            this.SellOnTrsUpdate = false;
             this.SellOnTrendsUpdate = false;
             this.SellOnTargetUpdate = false;
             this.ShortDescriptionUpdate = false;
@@ -4520,6 +4522,7 @@ namespace OdinModels
             if (string.IsNullOrEmpty(this.SellOnGuitarCenter)) { this.SellOnGuitarCenter = "N"; }
             if (string.IsNullOrEmpty(this.SellOnHayneedle)) { this.SellOnHayneedle = "N"; }
             if (string.IsNullOrEmpty(this.SellOnHouzz)) { this.SellOnHouzz = "N"; }
+            if (string.IsNullOrEmpty(this.SellOnTrs)) { this.SellOnTrs = "N"; }
             if (string.IsNullOrEmpty(this.SellOnTarget)) { this.SellOnTarget = "N"; }
             if (string.IsNullOrEmpty(this.SellOnTrends)) { this.SellOnTrends = "N"; }
             if (string.IsNullOrEmpty(this.SellOnWalmart)) { this.SellOnWalmart = "N"; }

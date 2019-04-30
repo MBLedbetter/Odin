@@ -2545,7 +2545,7 @@ namespace OdinServices
             validationError =ValidateSellOnValue(var, "Trends");
             if (validationError != null) { ErrorList.Add(validationError); }
             // Sell On Trs //
-            validationError = ValidateSellOnValue(var, "Trs");
+            validationError = ValidateSellOnValue(var, "Shop Trends");
             if (validationError != null) { ErrorList.Add(validationError); }
             // Sell On Walmart //
             validationError =ValidateSellOnValue(var, "Walmart");
@@ -5715,7 +5715,7 @@ namespace OdinServices
                 case "Trends":
                     value = var.SellOnTrends;
                     break;
-                case "Trs":
+                case "Shop Trends":
                     value = var.SellOnTrs;
                     checkItemId = true;
                     break;

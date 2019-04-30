@@ -3827,7 +3827,7 @@ namespace Odin.ViewModels
                 _sellOnTrsError = value;
                 this.SellOnTrsBoxColor =  ReturnErrorColor(value);
                 this.TabColorWebFlag = CheckWebFlagsTabColor();
-                OnPropertyChanged("SellOnTrssErrorError");
+                OnPropertyChanged("SellOnTrsError");
             }
         }
         private string _sellOnTrsError = string.Empty;
@@ -9395,7 +9395,7 @@ namespace Odin.ViewModels
                     break;
 
                 case "SellOnTrsCheck":
-                    this.SellOnTrsError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Trs")?.ReturnErrorMessage() ?? "";
+                    this.SellOnTrsError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Shop Trends")?.ReturnErrorMessage() ?? "";
                     this.DtcPriceError = ItemService.ValidateDtcPrice(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
@@ -9867,7 +9867,7 @@ namespace Odin.ViewModels
             this.SellOnHayneedleError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Hayneedle").ReturnErrorMessage();
             this.SellOnHouzzError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Houzz").ReturnErrorMessage();
             this.SellOnTargetError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Target").ReturnErrorMessage();
-            this.SellOnTrsError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Trs").ReturnErrorMessage();
+            this.SellOnTrsError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Shop Trends").ReturnErrorMessage();
             this.SellOnWalmartError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Walmart").ReturnErrorMessage();
             this.SellOnWayfairError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Wayfair").ReturnErrorMessage();
         }

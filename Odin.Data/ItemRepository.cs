@@ -1929,6 +1929,7 @@ namespace Odin.Data
                     item.SellOnHayneedle = odinItemUpdateRecord.SellOnHayneedle;
                     item.SellOnHouzz = odinItemUpdateRecord.SellOnHouzz;
                     item.SellOnTarget = odinItemUpdateRecord.SellOnTarget;
+                    item.SellOnTrs = odinItemUpdateRecord.SellOnTrs;
                     item.SellOnWalmart = odinItemUpdateRecord.SellOnWalmart;
                     item.SellOnWayfair = odinItemUpdateRecord.SellOnWayfair;
                     item.SellOnTrends = odinItemUpdateRecord.SellOnWeb;
@@ -2403,6 +2404,7 @@ namespace Odin.Data
             UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HAYNEEDLE"), item.SellOnHayneedle, context);
             UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HOUZZ"), item.SellOnHouzz, context);
             UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TARGET"), item.SellOnTarget, context);
+            UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TRS"), item.SellOnTrs, context);
             UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("WALMART"), item.SellOnWalmart, context);
             UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("WAYFAIR"), item.SellOnWayfair, context);
         }
