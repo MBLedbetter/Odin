@@ -1957,6 +1957,13 @@ namespace OdinServices
                                 row++;
                             }
                             break;
+                        case "Sell On Shop Trends":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.SellOnTrs);
+                                row++;
+                            }
+                            break;
                         case "Sell On Target":
                             foreach (ItemObject item in items)
                             {

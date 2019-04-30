@@ -9221,8 +9221,10 @@ namespace Odin.ViewModels
                 case "ItemGroup":
                     this.ItemGroupError = ItemService.ValidateItemGroup(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
+
                 case "ItemId":
                     this.ItemIdError = ItemService.ValidateItemId(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "ItemKeywords":
