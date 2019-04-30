@@ -71,6 +71,11 @@ namespace Odin.DbTableModels
         public string DirectImport { get; set; }
 
         /// <summary>
+        ///     Gets or sets DTC_PRICE
+        /// </summary>
+        public decimal DtcPrice { get; set; }
+
+        /// <summary>
         ///     Gets or sets DUTY
         /// </summary>
         public string Duty { get; set; }

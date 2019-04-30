@@ -84,6 +84,7 @@ namespace Odin.Data
                     CostProfileGroup = template.CostProfileGroup,
                     DefaultActualCostUsd = template.DefaultActualCostUsd,
                     DefaultActualCostCad = template.DefaultActualCostCad,
+                    DtcPrice = template.DtcPrice,
                     Duty = template.Duty,
                     Gpc = template.Gpc,
                     Height = template.Height,
@@ -333,6 +334,7 @@ namespace Odin.Data
                     template.CostProfileGroup = (!string.IsNullOrEmpty(x.CostProfileGroup)) ? x.CostProfileGroup : "";
                     template.DefaultActualCostCad = (!string.IsNullOrEmpty(x.DefaultActualCostCad)) ? x.DefaultActualCostCad : "";
                     template.DefaultActualCostUsd = (!string.IsNullOrEmpty(x.DefaultActualCostUsd)) ? x.DefaultActualCostUsd : "";
+                    template.DtcPrice = (!string.IsNullOrEmpty(x.Duty)) ? x.DtcPrice : "";
                     template.Duty = (!string.IsNullOrEmpty(x.Duty)) ? x.Duty : "";
                     template.Gpc = (!string.IsNullOrEmpty(x.Gpc)) ? x.Gpc : "";
                     template.Height = (!string.IsNullOrEmpty(x.Height)) ? x.Height : "";

@@ -2364,9 +2364,9 @@
                         Grid.Row="13"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Width="116"
+                        Width="115"
                         Padding="3"
-                        Margin="10,8,0,8" Grid.ColumnSpan="2">
+                        Margin="10,8,0,8">
                         <TextBox.ToolTip>
                             <ToolTip>
                                 <Grid Width="300">
@@ -3333,11 +3333,62 @@
                         VerticalContentAlignment="Center"
                         VerticalScrollBarVisibility="Auto"
                         Width="300" />
+                    <!-- DtcPrice -->
+                    <TextBox
+                        BorderThickness="0"
+                        Background="{Binding DtcPriceBoxColor}"
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        Padding="3"
+                        VerticalAlignment="Center" 
+                        Width="100">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                <Grid Width="300">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Background="PowderBlue"
+                                        Content="DTC Price" 
+                                        FontWeight="Bold" />
+                                    <TextBlock 
+                                        Grid.Row="2"
+                                        Padding="3"
+                                        Text="{Binding DtcPriceToolTip}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock 
+                                        Grid.Row="3"
+                                        Background="LightPink"
+                                        Padding="3"
+                                        Text="{Binding DtcPriceError}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                        DTC Price
+                    </TextBox>
+                    <TextBox
+                        Height="26"
+                        HorizontalAlignment="Left"
+                        Margin="6,6,0,4"
+                        Grid.Row="7"
+                        TextWrapping="Wrap"
+                        MaxHeight="26"
+                        Grid.Column="1"
+                        Text="{Binding DtcPrice}"
+                        VerticalContentAlignment="Top"
+                        Width="300" />
                     <!-- In Stock Date-->
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding InStockDateBoxColor}"
-                        Grid.Row="7"
+                        Grid.Row="8"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         Padding="3"
@@ -3377,7 +3428,7 @@
                         Height="26"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,4"
-                        Grid.Row="7"
+                        Grid.Row="8"
                         Grid.Column="1"
                         SelectedDate="{Binding InStockDate}"
                         VerticalContentAlignment="Center"
@@ -3386,7 +3437,7 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding ItemKeywordsBoxColor}"
-                        Grid.Row="8"
+                        Grid.Row="9"
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         Padding="3"
@@ -3426,7 +3477,7 @@
                         Height="128"
                         HorizontalAlignment="Left"
                         Margin="6,8,0,8"
-                        Grid.Row="8"
+                        Grid.Row="9"
                         Grid.RowSpan="4"
                         TextWrapping="Wrap"
                         Grid.Column="1"
@@ -3438,8 +3489,8 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding LicenseBoxColor}"
-                        Grid.Row="12"
-                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.Column="2"
                         HorizontalAlignment="Left"
                         Padding="3"
                         VerticalAlignment="Center" 
@@ -3477,8 +3528,8 @@
                     <ComboBox
                         Height="26"
                         HorizontalAlignment="Left"
-                        Grid.Column="1"
-                        Grid.Row="12"
+                        Grid.Column="3"
+                        Grid.Row="0"
                         ItemsSource="{Binding Licenses}"
                         Margin="6,6,0,4"
                         Text="{Binding License}"
@@ -3487,8 +3538,8 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding MetaDescriptionBoxColor}"
-                        Grid.Row="13"
-                        Grid.Column="0"
+                        Grid.Row="1"
+                        Grid.Column="2"
                         HorizontalAlignment="Left"
                         Padding="3"
                         VerticalAlignment="Center" 
@@ -3525,8 +3576,8 @@
                     </TextBox>
                     <ComboBox
                         HorizontalAlignment="Left"
-                        Grid.Column="1"
-                        Grid.Row="13"
+                        Grid.Column="3"
+                        Grid.Row="1"
                         Height="26"
                         ItemsSource="{Binding MetaDescriptions}"
                         Margin="6,6,0,4"
@@ -3536,8 +3587,8 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding ProductQtyBoxColor}"
-                        Grid.Row="14"
-                        Grid.Column="0"
+                        Grid.Row="2"
+                        Grid.Column="2"
                         HorizontalAlignment="Left"
                         IsEnabled="{Binding IsEnabled}"
                         Padding="3"
@@ -3577,10 +3628,10 @@
                         Height="26"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,4"
-                        Grid.Row="14"
+                        Grid.Row="2"
                         TextWrapping="Wrap"
                         MaxHeight="26"
-                        Grid.Column="1"
+                        Grid.Column="3"
                         IsEnabled="{Binding IsEnabled}"
                         Text="{Binding ProductQty}"
                         VerticalContentAlignment="Top"
@@ -3588,7 +3639,7 @@
                     <!-- Product Qty Total -->
                     <TextBox
                         BorderThickness="0"
-                        Grid.Row="0"
+                        Grid.Row="3"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center" 
@@ -3622,7 +3673,7 @@
                         Height="26"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6" 
-                        Grid.Row="0"
+                        Grid.Row="3"
                         TextWrapping="Wrap"
                         MaxHeight="26"
                         Grid.Column="3"
@@ -3635,7 +3686,7 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding PropertyBoxColor}"
-                        Grid.Row="1"
+                        Grid.Row="4"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center" 
@@ -3674,7 +3725,7 @@
                     <ComboBox
                         HorizontalAlignment="Left"
                         Grid.Column="3"
-                        Grid.Row="1"
+                        Grid.Row="4"
                         ItemsSource="{Binding PropertyList}"
                         Margin="6,6,0,6" 
                         Text="{Binding Property}"
@@ -3683,7 +3734,7 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding ShortDescriptionBoxColor}"
-                        Grid.Row="2"
+                        Grid.Row="5"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center" 
@@ -3722,7 +3773,7 @@
                     <TextBox
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6" 
-                        Grid.Row="2"
+                        Grid.Row="5"
                         Grid.RowSpan="3"
                         TextWrapping="Wrap"
                         MaxHeight="128"
@@ -3736,7 +3787,7 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding SizeBoxColor}"
-                        Grid.Row="5"
+                        Grid.Row="8"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center" 
@@ -3776,7 +3827,7 @@
                         Height="26"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6"
-                        Grid.Row="5"
+                        Grid.Row="8"
                         TextWrapping="Wrap"
                         MaxHeight="26"
                         Grid.Column="3"
@@ -3787,7 +3838,7 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding TitleBoxColor}"
-                        Grid.Row="6"
+                        Grid.Row="9"
                         Grid.Column="2"
                         Height="26"         
                         HorizontalAlignment="Left"
@@ -3828,7 +3879,7 @@
                         Height="26"
                         HorizontalAlignment="Left"
                         Margin="6,6,0,6" 
-                        Grid.Row="6"
+                        Grid.Row="9"
                         TextWrapping="Wrap"
                         MaxHeight="26"
                         Grid.Column="3"
@@ -3839,7 +3890,7 @@
                     <TextBox
                         BorderThickness="0"
                         Background="{Binding WebsitePriceBoxColor}"
-                        Grid.Row="7"
+                        Grid.Row="10"
                         Grid.Column="2"
                         Height="26"         
                         HorizontalAlignment="Left"
@@ -3879,7 +3930,7 @@
                     <TextBox
                         Height="26"
                         HorizontalAlignment="Left"
-                        Grid.Row="7"
+                        Grid.Row="10"
                         TextWrapping="Wrap"
                         MaxHeight="26"
                         Grid.Column="3"
@@ -4423,7 +4474,7 @@
                                     <Label 
                                         Grid.Row="0"
                                         Background="PowderBlue"
-                                        Content="Sell On Trs" 
+                                        Content="Sell On Shop Trends" 
                                         FontWeight="Bold" />
                                     <TextBlock 
                                         Grid.Row="2"
@@ -4439,7 +4490,7 @@
                                 </Grid>
                             </ToolTip>
                         </TextBox.ToolTip>
-                        Sell On Trs
+                        Sell On Shop Trends
                     </TextBox>
                     <CheckBox
                         HorizontalAlignment="Left"
@@ -6693,8 +6744,7 @@
                     <Image
                         Grid.Column="3"
                         Grid.Row="6"
-                        Source="{Binding Image3}" 
-                        Grid.ColumnSpan="2"/>
+                        Source="{Binding Image3}"/>
                     <Label
                         Content="Image Path 4"
                         Grid.Row="5"
@@ -6704,7 +6754,7 @@
                         Height="26"
                         Margin="6,6,0,6"/>
                     <Image
-                        Grid.Column="5"
+                        Grid.Column="4"
                         Grid.Row="6"
                         Source="{Binding Image4}"/>
                     <Label

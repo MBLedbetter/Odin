@@ -47,6 +47,7 @@ namespace OdinServices
             public static string DacUsd = "DAC USD";
             public static string Description = "Description";
             public static string DirectImport = "Direct Import";
+            public static string DtcPrice = "Dtc Price";
             public static string Duty = "Duty";
             public static string Ean = "Ean";
             public static string EcommerceAsin = "Ecommerce Asin";
@@ -157,6 +158,7 @@ namespace OdinServices
             public static string SellOnTarget = "Sell On Target";
             public static string SellOnTrends = "Sell On Trends";
             public static string SellOnTrs = "Sell On Trs";
+            public static string SellOnShopTrends = "Sell On Shop Trends";
             public static string SellOnWalmart = "Sell On Walmart";
             public static string SellOnWayfair = "Sell On Wayfair";
             public static string ShortDescription = "Short Description";
@@ -668,35 +670,36 @@ namespace OdinServices
             // Retrieve existing values from database
             ItemObject returnItem = RetrieveItem(item.ItemId, itemRow);
 
-            if ((!string.IsNullOrEmpty(item.AccountingGroup)) && (item.AccountingGroup.Trim() != returnItem.AccountingGroup.Trim())) { returnItem.AccountingGroup = item.AccountingGroup; }
-            if ((!string.IsNullOrEmpty(item.AltImageFile1)) && (item.AltImageFile1.Trim() != returnItem.AltImageFile1.Trim())) { returnItem.AltImageFile1 = item.AltImageFile1; }
-            if ((!string.IsNullOrEmpty(item.AltImageFile2)) && (item.AltImageFile2.Trim() != returnItem.AltImageFile2.Trim())) { returnItem.AltImageFile2 = item.AltImageFile2; }
-            if ((!string.IsNullOrEmpty(item.AltImageFile3)) && (item.AltImageFile3.Trim() != returnItem.AltImageFile3.Trim())) { returnItem.AltImageFile3 = item.AltImageFile3; }
-            if ((!string.IsNullOrEmpty(item.AltImageFile4)) && (item.AltImageFile4.Trim() != returnItem.AltImageFile4.Trim())) { returnItem.AltImageFile4 = item.AltImageFile4; }
+            if ((!string.IsNullOrEmpty(item.AccountingGroup)) && (item.AccountingGroup.Trim() != returnItem.AccountingGroup.Trim())) { returnItem.AccountingGroup = item.AccountingGroup; } // Accounting Group
+            if ((!string.IsNullOrEmpty(item.AltImageFile1)) && (item.AltImageFile1.Trim() != returnItem.AltImageFile1.Trim())) { returnItem.AltImageFile1 = item.AltImageFile1; }  // Alt Image Field 1
+            if ((!string.IsNullOrEmpty(item.AltImageFile2)) && (item.AltImageFile2.Trim() != returnItem.AltImageFile2.Trim())) { returnItem.AltImageFile2 = item.AltImageFile2; }  // Alt Image Field 2
+            if ((!string.IsNullOrEmpty(item.AltImageFile3)) && (item.AltImageFile3.Trim() != returnItem.AltImageFile3.Trim())) { returnItem.AltImageFile3 = item.AltImageFile3; }  // Alt Image Field 3
+            if ((!string.IsNullOrEmpty(item.AltImageFile4)) && (item.AltImageFile4.Trim() != returnItem.AltImageFile4.Trim())) { returnItem.AltImageFile4 = item.AltImageFile4; }  // Alt Image Field 4
             if ((!string.IsNullOrEmpty(item.ReturnBillOfMaterials())) && (item.ReturnBillOfMaterials()).Trim() != returnItem.ReturnBillOfMaterials())
             {
                 returnItem.BillOfMaterials = item.BillOfMaterials;
-            }
-            if ((!string.IsNullOrEmpty(item.Active.ToString())) && (item.Active != returnItem.Active)) { returnItem.Active = item.Active; }
-            if ((!string.IsNullOrEmpty(item.CasepackHeight)) && (item.CasepackHeight.Trim() != returnItem.CasepackHeight.Trim())) { returnItem.CasepackHeight = item.CasepackHeight; }
-            if ((!string.IsNullOrEmpty(item.CasepackLength)) && (item.CasepackLength.Trim() != returnItem.CasepackLength.Trim())) { returnItem.CasepackLength = item.CasepackLength; }
-            if ((!string.IsNullOrEmpty(item.CasepackQty)) && (item.CasepackQty.Trim() != returnItem.CasepackQty.Trim())) { returnItem.CasepackQty = item.CasepackQty; }
-            if ((!string.IsNullOrEmpty(item.CasepackUpc)) && (item.CasepackUpc.Trim() != returnItem.CasepackUpc.Trim())) { returnItem.CasepackUpc = item.CasepackUpc; }
-            if ((!string.IsNullOrEmpty(item.CasepackWidth)) && (item.CasepackWidth.Trim() != returnItem.CasepackWidth.Trim())) { returnItem.CasepackWidth = item.CasepackWidth; }
-            if ((!string.IsNullOrEmpty(item.CasepackWeight)) && (item.CasepackWeight.Trim() != returnItem.CasepackWeight.Trim())) { returnItem.CasepackWeight = item.CasepackWeight; }
-            if ((!string.IsNullOrEmpty(item.Category)) && (item.Category.Trim() != returnItem.Category.Trim())) { returnItem.Category = item.Category; }
-            if ((!string.IsNullOrEmpty(item.Category2)) && (item.Category2.Trim() != returnItem.Category2.Trim())) { returnItem.Category2 = item.Category2; }
-            if ((!string.IsNullOrEmpty(item.Category3)) && (item.Category3.Trim() != returnItem.Category3.Trim())) { returnItem.Category3 = item.Category3; }
-            if ((!string.IsNullOrEmpty(item.Color)) && (item.Color.Trim() != returnItem.Color.Trim())) { returnItem.Color = item.Color; }
-            if ((!string.IsNullOrEmpty(item.Copyright)) && (item.Copyright.Trim() != returnItem.Copyright.Trim())) { returnItem.Copyright = item.Copyright; }
-            if ((!string.IsNullOrEmpty(item.CountryOfOrigin)) && (item.CountryOfOrigin.Trim() != returnItem.CountryOfOrigin.Trim())) { returnItem.CountryOfOrigin = item.CountryOfOrigin; }
-            if ((!string.IsNullOrEmpty(item.CostProfileGroup)) && (item.CostProfileGroup.Trim() != returnItem.CostProfileGroup.Trim())) { returnItem.CostProfileGroup = item.CostProfileGroup; }
-            if ((!string.IsNullOrEmpty(item.DefaultActualCostCad)) && (item.DefaultActualCostCad.Trim() != returnItem.DefaultActualCostCad.Trim())) { returnItem.DefaultActualCostCad = item.DefaultActualCostCad; }
-            if ((!string.IsNullOrEmpty(item.DefaultActualCostUsd)) && (item.DefaultActualCostUsd.Trim() != returnItem.DefaultActualCostUsd.Trim())) { returnItem.DefaultActualCostUsd = item.DefaultActualCostUsd; }
-            if ((!string.IsNullOrEmpty(item.Description)) && (item.Description.Trim() != returnItem.Description.Trim())) { returnItem.Description = item.Description; }
-            if ((!string.IsNullOrEmpty(item.DirectImport)) && (item.DirectImport.Trim() != returnItem.DirectImport.Trim())) { returnItem.DirectImport = AssignDirectImport(item.DirectImport); }
-            if ((!string.IsNullOrEmpty(item.Duty)) && (item.Duty.Trim() != returnItem.Duty.Trim())) { returnItem.Duty = item.Duty; }
-            if ((!string.IsNullOrEmpty(item.Ean)) && (item.Ean.Trim() != returnItem.Ean.Trim())) { returnItem.Ean = item.Ean; }
+            } // Bill of Materials
+            if ((!string.IsNullOrEmpty(item.Active.ToString())) && (item.Active != returnItem.Active)) { returnItem.Active = item.Active; } // Active
+            if ((!string.IsNullOrEmpty(item.CasepackHeight)) && (item.CasepackHeight.Trim() != returnItem.CasepackHeight.Trim())) { returnItem.CasepackHeight = item.CasepackHeight; } // Casepack Height
+            if ((!string.IsNullOrEmpty(item.CasepackLength)) && (item.CasepackLength.Trim() != returnItem.CasepackLength.Trim())) { returnItem.CasepackLength = item.CasepackLength; } // Casepack Length
+            if ((!string.IsNullOrEmpty(item.CasepackQty)) && (item.CasepackQty.Trim() != returnItem.CasepackQty.Trim())) { returnItem.CasepackQty = item.CasepackQty; } // Casepack Qty
+            if ((!string.IsNullOrEmpty(item.CasepackUpc)) && (item.CasepackUpc.Trim() != returnItem.CasepackUpc.Trim())) { returnItem.CasepackUpc = item.CasepackUpc; } // Casepack UPC
+            if ((!string.IsNullOrEmpty(item.CasepackWidth)) && (item.CasepackWidth.Trim() != returnItem.CasepackWidth.Trim())) { returnItem.CasepackWidth = item.CasepackWidth; } // Casepack Width
+            if ((!string.IsNullOrEmpty(item.CasepackWeight)) && (item.CasepackWeight.Trim() != returnItem.CasepackWeight.Trim())) { returnItem.CasepackWeight = item.CasepackWeight; } // Casepack Weight
+            if ((!string.IsNullOrEmpty(item.Category)) && (item.Category.Trim() != returnItem.Category.Trim())) { returnItem.Category = item.Category; } // Category
+            if ((!string.IsNullOrEmpty(item.Category2)) && (item.Category2.Trim() != returnItem.Category2.Trim())) { returnItem.Category2 = item.Category2; } // Category 2
+            if ((!string.IsNullOrEmpty(item.Category3)) && (item.Category3.Trim() != returnItem.Category3.Trim())) { returnItem.Category3 = item.Category3; } // Category 3
+            if ((!string.IsNullOrEmpty(item.Color)) && (item.Color.Trim() != returnItem.Color.Trim())) { returnItem.Color = item.Color; } // Color
+            if ((!string.IsNullOrEmpty(item.Copyright)) && (item.Copyright.Trim() != returnItem.Copyright.Trim())) { returnItem.Copyright = item.Copyright; } // Copyright
+            if ((!string.IsNullOrEmpty(item.CountryOfOrigin)) && (item.CountryOfOrigin.Trim() != returnItem.CountryOfOrigin.Trim())) { returnItem.CountryOfOrigin = item.CountryOfOrigin; } // Country of Origin
+            if ((!string.IsNullOrEmpty(item.CostProfileGroup)) && (item.CostProfileGroup.Trim() != returnItem.CostProfileGroup.Trim())) { returnItem.CostProfileGroup = item.CostProfileGroup; } // Cost Profile Group
+            if ((!string.IsNullOrEmpty(item.DefaultActualCostCad)) && (item.DefaultActualCostCad.Trim() != returnItem.DefaultActualCostCad.Trim())) { returnItem.DefaultActualCostCad = item.DefaultActualCostCad; } // Default Actual Cost CAD
+            if ((!string.IsNullOrEmpty(item.DefaultActualCostUsd)) && (item.DefaultActualCostUsd.Trim() != returnItem.DefaultActualCostUsd.Trim())) { returnItem.DefaultActualCostUsd = item.DefaultActualCostUsd; } // Default Actual Cost USD
+            if ((!string.IsNullOrEmpty(item.Description)) && (item.Description.Trim() != returnItem.Description.Trim())) { returnItem.Description = item.Description; } // Description
+            if ((!string.IsNullOrEmpty(item.DirectImport)) && (item.DirectImport.Trim() != returnItem.DirectImport.Trim())) { returnItem.DirectImport = AssignDirectImport(item.DirectImport); } // Direct Import
+            if ((!string.IsNullOrEmpty(item.DtcPrice)) && (item.DtcPrice.Trim() != returnItem.DtcPrice.Trim())) { returnItem.DtcPrice = item.DtcPrice; } // DTC Price
+            if ((!string.IsNullOrEmpty(item.Duty)) && (item.Duty.Trim() != returnItem.Duty.Trim())) { returnItem.Duty = item.Duty; } // Duty
+            if ((!string.IsNullOrEmpty(item.Ean)) && (item.Ean.Trim() != returnItem.Ean.Trim())) { returnItem.Ean = item.Ean; } // EAN
             if ((!string.IsNullOrEmpty(item.EcommerceAsin)) && (item.EcommerceAsin.Trim() != returnItem.EcommerceAsin.Trim())) { returnItem.EcommerceAsin = item.EcommerceAsin; } // Ecommerce EcommerceAsin
             if ((!string.IsNullOrEmpty(item.EcommerceBullet1)) && (item.EcommerceBullet1.Trim() != returnItem.EcommerceBullet1.Trim())) { returnItem.EcommerceBullet1 = item.EcommerceBullet1; } // Ecommerce Bullet 1
             if ((!string.IsNullOrEmpty(item.EcommerceBullet2)) && (item.EcommerceBullet2.Trim() != returnItem.EcommerceBullet2.Trim())) { returnItem.EcommerceBullet2 = item.EcommerceBullet2; } // Ecommerce Bullet 2
@@ -830,6 +833,7 @@ namespace OdinServices
                 if (string.IsNullOrEmpty(template.CostProfileGroup)) { template.CostProfileGroup = oldTemplate.CostProfileGroup; }
                 if (string.IsNullOrEmpty(template.DefaultActualCostUsd)) { template.DefaultActualCostUsd = oldTemplate.DefaultActualCostUsd; }
                 if (string.IsNullOrEmpty(template.DefaultActualCostCad)) { template.DefaultActualCostCad = oldTemplate.DefaultActualCostCad; }
+                if (string.IsNullOrEmpty(template.DtcPrice)) { template.DtcPrice = oldTemplate.DtcPrice; }
                 if (string.IsNullOrEmpty(template.Duty)) { template.Duty = oldTemplate.Duty; }
                 if (string.IsNullOrEmpty(template.EcommerceBullet1)) { template.EcommerceBullet1 = oldTemplate.EcommerceBullet1; }
                 if (string.IsNullOrEmpty(template.EcommerceBullet2)) { template.EcommerceBullet2 = oldTemplate.EcommerceBullet2; }
@@ -1048,6 +1052,7 @@ namespace OdinServices
                     DefaultActualCostCad = DbUtil.RoundValue4Dec(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.DacCad, WorksheetColumnHeaders.DefaultActualCostCad)),
                     Description = DbUtil.ReplaceCharacters(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Description)).Trim(),
                     DirectImport = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.DirectImport),
+                    DtcPrice = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.DtcPrice), 2),
                     Duty = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Duty),
                     Ean = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ean),
                     EcommerceAsin = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceAsin, WorksheetColumnHeaders.A_Asin),
@@ -1128,7 +1133,7 @@ namespace OdinServices
                     SellOnHouzz = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnHouzz).Trim(),
                     SellOnTarget = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnTarget).Trim(),
                     SellOnTrends = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnTrends).Trim(),
-                    SellOnTrs = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnTrs).Trim(),
+                    SellOnTrs = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnTrs, WorksheetColumnHeaders.SellOnShopTrends).Trim(),
                     SellOnWalmart = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnWalmart).Trim(),
                     SellOnWayfair = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnWayfair).Trim(),
                     ShortDescription = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ShortDescription).Trim(),
@@ -1147,10 +1152,7 @@ namespace OdinServices
                     Weight = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Weight, WorksheetColumnHeaders.ItemWeight), 1),
                     Width = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Width, WorksheetColumnHeaders.ItemWidth), 1)
                 };
-                if (status == "Add")
-                {
-                    item.ProductIdTranslation = ParseChildElementIds(ItemId, ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ProductIdTranslation));
-                }
+                // Load override attributes if admin
                 if (GlobalData.UserPermissions.Contains("ADMIN_CONTROLS"))
                 {
                     item.ItemKeywordsOverride = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ItemKeywordsOverride).Trim();
@@ -1159,6 +1161,7 @@ namespace OdinServices
                 }
                 if (status == "Add")
                 {
+                    item.ProductIdTranslation = ParseChildElementIds(ItemId, ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ProductIdTranslation));
                     string TemplateName = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.TemplateName, WorksheetColumnHeaders.TemplateId);
                     if (!string.IsNullOrEmpty(TemplateName))
                     {
@@ -1206,6 +1209,7 @@ namespace OdinServices
                         CostProfileGroup = worksheetData.GetValue(row, WorksheetColumnHeaders.CostProfileGroup).Trim(),
                         DefaultActualCostUsd = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.DacUsd, WorksheetColumnHeaders.DefaultActualCostUsd).Trim()),
                         DefaultActualCostCad = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.DacCad, WorksheetColumnHeaders.DefaultActualCostCad).Trim()),
+                        DtcPrice = DbUtil.RoundValue2Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.DtcPrice).Trim()),
                         Gpc = worksheetData.GetValue(row, WorksheetColumnHeaders.Gpc).Trim(),
                         Height = worksheetData.GetValue(row, WorksheetColumnHeaders.Height, WorksheetColumnHeaders.ItemHeight).Trim(),
                         InnerpackHeight = DbUtil.RoundValue2Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackHeight).Trim()),
@@ -2297,6 +2301,9 @@ namespace OdinServices
             // Direct Import //
             validationError =ValidateDirectImport(var);
             if (validationError != null) { ErrorList.Add(validationError); }
+            // DTC Price //
+            validationError = ValidateDtcPrice(var);
+            if (validationError != null) { ErrorList.Add(validationError); }
             // Duty //
             validationError =ValidateDuty(var);
             if (validationError != null) { ErrorList.Add(validationError); }
@@ -3099,7 +3106,7 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             OdinServices.Properties.Resources.Error_Required,
-                            "Country of Origin");
+                            "Country Of Origin");
                     }
                 }
                 if (var.CountryOfOrigin.Length > 3)
@@ -3108,7 +3115,7 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "3 characters.",
-                        "Country of Origin");
+                        "Country Of Origin");
 
                 }
                 if (!DbUtil.ContainsOnlyAZ(var.CountryOfOrigin))
@@ -3117,7 +3124,7 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value conatins invalid charachters. (Country of Origin can only use charachters A-Z)",
-                        "Country of Origin");
+                        "Country Of Origin");
                 }
                 if (!GlobalData.ReturnCountryofOriginCodes().Contains(var.CountryOfOrigin))
                 {
@@ -3125,7 +3132,7 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NoMatch,
-                        "Country of Origin");
+                        "Country Of Origin");
                 }
             }
             return null;
@@ -3296,6 +3303,54 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Validates the Dtc Price field. Returns ItemError or null if no error exists.
+        /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
+        public ItemError ValidateDtcPrice(ItemObject var)
+        {
+            if (!string.IsNullOrEmpty(var.DtcPrice))
+            {
+                if (var.DtcPrice.Length > 9)
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        OdinServices.Properties.Resources.Error_LengthMax + "9 characters.",
+                        "Dtc Price");
+                }
+                if (!DbUtil.IsNumber(var.DtcPrice))
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        OdinServices.Properties.Resources.Error_NonNumeric,
+                        "Dtc Price");
+                }
+            }
+            else
+            {
+                if (var.SellOnTrs == "Y")
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Required if Sell on Shop Trends is set to 'Y'.",
+                        "Dtc Price");                    
+                }
+                if (var.ProductLine == "Poster Frame" && var.ItemId.Substring(0, 3) == "POD")
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Required if product line = Poster Frame and item Id starts with 'POD'.",
+                        "Dtc Price");
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
         ///     Validates the Duty field. Returns ItemError or null if no error exists.
         /// </summary>
         /// <param name="value"></param>
@@ -3411,7 +3466,6 @@ namespace OdinServices
             }
             return null;
         }
-
 
         /// <summary>
         ///     Validates the EcommerceBullet Validation field. Returns ItemError or null if no error exists.
@@ -5080,6 +5134,14 @@ namespace OdinServices
                         OdinServices.Properties.Resources.Error_LengthMax + "10 characters.",
                         name);
                 }
+                if (!DbUtil.IsNumber(value))
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        OdinServices.Properties.Resources.Error_NonNumeric,
+                        name);
+                }
                 if (string.IsNullOrEmpty(value))
                 {
                     if (!CheckGreaterThanZero(var.ListPriceUsd))
@@ -5094,14 +5156,6 @@ namespace OdinServices
                             OdinServices.Properties.Resources.Error_Required,
                             name);
                     }
-                }
-                if (!DbUtil.IsNumber(value))
-                {
-                    return new ItemError(
-                        var.ItemId,
-                        var.ItemRow,
-                        OdinServices.Properties.Resources.Error_NonNumeric,
-                        name);
                 }
             }
             return null;

@@ -390,7 +390,6 @@ namespace Odin.ViewModels
                     if (requestType != "Remove")
                     {
                         item = ItemService.RetrieveItem(request.ItemId, count);
-
                     }
                     else
                     {

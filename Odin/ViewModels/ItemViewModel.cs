@@ -251,7 +251,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._accountingGroupToolTip = value;
+                _accountingGroupToolTip = value;
                 OnPropertyChanged("AccountingGroupToolTip");
             }
         }
@@ -309,7 +309,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._billOfMaterialsToolTip = value;
+                _billOfMaterialsToolTip = value;
                 OnPropertyChanged("BillOfMaterialsToolTip");
             }
         }
@@ -367,7 +367,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._casepackHeightToolTip = value;
+                _casepackHeightToolTip = value;
                 OnPropertyChanged("CasepackHeightToolTip");
             }
         }
@@ -425,7 +425,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._casepackLengthToolTip = value;
+                _casepackLengthToolTip = value;
                 OnPropertyChanged("CasepackLengthToolTip");
             }
         }
@@ -483,7 +483,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._casepackQtyToolTip = value;
+                _casepackQtyToolTip = value;
                 OnPropertyChanged("CasepackQtyToolTip");
             }
         }
@@ -541,7 +541,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this.__casepackUpcToolTip = value;
+                __casepackUpcToolTip = value;
                 OnPropertyChanged("CasepackUpcToolTip");
             }
         }
@@ -599,7 +599,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._casepackWidthToolTip = value;
+                _casepackWidthToolTip = value;
                 OnPropertyChanged("CasepackWidthToolTip");
             }
         }
@@ -657,7 +657,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._casepackWeightToolTip = value;
+                _casepackWeightToolTip = value;
                 OnPropertyChanged("CasepackWeightToolTip");
             }
         }
@@ -715,7 +715,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._colorToolTip = value;
+                _colorToolTip = value;
                 OnPropertyChanged("ColorToolTip");
             }
         }
@@ -773,7 +773,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._costProfileGroupToolTip = value;
+                _costProfileGroupToolTip = value;
                 OnPropertyChanged("CostProfileGroupToolTip");
             }
         }
@@ -831,7 +831,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._countryOfOriginToolTip = value;
+                _countryOfOriginToolTip = value;
                 OnPropertyChanged("CountryOfOriginToolTip");
             }
         }
@@ -889,7 +889,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._defaultActualCostUsdToolTip = value;
+                _defaultActualCostUsdToolTip = value;
                 OnPropertyChanged("DefaultActualCostUsdToolTip");
             }
         }
@@ -947,7 +947,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._defaultActualCostCadToolTip = value;
+                _defaultActualCostCadToolTip = value;
                 OnPropertyChanged("DefaultActualCostCadToolTip");
             }
         }
@@ -1005,7 +1005,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._descriptionToolTip = value;
+                _descriptionToolTip = value;
                 OnPropertyChanged("DescriptionToolTip");
             }
         }
@@ -1063,11 +1063,69 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._directImportToolTip = value;
+                _directImportToolTip = value;
                 OnPropertyChanged("DirectImportToolTip");
             }
         }
         private string _directImportToolTip = string.Empty;
+
+        public string DtcPrice
+        {
+            get
+            {
+                return this.ItemViewModelItem.DtcPrice.ToString();
+            }
+            set
+            {
+                if (this.ItemViewModelItem.DtcPrice != value)
+                {
+                    this.ItemViewModelItem.DtcPrice = value;
+                    FlagError("DtcPrice");
+                    OnPropertyChanged("DtcPrice");
+                }
+            }
+        }
+        public string DtcPriceBoxColor
+        {
+            get
+            {
+                return _dtcPriceBoxColor;
+            }
+            set
+            {
+                _dtcPriceBoxColor = value;
+                OnPropertyChanged("DtcPriceBoxColor");
+            }
+        }
+        private string _dtcPriceBoxColor = "White";
+        public string DtcPriceError
+        {
+            get
+            {
+                return _dtcPriceError;
+            }
+            set
+            {
+                _dtcPriceError = value;
+                this.DtcPriceBoxColor = ReturnErrorColor(value);
+                this.TabColorItemInfo = CheckItemInfoTabColor();
+                OnPropertyChanged("DtcPriceError");
+            }
+        }
+        private string _dtcPriceError = string.Empty;
+        public string DtcPriceToolTip
+        {
+            get
+            {
+                return _dtcPriceToolTip;
+            }
+            set
+            {
+                _dtcPriceToolTip = value;
+                OnPropertyChanged("DtcPriceToolTip");
+            }
+        }
+        private string _dtcPriceToolTip = string.Empty;
 
         public string Ean
         {
@@ -1121,7 +1179,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._eanToolTip = value;
+                _eanToolTip = value;
                 OnPropertyChanged("EanToolTip");
             }
         }
@@ -1179,7 +1237,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._dutyToolTip = value;
+                _dutyToolTip = value;
                 OnPropertyChanged("DutyToolTip");
             }
         }
@@ -1237,7 +1295,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._gpcToolTip = value;
+                _gpcToolTip = value;
                 OnPropertyChanged("GpcToolTip");
             }
         }
@@ -1295,7 +1353,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._heightToolTip = value;
+                _heightToolTip = value;
                 OnPropertyChanged("HeightToolTip");
             }
         }
@@ -1353,7 +1411,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._innerpackHeightToolTip = value;
+                _innerpackHeightToolTip = value;
                 OnPropertyChanged("InnerpackHeightToolTip");
             }
         }
@@ -1411,7 +1469,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._innerpackLengthToolTip = value;
+                _innerpackLengthToolTip = value;
                 OnPropertyChanged("InnerpackLengthToolTip");
             }
         }
@@ -1469,7 +1527,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._innerpackQuantityToolTip = value;
+                _innerpackQuantityToolTip = value;
                 OnPropertyChanged("InnerpackQuantityToolTip");
             }
         }
@@ -1527,7 +1585,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._innerpackUpcToolTip = value;
+                _innerpackUpcToolTip = value;
                 OnPropertyChanged("InnerpackUpcToolTip");
             }
         }
@@ -1585,7 +1643,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._innerpackWeightToolTip = value;
+                _innerpackWeightToolTip = value;
                 OnPropertyChanged("InnerpackWeightToolTip");
             }
         }
@@ -1643,7 +1701,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._innerpackWidthToolTip = value;
+                _innerpackWidthToolTip = value;
                 OnPropertyChanged("InnerpackWidthToolTip");
             }
         }
@@ -1701,7 +1759,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._isbnToolTip = value;
+                _isbnToolTip = value;
                 OnPropertyChanged("IsbnToolTip");
             }
         }
@@ -1759,7 +1817,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._itemCategoryToolTip = value;
+                _itemCategoryToolTip = value;
                 OnPropertyChanged("ItemCategoryToolTip");
             }
         }
@@ -1817,7 +1875,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._itemFamilyToolTip = value;
+                _itemFamilyToolTip = value;
                 OnPropertyChanged("ItemFamilyToolTip");
             }
         }
@@ -1875,7 +1933,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._itemGroupToolTip = value;
+                _itemGroupToolTip = value;
                 OnPropertyChanged("ItemGroupToolTip");
             }
         }
@@ -1933,7 +1991,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._itemIdToolTip = value;
+                _itemIdToolTip = value;
                 OnPropertyChanged("ItemIdToolTip");
             }
         }
@@ -2003,7 +2061,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._languageToolTip = value;
+                _languageToolTip = value;
                 OnPropertyChanged("LanguageToolTip");
             }
         }
@@ -2061,7 +2119,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._lengthToolTip = value;
+                _lengthToolTip = value;
                 OnPropertyChanged("LengthToolTip");
             }
         }
@@ -2119,7 +2177,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._licenseBeginDateToolTip = value;
+                _licenseBeginDateToolTip = value;
                 OnPropertyChanged("LicenseBeginDateToolTip");
             }
         }
@@ -2166,7 +2224,7 @@ namespace Odin.ViewModels
             set
             {
                 _listPriceCadError = value;
-                this._listPriceCadBoxColor = ReturnErrorColor(value, "AliceBlue");
+                this.ListPriceCadBoxColor = ReturnErrorColor(value, "AliceBlue");
                 this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ListPriceCadError");
             }
@@ -2180,7 +2238,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._listPriceCadToolTip = value;
+                _listPriceCadToolTip = value;
                 OnPropertyChanged("ListPriceCadToolTip");
             }
         }
@@ -2241,7 +2299,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._listPriceMxnToolTip = value;
+                _listPriceMxnToolTip = value;
                 OnPropertyChanged("ListPriceMxnToolTip");
             }
         }
@@ -2302,7 +2360,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._listPriceUsdToolTip = value;
+                _listPriceUsdToolTip = value;
                 OnPropertyChanged("ListPriceUsdToolTip");
             }
         }
@@ -2363,7 +2421,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._mfgSourceToolTip = value;
+                _mfgSourceToolTip = value;
                 OnPropertyChanged("MfgSourceToolTip");
             }
         }
@@ -2424,7 +2482,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._msrpToolTip = value;
+                _msrpToolTip = value;
                 OnPropertyChanged("MsrpToolTip");
             }
         }
@@ -2485,7 +2543,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._msrpCadToolTip = value;
+                _msrpCadToolTip = value;
                 OnPropertyChanged("MsrpCadToolTip");
             }
         }
@@ -2546,7 +2604,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._msrpMxnToolTip = value;
+                _msrpMxnToolTip = value;
                 OnPropertyChanged("MsrpMxnToolTip");
             }
         }
@@ -2607,7 +2665,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._pricingGroupToolTip = value;
+                _pricingGroupToolTip = value;
                 OnPropertyChanged("PricingGroupToolTip");
             }
         }
@@ -2668,7 +2726,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._printOnDemandToolTip = value;
+                _printOnDemandToolTip = value;
                 OnPropertyChanged("PrintOnDemandToolTip");
             }
         }
@@ -2729,7 +2787,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._productFormatToolTip = value;
+                _productFormatToolTip = value;
                 OnPropertyChanged("ProductFormatToolTip");
             }
         }
@@ -2790,7 +2848,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._productGroupToolTip = value;
+                _productGroupToolTip = value;
                 OnPropertyChanged("    ToolTip");
             }
         }
@@ -2851,7 +2909,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._productIdTranslationToolTip = value;
+                _productIdTranslationToolTip = value;
                 OnPropertyChanged("ProductIdTranslationToolTip");
             }
         }
@@ -2912,7 +2970,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._productLineToolTip = value;
+                _productLineToolTip = value;
                 OnPropertyChanged("ProductLineToolTip");
             }
         }
@@ -2986,7 +3044,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._productQtyToolTip = value;
+                _productQtyToolTip = value;
                 OnPropertyChanged("ProductQtyToolTip");
             }
         }
@@ -3047,7 +3105,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._psStatusToolTip = value;
+                _psStatusToolTip = value;
                 OnPropertyChanged("PsStatusToolTip");
             }
         }
@@ -3108,7 +3166,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._satCodeToolTip = value;
+                _satCodeToolTip = value;
                 OnPropertyChanged("SatCodeToolTip");
             }
         }
@@ -3169,7 +3227,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._sellOnAllPostersToolTip = value;
+                _sellOnAllPostersToolTip = value;
                 OnPropertyChanged("SellOnAllPostersToolTip");
             }
         }
@@ -3230,7 +3288,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._sellOnAmazonToolTip = value;
+                _sellOnAmazonToolTip = value;
                 OnPropertyChanged("SellOnAmazonToolTip");
             }
         }
@@ -3292,7 +3350,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._sellOnAmazonSellerCentralToolTip = value;
+                _sellOnAmazonSellerCentralToolTip = value;
                 OnPropertyChanged("SellOnAmazonSellerCentralToolTip");
             }
         }
@@ -3353,7 +3411,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._sellOnEcommerceToolTip = value;
+                _sellOnEcommerceToolTip = value;
                 OnPropertyChanged("SellOnEcommerceToolTip");
             }
         }
@@ -3414,7 +3472,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._sellOnFanaticsToolTip = value;
+                _sellOnFanaticsToolTip = value;
                 OnPropertyChanged("SellOnFanaticsToolTip");
             }
         }
@@ -3476,7 +3534,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._sellOnGuitarCenterToolTip = value;
+                _sellOnGuitarCenterToolTip = value;
                 OnPropertyChanged("SellOnGuitarCenterToolTip");
             }
         }
@@ -3537,7 +3595,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._sellOnHayneedleToolTip = value;
+                _sellOnHayneedleToolTip = value;
                 OnPropertyChanged("SellOnHayneedleToolTip");
             }
         }
@@ -3598,7 +3656,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._sellOnHouzzToolTip = value;
+                _sellOnHouzzToolTip = value;
                 OnPropertyChanged("SellOnHouzzToolTip");
             }
         }
@@ -3659,7 +3717,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._sellOnTargetToolTip = value;
+                _sellOnTargetToolTip = value;
                 OnPropertyChanged("SellOnTargetToolTip");
             }
         }
@@ -3720,7 +3778,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this.__sellOnTrendsToolTip = value;
+                __sellOnTrendsToolTip = value;
                 OnPropertyChanged("SellOnTrendsToolTip");
             }
         }
@@ -3781,7 +3839,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._sellOnTrsToolTip = value;
+                _sellOnTrsToolTip = value;
                 OnPropertyChanged("SellOnTrsToolTip");
             }
         }
@@ -3842,7 +3900,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this.__sellOnWalmartToolTip = value;
+                __sellOnWalmartToolTip = value;
                 OnPropertyChanged("SellOnWalmartToolTip");
             }
         }
@@ -3903,7 +3961,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this.__sellOnWayfairToolTip = value;
+                __sellOnWayfairToolTip = value;
                 OnPropertyChanged("SellOnWayfairToolTip");
             }
         }
@@ -3964,7 +4022,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._standardCostToolTip = value;
+                _standardCostToolTip = value;
                 OnPropertyChanged("StandardCostToolTip");
             }
         }
@@ -4025,7 +4083,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._statsCodeToolTip = value;
+                _statsCodeToolTip = value;
                 OnPropertyChanged("StatsCodeToolTip");
             }
         }
@@ -4101,7 +4159,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._tariffCodeToolTip = value;
+                _tariffCodeToolTip = value;
                 OnPropertyChanged("TariffCodeToolTip");
             }
         }
@@ -4163,7 +4221,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._territoryToolTip = value;
+                _territoryToolTip = value;
                 OnPropertyChanged("TerritoryToolTip");
             }
         }
@@ -4224,7 +4282,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._udexToolTip = value;
+                _udexToolTip = value;
                 OnPropertyChanged("UdexToolTip");
             }
         }
@@ -4468,7 +4526,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._weightToolTip = value;
+                _weightToolTip = value;
                 OnPropertyChanged("WeightToolTip");
             }
         }
@@ -4529,7 +4587,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._widthToolTip = value;
+                _widthToolTip = value;
                 OnPropertyChanged("WidthToolTip");
             }
         }
@@ -4594,7 +4652,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._copyrightToolTip = value;
+                _copyrightToolTip = value;
                 OnPropertyChanged("CopyrightToolTip");
             }
         }
@@ -4655,7 +4713,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._inStockDateToolTip = value;
+                _inStockDateToolTip = value;
                 OnPropertyChanged("InStockDateToolTip");
             }
         }
@@ -4716,7 +4774,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._categoryToolTip = value;
+                _categoryToolTip = value;
                 OnPropertyChanged("CategoryToolTip");
             }
         }
@@ -4777,7 +4835,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._category2ToolTip = value;
+                _category2ToolTip = value;
                 OnPropertyChanged("Category2ToolTip");
             }
         }
@@ -4838,7 +4896,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._category3ToolTip = value;
+                _category3ToolTip = value;
                 OnPropertyChanged("Category3ToolTip");
             }
         }
@@ -4899,7 +4957,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._itemKeywordsErrorToolTip = value;
+                _itemKeywordsErrorToolTip = value;
                 OnPropertyChanged("ItemKeywordsToolTip");
             }
         }
@@ -4960,7 +5018,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._titleToolTip = value;
+                _titleToolTip = value;
                 OnPropertyChanged("TitleToolTip");
             }
         }
@@ -5021,7 +5079,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._licenseToolTip = value;
+                _licenseToolTip = value;
                 OnPropertyChanged("LicenseToolTip");
             }
         }
@@ -5082,7 +5140,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._metaDescriptionToolTip = value;
+                _metaDescriptionToolTip = value;
                 OnPropertyChanged("MetaDescriptionToolTip");
             }
         }
@@ -5143,7 +5201,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._propertyToolTip = value;
+                _propertyToolTip = value;
                 OnPropertyChanged("PropertyToolTip");
             }
         }
@@ -5204,7 +5262,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._shortDescriptionToolTip = value;
+                _shortDescriptionToolTip = value;
                 OnPropertyChanged("ShortDescriptionToolTip");
             }
         }
@@ -5265,7 +5323,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._sizeToolTip = value;
+                _sizeToolTip = value;
                 OnPropertyChanged("SizeToolTip");
             }
         }
@@ -5326,7 +5384,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._websitePriceToolTip = value;
+                _websitePriceToolTip = value;
                 OnPropertyChanged("WebsitePriceToolTip");
             }
         }
@@ -5391,7 +5449,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._AltImageFile1ToolTip = value;
+                _AltImageFile1ToolTip = value;
                 OnPropertyChanged("AltImageFile1ToolTip");
             }
         }
@@ -5452,7 +5510,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._AltImageFile2ToolTip = value;
+                _AltImageFile2ToolTip = value;
                 OnPropertyChanged("AltImageFile2ToolTip");
             }
         }
@@ -5513,7 +5571,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._AltImageFile3ToolTip = value;
+                _AltImageFile3ToolTip = value;
                 OnPropertyChanged("AltImageFile3ToolTip");
             }
         }
@@ -5574,7 +5632,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._AltImageFile4ToolTip = value;
+                _AltImageFile4ToolTip = value;
                 OnPropertyChanged("AltImageFile4ToolTip");
             }
         }
@@ -5635,7 +5693,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._ImagePathToolTip = value;
+                _ImagePathToolTip = value;
                 OnPropertyChanged("ImagePathToolTip");
             }
         }
@@ -5700,7 +5758,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommerceAsinToolTip = value;
+                _EcommerceAsinToolTip = value;
                 OnPropertyChanged("EcommerceAsinToolTip");
             }
         }
@@ -5761,7 +5819,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._Ecommercebullet1ToolTip = value;
+                _Ecommercebullet1ToolTip = value;
                 OnPropertyChanged("EcommerceBullet1ToolTip");
             }
         }
@@ -5822,7 +5880,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._Ecommercebullet2ToolTip = value;
+                _Ecommercebullet2ToolTip = value;
                 OnPropertyChanged("EcommerceBullet2ToolTip");
             }
         }
@@ -5883,7 +5941,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._Ecommercebullet3ToolTip = value;
+                _Ecommercebullet3ToolTip = value;
                 OnPropertyChanged("EcommerceBullet3ToolTip");
             }
         }
@@ -5944,7 +6002,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._Ecommercebullet4ToolTip = value;
+                _Ecommercebullet4ToolTip = value;
                 OnPropertyChanged("EcommerceBullet4ToolTip");
             }
         }
@@ -6005,7 +6063,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._Ecommercebullet5ToolTip = value;
+                _Ecommercebullet5ToolTip = value;
                 OnPropertyChanged("EcommerceBullet5ToolTip");
             }
         }
@@ -6066,7 +6124,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommercecomponentsToolTip = value;
+                _EcommercecomponentsToolTip = value;
                 OnPropertyChanged("EcommerceComponentsToolTip");
             }
         }
@@ -6127,7 +6185,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommerceCostToolTip = value;
+                _EcommerceCostToolTip = value;
                 OnPropertyChanged("EcommerceCostToolTip");
             }
         }
@@ -6188,7 +6246,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommerceExternalIDToolTip = value;
+                _EcommerceExternalIDToolTip = value;
                 OnPropertyChanged("EcommerceExternalIdToolTip");
             }
         }
@@ -6249,7 +6307,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommerceExternalIdTypeToolTip = value;
+                _EcommerceExternalIdTypeToolTip = value;
                 OnPropertyChanged("EcommerceExternalIdTypeToolTip");
             }
         }
@@ -6405,7 +6463,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommerceItemHeightToolTip = value;
+                _EcommerceItemHeightToolTip = value;
                 OnPropertyChanged("EcommerceItemHeightToolTip");
             }
         }
@@ -6466,7 +6524,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommerceItemLengthToolTip = value;
+                _EcommerceItemLengthToolTip = value;
                 OnPropertyChanged("EcommerceItemLengthToolTip");
             }
         }
@@ -6527,7 +6585,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommerceItemNameToolTip = value;
+                _EcommerceItemNameToolTip = value;
                 OnPropertyChanged("EcommerceItemNameToolTip");
             }
         }
@@ -6588,7 +6646,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommerceItemTypeKeywordsToolTip = value;
+                _EcommerceItemTypeKeywordsToolTip = value;
                 OnPropertyChanged("EcommerceItemTypeKeywordsToolTip");
             }
         }
@@ -6649,7 +6707,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommerceItemWeightToolTip = value;
+                _EcommerceItemWeightToolTip = value;
                 OnPropertyChanged("EcommerceItemWeightToolTip");
             }
         }
@@ -6710,7 +6768,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommerceItemWidthToolTip = value;
+                _EcommerceItemWidthToolTip = value;
                 OnPropertyChanged("EcommerceItemWidthToolTip");
             }
         }
@@ -6771,7 +6829,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommerceModelNameToolTip = value;
+                _EcommerceModelNameToolTip = value;
                 OnPropertyChanged("EcommerceModelNameToolTip");
             }
         }
@@ -6832,7 +6890,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommercePackageHeightToolTip = value;
+                _EcommercePackageHeightToolTip = value;
                 OnPropertyChanged("EcommercePackageHeightToolTip");
             }
         }
@@ -6893,7 +6951,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommercePackageLengthToolTip = value;
+                _EcommercePackageLengthToolTip = value;
                 OnPropertyChanged("EcommercePackageLengthToolTip");
             }
         }
@@ -6954,7 +7012,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommercePackageWeightToolTip = value;
+                _EcommercePackageWeightToolTip = value;
                 OnPropertyChanged("EcommercePackageWeightToolTip");
             }
         }
@@ -7015,7 +7073,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommercePackageWidthToolTip = value;
+                _EcommercePackageWidthToolTip = value;
                 OnPropertyChanged("EcommercePackageWidthToolTip");
             }
         }
@@ -7076,7 +7134,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommercePageQtyToolTip = value;
+                _EcommercePageQtyToolTip = value;
                 OnPropertyChanged("EcommercePageQtyToolTip");
             }
         }
@@ -7137,7 +7195,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._ecommerceParentAsinToolTip = value;
+                _ecommerceParentAsinToolTip = value;
                 OnPropertyChanged("EcommerceParentAsinToolTip");
             }
         }
@@ -7198,7 +7256,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommerceProductCategoryToolTip = value;
+                _EcommerceProductCategoryToolTip = value;
                 OnPropertyChanged("EcommerceProductCategoryToolTip");
             }
         }
@@ -7259,7 +7317,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommerceProductDescriptionToolTip = value;
+                _EcommerceProductDescriptionToolTip = value;
                 OnPropertyChanged("EcommerceProductDescriptionToolTip");
             }
         }
@@ -7320,7 +7378,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommerceProductSubcategoryToolTip = value;
+                _EcommerceProductSubcategoryToolTip = value;
                 OnPropertyChanged("EcommerceProductSubcategoryToolTip");
             }
         }
@@ -7381,7 +7439,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommerceManufacturerNameToolTip = value;
+                _EcommerceManufacturerNameToolTip = value;
                 OnPropertyChanged("EcommerceManufacturerNameToolTip");
             }
         }
@@ -7442,7 +7500,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommerceMsrpToolTip = value;
+                _EcommerceMsrpToolTip = value;
                 OnPropertyChanged("EcommerceMsrpToolTip");
             }
         }
@@ -7503,7 +7561,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommerceGenericKeywordsToolTip = value;
+                _EcommerceGenericKeywordsToolTip = value;
                 OnPropertyChanged("EcommerceGenericKeywordsToolTip");
             }
         }
@@ -7564,7 +7622,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommercesizeToolTip = value;
+                _EcommercesizeToolTip = value;
                 OnPropertyChanged("EcommerceSizeToolTip");
             }
         }
@@ -7625,7 +7683,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._EcommerceSubjectKeywordsToolTip = value;
+                _EcommerceSubjectKeywordsToolTip = value;
                 OnPropertyChanged("EcommerceSubjectKeywordsToolTip");
             }
         }
@@ -7751,7 +7809,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._ItemKeywordsOverrideErrorToolTip = value;
+                _ItemKeywordsOverrideErrorToolTip = value;
                 OnPropertyChanged("ItemKeywordsOverrideToolTip");
             }
         }
@@ -7812,7 +7870,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._TitleOverrideToolTip = value;
+                _TitleOverrideToolTip = value;
                 OnPropertyChanged("TitleOverrideToolTip");
             }
         }
@@ -7873,7 +7931,7 @@ namespace Odin.ViewModels
             }
             set
             {
-                this._WebsitePriceOverrideToolTip = value;
+                _WebsitePriceOverrideToolTip = value;
                 OnPropertyChanged("WebsitePriceOverrideToolTip");
             }
         }
@@ -8264,6 +8322,10 @@ namespace Odin.ViewModels
 
                 case "Direct Import":
                     this.DirectImportError = error.ReturnErrorMessage();
+                    break;
+
+                case "DtcPrice":
+                    this.DtcPriceError = error.ReturnErrorMessage();
                     break;
 
                 case "Duty":
@@ -8955,6 +9017,10 @@ namespace Odin.ViewModels
                     this.DutyError = ItemService.ValidateDuty(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
+                case "DtcPrice":
+                    this.DtcPriceError = ItemService.ValidateDtcPrice(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    break;
+
                 case "Ean":
                     this.EanError = ItemService.ValidateEan(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
@@ -9328,6 +9394,7 @@ namespace Odin.ViewModels
 
                 case "SellOnTrsCheck":
                     this.SellOnTrsError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Trs")?.ReturnErrorMessage() ?? "";
+                    this.DtcPriceError = ItemService.ValidateDtcPrice(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "SellOnWalmartCheck":
@@ -9447,18 +9514,11 @@ namespace Odin.ViewModels
         /// <param name="value">error message</param>
         /// <param name="baseColor">base color if something other than default white</param>
         /// <returns>Either White / baseColor if no error exists or Tomato if error does exist</returns>
-        public string ReturnErrorColor(string value, string baseColor = null)
+        public string ReturnErrorColor(string value, string baseColor = "White")
         {
             if (value == "")
             {
-                if (baseColor != null)
-                {
-                    return "White";
-                }
-                else
-                {
-                    return baseColor;
-                }
+                return baseColor;
             }
             else
                 return "Tomato";
@@ -9622,6 +9682,7 @@ namespace Odin.ViewModels
             this.DefaultActualCostCadToolTip = ReturnToolTip("DefaultActualCost");
             this.DescriptionToolTip = ReturnToolTip("Description");
             this.DirectImportToolTip = ReturnToolTip("DirectImport");
+            this.DtcPriceToolTip = ReturnToolTip("DtcPrice");
             this.DutyToolTip = ReturnToolTip("Duty");
             this.EanToolTip = ReturnToolTip("Ean");
             this.EcommerceAsinToolTip = ReturnToolTip("EcommerceAsin");

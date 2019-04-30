@@ -873,6 +873,19 @@ namespace OdinModels
         }
         private static bool _directImportVisibility = true;
 
+        public static bool DtcPriceVisibility
+        {
+            get
+            {
+                return _dtcPriceVisibility;
+            }
+            set
+            {
+                _dtcPriceVisibility = value;
+            }
+        }
+        private static bool _dtcPriceVisibility = true;
+
         public static bool DutyVisibility
         {
             get

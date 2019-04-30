@@ -21,9 +21,9 @@ GO
 /*
 sp_help ODIN_TOOL_TIPS
 SELECT * FROM ODIN_TOOL_TIPS
-
+INSERT INTO [ODIN_TOOL_TIPS] VALUES ('Dtc Price','Price for items being sold on ShopTrends.com.')
 INSERT INTO [ODIN_TOOL_TIPS] VALUES ('WebsitePrice','')
-INSERT INTO [ODIN_TOOL_TIPS] VALUES ('SellOnTrs','Must be set to Y if this item is being sold on TRS')
+INSERT INTO [ODIN_TOOL_TIPS] VALUES ('SellOnTrs','Set to Y if this item is being sold on Shop Trends')
 INSERT INTO [ODIN_TOOL_TIPS] VALUES ('SellOnWayfair','Must be set to Y if this item is being sold on Wayfair.com')
 INSERT INTO [ODIN_TOOL_TIPS] VALUES ('SellOnGuitarCenter','Must be set to Y if this item is being sold on GuitarCenter.com')
 INSERT INTO [ODIN_TOOL_TIPS] VALUES ('SellOnAmazonSellerCentral','Must be set to Y if this item is being sold on Amazon Seller Central')

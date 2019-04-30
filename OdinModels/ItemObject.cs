@@ -547,6 +547,24 @@ namespace OdinModels
         private string _directImport = string.Empty;
 
         /// <summary>
+        ///     Gets or sets the DTC Price
+        /// </summary>
+        public string DtcPrice
+        {
+            get
+            {
+                return _dtcPrice;
+            }
+            set
+            {
+                if (_dtcPrice != value) { DtcPriceUpdate = true; }
+                _dtcPrice = value;
+                OnPropertyChanged("DtcPrice");
+            }
+        }
+        private string _dtcPrice = string.Empty;
+
+        /// <summary>
         ///     Gets or sets the Duty
         /// </summary>
         public string Duty
@@ -559,10 +577,7 @@ namespace OdinModels
             {
                 if (_duty != value) { DutyUpdate = true; }
                 _duty = value;
-                OnPropertyChanged
-
-                    ("Duty");
-
+                OnPropertyChanged("Duty");
             }
         }
         private string _duty = string.Empty;
@@ -3103,6 +3118,7 @@ namespace OdinModels
                     this.CasepackWeightUpdate ||
                     this.CasepackWidthUpdate ||
                     this.DirectImportUpdate ||
+                    this.DtcPriceUpdate ||
                     this.ImagePathUpdate ||
                     this.InnerpackHeightUpdate ||
                     this.InnerpackLengthUpdate ||
@@ -3353,6 +3369,7 @@ namespace OdinModels
                     this.SellOnHayneedleUpdate ||
                     this.SellOnHouzzUpdate ||
                     this.SellOnTargetUpdate ||
+                    this.SellOnTrsUpdate ||
                     this.SellOnWalmartUpdate ||
                     this.SellOnWayfairUpdate)
                 {
@@ -3476,6 +3493,11 @@ namespace OdinModels
         ///     DirectImportUpdate update flag
         /// </summary>
         public bool DirectImportUpdate = false;
+
+        /// <summary>
+        ///     DtcPriceUpdate update flag
+        /// </summary>
+        public bool DtcPriceUpdate = false;
 
         /// <summary>
         ///     DutyUpdate update flag
@@ -4288,8 +4310,12 @@ namespace OdinModels
             }
             if (value != string.Empty)
             {
-                string[] words = value.Split('\\');
-                return words[words.Length - 1];
+                int idx = value.LastIndexOf("/");
+                if (idx != -1)
+                {
+                    return value.Substring(idx + 1);
+                }
+                return value;
             }
             else return "";
         }
@@ -4362,6 +4388,7 @@ namespace OdinModels
                 this.DefaultActualCostCad = item.DefaultActualCostCad;
                 this.Description = item.Description;
                 this.DirectImport = item.DirectImport;
+                this.DtcPrice = item.DtcPrice;
                 this.Duty = item.Duty;
                 this.Ean = item.Ean;
                 this.EcommerceAsin = item.EcommerceAsin;

@@ -576,6 +576,7 @@ namespace Odin.Data
                     CasepackWidth = DbUtil.ToDecimal(item.CasepackWidth),
                     CasepackWeight = DbUtil.ToDecimal(item.CasepackWeight),
                     DirectImport = item.DirectImport,
+                    DtcPrice = DbUtil.ToDecimal(item.DtcPrice),
                     Duty = item.Duty,
                     Gtin = "",
                     ImageFileName = item.ImagePath,
@@ -1612,6 +1613,7 @@ namespace Odin.Data
                         DefaultActualCostUsd = (odinItem.DefaultActualCostUsd != null) ? DbUtil.ZeroTrim(odinItem.DefaultActualCostUsd.ToString(), 2) : "",
                         Description = (!string.IsNullOrEmpty(odinItem.Descr60)) ? odinItem.Descr60.Trim() : "",
                         DirectImport = (!string.IsNullOrEmpty(odinItem.DirectImport)) ? odinItem.DirectImport.Trim() : "",
+                        DtcPrice = (!string.IsNullOrEmpty(odinItem.DtcPrice)) ? odinItem.DtcPrice.Trim() : "",
                         Duty = (!string.IsNullOrEmpty(odinItem.Duty)) ? odinItem.Duty.Trim() : "",
                         Ean = (!string.IsNullOrEmpty(odinItem.Ean)) ? odinItem.Ean.Trim() : "",
                         EcommerceAsin = (!string.IsNullOrEmpty(odinItem.EcommerceAsin)) ? odinItem.EcommerceAsin.Trim() : "",
@@ -2536,6 +2538,7 @@ namespace Odin.Data
                 itemAttribEx.CasepackWidth = DbUtil.ToDecimal(item.CasepackWidth);
                 itemAttribEx.CasepackWeight = DbUtil.ToDecimal(item.CasepackWeight);
                 itemAttribEx.DirectImport = item.DirectImport;
+                itemAttribEx.DtcPrice = DbUtil.ToDecimal(item.DtcPrice);
                 itemAttribEx.Duty = item.Duty;
                 itemAttribEx.ImageFileName = item.ImagePath;
                 itemAttribEx.InnerpackHeight = DbUtil.ToDecimal(item.InnerpackHeight);

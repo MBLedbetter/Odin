@@ -3385,7 +3385,77 @@ namespace Odin.ViewModels
             }
         }
         private string _category3ToolTip = string.Empty;
-                
+
+        public string DtcPrice
+        {
+            get
+            {
+                if (this.TemplateObject.DtcPrice != string.Empty)
+                {
+                    return this.TemplateObject.DtcPrice.ToString();
+                }
+                else return "";
+            }
+            set
+            {
+                if (this.TemplateObject.DtcPrice != value)
+                {
+                    this.TemplateObject.DtcPrice = value;
+                    FlagError("DtcPrice");
+                    OnPropertyChanged("DtcPrice");
+                }
+            }
+        }
+        public string DtcPriceBoxColor
+        {
+            get
+            {
+                return _dtcPriceBoxColor;
+            }
+            set
+            {
+                _dtcPriceBoxColor = value;
+                OnPropertyChanged("DtcPriceBoxColor");
+            }
+        }
+        private string _dtcPriceBoxColor = "White";
+        public string DtcPriceError
+        {
+            get
+            {
+                return _dtcPriceError;
+            }
+            set
+            {
+                _dtcPriceError = value;
+                if (value != "")
+                {
+                    DtcPriceToolTip = "Error: " + value + "\n\n" + ReturnToolTip("Category");
+                }
+                else
+                {
+                    DtcPriceToolTip = ReturnToolTip("Category");
+                }
+                this.DtcPriceBoxColor = (value == "") ? "White" : "Tomato";
+                this.WebInfoTabColor = CheckWebInfoTabColor();
+                OnPropertyChanged("DtcPriceError");
+            }
+        }
+        private string _dtcPriceError = string.Empty;
+        public string DtcPriceToolTip
+        {
+            get
+            {
+                return _dtcPriceToolTip;
+            }
+            set
+            {
+                this._dtcPriceToolTip = value;
+                OnPropertyChanged("DtcPriceToolTip");
+            }
+        }
+        private string _dtcPriceToolTip = string.Empty;
+
         public string MetaDescription
         {
             get
@@ -5974,13 +6044,14 @@ namespace Odin.ViewModels
         /// <returns></returns>
         private string CheckWebInfoTabColor()
         {
-            if (CopyrightBoxColor == "Tomato") { return "Tomato"; }
-            if (CategoryBoxColor == "Tomato") { return "Tomato"; }
-            if (Category2BoxColor == "Tomato") { return "Tomato"; }
-            if (Category3BoxColor == "Tomato") { return "Tomato"; }
-            if (MetaDescriptionBoxColor == "Tomato") { return "Tomato"; }
-            if (SizeBoxColor == "Tomato") { return "Tomato"; }
-            if (WebsitePriceBoxColor == "Tomato") { return "Tomato"; }
+            if (this.CopyrightBoxColor == "Tomato") { return "Tomato"; }
+            if (this.CategoryBoxColor == "Tomato") { return "Tomato"; }
+            if (this.Category2BoxColor == "Tomato") { return "Tomato"; }
+            if (this.Category3BoxColor == "Tomato") { return "Tomato"; }
+            if (this.DtcPriceBoxColor == "Tomato") { return "Tomato"; }
+            if (this.MetaDescriptionBoxColor == "Tomato") { return "Tomato"; }
+            if (this.SizeBoxColor == "Tomato") { return "Tomato"; }
+            if (this.WebsitePriceBoxColor == "Tomato") { return "Tomato"; }
             return "White";
         }
 

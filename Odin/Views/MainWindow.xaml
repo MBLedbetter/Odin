@@ -842,6 +842,14 @@
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
+                        DisplayMemberBinding="{Binding DtcPrice}"
+                        Width="{Binding DtcPriceVisibility}">
+                        <GridViewColumnHeader
+                            Content="DTC Price"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
                         DisplayMemberBinding="{Binding Duty}"
                         Width="{Binding DutyVisibility}">
                         <GridViewColumnHeader

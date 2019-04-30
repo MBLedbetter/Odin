@@ -141,7 +141,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("DisabledCheck");                
             }
         }
-        private bool _disabledCheck = false;
+        private bool _disabledCheck = true;
 
         /// <summary>
         ///     Gets or sets the ItemErrors

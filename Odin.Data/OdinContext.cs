@@ -1463,6 +1463,7 @@ namespace Odin.Data
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.CasepackWeight).HasColumnName("CASEPACK_WEIGHT");
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.CasepackWidth).HasColumnName("CASEPACK_WIDTH");
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.DirectImport).HasColumnName("DIRECT_IMPORT");
+            modelBuilder.Entity<ItemAttribEx>().Property(p => p.DtcPrice).HasColumnName("DTC_PRICE");
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.Duty).HasColumnName("DUTY");
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.Gtin).HasColumnName("GTIN");
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.ImageFileName).HasColumnName("IMAGE_FILE_NAME");
@@ -2059,6 +2060,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItem>().Property(p => p.DefaultActualCostCad).HasColumnName("DACCAD");
             modelBuilder.Entity<OdinItem>().Property(p => p.DefaultActualCostUsd).HasColumnName("DACUSD");
             modelBuilder.Entity<OdinItem>().Property(p => p.DirectImport).HasColumnName("DIRECT_IMPORT");
+            modelBuilder.Entity<OdinItem>().Property(p => p.DtcPrice).HasColumnName("DTC_PRICE");
             modelBuilder.Entity<OdinItem>().Property(p => p.Duty).HasColumnName("DUTY");
             modelBuilder.Entity<OdinItem>().Property(p => p.Ean).HasColumnName("EAN");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceAsin).HasColumnName("ECOMMERCE_ASIN");
@@ -2281,6 +2283,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.CostProfileGroup).HasColumnName("COST_PROFILE_GROUP");
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.DefaultActualCostCad).HasColumnName("DEFAULT_ACTUAL_COST_CAD");
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.DefaultActualCostUsd).HasColumnName("DEFAULT_ACTUAL_COST_USD");
+            modelBuilder.Entity<OdinItemTemplates>().Property(p => p.DtcPrice).HasColumnName("DTC_PRICE");
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.Duty).HasColumnName("DUTY");
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.EcommerceBullet1).HasColumnName("ECOMMERCE_BULLET_1");
             modelBuilder.Entity<OdinItemTemplates>().Property(p => p.EcommerceBullet2).HasColumnName("ECOMMERCE_BULLET_2");
@@ -2456,6 +2459,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.DefaultActualCostUsd).HasColumnName("DEFAULT_ACTUAL_COST_USD");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Description).HasColumnName("DESCRIPTION");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.DirectImport).HasColumnName("DIRECT_IMPORT");
+            modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.DtcPrice).HasColumnName("DTC_PRICE");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Duty).HasColumnName("DUTY");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Ean).HasColumnName("EAN");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Fplcanl1).HasColumnName("FPLCANL1");
