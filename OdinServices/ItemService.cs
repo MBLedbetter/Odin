@@ -3419,6 +3419,14 @@ namespace OdinServices
                         OdinServices.Properties.Resources.Error_LengthMax + "30 characters.",
                         "EAN");
                 }
+                if (var.Ean.Contains("-"))
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Value cannot contain dashes (-).",
+                        "EAN");
+                }
             }
             return null;
         }
