@@ -231,9 +231,9 @@ namespace Odin.Data
         public DbSet<OdinItemTemplates> OdinItemTemplates { get; set; }
 
         /// <summary>
-        ///     Gets or sets a list of the OdinItemTypeSuffixes lines that are in this context.
+        ///     Gets or sets a list of the OdinItemTypeExtensions lines that are in this context.
         /// </summary>
-        public DbSet<OdinItemTypeSuffixes> OdinItemTypeSuffixes { get; set; }
+        public DbSet<OdinItemTypeExtensions> OdinItemTypeExtensions { get; set; }
 
         /// <summary>
         ///     Gets or sets a list of the OdinItemUpdateRecords lines that are in this context.
@@ -509,7 +509,7 @@ namespace Odin.Data
             MapOdinItemIdSuffixes(modelBuilder);
             MapOdinItemOverrideInfo(modelBuilder);
             MapOdinItemTemplates(modelBuilder);
-            MapOdinItemTypeSuffixes(modelBuilder);
+            MapOdinItemTypeExtensions(modelBuilder);
             MapOdinItemUpdateRecords(modelBuilder);
             MapOdinLanguage(modelBuilder);
             MapOdinMetaDescription(modelBuilder);
@@ -1649,6 +1649,7 @@ namespace Odin.Data
             modelBuilder.Entity<ItemWebInfo>().Property(p => p.NewDate).HasColumnName("NEW_DATE");
             modelBuilder.Entity<ItemWebInfo>().Property(p => p.Newcategory).HasColumnName("NEWCATEGORY");
             modelBuilder.Entity<ItemWebInfo>().Property(p => p.OnSite).HasColumnName("ON_SITE");
+            modelBuilder.Entity<ItemWebInfo>().Property(p => p.OnShopTrends).HasColumnName("ON_SHOPTRENDS");
             modelBuilder.Entity<ItemWebInfo>().Property(p => p.ProdQty).HasColumnName("PROD_QTY");
             modelBuilder.Entity<ItemWebInfo>().Property(p => p.Property).HasColumnName("PROPERTY");
             modelBuilder.Entity<ItemWebInfo>().Property(p => p.ShortDesc).HasColumnName("SHORT_DESC");
@@ -1657,7 +1658,6 @@ namespace Odin.Data
             modelBuilder.Entity<ItemWebInfo>().Property(p => p.Title).HasColumnName("TITLE");
             modelBuilder.Entity<ItemWebInfo>().Property(p => p.Warranty).HasColumnName("WARRANTY");
             modelBuilder.Entity<ItemWebInfo>().Property(p => p.WarrantyCheck).HasColumnName("WARRANTY_CHECK");
-
         }
 
         /// <summary>
@@ -2363,20 +2363,20 @@ namespace Odin.Data
         /// <param name="DbModelBuilder modelBuilder">
         ///             The DbDbModelBuilder modelBuilder to update with the mapping.
         /// </param>
-        private void MapOdinItemTypeSuffixes(DbModelBuilder modelBuilder)
+        private void MapOdinItemTypeExtensions(DbModelBuilder modelBuilder)
         {
-            // Map the OdinItemTypeSuffixes class to the ODIN_ITEM_TYPE_SUFFIXES table
-            modelBuilder.Entity<OdinItemTypeSuffixes>()
+            // Map the OdinItemTypeSuffixes class to the ODIN_ITEM_TYPE_EXTENSIONS table
+            modelBuilder.Entity<OdinItemTypeExtensions>()
                 .HasKey(p => new
                 {
-                    p.Type,
-                    p.FieldValue
+                    p.Prefix,
+                    p.Suffix
                 })
-                .ToTable("ODIN_ITEM_TYPE_SUFFIXES");
+                .ToTable("ODIN_ITEM_TYPE_EXTENSIONS");
 
             // Map each column
-            modelBuilder.Entity<OdinItemTypeSuffixes>().Property(p => p.FieldValue).HasColumnName("FIELD_VALUE");
-            modelBuilder.Entity<OdinItemTypeSuffixes>().Property(p => p.Type).HasColumnName("TYPE");
+            modelBuilder.Entity<OdinItemTypeExtensions>().Property(p => p.Prefix).HasColumnName("PREFIX");
+            modelBuilder.Entity<OdinItemTypeExtensions>().Property(p => p.Suffix).HasColumnName("SUFFIX");
 
         }
 
@@ -2887,6 +2887,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinWebsiteItemRequests>().Property(p => p.RequestId).HasColumnName("RequestId");
             modelBuilder.Entity<OdinWebsiteItemRequests>().Property(p => p.RequestStatus).HasColumnName("RequestStatus");
             modelBuilder.Entity<OdinWebsiteItemRequests>().Property(p => p.UserName).HasColumnName("UserName");
+            modelBuilder.Entity<OdinWebsiteItemRequests>().Property(p => p.Website).HasColumnName("Website");
 
         }
 

@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Odin.DbTableModels
 {
-    public class OdinItemTypeSuffixes
+    public class OdinItemTypeExtensions
     {
         #region Public Properties
 
         /// <summary>
-        ///     Gets or sets FIELD_VALUE
+        ///     Gets or sets PREFIX
         /// </summary>
-        public string FieldValue { get; set; }
+        public string Prefix { get; set; }
 
         /// <summary>
-        ///     Gets or sets TYPE
+        ///     Gets or sets SUFFIX
         /// </summary>
-        public string Type { get; set; }
+        public string Suffix { get; set; }
 
         #endregion // Public Properties
     }

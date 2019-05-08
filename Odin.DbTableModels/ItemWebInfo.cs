@@ -80,6 +80,11 @@ namespace Odin.DbTableModels
         /// </summary>
         public string Newcategory { get; set; }
 
+
+        /// <summary>
+        ///     Gets or sets ON_SHOPTRENDS
+        /// </summary>
+        public string OnShopTrends { get; set; }
         /// <summary>
         ///     Gets or sets ON_SITE
         /// </summary>

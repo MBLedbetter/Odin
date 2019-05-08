@@ -2467,10 +2467,10 @@ namespace OdinServices
         ///     Submit data for a request submission
         /// </summary>
         /// <param name="Items"></param>
-        public void SubmitRequest(ObservableCollection<ItemObject> Items, string status, string Comment)
+        public void SubmitRequest(ObservableCollection<ItemObject> items, string status, string website, string comment)
         {
             RequestNum = Convert.ToInt32(RequestRepository.RetrieveSubmitRequestNumber());
-            RequestRepository.SubmitRequest(Items, status, Comment, RequestNum);
+            RequestRepository.SubmitRequest(items, status, comment, website, RequestNum);
         }
         
         /// <summary>
@@ -2817,14 +2817,14 @@ namespace OdinServices
             this.CurrentMagento2Parents.Add(item.ItemId);
             string result = string.Empty;
             string title = (string.IsNullOrEmpty(item.TitleOverride)) ? item.Title : item.TitleOverride;
-            string itemKeywords = (string.IsNullOrEmpty(item.ItemKeywordsOverride)) ? item.ItemKeywordsOverride : item.ItemKeywordsOverride;
+            string itemKeywords = (string.IsNullOrEmpty(item.ItemKeywordsOverride)) ? item.ItemKeywords : item.ItemKeywordsOverride;
             string itemId = item.ItemId;
             string dateAdded = (item.Status == "Add") ? DateTime.Now.ToShortDateString() : "";
 
             result += "\"" + item.ItemId.Trim() + "\","; /* A */
             result += ","; /* B */
             result += "\"" + "Default" + "\","; /* C */
-            result += "\"virtual\","; /* D */
+            result += "\"simple\","; /* D */
             result += ","; /* E */
             result += "\"base\","; /* F */
             result += "\"" + item.Title.Trim() + "\","; /* G */

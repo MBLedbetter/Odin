@@ -532,7 +532,7 @@ namespace Odin.Data
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        void UpdateOnSite(string itemId);
+        void UpdateOnSite(string itemId, string website);
 
         /// <summary>
         ///     Updates the values in PS_PROD_ITEM

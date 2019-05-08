@@ -8649,15 +8649,16 @@ namespace Odin.ViewModels
                     this.SellOnHouzzError = error.ReturnErrorMessage();
                     break;
 
+                case "Sell On Shop Trends":
+                    this.SellOnTrsError = error.ReturnErrorMessage();
+                    break;
+
                 case "Sell On Target":
                     this.SellOnTargetError = error.ReturnErrorMessage();
                     break;
 
                 case "Sell On Trends":
                     this.SellOnTrendsError = error.ReturnErrorMessage();
-                    break;
-                case "Sell On Trs":
-                    this.SellOnTrsError = error.ReturnErrorMessage();
                     break;
 
                 case "Sell On Walmart":

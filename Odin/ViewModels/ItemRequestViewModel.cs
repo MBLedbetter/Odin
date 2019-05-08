@@ -37,6 +37,9 @@ namespace Odin.ViewModels
 
         #region Properties
 
+        /// <summary>
+        ///     Gets or sets the AdminStatus
+        /// </summary>
         public bool AdminStatus
         {
             get
@@ -53,6 +56,101 @@ namespace Odin.ViewModels
             }
         }
         private bool _adminStatus;
+
+        /// <summary>
+        ///     Gets or sets the Comment
+        /// </summary>
+        public string Comment
+        {
+            get
+            {
+                return _comment;
+            }
+            set
+            {
+                _comment = value;
+                OnPropertyChanged("Comment");
+            }
+
+        }
+        private string _comment = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the DttmSubmitted
+        /// </summary>
+        public string DttmSubmitted
+        {
+            get
+            {
+                return _dttmSubmitted;
+            }
+            set
+            {
+                _dttmSubmitted = value;
+            }
+
+        }
+        private string _dttmSubmitted = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the InStockDate
+        /// </summary>
+        public string InStockDate
+        {
+            get
+            {
+                return _inStockDate;
+            }
+            set
+            {
+                _inStockDate = value;
+            }
+
+        }
+        private string _inStockDate = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the ItemId
+        /// </summary>
+        public string ItemId
+        {
+            get
+            {
+                return _itemId;
+            }
+            set
+            {
+                _itemId = value;
+            }
+
+        }
+        private string _itemId = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the ItemStatus
+        /// </summary>
+        public string ItemStatus
+        {
+            get
+            {
+                return _itemStatus;
+            }
+            set
+            {
+                _itemStatus = value;
+            }
+
+        }
+        private string _itemStatus = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the OptionService
+        /// </summary>
+        public OptionService OptionService { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the RequestId
+        /// </summary>
         public int RequestId
         {
             get
@@ -69,109 +167,10 @@ namespace Odin.ViewModels
             }
         }
         private int _requestId;
-        public string ItemId
-        {
-            get
-            {
-                if (_itemId == null)
-                {
-                    _itemId = string.Empty;
-                }
-                return _itemId;
-            }
-            set
-            {
-                _itemId = value;
-            }
 
-        }
-        private string _itemId;
-        public string UserName
-        {
-            get
-            {
-                if (_userName == null)
-                {
-                    _userName = string.Empty;
-                }
-                return _userName;
-            }
-            set
-            {
-                _userName = value;
-            }
-
-        }
-        private string _userName;
-        public string DttmSubmitted
-        {
-            get
-            {
-                if (_dttmSubmitted == null)
-                {
-                    _dttmSubmitted = string.Empty;
-                }
-                return _dttmSubmitted;
-            }
-            set
-            {
-                _dttmSubmitted = value;
-            }
-
-        }
-        private string _dttmSubmitted;
-        public string InStockDate
-        {
-            get
-            {
-                if (_inStockDate == null)
-                {
-                    _inStockDate = string.Empty;
-                }
-                return _inStockDate;
-            }
-            set
-            {
-                _inStockDate = value;
-            }
-
-        }
-        private string _inStockDate;
-        public string Comment
-        {
-            get
-            {
-                if (_comment == null)
-                {
-                    _comment = string.Empty;
-                }
-                return _comment;
-            }
-            set
-            {
-                _comment = value;
-                OnPropertyChanged("Comment");
-            }
-
-        }
-        private string _comment;
-        public string ItemStatus
-        {
-            get
-            {
-                if (_itemStatus == null)
-                {
-                    _itemStatus = string.Empty;
-                }
-                return _itemStatus;
-            }
-            set
-            {
-                _itemStatus = value;
-            }
-
-        }
-        private string _itemStatus;
+        /// <summary>
+        ///     Gets or sets the RequestStatus
+        /// </summary>
         public string RequestStatus
         {
             get
@@ -189,7 +188,11 @@ namespace Odin.ViewModels
             }
 
         }
-        private string _requestStatus;
+        private string _requestStatus = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the RequestStatusList
+        /// </summary>
         public List<string> RequestStatusList
         {
             get
@@ -197,10 +200,40 @@ namespace Odin.ViewModels
                 return GlobalData.RequestStatus;
             }
         }
+
         /// <summary>
-        ///     Gets or sets the OptionService
+        ///     Gets or sets the UserName
         /// </summary>
-        public OptionService OptionService { get; set; }
+        public string UserName
+        {
+            get
+            {
+                return _userName;
+            }
+            set
+            {
+                _userName = value;
+            }
+
+        }
+        private string _userName = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the Website
+        /// </summary>
+        public string Website
+        {
+            get
+            {
+                return _website;
+            }
+            set
+            {
+                _website = value;
+            }
+
+        }
+        private string _website = string.Empty;
 
         #endregion // Properties        
 
@@ -209,7 +242,7 @@ namespace Odin.ViewModels
         public bool SaveRequest() 
         {
             
-            Request request = new Request(this.RequestId, this.ItemId, this.ItemStatus, this.UserName, this.DttmSubmitted,this.InStockDate, this.Comment, this.RequestStatus);
+            Request request = new Request(this.RequestId, this.ItemId, this.ItemStatus, this.UserName, this.DttmSubmitted,this.InStockDate, this.Comment, this.RequestStatus, this.Website);
             OptionService.UpdateWebsiteRequest(request);
             return true;
         }
@@ -220,16 +253,16 @@ namespace Odin.ViewModels
 
         public ItemRequestViewModel(OptionService optionService, Request request, Boolean adminStatus)
         {
-            if (optionService == null) { throw new ArgumentNullException("optionService"); }
-            this.OptionService = optionService;
-            this.RequestId = request.RequestId;
-            this.ItemId = request.ItemId;
-            this.UserName = request.UserName;
-            this.RequestStatus = request.RequestStatus;
-            this.ItemStatus = request.ItemStatus;
+            this.OptionService = optionService ?? throw new ArgumentNullException("optionService");
+            this.AdminStatus = adminStatus;
             this.Comment = request.Comment;
             this.DttmSubmitted = request.DttmSubmitted;
-            this.AdminStatus = adminStatus;
+            this.ItemId = request.ItemId;
+            this.ItemStatus = request.ItemStatus;
+            this.RequestId = request.RequestId;
+            this.RequestStatus = request.RequestStatus;
+            this.UserName = request.UserName;
+            this.Website = request.Website;
         }
 
         #endregion // Constructor

@@ -546,7 +546,7 @@
                         DisplayMemberBinding="{Binding SellOnTrs}"
                         Width="auto">
                             <GridViewColumnHeader
-                            Content="Sell On Trs"
+                            Content="Sell On Shop Trends"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                         </GridViewColumn>

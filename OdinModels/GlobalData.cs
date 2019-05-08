@@ -286,20 +286,37 @@ namespace OdinModels
         private static List<ItemRecord> _itemRecords = new List<ItemRecord>();
 
         /// <summary>
-        ///     List of item type suffixes
+        ///     List of ItemTypeExtensions pairs
         /// </summary>
-        public static List<KeyValuePair<string, string>> ItemTypeSuffixes
+        public static List<KeyValuePair<string, string>> ItemTypeExtensions
         {
             get
             {
-                return _itemTypeSuffixes;
+                return _itemTypeExtensions;
             }
             set
             {
-                _itemTypeSuffixes = value;
+                _itemTypeExtensions = value;
+                
             }
         }
-        private static List<KeyValuePair<string, string>> _itemTypeSuffixes = new List<KeyValuePair<string, string>>();
+        private static List<KeyValuePair<string, string>> _itemTypeExtensions = new List<KeyValuePair<string, string>>();
+
+        /// <summary>
+        ///     List of ItemTypeExtensions
+        /// </summary>
+        public static List<string> ItemTypeExtensionsList
+        {
+            get
+            {
+                return _itemTypeExtensionsList;
+            }
+            set
+            {
+                _itemTypeExtensionsList = value;
+            }
+        }
+        private static List<string> _itemTypeExtensionsList = new List<string>();
 
         /// <summary>
         ///     Language dropdown values
@@ -774,6 +791,26 @@ namespace OdinModels
             UserNames.Clear();
             UserRoles.Clear();
             WebCategoryList.Clear();
+        }
+
+        /// <summary>
+        ///     Creates a list of all the item type extension prefixes ans suffixes
+        /// </summary>
+        public static void CreateItemTypeExtensionList()
+        {
+            List<string> newList = new List<string>();
+            foreach(KeyValuePair<string,string> x in ItemTypeExtensions)
+            {
+                if(!newList.Contains(x.Key)&& x.Key!= "")
+                {
+                    newList.Add(x.Key);
+                }
+                if (!newList.Contains(x.Value) && x.Value != "")
+                {
+                    newList.Add(x.Value);
+                }
+            }
+            ItemTypeExtensionsList = newList;
         }
 
         /// <summary>

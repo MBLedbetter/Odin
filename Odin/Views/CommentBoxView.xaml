@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Odin.Views.CommentBoxView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="CommentBoxView" Height="230" Width="450">
+        Title="CommentBoxView" Height="270" Width="450">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -13,6 +13,8 @@
                 Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto" />
             <RowDefinition
                 Height="Auto" />
             <RowDefinition
@@ -33,14 +35,24 @@
         <TextBox
             HorizontalAlignment="Left"
             Height="100"
-            Margin="10"
+            Margin="10,11,0,11"
             Grid.Row="1"
             TextWrapping="Wrap"
-            Grid.Column="1"
             Text="{Binding Comment}"
             VerticalContentAlignment="Center"
-            Width="420" />
+            Width="422" Grid.ColumnSpan="2" />
+        <StackPanel
+            Grid.Row="2" >
+            <RadioButton
+                Content="TrendsInternational.com" 
+                Checked="{Binding TrendsInternationalCheckBox}">
+            </RadioButton>
+            <RadioButton
+                Content="ShopTrends.com"
+                Checked="{Binding ShopTrendsCheckBox}" >
+            </RadioButton>
 
+        </StackPanel>
         <StackPanel
             FlowDirection="RightToLeft"
             Grid.Row="4"

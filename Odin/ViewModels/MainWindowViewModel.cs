@@ -3747,10 +3747,21 @@ namespace Odin.ViewModels
                 if ((ItemErrors.Count == 0) || (Items[0].Status == "Remove"))
                 {
                     string comment = string.Empty;
+                    string site = string.Empty;
                     if (Items[0].Status == "Remove")
                     {
-                        ExcelService.SubmitRequest(Items, "Remove", "");
-                        EmailService.sendPendingRequestEmail(GlobalData.UserName, "", ExcelService.ReturnRequestNum());
+                        CommentBoxView window = new CommentBoxView()
+                        {
+                            DataContext = new CommentBoxViewModel()
+                        };
+                        window.ShowDialog();
+                        if (window.DialogResult == true)
+                        {
+                            comment = (window.DataContext as CommentBoxViewModel).Comment;
+                            site = (window.DataContext as CommentBoxViewModel).Website;
+                        }
+                        ExcelService.SubmitRequest(Items, "Remove", site, comment);
+                        EmailService.SendPendingRequestEmail(GlobalData.UserName, comment, site, ExcelService.ReturnRequestNum());
                         MessageBox.Show("Items Removal Submitted Successfully");
                         Items = new ObservableCollection<ItemObject>(); ;
                         SubmitStatus = false;
@@ -3760,7 +3771,7 @@ namespace Odin.ViewModels
                         string itemWebChecklist = string.Empty;
                         foreach (ItemObject item in this.Items)
                         {
-                            if (item.SellOnTrends != "Y")
+                            if ((item.SellOnTrends != "Y")&& (item.SellOnTrs != "Y"))
                             {
                                 if (itemWebChecklist != string.Empty) { itemWebChecklist += ", "; }
                                 itemWebChecklist += item.ItemId + ", ";
@@ -3779,10 +3790,11 @@ namespace Odin.ViewModels
                                 if (window.DialogResult == true)
                                 {
                                     comment = (window.DataContext as CommentBoxViewModel).Comment;
+                                    site = (window.DataContext as CommentBoxViewModel).Website;
                                 }
                                 Mouse.OverrideCursor = Cursors.Wait;
-                                ExcelService.SubmitRequest(Items, "Add", comment);
-                                EmailService.sendPendingRequestEmail(GlobalData.UserName, comment, ExcelService.ReturnRequestNum());
+                                ExcelService.SubmitRequest(Items, "Add", site, comment);
+                                EmailService.SendPendingRequestEmail(GlobalData.UserName, comment, site ,ExcelService.ReturnRequestNum());
                                 Mouse.OverrideCursor = null;
                                 MessageBox.Show("Items Submitted Successfully");
                                 Items = new ObservableCollection<ItemObject>();
@@ -3799,10 +3811,11 @@ namespace Odin.ViewModels
                                 if (window.DialogResult == true)
                                 {
                                     comment = (window.DataContext as CommentBoxViewModel).Comment;
+                                    site = (window.DataContext as CommentBoxViewModel).Website;
                                 }
                                 Mouse.OverrideCursor = Cursors.Wait;
-                                ExcelService.SubmitRequest(Items, "Update", comment);
-                                EmailService.sendPendingRequestEmail(GlobalData.UserName, comment, ExcelService.ReturnRequestNum());
+                                ExcelService.SubmitRequest(Items, "Update", site, comment);
+                                EmailService.SendPendingRequestEmail(GlobalData.UserName, comment, site, ExcelService.ReturnRequestNum());
                                 MessageBox.Show("Items Submitted Successfully");
                                 Items = new ObservableCollection<ItemObject>();
                                 this.SubmitStatus = false;

@@ -73,7 +73,7 @@ namespace Odin.Data
         /// <param name="Comment"></param>
         /// <param name="requestNum"></param>
         /// <returns></returns>
-        void SubmitRequest(ObservableCollection<ItemObject> Items, string status, string Comment, int requestNum);
+        void SubmitRequest(ObservableCollection<ItemObject> items, string status, string comment, string website, int requestNum);
 
         /// <summary>
         ///     Update Odin_WebsiteItemRequests Table with RequestID, ItemId, Comment, RequestStatus

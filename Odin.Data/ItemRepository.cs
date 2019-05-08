@@ -845,6 +845,7 @@ namespace Odin.Data
                     Msrp = "0",
                     Newcategory = "",
                     NewDate = "",
+                    OnShopTrends = "N",
                     OnSite = "N",
                     ProdQty = item.ProductQty,
                     Property = item.Property,
@@ -1528,7 +1529,7 @@ namespace Odin.Data
             GlobalData.ItemGroups = RetrieveItemGroups();
             GlobalData.ItemIds = RetrieveItemIds();
             GlobalData.ItemIdSuffixes = RetrieveItemIdSuffixes();
-            GlobalData.ItemTypeSuffixes = RetrieveItemTypeSuffixes();
+            GlobalData.ItemTypeExtensions = RetrieveItemTypeExtensions();
             GlobalData.Languages = RetrieveLanguages();
             GlobalData.Licenses = RetrieveLicenseList();
             GlobalData.MetaDescriptions = RetrieveMetaDescriptionList();
@@ -1550,6 +1551,7 @@ namespace Odin.Data
             GlobalData.UserNames = RetrieveUserNames();
             GlobalData.UserRoles = RetrieveUserRoles();
             GlobalData.WebCategoryList = RetrieveWebCategoryList();
+            GlobalData.CreateItemTypeExtensionList();
         }
 
         /// <summary>
@@ -2649,7 +2651,6 @@ namespace Odin.Data
                 masterItemTbl.LastDttmUpdate = DateTime.Now;
                 masterItemTbl.LastMaintOprid = GlobalData.UserName;
                 masterItemTbl.OrigOprid = GlobalData.UserName;
-
             }
         }
 
@@ -2676,14 +2677,22 @@ namespace Odin.Data
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        public void UpdateOnSite(string itemId)
+        public void UpdateOnSite(string itemId, string website)
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 ItemWebInfo itemWebInfo = (from o in context.ItemWebInfo where o.InvItemId == itemId select o).FirstOrDefault();
+
                 if (itemWebInfo != null)
                 {
-                    itemWebInfo.OnSite = "Y";
+                    if (website.ToUpper()=="SHOPTRENDS.COM")
+                    {
+                        itemWebInfo.OnShopTrends = "Y";
+                    }
+                    else
+                    {
+                        itemWebInfo.OnSite = "Y";
+                    }
                     context.SaveChanges();
                 }
             }
@@ -3704,17 +3713,17 @@ namespace Odin.Data
         ///     Retrieves a List of the item type suffixes and type
         /// </summary>
         /// <returns></returns>
-        private List<KeyValuePair<string, string>> RetrieveItemTypeSuffixes()
+        private List<KeyValuePair<string, string>> RetrieveItemTypeExtensions()
         {
             List<KeyValuePair<string, string>> results = new List<KeyValuePair<string, string>>();
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                if ((context.OdinItemTypeSuffixes.Any()))
+                if ((context.OdinItemTypeExtensions.Any()))
                 {
-                    var dataset = context.OdinItemTypeSuffixes.Select(x => new { x.FieldValue, x.Type }).ToList();
+                    var dataset = context.OdinItemTypeExtensions.Select(x => new { x.Prefix, x.Suffix }).ToList();
                     foreach (var x in dataset)
                     {
-                        results.Add(new KeyValuePair<string, string> (x.FieldValue, x.Type));
+                        results.Add(new KeyValuePair<string, string> (x.Prefix, x.Suffix));
                     }
                 }
             }

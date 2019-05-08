@@ -28,7 +28,7 @@
             <RowDefinition
                 Height="Auto" />
             <RowDefinition
-                Height="20" />
+                Height="Auto" />
             <RowDefinition
                 Height="Auto" />
             <RowDefinition
@@ -130,7 +130,7 @@
             Text="{Binding ItemStatus}"
             VerticalContentAlignment="Center"
             Width="180" />
-        <!-- Item Status -->
+        <!-- DttmSubmitted -->
         <Label
             Content="DttmSubmitted"
             Grid.Row="6"
@@ -149,6 +149,25 @@
             Grid.Column="1"
             Text="{Binding DttmSubmitted}"
             VerticalContentAlignment="Center"
+            Width="180" />
+        <!-- Website -->
+        <Label
+            Content="Website"
+            Grid.Row="7"
+            Grid.Column="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center" />
+        <TextBox
+            IsEnabled="False"
+            HorizontalAlignment="Left"
+            Height="23"
+            Margin="6"
+            Grid.Row="7"
+            TextWrapping="Wrap"
+            MaxLength="18"
+            Grid.Column="1"
+            Text="{Binding Website}"
+            VerticalContentAlignment="Center"            
             Width="180" />
         <Button
             Click="SaveButton_Click"

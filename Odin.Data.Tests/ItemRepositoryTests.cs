@@ -3714,7 +3714,7 @@ namespace Odin.Data.Tests
 
             using (OdinContext context = OdinContextFactory.CreateContext())
             {
-                itemRepository.UpdateOnSite("TEST1");
+                itemRepository.UpdateOnSite("TEST1","website");
                 context.SaveChanges();
             }
 

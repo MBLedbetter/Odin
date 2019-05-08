@@ -36,7 +36,8 @@ namespace Odin.Data
                 Comment = request.Comment,
                 DttmSubmitted = DateTime.Now.ToString(),
                 InStockDate = request.InStockDate,
-                RequestStatus = request.RequestStatus
+                RequestStatus = request.RequestStatus,
+                Website = request.Website
             });
         }
 
@@ -82,7 +83,8 @@ namespace Odin.Data
                         odinWebsiteItemRequest.DttmSubmitted,
                         odinWebsiteItemRequest.InStockDate,
                         odinWebsiteItemRequest.Comment,
-                        odinWebsiteItemRequest.RequestStatus));
+                        odinWebsiteItemRequest.RequestStatus,
+                        odinWebsiteItemRequest.Website));
                 }
             }
             return requestList;
@@ -112,7 +114,8 @@ namespace Odin.Data
                         odinWebsiteItemRequest.DttmSubmitted,
                         odinWebsiteItemRequest.InStockDate,
                         odinWebsiteItemRequest.Comment,
-                        odinWebsiteItemRequest.RequestStatus));
+                        odinWebsiteItemRequest.RequestStatus,
+                        odinWebsiteItemRequest.Website));
                 }
             }
             return requestList;
@@ -155,15 +158,15 @@ namespace Odin.Data
                 foreach (OdinWebsiteItemRequests x in odinWebsiteItemRequests)
                 {
                     Request request = new Request(
-        x.RequestId,
-         x.ItemId.Trim(),
-         x.ItemStatus.Trim(),
-         x.UserName.Trim(),
-         x.DttmSubmitted.Trim(),
-         x.InStockDate.Trim(),
-         x.Comment.Trim(),
-         x.RequestStatus.Trim()
-         );
+                        x.RequestId,
+                        x.ItemId.Trim(),
+                        x.ItemStatus.Trim(),
+                        x.UserName.Trim(),
+                        x.DttmSubmitted.Trim(),
+                        x.InStockDate.Trim(),
+                        x.Comment.Trim(),
+                        x.RequestStatus.Trim(),
+                        x.Website.Trim());
                     RequestList.Add(request);
                 }
             }
@@ -194,19 +197,19 @@ namespace Odin.Data
         /// <param name="Comment"></param>
         /// <param name="requestNum"></param>
         /// <returns></returns>
-        public void SubmitRequest(ObservableCollection<ItemObject> Items, string status, string Comment, int requestNum)
+        public void SubmitRequest(ObservableCollection<ItemObject> Items, string status, string comment, string website, int requestNum)
         {
             string date = DateTime.Now.ToString("M/d/yyyy");
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 foreach (ItemObject item in Items)
                 {
-                    Request request = new Request(requestNum, item.ItemId, status, Environment.UserName, date, item.InStockDate, "", "Pending");
+                    Request request = new Request(requestNum, item.ItemId, status, Environment.UserName, date, item.InStockDate, comment, "Pending", website);
                     InsertWebsiteItemRequests(request, context);
                 }
-                if (!(string.IsNullOrEmpty(Comment)))
+                if (!(string.IsNullOrEmpty(comment)))
                 {
-                    InsertRequestComment(requestNum, Comment, context);
+                    InsertRequestComment(requestNum, comment, context);
                 }
                 context.SaveChanges();
             }

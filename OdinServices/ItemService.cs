@@ -2060,6 +2060,8 @@ namespace OdinServices
         public List<string> RetrieveRelatedProducts(string itemId)
         {
             List<string> results = new List<string>();
+
+            /*
             if (itemId.Contains("RP"))
             {
                 string idCore = itemId.Replace("RP","");
@@ -2081,6 +2083,7 @@ namespace OdinServices
                     }
                 }
             }
+            */
             return results;
         }
 
@@ -2195,9 +2198,9 @@ namespace OdinServices
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        public void UpdateOnSite(string itemId)
+        public void UpdateOnSite(string itemId, string website)
         {
-            ItemRepository.UpdateOnSite(itemId);
+            ItemRepository.UpdateOnSite(itemId, website);
         }
         
         /// <summary>
@@ -2544,7 +2547,7 @@ namespace OdinServices
             // Sell On Trends //
             validationError =ValidateSellOnValue(var, "Trends");
             if (validationError != null) { ErrorList.Add(validationError); }
-            // Sell On Trs //
+            // Sell On Shop Trends //
             validationError = ValidateSellOnValue(var, "Shop Trends");
             if (validationError != null) { ErrorList.Add(validationError); }
             // Sell On Walmart //
