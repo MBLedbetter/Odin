@@ -2020,6 +2020,36 @@ namespace Odin.Data
         }
 
         /// <summary>
+        ///     Check if item is listed as being on the shoptrends site. PS_ITEM_WEB_INFO.ON_SHOPTRENDS == "Y"
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        public bool RetrieveOnShopTrends(string itemId)
+        {
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                string result = (from o in context.ItemWebInfo where o.InvItemId == itemId select o.OnShopTrends).FirstOrDefault();
+                if (result == "Y") { return true; }
+            }
+            return false;
+        }
+
+        /// <summary>
+        ///     Check if item is listed as being on the trendsinteranational site. PS_ITEM_WEB_INFO.ON_SITE == "Y"
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        public bool RetrieveOnSite(string itemId)
+        {
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                string result = (from o in context.ItemWebInfo where o.InvItemId == itemId select o.OnSite).FirstOrDefault();
+                if (result == "Y") { return true; }
+            }
+            return false;
+        }
+
+        /// <summary>
         ///     Searches PS_ORD_LINE for any open orders
         /// </summary>
         /// <param name="itemId"></param>

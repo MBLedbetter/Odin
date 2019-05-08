@@ -341,6 +341,20 @@ namespace Odin.Data
         List<string> RetrieveLicensePropertyList();
 
         /// <summary>
+        ///     Check if item is listed as being on the shoptrends site. PS_ITEM_WEB_INFO.ON_SHOPTRENDS == "Y"
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        bool RetrieveOnShopTrends(string itemId);
+
+        /// <summary>
+        ///     Check if item is listed as being on the trendsinteranational site. PS_ITEM_WEB_INFO.ON_SITE == "Y"
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        bool RetrieveOnSite(string itemId);
+
+        /// <summary>
         ///     Retrives a child / parent match from PS_MARKETPLACE_PRODUCT_TRANSLATIONS
         /// </summary>
         /// <param name="childIt"></param>

@@ -426,8 +426,7 @@ namespace OdinServices
         /// <returns></returns>
         public string SetConfigurableVariationLabels(ItemObject item)
         {
-            string result = string.Empty;
-            return result;
+            return "poster_options=Poster Options";
         }
 
         /// <summary>
@@ -435,9 +434,18 @@ namespace OdinServices
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        public string SetConfigurableVariations(ItemObject item)
+        public string SetConfigurableVariations(List<string> items)
         {
-            return "poster_options=Poster Options";
+            string result = string.Empty;
+            foreach(string x in items)
+            {
+                if(!string.IsNullOrEmpty(result))
+                {
+                    result += "|";
+                }
+                result += "sku=" + x + ",poster_options=" + ReturnPosterOption(x);
+            }
+            return result;
         }
 
         public string SetCustomOptions(ItemObject item)
@@ -579,7 +587,6 @@ namespace OdinServices
 
         #endregion // Modifier Methods
         
-
         /// <summary>
         ///     Create a excell documents for a given list of items
         /// </summary>
@@ -847,9 +854,9 @@ namespace OdinServices
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        public string FormatAdditionalAttributes(ItemObject item)
+        public string FormatAdditionalAttributes(ItemObject item, bool isChild)
         {
-            string result = "product_image_size = Default,product_page_type = Full Width,sw_featured = No";
+            string result = "gift_wrapping_available=No,product_image_size = Default,product_page_type = Full Width,sw_featured = No";
 
             if (!string.IsNullOrEmpty(item.License))
             {
@@ -858,6 +865,12 @@ namespace OdinServices
             if(!string.IsNullOrEmpty(item.Property))
             {
                 result += ",property =" + item.Property;
+            }
+            if(isChild)
+            {
+                result += ",poster_options =" + ReturnPosterOption(item.ItemId);
+                result += ",upc=" + item.Upc;
+                result += ",size=" + item.Width + "\"x" + item.Height + "\"";
             }
             return result;
         }
@@ -2373,6 +2386,32 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Returns the shoptrends poster option that coresponds with the itemid
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        public string ReturnPosterOption(string itemId)
+        {
+            if(itemId.Contains("BLK22X34"))
+            {
+                return "BLACKFRAME";
+            }
+            else if (itemId.Contains("SIL22X34"))
+            {
+                return "SILVERFRAME";
+            }
+            else if (itemId.Contains("POD"))
+            {
+                return "PREMIUM";
+            }
+            else if (itemId.Contains("RP"))
+            {
+                return "UNFRAMED";
+            }
+            return "";
+        }
+
+        /// <summary>
         ///     Combines the license and property values for website if property exists.
         /// </summary>
         /// <param name="license"></param>
@@ -2629,25 +2668,47 @@ namespace OdinServices
                 CreateMagento2Headers()
             };
 
-            foreach (ItemObject item in itemList)
+            string itemString = string.Empty;
+
+            if ((requestType == "Add") || (requestType == "Update"))
             {
-                ItemIds.Add(item.ItemId);
-            }
-            foreach (ItemObject item in itemList)
-            {
-                if ((requestType == "Add") || (requestType == "Update"))
+                foreach (ItemObject item in itemList)
                 {
-                    string itemString = string.Empty;
-                    if (!this.CurrentMagento2Parents.Contains(item.ItemId))
+                    string idCore = ItemService.RetrieveItemIdCore(item.ItemId);
+                    if (!ItemIds.Contains(idCore))
                     {
-                        itemString = WriteMagento2MainLine(item);
+                        List<string> childProducts = new List<string>();
+
+                        // Check all existing active related products
+                        foreach(string x in ItemService.RetrieveRelatedProductIds(item.ItemId))
+                        {
+                            // Add all products that are currently on the site
+                            if(ItemService.CheckOnSite(x,"SHOPTRENDS.COM"))
+                            {
+                                childProducts.Add(x);
+                            }
+                            //  If the item id is in the current upload
+                            if(itemList.Any(y=>y.ItemId == x))
+                            {
+                                if(!childProducts.Contains(x))
+                                {
+                                    childProducts.Add(x);
+                                }
+                            }
+                        }
+
+                        itemString = WriteMagento2ParentLine(item, childProducts);
                         CSV_Add.Add(itemString);
+
                     }
-                    itemString = WriteMagento2SecondaryLine(item);
+                }
+                foreach (ItemObject item in itemList)
+                {
+                    itemString = WriteMagento2ChildLine(item);
                     CSV_Add.Add(itemString);
 
-                }                
-                
+
+                }
                 if (CSV_Add.Count > 1)
                 {
                     string csvFilePath = desktop + @"\Request-" + "-" + requestId + "_Add.csv";
@@ -2808,131 +2869,11 @@ namespace OdinServices
         }
 
         /// <summary>
-        ///     Writes the line for the parent virtual item
-        /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
-        public string WriteMagento2MainLine(ItemObject item)
-        {
-            this.CurrentMagento2Parents.Add(item.ItemId);
-            string result = string.Empty;
-            string title = (string.IsNullOrEmpty(item.TitleOverride)) ? item.Title : item.TitleOverride;
-            string itemKeywords = (string.IsNullOrEmpty(item.ItemKeywordsOverride)) ? item.ItemKeywords : item.ItemKeywordsOverride;
-            string itemId = item.ItemId;
-            string dateAdded = (item.Status == "Add") ? DateTime.Now.ToShortDateString() : "";
-
-            result += "\"" + item.ItemId.Trim() + "\","; /* A */
-            result += ","; /* B */
-            result += "\"" + "Default" + "\","; /* C */
-            result += "\"simple\","; /* D */
-            result += ","; /* E */
-            result += "\"base\","; /* F */
-            result += "\"" + item.Title.Trim() + "\","; /* G */
-            result += ","; /* H */
-            result += ","; /* I */
-            result += "\"" + item.Weight.Trim() + "\","; /* J */
-            result += "\"" + "1" + "\","; /* K */
-            result += "\"" + "Taxable Goods" + "\","; /* L */
-            result += "\"" + "Not Visible Individually" + "\","; /* M */
-            result += "\"" + item.DtcPrice + "\","; /* N */
-            result += ","; /* O */
-            result += ","; /* P */
-            result += ","; /* Q */
-            result += "\"" + FormatMagento2Url(title) + "\","; /* R */
-            result += "\"" + title + "\","; /* S */
-            result += "\"" + itemKeywords + "\","; /* T */
-            result += "\"" + title + "\","; /* U */
-            result += "\"" + item.ReturnImageName(1) + "\","; /* V */
-            result += ","; /* W */
-            result += "\"" + item.ReturnImageName(1) + "\","; /* X */
-            result += ","; /* Y */
-            result += "\"" + item.ReturnImageName(1) + "\","; /* Z */
-            result += ","; /* AA */
-            result += "\"" + item.ReturnImageName(1) + "\","; /* AB */
-            result += ","; /* AC */
-            result += "\"" + dateAdded + "\","; /* AD */
-            result += "\"" + DateTime.Now.ToShortDateString() + "\","; /* AE */
-            result += ","; /* AF */
-            result += ","; /* AG */
-            result += "\"" + "Block after Info Column" + "\","; /* AH */
-            result += ","; /* AI */
-            result += ","; /* AJ */
-            result += ","; /* AK */
-            result += "\"" + "No" + "\","; /* AL */
-            result += ","; /* AM */
-            result += ","; /* AN */
-            result += ","; /* AO */
-            result += ","; /* AP */
-            result += "\"" + "Product -- Full Width" + "\","; /* AQ */
-            result += ","; /* AR */
-            result += "\"" + "Use config" + "\","; /* AS */
-            result += "\"" + "United States" + "\","; ; /* AT */
-            result += "\"" + FormatAdditionalAttributes(item) + "\","; /* AU */
-            result += "\"" + "0" + "\","; /* AV */
-            result += "\"" + "0" + "\","; /* AW */
-            result += "\"" + "1" + "\","; /* AX */
-            result += "\"" + "0" + "\","; /* AY */
-            result += "\"" + "0" + "\","; /* AZ */
-            result += "\"" + "1" + "\","; /* BA */
-            result += "\"" + "1" + "\","; /* BB */
-            result += "\"" + "1" + "\","; /* BC */
-            result += "\"" + "10000" + "\","; /* BD */
-            result += "\"" + "1" + "\","; /* BE */
-            result += "\"" + "1" + "\","; /* BF */
-            result += "\"" + "1" + "\","; /* BG */
-            result += "\"" + "1" + "\","; /* BH */
-            result += "\"" + "1" + "\","; /* BI */
-            result += "\"" + "1" + "\","; /* BJ */
-            result += "\"" + "1" + "\","; /* BK */
-            result += "\"" + "1" + "\","; /* BL */
-            result += "\"" + "1" + "\","; /* BM */
-            result += "\"" + "0" + "\","; /* BN */
-            result += "\"" + "0" + "\","; ; /* BO */
-            result += "\"" + "0" + "\","; ; /* BP */
-            result += ","; /* BQ */
-            result += ","; /* BR */
-            result += ","; /* BS */
-            result += ","; /* BT */
-            result += ","; /* BU */
-            result += ","; /* BV */
-            result += ","; /* BW */
-            result += ","; /* BX */
-            result += "\"" + FormatAdditionalImages(item) + "\","; /* BY */
-            result += ","; /* BZ */
-            result += ","; /* CA */
-            result += ","; /* CB */
-            result += ","; /* CC */
-            result += ","; /* CD */
-            result += ","; /* CE */
-            result += ","; /* CF */
-            result += ","; /* CG */
-            result += ","; /* CH */
-            result += ","; /* CI" */
-            result += ","; /* CJ" */
-            result += ","; /* CK" */
-            result += ","; /* CL" */
-            result += ","; /* CM" */
-            result += ","; /* CN" */
-            result += ","; /* CO" */
-            result += ","; /* CP" */
-            result += ","; /* CQ" */
-            result += ","; /* CR" */
-            result += ","; /* CS" */
-            result += ","; /* CT" */
-            result += ","; /* CU" */
-            result += ","; /* CV" */
-            result += "\"" + SetConfigurableVariations(item) + "\","; /* CW" */
-            result += "\"" + SetConfigurableVariationLabels(item) + "\","; /* CX" */
-
-            return result;
-        }
-
-        /// <summary>
         ///     Writes the line for the child virtual product
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        public string WriteMagento2SecondaryLine(ItemObject item)
+        public string WriteMagento2ChildLine(ItemObject item)
         {
             string result = string.Empty;
             string title = (string.IsNullOrEmpty(item.TitleOverride)) ? item.Title : item.TitleOverride;
@@ -3045,6 +2986,127 @@ namespace OdinServices
 
             return result;
         }
+
+        /// <summary>
+        ///     Writes the line for the parent virtual item
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public string WriteMagento2ParentLine(ItemObject item, List<string> childProducts)
+        {
+            this.CurrentMagento2Parents.Add(item.ItemId);
+            string result = string.Empty;
+            string title = (string.IsNullOrEmpty(item.TitleOverride)) ? item.Title : item.TitleOverride;
+            string itemKeywords = (string.IsNullOrEmpty(item.ItemKeywordsOverride)) ? item.ItemKeywords : item.ItemKeywordsOverride;
+            string itemId = item.ItemId;
+            string dateAdded = (item.Status == "Add") ? DateTime.Now.ToShortDateString() : "";
+
+            result += "\"" + item.ItemId.Trim() + "\","; /* A */
+            result += ","; /* B */
+            result += "\"" + "Default" + "\","; /* C */
+            result += "\"simple\","; /* D */
+            result += ","; /* E */
+            result += "\"base\","; /* F */
+            result += "\"" + item.Title.Trim() + "\","; /* G */
+            result += ","; /* H */
+            result += ","; /* I */
+            result += "\"" + item.Weight.Trim() + "\","; /* J */
+            result += "\"" + "1" + "\","; /* K */
+            result += "\"" + "Taxable Goods" + "\","; /* L */
+            result += "\"" + "Not Visible Individually" + "\","; /* M */
+            result += "\"" + item.DtcPrice + "\","; /* N */
+            result += ","; /* O */
+            result += ","; /* P */
+            result += ","; /* Q */
+            result += "\"" + FormatMagento2Url(title) + "\","; /* R */
+            result += "\"" + title + "\","; /* S */
+            result += "\"" + itemKeywords + "\","; /* T */
+            result += "\"" + title + "\","; /* U */
+            result += "\"" + item.ReturnImageName(1) + "\","; /* V */
+            result += ","; /* W */
+            result += "\"" + item.ReturnImageName(1) + "\","; /* X */
+            result += ","; /* Y */
+            result += "\"" + item.ReturnImageName(1) + "\","; /* Z */
+            result += ","; /* AA */
+            result += "\"" + item.ReturnImageName(1) + "\","; /* AB */
+            result += ","; /* AC */
+            result += "\"" + dateAdded + "\","; /* AD */
+            result += "\"" + DateTime.Now.ToShortDateString() + "\","; /* AE */
+            result += ","; /* AF */
+            result += ","; /* AG */
+            result += "\"" + "Block after Info Column" + "\","; /* AH */
+            result += ","; /* AI */
+            result += ","; /* AJ */
+            result += ","; /* AK */
+            result += "\"" + "No" + "\","; /* AL */
+            result += ","; /* AM */
+            result += ","; /* AN */
+            result += ","; /* AO */
+            result += ","; /* AP */
+            result += "\"" + "Product -- Full Width" + "\","; /* AQ */
+            result += ","; /* AR */
+            result += "\"" + "Use config" + "\","; /* AS */
+            result += "\"" + "United States" + "\","; ; /* AT */
+            result += "\"" + FormatAdditionalAttributes(item, false) + "\","; /* AU */
+            result += "\"" + "0" + "\","; /* AV */
+            result += "\"" + "0" + "\","; /* AW */
+            result += "\"" + "1" + "\","; /* AX */
+            result += "\"" + "0" + "\","; /* AY */
+            result += "\"" + "0" + "\","; /* AZ */
+            result += "\"" + "1" + "\","; /* BA */
+            result += "\"" + "1" + "\","; /* BB */
+            result += "\"" + "1" + "\","; /* BC */
+            result += "\"" + "10000" + "\","; /* BD */
+            result += "\"" + "1" + "\","; /* BE */
+            result += "\"" + "1" + "\","; /* BF */
+            result += "\"" + "1" + "\","; /* BG */
+            result += "\"" + "1" + "\","; /* BH */
+            result += "\"" + "1" + "\","; /* BI */
+            result += "\"" + "1" + "\","; /* BJ */
+            result += "\"" + "1" + "\","; /* BK */
+            result += "\"" + "1" + "\","; /* BL */
+            result += "\"" + "1" + "\","; /* BM */
+            result += "\"" + "0" + "\","; /* BN */
+            result += "\"" + "0" + "\","; ; /* BO */
+            result += "\"" + "0" + "\","; ; /* BP */
+            result += ","; /* BQ */
+            result += ","; /* BR */
+            result += ","; /* BS */
+            result += ","; /* BT */
+            result += ","; /* BU */
+            result += ","; /* BV */
+            result += ","; /* BW */
+            result += ","; /* BX */
+            result += "\"" + FormatAdditionalImages(item) + "\","; /* BY */
+            result += ","; /* BZ */
+            result += ","; /* CA */
+            result += ","; /* CB */
+            result += ","; /* CC */
+            result += ","; /* CD */
+            result += ","; /* CE */
+            result += ","; /* CF */
+            result += ","; /* CG */
+            result += ","; /* CH */
+            result += ","; /* CI" */
+            result += ","; /* CJ" */
+            result += ","; /* CK" */
+            result += ","; /* CL" */
+            result += ","; /* CM" */
+            result += ","; /* CN" */
+            result += ","; /* CO" */
+            result += ","; /* CP" */
+            result += ","; /* CQ" */
+            result += ","; /* CR" */
+            result += ","; /* CS" */
+            result += ","; /* CT" */
+            result += ","; /* CU" */
+            result += ","; /* CV" */
+            result += "\"" + SetConfigurableVariations(childProducts) + "\","; /* CW" */
+            result += "\"" + SetConfigurableVariationLabels(item) + "\","; /* CX" */
+
+            return result;
+        }
+
 
         public string WriteMagentoSecondaryLine(ItemObject item, string territory, string requestType)
         {

@@ -83,7 +83,14 @@ namespace Odin.ViewModels
             {
                 if (ShopTrendsCheckBox == true)
                 {
-                    return "ShopTrends.com";
+                    if (TrendsInternationalCheckBox == true)
+                    {
+                        return "TrendsInternational.com, ShopTrends.com";
+                    }
+                    else
+                    {
+                        return "ShopTrends.com";
+                    }
                 }
                 else
                 {

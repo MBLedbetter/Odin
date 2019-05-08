@@ -466,6 +466,25 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Checks if product is currently marked as being on site
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <param name="site"></param>
+        /// <returns></returns>
+        public bool CheckOnSite(string itemId, string site)
+        {
+            if(site.ToUpper() == "TRENDSINTERNATIONAL.COM")
+            {
+                return ItemRepository.RetrieveOnSite(itemId);
+            }
+            else if (site.ToUpper() == "SHOPTRENDS.COM")
+            {
+                return ItemRepository.RetrieveOnShopTrends(itemId);
+            }
+            return false;
+        }
+
+        /// <summary>
         ///     Checks if the combination of product group, product line and product format is valid. Returns true if all match
         /// </summary>
         /// <param name="productGroup"></param>
@@ -1792,26 +1811,6 @@ namespace OdinServices
         #region Retrieval Methods
         
         /// <summary>
-        ///     Retrieves a list of search items from the database
-        /// </summary>
-        /// <param name="searchValue"></param>
-        /// <returns></returns>
-        public List<SearchItem> RetrieveFindItemSearchResults(string searchValue, bool includeDisabled)
-        {
-            List<SearchItem> SearchItemResults = ItemRepository.RetrieveItemSearchResults(searchValue, includeDisabled);
-            foreach(SearchItem item in SearchItemResults)
-            {
-                if(item.ItemId == searchValue.ToUpper())
-                {
-                    List<SearchItem> OverrideList = new List<SearchItem>() { item };
-                    return OverrideList;
-                }
-            }
-
-            return SearchItemResults;
-        }
-
-        /// <summary>
         ///     Returns a list of all item ids with an active status of 'A' for the given customer
         /// </summary>
         /// <returns></returns>
@@ -1845,7 +1844,27 @@ namespace OdinServices
             }
             return value;
         }
-        
+
+        /// <summary>
+        ///     Retrieves a list of search items from the database
+        /// </summary>
+        /// <param name="searchValue"></param>
+        /// <returns></returns>
+        public List<SearchItem> RetrieveFindItemSearchResults(string searchValue, bool includeDisabled)
+        {
+            List<SearchItem> SearchItemResults = ItemRepository.RetrieveItemSearchResults(searchValue, includeDisabled);
+            foreach (SearchItem item in SearchItemResults)
+            {
+                if (item.ItemId == searchValue.ToUpper())
+                {
+                    List<SearchItem> OverrideList = new List<SearchItem>() { item };
+                    return OverrideList;
+                }
+            }
+
+            return SearchItemResults;
+        }
+
         /// <summary>
         ///     Returns the full country name of the given country code
         /// </summary>
@@ -1882,7 +1901,7 @@ namespace OdinServices
         public ItemObject RetrieveItem(string itemId, int count)
         {
             ItemObject item = ItemRepository.RetrieveItem(itemId, count);
-            item.RelatedProducts = RetrieveRelatedProducts(item.ItemId);
+            // item.RelatedProducts = RetrieveRelatedProducts(item.ItemId);
             item.SetFlagDefaults();
             return item;
         }
@@ -1896,6 +1915,24 @@ namespace OdinServices
             List<string> result = GlobalData.ItemCategories.Keys.ToList();
             result.Sort();
             return result;
+        }
+
+        /// <summary>
+        ///     Removes prefixes and suffixes from itemId.
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns>ItemId core</returns>
+        public string RetrieveItemIdCore(string itemId)
+        {
+            string idCore = itemId;
+            foreach (string x in GlobalData.ItemTypeExtensionsList.OrderBy(x => x.Length))
+            {
+                if(itemId.Contains(x))
+                {
+                    idCore.Replace(x,"");
+                }
+            }
+            return idCore;
         }
 
         /// <summary>
@@ -2051,40 +2088,27 @@ namespace OdinServices
         }
 
         /// <summary>
-        ///     Retrieves the related item ids for the given itemId. ItemIds with 
-        ///     the same numerical value, but with different prefixes / suffixes
-        ///     are considered 'related'. Only works for posters currently.
+        ///     Retrieves existing related item ids for the given itemId. ItemIds with 
+        ///     the same numerical value, but with different prefixes / suffixes are 
+        ///     considered 'related'. 
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns> List of itemIds </returns>
-        public List<string> RetrieveRelatedProducts(string itemId)
+        public List<string> RetrieveRelatedProductIds(string itemId)
         {
-            List<string> results = new List<string>();
+            string idCore = RetrieveItemIdCore(itemId);
+            List<string> relatedProducts = new List<string>();
 
-            /*
-            if (itemId.Contains("RP"))
+            foreach(KeyValuePair<string,string> x in GlobalData.ItemTypeExtensions)
             {
-                string idCore = itemId.Replace("RP","");
-                foreach (KeyValuePair<string, string> x in GlobalData.ItemTypeSuffixes)
+                string y = (x.Key+idCore+x.Value).Trim();
+                if(GlobalData.ItemIds.Contains(y)||GlobalData.LocalItemIds.Contains(y))
                 {
-                    if (x.Value == "PRE")
-                    {
-                        if(GlobalData.ItemIds.Contains(x.Key+idCore))
-                        {
-                            results.Add(x.Key + idCore);
-                        }
-                    }
-                    else if (x.Value == "SUF")
-                    {
-                        if (GlobalData.ItemIds.Contains(idCore+x.Key))
-                        {
-                            results.Add(idCore + x.Key);
-                        }
-                    }
+                    relatedProducts.Add(y);
                 }
             }
-            */
-            return results;
+
+            return relatedProducts;
         }
 
         /// <summary>
@@ -2200,7 +2224,19 @@ namespace OdinServices
         /// <returns></returns>
         public void UpdateOnSite(string itemId, string website)
         {
-            ItemRepository.UpdateOnSite(itemId, website);
+            // If update is for multiple sites
+            if(website.Contains(","))
+            {
+                string[] x = website.Split(',');
+                foreach (string y in x)
+                {
+                    ItemRepository.UpdateOnSite(itemId, y.Trim());
+                }
+            }
+            else
+            {
+                ItemRepository.UpdateOnSite(itemId, website);
+            }
         }
         
         /// <summary>

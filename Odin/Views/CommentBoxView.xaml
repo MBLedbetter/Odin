@@ -1,18 +1,17 @@
 ﻿<Window x:Class="Odin.Views.CommentBoxView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="CommentBoxView" Height="270" Width="450">
+        Title="CommentBoxView" Height="319.02" Width="450">
     <Grid>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition
-                Width="Auto" />
-            <ColumnDefinition
-                Width="Auto" />
-            <ColumnDefinition
-                Width="*" />
+                Width="145" />
+            <ColumnDefinition Width="297"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto" />
             <RowDefinition
                 Height="Auto" />
             <RowDefinition
@@ -28,35 +27,56 @@
             Content="Comments"
             Grid.Row="0"
             Grid.Column="0"
-            Margin="10,0,0,0"
+            Margin="10,7,0,6"
             HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Grid.ColumnSpan="2" />
+            VerticalAlignment="Center" />
         <TextBox
             HorizontalAlignment="Left"
             Height="100"
-            Margin="10,11,0,11"
+            Margin="10,13,0,16"
             Grid.Row="1"
             TextWrapping="Wrap"
             Text="{Binding Comment}"
             VerticalContentAlignment="Center"
             Width="422" Grid.ColumnSpan="2" />
-        <StackPanel
-            Grid.Row="2" >
-            <RadioButton
-                Content="TrendsInternational.com" 
-                Checked="{Binding TrendsInternationalCheckBox}">
-            </RadioButton>
-            <RadioButton
-                Content="ShopTrends.com"
-                Checked="{Binding ShopTrendsCheckBox}" >
-            </RadioButton>
-
-        </StackPanel>
+        <TextBox
+            Grid.Column="0"
+            Grid.Row="2"
+            BorderThickness="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"  
+            Padding="3" 
+            Margin="0,9">
+            TrendsInternational.com
+        </TextBox>
+        <CheckBox
+            Grid.Column="1"
+            Grid.Row="2"
+            HorizontalAlignment="Left"
+            Margin="6,6,0,6"
+            IsChecked="{Binding TrendsInternationalCheckBox}"
+            VerticalContentAlignment="Center"/>
+        <TextBox
+            BorderThickness="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"  
+            Padding="3" 
+            Grid.Column="0"
+            Grid.Row="3"
+            Margin="0,9">
+            ShopTrends.com
+        </TextBox>
+        <CheckBox
+            Grid.Column="1"
+            Grid.Row="3"
+            HorizontalAlignment="Left"
+            Margin="6,6,0,6"
+            IsChecked="{Binding ShopTrendsCheckBox}"
+            VerticalContentAlignment="Center"/>
         <StackPanel
             FlowDirection="RightToLeft"
             Grid.Row="4"
-            Grid.ColumnSpan="5"
+            Grid.ColumnSpan="2"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Bottom"
             Orientation="Horizontal">

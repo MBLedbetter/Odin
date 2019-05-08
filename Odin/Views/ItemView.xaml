@@ -4061,15 +4061,15 @@
                             </ToolTip>
                         </TextBox.ToolTip>
                         Sell On All Posters
-                    </TextBox>
+                        </TextBox>
                     <CheckBox
-                        HorizontalAlignment="Left"
-                        Grid.Column="1"
-                        Grid.Row="1"
-                        Grid.RowSpan="1"
-                        Margin="6,6,0,6"           
-                        IsChecked="{Binding SellOnAllPostersCheck}"
-                        VerticalContentAlignment="Center"/>
+                            HorizontalAlignment="Left"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Grid.RowSpan="1"
+                            Margin="6,6,0,6"           
+                            IsChecked="{Binding SellOnAllPostersCheck}"
+                            VerticalContentAlignment="Center"/>
                     <!-- Sell On Amazon -->
                     <TextBox
                         BorderThickness="0"
