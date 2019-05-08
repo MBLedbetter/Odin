@@ -8656,7 +8656,8 @@ namespace Odin.ViewModels
                 case "Sell On Trends":
                     this.SellOnTrendsError = error.ReturnErrorMessage();
                     break;
-                case "Sell On Trs":
+
+                case "Sell On Shop Trends":
                     this.SellOnTrsError = error.ReturnErrorMessage();
                     break;
 
