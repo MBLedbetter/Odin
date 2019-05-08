@@ -4176,6 +4176,10 @@ namespace Odin.Data
                     prodPrice.LastMaintOprid = GlobalData.UserName;
                 }
             }
+            else
+            {
+                InsertProdPrice(item, businessUnit, currencyCode, listPrice, msrp, context);
+            }
         }
         
         #endregion // Private Update Methods
