@@ -2058,6 +2058,13 @@ namespace OdinServices
                                 row++;
                             }
                             break;
+                        case "Title + Trends International":
+                            foreach (ItemObject item in items)
+                            {
+                                WriteCell(row, columnCount, item.Title + " Trends International");
+                                row++;
+                            }
+                            break;
                         case "UDEX":
                             foreach (ItemObject item in items)
                             {
