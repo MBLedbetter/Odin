@@ -150,10 +150,6 @@ namespace Odin.ViewModels
         {
             get
             {
-                if (_itemErrors == null)
-                {
-                    _itemErrors = new ObservableCollection<ItemError>();
-                }
                 return _itemErrors;
             }
             private set
@@ -171,10 +167,6 @@ namespace Odin.ViewModels
         {
             get
             {
-                if (_itemIdAbsentList == null)
-                {
-                    _itemIdAbsentList = new List<string>();
-                }
                 return _itemIdAbsentList;
             }
             set
@@ -192,10 +184,6 @@ namespace Odin.ViewModels
         {
             get
             {
-                if (_itemIdList == null)
-                {
-                    _itemIdList = new List<string>();
-                }
                 return _itemIdList;
             }
             set
@@ -223,10 +211,6 @@ namespace Odin.ViewModels
         {
             get
             {
-                if (_itemList == null)
-                {
-                    _itemList = new ObservableCollection<ItemObject>();
-                }
                 return _itemList;
             }
             private set

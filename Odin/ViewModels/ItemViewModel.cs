@@ -4964,6 +4964,189 @@ namespace Odin.ViewModels
         private string _itemKeywordsErrorToolTip = string.Empty;
 
         /// <summary>
+        ///     Gets or sets the genre1
+        /// </summary>
+        public string Genre1
+        {
+            get
+            {
+                return this.ItemViewModelItem.Genre1;
+            }
+            set
+            {
+                if (this.ItemViewModelItem.Genre1 != value)
+                {
+                    this.ItemViewModelItem.Genre1 = value;
+                    FlagError("Genre1");
+                    OnPropertyChanged("Genre1");
+                }
+            }
+        }
+        public string Genre1BoxColor
+        {
+            get
+            {
+                return _genre1BoxColor;
+            }
+            set
+            {
+                _genre1BoxColor = value;
+                OnPropertyChanged("Genre1BoxColor");
+            }
+        }
+        private string _genre1BoxColor = "White";
+        public string Genre1Error
+        {
+            get
+            {
+                return _genre1Error;
+            }
+            set
+            {
+                _genre1Error = value;
+                this.Genre1BoxColor = ReturnErrorColor(value);
+                this.TabColorWebInfo = CheckWebInfoTabColor();
+                OnPropertyChanged("Genre1Error");
+            }
+        }
+        private string _genre1Error = string.Empty;
+        public string Genre1ToolTip
+        {
+            get
+            {
+                return _genre1ToolTip;
+            }
+            set
+            {
+                _genre1ToolTip = value;
+                OnPropertyChanged("GenreToolTip");
+            }
+        }
+        private string _genre1ToolTip = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the genre2
+        /// </summary>
+        public string Genre2
+        {
+            get
+            {
+                return this.ItemViewModelItem.Genre2;
+            }
+            set
+            {
+                if (this.ItemViewModelItem.Genre2 != value)
+                {
+                    this.ItemViewModelItem.Genre2 = value;
+                    FlagError("Genre2");
+                    OnPropertyChanged("Genre2");
+                }
+            }
+        }
+        public string Genre2BoxColor
+        {
+            get
+            {
+                return _genre2BoxColor;
+            }
+            set
+            {
+                _genre2BoxColor = value;
+                OnPropertyChanged("Genre2BoxColor");
+            }
+        }
+        private string _genre2BoxColor = "White";
+        public string Genre2Error
+        {
+            get
+            {
+                return _genre2Error;
+            }
+            set
+            {
+                _genre2Error = value;
+                this.Genre2BoxColor = ReturnErrorColor(value);
+                this.TabColorWebInfo = CheckWebInfoTabColor();
+                OnPropertyChanged("Genre2Error");
+            }
+        }
+        private string _genre2Error = string.Empty;
+        public string Genre2ToolTip
+        {
+            get
+            {
+                return _genre2ToolTip;
+            }
+            set
+            {
+                _genre2ToolTip = value;
+                OnPropertyChanged("GenreToolTip");
+            }
+        }
+        private string _genre2ToolTip = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the genre3
+        /// </summary>
+        public string Genre3
+        {
+            get
+            {
+                return this.ItemViewModelItem.Genre3;
+            }
+            set
+            {
+                if (this.ItemViewModelItem.Genre3 != value)
+                {
+                    this.ItemViewModelItem.Genre3 = value;
+                    FlagError("Genre3");
+                    OnPropertyChanged("Genre3");
+                }
+            }
+        }
+        public string Genre3BoxColor
+        {
+            get
+            {
+                return _genre3BoxColor;
+            }
+            set
+            {
+                _genre3BoxColor = value;
+                OnPropertyChanged("Genre3BoxColor");
+            }
+        }
+        private string _genre3BoxColor = "White";
+        public string Genre3Error
+        {
+            get
+            {
+                return _genre3Error;
+            }
+            set
+            {
+                _genre3Error = value;
+                this.Genre3BoxColor = ReturnErrorColor(value);
+                this.TabColorWebInfo = CheckWebInfoTabColor();
+                OnPropertyChanged("Genre3Error");
+            }
+        }
+        private string _genre3Error = string.Empty;
+        public string Genre3ToolTip
+        {
+            get
+            {
+                return _genre3ToolTip;
+            }
+            set
+            {
+                _genre3ToolTip = value;
+                OnPropertyChanged("GenreToolTip");
+            }
+        }
+        private string _genre3ToolTip = string.Empty;
+
+        /// <summary>
         ///     Gets or sets the title
         /// </summary>
         public string Title
@@ -7941,6 +8124,9 @@ namespace Odin.ViewModels
 
         #region ComboBox Properties
 
+        /// <summary>
+        ///     Gets a list of Accounting Groups
+        /// </summary>
         public List<string> AccountingGroupsList
         {
             get
@@ -7978,6 +8164,20 @@ namespace Odin.ViewModels
             }
         }
 
+        /// <summary>
+        ///     Gets a list of Genre Options
+        /// </summary>
+        public List<string> GenreList
+        {
+            get
+            {
+                return GlobalData.Genres;
+            }
+        }
+
+        /// <summary>
+        ///     Gets a list of Item Group options
+        /// </summary>
         public List<string> ItemGroups
         {
             get
@@ -8464,6 +8664,18 @@ namespace Odin.ViewModels
                     this.EcommerceUpcError = error.ReturnErrorMessage();
                     break;
 
+                case "Genre 1":
+                    this.Genre1Error = error.ReturnErrorMessage();
+                    break;
+
+                case "Genre 2":
+                    this.Genre2Error = error.ReturnErrorMessage();
+                    break;
+
+                case "Genre 3":
+                    this.Genre3Error = error.ReturnErrorMessage();
+                    break;
+
                 case "GPC":
                     this.GpcError = error.ReturnErrorMessage();
                     break;
@@ -8886,6 +9098,9 @@ namespace Odin.ViewModels
             if (Category2BoxColor == "Tomato") { return "Tomato"; }
             if (Category3BoxColor == "Tomato") { return "Tomato"; }
             if (ItemKeywordsBoxColor == "Tomato") { return "Tomato"; }
+            if (Genre1BoxColor == "Tomato") { return "Tomato"; }
+            if (Genre2BoxColor == "Tomato") { return "Tomato"; }
+            if (Genre3BoxColor == "Tomato") { return "Tomato"; }
             if (TitleBoxColor == "Tomato") { return "Tomato"; }
             if (LicenseBoxColor == "Tomato") { return "Tomato"; }
             if (MetaDescriptionBoxColor == "Tomato") { return "Tomato"; }
@@ -9152,6 +9367,18 @@ namespace Odin.ViewModels
 
                 case "EcommereUpc":
                     this.EcommerceUpcError = ItemService.ValidateEcommerceUpc(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    break;
+
+                case "Genre1":
+                    this.Genre1Error = ItemService.ValidateGenre(ItemViewModelItem, 1)?.ReturnErrorMessage() ?? "";
+                    break;
+
+                case "Genre2":
+                    this.Genre2Error = ItemService.ValidateGenre(ItemViewModelItem, 2)?.ReturnErrorMessage() ?? "";
+                    break;
+
+                case "Genre3":
+                    this.Genre3Error = ItemService.ValidateGenre(ItemViewModelItem, 3)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "Gpc":
@@ -9500,7 +9727,14 @@ namespace Odin.ViewModels
         /// <param name="license"></param>
         private void RefreshPropertyList(string license)
         {
-            this.PropertyList = ItemService.RetrievePropertyList(license);
+            if (!string.IsNullOrEmpty(license))
+            {
+                this.PropertyList = ItemService.RetrievePropertyList(license);
+            }
+            else
+            {
+                this.PropertyList = new List<string> { "" };
+            }
         }
 
         /// <summary>
@@ -9720,6 +9954,9 @@ namespace Odin.ViewModels
             this.EcommerceSizeToolTip = ReturnToolTip("EcommerceSize");
             this.EcommerceSubjectKeywordsToolTip = ReturnToolTip("EcommerceSubjectKeywords");
             this.EcommerceUpcToolTip = ReturnToolTip("EcommerceUpc");
+            this.Genre1ToolTip = ReturnToolTip("Genre");
+            this.Genre2ToolTip = ReturnToolTip("Genre");
+            this.Genre3ToolTip = ReturnToolTip("Genre");
             this.GpcToolTip = ReturnToolTip("Gpc");
             this.HeightToolTip = ReturnToolTip("Height");
             this.ImagePathToolTip = ReturnToolTip("ImagePath");

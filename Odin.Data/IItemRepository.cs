@@ -186,6 +186,13 @@ namespace Odin.Data
         void InsertLicense(string license, string property);
 
         /// <summary>
+        ///     Insert info into to PS_MARKETPLACE_CUSTOMER_PRODUCTS
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <param name="title"></param>
+        void InsertMarketplaceCustomerProducts(string itemId, string title, string customer);
+
+        /// <summary>
         ///     Inserts a Meta Description value into Odin_MetaDescription
         /// </summary>
         /// <param name="metaDescription"></param>
@@ -243,6 +250,7 @@ namespace Odin.Data
         ///     Runs InsertUomTypeInv for each Uom type
         /// </summary>
         void InsertUomTypeInvAll(ItemObject item, OdinContext context);
+
         /// <summary>
         ///     Inserts a value into Odin_NewWebCategories
         /// </summary>
@@ -367,7 +375,7 @@ namespace Odin.Data
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        List<string> RetrieveImagePaths(string itemId);
+        List<KeyValuePair<string, int>> RetrieveImagePaths(string itemId);
 
         /// <summary>
         ///     Searches PS_ORD_LINE for any open orders
@@ -546,7 +554,7 @@ namespace Odin.Data
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        void UpdateOnSite(string itemId, string website);
+        void UpdateOnSite(ItemObject item, string website);
 
         /// <summary>
         ///     Updates the values in PS_PROD_ITEM

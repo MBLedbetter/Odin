@@ -234,6 +234,18 @@ namespace Odin.ViewModels
             }
         }
         private RelayCommand _managePermision;
+        public ICommand Magento2CustomExcelCommand
+        {
+            get
+            {
+                if (_magento2CustomExcel == null)
+                {
+                    _magento2CustomExcel = new RelayCommand(param => CreateMagento2CustomExcel());
+                }
+                return _magento2CustomExcel;
+            }
+        }
+        private RelayCommand _magento2CustomExcel;
         public ICommand NewTemplateCommand
         {
             get
@@ -282,6 +294,18 @@ namespace Odin.ViewModels
             }
         }
         private RelayCommand _createAllAmazonItems;
+        public ICommand PullImagesCommand
+        {
+            get
+            {
+                if (_pullImages == null)
+                {
+                    _pullImages = new RelayCommand(param => PullImages());
+                }
+                return _pullImages;
+            }
+        }
+        private RelayCommand _pullImages;
         public ICommand RemoveSelectedItemCommand
         {
             get
@@ -986,6 +1010,57 @@ namespace Odin.ViewModels
             }
         }
         private string _eanVisibility = "auto";
+
+        /// <summary>
+        ///     Gets or sets the Genre1Visibility field
+        /// </summary>
+        public string Genre1Visibility
+        {
+            get
+            {
+                return _genre1Visibility;
+            }
+            set
+            {
+                _genre1Visibility = value;
+                OnPropertyChanged("Genre1Visibility");
+            }
+        }
+        private string _genre1Visibility = "auto";
+
+        /// <summary>
+        ///     Gets or sets the Genre2Visibility field
+        /// </summary>
+        public string Genre2Visibility
+        {
+            get
+            {
+                return _genre2Visibility;
+            }
+            set
+            {
+                _genre2Visibility = value;
+                OnPropertyChanged("Genre2Visibility");
+            }
+        }
+        private string _genre2Visibility = "auto";
+
+        /// <summary>
+        ///     Gets or sets the Genre3Visibility field
+        /// </summary>
+        public string Genre3Visibility
+        {
+            get
+            {
+                return _genre3Visibility;
+            }
+            set
+            {
+                _genre3Visibility = value;
+                OnPropertyChanged("Genre3Visibility");
+            }
+        }
+        private string _genre3Visibility = "auto";
 
         /// <summary>
         ///     Gets or sets the GpcVisibility field
@@ -2970,7 +3045,24 @@ namespace Odin.ViewModels
             };
             window.ShowDialog();
         }
-        
+
+        /// <summary>
+        ///     Creates a Magento 2 excel sheet from the curretnly loaded items
+        /// </summary>
+        public void CreateMagento2CustomExcel()
+        {
+            if(this.Items.Count>0)
+            {
+                Random rnd = new Random();
+                int rndId = rnd.Next(1000);
+                string custId = "CUST-" + rndId.ToString();
+                ExcelService.WriteMagento2Csv(this.Items, custId, "Add");
+            }
+            else
+            {
+                MessageBox.Show("There are no items!");
+            }
+        }
         /// <summary>
         ///     Opens DbSetting View / View Model
         /// </summary>
@@ -3299,6 +3391,27 @@ namespace Odin.ViewModels
         }
 
         /// <summary>
+        ///     Copies the images for the given request into a folder on the users desktop
+        /// </summary>
+        public void PullImages()
+        {
+            List<string> itemIds = new List<string>();
+            foreach (ItemObject item in this.Items)
+            {
+                itemIds.Add(item.ItemId);
+            }
+            List<string> missingImages = ItemService.PullImages(itemIds, true);
+            if (missingImages.Count > 0)
+            {
+                AlertView window = new AlertView
+                {
+                    DataContext = new AlertViewModel(missingImages, "Alert", "The following images were not found in the captures folder or were too large.")
+                };
+                window.ShowDialog();
+            }
+        }
+
+        /// <summary>
         ///     Remove the given item from the list, error list and local itemid list
         /// </summary>
         /// <param name="itemId"></param>
@@ -3464,6 +3577,9 @@ namespace Odin.ViewModels
             this.DirectImportVisibility = (UserOptions.DirectImportVisibility) ? "100" : "0";
             this.DutyVisibility = (UserOptions.DutyVisibility) ? "100" : "0";
             this.EanVisibility = (UserOptions.EanVisibility) ? "100" : "0";
+            this.Genre1Visibility = (UserOptions.Genre1Visibility) ? "100" : "0";
+            this.Genre2Visibility = (UserOptions.Genre2Visibility) ? "100" : "0";
+            this.Genre3Visibility = (UserOptions.Genre3Visibility) ? "100" : "0";
             this.GpcVisibility = (UserOptions.GpcVisibility) ? "100" : "0";
             this.HeightVisibility = (UserOptions.HeightVisibility) ? "100" : "0";
             this.InnerpackHeightVisibility = (UserOptions.InnerpackHeightVisibility) ? "100" : "0";
@@ -3593,6 +3709,9 @@ namespace Odin.ViewModels
             UserOptions.DirectImportVisibility = true;
             UserOptions.DutyVisibility = true;
             UserOptions.EanVisibility = true;
+            UserOptions.Genre1Visibility = true;
+            UserOptions.Genre2Visibility = true;
+            UserOptions.Genre3Visibility = true;
             UserOptions.GpcVisibility = true;
             UserOptions.HeightVisibility = true;
             UserOptions.InnerpackHeightVisibility = true;

@@ -81,6 +81,21 @@ namespace Odin.DbTableModels
         public string Duty { get; set; }
 
         /// <summary>
+        ///     Gets or sets GENRE_1
+        /// </summary>
+        public string Genre1 { get; set; }
+
+        /// <summary>
+        ///     Gets or sets GENRE_2
+        /// </summary>
+        public string Genre2 { get; set; }
+
+        /// <summary>
+        ///     Gets or sets GENRE_3
+        /// </summary>
+        public string Genre3 { get; set; }
+
+        /// <summary>
         ///     Gets or sets GTIN
         /// </summary>
         public string Gtin { get; set; }

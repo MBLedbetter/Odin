@@ -1019,6 +1019,45 @@ namespace Odin.ViewModels
             }
         }
 
+        public bool Genre1Visibility
+        {
+            get
+            {
+                return UserOptions.Genre1Visibility;
+            }
+            set
+            {
+                UserOptions.Genre1Visibility = value;
+                OnPropertyChanged("Genre1Visibility");
+            }
+        }
+
+        public bool Genre2Visibility
+        {
+            get
+            {
+                return UserOptions.Genre2Visibility;
+            }
+            set
+            {
+                UserOptions.Genre2Visibility = value;
+                OnPropertyChanged("Genre2Visibility");
+            }
+        }
+
+        public bool Genre3Visibility
+        {
+            get
+            {
+                return UserOptions.Genre3Visibility;
+            }
+            set
+            {
+                UserOptions.Genre3Visibility = value;
+                OnPropertyChanged("Genre3Visibility");
+            }
+        }
+
         public bool GpcVisibility
         {
             get
@@ -1963,6 +2002,9 @@ namespace Odin.ViewModels
             if (UserOptions.Category2Visibility  == false) { return false; }
             if (UserOptions.Category3Visibility  == false) { return false; }
             if (UserOptions.CopyrightVisibility  == false) { return false; }
+            if (UserOptions.Genre1Visibility == false) { return false; }
+            if (UserOptions.Genre2Visibility == false) { return false; }
+            if (UserOptions.Genre3Visibility == false) { return false; }
             if (UserOptions.InStockDateVisibility  == false) { return false; }
             if (UserOptions.ItemKeywordsVisibility  == false) { return false; }
             if (UserOptions.LicenseVisibility  == false) { return false; }
@@ -2154,6 +2196,9 @@ namespace Odin.ViewModels
                 this.Category2Visibility = true;
                 this.Category3Visibility = true;
                 this.CopyrightVisibility = true;
+                this.Genre1Visibility = true;
+                this.Genre2Visibility = true;
+                this.Genre3Visibility = true;
                 this.InStockDateVisibility = true;
                 this.ItemKeywordsVisibility = true;
                 this.LicenseVisibility = true;
@@ -2170,6 +2215,9 @@ namespace Odin.ViewModels
                 this.Category2Visibility = false;
                 this.Category3Visibility = false;
                 this.CopyrightVisibility = false;
+                this.Genre1Visibility = false;
+                this.Genre2Visibility = false;
+                this.Genre3Visibility = false;
                 this.InStockDateVisibility = false;
                 this.ItemKeywordsVisibility = false;
                 this.LicenseVisibility = false;

@@ -245,9 +245,9 @@ namespace Odin.Data
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        public List<string> RetrieveImagePaths(string itemId)
+        public List<KeyValuePair<string, int>> RetrieveImagePaths(string itemId)
         {
-            return new List<string>();
+            return new List<KeyValuePair<string, int>>();
         }
 
         /// <summary>
@@ -1080,6 +1080,16 @@ namespace Odin.Data
         }
 
         /// <summary>
+        ///     Insert info into to PS_MARKETPLACE_CUSTOMER_PRODUCTS
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <param name="title"></param>
+        public void InsertMarketplaceCustomerProducts(string itemId, string title, string customer)
+        {
+
+        }
+
+        /// <summary>
         ///     Inserts a Meta Description value into Odin_MetaDescription
         /// </summary>
         /// <param name="metaDescription"></param>
@@ -1690,9 +1700,9 @@ namespace Odin.Data
                 WebsitePrice = "WebsitePrice",
                 Weight = "Weight",
                 Width = "Width"
-            } });
-
-                        
+            }
+            });
+                                    
             items[0].OnSite = "Y";
             items[0].EcommerceCountryofOrigin = "CountryOfOrigin";
             items[0].Status = "Update";
@@ -1710,6 +1720,26 @@ namespace Odin.Data
                 "License2:Property2",
                 "License3:Property3"
             });
+        }
+
+        /// <summary>
+        ///     Check if item is listed as being on the shoptrends site. PS_ITEM_WEB_INFO.ON_SHOPTRENDS == "Y"
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        public bool RetrieveOnShopTrends(string itemId)
+        {
+            return false;
+        }
+
+        /// <summary>
+        ///     Check if item is listed as being on the trendsinteranational site. PS_ITEM_WEB_INFO.ON_SITE == "Y"
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        public bool RetrieveOnSite(string itemId)
+        {
+            return false;
         }
 
         /// <summary>
@@ -1977,7 +2007,7 @@ namespace Odin.Data
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        public void UpdateOnSite(string itemId,string website)
+        public void UpdateOnSite(ItemObject item, string website)
         {
         }
 

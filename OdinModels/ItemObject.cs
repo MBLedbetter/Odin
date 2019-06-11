@@ -1377,6 +1377,63 @@ namespace OdinModels
         private string _ecommerceupc = string.Empty;
 
         /// <summary>
+        ///     Gets or sets the Genre1
+        /// </summary>
+        public string Genre1
+        {
+            get
+            {
+                return _genre1;
+            }
+            set
+            {
+                if (_genre1 != value) { Genre1Update = true; }
+                _genre1 = value;
+                OnPropertyChanged("Genre1");
+
+            }
+        }
+        private string _genre1 = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the Genre2
+        /// </summary>
+        public string Genre2
+        {
+            get
+            {
+                return _genre2;
+            }
+            set
+            {
+                if (_genre2 != value) { Genre2Update = true; }
+                _genre2 = value;
+                OnPropertyChanged("Genre2");
+
+            }
+        }
+        private string _genre2 = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the Genre1
+        /// </summary>
+        public string Genre3
+        {
+            get
+            {
+                return _genre3;
+            }
+            set
+            {
+                if (_genre3 != value) { Genre3Update = true; }
+                _genre3 = value;
+                OnPropertyChanged("Genre3");
+
+            }
+        }
+        private string _genre3 = string.Empty;
+
+        /// <summary>
         ///     Gets or sets the Gpc
         /// </summary>
         public string Gpc
@@ -1952,6 +2009,24 @@ namespace OdinModels
             }
         }
         private string _msrpMxn = string.Empty;
+
+        /// <summary>
+        ///     Gets or set the OnShopTrends value. Flag for determining if the item has already been uploaded to shoptrends.com.
+        ///     User cannot edit this field. Switched upon admin exporting web excel.
+        /// </summary>
+        public string OnShopTrends
+        {
+            get
+            {
+                return _onShopTrends;
+            }
+            set
+            {
+                _onShopTrends = value;
+                OnPropertyChanged("OnShopTrends");
+            }
+        }
+        private string _onShopTrends = string.Empty;
 
         /// <summary>
         ///     Gets or set the OnSite value. Flag for determining if the item has already been uploaded to trendsinternational.com.
@@ -3120,6 +3195,9 @@ namespace OdinModels
                     this.CasepackWidthUpdate ||
                     this.DirectImportUpdate ||
                     this.DtcPriceUpdate ||
+                    this.Genre1Update ||
+                    this.Genre2Update ||
+                    this.Genre3Update ||
                     this.ImagePathUpdate ||
                     this.InnerpackHeightUpdate ||
                     this.InnerpackLengthUpdate ||
@@ -3701,6 +3779,21 @@ namespace OdinModels
         public bool EcommerceUpcUpdate = false;
 
         /// <summary>
+        ///     Genre1Update update flag
+        /// </summary>
+        public bool Genre1Update = false;
+
+        /// <summary>
+        ///     Genre2Update update flag
+        /// </summary>
+        public bool Genre2Update = false;
+
+        /// <summary>
+        ///     Genre3Update update flag
+        /// </summary>
+        public bool Genre3Update = false;
+
+        /// <summary>
         ///     GpcUpdate update flag
         /// </summary>
         public bool GpcUpdate = false;
@@ -4180,6 +4273,9 @@ namespace OdinModels
             this.EcommerceSizeUpdate = false;
             this.EcommerceSubjectKeywordsUpdate = false;
             this.EcommerceUpcUpdate = false;
+            this.Genre1Update = false;
+            this.Genre2Update = false;
+            this.Genre3Update = false;
             this.GpcUpdate = false;
             this.HeightUpdate = false;
             this.ImagePathUpdate = false;
@@ -4312,7 +4408,7 @@ namespace OdinModels
             }
             if (value != string.Empty)
             {
-                int idx = value.LastIndexOf("/");
+                int idx = value.LastIndexOf("\\");
                 if (idx != -1)
                 {
                     return value.Substring(idx + 1);
@@ -4430,6 +4526,9 @@ namespace OdinModels
                 this.EcommerceSize = item.EcommerceSize;
                 this.EcommerceSubjectKeywords = item.EcommerceSubjectKeywords;
                 this.EcommerceUpc = item.EcommerceUpc;
+                this.Genre1 = item.Genre1;
+                this.Genre2 = item.Genre2;
+                this.Genre3 = item.Genre3;
                 this.Gpc = item.Gpc;
                 this.Height = item.Height;
                 this.ImagePath = item.ImagePath;
@@ -4514,6 +4613,8 @@ namespace OdinModels
         public void SetFlagDefaults()
         {
             if (string.IsNullOrEmpty(this.PsStatus)) { this.PsStatus = "I"; }
+            if (string.IsNullOrEmpty(this.OnShopTrends)) { this.OnShopTrends = "N"; }
+            if (string.IsNullOrEmpty(this.OnSite)) { this.OnSite = "N"; }
             if (string.IsNullOrEmpty(this.SellOnAllPosters)) { this.SellOnAllPosters = "N"; }
             if (string.IsNullOrEmpty(this.SellOnAmazon)) { this.SellOnAmazon = "N"; }
             if (string.IsNullOrEmpty(this.SellOnAmazonSellerCentral)) { this.SellOnAmazonSellerCentral = "N"; }

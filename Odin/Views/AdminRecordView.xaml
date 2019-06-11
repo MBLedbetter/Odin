@@ -223,6 +223,30 @@
                             Padding="5" />
                         </GridViewColumn>
                         <GridViewColumn
+                        DisplayMemberBinding="{Binding Genre1}"
+                        Width="auto">
+                            <GridViewColumnHeader
+                            Content="Genre 1"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                        </GridViewColumn>
+                        <GridViewColumn
+                        DisplayMemberBinding="{Binding Genre2}"
+                        Width="auto">
+                            <GridViewColumnHeader
+                            Content="Genre 2"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                        </GridViewColumn>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding Genre3}"
+                            Width="auto">
+                            <GridViewColumnHeader
+                            Content="Genre 3"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                        </GridViewColumn>
+                        <GridViewColumn
                         DisplayMemberBinding="{Binding Gpc}"
                         Width="auto">
                             <GridViewColumnHeader

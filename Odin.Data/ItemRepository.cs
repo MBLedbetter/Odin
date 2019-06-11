@@ -286,6 +286,7 @@ namespace Odin.Data
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("GUITAR CENTER"), item.SellOnGuitarCenter, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HAYNEEDLE"), item.SellOnHayneedle, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HOUZZ"), item.SellOnHouzz, context);
+            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("SHOP TRENDS"), item.SellOnTrs, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TARGET"), item.SellOnTarget, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TRS"), item.SellOnTrs, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("WALMART"), item.SellOnWalmart, context) ;
@@ -578,6 +579,9 @@ namespace Odin.Data
                     DirectImport = item.DirectImport,
                     DtcPrice = DbUtil.ToDecimal(item.DtcPrice),
                     Duty = item.Duty,
+                    Genre1 = item.Genre1,
+                    Genre2 = item.Genre2,
+                    Genre3 = item.Genre3,
                     Gtin = "",
                     ImageFileName = item.ImagePath,
                     InnerpackHeight = DbUtil.ToDecimal(item.InnerpackHeight),
@@ -715,6 +719,9 @@ namespace Odin.Data
                 Ean = item.Ean,
                 Fplcanl1 = "",
                 Fplusl1 = "",
+                Genre1 = item.Genre1,
+                Genre2 = item.Genre2,
+                Genre3 = item.Genre3,
                 Gpc = item.Gpc,
                 Height = item.Height,
                 ImageFileName = item.ImagePath,
@@ -826,8 +833,9 @@ namespace Odin.Data
         {
             if (!context.ItemWebInfo.Any(o => o.InvItemId == item.ItemId))
             {
-                item.CombinedCategories = CombineCategories(item.Category, item.Category2, item.Category3);                
-                
+                item.CombinedCategories = CombineCategories(item.Category, item.Category2, item.Category3);
+                string onShopTrends = (string.IsNullOrEmpty(item.OnShopTrends)) ? "N" : item.OnShopTrends;
+                string onSite = (string.IsNullOrEmpty(item.OnSite)) ? "N" : item.OnSite;
                 DateTime inStockDate = (!(string.IsNullOrEmpty(item.InStockDate))) ? Convert.ToDateTime(item.InStockDate) : new DateTime(1900, 01, 01);
                 context.ItemWebInfo.Add(new ItemWebInfo
                 {
@@ -845,8 +853,8 @@ namespace Odin.Data
                     Msrp = "0",
                     Newcategory = "",
                     NewDate = "",
-                    OnShopTrends = "N",
-                    OnSite = "N",
+                    OnShopTrends = onShopTrends,
+                    OnSite = onSite,
                     ProdQty = item.ProductQty,
                     Property = item.Property,
                     ShortDesc = item.ShortDescription,
@@ -981,7 +989,28 @@ namespace Odin.Data
                 });
             }
         }
-        
+
+        /// <summary>
+        ///     Insert info into to PS_MARKETPLACE_CUSTOMER_PRODUCTS
+        /// </summary>
+        public void InsertMarketplaceCustomerProducts(string itemId, string title, string customer)
+        {
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                if (!context.MarketplaceCustomerProducts.Any(o => o.InvItemId == itemId && o.Setid == "SHARE" && o.CustId == customer))
+                {
+                    context.MarketplaceCustomerProducts.Add(new MarketplaceCustomerProducts
+                    {
+                        CustId = customer,
+                        InvItemId = itemId,
+                        Setid = "SHARE",
+                        Title = title
+                    });
+                    context.SaveChanges();
+                }            
+            }
+        }
+
         /// <summary>
         ///     Inserts a Meta Description value into Odin_MetaDescription
         /// </summary>
@@ -1525,6 +1554,7 @@ namespace Odin.Data
             GlobalData.Customers = RetrieveCustomerIdConversionsList();
             GlobalData.CustomerIdConversions = RetrieveCustomerIdConversionsList();
             GlobalData.ExternalIdTypes = RetrieveEcommerceExternalIdTypeList();
+            GlobalData.Genres = RetrieveGenres();
             GlobalData.ItemCategories = RetrieveItemCategories();
             GlobalData.ItemGroups = RetrieveItemGroups();
             GlobalData.ItemIds = RetrieveItemIds();
@@ -1559,19 +1589,19 @@ namespace Odin.Data
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        public List<string> RetrieveImagePaths(string itemId)
+        public List<KeyValuePair<string, int>> RetrieveImagePaths(string itemId)
         {
-            List<string> imagePaths = new List<string>();
+            List<KeyValuePair<string, int>> imagePaths = new List<KeyValuePair<string, int>>();
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 var dataset = context.ItemAttribEx
                 .Where(x => x.InvItemId == itemId)
                 .Select(x => new { x.ImageFileName, x.AltImageFile1, x.AltImageFile2, x.AltImageFile3, x.AltImageFile4 }).FirstOrDefault();
-                if (!string.IsNullOrEmpty(dataset.ImageFileName)) { imagePaths.Add(dataset.ImageFileName); }
-                if (!string.IsNullOrEmpty(dataset.AltImageFile1)) { imagePaths.Add(dataset.AltImageFile1); }
-                if (!string.IsNullOrEmpty(dataset.AltImageFile2)) { imagePaths.Add(dataset.AltImageFile2); }
-                if (!string.IsNullOrEmpty(dataset.AltImageFile3)) { imagePaths.Add(dataset.AltImageFile3); }
-                if (!string.IsNullOrEmpty(dataset.AltImageFile4)) { imagePaths.Add(dataset.AltImageFile4); }
+                if (!string.IsNullOrEmpty(dataset.ImageFileName)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.ImageFileName,1)); }
+                if (!string.IsNullOrEmpty(dataset.AltImageFile1)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.AltImageFile1,2)); }
+                if (!string.IsNullOrEmpty(dataset.AltImageFile2)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.AltImageFile2,3)); }
+                if (!string.IsNullOrEmpty(dataset.AltImageFile3)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.AltImageFile3,4)); }
+                if (!string.IsNullOrEmpty(dataset.AltImageFile4)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.AltImageFile4,5)); }
             }
             return imagePaths;
         }
@@ -1626,6 +1656,7 @@ namespace Odin.Data
                         EcommerceBullet5 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet5)) ? odinItem.EcommerceBullet5.Trim() : "",
                         EcommerceComponents = (!string.IsNullOrEmpty(odinItem.EcommerceComponents)) ? odinItem.EcommerceComponents.Trim() : "",
                         EcommerceCost = (odinItem.EcommerceCost != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceCost).Trim(), 2) : "",
+                        EcommerceCountryofOrigin = (!string.IsNullOrEmpty(odinItem.CountryIstOrigin)) ? odinItem.CountryIstOrigin : "",
                         EcommerceExternalId = (!string.IsNullOrEmpty(odinItem.EcommerceExternalId)) ? odinItem.EcommerceExternalId.Trim() : "",
                         EcommerceExternalIdType = (!string.IsNullOrEmpty(odinItem.EcommerceExternalIdType)) ? odinItem.EcommerceExternalIdType.Trim() : "",
                         EcommerceImagePath1 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl1)) ? odinItem.EcommerceImageUrl1.Trim() : "",
@@ -1655,6 +1686,9 @@ namespace Odin.Data
                         EcommerceSubjectKeywords = (!string.IsNullOrEmpty(odinItem.EcommerceSubjectKeywords)) ? odinItem.EcommerceSubjectKeywords.Trim() : "",
                         EcommerceSize = (!string.IsNullOrEmpty(odinItem.EcommerceSize)) ? odinItem.EcommerceSize.Trim() : "",
                         EcommerceUpc = (!string.IsNullOrEmpty(odinItem.EcommerceUpc)) ? odinItem.EcommerceUpc.Trim() : "",
+                        Genre1 = (!string.IsNullOrEmpty(odinItem.Genre1)) ? odinItem.Genre1.Trim() : "",
+                        Genre2 = (!string.IsNullOrEmpty(odinItem.Genre2)) ? odinItem.Genre2.Trim() : "",
+                        Genre3 = (!string.IsNullOrEmpty(odinItem.Genre3)) ? odinItem.Genre3.Trim() : "",
                         Gpc = (!string.IsNullOrEmpty(odinItem.Gpc)) ? odinItem.Gpc.Trim() : "",
                         Height = (odinItem.InvItemHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemHeight), 1) : "",
                         ImagePath = (!string.IsNullOrEmpty(odinItem.ImageFileName)) ? odinItem.ImageFileName.Trim() : "",
@@ -1683,6 +1717,8 @@ namespace Odin.Data
                         MsrpCad = (!string.IsNullOrEmpty(odinItem.MsrpCad)) ? DbUtil.ZeroTrim(odinItem.MsrpCad, 2) : "",
                         MsrpMxn = (!string.IsNullOrEmpty(odinItem.MsrpMxn)) ? DbUtil.ZeroTrim(odinItem.MsrpMxn, 2) : "",
                         Msrp = (!string.IsNullOrEmpty(odinItem.MsrpUsd)) ? DbUtil.ZeroTrim(odinItem.MsrpUsd, 2) : "",
+                        OnSite = (!string.IsNullOrEmpty(odinItem.OnSite)) ? odinItem.OnSite : "",
+                        OnShopTrends = (!string.IsNullOrEmpty(odinItem.OnShopTrends)) ? odinItem.OnShopTrends : "",
                         PricingGroup = (!string.IsNullOrEmpty(odinItem.PricingGroup)) ? odinItem.PricingGroup.Trim() : "",
                         ProductFormat = (!string.IsNullOrEmpty(odinItem.ProdFormat)) ? odinItem.ProdFormat.Trim() : "",
                         ProductGroup = (!string.IsNullOrEmpty(odinItem.ProdGroup)) ? odinItem.ProdGroup.Trim() : "",
@@ -1722,8 +1758,6 @@ namespace Odin.Data
                         WebsitePriceOverride = (odinItem.WebsitePriceOverride != null) ? DbUtil.ZeroTrim(odinItem.WebsitePriceOverride.ToString(), 2) : "",
                         Weight = (odinItem.InvItemWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWeight), 1) : "",
                         Width = (odinItem.InvItemWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWidth), 1) : "",
-                        OnSite = (!string.IsNullOrEmpty(odinItem.OnSite)) ? odinItem.OnSite : "",
-                        EcommerceCountryofOrigin = (!string.IsNullOrEmpty(odinItem.CountryIstOrigin)) ? odinItem.CountryIstOrigin : "",
                         Status = "Update",
                         ItemRow = row
                     };
@@ -1887,6 +1921,9 @@ namespace Odin.Data
                     item.Duty = odinItemUpdateRecord.Duty;
                     item.Ean = odinItemUpdateRecord.Ean;
                     item.Gpc = odinItemUpdateRecord.Gpc;
+                    item.Genre1 = odinItemUpdateRecord.Genre1;
+                    item.Genre2 = odinItemUpdateRecord.Genre2;
+                    item.Genre3 = odinItemUpdateRecord.Genre3;
                     item.Height = odinItemUpdateRecord.Height;
                     item.ImagePath = odinItemUpdateRecord.ImagePath;
                     item.InnerpackHeight = odinItemUpdateRecord.InnerpackHeight;
@@ -2574,6 +2611,9 @@ namespace Odin.Data
                 itemAttribEx.DirectImport = item.DirectImport;
                 itemAttribEx.DtcPrice = DbUtil.ToDecimal(item.DtcPrice);
                 itemAttribEx.Duty = item.Duty;
+                itemAttribEx.Genre1 = item.Genre1;
+                itemAttribEx.Genre2 = item.Genre2;
+                itemAttribEx.Genre3 = item.Genre3;
                 itemAttribEx.ImageFileName = item.ImagePath;
                 itemAttribEx.InnerpackHeight = DbUtil.ToDecimal(item.InnerpackHeight);
                 itemAttribEx.InnerpackLength = DbUtil.ToDecimal(item.InnerpackLength);
@@ -2707,11 +2747,11 @@ namespace Odin.Data
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        public void UpdateOnSite(string itemId, string website)
+        public void UpdateOnSite(ItemObject item, string website)
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                ItemWebInfo itemWebInfo = (from o in context.ItemWebInfo where o.InvItemId == itemId select o).FirstOrDefault();
+                ItemWebInfo itemWebInfo = (from o in context.ItemWebInfo where o.InvItemId == item.ItemId select o).FirstOrDefault();
 
                 if (itemWebInfo != null)
                 {
@@ -2723,8 +2763,12 @@ namespace Odin.Data
                     {
                         itemWebInfo.OnSite = "Y";
                     }
-                    context.SaveChanges();
                 }
+                else
+                {
+                    InsertItemWebInfo(item, context);
+                }
+                context.SaveChanges();
             }
         }
 
@@ -3682,6 +3726,18 @@ namespace Odin.Data
         }
 
         /// <summary>
+        ///     Retrieves a list of genres from ODIN_GENRES
+        /// </summary>
+        /// <returns></returns>
+        private List<string> RetrieveGenres()
+        {
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                return (from o in context.OdinGenres select o.Genre).ToList();
+            }
+        }
+
+        /// <summary>
         ///     Retrieves a dictionary of item category name / ids from PS_ITM_CAT_TBL
         /// </summary>
         /// <returns></returns>
@@ -3748,7 +3804,7 @@ namespace Odin.Data
             List<KeyValuePair<string, string>> results = new List<KeyValuePair<string, string>>();
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                if ((context.OdinItemTypeExtensions.Any()))
+                if (context.OdinItemTypeExtensions.Any())
                 {
                     var dataset = context.OdinItemTypeExtensions.Select(x => new { x.Prefix, x.Suffix }).ToList();
                     foreach (var x in dataset)
@@ -3769,7 +3825,7 @@ namespace Odin.Data
             List<string> results = new List<string>();
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                if ((context.LanguageTbl.Any()))
+                if (context.LanguageTbl.Any())
                 {
                     results = (from o in context.OdinWebLanguages select o.Language).ToList();
                 }

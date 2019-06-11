@@ -8,6 +8,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
+using System.Drawing;
 
 namespace OdinServices
 {
@@ -90,6 +92,9 @@ namespace OdinServices
             public static string EcommerceSize = "Ecommerce Size";
             public static string EcommerceUpc = "Ecommerce UPC";
             public static string GenericKeywords = "Generic Keywords";
+            public static string Genre1 = "Genre 1";
+            public static string Genre2 = "Genre 2";
+            public static string Genre3 = "Genre 3";
             public static string Gpc = "Gpc";
             public static string Height = "Height";
             public static string ImagePath = "Image Path";
@@ -284,7 +289,11 @@ namespace OdinServices
                 // value = "@" + value;
                 if (File.Exists(value))
                 {
-                    return true;
+                    // Check that file isn't too big, to prevent memory exception
+                    if ((new System.IO.FileInfo(value).Length < 20000000))
+                    {
+                        return true;
+                    }                  
                 }
                 return false;
             }
@@ -627,6 +636,9 @@ namespace OdinServices
             if (item.EcommerceSize.Trim() == "[CLEAR]") { item.EcommerceSize = ""; }
             if (item.EcommerceSubjectKeywords.Trim() == "[CLEAR]") { item.EcommerceSubjectKeywords = ""; }
             if (item.EcommerceUpc.Trim() == "[CLEAR]") { item.EcommerceUpc = ""; }
+            if (item.Genre1.Trim() == "[CLEAR]") { item.Genre1 = ""; }
+            if (item.Genre2.Trim() == "[CLEAR]") { item.Genre2 = ""; }
+            if (item.Genre3.Trim() == "[CLEAR]") { item.Genre3 = ""; }
             if (item.Gpc.Trim() == "[CLEAR]") { item.Gpc = ""; }
             if (item.Height.Trim() == "[CLEAR]") { item.Height = ""; }
             if (item.ImagePath.Trim() == "[CLEAR]") { item.ImagePath = ""; }
@@ -755,7 +767,10 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.EcommerceGenericKeywords)) && (item.EcommerceGenericKeywords.Trim() != returnItem.EcommerceGenericKeywords.Trim())) { returnItem.EcommerceGenericKeywords = item.EcommerceGenericKeywords; } 
             if ((!string.IsNullOrEmpty(item.EcommerceSize)) && (item.EcommerceSize.Trim() != returnItem.EcommerceSize.Trim())) { returnItem.EcommerceSize = item.EcommerceSize; } 
             if ((!string.IsNullOrEmpty(item.EcommerceSubjectKeywords)) && (item.EcommerceSubjectKeywords.Trim() != returnItem.EcommerceSubjectKeywords.Trim())) { returnItem.EcommerceSubjectKeywords = item.EcommerceSubjectKeywords; } 
-            if ((!string.IsNullOrEmpty(item.EcommerceUpc)) && (item.EcommerceUpc.Trim() != returnItem.EcommerceUpc.Trim())) { returnItem.EcommerceUpc = item.EcommerceUpc; } 
+            if ((!string.IsNullOrEmpty(item.EcommerceUpc)) && (item.EcommerceUpc.Trim() != returnItem.EcommerceUpc.Trim())) { returnItem.EcommerceUpc = item.EcommerceUpc; }
+            if ((!string.IsNullOrEmpty(item.Genre1)) && (item.Genre1.Trim() != returnItem.Genre1.Trim())) { returnItem.Genre1 = item.Genre1; }
+            if ((!string.IsNullOrEmpty(item.Genre2)) && (item.Genre2.Trim() != returnItem.Genre2.Trim())) { returnItem.Genre2 = item.Genre2; }
+            if ((!string.IsNullOrEmpty(item.Genre3)) && (item.Genre3.Trim() != returnItem.Genre3.Trim())) { returnItem.Genre3 = item.Genre3; }
             if ((!string.IsNullOrEmpty(item.Gpc)) && (item.Gpc.Trim() != returnItem.Gpc.Trim())) { returnItem.Gpc = item.Gpc; }
             if ((!string.IsNullOrEmpty(item.Height)) && (item.Height.Trim() != returnItem.Height.Trim())) { returnItem.Height = item.Height; }
             if ((!string.IsNullOrEmpty(item.ImagePath)) && (item.ImagePath.Trim() != returnItem.ImagePath.Trim())) { returnItem.ImagePath = item.ImagePath; }
@@ -1023,6 +1038,29 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Returns image name as a [itemid]-[itemnumber].jpg 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="imgNum"></param>
+        /// <returns></returns>
+        public string ReturnImageName(string itemId, int imgNum)
+        {
+            /*
+            string imageName = item.ReturnImageName(imgNum);
+            imageName = imageName.Replace(" ", "");
+            imageName = imageName.Replace(".tif", ".jpg");
+            imageName = imageName.Replace(".pdf", ".jpg");
+            imageName = imageName.Replace(".png", ".jpg");
+            imageName = imageName.Replace(".TIF", ".jpg");
+            imageName = imageName.Replace(".jpeg", ".jpg");
+            imageName = imageName.Replace("#", "");
+            imageName = imageName.Replace("(", "");
+            imageName = imageName.Replace(")", "");
+            */
+            return itemId + "-" + imgNum.ToString() + ".jpg";
+        }
+
+        /// <summary>
         ///     Calls a window explorer with workbook reader and loads in list of spreadsheet items
         /// </summary>
         /// <param name="status">Item Status (update / add / remove)</param>
@@ -1106,6 +1144,9 @@ namespace OdinServices
                     EcommerceSubjectKeywords = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceSearchTerms, WorksheetColumnHeaders.A_SearchTerms),
                     EcommerceSize = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceSize, WorksheetColumnHeaders.A_Size),
                     EcommerceUpc = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceUpc),
+                    Genre1 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Genre1),
+                    Genre2 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Genre2),
+                    Genre3 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Genre3),
                     Gpc = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Gpc),
                     Height = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Height, WorksheetColumnHeaders.ItemHeight), 1),
                     ImagePath = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ImagePath, WorksheetColumnHeaders.ImagePath1),
@@ -1360,6 +1401,39 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Copies the images for the given request into a folder on the users desktop
+        /// </summary>
+        /// <param name="itemIds"></param>
+        /// <returns>Any image paths that were incorrect</returns>
+        public List<string> PullImages(List<string> itemIds, bool clearSpaces = false)
+        {
+            string location = @"C:\Users\" + Environment.UserName.ToLower() + @"\Desktop\EcomerceImages";
+            List<string> missingImages = new List<string>();
+            Directory.CreateDirectory(location);
+            foreach (string itemId in itemIds)
+            {
+                foreach (KeyValuePair<string,int> img in RetrieveImagePaths(itemId))
+                {
+                    if (CheckFileExists(img.Key, false))
+                    {
+                        string filename = location + @"\" + ReturnImageName(itemId, img.Value);
+                        if (!CheckFileExists(filename,false))
+                        {
+                            Image myImage = Image.FromFile(img.Key, true);
+                            SaveJpeg(filename, myImage, 60);
+                            myImage.Dispose();
+                        }
+                    }
+                    else
+                    {
+                        missingImages.Add(img.Key);
+                    }
+                }
+            }
+            return missingImages;
+        }
+
+        /// <summary>
         ///     Combines the three category fields into a single string to be uploaded to the website.
         /// </summary>
         /// <param name="value1"></param>
@@ -1448,7 +1522,51 @@ namespace OdinServices
             }
             return value;
         }
-        
+
+        /// <summary> 
+        /// Returns the image codec with the given mime type 
+        /// </summary> 
+        private static ImageCodecInfo GetEncoderInfo(string mimeType)
+        {
+            // Get image codecs for all image formats 
+            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
+
+            // Find the correct image codec 
+            for (int i = 0; i < codecs.Length; i++)
+                if (codecs[i].MimeType == mimeType)
+                    return codecs[i];
+
+            return null;
+        }
+
+        /// <summary> 
+        /// Saves an image as a jpeg image, with the given quality 
+        /// </summary> 
+        /// <param name="path"> Path to which the image would be saved. </param> 
+        /// <param name="quality"> An integer from 0 to 100, with 100 being the highest quality. </param> 
+        public static void SaveJpeg(string path, Image img, int quality)
+        {
+            if(path.Contains('.'))
+            {
+               string[] segments = path.Split('.');
+                path = segments[0] + ".jpg";
+            }
+            if (quality < 0 || quality > 100)
+                throw new ArgumentOutOfRangeException("quality must be between 0 and 100.");
+            Bitmap img2 = new Bitmap(img);
+            // Encoder parameter for image quality 
+            EncoderParameter qualityParam = new EncoderParameter(Encoder.Quality, quality);
+            // JPEG image codec 
+            ImageCodecInfo jpegCodec = GetEncoderInfo("image/jpeg");
+            EncoderParameters encoderParams = new EncoderParameters(1);
+            encoderParams.Param[0] = qualityParam;
+            img2.Save(path, jpegCodec, encoderParams);
+
+            img2.Dispose();
+            encoderParams.Dispose();
+            qualityParam.Dispose();
+        }
+
         /// <summary>
         ///     Reads the categories for the product to determine what product group to assign, default to "Product"
         /// </summary>
@@ -1680,6 +1798,16 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Insert info into to PS_MARKETPLACE_CUSTOMER_PRODUCTS
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <param name="title"></param>
+        public void InsertMarketplaceCustomerProducts(string itemId, string title, string customer)
+        {
+            ItemRepository.InsertMarketplaceCustomerProducts(itemId, title, customer);
+        }
+
+        /// <summary>
         ///     Inserts a meta description value into Odin_MetaDescription
         /// </summary>
         /// <param name="value"></param>
@@ -1887,7 +2015,7 @@ namespace OdinServices
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        public List<string> RetrieveImagePaths(string itemId)
+        public List<KeyValuePair<string, int>> RetrieveImagePaths(string itemId)
         {
             return ItemRepository.RetrieveImagePaths(itemId);
         }
@@ -1924,12 +2052,13 @@ namespace OdinServices
         /// <returns>ItemId core</returns>
         public string RetrieveItemIdCore(string itemId)
         {
+            
             string idCore = itemId;
             foreach (string x in GlobalData.ItemTypeExtensionsList.OrderBy(x => x.Length))
             {
                 if(itemId.Contains(x))
                 {
-                    idCore.Replace(x,"");
+                    idCore = idCore.Replace(x,"");
                 }
             }
             return idCore;
@@ -2064,8 +2193,10 @@ namespace OdinServices
         /// <returns>List of properties</returns>
         public List<string> RetrievePropertyList(string license)
         {
-            List<string> properties = new List<string>();
-            properties.Add("");
+            List<string> properties = new List<string>
+            {
+                ""
+            };
             if (!string.IsNullOrEmpty(license))
             {
                 foreach (KeyValuePair<string, string> x in GlobalData.Properties)
@@ -2075,14 +2206,15 @@ namespace OdinServices
                         properties.Add(x.Value);
                     }
                 }
-            }
+            }            
             else
-            {
+            {                
                 foreach (KeyValuePair<string, string> x in GlobalData.Properties)
                 {
                     properties.Add(x.Key+":"+x.Value);
-                }
+                }                
             }
+            
             properties.Sort();
             return properties;
         }
@@ -2222,7 +2354,7 @@ namespace OdinServices
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        public void UpdateOnSite(string itemId, string website)
+        public void UpdateOnSite(ItemObject item, string website)
         {
             // If update is for multiple sites
             if(website.Contains(","))
@@ -2230,12 +2362,12 @@ namespace OdinServices
                 string[] x = website.Split(',');
                 foreach (string y in x)
                 {
-                    ItemRepository.UpdateOnSite(itemId, y.Trim());
+                    ItemRepository.UpdateOnSite(item, y.Trim());
                 }
             }
             else
             {
-                ItemRepository.UpdateOnSite(itemId, website);
+                ItemRepository.UpdateOnSite(item, website);
             }
         }
         
@@ -2444,6 +2576,15 @@ namespace OdinServices
             if (validationError != null) { ErrorList.Add(validationError); }
             // Ecommerce Upc //
             validationError =ValidateEcommerceUpc(var);
+            if (validationError != null) { ErrorList.Add(validationError); }
+            // Genre1 //
+            validationError = ValidateGenre(var,1);
+            if (validationError != null) { ErrorList.Add(validationError); }
+            // Genre2 //
+            validationError = ValidateGenre(var, 2);
+            if (validationError != null) { ErrorList.Add(validationError); }
+            // Genre3 //
+            validationError = ValidateGenre(var, 3);
             if (validationError != null) { ErrorList.Add(validationError); }
             // Gpc //
             validationError =ValidateGpc(var);
@@ -3298,6 +3439,14 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_Required,
+                        "Description");
+                }
+                if (value.Contains((char)13))
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Value cannot contain carriage returns.",
                         "Description");
                 }
                 if (value.Length > 60)
@@ -4370,6 +4519,47 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Validates the genre field. Returns ItemError or null if no error exists.
+        /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <param name="type"></param>
+        /// <returns>Error message or "" if value is valid</returns>
+        public ItemError ValidateGenre(ItemObject var, int type)
+        {
+            /*
+            string value = string.Empty;
+            switch (type)
+            {
+                case 1:
+                    value = var.Genre1;
+                    break;
+                case 2:
+                    value = var.Genre2;
+                    break;
+                case 3:
+                    value = var.Genre3;
+                    break;
+                default:
+                    throw new ArgumentNullException("ValidateGenre unknown type " + type.ToString());
+            }
+
+            if (!string.IsNullOrEmpty(value))
+            {
+                if (!GlobalData.Genres.Contains(value))
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        OdinServices.Properties.Resources.Error_NoMatch,
+                        "Genre "+type.ToString());
+                }
+            }
+            */
+            return null;
+            
+        }
+
+        /// <summary>
         ///     Validates the GPC field. Returns ItemError or null if no error exists.
         /// </summary>
         /// <param name="var">Item Object</param>
@@ -4564,12 +4754,12 @@ namespace OdinServices
                         OdinServices.Properties.Resources.Error_LengthMax + "254 characters.",
                         "Image Path " + imageNumber);
                 }
-                if (!File.Exists(value) && required)
+                if (!CheckFileExists(value,false) && required)
                 {
                     return new ItemError(
                         var.ItemId,
                         var.ItemRow,
-                        @" could not find image with given filepath: " + value,
+                        @" could not find image with given filepath or the image is too large: " + value,
                         "Image Path " + imageNumber);
                 }
             }

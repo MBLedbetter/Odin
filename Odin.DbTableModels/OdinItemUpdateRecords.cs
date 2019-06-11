@@ -341,6 +341,21 @@ namespace Odin.DbTableModels
         public string Fplusl1 { get; set; }
 
         /// <summary>
+        ///     Gets or sets GENRE_1
+        /// </summary>
+        public string Genre1 { get; set; }
+
+        /// <summary>
+        ///     Gets or sets GENRE_2
+        /// </summary>
+        public string Genre2 { get; set; }
+
+        /// <summary>
+        ///     Gets or sets GENRE_3
+        /// </summary>
+        public string Genre3 { get; set; }
+
+        /// <summary>
         ///     Gets or sets GPC
         /// </summary>
         public string Gpc { get; set; }

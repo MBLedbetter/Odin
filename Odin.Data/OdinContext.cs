@@ -166,6 +166,11 @@ namespace Odin.Data
         public DbSet<LanguageTbl> LanguageTbl { get; set; }
 
         /// <summary>
+        ///     Gets or sets a list of the MarketplaceCustomerProducts lines that are in this context.
+        /// </summary>
+        public DbSet<MarketplaceCustomerProducts> MarketplaceCustomerProducts { get; set; }
+
+        /// <summary>
         ///     Gets or sets a list of the MarketplaceProductTranslations lines that are in this context.
         /// </summary>
         public DbSet<MarketplaceProductTranslations> MarketplaceProductTranslations { get; set; }
@@ -209,6 +214,11 @@ namespace Odin.Data
         ///     Gets or sets a list of the OdinItemOverrideInfo lines that are in this context.
         /// </summary>
         public DbSet<OdinItemOverrideInfo> OdinItemOverrideInfo { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a list of the OdinGenres lines that are in this context.
+        /// </summary>
+        public DbSet<OdinGenres> OdinGenres { get; set; }
 
         /// <summary>
         ///     Gets or sets a list of the OdinGlobalKeys lines that are in this context.
@@ -289,7 +299,7 @@ namespace Odin.Data
         ///     Gets or sets a list of the OdinToolTips lines that are in this context.
         /// </summary>
         public DbSet<OdinToolTips> OdinToolTips { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets a list of the OdinUserExceptions lines that are in this context.
         /// </summary>
@@ -496,6 +506,7 @@ namespace Odin.Data
             MapItemWebInfo(modelBuilder);
             MapItmCatTbl(modelBuilder);
             MapLanguageTbl(modelBuilder);
+            MapMarketplaceCustomerProducts(modelBuilder);
             MapMarketplaceProductTranslations(modelBuilder);
             MapMasterItemTbl(modelBuilder);
             MapOdinAutoNumberControlTable(modelBuilder);
@@ -503,6 +514,7 @@ namespace Odin.Data
             MapOdinExcelLayoutData(modelBuilder);
             MapOdinExcelLayoutIds(modelBuilder);
             MapOdinFieldValues(modelBuilder);
+            MapOdinGenres(modelBuilder);
             MapOdinGlobalKeys(modelBuilder);
             MapOdinItem(modelBuilder);
             MapOdinItemExceptions(modelBuilder);
@@ -1465,6 +1477,9 @@ namespace Odin.Data
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.DirectImport).HasColumnName("DIRECT_IMPORT");
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.DtcPrice).HasColumnName("DTC_PRICE");
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.Duty).HasColumnName("DUTY");
+            modelBuilder.Entity<ItemAttribEx>().Property(p => p.Genre1).HasColumnName("GENRE_1");
+            modelBuilder.Entity<ItemAttribEx>().Property(p => p.Genre2).HasColumnName("GENRE_2");
+            modelBuilder.Entity<ItemAttribEx>().Property(p => p.Genre3).HasColumnName("GENRE_3");
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.Gtin).HasColumnName("GTIN");
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.ImageFileName).HasColumnName("IMAGE_FILE_NAME");
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.InnerpackHeight).HasColumnName("INNERPACK_HEIGHT");
@@ -1761,6 +1776,32 @@ namespace Odin.Data
         }
 
         /// <summary>
+        ///             This method maps the MarketplaceCustomerProducts class to the database.
+        /// </summary>
+        /// 
+        /// <param name="DbModelBuilder modelBuilder">
+        ///             The DbDbModelBuilder modelBuilder to update with the mapping.
+        /// </param>
+        private void MapMarketplaceCustomerProducts(DbModelBuilder modelBuilder)
+        {
+            // Map the MarketplaceCustomerProducts class to the PS_MARKETPLACE_CUSTOMER_PRODUCTS table
+            modelBuilder.Entity<MarketplaceCustomerProducts>()
+                .HasKey(p => new
+                {
+                    p.CustId,
+                    p.InvItemId,
+                    p.Setid
+                })
+                .ToTable("PS_MARKETPLACE_CUSTOMER_PRODUCTS");
+
+            // Map each column
+            modelBuilder.Entity<MarketplaceCustomerProducts>().Property(p => p.CustId).HasColumnName("CUST_ID");
+            modelBuilder.Entity<MarketplaceCustomerProducts>().Property(p => p.InvItemId).HasColumnName("INV_ITEM_ID");
+            modelBuilder.Entity<MarketplaceCustomerProducts>().Property(p => p.Setid).HasColumnName("SETID");
+            modelBuilder.Entity<MarketplaceCustomerProducts>().Property(p => p.Title).HasColumnName("TITLE");
+        }
+
+        /// <summary>
         ///             This method maps the MarketplaceProductTranslations class to the database.
         /// </summary>
         /// 
@@ -1999,6 +2040,28 @@ namespace Odin.Data
         }
 
         /// <summary>
+        ///             This method maps the OdinGenres class to the database.
+        /// </summary>
+        /// 
+        /// <param name="DbModelBuilder modelBuilder">
+        ///             The DbDbModelBuilder modelBuilder to update with the mapping.
+        /// </param>
+        private void MapOdinGenres(DbModelBuilder modelBuilder)
+        {
+            // Map the OdinGenres class to the ODIN_GENRES table
+            modelBuilder.Entity<OdinGenres>()
+                .HasKey(p => new
+                {
+                    p.Genre
+                })
+                .ToTable("ODIN_GENRES");
+
+            // Map each column
+            modelBuilder.Entity<OdinGenres>().Property(p => p.Genre).HasColumnName("GENRE");
+
+        }
+
+        /// <summary>
         ///             This method maps the OdinGlobalKeys class to the database.
         /// </summary>
         /// 
@@ -2102,6 +2165,9 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceWeight).HasColumnName("ECOMMERCE_WEIGHT");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceWidth).HasColumnName("ECOMMERCE_WIDTH");
             modelBuilder.Entity<OdinItem>().Property(p => p.Gpc).HasColumnName("GPC");
+            modelBuilder.Entity<OdinItem>().Property(p => p.Genre1).HasColumnName("GENRE_1");
+            modelBuilder.Entity<OdinItem>().Property(p => p.Genre2).HasColumnName("GENRE_2");
+            modelBuilder.Entity<OdinItem>().Property(p => p.Genre3).HasColumnName("GENRE_3");
             modelBuilder.Entity<OdinItem>().Property(p => p.HarmonizedCd).HasColumnName("HARMONIZED_CD");
             modelBuilder.Entity<OdinItem>().Property(p => p.ImageFileName).HasColumnName("IMAGE_FILE_NAME");
             modelBuilder.Entity<OdinItem>().Property(p => p.InnerpackHeight).HasColumnName("INNERPACK_HEIGHT");
@@ -2135,6 +2201,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItem>().Property(p => p.MsrpUsd).HasColumnName("MSRP_USD");
             modelBuilder.Entity<OdinItem>().Property(p => p.NewDate).HasColumnName("NEW_DATE");
             modelBuilder.Entity<OdinItem>().Property(p => p.Newcategory).HasColumnName("NEWCATEGORY");
+            modelBuilder.Entity<OdinItem>().Property(p => p.OnShopTrends).HasColumnName("ON_SHOPTRENDS");
             modelBuilder.Entity<OdinItem>().Property(p => p.OnSite).HasColumnName("ON_SITE");
             modelBuilder.Entity<OdinItem>().Property(p => p.PricingGroup).HasColumnName("PRICING_GROUP");
             modelBuilder.Entity<OdinItem>().Property(p => p.PrintOnDemand).HasColumnName("PRINT_ON_DEMAND");
@@ -2357,7 +2424,7 @@ namespace Odin.Data
         }
 
         /// <summary>
-        ///             This method maps the OdinItemTypeSuffixes class to the database.
+        ///             This method maps the OdinItemTypeExtensions class to the database.
         /// </summary>
         /// 
         /// <param name="DbModelBuilder modelBuilder">
@@ -2365,7 +2432,7 @@ namespace Odin.Data
         /// </param>
         private void MapOdinItemTypeExtensions(DbModelBuilder modelBuilder)
         {
-            // Map the OdinItemTypeSuffixes class to the ODIN_ITEM_TYPE_EXTENSIONS table
+            // Map the OdinItemTypeExtensions class to the ODIN_ITEM_TYPE_EXTENSIONS table
             modelBuilder.Entity<OdinItemTypeExtensions>()
                 .HasKey(p => new
                 {
@@ -2464,6 +2531,9 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Ean).HasColumnName("EAN");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Fplcanl1).HasColumnName("FPLCANL1");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Fplusl1).HasColumnName("FPLUSL1");
+            modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Genre1).HasColumnName("GENRE_1");
+            modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Genre2).HasColumnName("GENRE_2");
+            modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Genre3).HasColumnName("GENRE_3");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Gpc).HasColumnName("GPC");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Height).HasColumnName("HEIGHT");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.ImageFileName).HasColumnName("IMAGE_FILE_NAME");

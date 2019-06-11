@@ -511,7 +511,55 @@ namespace OdinModels
             }
         }
         private static bool _copyrightVisibility = true;
-        
+
+        /// <summary>
+        ///     Gets or sets the Genre1
+        /// </summary>
+        public static bool Genre1Visibility
+        {
+            get
+            {
+                return _genre1Visibility;
+            }
+            set
+            {
+                _genre1Visibility = value;
+            }
+        }
+        private static bool _genre1Visibility = true;
+
+        /// <summary>
+        ///     Gets or sets the Genre2
+        /// </summary>
+        public static bool Genre2Visibility
+        {
+            get
+            {
+                return _genre2Visibility;
+            }
+            set
+            {
+                _genre2Visibility = value;
+            }
+        }
+        private static bool _genre2Visibility = true;
+
+        /// <summary>
+        ///     Gets or sets the Genre3
+        /// </summary>
+        public static bool Genre3Visibility
+        {
+            get
+            {
+                return _genre3Visibility;
+            }
+            set
+            {
+                _genre3Visibility = value;
+            }
+        }
+        private static bool _genre3Visibility = true;
+
         /// <summary>
         ///     Gets or sets the InStockDate
         /// </summary>

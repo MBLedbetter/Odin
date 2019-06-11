@@ -336,13 +336,14 @@ namespace Odin.ViewModels
         /// </summary>
         public void CreateCSVFile()
         {
-            if(this.SelectedRequest.Website.ToUpper() == "TRENDINTERNATIONAL.COM")
-            {
-                CreateMagento1File();
-            }
-            else if (this.SelectedRequest.Website.ToUpper() == "SHOPTRENDS.COM")
+            if (this.SelectedRequest.Website.ToUpper() == "SHOPTRENDS.COM")
             {
                 CreateMagento2File();
+            }
+            //if (this.SelectedRequest.Website.ToUpper() == "TRENDINTERNATIONAL.COM")
+            else
+            {
+                CreateMagento1File();
             }
 
         }
@@ -502,30 +503,19 @@ namespace Odin.ViewModels
         ///     Copies the images for the given request into a folder on the users desktop
         /// </summary>
         public void PullImages()
-        {            
-            string location = @"C:\Users\" + Environment.UserName.ToLower() + @"\Desktop\EcomerceImages";
-            List<string> missingImages = new List<string>();
-            Directory.CreateDirectory(location);
+        {
+            List<string> itemIds = new List<string>();
             foreach (Request r in this.SelectedRequestlingList)
             {
-                foreach (string path in ItemService.RetrieveImagePaths(r.ItemId))
-                {
-                    if (ItemService.CheckFileExists(path, false))
-                    {
-                        string[] bits = path.Split('\\');
-                        string filename = location + @"\" + bits[bits.Length - 1];
-                        File.Copy(path, filename);
-                    }
-                    else
-                    {
-                        missingImages.Add(path);
-                    }
-                }
+                itemIds.Add(r.ItemId);
             }
-            if(missingImages.Count>0)
+            List<string> missingImages = ItemService.PullImages(itemIds);
+            if (missingImages.Count>0)
             {
-                AlertView window = new AlertView();
-                window.DataContext = new AlertViewModel(missingImages, "Alert", "The following images were not found in the captures folder.");
+                AlertView window = new AlertView
+                {
+                    DataContext = new AlertViewModel(missingImages, "Alert", "The following images were not found in the captures folder or were too large.")
+                };
                 window.ShowDialog();
             }
         }
@@ -578,7 +568,11 @@ namespace Odin.ViewModels
                         OptionService.UpdateWebsiteRequest(request);
                         if (request.RequestStatus == "Completed")
                         {
-                            ItemService.UpdateOnSite(request.ItemId, request.Website);
+                            ItemObject item = new ItemObject(0)
+                            {
+                                ItemId = request.ItemId
+                            };
+                            ItemService.UpdateOnSite(item, request.Website);
                         }
                     }
                     System.Windows.MessageBox.Show("Requests Submitted");

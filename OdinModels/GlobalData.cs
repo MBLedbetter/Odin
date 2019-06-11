@@ -206,6 +206,22 @@ namespace OdinModels
         private static List<string> _ftpUserexceptions = new List<string>();
 
         /// <summary>
+        ///     List of genres
+        /// </summary>
+        public static List<string> Genres
+        {
+            get
+            {
+                return _genres;
+            }
+            set
+            {
+                _genres = value;
+            }
+        }
+        private static List<string> _genres = new List<string>();
+
+        /// <summary>
         ///     List of Item Category Name / id from PS_ITM_CAT_TBL
         /// </summary>
         public static Dictionary<string, string> ItemCategories
@@ -792,7 +808,7 @@ namespace OdinModels
             UserRoles.Clear();
             WebCategoryList.Clear();
         }
-
+        
         /// <summary>
         ///     Creates a list of all the item type extension prefixes ans suffixes
         /// </summary>
@@ -825,6 +841,41 @@ namespace OdinModels
                 results.Add(x.Key);
             }
             results.Sort();
+            return results;
+        }
+
+        /// <summary>
+        ///     Returns a List of licenses set up on ShopTrends
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> ReturnShopTrendsLicenses()
+        {
+            List<string> results = new List<string>
+            {
+                "Activision",
+                "DC Comics",
+                "Disney",
+                "DreamWorks",
+                "Fender",
+                "Harry Potter",
+                "Hello Kitty",
+                "Marvel",
+                "MLB",
+                "NBA",
+                "Netflix",
+                "NFL",
+                "NHL",
+                "Nickelodeon",
+                "Pokémon",
+                "Rolling Stone",
+                "Sanrio",
+                "Sports Illustrated",
+                "Star Wars",
+                "WWE"
+            };
+
+
+
             return results;
         }
 

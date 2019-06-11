@@ -64,8 +64,13 @@
                         ToolTip="Find and pull down existing items into Odin." />
                     <MenuItem 
                         Header="_Remove Items"
-                            Command="{Binding DeleteItemCommand}"
-                            ToolTip="Upload a list of items to be removed from the website." />
+                        Command="{Binding DeleteItemCommand}"
+                        ToolTip="Upload a list of items to be removed from the website." />
+                    <MenuItem 
+                        Header="_Pull Images"
+                        Command="{Binding PullImagesCommand}"
+                        ToolTip="Pulls down the images for the items currently loaded in Odin."
+                        Visibility="{Binding PermissionAdminVisibility}" />
                     <MenuItem 
                         Header="_Update Existing"
                         Command="{Binding UpdateProductsCommand}"
@@ -126,6 +131,10 @@
                         Header="Update Records" 
                         Command="{Binding FindItemUpdateRecordCommand}"
                         ToolTip="Find a list of updates made to an item"/>
+                    <MenuItem 
+                        Header="Generate Magento 2 Excel" 
+                        Command="{Binding Magento2CustomExcelCommand}"
+                        ToolTip="Generate a Magento 2 Excel from current items"/>
                 </MenuItem>
                 <MenuItem 
                     Header="Ecommerce Manager"
@@ -1110,6 +1119,30 @@
                         Width="{Binding EcommerceUpcVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce Upc"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Genre1}"
+                        Width="{Binding Genre1Visibility}">
+                        <GridViewColumnHeader
+                            Content="Genre 1"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Genre2}"
+                        Width="{Binding Genre2Visibility}">
+                        <GridViewColumnHeader
+                            Content="Genre 2"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Genre3}"
+                        Width="{Binding Genre3Visibility}">
+                        <GridViewColumnHeader
+                            Content="Genre 3"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
