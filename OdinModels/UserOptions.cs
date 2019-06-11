@@ -511,7 +511,55 @@ namespace OdinModels
             }
         }
         private static bool _copyrightVisibility = true;
-        
+
+        /// <summary>
+        ///     Gets or sets the Genre1
+        /// </summary>
+        public static bool Genre1Visibility
+        {
+            get
+            {
+                return _genre1Visibility;
+            }
+            set
+            {
+                _genre1Visibility = value;
+            }
+        }
+        private static bool _genre1Visibility = true;
+
+        /// <summary>
+        ///     Gets or sets the Genre2
+        /// </summary>
+        public static bool Genre2Visibility
+        {
+            get
+            {
+                return _genre2Visibility;
+            }
+            set
+            {
+                _genre2Visibility = value;
+            }
+        }
+        private static bool _genre2Visibility = true;
+
+        /// <summary>
+        ///     Gets or sets the Genre3
+        /// </summary>
+        public static bool Genre3Visibility
+        {
+            get
+            {
+                return _genre3Visibility;
+            }
+            set
+            {
+                _genre3Visibility = value;
+            }
+        }
+        private static bool _genre3Visibility = true;
+
         /// <summary>
         ///     Gets or sets the InStockDate
         /// </summary>
@@ -872,6 +920,19 @@ namespace OdinModels
             }
         }
         private static bool _directImportVisibility = true;
+
+        public static bool DtcPriceVisibility
+        {
+            get
+            {
+                return _dtcPriceVisibility;
+            }
+            set
+            {
+                _dtcPriceVisibility = value;
+            }
+        }
+        private static bool _dtcPriceVisibility = true;
 
         public static bool DutyVisibility
         {
@@ -1555,6 +1616,22 @@ namespace OdinModels
         private static bool _sellOnHayneedleVisibility = true;
 
         /// <summary>
+        ///     Gets or sets SellOnHouzzVisibility
+        /// </summary>
+        public static bool SellOnHouzzVisibility
+        {
+            get
+            {
+                return _sellOnHouzzVisibility;
+            }
+            set
+            {
+                _sellOnHouzzVisibility = value;
+            }
+        }
+        private static bool _sellOnHouzzVisibility = true;
+
+        /// <summary>
         ///     Gets or sets SellOnTargetVisibility
         /// </summary>
         public static bool SellOnTargetVisibility
@@ -1585,6 +1662,22 @@ namespace OdinModels
             }
         }
         private static bool _sellOnTrendsVisibility = true;
+
+        /// <summary>
+        ///     Gets or sets SellOnTrsVisibility
+        /// </summary>
+        public static bool SellOnTrsVisibility
+        {
+            get
+            {
+                return _sellOnTrsVisibility;
+            }
+            set
+            {
+                _sellOnTrsVisibility = value;
+            }
+        }
+        private static bool _sellOnTrsVisibility = true;
 
         /// <summary>
         ///     Gets or sets SellOnWalmartVisibility

@@ -245,9 +245,9 @@ namespace Odin.Data
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        public List<string> RetrieveImagePaths(string itemId)
+        public List<KeyValuePair<string, int>> RetrieveImagePaths(string itemId)
         {
-            return new List<string>();
+            return new List<KeyValuePair<string, int>>();
         }
 
         /// <summary>
@@ -843,7 +843,8 @@ namespace Odin.Data
                 SellOnFanatics ="SellOnFanaticsA",
                 SellOnGuitarCenter="SellOnGuitarCenterA",
                 SellOnHayneedle="SellOnHayneedleA",
-                SellOnTarget="SellOnTargetA",
+                SellOnHouzz = "SellOnHouzzA",
+                SellOnTarget ="SellOnTargetA",
                 SellOnTrends="SellOnTrendsA",
                 SellOnWalmart="SellOnWalmartA",
                 SellOnWayfair="SellOnWayfairA",
@@ -966,6 +967,7 @@ namespace Odin.Data
                 SellOnFanatics = "SellOnFanaticsB",
                 SellOnGuitarCenter = "SellOnGuitarCenterB",
                 SellOnHayneedle = "SellOnHayneedleB",
+                SellOnHouzz = "SellOnHouzzB",
                 SellOnTarget = "SellOnTargetB",
                 SellOnTrends = "SellOnTrendsB",
                 SellOnWalmart = "SellOnWalmartB",
@@ -1075,6 +1077,16 @@ namespace Odin.Data
         /// <param name="category"></param>
         public void InsertLicense(string license, string property)
         {
+        }
+
+        /// <summary>
+        ///     Insert info into to PS_MARKETPLACE_CUSTOMER_PRODUCTS
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <param name="title"></param>
+        public void InsertMarketplaceCustomerProducts(string itemId, string title, string customer)
+        {
+
         }
 
         /// <summary>
@@ -1538,7 +1550,7 @@ namespace Odin.Data
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public List<SearchItem> RetrieveItemSearchResults(string value)
+        public List<SearchItem> RetrieveItemSearchResults(string value, bool includeDisabled)
         {
             return new List<SearchItem>() {
                 new SearchItem("ItemId", "Descr254")
@@ -1671,6 +1683,7 @@ namespace Odin.Data
                 SellOnFanatics = "SellOnFanatics",
                 SellOnGuitarCenter = "SellOnGuitarCenter",
                 SellOnHayneedle =  "SellOnHayneedle",
+                SellOnHouzz =  "SellOnHouzz",
                 SellOnTarget = "SellOnTarget",
                 SellOnTrends = "SellOnTrends",
                 SellOnWalmart = "SellOnWalmart",
@@ -1687,9 +1700,9 @@ namespace Odin.Data
                 WebsitePrice = "WebsitePrice",
                 Weight = "Weight",
                 Width = "Width"
-            } });
-
-                        
+            }
+            });
+                                    
             items[0].OnSite = "Y";
             items[0].EcommerceCountryofOrigin = "CountryOfOrigin";
             items[0].Status = "Update";
@@ -1707,6 +1720,26 @@ namespace Odin.Data
                 "License2:Property2",
                 "License3:Property3"
             });
+        }
+
+        /// <summary>
+        ///     Check if item is listed as being on the shoptrends site. PS_ITEM_WEB_INFO.ON_SHOPTRENDS == "Y"
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        public bool RetrieveOnShopTrends(string itemId)
+        {
+            return false;
+        }
+
+        /// <summary>
+        ///     Check if item is listed as being on the trendsinteranational site. PS_ITEM_WEB_INFO.ON_SITE == "Y"
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        public bool RetrieveOnSite(string itemId)
+        {
+            return false;
         }
 
         /// <summary>
@@ -1751,6 +1784,89 @@ namespace Odin.Data
             return "";
         }
 
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Item Category
+        /// </summary>
+        /// <param name="itemCategory">Item Category search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByItemCategory(string itemCategory, bool includeDisabled)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+            return returnSearchItemList;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Item Group
+        /// </summary>
+        /// <param name="itemGroup">Item Group search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByItemGroup(string itemGroup, bool includeDisabled)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+            return returnSearchItemList;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Format
+        /// </summary>
+        /// <param name="productFormat">Product Format search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByProductFormat(string productFormat, bool includeDisabled)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+            return returnSearchItemList;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Group
+        /// </summary>
+        /// <param name="productGroup">Product Group search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByProductGroup(string productGroup, bool includeDisabled)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+            return returnSearchItemList;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Line
+        /// </summary>
+        /// <param name="productLine">Product Line search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByProductLine(string productLine, bool includeDisabled)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+            return returnSearchItemList;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Stats Code
+        /// </summary>
+        /// <param name="statsCode">Stats Code search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByStatsCode(string statsCode, bool includeDisabled)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+            return returnSearchItemList;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Tariff Code
+        /// </summary>
+        /// <param name="tariffCode">Tariff Code search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByTariffCode(string tariffCode, bool includeDisabled = false)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+            return returnSearchItemList;
+        }
         /// <summary>
         ///     Retrieve a List of item ids that have been updated withing the given dates
         /// </summary>
@@ -1891,7 +2007,7 @@ namespace Odin.Data
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        public void UpdateOnSite(string itemId)
+        public void UpdateOnSite(ItemObject item, string website)
         {
         }
 

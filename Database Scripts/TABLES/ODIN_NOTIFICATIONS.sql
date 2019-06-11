@@ -17,6 +17,8 @@ INSERT INTO ODIN_NOTIFICATIONS VALUES (12, '2018-12-18 00:00:00.000', 'Warranty 
 INSERT INTO ODIN_NOTIFICATIONS VALUES (13, '2019-01-23 00:00:00.000', '1. Ecommerce Parent ASIN field has been added. 2. ASIN validation has been updated to require unique values (some items have duplicate values that may cause errors). 3. Item window has been adjusted slightly. 4. Bug causing certain item errors to cause Odin to crash have been fixed.')
 INSERT INTO ODIN_NOTIFICATIONS VALUES (14, '2019-03-25 00:00:00.000', 'Ecommerce Item Type Keywords field has been added.')
 INSERT INTO ODIN_NOTIFICATIONS VALUES (15, '2019-04-02 00:00:00.000', 'New header menu added. All exiting buttons can be found here as well. Just laying down the framework for future Odin additions.')
+INSERT INTO ODIN_NOTIFICATIONS VALUES (16, '2019-04-30 00:00:00.000', 'New fields added (Dtc Price, Sell on Houzz, Sell on Shop Trends). Dtc Price and Sell on Shop Trends are for the new direct to customer site that is still being built.')
+INSERT INTO ODIN_NOTIFICATIONS VALUES (17, '2019-04-30 00:00:00.000', 'New search functionality added. Ability to search for items by fields and can now filter out items that have been canceled.')
 */
 SET ANSI_NULLS ON
 GO

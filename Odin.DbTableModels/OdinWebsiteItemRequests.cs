@@ -50,6 +50,11 @@ namespace Odin.DbTableModels
         /// </summary>
         public string UserName { get; set; }
 
+        /// <summary>
+        ///     Gets or sets Website
+        /// </summary>
+        public string Website { get; set; }
+
         #endregion // Public Properties
     }
 }

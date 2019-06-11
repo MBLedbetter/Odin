@@ -8,6 +8,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
+using System.Drawing;
 
 namespace OdinServices
 {
@@ -47,6 +49,7 @@ namespace OdinServices
             public static string DacUsd = "DAC USD";
             public static string Description = "Description";
             public static string DirectImport = "Direct Import";
+            public static string DtcPrice = "Dtc Price";
             public static string Duty = "Duty";
             public static string Ean = "Ean";
             public static string EcommerceAsin = "Ecommerce Asin";
@@ -89,6 +92,9 @@ namespace OdinServices
             public static string EcommerceSize = "Ecommerce Size";
             public static string EcommerceUpc = "Ecommerce UPC";
             public static string GenericKeywords = "Generic Keywords";
+            public static string Genre1 = "Genre 1";
+            public static string Genre2 = "Genre 2";
+            public static string Genre3 = "Genre 3";
             public static string Gpc = "Gpc";
             public static string Height = "Height";
             public static string ImagePath = "Image Path";
@@ -153,8 +159,11 @@ namespace OdinServices
             public static string SellOnFanatics = "Sell On Fanatics";
             public static string SellOnGuitarCenter = "Sell On Guitar Center";
             public static string SellOnHayneedle = "Sell On Hayneedle";
+            public static string SellOnHouzz = "Sell On Houzz";
             public static string SellOnTarget = "Sell On Target";
             public static string SellOnTrends = "Sell On Trends";
+            public static string SellOnTrs = "Sell On Trs";
+            public static string SellOnShopTrends = "Sell On Shop Trends";
             public static string SellOnWalmart = "Sell On Walmart";
             public static string SellOnWayfair = "Sell On Wayfair";
             public static string ShortDescription = "Short Description";
@@ -280,7 +289,11 @@ namespace OdinServices
                 // value = "@" + value;
                 if (File.Exists(value))
                 {
-                    return true;
+                    // Check that file isn't too big, to prevent memory exception
+                    if ((new System.IO.FileInfo(value).Length < 20000000))
+                    {
+                        return true;
+                    }                  
                 }
                 return false;
             }
@@ -462,6 +475,25 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Checks if product is currently marked as being on site
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <param name="site"></param>
+        /// <returns></returns>
+        public bool CheckOnSite(string itemId, string site)
+        {
+            if(site.ToUpper() == "TRENDSINTERNATIONAL.COM")
+            {
+                return ItemRepository.RetrieveOnSite(itemId);
+            }
+            else if (site.ToUpper() == "SHOPTRENDS.COM")
+            {
+                return ItemRepository.RetrieveOnShopTrends(itemId);
+            }
+            return false;
+        }
+
+        /// <summary>
         ///     Checks if the combination of product group, product line and product format is valid. Returns true if all match
         /// </summary>
         /// <param name="productGroup"></param>
@@ -604,6 +636,9 @@ namespace OdinServices
             if (item.EcommerceSize.Trim() == "[CLEAR]") { item.EcommerceSize = ""; }
             if (item.EcommerceSubjectKeywords.Trim() == "[CLEAR]") { item.EcommerceSubjectKeywords = ""; }
             if (item.EcommerceUpc.Trim() == "[CLEAR]") { item.EcommerceUpc = ""; }
+            if (item.Genre1.Trim() == "[CLEAR]") { item.Genre1 = ""; }
+            if (item.Genre2.Trim() == "[CLEAR]") { item.Genre2 = ""; }
+            if (item.Genre3.Trim() == "[CLEAR]") { item.Genre3 = ""; }
             if (item.Gpc.Trim() == "[CLEAR]") { item.Gpc = ""; }
             if (item.Height.Trim() == "[CLEAR]") { item.Height = ""; }
             if (item.ImagePath.Trim() == "[CLEAR]") { item.ImagePath = ""; }
@@ -666,35 +701,36 @@ namespace OdinServices
             // Retrieve existing values from database
             ItemObject returnItem = RetrieveItem(item.ItemId, itemRow);
 
-            if ((!string.IsNullOrEmpty(item.AccountingGroup)) && (item.AccountingGroup.Trim() != returnItem.AccountingGroup.Trim())) { returnItem.AccountingGroup = item.AccountingGroup; }
-            if ((!string.IsNullOrEmpty(item.AltImageFile1)) && (item.AltImageFile1.Trim() != returnItem.AltImageFile1.Trim())) { returnItem.AltImageFile1 = item.AltImageFile1; }
-            if ((!string.IsNullOrEmpty(item.AltImageFile2)) && (item.AltImageFile2.Trim() != returnItem.AltImageFile2.Trim())) { returnItem.AltImageFile2 = item.AltImageFile2; }
-            if ((!string.IsNullOrEmpty(item.AltImageFile3)) && (item.AltImageFile3.Trim() != returnItem.AltImageFile3.Trim())) { returnItem.AltImageFile3 = item.AltImageFile3; }
-            if ((!string.IsNullOrEmpty(item.AltImageFile4)) && (item.AltImageFile4.Trim() != returnItem.AltImageFile4.Trim())) { returnItem.AltImageFile4 = item.AltImageFile4; }
+            if ((!string.IsNullOrEmpty(item.AccountingGroup)) && (item.AccountingGroup.Trim() != returnItem.AccountingGroup.Trim())) { returnItem.AccountingGroup = item.AccountingGroup; } // Accounting Group
+            if ((!string.IsNullOrEmpty(item.AltImageFile1)) && (item.AltImageFile1.Trim() != returnItem.AltImageFile1.Trim())) { returnItem.AltImageFile1 = item.AltImageFile1; }  // Alt Image Field 1
+            if ((!string.IsNullOrEmpty(item.AltImageFile2)) && (item.AltImageFile2.Trim() != returnItem.AltImageFile2.Trim())) { returnItem.AltImageFile2 = item.AltImageFile2; }  // Alt Image Field 2
+            if ((!string.IsNullOrEmpty(item.AltImageFile3)) && (item.AltImageFile3.Trim() != returnItem.AltImageFile3.Trim())) { returnItem.AltImageFile3 = item.AltImageFile3; }  // Alt Image Field 3
+            if ((!string.IsNullOrEmpty(item.AltImageFile4)) && (item.AltImageFile4.Trim() != returnItem.AltImageFile4.Trim())) { returnItem.AltImageFile4 = item.AltImageFile4; }  // Alt Image Field 4
             if ((!string.IsNullOrEmpty(item.ReturnBillOfMaterials())) && (item.ReturnBillOfMaterials()).Trim() != returnItem.ReturnBillOfMaterials())
             {
                 returnItem.BillOfMaterials = item.BillOfMaterials;
-            }
-            if ((!string.IsNullOrEmpty(item.Active.ToString())) && (item.Active != returnItem.Active)) { returnItem.Active = item.Active; }
-            if ((!string.IsNullOrEmpty(item.CasepackHeight)) && (item.CasepackHeight.Trim() != returnItem.CasepackHeight.Trim())) { returnItem.CasepackHeight = item.CasepackHeight; }
-            if ((!string.IsNullOrEmpty(item.CasepackLength)) && (item.CasepackLength.Trim() != returnItem.CasepackLength.Trim())) { returnItem.CasepackLength = item.CasepackLength; }
-            if ((!string.IsNullOrEmpty(item.CasepackQty)) && (item.CasepackQty.Trim() != returnItem.CasepackQty.Trim())) { returnItem.CasepackQty = item.CasepackQty; }
-            if ((!string.IsNullOrEmpty(item.CasepackUpc)) && (item.CasepackUpc.Trim() != returnItem.CasepackUpc.Trim())) { returnItem.CasepackUpc = item.CasepackUpc; }
-            if ((!string.IsNullOrEmpty(item.CasepackWidth)) && (item.CasepackWidth.Trim() != returnItem.CasepackWidth.Trim())) { returnItem.CasepackWidth = item.CasepackWidth; }
-            if ((!string.IsNullOrEmpty(item.CasepackWeight)) && (item.CasepackWeight.Trim() != returnItem.CasepackWeight.Trim())) { returnItem.CasepackWeight = item.CasepackWeight; }
-            if ((!string.IsNullOrEmpty(item.Category)) && (item.Category.Trim() != returnItem.Category.Trim())) { returnItem.Category = item.Category; }
-            if ((!string.IsNullOrEmpty(item.Category2)) && (item.Category2.Trim() != returnItem.Category2.Trim())) { returnItem.Category2 = item.Category2; }
-            if ((!string.IsNullOrEmpty(item.Category3)) && (item.Category3.Trim() != returnItem.Category3.Trim())) { returnItem.Category3 = item.Category3; }
-            if ((!string.IsNullOrEmpty(item.Color)) && (item.Color.Trim() != returnItem.Color.Trim())) { returnItem.Color = item.Color; }
-            if ((!string.IsNullOrEmpty(item.Copyright)) && (item.Copyright.Trim() != returnItem.Copyright.Trim())) { returnItem.Copyright = item.Copyright; }
-            if ((!string.IsNullOrEmpty(item.CountryOfOrigin)) && (item.CountryOfOrigin.Trim() != returnItem.CountryOfOrigin.Trim())) { returnItem.CountryOfOrigin = item.CountryOfOrigin; }
-            if ((!string.IsNullOrEmpty(item.CostProfileGroup)) && (item.CostProfileGroup.Trim() != returnItem.CostProfileGroup.Trim())) { returnItem.CostProfileGroup = item.CostProfileGroup; }
-            if ((!string.IsNullOrEmpty(item.DefaultActualCostCad)) && (item.DefaultActualCostCad.Trim() != returnItem.DefaultActualCostCad.Trim())) { returnItem.DefaultActualCostCad = item.DefaultActualCostCad; }
-            if ((!string.IsNullOrEmpty(item.DefaultActualCostUsd)) && (item.DefaultActualCostUsd.Trim() != returnItem.DefaultActualCostUsd.Trim())) { returnItem.DefaultActualCostUsd = item.DefaultActualCostUsd; }
-            if ((!string.IsNullOrEmpty(item.Description)) && (item.Description.Trim() != returnItem.Description.Trim())) { returnItem.Description = item.Description; }
-            if ((!string.IsNullOrEmpty(item.DirectImport)) && (item.DirectImport.Trim() != returnItem.DirectImport.Trim())) { returnItem.DirectImport = AssignDirectImport(item.DirectImport); }
-            if ((!string.IsNullOrEmpty(item.Duty)) && (item.Duty.Trim() != returnItem.Duty.Trim())) { returnItem.Duty = item.Duty; }
-            if ((!string.IsNullOrEmpty(item.Ean)) && (item.Ean.Trim() != returnItem.Ean.Trim())) { returnItem.Ean = item.Ean; }
+            } // Bill of Materials
+            if ((!string.IsNullOrEmpty(item.Active.ToString())) && (item.Active != returnItem.Active)) { returnItem.Active = item.Active; } // Active
+            if ((!string.IsNullOrEmpty(item.CasepackHeight)) && (item.CasepackHeight.Trim() != returnItem.CasepackHeight.Trim())) { returnItem.CasepackHeight = item.CasepackHeight; } // Casepack Height
+            if ((!string.IsNullOrEmpty(item.CasepackLength)) && (item.CasepackLength.Trim() != returnItem.CasepackLength.Trim())) { returnItem.CasepackLength = item.CasepackLength; } // Casepack Length
+            if ((!string.IsNullOrEmpty(item.CasepackQty)) && (item.CasepackQty.Trim() != returnItem.CasepackQty.Trim())) { returnItem.CasepackQty = item.CasepackQty; } // Casepack Qty
+            if ((!string.IsNullOrEmpty(item.CasepackUpc)) && (item.CasepackUpc.Trim() != returnItem.CasepackUpc.Trim())) { returnItem.CasepackUpc = item.CasepackUpc; } // Casepack UPC
+            if ((!string.IsNullOrEmpty(item.CasepackWidth)) && (item.CasepackWidth.Trim() != returnItem.CasepackWidth.Trim())) { returnItem.CasepackWidth = item.CasepackWidth; } // Casepack Width
+            if ((!string.IsNullOrEmpty(item.CasepackWeight)) && (item.CasepackWeight.Trim() != returnItem.CasepackWeight.Trim())) { returnItem.CasepackWeight = item.CasepackWeight; } // Casepack Weight
+            if ((!string.IsNullOrEmpty(item.Category)) && (item.Category.Trim() != returnItem.Category.Trim())) { returnItem.Category = item.Category; } // Category
+            if ((!string.IsNullOrEmpty(item.Category2)) && (item.Category2.Trim() != returnItem.Category2.Trim())) { returnItem.Category2 = item.Category2; } // Category 2
+            if ((!string.IsNullOrEmpty(item.Category3)) && (item.Category3.Trim() != returnItem.Category3.Trim())) { returnItem.Category3 = item.Category3; } // Category 3
+            if ((!string.IsNullOrEmpty(item.Color)) && (item.Color.Trim() != returnItem.Color.Trim())) { returnItem.Color = item.Color; } // Color
+            if ((!string.IsNullOrEmpty(item.Copyright)) && (item.Copyright.Trim() != returnItem.Copyright.Trim())) { returnItem.Copyright = item.Copyright; } // Copyright
+            if ((!string.IsNullOrEmpty(item.CountryOfOrigin)) && (item.CountryOfOrigin.Trim() != returnItem.CountryOfOrigin.Trim())) { returnItem.CountryOfOrigin = item.CountryOfOrigin; } // Country of Origin
+            if ((!string.IsNullOrEmpty(item.CostProfileGroup)) && (item.CostProfileGroup.Trim() != returnItem.CostProfileGroup.Trim())) { returnItem.CostProfileGroup = item.CostProfileGroup; } // Cost Profile Group
+            if ((!string.IsNullOrEmpty(item.DefaultActualCostCad)) && (item.DefaultActualCostCad.Trim() != returnItem.DefaultActualCostCad.Trim())) { returnItem.DefaultActualCostCad = item.DefaultActualCostCad; } // Default Actual Cost CAD
+            if ((!string.IsNullOrEmpty(item.DefaultActualCostUsd)) && (item.DefaultActualCostUsd.Trim() != returnItem.DefaultActualCostUsd.Trim())) { returnItem.DefaultActualCostUsd = item.DefaultActualCostUsd; } // Default Actual Cost USD
+            if ((!string.IsNullOrEmpty(item.Description)) && (item.Description.Trim() != returnItem.Description.Trim())) { returnItem.Description = item.Description; } // Description
+            if ((!string.IsNullOrEmpty(item.DirectImport)) && (item.DirectImport.Trim() != returnItem.DirectImport.Trim())) { returnItem.DirectImport = AssignDirectImport(item.DirectImport); } // Direct Import
+            if ((!string.IsNullOrEmpty(item.DtcPrice)) && (item.DtcPrice.Trim() != returnItem.DtcPrice.Trim())) { returnItem.DtcPrice = item.DtcPrice; } // DTC Price
+            if ((!string.IsNullOrEmpty(item.Duty)) && (item.Duty.Trim() != returnItem.Duty.Trim())) { returnItem.Duty = item.Duty; } // Duty
+            if ((!string.IsNullOrEmpty(item.Ean)) && (item.Ean.Trim() != returnItem.Ean.Trim())) { returnItem.Ean = item.Ean; } // EAN
             if ((!string.IsNullOrEmpty(item.EcommerceAsin)) && (item.EcommerceAsin.Trim() != returnItem.EcommerceAsin.Trim())) { returnItem.EcommerceAsin = item.EcommerceAsin; } // Ecommerce EcommerceAsin
             if ((!string.IsNullOrEmpty(item.EcommerceBullet1)) && (item.EcommerceBullet1.Trim() != returnItem.EcommerceBullet1.Trim())) { returnItem.EcommerceBullet1 = item.EcommerceBullet1; } // Ecommerce Bullet 1
             if ((!string.IsNullOrEmpty(item.EcommerceBullet2)) && (item.EcommerceBullet2.Trim() != returnItem.EcommerceBullet2.Trim())) { returnItem.EcommerceBullet2 = item.EcommerceBullet2; } // Ecommerce Bullet 2
@@ -731,7 +767,10 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.EcommerceGenericKeywords)) && (item.EcommerceGenericKeywords.Trim() != returnItem.EcommerceGenericKeywords.Trim())) { returnItem.EcommerceGenericKeywords = item.EcommerceGenericKeywords; } 
             if ((!string.IsNullOrEmpty(item.EcommerceSize)) && (item.EcommerceSize.Trim() != returnItem.EcommerceSize.Trim())) { returnItem.EcommerceSize = item.EcommerceSize; } 
             if ((!string.IsNullOrEmpty(item.EcommerceSubjectKeywords)) && (item.EcommerceSubjectKeywords.Trim() != returnItem.EcommerceSubjectKeywords.Trim())) { returnItem.EcommerceSubjectKeywords = item.EcommerceSubjectKeywords; } 
-            if ((!string.IsNullOrEmpty(item.EcommerceUpc)) && (item.EcommerceUpc.Trim() != returnItem.EcommerceUpc.Trim())) { returnItem.EcommerceUpc = item.EcommerceUpc; } 
+            if ((!string.IsNullOrEmpty(item.EcommerceUpc)) && (item.EcommerceUpc.Trim() != returnItem.EcommerceUpc.Trim())) { returnItem.EcommerceUpc = item.EcommerceUpc; }
+            if ((!string.IsNullOrEmpty(item.Genre1)) && (item.Genre1.Trim() != returnItem.Genre1.Trim())) { returnItem.Genre1 = item.Genre1; }
+            if ((!string.IsNullOrEmpty(item.Genre2)) && (item.Genre2.Trim() != returnItem.Genre2.Trim())) { returnItem.Genre2 = item.Genre2; }
+            if ((!string.IsNullOrEmpty(item.Genre3)) && (item.Genre3.Trim() != returnItem.Genre3.Trim())) { returnItem.Genre3 = item.Genre3; }
             if ((!string.IsNullOrEmpty(item.Gpc)) && (item.Gpc.Trim() != returnItem.Gpc.Trim())) { returnItem.Gpc = item.Gpc; }
             if ((!string.IsNullOrEmpty(item.Height)) && (item.Height.Trim() != returnItem.Height.Trim())) { returnItem.Height = item.Height; }
             if ((!string.IsNullOrEmpty(item.ImagePath)) && (item.ImagePath.Trim() != returnItem.ImagePath.Trim())) { returnItem.ImagePath = item.ImagePath; }
@@ -777,10 +816,12 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.SellOnAmazonSellerCentral)) && (item.SellOnAmazonSellerCentral.Trim() != returnItem.SellOnAmazonSellerCentral.Trim())) { returnItem.SellOnAmazonSellerCentral = item.SellOnAmazonSellerCentral.Trim(); }
             if ((!string.IsNullOrEmpty(item.SellOnTarget)) && (item.SellOnTarget.Trim() != returnItem.SellOnTarget.Trim())) { returnItem.SellOnTarget = item.SellOnTarget.Trim(); }
             if ((!string.IsNullOrEmpty(item.SellOnTrends)) && (item.SellOnTrends.Trim() != returnItem.SellOnTrends.Trim())) { returnItem.SellOnTrends = item.SellOnTrends.Trim(); }
+            if ((!string.IsNullOrEmpty(item.SellOnTrs)) && (item.SellOnTrs.Trim() != returnItem.SellOnTrs.Trim())) { returnItem.SellOnTrs = item.SellOnTrs.Trim(); }
             if ((!string.IsNullOrEmpty(item.SellOnEcommerce)) && (item.SellOnEcommerce.Trim() != returnItem.SellOnEcommerce.Trim())) { returnItem.SellOnEcommerce = item.SellOnEcommerce.Trim(); }
             if ((!string.IsNullOrEmpty(item.SellOnFanatics)) && (item.SellOnFanatics.Trim() != returnItem.SellOnFanatics.Trim())) { returnItem.SellOnFanatics = item.SellOnFanatics.Trim(); } 
             if ((!string.IsNullOrEmpty(item.SellOnGuitarCenter)) && (item.SellOnGuitarCenter.Trim() != returnItem.SellOnGuitarCenter.Trim())) { returnItem.SellOnGuitarCenter = item.SellOnGuitarCenter.Trim(); } 
-            if ((!string.IsNullOrEmpty(item.SellOnHayneedle)) && (item.SellOnHayneedle.Trim() != returnItem.SellOnHayneedle.Trim())) { returnItem.SellOnHayneedle = item.SellOnHayneedle.Trim(); } 
+            if ((!string.IsNullOrEmpty(item.SellOnHayneedle)) && (item.SellOnHayneedle.Trim() != returnItem.SellOnHayneedle.Trim())) { returnItem.SellOnHayneedle = item.SellOnHayneedle.Trim(); }
+            if ((!string.IsNullOrEmpty(item.SellOnHouzz)) && (item.SellOnHouzz.Trim() != returnItem.SellOnHouzz.Trim())) { returnItem.SellOnHouzz = item.SellOnHouzz.Trim(); }
             if ((!string.IsNullOrEmpty(item.SellOnWalmart)) && (item.SellOnWalmart.Trim() != returnItem.SellOnWalmart.Trim())) { returnItem.SellOnWalmart = item.SellOnWalmart.Trim(); } 
             if ((!string.IsNullOrEmpty(item.SellOnWayfair)) && (item.SellOnWayfair.Trim() != returnItem.SellOnWayfair.Trim())) { returnItem.SellOnWayfair = item.SellOnWayfair.Trim(); } 
             if ((!string.IsNullOrEmpty(item.ShortDescription)) && (item.ShortDescription.Trim() != returnItem.ShortDescription.Trim())) { returnItem.ShortDescription = item.ShortDescription.Trim(); }
@@ -826,6 +867,7 @@ namespace OdinServices
                 if (string.IsNullOrEmpty(template.CostProfileGroup)) { template.CostProfileGroup = oldTemplate.CostProfileGroup; }
                 if (string.IsNullOrEmpty(template.DefaultActualCostUsd)) { template.DefaultActualCostUsd = oldTemplate.DefaultActualCostUsd; }
                 if (string.IsNullOrEmpty(template.DefaultActualCostCad)) { template.DefaultActualCostCad = oldTemplate.DefaultActualCostCad; }
+                if (string.IsNullOrEmpty(template.DtcPrice)) { template.DtcPrice = oldTemplate.DtcPrice; }
                 if (string.IsNullOrEmpty(template.Duty)) { template.Duty = oldTemplate.Duty; }
                 if (string.IsNullOrEmpty(template.EcommerceBullet1)) { template.EcommerceBullet1 = oldTemplate.EcommerceBullet1; }
                 if (string.IsNullOrEmpty(template.EcommerceBullet2)) { template.EcommerceBullet2 = oldTemplate.EcommerceBullet2; }
@@ -996,6 +1038,29 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Returns image name as a [itemid]-[itemnumber].jpg 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="imgNum"></param>
+        /// <returns></returns>
+        public string ReturnImageName(string itemId, int imgNum)
+        {
+            /*
+            string imageName = item.ReturnImageName(imgNum);
+            imageName = imageName.Replace(" ", "");
+            imageName = imageName.Replace(".tif", ".jpg");
+            imageName = imageName.Replace(".pdf", ".jpg");
+            imageName = imageName.Replace(".png", ".jpg");
+            imageName = imageName.Replace(".TIF", ".jpg");
+            imageName = imageName.Replace(".jpeg", ".jpg");
+            imageName = imageName.Replace("#", "");
+            imageName = imageName.Replace("(", "");
+            imageName = imageName.Replace(")", "");
+            */
+            return itemId + "-" + imgNum.ToString() + ".jpg";
+        }
+
+        /// <summary>
         ///     Calls a window explorer with workbook reader and loads in list of spreadsheet items
         /// </summary>
         /// <param name="status">Item Status (update / add / remove)</param>
@@ -1044,6 +1109,7 @@ namespace OdinServices
                     DefaultActualCostCad = DbUtil.RoundValue4Dec(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.DacCad, WorksheetColumnHeaders.DefaultActualCostCad)),
                     Description = DbUtil.ReplaceCharacters(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Description)).Trim(),
                     DirectImport = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.DirectImport),
+                    DtcPrice = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.DtcPrice), 2),
                     Duty = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Duty),
                     Ean = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Ean),
                     EcommerceAsin = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceAsin, WorksheetColumnHeaders.A_Asin),
@@ -1078,6 +1144,9 @@ namespace OdinServices
                     EcommerceSubjectKeywords = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceSearchTerms, WorksheetColumnHeaders.A_SearchTerms),
                     EcommerceSize = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceSize, WorksheetColumnHeaders.A_Size),
                     EcommerceUpc = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceUpc),
+                    Genre1 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Genre1),
+                    Genre2 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Genre2),
+                    Genre3 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Genre3),
                     Gpc = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Gpc),
                     Height = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Height, WorksheetColumnHeaders.ItemHeight), 1),
                     ImagePath = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ImagePath, WorksheetColumnHeaders.ImagePath1),
@@ -1121,8 +1190,10 @@ namespace OdinServices
                     SellOnFanatics = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnFanatics).Trim(),
                     SellOnGuitarCenter = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnGuitarCenter).Trim(),
                     SellOnHayneedle = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnHayneedle).Trim(),
+                    SellOnHouzz = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnHouzz).Trim(),
                     SellOnTarget = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnTarget).Trim(),
                     SellOnTrends = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnTrends).Trim(),
+                    SellOnTrs = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnTrs, WorksheetColumnHeaders.SellOnShopTrends).Trim(),
                     SellOnWalmart = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnWalmart).Trim(),
                     SellOnWayfair = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.SellOnWayfair).Trim(),
                     ShortDescription = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ShortDescription).Trim(),
@@ -1141,10 +1212,7 @@ namespace OdinServices
                     Weight = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Weight, WorksheetColumnHeaders.ItemWeight), 1),
                     Width = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Width, WorksheetColumnHeaders.ItemWidth), 1)
                 };
-                if (status == "Add")
-                {
-                    item.ProductIdTranslation = ParseChildElementIds(ItemId, ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ProductIdTranslation));
-                }
+                // Load override attributes if admin
                 if (GlobalData.UserPermissions.Contains("ADMIN_CONTROLS"))
                 {
                     item.ItemKeywordsOverride = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ItemKeywordsOverride).Trim();
@@ -1153,6 +1221,7 @@ namespace OdinServices
                 }
                 if (status == "Add")
                 {
+                    item.ProductIdTranslation = ParseChildElementIds(ItemId, ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ProductIdTranslation));
                     string TemplateName = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.TemplateName, WorksheetColumnHeaders.TemplateId);
                     if (!string.IsNullOrEmpty(TemplateName))
                     {
@@ -1200,6 +1269,7 @@ namespace OdinServices
                         CostProfileGroup = worksheetData.GetValue(row, WorksheetColumnHeaders.CostProfileGroup).Trim(),
                         DefaultActualCostUsd = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.DacUsd, WorksheetColumnHeaders.DefaultActualCostUsd).Trim()),
                         DefaultActualCostCad = DbUtil.RoundValue4Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.DacCad, WorksheetColumnHeaders.DefaultActualCostCad).Trim()),
+                        DtcPrice = DbUtil.RoundValue2Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.DtcPrice).Trim()),
                         Gpc = worksheetData.GetValue(row, WorksheetColumnHeaders.Gpc).Trim(),
                         Height = worksheetData.GetValue(row, WorksheetColumnHeaders.Height, WorksheetColumnHeaders.ItemHeight).Trim(),
                         InnerpackHeight = DbUtil.RoundValue2Dec(worksheetData.GetValue(row, WorksheetColumnHeaders.InnerpackHeight).Trim()),
@@ -1331,6 +1401,39 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Copies the images for the given request into a folder on the users desktop
+        /// </summary>
+        /// <param name="itemIds"></param>
+        /// <returns>Any image paths that were incorrect</returns>
+        public List<string> PullImages(List<string> itemIds, bool clearSpaces = false)
+        {
+            string location = @"C:\Users\" + Environment.UserName.ToLower() + @"\Desktop\EcomerceImages";
+            List<string> missingImages = new List<string>();
+            Directory.CreateDirectory(location);
+            foreach (string itemId in itemIds)
+            {
+                foreach (KeyValuePair<string,int> img in RetrieveImagePaths(itemId))
+                {
+                    if (CheckFileExists(img.Key, false))
+                    {
+                        string filename = location + @"\" + ReturnImageName(itemId, img.Value);
+                        if (!CheckFileExists(filename,false))
+                        {
+                            Image myImage = Image.FromFile(img.Key, true);
+                            SaveJpeg(filename, myImage, 60);
+                            myImage.Dispose();
+                        }
+                    }
+                    else
+                    {
+                        missingImages.Add(img.Key);
+                    }
+                }
+            }
+            return missingImages;
+        }
+
+        /// <summary>
         ///     Combines the three category fields into a single string to be uploaded to the website.
         /// </summary>
         /// <param name="value1"></param>
@@ -1419,7 +1522,51 @@ namespace OdinServices
             }
             return value;
         }
-        
+
+        /// <summary> 
+        /// Returns the image codec with the given mime type 
+        /// </summary> 
+        private static ImageCodecInfo GetEncoderInfo(string mimeType)
+        {
+            // Get image codecs for all image formats 
+            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
+
+            // Find the correct image codec 
+            for (int i = 0; i < codecs.Length; i++)
+                if (codecs[i].MimeType == mimeType)
+                    return codecs[i];
+
+            return null;
+        }
+
+        /// <summary> 
+        /// Saves an image as a jpeg image, with the given quality 
+        /// </summary> 
+        /// <param name="path"> Path to which the image would be saved. </param> 
+        /// <param name="quality"> An integer from 0 to 100, with 100 being the highest quality. </param> 
+        public static void SaveJpeg(string path, Image img, int quality)
+        {
+            if(path.Contains('.'))
+            {
+               string[] segments = path.Split('.');
+                path = segments[0] + ".jpg";
+            }
+            if (quality < 0 || quality > 100)
+                throw new ArgumentOutOfRangeException("quality must be between 0 and 100.");
+            Bitmap img2 = new Bitmap(img);
+            // Encoder parameter for image quality 
+            EncoderParameter qualityParam = new EncoderParameter(Encoder.Quality, quality);
+            // JPEG image codec 
+            ImageCodecInfo jpegCodec = GetEncoderInfo("image/jpeg");
+            EncoderParameters encoderParams = new EncoderParameters(1);
+            encoderParams.Param[0] = qualityParam;
+            img2.Save(path, jpegCodec, encoderParams);
+
+            img2.Dispose();
+            encoderParams.Dispose();
+            qualityParam.Dispose();
+        }
+
         /// <summary>
         ///     Reads the categories for the product to determine what product group to assign, default to "Product"
         /// </summary>
@@ -1651,6 +1798,16 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Insert info into to PS_MARKETPLACE_CUSTOMER_PRODUCTS
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <param name="title"></param>
+        public void InsertMarketplaceCustomerProducts(string itemId, string title, string customer)
+        {
+            ItemRepository.InsertMarketplaceCustomerProducts(itemId, title, customer);
+        }
+
+        /// <summary>
         ///     Inserts a meta description value into Odin_MetaDescription
         /// </summary>
         /// <param name="value"></param>
@@ -1782,26 +1939,6 @@ namespace OdinServices
         #region Retrieval Methods
         
         /// <summary>
-        ///     Retrieves a list of search items from the database
-        /// </summary>
-        /// <param name="searchValue"></param>
-        /// <returns></returns>
-        public List<SearchItem> RetrieveFindItemSearchResults(string searchValue)
-        {
-            List<SearchItem> SearchItemResults = ItemRepository.RetrieveItemSearchResults(searchValue);
-            foreach(SearchItem item in SearchItemResults)
-            {
-                if(item.ItemId == searchValue.ToUpper())
-                {
-                    List<SearchItem> OverrideList = new List<SearchItem>() { item };
-                    return OverrideList;
-                }
-            }
-
-            return SearchItemResults;
-        }
-
-        /// <summary>
         ///     Returns a list of all item ids with an active status of 'A' for the given customer
         /// </summary>
         /// <returns></returns>
@@ -1835,7 +1972,27 @@ namespace OdinServices
             }
             return value;
         }
-        
+
+        /// <summary>
+        ///     Retrieves a list of search items from the database
+        /// </summary>
+        /// <param name="searchValue"></param>
+        /// <returns></returns>
+        public List<SearchItem> RetrieveFindItemSearchResults(string searchValue, bool includeDisabled)
+        {
+            List<SearchItem> SearchItemResults = ItemRepository.RetrieveItemSearchResults(searchValue, includeDisabled);
+            foreach (SearchItem item in SearchItemResults)
+            {
+                if (item.ItemId == searchValue.ToUpper())
+                {
+                    List<SearchItem> OverrideList = new List<SearchItem>() { item };
+                    return OverrideList;
+                }
+            }
+
+            return SearchItemResults;
+        }
+
         /// <summary>
         ///     Returns the full country name of the given country code
         /// </summary>
@@ -1858,7 +2015,7 @@ namespace OdinServices
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        public List<string> RetrieveImagePaths(string itemId)
+        public List<KeyValuePair<string, int>> RetrieveImagePaths(string itemId)
         {
             return ItemRepository.RetrieveImagePaths(itemId);
         }
@@ -1872,8 +2029,39 @@ namespace OdinServices
         public ItemObject RetrieveItem(string itemId, int count)
         {
             ItemObject item = ItemRepository.RetrieveItem(itemId, count);
+            // item.RelatedProducts = RetrieveRelatedProducts(item.ItemId);
             item.SetFlagDefaults();
             return item;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of all Item Category Names from global data
+        /// </summary>
+        /// <returns></returns>
+        public List<string> RetrieveItemCategoryNames()
+        {
+            List<string> result = GlobalData.ItemCategories.Keys.ToList();
+            result.Sort();
+            return result;
+        }
+
+        /// <summary>
+        ///     Removes prefixes and suffixes from itemId.
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns>ItemId core</returns>
+        public string RetrieveItemIdCore(string itemId)
+        {
+            
+            string idCore = itemId;
+            foreach (string x in GlobalData.ItemTypeExtensionsList.OrderBy(x => x.Length))
+            {
+                if(itemId.Contains(x))
+                {
+                    idCore = idCore.Replace(x,"");
+                }
+            }
+            return idCore;
         }
 
         /// <summary>
@@ -1959,6 +2147,17 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Retrive all distinct product format values
+        /// </summary>
+        /// <returns></returns>
+        public List<string> RetrieveProductFormatsAll()
+        {
+            List<string> result = GlobalData.ProductFormats.Select(c => c.Format).Distinct().ToList();
+            result.Sort();
+            return result;
+        }
+
+        /// <summary>
         ///     Retrieve Product Line fields from the Global Data 
         ///     that corespond to the give product group
         /// </summary>
@@ -1978,13 +2177,26 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Retrive all distinct product line values
+        /// </summary>
+        /// <returns></returns>
+        public List<string> RetrieveProductLinesAll()
+        {
+            List<string> result = (from o in GlobalData.ProductLines select o.Value).Distinct().ToList();
+            result.Sort();
+            return result;
+        }        
+
+        /// <summary>
         ///     Retrieve Property fields from the Global Data. With the key of given license. Empty License returns all properties.
         /// </summary>
         /// <returns>List of properties</returns>
         public List<string> RetrievePropertyList(string license)
         {
-            List<string> properties = new List<string>();
-            properties.Add("");
+            List<string> properties = new List<string>
+            {
+                ""
+            };
             if (!string.IsNullOrEmpty(license))
             {
                 foreach (KeyValuePair<string, string> x in GlobalData.Properties)
@@ -1994,18 +2206,131 @@ namespace OdinServices
                         properties.Add(x.Value);
                     }
                 }
-            }
+            }            
             else
-            {
+            {                
                 foreach (KeyValuePair<string, string> x in GlobalData.Properties)
                 {
                     properties.Add(x.Key+":"+x.Value);
-                }
+                }                
             }
+            
             properties.Sort();
             return properties;
         }
-        
+
+        /// <summary>
+        ///     Retrieves existing related item ids for the given itemId. ItemIds with 
+        ///     the same numerical value, but with different prefixes / suffixes are 
+        ///     considered 'related'. 
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns> List of itemIds </returns>
+        public List<string> RetrieveRelatedProductIds(string itemId)
+        {
+            string idCore = RetrieveItemIdCore(itemId);
+            List<string> relatedProducts = new List<string>();
+
+            foreach(KeyValuePair<string,string> x in GlobalData.ItemTypeExtensions)
+            {
+                string y = (x.Key+idCore+x.Value).Trim();
+                if(GlobalData.ItemIds.Contains(y)||GlobalData.LocalItemIds.Contains(y))
+                {
+                    relatedProducts.Add(y);
+                }
+            }
+
+            return relatedProducts;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Item Category
+        /// </summary>
+        /// <param name="itemCategory">Item Category search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByItemCategory(string itemCategory, bool includeDisabled = false)
+        {
+            return ItemRepository.RetreiveSearchItemByItemCategory(itemCategory, includeDisabled);
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Item Group
+        /// </summary>
+        /// <param name="itemGroup">Item Group search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByItemGroup(string itemGroup, bool includeDisabled = false)
+        {
+            return ItemRepository.RetreiveSearchItemByItemGroup(itemGroup, includeDisabled);
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Format
+        /// </summary>
+        /// <param name="productFormat">Product Format search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByProductFormat(string productFormat, bool includeDisabled = false)
+        {
+            return ItemRepository.RetreiveSearchItemByProductFormat(productFormat, includeDisabled);
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Group
+        /// </summary>
+        /// <param name="productGroup">Product Group search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByProductGroup(string productGroup, bool includeDisabled = false)
+        {
+            return ItemRepository.RetreiveSearchItemByProductGroup(productGroup, includeDisabled);
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Line
+        /// </summary>
+        /// <param name="productLine">Product Line search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByProductLine(string productLine, bool includeDisabled = false)
+        {
+            return ItemRepository.RetreiveSearchItemByProductLine(productLine, includeDisabled);
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Stats Code
+        /// </summary>
+        /// <param name="statsCode">Stats Code search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByStatsCode(string statsCode, bool includeDisabled = false)
+        {
+            return ItemRepository.RetreiveSearchItemByStatsCode(statsCode, includeDisabled);
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Tariff Code
+        /// </summary>
+        /// <param name="tariffCode">Tariff Code search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByTariffCode(string tariffCode, bool includeDisabled = false)
+        {
+            return ItemRepository.RetreiveSearchItemByTariffCode(tariffCode, includeDisabled);
+        }
+
+        /// <summary>
+        ///     Retrieves a List of all stats codes values in global data
+        /// </summary>
+        /// <returns></returns>
+        public List<string> RetrieveStatsCodes()
+        {
+            List<string> result = GlobalData.StatsCodes.Keys.ToList();
+            result.Sort();
+            return result;
+        }
+
         /// <summary>
         ///     Retrieves a template from the db
         /// </summary>
@@ -2029,9 +2354,21 @@ namespace OdinServices
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        public void UpdateOnSite(string itemId)
+        public void UpdateOnSite(ItemObject item, string website)
         {
-            ItemRepository.UpdateOnSite(itemId);
+            // If update is for multiple sites
+            if(website.Contains(","))
+            {
+                string[] x = website.Split(',');
+                foreach (string y in x)
+                {
+                    ItemRepository.UpdateOnSite(item, y.Trim());
+                }
+            }
+            else
+            {
+                ItemRepository.UpdateOnSite(item, website);
+            }
         }
         
         /// <summary>
@@ -2135,6 +2472,9 @@ namespace OdinServices
             // Direct Import //
             validationError =ValidateDirectImport(var);
             if (validationError != null) { ErrorList.Add(validationError); }
+            // DTC Price //
+            validationError = ValidateDtcPrice(var);
+            if (validationError != null) { ErrorList.Add(validationError); }
             // Duty //
             validationError =ValidateDuty(var);
             if (validationError != null) { ErrorList.Add(validationError); }
@@ -2236,6 +2576,15 @@ namespace OdinServices
             if (validationError != null) { ErrorList.Add(validationError); }
             // Ecommerce Upc //
             validationError =ValidateEcommerceUpc(var);
+            if (validationError != null) { ErrorList.Add(validationError); }
+            // Genre1 //
+            validationError = ValidateGenre(var,1);
+            if (validationError != null) { ErrorList.Add(validationError); }
+            // Genre2 //
+            validationError = ValidateGenre(var, 2);
+            if (validationError != null) { ErrorList.Add(validationError); }
+            // Genre3 //
+            validationError = ValidateGenre(var, 3);
             if (validationError != null) { ErrorList.Add(validationError); }
             // Gpc //
             validationError =ValidateGpc(var);
@@ -2366,11 +2715,17 @@ namespace OdinServices
             // Sell On Hayneedle //
             validationError =ValidateSellOnValue(var, "Hayneedle");
             if (validationError != null) { ErrorList.Add(validationError); }
+            // Sell On Houzz //
+            validationError = ValidateSellOnValue(var, "Houzz");
+            if (validationError != null) { ErrorList.Add(validationError); }
             // Sell On Target //
             validationError =ValidateSellOnValue(var, "Target");
             if (validationError != null) { ErrorList.Add(validationError); }
             // Sell On Trends //
             validationError =ValidateSellOnValue(var, "Trends");
+            if (validationError != null) { ErrorList.Add(validationError); }
+            // Sell On Shop Trends //
+            validationError = ValidateSellOnValue(var, "Shop Trends");
             if (validationError != null) { ErrorList.Add(validationError); }
             // Sell On Walmart //
             validationError =ValidateSellOnValue(var, "Walmart");
@@ -2931,7 +3286,7 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             OdinServices.Properties.Resources.Error_Required,
-                            "Country of Origin");
+                            "Country Of Origin");
                     }
                 }
                 if (var.CountryOfOrigin.Length > 3)
@@ -2940,7 +3295,7 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "3 characters.",
-                        "Country of Origin");
+                        "Country Of Origin");
 
                 }
                 if (!DbUtil.ContainsOnlyAZ(var.CountryOfOrigin))
@@ -2949,7 +3304,7 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value conatins invalid charachters. (Country of Origin can only use charachters A-Z)",
-                        "Country of Origin");
+                        "Country Of Origin");
                 }
                 if (!GlobalData.ReturnCountryofOriginCodes().Contains(var.CountryOfOrigin))
                 {
@@ -2957,7 +3312,7 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NoMatch,
-                        "Country of Origin");
+                        "Country Of Origin");
                 }
             }
             return null;
@@ -3086,6 +3441,14 @@ namespace OdinServices
                         OdinServices.Properties.Resources.Error_Required,
                         "Description");
                 }
+                if (value.Contains((char)13))
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Value cannot contain carriage returns.",
+                        "Description");
+                }
                 if (value.Length > 60)
                 {
                     return new ItemError(
@@ -3125,6 +3488,54 @@ namespace OdinServices
                     OdinServices.Properties.Resources.Error_YorN,
                     "Direct Import");
             }
+        }
+
+        /// <summary>
+        ///     Validates the Dtc Price field. Returns ItemError or null if no error exists.
+        /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
+        public ItemError ValidateDtcPrice(ItemObject var)
+        {
+            if (!string.IsNullOrEmpty(var.DtcPrice))
+            {
+                if (var.DtcPrice.Length > 9)
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        OdinServices.Properties.Resources.Error_LengthMax + "9 characters.",
+                        "Dtc Price");
+                }
+                if (!DbUtil.IsNumber(var.DtcPrice))
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        OdinServices.Properties.Resources.Error_NonNumeric,
+                        "Dtc Price");
+                }
+            }
+            else
+            {
+                if (var.SellOnTrs == "Y")
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Required if Sell on Shop Trends is set to 'Y'.",
+                        "Dtc Price");                    
+                }
+                if (var.ProductLine == "Poster Frame" && var.ItemId.Substring(0, 3) == "POD")
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Required if product line = Poster Frame and item Id starts with 'POD'.",
+                        "Dtc Price");
+                }
+            }
+            return null;
         }
 
         /// <summary>
@@ -3196,6 +3607,14 @@ namespace OdinServices
                         OdinServices.Properties.Resources.Error_LengthMax + "30 characters.",
                         "EAN");
                 }
+                if (var.Ean.Contains("-"))
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Value cannot contain dashes (-).",
+                        "EAN");
+                }
             }
             return null;
         }
@@ -3243,7 +3662,6 @@ namespace OdinServices
             }
             return null;
         }
-
 
         /// <summary>
         ///     Validates the EcommerceBullet Validation field. Returns ItemError or null if no error exists.
@@ -4101,6 +4519,47 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Validates the genre field. Returns ItemError or null if no error exists.
+        /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <param name="type"></param>
+        /// <returns>Error message or "" if value is valid</returns>
+        public ItemError ValidateGenre(ItemObject var, int type)
+        {
+            /*
+            string value = string.Empty;
+            switch (type)
+            {
+                case 1:
+                    value = var.Genre1;
+                    break;
+                case 2:
+                    value = var.Genre2;
+                    break;
+                case 3:
+                    value = var.Genre3;
+                    break;
+                default:
+                    throw new ArgumentNullException("ValidateGenre unknown type " + type.ToString());
+            }
+
+            if (!string.IsNullOrEmpty(value))
+            {
+                if (!GlobalData.Genres.Contains(value))
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        OdinServices.Properties.Resources.Error_NoMatch,
+                        "Genre "+type.ToString());
+                }
+            }
+            */
+            return null;
+            
+        }
+
+        /// <summary>
         ///     Validates the GPC field. Returns ItemError or null if no error exists.
         /// </summary>
         /// <param name="var">Item Object</param>
@@ -4295,12 +4754,12 @@ namespace OdinServices
                         OdinServices.Properties.Resources.Error_LengthMax + "254 characters.",
                         "Image Path " + imageNumber);
                 }
-                if (!File.Exists(value) && required)
+                if (!CheckFileExists(value,false) && required)
                 {
                     return new ItemError(
                         var.ItemId,
                         var.ItemRow,
-                        @" could not find image with given filepath: " + value,
+                        @" could not find image with given filepath or the image is too large: " + value,
                         "Image Path " + imageNumber);
                 }
             }
@@ -4912,6 +5371,14 @@ namespace OdinServices
                         OdinServices.Properties.Resources.Error_LengthMax + "10 characters.",
                         name);
                 }
+                if (!DbUtil.IsNumber(value))
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        OdinServices.Properties.Resources.Error_NonNumeric,
+                        name);
+                }
                 if (string.IsNullOrEmpty(value))
                 {
                     if (!CheckGreaterThanZero(var.ListPriceUsd))
@@ -4926,14 +5393,6 @@ namespace OdinServices
                             OdinServices.Properties.Resources.Error_Required,
                             name);
                     }
-                }
-                if (!DbUtil.IsNumber(value))
-                {
-                    return new ItemError(
-                        var.ItemId,
-                        var.ItemRow,
-                        OdinServices.Properties.Resources.Error_NonNumeric,
-                        name);
                 }
             }
             return null;
@@ -5460,6 +5919,7 @@ namespace OdinServices
         public ItemError ValidateSellOnValue(ItemObject var, string type)
         {
             string value = string.Empty;
+            bool checkItemId = false;
             switch (type)
             {
                 case "All Posters":
@@ -5483,11 +5943,18 @@ namespace OdinServices
                 case "Hayneedle":
                     value = var.SellOnHayneedle;
                     break;
+                case "Houzz":
+                    value = var.SellOnHouzz;
+                    break;
                 case "Target":
                     value = var.SellOnTarget;
                     break;
                 case "Trends":
                     value = var.SellOnTrends;
+                    break;
+                case "Shop Trends":
+                    value = var.SellOnTrs;
+                    checkItemId = true;
                     break;
                 case "Walmart":
                     value = var.SellOnWalmart;
@@ -5514,6 +5981,17 @@ namespace OdinServices
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_YorN,
                     "Sell On " + type);
+            }
+            if(checkItemId)
+            {
+                if(var.ItemId.Contains("-"))
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Item's being sold on TRS cannot contain a '-' in the itemId.",
+                        "Sell On " + type);
+                }
             }
             return null;
         }

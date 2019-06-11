@@ -72,6 +72,17 @@
                             </GridViewColumn.Header>
                         </GridViewColumn>
                         <GridViewColumn
+                            DisplayMemberBinding="{Binding Website}"
+                            Width="auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Content="Website"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn
                             DisplayMemberBinding="{Binding UserName}"
                             Width="auto">
                             <GridViewColumn.Header>
@@ -171,6 +182,17 @@
                                     Padding="10,0,0,0" />
                             </GridViewColumn.Header>
                         </GridViewColumn>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding Website}"
+                            Width="auto">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Content="Website"
+                                    HorizontalContentAlignment="Left"
+                                    Height="20"
+                                    Padding="10,0,0,0" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
 
                         <GridViewColumn
                             DisplayMemberBinding="{Binding RequestStatus}"
@@ -209,15 +231,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button
-            Command="{Binding CreateCSV2Command}"
-            Content="Magento 2 Excel"
-            Margin="0,3,12,2"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Center"
-            Visibility="{Binding ControlVisibility}"
-            Width="105"
-            Height="26" Grid.Row="2" Grid.Column="3" />
         <Button
             Command="{Binding CreateCSVCommand}"
             Content="Create CSV"

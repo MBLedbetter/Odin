@@ -24,3 +24,6 @@ ALTER TABLE Odin_WebsiteItemRequests add primary key (RequestId, ItemId)
 SET ANSI_PADDING OFF
 GO
 
+/*
+ALTER TABLE [dbo].[Odin_WebsiteItemRequests] ADD [Website] [varchar](266) NULL
+*/

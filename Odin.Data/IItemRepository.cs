@@ -186,6 +186,13 @@ namespace Odin.Data
         void InsertLicense(string license, string property);
 
         /// <summary>
+        ///     Insert info into to PS_MARKETPLACE_CUSTOMER_PRODUCTS
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <param name="title"></param>
+        void InsertMarketplaceCustomerProducts(string itemId, string title, string customer);
+
+        /// <summary>
         ///     Inserts a Meta Description value into Odin_MetaDescription
         /// </summary>
         /// <param name="metaDescription"></param>
@@ -243,6 +250,7 @@ namespace Odin.Data
         ///     Runs InsertUomTypeInv for each Uom type
         /// </summary>
         void InsertUomTypeInvAll(ItemObject item, OdinContext context);
+
         /// <summary>
         ///     Inserts a value into Odin_NewWebCategories
         /// </summary>
@@ -325,7 +333,7 @@ namespace Odin.Data
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        List<SearchItem> RetrieveItemSearchResults(string value);
+        List<SearchItem> RetrieveItemSearchResults(string value, bool includeDisabled);
 
         /// <summary>
         ///     Retrieve a list of Item Objects relating to update records for the given item id
@@ -341,6 +349,20 @@ namespace Odin.Data
         List<string> RetrieveLicensePropertyList();
 
         /// <summary>
+        ///     Check if item is listed as being on the shoptrends site. PS_ITEM_WEB_INFO.ON_SHOPTRENDS == "Y"
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        bool RetrieveOnShopTrends(string itemId);
+
+        /// <summary>
+        ///     Check if item is listed as being on the trendsinteranational site. PS_ITEM_WEB_INFO.ON_SITE == "Y"
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        bool RetrieveOnSite(string itemId);
+
+        /// <summary>
         ///     Retrives a child / parent match from PS_MARKETPLACE_PRODUCT_TRANSLATIONS
         /// </summary>
         /// <param name="childIt"></param>
@@ -353,7 +375,7 @@ namespace Odin.Data
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        List<string> RetrieveImagePaths(string itemId);
+        List<KeyValuePair<string, int>> RetrieveImagePaths(string itemId);
 
         /// <summary>
         ///     Searches PS_ORD_LINE for any open orders
@@ -367,7 +389,63 @@ namespace Odin.Data
         /// </summary>
         /// <returns></returns>
         string RetrieveSaveProgress();
-        
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Item Category
+        /// </summary>
+        /// <param name="itemCategory">Item Category search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        List<SearchItem> RetreiveSearchItemByItemCategory(string itemCategory, bool includeDisabled = false);
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Item Group
+        /// </summary>
+        /// <param name="itemGroup">Item Group search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        List<SearchItem> RetreiveSearchItemByItemGroup(string itemGroup, bool includeDisabled = false);
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Format
+        /// </summary>
+        /// <param name="productFormat">Product Format search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        List<SearchItem> RetreiveSearchItemByProductFormat(string productFormat, bool includeDisabled = false);
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Group
+        /// </summary>
+        /// <param name="productGroup">Product Group search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        List<SearchItem> RetreiveSearchItemByProductGroup(string productGroup, bool includeDisabled = false);
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Line
+        /// </summary>
+        /// <param name="productLine">Product Line search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        List<SearchItem> RetreiveSearchItemByProductLine(string productLine, bool includeDisabled = false);
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Stats Code
+        /// </summary>
+        /// <param name="statsCode">Stats Code search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        List<SearchItem> RetreiveSearchItemByStatsCode(string statsCode, bool includeDisabled = false);
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Tariff Code
+        /// </summary>
+        /// <param name="tariffCode">Tariff Code search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        List<SearchItem> RetreiveSearchItemByTariffCode(string tariffCode, bool includeDisabled = false);
+
         /// <summary>
         ///     Returns the web category code associated with the given name
         /// </summary>
@@ -476,7 +554,7 @@ namespace Odin.Data
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        void UpdateOnSite(string itemId);
+        void UpdateOnSite(ItemObject item, string website);
 
         /// <summary>
         ///     Updates the values in PS_PROD_ITEM

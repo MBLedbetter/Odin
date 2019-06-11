@@ -50,22 +50,6 @@ namespace Odin.ViewModels
         private RelayCommand _createCSVCommand;
 
         /// <summary>
-        ///     Create CSV button triggered command
-        /// </summary>
-        public ICommand CreateCSV2Command
-        {
-            get
-            {
-                if (_createCSV2Command == null)
-                {
-                    _createCSV2Command = new RelayCommand(param => CreateCSV2File());
-                }
-                return _createCSV2Command;
-            }
-        }
-        private RelayCommand _createCSV2Command;
-
-        /// <summary>
         ///     Pull Images button triggered command
         /// </summary>
         public ICommand PullImagesCommand
@@ -170,14 +154,29 @@ namespace Odin.ViewModels
         }
         private string _adminVisible = string.Empty;
 
+        /// <summary>
+        ///     Gets or sets the ControlVisibility
+        /// </summary>
         public string ControlVisibility { get; set; }
 
+        /// <summary>
+        ///     Gets or sets the EmailService
+        /// </summary>
         public EmailService EmailService { get; set; }
 
+        /// <summary>
+        ///     Gets or sets the ExcelService
+        /// </summary>
         public ExcelService ExcelService { get; set; }
 
+        /// <summary>
+        ///     Gets or sets the ItemService
+        /// </summary>
         public ItemService ItemService { get; set; }
 
+        /// <summary>
+        ///     Gets or sets the OptionService
+        /// </summary>
         public OptionService OptionService { get; set; }
 
         /// <summary>
@@ -222,7 +221,7 @@ namespace Odin.ViewModels
             {
                 if (_selectedRequest == null)
                 {
-                    _selectedRequest = new Request(0, "", "", "", "", "", "", "");
+                    _selectedRequest = new Request(0, "", "", "", "", "", "", "", "");
                 }
                 return _selectedRequest;
             }
@@ -337,6 +336,20 @@ namespace Odin.ViewModels
         /// </summary>
         public void CreateCSVFile()
         {
+            if (this.SelectedRequest.Website.ToUpper() == "SHOPTRENDS.COM")
+            {
+                CreateMagento2File();
+            }
+            //if (this.SelectedRequest.Website.ToUpper() == "TRENDINTERNATIONAL.COM")
+            else
+            {
+                CreateMagento1File();
+            }
+
+        }
+
+        public void CreateMagento1File()
+        {
             if (SelectedRequestlingList.Count > 0)
             {
                 string requestId = SelectedRequestlingList[0].RequestId.ToString();
@@ -350,7 +363,7 @@ namespace Odin.ViewModels
                     ItemObject item = new ItemObject(1);
                     if (requestType != "Remove")
                     {
-                        item = ItemService.RetrieveItem(request.ItemId,count);
+                        item = ItemService.RetrieveItem(request.ItemId, count);
 
                     }
                     else
@@ -368,13 +381,12 @@ namespace Odin.ViewModels
             {
                 System.Windows.MessageBox.Show("Please select a Request");
             }
-
         }
 
         /// <summary>
         ///     Creates a CSV file to the desktop for the currently selected request
         /// </summary>
-        public void CreateCSV2File()
+        public void CreateMagento2File()
         {
             if (SelectedRequestlingList.Count > 0)
             {
@@ -390,7 +402,6 @@ namespace Odin.ViewModels
                     if (requestType != "Remove")
                     {
                         item = ItemService.RetrieveItem(request.ItemId, count);
-
                     }
                     else
                     {
@@ -492,30 +503,19 @@ namespace Odin.ViewModels
         ///     Copies the images for the given request into a folder on the users desktop
         /// </summary>
         public void PullImages()
-        {            
-            string location = @"C:\Users\" + Environment.UserName.ToLower() + @"\Desktop\EcomerceImages";
-            List<string> missingImages = new List<string>();
-            Directory.CreateDirectory(location);
+        {
+            List<string> itemIds = new List<string>();
             foreach (Request r in this.SelectedRequestlingList)
             {
-                foreach (string path in ItemService.RetrieveImagePaths(r.ItemId))
-                {
-                    if (ItemService.CheckFileExists(path, false))
-                    {
-                        string[] bits = path.Split('\\');
-                        string filename = location + @"\" + bits[bits.Length - 1];
-                        File.Copy(path, filename);
-                    }
-                    else
-                    {
-                        missingImages.Add(path);
-                    }
-                }
+                itemIds.Add(r.ItemId);
             }
-            if(missingImages.Count>0)
+            List<string> missingImages = ItemService.PullImages(itemIds);
+            if (missingImages.Count>0)
             {
-                AlertView window = new AlertView();
-                window.DataContext = new AlertViewModel(missingImages, "Alert", "The following images were not found in the captures folder.");
+                AlertView window = new AlertView
+                {
+                    DataContext = new AlertViewModel(missingImages, "Alert", "The following images were not found in the captures folder or were too large.")
+                };
                 window.ShowDialog();
             }
         }
@@ -558,7 +558,7 @@ namespace Odin.ViewModels
                 {
                     List<Request> requests = OptionService.RetrieveRequestList(SelectedRequest.RequestId);
 
-                    EmailService.sendStatusChangedEmail(SelectedRequest.RequestId.ToString(), requests, SelectedRequest.UserName);
+                    EmailService.SendStatusChangedEmail(SelectedRequest.RequestId.ToString(), requests, SelectedRequest.UserName);
                     foreach (Request request in requests)
                     {
                         if (SelectedRequestStatus != "")
@@ -568,7 +568,11 @@ namespace Odin.ViewModels
                         OptionService.UpdateWebsiteRequest(request);
                         if (request.RequestStatus == "Completed")
                         {
-                            ItemService.UpdateOnSite(request.ItemId);
+                            ItemObject item = new ItemObject(0)
+                            {
+                                ItemId = request.ItemId
+                            };
+                            ItemService.UpdateOnSite(item, request.Website);
                         }
                     }
                     System.Windows.MessageBox.Show("Requests Submitted");

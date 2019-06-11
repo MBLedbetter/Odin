@@ -1019,6 +1019,45 @@ namespace Odin.ViewModels
             }
         }
 
+        public bool Genre1Visibility
+        {
+            get
+            {
+                return UserOptions.Genre1Visibility;
+            }
+            set
+            {
+                UserOptions.Genre1Visibility = value;
+                OnPropertyChanged("Genre1Visibility");
+            }
+        }
+
+        public bool Genre2Visibility
+        {
+            get
+            {
+                return UserOptions.Genre2Visibility;
+            }
+            set
+            {
+                UserOptions.Genre2Visibility = value;
+                OnPropertyChanged("Genre2Visibility");
+            }
+        }
+
+        public bool Genre3Visibility
+        {
+            get
+            {
+                return UserOptions.Genre3Visibility;
+            }
+            set
+            {
+                UserOptions.Genre3Visibility = value;
+                OnPropertyChanged("Genre3Visibility");
+            }
+        }
+
         public bool GpcVisibility
         {
             get
@@ -1652,6 +1691,19 @@ namespace Odin.ViewModels
             }
         }
 
+        public bool SellOnHouzzVisibility
+        {
+            get
+            {
+                return UserOptions.SellOnHouzzVisibility;
+            }
+            set
+            {
+                UserOptions.SellOnHouzzVisibility = value;
+                OnPropertyChanged("SellOnHouzzVisibility");
+            }
+        }
+
         public bool SellOnTargetVisibility
         {
             get
@@ -1675,6 +1727,19 @@ namespace Odin.ViewModels
             {
                 UserOptions.SellOnTrendsVisibility = value;
                 OnPropertyChanged("SellOnTrendsVisibility");
+            }
+        }
+
+        public bool SellOnTrsVisibility
+        {
+            get
+            {
+                return UserOptions.SellOnTrsVisibility;
+            }
+            set
+            {
+                UserOptions.SellOnTrsVisibility = value;
+                OnPropertyChanged("SellOnTrsVisibility");
             }
         }
 
@@ -1937,6 +2002,9 @@ namespace Odin.ViewModels
             if (UserOptions.Category2Visibility  == false) { return false; }
             if (UserOptions.Category3Visibility  == false) { return false; }
             if (UserOptions.CopyrightVisibility  == false) { return false; }
+            if (UserOptions.Genre1Visibility == false) { return false; }
+            if (UserOptions.Genre2Visibility == false) { return false; }
+            if (UserOptions.Genre3Visibility == false) { return false; }
             if (UserOptions.InStockDateVisibility  == false) { return false; }
             if (UserOptions.ItemKeywordsVisibility  == false) { return false; }
             if (UserOptions.LicenseVisibility  == false) { return false; }
@@ -2069,8 +2137,10 @@ namespace Odin.ViewModels
             if (UserOptions.SellOnFanaticsVisibility  == false) { return false; }
             if (UserOptions.SellOnGuitarCenterVisibility == false) { return false; }
             if (UserOptions.SellOnHayneedleVisibility  == false) { return false; }
+            if (UserOptions.SellOnHouzzVisibility == false) { return false; }
             if (UserOptions.SellOnTargetVisibility  == false) { return false; }
             if (UserOptions.SellOnTrendsVisibility  == false) { return false; }
+            if (UserOptions.SellOnTrsVisibility == false) { return false; }
             if (UserOptions.SellOnWalmartVisibility  == false) { return false; }
             if (UserOptions.SellOnWayfairVisibility  == false) { return false; }
             return true;
@@ -2126,6 +2196,9 @@ namespace Odin.ViewModels
                 this.Category2Visibility = true;
                 this.Category3Visibility = true;
                 this.CopyrightVisibility = true;
+                this.Genre1Visibility = true;
+                this.Genre2Visibility = true;
+                this.Genre3Visibility = true;
                 this.InStockDateVisibility = true;
                 this.ItemKeywordsVisibility = true;
                 this.LicenseVisibility = true;
@@ -2142,6 +2215,9 @@ namespace Odin.ViewModels
                 this.Category2Visibility = false;
                 this.Category3Visibility = false;
                 this.CopyrightVisibility = false;
+                this.Genre1Visibility = false;
+                this.Genre2Visibility = false;
+                this.Genre3Visibility = false;
                 this.InStockDateVisibility = false;
                 this.ItemKeywordsVisibility = false;
                 this.LicenseVisibility = false;
@@ -2401,8 +2477,10 @@ namespace Odin.ViewModels
                 this.SellOnFanaticsVisibility = true;
                 this.SellOnGuitarCenterVisibility = true;
                 this.SellOnHayneedleVisibility = true;
+                this.SellOnHouzzVisibility = true;
                 this.SellOnTargetVisibility = true;
                 this.SellOnTrendsVisibility = true;
+                this.SellOnTrsVisibility = true;
                 this.SellOnWalmartVisibility = true;
                 this.SellOnWayfairVisibility = true;
             }
@@ -2413,8 +2491,10 @@ namespace Odin.ViewModels
                 this.SellOnAmazonSellerCentralVisibility = false;
                 this.SellOnGuitarCenterVisibility = false;
                 this.SellOnHayneedleVisibility = false;
+                this.SellOnHouzzVisibility = false;
                 this.SellOnTargetVisibility = false;
                 this.SellOnTrendsVisibility = false;
+                this.SellOnTrsVisibility = false;
                 this.SellOnWalmartVisibility = false;
                 this.SellOnWayfairVisibility = false;
             }

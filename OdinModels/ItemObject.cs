@@ -547,6 +547,24 @@ namespace OdinModels
         private string _directImport = string.Empty;
 
         /// <summary>
+        ///     Gets or sets the DTC Price
+        /// </summary>
+        public string DtcPrice
+        {
+            get
+            {
+                return _dtcPrice;
+            }
+            set
+            {
+                if (_dtcPrice != value) { DtcPriceUpdate = true; }
+                _dtcPrice = value;
+                OnPropertyChanged("DtcPrice");
+            }
+        }
+        private string _dtcPrice = string.Empty;
+
+        /// <summary>
         ///     Gets or sets the Duty
         /// </summary>
         public string Duty
@@ -559,10 +577,7 @@ namespace OdinModels
             {
                 if (_duty != value) { DutyUpdate = true; }
                 _duty = value;
-                OnPropertyChanged
-
-                    ("Duty");
-
+                OnPropertyChanged("Duty");
             }
         }
         private string _duty = string.Empty;
@@ -1362,6 +1377,63 @@ namespace OdinModels
         private string _ecommerceupc = string.Empty;
 
         /// <summary>
+        ///     Gets or sets the Genre1
+        /// </summary>
+        public string Genre1
+        {
+            get
+            {
+                return _genre1;
+            }
+            set
+            {
+                if (_genre1 != value) { Genre1Update = true; }
+                _genre1 = value;
+                OnPropertyChanged("Genre1");
+
+            }
+        }
+        private string _genre1 = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the Genre2
+        /// </summary>
+        public string Genre2
+        {
+            get
+            {
+                return _genre2;
+            }
+            set
+            {
+                if (_genre2 != value) { Genre2Update = true; }
+                _genre2 = value;
+                OnPropertyChanged("Genre2");
+
+            }
+        }
+        private string _genre2 = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the Genre1
+        /// </summary>
+        public string Genre3
+        {
+            get
+            {
+                return _genre3;
+            }
+            set
+            {
+                if (_genre3 != value) { Genre3Update = true; }
+                _genre3 = value;
+                OnPropertyChanged("Genre3");
+
+            }
+        }
+        private string _genre3 = string.Empty;
+
+        /// <summary>
         ///     Gets or sets the Gpc
         /// </summary>
         public string Gpc
@@ -1939,6 +2011,24 @@ namespace OdinModels
         private string _msrpMxn = string.Empty;
 
         /// <summary>
+        ///     Gets or set the OnShopTrends value. Flag for determining if the item has already been uploaded to shoptrends.com.
+        ///     User cannot edit this field. Switched upon admin exporting web excel.
+        /// </summary>
+        public string OnShopTrends
+        {
+            get
+            {
+                return _onShopTrends;
+            }
+            set
+            {
+                _onShopTrends = value;
+                OnPropertyChanged("OnShopTrends");
+            }
+        }
+        private string _onShopTrends = string.Empty;
+
+        /// <summary>
         ///     Gets or set the OnSite value. Flag for determining if the item has already been uploaded to trendsinternational.com.
         ///     User cannot edit this field. Switched upon admin exporting web excel.
         /// </summary>
@@ -2305,6 +2395,24 @@ namespace OdinModels
         private string _sellOnHayneedle = "";
 
         /// <summary>
+        ///     Gets or sets the SellOnHouzz field
+        /// </summary>
+        public string SellOnHouzz
+        {
+            get
+            {
+                return _sellOnHouzz;
+            }
+            set
+            {
+                if (_sellOnHouzz != value) { SellOnHouzzUpdate = true; }
+                _sellOnHouzz = value;
+                OnPropertyChanged("SellOnHouzz");
+            }
+        }
+        private string _sellOnHouzz = "";
+
+        /// <summary>
         ///     Gets or sets the SellOnTarget
         /// </summary>
         public string SellOnTarget
@@ -2340,6 +2448,24 @@ namespace OdinModels
             }
         }
         private string _sellOnTrends = "";
+        
+        /// <summary>
+        ///     Gets or sets the SellOnTrs
+        /// </summary>
+        public string SellOnTrs
+        {
+            get
+            {
+                return _sellOnTrs;
+            }
+            set
+            {
+                if (_sellOnTrs != value) { SellOnTrsUpdate = true; }
+                _sellOnTrs = value;
+                OnPropertyChanged("SellOnTrs");
+            }
+        }
+        private string _sellOnTrs = "";
 
         /// <summary>
         ///     Gets or sets the SellOnWalmart
@@ -2759,6 +2885,24 @@ namespace OdinModels
         private string _recordDate = string.Empty;
 
         /// <summary>
+        ///     List of related products
+        /// </summary>
+        public List<string> RelatedProducts
+        {
+            get
+            {
+                return _relatedProducts;
+            }
+            set
+            {
+                _relatedProducts = value;
+                OnPropertyChanged("RelatedProducts");
+
+            }
+        }
+        private List<string> _relatedProducts = new List<string>();
+
+        /// <summary>
         ///     Gets or sets the RowColor. Used for listview display.
         /// </summary>
         public string RowColor
@@ -2995,7 +3139,9 @@ namespace OdinModels
                     this.SellOnFanatics == "Y" ||
                     this.SellOnGuitarCenter == "Y" ||
                     this.SellOnHayneedle == "Y" ||
+                    this.SellOnHouzz == "Y" ||
                     this.SellOnTarget == "Y" ||
+                    this.SellOnTrs == "Y" ||
                     this.SellOnWalmart == "Y" ||
                     this.SellOnWayfair == "Y")
                 {
@@ -3048,6 +3194,10 @@ namespace OdinModels
                     this.CasepackWeightUpdate ||
                     this.CasepackWidthUpdate ||
                     this.DirectImportUpdate ||
+                    this.DtcPriceUpdate ||
+                    this.Genre1Update ||
+                    this.Genre2Update ||
+                    this.Genre3Update ||
                     this.ImagePathUpdate ||
                     this.InnerpackHeightUpdate ||
                     this.InnerpackLengthUpdate ||
@@ -3296,7 +3446,9 @@ namespace OdinModels
                     this.SellOnFanaticsUpdate ||
                     this.SellOnGuitarCenterUpdate ||
                     this.SellOnHayneedleUpdate ||
+                    this.SellOnHouzzUpdate ||
                     this.SellOnTargetUpdate ||
+                    this.SellOnTrsUpdate ||
                     this.SellOnWalmartUpdate ||
                     this.SellOnWayfairUpdate)
                 {
@@ -3420,6 +3572,11 @@ namespace OdinModels
         ///     DirectImportUpdate update flag
         /// </summary>
         public bool DirectImportUpdate = false;
+
+        /// <summary>
+        ///     DtcPriceUpdate update flag
+        /// </summary>
+        public bool DtcPriceUpdate = false;
 
         /// <summary>
         ///     DutyUpdate update flag
@@ -3620,6 +3777,21 @@ namespace OdinModels
         ///     Ecommere_UpcUpdate update flag
         /// </summary>
         public bool EcommerceUpcUpdate = false;
+
+        /// <summary>
+        ///     Genre1Update update flag
+        /// </summary>
+        public bool Genre1Update = false;
+
+        /// <summary>
+        ///     Genre2Update update flag
+        /// </summary>
+        public bool Genre2Update = false;
+
+        /// <summary>
+        ///     Genre3Update update flag
+        /// </summary>
+        public bool Genre3Update = false;
 
         /// <summary>
         ///     GpcUpdate update flag
@@ -3852,6 +4024,11 @@ namespace OdinModels
         public bool SellOnHayneedleUpdate = false;
 
         /// <summary>
+        ///     SellOnHouzzUpdate update flag
+        /// </summary>
+        public bool SellOnHouzzUpdate = false;
+
+        /// <summary>
         ///     SellOnTargetUpdate update flag
         /// </summary>
         public bool SellOnTargetUpdate = false;
@@ -3860,6 +4037,11 @@ namespace OdinModels
         ///     SellOnTrendsUpdate update flag
         /// </summary>
         public bool SellOnTrendsUpdate = false;
+
+        /// <summary>
+        ///     SellOnTrsUpdate update flag
+        /// </summary>
+        public bool SellOnTrsUpdate = false;
 
         /// <summary>
         ///     SellOnWalmartUpdate update flag
@@ -4091,6 +4273,9 @@ namespace OdinModels
             this.EcommerceSizeUpdate = false;
             this.EcommerceSubjectKeywordsUpdate = false;
             this.EcommerceUpcUpdate = false;
+            this.Genre1Update = false;
+            this.Genre2Update = false;
+            this.Genre3Update = false;
             this.GpcUpdate = false;
             this.HeightUpdate = false;
             this.ImagePathUpdate = false;
@@ -4135,8 +4320,10 @@ namespace OdinModels
             this.SellOnFanaticsUpdate = false;
             this.SellOnGuitarCenterUpdate = false;
             this.SellOnHayneedleUpdate = false;
+            this.SellOnHouzzUpdate = false;
             this.SellOnWalmartUpdate = false;
             this.SellOnWayfairUpdate = false;
+            this.SellOnTrsUpdate = false;
             this.SellOnTrendsUpdate = false;
             this.SellOnTargetUpdate = false;
             this.ShortDescriptionUpdate = false;
@@ -4221,8 +4408,12 @@ namespace OdinModels
             }
             if (value != string.Empty)
             {
-                string[] words = value.Split('\\');
-                return words[words.Length - 1];
+                int idx = value.LastIndexOf("\\");
+                if (idx != -1)
+                {
+                    return value.Substring(idx + 1);
+                }
+                return value;
             }
             else return "";
         }
@@ -4295,6 +4486,7 @@ namespace OdinModels
                 this.DefaultActualCostCad = item.DefaultActualCostCad;
                 this.Description = item.Description;
                 this.DirectImport = item.DirectImport;
+                this.DtcPrice = item.DtcPrice;
                 this.Duty = item.Duty;
                 this.Ean = item.Ean;
                 this.EcommerceAsin = item.EcommerceAsin;
@@ -4334,6 +4526,9 @@ namespace OdinModels
                 this.EcommerceSize = item.EcommerceSize;
                 this.EcommerceSubjectKeywords = item.EcommerceSubjectKeywords;
                 this.EcommerceUpc = item.EcommerceUpc;
+                this.Genre1 = item.Genre1;
+                this.Genre2 = item.Genre2;
+                this.Genre3 = item.Genre3;
                 this.Gpc = item.Gpc;
                 this.Height = item.Height;
                 this.ImagePath = item.ImagePath;
@@ -4381,8 +4576,10 @@ namespace OdinModels
                 this.SellOnFanatics = item.SellOnFanatics;
                 this.SellOnGuitarCenter = item.SellOnGuitarCenter;
                 this.SellOnHayneedle = item.SellOnHayneedle;
+                this.SellOnHouzz = item.SellOnHouzz;
                 this.SellOnTarget = item.SellOnTarget;
                 this.SellOnTrends = item.SellOnTrends;
+                this.SellOnTrs = item.SellOnTrs;
                 this.SellOnWalmart = item.SellOnWalmart;
                 this.SellOnWayfair = item.SellOnWayfair;
                 this.ShortDescription = item.ShortDescription;
@@ -4416,6 +4613,8 @@ namespace OdinModels
         public void SetFlagDefaults()
         {
             if (string.IsNullOrEmpty(this.PsStatus)) { this.PsStatus = "I"; }
+            if (string.IsNullOrEmpty(this.OnShopTrends)) { this.OnShopTrends = "N"; }
+            if (string.IsNullOrEmpty(this.OnSite)) { this.OnSite = "N"; }
             if (string.IsNullOrEmpty(this.SellOnAllPosters)) { this.SellOnAllPosters = "N"; }
             if (string.IsNullOrEmpty(this.SellOnAmazon)) { this.SellOnAmazon = "N"; }
             if (string.IsNullOrEmpty(this.SellOnAmazonSellerCentral)) { this.SellOnAmazonSellerCentral = "N"; }
@@ -4423,6 +4622,8 @@ namespace OdinModels
             if (string.IsNullOrEmpty(this.SellOnFanatics)) { this.SellOnFanatics = "N"; }
             if (string.IsNullOrEmpty(this.SellOnGuitarCenter)) { this.SellOnGuitarCenter = "N"; }
             if (string.IsNullOrEmpty(this.SellOnHayneedle)) { this.SellOnHayneedle = "N"; }
+            if (string.IsNullOrEmpty(this.SellOnHouzz)) { this.SellOnHouzz = "N"; }
+            if (string.IsNullOrEmpty(this.SellOnTrs)) { this.SellOnTrs = "N"; }
             if (string.IsNullOrEmpty(this.SellOnTarget)) { this.SellOnTarget = "N"; }
             if (string.IsNullOrEmpty(this.SellOnTrends)) { this.SellOnTrends = "N"; }
             if (string.IsNullOrEmpty(this.SellOnWalmart)) { this.SellOnWalmart = "N"; }
@@ -4431,7 +4632,6 @@ namespace OdinModels
             if (string.IsNullOrEmpty(this.WarrantyCheck)) { this.WarrantyCheck = "N"; }
         }
         
-
         #endregion //Methods
 
         #region Constructor

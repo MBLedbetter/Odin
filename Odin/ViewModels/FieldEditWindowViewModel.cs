@@ -180,7 +180,6 @@ namespace Odin.ViewModels
                         break;
                 }
             }
-
             else if (FieldStatus == "Update")
             {
                 switch (FieldType)
@@ -209,7 +208,7 @@ namespace Odin.ViewModels
                             NewFieldValue = "#" + NewFieldValue;
                             ItemService.InsertCategory(NewFieldValue);
                             string name = Environment.UserName;
-                            EmailService.sendCategoryUpdateEmail(Environment.UserName);
+                            EmailService.SendCategoryUpdateEmail(Environment.UserName);
                             MessageBox.Show("Category Request Placed");
                         }
                         catch (Exception ex)

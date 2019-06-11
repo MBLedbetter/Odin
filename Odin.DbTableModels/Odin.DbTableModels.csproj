@@ -71,6 +71,7 @@
     <Compile Include="ItemWebInfo.cs" />
     <Compile Include="ItmCatTbl.cs" />
     <Compile Include="LanguageTbl.cs" />
+    <Compile Include="MarketplaceCustomerProducts.cs" />
     <Compile Include="MarketplaceProductTranslations.cs" />
     <Compile Include="MasterItemTbl.cs" />
     <Compile Include="OdinAutoNumberControlTable.cs" />
@@ -78,12 +79,14 @@
     <Compile Include="OdinExcelLayoutData.cs" />
     <Compile Include="OdinExcelLayoutIds.cs" />
     <Compile Include="OdinFieldValues.cs" />
+    <Compile Include="OdinGenres.cs" />
     <Compile Include="OdinGlobalKeys.cs" />
     <Compile Include="OdinItem.cs" />
     <Compile Include="OdinItemExceptions.cs" />
     <Compile Include="OdinItemIdSuffixes.cs" />
     <Compile Include="OdinItemOverrideInfo.cs" />
     <Compile Include="OdinItemTemplates.cs" />
+    <Compile Include="OdinItemTypeExtensions.cs" />
     <Compile Include="OdinItemUpdateRecords.cs" />
     <Compile Include="OdinLanguage.cs" />
     <Compile Include="OdinLicenseStats.cs" />

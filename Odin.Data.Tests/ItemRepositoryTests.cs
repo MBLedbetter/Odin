@@ -1075,15 +1075,19 @@ namespace Odin.Data.Tests
             GlobalData.WebCategoryList.Add("2", "Category2");
             GlobalData.WebCategoryList.Add("3", "Category3");
 
-            GlobalData.CustomerIdConversions.Add("ALL POSTERS", "1");
-            GlobalData.CustomerIdConversions.Add("AMAZON", "2");
-            GlobalData.CustomerIdConversions.Add("AMAZON SELLER CENTRAL", "10");
-            GlobalData.CustomerIdConversions.Add("FANATICS", "3");
-            GlobalData.CustomerIdConversions.Add("HAYNEEDLE", "4");
-            GlobalData.CustomerIdConversions.Add("TARGET", "5");
-            GlobalData.CustomerIdConversions.Add("WALMART", "6");
-            GlobalData.CustomerIdConversions.Add("WAYFAIR", "8");
-            GlobalData.CustomerIdConversions.Add("GUITAR CENTER", "9");
+            GlobalData.CustomerIdConversions.Add("ALL POSTERS", "000000000020536");
+            GlobalData.CustomerIdConversions.Add("AMAZON", "000000000125480");
+            GlobalData.CustomerIdConversions.Add("AMAZON SELLER CENTRAL", "000000000145518");
+            GlobalData.CustomerIdConversions.Add("FANATICS", "000000000125904");
+            GlobalData.CustomerIdConversions.Add("HAYNEEDLE", "000000000126605");
+            GlobalData.CustomerIdConversions.Add("HOUZZ", "000000000146472");
+            GlobalData.CustomerIdConversions.Add("TARGET", "000000000064965");
+            GlobalData.CustomerIdConversions.Add("WALMART", "000000000125921");
+            GlobalData.CustomerIdConversions.Add("WAYFAIR", "000000000130446");
+            GlobalData.CustomerIdConversions.Add("GUITAR CENTER", "000000000145389");
+            GlobalData.CustomerIdConversions.Add("SHOP TRENDS", "000000000146515");
+            GlobalData.CustomerIdConversions.Add("TRS", "000000000146515");
+            GlobalData.ItemIdSuffixes.Add("DI");
 
             List<ChildElement> billOfMaterials = new List<ChildElement>() {
                 new ChildElement("ST1111", "TestItem2", 1),
@@ -1096,7 +1100,6 @@ namespace Odin.Data.Tests
             };
 
             ItemObject item = new ItemObject(1) {
-
                 AltImageFile1 = "\\\\isiloncifs\\Store 2\\•CAPTURES\\Poster Captures\\3000\\3400\\3403_BRETT FAVRE.TIFF",
                 AltImageFile2 = "\\\\isiloncifs\\Store 2\\•CAPTURES\\Poster Captures\\3000\\3400\\3403_BRETT FAVRE.TIFF",
                 AltImageFile3 = "\\\\isiloncifs\\Store 2\\•CAPTURES\\Poster Captures\\3000\\3400\\3403_BRETT FAVRE.TIFF",
@@ -1106,9 +1109,11 @@ namespace Odin.Data.Tests
                 SellOnAmazonSellerCentral = "Y",
                 SellOnFanatics = "N",
                 SellOnGuitarCenter = "N",
-                SellOnHayneedle = "N",
+                SellOnHayneedle = "Y",
+                SellOnHouzz = "N",
                 SellOnTarget = "N",
                 SellOnTrends = "N",
+                SellOnTrs = "N",
                 SellOnWalmart = "N",
                 SellOnWayfair = "N",
                 EcommerceAsin = "ASIN",
@@ -1225,9 +1230,10 @@ namespace Odin.Data.Tests
             #endregion // Assemble
 
             #region Act
+
             itemRepository.InsertAll(item,1);
             ItemObject newItem = itemRepository.RetrieveItem("TestItem2", 1);
-            // ItemObject newItem = new ItemObject(1);
+
             #endregion // Act
 
             #region Assert
@@ -1237,8 +1243,10 @@ namespace Odin.Data.Tests
             Assert.AreEqual("Y", newItem.SellOnAmazonSellerCentral);
             Assert.AreEqual("N", newItem.SellOnFanatics);
             Assert.AreEqual("N", newItem.SellOnGuitarCenter);
-            Assert.AreEqual("N", newItem.SellOnHayneedle);
+            Assert.AreEqual("Y", newItem.SellOnHayneedle);
+            Assert.AreEqual("N", newItem.SellOnHouzz);
             Assert.AreEqual("N", newItem.SellOnTarget);
+            Assert.AreEqual("N", newItem.SellOnTrs);
             Assert.AreEqual("N", newItem.SellOnWalmart);
             Assert.AreEqual("N", newItem.SellOnWayfair);
             Assert.AreEqual("N", newItem.SellOnTrends);
@@ -1631,6 +1639,7 @@ namespace Odin.Data.Tests
                 SellOnFanatics = "N",
                 SellOnGuitarCenter = "N",
                 SellOnHayneedle = "N",
+                SellOnHouzz = "N",
                 SellOnTarget = "N",
                 SellOnTrends = "N",
                 SellOnWalmart = "N",
@@ -1729,6 +1738,7 @@ namespace Odin.Data.Tests
                 Assert.AreEqual("N", itemUpdateRecord.SellOnFanatics);  //item.SellOnFanatics
                 Assert.AreEqual("N", itemUpdateRecord.SellOnGuitarCenter);  //item.SellOnGuitarCenter
                 Assert.AreEqual("N", itemUpdateRecord.SellOnHayneedle);  //item.SellOnHayneedle
+                Assert.AreEqual("N", itemUpdateRecord.SellOnHouzz);  //item.SellOnHouzz
                 Assert.AreEqual("N", itemUpdateRecord.SellOnTarget);  //item.SellOnTarget
                 Assert.AreEqual("N", itemUpdateRecord.SellOnWeb);  //item.SellOnTrends
                 Assert.AreEqual("N", itemUpdateRecord.SellOnWalmart);  //item.SellOnWalmart
@@ -2945,11 +2955,14 @@ namespace Odin.Data.Tests
             GlobalData.CustomerIdConversions.Add("AMAZON", "2");
             GlobalData.CustomerIdConversions.Add("FANATICS", "3");
             GlobalData.CustomerIdConversions.Add("HAYNEEDLE", "4");
+            GlobalData.CustomerIdConversions.Add("HOUZZ", "000000000146472");
             GlobalData.CustomerIdConversions.Add("TARGET", "5");
             GlobalData.CustomerIdConversions.Add("WALMART", "6");
             GlobalData.CustomerIdConversions.Add("WAYFAIR", "7");
             GlobalData.CustomerIdConversions.Add("GUITAR CENTER", "9");
             GlobalData.CustomerIdConversions.Add("AMAZON SELLER CENTRAL", "10");
+            GlobalData.CustomerIdConversions.Add("TRS", "000000000146515");
+            GlobalData.CustomerIdConversions.Add("SHOP TRENDS", "000000000146515");
 
             ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
@@ -2958,7 +2971,9 @@ namespace Odin.Data.Tests
                 SellOnFanatics = "Y",
                 SellOnGuitarCenter = "Y",
                 SellOnHayneedle = "N",
+                // SellOnHouzz = "N",
                 SellOnTarget = "Y",
+                SellOnTrs = "N",
                 SellOnWalmart = "N",
                 SellOnWayfair = "Y"
             };
@@ -2977,7 +2992,9 @@ namespace Odin.Data.Tests
             item.SellOnFanatics = "N";
             item.SellOnGuitarCenter = "N";
             item.SellOnHayneedle = "Y";
+            // item.SellOnHouzz = "Y";
             item.SellOnTarget = "N";
+            item.SellOnTrs = "N";
             item.SellOnWalmart = "Y";
             item.SellOnWayfair = "N";
             using (OdinContext context = OdinContextFactory.CreateContext())
@@ -3699,7 +3716,7 @@ namespace Odin.Data.Tests
 
             using (OdinContext context = OdinContextFactory.CreateContext())
             {
-                itemRepository.UpdateOnSite("TEST1");
+                itemRepository.UpdateOnSite(item,"website");
                 context.SaveChanges();
             }
 

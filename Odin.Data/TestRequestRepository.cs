@@ -42,8 +42,9 @@ namespace Odin.Data
         /// <returns>List of requests</returns>
         public List<Request> RetrieveRequests()
         {
-            List<Request> requestList = new List<Request>();
-            requestList.Add(new Request(
+            List<Request> requestList = new List<Request>
+            {
+                new Request(
                             1,
                             "Itemid",
                             "Itemstatus",
@@ -51,7 +52,9 @@ namespace Odin.Data
                             "Dttmsubmitted",
                             "Instockdate",
                             "Comment",
-                            "Requeststatus"));
+                            "Requeststatus",
+                            "Website")
+            };
             return requestList;
         }
 
@@ -71,7 +74,8 @@ namespace Odin.Data
                             "Dttmsubmitted",
                             "Instockdate",
                             "Comment",
-                            "Requeststatus"));
+                            "Requeststatus",
+                            "Website"));
 
             return requestList;
         }
@@ -102,7 +106,8 @@ namespace Odin.Data
                 "Dttmsubmitted",
                 "Instockdate",
                 "Comment",
-                "Requeststatus"));
+                "Requeststatus",
+                "Website"));
             return RequestList;
         }
 
@@ -130,7 +135,7 @@ namespace Odin.Data
         /// <param name="Comment"></param>
         /// <param name="requestNum"></param>
         /// <returns></returns>
-        public void SubmitRequest(ObservableCollection<ItemObject> Items, string status, string Comment, int requestNum)
+        public void SubmitRequest(ObservableCollection<ItemObject> Items, string status, string comment, string website, int requestNum)
         {
         }
 

@@ -8,7 +8,6 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Input;
 using System.ComponentModel;
 
@@ -44,13 +43,26 @@ namespace Odin.ViewModels
         }
         private RelayCommand _enterKeyCommand;
 
+        public ICommand FindItemByFieldCommand
+        {
+            get
+            {
+                if (_findItemByField == null)
+                {
+                    _findItemByField = new RelayCommand(param => FindItemByField());
+                }
+                return _findItemByField;
+            }
+        }
+        private RelayCommand _findItemByField;
+
         public ICommand FindItemCommand
         {
             get
             {
                 if (_findItem == null)
                 {
-                    _findItem = new RelayCommand(param => FindItem());
+                    _findItem = new RelayCommand(param => FindItemById());
                 }
                 return _findItem;
             }
@@ -115,16 +127,29 @@ namespace Odin.ViewModels
         private int DescriptionIdSearchOrder { get; set; }
 
         /// <summary>
+        ///     Gets or sets the DisabledCheck
+        /// </summary>
+        public bool DisabledCheck
+        {
+            get
+            {
+                return _disabledCheck;
+            }
+            set
+            {
+                _disabledCheck = value;
+                OnPropertyChanged("DisabledCheck");                
+            }
+        }
+        private bool _disabledCheck = true;
+
+        /// <summary>
         ///     Gets or sets the ItemErrors
         /// </summary>
         public ObservableCollection<ItemError> ItemErrors
         {
             get
             {
-                if (_itemErrors == null)
-                {
-                    _itemErrors = new ObservableCollection<ItemError>();
-                }
                 return _itemErrors;
             }
             private set
@@ -142,10 +167,6 @@ namespace Odin.ViewModels
         {
             get
             {
-                if (_itemIdAbsentList == null)
-                {
-                    _itemIdAbsentList = new List<string>();
-                }
                 return _itemIdAbsentList;
             }
             set
@@ -163,10 +184,6 @@ namespace Odin.ViewModels
         {
             get
             {
-                if (_itemIdList == null)
-                {
-                    _itemIdList = new List<string>();
-                }
                 return _itemIdList;
             }
             set
@@ -194,10 +211,6 @@ namespace Odin.ViewModels
         {
             get
             {
-                if (_itemList == null)
-                {
-                    _itemList = new ObservableCollection<ItemObject>();
-                }
                 return _itemList;
             }
             private set
@@ -244,24 +257,93 @@ namespace Odin.ViewModels
         private string _progressText = string.Empty;
 
         /// <summary>
-        ///     Item id input field
+        ///     Gets or sets the Search By Field Combobox value
         /// </summary>
-        public string SearchInput
+        public string SearchByField
         {
             get
             {
-                return _searchInput;
+                return _searchByField;
             }
             set
             {
-                if (_searchInput != value.Trim().ToUpper())
+                _searchByField = value;
+                SetSearchByFieldValue(value);
+                OnPropertyChanged("SearchByField");
+            }
+        }
+        private string _searchByField = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the Search By Fields Combobox values
+        /// </summary>
+        public List<string> SearchByFields
+        {
+            get
+            {
+                return _searchByFields;
+            }
+            set
+            {
+                _searchByFields = value;
+                OnPropertyChanged("SearchByFields");
+            }
+        }
+        private List<string> _searchByFields = new List<string>();
+
+        /// <summary>
+        ///     Gets or sets the Search By Field Value
+        /// </summary>
+        public string SearchByFieldValue
+        {
+            get
+            {
+                return _searchByFieldValue;
+            }
+            set
+            {
+                _searchByFieldValue = value;
+                OnPropertyChanged("SearchByFieldValue");
+            }
+        }
+        private string _searchByFieldValue = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the Search By Field value Combobox values
+        /// </summary>
+        public List<string> SearchByFieldValues
+        {
+            get
+            {
+                return _searchByFieldValues;
+            }
+            set
+            {
+                _searchByFieldValues = value;
+                OnPropertyChanged("SearchByFieldValues");
+            }
+        }
+        private List<string> _searchByFieldValues = new List<string>();
+
+        /// <summary>
+        ///     Item id input field
+        /// </summary>
+        public string ItemIdSearchInput
+        {
+            get
+            {
+                return _itemIdSearchInput;
+            }
+            set
+            {
+                if (_itemIdSearchInput != value.Trim().ToUpper())
                 {
-                    _searchInput = value.Trim().ToUpper();
-                    OnPropertyChanged("ItemIdInput");
+                    _itemIdSearchInput = value.Trim().ToUpper();
+                    OnPropertyChanged("ItemIdSearchInput");
                 }
             }
         }
-        private string _searchInput = string.Empty;
+        private string _itemIdSearchInput = string.Empty;
 
         /// <summary>
         ///     Gets or sets the SearchItemIds
@@ -382,21 +464,88 @@ namespace Odin.ViewModels
         /// </summary>
         public void EnterKey()
         {
-            FindItem();
+            FindItemById();
+        }
+        /// <summary>
+        ///     Add item id input to the list of items to update.
+        /// </summary>
+        public void FindItemByField()
+        {
+            if (!string.IsNullOrEmpty(this.SearchByField) && !string.IsNullOrEmpty(this.SearchByFieldValue))
+            {
+                try
+                {
+                    List<SearchItem> searchItems = RetrieveFindItemByFieldResults(this.SearchByField, this.SearchByFieldValue);
+                    if (searchItems.Count() == 0)
+                    {
+                        AlertView window = new AlertView()
+                        {
+                            DataContext = new AlertViewModel(new List<string>(), "Alert", "No results were found for the given search criteria.")
+                        };
+                        window.ShowDialog();
+                    }
+                    else if (searchItems.Count > 0)
+                    {
+                        FindItemResultListView window = new FindItemResultListView()
+                        {
+                            DataContext = new FindItemResultListViewModel(searchItems)
+                        };
+                        List<string> itemIds = new List<string>();
+                        if (window.ShowDialog() == true)
+                        {
+                            ObservableCollection<SearchItem> ReturnedItems = (window.DataContext as FindItemResultListViewModel).ReturnSelectedItems();
+
+                            // Items already in item list
+                            foreach (SearchItem returnedItem in ReturnedItems)
+                            {
+                                bool exists = false;
+                                // Items selected from search
+
+                                foreach (ItemObject CurrentItem in this.ItemList)
+                                {
+                                    if (returnedItem.ItemId == CurrentItem.ItemId)
+                                    {
+                                        exists = true;
+                                        break;
+                                    }
+                                }
+                                if (!exists)
+                                {
+                                    itemIds.Add(returnedItem.ItemId);
+                                    this.ItemList.Add(ItemService.RetrieveItem(returnedItem.ItemId, this.ItemList.Count + 1));
+                                }
+                            }
+                            this.ItemLoadCount = this.SearchItemIds.Count;
+                            this.ButtonVisibility = "False";
+                            this.BackgroundWorkerState = "SearchList";
+                            BackgroundWorker.DoWork += BackgroundWorker_DoWork;
+                            BackgroundWorker.ProgressChanged += BackgroundWorker_ProgressChanged;
+                            BackgroundWorker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
+                            BackgroundWorker.WorkerReportsProgress = true;
+                            BackgroundWorker.RunWorkerAsync();
+                            // this.SearchItemList = ReturnedItems;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ErrorLog.LogError("Odin was unable to retireve the items.", ex.ToString());
+                }
+            }
         }
 
         /// <summary>
         ///     Add item id input to the list of items to update.
         /// </summary>
-        public void FindItem()
+        public void FindItemById()
         {
-            if (!(string.IsNullOrEmpty(this.SearchInput)))
+            if (!(string.IsNullOrEmpty(this.ItemIdSearchInput)))
             {
-                if (this.SearchInput.Length > 1)
+                if (this.ItemIdSearchInput.Length > 1)
                 {
                     try
                     {
-                        List<SearchItem> searchItems = ItemService.RetrieveFindItemSearchResults(this.SearchInput);
+                        List<SearchItem> searchItems = ItemService.RetrieveFindItemSearchResults(this.ItemIdSearchInput, this.DisabledCheck);
                         if (searchItems.Count() == 0)
                         {
                             List<string> missingItems = new List<string>();
@@ -589,6 +738,85 @@ namespace Odin.ViewModels
             return ReturnList;
         }
 
+        public List<SearchItem> RetrieveFindItemByFieldResults(string searchByField, string searchByFieldValue)
+        {
+            switch (searchByField)
+            {
+                case "Item Category":
+                    return ItemService.RetreiveSearchItemByItemCategory(searchByFieldValue, this.DisabledCheck);
+
+                case "Item Group":
+                    return ItemService.RetreiveSearchItemByItemGroup(searchByFieldValue, this.DisabledCheck);
+
+                case "Product Format":
+                    return ItemService.RetreiveSearchItemByProductFormat(searchByFieldValue, this.DisabledCheck);
+
+                case "Product Group":
+                    return ItemService.RetreiveSearchItemByProductGroup(searchByFieldValue, this.DisabledCheck);
+
+                case "Product Line":
+                    return ItemService.RetreiveSearchItemByProductLine(searchByFieldValue, this.DisabledCheck);
+
+                case "Stats Code":
+                    return ItemService.RetreiveSearchItemByStatsCode(searchByFieldValue, this.DisabledCheck);
+
+                case "Tariff Code":
+                    return ItemService.RetreiveSearchItemByTariffCode(searchByFieldValue, this.DisabledCheck);
+
+                default:
+                    return new List<SearchItem>();
+            }
+        }
+        public List<string> SetSearchByFields()
+        {
+            List<string> values = new List<string>()
+            {
+                "Item Category",
+                "Product Format",
+                "Product Group",
+                "Product Line",
+                "Item Group",
+                "Stats Code",
+                "Tariff Code"
+            };
+
+            return values;
+        }
+
+        public void SetSearchByFieldValue(string value)
+        {
+            switch(value)
+            {
+                case "Item Category":
+                    this.SearchByFieldValues = ItemService.RetrieveItemCategoryNames();
+                    break;
+
+                case "Item Group":
+                    this.SearchByFieldValues = GlobalData.ItemGroups;
+                    break;
+
+                case "Product Format":
+                    this.SearchByFieldValues = ItemService.RetrieveProductFormatsAll();
+                    break;
+
+                case "Product Group":
+                    this.SearchByFieldValues = GlobalData.ProductGoups;
+                    break;
+
+                case "Product Line":
+                    this.SearchByFieldValues = ItemService.RetrieveProductLinesAll();
+                    break;
+
+                case "Stats Code":
+                    this.SearchByFieldValues = ItemService.RetrieveStatsCodes();
+                    break;
+
+                case "Tariff Code":
+                    this.SearchByFieldValues = GlobalData.TariffCodes;
+                    break;
+            }
+        }
+
         /// <summary>
         ///     Sorts List by Item Ids
         /// </summary>
@@ -651,6 +879,7 @@ namespace Odin.ViewModels
             this.ItemService = itemService?? throw new ArgumentNullException("itemService");
             this.WorkbookReader = workbookReader?? throw new ArgumentNullException("workbookReader");
             this.UpdateType = type;
+            this.SearchByFields = SetSearchByFields();
             this.Title = type + " Items";
             this.ItemIdSearchOrder = 0;
             this.DescriptionIdSearchOrder = 0;

@@ -316,6 +316,11 @@ namespace Odin.DbTableModels
         public string DirectImport { get; set; }
 
         /// <summary>
+        ///     Gets or sets DTC_PRICE
+        /// </summary>
+        public string DtcPrice { get; set; }
+
+        /// <summary>
         ///     Gets or sets DUTY
         /// </summary>
         public string Duty { get; set; }
@@ -334,6 +339,21 @@ namespace Odin.DbTableModels
         ///     Gets or sets FPLUSL1
         /// </summary>
         public string Fplusl1 { get; set; }
+
+        /// <summary>
+        ///     Gets or sets GENRE_1
+        /// </summary>
+        public string Genre1 { get; set; }
+
+        /// <summary>
+        ///     Gets or sets GENRE_2
+        /// </summary>
+        public string Genre2 { get; set; }
+
+        /// <summary>
+        ///     Gets or sets GENRE_3
+        /// </summary>
+        public string Genre3 { get; set; }
 
         /// <summary>
         ///     Gets or sets GPC
@@ -576,6 +596,11 @@ namespace Odin.DbTableModels
         public string SellOnHayneedle { get; set; }
 
         /// <summary>
+        ///     Gets or sets SELL_ON_HOUZZ
+        /// </summary>
+        public string SellOnHouzz { get; set; }
+
+        /// <summary>
         ///     Gets or sets SELL_ON_JET
         /// </summary>
         public string SellOnJet { get; set; }
@@ -584,6 +609,11 @@ namespace Odin.DbTableModels
         ///     Gets or sets SELL_ON_TARGET
         /// </summary>
         public string SellOnTarget { get; set; }
+
+        /// <summary>
+        ///     Gets or sets SELL_ON_TRS
+        /// </summary>
+        public string SellOnTrs { get; set; }
 
         /// <summary>
         ///     Gets or sets SELL_ON_WALMART

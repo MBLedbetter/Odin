@@ -81,6 +81,11 @@ namespace Odin.DbTableModels
         public string DefaultActualCostUsd { get; set; }
 
         /// <summary>
+        ///     Gets or sets DTC_PRICE
+        /// </summary>
+        public string DtcPrice { get; set; }
+
+        /// <summary>
         ///     Gets or sets DUTY
         /// </summary>
         public string Duty { get; set; }

@@ -9,7 +9,112 @@ namespace OdinModels
     public class Request
     {
         #region Properties
+                                        
+        /// <summary>
+        ///     Gets or sets the Comment
+        /// </summary>
+        public string Comment
+        {
+            get
+            {
+                return _comment;
+            }
+            set
+            {
+                _comment = value;
+            }
 
+        }
+        private string _comment = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the DttmSubmitted
+        /// </summary>
+        public string DttmSubmitted
+        {
+            get
+            {
+                return _dttmSubmitted;
+            }
+            set
+            {
+                _dttmSubmitted = value;
+            }
+
+        }
+        private string _dttmSubmitted = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the GroupComment
+        /// </summary>
+        public string GroupComment
+        {
+            get
+            {
+                return _groupComment;
+            }
+            set
+            {
+                _groupComment = value;
+            }
+
+        }
+        private string _groupComment = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the ItemId
+        /// </summary>
+        public string ItemId
+        {
+            get
+            {
+                return _itemId;
+            }
+            set
+            {
+                _itemId = value;
+            }
+
+        }
+        private string _itemId = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the InStockDate
+        /// </summary>
+        public string InStockDate
+        {
+            get
+            {
+                return _inStockDate;
+            }
+            set
+            {
+                _inStockDate = value;
+            }
+
+        }
+        private string _inStockDate = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the ItemStatus
+        /// </summary>
+        public string ItemStatus
+        {
+            get
+            {
+                return _itemStatus;
+            }
+            set
+            {
+                _itemStatus = value;
+            }
+
+        }
+        private string _itemStatus = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the RequestId
+        /// </summary>
         public int RequestId
         {
             get
@@ -23,32 +128,30 @@ namespace OdinModels
         }
         private int _requestId;
 
-        public string ItemId
+        /// <summary>
+        ///     Gets or sets the RequestStatus
+        /// </summary>
+        public string RequestStatus
         {
             get
             {
-                if (_itemId == null)
-                {
-                    _itemId = string.Empty;
-                }
-                return _itemId;
+                return _requestStatus;
             }
             set
             {
-                _itemId = value;
+                _requestStatus = value;
             }
 
         }
-        private string _itemId;
+        private string _requestStatus = string.Empty;
 
+        /// <summary>
+        ///     Gets or sets the UserName
+        /// </summary>
         public string UserName
         {
             get
             {
-                if (_userName == null)
-                {
-                    _userName = string.Empty;
-                }
                 return _userName;
             }
             set
@@ -59,113 +162,22 @@ namespace OdinModels
         }
         private string _userName;
 
-        public string DttmSubmitted
+        /// <summary>
+        ///     Gets or sets the Website
+        /// </summary>
+        public string Website
         {
             get
             {
-                if (_dttmSubmitted == null)
-                {
-                    _dttmSubmitted = string.Empty;
-                }
-                return _dttmSubmitted;
+                return _website;
             }
             set
             {
-                _dttmSubmitted = value;
+                _website = value;
             }
 
         }
-        private string _dttmSubmitted;
-
-        public string InStockDate
-        {
-            get
-            {
-                if (_inStockDate == null)
-                {
-                    _inStockDate = string.Empty;
-                }
-                return _inStockDate;
-            }
-            set
-            {
-                _inStockDate = value;
-            }
-
-        }
-        private string _inStockDate;
-
-        public string Comment
-        {
-            get
-            {
-                if (_comment == null)
-                {
-                    _comment = string.Empty;
-                }
-                return _comment;
-            }
-            set
-            {
-                _comment = value;
-            }
-
-        }
-        private string _comment;
-
-        public string GroupComment
-        {
-            get
-            {
-                if (_groupComment == null)
-                {
-                    _groupComment = string.Empty;
-                }
-                return _groupComment;
-            }
-            set
-            {
-                _groupComment = value;
-            }
-
-        }
-        private string _groupComment;
-
-        public string ItemStatus
-        {
-            get
-            {
-                if (_itemStatus == null)
-                {
-                    _itemStatus = string.Empty;
-                }
-                return _itemStatus;
-            }
-            set
-            {
-                _itemStatus = value;
-            }
-
-        }
-        private string _itemStatus;
-
-        public string RequestStatus
-        {
-            get
-            {
-                if (_requestStatus == null)
-                {
-                    _requestStatus = string.Empty;
-                }
-                return _requestStatus;
-            }
-            set
-            {
-                _requestStatus = value;
-            }
-
-        }
-        private string _requestStatus;
+        private string _website = string.Empty;
 
         #endregion // Properties
 
@@ -200,7 +212,8 @@ namespace OdinModels
             string dttmSubmitted,
             string inStockDate,
             string comment,
-            string requestStatus)
+            string requestStatus,
+            string website)
         {
             this.RequestId = requestId;
             this.ItemId = itemId;
@@ -210,6 +223,7 @@ namespace OdinModels
             this.ItemStatus = itemStatus;
             this.Comment = comment;
             this.RequestStatus = requestStatus;
+            this.Website = website;
         }
 
         public Request(

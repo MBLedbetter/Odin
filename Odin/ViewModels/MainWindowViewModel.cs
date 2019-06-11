@@ -17,7 +17,7 @@ namespace Odin.ViewModels
     {
 
         #region Command Properties
-
+        
         public ICommand AboutCommand
         {
             get
@@ -234,6 +234,18 @@ namespace Odin.ViewModels
             }
         }
         private RelayCommand _managePermision;
+        public ICommand Magento2CustomExcelCommand
+        {
+            get
+            {
+                if (_magento2CustomExcel == null)
+                {
+                    _magento2CustomExcel = new RelayCommand(param => CreateMagento2CustomExcel());
+                }
+                return _magento2CustomExcel;
+            }
+        }
+        private RelayCommand _magento2CustomExcel;
         public ICommand NewTemplateCommand
         {
             get
@@ -282,6 +294,31 @@ namespace Odin.ViewModels
             }
         }
         private RelayCommand _createAllAmazonItems;
+        public ICommand PullImagesCommand
+        {
+            get
+            {
+                if (_pullImages == null)
+                {
+                    _pullImages = new RelayCommand(param => PullImages());
+                }
+                return _pullImages;
+            }
+        }
+        private RelayCommand _pullImages;
+        public ICommand RemoveSelectedItemCommand
+        {
+            get
+            {
+                if (_removeSelectedItem == null)
+                {
+                    _removeSelectedItem = new RelayCommand(param => RemoveItem());
+                }
+                return _removeSelectedItem;
+            }
+        }
+        private RelayCommand _removeSelectedItem;
+
         public ICommand RequestEcommerceImageListCommand
         {
             get
@@ -973,6 +1010,57 @@ namespace Odin.ViewModels
             }
         }
         private string _eanVisibility = "auto";
+
+        /// <summary>
+        ///     Gets or sets the Genre1Visibility field
+        /// </summary>
+        public string Genre1Visibility
+        {
+            get
+            {
+                return _genre1Visibility;
+            }
+            set
+            {
+                _genre1Visibility = value;
+                OnPropertyChanged("Genre1Visibility");
+            }
+        }
+        private string _genre1Visibility = "auto";
+
+        /// <summary>
+        ///     Gets or sets the Genre2Visibility field
+        /// </summary>
+        public string Genre2Visibility
+        {
+            get
+            {
+                return _genre2Visibility;
+            }
+            set
+            {
+                _genre2Visibility = value;
+                OnPropertyChanged("Genre2Visibility");
+            }
+        }
+        private string _genre2Visibility = "auto";
+
+        /// <summary>
+        ///     Gets or sets the Genre3Visibility field
+        /// </summary>
+        public string Genre3Visibility
+        {
+            get
+            {
+                return _genre3Visibility;
+            }
+            set
+            {
+                _genre3Visibility = value;
+                OnPropertyChanged("Genre3Visibility");
+            }
+        }
+        private string _genre3Visibility = "auto";
 
         /// <summary>
         ///     Gets or sets the GpcVisibility field
@@ -2062,6 +2150,23 @@ namespace Odin.ViewModels
         private string _sellOnHayneedleVisibility = "auto";
 
         /// <summary>
+        ///     Gets or sets the SellOnHouzzVisibility field
+        /// </summary>
+        public string SellOnHouzzVisibility
+        {
+            get
+            {
+                return _sellOnHouzzVisibility;
+            }
+            set
+            {
+                _sellOnHouzzVisibility = value;
+                OnPropertyChanged("SellOnHouzzVisibility");
+            }
+        }
+        private string _sellOnHouzzVisibility = "auto";
+
+        /// <summary>
         ///     Gets or sets the SellOnTargetVisibility field
         /// </summary>
         public string SellOnTargetVisibility
@@ -2094,6 +2199,23 @@ namespace Odin.ViewModels
             }
         }
         private string _sellOnTrendsVisibility = "auto";
+
+        /// <summary>
+        ///     Gets or sets the SellOnTrsVisibility field
+        /// </summary>
+        public string SellOnTrsVisibility
+        {
+            get
+            {
+                return _sellOnTrsVisibility;
+            }
+            set
+            {
+                _sellOnTrsVisibility = value;
+                OnPropertyChanged("SellOnTrsVisibility");
+            }
+        }
+        private string _sellOnTrsVisibility = "auto";
 
         /// <summary>
         ///     Gets or sets the SellOnWalmartVisibility field
@@ -2784,7 +2906,7 @@ namespace Odin.ViewModels
         #endregion // Properties
 
         #region Methods
-
+        
         /// <summary>
         ///     Creates and displays the About window
         /// </summary>
@@ -2796,11 +2918,7 @@ namespace Odin.ViewModels
             };
             window.ShowDialog();
         }
-
-        private void BackgroundWorkerSetCache_DoWork(object sender, DoWorkEventArgs e)
-        {
-        }
-
+        
         private void BackgroundWorkerValidate_DoWork(object sender, DoWorkEventArgs e)
         {
             bool errors = false;
@@ -2928,21 +3046,23 @@ namespace Odin.ViewModels
             window.ShowDialog();
         }
 
-        /*
         /// <summary>
-        ///     Displays the progression of the item saving process
+        ///     Creates a Magento 2 excel sheet from the curretnly loaded items
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="e"></param>
-        public void DisplayTimeEvent(object source, ElapsedEventArgs e)
+        public void CreateMagento2CustomExcel()
         {
-            string count = ItemService.ReturnSaveStatus();
-            int num = Convert.ToInt32(count)-1;
-            this.Items[num].RowColor = "LightSkyBlue";
-            this.ProgressText = "Saving item " + count + " of " + this.Items.Count.ToString();
+            if(this.Items.Count>0)
+            {
+                Random rnd = new Random();
+                int rndId = rnd.Next(1000);
+                string custId = "CUST-" + rndId.ToString();
+                ExcelService.WriteMagento2Csv(this.Items, custId, "Add");
+            }
+            else
+            {
+                MessageBox.Show("There are no items!");
+            }
         }
-        */
-
         /// <summary>
         ///     Opens DbSetting View / View Model
         /// </summary>
@@ -3003,25 +3123,7 @@ namespace Odin.ViewModels
             {
                 if ((window.DataContext as ItemViewModel).Remove)
                 {
-                    for (int x = this.ItemErrors.Count - 1; x >= 0; x--)
-                    {
-                        if (this.ItemErrors[x].ItemIdNumber == (window.DataContext as ItemViewModel).ItemId)
-                        {
-                            this.ItemErrors.Remove(this.ItemErrors[x]);
-                        }
-                    }
-                    foreach (ItemObject collectionItem in Items)
-                    {
-                        if (collectionItem.ItemId == (window.DataContext as ItemViewModel).ItemId)
-                        {
-                            this.Items.Remove(collectionItem);
-                            break;
-                        }
-                    }
-                    if (GlobalData.LocalItemIds.Contains((window.DataContext as ItemViewModel).ItemId))
-                    {
-                        GlobalData.LocalItemIds.Remove((window.DataContext as ItemViewModel).ItemId);
-                    }
+                    RemoveItem((window.DataContext as ItemViewModel).ItemId);
                 }
                 else if (!((window.DataContext as ItemViewModel).Remove))
                 {
@@ -3039,7 +3141,7 @@ namespace Odin.ViewModels
                 }
             }
         }
-
+        
         /// <summary>
         ///     Function that retrieves item information from the Peoplesoft Database
         /// </summary>
@@ -3289,6 +3391,82 @@ namespace Odin.ViewModels
         }
 
         /// <summary>
+        ///     Copies the images for the given request into a folder on the users desktop
+        /// </summary>
+        public void PullImages()
+        {
+            List<string> itemIds = new List<string>();
+            foreach (ItemObject item in this.Items)
+            {
+                itemIds.Add(item.ItemId);
+            }
+            List<string> missingImages = ItemService.PullImages(itemIds, true);
+            if (missingImages.Count > 0)
+            {
+                AlertView window = new AlertView
+                {
+                    DataContext = new AlertViewModel(missingImages, "Alert", "The following images were not found in the captures folder or were too large.")
+                };
+                window.ShowDialog();
+            }
+        }
+
+        /// <summary>
+        ///     Remove the given item from the list, error list and local itemid list
+        /// </summary>
+        /// <param name="itemId"></param>
+        public void RemoveItem(string itemId = null)
+        {
+            if (itemId == null)
+            {
+                itemId = this.SelectedItem.ItemId;
+            }
+
+            for (int x = this.ItemErrors.Count - 1; x >= 0; x--)
+            {
+                if (this.ItemErrors[x].ItemIdNumber == (itemId))
+                {
+                    this.ItemErrors.Remove(this.ItemErrors[x]);
+                }
+            }
+            foreach (ItemObject collectionItem in Items)
+            {
+                if (collectionItem.ItemId == (itemId))
+                {
+                    this.Items.Remove(collectionItem);
+                    break;
+                }
+            }
+            if (GlobalData.LocalItemIds.Contains(itemId))
+            {
+                GlobalData.LocalItemIds.Remove(itemId);
+            }
+            ReorderRows();
+        }
+
+        /// <summary>
+        ///     Reorders the row numbers of all items and errors. Used when an item is removed from item list
+        /// </summary>
+        public void ReorderRows()
+        {
+            for (int x = 0; x < this.Items.Count; x++)
+            {
+                if(this.Items[x].ItemRow!= x+1)
+                {
+                    this.Items[x].ItemRow = x + 1;
+
+                    foreach (ItemError itemError in this.ItemErrors)
+                    {
+                        if(itemError.ItemIdNumber == this.Items[x].ItemId)
+                        {
+                            itemError.LineNumber = x + 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         ///     Submits a request for additional file images to be uploaded to the b2b server
         /// </summary>
         public void SubmitEcommerceImages()
@@ -3399,6 +3577,9 @@ namespace Odin.ViewModels
             this.DirectImportVisibility = (UserOptions.DirectImportVisibility) ? "100" : "0";
             this.DutyVisibility = (UserOptions.DutyVisibility) ? "100" : "0";
             this.EanVisibility = (UserOptions.EanVisibility) ? "100" : "0";
+            this.Genre1Visibility = (UserOptions.Genre1Visibility) ? "100" : "0";
+            this.Genre2Visibility = (UserOptions.Genre2Visibility) ? "100" : "0";
+            this.Genre3Visibility = (UserOptions.Genre3Visibility) ? "100" : "0";
             this.GpcVisibility = (UserOptions.GpcVisibility) ? "100" : "0";
             this.HeightVisibility = (UserOptions.HeightVisibility) ? "100" : "0";
             this.InnerpackHeightVisibility = (UserOptions.InnerpackHeightVisibility) ? "100" : "0";
@@ -3460,8 +3641,10 @@ namespace Odin.ViewModels
             this.SellOnFanaticsVisibility = (UserOptions.SellOnFanaticsVisibility) ? "100" : "0";
             this.SellOnGuitarCenterVisibility = (UserOptions.SellOnGuitarCenterVisibility) ? "100" : "0";
             this.SellOnHayneedleVisibility = (UserOptions.SellOnHayneedleVisibility) ? "100" : "0";
+            this.SellOnHouzzVisibility = (UserOptions.SellOnHouzzVisibility) ? "100" : "0";
             this.SellOnTargetVisibility = (UserOptions.SellOnTargetVisibility) ? "100" : "0";
             this.SellOnTrendsVisibility = (UserOptions.SellOnTrendsVisibility) ? "100" : "0";
+            this.SellOnTrsVisibility = (UserOptions.SellOnTrsVisibility) ? "100" : "0";
             this.SellOnWalmartVisibility = (UserOptions.SellOnWalmartVisibility) ? "100" : "0";
             this.SellOnWayfairVisibility = (UserOptions.SellOnWayfairVisibility) ? "100" : "0";
             /* Image Path Visibility */
@@ -3526,6 +3709,9 @@ namespace Odin.ViewModels
             UserOptions.DirectImportVisibility = true;
             UserOptions.DutyVisibility = true;
             UserOptions.EanVisibility = true;
+            UserOptions.Genre1Visibility = true;
+            UserOptions.Genre2Visibility = true;
+            UserOptions.Genre3Visibility = true;
             UserOptions.GpcVisibility = true;
             UserOptions.HeightVisibility = true;
             UserOptions.InnerpackHeightVisibility = true;
@@ -3586,8 +3772,10 @@ namespace Odin.ViewModels
             UserOptions.SellOnFanaticsVisibility = true;
             UserOptions.SellOnGuitarCenterVisibility = true;
             UserOptions.SellOnHayneedleVisibility = true;
+            UserOptions.SellOnHouzzVisibility = true;
             UserOptions.SellOnTargetVisibility = true;
             UserOptions.SellOnTrendsVisibility = true;
+            UserOptions.SellOnTrsVisibility = true;
             UserOptions.SellOnWalmartVisibility = true;
             UserOptions.SellOnWayfairVisibility = true;
             UserOptions.ImagePath1Visibility = true;
@@ -3678,10 +3866,21 @@ namespace Odin.ViewModels
                 if ((ItemErrors.Count == 0) || (Items[0].Status == "Remove"))
                 {
                     string comment = string.Empty;
+                    string site = string.Empty;
                     if (Items[0].Status == "Remove")
                     {
-                        ExcelService.SubmitRequest(Items, "Remove", "");
-                        EmailService.sendPendingRequestEmail(GlobalData.UserName, "", ExcelService.ReturnRequestNum());
+                        CommentBoxView window = new CommentBoxView()
+                        {
+                            DataContext = new CommentBoxViewModel()
+                        };
+                        window.ShowDialog();
+                        if (window.DialogResult == true)
+                        {
+                            comment = (window.DataContext as CommentBoxViewModel).Comment;
+                            site = (window.DataContext as CommentBoxViewModel).Website;
+                        }
+                        ExcelService.SubmitRequest(Items, "Remove", site, comment);
+                        EmailService.SendPendingRequestEmail(GlobalData.UserName, comment, site, ExcelService.ReturnRequestNum());
                         MessageBox.Show("Items Removal Submitted Successfully");
                         Items = new ObservableCollection<ItemObject>(); ;
                         SubmitStatus = false;
@@ -3691,7 +3890,7 @@ namespace Odin.ViewModels
                         string itemWebChecklist = string.Empty;
                         foreach (ItemObject item in this.Items)
                         {
-                            if (item.SellOnTrends != "Y")
+                            if ((item.SellOnTrends != "Y")&& (item.SellOnTrs != "Y"))
                             {
                                 if (itemWebChecklist != string.Empty) { itemWebChecklist += ", "; }
                                 itemWebChecklist += item.ItemId + ", ";
@@ -3710,10 +3909,11 @@ namespace Odin.ViewModels
                                 if (window.DialogResult == true)
                                 {
                                     comment = (window.DataContext as CommentBoxViewModel).Comment;
+                                    site = (window.DataContext as CommentBoxViewModel).Website;
                                 }
                                 Mouse.OverrideCursor = Cursors.Wait;
-                                ExcelService.SubmitRequest(Items, "Add", comment);
-                                EmailService.sendPendingRequestEmail(GlobalData.UserName, comment, ExcelService.ReturnRequestNum());
+                                ExcelService.SubmitRequest(Items, "Add", site, comment);
+                                EmailService.SendPendingRequestEmail(GlobalData.UserName, comment, site ,ExcelService.ReturnRequestNum());
                                 Mouse.OverrideCursor = null;
                                 MessageBox.Show("Items Submitted Successfully");
                                 Items = new ObservableCollection<ItemObject>();
@@ -3730,10 +3930,11 @@ namespace Odin.ViewModels
                                 if (window.DialogResult == true)
                                 {
                                     comment = (window.DataContext as CommentBoxViewModel).Comment;
+                                    site = (window.DataContext as CommentBoxViewModel).Website;
                                 }
                                 Mouse.OverrideCursor = Cursors.Wait;
-                                ExcelService.SubmitRequest(Items, "Update", comment);
-                                EmailService.sendPendingRequestEmail(GlobalData.UserName, comment, ExcelService.ReturnRequestNum());
+                                ExcelService.SubmitRequest(Items, "Update", site, comment);
+                                EmailService.SendPendingRequestEmail(GlobalData.UserName, comment, site, ExcelService.ReturnRequestNum());
                                 MessageBox.Show("Items Submitted Successfully");
                                 Items = new ObservableCollection<ItemObject>();
                                 this.SubmitStatus = false;

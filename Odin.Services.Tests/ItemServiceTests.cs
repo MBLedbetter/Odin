@@ -335,6 +335,7 @@ namespace Odin.Services.Tests
             Assert.AreEqual("SellOnGuitarCenterA", completeItem.SellOnGuitarCenter);
             Assert.AreEqual("SellOnAllPostersA", completeItem.SellOnAllPosters);
             Assert.AreEqual("SellOnHayneedleA", completeItem.SellOnHayneedle);
+            Assert.AreEqual("SellOnHouzzA", completeItem.SellOnHouzz);
             Assert.AreEqual("SellOnTargetA", completeItem.SellOnTarget);
             Assert.AreEqual("SellOnTrendsA", completeItem.SellOnTrends);
             Assert.AreEqual("SellOnWalmartA", completeItem.SellOnWalmart);
@@ -442,6 +443,8 @@ namespace Odin.Services.Tests
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000004", "RP4444DI"));
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000005", "RP9999"));
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000006", "RP8888"));
+            GlobalData.ItemIdSuffixes.Add("DI");
+            GlobalData.ItemIdSuffixes.Add("TG");
 
             #endregion // Assemble
 
@@ -1628,6 +1631,7 @@ namespace Odin.Services.Tests
             Assert.AreEqual("N", item.SellOnFanatics); // Sell On Fanatics
             Assert.AreEqual("N", item.SellOnGuitarCenter); // Sell On Guitar Center
             Assert.AreEqual("N", item.SellOnHayneedle); // Sell On Hayneedle
+            Assert.AreEqual("N", item.SellOnHouzz); // Sell On Houzz
             Assert.AreEqual("N", item.SellOnWalmart); // Sell On Walmart
 
             #endregion // Assert
@@ -1648,6 +1652,7 @@ namespace Odin.Services.Tests
             fakeWorkbookReader.ColumnHeaders.Add("Sell On Fanatics");
             fakeWorkbookReader.ColumnHeaders.Add("Sell On Walmart");
             fakeWorkbookReader.ColumnHeaders.Add("Sell On Hayneedle");
+            fakeWorkbookReader.ColumnHeaders.Add("Sell On Houzz");
             fakeWorkbookReader.AddWorksheetRow();
             fakeWorkbookReader.AddCellValue("ST1234"); // Item Id
             fakeWorkbookReader.AddCellValue("N"); // PS Status
@@ -1655,6 +1660,7 @@ namespace Odin.Services.Tests
             fakeWorkbookReader.AddCellValue("N"); // Sell On Fanatics
             fakeWorkbookReader.AddCellValue("N"); // Sell On Walmart
             fakeWorkbookReader.AddCellValue("N"); // Sell On Hayneedle
+            fakeWorkbookReader.AddCellValue("N"); // Sell On Houzz
             TestItemRepository testItemRepository = new TestItemRepository();
 
             #endregion // Set Up
@@ -1683,6 +1689,7 @@ namespace Odin.Services.Tests
             Assert.AreEqual("N", item.SellOnAmazon); // Sell On Amazon
             Assert.AreEqual("N", item.SellOnFanatics); // Sell On Fanatics
             Assert.AreEqual("N", item.SellOnHayneedle); // Sell On Hayneedle
+            Assert.AreEqual("N", item.SellOnHouzz); // Sell On Houzz
             Assert.AreEqual("N", item.SellOnWalmart); // Sell On Walmart
 
             #endregion // Assert
@@ -3074,6 +3081,7 @@ namespace Odin.Services.Tests
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("123456789123", "RP3322"));
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000000", "RP1234"));
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000000", "RP1234WM"));
+            GlobalData.ItemIdSuffixes.Add("DI");
 
             ItemObject item = new ItemObject(1)
             {

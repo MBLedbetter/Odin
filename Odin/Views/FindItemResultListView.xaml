@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Odin.Views"
         mc:Ignorable="d"
-        Title="FindItemResultListView" Height="302.239" Width="451.493">
+        Title="FindItemResultListView" Height="313.297" Width="451.493">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition
@@ -16,10 +16,9 @@
                 Width="90" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition />
             <RowDefinition
-                Height="*" />
-            <RowDefinition
-                Height="31" />
+                Height="45" />
         </Grid.RowDefinitions>
         <ListView
             SelectedItem="{Binding SelectedSearchItems}"
@@ -32,7 +31,7 @@
             MinWidth="420"
             Name="ListView1"
             Grid.Row="0"
-            VerticalAlignment="Top">
+            VerticalAlignment="Top" Height="218" Width="420">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -80,23 +79,25 @@
             Grid.Column="0"
             HorizontalAlignment="Left"
             VerticalAlignment="Center" 
-            Height="26" Margin="33,233,0,12" Grid.RowSpan="2" />
+            Height="26" Margin="33,3,0,16" Grid.Row="1" Width="58" />
         <CheckBox
             Grid.Column="0"
             HorizontalAlignment="Left"
             IsChecked="{Binding SelectAll}"
-            VerticalAlignment="Center" Margin="12,238,0,18" Grid.RowSpan="2"/>
+            VerticalAlignment="Center" Margin="12,5,0,26" Height="14" Grid.Row="1" Width="16"/>
         <Button
-            Height="26"
-            Grid.Column="1"
-            Width="80"
             Content="Cancel"
-            Click="CancelButton_Click" Margin="89,233,11,12" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-        <Button
+            Click="CancelButton_Click" 
+            Margin="3"
             Height="26"
+            Grid.Column="2"
+            Grid.Row="1"/>
+        <Button
             Grid.Column="1"
-            Width="80"
             Content="Submit"
-            Click="SubmitButton_Click" Margin="4,233,6,12" Grid.RowSpan="2"/>
+            Click="SubmitButton_Click" 
+            Margin="3"
+            Height="26"
+            Grid.Row="1"/>
     </Grid>
 </Window>

@@ -284,8 +284,11 @@ namespace Odin.Data
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("AMAZON SELLER CENTRAL"), item.SellOnAmazonSellerCentral, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("FANATICS"), item.SellOnFanatics, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("GUITAR CENTER"), item.SellOnGuitarCenter, context);
-            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HAYNEEDLE"), item.SellOnHayneedle, context) ;
+            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HAYNEEDLE"), item.SellOnHayneedle, context);
+            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HOUZZ"), item.SellOnHouzz, context);
+            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("SHOP TRENDS"), item.SellOnTrs, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TARGET"), item.SellOnTarget, context);
+            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TRS"), item.SellOnTrs, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("WALMART"), item.SellOnWalmart, context) ;
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("WAYFAIR"), item.SellOnWayfair, context);            
         }
@@ -574,7 +577,11 @@ namespace Odin.Data
                     CasepackWidth = DbUtil.ToDecimal(item.CasepackWidth),
                     CasepackWeight = DbUtil.ToDecimal(item.CasepackWeight),
                     DirectImport = item.DirectImport,
+                    DtcPrice = DbUtil.ToDecimal(item.DtcPrice),
                     Duty = item.Duty,
+                    Genre1 = item.Genre1,
+                    Genre2 = item.Genre2,
+                    Genre3 = item.Genre3,
                     Gtin = "",
                     ImageFileName = item.ImagePath,
                     InnerpackHeight = DbUtil.ToDecimal(item.InnerpackHeight),
@@ -712,6 +719,9 @@ namespace Odin.Data
                 Ean = item.Ean,
                 Fplcanl1 = "",
                 Fplusl1 = "",
+                Genre1 = item.Genre1,
+                Genre2 = item.Genre2,
+                Genre3 = item.Genre3,
                 Gpc = item.Gpc,
                 Height = item.Height,
                 ImageFileName = item.ImagePath,
@@ -757,8 +767,10 @@ namespace Odin.Data
                 SellOnFanatics = item.SellOnFanatics,
                 SellOnGuitarCenter = item.SellOnGuitarCenter,
                 SellOnHayneedle = item.SellOnHayneedle,
+                SellOnHouzz = item.SellOnHouzz,
                 SellOnTarget = item.SellOnTarget,
                 SellOnWeb = item.SellOnTrends,
+                SellOnTrs = item.SellOnTrs,
                 SellOnWalmart = item.SellOnWalmart,
                 SellOnWayfair = item.SellOnWayfair,
                 SellOnJet = "",
@@ -821,8 +833,9 @@ namespace Odin.Data
         {
             if (!context.ItemWebInfo.Any(o => o.InvItemId == item.ItemId))
             {
-                item.CombinedCategories = CombineCategories(item.Category, item.Category2, item.Category3);                
-                
+                item.CombinedCategories = CombineCategories(item.Category, item.Category2, item.Category3);
+                string onShopTrends = (string.IsNullOrEmpty(item.OnShopTrends)) ? "N" : item.OnShopTrends;
+                string onSite = (string.IsNullOrEmpty(item.OnSite)) ? "N" : item.OnSite;
                 DateTime inStockDate = (!(string.IsNullOrEmpty(item.InStockDate))) ? Convert.ToDateTime(item.InStockDate) : new DateTime(1900, 01, 01);
                 context.ItemWebInfo.Add(new ItemWebInfo
                 {
@@ -840,7 +853,8 @@ namespace Odin.Data
                     Msrp = "0",
                     Newcategory = "",
                     NewDate = "",
-                    OnSite = "N",
+                    OnShopTrends = onShopTrends,
+                    OnSite = onSite,
                     ProdQty = item.ProductQty,
                     Property = item.Property,
                     ShortDesc = item.ShortDescription,
@@ -975,7 +989,28 @@ namespace Odin.Data
                 });
             }
         }
-        
+
+        /// <summary>
+        ///     Insert info into to PS_MARKETPLACE_CUSTOMER_PRODUCTS
+        /// </summary>
+        public void InsertMarketplaceCustomerProducts(string itemId, string title, string customer)
+        {
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                if (!context.MarketplaceCustomerProducts.Any(o => o.InvItemId == itemId && o.Setid == "SHARE" && o.CustId == customer))
+                {
+                    context.MarketplaceCustomerProducts.Add(new MarketplaceCustomerProducts
+                    {
+                        CustId = customer,
+                        InvItemId = itemId,
+                        Setid = "SHARE",
+                        Title = title
+                    });
+                    context.SaveChanges();
+                }            
+            }
+        }
+
         /// <summary>
         ///     Inserts a Meta Description value into Odin_MetaDescription
         /// </summary>
@@ -1519,10 +1554,12 @@ namespace Odin.Data
             GlobalData.Customers = RetrieveCustomerIdConversionsList();
             GlobalData.CustomerIdConversions = RetrieveCustomerIdConversionsList();
             GlobalData.ExternalIdTypes = RetrieveEcommerceExternalIdTypeList();
+            GlobalData.Genres = RetrieveGenres();
             GlobalData.ItemCategories = RetrieveItemCategories();
             GlobalData.ItemGroups = RetrieveItemGroups();
             GlobalData.ItemIds = RetrieveItemIds();
             GlobalData.ItemIdSuffixes = RetrieveItemIdSuffixes();
+            GlobalData.ItemTypeExtensions = RetrieveItemTypeExtensions();
             GlobalData.Languages = RetrieveLanguages();
             GlobalData.Licenses = RetrieveLicenseList();
             GlobalData.MetaDescriptions = RetrieveMetaDescriptionList();
@@ -1544,6 +1581,7 @@ namespace Odin.Data
             GlobalData.UserNames = RetrieveUserNames();
             GlobalData.UserRoles = RetrieveUserRoles();
             GlobalData.WebCategoryList = RetrieveWebCategoryList();
+            GlobalData.CreateItemTypeExtensionList();
         }
 
         /// <summary>
@@ -1551,19 +1589,19 @@ namespace Odin.Data
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        public List<string> RetrieveImagePaths(string itemId)
+        public List<KeyValuePair<string, int>> RetrieveImagePaths(string itemId)
         {
-            List<string> imagePaths = new List<string>();
+            List<KeyValuePair<string, int>> imagePaths = new List<KeyValuePair<string, int>>();
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 var dataset = context.ItemAttribEx
                 .Where(x => x.InvItemId == itemId)
                 .Select(x => new { x.ImageFileName, x.AltImageFile1, x.AltImageFile2, x.AltImageFile3, x.AltImageFile4 }).FirstOrDefault();
-                if (!string.IsNullOrEmpty(dataset.ImageFileName)) { imagePaths.Add(dataset.ImageFileName); }
-                if (!string.IsNullOrEmpty(dataset.AltImageFile1)) { imagePaths.Add(dataset.AltImageFile1); }
-                if (!string.IsNullOrEmpty(dataset.AltImageFile2)) { imagePaths.Add(dataset.AltImageFile2); }
-                if (!string.IsNullOrEmpty(dataset.AltImageFile3)) { imagePaths.Add(dataset.AltImageFile3); }
-                if (!string.IsNullOrEmpty(dataset.AltImageFile4)) { imagePaths.Add(dataset.AltImageFile4); }
+                if (!string.IsNullOrEmpty(dataset.ImageFileName)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.ImageFileName,1)); }
+                if (!string.IsNullOrEmpty(dataset.AltImageFile1)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.AltImageFile1,2)); }
+                if (!string.IsNullOrEmpty(dataset.AltImageFile2)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.AltImageFile2,3)); }
+                if (!string.IsNullOrEmpty(dataset.AltImageFile3)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.AltImageFile3,4)); }
+                if (!string.IsNullOrEmpty(dataset.AltImageFile4)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.AltImageFile4,5)); }
             }
             return imagePaths;
         }
@@ -1607,6 +1645,7 @@ namespace Odin.Data
                         DefaultActualCostUsd = (odinItem.DefaultActualCostUsd != null) ? DbUtil.ZeroTrim(odinItem.DefaultActualCostUsd.ToString(), 2) : "",
                         Description = (!string.IsNullOrEmpty(odinItem.Descr60)) ? odinItem.Descr60.Trim() : "",
                         DirectImport = (!string.IsNullOrEmpty(odinItem.DirectImport)) ? odinItem.DirectImport.Trim() : "",
+                        DtcPrice = (!string.IsNullOrEmpty(odinItem.DtcPrice)) ? odinItem.DtcPrice.Trim() : "",
                         Duty = (!string.IsNullOrEmpty(odinItem.Duty)) ? odinItem.Duty.Trim() : "",
                         Ean = (!string.IsNullOrEmpty(odinItem.Ean)) ? odinItem.Ean.Trim() : "",
                         EcommerceAsin = (!string.IsNullOrEmpty(odinItem.EcommerceAsin)) ? odinItem.EcommerceAsin.Trim() : "",
@@ -1617,6 +1656,7 @@ namespace Odin.Data
                         EcommerceBullet5 = (!string.IsNullOrEmpty(odinItem.EcommerceBullet5)) ? odinItem.EcommerceBullet5.Trim() : "",
                         EcommerceComponents = (!string.IsNullOrEmpty(odinItem.EcommerceComponents)) ? odinItem.EcommerceComponents.Trim() : "",
                         EcommerceCost = (odinItem.EcommerceCost != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.EcommerceCost).Trim(), 2) : "",
+                        EcommerceCountryofOrigin = (!string.IsNullOrEmpty(odinItem.CountryIstOrigin)) ? odinItem.CountryIstOrigin : "",
                         EcommerceExternalId = (!string.IsNullOrEmpty(odinItem.EcommerceExternalId)) ? odinItem.EcommerceExternalId.Trim() : "",
                         EcommerceExternalIdType = (!string.IsNullOrEmpty(odinItem.EcommerceExternalIdType)) ? odinItem.EcommerceExternalIdType.Trim() : "",
                         EcommerceImagePath1 = (!string.IsNullOrEmpty(odinItem.EcommerceImageUrl1)) ? odinItem.EcommerceImageUrl1.Trim() : "",
@@ -1646,6 +1686,9 @@ namespace Odin.Data
                         EcommerceSubjectKeywords = (!string.IsNullOrEmpty(odinItem.EcommerceSubjectKeywords)) ? odinItem.EcommerceSubjectKeywords.Trim() : "",
                         EcommerceSize = (!string.IsNullOrEmpty(odinItem.EcommerceSize)) ? odinItem.EcommerceSize.Trim() : "",
                         EcommerceUpc = (!string.IsNullOrEmpty(odinItem.EcommerceUpc)) ? odinItem.EcommerceUpc.Trim() : "",
+                        Genre1 = (!string.IsNullOrEmpty(odinItem.Genre1)) ? odinItem.Genre1.Trim() : "",
+                        Genre2 = (!string.IsNullOrEmpty(odinItem.Genre2)) ? odinItem.Genre2.Trim() : "",
+                        Genre3 = (!string.IsNullOrEmpty(odinItem.Genre3)) ? odinItem.Genre3.Trim() : "",
                         Gpc = (!string.IsNullOrEmpty(odinItem.Gpc)) ? odinItem.Gpc.Trim() : "",
                         Height = (odinItem.InvItemHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemHeight), 1) : "",
                         ImagePath = (!string.IsNullOrEmpty(odinItem.ImageFileName)) ? odinItem.ImageFileName.Trim() : "",
@@ -1674,6 +1717,8 @@ namespace Odin.Data
                         MsrpCad = (!string.IsNullOrEmpty(odinItem.MsrpCad)) ? DbUtil.ZeroTrim(odinItem.MsrpCad, 2) : "",
                         MsrpMxn = (!string.IsNullOrEmpty(odinItem.MsrpMxn)) ? DbUtil.ZeroTrim(odinItem.MsrpMxn, 2) : "",
                         Msrp = (!string.IsNullOrEmpty(odinItem.MsrpUsd)) ? DbUtil.ZeroTrim(odinItem.MsrpUsd, 2) : "",
+                        OnSite = (!string.IsNullOrEmpty(odinItem.OnSite)) ? odinItem.OnSite : "",
+                        OnShopTrends = (!string.IsNullOrEmpty(odinItem.OnShopTrends)) ? odinItem.OnShopTrends : "",
                         PricingGroup = (!string.IsNullOrEmpty(odinItem.PricingGroup)) ? odinItem.PricingGroup.Trim() : "",
                         ProductFormat = (!string.IsNullOrEmpty(odinItem.ProdFormat)) ? odinItem.ProdFormat.Trim() : "",
                         ProductGroup = (!string.IsNullOrEmpty(odinItem.ProdGroup)) ? odinItem.ProdGroup.Trim() : "",
@@ -1692,7 +1737,9 @@ namespace Odin.Data
                         SellOnFanatics = (!string.IsNullOrEmpty(odinItem.SellOnFanatics)) ? odinItem.SellOnFanatics : "N",
                         SellOnGuitarCenter = (!string.IsNullOrEmpty(odinItem.SellOnGuitarCenter)) ? odinItem.SellOnGuitarCenter : "N",
                         SellOnHayneedle = (!string.IsNullOrEmpty(odinItem.SellOnHayneedle)) ? odinItem.SellOnHayneedle : "N",
+                        SellOnHouzz = (!string.IsNullOrEmpty(odinItem.SellOnHouzz)) ? odinItem.SellOnHouzz : "N",
                         SellOnTarget = (!string.IsNullOrEmpty(odinItem.SellOnTarget)) ? odinItem.SellOnTarget : "N",
+                        SellOnTrs = (!string.IsNullOrEmpty(odinItem.SellOnTrs)) ? odinItem.SellOnTrs : "N",
                         SellOnWalmart = (!string.IsNullOrEmpty(odinItem.SellOnWalmart)) ? odinItem.SellOnWalmart : "N",
                         SellOnWayfair = (!string.IsNullOrEmpty(odinItem.SellOnWayfair)) ? odinItem.SellOnWayfair : "N",
                         ShortDescription = (!string.IsNullOrEmpty(odinItem.ShortDesc)) ? odinItem.ShortDesc.Trim() : "",
@@ -1711,8 +1758,6 @@ namespace Odin.Data
                         WebsitePriceOverride = (odinItem.WebsitePriceOverride != null) ? DbUtil.ZeroTrim(odinItem.WebsitePriceOverride.ToString(), 2) : "",
                         Weight = (odinItem.InvItemWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWeight), 1) : "",
                         Width = (odinItem.InvItemWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWidth), 1) : "",
-                        OnSite = (!string.IsNullOrEmpty(odinItem.OnSite)) ? odinItem.OnSite : "",
-                        EcommerceCountryofOrigin = (!string.IsNullOrEmpty(odinItem.CountryIstOrigin)) ? odinItem.CountryIstOrigin : "",
                         Status = "Update",
                         ItemRow = row
                     };
@@ -1745,29 +1790,6 @@ namespace Odin.Data
                     return new ItemObject(1);
                 }
             }
-        }
-
-        /// <summary>
-        ///     Retrieves a list of search item values
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public List<SearchItem> RetrieveItemSearchResults(string value)
-        {
-            List<SearchItem> returnSearchItemList = new List<SearchItem>();
-
-            using (OdinContext context = this.contextFactory.CreateContext())
-            {
-                List<InvItems> invItems = (from o in context.InvItems
-                                           where o.InvItemId.Contains(value) || o.Descr254.Contains(value)
-                                           select o).ToList();
-
-                foreach (InvItems invItem in invItems)
-                {
-                    returnSearchItemList.Add(new SearchItem(invItem.InvItemId, invItem.Descr254));
-                }
-            }
-            return returnSearchItemList;
         }
 
         /// <summary>
@@ -1805,6 +1827,38 @@ namespace Odin.Data
             return records;
         }
 
+        /// <summary>
+        ///     Retrieves a list of search item values
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public List<SearchItem> RetrieveItemSearchResults(string value, bool includeDisabled)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                var searchItems = (from o in context.MasterItemTbl
+                                                where o.InvItemId.Contains(value) || o.Descr.Contains(value)
+                                                group o by new { o.InvItemId, o.ItemFieldC2, o.Descr} into g
+                                                select new
+                                                {
+                                                    ItemId = g.Key.InvItemId,
+                                                    Status = g.Key.ItemFieldC2,
+                                                    Description = g.Key.Descr
+                                                }).ToList();
+
+                foreach (var searchItem in searchItems)
+                {
+                    if(searchItem.Status != "D" || includeDisabled)
+                    { 
+                        returnSearchItemList.Add(new SearchItem(searchItem.ItemId, searchItem.Description, searchItem.Status));
+                    }
+                }
+            }
+            return returnSearchItemList;
+        }
+        
         /// <summary>
         ///     Retrieve a list of Item Objects relating to update records for the given item id
         /// </summary>
@@ -1867,6 +1921,9 @@ namespace Odin.Data
                     item.Duty = odinItemUpdateRecord.Duty;
                     item.Ean = odinItemUpdateRecord.Ean;
                     item.Gpc = odinItemUpdateRecord.Gpc;
+                    item.Genre1 = odinItemUpdateRecord.Genre1;
+                    item.Genre2 = odinItemUpdateRecord.Genre2;
+                    item.Genre3 = odinItemUpdateRecord.Genre3;
                     item.Height = odinItemUpdateRecord.Height;
                     item.ImagePath = odinItemUpdateRecord.ImagePath;
                     item.InnerpackHeight = odinItemUpdateRecord.InnerpackHeight;
@@ -1909,7 +1966,9 @@ namespace Odin.Data
                     item.SellOnFanatics = odinItemUpdateRecord.SellOnFanatics;
                     item.SellOnGuitarCenter = odinItemUpdateRecord.SellOnGuitarCenter;
                     item.SellOnHayneedle = odinItemUpdateRecord.SellOnHayneedle;
+                    item.SellOnHouzz = odinItemUpdateRecord.SellOnHouzz;
                     item.SellOnTarget = odinItemUpdateRecord.SellOnTarget;
+                    item.SellOnTrs = odinItemUpdateRecord.SellOnTrs;
                     item.SellOnWalmart = odinItemUpdateRecord.SellOnWalmart;
                     item.SellOnWayfair = odinItemUpdateRecord.SellOnWayfair;
                     item.SellOnTrends = odinItemUpdateRecord.SellOnWeb;
@@ -1998,6 +2057,36 @@ namespace Odin.Data
         }
 
         /// <summary>
+        ///     Check if item is listed as being on the shoptrends site. PS_ITEM_WEB_INFO.ON_SHOPTRENDS == "Y"
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        public bool RetrieveOnShopTrends(string itemId)
+        {
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                string result = (from o in context.ItemWebInfo where o.InvItemId == itemId select o.OnShopTrends).FirstOrDefault();
+                if (result == "Y") { return true; }
+            }
+            return false;
+        }
+
+        /// <summary>
+        ///     Check if item is listed as being on the trendsinteranational site. PS_ITEM_WEB_INFO.ON_SITE == "Y"
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        public bool RetrieveOnSite(string itemId)
+        {
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                string result = (from o in context.ItemWebInfo where o.InvItemId == itemId select o.OnSite).FirstOrDefault();
+                if (result == "Y") { return true; }
+            }
+            return false;
+        }
+
+        /// <summary>
         ///     Searches PS_ORD_LINE for any open orders
         /// </summary>
         /// <param name="itemId"></param>
@@ -2048,6 +2137,239 @@ namespace Odin.Data
         public string RetrieveSaveProgress()
         {
             return this.SaveProgress;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Item Category
+        /// </summary>
+        /// <param name="itemCategory">Item Category search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByItemCategory(string itemCategory, bool includeDisabled)
+        {
+            string categoryId = RetriveCategoryId(itemCategory);
+            
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                var searchItems = (from o in context.MasterItemTbl
+                                   where o.CategoryId == categoryId
+                                   group o by new { o.InvItemId, o.ItemFieldC2, o.Descr} into g
+                                   select new
+                                   {
+                                       ItemId = g.Key.InvItemId,
+                                       Status = g.Key.ItemFieldC2,
+                                       Description = g.Key.Descr
+                                   }).ToList();
+
+                foreach (var searchItem in searchItems)
+                {
+                    if(searchItem.Status != "D" || includeDisabled)
+                    { 
+                        returnSearchItemList.Add(new SearchItem(searchItem.ItemId, searchItem.Description, searchItem.Status));
+                    }
+                }
+            }
+            return returnSearchItemList;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Item Group
+        /// </summary>
+        /// <param name="itemGroup">Item Group search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByItemGroup(string itemGroup, bool includeDisabled)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                var searchItems = (from o in context.MasterItemTbl
+                                   where o.InvItemGroup == itemGroup
+                                   group o by new { o.InvItemId, o.ItemFieldC2, o.Descr } into g
+                                   select new
+                                   {
+                                       ItemId = g.Key.InvItemId,
+                                       Status = g.Key.ItemFieldC2,
+                                       Description = g.Key.Descr
+                                   }).ToList();
+
+                foreach (var searchItem in searchItems)
+                {
+                    if (searchItem.Status != "D" || includeDisabled)
+                    {
+                        returnSearchItemList.Add(new SearchItem(searchItem.ItemId, searchItem.Description, searchItem.Status));
+                    }
+                }
+            }
+            return returnSearchItemList;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Format
+        /// </summary>
+        /// <param name="productFormat">Product Format search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByProductFormat(string productFormat, bool includeDisabled)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                var searchItems = (from a in context.ItemAttribEx
+                                   join b in context.MasterItemTbl on a.InvItemId equals b.InvItemId
+                                   where a.ProdFormat == productFormat
+                                   group b by new { b.InvItemId, b.ItemFieldC2, b.Descr } into g
+                                   select new
+                                   {
+                                       ItemId = g.Key.InvItemId,
+                                       Status = g.Key.ItemFieldC2,
+                                       Description = g.Key.Descr
+                                   }).ToList();
+
+                foreach (var searchItem in searchItems)
+                {
+                    if (searchItem.Status != "D" || includeDisabled)
+                    {
+                        returnSearchItemList.Add(new SearchItem(searchItem.ItemId, searchItem.Description, searchItem.Status));
+                    }
+                }
+            }
+            return returnSearchItemList;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Group
+        /// </summary>
+        /// <param name="productGroup">Product Group search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByProductGroup(string productGroup, bool includeDisabled)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                var searchItems = (from a in context.ItemAttribEx
+                                   join b in context.MasterItemTbl on a.InvItemId equals b.InvItemId
+                                   where a.ProdGroup == productGroup
+                                   group b by new { b.InvItemId, b.ItemFieldC2, b.Descr } into g
+                                   select new
+                                   {
+                                       ItemId = g.Key.InvItemId,
+                                       Status = g.Key.ItemFieldC2,
+                                       Description = g.Key.Descr
+                                   }).ToList();
+
+                foreach (var searchItem in searchItems)
+                {
+                    if (searchItem.Status != "D" || includeDisabled)
+                    {
+                        returnSearchItemList.Add(new SearchItem(searchItem.ItemId, searchItem.Description, searchItem.Status));
+                    }
+                }
+            }
+            return returnSearchItemList;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Product Line
+        /// </summary>
+        /// <param name="productLine">Product Line search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByProductLine(string productLine, bool includeDisabled)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                var searchItems = (from a in context.ItemAttribEx
+                                   join b in context.MasterItemTbl on a.InvItemId equals b.InvItemId
+                                   where a.ProdLine == productLine
+                                   group b by new { b.InvItemId, b.ItemFieldC2, b.Descr } into g
+                                   select new
+                                   {
+                                       ItemId = g.Key.InvItemId,
+                                       Status = g.Key.ItemFieldC2,
+                                       Description = g.Key.Descr
+                                   }).ToList();
+
+                foreach (var searchItem in searchItems)
+                {
+                    if (searchItem.Status != "D" || includeDisabled)
+                    {
+                        returnSearchItemList.Add(new SearchItem(searchItem.ItemId, searchItem.Description, searchItem.Status));
+                    }
+                }
+            }
+            return returnSearchItemList;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Stats Code
+        /// </summary>
+        /// <param name="statsCode">Stats Code search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByStatsCode(string statsCode, bool includeDisabled)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                var searchItems = (from a in context.ProdItem
+                                   join b in context.MasterItemTbl on a.ProductId equals b.InvItemId
+                                   where a.ProdFieldC30B == statsCode
+                                   group b by new { b.InvItemId, b.ItemFieldC2, b.Descr } into g
+                                   select new
+                                   {
+                                       ItemId = g.Key.InvItemId,
+                                       Status = g.Key.ItemFieldC2,
+                                       Description = g.Key.Descr
+                                   }).ToList();
+
+                foreach (var searchItem in searchItems)
+                {
+                    if (searchItem.Status != "D" || includeDisabled)
+                    {
+                        returnSearchItemList.Add(new SearchItem(searchItem.ItemId, searchItem.Description, searchItem.Status));
+                    }
+                }
+            }
+            return returnSearchItemList;
+        }
+
+        /// <summary>
+        ///     Retrieves a List of SearchItems based on their Tariff Code
+        /// </summary>
+        /// <param name="tariffCode">Tariff Code search parameter</param>
+        /// <param name="includeDisabled">if true include items in destroyed status</param>
+        /// <returns>List of Search Items</returns>
+        public List<SearchItem> RetreiveSearchItemByTariffCode(string tariffCode, bool includeDisabled = false)
+        {
+            List<SearchItem> returnSearchItemList = new List<SearchItem>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                var searchItems = (from a in context.InvItems
+                                   join b in context.MasterItemTbl on a.InvItemId equals b.InvItemId
+                                   where a.HarmonizedCd == tariffCode
+                                   group b by new { b.InvItemId, b.ItemFieldC2, b.Descr } into g
+                                   select new
+                                   {
+                                       ItemId = g.Key.InvItemId,
+                                       Status = g.Key.ItemFieldC2,
+                                       Description = g.Key.Descr
+                                   }).ToList();
+
+                foreach (var searchItem in searchItems)
+                {
+                    if (searchItem.Status != "D" || includeDisabled)
+                    {
+                        returnSearchItemList.Add(new SearchItem(searchItem.ItemId, searchItem.Description, searchItem.Status));
+                    }
+                }
+            }
+            return returnSearchItemList;
         }
 
         /// <summary>
@@ -2149,7 +2471,9 @@ namespace Odin.Data
             UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("FANATICS"), item.SellOnFanatics, context);
             UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("GUITAR CENTER"), item.SellOnGuitarCenter, context);
             UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HAYNEEDLE"), item.SellOnHayneedle, context);
+            UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HOUZZ"), item.SellOnHouzz, context);
             UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TARGET"), item.SellOnTarget, context);
+            UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TRS"), item.SellOnTrs, context);
             UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("WALMART"), item.SellOnWalmart, context);
             UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("WAYFAIR"), item.SellOnWayfair, context);
         }
@@ -2285,7 +2609,11 @@ namespace Odin.Data
                 itemAttribEx.CasepackWidth = DbUtil.ToDecimal(item.CasepackWidth);
                 itemAttribEx.CasepackWeight = DbUtil.ToDecimal(item.CasepackWeight);
                 itemAttribEx.DirectImport = item.DirectImport;
+                itemAttribEx.DtcPrice = DbUtil.ToDecimal(item.DtcPrice);
                 itemAttribEx.Duty = item.Duty;
+                itemAttribEx.Genre1 = item.Genre1;
+                itemAttribEx.Genre2 = item.Genre2;
+                itemAttribEx.Genre3 = item.Genre3;
                 itemAttribEx.ImageFileName = item.ImagePath;
                 itemAttribEx.InnerpackHeight = DbUtil.ToDecimal(item.InnerpackHeight);
                 itemAttribEx.InnerpackLength = DbUtil.ToDecimal(item.InnerpackLength);
@@ -2303,7 +2631,6 @@ namespace Odin.Data
                 itemAttribEx.SellOnWeb = item.SellOnTrends;
                 itemAttribEx.TranslateEdiProd = item.ReturnTranslateEdiProd();
                 itemAttribEx.WebsitePrice = DbUtil.ToDecimal(item.WebsitePrice);
-
             }
         }
 
@@ -2394,7 +2721,6 @@ namespace Odin.Data
                 masterItemTbl.LastDttmUpdate = DateTime.Now;
                 masterItemTbl.LastMaintOprid = GlobalData.UserName;
                 masterItemTbl.OrigOprid = GlobalData.UserName;
-
             }
         }
 
@@ -2421,16 +2747,28 @@ namespace Odin.Data
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        public void UpdateOnSite(string itemId)
+        public void UpdateOnSite(ItemObject item, string website)
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                ItemWebInfo itemWebInfo = (from o in context.ItemWebInfo where o.InvItemId == itemId select o).FirstOrDefault();
+                ItemWebInfo itemWebInfo = (from o in context.ItemWebInfo where o.InvItemId == item.ItemId select o).FirstOrDefault();
+
                 if (itemWebInfo != null)
                 {
-                    itemWebInfo.OnSite = "Y";
-                    context.SaveChanges();
+                    if (website.ToUpper()=="SHOPTRENDS.COM")
+                    {
+                        itemWebInfo.OnShopTrends = "Y";
+                    }
+                    else
+                    {
+                        itemWebInfo.OnSite = "Y";
+                    }
                 }
+                else
+                {
+                    InsertItemWebInfo(item, context);
+                }
+                context.SaveChanges();
             }
         }
 
@@ -3333,17 +3671,7 @@ namespace Odin.Data
         /// <returns></returns>
         private string RetrieveCustomerId(string value)
         {
-            return GlobalData.CustomerIdConversions[value];
-            
-            /*
-            foreach (KeyValuePair<string, string> x in GlobalData.CustomerIdConversions)
-            {
-                if (x.Key == value)
-                {
-                    return x.Value;
-                }
-            }
-            */
+            return GlobalData.CustomerIdConversions[value];            
         }
 
         /// <summary>
@@ -3394,6 +3722,18 @@ namespace Odin.Data
                 List<OdinItemExceptions> odinItemExceptions = (from o in context.OdinItemExceptions select o).ToList();
                 odinItemExceptions = odinItemExceptions.Where(o => o.ExceptionTrigger == exceptionTrigger && o.ExceptionResult == exceptionResult).ToList();
                 return odinItemExceptions.Select(o => o.ExceptionValue).ToList();
+            }
+        }
+
+        /// <summary>
+        ///     Retrieves a list of genres from ODIN_GENRES
+        /// </summary>
+        /// <returns></returns>
+        private List<string> RetrieveGenres()
+        {
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                return (from o in context.OdinGenres select o.Genre).ToList();
             }
         }
 
@@ -3456,6 +3796,27 @@ namespace Odin.Data
         }
 
         /// <summary>
+        ///     Retrieves a List of the item type suffixes and type
+        /// </summary>
+        /// <returns></returns>
+        private List<KeyValuePair<string, string>> RetrieveItemTypeExtensions()
+        {
+            List<KeyValuePair<string, string>> results = new List<KeyValuePair<string, string>>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                if (context.OdinItemTypeExtensions.Any())
+                {
+                    var dataset = context.OdinItemTypeExtensions.Select(x => new { x.Prefix, x.Suffix }).ToList();
+                    foreach (var x in dataset)
+                    {
+                        results.Add(new KeyValuePair<string, string> (x.Prefix, x.Suffix));
+                    }
+                }
+            }
+            return results;
+        }
+
+        /// <summary>
         ///     Retrieve list of available languages
         /// </summary>
         /// <returns>List of web languages</returns>
@@ -3464,7 +3825,7 @@ namespace Odin.Data
             List<string> results = new List<string>();
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                if ((context.LanguageTbl.Any()))
+                if (context.LanguageTbl.Any())
                 {
                     results = (from o in context.OdinWebLanguages select o.Language).ToList();
                 }
@@ -3870,6 +4231,10 @@ namespace Odin.Data
                     prodPrice.MfgSugRtlPrc = msrp;
                     prodPrice.LastMaintOprid = GlobalData.UserName;
                 }
+            }
+            else
+            {
+                InsertProdPrice(item, businessUnit, currencyCode, listPrice, msrp, context);
             }
         }
         

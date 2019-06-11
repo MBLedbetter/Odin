@@ -206,6 +206,22 @@ namespace OdinModels
         private static List<string> _ftpUserexceptions = new List<string>();
 
         /// <summary>
+        ///     List of genres
+        /// </summary>
+        public static List<string> Genres
+        {
+            get
+            {
+                return _genres;
+            }
+            set
+            {
+                _genres = value;
+            }
+        }
+        private static List<string> _genres = new List<string>();
+
+        /// <summary>
         ///     List of Item Category Name / id from PS_ITM_CAT_TBL
         /// </summary>
         public static Dictionary<string, string> ItemCategories
@@ -286,6 +302,39 @@ namespace OdinModels
         private static List<ItemRecord> _itemRecords = new List<ItemRecord>();
 
         /// <summary>
+        ///     List of ItemTypeExtensions pairs
+        /// </summary>
+        public static List<KeyValuePair<string, string>> ItemTypeExtensions
+        {
+            get
+            {
+                return _itemTypeExtensions;
+            }
+            set
+            {
+                _itemTypeExtensions = value;
+                
+            }
+        }
+        private static List<KeyValuePair<string, string>> _itemTypeExtensions = new List<KeyValuePair<string, string>>();
+
+        /// <summary>
+        ///     List of ItemTypeExtensions
+        /// </summary>
+        public static List<string> ItemTypeExtensionsList
+        {
+            get
+            {
+                return _itemTypeExtensionsList;
+            }
+            set
+            {
+                _itemTypeExtensionsList = value;
+            }
+        }
+        private static List<string> _itemTypeExtensionsList = new List<string>();
+
+        /// <summary>
         ///     Language dropdown values
         /// </summary>
         public static List<string> Languages
@@ -317,7 +366,6 @@ namespace OdinModels
 
         }
         private static List<string> _licenses = new List<string>();
-
 
         /// <summary>
         ///     List of all item ids currently loaded in Odin
@@ -736,6 +784,7 @@ namespace OdinModels
             ItemCategories.Clear();
             ItemGroups.Clear();
             ItemIds.Clear();
+            ItemIdSuffixes.Clear();
             ItemRecords.Clear();
             Languages.Clear();
             Licenses.Clear();
@@ -759,6 +808,26 @@ namespace OdinModels
             UserRoles.Clear();
             WebCategoryList.Clear();
         }
+        
+        /// <summary>
+        ///     Creates a list of all the item type extension prefixes ans suffixes
+        /// </summary>
+        public static void CreateItemTypeExtensionList()
+        {
+            List<string> newList = new List<string>();
+            foreach(KeyValuePair<string,string> x in ItemTypeExtensions)
+            {
+                if(!newList.Contains(x.Key)&& x.Key!= "")
+                {
+                    newList.Add(x.Key);
+                }
+                if (!newList.Contains(x.Value) && x.Value != "")
+                {
+                    newList.Add(x.Value);
+                }
+            }
+            ItemTypeExtensionsList = newList;
+        }
 
         /// <summary>
         ///     Returns a List of all CountryOfOrigin 3 character codes
@@ -772,6 +841,41 @@ namespace OdinModels
                 results.Add(x.Key);
             }
             results.Sort();
+            return results;
+        }
+
+        /// <summary>
+        ///     Returns a List of licenses set up on ShopTrends
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> ReturnShopTrendsLicenses()
+        {
+            List<string> results = new List<string>
+            {
+                "Activision",
+                "DC Comics",
+                "Disney",
+                "DreamWorks",
+                "Fender",
+                "Harry Potter",
+                "Hello Kitty",
+                "Marvel",
+                "MLB",
+                "NBA",
+                "Netflix",
+                "NFL",
+                "NHL",
+                "Nickelodeon",
+                "Pokémon",
+                "Rolling Stone",
+                "Sanrio",
+                "Sports Illustrated",
+                "Star Wars",
+                "WWE"
+            };
+
+
+
             return results;
         }
 

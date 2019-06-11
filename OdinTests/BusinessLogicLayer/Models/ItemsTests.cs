@@ -67,6 +67,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             ItemObject sellOnFanaticsItem = new ItemObject(1);
             ItemObject sellOnGuitarCenterItem = new ItemObject(1);
             ItemObject sellOnHayneedleItem = new ItemObject(1);
+            ItemObject sellOnHouzzItem = new ItemObject(1);
             ItemObject sellOnTargetItem = new ItemObject(1);
             ItemObject sellOnTrendsItem = new ItemObject(1);
             ItemObject sellOnWalmartItem = new ItemObject(1);
@@ -190,6 +191,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             sellOnFanaticsItem.SellOnFanatics = "1";
             sellOnGuitarCenterItem.SellOnGuitarCenter = "1";
             sellOnHayneedleItem.SellOnHayneedle = "1";
+            sellOnHouzzItem.SellOnHouzz = "1";
             sellOnTargetItem.SellOnAmazon = "1";
             sellOnTrendsItem.SellOnTrends = "1";
             sellOnWalmartItem.SellOnWalmart = "1";
@@ -329,6 +331,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             Assert.IsTrue(sellOnFanaticsItem.SellOnFlagUpdate);
             Assert.IsTrue(sellOnGuitarCenterItem.SellOnFlagUpdate);
             Assert.IsTrue(sellOnHayneedleItem.SellOnFlagUpdate);
+            Assert.IsTrue(sellOnHouzzItem.SellOnFlagUpdate);
             Assert.IsTrue(sellOnTargetItem.SellOnFlagUpdate);
             Assert.IsTrue(sellOnWalmartItem.SellOnFlagUpdate);
             Assert.IsTrue(sellOnWayfairItem.SellOnFlagUpdate);
@@ -773,6 +776,7 @@ namespace OdinTests.BusinessLogicLayer.Models
                 SellOnFanatics = "sellOnFanatics",
                 SellOnGuitarCenter = "sellOnGuitarCenter",
                 SellOnHayneedle = "sellOnHayneedle",
+                SellOnHouzz = "sellOnHouzz",
                 SellOnTarget = "SellOnTarget",
                 SellOnTrends = "SellOnTrends",
                 SellOnWalmart = "sellOnWalmart",
@@ -1221,6 +1225,7 @@ namespace OdinTests.BusinessLogicLayer.Models
                 SellOnFanatics = "sellOnFanatics",
                 SellOnGuitarCenter = "sellOnGuitarCenter",
                 SellOnHayneedle = "sellOnHayneedle",
+                SellOnHouzz = "sellOnHouzz",
                 SellOnTarget = "SellOnTarget",
                 SellOnTrends = "SellOnTrends",
                 SellOnWalmart = "sellOnWalmart",

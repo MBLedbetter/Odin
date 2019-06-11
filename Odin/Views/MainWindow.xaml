@@ -12,9 +12,7 @@
     <Grid
         Background="LightGray">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="139*" />
-            <ColumnDefinition Width="236*"/>
-            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition
@@ -32,7 +30,7 @@
             <RowDefinition
                 Height="30" />
         </Grid.RowDefinitions>
-        <DockPanel>
+        <DockPanel Margin="0,0,679,0">
             <Menu DockPanel.Dock="Top" Grid.Row="0" Margin="0,0,-678,0">
                 <MenuItem Header="_File">
                     <MenuItem 
@@ -61,13 +59,18 @@
                         Command="{Binding LoadItemsCommand}"
                         ToolTip="Upload a list of new products into Odin."/>
                     <MenuItem 
-                        Header="_Search"
+                        Header="_Find Items"
                         Command="{Binding FindItemCommand}"
                         ToolTip="Find and pull down existing items into Odin." />
                     <MenuItem 
                         Header="_Remove Items"
-                            Command="{Binding DeleteItemCommand}"
-                            ToolTip="Upload a list of items to be removed from the website." />
+                        Command="{Binding DeleteItemCommand}"
+                        ToolTip="Upload a list of items to be removed from the website." />
+                    <MenuItem 
+                        Header="_Pull Images"
+                        Command="{Binding PullImagesCommand}"
+                        ToolTip="Pulls down the images for the items currently loaded in Odin."
+                        Visibility="{Binding PermissionAdminVisibility}" />
                     <MenuItem 
                         Header="_Update Existing"
                         Command="{Binding UpdateProductsCommand}"
@@ -128,6 +131,10 @@
                         Header="Update Records" 
                         Command="{Binding FindItemUpdateRecordCommand}"
                         ToolTip="Find a list of updates made to an item"/>
+                    <MenuItem 
+                        Header="Generate Magento 2 Excel" 
+                        Command="{Binding Magento2CustomExcelCommand}"
+                        ToolTip="Generate a Magento 2 Excel from current items"/>
                 </MenuItem>
                 <MenuItem 
                     Header="Ecommerce Manager"
@@ -148,7 +155,6 @@
             LicenseKey="DAD80300DA22"
             x:Name="ribbon"
             SystemButtons="False" 
-            Grid.ColumnSpan="3" 
             Grid.Row="1" 
             Grid.RowSpan="2" SelectionChanged="Ribbon_SelectionChanged"
             >
@@ -640,10 +646,22 @@
             SelectedItem="{Binding SelectedItem}"
             IsSynchronizedWithCurrentItem="True"
             ItemsSource="{Binding Items}"
-            Background="White"
-            Grid.ColumnSpan="3" 
-            Margin="0,145,0,5" 
-            Grid.RowSpan="3">
+            Background="White" 
+            Margin="0,125,0,5" 
+            Grid.RowSpan="2" Grid.Row="1">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Edit Item"
+                        Command="{Binding EditSelectedItemCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}" />
+                    <MenuItem Header="Remove Item"
+                        Command="{Binding RemoveSelectedItemCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}" />
+                    <!--MenuItem Header="Item Info"
+                        Command="{Binding GetItemInfoCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}" /-->
+                </ContextMenu>
+            </ListView.ContextMenu>
             <ListView.ItemContainerStyle>
                 <Style
                     TargetType="{x:Type ListViewItem}">
@@ -829,6 +847,14 @@
                         Width="{Binding DirectImportVisibility}">
                         <GridViewColumnHeader
                             Content="Direct Import"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding DtcPrice}"
+                        Width="{Binding DtcPriceVisibility}">
+                        <GridViewColumnHeader
+                            Content="DTC Price"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -1093,6 +1119,30 @@
                         Width="{Binding EcommerceUpcVisibility}">
                         <GridViewColumnHeader
                             Content="Ecommerce Upc"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Genre1}"
+                        Width="{Binding Genre1Visibility}">
+                        <GridViewColumnHeader
+                            Content="Genre 1"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Genre2}"
+                        Width="{Binding Genre2Visibility}">
+                        <GridViewColumnHeader
+                            Content="Genre 2"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Genre3}"
+                        Width="{Binding Genre3Visibility}">
+                        <GridViewColumnHeader
+                            Content="Genre 3"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -1497,6 +1547,14 @@
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnHouzz}"
+                        Width="{Binding SellOnHouzzVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Houzz"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
                         DisplayMemberBinding="{Binding SellOnTarget}"
                         Width="{Binding SellOnTargetVisibility}">
                         <GridViewColumnHeader
@@ -1509,6 +1567,14 @@
                         Width="{Binding SellOnTrendsVisibility}">
                         <GridViewColumnHeader
                             Content="Sell On Trends"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding SellOnTrs}"
+                        Width="{Binding SellOnTrsVisibility}">
+                        <GridViewColumnHeader
+                            Content="Sell On Target"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>
@@ -1629,15 +1695,13 @@
         </ListView>
         <GridSplitter Grid.Row="3" 
                       Height="5" 
-                      HorizontalAlignment="Stretch" 
-                      Grid.ColumnSpan="3" />
+                      HorizontalAlignment="Stretch" />
         <!-- list of errors-->
         <ListView
             SelectedItem="{Binding SelectedError}"
             IsSynchronizedWithCurrentItem="True"
             ItemsSource="{Binding ItemErrors}"
-            Grid.Row="4"
-            Margin="0" Grid.ColumnSpan="3" 
+            Grid.Row="4" 
             >
             <ListView.Background>
                 <LinearGradientBrush
@@ -1700,8 +1764,7 @@
             Visibility="{Binding PermissionSaveItemVisibility}"
             VerticalAlignment="Top"
             Width="140"
-            Click="SaveButton_Click" 
-            Grid.Column="2"/>
+            Click="SaveButton_Click"/>
         <Button
             IsEnabled="{Binding SubmitStatus}"
             Visibility="{Binding PermissionSubmitItemVisibility}"
@@ -1709,14 +1772,12 @@
             HorizontalAlignment="Right"
             Height="30"
             Grid.Row="5"
-            Margin="0,5,150,0"
+            Margin="0,5,149,0"
             VerticalAlignment="Top"
             Width="141"
-            Click="SubmitButton_Click"
-            Grid.ColumnSpan="2" Grid.Column="1"/>
+            Click="SubmitButton_Click"/>
         <TextBlock            
             Grid.Column="0"
-            Grid.ColumnSpan="3"
             Grid.Row="6"
             Margin="5"
             Text="{Binding ProgressText}"  
