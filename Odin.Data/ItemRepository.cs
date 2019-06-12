@@ -286,7 +286,6 @@ namespace Odin.Data
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("GUITAR CENTER"), item.SellOnGuitarCenter, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HAYNEEDLE"), item.SellOnHayneedle, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HOUZZ"), item.SellOnHouzz, context);
-            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("SHOP TRENDS"), item.SellOnTrs, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TARGET"), item.SellOnTarget, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TRS"), item.SellOnTrs, context);
             InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("WALMART"), item.SellOnWalmart, context) ;
