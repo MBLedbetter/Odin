@@ -4738,6 +4738,20 @@ namespace OdinServices
                         "Value cannot contain apostrophes.",
                         "Image Path " + imageNumber);
                 }
+                if (value.Length > 4)
+                {
+                    string fileType = value.Substring(value.Length - 4).ToUpper();
+                    if (fileType != ".JPG"
+                        && fileType != ".PNG"
+                        && fileType != ".TIF")
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            "Invalid file type. (Must be .jpg, .png, or .tif).",
+                            "Image Path " + imageNumber);
+                    }
+                }
                 if (CheckSpecialChar(value))
                 {
                     return new ItemError(
