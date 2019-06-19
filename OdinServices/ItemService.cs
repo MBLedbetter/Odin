@@ -289,11 +289,41 @@ namespace OdinServices
                 // value = "@" + value;
                 if (File.Exists(value))
                 {
+                    return true;  
+                }
+            }
+            else
+            {
+                if (value == "testImagePath")
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        /// <summary>
+        ///     Check that the provided image is not too large
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="isTest"></param>
+        /// <returns>false if file is too large</returns>
+        public bool CheckFileSize(string value, bool isTest)
+        {
+            if (!isTest)
+            {
+                // value = "@" + value;
+                if (File.Exists(value))
+                {
                     // Check that file isn't too big, to prevent memory exception
                     if ((new System.IO.FileInfo(value).Length < 20000000))
                     {
                         return true;
-                    }                  
+                    }
+                }
+                else
+                {
+                    return false;
                 }
             }
             else
@@ -1437,21 +1467,25 @@ namespace OdinServices
                 {
                     if (CheckFileExists(img.Key, false))
                     {
-                        string filename = location + @"\" + ReturnImageName(itemId, img.Value);
-                        if (!CheckFileExists(filename,false))
+                        if (CheckFileSize(img.Key, false))
                         {
-                            Image myImage = Image.FromFile(img.Key, true);
-                            SaveJpeg(filename, myImage, 60);
-                            myImage.Dispose();
-                            if (!usedIdCores.Contains(RetrieveItemIdCore(itemId)) && img.Value==1)
+                            string filename = location + @"\" + ReturnImageName(itemId, img.Value);
+                            //  make sure the same image file has not been created in the ecommerceImage directory already
+                            if (!CheckFileExists(filename, false))
                             {
-                                if (itemId.Substring(0, 2) == "RP" || itemId.Substring(0, 3) == "POD")
+                                Image myImage = Image.FromFile(img.Key, true);
+                                SaveJpeg(filename, myImage, 60);
+                                myImage.Dispose();
+                                if (!usedIdCores.Contains(RetrieveItemIdCore(itemId)) && img.Value == 1)
                                 {
-                                    filename = location + @"\" + ReturnImageName("POSTER" + RetrieveItemIdCore(itemId), img.Value);
-                                    Image posterImage = Image.FromFile(img.Key, true);
-                                    SaveJpeg(filename, posterImage, 60);
-                                    posterImage.Dispose();
-                                    usedIdCores.Add(RetrieveItemIdCore(itemId));
+                                    if (itemId.Substring(0, 2) == "RP" || itemId.Substring(0, 3) == "POD")
+                                    {
+                                        filename = location + @"\" + ReturnImageName("POSTER" + RetrieveItemIdCore(itemId), img.Value);
+                                        Image posterImage = Image.FromFile(img.Key, true);
+                                        SaveJpeg(filename, posterImage, 60);
+                                        posterImage.Dispose();
+                                        usedIdCores.Add(RetrieveItemIdCore(itemId));
+                                    }
                                 }
                             }
                         }
@@ -4743,20 +4777,20 @@ namespace OdinServices
             switch (imageNumber)
             {
                 case "1":
-                    value = var.ImagePath;
+                    value = var.ImagePath.Trim();
                     required = true;
                     break;
                 case "2":
-                    value = var.AltImageFile1;
+                    value = var.AltImageFile1.Trim();
                     break;
                 case "3":
-                    value = var.AltImageFile1;
+                    value = var.AltImageFile2.Trim();
                     break;
                 case "4":
-                    value = var.AltImageFile1;
+                    value = var.AltImageFile3.Trim();
                     break;
                 case "5":
-                    value = var.AltImageFile1;
+                    value = var.AltImageFile4.Trim();
                     break;
                 default:
                     throw new ArgumentNullException("ValidateImagePath unknown imageNumber " + imageNumber);
@@ -4768,7 +4802,7 @@ namespace OdinServices
                 {
                     fileType = value.Substring(value.Length - 4).ToUpper();
                 }
-                    if (string.IsNullOrEmpty(value) && var.SellOnTrends == "Y" && required)
+                if (string.IsNullOrEmpty(value) && var.SellOnTrends == "Y" && required)
                 {
                     return new ItemError(
                         var.ItemId,
@@ -4776,48 +4810,58 @@ namespace OdinServices
                         OdinServices.Properties.Resources.Error_RequiredWeb,
                         "Image Path " + imageNumber);
                 }
-                if (value.Contains("'")||value.Contains("`"))
+                if (!string.IsNullOrEmpty(value))
                 {
-                    return new ItemError(
-                        var.ItemId,
-                        var.ItemRow,
-                        "Value cannot contain apostrophes.",
-                        "Image Path " + imageNumber);
-                }
-                if (fileType != ".JPG"
-                        && fileType != ".PNG"
-                        && fileType != ".TIF")
-                {
-                    return new ItemError(
-                        var.ItemId,
-                        var.ItemRow,
-                        "Invalid file type. (Must be .jpg, .png, or .tif).",
-                        "Image Path " + imageNumber);
-                }
-                if (!CheckFileExists(value, false) && required && fileType != ".TIF")
-                {
-                    return new ItemError(
-                        var.ItemId,
-                        var.ItemRow,
-                        @" could not find image with given filepath or the image is too large: " + value,
-                        "Image Path " + imageNumber);
-
-                }                
-                if (CheckSpecialChar(value))
-                {
-                    return new ItemError(
-                        var.ItemId,
-                        var.ItemRow,
-                        "Value cannot contain special characters.",
-                        "Image Path " + imageNumber);
-                }
-                if (value.Length > 254)
-                {
-                    return new ItemError(
-                        var.ItemId,
-                        var.ItemRow,
-                        OdinServices.Properties.Resources.Error_LengthMax + "254 characters.",
-                        "Image Path " + imageNumber);
+                    if (value.Contains("'") || value.Contains("`"))
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            "Value cannot contain apostrophes.",
+                            "Image Path " + imageNumber);
+                    }
+                    if (CheckSpecialChar(value))
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            "Value cannot contain special characters.",
+                            "Image Path " + imageNumber);
+                    }
+                    if (fileType != ".JPG"
+                            && fileType != ".PNG"
+                            && fileType != ".TIF")
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            "Invalid file type. (Must be .jpg, .png, or .tif).",
+                            "Image Path " + imageNumber);
+                    }
+                    if (!CheckFileExists(value, false))
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            @" could not find image with given filepath : " + value,
+                            "Image Path " + imageNumber);
+                    }
+                    if (!CheckFileSize(value, false) && fileType != ".TIF")
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            @" Image file is too large (Max 20,000KB for .jpg & .png files)",
+                            "Image Path " + imageNumber);
+                    }
+                    if (value.Length > 254)
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            OdinServices.Properties.Resources.Error_LengthMax + "254 characters.",
+                            "Image Path " + imageNumber);
+                    }
                 }
             }
             return null;
