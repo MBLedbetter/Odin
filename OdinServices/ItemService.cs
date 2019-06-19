@@ -295,7 +295,6 @@ namespace OdinServices
                         return true;
                     }                  
                 }
-                return false;
             }
             else
             {
@@ -303,8 +302,8 @@ namespace OdinServices
                 {
                     return true;
                 }
-                else return false;
             }
+            return false;
         }
 
         /// <summary>
@@ -1043,20 +1042,41 @@ namespace OdinServices
         /// <param name="item"></param>
         /// <param name="imgNum"></param>
         /// <returns></returns>
-        public string ReturnImageName(string itemId, int imgNum)
+        public string ReturnImageName(string itemId, int imgNum, bool forMagento2Images = true)
         {
-            /*
-            string imageName = item.ReturnImageName(imgNum);
-            imageName = imageName.Replace(" ", "");
-            imageName = imageName.Replace(".tif", ".jpg");
-            imageName = imageName.Replace(".pdf", ".jpg");
-            imageName = imageName.Replace(".png", ".jpg");
-            imageName = imageName.Replace(".TIF", ".jpg");
-            imageName = imageName.Replace(".jpeg", ".jpg");
-            imageName = imageName.Replace("#", "");
-            imageName = imageName.Replace("(", "");
-            imageName = imageName.Replace(")", "");
-            */
+            // for framed posters in Magento 2, points to location of shared images on server
+            if (forMagento2Images)
+            {
+                if (itemId.Substring(0, 2) == "FR")
+                {
+                    if (imgNum == 5 || imgNum == 4)
+                    {
+                        if (itemId.Contains("BLK22X34"))
+                        {
+                            if (imgNum == 4)
+                            {
+                                return "../catalog/product/frames/cust_frame_back_blk.png";
+                            }
+                            else
+                            {
+                                return "../catalog/product/frames/cust_frame_blk_side.jpg";
+                            }
+                        }
+                        if (itemId.Contains("SIL22X34"))
+                        {
+                            if (imgNum == 4)
+                            {
+                                return "../catalog/product/frames/cust_frame_back_sil.png";
+                            }
+                            else
+                            {
+                                return "../catalog/product/frames/cust_frame_sil_side.jpg";
+                            }
+                        }
+                    }
+                }
+            }
+
             return itemId + "-" + imgNum.ToString() + ".jpg";
         }
 
@@ -1409,6 +1429,7 @@ namespace OdinServices
         {
             string location = @"C:\Users\" + Environment.UserName.ToLower() + @"\Desktop\EcomerceImages";
             List<string> missingImages = new List<string>();
+            List<string> usedIdCores = new List<string>();
             Directory.CreateDirectory(location);
             foreach (string itemId in itemIds)
             {
@@ -1422,6 +1443,17 @@ namespace OdinServices
                             Image myImage = Image.FromFile(img.Key, true);
                             SaveJpeg(filename, myImage, 60);
                             myImage.Dispose();
+                            if (!usedIdCores.Contains(RetrieveItemIdCore(itemId)) && img.Value==1)
+                            {
+                                if (itemId.Substring(0, 2) == "RP" || itemId.Substring(0, 3) == "POD")
+                                {
+                                    filename = location + @"\" + ReturnImageName("POSTER" + RetrieveItemIdCore(itemId), img.Value);
+                                    Image posterImage = Image.FromFile(img.Key, true);
+                                    SaveJpeg(filename, posterImage, 60);
+                                    posterImage.Dispose();
+                                    usedIdCores.Add(RetrieveItemIdCore(itemId));
+                                }
+                            }
                         }
                     }
                     else
@@ -2017,7 +2049,9 @@ namespace OdinServices
         /// <returns></returns>
         public List<KeyValuePair<string, int>> RetrieveImagePaths(string itemId)
         {
-            return ItemRepository.RetrieveImagePaths(itemId);
+            List<KeyValuePair<string, int>> results = ItemRepository.RetrieveImagePaths(itemId);
+            
+            return results;
         }
 
         /// <summary>
@@ -2182,7 +2216,14 @@ namespace OdinServices
         /// <returns></returns>
         public List<string> RetrieveProductLinesAll()
         {
-            List<string> result = (from o in GlobalData.ProductLines select o.Value).Distinct().ToList();
+            List<string> result = new List<string>();
+            foreach (KeyValuePair<string, string> x in GlobalData.ProductLines)
+            {
+                if (!result.Contains(x.Key))
+                {
+                    result.Add(x.Key);
+                }
+            }
             result.Sort();
             return result;
         }        
@@ -4722,7 +4763,12 @@ namespace OdinServices
             }
             if (var.SellOnTrends=="Y" || !string.IsNullOrEmpty(value))
             {
-                if (string.IsNullOrEmpty(value) && var.SellOnTrends == "Y" && required)
+                string fileType = "";
+                if (value.Length > 4)
+                {
+                    fileType = value.Substring(value.Length - 4).ToUpper();
+                }
+                    if (string.IsNullOrEmpty(value) && var.SellOnTrends == "Y" && required)
                 {
                     return new ItemError(
                         var.ItemId,
@@ -4738,20 +4784,25 @@ namespace OdinServices
                         "Value cannot contain apostrophes.",
                         "Image Path " + imageNumber);
                 }
-                if (value.Length > 4)
-                {
-                    string fileType = value.Substring(value.Length - 4).ToUpper();
-                    if (fileType != ".JPG"
+                if (fileType != ".JPG"
                         && fileType != ".PNG"
                         && fileType != ".TIF")
-                    {
-                        return new ItemError(
-                            var.ItemId,
-                            var.ItemRow,
-                            "Invalid file type. (Must be .jpg, .png, or .tif).",
-                            "Image Path " + imageNumber);
-                    }
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Invalid file type. (Must be .jpg, .png, or .tif).",
+                        "Image Path " + imageNumber);
                 }
+                if (!CheckFileExists(value, false) && required && fileType != ".TIF")
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        @" could not find image with given filepath or the image is too large: " + value,
+                        "Image Path " + imageNumber);
+
+                }                
                 if (CheckSpecialChar(value))
                 {
                     return new ItemError(
@@ -4766,14 +4817,6 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "254 characters.",
-                        "Image Path " + imageNumber);
-                }
-                if (!CheckFileExists(value,false) && required)
-                {
-                    return new ItemError(
-                        var.ItemId,
-                        var.ItemRow,
-                        @" could not find image with given filepath or the image is too large: " + value,
                         "Image Path " + imageNumber);
                 }
             }
