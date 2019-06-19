@@ -894,7 +894,7 @@ namespace OdinServices
         /// <returns></returns>
         public string FormatMagento2Categories(ItemObject item)
         {
-            string result = "Default Category";
+            string result = "Default Category,Default Category/Shop All";
 
             if (GlobalData.ReturnShopTrendsLicenses().Contains(item.License))
             {
@@ -933,15 +933,16 @@ namespace OdinServices
                     }
                 }
             }
-            if(!string.IsNullOrEmpty(item.Genre1))
+
+            if(!string.IsNullOrEmpty(item.Genre1) && item.Genre1 != "OTHER")
             {
                 result += ",Default Category/Shop by Genre/" + DbUtil.UppercaseFirst(item.Genre1);
             }
-            if (!string.IsNullOrEmpty(item.Genre2))
+            if (!string.IsNullOrEmpty(item.Genre2) && item.Genre2 != "OTHER")
             {
                 result += ",Default Category/Shop by Genre/" + DbUtil.UppercaseFirst(item.Genre2);
             }
-            if (!string.IsNullOrEmpty(item.Genre3))
+            if (!string.IsNullOrEmpty(item.Genre3) && item.Genre3 != "OTHER")
             {
                 result += ",Default Category/Shop by Genre/" + DbUtil.UppercaseFirst(item.Genre3);
             }
@@ -3149,8 +3150,10 @@ namespace OdinServices
         {
             string result = string.Empty;
             string title = (string.IsNullOrEmpty(item.EcommerceItemName)) ? item.Title : item.EcommerceItemName;
-            title = (string.IsNullOrEmpty(item.TitleOverride)) ? item.Title : item.TitleOverride;
-            string itemKeywords = (string.IsNullOrEmpty(item.ItemKeywordsOverride)) ? item.ItemKeywords : item.ItemKeywordsOverride;
+            if (!string.IsNullOrEmpty(item.TitleOverride))
+            {
+                title = item.TitleOverride;
+            }
             string itemId = "POSTER"+ItemService.RetrieveItemIdCore(item.ItemId);
             string dateAdded = (item.Status == "Add") ? DateTime.Now.ToShortDateString() : "";
 
@@ -3173,15 +3176,15 @@ namespace OdinServices
             result += ","; /* Q */
             result += "\"" + FormatMagento2Url(title, itemId) + "\","; /* R */
             result += "\"" + title + "\","; /* S */
-            result += "\"" +  FormatMagento2Keywords(item) + "\","; /* T */
+            result += "\"" + FormatMagento2Keywords(item) + "\","; /* T */
             result += "\"" + title + "\","; /* U */
-            result += "\"" + ItemService.ReturnImageName(item.ItemId, 1) + "\","; /* V */
+            result += "\"" + ItemService.ReturnImageName(itemId, 1) + "\","; /* V */
             result += ","; /* W */
-            result += "\"" + ItemService.ReturnImageName(item.ItemId, 1) + "\","; /* X */
+            result += "\"" + ItemService.ReturnImageName(itemId, 1) + "\","; /* X */
             result += ","; /* Y */
-            result += "\"" + ItemService.ReturnImageName(item.ItemId, 1) + "\","; /* Z */
+            result += "\"" + ItemService.ReturnImageName(itemId, 1) + "\","; /* Z */
             result += ","; /* AA */
-            result += "\"" + ItemService.ReturnImageName(item.ItemId, 1) + "\","; /* AB */
+            result += "\"" + ItemService.ReturnImageName(itemId, 1) + "\","; /* AB */
             result += ","; /* AC */
             result += "\"" + dateAdded + "\","; /* AD */
             result += "\"" + DateTime.Now.ToShortDateString() + "\","; /* AE */

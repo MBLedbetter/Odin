@@ -4211,7 +4211,7 @@
                             </ToolTip>
                         </TextBox.ToolTip>
                         Sell On All Posters
-                        </TextBox>
+                    </TextBox>
                     <CheckBox
                             HorizontalAlignment="Left"
                             Grid.Column="1"
@@ -6200,7 +6200,7 @@
                                 </Grid>
                             </ToolTip>
                         </TextBox.ToolTip>
-                            Product Description
+                        Product Description
                     </TextBox>
                     <TextBox
                         HorizontalAlignment="Left"
@@ -6657,6 +6657,14 @@
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="570"/>
+                    <Button
+                        Command="{Binding FindImage1Command}"
+                        Grid.Column="4"
+                        Grid.Row="0"
+                        Height="26"
+                        Width="80"
+                        Margin="98,6,144,6"
+                        Content="Find Image" Grid.ColumnSpan="2" />
                     <!-- AltImageFile1 -->
                     <TextBox
                         BorderThickness="0"
@@ -6697,6 +6705,14 @@
                         </TextBox.ToolTip>
                         Image Path 2
                     </TextBox>
+                    <Button
+                        Command="{Binding FindImage2Command}"
+                        Grid.Column="4"
+                        Grid.Row="1"
+                        Height="26"
+                        Width="80"
+                        Margin="98,6,144,6"
+                        Content="Find Image" Grid.ColumnSpan="2" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -6747,6 +6763,13 @@
                         </TextBox.ToolTip>
                         Image Path 3
                     </TextBox>
+                    <Button
+                        Command="{Binding FindImage3Command}"
+                        Grid.Column="4"
+                        Grid.Row="2"
+                        Width="80"
+                        Margin="98,6,144,6"
+                        Content="Find Image" Grid.ColumnSpan="2" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -6797,6 +6820,14 @@
                         </TextBox.ToolTip>
                         Image Path 4
                     </TextBox>
+                    <Button
+                        Command="{Binding FindImage4Command}"
+                        Grid.Column="4"
+                        Grid.Row="3"
+                        Height="26"
+                        Width="80"
+                        Margin="98,6,144,6"
+                        Content="Find Image" Grid.ColumnSpan="2" />
                     <TextBox
                         HorizontalAlignment="Left"
                         Grid.Column="1"
@@ -6848,6 +6879,14 @@
                         </TextBox.ToolTip>
                         Image Path 5
                     </TextBox>
+                    <Button
+                        Command="{Binding FindImage5Command}"
+                        Grid.Column="4"
+                        Grid.Row="4"
+                        Height="26"
+                        Width="80"
+                        Margin="98,6,144,6"
+                        Content="Find Image" Grid.ColumnSpan="2" />
                     <TextBox
                         Grid.Column="1"
                         Grid.ColumnSpan="5"

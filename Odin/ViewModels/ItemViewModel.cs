@@ -10,6 +10,7 @@ using Odin.Views;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using System.IO;
+using Microsoft.Win32;
 
 namespace Odin.ViewModels
 {
@@ -29,6 +30,71 @@ namespace Odin.ViewModels
             }
         }
         private RelayCommand _RemoveItemCommand;
+
+        public ICommand FindImage1Command
+        {
+            get
+            {
+                if (_findImage1Command == null)
+                {
+                    _findImage1Command = new RelayCommand(param => FindImagePath(1));
+                }
+                return _findImage1Command;
+            }
+        }
+        private RelayCommand _findImage1Command;
+
+        public ICommand FindImage2Command
+        {
+            get
+            {
+                if (_findImage2Command == null)
+                {
+                    _findImage2Command = new RelayCommand(param => FindImagePath(2));
+                }
+                return _findImage2Command;
+            }
+        }
+        private RelayCommand _findImage2Command;
+
+        public ICommand FindImage3Command
+        {
+            get
+            {
+                if (_findImage3Command == null)
+                {
+                    _findImage3Command = new RelayCommand(param => FindImagePath(3));
+                }
+                return _findImage3Command;
+            }
+        }
+        private RelayCommand _findImage3Command;
+
+        public ICommand FindImage4Command
+        {
+            get
+            {
+                if (_findImage4Command == null)
+                {
+                    _findImage4Command = new RelayCommand(param => FindImagePath(4));
+                }
+                return _findImage4Command;
+            }
+        }
+        private RelayCommand _findImage4Command;
+
+        public ICommand FindImage5Command
+        {
+            get
+            {
+                if (_findImage5Command == null)
+                {
+                    _findImage5Command = new RelayCommand(param => FindImagePath(5));
+                }
+                return _findImage5Command;
+            }
+        }
+        private RelayCommand _findImage5Command;
 
         public ICommand SubmitItemCommand
         {
@@ -8380,7 +8446,7 @@ namespace Odin.ViewModels
             set
             {
                 _image4 = value;
-                OnPropertyChanged("Image1");
+                OnPropertyChanged("Image4");
             }
         }
         private BitmapImage _image4 = new BitmapImage();
@@ -9109,6 +9175,42 @@ namespace Odin.ViewModels
             if (SizeBoxColor == "Tomato") { return "Tomato"; }
             if (WebsitePriceBoxColor == "Tomato") { return "Tomato"; }
             return "White";
+        }
+
+        /// <summary>
+        ///     Loads a selected excel file using the workbook reader
+        /// </summary>
+        public void FindImagePath(int imagePath)
+        {
+            OpenFileDialog dialog = new OpenFileDialog()
+            {
+                Filter = "Image files|*.png; *.tif; *.jpg"
+            };
+            if (dialog.ShowDialog() != true)
+            {
+                return;
+            }
+            else
+            {
+                switch(imagePath)
+                {
+                    case 1:
+                        this.ImagePath = dialog.FileName.ToString();
+                        break;
+                    case 2:
+                        this.AltImageFile1 = dialog.FileName.ToString();
+                        break;
+                    case 3:
+                        this.AltImageFile2 = dialog.FileName.ToString();
+                        break;
+                    case 4:
+                        this.AltImageFile3 = dialog.FileName.ToString();
+                        break;
+                    case 5:
+                        this.AltImageFile4 = dialog.FileName.ToString();
+                        break;
+                }
+            }
         }
 
         /// <summary>
