@@ -4601,7 +4601,7 @@ namespace OdinServices
         /// <returns>Error message or "" if value is valid</returns>
         public ItemError ValidateGenre(ItemObject var, int type)
         {
-            /*
+            
             string value = string.Empty;
             switch (type)
             {
@@ -4629,9 +4629,18 @@ namespace OdinServices
                         "Genre "+type.ToString());
                 }
             }
-            */
-            return null;
-            
+            else
+            {
+                if(var.SellOnTrs == "Y" && type ==1)
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Value is required for products being sold on ShopTrends.",
+                        "Genre " + type.ToString());
+                }
+            }            
+            return null;            
         }
 
         /// <summary>

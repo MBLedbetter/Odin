@@ -951,6 +951,21 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Removes "24X36" from the front of title
+        /// </summary>
+        /// <param name="oldTitle"></param>
+        /// <returns></returns>
+        public string FormatMagento2Title(string oldTitle)
+        {
+            string newTitle = oldTitle;
+            if(oldTitle.Substring(0,6).ToUpper()=="24X36 ")
+            {
+                newTitle = oldTitle.Remove(0, 6);
+            }
+            return newTitle;
+        }
+
+        /// <summary>
         ///     Formats the keywords using ecom name, license, property and keyword overrides
         /// </summary>
         /// <param name="item"></param>
@@ -3149,12 +3164,12 @@ namespace OdinServices
         public string WriteMagento2ParentLine(ItemObject item, List<string> childProducts)
         {
             string result = string.Empty;
-            string title = (string.IsNullOrEmpty(item.EcommerceItemName)) ? item.Title : item.EcommerceItemName;
+            string title = (string.IsNullOrEmpty(item.EcommerceItemName)) ? FormatMagento2Title(item.Title) : FormatMagento2Title(item.EcommerceItemName);
             if (!string.IsNullOrEmpty(item.TitleOverride))
             {
                 title = item.TitleOverride;
             }
-            string itemId = "POSTER"+ItemService.RetrieveItemIdCore(item.ItemId);
+            string itemId = "POSTER" + ItemService.RetrieveItemIdCore(item.ItemId);
             string dateAdded = (item.Status == "Add") ? DateTime.Now.ToShortDateString() : "";
 
             result += "\"" + itemId.Trim() + "\","; /* A */
