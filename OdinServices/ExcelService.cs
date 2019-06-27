@@ -951,16 +951,24 @@ namespace OdinServices
         }
 
         /// <summary>
-        ///     Removes "24X36" from the front of title
+        ///     Removes "24X36" from the front of title and "One Sheet
         /// </summary>
         /// <param name="oldTitle"></param>
         /// <returns></returns>
         public string FormatMagento2Title(string oldTitle)
         {
-            string newTitle = oldTitle;
-            if(oldTitle.Substring(0,6).ToUpper()=="24X36 ")
+            string newTitle = oldTitle.Trim();
+            if(newTitle.Substring(0,6).ToUpper()=="24X36 ")
             {
-                newTitle = oldTitle.Remove(0, 6);
+                newTitle = newTitle.Remove(0, 6);
+            }
+            if (newTitle.Substring(newTitle.Length - 12, 12).ToUpper() == " - ONE SHEET")
+            {
+                newTitle = newTitle.Remove(newTitle.Length - 12);
+            }
+            if (newTitle.Substring(newTitle.Length - 10, 10).ToUpper() == " ONE SHEET")
+            {
+                newTitle = newTitle.Remove(newTitle.Length - 10);
             }
             return newTitle;
         }
@@ -2504,7 +2512,7 @@ namespace OdinServices
         ///     Returns a hard coded short desctiption for the parent poster item
         /// </summary>
         /// <returns></returns>
-        public string ReturnMagento2PosterShortDescription()
+        public string ReturnMagento2PosterShortDescription(ItemObject item)
         {
             string result = string.Empty;
             result += "<p>Our posters are officially licensed and printed on FSC certified paper.</p>";
@@ -2514,6 +2522,12 @@ namespace OdinServices
             result += "<li> Unframed Premium Poster(22.375” x 34”) – Poster is printed on premium 210 GSM photo art gloss paper.</ li > ";
             result += "<li> Framed Poster(24.25” x 35.75” x 1”) – Poster is adhered to a sturdy 3 / 16” lightweight backer board to keep poster flat and smooth. The mounted poster is framed and ready to hang. Metal sawtooth hangers included.</li> ";
             result += "</ul> ";
+            if(!string.IsNullOrEmpty(item.Copyright))
+            {
+                result += "<p><em>";
+                result += item.Copyright;
+                result += "</em></p>";
+            }
             return result;
         }
 
@@ -3180,7 +3194,7 @@ namespace OdinServices
             result += "\"base\","; /* F */
             result += "\"" + item.Title.Trim() + "\","; /* G */
             result += ","; /* H */
-            result += "\"" + ReturnMagento2PosterShortDescription() + "\","; /* I */
+            result += "\"" + ReturnMagento2PosterShortDescription(item) + "\","; /* I */
             result += ","; /* J */
             result += "\"" + "1" + "\","; /* K */
             result += "\"" + "Taxable Goods" + "\","; /* L */

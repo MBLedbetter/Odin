@@ -3747,7 +3747,10 @@ namespace Odin.Data
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                return (from o in context.OdinGenres select o.Genre).ToList();
+                List<string> results = (from o in context.OdinGenres select o.Genre).ToList();
+                results.Add("");
+                results.Sort();
+                return results;
             }
         }
 
