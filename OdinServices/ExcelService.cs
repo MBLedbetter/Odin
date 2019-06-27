@@ -850,7 +850,7 @@ namespace OdinServices
         public string FormatAdditionalAttributes(ItemObject item, bool isChild)
         {
             string result = "gift_wrapping_available=No,product_image_size = Default,product_page_type = Full Width,sw_featured = No";
-
+            result += ",date_create=" + item.DateAdded;
             if (!string.IsNullOrEmpty(item.License) && GlobalData.ReturnShopTrendsLicenses().Contains(item.License.Trim()))
             {
                 result += ",license=" + item.License;

@@ -92,6 +92,11 @@ namespace Odin.DbTableModels
         public string CountryIstOrigin { get; set; }
 
         /// <summary>
+        ///     Gets or sets DATE_ADDED
+        /// </summary>
+        public string DateAdded { get; set; }
+
+        /// <summary>
         ///     Gets or sets DACCAD
         /// </summary>
         public decimal? DefaultActualCostCad { get; set; }

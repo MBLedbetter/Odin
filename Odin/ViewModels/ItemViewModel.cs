@@ -903,6 +903,22 @@ namespace Odin.ViewModels
         }
         private string _countryOfOriginToolTip = string.Empty;
 
+        public string DateAdded
+        {
+            get
+            {
+                return this.ItemViewModelItem.DateAdded.ToString();
+            }
+            set
+            {
+                if (this.ItemViewModelItem.DateAdded != value)
+                {
+                    this.ItemViewModelItem.DateAdded = value;
+                    OnPropertyChanged("DateAdded");
+                }
+            }
+        }
+
         public string DefaultActualCostUsd
         {
             get

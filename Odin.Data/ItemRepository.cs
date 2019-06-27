@@ -1655,6 +1655,7 @@ namespace Odin.Data
                         Copyright = (!string.IsNullOrEmpty(odinItem.Copyright)) ? odinItem.Copyright.Trim() : "",
                         CountryOfOrigin = (!string.IsNullOrEmpty(odinItem.CountryIstOrigin)) ? odinItem.CountryIstOrigin.Trim() : "",
                         CostProfileGroup = (!string.IsNullOrEmpty(odinItem.CmGroup)) ? odinItem.CmGroup.Trim() : "",
+                        DateAdded = (!string.IsNullOrEmpty(odinItem.DateAdded)) ? odinItem.DateAdded.Trim() : "",
                         DefaultActualCostCad = (odinItem.DefaultActualCostCad != null) ? DbUtil.ZeroTrim(odinItem.DefaultActualCostCad.ToString(), 2) : "",
                         DefaultActualCostUsd = (odinItem.DefaultActualCostUsd != null) ? DbUtil.ZeroTrim(odinItem.DefaultActualCostUsd.ToString(), 2) : "",
                         Description = (!string.IsNullOrEmpty(odinItem.Descr60)) ? odinItem.Descr60.Trim() : "",
@@ -3859,7 +3860,10 @@ namespace Odin.Data
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                return (from o in context.OdinWebLicense select o.License).Distinct().ToList();
+                List<string> result = (from o in context.OdinWebLicense select o.License).Distinct().ToList();
+                result.Add("");
+                result.Sort();
+                return result;
             }
         }
         

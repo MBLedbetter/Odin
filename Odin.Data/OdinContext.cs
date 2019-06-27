@@ -2119,9 +2119,10 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItem>().Property(p => p.CmGroup).HasColumnName("CM_GROUP");
             modelBuilder.Entity<OdinItem>().Property(p => p.Copyright).HasColumnName("COPYRIGHT");
             modelBuilder.Entity<OdinItem>().Property(p => p.CountryIstOrigin).HasColumnName("COUNTRY_IST_ORIGIN");
-            modelBuilder.Entity<OdinItem>().Property(p => p.Descr60).HasColumnName("DESCR60");
             modelBuilder.Entity<OdinItem>().Property(p => p.DefaultActualCostCad).HasColumnName("DACCAD");
             modelBuilder.Entity<OdinItem>().Property(p => p.DefaultActualCostUsd).HasColumnName("DACUSD");
+            modelBuilder.Entity<OdinItem>().Property(p => p.DateAdded).HasColumnName("DATE_ADDED");
+            modelBuilder.Entity<OdinItem>().Property(p => p.Descr60).HasColumnName("DESCR60");
             modelBuilder.Entity<OdinItem>().Property(p => p.DirectImport).HasColumnName("DIRECT_IMPORT");
             modelBuilder.Entity<OdinItem>().Property(p => p.DtcPrice).HasColumnName("DTC_PRICE");
             modelBuilder.Entity<OdinItem>().Property(p => p.Duty).HasColumnName("DUTY");

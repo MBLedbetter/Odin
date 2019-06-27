@@ -465,6 +465,24 @@ namespace OdinModels
         private string _countryOfOrigin = string.Empty;
 
         /// <summary>
+        ///     Gets or sets the DateAdded
+        /// </summary>
+        public string DateAdded
+        {
+            get
+            {
+                return _dateAdded;
+            }
+            set
+            {
+                _dateAdded = value;
+                OnPropertyChanged("DateAdded");
+
+            }
+        }
+        private string _dateAdded = string.Empty;
+
+        /// <summary>
         ///     Gets or sets the DefaultActualCostCad
         /// </summary>
         public string DefaultActualCostCad
