@@ -5,12 +5,41 @@ using OdinModels;
 using System.Collections.Generic;
 using Odin.Data;
 using Odin.Services.Tests.Helpers;
+using System;
 
 namespace OdinTests.Services
 {
     [TestClass]
     public class ExcelServiceTests
     {
+
+        /// <summary>
+        ///     Checks that the Modify Keywords function appends item id to the end of keyword search and removes the letters.
+        ///     (Implemented so posters could be searched on B2B by number)
+        /// </summary>
+        [TestMethod]
+        public void GenerateSortNumber_ReturnsCorrectNumber_ShouldSucceed()
+        {
+            #region Assemble
+            GlobalData.ClearValues();
+            OptionService optionService = new OptionService(new TestOptionRepository(), new TestRequestRepository());
+            ExcelService excelService = new ExcelService(true, new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository()), optionService, new TestTemplateRepository(), new TestRequestRepository());
+            DateTime dateTime = new DateTime(2019, 6, 27);
+            #endregion // Assemble
+
+            #region Act
+
+            string result = excelService.GenerateSortNumber(dateTime);
+
+            #endregion // Act
+
+            #region Assert
+
+            Assert.AreEqual("79809373", result);
+
+            #endregion // Assert
+        }
+
         [TestMethod]
         public void SortAmazonItemVariations_HasValues_ShouldMatch()
         {

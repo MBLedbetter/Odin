@@ -907,15 +907,7 @@ namespace Odin.ViewModels
         {
             get
             {
-                return this.ItemViewModelItem.DateAdded.ToString();
-            }
-            set
-            {
-                if (this.ItemViewModelItem.DateAdded != value)
-                {
-                    this.ItemViewModelItem.DateAdded = value;
-                    OnPropertyChanged("DateAdded");
-                }
+                return this.ItemViewModelItem.DateAdded.ToString("MM/dd/yyy");
             }
         }
 
@@ -9263,6 +9255,7 @@ namespace Odin.ViewModels
 
                 case "BillOfMaterials":
                     this.BillOfMaterialsError = ItemService.ValidateBillOfMaterials(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.ProductIdTranslationError = ItemService.ValidateProductIdTranslation(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "CasepackHeight":
@@ -9668,6 +9661,7 @@ namespace Odin.ViewModels
                     break;
 
                 case "ProductIdTranslation":
+                    this.BillOfMaterialsError = ItemService.ValidateBillOfMaterials(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     this.ProductIdTranslationError = ItemService.ValidateProductIdTranslation(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 

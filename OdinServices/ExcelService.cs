@@ -316,6 +316,18 @@ namespace OdinServices
         #region Modifier Methods
 
         /// <summary>
+        ///     Generates a sort number. The created date (yyyymmdd) - 100000000
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
+        public string GenerateSortNumber(DateTime dateTime)
+        {
+            string i = dateTime.ToString("yyyyMMdd");
+            int x = 100000000 - Convert.ToInt32(i);
+            return x.ToString();
+        }
+
+        /// <summary>
         ///     Converts the existing image path to reflect the location of additional images
         /// </summary>
         /// <param name="value"></param>
@@ -850,19 +862,19 @@ namespace OdinServices
         public string FormatAdditionalAttributes(ItemObject item, bool isChild)
         {
             string result = "gift_wrapping_available=No,product_image_size = Default,product_page_type = Full Width,sw_featured = No";
-            result += ",date_create=" + item.DateAdded;
+            result += ",date_created=" + item.DateAdded.ToString("MM/dd/yyyy");
+            result += ",sort_number=" + GenerateSortNumber(item.DateAdded);
             if (!string.IsNullOrEmpty(item.License) && GlobalData.ReturnShopTrendsLicenses().Contains(item.License.Trim()))
             {
                 result += ",license=" + item.License;
             }
-
             /*
             if(!string.IsNullOrEmpty(item.Property))
             {
                 result += ",property=" + item.Property;
             }
             */
-            if(isChild)
+            if (isChild)
             {
                 result += ",poster_options=" + ReturnPosterOption(item.ItemId);
                 result += ",upc=" + item.Upc;
@@ -2641,6 +2653,14 @@ namespace OdinServices
                 else if (item.ItemId.Contains("BLK"))
                 {
                     return "Black Framed Version";
+                }
+                else if (item.ItemId.Contains("WHT"))
+                {
+                    return "White Framed Version";
+                }
+                else if (item.ItemId.Contains("MAH"))
+                {
+                    return "Mahogany Framed Version";
                 }
                 else
                 {

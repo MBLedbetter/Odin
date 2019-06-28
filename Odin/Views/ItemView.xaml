@@ -855,7 +855,7 @@
                         VerticalScrollBarVisibility="Auto"
                         MaxHeight="26"
                         Grid.Column="1"
-                        Text="{Binding DateAdded}"
+                        Text="{Binding Path=DateAdded, Mode=OneWay}"
                         VerticalContentAlignment="Center"
                         Width="170" />
                     <!-- Direct Import -->

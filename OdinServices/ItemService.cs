@@ -3065,10 +3065,21 @@ namespace OdinServices
         {
             List<string> BomIdList = new List<string>();
             bool existingValue = false;
-
+            
             if (var.BillOfMaterials.Count() == 0)
             {
                 return null;
+            }
+            else
+            {
+                if (var.ProductIdTranslation.Count()>0)
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Field must be left empty if Product Id Translation has a value.",
+                        "Bill of Materials");
+                }
             }
             if(GlobalData.BillofMaterials.Where(p => p.ParentId == var.ItemId).Count()>0)
             {
@@ -5752,6 +5763,14 @@ namespace OdinServices
             }
             else
             {
+                if(var.BillOfMaterials.Count>0)
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Field must be empty if Bill of Materials has a value.",
+                        "Product Id Translations");
+                }
                 foreach (ChildElement productIdTranslation in var.ProductIdTranslation)
                 {
                     if (!string.IsNullOrEmpty(productIdTranslation.ItemId))
@@ -6432,6 +6451,11 @@ namespace OdinServices
             }
             else
             {
+                if(var.Upc == "000000000000")
+                {
+                    // Exception for items that do not get scanned (for comic-con / other events)
+                    return null;
+                }
                 if (!DbUtil.IsNumber(var.Upc))
                 {
                     return new ItemError(

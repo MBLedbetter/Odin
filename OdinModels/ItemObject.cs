@@ -467,20 +467,11 @@ namespace OdinModels
         /// <summary>
         ///     Gets or sets the DateAdded
         /// </summary>
-        public string DateAdded
+        public DateTime DateAdded
         {
-            get
-            {
-                return _dateAdded;
-            }
-            set
-            {
-                _dateAdded = value;
-                OnPropertyChanged("DateAdded");
-
-            }
+            get;
+            set;
         }
-        private string _dateAdded = string.Empty;
 
         /// <summary>
         ///     Gets or sets the DefaultActualCostCad

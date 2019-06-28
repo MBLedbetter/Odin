@@ -94,7 +94,7 @@ namespace Odin.DbTableModels
         /// <summary>
         ///     Gets or sets DATE_ADDED
         /// </summary>
-        public string DateAdded { get; set; }
+        public DateTime DateAdded { get; set; }
 
         /// <summary>
         ///     Gets or sets DACCAD
