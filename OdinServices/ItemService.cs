@@ -6451,11 +6451,13 @@ namespace OdinServices
             }
             else
             {
+                
                 if(var.Upc == "000000000000")
                 {
                     // Exception for items that do not get scanned (for comic-con / other events)
                     return null;
                 }
+                
                 if (!DbUtil.IsNumber(var.Upc))
                 {
                     return new ItemError(
