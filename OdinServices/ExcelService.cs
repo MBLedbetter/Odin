@@ -970,17 +970,26 @@ namespace OdinServices
         public string FormatMagento2Title(string oldTitle)
         {
             string newTitle = oldTitle.Trim();
-            if(newTitle.Substring(0,6).ToUpper()=="24X36 ")
+            if (newTitle.Length > 6)
             {
-                newTitle = newTitle.Remove(0, 6);
+                if (newTitle.Substring(0, 6).ToUpper() == "24X36 ")
+                {
+                    newTitle = newTitle.Remove(0, 6);
+                }
             }
-            if (newTitle.Substring(newTitle.Length - 12, 12).ToUpper() == " - ONE SHEET")
+            if (newTitle.Length > 12)
             {
-                newTitle = newTitle.Remove(newTitle.Length - 12);
+                if (newTitle.Substring(newTitle.Length - 12, 12).ToUpper() == " - ONE SHEET")
+                {
+                    newTitle = newTitle.Remove(newTitle.Length - 12);
+                }
             }
-            if (newTitle.Substring(newTitle.Length - 10, 10).ToUpper() == " ONE SHEET")
+            if (newTitle.Length > 10)
             {
-                newTitle = newTitle.Remove(newTitle.Length - 10);
+                if (newTitle.Substring(newTitle.Length - 10, 10).ToUpper() == " ONE SHEET")
+                {
+                    newTitle = newTitle.Remove(newTitle.Length - 10);
+                }
             }
             return newTitle;
         }
@@ -2640,7 +2649,7 @@ namespace OdinServices
                 }
                 if (item.ProductFormat == "Clip Bundle")
                 {
-                    return "'Poster & Clip Bundle";
+                    return "Poster & Clip Bundle";
                 }
             }
 

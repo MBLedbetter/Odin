@@ -3067,6 +3067,39 @@ namespace Odin.Services.Tests
         }
 
         /// <summary>
+        ///     This method tests the ValidateDtcPrice method with a valid string. Checks that a value of
+        ///     zero will return an error
+        /// </summary>
+        [TestMethod]
+        public void ValidateDtcPrice_ValueIsZero_ShouldFail()
+        {
+            #region Setup
+
+            ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+
+            GlobalData.ClearValues();
+            ItemObject item1 = new ItemObject(1) { DtcPrice = "0.00" };
+            ItemObject item2 = new ItemObject(1) { DtcPrice = "0" };
+
+
+            #endregion //Setup
+
+            #region Act
+
+            ItemError result = itemValidator.ValidateDtcPrice(item1);
+            ItemError result2 = itemValidator.ValidateDtcPrice(item2);
+
+            #endregion //Act
+
+            #region Assert
+
+            Assert.IsNotNull(result);
+            Assert.IsNotNull(result2);
+
+            #endregion //Assert
+        }
+
+        /// <summary>
         ///     This method tests the upc validation against items trying to use an existing upc value.
         /// </summary>
         [TestMethod]

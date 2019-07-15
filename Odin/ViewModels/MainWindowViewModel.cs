@@ -3903,14 +3903,16 @@ namespace Odin.ViewModels
                         string itemWebChecklist = string.Empty;
                         foreach (ItemObject item in this.Items)
                         {
-                            if ((item.SellOnTrends != "Y")&& (item.SellOnTrs != "Y"))
+                            if ((item.SellOnTrends != "Y") && (item.SellOnTrs != "Y"))
                             {
-                                if (itemWebChecklist != string.Empty) { itemWebChecklist += ", "; }
+                                if (itemWebChecklist != string.Empty) {
+                                    itemWebChecklist += ", ";
+                                }
                                 itemWebChecklist += item.ItemId + ", ";
                             }
                         }
                         if (itemWebChecklist == string.Empty)
-                        {
+                        {                            
                             bool isNew = string.IsNullOrEmpty(Items[0].NewDate) ? true : false;
                             if (isNew)
                             {
@@ -3952,7 +3954,7 @@ namespace Odin.ViewModels
                                 Items = new ObservableCollection<ItemObject>();
                                 this.SubmitStatus = false;
                                 Mouse.OverrideCursor = null;
-                            }
+                            }                            
                         }
                         else
                         {

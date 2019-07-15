@@ -1219,7 +1219,7 @@ namespace OdinServices
                     ListPriceCad = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ListPriceCad, WorksheetColumnHeaders.ListPriceCadCAD), 2),
                     ListPriceUsd = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ListPriceUsd, WorksheetColumnHeaders.ListPriceUsdUSD), 2),
                     ListPriceMxn = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ListPriceMxn, WorksheetColumnHeaders.ListPriceMxnMXN), 2),
-                    MetaDescription = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.MetaDescription),
+                    MetaDescription = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.MetaDescription).Trim(),
                     MfgSource = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.MfgSource).Trim(),
                     Msrp = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Msrp).Trim(),
                     MsrpCad = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.MsrpCad).Trim(),
@@ -2730,6 +2730,9 @@ namespace OdinServices
             // List Price Usd //
             validationError =ValidateListPrice(var, "USD");
             if (validationError != null) { ErrorList.Add(validationError); }
+            // Meta Description //
+            validationError = ValidateMetaDescription(var);
+            if (validationError != null) { ErrorList.Add(validationError); }
             // Mfg Source //
             validationError =ValidateMfgSource(var);
             if (validationError != null) { ErrorList.Add(validationError); }
@@ -3600,6 +3603,20 @@ namespace OdinServices
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NonNumeric,
                         "Dtc Price");
+                }
+                else
+                {
+                    if (var.SellOnTrs == "Y")
+                    {
+                        if (Convert.ToDouble(var.DtcPrice) < 0.01)
+                        {
+                            return new ItemError(
+                                var.ItemId,
+                                var.ItemRow,
+                                "Value must be more that 0.00",
+                                "Dtc Price");
+                        }
+                    }
                 }
             }
             else

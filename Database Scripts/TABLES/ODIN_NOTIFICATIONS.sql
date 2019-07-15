@@ -19,6 +19,9 @@ INSERT INTO ODIN_NOTIFICATIONS VALUES (14, '2019-03-25 00:00:00.000', 'Ecommerce
 INSERT INTO ODIN_NOTIFICATIONS VALUES (15, '2019-04-02 00:00:00.000', 'New header menu added. All exiting buttons can be found here as well. Just laying down the framework for future Odin additions.')
 INSERT INTO ODIN_NOTIFICATIONS VALUES (16, '2019-04-30 00:00:00.000', 'New fields added (Dtc Price, Sell on Houzz, Sell on Shop Trends). Dtc Price and Sell on Shop Trends are for the new direct to customer site that is still being built.')
 INSERT INTO ODIN_NOTIFICATIONS VALUES (17, '2019-04-30 00:00:00.000', 'New search functionality added. Ability to search for items by fields and can now filter out items that have been canceled.')
+INSERT INTO ODIN_NOTIFICATIONS VALUES (19, '2019-07-01 00:00:00.000', 'Validation added. Items cannot contain both Bill of Materials and Product Id Translations.')
+INSERT INTO ODIN_NOTIFICATIONS VALUES (20, '2019-07-08 00:00:00.000', 'Validation update. DTC Price can no longer be set to 0.00.')
+
 */
 SET ANSI_NULLS ON
 GO

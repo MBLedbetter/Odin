@@ -4192,14 +4192,21 @@ namespace OdinModels
                     string[] values = value.Split('\\');
                     if (values.Length > 1)
                     {
-                        returnValue = "http://trendsinternational.com/media/catalog/product/";
                         int last = values.Length;
                         value = values[last - 1];
-                        string a = (!string.IsNullOrEmpty(value.Substring(0, 1))) ? value.Substring(0, 1) + "/" : "";
-                        string b = (!string.IsNullOrEmpty(value.Substring(1, 1))) ? value.Substring(1, 1) + "/" : "";
-                        values = value.Split('.');
-                        value = value.Replace("." + values[values.Length - 1], "");
-                        returnValue += a + b + value.TrimEnd('.') + ".jpg";
+                        if (value.Length > 2)
+                        {
+                            returnValue = "http://trendsinternational.com/media/catalog/product/";
+                            string a = (!string.IsNullOrEmpty(value.Substring(0, 1))) ? value.Substring(0, 1) + "/" : "";
+                            string b = (!string.IsNullOrEmpty(value.Substring(1, 1))) ? value.Substring(1, 1) + "/" : "";
+                            values = value.Split('.');
+                            value = value.Replace("." + values[values.Length - 1], "");
+                            returnValue += a + b + value.TrimEnd('.') + ".jpg";
+                        }
+                        else
+                        {
+                            return "";
+                        }
                     }
                     else
                     {

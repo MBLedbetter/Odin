@@ -8598,7 +8598,7 @@ namespace Odin.ViewModels
                     this.DirectImportError = error.ReturnErrorMessage();
                     break;
 
-                case "DtcPrice":
+                case "Dtc Price":
                     this.DtcPriceError = error.ReturnErrorMessage();
                     break;
 
@@ -9171,6 +9171,7 @@ namespace Odin.ViewModels
             if (this.CategoryBoxColor == "Tomato") { return "Tomato"; }
             if (this.Category2BoxColor == "Tomato") { return "Tomato"; }
             if (this.Category3BoxColor == "Tomato") { return "Tomato"; }
+            if (this.DtcPriceBoxColor == "Tomato") { return "Tomato"; }
             if (this.ItemKeywordsBoxColor == "Tomato") { return "Tomato"; }
             if (this.Genre1BoxColor == "Tomato") { return "Tomato"; }
             if (this.Genre2BoxColor == "Tomato") { return "Tomato"; }
