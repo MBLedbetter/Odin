@@ -5652,7 +5652,7 @@ namespace OdinServices
                         "Meta Description");
                 }
             }
-            if (var.HasWeb && string.IsNullOrEmpty(var.MetaDescription))
+            if (var.SellOnTrends=="Y" && string.IsNullOrEmpty(var.MetaDescription))
             {
                 return new ItemError(
                     var.ItemId,

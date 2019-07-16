@@ -3078,8 +3078,8 @@ namespace Odin.Services.Tests
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
             GlobalData.ClearValues();
-            ItemObject item1 = new ItemObject(1) { DtcPrice = "0.00" };
-            ItemObject item2 = new ItemObject(1) { DtcPrice = "0" };
+            ItemObject item1 = new ItemObject(1) { DtcPrice = "0.00", SellOnTrs="Y" };
+            ItemObject item2 = new ItemObject(1) { DtcPrice = "0", SellOnTrs = "Y" };
 
 
             #endregion //Setup
