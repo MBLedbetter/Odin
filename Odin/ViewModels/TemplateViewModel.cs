@@ -6348,7 +6348,7 @@ namespace Odin.ViewModels
                     break;
 
                 case "TemplateId":
-                    this.TemplateIdError = ItemService.ValidateTemplateId(TemplateObject)?.ReturnErrorMessage() ?? "";
+                    this.TemplateIdError = ItemService.ValidateTemplateId(TemplateObject,true)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "Udex":

@@ -561,6 +561,22 @@ namespace OdinModels
         private static List<string> _requestStatus = new List<string>();
 
         /// <summary>
+        ///     Gets or sets ShoptrendsBrands
+        /// </summary>
+        public static List<string> ShoptrendsBrands
+        {
+            get
+            {
+                return _shoptrendsBrands;
+            }
+            set
+            {
+                _shoptrendsBrands = value;
+            }
+        }
+        private static List<string> _shoptrendsBrands = new List<string>();
+
+        /// <summary>
         ///     List of characters not allow in the peoplesoft database
         /// </summary>
         public static List<string> SpecialCharacters
@@ -841,41 +857,6 @@ namespace OdinModels
                 results.Add(x.Key);
             }
             results.Sort();
-            return results;
-        }
-
-        /// <summary>
-        ///     Returns a List of licenses set up on ShopTrends
-        /// </summary>
-        /// <returns></returns>
-        public static List<string> ReturnShopTrendsLicenses()
-        {
-            List<string> results = new List<string>
-            {
-                "Activision",
-                "DC Comics",
-                "Disney",
-                "DreamWorks",
-                "Fender",
-                "Harry Potter",
-                "Hello Kitty",
-                "Marvel",
-                "MLB",
-                "NBA",
-                "Netflix",
-                "NFL",
-                "NHL",
-                "Nickelodeon",
-                "Pokémon",
-                "Rolling Stone",
-                "Sanrio",
-                "Sports Illustrated",
-                "Star Wars",
-                "WWE"
-            };
-
-
-
             return results;
         }
 

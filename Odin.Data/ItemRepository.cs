@@ -1570,6 +1570,7 @@ namespace Odin.Data
             GlobalData.PricingGroups = RetrievePriceGroupList();
             GlobalData.PsStatuses = RetrievePsStatuses();
             GlobalData.RequestStatus = RetrieveRequestStatuses();
+            GlobalData.ShoptrendsBrands = RetrieveShopTrendsBrands();
             GlobalData.SpecialCharacters = RetrieveSpecialCharacters();
             GlobalData.StatsCodes = RetrieveStatsCodes();
             GlobalData.TariffCodes = RetrieveTariffCodeList();
@@ -4034,6 +4035,19 @@ namespace Odin.Data
         {
             List<string> results = new List<string>(new string[] {"Pending","Completed","Canceled","Incomplete"});
             return results;
+        }
+
+        /// <summary>
+        ///     Retrieves a list of brands from ODIN_SHOPTRENDS_BRANDS
+        /// </summary>
+        /// <returns>list of brands</returns>
+        private List<string> RetrieveShopTrendsBrands()
+        {
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                List<string> results = (from o in context.OdinShoptrendsBrands select o.Brand).ToList();
+                return results;
+            }
         }
 
         /// <summary>

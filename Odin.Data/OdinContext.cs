@@ -286,12 +286,17 @@ namespace Odin.Data
         public DbSet<OdinRolePermissions> OdinRolePermissions { get; set; }
 
         /// <summary>
-        ///     Gets or sets a list of the xxx lines that are in this context.
+        ///     Gets or sets a list of the OdinShoptrendsBrands lines that are in this context.
+        /// </summary>
+        public DbSet<OdinShoptrendsBrands> OdinShoptrendsBrands { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a list of the OdinSpecialChars lines that are in this context.
         /// </summary>
         public DbSet<OdinSpecialChars> OdinSpecialChars { get; set; }
 
         /// <summary>
-        ///     Gets or sets a list of the xxx lines that are in this context.
+        ///     Gets or sets a list of the OdinTerritories lines that are in this context.
         /// </summary>
         public DbSet<OdinTerritories> OdinTerritories { get; set; }
 
@@ -530,6 +535,7 @@ namespace Odin.Data
             MapOdinOptionsTable(modelBuilder);
             MapOdinRequestComments(modelBuilder);
             MapOdinRolePermissions(modelBuilder);
+            MapOdinShoptrendsBrands(modelBuilder);
             MapOdinSpecialChars(modelBuilder);
             MapOdinTerritories(modelBuilder);
             MapOdinToolTips(modelBuilder);
@@ -2771,6 +2777,27 @@ namespace Odin.Data
             modelBuilder.Entity<OdinRolePermissions>().Property(p => p.Role).HasColumnName("ROLE");
         }
 
+        /// <summary>
+        ///             This method maps the OdinShoptrendsBrands class to the database.
+        /// </summary>
+        /// 
+        /// <param name="DbModelBuilder modelBuilder">
+        ///             The DbDbModelBuilder modelBuilder to update with the mapping.
+        /// </param>
+        private void MapOdinShoptrendsBrands(DbModelBuilder modelBuilder)
+        {
+            // Map the OdinShoptrendsBrands class to the ODIN_SHOPTRENDS_BRANDS table
+            modelBuilder.Entity<OdinShoptrendsBrands>()
+                .HasKey(p => new
+                {
+                    p.Brand
+                })
+                .ToTable("ODIN_SHOPTRENDS_BRANDS");
+
+            // Map each column
+            modelBuilder.Entity<OdinShoptrendsBrands>().Property(p => p.Brand).HasColumnName("BRAND");
+
+        }
         /// <summary>
         ///             This method maps the OdinSpecialChars class to the database.
         /// </summary>

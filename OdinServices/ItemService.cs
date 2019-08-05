@@ -2470,9 +2470,9 @@ namespace OdinServices
             ObservableCollection<ItemError> ErrorList = new ObservableCollection<ItemError>();
             if (isSubmit)
             {
-                if (var.SellOnTrends != "Y")
+                if (var.SellOnTrends != "Y" && var.SellOnTrs != "Y")
                 {
-                    ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, "Sell On Trends must be set to Y before item can be submitted to the web.", "Sell On Trends"));
+                    ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, " or Sell on Shop Trends must be set to Y before item can be submitted to the web.", "Sell On Trends"));
                     return ErrorList;
                 }
             }
@@ -2867,7 +2867,7 @@ namespace OdinServices
             List<ItemError> ErrorMessages = new List<ItemError>();
             ItemError validationError = null;
 
-            validationError = ValidateTemplateId(var);
+            validationError = ValidateTemplateId(var,true);
             if (validationError != null) { ErrorMessages.Add(validationError); }
             validationError = ValidateAccountingGroup(var);
             if (validationError != null) { ErrorMessages.Add(validationError); }
@@ -4659,7 +4659,7 @@ namespace OdinServices
             }
             else
             {
-                if(var.SellOnTrs == "Y" && type ==1)
+                if(var.SellOnTrs == "Y" && type == 1)
                 {
                     return new ItemError(
                         var.ItemId,
@@ -4832,20 +4832,12 @@ namespace OdinServices
                 default:
                     throw new ArgumentNullException("ValidateImagePath unknown imageNumber " + imageNumber);
             }
-            if (var.SellOnTrends=="Y" || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
                 string fileType = "";
                 if (value.Length > 4)
                 {
                     fileType = value.Substring(value.Length - 4).ToUpper();
-                }
-                if (string.IsNullOrEmpty(value) && var.SellOnTrends == "Y" && required)
-                {
-                    return new ItemError(
-                        var.ItemId,
-                        var.ItemRow,
-                        OdinServices.Properties.Resources.Error_RequiredWeb,
-                        "Image Path " + imageNumber);
                 }
                 if (!string.IsNullOrEmpty(value))
                 {
@@ -4897,6 +4889,17 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             OdinServices.Properties.Resources.Error_LengthMax + "254 characters.",
+                            "Image Path " + imageNumber);
+                    }
+                }
+                else
+                {
+                    if((var.SellOnTrends == "Y" || var.SellOnTrs == "Y") && required)
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            OdinServices.Properties.Resources.Error_RequiredWeb,
                             "Image Path " + imageNumber);
                     }
                 }
@@ -6135,7 +6138,7 @@ namespace OdinServices
                     return new ItemError(
                         var.ItemId,
                         var.ItemRow,
-                        "Item's being sold on TRS cannot contain a '-' in the itemId.",
+                        "Item's being sold on Shop Trends cannot contain a '-' in the itemId.",
                         "Sell On " + type);
                 }
             }
@@ -6283,11 +6286,12 @@ namespace OdinServices
         }
 
         /// <summary>
-        ///     Validate the template Id
+        ///     
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="var">item object</param>
+        /// <param name="isTemplate">Is this an item field</param>
         /// <returns></returns>
-        public ItemError ValidateTemplateId(ItemObject var)
+        public ItemError ValidateTemplateId(ItemObject var, bool isTemplate)
         {
             if (string.IsNullOrEmpty(var.TemplateId))
             {
@@ -6297,23 +6301,37 @@ namespace OdinServices
                     "Value is empty. Please select a name before saving.",
                     "Template Id");
             }
-            if (var.TemplateId.Length > 255)
+            else
             {
-                return new ItemError(
-                    var.ItemId,
-                    var.ItemRow,
-                    OdinServices.Properties.Resources.Error_LengthMax + "255 characters.",
-                    "Template Id");
-            }
-            if (var.Status != "Update")
-            {
-                if (GlobalData.TemplateNames.Contains(var.TemplateId))
+                if (var.TemplateId.Length > 255)
                 {
                     return new ItemError(
                         var.ItemId,
                         var.ItemRow,
-                        var.TemplateId + " already exists. Please select a different name.",
+                        OdinServices.Properties.Resources.Error_LengthMax + "255 characters.",
                         "Template Id");
+                }
+                if (var.Status != "Update")
+                {
+                    if (GlobalData.TemplateNames.Contains(var.TemplateId))
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            var.TemplateId + " already exists. Please select a different name.",
+                            "Template Id");
+                    }
+                }
+                if (!isTemplate)
+                {
+                    if (!GlobalData.TemplateNames.Contains(var.TemplateId))
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            "Value does not match any existing Template Ids.",
+                            "Template Id");
+                    }
                 }
             }
             return null;

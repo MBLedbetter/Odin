@@ -452,50 +452,7 @@ namespace OdinServices
             }
             return result;
         }
-
-        public string SetCustomOptions(ItemObject item)
-        {
-            string result = string.Empty;
-
-            foreach (string itemId in item.RelatedProducts)
-            {
-                if (itemId.Contains("SIL22X34") || itemId.Contains("BLK22X34") || itemId.Contains("POD"))
-                {
-                    result += "name = Frame,";
-                    result += "type = drop_down,";
-                    result += "required = 0,";
-                    result += "price_type =fixed,";
-                    result += "file_extension =,";
-                    result += "image_size_x = 0,";
-                    result += "image_size_y = 0,";
-                    if (itemId.Contains("SIL22X34"))
-                    {
-                        result += "price = 40.0000,";
-                        result += "sku = SIL22X34,";
-                        result += "option_title = Silver Frame";
-                    }
-                    else if (itemId.Contains("BLK22X34"))
-                    {
-                        result += "price = 40.0000,";
-                        result += "sku = BLK22X34,";
-                        result += "option_title = Black Frame";
-                    }
-                    else if (itemId.Contains("POD"))
-                    {
-                        result += "price = 10.0000,";
-                        result += "sku = PREMIUM,";
-                        result += "option_title = Premium Print";
-                    }
-                    result += "|";
-                }
-            }
-            if (!string.IsNullOrEmpty(result))
-            {
-                result = result.Remove(result.Length - 1);
-            }
-            return result;
-        }
-
+        
         /// <summary>
         ///     If the file exists on externalCaptures return filepath otherwise returns ""
         /// </summary>
@@ -864,16 +821,14 @@ namespace OdinServices
             string result = "gift_wrapping_available=No,product_image_size = Default,product_page_type = Full Width,sw_featured = No";
             result += ",date_created=" + item.DateAdded.ToString("MM/dd/yyyy");
             result += ",sort_number=" + GenerateSortNumber(item.DateAdded);
-            if (!string.IsNullOrEmpty(item.License) && GlobalData.ReturnShopTrendsLicenses().Contains(item.License.Trim()))
+            if(GlobalData.ShoptrendsBrands.Contains(item.Property))
+            {
+                result += ",license=" + item.Property;
+            }
+            else if (GlobalData.ShoptrendsBrands.Contains(item.License))
             {
                 result += ",license=" + item.License;
             }
-            /*
-            if(!string.IsNullOrEmpty(item.Property))
-            {
-                result += ",property=" + item.Property;
-            }
-            */
             if (isChild)
             {
                 result += ",poster_options=" + ReturnPosterOption(item.ItemId);
@@ -908,14 +863,14 @@ namespace OdinServices
         {
             string result = "Default Category,Default Category/Shop All";
 
-            if (GlobalData.ReturnShopTrendsLicenses().Contains(item.License))
+            if (GlobalData.ShoptrendsBrands.Contains(item.License))
             {
                 if (item.License == "Hello Kitty")
                 {
                     item.License = "Sanrio";
                 }
                 result += ",Default Category/Shop by Brand/" + item.License;
-                
+                /*
                 if (!string.IsNullOrEmpty(item.Property))
                 {
                     if (item.Property != item.License)
@@ -923,7 +878,7 @@ namespace OdinServices
                         result += ",Default Category/Shop by Brand/" + item.License + "/" + item.Property;
                     }
                 }
-
+                */
                 if (item.License == "NFL"|| item.License == "MLB" || item.License == "NBA" || item.License == "NHL")
                 {
                     result += ",Default Category/Shop by Genre/Sports";
@@ -993,7 +948,7 @@ namespace OdinServices
             }
             return newTitle;
         }
-
+        /*
         /// <summary>
         ///     Formats the keywords using ecom name, license, property and keyword overrides
         /// </summary>
@@ -1004,6 +959,7 @@ namespace OdinServices
             string result = string.Empty;
 
             result += ItemService.RetrieveItemIdCore(item.ItemId) + ",";
+
 
             if (!string.IsNullOrEmpty(item.EcommerceItemName))
             {
@@ -1048,6 +1004,7 @@ namespace OdinServices
 
             return result.TrimEnd(',');
         }
+        */
 
         /// <summary>
         ///     Lowercases and replaces spaces with underscoress
@@ -2536,17 +2493,18 @@ namespace OdinServices
         public string ReturnMagento2PosterShortDescription(ItemObject item)
         {
             string result = string.Empty;
-            result += "<p>Our posters are officially licensed and printed on FSC certified paper.</p>";
-            result += "<p> Poster Options(when available):</p> ";
-            result += "<ul> ";
-            result += "<li> Unframed Poster(22.375” x 34”) </li> ";
-            result += "<li> Unframed Premium Poster(22.375” x 34”) – Poster is printed on premium 210 GSM photo art gloss paper.</ li > ";
-            result += "<li> Framed Poster(24.25” x 35.75” x 1”) – Poster is adhered to a sturdy 3 / 16” lightweight backer board to keep poster flat and smooth. The mounted poster is framed and ready to hang. Metal sawtooth hangers included.</li> ";
+            string size = item.EcommerceSize.Replace("\"","''");
+            result += "<p>Trends Posters feature superior product quality, exclusive licenses and cutting-edge designs.</p>";
+            result += "<p>Poster options (when available):</p> ";
+            result += "<ul>";
+            result += "<li>Standard Unframed Poster (" + size + ") — Poster is printed on standard 80 lb paper.</li> ";
+            result += "<li>Premium Unframed Poster (" + size + ") — Poster is printed on premium 210 GSM photo art gloss paper.</li>";
+            result += "<li>Framed Poster (" + size + ") — Poster is adhered to a sturdy 3 / 16'' lightweight backer board to keep it flat and smooth. The mounted poster is framed and ready to hang. Metal sawtooth hangers included. Multiple frame color options.</li> ";
             result += "</ul> ";
             if(!string.IsNullOrEmpty(item.Copyright))
             {
                 result += "<p><em>";
-                result += item.Copyright;
+                result += Regex.Replace(item.Copyright, @"\r\n?|\n", " ");
                 result += "</em></p>";
             }
             return result;
@@ -2592,11 +2550,11 @@ namespace OdinServices
         /// <returns></returns>
         public string ReturnPosterOption(string itemId)
         {
-            if(itemId.Contains("BLK22X34"))
+            if(itemId.Contains("BLK22X34") || itemId.Contains("BLK24X36"))
             {
                 return "BLACKFRAME";
             }
-            else if (itemId.Contains("SIL22X34"))
+            else if (itemId.Contains("SIL22X34")|| itemId.Contains("SIL24X36"))
             {
                 return "SILVERFRAME";
             }
@@ -3112,7 +3070,7 @@ namespace OdinServices
             result += ","; /* Q */
             result += "\"" + FormatMagento2Url(title,item.ItemId) + "\","; /* R */
             result += "\"" + title + "\","; /* S */
-            result += "\"" + FormatMagento2Keywords(item) + "\","; /* T */
+            result += "\"" + item.ItemKeywords + "\","; /* T */
             result += "\"" + title + "\","; /* U */
             result += "\"" + ItemService.ReturnImageName(item.ItemId, 1) + "\","; /* V */
             result += ","; /* W */
@@ -3234,7 +3192,7 @@ namespace OdinServices
             result += ","; /* Q */
             result += "\"" + FormatMagento2Url(title, itemId) + "\","; /* R */
             result += "\"" + title + "\","; /* S */
-            result += "\"" + FormatMagento2Keywords(item) + "\","; /* T */
+            result += "\"" + item.ItemKeywords + "\","; /* T */
             result += "\"" + title + "\","; /* U */
             result += "\"" + ItemService.ReturnImageName(itemId, 1) + "\","; /* V */
             result += ","; /* W */
