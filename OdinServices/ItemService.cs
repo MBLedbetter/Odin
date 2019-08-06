@@ -15,7 +15,6 @@ namespace OdinServices
 {
     public class ItemService
     {
-
         #region Enumerations
 
         /// <summary>
@@ -2142,13 +2141,15 @@ namespace OdinServices
         }
 
         /// <summary>
-        ///     Return all update records for the given itemId
+        ///     Return all update records in order for the given itemId 
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
         public List<ItemObject> RetrieveItemUpdateRecords(string itemId)
         {
-            return ItemRepository.RetrieveItemUpdateRecords(itemId);
+            List<ItemObject> result = ItemRepository.RetrieveItemUpdateRecords(itemId);
+            result.OrderBy(o => o.RecordDate).ToList();
+            return result;
         }
 
         /// <summary>

@@ -2042,7 +2042,7 @@ namespace Odin.Data
                     item.EcommerceComponents = odinItemUpdateRecord.AComponents;
 
                     item.UserName = odinItemUpdateRecord.Username;
-                    item.RecordDate = Convert.ToString(odinItemUpdateRecord.InputDate);
+                    item.RecordDate = odinItemUpdateRecord.InputDate;
                     item.Status = odinItemUpdateRecord.ItemInputStatus;
                     items.Add(item);
                 }

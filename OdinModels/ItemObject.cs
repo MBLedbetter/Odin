@@ -2878,7 +2878,7 @@ namespace OdinModels
         /// <summary>
         ///     Gets or sets the RecordDate. Used for update records view.
         /// </summary>
-        public string RecordDate
+        public DateTime RecordDate
         {
             get
             {
@@ -2891,7 +2891,7 @@ namespace OdinModels
 
             }
         }
-        private string _recordDate = string.Empty;
+        private DateTime _recordDate;
 
         /// <summary>
         ///     List of related products

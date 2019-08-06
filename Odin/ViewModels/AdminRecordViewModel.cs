@@ -29,6 +29,19 @@ namespace Odin.ViewModels
         }
         private RelayCommand _findItemCommand;
 
+        public ICommand SortRecordDateCommand
+        {
+            get
+            {
+                if (_sortRecordDate == null)
+                {
+                    _sortRecordDate = new RelayCommand(param => SortRecordDates());
+                }
+                return _sortRecordDate;
+            }
+        }
+        private RelayCommand _sortRecordDate;
+
         #endregion // Commands
 
         #region Properties
@@ -73,6 +86,11 @@ namespace Odin.ViewModels
         /// </summary>
         public ItemService ItemService { get; set; }
 
+        /// <summary>
+        ///     Flags current Record Date sort order
+        /// </summary>
+        private int RecordDateOrder { get; set; }
+
         #endregion // Properties
 
         #region Methods
@@ -99,6 +117,25 @@ namespace Odin.ViewModels
             }
         }
 
+        /// <summary>
+        ///     Toggles the sorting of the record dates
+        /// </summary>
+        public void SortRecordDates()
+        {
+            List<ItemObject> SortedList = new List<ItemObject>();
+            if (RecordDateOrder == 0)
+            {
+                SortedList = this.ItemList.OrderByDescending(o => o.RecordDate).ToList();
+                RecordDateOrder = 1;
+            }
+            else
+            {
+                SortedList = ItemList.OrderBy(o => o.RecordDate).ToList();
+                RecordDateOrder = 0;
+            }
+            this.ItemList = SortedList;
+        }
+
         #endregion // Methods
 
         #region Constructor
@@ -109,8 +146,8 @@ namespace Odin.ViewModels
         /// <param name="itemService"></param>
         public AdminRecordViewModel(ItemService itemService)
         {
-            if (itemService == null) { throw new ArgumentNullException("ItemService"); }
-            this.ItemService = itemService;
+            this.ItemService = itemService ?? throw new ArgumentNullException("ItemService");
+            this.RecordDateOrder = 0;
         }
 
         #endregion // Constructor
