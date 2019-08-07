@@ -64,27 +64,38 @@ namespace Odin.Data
         ///     Retrieve all submitted requests from Odin_WebsiteItemRequests
         /// </summary>
         /// <returns>List of requests</returns>
-        public List<Request> RetrieveRequests()
+        public List<Request> RetrieveRequests(bool isAdmin)
         {
             List<Request> requestList = new List<Request>();
+            List<OdinWebsiteItemRequests> odinWebsiteItemRequests = new List<OdinWebsiteItemRequests>();
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                List<OdinWebsiteItemRequests> odinWebsiteItemRequests = (from o in context.OdinWebsiteItemRequests
-                                     orderby o.RequestId descending
-                                     select o).ToList();
-
-                foreach (OdinWebsiteItemRequests odinWebsiteItemRequest in odinWebsiteItemRequests)
+                if (isAdmin)
                 {
-                    requestList.Add(new Request(
-                        odinWebsiteItemRequest.RequestId,
-                        odinWebsiteItemRequest.ItemId,
-                        odinWebsiteItemRequest.ItemStatus,
-                        odinWebsiteItemRequest.UserName,
-                        odinWebsiteItemRequest.DttmSubmitted,
-                        odinWebsiteItemRequest.InStockDate,
-                        odinWebsiteItemRequest.Comment,
-                        odinWebsiteItemRequest.RequestStatus,
-                        odinWebsiteItemRequest.Website));
+                    odinWebsiteItemRequests = (from o in context.OdinWebsiteItemRequests
+                                               orderby o.RequestId descending
+                                               select o).ToList();
+                }
+                else
+                {
+                    odinWebsiteItemRequests = (from o in context.OdinWebsiteItemRequests
+                                               where o.UserName == GlobalData.UserName.ToLower()
+                                               select o).ToList();
+                }
+                foreach (OdinWebsiteItemRequests x in odinWebsiteItemRequests)
+                {
+                    string website = (x.Website != null) ? x.Website.Trim() : "";
+                    Request request = new Request(
+                        x.RequestId,
+                        x.ItemId.Trim(),
+                        x.ItemStatus.Trim(),
+                        x.UserName.Trim(),
+                        x.DttmSubmitted.Trim(),
+                        x.InStockDate.Trim(),
+                        x.Comment.Trim(),
+                        x.RequestStatus.Trim(),
+                        website);
+                    requestList.Add(request);
                 }
             }
             return requestList;
@@ -139,41 +150,6 @@ namespace Odin.Data
                 context.SaveChanges();
             }
             return autoNumber;
-        }
-
-        /// <summary>
-        ///     Retrieves all requests made by current user
-        /// </summary>
-        /// <returns></returns>
-        public List<Request> RetrieveUserRequests()
-        {
-            List<Request> requestList = new List<Request>();
-
-            using (OdinContext context = this.contextFactory.CreateContext())
-            {
-                List<OdinWebsiteItemRequests> odinWebsiteItemRequests = (from o in context.OdinWebsiteItemRequests
-                                     where o.UserName == GlobalData.UserName.ToLower()
-                                     select o).ToList();
-                if (odinWebsiteItemRequests.Count > 0)
-                {
-                    foreach (OdinWebsiteItemRequests x in odinWebsiteItemRequests)
-                    {
-                        string website = (x.Website != null) ? x.Website.Trim() : "";
-                        Request request = new Request(
-                            x.RequestId,
-                            x.ItemId.Trim(),
-                            x.ItemStatus.Trim(),
-                            x.UserName.Trim(),
-                            x.DttmSubmitted.Trim(),
-                            x.InStockDate.Trim(),
-                            x.Comment.Trim(),
-                            x.RequestStatus.Trim(),
-                            website);
-                        requestList.Add(request);
-                    }
-                }
-            }
-            return requestList;
         }
 
         #endregion // Public Retrieval Methods

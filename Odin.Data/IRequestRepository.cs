@@ -36,7 +36,7 @@ namespace Odin.Data
         ///     Retrieve all submitted requests from Odin_WebsiteItemRequests
         /// </summary>
         /// <returns>List of requests</returns>
-        List<Request> RetrieveRequests();
+        List<Request> RetrieveRequests(bool isAdmin);
 
         /// <summary>
         ///     Gets all requests with the given request id from Odin_WebsiteItemRequests
@@ -51,11 +51,6 @@ namespace Odin.Data
         /// <returns></returns>
         string RetrieveSubmitRequestNumber();
 
-        /// <summary>
-        ///     Retrieves all requests made by current user
-        /// </summary>
-        /// <returns></returns>
-        List<Request> RetrieveUserRequests();
 
         #endregion // Public Retrieval Methods
 

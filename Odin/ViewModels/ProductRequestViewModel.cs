@@ -344,7 +344,6 @@ namespace Odin.ViewModels
             {
                 CreateMagento1File();
             }
-
         }
 
         public void CreateMagento1File()
@@ -428,24 +427,14 @@ namespace Odin.ViewModels
         {
             List<Request> requestList = new List<Request>();
             List<int> requestIds = new List<int>();
-            List<Request> rawRequests = new List<Request>();
             try
             {
-                if (this.AdminStatus)
-                {
-                    rawRequests = OptionService.RetrieveRequests();
-                }
-                else
-                {
-                    rawRequests = OptionService.RetrieveUserRequests();
-                }
-
+                List<Request> rawRequests = OptionService.RetrieveRequests(this.AdminStatus);                
                 int PresentId = 0;
                 string PresentStatus = string.Empty;
 
                 for (int i = 0; i < rawRequests.Count; i++)
                 {
-                    int nextId = i + 1;
                     int CurrentId = rawRequests[i].RequestId;
                     string CurrentStatus = rawRequests[i].RequestStatus;
 
@@ -476,16 +465,23 @@ namespace Odin.ViewModels
                                 break;
                         }
                     }
-                    if (nextId == rawRequests.Count)
+                    if (i+1 == rawRequests.Count)
                     {
-                        Request request = new Request(PresentId, rawRequests[i].UserName, rawRequests[i].DttmSubmitted, PresentStatus);
-                        request.GroupComment = rawRequests[i].GroupComment;
+                        Request request = new Request(PresentId, rawRequests[i].UserName, rawRequests[i].DttmSubmitted, PresentStatus)
+                        {
+                            GroupComment = rawRequests[i].GroupComment,
+                            Website = rawRequests[i].Website
+
+                        };
                         requestList.Add(request);
                     }
-                    else if (rawRequests[i].RequestId != rawRequests[nextId].RequestId)
+                    else if (rawRequests[i].RequestId != rawRequests[i + 1].RequestId)
                     {
-                        Request request = new Request(PresentId, rawRequests[i].UserName, rawRequests[i].DttmSubmitted, PresentStatus);
-                        request.GroupComment = rawRequests[i].GroupComment;
+                        Request request = new Request(PresentId, rawRequests[i].UserName, rawRequests[i].DttmSubmitted, PresentStatus)
+                        {
+                            GroupComment = rawRequests[i].GroupComment,
+                            Website = rawRequests[i].Website
+                        };
                         requestList.Add(request);
                     }
                 }// End for (int i = 0; i <= RawRequests.Count; i++)
