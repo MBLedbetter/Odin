@@ -59,8 +59,6 @@ namespace Odin
             ErrorLog.CreateFolder();
             try
             {
-                
-
                 ConnectionManager connectionManager = new ConnectionManager(Odin.Properties.Settings.Default.DbServerName, Odin.Properties.Settings.Default.DbName);
                 // ConnectionManager connectionManager = new ConnectionManager(@"(local)\SQLExpress", "Odin");
                 // connectionManager.SetUseTrustedConnection(true);
@@ -92,7 +90,7 @@ namespace Odin
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                // MessageBox.Show(e.ToString());
                 ErrorLog.LogError("Odin encountered an error with the database.", e.ToString());
                 Environment.Exit(1);
             }

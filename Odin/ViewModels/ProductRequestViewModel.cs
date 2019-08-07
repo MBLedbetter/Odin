@@ -336,11 +336,10 @@ namespace Odin.ViewModels
         /// </summary>
         public void CreateCSVFile()
         {
-            if (this.SelectedRequest.Website.ToUpper() == "SHOPTRENDS.COM")
+            if (this.SelectedRequest.Website == "ShopTrends.com")
             {
                 CreateMagento2File();
             }
-            //if (this.SelectedRequest.Website.ToUpper() == "TRENDINTERNATIONAL.COM")
             else
             {
                 CreateMagento1File();
@@ -429,26 +428,26 @@ namespace Odin.ViewModels
         {
             List<Request> requestList = new List<Request>();
             List<int> requestIds = new List<int>();
-            List<Request> RawRequests = new List<Request>();
+            List<Request> rawRequests = new List<Request>();
             try
             {
                 if (this.AdminStatus)
                 {
-                    RawRequests = OptionService.RetrieveRequests();
+                    rawRequests = OptionService.RetrieveRequests();
                 }
                 else
                 {
-                    RawRequests = OptionService.RetrieveUserRequests();
+                    rawRequests = OptionService.RetrieveUserRequests();
                 }
 
                 int PresentId = 0;
                 string PresentStatus = string.Empty;
 
-                for (int i = 0; i < RawRequests.Count; i++)
+                for (int i = 0; i < rawRequests.Count; i++)
                 {
                     int nextId = i + 1;
-                    int CurrentId = RawRequests[i].RequestId;
-                    string CurrentStatus = RawRequests[i].RequestStatus;
+                    int CurrentId = rawRequests[i].RequestId;
+                    string CurrentStatus = rawRequests[i].RequestStatus;
 
                     if (PresentId != CurrentId)
                     {
@@ -477,16 +476,16 @@ namespace Odin.ViewModels
                                 break;
                         }
                     }
-                    if (nextId == RawRequests.Count)
+                    if (nextId == rawRequests.Count)
                     {
-                        Request request = new Request(PresentId, RawRequests[i].UserName, RawRequests[i].DttmSubmitted, PresentStatus);
-                        request.GroupComment = RawRequests[i].GroupComment;
+                        Request request = new Request(PresentId, rawRequests[i].UserName, rawRequests[i].DttmSubmitted, PresentStatus);
+                        request.GroupComment = rawRequests[i].GroupComment;
                         requestList.Add(request);
                     }
-                    else if (RawRequests[i].RequestId != RawRequests[nextId].RequestId)
+                    else if (rawRequests[i].RequestId != rawRequests[nextId].RequestId)
                     {
-                        Request request = new Request(PresentId, RawRequests[i].UserName, RawRequests[i].DttmSubmitted, PresentStatus);
-                        request.GroupComment = RawRequests[i].GroupComment;
+                        Request request = new Request(PresentId, rawRequests[i].UserName, rawRequests[i].DttmSubmitted, PresentStatus);
+                        request.GroupComment = rawRequests[i].GroupComment;
                         requestList.Add(request);
                     }
                 }// End for (int i = 0; i <= RawRequests.Count; i++)
@@ -611,23 +610,20 @@ namespace Odin.ViewModels
         /// <param name="excelService"></param>
         /// <param name="optionService"></param>
         /// <param name="itemService"></param>
-        public ProductRequestViewModel(bool controlVisibility,
+        public ProductRequestViewModel(
+            bool controlVisibility,
             bool adminstatus,
             EmailService emailService,
             ExcelService excelService,
             OptionService optionService,
             ItemService itemService)
         {
-            if (emailService == null) { throw new ArgumentNullException("emailService"); }
-            if (excelService == null) { throw new ArgumentNullException("excelService"); }
-            if (optionService == null) { throw new ArgumentNullException("optionService"); }
-            if (itemService == null) { throw new ArgumentNullException("itemService"); }
-            this.ExcelService = excelService;
+            this.ExcelService = excelService ?? throw new ArgumentNullException("excelService");
             this.ControlVisibility = (controlVisibility) ? "Visible" : "Hidden";
             this.AdminStatus = adminstatus;
-            this.EmailService = emailService;
-            this.ItemService = itemService;
-            OptionService = optionService;
+            this.EmailService = emailService ?? throw new ArgumentNullException("emailService");
+            this.ItemService = itemService ?? throw new ArgumentNullException("itemService");
+            this.OptionService = optionService ?? throw new ArgumentNullException("optionService");
             try
             {
                 this.RequestList = LoadRequests();

@@ -4156,7 +4156,7 @@ namespace Odin.ViewModels
             Items.Clear();
             ProductRequestView window1 = new ProductRequestView()
             {
-                DataContext = new ProductRequestViewModel(true, true, EmailService, ExcelService, OptionService, ItemService)
+                DataContext = new ProductRequestViewModel(true, true, this.EmailService, this.ExcelService, this.OptionService, this.ItemService)
             };
      
             window1.ShowDialog();
@@ -4170,7 +4170,7 @@ namespace Odin.ViewModels
             Items.Clear();
             ProductRequestView window = new ProductRequestView()
             {
-                DataContext = new ProductRequestViewModel(false, false, EmailService, ExcelService, OptionService, ItemService)
+                DataContext = new ProductRequestViewModel(false, false, this.EmailService, this.ExcelService, this.OptionService, this.ItemService)
             };
             window.ShowDialog();
         }

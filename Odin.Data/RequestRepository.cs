@@ -147,30 +147,33 @@ namespace Odin.Data
         /// <returns></returns>
         public List<Request> RetrieveUserRequests()
         {
-            List<Request> RequestList = new List<Request>();
+            List<Request> requestList = new List<Request>();
 
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 List<OdinWebsiteItemRequests> odinWebsiteItemRequests = (from o in context.OdinWebsiteItemRequests
-                                     where o.UserName == Environment.UserName
+                                     where o.UserName == GlobalData.UserName.ToLower()
                                      select o).ToList();
-
-                foreach (OdinWebsiteItemRequests x in odinWebsiteItemRequests)
+                if (odinWebsiteItemRequests.Count > 0)
                 {
-                    Request request = new Request(
-                        x.RequestId,
-                        x.ItemId.Trim(),
-                        x.ItemStatus.Trim(),
-                        x.UserName.Trim(),
-                        x.DttmSubmitted.Trim(),
-                        x.InStockDate.Trim(),
-                        x.Comment.Trim(),
-                        x.RequestStatus.Trim(),
-                        x.Website.Trim());
-                    RequestList.Add(request);
+                    foreach (OdinWebsiteItemRequests x in odinWebsiteItemRequests)
+                    {
+                        string website = (x.Website != null) ? x.Website.Trim() : "";
+                        Request request = new Request(
+                            x.RequestId,
+                            x.ItemId.Trim(),
+                            x.ItemStatus.Trim(),
+                            x.UserName.Trim(),
+                            x.DttmSubmitted.Trim(),
+                            x.InStockDate.Trim(),
+                            x.Comment.Trim(),
+                            x.RequestStatus.Trim(),
+                            website);
+                        requestList.Add(request);
+                    }
                 }
             }
-            return RequestList;
+            return requestList;
         }
 
         #endregion // Public Retrieval Methods
