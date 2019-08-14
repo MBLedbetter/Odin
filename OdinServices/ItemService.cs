@@ -1080,7 +1080,7 @@ namespace OdinServices
                 {
                     if (imgNum == 5 || imgNum == 4)
                     {
-                        if (itemId.Contains("BLK22X34"))
+                        if (itemId.Contains("BLK22X34")|| itemId.Contains("BLK24X36"))
                         {
                             if (imgNum == 4)
                             {
@@ -1091,7 +1091,7 @@ namespace OdinServices
                                 return "../catalog/product/frames/cust_frame_blk_side.jpg";
                             }
                         }
-                        if (itemId.Contains("SIL22X34"))
+                        else if (itemId.Contains("SIL22X34") || itemId.Contains("SIL24X36"))
                         {
                             if (imgNum == 4)
                             {
@@ -1100,6 +1100,28 @@ namespace OdinServices
                             else
                             {
                                 return "../catalog/product/frames/cust_frame_sil_side.jpg";
+                            }
+                        }
+                        else if (itemId.Contains("MAH22X34") || itemId.Contains("MAH24X36"))
+                        {
+                            if (imgNum == 4)
+                            {
+                                return "../catalog/product/frames/cust_frame_back_mah.png";
+                            }
+                            else
+                            {
+                                return "../catalog/product/frames/cust_frame_mah_side.jpg";
+                            }
+                        }
+                        else if (itemId.Contains("WHT22X34") || itemId.Contains("WHT24X36"))
+                        {
+                            if (imgNum == 4)
+                            {
+                                return "../catalog/product/frames/cust_frame_back_wht.png";
+                            }
+                            else
+                            {
+                                return "../catalog/product/frames/cust_frame_wht_side.jpg";
                             }
                         }
                     }

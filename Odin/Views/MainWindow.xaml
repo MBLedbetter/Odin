@@ -132,8 +132,12 @@
                         Command="{Binding FindItemUpdateRecordCommand}"
                         ToolTip="Find a list of updates made to an item"/>
                     <MenuItem 
-                        Header="Generate Magento 2 Excel" 
+                        Header="Generate ShopTrends.com Excel" 
                         Command="{Binding Magento2CustomExcelCommand}"
+                        ToolTip="Generate a Magento 2 Excel from current items"/>
+                    <MenuItem 
+                        Header="Generate TrendsInternational.com Excel" 
+                        Command="{Binding Magento1CustomExcelCommand}"
                         ToolTip="Generate a Magento 2 Excel from current items"/>
                 </MenuItem>
                 <MenuItem 

@@ -2554,9 +2554,17 @@ namespace OdinServices
             {
                 return "BLACKFRAME";
             }
-            else if (itemId.Contains("SIL22X34")|| itemId.Contains("SIL24X36"))
+            else if (itemId.Contains("MAH22X34") || itemId.Contains("MAH24X36"))
+            {
+                return "MAHOGANYFRAME";
+            }
+            else if (itemId.Contains("SIL22X34") || itemId.Contains("SIL24X36"))
             {
                 return "SILVERFRAME";
+            }
+            else if (itemId.Contains("WHT22X34") || itemId.Contains("WHT24X36"))
+            {
+                return "WHITEFRAME";
             }
             else if (itemId.Contains("POD"))
             {
@@ -2685,7 +2693,32 @@ namespace OdinServices
             RequestNum = Convert.ToInt32(RequestRepository.RetrieveSubmitRequestNumber());
             RequestRepository.SubmitRequest(items, status, comment, website, RequestNum);
         }
-        
+
+        /// <summary>
+        ///     Write out the short description for items being sold on trendsinternational.com
+        ///     Includes the items short description + a link to shoptrends.com for eligible items
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public string WriteB2BShortDescription(ItemObject item)
+        {
+            string result = string.Empty;
+            if(item.SellOnTrs=="Y")
+            {
+                string title = item.Title.Replace(' ', '-').ToLower();
+                title = title.Replace("---", "-");
+                string url = "https://shoptrends.com/" + title;
+                url += "-poster" + ItemService.RetrieveItemIdCore(item.ItemId) + ".html";
+                result += "<a href=\"" + url + "\">Buy On Shoptrends.com</a>";
+            }
+            if (!string.IsNullOrEmpty(item.ShortDescription))
+            {
+                result += item.ShortDescription.Trim();
+            }
+
+            return result;
+        }
+
         /// <summary>
         ///     Write item data into an excel cell with the given parameters
         /// </summary>
@@ -2991,7 +3024,7 @@ namespace OdinServices
             result += price; /* price */
             result += "\"" + ItemService.ReturnItemPrice(item.ListPriceCad.Trim(), item.ProductQty) + "\","; /* pricecan */
             result += "\"0\","; /* required_options */
-            result += "\"" + item.ShortDescription.Trim() + "\","; /* short_description */
+            result += "\"" + WriteB2BShortDescription(item) + "\","; /* short_description */
             result += "\"1\","; /* status */
             result += "\"0\","; /* tax_class_id */
             result += "\"" + DbUtil.OrderTerritory(item.Territory.Trim()) + "\","; /* territory */

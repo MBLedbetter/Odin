@@ -315,5 +315,35 @@ namespace OdinTests.Services
 
             #endregion // Assert
         }
+
+        /// <summary>
+        ///     Checks that WriteB2BShortDescription writes the correct url
+        /// </summary>
+        [TestMethod]
+        public void WriteB2BShortDescription_ShouldGenerateUrlMatch_ShouldPass()
+        {
+            #region Assemble
+            GlobalData.ClearValues();
+            GlobalData.ItemTypeExtensionsList.Add("RP");
+            OptionService optionService = new OptionService(new TestOptionRepository(), new TestRequestRepository());
+            ExcelService excelService = new ExcelService(true, new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository()), optionService, new TestTemplateRepository(), new TestRequestRepository());
+            ItemObject item = new ItemObject(1)
+            {
+                Title = "Poster Title",
+                ItemId = "RP14200",
+                SellOnTrs ="Y"
+            };
+            #endregion // Assemble
+
+            #region Act
+            string result = excelService.WriteB2BShortDescription(item);
+            #endregion // Act
+
+            #region Assert
+
+            Assert.AreEqual("<a href=\"https://shoptrends.com/poster-title-poster14200.html\">Buy On Shoptrends.com</a>", result);
+
+            #endregion // Assert
+        }
     }
 }

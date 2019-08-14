@@ -234,6 +234,18 @@ namespace Odin.ViewModels
             }
         }
         private RelayCommand _managePermision;
+        public ICommand Magento1CustomExcelCommand
+        {
+            get
+            {
+                if (_magento1CustomExcel == null)
+                {
+                    _magento1CustomExcel = new RelayCommand(param => CreateMagento1CustomExcel());
+                }
+                return _magento1CustomExcel;
+            }
+        }
+        private RelayCommand _magento1CustomExcel;
         public ICommand Magento2CustomExcelCommand
         {
             get
@@ -3058,11 +3070,29 @@ namespace Odin.ViewModels
         }
 
         /// <summary>
+        ///     Creates a Magento 1 excel sheet from the curretnly loaded items
+        /// </summary>
+        public void CreateMagento1CustomExcel()
+        {
+            if(this.Items.Count>0)
+            {
+                Random rnd = new Random();
+                int rndId = rnd.Next(1000);
+                string custId = "CUST-" + rndId.ToString();
+                ExcelService.WriteMagentoCsv(this.Items, custId, "Add");
+            }
+            else
+            {
+                MessageBox.Show("There are no items!");
+            }
+        }
+
+        /// <summary>
         ///     Creates a Magento 2 excel sheet from the curretnly loaded items
         /// </summary>
         public void CreateMagento2CustomExcel()
         {
-            if(this.Items.Count>0)
+            if (this.Items.Count > 0)
             {
                 Random rnd = new Random();
                 int rndId = rnd.Next(1000);
