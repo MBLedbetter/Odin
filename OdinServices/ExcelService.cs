@@ -932,20 +932,6 @@ namespace OdinServices
                     newTitle = newTitle.Remove(0, 6);
                 }
             }
-            if (newTitle.Length > 12)
-            {
-                if (newTitle.Substring(newTitle.Length - 12, 12).ToUpper() == " - ONE SHEET")
-                {
-                    newTitle = newTitle.Remove(newTitle.Length - 12);
-                }
-            }
-            if (newTitle.Length > 10)
-            {
-                if (newTitle.Substring(newTitle.Length - 10, 10).ToUpper() == " ONE SHEET")
-                {
-                    newTitle = newTitle.Remove(newTitle.Length - 10);
-                }
-            }
             return newTitle;
         }
         /*
