@@ -6156,7 +6156,7 @@ namespace OdinServices
             }
             if(checkItemId)
             {
-                if(var.ItemId.Contains("-"))
+                if(var.ItemId.Contains("-") && var.SellOnTrs == "Y")
                 {
                     return new ItemError(
                         var.ItemId,

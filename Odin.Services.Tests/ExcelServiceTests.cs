@@ -341,7 +341,7 @@ namespace OdinTests.Services
 
             #region Assert
 
-            Assert.AreEqual("<a href=\"https://shoptrends.com/poster-title-poster14200.html\">Buy On Shoptrends.com</a>", result);
+            Assert.AreEqual("<a href='https://shoptrends.com/poster-title-poster14200.html'  class='shopTrends_button' target='_blank'>Buy On Shoptrends.com</a>>. ", result);
 
             #endregion // Assert
         }

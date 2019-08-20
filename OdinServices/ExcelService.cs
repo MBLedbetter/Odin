@@ -934,63 +934,6 @@ namespace OdinServices
             }
             return newTitle;
         }
-        /*
-        /// <summary>
-        ///     Formats the keywords using ecom name, license, property and keyword overrides
-        /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
-        public string FormatMagento2Keywords(ItemObject item)
-        {
-            string result = string.Empty;
-
-            result += ItemService.RetrieveItemIdCore(item.ItemId) + ",";
-
-
-            if (!string.IsNullOrEmpty(item.EcommerceItemName))
-            {
-                result += item.EcommerceItemName + ",";
-                if(item.EcommerceItemName.Contains('-'))
-                {
-                    result += item.EcommerceItemName.Replace("-", "") + ",";
-                }
-            }
-            if (!string.IsNullOrEmpty(item.License))
-            {
-                result += item.License + ",";
-                if (item.License.Contains('-'))
-                {
-                    result += item.License.Replace("-", "") + ",";
-                }
-            }
-            if (!string.IsNullOrEmpty(item.Property))
-            {
-                result += item.Property + ",";
-                if (item.Property.Contains('-'))
-                {
-                    result += item.Property.Replace("-", "") + ",";
-                }
-            }
-            if (!string.IsNullOrEmpty(item.Genre1))
-            {
-                result += item.Genre1 + ",";
-            }
-            if (!string.IsNullOrEmpty(item.Genre2))
-            {
-                result += item.Genre2 + ",";
-            }
-            if (!string.IsNullOrEmpty(item.Genre3))
-            {
-                result += item.Genre3 + ",";
-            }
-            if (!string.IsNullOrEmpty(item.ItemKeywordsOverride))
-            {
-                result += item.ItemKeywordsOverride + ",";
-            }
-
-            return result.TrimEnd(',');
-        }
-        */
 
         /// <summary>
         ///     Lowercases and replaces spaces with underscoress
@@ -2695,7 +2638,7 @@ namespace OdinServices
                 title = title.Replace("---", "-");
                 string url = "https://shoptrends.com/" + title;
                 url += "-poster" + ItemService.RetrieveItemIdCore(item.ItemId) + ".html";
-                result += "<a href=\"" + url + "\">Buy On Shoptrends.com</a>";
+                result += "<a href=\'" + url + "\'  class='shopTrends_button' target=\'_blank\'>Buy On Shoptrends.com</a>";
             }
             if (!string.IsNullOrEmpty(item.ShortDescription))
             {
@@ -2913,6 +2856,13 @@ namespace OdinServices
             } // End foreach (Request request in requests)
         }
 
+        /// <summary>
+        ///     Writes the main line for each product in a magento 1 csv for each store (CAN or US store)
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="territory"></param>
+        /// <param name="requestType"></param>
+        /// <returns></returns>
         public string WriteMagentoMainLine(ItemObject item, string territory, string requestType)
         {
             string result = string.Empty;
