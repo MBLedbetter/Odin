@@ -4368,15 +4368,13 @@ namespace OdinModels
         {
             string result = string.Empty;
             int listLength = this.BillOfMaterials.Count;
-            int count = 0;
-            while (count < listLength)
+            for(int x = 0; x < listLength; x++)
             {
-                result += CombineChildElement(this.BillOfMaterials[count]);
-                if (listLength - count > 1)
+                result += CombineChildElement(this.BillOfMaterials[x]);
+                if (listLength - x > 1)
                 {
                     result += ", ";
                 }
-                count++;
             }
             return result;
         }
