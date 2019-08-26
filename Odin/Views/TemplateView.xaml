@@ -2428,7 +2428,7 @@
                         MaxLength="1000"
                         Grid.Column="3"
                         IsEnabled="{Binding IsNew}"
-                        Text="{Binding ProductQty}"
+                        Text="{Binding DtcPrice}"
                         Width="300" />
                     <!-- Meta Description -->
                     <TextBox
