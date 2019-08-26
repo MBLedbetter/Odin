@@ -2839,6 +2839,24 @@ namespace OdinModels
         #region Odin Properties
 
         /// <summary>
+        ///     Gets or sets the Child Products
+        /// </summary>
+        public List<string> ChildProducts
+        {
+            get
+            {
+                return _childProducts;
+            }
+            set
+            {
+                _childProducts = value;
+                OnPropertyChanged("ChildProducts");
+
+            }
+        }
+        private List<string> _childProducts = new List<string>();
+
+        /// <summary>
         ///     Gets or sets the ItemRow
         /// </summary>
         public int ItemRow
@@ -2857,6 +2875,24 @@ namespace OdinModels
         private int _itemRow;
 
         public string NewDate { get; set; }
+
+        /// <summary>
+        ///     Flag if item is a parent item
+        /// </summary>
+        public bool IsParentItem
+        {
+            get
+            {
+                return _isParentItem;
+            }
+            set
+            {
+                _isParentItem = value;
+                OnPropertyChanged("IsParentItem");
+
+            }
+        }
+        private bool _isParentItem = false;
 
         /// <summary>
         ///     Product Type: distinguishes between items(1) and kits(0)
