@@ -6120,6 +6120,10 @@ namespace Odin.ViewModels
                     this.DefaultActualCostUsdError = ItemService.ValidateDefaultActualCost(TemplateObject, "USD")?.ReturnErrorMessage()??"";
                     break;
 
+                case "DtcPrice":
+                    this.DtcPriceError = ItemService.ValidateDtcPrice(TemplateObject)?.ReturnErrorMessage() ?? "";
+                    break;
+
                 case "Duty":
                     this.DutyError = ItemService.ValidateDuty(TemplateObject)?.ReturnErrorMessage()??"";
                     break;
@@ -6595,6 +6599,7 @@ namespace Odin.ViewModels
                 this.CountryOfOrigin = template.CountryOfOrigin;
                 this.DefaultActualCostUsd = template.DefaultActualCostUsd;
                 this.DefaultActualCostCad = template.DefaultActualCostCad;
+                this.DtcPrice = template.DtcPrice;
                 this.Duty = template.Duty;
                 this.EcommerceBullet1 = template.EcommerceBullet1;
                 this.EcommerceBullet2 = template.EcommerceBullet2;
