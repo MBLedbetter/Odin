@@ -15,7 +15,6 @@ namespace OdinServices
 {
     public class ItemService
     {
-
         #region Enumerations
 
         /// <summary>
@@ -289,11 +288,41 @@ namespace OdinServices
                 // value = "@" + value;
                 if (File.Exists(value))
                 {
+                    return true;  
+                }
+            }
+            else
+            {
+                if (value == "testImagePath")
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        /// <summary>
+        ///     Check that the provided image is not too large
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="isTest"></param>
+        /// <returns>false if file is too large</returns>
+        public bool CheckFileSize(string value, bool isTest)
+        {
+            if (!isTest)
+            {
+                // value = "@" + value;
+                if (File.Exists(value))
+                {
                     // Check that file isn't too big, to prevent memory exception
                     if ((new System.IO.FileInfo(value).Length < 20000000))
                     {
                         return true;
-                    }                  
+                    }
+                }
+                else
+                {
+                    return false;
                 }
             }
             else
@@ -1051,7 +1080,7 @@ namespace OdinServices
                 {
                     if (imgNum == 5 || imgNum == 4)
                     {
-                        if (itemId.Contains("BLK22X34"))
+                        if (itemId.Contains("BLK22X34")|| itemId.Contains("BLK24X36"))
                         {
                             if (imgNum == 4)
                             {
@@ -1062,7 +1091,7 @@ namespace OdinServices
                                 return "../catalog/product/frames/cust_frame_blk_side.jpg";
                             }
                         }
-                        if (itemId.Contains("SIL22X34"))
+                        else if (itemId.Contains("SIL22X34") || itemId.Contains("SIL24X36"))
                         {
                             if (imgNum == 4)
                             {
@@ -1071,6 +1100,28 @@ namespace OdinServices
                             else
                             {
                                 return "../catalog/product/frames/cust_frame_sil_side.jpg";
+                            }
+                        }
+                        else if (itemId.Contains("MAH22X34") || itemId.Contains("MAH24X36"))
+                        {
+                            if (imgNum == 4)
+                            {
+                                return "../catalog/product/frames/cust_frame_back_mah.png";
+                            }
+                            else
+                            {
+                                return "../catalog/product/frames/cust_frame_mah_side.jpg";
+                            }
+                        }
+                        else if (itemId.Contains("WHT22X34") || itemId.Contains("WHT24X36"))
+                        {
+                            if (imgNum == 4)
+                            {
+                                return "../catalog/product/frames/cust_frame_back_wht.png";
+                            }
+                            else
+                            {
+                                return "../catalog/product/frames/cust_frame_wht_side.jpg";
                             }
                         }
                     }
@@ -1189,7 +1240,7 @@ namespace OdinServices
                     ListPriceCad = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ListPriceCad, WorksheetColumnHeaders.ListPriceCadCAD), 2),
                     ListPriceUsd = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ListPriceUsd, WorksheetColumnHeaders.ListPriceUsdUSD), 2),
                     ListPriceMxn = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ListPriceMxn, WorksheetColumnHeaders.ListPriceMxnMXN), 2),
-                    MetaDescription = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.MetaDescription),
+                    MetaDescription = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.MetaDescription).Trim(),
                     MfgSource = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.MfgSource).Trim(),
                     Msrp = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Msrp).Trim(),
                     MsrpCad = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.MsrpCad).Trim(),
@@ -1437,21 +1488,25 @@ namespace OdinServices
                 {
                     if (CheckFileExists(img.Key, false))
                     {
-                        string filename = location + @"\" + ReturnImageName(itemId, img.Value);
-                        if (!CheckFileExists(filename,false))
+                        if (CheckFileSize(img.Key, false))
                         {
-                            Image myImage = Image.FromFile(img.Key, true);
-                            SaveJpeg(filename, myImage, 60);
-                            myImage.Dispose();
-                            if (!usedIdCores.Contains(RetrieveItemIdCore(itemId)) && img.Value==1)
+                            string filename = location + @"\" + ReturnImageName(itemId, img.Value);
+                            //  make sure the same image file has not been created in the ecommerceImage directory already
+                            if (!CheckFileExists(filename, false))
                             {
-                                if (itemId.Substring(0, 2) == "RP" || itemId.Substring(0, 3) == "POD")
+                                Image myImage = Image.FromFile(img.Key, true);
+                                SaveJpeg(filename, myImage, 60);
+                                myImage.Dispose();
+                                if (!usedIdCores.Contains(RetrieveItemIdCore(itemId)) && img.Value == 1)
                                 {
-                                    filename = location + @"\" + ReturnImageName("POSTER" + RetrieveItemIdCore(itemId), img.Value);
-                                    Image posterImage = Image.FromFile(img.Key, true);
-                                    SaveJpeg(filename, posterImage, 60);
-                                    posterImage.Dispose();
-                                    usedIdCores.Add(RetrieveItemIdCore(itemId));
+                                    if (itemId.Substring(0, 2) == "RP" || itemId.Substring(0, 3) == "POD")
+                                    {
+                                        filename = location + @"\" + ReturnImageName("POSTER" + RetrieveItemIdCore(itemId), img.Value);
+                                        Image posterImage = Image.FromFile(img.Key, true);
+                                        SaveJpeg(filename, posterImage, 60);
+                                        posterImage.Dispose();
+                                        usedIdCores.Add(RetrieveItemIdCore(itemId));
+                                    }
                                 }
                             }
                         }
@@ -1678,6 +1733,7 @@ namespace OdinServices
                 if (string.IsNullOrEmpty(item.CostProfileGroup)) { item.CostProfileGroup = template.CostProfileGroup; }
                 if (string.IsNullOrEmpty(item.DefaultActualCostUsd)) { item.DefaultActualCostUsd = template.DefaultActualCostUsd; }
                 if (string.IsNullOrEmpty(item.DefaultActualCostCad)) { item.DefaultActualCostCad = template.DefaultActualCostCad; }
+                if (string.IsNullOrEmpty(item.DtcPrice)) { item.DtcPrice = template.DtcPrice; }
                 if (string.IsNullOrEmpty(item.Duty)) { item.Duty = template.Duty; }
                 if (string.IsNullOrEmpty(item.EcommerceBullet1)) { item.EcommerceBullet1 = template.EcommerceBullet1; }
                 if (string.IsNullOrEmpty(item.EcommerceBullet2)) { item.EcommerceBullet2 = template.EcommerceBullet2; }
@@ -2108,13 +2164,15 @@ namespace OdinServices
         }
 
         /// <summary>
-        ///     Return all update records for the given itemId
+        ///     Return all update records in order for the given itemId 
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
         public List<ItemObject> RetrieveItemUpdateRecords(string itemId)
         {
-            return ItemRepository.RetrieveItemUpdateRecords(itemId);
+            List<ItemObject> result = ItemRepository.RetrieveItemUpdateRecords(itemId);
+            result.OrderBy(o => o.RecordDate).ToList();
+            return result;
         }
 
         /// <summary>
@@ -2436,9 +2494,9 @@ namespace OdinServices
             ObservableCollection<ItemError> ErrorList = new ObservableCollection<ItemError>();
             if (isSubmit)
             {
-                if (var.SellOnTrends != "Y")
+                if (var.SellOnTrends != "Y" && var.SellOnTrs != "Y")
                 {
-                    ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, "Sell On Trends must be set to Y before item can be submitted to the web.", "Sell On Trends"));
+                    ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, " or Sell on Shop Trends must be set to Y before item can be submitted to the web.", "Sell On Trends"));
                     return ErrorList;
                 }
             }
@@ -2696,6 +2754,9 @@ namespace OdinServices
             // List Price Usd //
             validationError =ValidateListPrice(var, "USD");
             if (validationError != null) { ErrorList.Add(validationError); }
+            // Meta Description //
+            validationError = ValidateMetaDescription(var);
+            if (validationError != null) { ErrorList.Add(validationError); }
             // Mfg Source //
             validationError =ValidateMfgSource(var);
             if (validationError != null) { ErrorList.Add(validationError); }
@@ -2830,7 +2891,7 @@ namespace OdinServices
             List<ItemError> ErrorMessages = new List<ItemError>();
             ItemError validationError = null;
 
-            validationError = ValidateTemplateId(var);
+            validationError = ValidateTemplateId(var,true);
             if (validationError != null) { ErrorMessages.Add(validationError); }
             validationError = ValidateAccountingGroup(var);
             if (validationError != null) { ErrorMessages.Add(validationError); }
@@ -3031,10 +3092,21 @@ namespace OdinServices
         {
             List<string> BomIdList = new List<string>();
             bool existingValue = false;
-
+            
             if (var.BillOfMaterials.Count() == 0)
             {
                 return null;
+            }
+            else
+            {
+                if (var.ProductIdTranslation.Count()>0)
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Field must be left empty if Product Id Translation has a value.",
+                        "Bill of Materials");
+                }
             }
             if(GlobalData.BillofMaterials.Where(p => p.ParentId == var.ItemId).Count()>0)
             {
@@ -3555,6 +3627,20 @@ namespace OdinServices
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NonNumeric,
                         "Dtc Price");
+                }
+                else
+                {
+                    if (var.SellOnTrs == "Y")
+                    {
+                        if (Convert.ToDouble(var.DtcPrice) < 0.01)
+                        {
+                            return new ItemError(
+                                var.ItemId,
+                                var.ItemRow,
+                                "Value must be more that 0.00",
+                                "Dtc Price");
+                        }
+                    }
                 }
             }
             else
@@ -4567,7 +4653,7 @@ namespace OdinServices
         /// <returns>Error message or "" if value is valid</returns>
         public ItemError ValidateGenre(ItemObject var, int type)
         {
-            /*
+            
             string value = string.Empty;
             switch (type)
             {
@@ -4595,9 +4681,18 @@ namespace OdinServices
                         "Genre "+type.ToString());
                 }
             }
-            */
-            return null;
-            
+            else
+            {
+                if(var.SellOnTrs == "Y" && type == 1)
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Value is required for products being sold on ShopTrends.",
+                        "Genre " + type.ToString());
+                }
+            }            
+            return null;            
         }
 
         /// <summary>
@@ -4743,81 +4838,94 @@ namespace OdinServices
             switch (imageNumber)
             {
                 case "1":
-                    value = var.ImagePath;
+                    value = var.ImagePath.Trim();
                     required = true;
                     break;
                 case "2":
-                    value = var.AltImageFile1;
+                    value = var.AltImageFile1.Trim();
                     break;
                 case "3":
-                    value = var.AltImageFile1;
+                    value = var.AltImageFile2.Trim();
                     break;
                 case "4":
-                    value = var.AltImageFile1;
+                    value = var.AltImageFile3.Trim();
                     break;
                 case "5":
-                    value = var.AltImageFile1;
+                    value = var.AltImageFile4.Trim();
                     break;
                 default:
                     throw new ArgumentNullException("ValidateImagePath unknown imageNumber " + imageNumber);
             }
-            if (var.SellOnTrends=="Y" || !string.IsNullOrEmpty(value))
+            if (!string.IsNullOrEmpty(value))
             {
                 string fileType = "";
                 if (value.Length > 4)
                 {
                     fileType = value.Substring(value.Length - 4).ToUpper();
                 }
-                    if (string.IsNullOrEmpty(value) && var.SellOnTrends == "Y" && required)
+                if (!string.IsNullOrEmpty(value))
                 {
-                    return new ItemError(
-                        var.ItemId,
-                        var.ItemRow,
-                        OdinServices.Properties.Resources.Error_RequiredWeb,
-                        "Image Path " + imageNumber);
+                    if (value.Contains("'") || value.Contains("`"))
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            "Value cannot contain apostrophes.",
+                            "Image Path " + imageNumber);
+                    }
+                    if (CheckSpecialChar(value))
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            "Value cannot contain special characters.",
+                            "Image Path " + imageNumber);
+                    }
+                    if (fileType != ".JPG"
+                            && fileType != ".PNG"
+                            && fileType != ".TIF")
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            "Invalid file type. (Must be .jpg, .png, or .tif).",
+                            "Image Path " + imageNumber);
+                    }
+                    if (!CheckFileExists(value, false))
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            @" could not find image with given filepath : " + value,
+                            "Image Path " + imageNumber);
+                    }
+                    if (!CheckFileSize(value, false) && fileType != ".TIF")
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            @" Image file is too large (Max 20,000KB for .jpg & .png files)",
+                            "Image Path " + imageNumber);
+                    }
+                    if (value.Length > 254)
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            OdinServices.Properties.Resources.Error_LengthMax + "254 characters.",
+                            "Image Path " + imageNumber);
+                    }
                 }
-                if (value.Contains("'")||value.Contains("`"))
+                else
                 {
-                    return new ItemError(
-                        var.ItemId,
-                        var.ItemRow,
-                        "Value cannot contain apostrophes.",
-                        "Image Path " + imageNumber);
-                }
-                if (fileType != ".JPG"
-                        && fileType != ".PNG"
-                        && fileType != ".TIF")
-                {
-                    return new ItemError(
-                        var.ItemId,
-                        var.ItemRow,
-                        "Invalid file type. (Must be .jpg, .png, or .tif).",
-                        "Image Path " + imageNumber);
-                }
-                if (!CheckFileExists(value, false) && required && fileType != ".TIF")
-                {
-                    return new ItemError(
-                        var.ItemId,
-                        var.ItemRow,
-                        @" could not find image with given filepath or the image is too large: " + value,
-                        "Image Path " + imageNumber);
-
-                }                
-                if (CheckSpecialChar(value))
-                {
-                    return new ItemError(
-                        var.ItemId,
-                        var.ItemRow,
-                        "Value cannot contain special characters.",
-                        "Image Path " + imageNumber);
-                }
-                if (value.Length > 254)
-                {
-                    return new ItemError(
-                        var.ItemId,
-                        var.ItemRow,
-                        OdinServices.Properties.Resources.Error_LengthMax + "254 characters.",
-                        "Image Path " + imageNumber);
+                    if((var.SellOnTrends == "Y" || var.SellOnTrs == "Y") && required)
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            OdinServices.Properties.Resources.Error_RequiredWeb,
+                            "Image Path " + imageNumber);
+                    }
                 }
             }
             return null;
@@ -5571,7 +5679,7 @@ namespace OdinServices
                         "Meta Description");
                 }
             }
-            if (var.HasWeb && string.IsNullOrEmpty(var.MetaDescription))
+            if (var.SellOnTrends=="Y" && string.IsNullOrEmpty(var.MetaDescription))
             {
                 return new ItemError(
                     var.ItemId,
@@ -5699,6 +5807,14 @@ namespace OdinServices
             }
             else
             {
+                if(var.BillOfMaterials.Count>0)
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Field must be empty if Bill of Materials has a value.",
+                        "Product Id Translations");
+                }
                 foreach (ChildElement productIdTranslation in var.ProductIdTranslation)
                 {
                     if (!string.IsNullOrEmpty(productIdTranslation.ItemId))
@@ -6041,12 +6157,12 @@ namespace OdinServices
             }
             if(checkItemId)
             {
-                if(var.ItemId.Contains("-"))
+                if(var.ItemId.Contains("-") && var.SellOnTrs == "Y")
                 {
                     return new ItemError(
                         var.ItemId,
                         var.ItemRow,
-                        "Item's being sold on TRS cannot contain a '-' in the itemId.",
+                        "Item's being sold on Shop Trends cannot contain a '-' in the itemId.",
                         "Sell On " + type);
                 }
             }
@@ -6194,11 +6310,12 @@ namespace OdinServices
         }
 
         /// <summary>
-        ///     Validate the template Id
+        ///     
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="var">item object</param>
+        /// <param name="isTemplate">Is this an item field</param>
         /// <returns></returns>
-        public ItemError ValidateTemplateId(ItemObject var)
+        public ItemError ValidateTemplateId(ItemObject var, bool isTemplate)
         {
             if (string.IsNullOrEmpty(var.TemplateId))
             {
@@ -6208,23 +6325,37 @@ namespace OdinServices
                     "Value is empty. Please select a name before saving.",
                     "Template Id");
             }
-            if (var.TemplateId.Length > 255)
+            else
             {
-                return new ItemError(
-                    var.ItemId,
-                    var.ItemRow,
-                    OdinServices.Properties.Resources.Error_LengthMax + "255 characters.",
-                    "Template Id");
-            }
-            if (var.Status != "Update")
-            {
-                if (GlobalData.TemplateNames.Contains(var.TemplateId))
+                if (var.TemplateId.Length > 255)
                 {
                     return new ItemError(
                         var.ItemId,
                         var.ItemRow,
-                        var.TemplateId + " already exists. Please select a different name.",
+                        OdinServices.Properties.Resources.Error_LengthMax + "255 characters.",
                         "Template Id");
+                }
+                if (var.Status != "Update")
+                {
+                    if (GlobalData.TemplateNames.Contains(var.TemplateId))
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            var.TemplateId + " already exists. Please select a different name.",
+                            "Template Id");
+                    }
+                }
+                if (!isTemplate)
+                {
+                    if (!GlobalData.TemplateNames.Contains(var.TemplateId))
+                    {
+                        return new ItemError(
+                            var.ItemId,
+                            var.ItemRow,
+                            "Value does not match any existing Template Ids.",
+                            "Template Id");
+                    }
                 }
             }
             return null;
@@ -6379,6 +6510,13 @@ namespace OdinServices
             }
             else
             {
+                
+                if(var.Upc == "000000000000")
+                {
+                    // Exception for items that do not get scanned (for comic-con / other events)
+                    return null;
+                }
+                
                 if (!DbUtil.IsNumber(var.Upc))
                 {
                     return new ItemError(

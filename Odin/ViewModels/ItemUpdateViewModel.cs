@@ -190,7 +190,7 @@ namespace Odin.ViewModels
             {
                 AlertView window = new AlertView
                 {
-                    DataContext = new AlertViewModel(wrongHeaders, "Alert", "The following columns did not match any existing values. Please adjust the header or remove this collumn before loading.")
+                    DataContext = new AlertViewModel(wrongHeaders, "Alert", "The following columns did not match any existing values. Please adjust the header or remove this column before loading.")
                 };
                 window.ShowDialog();
             }

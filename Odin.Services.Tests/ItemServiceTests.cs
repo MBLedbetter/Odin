@@ -3067,6 +3067,39 @@ namespace Odin.Services.Tests
         }
 
         /// <summary>
+        ///     This method tests the ValidateDtcPrice method with a valid string. Checks that a value of
+        ///     zero will return an error
+        /// </summary>
+        [TestMethod]
+        public void ValidateDtcPrice_ValueIsZero_ShouldFail()
+        {
+            #region Setup
+
+            ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+
+            GlobalData.ClearValues();
+            ItemObject item1 = new ItemObject(1) { DtcPrice = "0.00", SellOnTrs="Y" };
+            ItemObject item2 = new ItemObject(1) { DtcPrice = "0", SellOnTrs = "Y" };
+
+
+            #endregion //Setup
+
+            #region Act
+
+            ItemError result = itemValidator.ValidateDtcPrice(item1);
+            ItemError result2 = itemValidator.ValidateDtcPrice(item2);
+
+            #endregion //Act
+
+            #region Assert
+
+            Assert.IsNotNull(result);
+            Assert.IsNotNull(result2);
+
+            #endregion //Assert
+        }
+
+        /// <summary>
         ///     This method tests the upc validation against items trying to use an existing upc value.
         /// </summary>
         [TestMethod]
@@ -3928,7 +3961,7 @@ namespace Odin.Services.Tests
             GlobalData.ClearValues();
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("123456789123", "RP2347"));
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("123456789098", "RP2341"));
-            GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000000", "RP3323"));
+            GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000001", "RP3323"));
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000666666", "RP3329"));
 
             ItemObject item1 = new ItemObject(1)
@@ -3973,14 +4006,14 @@ namespace Odin.Services.Tests
             ItemObject item4 = new ItemObject(1)
             {
                 ItemId = "RP3323",
-                Upc = "000000000000",
+                Upc = "000000000001",
                 Status = "Update",
                 ListPriceUsd = "4.00",
                 ProductFormat = "Poster",
                 ProductGroup = "Poster",
                 ProductLine = "Poster",
                 Ean = "1234",
-                EcommerceUpc = "000000000000",
+                EcommerceUpc = "000000000001",
                 
             };
 

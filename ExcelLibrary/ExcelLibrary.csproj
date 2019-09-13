@@ -58,10 +58,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CellBorder.cs" />
+    <Compile Include="CellFormat.cs" />
+    <Compile Include="CellMergeRange.cs" />
+    <Compile Include="ColumnFormat.cs" />
     <Compile Include="IWorkbookReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RangeFormat.cs" />
+    <Compile Include="RowFormat.cs" />
     <Compile Include="WorkbookReader.cs" />
+    <Compile Include="WorksheetColumn.cs" />
     <Compile Include="WorksheetData.cs" />
+    <Compile Include="WorksheetRow.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">

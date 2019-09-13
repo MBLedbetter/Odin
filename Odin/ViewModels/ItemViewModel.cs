@@ -903,6 +903,14 @@ namespace Odin.ViewModels
         }
         private string _countryOfOriginToolTip = string.Empty;
 
+        public string DateAdded
+        {
+            get
+            {
+                return this.ItemViewModelItem.DateAdded.ToString("MM/dd/yyy");
+            }
+        }
+
         public string DefaultActualCostUsd
         {
             get
@@ -8590,7 +8598,7 @@ namespace Odin.ViewModels
                     this.DirectImportError = error.ReturnErrorMessage();
                     break;
 
-                case "DtcPrice":
+                case "Dtc Price":
                     this.DtcPriceError = error.ReturnErrorMessage();
                     break;
 
@@ -9158,22 +9166,23 @@ namespace Odin.ViewModels
         /// <returns></returns>
         private string CheckWebInfoTabColor()
         {
-            if (CopyrightBoxColor == "Tomato") { return "Tomato"; }
-            if (InStockDateBoxColor == "Tomato") { return "Tomato"; }
-            if (CategoryBoxColor == "Tomato") { return "Tomato"; }
-            if (Category2BoxColor == "Tomato") { return "Tomato"; }
-            if (Category3BoxColor == "Tomato") { return "Tomato"; }
-            if (ItemKeywordsBoxColor == "Tomato") { return "Tomato"; }
-            if (Genre1BoxColor == "Tomato") { return "Tomato"; }
-            if (Genre2BoxColor == "Tomato") { return "Tomato"; }
-            if (Genre3BoxColor == "Tomato") { return "Tomato"; }
-            if (TitleBoxColor == "Tomato") { return "Tomato"; }
-            if (LicenseBoxColor == "Tomato") { return "Tomato"; }
-            if (MetaDescriptionBoxColor == "Tomato") { return "Tomato"; }
-            if (PropertyBoxColor == "Tomato") { return "Tomato"; }
-            if (ShortDescriptionBoxColor == "Tomato") { return "Tomato"; }
-            if (SizeBoxColor == "Tomato") { return "Tomato"; }
-            if (WebsitePriceBoxColor == "Tomato") { return "Tomato"; }
+            if (this.CopyrightBoxColor == "Tomato") { return "Tomato"; }
+            if (this.InStockDateBoxColor == "Tomato") { return "Tomato"; }
+            if (this.CategoryBoxColor == "Tomato") { return "Tomato"; }
+            if (this.Category2BoxColor == "Tomato") { return "Tomato"; }
+            if (this.Category3BoxColor == "Tomato") { return "Tomato"; }
+            if (this.DtcPriceBoxColor == "Tomato") { return "Tomato"; }
+            if (this.ItemKeywordsBoxColor == "Tomato") { return "Tomato"; }
+            if (this.Genre1BoxColor == "Tomato") { return "Tomato"; }
+            if (this.Genre2BoxColor == "Tomato") { return "Tomato"; }
+            if (this.Genre3BoxColor == "Tomato") { return "Tomato"; }
+            if (this.TitleBoxColor == "Tomato") { return "Tomato"; }
+            if (this.LicenseBoxColor == "Tomato") { return "Tomato"; }
+            if (this.MetaDescriptionBoxColor == "Tomato") { return "Tomato"; }
+            if (this.PropertyBoxColor == "Tomato") { return "Tomato"; }
+            if (this.ShortDescriptionBoxColor == "Tomato") { return "Tomato"; }
+            if (this.SizeBoxColor == "Tomato") { return "Tomato"; }
+            if (this.WebsitePriceBoxColor == "Tomato") { return "Tomato"; }
             return "White";
         }
 
@@ -9247,6 +9256,7 @@ namespace Odin.ViewModels
 
                 case "BillOfMaterials":
                     this.BillOfMaterialsError = ItemService.ValidateBillOfMaterials(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.ProductIdTranslationError = ItemService.ValidateProductIdTranslation(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "CasepackHeight":
@@ -9652,6 +9662,7 @@ namespace Odin.ViewModels
                     break;
 
                 case "ProductIdTranslation":
+                    this.BillOfMaterialsError = ItemService.ValidateBillOfMaterials(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     this.ProductIdTranslationError = ItemService.ValidateProductIdTranslation(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
                     break;
 
@@ -9727,6 +9738,7 @@ namespace Odin.ViewModels
                 case "SellOnTrsCheck":
                     this.SellOnTrsError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Shop Trends")?.ReturnErrorMessage() ?? "";
                     this.DtcPriceError = ItemService.ValidateDtcPrice(ItemViewModelItem)?.ReturnErrorMessage() ?? "";
+                    this.Genre1Error = ItemService.ValidateGenre(ItemViewModelItem,1)?.ReturnErrorMessage() ?? "";
                     break;
 
                 case "SellOnWalmartCheck":

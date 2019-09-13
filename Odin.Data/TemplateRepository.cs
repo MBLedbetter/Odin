@@ -334,7 +334,7 @@ namespace Odin.Data
                     template.CostProfileGroup = (!string.IsNullOrEmpty(x.CostProfileGroup)) ? x.CostProfileGroup : "";
                     template.DefaultActualCostCad = (!string.IsNullOrEmpty(x.DefaultActualCostCad)) ? x.DefaultActualCostCad : "";
                     template.DefaultActualCostUsd = (!string.IsNullOrEmpty(x.DefaultActualCostUsd)) ? x.DefaultActualCostUsd : "";
-                    template.DtcPrice = (!string.IsNullOrEmpty(x.Duty)) ? x.DtcPrice : "";
+                    template.DtcPrice = (!string.IsNullOrEmpty(x.DtcPrice)) ? x.DtcPrice : "";
                     template.Duty = (!string.IsNullOrEmpty(x.Duty)) ? x.Duty : "";
                     template.Gpc = (!string.IsNullOrEmpty(x.Gpc)) ? x.Gpc : "";
                     template.Height = (!string.IsNullOrEmpty(x.Height)) ? x.Height : "";

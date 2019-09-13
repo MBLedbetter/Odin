@@ -71,6 +71,17 @@
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn
+                            DisplayMemberBinding="{Binding RecordDate}"
+                            Width="100">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader
+                                    Content="Date Modified"
+                                    Click="RecordDate_Column_Click"
+                                    HorizontalContentAlignment="Left"
+                                    Padding="5" />
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn
                             DisplayMemberBinding="{Binding UserName}"                         
                             Width="80">
                         <GridViewColumn.Header>
@@ -79,16 +90,6 @@
                                     
                                     HorizontalContentAlignment="Left"
                                     Padding="5"/>
-                            </GridViewColumn.Header>
-                        </GridViewColumn>
-                        <GridViewColumn
-                            DisplayMemberBinding="{Binding RecordDate}"
-                            Width="100">
-                            <GridViewColumn.Header>
-                                <GridViewColumnHeader
-                                    Content="Date Modified"
-                                    HorizontalContentAlignment="Left"
-                                    Padding="5" />
                             </GridViewColumn.Header>
                         </GridViewColumn>
                         <GridViewColumn

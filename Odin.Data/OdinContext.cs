@@ -286,12 +286,17 @@ namespace Odin.Data
         public DbSet<OdinRolePermissions> OdinRolePermissions { get; set; }
 
         /// <summary>
-        ///     Gets or sets a list of the xxx lines that are in this context.
+        ///     Gets or sets a list of the OdinShoptrendsBrands lines that are in this context.
+        /// </summary>
+        public DbSet<OdinShoptrendsBrands> OdinShoptrendsBrands { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a list of the OdinSpecialChars lines that are in this context.
         /// </summary>
         public DbSet<OdinSpecialChars> OdinSpecialChars { get; set; }
 
         /// <summary>
-        ///     Gets or sets a list of the xxx lines that are in this context.
+        ///     Gets or sets a list of the OdinTerritories lines that are in this context.
         /// </summary>
         public DbSet<OdinTerritories> OdinTerritories { get; set; }
 
@@ -530,6 +535,7 @@ namespace Odin.Data
             MapOdinOptionsTable(modelBuilder);
             MapOdinRequestComments(modelBuilder);
             MapOdinRolePermissions(modelBuilder);
+            MapOdinShoptrendsBrands(modelBuilder);
             MapOdinSpecialChars(modelBuilder);
             MapOdinTerritories(modelBuilder);
             MapOdinToolTips(modelBuilder);
@@ -2119,9 +2125,10 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItem>().Property(p => p.CmGroup).HasColumnName("CM_GROUP");
             modelBuilder.Entity<OdinItem>().Property(p => p.Copyright).HasColumnName("COPYRIGHT");
             modelBuilder.Entity<OdinItem>().Property(p => p.CountryIstOrigin).HasColumnName("COUNTRY_IST_ORIGIN");
-            modelBuilder.Entity<OdinItem>().Property(p => p.Descr60).HasColumnName("DESCR60");
             modelBuilder.Entity<OdinItem>().Property(p => p.DefaultActualCostCad).HasColumnName("DACCAD");
             modelBuilder.Entity<OdinItem>().Property(p => p.DefaultActualCostUsd).HasColumnName("DACUSD");
+            modelBuilder.Entity<OdinItem>().Property(p => p.DateAdded).HasColumnName("DATE_ADDED");
+            modelBuilder.Entity<OdinItem>().Property(p => p.Descr60).HasColumnName("DESCR60");
             modelBuilder.Entity<OdinItem>().Property(p => p.DirectImport).HasColumnName("DIRECT_IMPORT");
             modelBuilder.Entity<OdinItem>().Property(p => p.DtcPrice).HasColumnName("DTC_PRICE");
             modelBuilder.Entity<OdinItem>().Property(p => p.Duty).HasColumnName("DUTY");
@@ -2770,6 +2777,27 @@ namespace Odin.Data
             modelBuilder.Entity<OdinRolePermissions>().Property(p => p.Role).HasColumnName("ROLE");
         }
 
+        /// <summary>
+        ///             This method maps the OdinShoptrendsBrands class to the database.
+        /// </summary>
+        /// 
+        /// <param name="DbModelBuilder modelBuilder">
+        ///             The DbDbModelBuilder modelBuilder to update with the mapping.
+        /// </param>
+        private void MapOdinShoptrendsBrands(DbModelBuilder modelBuilder)
+        {
+            // Map the OdinShoptrendsBrands class to the ODIN_SHOPTRENDS_BRANDS table
+            modelBuilder.Entity<OdinShoptrendsBrands>()
+                .HasKey(p => new
+                {
+                    p.Brand
+                })
+                .ToTable("ODIN_SHOPTRENDS_BRANDS");
+
+            // Map each column
+            modelBuilder.Entity<OdinShoptrendsBrands>().Property(p => p.Brand).HasColumnName("BRAND");
+
+        }
         /// <summary>
         ///             This method maps the OdinSpecialChars class to the database.
         /// </summary>

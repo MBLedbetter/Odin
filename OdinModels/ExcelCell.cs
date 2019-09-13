@@ -88,7 +88,23 @@ namespace OdinModels
             }
         }
         private string _field = string.Empty;
-        
+
+        /// <summary>
+        ///     Gets or sets the HeaderOverride
+        /// </summary>
+        public string HeaderOverride
+        {
+            get
+            {
+                return _headerOverride;
+            }
+            set
+            {
+                _headerOverride = value;
+            }
+        }
+        private string _headerOverride = string.Empty;
+
         /// <summary>
         ///     Gets or sets the Option
         /// </summary>
@@ -115,6 +131,15 @@ namespace OdinModels
         public ExcelCell()
         {
 
+        }
+
+        /// <summary>
+        ///     Constructs the ExcelCell object
+        /// </summary>
+        public ExcelCell(string field, string headerOverride)
+        {
+            this.Field = field;
+            this.HeaderOverride = headerOverride;
         }
 
         /// <summary>

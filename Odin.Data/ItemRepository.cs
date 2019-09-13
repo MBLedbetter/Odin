@@ -1570,6 +1570,7 @@ namespace Odin.Data
             GlobalData.PricingGroups = RetrievePriceGroupList();
             GlobalData.PsStatuses = RetrievePsStatuses();
             GlobalData.RequestStatus = RetrieveRequestStatuses();
+            GlobalData.ShoptrendsBrands = RetrieveShopTrendsBrands();
             GlobalData.SpecialCharacters = RetrieveSpecialCharacters();
             GlobalData.StatsCodes = RetrieveStatsCodes();
             GlobalData.TariffCodes = RetrieveTariffCodeList();
@@ -1655,6 +1656,7 @@ namespace Odin.Data
                         Copyright = (!string.IsNullOrEmpty(odinItem.Copyright)) ? odinItem.Copyright.Trim() : "",
                         CountryOfOrigin = (!string.IsNullOrEmpty(odinItem.CountryIstOrigin)) ? odinItem.CountryIstOrigin.Trim() : "",
                         CostProfileGroup = (!string.IsNullOrEmpty(odinItem.CmGroup)) ? odinItem.CmGroup.Trim() : "",
+                        DateAdded = odinItem.DateAdded,
                         DefaultActualCostCad = (odinItem.DefaultActualCostCad != null) ? DbUtil.ZeroTrim(odinItem.DefaultActualCostCad.ToString(), 2) : "",
                         DefaultActualCostUsd = (odinItem.DefaultActualCostUsd != null) ? DbUtil.ZeroTrim(odinItem.DefaultActualCostUsd.ToString(), 2) : "",
                         Description = (!string.IsNullOrEmpty(odinItem.Descr60)) ? odinItem.Descr60.Trim() : "",
@@ -2040,7 +2042,7 @@ namespace Odin.Data
                     item.EcommerceComponents = odinItemUpdateRecord.AComponents;
 
                     item.UserName = odinItemUpdateRecord.Username;
-                    item.RecordDate = Convert.ToString(odinItemUpdateRecord.InputDate);
+                    item.RecordDate = odinItemUpdateRecord.InputDate;
                     item.Status = odinItemUpdateRecord.ItemInputStatus;
                     items.Add(item);
                 }
@@ -3747,7 +3749,10 @@ namespace Odin.Data
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                return (from o in context.OdinGenres select o.Genre).ToList();
+                List<string> results = (from o in context.OdinGenres select o.Genre).ToList();
+                results.Add("");
+                results.Sort();
+                return results;
             }
         }
 
@@ -3856,7 +3861,10 @@ namespace Odin.Data
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                return (from o in context.OdinWebLicense select o.License).Distinct().ToList();
+                List<string> result = (from o in context.OdinWebLicense select o.License).Distinct().ToList();
+                result.Add("");
+                result.Sort();
+                return result;
             }
         }
         
@@ -4027,6 +4035,19 @@ namespace Odin.Data
         {
             List<string> results = new List<string>(new string[] {"Pending","Completed","Canceled","Incomplete"});
             return results;
+        }
+
+        /// <summary>
+        ///     Retrieves a list of brands from ODIN_SHOPTRENDS_BRANDS
+        /// </summary>
+        /// <returns>list of brands</returns>
+        private List<string> RetrieveShopTrendsBrands()
+        {
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                List<string> results = (from o in context.OdinShoptrendsBrands select o.Brand).ToList();
+                return results;
+            }
         }
 
         /// <summary>

@@ -40,7 +40,7 @@ namespace Odin.Data
         ///     Retrieve all submitted requests from Odin_WebsiteItemRequests
         /// </summary>
         /// <returns>List of requests</returns>
-        public List<Request> RetrieveRequests()
+        public List<Request> RetrieveRequests(bool isAdmin)
         {
             List<Request> requestList = new List<Request>
             {

@@ -465,6 +465,15 @@ namespace OdinModels
         private string _countryOfOrigin = string.Empty;
 
         /// <summary>
+        ///     Gets or sets the DateAdded
+        /// </summary>
+        public DateTime DateAdded
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         ///     Gets or sets the DefaultActualCostCad
         /// </summary>
         public string DefaultActualCostCad
@@ -2830,6 +2839,24 @@ namespace OdinModels
         #region Odin Properties
 
         /// <summary>
+        ///     Gets or sets the Child Products
+        /// </summary>
+        public List<string> ChildProducts
+        {
+            get
+            {
+                return _childProducts;
+            }
+            set
+            {
+                _childProducts = value;
+                OnPropertyChanged("ChildProducts");
+
+            }
+        }
+        private List<string> _childProducts = new List<string>();
+
+        /// <summary>
         ///     Gets or sets the ItemRow
         /// </summary>
         public int ItemRow
@@ -2848,6 +2875,24 @@ namespace OdinModels
         private int _itemRow;
 
         public string NewDate { get; set; }
+
+        /// <summary>
+        ///     Flag if item is a parent item
+        /// </summary>
+        public bool IsParentItem
+        {
+            get
+            {
+                return _isParentItem;
+            }
+            set
+            {
+                _isParentItem = value;
+                OnPropertyChanged("IsParentItem");
+
+            }
+        }
+        private bool _isParentItem = false;
 
         /// <summary>
         ///     Product Type: distinguishes between items(1) and kits(0)
@@ -2869,7 +2914,7 @@ namespace OdinModels
         /// <summary>
         ///     Gets or sets the RecordDate. Used for update records view.
         /// </summary>
-        public string RecordDate
+        public DateTime RecordDate
         {
             get
             {
@@ -2882,7 +2927,7 @@ namespace OdinModels
 
             }
         }
-        private string _recordDate = string.Empty;
+        private DateTime _recordDate;
 
         /// <summary>
         ///     List of related products
@@ -4183,14 +4228,21 @@ namespace OdinModels
                     string[] values = value.Split('\\');
                     if (values.Length > 1)
                     {
-                        returnValue = "http://trendsinternational.com/media/catalog/product/";
                         int last = values.Length;
                         value = values[last - 1];
-                        string a = (!string.IsNullOrEmpty(value.Substring(0, 1))) ? value.Substring(0, 1) + "/" : "";
-                        string b = (!string.IsNullOrEmpty(value.Substring(1, 1))) ? value.Substring(1, 1) + "/" : "";
-                        values = value.Split('.');
-                        value = value.Replace("." + values[values.Length - 1], "");
-                        returnValue += a + b + value.TrimEnd('.') + ".jpg";
+                        if (value.Length > 2)
+                        {
+                            returnValue = "http://trendsinternational.com/media/catalog/product/";
+                            string a = (!string.IsNullOrEmpty(value.Substring(0, 1))) ? value.Substring(0, 1) + "/" : "";
+                            string b = (!string.IsNullOrEmpty(value.Substring(1, 1))) ? value.Substring(1, 1) + "/" : "";
+                            values = value.Split('.');
+                            value = value.Replace("." + values[values.Length - 1], "");
+                            returnValue += a + b + value.TrimEnd('.') + ".jpg";
+                        }
+                        else
+                        {
+                            return "";
+                        }
                     }
                     else
                     {
@@ -4352,15 +4404,13 @@ namespace OdinModels
         {
             string result = string.Empty;
             int listLength = this.BillOfMaterials.Count;
-            int count = 0;
-            while (count < listLength)
+            for(int x = 0; x < listLength; x++)
             {
-                result += CombineChildElement(this.BillOfMaterials[count]);
-                if (listLength - count > 1)
+                result += CombineChildElement(this.BillOfMaterials[x]);
+                if (listLength - x > 1)
                 {
                     result += ", ";
                 }
-                count++;
             }
             return result;
         }

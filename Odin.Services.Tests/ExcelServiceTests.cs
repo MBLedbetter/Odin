@@ -5,12 +5,41 @@ using OdinModels;
 using System.Collections.Generic;
 using Odin.Data;
 using Odin.Services.Tests.Helpers;
+using System;
 
 namespace OdinTests.Services
 {
     [TestClass]
     public class ExcelServiceTests
     {
+
+        /// <summary>
+        ///     Checks that the Modify Keywords function appends item id to the end of keyword search and removes the letters.
+        ///     (Implemented so posters could be searched on B2B by number)
+        /// </summary>
+        [TestMethod]
+        public void GenerateSortNumber_ReturnsCorrectNumber_ShouldSucceed()
+        {
+            #region Assemble
+            GlobalData.ClearValues();
+            OptionService optionService = new OptionService(new TestOptionRepository(), new TestRequestRepository());
+            ExcelService excelService = new ExcelService(true, new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository()), optionService, new TestTemplateRepository(), new TestRequestRepository());
+            DateTime dateTime = new DateTime(2019, 6, 27);
+            #endregion // Assemble
+
+            #region Act
+
+            string result = excelService.GenerateSortNumber(dateTime);
+
+            #endregion // Act
+
+            #region Assert
+
+            Assert.AreEqual("79809373", result);
+
+            #endregion // Assert
+        }
+
         [TestMethod]
         public void SortAmazonItemVariations_HasValues_ShouldMatch()
         {
@@ -283,6 +312,36 @@ namespace OdinTests.Services
 
             Assert.AreEqual("bears, dogs, cats, 800884", result);
             Assert.AreEqual("bears, dogs, cats, 1234", result2);
+
+            #endregion // Assert
+        }
+
+        /// <summary>
+        ///     Checks that WriteB2BShortDescription writes the correct url
+        /// </summary>
+        [TestMethod]
+        public void WriteB2BShortDescription_ShouldGenerateUrlMatch_ShouldPass()
+        {
+            #region Assemble
+            GlobalData.ClearValues();
+            GlobalData.ItemTypeExtensionsList.Add("RP");
+            OptionService optionService = new OptionService(new TestOptionRepository(), new TestRequestRepository());
+            ExcelService excelService = new ExcelService(true, new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository()), optionService, new TestTemplateRepository(), new TestRequestRepository());
+            ItemObject item = new ItemObject(1)
+            {
+                Title = "Poster Title",
+                ItemId = "RP14200",
+                SellOnTrs ="Y"
+            };
+            #endregion // Assemble
+
+            #region Act
+            string result = excelService.WriteB2BShortDescription(item);
+            #endregion // Act
+
+            #region Assert
+
+            Assert.AreEqual("<a href='https://shoptrends.com/poster-title-poster14200.html'  class='shopTrends_button' target='_blank'>Buy On Shoptrends.com</a>>. ", result);
 
             #endregion // Assert
         }

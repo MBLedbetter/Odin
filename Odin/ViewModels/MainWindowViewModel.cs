@@ -234,6 +234,18 @@ namespace Odin.ViewModels
             }
         }
         private RelayCommand _managePermision;
+        public ICommand Magento1CustomExcelCommand
+        {
+            get
+            {
+                if (_magento1CustomExcel == null)
+                {
+                    _magento1CustomExcel = new RelayCommand(param => CreateMagento1CustomExcel());
+                }
+                return _magento1CustomExcel;
+            }
+        }
+        private RelayCommand _magento1CustomExcel;
         public ICommand Magento2CustomExcelCommand
         {
             get
@@ -480,9 +492,9 @@ namespace Odin.ViewModels
 
         #region Properties     
 
-        private BackgroundWorker BackgroundWorker { get; set; }
+        // private BackgroundWorker BackgroundWorker { get; set; }
 
-        private string BackgroundWorkerState = string.Empty;
+        // private string BackgroundWorkerState = string.Empty;
 
         /// <summary>
         ///     Gets or sets the EmailService
@@ -2919,90 +2931,101 @@ namespace Odin.ViewModels
             window.ShowDialog();
         }
         
+        private void BackgroundWorkerSave_DoWork(object sender, DoWorkEventArgs e)
+        {
+            for(int i = 0; i<this.Items.Count;i++)
+            {
+                try
+                {
+                    if (this.Items[i].Status != "Saved")
+                    {
+                        ItemService.InsertItem(this.Items[i], i + 1);
+                        if (!GlobalData.ItemIds.Contains(this.Items[i].ItemId))
+                        {
+                            GlobalData.ItemIds.Add(this.Items[i].ItemId);
+                        }
+                    }
+                    this.Items[i].Status = "Saved";
+                    this.Items[i].RowColor = "LightGreen";
+                    this.ProgressText = "Saving item " + i + 1 + " of " + this.Items.Count.ToString();
+                }
+                catch (Exception ex)
+                {
+                    this.Items[i].Status = "Error";
+                    this.Items[i].RowColor = "Salmon";
+                    ErrorLog.LogError("Item " + this.Items[i].ItemId + " Failed to Save.", ex.ToString());
+                    break;
+                }
+                ((BackgroundWorker)sender).ReportProgress(i + 1);
+            }
+            this.SaveStatus = true;         
+        }
+
         private void BackgroundWorkerValidate_DoWork(object sender, DoWorkEventArgs e)
         {
-            bool errors = false;
-            if (this.BackgroundWorkerState == "Validate")
+            ObservableCollection<ItemError> errors = new ObservableCollection<ItemError>();
+            for (int i = 0; i < this.Items.Count ;i++)
             {
-                ObservableCollection<ItemError> errorList = ValidateAll(this.Items);
-                e.Result = errorList;
+                if (this.Items[i].HasUpdate)
+                {
+                    foreach (ItemError error in this.ItemService.ValidateItem(this.Items[i], false))
+                    {
+                        errors.Add(error);
+                    }
+                }
+                ((BackgroundWorker)sender).ReportProgress(i + 1);
             }
-            else if (this.BackgroundWorkerState == "Save")
+            this.ItemErrors = errors;
+        }
+
+        private void BackgroundWorkerSave_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (this.ItemErrors.Count==0)
             {
-                int count = 1;
-                foreach (ItemObject item in this.Items)
-                {
-                    int num = count - 1;
-                    try
-                    {
-                        if (item.Status != "Saved")
-                        {
-                            ItemService.InsertItem(item, count);
-                            if (!GlobalData.ItemIds.Contains(item.ItemId))
-                            {
-                                GlobalData.ItemIds.Add(item.ItemId);
-                            }
-                        }
-                        item.Status = "Saved";
-                        item.RowColor = "LightGreen";
-                        this.ProgressText = "Saving item " + count + " of " + this.Items.Count.ToString();
-                    }
-                    catch (Exception ex)
-                    {
-                        item.Status = "Error";
-                        item.RowColor = "Salmon";
-                        errors = true;
-                        ErrorLog.LogError("Item " + this.Items[num].ItemId + " Failed to Save.", ex.ToString());
-                        break;
-                    }
-                    count++;
-                }
-                this.BackgroundWorkerState = "";
-                this.SaveStatus = true;
-                if (!errors)
-                {
-                    this.ProgressText = "Items Saved";
-                    this.SubmitStatus = true;
-                }
-                else
-                {
-                    this.ProgressText = "Item Error Halted Save Process";
-                    this.BackgroundWorker = new BackgroundWorker();
-                    this.SubmitStatus = false;
-                }
+                this.ProgressText = "Items Saved";
+                this.SubmitStatus = true;
             }
+            else
+            {
+                this.ProgressText = "Item Error Halted Save Process";
+                this.SubmitStatus = false;
+            }
+            this.SubmitStatus = true;            
+            this.SaveStatus = true;
         }
 
         private void BackgroundWorkerValidate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (this.BackgroundWorkerState == "Validate")
-            {
-                foreach (ItemError error in (ObservableCollection<ItemError>)e.Result)
-                {
-                    this.ItemErrors.Add(error);
-                }
-            }
-            if (this.BackgroundWorkerState == "Save")
-            {
+                this.ProgressText = "Item Validation Complete";
                 this.SubmitStatus = true;
-            }
+
             this.SaveStatus = true;
-            this.BackgroundWorkerState = "";
+        }
+
+        public void BackgroundWorkerSave_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            if (e.ProgressPercentage == this.Items.Count)
+            {
+                this.ProgressText = "Items Saved";
+            }
+            else
+            {
+                this.ProgressText = "Saving Data for item # " + e.ProgressPercentage.ToString() + " of " + this.Items.Count.ToString();
+            }
+
         }
 
         public void BackgroundWorkerValidate_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            if (this.BackgroundWorkerState == "Validate")
+            if (e.ProgressPercentage == this.Items.Count)
             {
-                if (e.ProgressPercentage == this.Items.Count)
-                {
-                    this.ProgressText = "Item Load Complete";
-                }
-                else
-                {
-                    this.ProgressText = "Validating Data for item # " + e.ProgressPercentage.ToString() + " of " + this.Items.Count.ToString();
-                }
+                this.ProgressText = "Item Load Complete";
             }
+            else
+            {
+                this.ProgressText = "Validating Data for item # " + e.ProgressPercentage.ToString() + " of " + this.Items.Count.ToString();
+            }
+            
         }
 
         /// <summary>
@@ -3025,7 +3048,7 @@ namespace Odin.ViewModels
         }
 
         /// <summary>
-        ///     Clears items and item errors from the MainWindowViewModel
+        ///     Clears existing items and item errors from Odin
         /// </summary>
         public void ClearLists()
         {
@@ -3047,11 +3070,29 @@ namespace Odin.ViewModels
         }
 
         /// <summary>
+        ///     Creates a Magento 1 excel sheet from the curretnly loaded items
+        /// </summary>
+        public void CreateMagento1CustomExcel()
+        {
+            if(this.Items.Count>0)
+            {
+                Random rnd = new Random();
+                int rndId = rnd.Next(1000);
+                string custId = "CUST-" + rndId.ToString();
+                ExcelService.WriteMagentoCsv(this.Items, custId, "Add");
+            }
+            else
+            {
+                MessageBox.Show("There are no items!");
+            }
+        }
+
+        /// <summary>
         ///     Creates a Magento 2 excel sheet from the curretnly loaded items
         /// </summary>
         public void CreateMagento2CustomExcel()
         {
-            if(this.Items.Count>0)
+            if (this.Items.Count > 0)
             {
                 Random rnd = new Random();
                 int rndId = rnd.Next(1000);
@@ -3063,6 +3104,7 @@ namespace Odin.ViewModels
                 MessageBox.Show("There are no items!");
             }
         }
+
         /// <summary>
         ///     Opens DbSetting View / View Model
         /// </summary>
@@ -3159,13 +3201,13 @@ namespace Odin.ViewModels
                 if (type == "Update")
                 {
                     this.Items = (window.DataContext as FindItemViewModel).ItemList;
+                    BackgroundWorker worker = new BackgroundWorker();
+                    worker.DoWork += BackgroundWorkerValidate_DoWork;
+                    worker.ProgressChanged += BackgroundWorkerValidate_ProgressChanged;
+                    worker.WorkerReportsProgress = true;
+                    worker.RunWorkerCompleted += BackgroundWorkerValidate_RunWorkerCompleted;
+                    worker.RunWorkerAsync();
 
-                    this.BackgroundWorkerState = "Validate";
-                    BackgroundWorker.DoWork += BackgroundWorkerValidate_DoWork;
-                    BackgroundWorker.ProgressChanged += BackgroundWorkerValidate_ProgressChanged;
-                    BackgroundWorker.RunWorkerCompleted += BackgroundWorkerValidate_RunWorkerCompleted;
-                    BackgroundWorker.WorkerReportsProgress = true;
-                    BackgroundWorker.RunWorkerAsync();
                     SaveStatus = true;
                     SubmitStatus = false;
                 }
@@ -3533,27 +3575,28 @@ namespace Odin.ViewModels
         /// </summary>
         public void SaveItems()
         {
+            BackgroundWorker worker = new BackgroundWorker();
             Mouse.OverrideCursor = Cursors.Wait;
-
-            this.SaveStatus = false;
-            this.SubmitStatus = false;
-            this.BackgroundWorkerState = "Save";
+            
             bool savedRun = false;
 
             if ((this.ItemErrors.Count == 0) && (this.Items.Count > 0))
             {
                 if (!savedRun)
                 {
-                    BackgroundWorker.DoWork += BackgroundWorkerValidate_DoWork;
-                    BackgroundWorker.RunWorkerCompleted += BackgroundWorkerValidate_RunWorkerCompleted;
-                    BackgroundWorker.WorkerReportsProgress = true;
-                    BackgroundWorker.RunWorkerAsync();
+                    worker.DoWork += BackgroundWorkerSave_DoWork;
+                    worker.ProgressChanged += BackgroundWorkerSave_ProgressChanged;
+                    worker.WorkerReportsProgress = true;
+                    worker.RunWorkerCompleted += BackgroundWorkerSave_RunWorkerCompleted;
+                    worker.RunWorkerAsync();
                 }  
             }
             else
             {
                 MessageBox.Show("Please remove all errors before saving");
             }
+            this.SaveStatus = false;
+            this.SubmitStatus = false;
             Mouse.OverrideCursor = null;
         }
 
@@ -3890,14 +3933,16 @@ namespace Odin.ViewModels
                         string itemWebChecklist = string.Empty;
                         foreach (ItemObject item in this.Items)
                         {
-                            if ((item.SellOnTrends != "Y")&& (item.SellOnTrs != "Y"))
+                            if ((item.SellOnTrends != "Y") && (item.SellOnTrs != "Y"))
                             {
-                                if (itemWebChecklist != string.Empty) { itemWebChecklist += ", "; }
+                                if (itemWebChecklist != string.Empty) {
+                                    itemWebChecklist += ", ";
+                                }
                                 itemWebChecklist += item.ItemId + ", ";
                             }
                         }
                         if (itemWebChecklist == string.Empty)
-                        {
+                        {                            
                             bool isNew = string.IsNullOrEmpty(Items[0].NewDate) ? true : false;
                             if (isNew)
                             {
@@ -3939,7 +3984,7 @@ namespace Odin.ViewModels
                                 Items = new ObservableCollection<ItemObject>();
                                 this.SubmitStatus = false;
                                 Mouse.OverrideCursor = null;
-                            }
+                            }                            
                         }
                         else
                         {
@@ -3999,17 +4044,12 @@ namespace Odin.ViewModels
                         item.ProdType = 0;
                     }
                 }
-
-                Mouse.OverrideCursor = Cursors.Wait;
-
-                this.BackgroundWorkerState = "Validate";
-                BackgroundWorker.DoWork += BackgroundWorkerValidate_DoWork;
-                BackgroundWorker.ProgressChanged += BackgroundWorkerValidate_ProgressChanged;
-                BackgroundWorker.RunWorkerCompleted += BackgroundWorkerValidate_RunWorkerCompleted;
-                BackgroundWorker.WorkerReportsProgress = true;
-                BackgroundWorker.RunWorkerAsync();
-                SaveStatus = true;
-                Mouse.OverrideCursor = null;
+                BackgroundWorker worker = new BackgroundWorker();
+                worker.DoWork += BackgroundWorkerValidate_DoWork;
+                worker.ProgressChanged += BackgroundWorkerValidate_ProgressChanged;
+                worker.WorkerReportsProgress = true;
+                worker.RunWorkerCompleted += BackgroundWorkerValidate_RunWorkerCompleted;
+                worker.RunWorkerAsync();
             }
         }
 
@@ -4054,37 +4094,7 @@ namespace Odin.ViewModels
                 }
             }
         }
-
-        /// <summary>
-        ///     Validates all items in a given collection and returns all errors
-        /// </summary>
-        /// <param name="items"></param>
-        /// <returns></returns>
-        public ObservableCollection<ItemError> ValidateAll(ObservableCollection<ItemObject> items)
-        {
-            this.SaveStatus = false;
-            ObservableCollection<ItemError> ReturnErrors = new ObservableCollection<ItemError>();
-            List<string> itemIds = new List<string>();
-            int count = 1;
-
-            foreach(ItemObject item in items)
-            {
-                itemIds.Add(item.ItemId);
-            }
-
-            foreach(ItemObject item in items)
-            {
-                foreach (ItemError error in this.ItemService.ValidateItem(item, false))
-                {
-                    ReturnErrors.Add(error);
-                }
-                BackgroundWorker.ReportProgress(count);
-                count++;
-            }
-            this.SaveStatus = true;
-            return ReturnErrors;
-        }
-
+        
         /// <summary>
         ///     Checks a selected spreadsheet for errors
         /// </summary>
@@ -4176,7 +4186,7 @@ namespace Odin.ViewModels
             Items.Clear();
             ProductRequestView window1 = new ProductRequestView()
             {
-                DataContext = new ProductRequestViewModel(true, true, EmailService, ExcelService, OptionService, ItemService)
+                DataContext = new ProductRequestViewModel(true, true, this.EmailService, this.ExcelService, this.OptionService, this.ItemService)
             };
      
             window1.ShowDialog();
@@ -4190,7 +4200,7 @@ namespace Odin.ViewModels
             Items.Clear();
             ProductRequestView window = new ProductRequestView()
             {
-                DataContext = new ProductRequestViewModel(false, false, EmailService, ExcelService, OptionService, ItemService)
+                DataContext = new ProductRequestViewModel(false, false, this.EmailService, this.ExcelService, this.OptionService, this.ItemService)
             };
             window.ShowDialog();
         }
@@ -4215,8 +4225,6 @@ namespace Odin.ViewModels
         {
             try
             {
-                this.BackgroundWorker = new BackgroundWorker();
-                BackgroundWorker.WorkerSupportsCancellation = true;
                 this.EmailService = emailService ?? throw new ArgumentNullException("emailService");
                 this.ExcelService = excelService ?? throw new ArgumentNullException("excelService");
                 this.ItemService = itemService ?? throw new ArgumentNullException("itemService");

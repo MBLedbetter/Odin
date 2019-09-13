@@ -126,9 +126,9 @@ namespace OdinServices
             return RequestRepository.RetrieveRequestList(requestId);
         }
 
-        public List<Request> RetrieveRequests()
+        public List<Request> RetrieveRequests(bool isAdmin)
         {
-            return RequestRepository.RetrieveRequests();
+            return RequestRepository.RetrieveRequests(isAdmin);
         }
 
         /// <summary>
@@ -147,15 +147,6 @@ namespace OdinServices
         public List<string> RetrieveUserExceptionList(string exception)
         {
             return OptionRepository.RetrieveUserExceptionList(exception);
-        }
-
-        /// <summary>
-        ///     Retrieves a list of the user requests
-        /// </summary>
-        /// <returns></returns>
-        public List<Request> RetrieveUserRequests()
-        {
-            return RequestRepository.RetrieveUserRequests();
         }
 
         /// <summary>

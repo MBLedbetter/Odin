@@ -96,6 +96,7 @@
     <Compile Include="OdinOptionsTable.cs" />
     <Compile Include="OdinRequestComments.cs" />
     <Compile Include="OdinRolePermissions.cs" />
+    <Compile Include="OdinShoptrendsBrands.cs" />
     <Compile Include="OdinSpecialChars.cs" />
     <Compile Include="OdinTerritories.cs" />
     <Compile Include="OdinToolTips.cs" />
