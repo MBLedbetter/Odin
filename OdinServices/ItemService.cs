@@ -1733,6 +1733,7 @@ namespace OdinServices
                 if (string.IsNullOrEmpty(item.CostProfileGroup)) { item.CostProfileGroup = template.CostProfileGroup; }
                 if (string.IsNullOrEmpty(item.DefaultActualCostUsd)) { item.DefaultActualCostUsd = template.DefaultActualCostUsd; }
                 if (string.IsNullOrEmpty(item.DefaultActualCostCad)) { item.DefaultActualCostCad = template.DefaultActualCostCad; }
+                if (string.IsNullOrEmpty(item.DtcPrice)) { item.DtcPrice = template.DtcPrice; }
                 if (string.IsNullOrEmpty(item.Duty)) { item.Duty = template.Duty; }
                 if (string.IsNullOrEmpty(item.EcommerceBullet1)) { item.EcommerceBullet1 = template.EcommerceBullet1; }
                 if (string.IsNullOrEmpty(item.EcommerceBullet2)) { item.EcommerceBullet2 = template.EcommerceBullet2; }
