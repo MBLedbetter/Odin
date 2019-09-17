@@ -161,13 +161,23 @@ namespace OdinServices
             WriteHeaders(excelCells);
             String[,] rowData = RetrieveRowData(excelCells, itemsList, customer);
             worksheet.get_Range("A2").get_Resize(rowData.GetLength(0), excelCells.Count).set_Value(Type.Missing, rowData);
-
             
             if (createFile)
             {
-                workbook.SaveAs(strFilePath, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                Type.Missing, XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing,
-                Type.Missing, Type.Missing, Type.Missing);
+                if (strFilePath.Substring(strFilePath.Length - 4).ToUpper() == ".CSV")
+                {
+                    workbook.SaveAs(strFilePath, XlFileFormat.xlCSVWindows, Type.Missing, Type.Missing, Type.Missing,
+                    Type.Missing, XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing,
+                    Type.Missing, Type.Missing, Type.Missing);
+                }
+                else
+                {
+                    workbook.SaveAs(strFilePath, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                    Type.Missing, XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing,
+                    Type.Missing, Type.Missing, Type.Missing);
+                }
+
+                
                 Cursor.Hide();
                 workbook.ReadOnly.Equals(false);
                 workbook.Close();
@@ -353,7 +363,7 @@ namespace OdinServices
                             case "Date Added":
                                 for (int x = 0; x < items.Count; x++)
                                 {
-                                    rows[x, column] = (items[x].Status == "Add") ? DateTime.Now.ToShortDateString() : items[x].DateAdded.ToString();
+                                    rows[x, column] = (items[x].Status == "Add") ? DateTime.Now.ToShortDateString() : items[x].DateAdded.ToShortDateString();
                                 }
                                 break;
                             case "Default Actual Cost CAD":
@@ -1011,8 +1021,8 @@ namespace OdinServices
                             case "Magento 2 Url":
                                 for (int x = 0; x < items.Count; x++)
                                 {
-                                    string title = (string.IsNullOrEmpty(items[x].EcommerceItemName)) ? FormatMagento2Title(items[x].Title) : FormatMagento2Title(items[x].EcommerceItemName);
-                                    rows[x, column] = FormatMagento2Url(title, items[x].ItemId);
+                                    //string title = (string.IsNullOrEmpty(items[x].EcommerceItemName)) ? FormatMagento2Title(items[x].Title) : FormatMagento2Title(items[x].EcommerceItemName);
+                                    rows[x, column] = items[x].ItemId;
                                 }
                                 break;
                             case "Meta Description":
@@ -1658,6 +1668,119 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Creates comman seperated string of headers for the magento 2 csv file
+        /// </summary>
+        /// <returns></returns>
+        private string CreateMagento2Headers()
+        {
+            string value = string.Empty;
+            value += "sku,"; /* A */
+            value += "store_view_code,"; /* B */
+            value += "attribute_set_code,"; /* C */
+            value += "product_type,"; /* D */
+            value += "categories,"; /* E */
+            value += "product_websites,"; /* F */
+            value += "name,"; /* G */
+            value += "description,"; /* H */
+            value += "short_description,"; /* I */
+            value += "weight,"; /* J */
+            value += "product_online,"; /* K */
+            value += "tax_class_name,"; /* L */
+            value += "visibility,"; /* M */
+            value += "price,"; /* N */
+            value += "special_price,"; /* O */
+            value += "special_price_from_date,"; /* P */
+            value += "special_price_to_date,"; /* Q */
+            value += "url_key,"; /* R */
+            value += "meta_title,"; /* S */
+            value += "meta_keywords,"; /* T */
+            value += "meta_description,"; /* U */
+            value += "base_image,"; /* V */
+            value += "base_image_label,"; /* W */
+            value += "small_image,"; /* X */
+            value += "small_image_label,"; /* Y */
+            value += "thumbnail_image,"; /* Z */
+            value += "thumbnail_image_label,"; /* AA */
+            value += "swatch_image,"; /* AB */
+            value += "swatch_image_label,"; /* AC */
+            value += "created_at,"; /* AD */
+            value += "updated_at,"; /* AE */
+            value += "new_from_date,"; /* AF */
+            value += "new_to_date,"; /* AG */
+            value += "display_product_options_in,"; /* AH */
+            value += "map_price,"; /* AI */
+            value += "msrp_price,"; /* AJ */
+            value += "map_enabled,"; /* AK */
+            value += "gift_message_available,"; /* AL */
+            value += "custom_design,"; /* AM */
+            value += "custom_design_from,"; /* AN */
+            value += "custom_design_to,"; /* AO */
+            value += "custom_layout_update,"; /* AP */
+            value += "page_layout,"; /* AQ*/
+            value += "product_options_container,"; /* AR */
+            value += "msrp_display_actual_price_type,"; /* AS */
+            value += "country_of_manufacture,"; /* AT */
+            value += "additional_attributes,"; /* AU */
+            value += "qty,"; /* AV */
+            value += "out_of_stock_qty,"; /* AW */
+            value += "use_config_min_qty,"; /* AX */
+            value += "is_qty_decimal,"; /* AY */
+            value += "allow_backorders,"; /* AZ */
+            value += "use_config_backorders,"; /* BA */
+            value += "min_cart_qty,"; /* BB */
+            value += "use_config_min_sale_qty,"; /* BC */
+            value += "max_cart_qty,"; /* BD */
+            value += "use_config_max_sale_qty,"; /* BE */
+            value += "is_in_stock,"; /* BF */
+            value += "notify_on_stock_below,"; /* BG */
+            value += "use_config_notify_stock_qty,"; /* BH */
+            value += "manage_stock,"; /* BI */
+            value += "use_config_manage_stock,"; /* BJ */
+            value += "use_config_qty_increments,"; /* BK */
+            value += "qty_increments,"; /* BL */
+            value += "use_config_enable_qty_inc,"; /* BM */
+            value += "enable_qty_increments,"; /* BN */
+            value += "is_decimal_divided,"; /* BO */
+            value += "website_id,"; /* BP */
+            value += "deferred_stock_update,"; /* BQ */
+            value += "use_config_deferred_stock_update,"; /* BR */
+            value += "related_skus,"; /* BS */
+            value += "related_position,"; /* BT */
+            value += "crosssell_skus,"; /* BU */
+            value += "crosssell_position,"; /* BV */
+            value += "upsell_skus,"; /* BW */
+            value += "upsell_position,"; /* BX */
+            value += "additional_images,"; /* BY */
+            value += "additional_image_labels,"; /* BZ */
+            value += "hide_from_product_page,"; /* CA */
+            value += "custom_options,"; /* CB */
+            value += "bundle_price_type,"; /* CC */
+            value += "bundle_sku_type,"; /* CD */
+            value += "bundle_price_view,"; /* CE */
+            value += "bundle_weight_type,"; /* CF */
+            value += "bundle_values,"; /* CG */
+            value += "bundle_shipment_type,"; /* CH */
+            value += "giftcard_type,"; /* CI */
+            value += "giftcard_allow_open_amount,"; /* CJ */
+            value += "giftcard_open_amount_min,"; /* CK */
+            value += "giftcard_open_amount_max,"; /* CL */
+            value += "giftcard_amount,"; /* CM */
+            value += "use_config_is_redeemable,"; /* CN */
+            value += "giftcard_is_redeemable,"; /* CO */
+            value += "use_config_lifetime,"; /* CP */
+            value += "giftcard_lifetime,"; /* CQ */
+            value += "use_config_allow_message,"; /* CR */
+            value += "giftcard_allow_message,"; /* CS */
+            value += "use_config_email_template,"; /* CT */
+            value += "giftcard_email_template,"; /* CU */
+            value += "associated_skus,"; /* CV */
+            value += "configurable_variations,"; /* CW */
+            value += "configurable_variation_labels"; /* CX */
+
+            return value;
+        }
+
+        /// <summary>
         ///     Creates comman seperated string of headers for the magento csv file
         /// </summary>
         /// <returns></returns>
@@ -1760,7 +1883,7 @@ namespace OdinServices
                 new ExcelCell("-EMPTY-","description"), /* H */
                 new ExcelCell("Magento 2 Poster Short Description","short_description"), /* I */
                 new ExcelCell("Item Weight","weight"), /* J *parent has no weight */
-                new ExcelCell("\"" +"1","product_online,"), /* K */
+                new ExcelCell("\"" +"1","product_online"), /* K */
                 new ExcelCell("\"" +"Taxable Goods"+ "\"","tax_class_name"), /* L */
                 new ExcelCell("Magento 2 Visibility","visibility"), /* M */
                 new ExcelCell("Dtc Price","price"), /* N */
@@ -1964,15 +2087,7 @@ namespace OdinServices
                     item.License = "Sanrio";
                 }
                 result += ",Default Category/Shop by Brand/" + item.License;
-                /*
-                if (!string.IsNullOrEmpty(item.Property))
-                {
-                    if (item.Property != item.License)
-                    {
-                        result += ",Default Category/Shop by Brand/" + item.License + "/" + item.Property;
-                    }
-                }
-                */
+                
                 if (item.License == "NFL"|| item.License == "MLB" || item.License == "NBA" || item.License == "NHL")
                 {
                     result += ",Default Category/Shop by Genre/Sports";
@@ -2027,24 +2142,6 @@ namespace OdinServices
                 }
             }
             return newTitle;
-        }
-
-        /// <summary>
-        ///     Lowercases and replaces spaces with underscoress
-        /// </summary>
-        /// <param name="title"></param>
-        /// <returns></returns>
-        public string FormatMagento2Url(string title, string itemId)
-        {
-            string result = string.Empty;
-
-            result = title + "_" + itemId;
-
-            if(string.IsNullOrEmpty(result))
-            {
-                result = result.ToLower().Replace(" ", "_");
-            }
-            return result;
         }
 
         public List<string> NewCategories(string cat1, string cat2, string cat3)
@@ -2640,9 +2737,7 @@ namespace OdinServices
             string result = string.Empty;
             if(item.SellOnTrs=="Y")
             {
-                string title = item.Title.Replace(' ', '-').ToLower();
-                title = title.Replace("---", "-");
-                string url = "https://shoptrends.com/" + title;
+                string url = "https://shoptrends.com/";
                 url += "-poster" + ItemService.RetrieveItemIdCore(item.ItemId) + ".html";
                 result += "<a href=\'" + url + "\'  class='shopTrends_button' target=\'_blank\'>Buy On Shoptrends.com</a>";
             }
@@ -2789,51 +2884,60 @@ namespace OdinServices
         public void WriteMagento2Csv(ObservableCollection<ItemObject> itemList, string requestId, string requestType)
         {
             string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string csvFilePath = desktop + @"\Request-" + "-" + requestId + "_Add.csv";
-            ObservableCollection<ExcelCell> columns = CreateMagento2Columns();
+            List<string> CSV_Add = new List<string>
+            {
+                CreateMagento2Headers()
+            };
 
             List<string> parentStrings = new List<string>();
 
             if ((requestType == "Add") || (requestType == "Update"))
             {
                 List<string> idCores = new List<string>();
-
-                // Retrieve the unique id cores for items in this list
+                foreach (ItemObject item in itemList)
+                {
+                    CSV_Add.Add(WriteMagento2ChildLine(item));
+                    string title = (string.IsNullOrEmpty(item.EcommerceItemName)) ? DbUtil.UppercaseFirst(item.Description) : item.EcommerceItemName;
+                    ItemService.InsertMarketplaceCustomerProducts(item.ItemId, title, "000000000146515");
+                    ItemService.UpdateOnSite(item, "SHOPTRENDS.COM");
+                }
                 foreach (ItemObject item in itemList)
                 {
                     string idCore = ItemService.RetrieveItemIdCore(item.ItemId);
                     if (!idCores.Contains(idCore))
                     {
-                        idCores.Add(idCore);
-                    }
-                }
-                // Add parent items to end of list
-                foreach(string core in idCores)
-                {
-                    if (GlobalData.ItemIds.Contains("POD" + core))
-                    {
-                        ItemObject item = ItemService.RetrieveItem("POD" + core, 0);
+                        List<string> childProducts = new List<string>();
 
                         // Check all existing active related products
-                        foreach (string i in ItemService.RetrieveRelatedProductIds(item.ItemId))
+                        foreach (string x in ItemService.RetrieveRelatedProductIds(item.ItemId))
                         {
                             // Add all products that are currently on the site or in the current upload
-                            if (ItemService.CheckOnSite(i, "SHOPTRENDS.COM") || itemList.Any(y => y.ItemId == i))
+                            if (ItemService.CheckOnSite(x, "SHOPTRENDS.COM") || itemList.Any(y => y.ItemId == x))
                             {
-                                if (!item.ChildProducts.Contains(i))
+                                if (!childProducts.Contains(x))
                                 {
-                                    item.ChildProducts.Add(i);
+                                    childProducts.Add(x);
                                 }
                             }
                         }
-                        item.ItemId = "POSTER" + core;
-                        item.IsParentItem = true;
-                        itemList.Add(item);
-                        ItemService.InsertMarketplaceCustomerProducts("POSTER" + core, item.Title, "000000000146515");
+                        CSV_Add.Add(WriteMagento2ParentLine(item, childProducts));
+                        idCores.Add(idCore);
+                        ItemService.InsertMarketplaceCustomerProducts("POSTER" + idCore, item.Title, "000000000146515");
                     }
                 }
-                CreateExcelSheet(itemList, columns, "", csvFilePath);
-
+                if (CSV_Add.Count > 1)
+                {
+                    string csvFilePath = desktop + @"\Request-" + "-" + requestId + "_Add.csv";
+                    string delimiter = ",";
+                    StringBuilder sb = new StringBuilder();
+                    StringBuilder sbl = new StringBuilder();
+                    StringBuilder sbi = new StringBuilder();
+                    for (int index = 0; index < CSV_Add.Count; index++)
+                    {
+                        sb.AppendLine(string.Join(delimiter, CSV_Add[index]));
+                    }
+                    File.WriteAllText(csvFilePath, sb.ToString());
+                }
             } // End foreach (Request request in requests)
         }
 
@@ -3018,7 +3122,7 @@ namespace OdinServices
             result += ","; /* O */
             result += ","; /* P */
             result += ","; /* Q */
-            result += "\"" + FormatMagento2Url(title,item.ItemId) + "\","; /* R */
+            result += "\"" + item.ItemId + "\","; /* R */
             result += "\"" + title + "\","; /* S */
             result += "\"" + item.ItemKeywords + "\","; /* T */
             result += "\"" + title + "\","; /* U */
@@ -3140,7 +3244,7 @@ namespace OdinServices
             result += ","; /* O */
             result += ","; /* P */
             result += ","; /* Q */
-            result += "\"" + FormatMagento2Url(title, itemId) + "\","; /* R */
+            result += "\"" + itemId + "\","; /* R */
             result += "\"" + title + "\","; /* S */
             result += "\"" + item.ItemKeywords + "\","; /* T */
             result += "\"" + title + "\","; /* U */
