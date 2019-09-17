@@ -1074,6 +1074,7 @@ namespace OdinServices
         public string ReturnImageName(string itemId, int imgNum, bool forMagento2Images = true)
         {
             // for framed posters in Magento 2, points to location of shared images on server
+            /*
             if (forMagento2Images)
             {
                 if (itemId.Substring(0, 2) == "FR")
@@ -1127,6 +1128,7 @@ namespace OdinServices
                     }
                 }
             }
+            */
 
             return itemId + "-" + imgNum.ToString() + ".jpg";
         }
@@ -1557,7 +1559,6 @@ namespace OdinServices
             {
                 value = value.Remove(value.Length - 1);
             }
-
             return value;
         }
                 

@@ -1586,7 +1586,6 @@ namespace Odin.Data
 
         /// <summary>
         ///     Retrieves the local file paths for all the given images.
-        ///     FR poster images skip the first image
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns>KeyValuePair key=imagePath, value=imageNumber</returns>
@@ -1597,26 +1596,15 @@ namespace Odin.Data
             bool framed = (itemId.Substring(0, 2) == "FR")? true : false;
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                if (!framed)
-                {
-                    var dataset = context.ItemAttribEx
+                var dataset = context.ItemAttribEx
                     .Where(x => x.InvItemId == itemId)
                     .Select(x => new { x.ImageFileName, x.AltImageFile1, x.AltImageFile2, x.AltImageFile3, x.AltImageFile4 }).FirstOrDefault();
-                    if (!string.IsNullOrEmpty(dataset.ImageFileName)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.ImageFileName, count)); count++; }
-                    if (!string.IsNullOrEmpty(dataset.AltImageFile1)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.AltImageFile1, count)); count++; }
-                    if (!string.IsNullOrEmpty(dataset.AltImageFile2)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.AltImageFile2, count)); count++; }
-                    if (!string.IsNullOrEmpty(dataset.AltImageFile3)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.AltImageFile3, count)); count++; }
-                    if (!string.IsNullOrEmpty(dataset.AltImageFile4)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.AltImageFile4, count)); }
-                }
-                // Do not grab the first, fourth or fifth images for framed items
-                else
-                {
-                    var dataset = context.ItemAttribEx
-                    .Where(x => x.InvItemId == itemId)
-                    .Select(x => new { x.ImageFileName, x.AltImageFile1, x.AltImageFile2, x.AltImageFile3, x.AltImageFile4 }).FirstOrDefault();
-                    if (!string.IsNullOrEmpty(dataset.AltImageFile1)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.AltImageFile1, count)); count++; }
-                    if (!string.IsNullOrEmpty(dataset.AltImageFile2)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.AltImageFile2, count)); }
-                }
+
+                if (!string.IsNullOrEmpty(dataset.ImageFileName)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.ImageFileName, count)); count++; }
+                if (!string.IsNullOrEmpty(dataset.AltImageFile1)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.AltImageFile1, count)); count++; }
+                if (!string.IsNullOrEmpty(dataset.AltImageFile2)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.AltImageFile2, count)); count++; }
+                if (!string.IsNullOrEmpty(dataset.AltImageFile3)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.AltImageFile3, count)); count++; }
+                if (!string.IsNullOrEmpty(dataset.AltImageFile4)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.AltImageFile4, count)); }
             }
             return imagePaths;
         }
