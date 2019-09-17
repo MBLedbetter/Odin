@@ -2624,7 +2624,7 @@ namespace OdinServices
             if(item.SellOnTrs=="Y")
             {
                 string url = "https://shoptrends.com/";
-                url += "-poster" + ItemService.RetrieveItemIdCore(item.ItemId) + ".html";
+                url += "poster" + ItemService.RetrieveItemIdCore(item.ItemId) + ".html";
                 result += "<a href=\'" + url + "\'  class='shopTrends_button' target=\'_blank\'>Buy On Shoptrends.com</a>";
             }
             if (!string.IsNullOrEmpty(item.ShortDescription))
