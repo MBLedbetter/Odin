@@ -5665,6 +5665,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.AltImageFile1 != value)
                 {
                     this.ItemViewModelItem.AltImageFile1 = value;
+                    this.EcommerceImagePath1 = ItemService.CreateImageUrl(this.ItemViewModelItem, value, 2);
                     FlagError("AltImageFile1");
                     OnPropertyChanged("AltImageFile1");
                 }
@@ -5726,6 +5727,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.AltImageFile2 != value)
                 {
                     this.ItemViewModelItem.AltImageFile2 = value;
+                    this.EcommerceImagePath1 = ItemService.CreateImageUrl(this.ItemViewModelItem, value, 3);
                     FlagError("AltImageFile2");
                     OnPropertyChanged("AltImageFile2");
                 }
@@ -5787,6 +5789,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.AltImageFile3 != value)
                 {
                     this.ItemViewModelItem.AltImageFile3 = value;
+                    this.EcommerceImagePath1 = ItemService.CreateImageUrl(this.ItemViewModelItem, value, 4);
                     FlagError("AltImageFile3");
                     OnPropertyChanged("AltImageFile3");
                 }
@@ -5848,6 +5851,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.AltImageFile4 != value)
                 {
                     this.ItemViewModelItem.AltImageFile4 = value;
+                    this.EcommerceImagePath1 = ItemService.CreateImageUrl(this.ItemViewModelItem, value, 5);
                     FlagError("AltImageFile4");
                     OnPropertyChanged("AltImageFile4");
                 }
@@ -5909,6 +5913,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.ImagePath != value)
                 {
                     this.ItemViewModelItem.ImagePath = value;
+                    this.EcommerceImagePath1 = ItemService.CreateImageUrl(this.ItemViewModelItem, value, 1);
                     FlagError("ImagePath");
                     OnPropertyChanged("ImagePath");
                 }
@@ -10252,7 +10257,6 @@ namespace Odin.ViewModels
                     }
                 }
             }
-            // ValidateAll(this.ItemViewModelItem);
         }
 
         #endregion // Constructor

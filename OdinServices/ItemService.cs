@@ -232,7 +232,7 @@ namespace OdinServices
         #endregion  // Enumerations
 
         #region Public Properties
-
+        
         public IItemRepository ItemRepository { get; private set; }
         
         public ITemplateRepository TemplateRepository { get; private set; }
@@ -961,18 +961,63 @@ namespace OdinServices
         }
 
         /// <summary>
-        ///     Excel bug causes 'Poster Captures' folder directory to be duplicated when copied and pasted. This removes the error when loaded into odin.
+        ///     Create an image path url. Will either point to shoptrends.com catalog
+        ///     or trendsinternational.com catalog / externalcaptures folder
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public string FixImgUrl(string value)
+        /// <param name="itemId">Item's item Id</param>
+        /// <param name="imagePath">Local image path</param>
+        /// <param name="type">Product Group</param>
+        /// <param name="number">Image number (1-5)</param>
+        /// <returns>Image url or "" if no path provided</returns>
+        public string CreateImageUrl(ItemObject item, string imagePath, int number)
         {
-            string returnValue = value;
-            if (value.Contains("Poster Captures\\Poster Captures\\"))
+            string returnValue = string.Empty;
+
+            if (!string.IsNullOrEmpty(imagePath))
             {
-                returnValue = value.Replace("Poster Captures\\Poster Captures", "Poster Captures");
+                string[] pathParts = imagePath.Split('\\');
+                if (pathParts.Length > 1)
+                {
+                    string fileName = pathParts[pathParts.Length - 1];
+                    string fileName2 = item.ItemId + "-"+ number.ToString() + ".jpg";
+                    // check b2b External Capture folder for file
+                    if (GlobalData.ExistingFiles.Contains(fileName))
+                    {
+                        returnValue = "https://trendsinternational.com/media/externalCaptures/" + fileName;
+                        returnValue = returnValue.Replace(" ", "%20");
+                        return returnValue;
+                    }
+                    if (GlobalData.ExistingFiles.Contains(fileName2))
+                    {
+                        returnValue = "https://trendsinternational.com/media/externalCaptures/" + fileName2;
+                        return returnValue;
+                    }
+                    //  if not in external capture and is set to sell on shoptrends catalog
+                    else if (item.SellOnTrs == "Y")
+                    {
+                        returnValue = "https://shoptrends.com/pub/media/catalog/product/";
+                        returnValue += item.ItemId.Substring(0, 1) + "/";
+                        returnValue += item.ItemId.Substring(1, 1) + "/";
+                        returnValue += item.ItemId + "-" + number.ToString() + ".jpg";
+                        return returnValue.ToLower();
+                    }
+                    // last resort, default to point to trendsinternational.com catalog 
+                    else
+                    {
+                        if (imagePath.Length > 2)
+                        {
+                            returnValue = "http://trendsinternational.com/media/catalog/product/";
+                            string a = (!string.IsNullOrEmpty(fileName.Substring(0, 1))) ? fileName.Substring(0, 1) + "/" : "";
+                            string b = (!string.IsNullOrEmpty(fileName.Substring(1, 1))) ? fileName.Substring(1, 1) + "/" : "";
+                            pathParts = fileName.Split('.');
+                            imagePath = fileName.Replace("." + pathParts[pathParts.Length - 1], "");
+                            returnValue += a + b + imagePath.TrimEnd('.') + ".jpg";                            
+                            return returnValue.Replace(" ","_");
+                        }
+                    }
+                }
             }
-            return returnValue;
+            return "";            
         }
 
         /// <summary>
@@ -1073,62 +1118,7 @@ namespace OdinServices
         /// <returns></returns>
         public string ReturnImageName(string itemId, int imgNum, bool forMagento2Images = true)
         {
-            // for framed posters in Magento 2, points to location of shared images on server
-            /*
-            if (forMagento2Images)
-            {
-                if (itemId.Substring(0, 2) == "FR")
-                {
-                    if (imgNum == 5 || imgNum == 4)
-                    {
-                        if (itemId.Contains("BLK22X34")|| itemId.Contains("BLK24X36"))
-                        {
-                            if (imgNum == 4)
-                            {
-                                return "../catalog/product/frames/cust_frame_back_blk.png";
-                            }
-                            else
-                            {
-                                return "../catalog/product/frames/cust_frame_blk_side.jpg";
-                            }
-                        }
-                        else if (itemId.Contains("SIL22X34") || itemId.Contains("SIL24X36"))
-                        {
-                            if (imgNum == 4)
-                            {
-                                return "../catalog/product/frames/cust_frame_back_sil.png";
-                            }
-                            else
-                            {
-                                return "../catalog/product/frames/cust_frame_sil_side.jpg";
-                            }
-                        }
-                        else if (itemId.Contains("MAH22X34") || itemId.Contains("MAH24X36"))
-                        {
-                            if (imgNum == 4)
-                            {
-                                return "../catalog/product/frames/cust_frame_back_mah.png";
-                            }
-                            else
-                            {
-                                return "../catalog/product/frames/cust_frame_mah_side.jpg";
-                            }
-                        }
-                        else if (itemId.Contains("WHT22X34") || itemId.Contains("WHT24X36"))
-                        {
-                            if (imgNum == 4)
-                            {
-                                return "../catalog/product/frames/cust_frame_back_wht.png";
-                            }
-                            else
-                            {
-                                return "../catalog/product/frames/cust_frame_wht_side.jpg";
-                            }
-                        }
-                    }
-                }
-            }
-            */
+            // for framed posters in Magento 2, points to location of shared images on server            
 
             return itemId + "-" + imgNum.ToString() + ".jpg";
         }
@@ -1285,6 +1275,11 @@ namespace OdinServices
                     Weight = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Weight, WorksheetColumnHeaders.ItemWeight), 1),
                     Width = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Width, WorksheetColumnHeaders.ItemWidth), 1)
                 };
+                if (!string.IsNullOrEmpty(item.ImagePath)){ item.EcommerceImagePath1 = CreateImageUrl(item, item.ImagePath, 1);}
+                if (!string.IsNullOrEmpty(item.AltImageFile1)) { item.EcommerceImagePath2 = CreateImageUrl(item, item.ImagePath, 2); }
+                if (!string.IsNullOrEmpty(item.AltImageFile2)) { item.EcommerceImagePath3 = CreateImageUrl(item, item.ImagePath, 3); }
+                if (!string.IsNullOrEmpty(item.AltImageFile3)) { item.EcommerceImagePath4 = CreateImageUrl(item, item.ImagePath, 4); }
+                if (!string.IsNullOrEmpty(item.AltImageFile4)) { item.EcommerceImagePath5 = CreateImageUrl(item, item.ImagePath, 5); }
                 // Load override attributes if admin
                 if (GlobalData.UserPermissions.Contains("ADMIN_CONTROLS"))
                 {

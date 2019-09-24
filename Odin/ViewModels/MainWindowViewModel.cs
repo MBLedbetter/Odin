@@ -10,6 +10,7 @@ using System.Windows.Input;
 using ExcelLibrary;
 using OdinModels;
 using System.ComponentModel;
+using System.Linq;
 
 namespace Odin.ViewModels
 {
@@ -3520,7 +3521,10 @@ namespace Odin.ViewModels
 
             if (this.FtpService != null)
             {
-                List<string> existingFiles = this.FtpService.ReturnExistingImageFiles();
+                if (!GlobalData.ExistingFiles.Any())
+                {
+                    GlobalData.ExistingFiles = this.FtpService.ReturnExistingImageFiles();
+                }
                 List<string> skippedFiles = new List<string>();
                 OpenFileDialog dialog = new OpenFileDialog() {
                     Multiselect = true,
@@ -3537,7 +3541,7 @@ namespace Odin.ViewModels
                     foreach (string name in dialog.FileNames)
                     {
                         string[] parts = name.Split('\\');
-                        if (!existingFiles.Contains(parts[parts.Length - 1]) && !parts[parts.Length - 1].Contains("'"))
+                        if (!GlobalData.ExistingFiles.Contains(parts[parts.Length - 1]) && !parts[parts.Length - 1].Contains("'"))
                         {
                             this.FtpService.SubmitImage(name);
                         }
@@ -4164,11 +4168,14 @@ namespace Odin.ViewModels
             if (!GlobalData.FtpUserexceptions.Contains(GlobalData.UserName))
             {
                 this.FtpService = new FtpService();
-                List<string> existingImages = this.FtpService.ReturnExistingImageFiles();
-                existingImages.Sort();
+                if(!GlobalData.ExistingFiles.Any())
+                {
+                    GlobalData.ExistingFiles = this.FtpService.ReturnExistingImageFiles();
+                    GlobalData.ExistingFiles.Sort();
+                }
                 AlertView window = new AlertView()
                 {
-                    DataContext = new AlertViewModel(existingImages, "Info", "The following images exist on the server.")
+                    DataContext = new AlertViewModel(GlobalData.ExistingFiles, "Info", "The following images exist on the server.")
                 };
                 window.ShowDialog();
             }

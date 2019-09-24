@@ -20,7 +20,6 @@ namespace OdinTests.BusinessLogicLayer.Models
             ItemObject item = new ItemObject(1);
             ItemObject item2 = new ItemObject(1);
             ItemObject item3 = new ItemObject(1);
-            ItemObject item4 = new ItemObject(1);
             // item5 has no updates, should return false
             ItemObject item5 = new ItemObject(1);
             ItemObject item6 = new ItemObject(1);
@@ -35,7 +34,6 @@ namespace OdinTests.BusinessLogicLayer.Models
             item.EcommerceBullet1 = "New Value";
             item2.EcommerceItemWidth = "11";
             item3.EcommerceMsrp = "0.99";
-            item4.EcommerceImagePath2 = "img links";
             item6.EcommerceSize = "Boardom";
             item7.PricingGroup = "Elephant";
             item8.EcommerceAsin = "0009876";
@@ -47,7 +45,6 @@ namespace OdinTests.BusinessLogicLayer.Models
             Assert.IsTrue(item.EcommerceValuesUpdate);
             Assert.IsTrue(item2.EcommerceValuesUpdate);
             Assert.IsTrue(item3.EcommerceValuesUpdate);
-            Assert.IsTrue(item4.EcommerceValuesUpdate);
             Assert.IsFalse(item5.EcommerceValuesUpdate);
             Assert.IsTrue(item6.EcommerceValuesUpdate);
             Assert.IsFalse(item7.EcommerceValuesUpdate);
@@ -82,11 +79,6 @@ namespace OdinTests.BusinessLogicLayer.Models
             ItemObject EcommerceCostItem = new ItemObject(1);
             ItemObject EcommerceExternalIDItem = new ItemObject(1);
             ItemObject EcommerceExternalIdTypeItem = new ItemObject(1);
-            ItemObject EcommerceImagePath1Item = new ItemObject(1);
-            ItemObject EcommerceImagePath2Item = new ItemObject(1);
-            ItemObject EcommerceImagePath3Item = new ItemObject(1);
-            ItemObject EcommerceImagePath4Item = new ItemObject(1);
-            ItemObject EcommerceImagePath5Item = new ItemObject(1);
             ItemObject EcommerceItemHeightItem = new ItemObject(1);
             ItemObject EcommerceItemLengthItem = new ItemObject(1);
             ItemObject EcommerceItemNameItem = new ItemObject(1);
@@ -206,11 +198,6 @@ namespace OdinTests.BusinessLogicLayer.Models
             EcommerceCostItem.EcommerceCost = "1";
             EcommerceExternalIDItem.EcommerceExternalId = "1";
             EcommerceExternalIdTypeItem.EcommerceExternalIdType = "1";
-            EcommerceImagePath1Item.EcommerceImagePath1 = "1";
-            EcommerceImagePath2Item.EcommerceImagePath2 = "1";
-            EcommerceImagePath3Item.EcommerceImagePath3 = "1";
-            EcommerceImagePath4Item.EcommerceImagePath4 = "1";
-            EcommerceImagePath5Item.EcommerceImagePath5 = "1";
             EcommerceItemHeightItem.EcommerceItemHeight = "1";
             EcommerceItemLengthItem.EcommerceItemLength = "1";
             EcommerceItemNameItem.EcommerceItemName = "1";
@@ -348,11 +335,6 @@ namespace OdinTests.BusinessLogicLayer.Models
             Assert.IsTrue(EcommerceCostItem.EcommerceValuesUpdate);
             Assert.IsTrue(EcommerceExternalIDItem.EcommerceValuesUpdate);
             Assert.IsTrue(EcommerceExternalIdTypeItem.EcommerceValuesUpdate);
-            Assert.IsTrue(EcommerceImagePath1Item.EcommerceValuesUpdate);
-            Assert.IsTrue(EcommerceImagePath2Item.EcommerceValuesUpdate);
-            Assert.IsTrue(EcommerceImagePath3Item.EcommerceValuesUpdate);
-            Assert.IsTrue(EcommerceImagePath4Item.EcommerceValuesUpdate);
-            Assert.IsTrue(EcommerceImagePath5Item.EcommerceValuesUpdate);
             Assert.IsTrue(EcommerceItemHeightItem.EcommerceValuesUpdate);
             Assert.IsTrue(EcommerceItemLengthItem.EcommerceValuesUpdate);
             Assert.IsTrue(EcommerceItemNameItem.EcommerceValuesUpdate);
@@ -912,11 +894,6 @@ namespace OdinTests.BusinessLogicLayer.Models
             bool Acommerce_CostUpdate2 = item.EcommerceCostUpdate;
             bool Acommerce_ExternalIDUpdate2 = item.EcommerceExternalIdUpdate;
             bool Acommerce_ExternalIdTypeUpdate2 = item.EcommerceExternalIdTypeUpdate;
-            bool Acommerce_ImagePath1Update2 = item.EcommerceImagePath1Update;
-            bool Acommerce_ImagePath2Update2 = item.EcommerceImagePath2Update;
-            bool Acommerce_ImagePath3Update2 = item.EcommerceImagePath3Update;
-            bool Acommerce_ImagePath4Update2 = item.EcommerceImagePath4Update;
-            bool Acommerce_ImagePath5Update2 = item.EcommerceImagePath5Update;
             bool Acommerce_ItemHeightUpdate2 = item.EcommerceItemHeightUpdate;
             bool Acommerce_ItemLengthUpdate2 = item.EcommerceItemLengthUpdate;
             bool Acommerce_ItemNameUpdate2 = item.EcommerceItemNameUpdate;
@@ -1016,11 +993,6 @@ namespace OdinTests.BusinessLogicLayer.Models
             Assert.IsFalse(Acommerce_CostUpdate2);
             Assert.IsFalse(Acommerce_ExternalIDUpdate2);
             Assert.IsFalse(Acommerce_ExternalIdTypeUpdate2);
-            Assert.IsFalse(Acommerce_ImagePath1Update2);
-            Assert.IsFalse(Acommerce_ImagePath2Update2);
-            Assert.IsFalse(Acommerce_ImagePath3Update2);
-            Assert.IsFalse(Acommerce_ImagePath4Update2);
-            Assert.IsFalse(Acommerce_ImagePath5Update2);
             Assert.IsFalse(Acommerce_ItemHeightUpdate2);
             Assert.IsFalse(Acommerce_ItemLengthUpdate2);
             Assert.IsFalse(Acommerce_ItemNameUpdate2);
@@ -1258,11 +1230,6 @@ namespace OdinTests.BusinessLogicLayer.Models
             bool Acommerce_CostUpdate1 = item.EcommerceCostUpdate;
             bool Acommerce_ExternalIDUpdate1 = item.EcommerceExternalIdUpdate;
             bool Acommerce_ExternalIdTypeUpdate1 = item.EcommerceExternalIdTypeUpdate;
-            bool Acommerce_ImagePath1Update1 = item.EcommerceImagePath1Update;
-            bool Acommerce_ImagePath2Update1 = item.EcommerceImagePath2Update;
-            bool Acommerce_ImagePath3Update1 = item.EcommerceImagePath3Update;
-            bool Acommerce_ImagePath4Update1 = item.EcommerceImagePath4Update;
-            bool Acommerce_ImagePath5Update1 = item.EcommerceImagePath5Update;
             bool Acommerce_ItemHeightUpdate1 = item.EcommerceItemHeightUpdate;
             bool Acommerce_ItemLengthUpdate1 = item.EcommerceItemLengthUpdate;
             bool Acommerce_ItemNameUpdate1 = item.EcommerceItemNameUpdate;
@@ -1461,11 +1428,6 @@ namespace OdinTests.BusinessLogicLayer.Models
             bool Acommerce_CostUpdate2 = item.EcommerceCostUpdate;
             bool Acommerce_ExternalIDUpdate2 = item.EcommerceExternalIdUpdate;
             bool Acommerce_ExternalIdTypeUpdate2 = item.EcommerceExternalIdTypeUpdate;
-            bool Acommerce_ImagePath1Update2 = item.EcommerceImagePath1Update;
-            bool Acommerce_ImagePath2Update2 = item.EcommerceImagePath2Update;
-            bool Acommerce_ImagePath3Update2 = item.EcommerceImagePath3Update;
-            bool Acommerce_ImagePath4Update2 = item.EcommerceImagePath4Update;
-            bool Acommerce_ImagePath5Update2 = item.EcommerceImagePath5Update;
             bool Acommerce_ItemHeightUpdate2 = item.EcommerceItemHeightUpdate;
             bool Acommerce_ItemLengthUpdate2 = item.EcommerceItemLengthUpdate;
             bool Acommerce_ItemNameUpdate2 = item.EcommerceItemNameUpdate;
@@ -1565,11 +1527,6 @@ namespace OdinTests.BusinessLogicLayer.Models
             Assert.IsFalse(Acommerce_CostUpdate1);
             Assert.IsFalse(Acommerce_ExternalIDUpdate1);
             Assert.IsFalse(Acommerce_ExternalIdTypeUpdate1);
-            Assert.IsFalse(Acommerce_ImagePath1Update1);
-            Assert.IsFalse(Acommerce_ImagePath2Update1);
-            Assert.IsFalse(Acommerce_ImagePath3Update1);
-            Assert.IsFalse(Acommerce_ImagePath4Update1);
-            Assert.IsFalse(Acommerce_ImagePath5Update1);
             Assert.IsFalse(Acommerce_ItemHeightUpdate1);
             Assert.IsFalse(Acommerce_ItemLengthUpdate1);
             Assert.IsFalse(Acommerce_ItemNameUpdate1);
@@ -1666,11 +1623,6 @@ namespace OdinTests.BusinessLogicLayer.Models
             Assert.IsTrue(Acommerce_CostUpdate2);
             Assert.IsTrue(Acommerce_ExternalIDUpdate2);
             Assert.IsTrue(Acommerce_ExternalIdTypeUpdate2);
-            Assert.IsTrue(Acommerce_ImagePath1Update2);
-            Assert.IsTrue(Acommerce_ImagePath2Update2);
-            Assert.IsTrue(Acommerce_ImagePath3Update2);
-            Assert.IsTrue(Acommerce_ImagePath4Update2);
-            Assert.IsTrue(Acommerce_ImagePath5Update2);
             Assert.IsTrue(Acommerce_ItemHeightUpdate2);
             Assert.IsTrue(Acommerce_ItemLengthUpdate2);
             Assert.IsTrue(Acommerce_ItemNameUpdate2);

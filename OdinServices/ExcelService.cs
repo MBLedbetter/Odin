@@ -502,36 +502,31 @@ namespace OdinServices
                             case "Ecommerce Image Path 1":
                                 for (int x = 0; x < items.Count; x++)
                                 {
-                                    bool fileExists = CheckFtpFileExists(items[x].EcommerceImagePath1);
-                                    rows[x, column] = SetImagePath(items[x].EcommerceImagePath1, fileExists);
+                                    rows[x, column] = items[x].EcommerceImagePath1;
                                 }
                                 break;
                             case "Ecommerce Image Path 2":
                                 for (int x = 0; x < items.Count; x++)
                                 {
-                                    bool fileExists = CheckFtpFileExists(items[x].EcommerceImagePath2);
-                                    rows[x, column] = SetImagePath(items[x].EcommerceImagePath2, fileExists);
+                                    rows[x, column] = items[x].EcommerceImagePath2;
                                 }
                                 break;
                             case "Ecommerce Image Path 3":
                                 for (int x = 0; x < items.Count; x++)
                                 {
-                                    bool fileExists = CheckFtpFileExists(items[x].EcommerceImagePath3);
-                                    rows[x, column] = SetImagePath(items[x].EcommerceImagePath3, fileExists);
+                                    rows[x, column] = items[x].EcommerceImagePath3;
                                 }
                                 break;
                             case "Ecommerce Image Path 4":
                                 for (int x = 0; x < items.Count; x++)
                                 {
-                                    bool fileExists = CheckFtpFileExists(items[x].EcommerceImagePath4);
-                                    rows[x, column] = SetImagePath(items[x].EcommerceImagePath4, fileExists);
+                                    rows[x, column] = items[x].EcommerceImagePath4;
                                 }
                                 break;
                             case "Ecommerce Image Path 5":
                                 for (int x = 0; x < items.Count; x++)
                                 {
-                                    bool fileExists = CheckFtpFileExists(items[x].EcommerceImagePath5);
-                                    rows[x, column] = SetImagePath(items[x].EcommerceImagePath5, fileExists);
+                                    rows[x, column] = items[x].EcommerceImagePath5;
                                 }
                                 break;
                             case "Ecommerce Item Height":
@@ -1429,21 +1424,7 @@ namespace OdinServices
             int x = 100000000 - Convert.ToInt32(i);
             return x.ToString();
         }
-
-        /// <summary>
-        ///     Converts the existing image path to reflect the location of additional images
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public string ModifyAdditionalImageUrl(string value)
-        {
-            string[] pathParts = value.Split('/');
-            string fileName = pathParts[pathParts.Length - 1];
-            string result = "https://trendsinternational.com/media/externalCaptures/" + fileName;
-            result = result.Replace(" ", "%20");
-            return result;
-        }
-
+       
         /// <summary>
         ///     Creates a combined bullet point seperated string for the items bullet points
         /// </summary>
@@ -1555,25 +1536,76 @@ namespace OdinServices
             }
             return result;
         }
-        
+        /*
         /// <summary>
         ///     If the file exists on externalCaptures return filepath otherwise returns ""
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
-        public string SetImagePath(string filePath, bool fileExists)
+        public string SetImagePath(ItemObject item, int imageNumber)
         {
-            if (!string.IsNullOrEmpty(filePath) && fileExists)
+            string filePath = string.Empty;
+            switch(imageNumber)
             {
-                string[] pathParts = filePath.Split('/');
-                string fileName = pathParts[pathParts.Length - 1];
-                string result = "http://trendsinternational.com/media/externalCaptures/" + fileName;
-                result = result.Replace(" ", "%20");
-                return result;
+                case 1:
+                    if(!string.IsNullOrEmpty(item.EcommerceImagePath1))
+                    {
+                        filePath = item.EcommerceImagePath1;
+                    }
+                    filePath = item.ImagePath;
+                    break;
+                case 2:
+                    if (!string.IsNullOrEmpty(item.EcommerceImagePath2))
+                    {
+                        filePath = item.EcommerceImagePath2;
+                    }
+                    filePath = item.AltImageFile1;
+                    break;
+                case 3:
+                    if (!string.IsNullOrEmpty(item.EcommerceImagePath3))
+                    {
+                        filePath = item.EcommerceImagePath3;
+                    }
+                    filePath = item.AltImageFile2;
+                    break;
+                case 4:
+                    if (!string.IsNullOrEmpty(item.EcommerceImagePath4))
+                    {
+                        filePath = item.EcommerceImagePath4;
+                    }
+                    filePath = item.AltImageFile3;
+                    break;
+                case 5:
+                    if (!string.IsNullOrEmpty(item.EcommerceImagePath5))
+                    {
+                        filePath = item.EcommerceImagePath5;
+                    }
+                    filePath = item.AltImageFile4;
+                    break;
             }
-            return "";            
-        }
+            MessageBox.Show(imageNumber.ToString() + " : " + filePath);
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                if (filePath.Contains("externalCaptures") || filePath.Contains("shoptrends.com"))
+                {
+                    return filePath;
+                }
+                else
+                {
+                    string[] pathParts = filePath.Split('/');
+                    string fileName = pathParts[pathParts.Length - 1];
+                    string result = "http://trendsinternational.com/media/externalCaptures/" + fileName;
+                    result = result.Replace(" ", "%20");
+                    if (CheckFtpFileExists(result))
+                    {
+                        return result;
+                    }
+                }
+            }
 
+            return item.CreateEcommerceImageUrl(imageNumber);
+        }
+        */
         /// <summary>
         ///     Sorts a list of items into groups based on the non-prefixed item sku. Will return a list of grouped item numbers with a coresponding
         ///     list of prefixes.
@@ -3291,7 +3323,11 @@ namespace OdinServices
                 {
                     this.FtpService = new FtpService();
                 }
-                this.ExistingFiles = this.FtpService.ReturnExistingImageFiles();                
+
+                if (!GlobalData.ExistingFiles.Any())
+                {
+                    GlobalData.ExistingFiles = this.FtpService.ReturnExistingImageFiles();
+                }              
             }
             else
             {
