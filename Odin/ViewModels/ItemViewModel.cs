@@ -403,6 +403,7 @@ namespace Odin.ViewModels
             {
                 return _casepackHeightBoxColor;
             }
+
             set
             {
                 _casepackHeightBoxColor = value;

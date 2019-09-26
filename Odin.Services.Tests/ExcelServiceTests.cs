@@ -329,7 +329,7 @@ namespace OdinTests.Services
             ExcelService excelService = new ExcelService(true, new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository()), optionService, new TestTemplateRepository(), new TestRequestRepository());
             ItemObject item = new ItemObject(1)
             {
-                Title = "Poster Title",
+                EcommerceItemName = "Poster Title",
                 ItemId = "RP14200",
                 SellOnTrs ="Y"
             };

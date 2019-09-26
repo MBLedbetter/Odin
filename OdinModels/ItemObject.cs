@@ -2512,6 +2512,23 @@ namespace OdinModels
         private string _upc = string.Empty;
 
         /// <summary>
+        ///     Gets or sets the Url
+        /// </summary>
+        public string Url
+        {
+            get
+            {
+                return _url;
+            }
+            set
+            {
+                _url = value;
+                OnPropertyChanged("Url");
+            }
+        }
+        private string _url = string.Empty;
+
+        /// <summary>
         ///     Gets or sets the Warranty
         /// </summary>
         public string Warranty

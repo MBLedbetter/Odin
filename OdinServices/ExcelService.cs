@@ -26,7 +26,7 @@ namespace OdinServices
         ///     List of all letters in the alphabet
         /// </summary>
         public string[] Alphabet = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-        
+
         /// <summary>
         ///     List of existing images on externalCaptures folder on the web server
         /// </summary>
@@ -52,7 +52,7 @@ namespace OdinServices
         ///     Gets or sets the itemservice
         /// </summary>
         public ItemService ItemService { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the missing ftp files
         /// </summary>
@@ -80,7 +80,7 @@ namespace OdinServices
         int RequestNum { get; set; }
 
         public IRequestRepository RequestRepository { get; set; }
-        
+
         public ITemplateRepository TemplateRepository { get; set; }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace OdinServices
             WriteHeaders(excelCells);
             String[,] rowData = RetrieveRowData(excelCells, itemsList, customer);
             worksheet.get_Range("A2").get_Resize(rowData.GetLength(0), excelCells.Count).set_Value(Type.Missing, rowData);
-            
+
             if (createFile)
             {
                 if (strFilePath.Substring(strFilePath.Length - 4).ToUpper() == ".CSV")
@@ -177,12 +177,12 @@ namespace OdinServices
                     Type.Missing, Type.Missing, Type.Missing);
                 }
 
-                
+
                 Cursor.Hide();
                 workbook.ReadOnly.Equals(false);
                 workbook.Close();
                 MessageBox.Show("Excel Document is Complete. " + strFilePath);
-            }        
+            }
         }
 
         #region Add data methods
@@ -217,7 +217,7 @@ namespace OdinServices
         public String[,] RetrieveRowData(ObservableCollection<ExcelCell> excelCells, ObservableCollection<ItemObject> items, string customer)
         {
             String[,] rows = new String[items.Count(), excelCells.Count()];
-            for(int column = 0; column < excelCells.Count; column++)
+            for (int column = 0; column < excelCells.Count; column++)
             {
                 if (!string.IsNullOrEmpty(excelCells[column].Field))
                 {
@@ -226,7 +226,7 @@ namespace OdinServices
                     {
                         for (int x = 0; x < items.Count; x++)
                         {
-                            rows[x, column] = excelCells[column].Field.Replace("\"","");
+                            rows[x, column] = excelCells[column].Field.Replace("\"", "");
                         }
                     }
                     else
@@ -990,7 +990,7 @@ namespace OdinServices
                             case "Magento 2 Product Type":
                                 for (int x = 0; x < items.Count; x++)
                                 {
-                                    if(items[x].IsParentItem)
+                                    if (items[x].IsParentItem)
                                     {
                                         rows[x, column] = "configurable";
                                     }
@@ -1025,7 +1025,7 @@ namespace OdinServices
                                 {
                                     rows[x, column] = items[x].MetaDescription;
                                 }
-                                break;                           
+                                break;
                             case "Mfg Source":
                                 for (int x = 0; x < items.Count; x++)
                                 {
@@ -1301,7 +1301,7 @@ namespace OdinServices
                 }
             }
             return rows;
-            
+
         }
 
         /// <summary>
@@ -1424,7 +1424,7 @@ namespace OdinServices
             int x = 100000000 - Convert.ToInt32(i);
             return x.ToString();
         }
-       
+
         /// <summary>
         ///     Creates a combined bullet point seperated string for the items bullet points
         /// </summary>
@@ -1526,9 +1526,9 @@ namespace OdinServices
         public string SetConfigurableVariations(List<string> items)
         {
             string result = string.Empty;
-            foreach(string x in items)
+            foreach (string x in items)
             {
-                if(!string.IsNullOrEmpty(result))
+                if (!string.IsNullOrEmpty(result))
                 {
                     result += "|";
                 }
@@ -1536,76 +1536,6 @@ namespace OdinServices
             }
             return result;
         }
-        /*
-        /// <summary>
-        ///     If the file exists on externalCaptures return filepath otherwise returns ""
-        /// </summary>
-        /// <param name="filePath"></param>
-        /// <returns></returns>
-        public string SetImagePath(ItemObject item, int imageNumber)
-        {
-            string filePath = string.Empty;
-            switch(imageNumber)
-            {
-                case 1:
-                    if(!string.IsNullOrEmpty(item.EcommerceImagePath1))
-                    {
-                        filePath = item.EcommerceImagePath1;
-                    }
-                    filePath = item.ImagePath;
-                    break;
-                case 2:
-                    if (!string.IsNullOrEmpty(item.EcommerceImagePath2))
-                    {
-                        filePath = item.EcommerceImagePath2;
-                    }
-                    filePath = item.AltImageFile1;
-                    break;
-                case 3:
-                    if (!string.IsNullOrEmpty(item.EcommerceImagePath3))
-                    {
-                        filePath = item.EcommerceImagePath3;
-                    }
-                    filePath = item.AltImageFile2;
-                    break;
-                case 4:
-                    if (!string.IsNullOrEmpty(item.EcommerceImagePath4))
-                    {
-                        filePath = item.EcommerceImagePath4;
-                    }
-                    filePath = item.AltImageFile3;
-                    break;
-                case 5:
-                    if (!string.IsNullOrEmpty(item.EcommerceImagePath5))
-                    {
-                        filePath = item.EcommerceImagePath5;
-                    }
-                    filePath = item.AltImageFile4;
-                    break;
-            }
-            MessageBox.Show(imageNumber.ToString() + " : " + filePath);
-            if (!string.IsNullOrEmpty(filePath))
-            {
-                if (filePath.Contains("externalCaptures") || filePath.Contains("shoptrends.com"))
-                {
-                    return filePath;
-                }
-                else
-                {
-                    string[] pathParts = filePath.Split('/');
-                    string fileName = pathParts[pathParts.Length - 1];
-                    string result = "http://trendsinternational.com/media/externalCaptures/" + fileName;
-                    result = result.Replace(" ", "%20");
-                    if (CheckFtpFileExists(result))
-                    {
-                        return result;
-                    }
-                }
-            }
-
-            return item.CreateEcommerceImageUrl(imageNumber);
-        }
-        */
         /// <summary>
         ///     Sorts a list of items into groups based on the non-prefixed item sku. Will return a list of grouped item numbers with a coresponding
         ///     list of prefixes.
@@ -1679,11 +1609,11 @@ namespace OdinServices
                     return value;
                 }
             }
-            return value;            
+            return value;
         }
 
         #endregion // Modifier Methods
-        
+
         /// <summary>
         ///     Create a excell documents for a given list of items
         /// </summary>
@@ -1896,7 +1826,7 @@ namespace OdinServices
 
             return value;
         }
-        
+
         /// <summary>
         ///     Create a excell document for a given list of items
         /// </summary>
@@ -1945,7 +1875,7 @@ namespace OdinServices
             Cursor.Hide();
             MessageBox.Show("Excel Document is Complete. " + strFilePath);
         }
-        
+
         /// <summary>
         ///     Retrieves all additional attributes and creates a comma seperated string
         /// </summary>
@@ -1956,7 +1886,7 @@ namespace OdinServices
             string result = "gift_wrapping_available=No,product_image_size = Default,product_page_type = Full Width,sw_featured = No";
             result += ",date_created=" + item.DateAdded.ToString("MM/dd/yyyy");
             result += ",sort_number=" + GenerateSortNumber(item.DateAdded);
-            if(GlobalData.ShoptrendsBrands.Contains(item.Property))
+            if (GlobalData.ShoptrendsBrands.Contains(item.Property))
             {
                 result += ",license=" + item.Property;
             }
@@ -1985,7 +1915,7 @@ namespace OdinServices
             result += (!string.IsNullOrEmpty(item.AltImageFile2)) ? ItemService.ReturnImageName(item.ItemId, 3) + "," : "";
             result += (!string.IsNullOrEmpty(item.AltImageFile3)) ? ItemService.ReturnImageName(item.ItemId, 4) + "," : "";
             result += (!string.IsNullOrEmpty(item.AltImageFile4)) ? ItemService.ReturnImageName(item.ItemId, 5) + "," : "";
-            if(result != string.Empty) { return result.TrimEnd(','); }
+            if (result != string.Empty) { return result.TrimEnd(','); }
             return result;
         }
 
@@ -2005,11 +1935,11 @@ namespace OdinServices
                     item.License = "Sanrio";
                 }
                 result += ",Default Category/Shop by Brand/" + item.License;
-                
-                if (item.License == "NFL"|| item.License == "MLB" || item.License == "NBA" || item.License == "NHL")
+
+                if (item.License == "NFL" || item.License == "MLB" || item.License == "NBA" || item.License == "NHL")
                 {
                     result += ",Default Category/Shop by Genre/Sports";
-                    if(item.License =="NFL")
+                    if (item.License == "NFL")
                     {
                         result += ",Default Category/Shop by Genre/Sports/Football";
                     }
@@ -2028,7 +1958,7 @@ namespace OdinServices
                 }
             }
 
-            if(!string.IsNullOrEmpty(item.Genre1) && item.Genre1 != "OTHER")
+            if (!string.IsNullOrEmpty(item.Genre1) && item.Genre1 != "OTHER")
             {
                 result += ",Default Category/Shop by Genre/" + DbUtil.UppercaseFirst(item.Genre1);
             }
@@ -2042,24 +1972,6 @@ namespace OdinServices
             }
 
             return result;
-        }
-
-        /// <summary>
-        ///     Removes "24X36" from the front of title and "One Sheet
-        /// </summary>
-        /// <param name="oldTitle"></param>
-        /// <returns></returns>
-        public string FormatMagento2Title(string oldTitle)
-        {
-            string newTitle = oldTitle.Trim();
-            if (newTitle.Length > 6)
-            {
-                if (newTitle.Substring(0, 6).ToUpper() == "24X36 ")
-                {
-                    newTitle = newTitle.Remove(0, 6);
-                }
-            }
-            return newTitle;
         }
 
         public List<string> NewCategories(string cat1, string cat2, string cat3)
@@ -2175,9 +2087,9 @@ namespace OdinServices
             this.TemplateHeaders.Add("Ecommerce Size");
             this.TemplateHeaders.Add("Website Price");
         }
-                
+
         #region Removal Methods
-        
+
         /// <summary>
         ///     Removes layout data associate with the given layout id from EXCEL_LAYOUT_DATA and EXCEL_LAYOUT_IDS
         /// </summary>
@@ -2201,7 +2113,7 @@ namespace OdinServices
         #endregion // Removal Methods
 
         #region Retrieval Methods
-        
+
         /// <summary>
         ///     Retrieve a list of sorted customers
         /// </summary>
@@ -2312,10 +2224,24 @@ namespace OdinServices
         /// <returns></returns>
         public List<string> RetrieveFieldValues()
         {
-            List<string> values =  TemplateRepository.RetrieveFieldValues();
+            List<string> values = TemplateRepository.RetrieveFieldValues();
             values.Insert(0, "-TEXT-");
             values.Insert(0, "- EMPTY -");
             return values;
+        }
+
+        /// <summary>
+        ///     Generates a url based on the itemId and the title of a product
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <param name="title"></param>
+        /// <returns></returns>
+        public string RetrieveUrl(string itemId, string title)
+        {
+            title = title.Replace(" ", "-");
+            title = title.Replace(":", "-");
+            string result = title.ToLower() + "-poster" + ItemService.RetrieveItemIdCore(itemId);
+            return result.ToLower();
         }
 
         /// <summary>
@@ -2444,9 +2370,9 @@ namespace OdinServices
             result += "<p>Trends Posters feature superior product quality, exclusive licenses and cutting-edge designs.</p>";
             result += "<p>Poster options (when available):</p> ";
             result += "<ul>";
-            result += "<li>Standard Unframed Poster (" + size + ") — Poster is printed on standard 80 lb paper.</li> ";
-            result += "<li>Premium Unframed Poster (" + size + ") — Poster is printed on premium 210 GSM photo art gloss paper.</li>";
-            result += "<li>Framed Poster (" + size + ") — Poster is adhered to a sturdy 3 / 16'' lightweight backer board to keep it flat and smooth. The mounted poster is framed and ready to hang. Metal sawtooth hangers included. Multiple frame color options.</li> ";
+            result += "<li>Standard Unframed Poster (" + size + ") - Poster is printed on standard 80 lb paper.</li> ";
+            result += "<li>Premium Unframed Poster (" + size + ") - Poster is printed on premium 210 GSM photo art gloss paper.</li>";
+            result += "<li>Framed Poster (" + size + ") - Poster is adhered to a sturdy 3 / 16'' lightweight backer board to keep it flat and smooth. The mounted poster is framed and ready to hang. Metal sawtooth hangers included. Multiple frame color options.</li> ";
             result += "</ul> ";
             if(!string.IsNullOrEmpty(item.Copyright))
             {
@@ -2656,7 +2582,7 @@ namespace OdinServices
             if(item.SellOnTrs=="Y")
             {
                 string url = "https://shoptrends.com/";
-                url += "poster" + ItemService.RetrieveItemIdCore(item.ItemId) + ".html";
+                url += RetrieveUrl(item.ItemId, item.EcommerceItemName) + ".html";
                 result += "<a href=\'" + url + "\'  class='shopTrends_button' target=\'_blank\'>Buy On Shoptrends.com</a>";
             }
             if (!string.IsNullOrEmpty(item.ShortDescription))
@@ -3137,11 +3063,13 @@ namespace OdinServices
         public string WriteMagento2ParentLine(ItemObject item, List<string> childProducts)
         {
             string result = string.Empty;
-            string title = (string.IsNullOrEmpty(item.EcommerceItemName)) ? FormatMagento2Title(item.Title) : FormatMagento2Title(item.EcommerceItemName);
+            // string title = (string.IsNullOrEmpty(item.EcommerceItemName)) ? item.Title : item.EcommerceItemName;
+            /*
             if (!string.IsNullOrEmpty(item.TitleOverride))
             {
                 title = item.TitleOverride;
             }
+            */
             string itemId = "POSTER" + ItemService.RetrieveItemIdCore(item.ItemId);
             string dateAdded = (item.Status == "Add") ? DateTime.Now.ToShortDateString() : "";
 
@@ -3162,10 +3090,10 @@ namespace OdinServices
             result += ","; /* O */
             result += ","; /* P */
             result += ","; /* Q */
-            result += "\"" + itemId + "\","; /* R */
-            result += "\"" + title + "\","; /* S */
+            result += "\"" + RetrieveUrl(item.ItemId, item.EcommerceItemName) + "\","; /* R */
+            result += "\"" + item.EcommerceItemName + "\","; /* S */
             result += "\"" + item.ItemKeywords + "\","; /* T */
-            result += "\"" + title + "\","; /* U */
+            result += "\"" + item.EcommerceItemName + "\","; /* U */
             result += "\"" + ItemService.ReturnImageName(itemId, 1) + "\","; /* V */
             result += ","; /* W */
             result += "\"" + ItemService.ReturnImageName(itemId, 1) + "\","; /* X */
