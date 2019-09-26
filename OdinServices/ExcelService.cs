@@ -2240,6 +2240,8 @@ namespace OdinServices
         {
             title = title.Replace(" ", "-");
             title = title.Replace(":", "-");
+            title = title.Replace("---", "-");
+            title = title.Replace("--", "-");
             string result = title.ToLower() + "-poster" + ItemService.RetrieveItemIdCore(itemId);
             return result.ToLower();
         }
