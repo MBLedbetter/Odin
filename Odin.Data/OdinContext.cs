@@ -624,6 +624,7 @@ namespace Odin.Data
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.Size).HasColumnName("SIZE");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.GenericKeywords).HasColumnName("GENERIC_KEYWORDS");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.UpcOverride).HasColumnName("UPC_OVERRIDE");
+            modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.UrlPath).HasColumnName("URL_PATH");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.Weight).HasColumnName("WEIGHT");
             modelBuilder.Entity<AmazonItemAttributes>().Property(p => p.Width).HasColumnName("WIDTH");
 
@@ -2169,6 +2170,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceSize).HasColumnName("ECOMMERCE_SIZE");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceSubjectKeywords).HasColumnName("ECOMMERCE_SEARCH_TERMS");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceUpc).HasColumnName("ECOMMERCE_UPC");
+            modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceUrl).HasColumnName("ECOMMERCE_URL");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceWeight).HasColumnName("ECOMMERCE_WEIGHT");
             modelBuilder.Entity<OdinItem>().Property(p => p.EcommerceWidth).HasColumnName("ECOMMERCE_WIDTH");
             modelBuilder.Entity<OdinItem>().Property(p => p.Gpc).HasColumnName("GPC");

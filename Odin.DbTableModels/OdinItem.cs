@@ -312,6 +312,11 @@ namespace Odin.DbTableModels
         public string EcommerceUpc { get; set; }
 
         /// <summary>
+        ///     Gets or sets EcommerceUrl
+        /// </summary>
+        public string EcommerceUrl { get; set; }
+
+        /// <summary>
         ///     Gets or sets EcommerceWEIGHT
         /// </summary>
         public decimal? EcommerceWeight { get; set; }

@@ -364,7 +364,8 @@ namespace Odin.Data
                     GenericKeywords = item.EcommerceGenericKeywords.ToLower(),
                     SubjectKeywords = item.EcommerceSubjectKeywords.ToLower(),
                     Size = item.EcommerceSize,
-                    UpcOverride = item.EcommerceUpc
+                    UpcOverride = item.EcommerceUpc,
+                    UrlPath = item.EcommerceUrl
                 });
             }
         }
@@ -1690,6 +1691,7 @@ namespace Odin.Data
                         EcommerceSubjectKeywords = (!string.IsNullOrEmpty(odinItem.EcommerceSubjectKeywords)) ? odinItem.EcommerceSubjectKeywords.Trim() : "",
                         EcommerceSize = (!string.IsNullOrEmpty(odinItem.EcommerceSize)) ? odinItem.EcommerceSize.Trim() : "",
                         EcommerceUpc = (!string.IsNullOrEmpty(odinItem.EcommerceUpc)) ? odinItem.EcommerceUpc.Trim() : "",
+                        EcommerceUrl = (!string.IsNullOrEmpty(odinItem.EcommerceUrl)) ? odinItem.EcommerceUrl.Trim() : "",
                         Genre1 = (!string.IsNullOrEmpty(odinItem.Genre1)) ? odinItem.Genre1.Trim() : "",
                         Genre2 = (!string.IsNullOrEmpty(odinItem.Genre2)) ? odinItem.Genre2.Trim() : "",
                         Genre3 = (!string.IsNullOrEmpty(odinItem.Genre3)) ? odinItem.Genre3.Trim() : "",

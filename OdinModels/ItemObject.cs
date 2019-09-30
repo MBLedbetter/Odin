@@ -1233,6 +1233,23 @@ namespace OdinModels
         private string _ecommerceupc = string.Empty;
 
         /// <summary>
+        ///     Gets or sets the EcommerceUrl
+        /// </summary>
+        public string EcommerceUrl
+        {
+            get
+            {
+                return _ecommerceurl;
+            }
+            set
+            {                
+                _ecommerceurl = value;
+                OnPropertyChanged("EcommerceUrl");
+            }
+        }
+        private string _ecommerceurl = string.Empty;
+
+        /// <summary>
         ///     Gets or sets the Genre1
         /// </summary>
         public string Genre1

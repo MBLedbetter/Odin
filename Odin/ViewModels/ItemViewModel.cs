@@ -6807,6 +6807,10 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.EcommerceItemName != value)
                 {
                     this.ItemViewModelItem.EcommerceItemName = value;
+                    if (string.IsNullOrEmpty(this.ItemViewModelItem.EcommerceUrl))
+                    {
+                        this.EcommerceUrl = ItemService.CreateUrl(this.ItemId, value, true);
+                    }
                     FlagError("EcommerceItemName");
                     OnPropertyChanged("EcommerceItemName");
                 }
@@ -8013,10 +8017,42 @@ namespace Odin.ViewModels
         }
         private string _EcommerceUpcToolTip = string.Empty;
 
+        /// <summary>
+        ///    EcommerceUrl
+        /// </summary>
+        public string EcommerceUrl
+        {
+            get
+            {
+                return this.ItemViewModelItem.EcommerceUrl;
+            }
+            set
+            {
+                if (this.ItemViewModelItem.EcommerceUrl != value)
+                {
+                    this.ItemViewModelItem.EcommerceUrl = value;
+                    OnPropertyChanged("EcommerceUrl");
+                }
+            }
+        }
+        public string EcommerceUrlToolTip
+        {
+            get
+            {
+                return _ecommerceUrlToolTip;
+            }
+            set
+            {
+                _ecommerceUrlToolTip = value;
+                OnPropertyChanged("EcommerceUrlToolTip");
+            }
+        }
+        private string _ecommerceUrlToolTip = string.Empty;
+
         #endregion // Ecommerce Properties
 
         #region Override Properties
-        
+
         /// <summary>
         ///     Gets or sets the item keywords
         /// </summary>

@@ -199,6 +199,11 @@ namespace Odin.DbTableModels
         public string UpcOverride { get; set; }
 
         /// <summary>
+        ///     Gets or sets URL_PATH
+        /// </summary>
+        public string UrlPath { get; set; }
+
+        /// <summary>
         ///     Gets or sets WEIGHT
         /// </summary>
         public decimal? Weight { get; set; }

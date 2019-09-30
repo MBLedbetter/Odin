@@ -2231,22 +2231,6 @@ namespace OdinServices
         }
 
         /// <summary>
-        ///     Generates a url based on the itemId and the title of a product
-        /// </summary>
-        /// <param name="itemId"></param>
-        /// <param name="title"></param>
-        /// <returns></returns>
-        public string RetrieveUrl(string itemId, string title)
-        {
-            title = title.Replace(" ", "-");
-            title = title.Replace(":", "-");
-            title = title.Replace("---", "-");
-            title = title.Replace("--", "-");
-            string result = title.ToLower() + "-poster" + ItemService.RetrieveItemIdCore(itemId);
-            return result.ToLower();
-        }
-
-        /// <summary>
         ///     Checks pricing group to determine if batteries are needed for this product
         /// </summary>
         /// <param name="pricingGroup"></param>
@@ -2583,8 +2567,7 @@ namespace OdinServices
             string result = string.Empty;
             if(item.SellOnTrs=="Y")
             {
-                string url = "https://shoptrends.com/";
-                url += RetrieveUrl(item.ItemId, item.EcommerceItemName) + ".html";
+                string url = ItemService.CreateUrl(item.ItemId, item.EcommerceItemName, true);
                 result += "<a href=\'" + url + "\'  class='shopTrends_button' target=\'_blank\'>Buy On Shoptrends.com</a>";
             }
             if (!string.IsNullOrEmpty(item.ShortDescription))
@@ -3092,7 +3075,7 @@ namespace OdinServices
             result += ","; /* O */
             result += ","; /* P */
             result += ","; /* Q */
-            result += "\"" + RetrieveUrl(item.ItemId, item.EcommerceItemName) + "\","; /* R */
+            result += "\"" + ItemService.CreateUrl(item.ItemId, item.EcommerceItemName,false) + "\","; /* R */
             result += "\"" + item.EcommerceItemName + "\","; /* S */
             result += "\"" + item.ItemKeywords + "\","; /* T */
             result += "\"" + item.EcommerceItemName + "\","; /* U */
