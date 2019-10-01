@@ -364,8 +364,7 @@ namespace Odin.Data
                     GenericKeywords = item.EcommerceGenericKeywords.ToLower(),
                     SubjectKeywords = item.EcommerceSubjectKeywords.ToLower(),
                     Size = item.EcommerceSize,
-                    UpcOverride = item.EcommerceUpc,
-                    UrlPath = item.EcommerceUrl
+                    UpcOverride = item.EcommerceUpc
                 });
             }
         }
@@ -601,7 +600,8 @@ namespace Odin.Data
                     SellOnWeb = item.SellOnTrends,
                     Setid = "SHARE",
                     TranslateEdiProd = item.ReturnTranslateEdiProd(),
-                    WebsitePrice = websitePrice
+                    WebsitePrice = websitePrice,
+                    WebsiteUrl = item.WebsiteUrl
                 });
             }
         }
@@ -1691,7 +1691,6 @@ namespace Odin.Data
                         EcommerceSubjectKeywords = (!string.IsNullOrEmpty(odinItem.EcommerceSubjectKeywords)) ? odinItem.EcommerceSubjectKeywords.Trim() : "",
                         EcommerceSize = (!string.IsNullOrEmpty(odinItem.EcommerceSize)) ? odinItem.EcommerceSize.Trim() : "",
                         EcommerceUpc = (!string.IsNullOrEmpty(odinItem.EcommerceUpc)) ? odinItem.EcommerceUpc.Trim() : "",
-                        EcommerceUrl = (!string.IsNullOrEmpty(odinItem.EcommerceUrl)) ? odinItem.EcommerceUrl.Trim() : "",
                         Genre1 = (!string.IsNullOrEmpty(odinItem.Genre1)) ? odinItem.Genre1.Trim() : "",
                         Genre2 = (!string.IsNullOrEmpty(odinItem.Genre2)) ? odinItem.Genre2.Trim() : "",
                         Genre3 = (!string.IsNullOrEmpty(odinItem.Genre3)) ? odinItem.Genre3.Trim() : "",
@@ -1762,6 +1761,7 @@ namespace Odin.Data
                         WarrantyCheck = (!string.IsNullOrEmpty(odinItem.WarrantyCheck)) ? odinItem.WarrantyCheck : "N",
                         WebsitePrice = (odinItem.WebsitePrice != null) ? DbUtil.ZeroTrim(odinItem.WebsitePrice.ToString(), 2) : "",
                         WebsitePriceOverride = (odinItem.WebsitePriceOverride != null) ? DbUtil.ZeroTrim(odinItem.WebsitePriceOverride.ToString(), 2) : "",
+                        WebsiteUrl = (!string.IsNullOrEmpty(odinItem.WebsiteUrl)) ? odinItem.WebsiteUrl.Trim() : "",
                         Weight = (odinItem.InvItemWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWeight), 1) : "",
                         Width = (odinItem.InvItemWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWidth), 1) : "",
                         Status = "Update",
@@ -2637,6 +2637,7 @@ namespace Odin.Data
                 itemAttribEx.SellOnWeb = item.SellOnTrends;
                 itemAttribEx.TranslateEdiProd = item.ReturnTranslateEdiProd();
                 itemAttribEx.WebsitePrice = DbUtil.ToDecimal(item.WebsitePrice);
+                itemAttribEx.WebsiteUrl = item.WebsiteUrl;
             }
         }
 

@@ -868,11 +868,11 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.Weight)) && (item.Weight.Trim() != returnItem.Weight.Trim())) { returnItem.Weight = item.Weight; }
             if ((!string.IsNullOrEmpty(item.Width)) && (item.Width.Trim() != returnItem.Width.Trim())) { returnItem.Width = item.Width; }
             
-            if(string.IsNullOrEmpty(returnItem.EcommerceUrl))
+            if(string.IsNullOrEmpty(returnItem.WebsiteUrl))
             {
                 if(string.IsNullOrEmpty(item.EcommerceItemName))
                 {
-                    returnItem.EcommerceUrl = CreateUrl(returnItem.ItemId, returnItem.EcommerceItemName, true);
+                    returnItem.WebsiteUrl = CreateUrl(returnItem.ItemId, returnItem.EcommerceItemName, item.ProductGroup, true);
                 }
             }
             returnItem = ClearFields(returnItem);
@@ -1033,13 +1033,22 @@ namespace OdinServices
         /// <param name="itemId"></param>
         /// <param name="title"></param>
         /// <returns></returns>
-        public string CreateUrl(string itemId, string title, bool fullUrl)
+        public string CreateUrl(string itemId, string title, string productType, bool fullUrl)
         {
             title = title.Replace(" ", "-");
             title = title.Replace(":", "-");
             title = title.Replace("---", "-");
             title = title.Replace("--", "-");
-            string result = title.ToLower() + "-poster" + RetrieveItemIdCore(itemId);
+            string result = title.ToLower();
+            if(productType == "Posters")
+            {
+                result += "-poster" + RetrieveItemIdCore(itemId);
+            }
+            else
+            {
+                result += itemId;
+            }
+            
             if(fullUrl)
             {
                 result = "https://shoptrends.com/" + result +".html";
@@ -1325,13 +1334,20 @@ namespace OdinServices
                     }
                     if(!string.IsNullOrEmpty(item.EcommerceItemName))
                     {
-                        item.EcommerceUrl = CreateUrl(item.ItemId, item.EcommerceItemName, true);
+                        item.WebsiteUrl = CreateUrl(item.ItemId, item.EcommerceItemName, item.ProductGroup, true);
                     }
                     item.SetFlagDefaults();
                 }
                 item.EcommerceCountryofOrigin = RetrieveFullCountryOfOrigin(item.CountryOfOrigin);
 
                 item.ResetUpdate();
+                if(status == "Update")
+                {
+                    if (!string.IsNullOrEmpty(item.EcommerceItemName)&& string.IsNullOrEmpty(item.WebsiteUrl))
+                    {
+                        item.WebsiteUrl = CreateUrl(item.ItemId, item.EcommerceItemName, item.ProductGroup, true);
+                    }
+                }
                 itemList.Add(item);
             }
             return itemList;

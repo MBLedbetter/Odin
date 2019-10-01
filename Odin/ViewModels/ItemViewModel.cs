@@ -6807,9 +6807,9 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.EcommerceItemName != value)
                 {
                     this.ItemViewModelItem.EcommerceItemName = value;
-                    if (string.IsNullOrEmpty(this.ItemViewModelItem.EcommerceUrl))
+                    if (string.IsNullOrEmpty(this.ItemViewModelItem.WebsiteUrl))
                     {
-                        this.EcommerceUrl = ItemService.CreateUrl(this.ItemId, value, true);
+                        this.WebsiteUrl = ItemService.CreateUrl(this.ItemId, value, this.ProductGroup, true);
                     }
                     FlagError("EcommerceItemName");
                     OnPropertyChanged("EcommerceItemName");
@@ -8018,36 +8018,36 @@ namespace Odin.ViewModels
         private string _EcommerceUpcToolTip = string.Empty;
 
         /// <summary>
-        ///    EcommerceUrl
+        ///    WebsiteUrl
         /// </summary>
-        public string EcommerceUrl
+        public string WebsiteUrl
         {
             get
             {
-                return this.ItemViewModelItem.EcommerceUrl;
+                return this.ItemViewModelItem.WebsiteUrl;
             }
             set
             {
-                if (this.ItemViewModelItem.EcommerceUrl != value)
+                if (this.ItemViewModelItem.WebsiteUrl != value)
                 {
-                    this.ItemViewModelItem.EcommerceUrl = value;
-                    OnPropertyChanged("EcommerceUrl");
+                    this.ItemViewModelItem.WebsiteUrl = value;
+                    OnPropertyChanged("WebsiteUrl");
                 }
             }
         }
-        public string EcommerceUrlToolTip
+        public string WebsiteUrlToolTip
         {
             get
             {
-                return _ecommerceUrlToolTip;
+                return _websiteUrlToolTip;
             }
             set
             {
-                _ecommerceUrlToolTip = value;
-                OnPropertyChanged("EcommerceUrlToolTip");
+                _websiteUrlToolTip = value;
+                OnPropertyChanged("WebsiteUrlToolTip");
             }
         }
-        private string _ecommerceUrlToolTip = string.Empty;
+        private string _websiteUrlToolTip = string.Empty;
 
         #endregion // Ecommerce Properties
 

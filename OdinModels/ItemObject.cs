@@ -1231,24 +1231,7 @@ namespace OdinModels
             }
         }
         private string _ecommerceupc = string.Empty;
-
-        /// <summary>
-        ///     Gets or sets the EcommerceUrl
-        /// </summary>
-        public string EcommerceUrl
-        {
-            get
-            {
-                return _ecommerceurl;
-            }
-            set
-            {                
-                _ecommerceurl = value;
-                OnPropertyChanged("EcommerceUrl");
-            }
-        }
-        private string _ecommerceurl = string.Empty;
-
+        
         /// <summary>
         ///     Gets or sets the Genre1
         /// </summary>
@@ -2529,23 +2512,6 @@ namespace OdinModels
         private string _upc = string.Empty;
 
         /// <summary>
-        ///     Gets or sets the Url
-        /// </summary>
-        public string Url
-        {
-            get
-            {
-                return _url;
-            }
-            set
-            {
-                _url = value;
-                OnPropertyChanged("Url");
-            }
-        }
-        private string _url = string.Empty;
-
-        /// <summary>
         ///     Gets or sets the Warranty
         /// </summary>
         public string Warranty
@@ -2618,6 +2584,24 @@ namespace OdinModels
             }
         }
         private string _websitePriceOverride = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the WebsiteUrl
+        /// </summary>
+        public string WebsiteUrl
+        {
+            get
+            {
+                return _websiteUrl;
+            }
+            set
+            {
+                if (_websiteUrl != value) { WebsiteUrlUpdate = true; }
+                _websiteUrl = value;
+                OnPropertyChanged("WebsiteUrl");
+            }
+        }
+        private string _websiteUrl = string.Empty;
 
         /// <summary>
         ///     Gets or sets the Weight
@@ -3081,7 +3065,8 @@ namespace OdinModels
                     this.SatCodeUpdate ||
                     this.SellOnEcommerceUpdate ||
                     this.SellOnTrendsUpdate ||
-                    this.WebsitePriceUpdate)
+                    this.WebsitePriceUpdate ||
+                    this.WebsiteUrlUpdate)
                 {
                     return true;
                 }
@@ -3966,6 +3951,11 @@ namespace OdinModels
         public bool WebsitePriceOverrideUpdate = false;
 
         /// <summary>
+        ///     WebsiteUrlUpdate update flag
+        /// </summary>
+        public bool WebsiteUrlUpdate = false;
+
+        /// <summary>
         ///     WeightUpdate update flag
         /// </summary>
         public bool WeightUpdate = false;
@@ -4140,6 +4130,7 @@ namespace OdinModels
             this.WarrantyCheckUpdate = false;
             this.WebsitePriceOverrideUpdate = false;
             this.WebsitePriceUpdate = false;
+            this.WebsiteUrlUpdate = false;
             this.WeightUpdate = false;
             this.WidthUpdate = false;
         }
@@ -4162,60 +4153,7 @@ namespace OdinModels
             }
             return result;
         }
-
-        /// <summary>
-        ///     Returns only the file name from the image path number given
-        /// </summary>
-        /// <param name="imageNumber"></param>
-        /// <returns></returns>
-        public string ReturnImageName(int imageNumber)
-        {
-            string value = string.Empty;
-            switch (imageNumber)
-            {
-                case 1:
-                    if (!string.IsNullOrEmpty(this.ImagePath))
-                    {
-                        value = this.ImagePath;
-                    }
-                    break;
-                case 2:
-                    if (!string.IsNullOrEmpty(this.AltImageFile1))
-                    {
-                        value = this.AltImageFile1;
-                    }
-                    break;
-                case 3:
-                    if (!string.IsNullOrEmpty(this.AltImageFile2))
-                    {
-                        value = this.AltImageFile2;
-                    }
-                    break;
-                case 4:
-                    if (!string.IsNullOrEmpty(this.AltImageFile3))
-                    {
-                        value = this.AltImageFile3;
-                    }
-                    break;
-                case 5:
-                    if (!string.IsNullOrEmpty(this.AltImageFile4))
-                    {
-                        value = this.AltImageFile4;
-                    }
-                    break;
-            }
-            if (value != string.Empty)
-            {
-                int idx = value.LastIndexOf("\\");
-                if (idx != -1)
-                {
-                    return value.Substring(idx + 1);
-                }
-                return value;
-            }
-            else return "";
-        }
-
+        
         /// <summary>
         ///     Returns Product Id Translations as a string
         /// </summary>

@@ -6626,7 +6626,7 @@
                                     <TextBlock 
                                         Grid.Row="2"
                                         Padding="3"
-                                        Text="{Binding EcommerceUrlToolTip}"
+                                        Text="{Binding WebsiteUrlToolTip}"
                                         TextWrapping="Wrap" />
                                 </Grid>
                             </ToolTip>
@@ -6640,7 +6640,7 @@
                         Grid.Row="11"
                         Margin="6,7,0,6"
                         MaxHeight="26"
-                        Text="{Binding EcommerceUrl}"
+                        Text="{Binding WebsiteUrl}"
                         TextWrapping="Wrap"
                         VerticalContentAlignment="Center"
                         Width="160" />

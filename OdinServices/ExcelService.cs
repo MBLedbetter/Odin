@@ -2567,8 +2567,7 @@ namespace OdinServices
             string result = string.Empty;
             if(item.SellOnTrs=="Y")
             {
-                string url = ItemService.CreateUrl(item.ItemId, item.EcommerceItemName, true);
-                result += "<a href=\'" + url + "\'  class='shopTrends_button' target=\'_blank\'>Buy On Shoptrends.com</a>";
+                result += "<a href=\'" + item.WebsiteUrl + "\'  class='shopTrends_button' target=\'_blank\'>Buy On Shoptrends.com</a>";
             }
             if (!string.IsNullOrEmpty(item.ShortDescription))
             {
@@ -3055,6 +3054,8 @@ namespace OdinServices
                 title = item.TitleOverride;
             }
             */
+            int pos = item.WebsiteUrl.LastIndexOf("/") + 1;
+            string url = item.WebsiteUrl.Substring(pos, item.WebsiteUrl.Length - pos); // prints "world"
             string itemId = "POSTER" + ItemService.RetrieveItemIdCore(item.ItemId);
             string dateAdded = (item.Status == "Add") ? DateTime.Now.ToShortDateString() : "";
 
@@ -3075,7 +3076,7 @@ namespace OdinServices
             result += ","; /* O */
             result += ","; /* P */
             result += ","; /* Q */
-            result += "\"" + ItemService.CreateUrl(item.ItemId, item.EcommerceItemName,false) + "\","; /* R */
+            result += "\"" + url + "\","; /* R */
             result += "\"" + item.EcommerceItemName + "\","; /* S */
             result += "\"" + item.ItemKeywords + "\","; /* T */
             result += "\"" + item.EcommerceItemName + "\","; /* U */
