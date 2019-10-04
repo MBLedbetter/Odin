@@ -403,6 +403,7 @@ namespace Odin.ViewModels
             {
                 return _casepackHeightBoxColor;
             }
+
             set
             {
                 _casepackHeightBoxColor = value;
@@ -5665,6 +5666,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.AltImageFile1 != value)
                 {
                     this.ItemViewModelItem.AltImageFile1 = value;
+                    this.EcommerceImagePath1 = ItemService.CreateImageUrl(this.ItemViewModelItem, value, 2);
                     FlagError("AltImageFile1");
                     OnPropertyChanged("AltImageFile1");
                 }
@@ -5726,6 +5728,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.AltImageFile2 != value)
                 {
                     this.ItemViewModelItem.AltImageFile2 = value;
+                    this.EcommerceImagePath1 = ItemService.CreateImageUrl(this.ItemViewModelItem, value, 3);
                     FlagError("AltImageFile2");
                     OnPropertyChanged("AltImageFile2");
                 }
@@ -5787,6 +5790,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.AltImageFile3 != value)
                 {
                     this.ItemViewModelItem.AltImageFile3 = value;
+                    this.EcommerceImagePath1 = ItemService.CreateImageUrl(this.ItemViewModelItem, value, 4);
                     FlagError("AltImageFile3");
                     OnPropertyChanged("AltImageFile3");
                 }
@@ -5848,6 +5852,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.AltImageFile4 != value)
                 {
                     this.ItemViewModelItem.AltImageFile4 = value;
+                    this.EcommerceImagePath1 = ItemService.CreateImageUrl(this.ItemViewModelItem, value, 5);
                     FlagError("AltImageFile4");
                     OnPropertyChanged("AltImageFile4");
                 }
@@ -5909,6 +5914,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.ImagePath != value)
                 {
                     this.ItemViewModelItem.ImagePath = value;
+                    this.EcommerceImagePath1 = ItemService.CreateImageUrl(this.ItemViewModelItem, value, 1);
                     FlagError("ImagePath");
                     OnPropertyChanged("ImagePath");
                 }
@@ -6801,6 +6807,10 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.EcommerceItemName != value)
                 {
                     this.ItemViewModelItem.EcommerceItemName = value;
+                    if (string.IsNullOrEmpty(this.ItemViewModelItem.WebsiteUrl))
+                    {
+                        this.WebsiteUrl = ItemService.CreateUrl(this.ItemId, value, this.ProductGroup, true);
+                    }
                     FlagError("EcommerceItemName");
                     OnPropertyChanged("EcommerceItemName");
                 }
@@ -8007,10 +8017,42 @@ namespace Odin.ViewModels
         }
         private string _EcommerceUpcToolTip = string.Empty;
 
+        /// <summary>
+        ///    WebsiteUrl
+        /// </summary>
+        public string WebsiteUrl
+        {
+            get
+            {
+                return this.ItemViewModelItem.WebsiteUrl;
+            }
+            set
+            {
+                if (this.ItemViewModelItem.WebsiteUrl != value)
+                {
+                    this.ItemViewModelItem.WebsiteUrl = value;
+                    OnPropertyChanged("WebsiteUrl");
+                }
+            }
+        }
+        public string WebsiteUrlToolTip
+        {
+            get
+            {
+                return _websiteUrlToolTip;
+            }
+            set
+            {
+                _websiteUrlToolTip = value;
+                OnPropertyChanged("WebsiteUrlToolTip");
+            }
+        }
+        private string _websiteUrlToolTip = string.Empty;
+
         #endregion // Ecommerce Properties
 
         #region Override Properties
-        
+
         /// <summary>
         ///     Gets or sets the item keywords
         /// </summary>
@@ -10252,7 +10294,6 @@ namespace Odin.ViewModels
                     }
                 }
             }
-            // ValidateAll(this.ItemViewModelItem);
         }
 
         #endregion // Constructor

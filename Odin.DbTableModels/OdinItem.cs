@@ -701,6 +701,11 @@ namespace Odin.DbTableModels
         /// </summary>
         public string WebsitePriceOverride { get; set; }
 
+        /// <summary>
+        ///     Gets or sets WebsiteUrl
+        /// </summary>
+        /// public string WebsiteUrl { get; set; }
+
         #endregion // Public Properties
     }
 }

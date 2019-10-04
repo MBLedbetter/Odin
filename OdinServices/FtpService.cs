@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OdinModels;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -16,22 +17,6 @@ namespace OdinServices
 
         #region Properties
                 
-        /// <summary>
-        ///     List of existing file names on the server
-        /// </summary>
-        public List<string> ExistingImageFiles
-        {
-            get
-            {
-                return _existingImageFiles;
-            }
-            set
-            {
-                _existingImageFiles = value;
-            }
-        }
-        private List<string> _existingImageFiles = new List<string>();
-
         /// <summary>
         ///     ftp password
         /// </summary>
@@ -55,7 +40,7 @@ namespace OdinServices
         {
             string[] x = filePath.Split('/');
             string fileName = x[x.Length - 1];
-            if(this.ExistingImageFiles.Contains(fileName))
+            if(GlobalData.ExistingFiles.Contains(fileName))
             {
                 return true;
             }
@@ -68,8 +53,9 @@ namespace OdinServices
         /// <returns></returns>
         public List<string> ReturnExistingImageFiles()
         {
-            List<string> rawNames = new List<string>();
 
+            List<string> rawNames = new List<string>();
+            
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://trendsinternational.com/trendsinternational.com/html/media/externalCaptures/");
             request.Method = WebRequestMethods.Ftp.ListDirectory;
 
@@ -86,7 +72,7 @@ namespace OdinServices
 
             rawNames.Remove(".");
             rawNames.Remove("..");
-
+            
             return rawNames;
         }
 
@@ -120,7 +106,10 @@ namespace OdinServices
             FtpWebResponse response = (FtpWebResponse)request.GetResponse();
             response.Close();
 
-            this.ExistingImageFiles = ReturnExistingImageFiles();
+            if (!GlobalData.ExistingFiles.Any())
+            {
+                GlobalData.ExistingFiles = ReturnExistingImageFiles();
+            }
         }
 
         #endregion // Methods

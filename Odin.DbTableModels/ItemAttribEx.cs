@@ -195,6 +195,11 @@ namespace Odin.DbTableModels
         /// </summary>
         public decimal WebsitePrice { get; set; }
 
+        /// <summary>
+        ///     Gets or sets WEBSITE_URL
+        /// </summary>
+        public string WebsiteUrl { get; set; }
+
         #endregion // Public Properties
     }
 }

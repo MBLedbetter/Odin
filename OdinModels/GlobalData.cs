@@ -174,6 +174,22 @@ namespace OdinModels
         private static bool _ecomFlagRequirement = false;
 
         /// <summary>
+        ///     List of existing images on externalCaptures folder on the web server
+        /// </summary>
+        public static List<string> ExistingFiles
+        {
+            get
+            {
+                return _existingFiles;
+            }
+            set
+            {
+                _existingFiles = value;
+            }
+        }
+        private static List<string> _existingFiles = new List<string>();
+
+        /// <summary>
         ///     List of cached External Id Type values
         /// </summary>
         public static List<string> ExternalIdTypes

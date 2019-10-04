@@ -11,33 +11,7 @@ namespace Odin.Services.Tests
 {
     [TestClass]
     public class ItemServiceTests
-    {
-        /// <summary>
-        ///     Checks that AssignDirectImport returns valid values when proper values are assigned.
-        /// </summary>
-        [TestMethod]
-        public void ItemServiceTests_CreateEcommerceImageUrl_ShouldCreateNewFilePath()
-        {
-            #region Assemble
-
-            ItemObject item = new ItemObject(1);
-            string x = @"\\isiloncifs\Store 2\•CAPTURES\Poster Captures\1000\1300 - POTC 4.4 - 3.4 Black Beard_4x6.TIFF";
-            
-            #endregion // Assemble
-
-            #region Act
-
-            string result1 = item.CreateEcommerceImageUrl(x);
-
-            #endregion // Act
-
-            #region Assert
-
-            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/1/3/1300 - POTC 4.4 - 3.4 Black Beard_4x6.jpg", result1);
-
-            #endregion // Assert
-        }
-        
+    {        
         /// <summary>
         ///     Checks that AssignDirectImport returns valid values when proper values are assigned.
         /// </summary>
@@ -213,8 +187,8 @@ namespace Odin.Services.Tests
 
             #region Assert
 
-            Assert.IsTrue(item.EcommerceImagePath1Update);
-            Assert.IsFalse(item.EcommerceImagePath2Update);
+            // Assert.IsTrue(item.EcommerceImagePath1Update);
+            // Assert.IsFalse(item.EcommerceImagePath2Update);
             Assert.IsFalse(item.AltImageFile1Update);
 
             #endregion // Assert
@@ -261,6 +235,7 @@ namespace Odin.Services.Tests
             Assert.AreEqual("DutyA", completeItem.Duty);
             Assert.AreEqual("GpcA", completeItem.Gpc);
             Assert.AreEqual("HeightA", completeItem.Height);
+            Assert.AreEqual("ImagePathA", completeItem.ImagePath);
             Assert.AreEqual("InnerpackHeightA", completeItem.InnerpackHeight);
             Assert.AreEqual("InnerpackLengthA", completeItem.InnerpackLength);
             Assert.AreEqual("InnerpackQuantityA", completeItem.InnerpackQuantity);
@@ -307,11 +282,11 @@ namespace Odin.Services.Tests
             Assert.AreEqual("ACostA", completeItem.EcommerceCost);
             Assert.AreEqual("AExternalIdA", completeItem.EcommerceExternalId);
             Assert.AreEqual("AExternalIdTypeA", completeItem.EcommerceExternalIdType);
-            Assert.AreEqual("ImagePathA", completeItem.EcommerceImagePath1);
-            Assert.AreEqual("AltImageFile1A", completeItem.EcommerceImagePath2);
-            Assert.AreEqual("AltImageFile2A", completeItem.EcommerceImagePath3);
-            Assert.AreEqual("AltImageFile3A", completeItem.EcommerceImagePath4);
-            Assert.AreEqual("AltImageFile4A", completeItem.EcommerceImagePath5);
+            Assert.AreEqual("EcommerceImagePath1A", completeItem.EcommerceImagePath1);
+            Assert.AreEqual("EcommerceImagePath2A", completeItem.EcommerceImagePath2);
+            Assert.AreEqual("EcommerceImagePath3A", completeItem.EcommerceImagePath3);
+            Assert.AreEqual("EcommerceImagePath4A", completeItem.EcommerceImagePath4);
+            Assert.AreEqual("EcommerceImagePath5A", completeItem.EcommerceImagePath5);
             Assert.AreEqual("AItemHeightA", completeItem.EcommerceItemHeight);
             Assert.AreEqual("AItemLengthA", completeItem.EcommerceItemLength);
             Assert.AreEqual("AItemNameA", completeItem.EcommerceItemName);
@@ -978,34 +953,52 @@ namespace Odin.Services.Tests
 
             #endregion // Assert
         }
-        
-        /// <summary>
-        ///     This method test the ReadItemIds function where invalid data exists in excel spreadsheet. Method should succeed.
-        /// </summary>
-        [TestMethod]
-        public void CreateEcommerceImageUrl_ValidImageUrl_ShouldReturnProperImageUrl()
-        {
 
+
+        [TestMethod]
+        public void CreateImageUrl_ImageLocationsGenerated_ShouldPass()
+        {
             #region Setup
 
-            ItemObject item = new ItemObject(1);
-            string imgLocation = @"\\MACSERV\Store 2\•CAPTURES\Poster Captures\Poster Captures\10000\10000\10031 - Zelda - A Link Between Worlds.tif";
+            ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+
+            GlobalData.ExistingFiles.Add("11234 - Test Name.jpg");
+            string imagepath1 = @"\\isiloncifs\Store 2\•CAPTURES\Poster Captures\17000\17200\11234 - Test Name.jpg";
+            string imagepath2 = @"\\isiloncifs\Store 2\•CAPTURES\Poster Captures\17000\17200\2222.jpg";
+            string imagepath3 = @"\\isiloncifs\Store 2\•CAPTURES\Poster Captures\17000\17200\ST1111 - Test Name 2.jpg";
+            ItemObject item1 = new ItemObject(1)
+            {
+                ItemId = "RP1234",
+                SellOnTrs = "Y"
+            };
+            ItemObject item2 = new ItemObject(1)
+            {
+                ItemId = "FR12345",
+                SellOnTrs = "Y"
+            };
+            ItemObject item3 = new ItemObject(1)
+            {
+                ItemId = "ST1111"
+            };
 
             #endregion // Setup
 
             #region Act
 
-            string result = item.CreateEcommerceImageUrl(imgLocation);
+            string result1 = itemService.CreateImageUrl(item1,imagepath1,1);
+            string result2 = itemService.CreateImageUrl(item2, imagepath2, 1);
+            string result3 = itemService.CreateImageUrl(item3, imagepath3, 1);
 
             #endregion // Act
 
             #region Assert
 
-            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/1/0/10031 - Zelda - A Link Between Worlds.jpg", result);
+            Assert.AreEqual("https://trendsinternational.com/media/externalCaptures/11234%20-%20Test%20Name.jpg", result1);
+            Assert.AreEqual("https://shoptrends.com/pub/media/catalog/product/f/r/fr12345-1.jpg", result2);
+            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/S/T/ST1111_-_Test_Name_2.jpg", result3);
 
             #endregion // Assert
         }
-
         [TestMethod]
         public void FormatCategory_GivenProperCategoryValue_ShouldReturnValidWebCategory()
         {
@@ -2077,11 +2070,11 @@ namespace Odin.Services.Tests
             Assert.IsFalse(item.EcommerceCostUpdate);
             Assert.IsFalse(item.EcommerceExternalIdUpdate);
             Assert.IsFalse(item.EcommerceExternalIdTypeUpdate);
-            Assert.IsFalse(item.EcommerceImagePath1Update);
-            Assert.IsFalse(item.EcommerceImagePath2Update);
-            Assert.IsFalse(item.EcommerceImagePath3Update);
-            Assert.IsFalse(item.EcommerceImagePath4Update);
-            Assert.IsFalse(item.EcommerceImagePath5Update);
+            // Assert.IsFalse(item.EcommerceImagePath1Update);
+            // Assert.IsFalse(item.EcommerceImagePath2Update);
+            // Assert.IsFalse(item.EcommerceImagePath3Update);
+            // Assert.IsFalse(item.EcommerceImagePath4Update);
+            // Assert.IsFalse(item.EcommerceImagePath5Update);
             Assert.IsFalse(item.EcommerceItemHeightUpdate);
             Assert.IsFalse(item.EcommerceItemLengthUpdate);
             Assert.IsFalse(item.EcommerceItemNameUpdate);

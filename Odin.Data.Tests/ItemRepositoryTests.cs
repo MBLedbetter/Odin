@@ -1126,11 +1126,11 @@ namespace Odin.Data.Tests
                 EcommerceCost = "5.99",
                 EcommerceExternalId = "000000000000",
                 EcommerceExternalIdType = "UPC",
-                EcommerceImagePath1 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath1.jpg",
-                EcommerceImagePath2 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath2.jpg",
-                EcommerceImagePath3 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath3.jpg",
-                EcommerceImagePath4 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath4.jpg",
-                EcommerceImagePath5 = "http://trendsinternational.com/media/catalog/product/I/m/ImagePath5.jpg",
+                EcommerceImagePath1 = "https://shoptrends.com/pub/media/catalog/product/t/e/testitem2-1.jpg",
+                EcommerceImagePath2 = "https://shoptrends.com/pub/media/catalog/product/t/e/testitem2-2.jpg",
+                EcommerceImagePath3 = "https://shoptrends.com/pub/media/catalog/product/t/e/testitem2-3.jpg",
+                EcommerceImagePath4 = "https://shoptrends.com/pub/media/catalog/product/t/e/testitem2-4.jpg",
+                EcommerceImagePath5 = "https://shoptrends.com/pub/media/catalog/product/t/e/testitem2-5.jpg",
                 EcommerceItemHeight = "6",
                 EcommerceItemLength = "7",
                 EcommerceItemName = "ItemName",
@@ -1260,11 +1260,11 @@ namespace Odin.Data.Tests
             Assert.AreEqual("5.99", newItem.EcommerceCost);
             Assert.AreEqual("000000000000", newItem.EcommerceExternalId);
             Assert.AreEqual("UPC", newItem.EcommerceExternalIdType);
-            Assert.AreEqual("ImagePath", newItem.EcommerceImagePath1);
-            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/I/m/ImagePath2.jpg", newItem.EcommerceImagePath2);
-            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/I/m/ImagePath3.jpg", newItem.EcommerceImagePath3);
-            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/I/m/ImagePath4.jpg", newItem.EcommerceImagePath4);
-            Assert.AreEqual("http://trendsinternational.com/media/catalog/product/I/m/ImagePath5.jpg", newItem.EcommerceImagePath5);
+            Assert.AreEqual("https://shoptrends.com/pub/media/catalog/product/t/e/testitem2-1.jpg", newItem.EcommerceImagePath1);
+            Assert.AreEqual("https://shoptrends.com/pub/media/catalog/product/t/e/testitem2-2.jpg", newItem.EcommerceImagePath2);
+            Assert.AreEqual("https://shoptrends.com/pub/media/catalog/product/t/e/testitem2-3.jpg", newItem.EcommerceImagePath3);
+            Assert.AreEqual("https://shoptrends.com/pub/media/catalog/product/t/e/testitem2-4.jpg", newItem.EcommerceImagePath4);
+            Assert.AreEqual("https://shoptrends.com/pub/media/catalog/product/t/e/testitem2-5.jpg", newItem.EcommerceImagePath5);
             Assert.AreEqual("6.0", newItem.EcommerceItemHeight);
             Assert.AreEqual("7.0", newItem.EcommerceItemLength);
             Assert.AreEqual("ItemName", newItem.EcommerceItemName);
