@@ -1506,7 +1506,7 @@ namespace Odin.Data
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.Setid).HasColumnName("SETID");
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.TranslateEdiProd).HasColumnName("TRANSLATE_EDI_PROD");
             modelBuilder.Entity<ItemAttribEx>().Property(p => p.WebsitePrice).HasColumnName("WEBSITE_PRICE");
-            modelBuilder.Entity<ItemAttribEx>().Property(p => p.WebsiteUrl).HasColumnName("WEBSITE_URL");
+            // modelBuilder.Entity<ItemAttribEx>().Property(p => p.WebsiteUrl).HasColumnName("WEBSITE_URL");
 
         }
         
@@ -2248,7 +2248,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItem>().Property(p => p.WarrantyCheck).HasColumnName("WARRANTY_CHECK");
             modelBuilder.Entity<OdinItem>().Property(p => p.WebsitePriceOverride).HasColumnName("WEBSITE_PRICE_OVERRIDE");
             modelBuilder.Entity<OdinItem>().Property(p => p.WebsitePrice).HasColumnName("WEBSITE_PRICE");
-            modelBuilder.Entity<OdinItem>().Property(p => p.WebsiteUrl).HasColumnName("WEBSITE_URL");
+            // modelBuilder.Entity<OdinItem>().Property(p => p.WebsiteUrl).HasColumnName("WEBSITE_URL");
         }
 
         /// <summary>

@@ -2567,7 +2567,7 @@ namespace OdinServices
             string result = string.Empty;
             if(item.SellOnTrs=="Y")
             {
-                result += "<a href=\'" + item.WebsiteUrl + "\'  class='shopTrends_button' target=\'_blank\'>Buy On Shoptrends.com</a>";
+                result += "<a href=\'" + ItemService.CreateUrl(item.ItemId,item.EcommerceItemName,item.ItemGroup,true) + "\'  class='shopTrends_button' target=\'_blank\'>Buy On Shoptrends.com</a>";
             }
             if (!string.IsNullOrEmpty(item.ShortDescription))
             {
@@ -3054,8 +3054,9 @@ namespace OdinServices
                 title = item.TitleOverride;
             }
             */
-            int pos = item.WebsiteUrl.LastIndexOf("/") + 1;
-            string url = item.WebsiteUrl.Substring(pos, item.WebsiteUrl.Length - pos); // prints "world"
+            string url = ItemService.CreateUrl(item.ItemId, item.EcommerceItemName, item.ItemGroup, false);
+            // int pos = item.WebsiteUrl.LastIndexOf("/") + 1;
+            // string url = item.WebsiteUrl.Substring(pos, item.WebsiteUrl.Length - pos); // prints "world"
             string itemId = "POSTER" + ItemService.RetrieveItemIdCore(item.ItemId);
             string dateAdded = (item.Status == "Add") ? DateTime.Now.ToShortDateString() : "";
 
