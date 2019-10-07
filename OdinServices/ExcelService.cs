@@ -2471,7 +2471,7 @@ namespace OdinServices
                 || item.ProductFormat == "POD Mount Bundle"
                 || item.ProductFormat == "POD Clip Bundle")
             {
-                if(item.ProductFormat=="Mount Bundle")
+                if(item.ProductFormat=="Mount Bundle" || item.ProductFormat == "14X22 Mount Bundle")
                 {
                     return "Poster & Mount Bundle";
                 }
@@ -2482,10 +2482,6 @@ namespace OdinServices
                 else if (item.ProductFormat == "POD Mount Bundle")
                 {
                     return "Premium Poster & Clip Bundle";
-                }
-                else if (item.ProductFormat == "14X22 Mount Bundle")
-                {
-                    return "Premium Unframed with Mounts";
                 }
                 else if (item.ProductFormat == "POD Clip Bundle")
                 {
@@ -2575,7 +2571,7 @@ namespace OdinServices
             string result = string.Empty;
             if(item.SellOnTrs=="Y")
             {
-                result += "<a href=\'" + ItemService.CreateUrl(item.ItemId,item.EcommerceItemName,item.ItemGroup,true) + "\'  class='shopTrends_button' target=\'_blank\'>Buy On Shoptrends.com</a>";
+                result += "<a href=\'" + ItemService.CreateUrl(item.ItemId,item.EcommerceItemName,item.ItemGroup,true) + "\' class='shopTrends_button' target=\'_blank\'>Buy On Shoptrends.com</a>";
             }
             if (!string.IsNullOrEmpty(item.ShortDescription))
             {
@@ -3062,9 +3058,9 @@ namespace OdinServices
                 title = item.TitleOverride;
             }
             */
-            string url = ItemService.CreateUrl(item.ItemId, item.EcommerceItemName, item.ItemGroup, false);
-            // int pos = item.WebsiteUrl.LastIndexOf("/") + 1;
-            // string url = item.WebsiteUrl.Substring(pos, item.WebsiteUrl.Length - pos); // prints "world"
+            // string url = ItemService.CreateUrl(item.ItemId, item.EcommerceItemName, item.ItemGroup, false);
+            int pos = item.WebsiteUrl.LastIndexOf("/") + 1;
+            string url = item.WebsiteUrl.Substring(pos, item.WebsiteUrl.Length - pos); // prints "world"
             string itemId = "POSTER" + ItemService.RetrieveItemIdCore(item.ItemId);
             string dateAdded = (item.Status == "Add") ? DateTime.Now.ToShortDateString() : "";
 
