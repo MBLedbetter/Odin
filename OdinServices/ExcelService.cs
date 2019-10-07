@@ -2534,6 +2534,11 @@ namespace OdinServices
         /// <returns></returns>
         public string ReturnVariantGroupId(string itemId)
         {
+            string number = new string(itemId.SkipWhile(c => !char.IsDigit(c))
+                         .TakeWhile(c => char.IsDigit(c))
+                         .ToArray());
+            return number;
+            /*
             List<string> filters = new List<string>();
             string result = itemId.Trim();
             foreach (string x in GlobalData.VariantGroupExclusionOptions)
@@ -2546,6 +2551,7 @@ namespace OdinServices
                 result = result.Replace(x, "");
             }
             return result;
+            */
         }
 
         #endregion // Retrieval Methods

@@ -101,10 +101,12 @@ namespace OdinTests.Services
 
 
             GlobalData.ClearValues();
+           /*
             GlobalData.VariantGroupExclusionOptions.Add("RP");
             GlobalData.VariantGroupExclusionOptions.Add("FR");
             GlobalData.VariantGroupExclusionOptions.Add("POD");
             GlobalData.VariantGroupExclusionOptions.Add("BLK22X34");
+            */
             OptionService optionService = new OptionService(new TestOptionRepository(), new TestRequestRepository());
             ExcelService excelService = new ExcelService(true, new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository()), optionService, new TestTemplateRepository(), new TestRequestRepository());
             string itemId1 = "RP1234";
