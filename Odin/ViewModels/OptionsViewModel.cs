@@ -42,32 +42,6 @@ namespace Odin.ViewModels
         }
         private RelayCommand _removeProductFormatExclusion;
 
-        public ICommand AddVariantGroupIdExclusionCommand
-        {
-            get
-            {
-                if (_addVariantGroupIdExclusion == null)
-                {
-                    _addVariantGroupIdExclusion = new RelayCommand(param => AddOption("VariantGroupExclusion"));
-                }
-                return _addVariantGroupIdExclusion;
-            }
-        }
-        private RelayCommand _addVariantGroupIdExclusion;
-
-        public ICommand RemoveVariantGroupIdExclusionCommand
-        {
-            get
-            {
-                if (_removeVariantGroupIdExclusion == null)
-                {
-                    _removeVariantGroupIdExclusion = new RelayCommand(param => RemoveVariantGroupIdExclusion());
-                }
-                return _removeVariantGroupIdExclusion;
-            }
-        }
-        private RelayCommand _removeVariantGroupIdExclusion;
-
         #endregion // Commands
 
         #region Properties
@@ -1978,13 +1952,8 @@ namespace Odin.ViewModels
             if (textWindow.DialogResult==true)
             {
                 string result = (textWindow.DataContext as TextPromptViewModel).TextValue;
-                if (optionType == "VariantGroupExclusion")
-                {
-                    OptionService.InsertOption(optionType, result, "");
-                    GlobalData.VariantGroupExclusionOptions = OptionService.RetrieveOptions("VariantGroupExclusion", "");
-                    this.VariantGroupExclusionOptions = GlobalData.VariantGroupExclusionOptions;
-                }
-                else if (optionType == "ProductFormatExclusion")
+
+                if (optionType == "ProductFormatExclusion")
                 {
                     OptionService.InsertOption(optionType, result, GlobalData.UserName);
                     GlobalData.ProductFormatExclusionOptions = OptionService.RetrieveOptions("ProductFormatExclusion", GlobalData.UserName);
@@ -2155,25 +2124,13 @@ namespace Odin.ViewModels
             GlobalData.ProductFormatExclusionOptions = OptionService.RetrieveOptions("ProductFormatExclusion", GlobalData.UserName);
             this.ProductFormatExclusionOptions = GlobalData.ProductFormatExclusionOptions;
             HasUpdate = true;
-        }
-
-        /// <summary>
-        ///     Removes a value from the VariantGroupIdExclusion list
-        /// </summary>
-        public void RemoveVariantGroupIdExclusion()
-        {
-            OptionService.RemoveOption("VariantGroupExclusion", this.SelectedVariantGroupExclusionOption, "");
-            GlobalData.VariantGroupExclusionOptions = OptionService.RetrieveOptions("VariantGroupExclusion","");
-            this.VariantGroupExclusionOptions = GlobalData.VariantGroupExclusionOptions;
-            HasUpdate = true;
-        }
+        }        
 
         /// <summary>
         ///     Runs all retrieval methods and populates properties
         /// </summary>
         public void RetrieveAllOptions()
         {
-            this.VariantGroupExclusionOptions = GlobalData.VariantGroupExclusionOptions;
             this.ProductFormatExclusionOptions = GlobalData.ProductFormatExclusionOptions;
             InitiateFlag = true;
             this.B2BFieldVisibility = CheckB2BFieldVisibility();

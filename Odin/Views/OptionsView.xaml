@@ -1929,7 +1929,7 @@
                             Height="Auto" />
                     </Grid.RowDefinitions>
                     <!--    Variant Group Id Exclusions     -->
-                    <Label
+                    <!--Label
                         Content="Variant Group Id Exclusions"
                         Grid.Column="0"
                         Grid.Row="0"
@@ -1970,7 +1970,7 @@
                         HorizontalAlignment="Left"
                         Margin="11,5,0,0"
                         VerticalAlignment="Top"
-                        Width="80"/>
+                        Width="80"/-->
                     <!--    End Variant Group Id Exclusions     -->
 
                 </Grid>

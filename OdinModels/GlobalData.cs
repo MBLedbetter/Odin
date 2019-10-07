@@ -770,23 +770,7 @@ namespace OdinModels
             }
         }
         private static List<string> _userRoles = new List<string>();
-
-        /// <summary>
-        ///     Gets or sets VariantGroupExclusionOptions
-        /// </summary>
-        public static List<string> VariantGroupExclusionOptions
-        {
-            get
-            {
-                return _variantGroupExclusionOptions;
-            }
-            set
-            {
-                _variantGroupExclusionOptions = value;
-            }
-        }
-        private static List<string> _variantGroupExclusionOptions = new List<string>();
-
+        
         /// <summary>
         ///     Gets or sets the WebCategoryList value. a Dictionary of website category names/ids from ODIN_WEB_CATEGORIES
         /// </summary>

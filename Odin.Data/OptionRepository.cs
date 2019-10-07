@@ -163,7 +163,6 @@ namespace Odin.Data
         /// </summary>
         public void RetrieveGloablOptionData()
         {
-            GlobalData.VariantGroupExclusionOptions = RetrieveOptions("VariantGroupExclusion","");
             GlobalData.ProductFormatExclusionOptions = RetrieveOptions("ProductFormatExclusion", GlobalData.UserName);
             GlobalData.UserPermissions = RetrievePermissions(GlobalData.UserName);
             if(GlobalData.UserPermissions.Count==0)
