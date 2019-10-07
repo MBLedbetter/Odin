@@ -704,7 +704,7 @@ namespace Odin.DbTableModels
         /// <summary>
         ///     Gets or sets WebsiteUrl
         /// </summary>
-        /// public string WebsiteUrl { get; set; }
+        public string WebsiteUrl { get; set; }
 
         #endregion // Public Properties
     }

@@ -2483,6 +2483,10 @@ namespace OdinServices
                 {
                     return "Premium Poster & Clip Bundle";
                 }
+                else if (item.ProductFormat == "14X22 Mount Bundle")
+                {
+                    return "Premium Unframed with Mounts";
+                }
                 else if (item.ProductFormat == "POD Clip Bundle")
                 {
                     return "Premium Poster & Mount Bundle";
@@ -2498,6 +2502,10 @@ namespace OdinServices
                 else if (item.ItemId.Contains("BLK"))
                 {
                     return "Black Framed Version";
+                }
+                else if (item.ItemId.Contains("BWD"))
+                {
+                    return "Barnwood Framed Version";
                 }
                 else if (item.ItemId.Contains("WHT"))
                 {
