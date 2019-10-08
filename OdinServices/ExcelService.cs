@@ -2407,11 +2407,15 @@ namespace OdinServices
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        public string ReturnPosterOption(string itemId)
+        private string ReturnPosterOption(string itemId)
         {
             if(itemId.Contains("BLK22X34") || itemId.Contains("BLK24X36"))
             {
                 return "BLACKFRAME";
+            }
+            else if (itemId.Contains("BWD22X34") || itemId.Contains("BWD24X36"))
+            {
+                return "BARNWOODFRAME";
             }
             else if (itemId.Contains("MAH22X34") || itemId.Contains("MAH24X36"))
             {
@@ -2442,7 +2446,7 @@ namespace OdinServices
         /// <param name="license"></param>
         /// <param name="property"></param>
         /// <returns>Valid Magento property value</returns>
-        public string ReturnProperty(string license, string property)
+        private string ReturnProperty(string license, string property)
         {
             if (string.IsNullOrEmpty(property))
             {
@@ -2971,6 +2975,22 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Returns an inventory of 0 for all products except for FR and POD items (450)
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        private string ReturnInventory(ItemObject item)
+        {
+            if(item.ProductGroup == "Posters")
+            {
+                if((item.ItemId.Substring(0, 3) == "POD") ||(item.ItemId.Substring(0,2)=="FR"))
+                {
+                    return "450";
+                }
+            }
+            return "0";
+        }
+        /// <summary>
         ///     Writes the line for the child simple product
         /// </summary>
         /// <param name="item"></param>
@@ -2981,7 +3001,6 @@ namespace OdinServices
             string title = (string.IsNullOrEmpty(item.EcommerceItemName)) ? item.Title : item.EcommerceItemName;
             title = (string.IsNullOrEmpty(item.TitleOverride)) ? item.Title : item.TitleOverride;
             string itemKeywords = (string.IsNullOrEmpty(item.ItemKeywordsOverride)) ? item.ItemKeywordsOverride : item.ItemKeywordsOverride;
-
             string dateAdded = item.Status == "Add" ? DateTime.Now.ToShortDateString() : "";
 
             result += "\"" + item.ItemId.Trim() + "\","; /* A */
@@ -3031,7 +3050,7 @@ namespace OdinServices
             result += "\"" + "Use config" + "\","; /* AS */
             result += "\"" + "United States" + "\","; ; /* AT */
             result += "\"" + FormatAdditionalAttributes(item,true) + "\","; /* AU */
-            result += "\"" + "1" + "\","; /* AV */
+            result += "\"" + ReturnInventory(item) + "\","; /* AV */
             result += "\"" + "0" + "\","; /* AW */
             result += "\"" + "1" + "\","; /* AX */
             result += "\"" + "0" + "\","; /* AY */
