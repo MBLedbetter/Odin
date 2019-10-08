@@ -242,234 +242,7 @@ namespace OdinServices
         #endregion // Public Properties
 
         #region Public Methods
-                
-        /// <summary>
-        ///     Assigns the value 'N' to items with no direct import value
-        /// </summary>
-        /// <param name="var"></param>
-        /// <returns></returns>
-        public string AssignDirectImport(string var)
-        {
-            if (string.IsNullOrEmpty(var.Trim()))
-            {
-                return "N";
-            }
-            else return var;
-        }
         
-        /// <summary>
-        ///     Checks existing bill of materials. If a match exists return true. Else return false.
-        /// </summary>
-        /// <param name="itemId"></param>
-        /// <param name="childId"></param>
-        /// <returns></returns>
-        public bool CheckBillofMaterial(string itemId, string childId)
-        {
-            foreach(ChildElement x in GlobalData.BillofMaterials)
-            {
-                if(x.ItemId == childId && x.ParentId == itemId)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /// <summary>
-        ///     Checks that provided image path returns a file
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="isTest"></param>
-        /// <returns></returns>
-        public bool CheckFileExists(string value, bool isTest)
-        {
-            if (!isTest)
-            {
-                // value = "@" + value;
-                if (File.Exists(value))
-                {
-                    return true;  
-                }
-            }
-            else
-            {
-                if (value == "testImagePath")
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-        
-        /// <summary>
-        ///     Check that the provided image is not too large
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="isTest"></param>
-        /// <returns>false if file is too large</returns>
-        public bool CheckFileSize(string value, bool isTest)
-        {
-            if (!isTest)
-            {
-                // value = "@" + value;
-                if (File.Exists(value))
-                {
-                    // Check that file isn't too big, to prevent memory exception
-                    if ((new System.IO.FileInfo(value).Length < 20000000))
-                    {
-                        return true;
-                    }
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                if (value == "testImagePath")
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /// <summary>
-        ///     Checks for existing items with matching UPC, checks to make sure found itemIds do not contain given itemId (ex. RP1234 * RP1234WP)
-        /// </summary>
-        /// <param name="itemId"></param>
-        /// <param name="upc"></param>
-        /// <param name="itemStatus"></param>
-        /// <returns>itemId if a duplicate UPC is found</returns>
-        public List<string> CheckDuplicateUPCs(string itemId, string upc, string itemStatus)
-        {
-            List<string> result = new List<string>();
-            string slimItemId = itemId;
-            List<string> existingIds = new List<string>();
-            if (itemId.Length>2)
-            {
-                string idSuffix = itemId.Substring(itemId.Length - 2);
-                if (GlobalData.ItemIdSuffixes.Contains(idSuffix))
-                {
-                    slimItemId = itemId.Substring(0, itemId.Length - 2);
-                }
-            }
-
-            List<KeyValuePair<string, string>> matches = GlobalData.Upcs.Where(v => v.Key == upc).ToList();
-
-            foreach (KeyValuePair<string, string> obj in matches)
-            {
-                existingIds.Add(obj.Value);
-            }
-            if (existingIds.Count() == 0)
-            {
-                return result;
-            }
-            if(itemStatus == "Add")
-            {
-                foreach(string id in existingIds)
-                {
-                    if(!id.Contains(slimItemId) && !itemId.Contains(id))
-                    {
-                        result.Add(id);                        
-                    }
-                }
-            }
-            else if (itemStatus == "Update")
-            {
-                if (existingIds.Count() == 1)
-                {
-                    bool existingValue = true;
-                    foreach (string id in existingIds)
-                    {
-                        if (!id.Contains(slimItemId) && !itemId.Contains(id))
-                        {
-                            existingValue = false;
-                            result.Add(id);
-                        }
-                    }
-                    if (existingValue)
-                    {
-                        return result;
-                    }
-                }
-                else
-                {
-                    foreach (string id in existingIds)
-                    {
-                        if (!id.Contains(slimItemId) && !itemId.Contains(id))
-                        {
-                            result.Add(id);
-                        }
-                    }
-                }
-            }
-            return result;
-        }
-
-        /// <summary>
-        ///     Checks if price field is blank, if it is insert 0.00.
-        /// </summary>
-        /// <param name="var"></param>
-        /// <returns></returns>
-        public string CheckEmptyPrice(string var)
-        {
-            if (string.IsNullOrEmpty(var))
-            {
-                return "0.00";
-            }
-            else return var;
-        }
-
-        /// <summary>
-        ///     Check to see if Id already exists in database
-        /// </summary>
-        /// <param name="itemId"></param>
-        /// <returns></returns>
-        public bool CheckForExistsingItemId(string itemId)
-        {
-            if (GlobalData.ItemIds.Contains(itemId))
-            {
-                return true;
-            }
-            return false;
-        }
-
-        /// <summary>
-        ///     Checks product formats for an object with a matching value. Returns true if match found
-        /// </summary>
-        /// <param name="prodFormat"></param>
-        /// <returns></returns>
-        public bool CheckForProductFormat(string prodFormat)
-        {
-            foreach(ProductFormat x in GlobalData.ProductFormats)
-            {
-                if(x.Format == prodFormat)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /// <summary>
-        ///     Checks if a given value is greater than 0.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns>true if greater than 0</returns>
-        public bool CheckGreaterThanZero(string value)
-        {
-            if (decimal.TryParse(value, out decimal valueDec))
-            {
-                if (valueDec > 0)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
         /// <summary>
         ///     Check for duplicate id's in list and check that id exists in database
         /// </summary>
@@ -490,16 +263,6 @@ namespace OdinServices
                 return true;
             }
             return false;
-        }
-        
-        /// <summary>
-        ///     Searches PS_ORD_LINE for any open orders (ORD_LINE_STATUS = P or O) with the given ItemId = CUSTOMER_ITEM_NBR
-        /// </summary>
-        /// <param name="itemId"></param>
-        /// <returns>true if any open orders with Item Id exist</returns>
-        public bool CheckItemHasOpenOrderLine(string itemId)
-        {
-            return ItemRepository.RetrieveOpenOrderLine(itemId);
         }
 
         /// <summary>
@@ -522,86 +285,11 @@ namespace OdinServices
         }
 
         /// <summary>
-        ///     Checks if the combination of product group, product line and product format is valid. Returns true if all match
-        /// </summary>
-        /// <param name="productGroup"></param>
-        /// <param name="productLine"></param>
-        /// <param name="productFormat"></param>
-        /// <returns></returns>
-        public bool CheckProductFormats(string productGroup, string productLine, string productFormat)
-        {
-            foreach(ProductFormat x in GlobalData.ProductFormats)
-            {
-                if (x.Group == productGroup.Trim())
-                {
-                    if (x.Line == productLine.Trim())
-                    {
-                        if (x.Format == productFormat.Trim())
-                        {
-                            return true;                            
-                        }
-                    }
-                }
-            }
-            return false;
-        }
-
-        /// <summary>
-        ///     Checks valid product group / line pairs and returns true if values match valid pair
-        /// </summary>
-        /// <param name="productGroup"></param>
-        /// <param name="productLine"></param>
-        /// <returns></returns>
-        public bool CheckProductLines(string productGroup, string productLine)
-        {
-            foreach(KeyValuePair<string,string> x in GlobalData.ProductLines)
-            {
-                if(x.Key == productLine && x.Value == productGroup)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /// <summary>
-        ///     Check string for special characters. Special chars have no place in the peoplesoft database.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public bool CheckSpecialChar(string value)
-        {
-            foreach (string specialChar in GlobalData.SpecialCharacters)
-            {
-                if (value.Contains(specialChar))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }        
-        
-        /// <summary>
-        ///     Compares current list of product id translations with those currently in the database returns false if the two lists don't match
-        /// </summary>
-        /// <param name="itemId"></param>
-        /// <param name="productIdTranslationList"></param>
-        /// <returns>false if a conflict emerges</returns>
-        public bool CheckExistingProductIdTranslationsMatch(List<ChildElement> productIdTranslationList)
-        {
-            foreach (ChildElement x in productIdTranslationList)
-            {
-                ItemRepository.RetrieveProductIdTranslationMatch(x.ItemId, x.ParentId);
-            }
-            return true;
-        }
-
-        /// <summary>
         ///     Replace "[CLEAR]" with empty value for all fields
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        public ItemObject ClearFields(ItemObject item)
+        private ItemObject ClearFields(ItemObject item)
         {
             if (item.AccountingGroup.Trim() == "[CLEAR]") { item.AccountingGroup = ""; }
             if (item.AltImageFile1.Trim() == "[CLEAR]") { item.AltImageFile1 = ""; }
@@ -755,7 +443,7 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.DefaultActualCostCad)) && (item.DefaultActualCostCad.Trim() != returnItem.DefaultActualCostCad.Trim())) { returnItem.DefaultActualCostCad = item.DefaultActualCostCad; } // Default Actual Cost CAD
             if ((!string.IsNullOrEmpty(item.DefaultActualCostUsd)) && (item.DefaultActualCostUsd.Trim() != returnItem.DefaultActualCostUsd.Trim())) { returnItem.DefaultActualCostUsd = item.DefaultActualCostUsd; } // Default Actual Cost USD
             if ((!string.IsNullOrEmpty(item.Description)) && (item.Description.Trim() != returnItem.Description.Trim())) { returnItem.Description = item.Description; } // Description
-            if ((!string.IsNullOrEmpty(item.DirectImport)) && (item.DirectImport.Trim() != returnItem.DirectImport.Trim())) { returnItem.DirectImport = AssignDirectImport(item.DirectImport); } // Direct Import
+            if ((!string.IsNullOrEmpty(item.DirectImport)) && (item.DirectImport.Trim() != returnItem.DirectImport.Trim())) { returnItem.DirectImport = !string.IsNullOrEmpty(item.DirectImport) ? item.DirectImport : "N"; } // Direct Import
             if ((!string.IsNullOrEmpty(item.DtcPrice)) && (item.DtcPrice.Trim() != returnItem.DtcPrice.Trim())) { returnItem.DtcPrice = item.DtcPrice; } // DTC Price
             if ((!string.IsNullOrEmpty(item.Duty)) && (item.Duty.Trim() != returnItem.Duty.Trim())) { returnItem.Duty = item.Duty; } // Duty
             if ((!string.IsNullOrEmpty(item.Ean)) && (item.Ean.Trim() != returnItem.Ean.Trim())) { returnItem.Ean = item.Ean; } // EAN
@@ -818,14 +506,14 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.Length)) && (item.Length.Trim() != returnItem.Length.Trim())) { returnItem.Length = item.Length; }
             if ((!string.IsNullOrEmpty(item.License)) && (item.License.Trim() != returnItem.License.Trim())) { returnItem.License = item.License; }
             if ((!string.IsNullOrEmpty(item.LicenseBeginDate)) && (item.LicenseBeginDate.Trim() != returnItem.LicenseBeginDate.Trim())) { returnItem.LicenseBeginDate = item.LicenseBeginDate; }
-            if ((!string.IsNullOrEmpty(item.ListPriceCad)) && (item.ListPriceCad.Trim() != returnItem.ListPriceCad.Trim())) { returnItem.ListPriceCad = CheckEmptyPrice(item.ListPriceCad); }
-            if ((!string.IsNullOrEmpty(item.ListPriceMxn)) && (item.ListPriceMxn.Trim() != returnItem.ListPriceMxn.Trim())) { returnItem.ListPriceMxn = CheckEmptyPrice(item.ListPriceMxn); }
-            if ((!string.IsNullOrEmpty(item.ListPriceUsd)) && (item.ListPriceUsd.Trim() != returnItem.ListPriceUsd.Trim())) { returnItem.ListPriceUsd = CheckEmptyPrice(item.ListPriceUsd); }
+            if ((!string.IsNullOrEmpty(item.ListPriceCad)) && (item.ListPriceCad.Trim() != returnItem.ListPriceCad.Trim())) { returnItem.ListPriceCad = string.IsNullOrEmpty(item.ListPriceCad) ? "0.00" : item.ListPriceCad; }
+            if ((!string.IsNullOrEmpty(item.ListPriceMxn)) && (item.ListPriceMxn.Trim() != returnItem.ListPriceMxn.Trim())) { returnItem.ListPriceMxn = string.IsNullOrEmpty(item.ListPriceMxn) ? "0.00" : item.ListPriceMxn; }
+            if ((!string.IsNullOrEmpty(item.ListPriceUsd)) && (item.ListPriceUsd.Trim() != returnItem.ListPriceUsd.Trim())) { returnItem.ListPriceUsd = string.IsNullOrEmpty(item.ListPriceUsd) ? "0.00" : item.ListPriceUsd; }
             if ((!string.IsNullOrEmpty(item.MetaDescription)) && (item.MetaDescription.Trim() != returnItem.MetaDescription.Trim())) { returnItem.MetaDescription = item.MetaDescription; }
             if ((!string.IsNullOrEmpty(item.MfgSource)) && (item.MfgSource.Trim() != returnItem.MfgSource.Trim())) { returnItem.MfgSource = item.MfgSource; }
-            if ((!string.IsNullOrEmpty(item.Msrp)) && (item.Msrp.Trim() != returnItem.Msrp.Trim())) { returnItem.Msrp = CheckEmptyPrice(item.Msrp); }
-            if ((!string.IsNullOrEmpty(item.MsrpCad)) && (item.MsrpCad.Trim() != returnItem.MsrpCad.Trim())) { returnItem.MsrpCad = CheckEmptyPrice(item.MsrpCad); }
-            if ((!string.IsNullOrEmpty(item.MsrpMxn)) && (item.MsrpMxn.Trim() != returnItem.MsrpMxn.Trim())) { returnItem.MsrpMxn = CheckEmptyPrice(item.MsrpMxn); }
+            if ((!string.IsNullOrEmpty(item.Msrp)) && (item.Msrp.Trim() != returnItem.Msrp.Trim())) { returnItem.Msrp = string.IsNullOrEmpty(item.Msrp) ? "0.00" : item.Msrp; }
+            if ((!string.IsNullOrEmpty(item.MsrpCad)) && (item.MsrpCad.Trim() != returnItem.MsrpCad.Trim())) { returnItem.MsrpCad = string.IsNullOrEmpty(item.MsrpCad) ? "0.00" : item.MsrpCad; }
+            if ((!string.IsNullOrEmpty(item.MsrpMxn)) && (item.MsrpMxn.Trim() != returnItem.MsrpMxn.Trim())) { returnItem.MsrpMxn = string.IsNullOrEmpty(item.MsrpMxn) ? "0.00" : item.MsrpMxn; }
             if ((!string.IsNullOrEmpty(item.PricingGroup)) && (item.PricingGroup.Trim() != returnItem.PricingGroup.Trim())) { returnItem.PricingGroup = item.PricingGroup; }
             if ((!string.IsNullOrEmpty(item.PrintOnDemand)) && (item.PrintOnDemand.Trim() != returnItem.PrintOnDemand.Trim())) { returnItem.PrintOnDemand = item.PrintOnDemand; }
             if ((!string.IsNullOrEmpty(item.ProductGroup)) && (item.ProductGroup.Trim() != returnItem.ProductGroup.Trim())) { returnItem.ProductGroup = item.ProductGroup; }
@@ -1026,17 +714,7 @@ namespace OdinServices
             }
             return "";            
         }
-
-        /// <summary>
-        ///     Retreive the Website URL for a given item
-        /// </summary>
-        /// <param name="itemIdCore"></param>
-        /// <returns></returns>
-        private string RetrieveWebsiteUrl(string itemId)
-        {
-            return ItemRepository.RetrieveWebsiteUrl(itemId);
-        }
-
+        
         /// <summary>
         ///     Generates a url based on the itemId and the title of a product
         /// </summary>
@@ -1078,39 +756,7 @@ namespace OdinServices
             }
             return "";
         }
-
-        /// <summary>
-        ///   Formats the Category for Lemonstand
-        /// </summary>
-        /// <param name="value">: split category</param>
-        /// <returns>website formated category with | and => splits</returns>
-        public string FormatCategory(string value)
-        {
-            string returnValue = "";
-
-            if (!string.IsNullOrEmpty(value))
-            {
-                string comboValue = string.Empty;
-                string[] s = value.Split(':');
-
-                foreach (string category in s)
-                {
-                    if (comboValue != string.Empty)
-                    {
-                        comboValue += "=>";
-                    }
-                    comboValue += category.Trim();
-                    if (returnValue != string.Empty)
-                    {
-                        returnValue += '|';
-                    }
-                    returnValue += comboValue;
-
-                }
-            }
-            return returnValue;
-        }        
-        
+                
         /// <summary>
         ///     Calls a window explorer with workbook reader and loads in list of spreadsheet items
         /// </summary>
@@ -1482,38 +1128,6 @@ namespace OdinServices
         }
         
         /// <summary>
-        ///     Parse the productId translation IDs and check for an ammount value be checking for whitespace or parenthesis
-        /// </summary>
-        /// <param name="productId"></param>
-        /// <returns></returns>
-        public ChildElement ParseChildElementId(string parentId, string productId)
-        {
-            ChildElement productIdTranslation = new ChildElement(productId, parentId);
-            productId = productId.Trim();
-            if (productId.Contains("("))
-            {
-                string[] parts = productId.Split('(');
-                if (parts[1].Contains(")")) { parts[1] = parts[1].Replace(")", ""); }
-
-                if (DbUtil.IsNumber(parts[1]))
-                {
-                    productIdTranslation.ItemId = parts[0].Trim();
-                    productIdTranslation.Qty = Convert.ToInt32(parts[1]);
-                }
-            }
-            else if (productId.Contains(" "))
-            {
-                string[] parts = productId.Split(' ');
-                if(DbUtil.IsNumber(parts[1]))
-                {
-                    productIdTranslation.ItemId = parts[0].Trim();
-                    productIdTranslation.Qty = Convert.ToInt32(parts[1]);
-                }
-            }
-            return productIdTranslation;
-        }
-
-        /// <summary>
         ///     Parses through a string of comma seperated product id translations and returns a list
         /// </summary>
         /// <param name="productIds"></param>
@@ -1588,46 +1202,6 @@ namespace OdinServices
         }
 
         /// <summary>
-        ///     Combines the three category fields into a single string to be uploaded to the website.
-        /// </summary>
-        /// <param name="value1"></param>
-        /// <param name="value2"></param>
-        /// <param name="value3"></param>
-        /// <returns></returns>
-        public string RemoveDuplicateCategories(string value1, string value2, string value3)
-        {
-            string value = "";
-            List<string> values = new List<string>();
-            List<string> sort = new List<string>();
-            if (!string.IsNullOrEmpty(value1)) { values.Add(FormatCategory(value1)); }
-            if (!string.IsNullOrEmpty(value2)) { values.Add(FormatCategory(value2)); }
-            if (!string.IsNullOrEmpty(value3)) { values.Add(FormatCategory(value3)); }
-            if (values.Count > 0)
-            {
-                foreach (string i in values)
-                {
-                    string[] x = i.Split('|');
-                    foreach (string a in x)
-                    {
-                        if (!sort.Contains(a))
-                        {
-                            sort.Add(a);
-                        }
-                    }
-                }
-                foreach (string x in sort)
-                {
-                    value += x + "|";
-                }
-            }
-            if (value != "")
-            {
-                value = value.Remove(value.Length - 1);
-            }
-            return value;
-        }
-                
-        /// <summary>
         ///     Returns a list of all header values (IN CAPS and with no spaces)
         /// </summary>
         /// <returns></returns>
@@ -1697,7 +1271,7 @@ namespace OdinServices
         /// </summary> 
         /// <param name="path"> Path to which the image would be saved. </param> 
         /// <param name="quality"> An integer from 0 to 100, with 100 being the highest quality. </param> 
-        public static void SaveJpeg(string path, Image img, int quality)
+        private static void SaveJpeg(string path, Image img, int quality)
         {
             if(path.Contains('.'))
             {
@@ -1721,66 +1295,12 @@ namespace OdinServices
         }
 
         /// <summary>
-        ///     Reads the categories for the product to determine what product group to assign, default to "Product"
-        /// </summary>
-        /// <param name="var"></param>
-        /// <returns></returns>
-        public string SetProductType(List<string> var)
-        {
-            foreach (string i in var)
-            {
-                if (i.Contains("Paper Craft"))
-                {
-                    return "Papercraft Product";
-                }
-                else if (i.Contains("Posters"))
-                {
-                    return "Poster Product";
-                }
-                else if (i.Contains("Stickers & Tattoos"))
-                {
-                    return "Sticker Product";
-                }
-                else if (i.Contains("Writing"))
-                {
-                    return "Writing Product";
-                }
-                else if (i.Contains("Gift Wrap"))
-                {
-                    return "Gift Wrap Product";
-                }
-                else if (i.Contains("Art Zone"))
-                {
-                    return "Art Zone Product";
-                }
-                else if (i.Contains("Bookmarks"))
-                {
-                    return "Bookmark Product";
-                }
-                else if (i.Contains("Calendars"))
-                {
-                    return "Calendar Product";
-                }
-                else if (i.Contains("Tape"))
-                {
-                    return "Tape Product";
-                }
-                else if (i.Contains("Tape Works"))
-                {
-                    return "Tape Product";
-                }
-            }
-
-            return "Product";
-        }
-
-        /// <summary>
         ///     Returns items with pre-loaded template data
         /// </summary>
         /// <param name="TemplateName"></param>
         /// <param name="item"></param>
         /// <returns></returns>
-        public ItemObject SetTemplateValues(string TemplateName, ItemObject item)
+        private ItemObject SetTemplateValues(string TemplateName, ItemObject item)
         {
             if (GlobalData.TemplateNames.Contains(TemplateName))
             {
@@ -5889,7 +5409,7 @@ namespace OdinServices
                             return new ItemError(
                                 var.ItemId,
                                 var.ItemRow,
-                                "Value contains an id that does not exist: " + productIdTranslation.ItemId + ".",
+                                "Value contains an id that does not exist: " + productIdTranslation.ItemId,
                                 "Product Id Translations");
                         }
                     }
@@ -6620,7 +6140,14 @@ namespace OdinServices
                     string ids = "";
                     foreach (string id in matchId)
                     {
-                        ids += id + ", ";
+                        if (ids == "")
+                        {
+                            ids += id;
+                        }
+                        else
+                        {
+                            ids += ", " + id;
+                        }
                     }
                     return new ItemError(
                         var.ItemId,
@@ -6719,7 +6246,338 @@ namespace OdinServices
 
         #region Private Methods
 
+        #region Private Check Methods
+
+        /// <summary>
+        ///     Checks existing bill of materials. If a match exists return true. Else return false.
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <param name="childId"></param>
+        /// <returns></returns>
+        private bool CheckBillofMaterial(string itemId, string childId)
+        {
+            foreach (ChildElement x in GlobalData.BillofMaterials)
+            {
+                if (x.ItemId == childId && x.ParentId == itemId)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        ///     Checks that provided image path returns a file
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="isTest"></param>
+        /// <returns></returns>
+        private bool CheckFileExists(string value, bool isTest)
+        {
+            if (!isTest)
+            {
+                // value = "@" + value;
+                if (File.Exists(value))
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                if (value == "testImagePath")
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        ///     Check that the provided image is not too large
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="isTest"></param>
+        /// <returns>false if file is too large</returns>
+        private bool CheckFileSize(string value, bool isTest)
+        {
+            if (!isTest)
+            {
+                // value = "@" + value;
+                if (File.Exists(value))
+                {
+                    // Check that file isn't too big, to prevent memory exception
+                    if ((new System.IO.FileInfo(value).Length < 20000000))
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (value == "testImagePath")
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        ///     Checks for existing items with matching UPC, checks to make sure found itemIds do not contain given itemId (ex. RP1234 * RP1234WP)
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <param name="upc"></param>
+        /// <param name="itemStatus"></param>
+        /// <returns>itemId if a duplicate UPC is found</returns>
+        private List<string> CheckDuplicateUPCs(string itemId, string upc, string itemStatus)
+        {
+            List<string> result = new List<string>();
+            string slimItemId = itemId;
+            List<string> existingIds = new List<string>();
+
+            // Check if itemId has a suffix that would allow it to share a UPC with other like products
+            if (itemId.Length > 2)
+            {
+                string idSuffix = itemId.Substring(itemId.Length - 2);
+                if (GlobalData.ItemIdSuffixes.Contains(idSuffix))
+                {
+                    slimItemId = itemId.Substring(0, itemId.Length - 2);
+                }
+            }
+
+            // Retrieve list of all products with the given UPC
+            List<KeyValuePair<string, string>> matches = GlobalData.Upcs.Where(v => v.Key == upc).ToList();
+
+            foreach (KeyValuePair<string, string> obj in matches)
+            {
+                existingIds.Add(obj.Value);
+            }
+            if (existingIds.Count() == 0)
+            {
+                return result;
+            }
+            if (itemStatus == "Add")
+            {
+                foreach (string id in existingIds)
+                {
+                    if (!id.Contains(slimItemId) && !itemId.Contains(id))
+                    {
+                        result.Add(id);
+                    }
+                }
+            }
+            else if (itemStatus == "Update")
+            {
+                if (existingIds.Count() == 1)
+                {
+                    bool existingValue = true;
+                    foreach (string id in existingIds)
+                    {
+                        if (!id.Contains(slimItemId) && !itemId.Contains(id))
+                        {
+                            existingValue = false;
+                            result.Add(id);
+                        }
+                    }
+                    if (existingValue)
+                    {
+                        return result;
+                    }
+                }
+                else
+                {
+                    foreach (string id in existingIds)
+                    {
+                        if (!id.Contains(slimItemId) && !itemId.Contains(id))
+                        {
+                            result.Add(id);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        ///     Checks product formats for an object with a matching value. Returns true if match found
+        /// </summary>
+        /// <param name="prodFormat"></param>
+        /// <returns></returns>
+        private bool CheckForProductFormat(string prodFormat)
+        {
+            foreach (ProductFormat x in GlobalData.ProductFormats)
+            {
+                if (x.Format == prodFormat)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        ///     Checks if a given value is greater than 0.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>true if greater than 0</returns>
+        private bool CheckGreaterThanZero(string value)
+        {
+            if (decimal.TryParse(value, out decimal valueDec))
+            {
+                if (valueDec > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        ///     Searches PS_ORD_LINE for any open orders (ORD_LINE_STATUS = P or O) with the given ItemId = CUSTOMER_ITEM_NBR
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns>true if any open orders with Item Id exist</returns>
+        private bool CheckItemHasOpenOrderLine(string itemId)
+        {
+            return ItemRepository.RetrieveOpenOrderLine(itemId);
+        }
+
+        /// <summary>
+        ///     Checks if the combination of product group, product line and product format is valid. Returns true if all match
+        /// </summary>
+        /// <param name="productGroup"></param>
+        /// <param name="productLine"></param>
+        /// <param name="productFormat"></param>
+        /// <returns></returns>
+        private bool CheckProductFormats(string productGroup, string productLine, string productFormat)
+        {
+            foreach (ProductFormat x in GlobalData.ProductFormats)
+            {
+                if (x.Group == productGroup.Trim())
+                {
+                    if (x.Line == productLine.Trim())
+                    {
+                        if (x.Format == productFormat.Trim())
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        ///     Checks valid product group / line pairs and returns true if values match valid pair
+        /// </summary>
+        /// <param name="productGroup"></param>
+        /// <param name="productLine"></param>
+        /// <returns></returns>
+        private bool CheckProductLines(string productGroup, string productLine)
+        {
+            if (GlobalData.ProductLines.Where(y => y.Key == productLine).Any())
+            {
+                foreach (KeyValuePair<string, string> x in GlobalData.ProductLines.Where(y => y.Key == productLine))
+                {
+                    if (x.Value.Trim() == productGroup.Trim())
+                    {
+                        return true;
+                    }
+                }
+            }
+            /*
+            foreach(KeyValuePair<string,string> x in GlobalData.ProductLines)
+            {
+                if(x.Key == productLine && x.Value == productGroup)
+                {
+                    return true;
+                }
+            }
+            */
+            return false;
+        }
+
+        /// <summary>
+        ///     Check string for special characters. Special chars have no place in the peoplesoft database.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private bool CheckSpecialChar(string value)
+        {
+            foreach (string specialChar in GlobalData.SpecialCharacters)
+            {
+                if (value.Contains(specialChar))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        ///     Compares current list of product id translations with those currently in the database returns false if the two lists don't match
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <param name="productIdTranslationList"></param>
+        /// <returns>false if a conflict emerges</returns>
+        private bool CheckExistingProductIdTranslationsMatch(List<ChildElement> productIdTranslationList)
+        {
+            foreach (ChildElement x in productIdTranslationList)
+            {
+                ItemRepository.RetrieveProductIdTranslationMatch(x.ItemId, x.ParentId);
+            }
+            return true;
+        }
+
+        #endregion // Private Check Methods
+        
+        /// <summary>
+        ///     Parse the productId translation IDs and check for an ammount value be checking for whitespace or parenthesis
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+        private ChildElement ParseChildElementId(string parentId, string productId)
+        {
+            ChildElement productIdTranslation = new ChildElement(productId, parentId);
+            productId = productId.Trim();
+            if (productId.Contains("("))
+            {
+                string[] parts = productId.Split('(');
+                if (parts[1].Contains(")")) { parts[1] = parts[1].Replace(")", ""); }
+
+                if (DbUtil.IsNumber(parts[1]))
+                {
+                    productIdTranslation.ItemId = parts[0].Trim();
+                    productIdTranslation.Qty = Convert.ToInt32(parts[1]);
+                }
+            }
+            else if (productId.Contains(" "))
+            {
+                string[] parts = productId.Split(' ');
+                if (DbUtil.IsNumber(parts[1]))
+                {
+                    productIdTranslation.ItemId = parts[0].Trim();
+                    productIdTranslation.Qty = Convert.ToInt32(parts[1]);
+                }
+            }
+            return productIdTranslation;
+        }
+
         #region Private Retrieval Methods
+
+        /// <summary>
+        ///     Retreive the Website URL for a given item
+        /// </summary>
+        /// <param name="itemIdCore"></param>
+        /// <returns></returns>
+        private string RetrieveWebsiteUrl(string itemId)
+        {
+            return ItemRepository.RetrieveWebsiteUrl(itemId);
+        }
 
         #endregion // Private Retrieval Methods
 

@@ -11,64 +11,7 @@ namespace Odin.Services.Tests
 {
     [TestClass]
     public class ItemServiceTests
-    {        
-        /// <summary>
-        ///     Checks that AssignDirectImport returns valid values when proper values are assigned.
-        /// </summary>
-        [TestMethod]
-        public void AssignDirectImport_HasValidValue_ShouldReturnValidValue()
-        {
-            #region Assemble
-
-            ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-
-            #endregion // Assemble
-
-            #region Act
-
-            string result1 = itemService.AssignDirectImport("");
-            string result2 = itemService.AssignDirectImport("Y");
-            string result3 = itemService.AssignDirectImport("N");
-
-            #endregion // Act
-
-            #region Assert
-
-            Assert.AreEqual(result1, "N");
-            Assert.AreEqual(result2, "Y");
-            Assert.AreEqual(result3, "N");
-
-            #endregion // Assert
-        }
-        
-        /// <summary>
-        ///     Checks that AssignDirectImport returns valid values when proper values are assigned.
-        /// </summary>
-        [TestMethod]
-        public void AssignDirectImport_HasInvalidValue_ShouldReturnInvalidValue()
-        {
-            #region Assemble
-            GlobalData.ClearValues();
-            ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-
-            #endregion // Assemble
-
-            #region Act
-
-            string result1 = itemService.AssignDirectImport("X");
-            string result2 = itemService.AssignDirectImport("Pizza");
-            string result3 = itemService.AssignDirectImport("true");
-
-            #endregion // Act
-
-            #region Assert
-
-            Assert.AreEqual(result1, "X");
-            Assert.AreEqual(result2, "Pizza");
-            Assert.AreEqual(result3, "true");
-
-            #endregion // Assert
-        }
+    {    
 
         [TestMethod]
         public void CategoryInsert_GivenProperCategoryValues_ShouldReturnValidWebCategoryIdString()
@@ -93,35 +36,6 @@ namespace Odin.Services.Tests
 
             #region Assert
             Assert.AreEqual("1,2,3", returnValue);
-
-            #endregion // Assert
-        }
-
-        [TestMethod]
-        public void CategoryRemoveDuplicates_ItemHasThreeValues_ShouldReturnFilteredValue()
-        {
-            #region Assemble
-
-            GlobalData.ClearValues();
-            TestItemRepository itemRepository = new TestItemRepository();
-            ItemService itemService = new ItemService(new FakeWorkbookReader(), itemRepository, new TestTemplateRepository());
-
-            string value1 = "Posters: Wall Posters: Movies";
-            string value2 = "Posters: What's New";
-            string value3 = "Posters: Wall Posters: Super Hero";
-
-
-            #endregion // Assemble
-
-            #region Act
-
-            string result = itemService.RemoveDuplicateCategories(value1, value2, value3);
-
-            #endregion // Act
-
-            #region Assert
-
-            Assert.AreEqual(result, "Posters|Posters=>Wall Posters|Posters=>Wall Posters=>Movies|Posters=>What's New|Posters=>Wall Posters=>Super Hero");
 
             #endregion // Assert
         }
@@ -418,6 +332,13 @@ namespace Odin.Services.Tests
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000004", "RP4444DI"));
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000005", "RP9999"));
             GlobalData.Upcs.Add(new KeyValuePair<string, string>("000000000006", "RP8888"));
+
+            ItemObject item1 = new ItemObject(1) { ItemId = "RP9980", Upc = "000000000000", Status = "Add", ProductLine ="Line",ProductFormat="Format",ProductGroup="Group" };
+            ItemObject item2 = new ItemObject(1) { ItemId = "RP1111", Upc = "000000000001", Status = "Add", ProductLine = "Line", ProductFormat = "Format", ProductGroup = "Group" };
+            ItemObject item3 = new ItemObject(1) { ItemId = "RP4325", Upc = "000000000002", Status = "Add", ProductLine = "Line", ProductFormat = "Format", ProductGroup = "Group" };
+            ItemObject item4 = new ItemObject(1) { ItemId = "RP9999DI", Upc = "000000000005", Status = "Update", ProductLine = "Line", ProductFormat = "Format", ProductGroup = "Group" };
+            ItemObject item5 = new ItemObject(1) { ItemId = "RP1111TG", Upc = "000000000001", Status = "Add", ProductLine = "Line", ProductFormat = "Format", ProductGroup = "Group" };
+            ItemObject item6 = new ItemObject(1) { ItemId = "RP1343", Upc = "123456789123", Status = "Add", ProductLine = "Line", ProductFormat = "Format", ProductGroup = "Group" };
             GlobalData.ItemIdSuffixes.Add("DI");
             GlobalData.ItemIdSuffixes.Add("TG");
 
@@ -431,69 +352,50 @@ namespace Odin.Services.Tests
             string result4 = "4";
             string result5 = "5";
             string result6 = "6";
-            if (itemService.CheckDuplicateUPCs("RP9980", "000000000000", "Add").Count > 0)
+            ItemError error1 = itemService.ValidateUpc(item1);
+            ItemError error2 = itemService.ValidateUpc(item2);
+            ItemError error3 = itemService.ValidateUpc(item3);
+            ItemError error4 = itemService.ValidateUpc(item4);
+            ItemError error5 = itemService.ValidateUpc(item5);
+            ItemError error6 = itemService.ValidateUpc(item6);
+            if (error1 != null)
             {
-                result1 = "error1";
+                result1 = error1.ErrorMessage;
             }
-            if (itemService.CheckDuplicateUPCs("RP1111", "000000000001", "Add").Count > 0)
+            if (error2 != null)
             {
-                result2 = "error2";
+                result2 = error2.ErrorMessage;
             }
-            if (itemService.CheckDuplicateUPCs("RP4325", "000000000002", "Add").Count > 0)
+            if (error3 != null)
             {
-                result3 = "error3";
+                result3 = error3.ErrorMessage;
             }
-            if (itemService.CheckDuplicateUPCs("RP9999DI", "000000000005", "Update").Count > 0)
+            if (error4 != null)
             {
-                result4 = itemService.CheckDuplicateUPCs("RP9999DI", "000000000005", "Update")[0];
+                result4 = error4.ErrorMessage;
             }
-            if (itemService.CheckDuplicateUPCs("RP1111TG", "000000000001", "Add").Count > 0)
+            if (error5 != null)
             {
-                result5 = "error5";
+                result5 = error5.ErrorMessage;
             }
-            if (itemService.CheckDuplicateUPCs("RP1343", "123456789123", "Add").Count > 0)
+            if (error6 != null)
             {
-                result6 = "error6";
+                result6 = error6.ErrorMessage;
             }
             #endregion // Act
 
             #region Assert
 
-            Assert.AreEqual("error1", result1);
+            Assert.AreEqual("1", result1);
             Assert.AreEqual("2", result2);
-            Assert.AreEqual("error3", result3);
+            Assert.AreNotEqual("3", result3);
             Assert.AreEqual("4", result4);
             Assert.AreEqual("5", result5);
-            Assert.AreEqual("error6", result6);
+            Assert.AreNotEqual("6", result6);
 
             #endregion // Assert
         }
-
-        [TestMethod]
-        public void CheckOrderLine_MultipleOrderStatus_ResultsVary()
-        {
-            #region Assemble
-
-            ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            
-            #endregion // Assemble
-
-            #region Act
-
-            bool result1 = itemService.CheckItemHasOpenOrderLine("RP1111");
-            bool result3 = itemService.CheckItemHasOpenOrderLine("OpenOrder");
-
-            #endregion // Act
-
-            #region Assert
-
-            Assert.IsTrue(result1);
-            Assert.IsFalse(result3);
-
-            #endregion // Assert
-
-        }
-        
+                
         /// <summary>
         ///     Tests that the itemObj Helper organizes different territory inputs to match validation.
         /// </summary>
@@ -547,60 +449,6 @@ namespace Odin.Services.Tests
 
             Assert.AreEqual(headerList[0], "ACCOUNTINGGROUP");
             Assert.AreEqual(headerList[19], "DACCAD");
-
-            #endregion // Assert
-        }
-
-        /// <summary>
-        ///     Tests that the IdExists function properly detects when an itemID already exists.
-        /// </summary>
-        [TestMethod]
-        public void CheckIdDoesNotExist_ItemIdDoesNotExistInDb_ShouldFail()
-        {
-            #region Setup
-
-
-            ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            string ItemId = "ST5674";
-
-
-            #endregion // Setup
-
-            #region Act
-
-            bool result = itemService.CheckForExistsingItemId(ItemId);
-
-            #endregion // Act
-
-            #region Assert
-
-            Assert.IsFalse(result);
-
-            #endregion // Assert
-        }
-
-        [TestMethod]
-        public void CheckIdExists_ItemIdExistsInDb_ShouldPass()
-        {
-            #region Setup
-            
-            ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-
-            GlobalData.ItemIds.Add("ST5678");
-            string ItemId = "ST5678";
-
-
-            #endregion // Setup
-
-            #region Act
-
-            bool result = itemService.CheckForExistsingItemId(ItemId);
-
-            #endregion // Act
-
-            #region Assert
-
-            Assert.IsTrue(result);
 
             #endregion // Assert
         }
@@ -999,53 +847,7 @@ namespace Odin.Services.Tests
 
             #endregion // Assert
         }
-        [TestMethod]
-        public void FormatCategory_GivenProperCategoryValue_ShouldReturnValidWebCategory()
-        {
-            #region Assemble
-
-            TestItemRepository itemRepository = new TestItemRepository();
-            ItemService itemService = new ItemService(new FakeWorkbookReader(), itemRepository, new TestTemplateRepository());
-
-            string category1 = "Poster: Wall Poster: Your Face";
-
-            #endregion // Assemble
-
-            #region Act
-
-            string newCategory = itemService.FormatCategory(category1);
-
-            #endregion // Act
-
-            #region Assert
-
-            Assert.AreEqual(newCategory, "Poster|Poster=>Wall Poster|Poster=>Wall Poster=>Your Face");
-
-            #endregion // Assert
-        }
-
-        [TestMethod]
-        public void FormatCategory_FormatsCategoryForSite_ShouldProperlyFormat()
-        {
-            #region Setup
-
-            string category = "Posters: Posters: Wall Posters: Sports: NFL";
-            ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            #endregion // Setup
-
-            #region Act
-
-            string formatedCategory = itemService.FormatCategory(category);
-
-            #endregion // Act
-
-            #region Assert
-
-            Assert.AreEqual("Posters|Posters=>Posters|Posters=>Posters=>Wall Posters|Posters=>Posters=>Wall Posters=>Sports|Posters=>Posters=>Wall Posters=>Sports=>NFL", formatedCategory);
-
-            #endregion // Assert
-        }
-
+        
         /// <summary>
         ///     This test creates a scenario, but not just any scenario. This scenario reads the rows of a worksheet 
         ///     with item id's and blank item id's and asserts that no items are created form rows with no item ids.
@@ -2607,83 +2409,6 @@ namespace Odin.Services.Tests
             #endregion // Assert
         }
 
-        [TestMethod]
-        public void SetProductType_ItemHasValidValue_ShouldReturnValidType()
-        {
-            #region SetUp
-            GlobalData.ClearValues();
-            ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            List<string> List1 = new List<string>(){
-                "Stickers & Tattoos/Decals/One Color Decals",
-                "",
-                ""
-            };
-            List<string> List2 = new List<string>() {
-                "Stickers & Tattoos/Office & Educational/Labels",
-                "Bookmarks/Bookmarks",
-                ""
-            };
-            List<string> List3 = new List<string>(){"Stickers & Tattoos/Stickers/Grab & Go",
-                "",
-                ""
-            };
-            List<string> List4 = new List<string>() { "Stickers & Tattoos/Tattoos/Glow Tattoos",
-                "Stickers & Tattoos",
-                "Stickers & Tattoos/Tattoos"};
-            List<string> List5 = new List<string>(){
-                "Bookmarks/Page Clips/Magnetic Page Clips",
-                "",
-                ""
-            };
-            List<string> List6 = new List<string>() {
-                "Calendars/Deluxe Wall Calendars",
-                "Art Zone/Coloring Journals",
-                ""
-            };
-            List<string> List7 = new List<string>(){"Posters/Posters/Wall Posters",
-                "",
-                ""
-            };
-        List<string> List8 = new List<string>(){"Art Zone/Coloring Journals",
-                "",
-                ""
-            };
-        List<string> List9 = new List<string>() {
-                "Writing/Ballpoint Pens/Glow Pens",
-                "",
-                ""
-            };
-            #endregion // Set Up
-
-            #region Act
-
-            string result1 = itemService.SetProductType(List1);
-            string result2 = itemService.SetProductType(List2);
-            string result3 = itemService.SetProductType(List3);
-            string result4 = itemService.SetProductType(List4);
-            string result5 = itemService.SetProductType(List5);
-            string result6 = itemService.SetProductType(List6);
-            string result7 = itemService.SetProductType(List7);
-            string result8 = itemService.SetProductType(List8);
-            string result9 = itemService.SetProductType(List9);
-
-            #endregion // Act
-
-            #region Assert
-
-            Assert.AreEqual("Sticker Product", result1);
-            Assert.AreEqual("Sticker Product", result2);
-            Assert.AreEqual("Sticker Product", result3);
-            Assert.AreEqual("Sticker Product", result4);
-            Assert.AreEqual("Bookmark Product", result5);
-            Assert.AreEqual("Calendar Product", result6);
-            Assert.AreEqual("Poster Product", result7);
-            Assert.AreEqual("Art Zone Product", result8);
-            Assert.AreEqual("Writing Product", result9);
-
-            #endregion // Assert
-        }
-
         #region Validation Tests
 
         [TestMethod]
@@ -3567,7 +3292,7 @@ namespace Odin.Services.Tests
 
             #endregion //Assert
         }
-
+        
         /// <summary>
         ///     This method test the ValidatePricingGroup method with a valid string. This method asserts that the validation succeeds.
         /// </summary>
@@ -3840,6 +3565,36 @@ namespace Odin.Services.Tests
             #endregion // Assert
         }
 
+        [TestMethod]
+        public void ValidateProductLine_ItemHasValidValue_ShouldPass()
+        {
+            #region Setup
+
+            GlobalData.ClearValues();
+            ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
+            ItemObject item = new ItemObject(1)
+            {
+                ItemId = "TestItem",
+                ProductGroup = "Group",
+                ProductLine = "Line"
+            };
+            GlobalData.ProductLines.Add(new KeyValuePair<string, string>("Line", "Group"));
+
+
+            #endregion // Setup
+
+            #region Act
+
+            ItemError result = itemService.ValidateProductLine(item);
+
+            #endregion // Act
+
+            #region Assert
+
+            Assert.AreEqual(null, result);
+
+            #endregion // Assert
+        }
         [TestMethod]
         public void ValidateProductIdTranslation_ItemHasNoOpenOrderLines_ShouldFail()
         {

@@ -2471,7 +2471,7 @@ namespace OdinServices
                 || item.ProductFormat == "POD Mount Bundle"
                 || item.ProductFormat == "POD Clip Bundle")
             {
-                if(item.ProductFormat=="Mount Bundle" || item.ProductFormat == "14X22 Mount Bundle")
+                if(item.ProductFormat=="Mount Bundle")
                 {
                     return "Poster & Mount Bundle";
                 }
@@ -2479,11 +2479,11 @@ namespace OdinServices
                 {
                     return "Poster & Clip Bundle";
                 }
-                else if (item.ProductFormat == "POD Mount Bundle")
+                else if (item.ProductFormat == "POD Clip Bundle")
                 {
                     return "Premium Poster & Clip Bundle";
                 }
-                else if (item.ProductFormat == "POD Clip Bundle")
+                else if (item.ProductFormat == "POD Mount Bundle" || item.ProductFormat == "14X22 Mount Bundle")
                 {
                     return "Premium Poster & Mount Bundle";
                 }
@@ -2538,24 +2538,65 @@ namespace OdinServices
                          .TakeWhile(c => char.IsDigit(c))
                          .ToArray());
             return number;
-            /*
-            List<string> filters = new List<string>();
-            string result = itemId.Trim();
-            foreach (string x in GlobalData.VariantGroupExclusionOptions)
-            {
-                filters.Add(x.Trim());
-            }
-            filters.Sort((a, b) => b.Length.CompareTo(a.Length));
-            foreach (string x in filters)
-            {
-                result = result.Replace(x, "");
-            }
-            return result;
-            */
         }
 
         #endregion // Retrieval Methods
-        
+
+
+        /// <summary>
+        ///     Reads the categories for the product to determine what product group to assign, default to "Product"
+        /// </summary>
+        /// <param name="var"></param>
+        /// <returns></returns>
+        public string SetProductType(List<string> var)
+        {
+            foreach (string i in var)
+            {
+                if (i.Contains("Paper Craft"))
+                {
+                    return "Papercraft Product";
+                }
+                else if (i.Contains("Posters"))
+                {
+                    return "Poster Product";
+                }
+                else if (i.Contains("Stickers & Tattoos"))
+                {
+                    return "Sticker Product";
+                }
+                else if (i.Contains("Writing"))
+                {
+                    return "Writing Product";
+                }
+                else if (i.Contains("Gift Wrap"))
+                {
+                    return "Gift Wrap Product";
+                }
+                else if (i.Contains("Art Zone"))
+                {
+                    return "Art Zone Product";
+                }
+                else if (i.Contains("Bookmarks"))
+                {
+                    return "Bookmark Product";
+                }
+                else if (i.Contains("Calendars"))
+                {
+                    return "Calendar Product";
+                }
+                else if (i.Contains("Tape"))
+                {
+                    return "Tape Product";
+                }
+                else if (i.Contains("Tape Works"))
+                {
+                    return "Tape Product";
+                }
+            }
+
+            return "Product";
+        }
+
         /// <summary>
         ///     Submit data for a request submission
         /// </summary>
@@ -2836,7 +2877,7 @@ namespace OdinServices
 
             result += "\"" + item.ItemId.Trim() + "\","; /* "sku" */
             result += store; /* "_store" */
-            result += "\"" + ItemService.SetProductType(cats) + "\","; /* "_attribute_set" */
+            result += "\"" + SetProductType(cats) + "\","; /* "_attribute_set" */
             result += "\"simple\","; /* _type */
             result += ",";/* _category */
             result += "\"Default Category\","; /* _root_category */

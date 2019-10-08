@@ -279,17 +279,17 @@ namespace Odin.Data
         /// <returns></returns>
         public void InsertCustomerProductAttributesAll(ItemObject item, OdinContext context)
         {
-            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("ALL POSTERS"), item.SellOnAllPosters, context) ;
-            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("AMAZON"), item.SellOnAmazon, context);
-            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("AMAZON SELLER CENTRAL"), item.SellOnAmazonSellerCentral, context);
-            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("FANATICS"), item.SellOnFanatics, context);
-            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("GUITAR CENTER"), item.SellOnGuitarCenter, context);
-            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HAYNEEDLE"), item.SellOnHayneedle, context);
-            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HOUZZ"), item.SellOnHouzz, context);
-            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TARGET"), item.SellOnTarget, context);
-            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TRS"), item.SellOnTrs, context);
-            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("WALMART"), item.SellOnWalmart, context) ;
-            InsertCustomerProductAttributes(item.ItemId, RetrieveCustomerId("WAYFAIR"), item.SellOnWayfair, context);            
+            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["ALL POSTERS"], item.SellOnAllPosters, context) ;
+            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["AMAZON"], item.SellOnAmazon, context);
+            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["AMAZON SELLER CENTRAL"], item.SellOnAmazonSellerCentral, context);
+            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["FANATICS"], item.SellOnFanatics, context);
+            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["GUITAR CENTER"], item.SellOnGuitarCenter, context);
+            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["HAYNEEDLE"], item.SellOnHayneedle, context);
+            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["HOUZZ"], item.SellOnHouzz, context);
+            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["TARGET"], item.SellOnTarget, context);
+            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["TRS"], item.SellOnTrs, context);
+            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["WALMART"], item.SellOnWalmart, context) ;
+            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["WAYFAIR"], item.SellOnWayfair, context);            
         }
         
         /// <summary>
@@ -1472,7 +1472,7 @@ namespace Odin.Data
             List<string> returnValues = new List<string>();
             DateTime start = Convert.ToDateTime(startDate);
             DateTime end = Convert.ToDateTime(endDate);
-            string customerId = RetrieveCustomerId(customerName);
+            string customerId = GlobalData.CustomerIdConversions[customerName];
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 var x = (from customerProductAttribute in context.CustomerProductAttributes
@@ -1524,7 +1524,16 @@ namespace Odin.Data
             }
             return returnValues;
         }
-        
+        /// <summary>
+        ///     Retrieves the category id for the given itemCategory from the GlobalData
+        /// </summary>
+        /// <returns>List of Accounting Group values</returns>
+        private string RetriveCategoryId(string itemCategory)
+        {
+            KeyValuePair<string, string> result = GlobalData.ItemCategories.FirstOrDefault(x => x.Value == itemCategory);
+            return result.Key;
+        }
+
         /// <summary>
         ///     Returns the category name associated with the given code
         /// </summary>
@@ -1539,6 +1548,16 @@ namespace Odin.Data
             {
                 return "";
             }
+        }
+
+        /// <summary>
+        ///     Get list of appropriate External Id types for Amazon Products
+        /// </summary>
+        /// <returns>List of External Id Types</returns>
+        private List<string> RetrieveEcommerceExternalIdTypeList()
+        {
+            List<string> Types = new List<string>(new string[] { "", "ISBN", "EAN", "UPC", "UPC (12-digits)" });
+            return Types;
         }
 
         /// <summary>
@@ -2484,17 +2503,17 @@ namespace Odin.Data
         /// <returns></returns>
         public void UpdateCustomerProductAttributesAll(ItemObject item, OdinContext context)
         {
-            UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("ALL POSTERS"), item.SellOnAllPosters, context);
-            UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("AMAZON"), item.SellOnAmazon, context);
-            UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("AMAZON SELLER CENTRAL"), item.SellOnAmazonSellerCentral, context);
-            UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("FANATICS"), item.SellOnFanatics, context);
-            UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("GUITAR CENTER"), item.SellOnGuitarCenter, context);
-            UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HAYNEEDLE"), item.SellOnHayneedle, context);
-            UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("HOUZZ"), item.SellOnHouzz, context);
-            UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TARGET"), item.SellOnTarget, context);
-            UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("TRS"), item.SellOnTrs, context);
-            UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("WALMART"), item.SellOnWalmart, context);
-            UpdateCustomerProductAttributes(item.ItemId, RetrieveCustomerId("WAYFAIR"), item.SellOnWayfair, context);
+            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["ALL POSTERS"], item.SellOnAllPosters, context);
+            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["AMAZON"], item.SellOnAmazon, context);
+            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["AMAZON SELLER CENTRAL"], item.SellOnAmazonSellerCentral, context);
+            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["FANATICS"], item.SellOnFanatics, context);
+            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["GUITAR CENTER"], item.SellOnGuitarCenter, context);
+            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["HAYNEEDLE"], item.SellOnHayneedle, context);
+            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["HOUZZ"], item.SellOnHouzz, context);
+            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["TARGET"], item.SellOnTarget, context);
+            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["TRS"], item.SellOnTrs, context);
+            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["WALMART"], item.SellOnWalmart, context);
+            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["WAYFAIR"], item.SellOnWayfair, context);
         }
 
         /// <summary>
@@ -3642,17 +3661,7 @@ namespace Odin.Data
                 }
             }
             return results;
-        }
-
-        /// <summary>
-        ///     Retrieves the category id for the given itemCategory
-        /// </summary>
-        /// <returns>List of Accounting Group values</returns>
-        private string RetriveCategoryId(string itemCategory)
-        {
-            KeyValuePair<string, string> result = GlobalData.ItemCategories.FirstOrDefault(x => x.Value == itemCategory);
-            return result.Key;
-        }
+        }        
 
         /// <summary>
         ///     Retrieves list of the Cost Profile Groups from the DB
@@ -3683,16 +3692,6 @@ namespace Odin.Data
             }
             return returnValues;
         }
-        
-        /// <summary>
-        ///     Returns the coresponding value for the given key from the customerIdConversion list
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        private string RetrieveCustomerId(string value)
-        {
-            return GlobalData.CustomerIdConversions[value];            
-        }
 
         /// <summary>
         ///     Retrieves a key value pair list of customer names and their coresponding customer ID from the 
@@ -3716,16 +3715,6 @@ namespace Odin.Data
                 }
             }
             return returnValues;
-        }
-                
-        /// <summary>
-        ///     Get list of appropriate External Id types for Amazon Products
-        /// </summary>
-        /// <returns>List of External Id Types</returns>
-        private List<string> RetrieveEcommerceExternalIdTypeList()
-        {
-            List<string> Types = new List<string>( new string[] { "", "ISBN", "EAN", "UPC", "UPC (12-digits)"});
-            return Types;
         }
         
         /// <summary>
