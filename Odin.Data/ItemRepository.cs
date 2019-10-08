@@ -2415,6 +2415,19 @@ namespace Odin.Data
             }
         }
 
+        /// <summary>
+        ///     Retrieves the website url asigned to a given itemId
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        public string RetrieveWebsiteUrl(string itemId)
+        {
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                return (from o in context.ItemAttribEx where o.InvItemId == itemId select o.WebsiteUrl).FirstOrDefault();
+            }
+        }
+
         #endregion // Public Retrieval Methods
 
         #region Public Update Methods

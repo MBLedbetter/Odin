@@ -6809,7 +6809,14 @@ namespace Odin.ViewModels
                     this.ItemViewModelItem.EcommerceItemName = value;
                     if (string.IsNullOrEmpty(this.ItemViewModelItem.WebsiteUrl))
                     {
-                        this.WebsiteUrl = ItemService.CreateUrl(this.ItemId, value, this.ProductGroup, true);
+                        if (this.SellOnTrsCheck)
+                        {
+                            this.WebsiteUrl = ItemService.CreateWebsiteUrl(this.ItemId, value, this.ProductGroup, true, "Y");
+                        }
+                        else
+                        {
+                            this.WebsiteUrl = ItemService.CreateWebsiteUrl(this.ItemId, value, this.ProductGroup, true, "N");
+                        }
                     }
                     FlagError("EcommerceItemName");
                     OnPropertyChanged("EcommerceItemName");

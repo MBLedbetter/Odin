@@ -1904,6 +1904,15 @@ namespace Odin.Data
                 return "";
             }
         }
+        /// <summary>
+        ///     Returns the website url associated with the given itemId
+        /// </summary>
+        /// <param name="value"></param>
+        public string RetrieveWebsiteUrl(string itemId)
+        {
+            return "";
+            
+        }
 
         #endregion // Public Retrieval Methods
 

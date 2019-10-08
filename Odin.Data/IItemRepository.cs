@@ -466,6 +466,8 @@ namespace Odin.Data
         /// <returns></returns>
         List<string> RetrieveUpdateReportItemIds(DateTime toDate, DateTime fromDate);
 
+        string RetrieveWebsiteUrl(string itemId);
+
         #endregion // Public Retrieval Methods
 
         #region Public Update Methods

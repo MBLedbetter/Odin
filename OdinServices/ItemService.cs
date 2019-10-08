@@ -872,7 +872,7 @@ namespace OdinServices
             {
                 if(string.IsNullOrEmpty(item.EcommerceItemName))
                 {
-                    returnItem.WebsiteUrl = CreateUrl(returnItem.ItemId, returnItem.EcommerceItemName, item.ProductGroup, true);
+                    returnItem.WebsiteUrl = CreateWebsiteUrl(returnItem.ItemId, returnItem.EcommerceItemName, returnItem.ProductGroup, true, returnItem.SellOnTrs);
                 }
             }
             returnItem = ClearFields(returnItem);
@@ -1028,33 +1028,55 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Retreive the Website URL for a given item
+        /// </summary>
+        /// <param name="itemIdCore"></param>
+        /// <returns></returns>
+        private string RetrieveWebsiteUrl(string itemId)
+        {
+            return ItemRepository.RetrieveWebsiteUrl(itemId);
+        }
+
+        /// <summary>
         ///     Generates a url based on the itemId and the title of a product
         /// </summary>
         /// <param name="itemId"></param>
         /// <param name="title"></param>
         /// <returns></returns>
-        public string CreateUrl(string itemId, string title, string productType, bool fullUrl)
+        public string CreateWebsiteUrl(string itemId, string title, string productType, bool fullUrl, string sellOnShopTrends)
         {
-            title = title.Replace(" ", "-");
-            title = title.Replace(":", "-");
-            title = title.Replace("---", "-");
-            title = title.Replace("--", "-");
-            string result = title.ToLower();
-            if(productType == "Posters")
+            if (sellOnShopTrends == "Y")
             {
-                result += "-poster" + RetrieveItemIdCore(itemId);
-            }
-            else
-            {
-                result += itemId;
-            }
-            
-            if(fullUrl)
-            {
-                result = "https://shoptrends.com/" + result +".html";
-            }
+                if (productType == "Posters")
+                {
+                    string podUrl = RetrieveWebsiteUrl("POD" + RetrieveItemIdCore(itemId));
+                    if (!string.IsNullOrEmpty(podUrl))
+                    {
+                        return podUrl;
+                    }
+                }
+                title = title.Replace(" ", "-");
+                title = title.Replace(":", "-");
+                title = title.Replace("---", "-");
+                title = title.Replace("--", "-");
+                string result = title.ToLower();
+                if (productType == "Posters")
+                {
+                    result += "-poster" + RetrieveItemIdCore(itemId);
+                }
+                else
+                {
+                    result += itemId;
+                }
 
-            return result.ToLower();
+                if (fullUrl)
+                {
+                    result = "https://shoptrends.com/" + result + ".html";
+                }
+
+                return result.ToLower();
+            }
+            return "";
         }
 
         /// <summary>
@@ -1334,7 +1356,7 @@ namespace OdinServices
                     }
                     if(!string.IsNullOrEmpty(item.EcommerceItemName))
                     {
-                        item.WebsiteUrl = CreateUrl(item.ItemId, item.EcommerceItemName, item.ProductGroup, true);
+                        item.WebsiteUrl = CreateWebsiteUrl(item.ItemId, item.EcommerceItemName, item.ProductGroup, true, item.SellOnTrs);
                     }
                     item.SetFlagDefaults();
                 }
@@ -1345,7 +1367,7 @@ namespace OdinServices
                 {
                     if (!string.IsNullOrEmpty(item.EcommerceItemName)&& string.IsNullOrEmpty(item.WebsiteUrl))
                     {
-                        item.WebsiteUrl = CreateUrl(item.ItemId, item.EcommerceItemName, item.ProductGroup, true);
+                        item.WebsiteUrl = CreateWebsiteUrl(item.ItemId, item.EcommerceItemName, item.ProductGroup, true, item.SellOnTrs);
                     }
                 }
                 itemList.Add(item);
@@ -6690,10 +6712,18 @@ namespace OdinServices
             }
             return null;
         }
-                
+
         #endregion // Validation Methods
-        
+
         #endregion // Public Methods
+
+        #region Private Methods
+
+        #region Private Retrieval Methods
+
+        #endregion // Private Retrieval Methods
+
+        #endregion // Private Methods
 
         #region Constructor
 

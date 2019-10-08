@@ -4102,12 +4102,13 @@
                         Website Price
                     </TextBox>
                     <TextBox
-                        Height="26"
+                        Height="54"
                         HorizontalAlignment="Left"
                         Grid.Row="5"
                         TextWrapping="Wrap"
-                        MaxHeight="26"
+                        MaxHeight="64"
                         Grid.Column="5"
+                        Grid.RowSpan="2"
                         Text="{Binding WebsitePrice}"
                         VerticalContentAlignment="Top"
                         Width="300" 

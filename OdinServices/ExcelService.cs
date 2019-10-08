@@ -2577,7 +2577,7 @@ namespace OdinServices
             string result = string.Empty;
             if(item.SellOnTrs=="Y")
             {
-                result += "<a href=\'" + ItemService.CreateUrl(item.ItemId,item.EcommerceItemName,item.ItemGroup,true) + "\' class='shopTrends_button' target=\'_blank\'>Buy On Shoptrends.com</a>";
+                result += "<a href=\'" + ItemService.CreateWebsiteUrl(item.ItemId,item.EcommerceItemName,item.ItemGroup,true, item.SellOnTrs) + "\' class='shopTrends_button' target=\'_blank\'>Buy On Shoptrends.com</a>";
             }
             if (!string.IsNullOrEmpty(item.ShortDescription))
             {
