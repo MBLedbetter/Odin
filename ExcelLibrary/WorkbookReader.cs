@@ -1,14 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Collections.ObjectModel;
 using Microsoft.Office.Interop.Excel;
-using System.Windows.Input;
-using System.Reflection;
-using Microsoft.Win32;
 using System.Windows.Forms;
 
 namespace ExcelLibrary
@@ -143,35 +135,42 @@ namespace ExcelLibrary
         /// <param name="i">row number</param>
         /// <returns>Item object populated with spreadsheet data</returns>
         public WorksheetData ReadWorksheet(string fileName)
-        {
+        {            
             WorksheetData worksheetData = new WorksheetData();
-            OpenWorkbook(fileName);
-            Range range = this.CurrentWorksheet.UsedRange;
-            object[,] cellData = range.Value;
-            if (cellData != null)
+            try
             {
-                for (int row = 1; row <= cellData.GetLength(0); row++)
+                OpenWorkbook(fileName);
+                Range range = this.CurrentWorksheet.UsedRange;
+                object[,] cellData = range.Value;
+                if (cellData != null)
                 {
-                    if (row > 1)
+                    for (int row = 1; row <= cellData.GetLength(0); row++)
                     {
-                        worksheetData.CellData.Add(new List<string>());
-                    }
-                    for (int column = 1; column <= cellData.GetLength(1); column++)
-                    {
-                        if (cellData[row, 1] == null || string.IsNullOrEmpty(cellData[row, 1].ToString()))
+                        if (row > 1)
                         {
-                            break;
+                            worksheetData.CellData.Add(new List<string>());
                         }
-                        if (row == 1)
+                        for (int column = 1; column <= cellData.GetLength(1); column++)
                         {
-                            worksheetData.ColumnHeaders.Add(Convert.ToString(cellData[row, column]));
-                        }
-                        else
-                        {
-                            worksheetData.CellData[row - 2].Add(Convert.ToString(cellData[row, column]));
+                            if (cellData[row, 1] == null || string.IsNullOrEmpty(cellData[row, 1].ToString()))
+                            {
+                                break;
+                            }
+                            if (row == 1)
+                            {
+                                worksheetData.ColumnHeaders.Add(Convert.ToString(cellData[row, column]));
+                            }
+                            else
+                            {
+                                worksheetData.CellData[row - 2].Add(Convert.ToString(cellData[row, column]));
+                            }
                         }
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Odin was unable to load in the given excel sheet. " + ex.ToString(), "Excel Reader Error");
             }
             return worksheetData;
         }
