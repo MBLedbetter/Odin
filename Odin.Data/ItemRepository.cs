@@ -115,6 +115,10 @@ namespace Odin.Data
                             InsertEnBomOutputs(item, context);
                             InsertSfPrdnAreaIt(item, context);
                         }
+                        if(item.SellOnAmazon=="Y" || item.SellOnAmazonSellerCentral=="Y")
+                        {
+                            InsertProductVariantions(item, GlobalData.CustomerIdConversions["AMAZON"], context);
+                        }
                         InsertItemUpdateRecord(item, context);
                     }
                     else if (item.HasUpdate)
@@ -137,6 +141,7 @@ namespace Odin.Data
                         if (item.ProdPriceBuUpdate) { UpdateProdPriceBuAll(item, context); }
                         if (item.PurchItemAttrUpdate) { UpdatePurchItemAttr(item, context); }
                         if (item.PvItmCategoryUpdate) { UpdatePvItmCategory(item); }
+
                         /*
                         if (item.ProductIdTranslationUpdate)
                         {
@@ -1214,6 +1219,27 @@ namespace Odin.Data
         }
 
         /// <summary>
+        ///     Insert item info into PS_PRODUCT_VARIATIONS
+        /// </summary>
+        public void InsertProductVariantions(ItemObject item, string customerId, OdinContext context)
+        {
+            if (!context.ProductVariations.Any(o => o.ProductId == item.ItemId && o.CustId == customerId))
+            {
+                context.ProductVariations.Add(new ProductVariations
+                {
+                    CustId = customerId,
+                    DttmCreated = DateTime.Now,
+                    DttmUpdated = DateTime.Now,
+                    ExternalParentId = item.EcommerceParentAsin,
+                    ProductId = item.ItemId,
+                    SetId = "SHARE",
+                    VariationGroupId = item.ReturnVariantGroupId(),
+                    VariationProductCategory = item.ItemCategory
+                });
+            }
+        }
+
+        /// <summary>
         ///     Insert item info into PS_PURCH_ITEM_ATTR
         /// </summary>
         public void InsertPurchItemAttr(ItemObject item, OdinContext context)
@@ -1524,6 +1550,7 @@ namespace Odin.Data
             }
             return returnValues;
         }
+        
         /// <summary>
         ///     Retrieves the category id for the given itemCategory from the GlobalData
         /// </summary>
@@ -2416,6 +2443,27 @@ namespace Odin.Data
                 }
             }
             return itemIds;
+        }
+
+        /// <summary>
+        ///     Retrieves the parent asin for the given variant group if it exists. Returns 
+        ///     empty if no records share variant group (itemid core)
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
+        public string RetrieveProductVariationsParentAsin(string variantGroup, string productCategory)
+        {
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                if ((context.ProductVariations.Any()))
+                {
+                    return (from o in context.ProductVariations
+                               where o.VariationGroupId == variantGroup
+                               && o.VariationProductCategory == productCategory
+                            select o.ExternalParentId).FirstOrDefault();
+                }
+            }
+            return "";
         }
 
         /// <summary>

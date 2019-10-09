@@ -46,6 +46,7 @@ namespace Odin.Data
             {
                 new Request(
                             1,
+                            "ItemCategory",
                             "Itemid",
                             "Itemstatus",
                             "Username",
@@ -68,6 +69,7 @@ namespace Odin.Data
             List<Request> requestList = new List<Request>();
             requestList.Add(new Request(
                             1,
+                            "ItemCategory",
                             "Itemid",
                             "Itemstatus",
                             "Username",
@@ -100,6 +102,7 @@ namespace Odin.Data
 
             RequestList.Add( new Request(
                 1,
+                "ItemCategory",
                 "Itemid",
                 "Itemstatus",
                 "Username",

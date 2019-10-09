@@ -110,6 +110,23 @@ namespace Odin.ViewModels
         private string _inStockDate = string.Empty;
 
         /// <summary>
+        ///     Gets or sets the ItemCategory
+        /// </summary>
+        public string ItemCategory
+        {
+            get
+            {
+                return _itemCategory;
+            }
+            set
+            {
+                _itemCategory = value;
+            }
+
+        }
+        private string _itemCategory = string.Empty;
+
+        /// <summary>
         ///     Gets or sets the ItemId
         /// </summary>
         public string ItemId
@@ -242,7 +259,7 @@ namespace Odin.ViewModels
         public bool SaveRequest() 
         {
             
-            Request request = new Request(this.RequestId, this.ItemId, this.ItemStatus, this.UserName, this.DttmSubmitted,this.InStockDate, this.Comment, this.RequestStatus, this.Website);
+            Request request = new Request(this.RequestId, this.ItemCategory, this.ItemId, this.ItemStatus, this.UserName, this.DttmSubmitted,this.InStockDate, this.Comment, this.RequestStatus, this.Website);
             OptionService.UpdateWebsiteRequest(request);
             return true;
         }
@@ -257,6 +274,7 @@ namespace Odin.ViewModels
             this.AdminStatus = adminStatus;
             this.Comment = request.Comment;
             this.DttmSubmitted = request.DttmSubmitted;
+            this.ItemCategory = request.ItemCategory;
             this.ItemId = request.ItemId;
             this.ItemStatus = request.ItemStatus;
             this.RequestId = request.RequestId;

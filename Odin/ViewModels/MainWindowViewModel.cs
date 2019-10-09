@@ -3438,12 +3438,7 @@ namespace Odin.ViewModels
         /// </summary>
         public void PullImages()
         {
-            List<string> itemIds = new List<string>();
-            foreach (ItemObject item in this.Items)
-            {
-                itemIds.Add(item.ItemId);
-            }
-            List<string> missingImages = ItemService.PullImages(itemIds, true);
+            List<string> missingImages = ItemService.PullImages(this.Items);
             if (missingImages.Count > 0)
             {
                 AlertView window = new AlertView

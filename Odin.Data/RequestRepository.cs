@@ -87,6 +87,7 @@ namespace Odin.Data
                     string website = (x.Website != null) ? x.Website.Trim() : "";
                     Request request = new Request(
                         x.RequestId,
+                        x.ItemCategory,
                         x.ItemId.Trim(),
                         x.ItemStatus.Trim(),
                         x.UserName.Trim(),
@@ -119,6 +120,7 @@ namespace Odin.Data
                 {
                     requestList.Add(new Request(
                         odinWebsiteItemRequest.RequestId,
+                        odinWebsiteItemRequest.ItemCategory,
                         odinWebsiteItemRequest.ItemId,
                         odinWebsiteItemRequest.ItemStatus,
                         odinWebsiteItemRequest.UserName,
@@ -183,7 +185,7 @@ namespace Odin.Data
             {
                 foreach (ItemObject item in Items)
                 {
-                    Request request = new Request(requestNum, item.ItemId, status, Environment.UserName, date, item.InStockDate, comment, "Pending", website);
+                    Request request = new Request(requestNum, item.ItemCategory, item.ItemId, status, Environment.UserName, date, item.InStockDate, comment, "Pending", website);
                     InsertWebsiteItemRequests(request, context);
                 }
                 if (!(string.IsNullOrEmpty(comment)))

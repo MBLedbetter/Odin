@@ -221,7 +221,7 @@ namespace Odin.ViewModels
             {
                 if (_selectedRequest == null)
                 {
-                    _selectedRequest = new Request(0, "", "", "", "", "", "", "", "");
+                    _selectedRequest = new Request(0, "", "", "", "", "", "", "", "", "");
                 }
                 return _selectedRequest;
             }
@@ -265,7 +265,7 @@ namespace Odin.ViewModels
             {
                 if (_selectedRequest2 == null)
                 {
-                    _selectedRequest2 = new Request(0, "", "", "", "", "", "");
+                    _selectedRequest2 = new Request(0, "", "", "", "", "", "", "");
                 }
                 return _selectedRequest2;
             }
@@ -471,7 +471,6 @@ namespace Odin.ViewModels
                         {
                             GroupComment = rawRequests[i].GroupComment,
                             Website = rawRequests[i].Website
-
                         };
                         requestList.Add(request);
                     }
@@ -499,12 +498,16 @@ namespace Odin.ViewModels
         /// </summary>
         public void PullImages()
         {
-            List<string> itemIds = new List<string>();
+            ObservableCollection<ItemObject> items = new ObservableCollection<ItemObject>();
             foreach (Request r in this.SelectedRequestlingList)
             {
-                itemIds.Add(r.ItemId);
+                items.Add(new ItemObject(1)
+                {
+                    ItemId = r.ItemId,
+                    ItemCategory = r.ItemCategory
+                });
             }
-            List<string> missingImages = ItemService.PullImages(itemIds);
+            List<string> missingImages = ItemService.PullImages(items);
             if (missingImages.Count>0)
             {
                 AlertView window = new AlertView

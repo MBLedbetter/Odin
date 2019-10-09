@@ -2988,13 +2988,13 @@ namespace Odin.Data
             modelBuilder.Entity<OdinWebsiteItemRequests>().Property(p => p.Comment).HasColumnName("Comment");
             modelBuilder.Entity<OdinWebsiteItemRequests>().Property(p => p.DttmSubmitted).HasColumnName("DttmSubmitted");
             modelBuilder.Entity<OdinWebsiteItemRequests>().Property(p => p.InStockDate).HasColumnName("InStockDate");
+            modelBuilder.Entity<OdinWebsiteItemRequests>().Property(p => p.ItemCategory).HasColumnName("ItemCategory");
             modelBuilder.Entity<OdinWebsiteItemRequests>().Property(p => p.ItemId).HasColumnName("ItemId");
             modelBuilder.Entity<OdinWebsiteItemRequests>().Property(p => p.ItemStatus).HasColumnName("ItemStatus");
             modelBuilder.Entity<OdinWebsiteItemRequests>().Property(p => p.RequestId).HasColumnName("RequestId");
             modelBuilder.Entity<OdinWebsiteItemRequests>().Property(p => p.RequestStatus).HasColumnName("RequestStatus");
             modelBuilder.Entity<OdinWebsiteItemRequests>().Property(p => p.UserName).HasColumnName("UserName");
             modelBuilder.Entity<OdinWebsiteItemRequests>().Property(p => p.Website).HasColumnName("Website");
-
         }
 
         /// <summary>

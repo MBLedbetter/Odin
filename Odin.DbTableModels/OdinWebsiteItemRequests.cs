@@ -26,6 +26,11 @@ namespace Odin.DbTableModels
         public string InStockDate { get; set; }
 
         /// <summary>
+        ///     Gets or sets ItemCategory
+        /// </summary>
+        public string ItemCategory { get; set; }
+
+        /// <summary>
         ///     Gets or sets ItemId
         /// </summary>
         public string ItemId { get; set; }

@@ -62,6 +62,23 @@ namespace OdinModels
         private string _groupComment = string.Empty;
 
         /// <summary>
+        ///     Gets or sets the ItemCategory
+        /// </summary>
+        public string ItemCategory
+        {
+            get
+            {
+                return _itemCategory;
+            }
+            set
+            {
+                _itemCategory = value;
+            }
+
+        }
+        private string _itemCategory = string.Empty;
+
+        /// <summary>
         ///     Gets or sets the ItemId
         /// </summary>
         public string ItemId
@@ -206,6 +223,7 @@ namespace OdinModels
 
         public Request(
             int requestId,
+            string itemCategory,
             string itemId,
             string itemStatus,
             string userName,
@@ -213,9 +231,10 @@ namespace OdinModels
             string inStockDate,
             string comment,
             string requestStatus,
-            string website="")
+            string website)
         {
             this.RequestId = requestId;
+            this.ItemCategory = itemCategory;
             this.ItemId = itemId;
             this.UserName = userName;
             this.DttmSubmitted = dttmSubmitted;
@@ -228,6 +247,7 @@ namespace OdinModels
 
         public Request(
             int requestId,
+            string itemCategory,
             string itemId,
             string itemStatus,
             string userName,
@@ -236,6 +256,7 @@ namespace OdinModels
             string requestStatus)
         {
             this.RequestId = requestId;
+            this.ItemCategory = itemCategory;
             this.ItemId = itemId;
             this.UserName = userName;
             this.InStockDate = inStockDate;

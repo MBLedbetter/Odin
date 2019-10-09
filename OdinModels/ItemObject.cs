@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace OdinModels
 {
@@ -4189,6 +4190,25 @@ namespace OdinModels
                 return "Y";
             }
             return "N";
+        }
+
+        /// <summary>
+        ///     Returns the variant id. This is the id core for poster items, item ID for 
+        ///     everything else.
+        /// </summary>
+        /// <returns></returns>
+        public string ReturnVariantGroupId()
+        {
+            if (this.ItemCategory == "POSTER")
+            {
+                return new string(this.ItemId.SkipWhile(c => !char.IsDigit(c))
+                             .TakeWhile(c => char.IsDigit(c))
+                             .ToArray());
+            }
+            else
+            {
+                return this.ItemId;
+            }
         }
 
         /// <summary>

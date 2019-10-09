@@ -2622,7 +2622,7 @@ namespace OdinServices
             string result = string.Empty;
             if(item.SellOnTrs=="Y")
             {
-                result += "<a href=\'" + ItemService.CreateWebsiteUrl(item.ItemId,item.EcommerceItemName,item.ItemGroup,true, item.SellOnTrs) + "\' class='shopTrends_button' target=\'_blank\'>Buy On Shoptrends.com</a>";
+                result += "<a href=\'" + ItemService.CreateWebsiteUrl(item,true) + "\' class='shopTrends_button' target=\'_blank\'>Buy On Shoptrends.com</a>";
             }
             if (!string.IsNullOrEmpty(item.ShortDescription))
             {
@@ -2786,13 +2786,13 @@ namespace OdinServices
                 }
                 foreach (ItemObject item in itemList)
                 {
-                    string idCore = ItemService.RetrieveItemIdCore(item.ItemId);
+                    string idCore = item.ReturnVariantGroupId();
                     if (!idCores.Contains(idCore))
                     {
                         List<string> childProducts = new List<string>();
 
                         // Check all existing active related products
-                        foreach (string x in ItemService.RetrieveRelatedProductIds(item.ItemId))
+                        foreach (string x in ItemService.RetrieveRelatedProductIds(item))
                         {
                             // Add all products that are currently on the site or in the current upload
                             if (ItemService.CheckOnSite(x, "SHOPTRENDS.COM") || itemList.Any(y => y.ItemId == x))
@@ -3127,7 +3127,7 @@ namespace OdinServices
             // string url = ItemService.CreateUrl(item.ItemId, item.EcommerceItemName, item.ItemGroup, false);
             int pos = item.WebsiteUrl.LastIndexOf("/") + 1;
             string url = item.WebsiteUrl.Substring(pos, item.WebsiteUrl.Length - pos); // prints "world"
-            string itemId = "POSTER" + ItemService.RetrieveItemIdCore(item.ItemId);
+            string itemId = "POSTER" + item.ReturnVariantGroupId();
             string dateAdded = (item.Status == "Add") ? DateTime.Now.ToShortDateString() : "";
 
             result += "\"" + itemId.Trim() + "\","; /* A */

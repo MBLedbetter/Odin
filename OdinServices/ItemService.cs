@@ -560,7 +560,7 @@ namespace OdinServices
             {
                 if(string.IsNullOrEmpty(item.EcommerceItemName))
                 {
-                    returnItem.WebsiteUrl = CreateWebsiteUrl(returnItem.ItemId, returnItem.EcommerceItemName, returnItem.ProductGroup, true, returnItem.SellOnTrs);
+                    returnItem.WebsiteUrl = CreateWebsiteUrl(returnItem, true);
                 }
             }
             returnItem = ClearFields(returnItem);
@@ -721,30 +721,30 @@ namespace OdinServices
         /// <param name="itemId"></param>
         /// <param name="title"></param>
         /// <returns></returns>
-        public string CreateWebsiteUrl(string itemId, string title, string productType, bool fullUrl, string sellOnShopTrends)
+        public string CreateWebsiteUrl(ItemObject item, bool fullUrl)
         {
-            if (sellOnShopTrends == "Y")
+            if (item.SellOnTrs == "Y")
             {
-                if (productType == "Posters")
+                if (item.ItemCategory == "POSTER")
                 {
-                    string podUrl = RetrieveWebsiteUrl("POD" + RetrieveItemIdCore(itemId));
+                    string podUrl = RetrieveWebsiteUrl("POD" + item.ReturnVariantGroupId());
                     if (!string.IsNullOrEmpty(podUrl))
                     {
                         return podUrl;
                     }
                 }
-                title = title.Replace(" ", "-");
+                string title = item.Title.Replace(" ", "-");
                 title = title.Replace(":", "-");
                 title = title.Replace("---", "-");
                 title = title.Replace("--", "-");
                 string result = title.ToLower();
-                if (productType == "Posters")
+                if (item.ItemCategory == "POSTER")
                 {
-                    result += "-poster" + RetrieveItemIdCore(itemId);
+                    result += "-poster" + item.ReturnVariantGroupId();
                 }
                 else
                 {
-                    result += itemId;
+                    result += item.ItemId;
                 }
 
                 if (fullUrl)
@@ -1002,7 +1002,7 @@ namespace OdinServices
                     }
                     if(!string.IsNullOrEmpty(item.EcommerceItemName))
                     {
-                        item.WebsiteUrl = CreateWebsiteUrl(item.ItemId, item.EcommerceItemName, item.ProductGroup, true, item.SellOnTrs);
+                        item.WebsiteUrl = CreateWebsiteUrl(item, true);
                     }
                     item.SetFlagDefaults();
                 }
@@ -1013,7 +1013,7 @@ namespace OdinServices
                 {
                     if (!string.IsNullOrEmpty(item.EcommerceItemName)&& string.IsNullOrEmpty(item.WebsiteUrl))
                     {
-                        item.WebsiteUrl = CreateWebsiteUrl(item.ItemId, item.EcommerceItemName, item.ProductGroup, true, item.SellOnTrs);
+                        item.WebsiteUrl = CreateWebsiteUrl(item, true);
                     }
                 }
                 itemList.Add(item);
@@ -1157,36 +1157,36 @@ namespace OdinServices
         /// </summary>
         /// <param name="itemIds"></param>
         /// <returns>Any image paths that were incorrect</returns>
-        public List<string> PullImages(List<string> itemIds, bool clearSpaces = false)
+        public List<string> PullImages(ObservableCollection<ItemObject> items)
         {
             string location = @"C:\Users\" + Environment.UserName.ToLower() + @"\Desktop\EcomerceImages";
             List<string> missingImages = new List<string>();
             List<string> usedIdCores = new List<string>();
             Directory.CreateDirectory(location);
-            foreach (string itemId in itemIds)
+            foreach (ItemObject item in items)
             {
-                foreach (KeyValuePair<string,int> img in RetrieveImagePaths(itemId))
+                foreach (KeyValuePair<string,int> img in RetrieveImagePaths(item.ItemId))
                 {
                     if (CheckFileExists(img.Key, false))
                     {
                         if (CheckFileSize(img.Key, false))
                         {
-                            string filename = location + @"\" + ReturnImageName(itemId, img.Value);
+                            string filename = location + @"\" + ReturnImageName(item.ItemId, img.Value);
                             //  make sure the same image file has not been created in the ecommerceImage directory already
                             if (!CheckFileExists(filename, false))
                             {
                                 Image myImage = Image.FromFile(img.Key, true);
                                 SaveJpeg(filename, myImage, 60);
                                 myImage.Dispose();
-                                if (!usedIdCores.Contains(RetrieveItemIdCore(itemId)) && img.Value == 1)
+                                if (!usedIdCores.Contains(item.ReturnVariantGroupId()) && img.Value == 1)
                                 {
-                                    if (itemId.Substring(0, 2) == "RP" || itemId.Substring(0, 3) == "POD")
+                                    if (item.ItemCategory == "POSTER")
                                     {
-                                        filename = location + @"\" + ReturnImageName("POSTER" + RetrieveItemIdCore(itemId), img.Value);
+                                        filename = location + @"\" + ReturnImageName("POSTER" + item.ReturnVariantGroupId(), img.Value);
                                         Image posterImage = Image.FromFile(img.Key, true);
                                         SaveJpeg(filename, posterImage, 60);
                                         posterImage.Dispose();
-                                        usedIdCores.Add(RetrieveItemIdCore(itemId));
+                                        usedIdCores.Add(item.ReturnVariantGroupId());
                                     }
                                 }
                             }
@@ -1719,7 +1719,7 @@ namespace OdinServices
             result.Sort();
             return result;
         }
-
+        /*
         /// <summary>
         ///     Removes prefixes and suffixes from itemId.
         /// </summary>
@@ -1738,7 +1738,7 @@ namespace OdinServices
             }
             return idCore;
         }
-
+        */
         /// <summary>
         ///     Retrieves a list of most recent ItemRecords from ODIN_ITEM_UPDATE_RECORDS
         /// </summary>
@@ -1910,9 +1910,9 @@ namespace OdinServices
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns> List of itemIds </returns>
-        public List<string> RetrieveRelatedProductIds(string itemId)
+        public List<string> RetrieveRelatedProductIds(ItemObject item)
         {
-            string idCore = RetrieveItemIdCore(itemId);
+            string idCore = item.ReturnVariantGroupId();
             List<string> relatedProducts = new List<string>();
 
             foreach(KeyValuePair<string,string> x in GlobalData.ItemTypeExtensions)
