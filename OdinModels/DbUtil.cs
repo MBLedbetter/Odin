@@ -70,6 +70,22 @@ namespace OdinModels
             }
             return str60;
         }
+        /// <summary>
+        ///     Checks if a given value is greater than 0.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>true if greater than 0</returns>
+        public static bool CheckGreaterThanZero(string value)
+        {
+            if (decimal.TryParse(value, out decimal valueDec))
+            {
+                if (valueDec > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         /// <summary>
         ///     Checks length of string without whitespaces. Returns false if string excedes the maximum limit

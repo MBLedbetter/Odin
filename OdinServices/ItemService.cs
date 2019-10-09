@@ -2974,7 +2974,7 @@ namespace OdinServices
             {
                 if (string.IsNullOrEmpty(var.CountryOfOrigin) && required)
                 {
-                    if (!CheckGreaterThanZero(var.ListPriceUsd))
+                    if (!DbUtil.CheckGreaterThanZero(var.ListPriceUsd))
                     {
                         return null;
                     }
@@ -3278,7 +3278,7 @@ namespace OdinServices
         {            
             if (string.IsNullOrEmpty(var.Ean))
             {
-                if (var.ListPriceUsd == "" || !CheckGreaterThanZero(var.ListPriceUsd))
+                if (var.ListPriceUsd == "" || !DbUtil.CheckGreaterThanZero(var.ListPriceUsd))
                 {
                     return null;
                 }
@@ -3858,7 +3858,7 @@ namespace OdinServices
                         OdinServices.Properties.Resources.Error_RequiredAmazon,
                         "Ecommerce Msrp");
                 }
-                if (!CheckGreaterThanZero(var.EcommerceMsrp))
+                if (!DbUtil.CheckGreaterThanZero(var.EcommerceMsrp))
                 {
                     return new ItemError(
                         var.ItemId,
@@ -4293,7 +4293,7 @@ namespace OdinServices
             {
                 if ((string.IsNullOrEmpty(var.Gpc)) && required)
                 {
-                    if (!CheckGreaterThanZero(var.ListPriceUsd))
+                    if (!DbUtil.CheckGreaterThanZero(var.ListPriceUsd))
                     {
                         return null;
                     }
@@ -4930,7 +4930,7 @@ namespace OdinServices
             }
             else
             {
-                if (!CheckGreaterThanZero(var.ListPriceUsd))
+                if (!DbUtil.CheckGreaterThanZero(var.ListPriceUsd))
                 {
                     return null;
                 }
@@ -5131,7 +5131,7 @@ namespace OdinServices
                 }
                 if (string.IsNullOrEmpty(value))
                 {
-                    if (!CheckGreaterThanZero(var.ListPriceUsd))
+                    if (!DbUtil.CheckGreaterThanZero(var.ListPriceUsd))
                     {
                         return null;
                     }
@@ -5568,7 +5568,7 @@ namespace OdinServices
                 }
                 if (string.IsNullOrEmpty(var.PricingGroup))
                 {
-                    if (!CheckGreaterThanZero(var.ListPriceUsd) && !CheckGreaterThanZero(var.ListPriceCad))
+                    if (!DbUtil.CheckGreaterThanZero(var.ListPriceUsd) && !DbUtil.CheckGreaterThanZero(var.ListPriceCad))
                     {
                         return null;
                     }
@@ -5830,7 +5830,7 @@ namespace OdinServices
             {
                 if (string.IsNullOrEmpty(var.StatsCode) && required)
                 {
-                    if (!CheckGreaterThanZero(var.ListPriceUsd))
+                    if (!DbUtil.CheckGreaterThanZero(var.ListPriceUsd))
                     {
                         return null;
                     }
@@ -5960,7 +5960,7 @@ namespace OdinServices
             {
                 if (string.IsNullOrEmpty(value) && required)
                 {
-                    if (!CheckGreaterThanZero(var.ListPriceUsd))
+                    if (!DbUtil.CheckGreaterThanZero(var.ListPriceUsd))
                     {
                         return null;
                     }
@@ -6076,7 +6076,7 @@ namespace OdinServices
                 {
                     return null;
                 }
-                else if (!CheckGreaterThanZero(var.ListPriceUsd))
+                else if (!DbUtil.CheckGreaterThanZero(var.ListPriceUsd))
                 {
                     return null;
                 }
@@ -6228,7 +6228,7 @@ namespace OdinServices
                         OdinServices.Properties.Resources.Error_RequiredWeb,
                         "Website Price");
                 }
-                if (!CheckGreaterThanZero(var.WebsitePrice) && var.ProductGroup != "Display")
+                if (!DbUtil.CheckGreaterThanZero(var.WebsitePrice) && var.ProductGroup != "Display")
                 {
                     return new ItemError(
                         var.ItemId,
@@ -6418,24 +6418,7 @@ namespace OdinServices
             }
             return false;
         }
-
-        /// <summary>
-        ///     Checks if a given value is greater than 0.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns>true if greater than 0</returns>
-        private bool CheckGreaterThanZero(string value)
-        {
-            if (decimal.TryParse(value, out decimal valueDec))
-            {
-                if (valueDec > 0)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
+    
         /// <summary>
         ///     Searches PS_ORD_LINE for any open orders (ORD_LINE_STATUS = P or O) with the given ItemId = CUSTOMER_ITEM_NBR
         /// </summary>

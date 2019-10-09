@@ -396,6 +396,11 @@ namespace Odin.Data
         public DbSet<ProductLines> ProductLines { get; set; }
 
         /// <summary>
+        ///     Gets or sets a list of the ProductVariations lines that are in this context.
+        /// </summary>
+        public DbSet<ProductVariations> ProductVariations { get; set; }
+
+        /// <summary>
         ///     Gets or sets a list of the ProdUom lines that are in this context.
         /// </summary>
         public DbSet<ProdUom> ProdUom { get; set; }
@@ -556,6 +561,7 @@ namespace Odin.Data
             MapProductFormats(modelBuilder);
             MapProductGroups(modelBuilder);
             MapProductLines(modelBuilder);
+            MapProductVariations(modelBuilder);
             MapProdUom(modelBuilder);
             MapPurchItemAttr(modelBuilder);
             MapPurchItemBu(modelBuilder);
@@ -3585,6 +3591,37 @@ namespace Odin.Data
             modelBuilder.Entity<ProductLines>().Property(p => p.IncludeInCatalog).HasColumnName("INCLUDE_IN_CATALOG");
             modelBuilder.Entity<ProductLines>().Property(p => p.ProdGroup).HasColumnName("PROD_GROUP");
             modelBuilder.Entity<ProductLines>().Property(p => p.ProdLine).HasColumnName("PROD_LINE");
+
+        }
+
+        /// <summary>
+        ///             This method maps the ProductVariations class to the database.
+        /// </summary>
+        /// 
+        /// <param name="DbModelBuilder modelBuilder">
+        ///             The DbDbModelBuilder modelBuilder to update with the mapping.
+        /// </param>
+        private void MapProductVariations(DbModelBuilder modelBuilder)
+        {
+            // Map the ProductLines class to the PS_PRODUCT_VARIATIONS table
+            modelBuilder.Entity<ProductVariations>()
+                .HasKey(p => new
+                {
+                    p.ProductId,
+                    p.SetId,
+                    p.CustId
+                })
+                .ToTable("PS_PRODUCT_VARIATIONS");
+
+            // Map each column
+            modelBuilder.Entity<ProductVariations>().Property(p => p.CustId).HasColumnName("CUST_ID");
+            modelBuilder.Entity<ProductVariations>().Property(p => p.DttmCreated).HasColumnName("DTTM_CREATED");
+            modelBuilder.Entity<ProductVariations>().Property(p => p.DttmUpdated).HasColumnName("DTTM_LAST_UPDATED");
+            modelBuilder.Entity<ProductVariations>().Property(p => p.ExternalParentId).HasColumnName("EXTERNAL_PARENT_ID");
+            modelBuilder.Entity<ProductVariations>().Property(p => p.ProductId).HasColumnName("PRODUCT_ID");
+            modelBuilder.Entity<ProductVariations>().Property(p => p.SetId).HasColumnName("SETID");
+            modelBuilder.Entity<ProductVariations>().Property(p => p.VariationGroupId).HasColumnName("VARIATION_GROUP_ID");
+            modelBuilder.Entity<ProductVariations>().Property(p => p.VariationProductCategory).HasColumnName("VARIATION_PRODUCT_CATEGORY");
 
         }
 

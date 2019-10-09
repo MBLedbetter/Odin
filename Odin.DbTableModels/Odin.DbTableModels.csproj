@@ -118,6 +118,7 @@
     <Compile Include="ProductFormats.cs" />
     <Compile Include="ProductGroups.cs" />
     <Compile Include="ProductLines.cs" />
+    <Compile Include="ProductVariations.cs" />
     <Compile Include="ProdUom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchItemAttr.cs" />
