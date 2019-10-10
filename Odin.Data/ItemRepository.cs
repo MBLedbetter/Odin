@@ -115,10 +115,12 @@ namespace Odin.Data
                             InsertEnBomOutputs(item, context);
                             InsertSfPrdnAreaIt(item, context);
                         }
+                        /*
                         if(item.SellOnAmazon=="Y" || item.SellOnAmazonSellerCentral=="Y")
                         {
                             InsertProductVariantions(item, GlobalData.CustomerIdConversions["AMAZON"], context);
                         }
+                        */
                         InsertItemUpdateRecord(item, context);
                     }
                     else if (item.HasUpdate)
@@ -156,8 +158,13 @@ namespace Odin.Data
                             InsertEnBomHeader(item, context);
                             InsertEnBomOutputs(item, context);
                             InsertSfPrdnAreaIt(item, context);
-                            
                         }
+                        /*
+                        if (item.EcommerceParentAsinUpdate)
+                        {
+                            UpdateProductVariantions(item, GlobalData.CustomerIdConversions["AMAZON"], context);
+                        }
+                        */
                         InsertItemUpdateRecord(item, context);
                     }
                     context.SaveChanges();
@@ -2930,6 +2937,22 @@ namespace Odin.Data
                     InsertProdPriceBu(item, "MXN", "TRUS1", context);
                     InsertProdPriceBu(item, "MXN", "TRMX1", context);
                 }
+            }
+        }
+
+        /// <summary>
+        ///     Insert item info into PS_PRODUCT_VARIATIONS
+        /// </summary>
+        public void UpdateProductVariantions(ItemObject item, string customerId, OdinContext context)
+        {
+            ProductVariations productVariations = context.ProductVariations.SingleOrDefault(o => o.ProductId == item.ItemId 
+                                                                                            && o.CustId == customerId
+                                                                                            && o.SetId == "SHARE");
+            if (productVariations != null)
+            {
+                productVariations.DttmUpdated = DateTime.Now;
+                productVariations.ExternalParentId = item.EcommerceParentAsin;
+                productVariations.VariationProductCategory = item.ItemCategory;
             }
         }
 
