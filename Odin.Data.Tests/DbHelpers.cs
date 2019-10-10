@@ -15,8 +15,10 @@ namespace Odin.Data.Tests
         {
             using (SqlConnection connection = GetConnection())
             {
-                SqlCommand command = new SqlCommand("[ClearDatabase]", connection);
-                command.CommandType = CommandType.StoredProcedure;
+                SqlCommand command = new SqlCommand("[ClearDatabase]", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
                 command.ExecuteNonQuery();
             }
         }

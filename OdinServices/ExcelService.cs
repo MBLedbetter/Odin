@@ -2470,28 +2470,23 @@ namespace OdinServices
         /// <returns></returns>
         public string ReturnVariantAttributeName(ItemObject item, string customer)
         {
-            if(item.ProductFormat== "Mount Bundle" 
-                || item.ProductFormat== "Clip Bundle"
-                || item.ProductFormat == "POD Mount Bundle"
-                || item.ProductFormat == "POD Clip Bundle")
+            if (item.ProductFormat == "Mount Bundle")
             {
-                if(item.ProductFormat=="Mount Bundle")
-                {
-                    return "Poster & Mount Bundle";
-                }
-                else if(item.ProductFormat == "Clip Bundle")
-                {
-                    return "Poster & Clip Bundle";
-                }
-                else if (item.ProductFormat == "POD Clip Bundle")
-                {
-                    return "Premium Poster & Clip Bundle";
-                }
-                else if (item.ProductFormat == "POD Mount Bundle" || item.ProductFormat == "14X22 Mount Bundle")
-                {
-                    return "Premium Poster & Mount Bundle";
-                }
+                return "Poster & Mount Bundle";
             }
+            else if (item.ProductFormat == "Clip Bundle")
+            {
+                return "Poster & Clip Bundle";
+            }
+            else if (item.ProductFormat == "POD Clip Bundle")
+            {
+                return "Premium Poster & Clip Bundle";
+            }
+            else if (item.ProductFormat == "POD Mount Bundle" || item.ProductFormat == "14X22 Mount Bundle")
+            {
+                return "Premium Poster & Mount Bundle";
+            }
+            
 
             if (item.ItemId.Substring(0, 2) == "FR")
             {

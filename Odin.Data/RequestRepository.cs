@@ -30,6 +30,7 @@ namespace Odin.Data
             context.OdinWebsiteItemRequests.Add(new OdinWebsiteItemRequests
             {
                 RequestId = request.RequestId,
+                ItemCategory = request.ItemCategory,
                 ItemId = request.ItemId,
                 ItemStatus = request.ItemStatus,
                 UserName = request.UserName,
