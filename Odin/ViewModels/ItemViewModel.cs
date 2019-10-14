@@ -3322,6 +3322,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.SellOnAmazon != DbUtil.ConvertYN(value))
                 {
                     this.ItemViewModelItem.SellOnAmazon = DbUtil.ConvertYN(value);
+                    CheckEcommerceParentAsin();
                     FlagError("SellOnAmazonCheck");
                     OnPropertyChanged("SellOnAmazonCheck");
                 }
@@ -3384,6 +3385,7 @@ namespace Odin.ViewModels
                 if (this.ItemViewModelItem.SellOnAmazonSellerCentral != DbUtil.ConvertYN(value))
                 {
                     this.ItemViewModelItem.SellOnAmazonSellerCentral = DbUtil.ConvertYN(value);
+                    CheckEcommerceParentAsin();
                     FlagError("SellOnAmazonSellerCentralCheck");
                     OnPropertyChanged("SellOnAmazonSellerCentralCheck");
                 }
@@ -9055,6 +9057,18 @@ namespace Odin.ViewModels
 
                 default:
                     throw new ArgumentNullException("ItemViewModel Assign error unknown type " + error.VarName);
+            }
+        }
+        
+        /// <summary>
+        ///     Checks the Ecommerce Parent ASIN and autofills if needed.
+        /// </summary>
+        /// <param name="item"></param>
+        private void CheckEcommerceParentAsin()
+        {
+            if(string.IsNullOrEmpty(this.EcommerceParentAsin))
+            {
+                this.EcommerceParentAsin = ItemService.AutoFillEcommerceParentAsin(this.ItemViewModelItem);
             }
         }
 

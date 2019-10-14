@@ -2120,7 +2120,7 @@ namespace OdinServices
         public List<string> RetrieveExcelCustomers()
         {
             List<string> customers = new List<string>();
-            foreach (KeyValuePair<string, string> cust in GlobalData.Customers)
+            foreach (KeyValuePair<string, string> cust in GlobalData.CustomerIdConversions)
             {
                 customers.Add(cust.Key);
             }

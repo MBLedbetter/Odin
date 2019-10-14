@@ -331,7 +331,6 @@ namespace Odin.ViewModels
             }
         }
         private RelayCommand _removeSelectedItem;
-
         public ICommand RequestEcommerceImageListCommand
         {
             get
@@ -452,6 +451,19 @@ namespace Odin.ViewModels
             }
         }
         private RelayCommand _uploadTemplateCommand;
+        public ICommand ViewDataCommand
+        {
+            get
+            {
+                if (_viewData == null)
+                {
+                    _viewData = new RelayCommand(param => ViewDataWindow());
+                }
+                return _viewData;
+            }
+        }
+        private RelayCommand _viewData;
+        
         public ICommand ValidateSpreadsheetCommand
         {
             get
@@ -4153,6 +4165,16 @@ namespace Odin.ViewModels
                 ErrorLog.LogError("Odin was unable to validate the given spreadsheet.", ex.ToString());
             }
         
+        }
+
+        public void ViewDataWindow()
+        {
+            DataView window = new DataView()
+            {
+                DataContext = new DataViewModel()
+            };
+            window.ShowDialog();
+
         }
 
         /// <summary>

@@ -11,7 +11,51 @@ namespace Odin.Services.Tests
 {
     [TestClass]
     public class ItemServiceTests
-    {    
+    {
+
+        [TestMethod]
+        public void AutoFillEcommerceParentAsin_MatchingVariantId_ShouldReturnParentASIN()
+        {
+            #region Assemble
+            GlobalData.ClearValues();
+            TestItemRepository testItemRepository = new TestItemRepository();
+            ItemObject item1 = new ItemObject(1)
+            {
+                ItemId = "RP1234",
+                SellOnAmazon = "Y",
+                ItemCategory = "POSTER"
+            };
+            ItemObject item2 = new ItemObject(1)
+            {
+                ItemId = "RP5678",
+                SellOnAmazon = "Y",
+                ItemCategory = "POSTER"
+            };
+            ItemService itemService = new ItemService(new FakeWorkbookReader(), testItemRepository, new TestTemplateRepository());
+
+            GlobalData.ClearValues();
+            GlobalData.ProductVariations.Add(new KeyValuePair<string, string>("1234", "TESTPARENTASIN1"));
+            GlobalData.ProductVariations.Add(new KeyValuePair<string, string>("5678", "TESTPARENTASIN2"));
+            GlobalData.ProductVariations.Add(new KeyValuePair<string, string>("5678", "TESTPARENTASIN3"));
+
+            #endregion // Assemble
+
+            #region Act
+
+            // item1 has single match, should return ParentAsin
+            string returnValue1 = itemService.AutoFillEcommerceParentAsin(item1);
+            // item2 has 2 matches, should return blank
+            string returnValue2 = itemService.AutoFillEcommerceParentAsin(item2);
+
+            #endregion // Act
+
+            #region Assert
+
+            Assert.AreEqual("TESTPARENTASIN1", returnValue1);
+            Assert.AreEqual("", returnValue2);
+
+            #endregion // Assert
+        }
 
         [TestMethod]
         public void CategoryInsert_GivenProperCategoryValues_ShouldReturnValidWebCategoryIdString()

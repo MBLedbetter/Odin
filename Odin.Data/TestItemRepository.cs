@@ -1487,7 +1487,6 @@ namespace Odin.Data
             GlobalData.AccountingGroups = RetrieveAccountingtGroupList();
             GlobalData.CostProfileGroups = RetrieveCostProfileGroups();
             GlobalData.CountriesOfOrigin = RetrieveCountriesOfOrigin();
-            GlobalData.Customers = RetrieveCustomerIdConversionsList();
             GlobalData.CustomerIdConversions = RetrieveCustomerIdConversionsList();
             GlobalData.ExternalIdTypes = RetrieveEcommerceExternalIdTypeList();
             GlobalData.ItemCategories = RetrieveItemCategories();

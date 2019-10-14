@@ -115,12 +115,12 @@ namespace Odin.Data
                             InsertEnBomOutputs(item, context);
                             InsertSfPrdnAreaIt(item, context);
                         }
-                        /*
+                        
                         if(item.SellOnAmazon=="Y" || item.SellOnAmazonSellerCentral=="Y")
                         {
                             InsertProductVariantions(item, GlobalData.CustomerIdConversions["AMAZON"], context);
                         }
-                        */
+                        
                         InsertItemUpdateRecord(item, context);
                     }
                     else if (item.HasUpdate)
@@ -143,15 +143,6 @@ namespace Odin.Data
                         if (item.ProdPriceBuUpdate) { UpdateProdPriceBuAll(item, context); }
                         if (item.PurchItemAttrUpdate) { UpdatePurchItemAttr(item, context); }
                         if (item.PvItmCategoryUpdate) { UpdatePvItmCategory(item); }
-
-                        /*
-                        if (item.ProductIdTranslationUpdate)
-                        {
-                            // === Removed Circa 8/15/2018 ===
-                            // RemoveMarketplaceProductTranslationsAll(item, context);
-                            // InsertProductIdTranslationAll(item, context);
-                        }
-                        */
                         if (item.BillOfMaterialsUpdate)
                         {                            
                             InsertEnBomCompsAll(item);
@@ -159,12 +150,12 @@ namespace Odin.Data
                             InsertEnBomOutputs(item, context);
                             InsertSfPrdnAreaIt(item, context);
                         }
-                        /*
-                        if (item.EcommerceParentAsinUpdate)
+                        
+                        if (item.EcommerceParentAsinUpdate || item.ItemCategoryUpdate)
                         {
                             UpdateProductVariantions(item, GlobalData.CustomerIdConversions["AMAZON"], context);
                         }
-                        */
+                        
                         InsertItemUpdateRecord(item, context);
                     }
                     context.SaveChanges();
@@ -1567,23 +1558,7 @@ namespace Odin.Data
             KeyValuePair<string, string> result = GlobalData.ItemCategories.FirstOrDefault(x => x.Value == itemCategory);
             return result.Key;
         }
-
-        /// <summary>
-        ///     Returns the category name associated with the given code
-        /// </summary>
-        /// <param name="value"></param>
-        public string RetrieveCategoryNameByCode(string value)
-        {
-            if (GlobalData.WebCategoryList.ContainsKey(value))
-            {
-                return GlobalData.WebCategoryList[value];
-            }
-            else
-            {
-                return "";
-            }
-        }
-
+        
         /// <summary>
         ///     Get list of appropriate External Id types for Amazon Products
         /// </summary>
@@ -1604,7 +1579,6 @@ namespace Odin.Data
             GlobalData.BillofMaterials = RetrieveBillofMaterialList();
             GlobalData.CostProfileGroups = RetrieveCostProfileGroups();
             GlobalData.CountriesOfOrigin = RetrieveCountriesOfOrigin();
-            GlobalData.Customers = RetrieveCustomerIdConversionsList();
             GlobalData.CustomerIdConversions = RetrieveCustomerIdConversionsList();
             GlobalData.ExternalIdTypes = RetrieveEcommerceExternalIdTypeList();
             GlobalData.Genres = RetrieveGenres();
@@ -1620,6 +1594,7 @@ namespace Odin.Data
             GlobalData.ProductFormats = RetrieveProductFormatList();
             GlobalData.ProductGoups = RetrieveProductGroupList();
             GlobalData.ProductLines = RetrieveProductLines();
+            GlobalData.ProductVariations = RetrieveProductVariations(GlobalData.CustomerIdConversions["AMAZON"]);
             GlobalData.Properties = RetrieveProperties();
             GlobalData.PricingGroups = RetrievePriceGroupList();
             GlobalData.PsStatuses = RetrievePsStatuses();
@@ -1635,7 +1610,6 @@ namespace Odin.Data
             GlobalData.UserNames = RetrieveUserNames();
             GlobalData.UserRoles = RetrieveUserRoles();
             GlobalData.WebCategoryList = RetrieveWebCategoryList();
-            GlobalData.CreateItemTypeExtensionList();
         }
 
         /// <summary>
@@ -2190,6 +2164,29 @@ namespace Odin.Data
         }
 
         /// <summary>
+        ///     Retrieves the parent asin for the given variant group if it exists. Returns 
+        ///     empty if no records share variant group (itemid core)
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
+        public List<string> RetrieveProductVariationsParentAsin(string variantGroup, string productCategory, string customerId)
+        {
+            List<string> results = new List<string>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                if ((context.ProductVariations.Any()))
+                {
+                    return (from o in context.ProductVariations
+                            where o.VariationGroupId == variantGroup
+                            && o.VariationProductCategory == productCategory
+                            && o.CustId == customerId
+                            select o.ExternalParentId).ToList();
+                }
+            }
+            return results;
+        }
+
+        /// <summary>
         ///     Returns the value of the save progress value
         /// </summary>
         /// <returns></returns>
@@ -2450,27 +2447,6 @@ namespace Odin.Data
                 }
             }
             return itemIds;
-        }
-
-        /// <summary>
-        ///     Retrieves the parent asin for the given variant group if it exists. Returns 
-        ///     empty if no records share variant group (itemid core)
-        /// </summary>
-        /// <param name="customer"></param>
-        /// <returns></returns>
-        public string RetrieveProductVariationsParentAsin(string variantGroup, string productCategory)
-        {
-            using (OdinContext context = this.contextFactory.CreateContext())
-            {
-                if ((context.ProductVariations.Any()))
-                {
-                    return (from o in context.ProductVariations
-                               where o.VariationGroupId == variantGroup
-                               && o.VariationProductCategory == productCategory
-                            select o.ExternalParentId).FirstOrDefault();
-                }
-            }
-            return "";
         }
 
         /// <summary>
@@ -4029,6 +4005,36 @@ namespace Odin.Data
                     foreach (var x in query)
                     {
                         results.Add(new KeyValuePair<string, string>(x.ProdLine, x.ProdGroup));
+                    }
+                }
+            }
+            return results;
+        }
+
+        /// <summary>
+        ///     returns a list of distinct keyvalue pairs [key = variation id, value = parentAsin]
+        /// </summary>
+        /// <returns></returns>
+        private List<KeyValuePair<string, string>> RetrieveProductVariations(string customerId)
+        {
+            List<KeyValuePair<string, string>> results = new List<KeyValuePair<string, string>>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                if ((context.ProductVariations.Any()))
+                {
+                    var query = (from o in context.ProductVariations
+                                 where o.CustId == customerId
+                                 && o.SetId == "SHARE"
+                                 group o by new { o.VariationGroupId, o.ExternalParentId } into p
+                                 select new
+                                 {
+                                     vid = p.Key.VariationGroupId,
+                                     pid = p.Key.ExternalParentId
+                                 }).ToList();
+
+                    foreach (var x in query)
+                    {
+                        results.Add(new KeyValuePair<string, string>(x.vid, x.pid));
                     }
                 }
             }

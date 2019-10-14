@@ -244,6 +244,31 @@ namespace OdinServices
         #region Public Methods
         
         /// <summary>
+        ///     Autofills the Ecommerce Parent Asin based on the items Variant Id and if it's set up to sell on 
+        ///     amazon / amazon seller central. If there is no duplicate existing in the DB then it autofills the
+        ///     corresponding Parent ASIN. If conflicting matches or no match empty string is returned.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>Parent ASIN for the product id variation or blank</returns>
+        public string AutoFillEcommerceParentAsin(ItemObject item)
+        {
+            string result = item.EcommerceParentAsin;
+            if(string.IsNullOrEmpty(result) 
+                && (item.SellOnAmazonSellerCentral == "Y" || item.SellOnAmazon == "Y")
+                && item.ItemCategory=="POSTER")
+            {
+                List<string> values = (from pv in GlobalData.ProductVariations
+                                       where pv.Key == item.ReturnVariantGroupId()
+                                       select pv.Value).ToList();
+                if(values.Count==1)
+                {
+                    return values[0];
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
         ///     Check for duplicate id's in list and check that id exists in database
         /// </summary>
         /// <param name="itemId">item Id being compared</param>
@@ -555,8 +580,9 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.WebsitePrice)) && (item.WebsitePrice.Trim() != returnItem.WebsitePrice.Trim())) { returnItem.WebsitePrice = item.WebsitePrice; }
             if ((!string.IsNullOrEmpty(item.Weight)) && (item.Weight.Trim() != returnItem.Weight.Trim())) { returnItem.Weight = item.Weight; }
             if ((!string.IsNullOrEmpty(item.Width)) && (item.Width.Trim() != returnItem.Width.Trim())) { returnItem.Width = item.Width; }
-            
-            if(string.IsNullOrEmpty(returnItem.WebsiteUrl))
+
+            returnItem.EcommerceParentAsin = AutoFillEcommerceParentAsin(returnItem);
+            if (string.IsNullOrEmpty(returnItem.WebsiteUrl))
             {
                 if(string.IsNullOrEmpty(item.EcommerceItemName))
                 {
@@ -980,6 +1006,7 @@ namespace OdinServices
                     Weight = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Weight, WorksheetColumnHeaders.ItemWeight), 1),
                     Width = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Width, WorksheetColumnHeaders.ItemWidth), 1)
                 };
+                item.EcommerceParentAsin = AutoFillEcommerceParentAsin(item);
                 if (!string.IsNullOrEmpty(item.ImagePath)){ item.EcommerceImagePath1 = CreateImageUrl(item, item.ImagePath, 1);}
                 if (!string.IsNullOrEmpty(item.AltImageFile1)) { item.EcommerceImagePath2 = CreateImageUrl(item, item.ImagePath, 2); }
                 if (!string.IsNullOrEmpty(item.AltImageFile2)) { item.EcommerceImagePath3 = CreateImageUrl(item, item.ImagePath, 3); }
@@ -5895,7 +5922,7 @@ namespace OdinServices
         }
 
         /// <summary>
-        ///     
+        ///     Validate the Template Id
         /// </summary>
         /// <param name="var">item object</param>
         /// <param name="isTemplate">Is this an item field</param>

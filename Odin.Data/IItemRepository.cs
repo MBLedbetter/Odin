@@ -453,12 +453,6 @@ namespace Odin.Data
         string RetrieveWebCategoryCodeByName(string value);
 
         /// <summary>
-        ///     Returns the category name associated with the given code
-        /// </summary>
-        /// <param name="value"></param>
-        string RetrieveCategoryNameByCode(string value);
-
-        /// <summary>
         ///     Retrieve a List of item ids that have been updated withing the given dates
         /// </summary>
         /// <param name="toDate"></param>

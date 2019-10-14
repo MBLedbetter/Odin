@@ -150,6 +150,7 @@
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\AdminRecordViewModel.cs" />
     <Compile Include="ViewModels\AlertViewModel.cs" />
+    <Compile Include="ViewModels\DataViewModel.cs" />
     <Compile Include="ViewModels\EcommercePullViewModel.cs" />
     <Compile Include="ViewModels\ExcelGeneratorViewModel.cs" />
     <Compile Include="ViewModels\FieldEditWindowViewModel.cs" />
@@ -184,6 +185,9 @@
     </Compile>
     <Compile Include="Views\AlertView.xaml.cs">
       <DependentUpon>AlertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataView.xaml.cs">
+      <DependentUpon>DataView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EcommercePullView.xaml.cs">
       <DependentUpon>EcommercePullView.xaml</DependentUpon>
@@ -264,6 +268,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AlertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DataView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

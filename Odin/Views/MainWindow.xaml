@@ -49,6 +49,9 @@
                     <MenuItem Header="Options"
                         Command="{Binding OptionsCommand}"
                         ToolTip="User Options."  />
+                    <MenuItem Header="Loaded Data"
+                        Command="{Binding ViewDataCommand}"
+                        ToolTip="View the preloaded data values." />
                     <MenuItem Header="Change DB Settings"
                         Command="{Binding DBSettingsCommand}"
                         ToolTip="Switch between development and production databases."  />

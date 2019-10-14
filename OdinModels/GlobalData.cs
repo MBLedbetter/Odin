@@ -126,22 +126,6 @@ namespace OdinModels
         private static Dictionary<string, string> _countriesOfOrigin = new Dictionary<string, string>();
 
         /// <summary>
-        ///     gets or sets the Dictionary of customers and their coresponding ids
-        /// </summary>
-        public static Dictionary<string, string> Customers
-        {
-            get
-            {
-                return _customers;
-            }
-            set
-            {
-                _customers = value;
-            }
-        }
-        private static Dictionary<string, string> _customers = new Dictionary<string, string>();
-
-        /// <summary>
         ///     Key value pair list of customer Names and their current customer id
         /// </summary>
         public static Dictionary<string, string> CustomerIdConversions
@@ -333,23 +317,7 @@ namespace OdinModels
             }
         }
         private static List<KeyValuePair<string, string>> _itemTypeExtensions = new List<KeyValuePair<string, string>>();
-
-        /// <summary>
-        ///     List of ItemTypeExtensions
-        /// </summary>
-        public static List<string> ItemTypeExtensionsList
-        {
-            get
-            {
-                return _itemTypeExtensionsList;
-            }
-            set
-            {
-                _itemTypeExtensionsList = value;
-            }
-        }
-        private static List<string> _itemTypeExtensionsList = new List<string>();
-
+        
         /// <summary>
         ///     Language dropdown values
         /// </summary>
@@ -526,7 +494,23 @@ namespace OdinModels
             }
         }
         private static List<KeyValuePair<string, string>> _productLines = new List<KeyValuePair<string, string>>();
-        
+
+        /// <summary>
+        ///     List of product variations
+        /// </summary>
+        public static List<KeyValuePair<string, string>> ProductVariations
+        {
+            get
+            {
+                return _productVariations;
+            }
+            set
+            {
+                _productVariations = value;
+            }
+        }
+        private static List<KeyValuePair<string, string>> _productVariations = new List<KeyValuePair<string, string>>();
+
         /// <summary>
         ///     List of property / license combinations
         /// </summary>
@@ -794,7 +778,6 @@ namespace OdinModels
             CopyrightGroups.Clear();
             CostProfileGroups.Clear();
             CountriesOfOrigin.Clear();
-            Customers.Clear();
             CustomerIdConversions.Clear();
             ExternalIdTypes.Clear();
             ItemCategories.Clear();
@@ -823,26 +806,6 @@ namespace OdinModels
             UserNames.Clear();
             UserRoles.Clear();
             WebCategoryList.Clear();
-        }
-        
-        /// <summary>
-        ///     Creates a list of all the item type extension prefixes ans suffixes
-        /// </summary>
-        public static void CreateItemTypeExtensionList()
-        {
-            List<string> newList = new List<string>();
-            foreach(KeyValuePair<string,string> x in ItemTypeExtensions)
-            {
-                if(!newList.Contains(x.Key)&& x.Key!= "")
-                {
-                    newList.Add(x.Key);
-                }
-                if (!newList.Contains(x.Value) && x.Value != "")
-                {
-                    newList.Add(x.Value);
-                }
-            }
-            ItemTypeExtensionsList = newList;
         }
 
         /// <summary>
