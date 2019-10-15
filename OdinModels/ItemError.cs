@@ -174,7 +174,7 @@ namespace OdinModels
         #endregion // Methods
 
         #region Constructor
-
+        /*
         /// <summary>
         ///     Creates an item error that keeps track of line number, message and the variable name
         /// </summary>
@@ -188,7 +188,7 @@ namespace OdinModels
             this.ErrorMessage = varName + " " + errorMessage;
             this.VarName = varName;
         }
-
+        */
         /// <summary>
         ///     Creates an Item Error Object
         /// </summary>
@@ -196,14 +196,14 @@ namespace OdinModels
         /// <param name="lineNumber">Line number of errored item</param>
         /// <param name="errorMessage">Error message</param>
         /// <param name="varName">Field causing error</param>
-        /// <param name="errorType">Type of error</param>
-        public ItemError(string itemId, int lineNumber, string errorMessage, string varName, string errorType = null)
+        /// <param name="isError">Type of error</param>
+        public ItemError(string itemId, int lineNumber, string errorMessage, string varName, bool isError)
         {
             this.ItemIdNumber = itemId;
             this.LineNumber = lineNumber;
             this.ErrorMessage = errorMessage;
             this.VarName = varName;
-            this.ErrorType = errorType ?? "";         
+            this.ErrorType = (isError) ? "Error" : "Warning";
         }
 
         #endregion // Constructor

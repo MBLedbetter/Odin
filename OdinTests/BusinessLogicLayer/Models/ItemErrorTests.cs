@@ -19,20 +19,20 @@ namespace OdinTests.BusinessLogicLayer.Models
 
             string errorMessage = "Invalid input";
             string fieldName = "ItemId";
-            ItemError itemError = new ItemError("RP123", 1, errorMessage, fieldName);
+            ItemError itemError = new ItemError("RP123", 1, errorMessage, fieldName, true);
 
             #endregion // Set Up
 
             #region Act
 
             int returnedRow = itemError.LineNumber;
-            string returnedMessage = itemError.ErrorMessage;
+            string returnedMessage = itemError.ReturnErrorMessage();
 
             #endregion // Act
 
             #region Assert
 
-            Assert.AreEqual(returnedMessage, "ItemId Invalid input");
+            Assert.AreEqual("ItemId Invalid input", returnedMessage);
             Assert.AreEqual(returnedRow, 1);
             Assert.AreEqual(fieldName, "ItemId");
 

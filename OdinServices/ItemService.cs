@@ -2108,7 +2108,7 @@ namespace OdinServices
             {
                 if (var.SellOnTrends != "Y" && var.SellOnTrs != "Y")
                 {
-                    ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, " or Sell on Shop Trends must be set to Y before item can be submitted to the web.", "Sell On Trends"));
+                    ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, " or Sell on Shop Trends must be set to Y before item can be submitted to the web.", "Sell On Trends", true));
                     return ErrorList;
                 }
             }
@@ -2404,7 +2404,7 @@ namespace OdinServices
             if (validationError != null) { ErrorList.Add(validationError); }
             // Ps Status //
             validationError =ValidatePsStatus(var);
-            if (validationError != null) { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, "Error", "PS Status")); }
+            if (validationError != null) { ErrorList.Add(new ItemError(var.ItemId, var.ItemRow, "Error", "PS Status", var.PsStatusUpdate)); }
             // Sat Code //
             validationError =ValidateSatCode(var);
             if (validationError != null) { ErrorList.Add(validationError); }
@@ -2670,7 +2670,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_Required,
-                        "Accounting Group");
+                        "Accounting Group",
+                        var.AccountingGroupUpdate);
                 }
                 if (var.AccountingGroup.Length > 10)
                 {
@@ -2678,7 +2679,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "10 characters.",
-                        "Accounting Group");
+                        "Accounting Group",
+                        var.AccountingGroupUpdate);
                 }
                 if (!GlobalData.AccountingGroups.Contains(var.AccountingGroup))
                 {
@@ -2686,7 +2688,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NoMatch,
-                        "Accounting Group");                 
+                        "Accounting Group",
+                        var.AccountingGroupUpdate);                 
                 }
             }
             return null;
@@ -2717,7 +2720,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Field must be left empty if Product Id Translation has a value.",
-                        "Bill of Materials");
+                        "Bill of Materials",
+                        var.BillOfMaterialsUpdate);
                 }
             }
             if(GlobalData.BillofMaterials.Where(p => p.ParentId == var.ItemId).Count()>0)
@@ -2734,7 +2738,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Field cannot be updated through Odin. The Bill of materials field does not match the values currently saved for this item. Once established Bill of Materials can only be updated through peoplesoft.",
-                            "Bill of Materials");
+                            "Bill of Materials",
+                        var.BillOfMaterialsUpdate);
                     }
                 }
                 if (!string.IsNullOrEmpty(billOfMaterial.ItemId))
@@ -2745,7 +2750,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Field contains an id that does not exist: " + billOfMaterial.ItemId + ". These items must exist in the database before they can be used as a bill of material.",
-                            "Bill of Materials");
+                            "Bill of Materials",
+                        var.BillOfMaterialsUpdate);
                     }
                 }
                 if (BomIdList.Contains(billOfMaterial.ItemId.Trim()))
@@ -2754,7 +2760,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Field can not contain multiple occurances of the same item. ["+ billOfMaterial.ItemId.Trim() + "]. Please remove duplicates.",
-                        "Bill of Materials");
+                        "Bill of Materials",
+                        var.BillOfMaterialsUpdate);
                 }
                 else
                 {
@@ -2776,6 +2783,7 @@ namespace OdinServices
             string value2 = string.Empty;
             string value3 = string.Empty;
             string value4 = string.Empty;
+            bool update = false;
             switch (type)
             {
                 case "Height":
@@ -2783,24 +2791,28 @@ namespace OdinServices
                     value2 = var.CasepackLength;
                     value3 = var.CasepackWeight;
                     value4 = var.CasepackWidth;
+                    update = var.CasepackHeightUpdate;
                     break;
                 case "Length":
                     value1 = var.CasepackLength;
                     value2 = var.CasepackHeight;
                     value3 = var.CasepackWeight;
                     value4 = var.CasepackWidth;
+                    update = var.CasepackLengthUpdate;
                     break;
                 case "Weight":
                     value1 = var.CasepackWeight;
                     value2 = var.CasepackLength;
                     value3 = var.CasepackHeight;
                     value4 = var.CasepackWidth;
+                    update = var.CasepackWeightUpdate;
                     break;
                 case "Width":
                     value1 = var.CasepackWidth;
                     value2 = var.CasepackLength;
                     value3 = var.CasepackWeight;
                     value4 = var.CasepackHeight;
+                    update = var.CasepackWidthUpdate;
                     break;
                 default:
                     throw new ArgumentNullException("Validate Casepack unknown type " + type);
@@ -2820,7 +2832,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Value cannot be left empty if the other casepack dimensional fields have values(height, weight, width, length).",
-                            "Casepack " + type);
+                            "Casepack " + type,
+                            update);
                     }
                 }
             }
@@ -2832,7 +2845,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "7 characters.",
-                        "Casepack " + type);
+                        "Casepack " + type,
+                        update);
                 }
                 if (!DbUtil.IsNumber(value1))
                 {
@@ -2840,7 +2854,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "must be a numeric value.",
-                        "Casepack " + type);
+                        "Casepack " + type,
+                        update);
                 }
             }
             return null;
@@ -2863,7 +2878,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     "Value cannot be a decimal.",
-                    "Casepack Quantity");
+                    "Casepack Quantity",
+                    var.CasepackQtyUpdate);
             }
             if (var.CasepackQty.Length > 7)
             {
@@ -2871,7 +2887,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_LengthMax + "7 characters.",
-                    "Casepack Quantity");
+                    "Casepack Quantity",
+                    var.CasepackQtyUpdate);
             }
             if (!DbUtil.IsNumber(var.CasepackQty))
             {
@@ -2879,7 +2896,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_NonNumeric,
-                    "Casepack Quantity");
+                    "Casepack Quantity",
+                    var.CasepackQtyUpdate);
             }
             return null;
         }
@@ -2895,20 +2913,24 @@ namespace OdinServices
             string value = string.Empty;
             bool webRequired = false;
             string fieldName = string.Empty;
+            bool update = false;
             switch (categoryNumber)
             {
                 case "1":
                     value = var.Category;
                     webRequired = true;
                     fieldName = "Category";
+                    update = var.CategoryUpdate;
                     break;
                 case "2":
                     value = var.Category2;
                     fieldName = "Category 2";
+                    update = var.Category2Update;
                     break;
                 case "3":
                     value = var.Category3;
                     fieldName = "Category 3";
+                    update = var.Category3Update;
                     break;
                 default:
                     throw new ArgumentNullException("ValidateCategory unknown categoryNumber: " + categoryNumber);
@@ -2921,7 +2943,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NoMatch,
-                        fieldName);
+                        fieldName,
+                        update);
                 }
             }
 
@@ -2933,7 +2956,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredWeb,
-                        fieldName);
+                        fieldName,
+                        update);
                 }
             }
             return null;
@@ -2952,7 +2976,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_LengthMax + "10 characters.",
-                    "Color");
+                    "Color",
+                    var.ColorUpdate);
             }
             if (!DbUtil.ContainsOnlyAZ09(var.Color))
             {
@@ -2960,7 +2985,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     "Value conatins invalid charachters. (Color can only use charachters A-Z and 0-9)",
-                    "Color");
+                    "Color",
+                    var.ColorUpdate);
             }
             return null;
         }
@@ -2981,7 +3007,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "1000 characters.",
-                        "Copyright");
+                        "Copyright",
+                        var.CopyrightUpdate);
                 }
             }
             return null;
@@ -3011,7 +3038,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             OdinServices.Properties.Resources.Error_Required,
-                            "Country Of Origin");
+                            "Country Of Origin",
+                            var.CountryOfOriginUpdate);
                     }
                 }
                 if (var.CountryOfOrigin.Length > 3)
@@ -3020,7 +3048,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "3 characters.",
-                        "Country Of Origin");
+                        "Country Of Origin",
+                        var.CountryOfOriginUpdate);
 
                 }
                 if (!DbUtil.ContainsOnlyAZ(var.CountryOfOrigin))
@@ -3029,7 +3058,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value conatins invalid charachters. (Country of Origin can only use charachters A-Z)",
-                        "Country Of Origin");
+                        "Country Of Origin",
+                        var.CountryOfOriginUpdate);
                 }
                 if (!GlobalData.ReturnCountryofOriginCodes().Contains(var.CountryOfOrigin))
                 {
@@ -3037,7 +3067,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NoMatch,
-                        "Country Of Origin");
+                        "Country Of Origin",
+                        var.CountryOfOriginUpdate);
                 }
             }
             return null;
@@ -3060,7 +3091,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_Required,
-                        "Cost Profile Group");
+                        "Cost Profile Group",
+                        var.CostProfileGroupUpdate);
                 }
                 if (!GlobalData.CostProfileGroups.Contains(var.CostProfileGroup))
                 {
@@ -3068,7 +3100,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NoMatch,
-                        "Cost Profile Group");
+                        "Cost Profile Group",
+                        var.CostProfileGroupUpdate);
                 }
                 if (!template)
                 {
@@ -3082,7 +3115,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Value does not align with the MFG Sorce value.",
-                            "Cost Profile Group");
+                            "Cost Profile Group",
+                        var.CostProfileGroupUpdate);
                     }
                 }
             }
@@ -3098,16 +3132,20 @@ namespace OdinServices
         public ItemError ValidateDefaultActualCost(ItemObject var, string currency)
         {
             string value = string.Empty;
+            bool update = false;
             switch (currency)
             {
                 case "USD":
                     value = var.ListPriceUsd;
+                    update = var.ListPriceUsdUpdate;
                     break;
                 case "CAD":
                     value = var.ListPriceCad;
+                    update = var.ListPriceCadUpdate;
                     break;
                 case "MXN":
                     value = var.ListPriceMxn;
+                    update = var.ListPriceMxnUpdate;
                     break;
                 default:
                     throw new ArgumentNullException("ValidateDefaultActualCost unknown currency " + currency);
@@ -3123,7 +3161,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_Required,
-                        "Default Actual Cost " + currency);
+                        "Default Actual Cost " + currency,
+                        update);
                 }
                 if (value.Length > 9)
                 {
@@ -3131,7 +3170,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "9 characters.",
-                        "Default Actual Cost " + currency);
+                        "Default Actual Cost " + currency,
+                        update);
                 }
                 if (!DbUtil.IsNumber(value))
                 {
@@ -3139,7 +3179,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NonNumeric,
-                        "Default Actual Cost " + currency);
+                        "Default Actual Cost " + currency,
+                        update);
                 }
             }
             return null;
@@ -3164,7 +3205,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_Required,
-                        "Description");
+                        "Description",
+                        var.DescriptionUpdate);
                 }
                 if (value.Contains((char)13))
                 {
@@ -3172,7 +3214,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value cannot contain carriage returns.",
-                        "Description");
+                        "Description",
+                        var.DescriptionUpdate);
                 }
                 if (value.Length > 60)
                 {
@@ -3180,7 +3223,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "60 characters.",
-                        "Description");
+                        "Description",
+                        var.DescriptionUpdate);
                 }
                 if (CheckSpecialChar(value))
                 {
@@ -3188,7 +3232,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_SpecialChars,
-                        "Description");
+                        "Description",
+                        var.DescriptionUpdate);
                 }
             }
             return null;
@@ -3211,7 +3256,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_YorN,
-                    "Direct Import");
+                    "Direct Import",
+                    var.DirectImportUpdate);
             }
         }
 
@@ -3230,7 +3276,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "9 characters.",
-                        "Dtc Price");
+                        "Dtc Price",
+                        var.DtcPriceUpdate);
                 }
                 if (!DbUtil.IsNumber(var.DtcPrice))
                 {
@@ -3238,7 +3285,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NonNumeric,
-                        "Dtc Price");
+                        "Dtc Price",
+                        var.DtcPriceUpdate);
                 }
                 else
                 {
@@ -3250,7 +3298,8 @@ namespace OdinServices
                                 var.ItemId,
                                 var.ItemRow,
                                 "Value must be more that 0.00",
-                                "Dtc Price");
+                                "Dtc Price",
+                        var.DtcPriceUpdate);
                         }
                     }
                 }
@@ -3263,7 +3312,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Required if Sell on Shop Trends is set to 'Y'.",
-                        "Dtc Price");                    
+                        "Dtc Price",
+                        var.DtcPriceUpdate);                    
                 }
                 if (var.ProductLine == "Poster Frame" && var.ItemId.Substring(0, 3) == "POD")
                 {
@@ -3271,7 +3321,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Required if product line = Poster Frame and item Id starts with 'POD'.",
-                        "Dtc Price");
+                        "Dtc Price",
+                        var.DtcPriceUpdate);
                 }
             }
             return null;
@@ -3291,7 +3342,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_LengthMax + "30 characters.",
-                    "Duty");
+                    "Duty",
+                    var.DutyUpdate);
             }
             return null;
         }
@@ -3301,8 +3353,12 @@ namespace OdinServices
         /// </summary>
         /// <param name="var">Item Object</param>
         /// <returns></returns>
-        public ItemError ValidateEan(ItemObject var) 
+        public ItemError ValidateEan(ItemObject var, string name = "EAN", bool updateOverride = false) 
         {            
+            if(name == "EAN")
+            {
+                updateOverride = var.EanUpdate;
+            }
             if (string.IsNullOrEmpty(var.Ean))
             {
                 if (var.ListPriceUsd == "" || !DbUtil.CheckGreaterThanZero(var.ListPriceUsd))
@@ -3324,7 +3380,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Value is required when a UPC is not provided.",
-                            "EAN");
+                            name,
+                            updateOverride);
                     }
                 }
             }
@@ -3336,7 +3393,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_SpecialChars,
-                        "EAN");
+                        name,
+                        updateOverride);
                 }
                 if (var.Ean.Length > 30)
                 {
@@ -3344,7 +3402,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "30 characters.",
-                        "EAN");
+                        name,
+                        updateOverride);
                 }
                 if (var.Ean.Contains("-"))
                 {
@@ -3352,7 +3411,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value cannot contain dashes (-).",
-                        "EAN");
+                        name,
+                        updateOverride);
                 }
             }
             return null;
@@ -3375,7 +3435,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_LengthMax + "10 characters.",
-                    "Ecommerce Asin");
+                    "Ecommerce Asin",
+                    var.EcommerceAsinUpdate);
             }
             if(GlobalData.Asins.ContainsKey(var.EcommerceAsin))
             {
@@ -3387,7 +3448,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Multiple items contain this ASIN: " + GlobalData.Asins[var.EcommerceAsin] + ". Please fix duplicates before saving.",
-                            "Ecommerce Asin");
+                            "Ecommerce Asin",
+                    var.EcommerceAsinUpdate);
                     }
                     else
                     {
@@ -3395,7 +3457,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Another item already contains this ASIN: "+ GlobalData.Asins[var.EcommerceAsin],
-                            "Ecommerce Asin");
+                            "Ecommerce Asin",
+                    var.EcommerceAsinUpdate);
                     }
                 }
             }
@@ -3411,25 +3474,31 @@ namespace OdinServices
         {
             string value = string.Empty;
             bool ecomRequired = false;
+            bool update = false;
             switch (bulletNumber)
             {
                 case "1":
                     value = var.EcommerceBullet1;
+                    update = var.EcommerceBullet1Update;
                     ecomRequired = true;
                     break;
                 case "2":
                     value = var.EcommerceBullet2;
+                    update = var.EcommerceBullet2Update;
                     ecomRequired = true;
                     break;
                 case "3":
                     value = var.EcommerceBullet3;
+                    update = var.EcommerceBullet3Update;
                     ecomRequired = true;
                     break;
                 case "4":
                     value = var.EcommerceBullet4;
+                    update = var.EcommerceBullet4Update;
                     break;
                 case "5":
                     value = var.EcommerceBullet5;
+                    update = var.EcommerceBullet5Update;
                     break;
                 default:
                     throw new ArgumentNullException("ValidateEcommerceBullet unknown bulletNumber: " + bulletNumber);
@@ -3442,7 +3511,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "254 characters.",
-                        "Ecommerce Bullet " + bulletNumber);
+                        "Ecommerce Bullet " + bulletNumber,
+                        update);
                 }
                 if (!DbUtil.CheckMinimum(value, 10))
                 {
@@ -3450,7 +3520,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMin + "10 characters.",
-                        "Ecommerce Bullet " + bulletNumber);
+                        "Ecommerce Bullet " + bulletNumber,
+                        update);
                 }
             }
             if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
@@ -3461,7 +3532,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredAmazon,
-                        "Ecommerce Bullet " + bulletNumber);
+                        "Ecommerce Bullet " + bulletNumber,
+                        update);
                 }
             }
             return null;
@@ -3482,7 +3554,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "100 characters.",
-                        "Ecommerce Components");
+                        "Ecommerce Components",
+                        var.EcommerceComponentsUpdate);
                 }
             }
             if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
@@ -3493,7 +3566,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredAmazon,
-                        "Ecommerce Components");
+                        "Ecommerce Components",
+                        var.EcommerceComponentsUpdate);
                 }
             }
             return null;
@@ -3514,7 +3588,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "9 characters.",
-                        "Ecommerce Cost");
+                        "Ecommerce Cost",
+                        var.EcommerceCostUpdate);
                 }
                 if (!DbUtil.IsNumber(var.EcommerceCost))
                 {
@@ -3522,7 +3597,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NonNumeric,
-                        "Ecommerce Cost");
+                        "Ecommerce Cost",
+                        var.EcommerceCostUpdate);
                 }
             }
             if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
@@ -3533,7 +3609,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredAmazon,
-                        "Ecommerce Cost");
+                        "Ecommerce Cost",
+                        var.EcommerceCostUpdate);
                 }
             }
             return null;
@@ -3554,7 +3631,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "20 characters.",
-                        "Ecommerce External Id");
+                        "Ecommerce External Id",
+                        var.EcommerceExternalIdUpdate);
                 }
                 if (GlobalData.ExternalIdTypes.Contains(var.EcommerceExternalIdType))
                 {
@@ -3567,7 +3645,8 @@ namespace OdinServices
                                     var.ItemId,
                                     var.ItemRow,
                                     OdinServices.Properties.Resources.Error_SpecialChars,
-                                    "Ecommerce External Id");
+                                    "Ecommerce External Id",
+                        var.EcommerceExternalIdUpdate);
                             }
                             if (!DbUtil.IsNumber(var.EcommerceExternalId))
                             {
@@ -3575,7 +3654,8 @@ namespace OdinServices
                                     var.ItemId,
                                     var.ItemRow,
                                     OdinServices.Properties.Resources.Error_NonNumeric,
-                                    "Ecommerce External Id");
+                                    "Ecommerce External Id",
+                        var.EcommerceExternalIdUpdate);
                             }
                             if ((var.EcommerceExternalId.Length != 8) && (var.EcommerceExternalId.Length != 12))
                             {
@@ -3583,7 +3663,8 @@ namespace OdinServices
                                     var.ItemId,
                                     var.ItemRow,
                                     "Value has invalid length. UPC values can only have a length of 8 or 12 characters.",
-                                    "Ecommerce External Id");
+                                    "Ecommerce External Id",
+                        var.EcommerceExternalIdUpdate);
                             }
                             return null;
                         case "UPC (12-digits)":
@@ -3593,7 +3674,8 @@ namespace OdinServices
                                     var.ItemId,
                                     var.ItemRow,
                                     OdinServices.Properties.Resources.Error_SpecialChars,
-                                    "Ecommerce External Id");
+                                    "Ecommerce External Id",
+                        var.EcommerceExternalIdUpdate);
                             }
                             if (!DbUtil.IsNumber(var.EcommerceExternalId))
                             {
@@ -3601,7 +3683,8 @@ namespace OdinServices
                                     var.ItemId,
                                     var.ItemRow,
                                     OdinServices.Properties.Resources.Error_NonNumeric,
-                                    "Ecommerce External Id");
+                                    "Ecommerce External Id",
+                        var.EcommerceExternalIdUpdate);
                             }
                             if ((var.EcommerceExternalId.Length != 8) && (var.EcommerceExternalId.Length != 12))
                             {
@@ -3609,13 +3692,14 @@ namespace OdinServices
                                     var.ItemId,
                                     var.ItemRow,
                                     "Value has invalid length. UPC values can only have a length of 8 or 12 characters.",
-                                    "Ecommerce External Id");
+                                    "Ecommerce External Id",
+                        var.EcommerceExternalIdUpdate);
                             }
                             return null;
                         case "ISBN":
-                            return ValidateIsbn(var);
+                            return ValidateIsbn(var, "External Id", var.EcommerceExternalIdUpdate);
                         case "EAN":
-                            return ValidateEan(var);
+                            return ValidateEan(var, "External Id", var.EcommerceExternalIdUpdate);
                     }
                 }
                 else
@@ -3624,7 +3708,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Invalid coresponding ExternalIdType. Odin does not recognize " + var.EcommerceExternalIdType + " as an valid External Id Type.",
-                        "Ecommerce External Id");
+                        "Ecommerce External Id",
+                        var.EcommerceExternalIdUpdate);
                 }
             }
             if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
@@ -3635,7 +3720,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredAmazon,
-                        "Ecommerce External Id");
+                        "Ecommerce External Id",
+                        var.EcommerceExternalIdUpdate);
                 }
             }
             return null;
@@ -3656,7 +3742,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value has an invalid value. (Accepted Values are 'UPC (12-digits)', 'ISBN', 'EAN' or 'GTIN'.",
-                        "Ecommerce External Id Type");
+                        "Ecommerce External Id Type",
+                        var.EcommerceExternalIdTypeUpdate);
                 }
                 return null;
             }
@@ -3668,7 +3755,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredAmazon,
-                        "Ecommerce External Id Type");
+                        "Ecommerce External Id Type",
+                        var.EcommerceExternalIdTypeUpdate);
                 }
             }
             return null;
@@ -3682,19 +3770,24 @@ namespace OdinServices
         public ItemError ValidateEcommerceItemDimension(ItemObject var, string type)
         {
             string value = string.Empty;
+            bool update = false;
             switch(type)
             {
                 case "Height":
                     value = var.EcommerceItemHeight;
+                    update = var.EcommerceItemHeightUpdate;
                     break;
                 case "Length":
                     value = var.EcommerceItemLength;
+                    update = var.EcommerceItemLengthUpdate;
                     break;
                 case "Weight":
                     value = var.EcommerceItemWeight;
+                    update = var.EcommerceItemWeightUpdate;
                     break;
                 case "Width":
                     value = var.EcommerceItemWidth;
+                    update = var.EcommerceItemWidthUpdate;
                     break;
                 default:
                     throw new ArgumentNullException("ValidateEcommerceItemDimension unknown type " + type);
@@ -3707,7 +3800,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "9 characters.",
-                        "Ecommerce " + type);
+                        "Ecommerce " + type,
+                        update);
                 }
                 if (!DbUtil.IsNumber(value))
                 {
@@ -3715,7 +3809,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NonNumeric,
-                        "Ecommerce " + type);
+                        "Ecommerce " + type,
+                        update);
                 }
             }
             if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
@@ -3726,7 +3821,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredAmazon,
-                        "Ecommerce " + type);
+                        "Ecommerce " + type,
+                        update);
                 }
             }
             return null;
@@ -3746,7 +3842,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "500 characters.",
-                        "Ecommerce Item Type Keywords");
+                        "Ecommerce Item Type Keywords",
+                        var.EcommerceItemTypeKeywordsUpdate);
                 }
             }
             return null;
@@ -3767,7 +3864,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "200 characters.",
-                        "Ecommerce Item Name");
+                        "Ecommerce Item Name",
+                        var.EcommerceItemTypeKeywordsUpdate);
                 }
             }
             if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
@@ -3778,7 +3876,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredAmazon,
-                        "Ecommerce Item Name");
+                        "Ecommerce Item Name",
+                        var.EcommerceItemTypeKeywordsUpdate);
                 }
             }
             return null;
@@ -3799,7 +3898,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "100  characters.",
-                        "Ecommerce Manufacturer Name");
+                        "Ecommerce Manufacturer Name",
+                        var.EcommerceManufacturerNameUpdate);
                 }
             }
             if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
@@ -3810,7 +3910,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredAmazon,
-                        "Ecommerce Manufacturer Name");
+                        "Ecommerce Manufacturer Name",
+                        var.EcommerceManufacturerNameUpdate);
                 }
             }
             return null;
@@ -3831,7 +3932,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "50 characters.",
-                        "Ecommerce Model Name");
+                        "Ecommerce Model Name",
+                        var.EcommerceModelNameUpdate);
                 }
                 return null;
             }
@@ -3843,7 +3945,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredAmazon,
-                        "Ecommerce Model Name");
+                        "Ecommerce Model Name",
+                        var.EcommerceModelNameUpdate);
                 }
             }
             return null;
@@ -3864,7 +3967,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "9 characters.",
-                        "Ecommerce Msrp");
+                        "Ecommerce Msrp",
+                        var.EcommerceMsrpUpdate);
                 }
                 if (!DbUtil.IsNumber(var.EcommerceMsrp))
                 {
@@ -3872,7 +3976,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NonNumeric,
-                        "Ecommerce Msrp");
+                        "Ecommerce Msrp",
+                        var.EcommerceMsrpUpdate);
                 }
             }
             if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
@@ -3883,7 +3988,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredAmazon,
-                        "Ecommerce Msrp");
+                        "Ecommerce Msrp",
+                        var.EcommerceMsrpUpdate);
                 }
                 if (!DbUtil.CheckGreaterThanZero(var.EcommerceMsrp))
                 {
@@ -3891,7 +3997,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value must contain a non-zero value.",
-                        "Ecommerce Msrp");
+                        "Ecommerce Msrp",
+                        var.EcommerceMsrpUpdate);
                 }
             }
             return null;
@@ -3905,19 +4012,24 @@ namespace OdinServices
         public ItemError ValidateEcommercePackageDimension(ItemObject var, string type)
         {
             string value = string.Empty;
+            bool update = false;
             switch (type)
             {
                 case "Height":
                     value = var.EcommercePackageHeight;
+                    update = var.EcommercePackageHeightUpdate;
                     break;
                 case "Length":
                     value = var.EcommercePackageLength;
+                    update = var.EcommercePackageLengthUpdate;
                     break;
                 case "Weight":
                     value = var.EcommercePackageWeight;
+                    update = var.EcommercePackageWeightUpdate;
                     break;
                 case "Width":
                     value = var.EcommercePackageWidth;
+                    update = var.EcommercePackageWidthUpdate;
                     break;
                 default:
                     throw new ArgumentNullException("ValidateEcommercePackageDimension unknown type " + type);
@@ -3930,7 +4042,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "9 characters.",
-                        "Ecommerce Package " + type);
+                        "Ecommerce Package " + type,
+                        update);
                 }
                 if (!DbUtil.IsNumber(value))
                 {
@@ -3938,7 +4051,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NonNumeric,
-                        "Ecommerce Package " + type);
+                        "Ecommerce Package " + type,
+                        update);
                 }
             }
             if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
@@ -3949,7 +4063,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredAmazon,
-                        "Ecommerce Package " + type);
+                        "Ecommerce Package " + type,
+                        update);
                 }
             }
             return null;
@@ -3962,6 +4077,7 @@ namespace OdinServices
         /// <returns></returns>
         public ItemError ValidateEcommercePageQty(ItemObject var)
         {
+            string errorMessage = "";
             if (!string.IsNullOrEmpty(var.EcommercePageQty))
             {
                 if (var.EcommercePageQty.Length > 4)
@@ -3970,7 +4086,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                          OdinServices.Properties.Resources.Error_LengthMax + "4 characters.",
-                        "Ecommerce Page Qty");
+                        "Ecommerce Page Qty",
+                        var.EcommercePageQtyUpdate);
                 }
                 if (var.EcommercePageQty.Contains("."))
                 {
@@ -3978,7 +4095,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value can not be a decimal",
-                        "Ecommerce Page Qty");
+                        "Ecommerce Page Qty",
+                        var.EcommercePageQtyUpdate);
                 }
                 if (!DbUtil.IsNumber(var.EcommercePageQty))
                 {
@@ -3986,7 +4104,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NonNumeric,
-                        "Ecommerce Page Qty");
+                        "Ecommerce Page Qty",
+                        var.EcommercePageQtyUpdate);
                 }
             }
             return null;
@@ -4009,7 +4128,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_LengthMax + "10 characters.",
-                    "Ecommerce Parent Asin");
+                    "Ecommerce Parent Asin",
+                    var.EcommerceParentAsinUpdate);
             }
             return null;
         }
@@ -4029,7 +4149,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "50 characters.",
-                        "Ecommerce Product Category");
+                        "Ecommerce Product Category",
+                        var.EcommerceProductCategoryUpdate);
                 }
                 return null;
             }
@@ -4041,7 +4162,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredAmazon,
-                        "Ecommerce Product Category");
+                        "Ecommerce Product Category",
+                        var.EcommerceProductCategoryUpdate);
                 }
             }
             return null;
@@ -4062,7 +4184,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                          OdinServices.Properties.Resources.Error_LengthMin + "100 characters.",
-                        "Ecommerce Product Description");
+                        "Ecommerce Product Description",
+                        var.EcommerceProductDescriptionUpdate);
                 }
                 
                 if (var.EcommerceProductDescription.Length > 8000)
@@ -4071,7 +4194,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "8000 characters.",
-                        "Ecommerce Product Description");
+                        "Ecommerce Product Description",
+                        var.EcommerceProductDescriptionUpdate);
                 }
             }
             if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
@@ -4082,7 +4206,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredAmazon,
-                        "Ecommerce Product Description");
+                        "Ecommerce Product Description",
+                        var.EcommerceProductDescriptionUpdate);
                 }
             }
             return null;
@@ -4103,7 +4228,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "50 characters.",
-                        "Ecommerce Product Subcategory");
+                        "Ecommerce Product Subcategory",
+                        var.EcommerceProductSubcategoryUpdate);
                 }
             }
             if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
@@ -4114,7 +4240,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredAmazon,
-                        "Ecommerce Product Subcategory");
+                        "Ecommerce Product Subcategory",
+                        var.EcommerceProductSubcategoryUpdate);
                 }
             }
             return null;
@@ -4129,13 +4256,16 @@ namespace OdinServices
         {
             string value = string.Empty;
             bool ecommerceRequired = false;
+            bool update = false;
             switch (type)
             {
                 case "Generic":
                     value = var.EcommerceGenericKeywords;
+                    update = var.EcommerceGenericKeywordsUpdate;
                     break;
                 case "Subject":
                     value = var.EcommerceSubjectKeywords;
+                    update = var.EcommerceSubjectKeywordsUpdate;
                     ecommerceRequired = true;
                     break;
                 default:
@@ -4149,7 +4279,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "385 characters.",
-                        "Ecommerce " + type + " Keywords");
+                        "Ecommerce " + type + " Keywords",
+                        update);
                 }
             }
             if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
@@ -4160,7 +4291,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredAmazon,
-                        "Ecommerce " + type + " Keywords");
+                        "Ecommerce " + type + " Keywords",
+                        update);
                 }
             }
             return null;
@@ -4181,7 +4313,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "254 characters.",
-                        "Ecommerce Size");
+                        "Ecommerce Size",
+                        var.EcommerceSizeUpdate);
                 }
             }
             if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
@@ -4192,7 +4325,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredAmazon,
-                        "Ecommerce Size");
+                        "Ecommerce Size",
+                        var.EcommerceSizeUpdate);
                 }
             }
             return null;
@@ -4213,7 +4347,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value has an invalid length. Ecommerce UPC can only have a length of 12 characters.",
-                        "Ecommerce UPC");
+                        "Ecommerce UPC",
+                        var.EcommerceUpcUpdate);
                 }
                 if (CheckSpecialChar(var.EcommerceUpc))
                 {
@@ -4221,7 +4356,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_SpecialChars,
-                        "Ecommerce UPC");
+                        "Ecommerce UPC",
+                        var.EcommerceUpcUpdate);
                 }
                 if (!DbUtil.IsNumber(var.EcommerceUpc))
                 {
@@ -4229,7 +4365,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NonNumeric,
-                        "Ecommerce UPC");
+                        "Ecommerce UPC",
+                        var.EcommerceUpcUpdate);
                 }
                 if (var.EcommerceUpc == var.Upc)
                 {
@@ -4237,7 +4374,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Item's Upc and Ecommerce Upc cannot share the same value.",
-                        "Ecommerce UPC");
+                        "Ecommerce UPC",
+                        var.EcommerceUpcUpdate);
                 }
                 List<string> matchId = CheckDuplicateUPCs(var.ItemId, var.EcommerceUpc, var.Status);
                 if (matchId.Count > 0)
@@ -4251,7 +4389,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value contains a duplicate ID. The following items already contain this upc or ecommerce upc: " + ids,
-                        "Ecommerce UPC");
+                        "Ecommerce UPC",
+                        var.EcommerceUpcUpdate);
                 }
             }
             return null;
@@ -4267,16 +4406,20 @@ namespace OdinServices
         {
             
             string value = string.Empty;
+            bool update = false;
             switch (type)
             {
                 case 1:
                     value = var.Genre1;
+                    update = var.Genre1Update;
                     break;
                 case 2:
                     value = var.Genre2;
+                    update = var.Genre2Update;
                     break;
                 case 3:
                     value = var.Genre3;
+                    update = var.Genre3Update;
                     break;
                 default:
                     throw new ArgumentNullException("ValidateGenre unknown type " + type.ToString());
@@ -4290,7 +4433,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NoMatch,
-                        "Genre "+type.ToString());
+                        "Genre "+type.ToString(),
+                        update);
                 }
             }
             else
@@ -4301,7 +4445,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value is required for products being sold on ShopTrends.",
-                        "Genre " + type.ToString());
+                        "Genre " + type.ToString(),
+                        update);
                 }
             }            
             return null;            
@@ -4330,7 +4475,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             OdinServices.Properties.Resources.Error_Required,
-                            "GPC");
+                            "GPC",
+                            var.GpcUpdate);
                     }
                 }
                 if (var.Gpc.Length > 10)
@@ -4339,7 +4485,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "10 characters.",
-                        "GPC");
+                        "GPC",
+                        var.GpcUpdate);
                 }
             }
             return null;
@@ -4380,19 +4527,24 @@ namespace OdinServices
         public ItemError ValidateItemDimension(ItemObject var, string type)
         {
             string value = string.Empty;
+            bool update = false;
             switch (type)
             {
                 case "Height":
                     value = var.Height;
+                    update = var.HeightUpdate;
                     break;
                 case "Length":
                     value = var.Length;
+                    update = var.LengthUpdate;
                     break;
                 case "Weight":
                     value = var.Weight;
+                    update = var.WeightUpdate;
                     break;
                 case "Width":
                     value = var.Width;
+                    update = var.WidthUpdate;
                     break;
                 default:
                     throw new ArgumentNullException("ValidateItemDimension unknown type " + type);
@@ -4408,7 +4560,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_Required,
-                        type);
+                        type,
+                        update);
                 }
                 if (value.Length > 8)
                 {
@@ -4416,7 +4569,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "8 characters.",
-                        type);
+                        type,
+                        update);
                 }
                 if (!DbUtil.IsNumber(value))
                 {
@@ -4424,7 +4578,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NonNumeric,
-                        type);
+                        type,
+                        update);
                 }
                 if (Convert.ToDouble(value) < 0.00001)
                 {
@@ -4432,7 +4587,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_0,
-                        type);
+                        type,
+                        update);
                 }
             }
             return null;
@@ -4447,23 +4603,29 @@ namespace OdinServices
         {
             string value = string.Empty;
             bool required = false;
+            bool update = false;
             switch (imageNumber)
             {
                 case "1":
                     value = var.ImagePath.Trim();
+                    update = var.ImagePathUpdate;
                     required = true;
                     break;
                 case "2":
                     value = var.AltImageFile1.Trim();
+                    update = var.AltImageFile1Update;
                     break;
                 case "3":
                     value = var.AltImageFile2.Trim();
+                    update = var.AltImageFile2Update;
                     break;
                 case "4":
                     value = var.AltImageFile3.Trim();
+                    update = var.AltImageFile3Update;
                     break;
                 case "5":
                     value = var.AltImageFile4.Trim();
+                    update = var.AltImageFile4Update;
                     break;
                 default:
                     throw new ArgumentNullException("ValidateImagePath unknown imageNumber " + imageNumber);
@@ -4483,7 +4645,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Value cannot contain apostrophes.",
-                            "Image Path " + imageNumber);
+                            "Image Path " + imageNumber,
+                            update);
                     }
                     if (CheckSpecialChar(value))
                     {
@@ -4491,7 +4654,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Value cannot contain special characters.",
-                            "Image Path " + imageNumber);
+                            "Image Path " + imageNumber,
+                            update);
                     }
                     if (fileType != ".JPG"
                             && fileType != ".PNG"
@@ -4501,7 +4665,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Invalid file type. (Must be .jpg, .png, or .tif).",
-                            "Image Path " + imageNumber);
+                            "Image Path " + imageNumber,
+                            update);
                     }
                     if (!CheckFileExists(value, false))
                     {
@@ -4509,7 +4674,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             @" could not find image with given filepath : " + value,
-                            "Image Path " + imageNumber);
+                            "Image Path " + imageNumber,
+                            update);
                     }
                     if (!CheckFileSize(value, false) && fileType != ".TIF")
                     {
@@ -4517,7 +4683,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             @" Image file is too large (Max 20,000KB for .jpg & .png files)",
-                            "Image Path " + imageNumber);
+                            "Image Path " + imageNumber,
+                            update);
                     }
                     if (value.Length > 254)
                     {
@@ -4525,7 +4692,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             OdinServices.Properties.Resources.Error_LengthMax + "254 characters.",
-                            "Image Path " + imageNumber);
+                            "Image Path " + imageNumber,
+                            update);
                     }
                 }
                 else
@@ -4536,7 +4704,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             OdinServices.Properties.Resources.Error_RequiredWeb,
-                            "Image Path " + imageNumber);
+                            "Image Path " + imageNumber,
+                            update);
                     }
                 }
             }
@@ -4555,6 +4724,7 @@ namespace OdinServices
             string value2 = string.Empty;
             string value3 = string.Empty;
             string value4 = string.Empty;
+            bool update = false;
             switch (type)
             {
                 case "Height":
@@ -4562,24 +4732,28 @@ namespace OdinServices
                     value2 = var.InnerpackLength;
                     value3 = var.InnerpackWeight;
                     value4 = var.InnerpackWidth;
+                    update = var.InnerpackHeightUpdate;
                     break;
                 case "Length":
                     value1 = var.InnerpackLength;
                     value2 = var.InnerpackHeight;
                     value3 = var.InnerpackWeight;
                     value4 = var.InnerpackWidth;
+                    update = var.InnerpackLengthUpdate;
                     break;
                 case "Weight":
                     value1 = var.InnerpackWeight;
                     value2 = var.InnerpackLength;
                     value3 = var.InnerpackHeight;
                     value4 = var.InnerpackWidth;
+                    update = var.InnerpackWeightUpdate;
                     break;
                 case "Width":
                     value1 = var.InnerpackWidth;
                     value2 = var.InnerpackLength;
                     value3 = var.InnerpackWeight;
                     value4 = var.InnerpackHeight;
+                    update = var.InnerpackWidthUpdate;
                     break;
                 default:
                     throw new ArgumentNullException("ValidateInnerpack unknown type " + type);
@@ -4600,7 +4774,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Field cannot be empty if this item has other innerpack dimension fields filled out (height, weight, width, length).",
-                            "Innerpack " + type);                        
+                            "Innerpack " + type,
+                            update);                        
                     }
                 }
             }
@@ -4610,7 +4785,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_LengthMax + "7 characters.",
-                    "Innerpack " + type);
+                    "Innerpack " + type,
+                            update);
             }
             if (!DbUtil.IsNumber(value1))
             {
@@ -4618,7 +4794,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_NonNumeric,
-                    "Innerpack " + type);
+                    "Innerpack " + type,
+                            update);
             }
             return null;
         }
@@ -4640,7 +4817,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     "Value cannot be a decimal.",
-                    "Innerpack Quantity");
+                    "Innerpack Quantity",
+                    var.InnerpackQuantityUpdate);
             }
             if (var.InnerpackQuantity.Length > 7)
             {
@@ -4648,7 +4826,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_LengthMax + "7 characters.",
-                    "Innerpack Quantity");
+                    "Innerpack Quantity",
+                    var.InnerpackQuantityUpdate);
             }
             if (!DbUtil.IsNumber(var.InnerpackQuantity))
             {
@@ -4656,7 +4835,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_NonNumeric,
-                    "Innerpack Quantity");
+                    "Innerpack Quantity",
+                    var.InnerpackQuantityUpdate);
             }
             return null;
         }
@@ -4676,7 +4856,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value cannot be set to 0000-00-00.",
-                        "License Begin Date");
+                        "License Begin Date",
+                        var.LicenseBeginDateUpdate);
                 }
                 if (!DateTime.TryParse(var.InStockDate, out DateTime temp))
                 {
@@ -4684,7 +4865,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value must contain a valid date",
-                        "License Begin Date");
+                        "License Begin Date",
+                        var.LicenseBeginDateUpdate);
                 }
                 else if (Convert.ToDateTime(var.InStockDate).Date < Convert.ToDateTime("01/01/1753").Date)
                 {
@@ -4692,7 +4874,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value cannot be before 01/01/1753.",
-                        "License Begin Date");
+                        "License Begin Date",
+                        var.LicenseBeginDateUpdate);
                 }
             }
             return null;
@@ -4703,8 +4886,12 @@ namespace OdinServices
         /// </summary>
         /// <param name="var">Item Object</param>
         /// <returns></returns>
-        public ItemError ValidateIsbn(ItemObject var)
+        public ItemError ValidateIsbn(ItemObject var, string name = "ISBN", bool overrideUpdate = false)
         {
+            if(name == "ISBN")
+            {
+                overrideUpdate = var.IsbnUpdate;
+            }
             if (!(string.IsNullOrEmpty(var.Isbn)))
             {
                 if (CheckSpecialChar(var.Isbn))
@@ -4713,7 +4900,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_SpecialChars,
-                        "ISBN");
+                        name,
+                        overrideUpdate);
                 }
                 if (var.Isbn.Length > 10)
                 {
@@ -4721,7 +4909,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "10 characters.",
-                        "ISBN");
+                        name,
+                        overrideUpdate);
                 }
             }
             return null;
@@ -4745,7 +4934,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_Required,
-                        "Item Category");
+                        "Item Category",
+                        var.ItemCategoryUpdate);
                 }
                 if (var.ItemCategory.Length > 15)
                 {
@@ -4753,7 +4943,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "15 characters.",
-                        "Item Category");
+                        "Item Category",
+                        var.ItemCategoryUpdate);
                 }
                 if (!GlobalData.ProductCategories.Contains(var.ItemCategory))
                 {
@@ -4761,7 +4952,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NoMatch,
-                        "Item Category");
+                        "Item Category",
+                        var.ItemCategoryUpdate);
                 }
             }
             return null;
@@ -4782,7 +4974,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "18 characters.",
-                        "Item Family");
+                        "Item Family",
+                        var.ItemFamilyUpdate);
                 }
                 if ((var.ItemFamily == "STICKER") || (var.ItemFamily == "") || (var.ItemFamily == "FLAT"))
                 {
@@ -4794,7 +4987,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value contains an invalid value. (Item Family must be set to 'STICKER', 'FLAT', or left empty)",
-                        "Item Family"); 
+                        "Item Family",
+                        var.ItemFamilyUpdate); 
                 }
             }
             return null;
@@ -4817,7 +5011,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_Required,
-                        "Item Group");
+                        "Item Group",
+                        var.ItemGroupUpdate);
                 }
                 if (var.ItemGroup.Length > 15)
                 {
@@ -4825,7 +5020,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "15 characters.",
-                        "Item Group");
+                        "Item Group",
+                        var.ItemGroupUpdate);
                 }
                 if (!GlobalData.ItemGroups.Contains(var.ItemGroup))
                 {
@@ -4833,7 +5029,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NoMatch,
-                        "Item Group");
+                        "Item Group",
+                        var.ItemGroupUpdate);
                 }
             }
             return null;
@@ -4852,7 +5049,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_Required,
-                    "Item Id");
+                    "Item Id",
+                    true);
             }
             if ((var.Status == "Add") || (var.Status == ""))
             {
@@ -4862,7 +5060,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "18 characters.",
-                        "Item Id");
+                        "Item Id",
+                    true);
                 }
                 for (int i = 0; i < var.ItemId.Length; i++)
                 {
@@ -4872,7 +5071,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Value contains invalid charachters. (Only use A-Z, 0-9 and -)",
-                            "Item Id");
+                            "Item Id",
+                    true);
                     }
                 }
                 if (GlobalData.ItemIds.Contains(var.ItemId))
@@ -4881,7 +5081,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_AlreadyExists,
-                        "Item Id");
+                        "Item Id",
+                    true);
                 }
             }
             else if (var.Status == "Update")
@@ -4892,7 +5093,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value does not exist in peoplesoft.",
-                        "Item Id");
+                        "Item Id",
+                    true);
                 }
             }
             return null;
@@ -4913,7 +5115,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "1000 characters.",
-                        "Item Keywords");
+                        "Item Keywords",
+                        var.ItemKeywordsUpdate);
                 }
             }
             if (var.HasWeb)
@@ -4924,7 +5127,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredWeb,
-                        "Item Keywords");
+                        "Item Keywords",
+                        var.ItemKeywordsUpdate);
                 }
             }
             return null;
@@ -4950,7 +5154,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                              y + OdinServices.Properties.Resources.Error_NoMatch,
-                            "Language");
+                            "Language",
+                            var.LanguageUpdate);
                     }
                 }
                 return null;
@@ -4967,7 +5172,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_Required,
-                        "Language");
+                        "Language",
+                            var.LanguageUpdate);
                 }
             }
             return null;
@@ -4988,7 +5194,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "255 characters.",
-                        "License");
+                        "License",
+                        var.LicenseUpdate);
                 }
                 if (!GlobalData.Licenses.Contains(var.License))
                 {
@@ -4996,7 +5203,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NoMatch,
-                        "License");
+                        "License",
+                        var.LicenseUpdate);
                 }
             }
             return null;
@@ -5017,7 +5225,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value cannot be set to 0000-00-00.",
-                        "License Begin Date");
+                        "License Begin Date",
+                        var.LicenseBeginDateUpdate);
                 }
                 if (!DateTime.TryParse(var.LicenseBeginDate, out DateTime temp))
                 {
@@ -5025,7 +5234,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value must contain a valid date",
-                        "License Begin Date");
+                        "License Begin Date",
+                        var.LicenseBeginDateUpdate);
                 }
                 else if (Convert.ToDateTime(var.LicenseBeginDate).Date < Convert.ToDateTime("01/01/1753").Date)
                 {
@@ -5033,7 +5243,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value cannot be before 01/01/1753.",
-                        "License Begin Date");
+                        "License Begin Date",
+                        var.LicenseBeginDateUpdate);
                 }
             }
             return null;
@@ -5064,7 +5275,8 @@ namespace OdinServices
                                 var.ItemId,
                                 var.ItemRow,
                                 "Value does not properly align with the Cost Profile Group value.",
-                                "MFG Source");
+                                "MFG Source",
+                                var.MfgSourceUpdate);
                         }
                     }
                 }
@@ -5082,7 +5294,8 @@ namespace OdinServices
                                 var.ItemId,
                                 var.ItemRow,
                                 "Value does not properly align with the Cost Profile Group value.",
-                                "MFG Source");
+                                "MFG Source",
+                                var.MfgSourceUpdate);
                         }
                     }
                 }
@@ -5092,7 +5305,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value can only be either '1' or '2'",
-                        "MFG Source");
+                        "MFG Source",
+                                var.MfgSourceUpdate);
                 }
             }
             else
@@ -5103,7 +5317,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_Required,
-                        "MFG Source");
+                        "MFG Source",
+                        var.MfgSourceUpdate);
                 }
             }
             return null;
@@ -5120,18 +5335,22 @@ namespace OdinServices
             bool required = (var.ProdType == 2) ? false : true;
             string value = string.Empty;
             string name = string.Empty;
+            bool update = false;
             switch (type)
             {
                 case "CAD":
                     value = var.MsrpCad;
+                    update = var.MsrpCadUpdate;
                     name = "MSRP CAD";
                     break;
                 case "MXN":
                     value = var.MsrpMxn;
+                    update = var.MsrpMxnUpdate;
                     name = "MSRP MXN";
                     break;
                 case "USD":
                     value = var.Msrp;
+                    update = var.MsrpUpdate;
                     name = "MSRP";
                     break;
                 default:
@@ -5146,7 +5365,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "10 characters.",
-                        name);
+                        name,
+                        update);
                 }
                 if (!DbUtil.IsNumber(value))
                 {
@@ -5154,7 +5374,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NonNumeric,
-                        name);
+                        name,
+                        update);
                 }
                 if (string.IsNullOrEmpty(value))
                 {
@@ -5168,7 +5389,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             OdinServices.Properties.Resources.Error_Required,
-                            name);
+                            name,
+                        update);
                     }
                 }
             }
@@ -5184,13 +5406,16 @@ namespace OdinServices
         public ItemError ValidatePackUpc(ItemObject var, string type)
         {
             string value = string.Empty;
+            bool update = false;
             switch (type)
             {
                 case "Casepack":
                     value = var.CasepackUpc;
+                    update = var.CasepackUpcUpdate;
                     break;
                 case "Innerpack":
                     value = var.InnerpackUpc;
+                    update = var.InnerpackUpcUpdate;
                     break;
                 default:
                     throw new ArgumentNullException("ValidatePackUpc unknown type " + type);
@@ -5205,7 +5430,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_NonNumeric,
-                    type + " UPC");
+                    type + " UPC",
+                    update);
             }
             if ((value.Length != 8) && (value.Length != 12))
             {
@@ -5213,7 +5439,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     "Value has invalid length. " + type + " UPC must have a length of 8 or 12 characters.",
-                    type + " UPC");
+                    type + " UPC",
+                    update);
             }
             return null;
         }
@@ -5228,16 +5455,20 @@ namespace OdinServices
         {
             bool required = (var.ProdType == 2) ? false : true;
             string value = string.Empty;
+            bool update = false;
             switch (currency)
             {
                 case "USD":
                     value = var.ListPriceUsd;
+                    update = var.ListPriceUsdUpdate;
                     break;
                 case "CAD":
                     value = var.ListPriceCad;
+                    update = var.ListPriceCadUpdate;
                     break;
                 case "MXN":
                     value = var.ListPriceMxn;
+                    update = var.ListPriceMxnUpdate;
                     break;
                 default:
                     throw new ArgumentNullException("ValidateListPrice unknown currency " + currency);
@@ -5251,7 +5482,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_Required,
-                        "List Price " + currency);
+                        "List Price " + currency,
+                        update);
                 }
                 if (value.Length > 9)
                 {
@@ -5259,7 +5491,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "9 characters.",
-                        "List Price " + currency);
+                        "List Price " + currency,
+                        update);
                 }
                 if (!DbUtil.IsNumber(value))
                 {
@@ -5267,7 +5500,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NonNumeric,
-                        "List Price " + currency);
+                        "List Price " + currency,
+                        update);
                 }
             }
             return null;
@@ -5288,7 +5522,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NoMatch,
-                        "Meta Description");
+                        "Meta Description",
+                        var.MetaDescriptionUpdate);
                 }
             }
             if (var.SellOnTrends=="Y" && string.IsNullOrEmpty(var.MetaDescription))
@@ -5297,7 +5532,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_RequiredWeb,
-                    "Meta Description");
+                    "Meta Description",
+                        var.MetaDescriptionUpdate);
             }
             return null;
         }
@@ -5319,7 +5555,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "60 characters.",
-                        "Product Format");
+                        "Product Format",
+                        var.ProductFormatUpdate);
                 }
                 if (!CheckProductFormats(var.ProductGroup, var.ProductLine, var.ProductFormat))
                 {
@@ -5327,7 +5564,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value does not align with Product Line and Product Group values provided.",
-                        "Product Format");
+                        "Product Format",
+                        var.ProductFormatUpdate);
                 }                
             }
             else
@@ -5340,7 +5578,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Value is a required value when a UPC value is provided.",
-                            "Product Format");
+                            "Product Format",
+                        var.ProductFormatUpdate);
                     }
                 }            
             }
@@ -5364,7 +5603,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_Required,
-                        "Product Group");
+                        "Product Group",
+                        var.ProductGroupUpdate);
                 }
                 if (var.ProductGroup.Trim().Length > 30)
                 {
@@ -5372,7 +5612,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "30 characters.",
-                        "Product Group");
+                        "Product Group",
+                        var.ProductGroupUpdate);
                 }
                 if (!GlobalData.ProductGoups.Contains(var.ProductGroup))
                 {
@@ -5380,7 +5621,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NoMatch,
-                        "Product Group");
+                        "Product Group",
+                        var.ProductGroupUpdate);
                 }
             }
             return null;
@@ -5402,7 +5644,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value is required when the Product Format = 'POD POSTER FRAME'.",
-                        "Product Id Translations");
+                        "Product Id Translations",
+                        var.ProductIdTranslationUpdate);
                 }
                 else if (!string.IsNullOrEmpty(var.PricingGroup))
                 {
@@ -5412,7 +5655,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Value is required when the Pricing Group = 'FRP'.",
-                            "Product Id Translations");
+                            "Product Id Translations",
+                        var.ProductIdTranslationUpdate);
                     }
                 }
                 return null;
@@ -5425,7 +5669,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Field must be empty if Bill of Materials has a value.",
-                        "Product Id Translations");
+                        "Product Id Translations",
+                        var.ProductIdTranslationUpdate);
                 }
                 foreach (ChildElement productIdTranslation in var.ProductIdTranslation)
                 {
@@ -5437,7 +5682,8 @@ namespace OdinServices
                                 var.ItemId,
                                 var.ItemRow,
                                 "Value contains an id that does not exist: " + productIdTranslation.ItemId,
-                                "Product Id Translations");
+                                "Product Id Translations",
+                        var.ProductIdTranslationUpdate);
                         }
                     }
                     int count = 0;
@@ -5459,7 +5705,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Value can not contain multiple occurances of the same item: " + erroredId,
-                            "Product Id Translations");
+                            "Product Id Translations",
+                        var.ProductIdTranslationUpdate);
                     }
                 }
                 if (var.Status == "Update")
@@ -5474,7 +5721,8 @@ namespace OdinServices
                                     var.ItemId,
                                     var.ItemRow,
                                     "Current open orders are preventing this change from taking place.",
-                                    "Product Id Translations");
+                                    "Product Id Translations",
+                        var.ProductIdTranslationUpdate);
                             }
                         }
                     }
@@ -5500,7 +5748,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "30 characters.",
-                        "Product Line");
+                        "Product Line",
+                        var.ProductLineUpdate);
                 }
 
                 if (!string.IsNullOrEmpty(var.ProductGroup))
@@ -5511,7 +5760,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Value does not align with Product Group provided.",
-                            "Product Line");
+                            "Product Line",
+                        var.ProductLineUpdate);
                     }
                 }
                 else
@@ -5524,7 +5774,8 @@ namespace OdinServices
                                 var.ItemId,
                                 var.ItemRow,
                                 "Value is a required value when a UPC is provided",
-                                "Product Line");
+                                "Product Line",
+                        var.ProductLineUpdate);
                         }
                     }
                 }
@@ -5547,7 +5798,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NonNumeric,
-                        "Product Quantity");
+                        "Product Quantity",
+                        var.ProductQtyUpdate);
                 }
             }
             return null;
@@ -5568,7 +5820,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value does not align with the provided item license.",
-                        "Property");
+                        "Property",
+                        var.PropertyUpdate);
                 }
             }
             return null;
@@ -5591,7 +5844,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "30 characters.",
-                        "Pricing Group");
+                        "Pricing Group",
+                        var.PricingGroupUpdate);
                 }
                 if (string.IsNullOrEmpty(var.PricingGroup))
                 {
@@ -5605,7 +5859,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value cannot be left empty if there is a List Price USD value or a List Price CAD value provided for this item.",
-                        "Pricing Group");
+                        "Pricing Group",
+                        var.PricingGroupUpdate);
                     }
                 }
                 if (!GlobalData.PricingGroups.Contains(var.PricingGroup) && required)
@@ -5614,7 +5869,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             OdinServices.Properties.Resources.Error_NoMatch,
-                            "Pricing Group");
+                            "Pricing Group",
+                        var.PricingGroupUpdate);
                 }
             }
             return null;
@@ -5639,7 +5895,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_YorN,
-                        "Print On Demand");
+                        "Print On Demand",
+                        var.PrintOnDemandUpdate);
                 }
 
             }
@@ -5661,7 +5918,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NoMatch,
-                        "PS Status");
+                        "PS Status",
+                        var.PsStatusUpdate);
                 }
             }
             else if (var.ProdType == 1)
@@ -5670,7 +5928,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_Required,
-                    "PS Status");
+                    "PS Status",
+                        var.PsStatusUpdate);
             }
             return null;
         }
@@ -5690,7 +5949,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "20 characters.",
-                        "SAT Code");
+                        "SAT Code",
+                        var.SatCodeUpdate);
                 }
             }
             return null;
@@ -5703,49 +5963,64 @@ namespace OdinServices
         /// <param name="type"> sell on type</param>
         public ItemError ValidateSellOnValue(ItemObject var, string type)
         {
-            string value = string.Empty;
             bool checkItemId = false;
+            bool update = false;
+            string value = string.Empty;
+
             switch (type)
             {
                 case "All Posters":
                     value = var.SellOnAllPosters;
+                    update = var.SellOnAllPostersUpdate;
                     break;
                 case "Amazon":
                     value = var.SellOnAmazon;
+                    update = var.SellOnAmazonUpdate;
                     break;
                 case "Amazon Seller Central":
                     value = var.SellOnAmazonSellerCentral;
+                    update = var.SellOnAmazonSellerCentralUpdate;
                     break;
                 case "Ecommerce":
                     value = var.SellOnEcommerce;
+                    update = var.SellOnEcommerceUpdate;
                     break;
                 case "Fanatics":
                     value = var.SellOnFanatics;
+                    update = var.SellOnFanaticsUpdate;
                     break;
                 case "Guitar Center":
+                    value = var.SellOnGuitarCenter;
                     value = var.SellOnGuitarCenter;
                     break;
                 case "Hayneedle":
                     value = var.SellOnHayneedle;
+                    update = var.SellOnHayneedleUpdate;
                     break;
                 case "Houzz":
                     value = var.SellOnHouzz;
+                    update = var.SellOnHouzzUpdate;
                     break;
                 case "Target":
                     value = var.SellOnTarget;
+                    update = var.SellOnTargetUpdate;
                     break;
                 case "Trends":
                     value = var.SellOnTrends;
+                    update = var.SellOnTrendsUpdate;
                     break;
                 case "Shop Trends":
                     value = var.SellOnTrs;
+                    update = var.SellOnTrsUpdate;
                     checkItemId = true;
                     break;
                 case "Walmart":
                     value = var.SellOnWalmart;
+                    update = var.SellOnWalmartUpdate;
                     break;
                 case "Wayfair":
                     value = var.SellOnWayfair;
+                    update = var.SellOnWayfairUpdate;
                     break;
                 default:
                     throw new ArgumentNullException("ValidateSellOnValue unknown type " + type);
@@ -5757,7 +6032,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_Required,
-                    "Sell On " + type);
+                    "Sell On " + type,
+                    update);
             }
             if ((value != "Y") && (value != "N"))
             {
@@ -5765,7 +6041,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_YorN,
-                    "Sell On " + type);
+                    "Sell On " + type,
+                    update);
             }
             if(checkItemId)
             {
@@ -5775,7 +6052,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Item's being sold on Shop Trends cannot contain a '-' in the itemId.",
-                        "Sell On " + type);
+                        "Sell On " + type,
+                        update);
                 }
             }
             return null;
@@ -5807,7 +6085,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_SpecialChars,
-                        "Size");
+                        "Size",
+                        var.SizeUpdate);
                 }
             }
             return null;
@@ -5830,7 +6109,8 @@ namespace OdinServices
                        var.ItemId,
                        var.ItemRow,
                        OdinServices.Properties.Resources.Error_Required,
-                       "Standard Cost");
+                       "Standard Cost",
+                       var.StandardCostUpdate);
                 }
                 if (!DbUtil.IsNumber(var.StandardCost))
                 {
@@ -5838,7 +6118,8 @@ namespace OdinServices
                        var.ItemId,
                        var.ItemRow,
                        OdinServices.Properties.Resources.Error_NonNumeric,
-                       "Standard Cost");
+                       "Standard Cost",
+                       var.StandardCostUpdate);
                 }
             }
             return null;
@@ -5867,7 +6148,8 @@ namespace OdinServices
                            var.ItemId,
                            var.ItemRow,
                            OdinServices.Properties.Resources.Error_Required,
-                           "Stats Code");
+                           "Stats Code",
+                           var.StatsCodeUpdate);
                     }
                 }
                 if (var.StatsCode.Length > 30)
@@ -5876,7 +6158,8 @@ namespace OdinServices
                        var.ItemId,
                        var.ItemRow,
                        OdinServices.Properties.Resources.Error_LengthMax + "30 characters.",
-                       "Stats Code");
+                       "Stats Code",
+                           var.StatsCodeUpdate);
                 }                
                 if(!GlobalData.StatsCodes.ContainsKey(var.StatsCode))
                 {
@@ -5884,7 +6167,8 @@ namespace OdinServices
                        var.ItemId,
                        var.ItemRow,
                        "Value does not match any values set up in the database.",
-                       "Stats Code");
+                       "Stats Code",
+                           var.StatsCodeUpdate);
                 }                
             }
             return null;
@@ -5907,7 +6191,8 @@ namespace OdinServices
                        var.ItemId,
                        var.ItemRow,
                        OdinServices.Properties.Resources.Error_Required,
-                       "Tariff Code");
+                       "Tariff Code",
+                       var.TariffCodeUpdate);
                 }
                 if(!GlobalData.TariffCodes.Contains(var.TariffCode))
                 {
@@ -5915,7 +6200,8 @@ namespace OdinServices
                        var.ItemId,
                        var.ItemRow,
                        OdinServices.Properties.Resources.Error_NoMatch,
-                       "Tariff Code");
+                       "Tariff Code",
+                       var.TariffCodeUpdate);
                 }
             }
             return null;
@@ -5935,7 +6221,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     "Value is empty. Please select a name before saving.",
-                    "Template Id");
+                    "Template Id",
+                    true);
             }
             else
             {
@@ -5945,7 +6232,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "255 characters.",
-                        "Template Id");
+                        "Template Id",
+                        true);
                 }
                 if (var.Status != "Update")
                 {
@@ -5955,7 +6243,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             var.TemplateId + " already exists. Please select a different name.",
-                            "Template Id");
+                            "Template Id",
+                            true);
                     }
                 }
                 if (!isTemplate)
@@ -5966,7 +6255,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Value does not match any existing Template Ids.",
-                            "Template Id");
+                            "Template Id",
+                            true);
                     }
                 }
             }
@@ -5997,7 +6287,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             OdinServices.Properties.Resources.Error_Required,
-                            "Territory");
+                            "Territory",
+                            var.TerritoryUpdate);
                     }
                 }
                 string[] x = value.Split('/');
@@ -6009,7 +6300,8 @@ namespace OdinServices
                             var.ItemId,
                             var.ItemRow,
                             "Value " + y + " " + OdinServices.Properties.Resources.Error_NoMatch,
-                            "Territory");
+                            "Territory",
+                            var.TerritoryUpdate);
                     }
                 }
             }
@@ -6031,7 +6323,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "266 characters.",
-                        "Title");
+                        "Title",
+                        var.TitleUpdate);
                 }
             }
             if (var.HasWeb)
@@ -6042,7 +6335,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredWeb,
-                        "Title");
+                        "Title",
+                        var.TitleUpdate);
                 }
             }
             return null;
@@ -6074,7 +6368,8 @@ namespace OdinServices
                        var.ItemId,
                        var.ItemRow,
                        OdinServices.Properties.Resources.Error_LengthMax + "30 characters.",
-                       "Udex");
+                       "Udex",
+                       var.UdexUpdate);
                 }
                 else return null;
             }
@@ -6117,7 +6412,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_Required + " (Required if the List Price USD is set to something other than 0 or if the Ean field is left blank.)",
-                        "UPC");
+                        "UPC",
+                        var.UpcUpdate);
                 }
             }
             else
@@ -6135,7 +6431,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NonNumeric,
-                        "UPC");
+                        "UPC",
+                        var.UpcUpdate);
                 }
                 if ((var.Upc.Length != 8) && (var.Upc.Length != 12))
                 {
@@ -6143,7 +6440,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value has an invalid length. UPC value can only have a length of 8 or 12 characters.",
-                        "UPC");
+                        "UPC",
+                        var.UpcUpdate);
                 }
                 if (string.IsNullOrEmpty(var.ProductGroup) || string.IsNullOrEmpty(var.ProductLine) || string.IsNullOrEmpty(var.ProductFormat))
                 {
@@ -6151,7 +6449,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Product Line, Product Group & Product Format are required values when UPC is provided.",
-                        "UPC");
+                        "UPC",
+                        var.UpcUpdate);
                 }
                 if (var.Upc == var.EcommerceUpc)
                 {
@@ -6159,7 +6458,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Item's Upc and Ecommerce Upc cannot share the same value.",
-                        "UPC");
+                        "UPC",
+                        var.UpcUpdate);
                 }
                 List<string> matchId = CheckDuplicateUPCs(var.ItemId, var.Upc, var.Status);
                 if (matchId.Count > 0)
@@ -6180,7 +6480,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value contains a duplicate ID. The following items already contain this upc or ecommerce upc: " + ids,
-                        "UPC");
+                        "UPC",
+                        var.UpcUpdate);
                 }
             }
             return null;
@@ -6198,7 +6499,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_LengthMax + "1000 characters.",
-                    "Warranty");
+                    "Warranty",
+                    var.WarrantyUpdate);
             }
             return null;
         }
@@ -6215,7 +6517,8 @@ namespace OdinServices
                     var.ItemId,
                     var.ItemRow,
                     OdinServices.Properties.Resources.Error_YorN,
-                    "Warranty Check");
+                    "Warranty Check",
+                    var.WarrantyCheckUpdate);
             }
             return null;
         }
@@ -6234,7 +6537,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "9 characters.",
-                        "Website Price");
+                        "Website Price",
+                        var.WebsitePriceUpdate);
                 }
                 if (!DbUtil.IsNumber(var.WebsitePrice))
                 {
@@ -6242,7 +6546,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NonNumeric,
-                        "Website Price");
+                        "Website Price",
+                        var.WebsitePriceUpdate);
                 }
             }
             if(var.HasWeb)
@@ -6253,7 +6558,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredWeb,
-                        "Website Price");
+                        "Website Price",
+                        var.WebsitePriceUpdate);
                 }
                 if (!DbUtil.CheckGreaterThanZero(var.WebsitePrice) && var.ProductGroup != "Display")
                 {
@@ -6261,7 +6567,8 @@ namespace OdinServices
                         var.ItemId,
                         var.ItemRow,
                         "Value must contain a value greater than 0.",
-                        "Website Price");
+                        "Website Price",
+                        var.WebsitePriceUpdate);
                 }
             }
             return null;
