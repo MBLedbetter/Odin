@@ -45,7 +45,11 @@ namespace OdinModels
         {
             get
             {
-                return _errorMessage;
+                if (_errorMessage == "")
+                {
+                    return "";
+                }
+                return this.VarName + " " + _errorMessage;
             }
             set
             {
@@ -155,40 +159,10 @@ namespace OdinModels
         private string _varName;
 
         #endregion // Properties
-
-        #region Methods
-
-        /// <summary>
-        ///     
-        /// </summary>
-        /// <returns></returns>
-        public string ReturnErrorMessage()
-        {
-            if(this.ErrorMessage=="")
-            {
-                return "";
-            }
-            return this.VarName + " " + this.ErrorMessage;
-        }
-
-        #endregion // Methods
+        
 
         #region Constructor
-        /*
-        /// <summary>
-        ///     Creates an item error that keeps track of line number, message and the variable name
-        /// </summary>
-        /// <param name="lineNumber">row error occurs on</param>
-        /// <param name="errorMessage">error message</param>
-        /// <param name="varName">name of the variable causing the error</param>
-        public ItemError(string itemId, int lineNumber, string errorMessage, string varName)
-        {
-            this.ItemIdNumber = itemId;
-            this.LineNumber = lineNumber;
-            this.ErrorMessage = varName + " " + errorMessage;
-            this.VarName = varName;
-        }
-        */
+
         /// <summary>
         ///     Creates an Item Error Object
         /// </summary>

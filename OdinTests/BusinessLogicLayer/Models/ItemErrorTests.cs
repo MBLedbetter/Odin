@@ -26,7 +26,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             #region Act
 
             int returnedRow = itemError.LineNumber;
-            string returnedMessage = itemError.ReturnErrorMessage();
+            string returnedMessage = itemError.ErrorMessage;
 
             #endregion // Act
 

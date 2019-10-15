@@ -1751,6 +1751,14 @@
                             Padding="10,0,0,0" />
                     </GridViewColumn>
                     <GridViewColumn
+                        DisplayMemberBinding="{Binding ErrorType}"
+                        Width="120">
+                        <GridViewColumnHeader
+                            Content="Error Type"
+                            HorizontalContentAlignment="Left"
+                            Padding="10,0,0,0" />
+                    </GridViewColumn>
+                    <GridViewColumn
                         DisplayMemberBinding="{Binding ErrorMessage}"
                         Width="800">
                         <GridViewColumnHeader

@@ -3185,13 +3185,17 @@ namespace Odin.ViewModels
                     string oldId = this.SelectedItem.ItemId;
 
                     SelectedItem.UpdateItem((window.DataContext as ItemViewModel).ItemViewModelItem);
-
+                    
                     for (int x = this.ItemErrors.Count - 1; x >= 0; x--)
                     {
                         if (this.ItemErrors[x].ItemIdNumber == oldId)
                         {
                             this.ItemErrors.Remove(this.ItemErrors[x]);
                         }
+                    }
+                    foreach(ItemError warningError in (window.DataContext as ItemViewModel).ItemErrors)
+                    {
+                        this.ItemErrors.Add(warningError);
                     }
                 }
             }
@@ -3895,6 +3899,7 @@ namespace Odin.ViewModels
         /// </summary>
         public void SubmitItems()
         {
+            List<ItemError> errors = new List<ItemError>();
             try
             {
                 if (Items[0].Status != "Remove")
@@ -3903,21 +3908,14 @@ namespace Odin.ViewModels
                     {
                         foreach (ItemError er in ItemService.ValidateItem(item, true))
                         {
-                            ItemErrors.Add(er);
+                            if (er.ErrorType == "Error")
+                            {
+                                errors.Add(er);
+                            }
                         }                    
-                        /*
-                        if(item.SellOnTrends!="Y")
-                        {
-                            ItemErrors.Add(new ItemError(
-                                item.ItemId,
-                                item.ItemRow, 
-                                "Sell on Trends must be set to 'Y' before an item can be submitted.", 
-                                "Sell On Trends"));
-                        }           
-                        */             
                     }
                 }
-                if ((ItemErrors.Count == 0) || (Items[0].Status == "Remove"))
+                if ((errors.Count == 0) || (Items[0].Status == "Remove"))
                 {
                     string comment = string.Empty;
                     string site = string.Empty;
@@ -3946,10 +3944,7 @@ namespace Odin.ViewModels
                         {
                             if ((item.SellOnTrends != "Y") && (item.SellOnTrs != "Y"))
                             {
-                                if (itemWebChecklist != string.Empty) {
-                                    itemWebChecklist += ", ";
-                                }
-                                itemWebChecklist += item.ItemId + ", ";
+                                itemWebChecklist = (itemWebChecklist != string.Empty) ? itemWebChecklist += ", ": itemWebChecklist += item.ItemId + ", ";
                             }
                         }
                         if (itemWebChecklist == string.Empty)
