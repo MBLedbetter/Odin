@@ -10065,7 +10065,7 @@ namespace Odin.ViewModels
                 ErrorLog.LogError("Odin could not load 1 or more image files.", ex.ToString());
             }
         }
-        
+                
         public void SetStatsCodes()
         {
             this.StatsCodes = ItemService.RetrieveStatsCodes();
