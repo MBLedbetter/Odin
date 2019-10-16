@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.IO;
 using Microsoft.Win32;
 using System.Linq;
+using System.Text;
 
 namespace Odin.ViewModels
 {
@@ -291,7 +292,7 @@ namespace Odin.ViewModels
         #endregion // Odin Properties
 
         #region Peoplesoft Properties
-
+        
         public string AccountingGroup
         {
             get
@@ -330,8 +331,6 @@ namespace Odin.ViewModels
             set
             {
                 _accountingGroupError = value;
-                this.AccountingGroupBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("AccountingGroupError");
             }
         }
@@ -388,8 +387,6 @@ namespace Odin.ViewModels
             set
             {
                 _billOfMaterialsError = value;
-                this.BillOfMaterialsBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("BillOfMaterialsError");
             }
         }
@@ -447,8 +444,6 @@ namespace Odin.ViewModels
             set
             {
                 _casepackHeightError = value;
-                this.CasepackHeightBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CasepackHeightError");
             }
         }
@@ -505,8 +500,6 @@ namespace Odin.ViewModels
             set
             {
                 _casepackLength = value;
-                this.CasepackLengthBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CasepackLengthError");
             }
         }
@@ -535,8 +528,6 @@ namespace Odin.ViewModels
             {
                 if (this.ItemViewModelItem.CasepackQty != value)
                 {
-                    this.ItemViewModelItem.CasepackQty = value;
-                    FlagError("CasepackQty");
                     OnPropertyChanged("CasepackQty");
                 }
             }
@@ -563,8 +554,6 @@ namespace Odin.ViewModels
             set
             {
                 _casepackQtyError = value;
-                this.CasepackQtyBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CasepackQtyError");
             }
         }
@@ -621,8 +610,6 @@ namespace Odin.ViewModels
             set
             {
                 _casepackUpcError = value;
-                this.CasepackUpcBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CasepackUpcError");
             }
         }
@@ -679,8 +666,6 @@ namespace Odin.ViewModels
             set
             {
                 _casepackWidthError = value;
-                this.CasepackWidthBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CasepackWidthErrorMsg");
             }
         }
@@ -737,8 +722,6 @@ namespace Odin.ViewModels
             set
             {
                 _casepackWeightError = value;
-                this.CasepackWeightBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CasepackWeightError");
             }
         }
@@ -795,8 +778,6 @@ namespace Odin.ViewModels
             set
             {
                 _colorError = value;
-                this.ColorBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ColorError");
             }
         }
@@ -853,8 +834,6 @@ namespace Odin.ViewModels
             set
             {
                 _costProfileGroupError = value;
-                this.CostProfileGroupBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CostProfileGroupError");
             }
         }
@@ -911,8 +890,6 @@ namespace Odin.ViewModels
             set
             {
                 _countryOfOriginError = value;
-                this.CountryOfOriginBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("CountryOfOriginError");
             }
         }
@@ -977,8 +954,6 @@ namespace Odin.ViewModels
             set
             {
                 _defaultActualCostUsdError = value;
-                this.DefaultActualCostUsdBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("DefaultActualCostUsdError");
             }
         }
@@ -1035,8 +1010,6 @@ namespace Odin.ViewModels
             set
             {
                 _defaultActualCostCadError = value;
-                this.DefaultActualCostCadBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("DefaultActualCostCadError");
             }
         }
@@ -1093,8 +1066,6 @@ namespace Odin.ViewModels
             set
             {
                 _descriptionError = value;
-                this.DescriptionBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("DescriptionError");
             }
         }
@@ -1151,8 +1122,6 @@ namespace Odin.ViewModels
             set
             {
                 _directImportError = value;
-                this.DirectImportBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("DirectImportError");
             }
         }
@@ -1209,8 +1178,6 @@ namespace Odin.ViewModels
             set
             {
                 _dtcPriceError = value;
-                this.DtcPriceBoxColor = ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("DtcPriceError");
             }
         }
@@ -1267,8 +1234,6 @@ namespace Odin.ViewModels
             set
             {
                 _eanError = value;
-                this.EanBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("EanError");
             }
         }
@@ -1325,8 +1290,6 @@ namespace Odin.ViewModels
             set
             {
                 _dutyError = value;
-                this.DutyBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("DutyError");
             }
         }
@@ -1383,8 +1346,6 @@ namespace Odin.ViewModels
             set
             {
                 _gpcError = value;
-                this.GpcBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("GpcError");
             }
         }
@@ -1441,8 +1402,6 @@ namespace Odin.ViewModels
             set
             {
                 _heightError = value;
-                this.HeightBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("HeightError");
             }
         }
@@ -1499,8 +1458,6 @@ namespace Odin.ViewModels
             set
             {
                 _innerpackHeightError = value;
-                this.InnerpackHeightBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("InnerpackHeightError");
             }
         }
@@ -1557,8 +1514,6 @@ namespace Odin.ViewModels
             set
             {
                 _innerpackLengthError = value;
-                this.InnerpackLengthBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("InnerpackLengthError");
             }
         }
@@ -1615,8 +1570,6 @@ namespace Odin.ViewModels
             set
             {
                 _innerpackQuantityError = value;
-                this.InnerpackQuantityBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("InnerpackQuantityError");
             }
         }
@@ -1673,8 +1626,6 @@ namespace Odin.ViewModels
             set
             {
                 _innerpackUpcError = value;
-                this.InnerpackUpcBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("InnerpackUpcError");
             }
         }
@@ -1731,8 +1682,6 @@ namespace Odin.ViewModels
             set
             {
                 _innerpackWeightError = value;
-                this.InnerpackWeightBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("InnerpackWeightError");
             }
         }
@@ -1789,8 +1738,6 @@ namespace Odin.ViewModels
             set
             {
                 _innperpackWidthError = value;
-                this.InnerpackWidthBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("InnerpackWidthError");
             }
         }
@@ -1847,8 +1794,6 @@ namespace Odin.ViewModels
             set
             {
                 _isbnError = value;
-                this.IsbnBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("IsbnErrorMsg");
             }
         }
@@ -1905,8 +1850,6 @@ namespace Odin.ViewModels
             set
             {
                 _itemCategoryError = value;
-                this.ItemCategoryBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ItemCategoryError");
             }
         }
@@ -1963,8 +1906,6 @@ namespace Odin.ViewModels
             set
             {
                 _itemFamilyError = value;
-                this.ItemFamilyBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ItemFamilyErrorMsg");
             }
         }
@@ -2021,8 +1962,6 @@ namespace Odin.ViewModels
             set
             {
                 _itemGroupError = value;
-                this.ItemGroupBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ItemGroupError");
             }
         }
@@ -2079,8 +2018,6 @@ namespace Odin.ViewModels
             set
             {
                 _itemIdError = value;
-                this.ItemIdBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ItemIdError");
             }
         }
@@ -2115,7 +2052,7 @@ namespace Odin.ViewModels
         {
             get
             {
-                    return this.ItemViewModelItem.Language;
+                return this.ItemViewModelItem.Language;
             }
             set
             {
@@ -2140,6 +2077,7 @@ namespace Odin.ViewModels
             }
         }
         private string _languageBoxColor = "White";
+
         public string LanguageError
         {
             get
@@ -2149,12 +2087,11 @@ namespace Odin.ViewModels
             set
             {
                 _languageError = value;
-                this.LanguageBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("LanguageError");
             }
         }
         private string _languageError = string.Empty;
+
         public string LanguageToolTip
         {
             get
@@ -2207,8 +2144,6 @@ namespace Odin.ViewModels
             set
             {
                 _lengthError = value;
-                this.LengthBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("LengthError");
             }
         }
@@ -2265,8 +2200,6 @@ namespace Odin.ViewModels
             set
             {
                 _licenseBeginDateError = value;
-                this.LicenseBeginDateBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("LicenseBeginDateError");
             }
         }
@@ -2326,8 +2259,6 @@ namespace Odin.ViewModels
             set
             {
                 _listPriceCadError = value;
-                this.ListPriceCadBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ListPriceCadError");
             }
         }
@@ -2387,8 +2318,6 @@ namespace Odin.ViewModels
             set
             {
                 _listPriceMxnError = value;
-                this.ListPriceMxnBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ListPriceMxnError");
             }
         }
@@ -2448,8 +2377,6 @@ namespace Odin.ViewModels
             set
             {
                 _listPriceUsdError = value;
-                this.ListPriceUsdBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ListPriceUsdError");
             }
         }
@@ -2509,8 +2436,6 @@ namespace Odin.ViewModels
             set
             {
                 _mfgSourceError = value;
-                this.MfgSourceBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("MfgSourceError");
             }
         }
@@ -2570,8 +2495,6 @@ namespace Odin.ViewModels
             set
             {
                 _msrpError = value;
-                this.MsrpBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("MsrpError");
             }
         }
@@ -2631,8 +2554,6 @@ namespace Odin.ViewModels
             set
             {
                 _msrpCadError = value;
-                this.MsrpCadBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("MsrpCadError");
             }
         }
@@ -2692,8 +2613,6 @@ namespace Odin.ViewModels
             set
             {
                 _msrpMxnError = value;
-                this.MsrpMxnBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("MsrpMxnError");
             }
         }
@@ -2753,8 +2672,6 @@ namespace Odin.ViewModels
             set
             {
                 _pricingGroupError = value;
-                this.PricingGroupBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("PricingGroupError");
             }
         }
@@ -2814,8 +2731,6 @@ namespace Odin.ViewModels
             set
             {
                 _printOnDemandError = value;
-                this.PrintOnDemandBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("PrintOnDemandError");
             }
         }
@@ -2875,8 +2790,6 @@ namespace Odin.ViewModels
             set
             {
                 _productFormatError = value;
-                this.ProductFormatBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ProductFormatError");
             }
         }
@@ -2936,8 +2849,6 @@ namespace Odin.ViewModels
             set
             {
                 _productGroupError = value;
-                this.ProductGroupBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ProductGroupError");
             }
         }
@@ -2997,8 +2908,6 @@ namespace Odin.ViewModels
             set
             {
                 _productIdTranslationError = value;
-                this.ProductIdTranslationBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ProductIdTranslationError");
             }
         }
@@ -3058,8 +2967,6 @@ namespace Odin.ViewModels
             set
             {
                 _productLineError = value;
-                this.ProductLineBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ProductLineError");
             }
         }
@@ -3119,8 +3026,6 @@ namespace Odin.ViewModels
             set
             {
                 _productQtyError = value;
-                this.ProductQtyBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("ProductQtyError");
             }
         }
@@ -3193,8 +3098,6 @@ namespace Odin.ViewModels
             set
             {
                 _psStatusError = value;
-                this.PsStatusBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("PsStatusError");
             }
         }
@@ -3254,8 +3157,6 @@ namespace Odin.ViewModels
             set
             {
                 _satCodeError = value;
-                this.SatCodeBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("SatCodeError");
             }
         }
@@ -3315,8 +3216,6 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnAllPostersError = value;
-                this.SellOnAllPostersBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnAllPostersError");
             }
         }
@@ -3377,8 +3276,6 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnAmazonError = value;
-                this.SellOnAmazonBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnAmazonError");
             }
         }
@@ -3440,8 +3337,6 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnAmazonSellerCentralError = value;
-                this.SellOnAmazonSellerCentralBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnAmazonSellerCentralError");
             }
         }
@@ -3501,8 +3396,6 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnEcommerceError = value;
-                this.SellOnEcommerceBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnEcommerceError");
             }
         }
@@ -3562,8 +3455,6 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnFanaticsError = value;
-                this.SellOnFanaticsBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnFanaticsError");
             }
         }
@@ -3624,8 +3515,6 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnGuitarCenterError = value;
-                this.SellOnGuitarCenterBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnGuitarCenterError");
             }
         }
@@ -3685,8 +3574,6 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnHayneedleError = value;
-                this.SellOnHayneedleBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnHayneedleError");
             }
         }
@@ -3746,8 +3633,6 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnHouzzError = value;
-                this.SellOnHouzzBoxColor = ReturnErrorColor(value);
-                this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnHouzzError");
             }
         }
@@ -3807,8 +3692,6 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnTargetError = value;
-                this.SellOnTargetBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnTargetsErrorError");
             }
         }
@@ -3868,8 +3751,6 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnTrendsError = value;
-                this.SellOnTrendsBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnTrendsError");
             }
         }
@@ -3929,8 +3810,6 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnTrsError = value;
-                this.SellOnTrsBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnTrsError");
             }
         }
@@ -3990,8 +3869,6 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnWalmartError = value;
-                this.SellOnWalmartBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnWalmartError");
             }
         }
@@ -4051,8 +3928,6 @@ namespace Odin.ViewModels
             set
             {
                 _sellOnWayfairError = value;
-                this.SellOnWayfairBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebFlag = CheckWebFlagsTabColor();
                 OnPropertyChanged("SellOnWayfairError");
             }
         }
@@ -4112,8 +3987,6 @@ namespace Odin.ViewModels
             set
             {
                 _standardCostError = value;
-                this.StandardCostBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("StandardCostError");
             }
         }
@@ -4173,8 +4046,6 @@ namespace Odin.ViewModels
             set
             {
                 _statsCodeError = value;
-                this.StatsCodeBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("StatsCodeError");
             }
         }
@@ -4249,8 +4120,6 @@ namespace Odin.ViewModels
             set
             {
                 _tariffCodeError = value;
-                this.TariffCodeBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("TariffCodeError");
             }
         }
@@ -4311,8 +4180,6 @@ namespace Odin.ViewModels
             set
             {
                 _territoryError = value;
-                this.TerritoryBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("TerritoryError");
             }
         }
@@ -4372,8 +4239,6 @@ namespace Odin.ViewModels
             set
             {
                 _udexError = value;
-                this.UdexBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("UdexError");
             }
         }
@@ -4433,8 +4298,6 @@ namespace Odin.ViewModels
             set
             {
                 _upcError = value;
-                this.UpcBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("UpcError");
             }
         }
@@ -4494,8 +4357,6 @@ namespace Odin.ViewModels
             set
             {
                 _warrantyError = value;
-                this.WarrantyBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("WarrantyError");
             }
         }
@@ -4555,8 +4416,6 @@ namespace Odin.ViewModels
             set
             {
                 _warrantyCheckError = value;
-                this.WarrantyCheckBoxColor =  ReturnErrorColor(value);
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("WarrantyCheckError");
             }
         }
@@ -4616,8 +4475,6 @@ namespace Odin.ViewModels
             set
             {
                 _weightError = value;
-                this.WeightBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("WeightError");
             }
         }
@@ -4677,8 +4534,6 @@ namespace Odin.ViewModels
             set
             {
                 _widthError = value;
-                this.WidthBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorItemInfo = CheckItemInfoTabColor();
                 OnPropertyChanged("WidthError");
             }
         }
@@ -4742,8 +4597,6 @@ namespace Odin.ViewModels
             set
             {
                 _copyrightError = value;
-                this.CopyrightBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("CopyrightError");
             }
         }
@@ -4803,8 +4656,6 @@ namespace Odin.ViewModels
             set
             {
                 _inStockDateError = value;
-                this.InStockDateBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("InStockDateError");
             }
         }
@@ -4864,8 +4715,6 @@ namespace Odin.ViewModels
             set
             {
                 _categoryError = value;
-                this.CategoryBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("CategoryError");
             }
         }
@@ -4925,8 +4774,6 @@ namespace Odin.ViewModels
             set
             {
                 _category2Error = value;
-                this.Category2BoxColor =  ReturnErrorColor(value);
-                this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("Category2Error");
             }
         }
@@ -4986,8 +4833,6 @@ namespace Odin.ViewModels
             set
             {
                 _category3Error = value;
-                this.Category3BoxColor =  ReturnErrorColor(value);
-                this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("Category3Error");
             }
         }
@@ -5047,8 +4892,6 @@ namespace Odin.ViewModels
             set
             {
                 _itemKeywordsError = value;
-                this.ItemKeywordsBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("ItemKeywordsError");
             }
         }
@@ -5108,8 +4951,6 @@ namespace Odin.ViewModels
             set
             {
                 _genre1Error = value;
-                this.Genre1BoxColor = ReturnErrorColor(value);
-                this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("Genre1Error");
             }
         }
@@ -5169,8 +5010,6 @@ namespace Odin.ViewModels
             set
             {
                 _genre2Error = value;
-                this.Genre2BoxColor = ReturnErrorColor(value);
-                this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("Genre2Error");
             }
         }
@@ -5230,8 +5069,6 @@ namespace Odin.ViewModels
             set
             {
                 _genre3Error = value;
-                this.Genre3BoxColor = ReturnErrorColor(value);
-                this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("Genre3Error");
             }
         }
@@ -5291,8 +5128,6 @@ namespace Odin.ViewModels
             set
             {
                 _titleError = value;
-                this.TitleBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("TitleError");
             }
         }
@@ -5352,8 +5187,6 @@ namespace Odin.ViewModels
             set
             {
                 _licenseError = value;
-                this.LicenseBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("LicenseError");
             }
         }
@@ -5413,8 +5246,6 @@ namespace Odin.ViewModels
             set
             {
                 _metaDescriptionError = value;
-                this.MetaDescriptionBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("MetaDescriptionError");
             }
         }
@@ -5474,8 +5305,6 @@ namespace Odin.ViewModels
             set
             {
                 _propertyError = value;
-                this.PropertyBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("PropertyError");
             }
         }
@@ -5535,8 +5364,6 @@ namespace Odin.ViewModels
             set
             {
                 _shortDescriptionError = value;
-                this.ShortDescriptionBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("ShortDescriptionError");
             }
         }
@@ -5596,8 +5423,6 @@ namespace Odin.ViewModels
             set
             {
                 _sizeError = value;
-                this.SizeBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("SizeError");
             }
         }
@@ -5657,8 +5482,6 @@ namespace Odin.ViewModels
             set
             {
                 _websitePriceError = value;
-                this.WebsitePriceBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("WebsitePriceError");
             }
         }
@@ -5723,8 +5546,6 @@ namespace Odin.ViewModels
             set
             {
                 _AltImageFile1Error = value;
-                this.AltImageFile1BoxColor =  ReturnErrorColor(value);
-                this.TabColorImagePath = CheckImagePathTabColor();
                 OnPropertyChanged("AltImageFile1Error");
             }
         }
@@ -5785,8 +5606,6 @@ namespace Odin.ViewModels
             set
             {
                 _AltImageFile2Error = value;
-                this.AltImageFile2BoxColor =  ReturnErrorColor(value);
-                this.TabColorImagePath = CheckImagePathTabColor();
                 OnPropertyChanged("AltImageFile2Error");
             }
         }
@@ -5847,8 +5666,6 @@ namespace Odin.ViewModels
             set
             {
                 _AltImageFile3Error = value;
-                this.AltImageFile3BoxColor =  ReturnErrorColor(value);
-                this.TabColorImagePath = CheckImagePathTabColor();
                 OnPropertyChanged("AltImageFile3Error");
             }
         }
@@ -5909,8 +5726,6 @@ namespace Odin.ViewModels
             set
             {
                 _AltImageFile4Error = value;
-                this.AltImageFile4BoxColor =  ReturnErrorColor(value);
-                this.TabColorImagePath = CheckImagePathTabColor();
                 OnPropertyChanged("AltImageFile4Error");
             }
         }
@@ -5971,8 +5786,6 @@ namespace Odin.ViewModels
             set
             {
                 _ImagePathError = value;
-                this.ImagePathBoxColor =  ReturnErrorColor(value);
-                this.TabColorImagePath = CheckImagePathTabColor();
                 OnPropertyChanged("ImagePathError");
             }
         }
@@ -6036,8 +5849,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceasinError = value;
-                this.EcommerceAsinBoxColor =  ReturnErrorColor(value);
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceAsinError");
             }
         }
@@ -6097,8 +5908,6 @@ namespace Odin.ViewModels
             set
             {
                 _Ecommercebullet1Error = value;
-                this.EcommerceBullet1BoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceBullet1Error");
             }
         }
@@ -6158,8 +5967,6 @@ namespace Odin.ViewModels
             set
             {
                 _Ecommercebullet2Error = value;
-                this.EcommerceBullet2BoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceBullet2Error");
             }
         }
@@ -6219,8 +6026,6 @@ namespace Odin.ViewModels
             set
             {
                 _Ecommercebullet3Error = value;
-                this.EcommerceBullet3BoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceBullet3Error");
             }
         }
@@ -6280,8 +6085,6 @@ namespace Odin.ViewModels
             set
             {
                 _Ecommercebullet4Error = value;
-                this.EcommerceBullet4BoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceBullet4Error");
             }
         }
@@ -6341,8 +6144,6 @@ namespace Odin.ViewModels
             set
             {
                 _Ecommercebullet5Error = value;
-                this.EcommerceBullet5BoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceBullet5Error");
             }
         }
@@ -6402,8 +6203,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommercecomponentsError = value;
-                this.EcommerceComponentsBoxColor =  ReturnErrorColor(value);
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceComponentsError");
             }
         }
@@ -6463,8 +6262,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceCostError = value;
-                this.EcommerceCostBoxColor =  ReturnErrorColor(value);
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceCostError");
             }
         }
@@ -6524,8 +6321,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceExternalIDError = value;
-                this.EcommerceExternalIdBoxColor =  ReturnErrorColor(value);
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceExternalIdError");
             }
         }
@@ -6585,8 +6380,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceExternalIdTypeError = value;
-                this.EcommerceExternalIdTypeBoxColor =  ReturnErrorColor(value);
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceExternalIdTypeError");
             }
         }
@@ -6741,8 +6534,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceItemHeightError = value;
-                this.EcommerceItemHeightBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceItemHeightError");
             }
         }
@@ -6802,8 +6593,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceItemLengthError = value;
-                this.EcommerceItemLengthBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceItemLengthError");
             }
         }
@@ -6867,8 +6656,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceItemNameError = value;
-                this.EcommerceItemNameBoxColor =  ReturnErrorColor(value);
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceItemNameError");
             }
         }
@@ -6928,8 +6715,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceItemTypeKeywordsError = value;
-                this.EcommerceItemTypeKeywordsBoxColor =  ReturnErrorColor(value);
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceItemTypeKeywordsError");
             }
         }
@@ -6989,8 +6774,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceItemWeightError = value;
-                this.EcommerceItemWeightBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceItemWeightError");
             }
         }
@@ -7050,8 +6833,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceItemWidthError = value;
-                this.EcommerceItemWidthBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceItemWidthError");
             }
         }
@@ -7111,8 +6892,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceModelNameError = value;
-                this.EcommerceModelNameBoxColor =  ReturnErrorColor(value);
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceModelNameError");
             }
         }
@@ -7172,8 +6951,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommercePackageHeightError = value;
-                this.EcommercePackageHeightBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommercePackageHeightError");
             }
         }
@@ -7233,8 +7010,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommercePackageLengthError = value;
-                this.EcommercePackageLengthBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommercePackageLengthError");
             }
         }
@@ -7294,8 +7069,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommercePackageWeightError = value;
-                this.EcommercePackageWeightBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommercePackageWeightError");
             }
         }
@@ -7355,8 +7128,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommercePackageWidthError = value;
-                this.EcommercePackageWidthBoxColor = ReturnErrorColor(value, "AliceBlue");
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommercePackageWidthError");
             }
         }
@@ -7416,8 +7187,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommercePageQtyError = value;
-                this.EcommercePageQtyBoxColor =  ReturnErrorColor(value);
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommercePageQtyError");
             }
         }
@@ -7477,8 +7246,6 @@ namespace Odin.ViewModels
             set
             {
                 _ecommerceParentAsinError = value;
-                this.EcommerceParentAsinBoxColor =  ReturnErrorColor(value);
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceParentAsinError");
             }
         }
@@ -7538,8 +7305,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceProductCategoryError = value;
-                this.EcommerceProductCategoryBoxColor =  ReturnErrorColor(value);
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceProductCategoryError");
             }
         }
@@ -7599,8 +7364,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceProductDescriptionError = value;
-                this.EcommerceProductDescriptionBoxColor =  ReturnErrorColor(value);
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceProductDescriptionError");
             }
         }
@@ -7660,8 +7423,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceProductSubcategoryError = value;
-                this.EcommerceProductSubcategoryBoxColor =  ReturnErrorColor(value);
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceProductSubcategoryError");
             }
         }
@@ -7721,8 +7482,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceManufacturerNameError = value;
-                this.EcommerceManufacturerNameBoxColor =  ReturnErrorColor(value);
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceManufacturerNameError");
             }
         }
@@ -7782,8 +7541,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceMsrpError = value;
-                this.EcommerceMsrpBoxColor =  ReturnErrorColor(value);
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceMsrpError");
             }
         }
@@ -7843,8 +7600,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceGenericKeywordsError = value;
-                this.EcommerceGenericKeywordsBoxColor =  ReturnErrorColor(value);
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceGenericKeywordsError");
             }
         }
@@ -7904,8 +7659,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommercesizeError = value;
-                this.EcommerceSizeBoxColor =  ReturnErrorColor(value);
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceSizeError");
             }
         }
@@ -7965,8 +7718,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceSubjectKeywordsError = value;
-                this.EcommerceSubjectKeywordsBoxColor =  ReturnErrorColor(value);
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceSubjectKeywordsError");
             }
         }
@@ -8026,8 +7777,6 @@ namespace Odin.ViewModels
             set
             {
                 _EcommerceUpcError = value;
-                this.EcommerceUpcBoxColor =  ReturnErrorColor(value);
-                this.TabColorEcommerce = CheckEcommerceTabColor();
                 OnPropertyChanged("EcommerceUpcError");
             }
         }
@@ -8123,8 +7872,6 @@ namespace Odin.ViewModels
             set
             {
                 _ItemKeywordsOverrideError = value;
-                this.ItemKeywordsOverrideBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("ItemKeywordsOverrideError");
             }
         }
@@ -8184,8 +7931,6 @@ namespace Odin.ViewModels
             set
             {
                 _TitleOverrideError = value;
-                this.TitleOverrideBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("TitleOverrideError");
             }
         }
@@ -8245,8 +7990,6 @@ namespace Odin.ViewModels
             set
             {
                 _WebsitePriceOverrideError = value;
-                this.WebsitePriceOverrideBoxColor =  ReturnErrorColor(value);
-                this.TabColorWebInfo = CheckWebInfoTabColor();
                 OnPropertyChanged("WebsitePriceOverrideError");
             }
         }
@@ -8545,530 +8288,11 @@ namespace Odin.ViewModels
         private BitmapImage _image5 = new BitmapImage();
 
         #endregion // Images
-
-        
+                
         #endregion // Properties
         
         #region Methods
 
-        private void AssignError(ItemError error)
-        {
-            switch (error.ErrorField.Trim())
-            {
-                case "Accounting Group":
-                    this.AccountingGroupError = error.ErrorMessage;
-                    break;
-
-                case "Image Path 2":
-                    this.AltImageFile1Error = error.ErrorMessage;
-                    SetImages();
-                    break;
-
-                case "Image Path 3":
-                    this.AltImageFile2Error = error.ErrorMessage;
-                    SetImages();
-                    break;
-
-                case "Image Path 4":
-                    this.AltImageFile3Error = error.ErrorMessage;
-                    SetImages();
-                    break;
-
-                case "Image Path 5":
-                    this.AltImageFile4Error = error.ErrorMessage;
-                    SetImages();
-                    break;
-
-                case "Bill of Materials":
-                    this.BillOfMaterialsError = error.ErrorMessage;
-                    break;
-
-                case "Casepack Height":
-                    this.CasepackHeightError = error.ErrorMessage;
-                    break;
-
-                case "Casepack Length":
-                    this.CasepackLengthError = error.ErrorMessage;
-                    break;
-
-                case "Casepack Weight":
-                    this.CasepackWeightError = error.ErrorMessage;
-                    break;
-
-                case "Casepack Width":
-                    this.CasepackWidthError = error.ErrorMessage;
-                    break;
-
-                case "Casepack Qty":
-                    this.CasepackQtyError = error.ErrorMessage;
-                    break;
-
-                case "Casepack Upc":
-                    this.CasepackUpcError = error.ErrorMessage;
-                    break;
-
-                case "Category":
-                    this.CategoryError = error.ErrorMessage;
-                    break;
-
-                case "Category 2":
-                    this.Category2Error = error.ErrorMessage;
-                    break;
-
-                case "Category 3":
-                    this.Category3Error = error.ErrorMessage;
-                    break;
-
-                case "Color":
-                    this.ColorError = error.ErrorMessage;
-                    break;
-
-                case "Copyright":
-                    this.CopyrightError = error.ErrorMessage;
-                    break;
-
-                case "Country Of Origin":
-                    this.CountryOfOriginError = error.ErrorMessage;
-                    break;
-
-                case "Cost Profile Group":
-                    this.CostProfileGroupError = error.ErrorMessage;
-                    break;
-
-                case "Default Actual Cost CAD":
-                    this.DefaultActualCostCadError = error.ErrorMessage;
-                    break;
-
-                case "Default Actual Cost USD":
-                    this.DefaultActualCostUsdError = error.ErrorMessage;
-                    break;
-
-                case "Description":
-                    this.DescriptionError = error.ErrorMessage;
-                    break;
-
-                case "Direct Import":
-                    this.DirectImportError = error.ErrorMessage;
-                    break;
-
-                case "Dtc Price":
-                    this.DtcPriceError = error.ErrorMessage;
-                    break;
-
-                case "Duty":
-                    this.DutyError = error.ErrorMessage;
-                    break;
-
-                case "EAN":
-                    this.EanError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Asin":
-                    this.EcommerceAsinError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Bullet 1":
-                    this.EcommerceBullet1Error = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Bullet 2":
-                    this.EcommerceBullet2Error = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Bullet 3":
-                    this.EcommerceBullet3Error = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Bullet 4":
-                    this.EcommerceBullet4Error = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Bullet 5":
-                    this.EcommerceBullet5Error = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Components":
-                    this.EcommerceComponentsError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Cost":
-                    this.EcommerceCostError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce External Id":
-                    this.EcommerceExternalIdError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce External Id Type":
-                    this.EcommerceExternalIdTypeError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Generic Keywords":
-                    this.EcommerceGenericKeywordsError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Height":
-                    this.EcommerceItemHeightError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Length":
-                    this.EcommerceItemLengthError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Item Name":
-                    this.EcommerceItemNameError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Item Type Keywords":
-                    this.EcommerceItemTypeKeywords = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Weight":
-                    this.EcommerceItemWeightError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Width":
-                    this.EcommerceItemWidthError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Model Name":
-                    this.EcommerceModelNameError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Package Height":
-                    this.EcommercePackageHeightError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Package Length":
-                    this.EcommercePackageLengthError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Package Weight":
-                    this.EcommercePackageWeightError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Package Width":
-                    this.EcommercePackageWidthError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Page Qty":
-                    this.EcommercePageQtyError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Parent Asin":
-                    this.EcommerceParentAsinError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Product Category":
-                    this.EcommerceProductCategoryError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Product Description":
-                    this.EcommerceProductDescriptionError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Product Subcategory":
-                    this.EcommerceProductSubcategoryError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Manufacturer Name":
-                    this.EcommerceManufacturerNameError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Msrp":
-                    this.EcommerceMsrpError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Size":
-                    this.EcommerceSizeError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce Subject Keywords":
-                    this.EcommerceSubjectKeywordsError = error.ErrorMessage;
-                    break;
-
-                case "Ecommerce UPC":
-                    this.EcommerceUpcError = error.ErrorMessage;
-                    break;
-
-                case "Genre 1":
-                    this.Genre1Error = error.ErrorMessage;
-                    break;
-
-                case "Genre 2":
-                    this.Genre2Error = error.ErrorMessage;
-                    break;
-
-                case "Genre 3":
-                    this.Genre3Error = error.ErrorMessage;
-                    break;
-
-                case "GPC":
-                    this.GpcError = error.ErrorMessage;
-                    break;
-
-                case "Height":
-                    this.HeightError = error.ErrorMessage;
-                    break;
-
-                case "Image Path 1":
-                    this.ImagePathError = error.ErrorMessage;
-                    SetImages();
-                    break;
-
-                case "Innerpack Height":
-                    this.InnerpackHeightError = error.ErrorMessage;
-                    break;
-
-                case "Innerpack Length":
-                    this.InnerpackLengthError = error.ErrorMessage;
-                    break;
-
-                case "Innerpack Weight":
-                    this.InnerpackWeightError = error.ErrorMessage;
-                    break;
-
-                case "Innerpack Width":
-                    this.InnerpackWidthError = error.ErrorMessage;
-                    break;
-
-                case "Innerpack Quantity":
-                    this.InnerpackQuantityError = error.ErrorMessage;
-                    break;
-
-                case "Innerpack UPC":
-                    this.InnerpackUpcError = error.ErrorMessage;
-                    break;
-
-                case "In Stock Date":
-                    this.InStockDateError = error.ErrorMessage;
-                    break;
-
-                case "ISBN":
-                    this.IsbnError = error.ErrorMessage;
-                    break;
-
-                case "Item Category":
-                    this.ItemCategoryError = error.ErrorMessage;
-                    break;
-
-                case "Item Family":
-                    this.ItemFamilyError = error.ErrorMessage;
-                    break;
-
-                case "Item Group":
-                    this.ItemGroupError = error.ErrorMessage;
-                    break;
-
-                case "Item Id":
-                    this.ItemIdError = error.ErrorMessage;
-                    break;
-
-                case "Item Keywords":
-                    this.ItemKeywordsError = error.ErrorMessage;
-                    break;
-
-                case "Language":
-                    this.LanguageError = error.ErrorMessage;
-                    break;
-
-                case "Length":
-                    this.LengthError = error.ErrorMessage;
-                    break;
-
-                case "License Begin Date":
-                    this.LicenseBeginDateError = error.ErrorMessage;
-                    break;
-
-                case "License":
-                    this.LicenseError = error.ErrorMessage;
-                    break;
-
-                case "List Price CAD":
-                    this.ListPriceCadError = error.ErrorMessage;
-                    break;
-
-                case "List Price MXN":
-                    this.ListPriceMxnError = error.ErrorMessage;
-                    break;
-
-                case "List Price USD":
-                    this.ListPriceUsdError = error.ErrorMessage;
-                    break;
-
-                case "Meta Description":
-                    this.MetaDescriptionError = error.ErrorMessage;
-                    break;
-
-                case "MFG Source":
-                    this.MfgSourceError = error.ErrorMessage;
-                    break;
-
-                case "MSRP":
-                    this.MsrpError = error.ErrorMessage;
-                    break;
-
-                case "MSRP CAD":
-                    this.MsrpCadError = error.ErrorMessage;
-                    break;
-
-                case "MSRP MXN":
-                    this.MsrpMxnError = error.ErrorMessage;
-                    break;
-
-                case "Pricing Group":
-                    this.PricingGroupError = error.ErrorMessage;
-                    break;
-
-                case "Print On Demand":
-                    this.PrintOnDemandError = error.ErrorMessage;
-                    break;
-
-                case "Product Format":
-                    this.ProductFormatError = error.ErrorMessage;
-                    break;
-
-                case "Product Group":
-                    this.ProductGroupError = error.ErrorMessage;
-                    break;
-
-                case "Product Id Translations":
-                    this.ProductIdTranslationError = error.ErrorMessage;
-                    break;
-
-                case "Product Line":
-                    this.ProductLineError = error.ErrorMessage;
-                    break;
-
-                case "Product Qty":
-                    this.ProductQtyError = error.ErrorMessage;
-                    break;
-
-                case "Property":
-                    this.PropertyError = error.ErrorMessage;
-                    break;
-
-                case "PS Status":
-                    this.PsStatusError = error.ErrorMessage;
-                    break;
-
-                case "SAT Code":
-                    this.SatCodeError = error.ErrorMessage;
-                    break;
-
-                case "Sell On All Posters":
-                    this.SellOnAllPostersError = error.ErrorMessage;
-                    break;
-
-                case "Sell On Amazon":
-                    this.SellOnAmazonError = error.ErrorMessage;
-                    break;
-
-                case "Sell On Amazon Seller Central":
-                    this.SellOnAmazonSellerCentralError = error.ErrorMessage;
-                    break;
-
-                case "Sell On Ecommerce":
-                    this.SellOnEcommerceError = error.ErrorMessage;
-                    break;
-
-                case "Sell On Fanatics":
-                    this.SellOnFanaticsError = error.ErrorMessage;
-                    break;
-
-                case "Sell On Guitar Center":
-                    this.SellOnGuitarCenterError = error.ErrorMessage;
-                    break;
-
-                case "Sell On Hayneedle":
-                    this.SellOnHayneedleError = error.ErrorMessage;
-                    break;
-
-                case "Sell On Houzz":
-                    this.SellOnHouzzError = error.ErrorMessage;
-                    break;
-
-                case "Sell On Shop Trends":
-                    this.SellOnTrsError = error.ErrorMessage;
-                    break;
-
-                case "Sell On Target":
-                    this.SellOnTargetError = error.ErrorMessage;
-                    break;
-
-                case "Sell On Trends":
-                    this.SellOnTrendsError = error.ErrorMessage;
-                    break;
-
-                case "Sell On Walmart":
-                    this.SellOnWalmartError = error.ErrorMessage;
-                    break;
-
-                case "Sell On Wayfair":
-                    this.SellOnWayfairError = error.ErrorMessage;
-                    break;
-
-                case "Short Description":
-                    this.ShortDescriptionError = error.ErrorMessage;
-                    break;
-
-                case "Size":
-                    this.SizeError = error.ErrorMessage;
-                    break;
-
-                case "Standard Cost":
-                    this.StandardCostError = error.ErrorMessage;
-                    break;
-
-                case "Stats Code":
-                    this.StatsCodeError = error.ErrorMessage;
-                    break;
-
-                case "Tariff Code":
-                    this.TariffCodeError = error.ErrorMessage;
-                    break;
-
-                case "Territory":
-                    this.TerritoryError = error.ErrorMessage;
-                    break;
-
-                case "Title":
-                    this.TitleError = error.ErrorMessage;
-                    break;
-
-                case "Udex":
-                    this.UdexError = error.ErrorMessage;
-                    break;
-
-                case "UPC":
-                    this.UpcError = error.ErrorMessage;
-                    break;
-
-                case "Website Price":
-                    this.WebsitePriceError = error.ErrorMessage;
-                    break;
-
-                case "Warranty":
-                    this.WarrantyError = error.ErrorMessage;
-                    break;
-
-                case "Warranty Check":
-                    this.WarrantyCheckError = error.ErrorMessage;
-                    break;
-
-                case "Weight":
-                    this.WeightError = error.ErrorMessage;
-                    break;
-
-                case "Width":
-                    this.WidthError = error.ErrorMessage;
-                    break;
-
-                default:
-                    throw new ArgumentNullException("ItemViewModel Assign error unknown type " + error.ErrorField);
-            }
-        }
-        
         /// <summary>
         ///     Checks the Ecommerce Parent ASIN and autofills if needed.
         /// </summary>
@@ -9087,38 +8311,49 @@ namespace Odin.ViewModels
         /// <returns></returns>
         private string CheckEcommerceTabColor()
         {
-            if (this.EcommerceAsinBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceBullet1BoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceBullet2BoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceBullet3BoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceBullet4BoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceBullet5BoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceComponentsBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceCostBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceExternalIdBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceExternalIdTypeBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceGenericKeywordsBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceItemHeightBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceItemLengthBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceItemNameBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceItemTypeKeywordsBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceItemWeightBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceItemWidthBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceModelNameBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommercePackageHeightBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommercePackageLengthBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommercePackageWeightBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommercePackageWidthBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommercePageQtyBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceParentAsinBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceProductCategoryBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceProductDescriptionBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceProductSubcategoryBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceManufacturerNameBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceMsrpBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceSizeBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceSubjectKeywordsBoxColor == "Tomato") { return "Tomato"; }
-            if (this.EcommerceUpcBoxColor == "Tomato") { return "Tomato"; }
+            List<string> colors = new List<string>
+            {
+                this.EcommerceAsinBoxColor,
+                this.EcommerceBullet1BoxColor,
+                this.EcommerceBullet2BoxColor,
+                this.EcommerceBullet3BoxColor,
+                this.EcommerceBullet4BoxColor,
+                this.EcommerceBullet5BoxColor,
+                this.EcommerceComponentsBoxColor,
+                this.EcommerceCostBoxColor,
+                this.EcommerceExternalIdBoxColor,
+                this.EcommerceExternalIdTypeBoxColor,
+                this.EcommerceGenericKeywordsBoxColor,
+                this.EcommerceItemHeightBoxColor,
+                this.EcommerceItemLengthBoxColor,
+                this.EcommerceItemNameBoxColor,
+                this.EcommerceItemTypeKeywordsBoxColor,
+                this.EcommerceItemWeightBoxColor,
+                this.EcommerceItemWidthBoxColor ,
+                this.EcommerceModelNameBoxColor,
+                this.EcommercePackageHeightBoxColor,
+                this.EcommercePackageLengthBoxColor,
+                this.EcommercePackageWeightBoxColor ,
+                this.EcommercePackageWidthBoxColor,
+                this.EcommercePageQtyBoxColor,
+                this.EcommerceParentAsinBoxColor,
+                this.EcommerceProductCategoryBoxColor,
+                this.EcommerceProductDescriptionBoxColor ,
+                this.EcommerceProductSubcategoryBoxColor,
+                this.EcommerceManufacturerNameBoxColor,
+                this.EcommerceMsrpBoxColor,
+                this.EcommerceSizeBoxColor,
+                this.EcommerceSubjectKeywordsBoxColor,
+                this.EcommerceUpcBoxColor,
+            };
+            if (colors.Contains("Tomato"))
+            {
+                return "Tomato";
+            }
+            else if (colors.Contains("PaleGoldenrod"))
+            {
+                return "PaleGoldenrod";
+            }
             return "White";
         }
 
@@ -9128,11 +8363,21 @@ namespace Odin.ViewModels
         /// <returns></returns>
         private string CheckImagePathTabColor()
         {
-            if (ImagePathBoxColor == "Tomato") { return "Tomato"; }
-            if (AltImageFile1BoxColor == "Tomato") { return "Tomato"; }
-            if (AltImageFile2BoxColor == "Tomato") { return "Tomato"; }
-            if (AltImageFile3BoxColor == "Tomato") { return "Tomato"; }
-            if (AltImageFile4BoxColor == "Tomato") { return "Tomato"; }
+            List<string> colors = new List<string> {
+                ImagePathBoxColor,
+                AltImageFile1BoxColor,
+                AltImageFile2BoxColor,
+                AltImageFile3BoxColor,
+                AltImageFile4BoxColor
+            };
+            if (colors.Contains("Tomato"))
+            {
+                return "Tomato";
+            }
+            else if (colors.Contains("PaleGoldenrod"))
+            {
+                return "PaleGoldenrod";
+            }
             return "White";
         }
 
@@ -9142,64 +8387,74 @@ namespace Odin.ViewModels
         /// <returns>'Tomato' if errors exist, 'White' if no errors exist</returns>
         private string CheckItemInfoTabColor()
         {
-            if (AccountingGroupBoxColor == "Tomato") { return "Tomato"; }
-            if (BillOfMaterialsBoxColor == "Tomato") { return "Tomato"; }
-            if (CasepackHeightBoxColor == "Tomato") { return "Tomato"; }
-            if (CasepackLengthBoxColor == "Tomato") { return "Tomato"; }
-            if (CasepackQtyBoxColor == "Tomato") { return "Tomato"; }
-            if (CasepackUpcBoxColor == "Tomato") { return "Tomato"; }
-            if (CasepackWidthBoxColor == "Tomato") { return "Tomato"; }
-            if (CasepackWeightBoxColor == "Tomato") { return "Tomato"; }
-            if (ColorBoxColor == "Tomato") { return "Tomato"; }
-            if (CostProfileGroupBoxColor == "Tomato") { return "Tomato"; }
-            if (CountryOfOriginBoxColor == "Tomato") { return "Tomato"; }
-            if (DefaultActualCostUsdBoxColor == "Tomato") { return "Tomato"; }
-            if (DefaultActualCostCadBoxColor == "Tomato") { return "Tomato"; }
-            if (DescriptionBoxColor == "Tomato") { return "Tomato"; }
-            if (EanBoxColor == "Tomato") { return "Tomato"; }
-            if (DutyBoxColor == "Tomato") { return "Tomato"; }
-            if (GpcBoxColor == "Tomato") { return "Tomato"; }
-            if (HeightBoxColor == "Tomato") { return "Tomato"; }
-            if (InnerpackHeightBoxColor == "Tomato") { return "Tomato"; }
-            if (InnerpackLengthBoxColor == "Tomato") { return "Tomato"; }
-            if (InnerpackQuantityBoxColor == "Tomato") { return "Tomato"; }
-            if (InnerpackUpcBoxColor == "Tomato") { return "Tomato"; }
-            if (InnerpackWeightBoxColor == "Tomato") { return "Tomato"; }
-            if (InnerpackWidthBoxColor == "Tomato") { return "Tomato"; }
-            if (IsbnBoxColor == "Tomato") { return "Tomato"; }
-            if (ItemCategoryBoxColor == "Tomato") { return "Tomato"; }
-            if (ItemFamilyBoxColor == "Tomato") { return "Tomato"; }
-            if (ItemGroupBoxColor == "Tomato") { return "Tomato"; }
-            if (ItemIdBoxColor == "Tomato") { return "Tomato"; }
-            if (LanguageBoxColor == "Tomato") { return "Tomato"; }
-            if (LengthBoxColor == "Tomato") { return "Tomato"; }
-            if (LicenseBeginDateBoxColor == "Tomato") { return "Tomato"; }
-            if (ListPriceCadBoxColor == "Tomato") { return "Tomato"; }
-            if (ListPriceMxnBoxColor == "Tomato") { return "Tomato"; }
-            if (ListPriceUsdBoxColor == "Tomato") { return "Tomato"; }
-            if (MfgSourceBoxColor == "Tomato") { return "Tomato"; }
-            if (MsrpBoxColor == "Tomato") { return "Tomato"; }
-            if (MsrpCadBoxColor == "Tomato") { return "Tomato"; }
-            if (MsrpMxnBoxColor == "Tomato") { return "Tomato"; }
-            if (PricingGroupBoxColor == "Tomato") { return "Tomato"; }
-            if (PrintOnDemandBoxColor == "Tomato") { return "Tomato"; }
-            if (ProductFormatBoxColor == "Tomato") { return "Tomato"; }
-            if (ProductGroupBoxColor == "Tomato") { return "Tomato"; }
-            if (ProductIdTranslationBoxColor == "Tomato") { return "Tomato"; }
-            if (ProductLineBoxColor == "Tomato") { return "Tomato"; }
-            if (ProductQtyBoxColor == "Tomato") { return "Tomato"; }
-            if (PsStatusBoxColor == "Tomato") { return "Tomato"; }
-            if (SatCodeBoxColor == "Tomato") { return "Tomato"; }
-            if (StandardCostBoxColor == "Tomato") { return "Tomato"; }
-            if (StatsCodeBoxColor == "Tomato") { return "Tomato"; }
-            if (TariffCodeBoxColor == "Tomato") { return "Tomato"; }
-            if (TerritoryBoxColor == "Tomato") { return "Tomato"; }
-            if (UdexBoxColor == "Tomato") { return "Tomato"; }
-            if (UpcBoxColor == "Tomato") { return "Tomato"; }
-            if (WarrantyBoxColor == "Tomato") { return "Tomato"; }
-            if (WarrantyCheckBoxColor == "Tomato") { return "Tomato"; }
-            if (WeightBoxColor == "Tomato") { return "Tomato"; }
-            if (WidthBoxColor == "Tomato") { return "Tomato"; }
+            List<string> colors = new List<string> {
+                AccountingGroupBoxColor,
+                BillOfMaterialsBoxColor,
+                CasepackHeightBoxColor,
+                CasepackLengthBoxColor,
+                CasepackQtyBoxColor,
+                CasepackUpcBoxColor,
+                CasepackWidthBoxColor,
+                CasepackWeightBoxColor,
+                ColorBoxColor,
+                CostProfileGroupBoxColor,
+                CountryOfOriginBoxColor,
+                DefaultActualCostUsdBoxColor,
+                DefaultActualCostCadBoxColor,
+                DescriptionBoxColor,
+                EanBoxColor,
+                DutyBoxColor,
+                GpcBoxColor,
+                HeightBoxColor,
+                InnerpackHeightBoxColor,
+                InnerpackLengthBoxColor,
+                InnerpackQuantityBoxColor,
+                InnerpackUpcBoxColor,
+                InnerpackWeightBoxColor,
+                InnerpackWidthBoxColor,
+                IsbnBoxColor,
+                ItemCategoryBoxColor,
+                ItemFamilyBoxColor,
+                ItemGroupBoxColor,
+                ItemIdBoxColor,
+                LanguageBoxColor,
+                LengthBoxColor,
+                LicenseBeginDateBoxColor,
+                ListPriceCadBoxColor,
+                ListPriceMxnBoxColor,
+                ListPriceUsdBoxColor,
+                MfgSourceBoxColor,
+                MsrpBoxColor,
+                MsrpCadBoxColor,
+                MsrpMxnBoxColor,
+                PricingGroupBoxColor,
+                PrintOnDemandBoxColor,
+                ProductFormatBoxColor,
+                ProductGroupBoxColor,
+                ProductIdTranslationBoxColor,
+                ProductLineBoxColor,
+                ProductQtyBoxColor,
+                PsStatusBoxColor,
+                SatCodeBoxColor,
+                StandardCostBoxColor,
+                StatsCodeBoxColor,
+                TariffCodeBoxColor,
+                TerritoryBoxColor,
+                UdexBoxColor,
+                UpcBoxColor,
+                WarrantyBoxColor,
+                WarrantyCheckBoxColor,
+                WeightBoxColor,
+                WidthBoxColor,
+            };
+            if (colors.Contains("Tomato"))
+            {
+                return "Tomato";
+            }
+            else if (colors.Contains("PaleGoldenrod"))
+            {
+                return "PaleGoldenrod";
+            }
             return "White";
         }
 
@@ -9209,19 +8464,30 @@ namespace Odin.ViewModels
         /// <returns></returns>
         private string CheckWebFlagsTabColor()
         {
-            if (SellOnAllPostersBoxColor == "Tomato") { return "Tomato"; }
-            if (SellOnAmazonBoxColor == "Tomato") { return "Tomato"; }
-            if (SellOnAmazonSellerCentralBoxColor == "Tomato") { return "Tomato"; }
-            if (SellOnEcommerceBoxColor == "Tomato") { return "Tomato"; }
-            if (SellOnFanaticsBoxColor == "Tomato") { return "Tomato"; }
-            if (SellOnGuitarCenterBoxColor == "Tomato") { return "Tomato"; }
-            if (SellOnHayneedleBoxColor == "Tomato") { return "Tomato"; }
-            if (SellOnHouzzBoxColor == "Tomato") { return "Tomato"; }
-            if (SellOnTargetBoxColor == "Tomato") { return "Tomato"; }
-            if (SellOnTrendsBoxColor == "Tomato") { return "Tomato"; }
-            if (SellOnTrsBoxColor == "Tomato") { return "Tomato"; }
-            if (SellOnWalmartBoxColor == "Tomato") { return "Tomato"; }
-            if (SellOnWayfairBoxColor == "Tomato") { return "Tomato"; }
+            List<string> colors = new List<string>
+            {
+                SellOnAllPostersBoxColor,
+                SellOnAmazonBoxColor,
+                SellOnAmazonSellerCentralBoxColor,
+                SellOnEcommerceBoxColor,
+                SellOnFanaticsBoxColor ,
+                SellOnGuitarCenterBoxColor ,
+                SellOnHayneedleBoxColor,
+                SellOnHouzzBoxColor,
+                SellOnTargetBoxColor,
+                SellOnTrendsBoxColor,
+                SellOnTrsBoxColor,
+                SellOnWalmartBoxColor,
+                SellOnWayfairBoxColor
+            };
+            if (colors.Contains("Tomato"))
+            {
+                return "Tomato";
+            }
+            else if (colors.Contains("PaleGoldenrod"))
+            {
+                return "PaleGoldenrod";
+            }
             return "White";
         }
 
@@ -9231,23 +8497,34 @@ namespace Odin.ViewModels
         /// <returns></returns>
         private string CheckWebInfoTabColor()
         {
-            if (this.CopyrightBoxColor == "Tomato") { return "Tomato"; }
-            if (this.InStockDateBoxColor == "Tomato") { return "Tomato"; }
-            if (this.CategoryBoxColor == "Tomato") { return "Tomato"; }
-            if (this.Category2BoxColor == "Tomato") { return "Tomato"; }
-            if (this.Category3BoxColor == "Tomato") { return "Tomato"; }
-            if (this.DtcPriceBoxColor == "Tomato") { return "Tomato"; }
-            if (this.ItemKeywordsBoxColor == "Tomato") { return "Tomato"; }
-            if (this.Genre1BoxColor == "Tomato") { return "Tomato"; }
-            if (this.Genre2BoxColor == "Tomato") { return "Tomato"; }
-            if (this.Genre3BoxColor == "Tomato") { return "Tomato"; }
-            if (this.TitleBoxColor == "Tomato") { return "Tomato"; }
-            if (this.LicenseBoxColor == "Tomato") { return "Tomato"; }
-            if (this.MetaDescriptionBoxColor == "Tomato") { return "Tomato"; }
-            if (this.PropertyBoxColor == "Tomato") { return "Tomato"; }
-            if (this.ShortDescriptionBoxColor == "Tomato") { return "Tomato"; }
-            if (this.SizeBoxColor == "Tomato") { return "Tomato"; }
-            if (this.WebsitePriceBoxColor == "Tomato") { return "Tomato"; }
+            List<string> colors = new List<string>
+            {
+                this.CopyrightBoxColor,
+                this.InStockDateBoxColor,
+                this.CategoryBoxColor,
+                this.Category2BoxColor,
+                this.Category3BoxColor,
+                this.DtcPriceBoxColor,
+                this.ItemKeywordsBoxColor,
+                this.Genre1BoxColor,
+                this.Genre2BoxColor,
+                this.Genre3BoxColor,
+                this.TitleBoxColor,
+                this.LicenseBoxColor,
+                this.MetaDescriptionBoxColor,
+                this.PropertyBoxColor,
+                this.ShortDescriptionBoxColor,
+                this.SizeBoxColor,
+                this.WebsitePriceBoxColor
+            };
+            if (colors.Contains("Tomato"))
+            {
+                return "Tomato";
+            }
+            else if (colors.Contains("PaleGoldenrod"))
+            {
+                return "PaleGoldenrod";
+            }
             return "White";
         }
 
@@ -9286,597 +8563,1368 @@ namespace Odin.ViewModels
                 }
             }
         }
-
+        
         /// <summary>
         ///     Runs validation for given field and assigns error message to error fields
         /// </summary>
         /// <param name="field"></param>
         private void FlagError(string field)
         {
-            switch(field)
+            field = field.Replace(" ","");
+            ItemError error = null;
+            switch (field)
             {
                 case "AccountingGroup":
-                    this.AccountingGroupError = ItemService.ValidateAccountingGroup(ItemViewModelItem)?.ErrorMessage ?? "";
+                    //  AccountingGroup Validation
+                    error = ItemService.ValidateAccountingGroup(ItemViewModelItem);
+                    this.AccountingGroupError = error?.ErrorMessage ?? "";
+                    this.AccountingGroupBoxColor = error?.ReturnErrorColor() ?? "White";                    
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "AltImageFile1":
-                    this.AltImageFile1Error = ItemService.ValidateImagePath(ItemViewModelItem, "2")?.ErrorMessage ?? "";
+                    //  AltImageFile1 Validation
+                    error = ItemService.ValidateImagePath(ItemViewModelItem, "2");
+                    this.AltImageFile1Error = error?.ErrorMessage ?? "";
+                    this.AltImageFile1BoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorImagePath = CheckImagePathTabColor();
                     SetImages();
                     break;
 
                 case "AltImageFile2":
-                    this.AltImageFile2Error = ItemService.ValidateImagePath(ItemViewModelItem, "3")?.ErrorMessage ?? "";
+
+                    //  AltImageFile2 Validation
+                    error = ItemService.ValidateImagePath(ItemViewModelItem, "3");
+                    this.AltImageFile2Error = error?.ErrorMessage ?? "";
+                    this.AltImageFile2BoxColor = error?.ReturnErrorColor() ?? "White";
+
                     SetImages();
                     break;
 
                 case "AltImageFile3":
-                    this.AltImageFile3Error = ItemService.ValidateImagePath(ItemViewModelItem, "4")?.ErrorMessage ?? "";
+
+                    //  AltImageFile3 Validation
+                    error = ItemService.ValidateImagePath(ItemViewModelItem, "4");
+                    this.AltImageFile3Error = error?.ErrorMessage ?? "";
+                    this.AltImageFile3BoxColor = error?.ReturnErrorColor() ?? "White";
+
                     SetImages();
                     break;
 
                 case "AltImageFile4":
-                    this.AltImageFile4Error = ItemService.ValidateImagePath(ItemViewModelItem, "5")?.ErrorMessage ?? "";
+
+                    //  AltImageFile4 Validation
+                    error = ItemService.ValidateImagePath(ItemViewModelItem, "5");
+                    this.AltImageFile4Error = error?.ErrorMessage ?? "";
+                    this.AltImageFile4BoxColor = error?.ReturnErrorColor() ?? "White";
+
                     SetImages();
                     break;
 
                 case "BillOfMaterials":
-                    this.BillOfMaterialsError = ItemService.ValidateBillOfMaterials(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.ProductIdTranslationError = ItemService.ValidateProductIdTranslation(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    //  BillOfMaterials Validation
+                    error = ItemService.ValidateBillOfMaterials(ItemViewModelItem);
+                    this.BillOfMaterialsError = error?.ErrorMessage ?? "";
+                    this.BillOfMaterialsBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    //  ProductIdTranslation Validation
+                    error = ItemService.ValidateProductIdTranslation(ItemViewModelItem);
+                    this.ProductIdTranslationError = error?.ErrorMessage ?? "";
+                    this.ProductIdTranslationBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "CasepackHeight":
-                    this.CasepackHeightError = ItemService.ValidateCasepack(ItemViewModelItem, "Height")?.ErrorMessage ?? "";
-                    this.CasepackLengthError = ItemService.ValidateCasepack(ItemViewModelItem, "Length")?.ErrorMessage ?? "";
-                    this.CasepackWidthError = ItemService.ValidateCasepack(ItemViewModelItem, "Width")?.ErrorMessage ?? "";
-                    this.CasepackWeightError = ItemService.ValidateCasepack(ItemViewModelItem, "Weight")?.ErrorMessage ?? "";
-                    break;
-
                 case "CasepackLength":
-                    this.CasepackHeightError = ItemService.ValidateCasepack(ItemViewModelItem, "Height")?.ErrorMessage ?? "";
-                    this.CasepackLengthError = ItemService.ValidateCasepack(ItemViewModelItem, "Length")?.ErrorMessage ?? "";
-                    this.CasepackWidthError = ItemService.ValidateCasepack(ItemViewModelItem, "Width")?.ErrorMessage ?? "";
-                    this.CasepackWeightError = ItemService.ValidateCasepack(ItemViewModelItem, "Weight")?.ErrorMessage ?? "";
-                    break;
-
                 case "CasepackWeight":
-                    this.CasepackHeightError = ItemService.ValidateCasepack(ItemViewModelItem, "Height")?.ErrorMessage ?? "";
-                    this.CasepackLengthError = ItemService.ValidateCasepack(ItemViewModelItem, "Length")?.ErrorMessage ?? "";
-                    this.CasepackWidthError = ItemService.ValidateCasepack(ItemViewModelItem, "Width")?.ErrorMessage ?? "";
-                    this.CasepackWeightError = ItemService.ValidateCasepack(ItemViewModelItem, "Weight")?.ErrorMessage ?? "";
-                    break;
-
                 case "CasepackWidth":
-                    this.CasepackHeightError = ItemService.ValidateCasepack(ItemViewModelItem, "Height")?.ErrorMessage??"";
-                    this.CasepackLengthError = ItemService.ValidateCasepack(ItemViewModelItem, "Length")?.ErrorMessage??"";
-                    this.CasepackWidthError = ItemService.ValidateCasepack(ItemViewModelItem, "Width")?.ErrorMessage??"";
-                    this.CasepackWeightError = ItemService.ValidateCasepack(ItemViewModelItem, "Weight")?.ErrorMessage??"";
+
+                    //  CasepackHeight Validation
+                    error = ItemService.ValidateCasepack(ItemViewModelItem, "Height");
+                    this.CasepackHeightError = error?.ErrorMessage ?? "";
+                    this.CasepackHeightBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    //  CasepackLength Validation
+                    error = ItemService.ValidateCasepack(ItemViewModelItem, "Length");
+                    this.CasepackLengthError = error?.ErrorMessage ?? "";
+                    this.CasepackLengthBoxColor = error?.ReturnErrorColor() ?? "WAliceBluehite";
+
+                    //  CasepackWeight Validation
+                    error = ItemService.ValidateCasepack(ItemViewModelItem, "Weigth");
+                    this.CasepackWeightError = error?.ErrorMessage ?? "";
+                    this.CasepackWeightBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    //  CasepackWidth Validation
+                    error = ItemService.ValidateCasepack(ItemViewModelItem, "Width");
+                    this.CasepackWidthError = error?.ErrorMessage ?? "";
+                    this.CasepackWidthBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "CasepackQty":
-                    this.CasepackQtyError = ItemService.ValidateCasepackQty(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    //  CasepackQty Validation
+                    error = ItemService.ValidateCasepackQty(ItemViewModelItem);
+                    this.CasepackQtyError = error?.ErrorMessage ?? "";
+                    this.CasepackQtyBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "CasepackUpc":
-                    this.CasepackUpcError = ItemService.ValidatePackUpc(ItemViewModelItem, "Casepack")?.ErrorMessage ?? "";
+
+                    //  CasepackUpc Validation
+                    error = ItemService.ValidatePackUpc(ItemViewModelItem, "Casepack");
+                    this.CasepackUpcError = error?.ErrorMessage ?? "";
+                    this.CasepackUpcBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "Category":
-                    this.CategoryError = ItemService.ValidateCategory(ItemViewModelItem, "1")?.ErrorMessage ?? "";
+
+                    //  Category Validation
+                    error = ItemService.ValidateCategory(ItemViewModelItem, "1");
+                    this.CategoryError = error?.ErrorMessage ?? "";
+                    this.CategoryBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebInfo = CheckWebInfoTabColor();
                     break;
 
                 case "Category2":
-                    this.Category2Error = ItemService.ValidateCategory(ItemViewModelItem, "2")?.ErrorMessage ?? "";
+
+                    //  Category2 Validation
+                    error = ItemService.ValidateCategory(ItemViewModelItem, "2");
+                    this.Category2Error = error?.ErrorMessage ?? "";
+                    this.Category2BoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebInfo = CheckWebInfoTabColor();
                     break;
 
                 case "Category3":
-                    this.Category3Error = ItemService.ValidateCategory(ItemViewModelItem, "3")?.ErrorMessage ?? "";
+
+                    //  Category3 Validation
+                    error = ItemService.ValidateCategory(ItemViewModelItem, "3");
+                    this.Category3Error = error?.ErrorMessage ?? "";
+                    this.Category3BoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebInfo = CheckWebInfoTabColor();
                     break;
 
                 case "Color":
-                    this.ColorError = ItemService.ValidateColor(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    //  Color Validation
+                    error = ItemService.ValidateColor(ItemViewModelItem);
+                    this.ColorError = error?.ErrorMessage ?? "";
+                    this.ColorBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "Copyright":
-                    this.CopyrightError = ItemService.ValidateCopyright(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    //  Copyright Validation
+                    error = ItemService.ValidateCopyright(ItemViewModelItem);
+                    this.CopyrightError = error?.ErrorMessage ?? "";
+                    this.CopyrightBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebInfo = CheckWebInfoTabColor();
                     break;
 
                 case "CountryOfOrigin":
+                                        
+                    //  CountryOfOrigin Validation
+                    error = ItemService.ValidateCountryOfOrigin(ItemViewModelItem);
+                    this.CountryOfOriginError = error?.ErrorMessage ?? "";
+                    this.CountryOfOriginBoxColor = error?.ReturnErrorColor() ?? "White";
+
                     this.ItemViewModelItem.EcommerceCountryofOrigin = ItemService.RetrieveFullCountryOfOrigin(ItemViewModelItem.CountryOfOrigin);
-                    this.CountryOfOriginError = ItemService.ValidateCountryOfOrigin(ItemViewModelItem)?.ErrorMessage ?? "";
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "CostProfileGroup":
-                    this.CostProfileGroupError = ItemService.ValidateCostProfileGroup(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.MfgSourceError = ItemService.ValidateMfgSource(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    //  CostProfileGroup Validation
+                    error = ItemService.ValidateCostProfileGroup(ItemViewModelItem);
+                    this.CostProfileGroupError = error?.ErrorMessage ?? "";
+                    this.CostProfileGroupBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    //  MfgSource Validation
+                    error = ItemService.ValidateMfgSource(ItemViewModelItem);
+                    this.MfgSourceError = error?.ErrorMessage ?? "";
+                    this.MfgSourceBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "DefaultActualCostCad":
-                    this.DefaultActualCostCadError = ItemService.ValidateDefaultActualCost(ItemViewModelItem, "CAD")?.ErrorMessage ?? "";
+
+                    //  DefaultActualCostCad Validation
+                    error = ItemService.ValidateDefaultActualCost(ItemViewModelItem, "CAD");
+                    this.DefaultActualCostCadError = error?.ErrorMessage ?? "";
+                    this.DefaultActualCostCadBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "DefaultActualCostUsd":
-                    this.DefaultActualCostUsdError = ItemService.ValidateDefaultActualCost(ItemViewModelItem, "USD")?.ErrorMessage ?? "";
+
+                    //  DefaultActualCostUsd Validation
+                    error = ItemService.ValidateDefaultActualCost(ItemViewModelItem, "USD");
+                    this.DefaultActualCostUsdError = error?.ErrorMessage ?? "";
+                    this.DefaultActualCostUsdBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "Description":
-                    this.DescriptionError = ItemService.ValidateDescription(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    //  Description Validation
+                    error = ItemService.ValidateDescription(ItemViewModelItem);
+                    this.DescriptionError = error?.ErrorMessage ?? "";
+                    this.DescriptionBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "DirectImport":
-                    this.DirectImportError = ItemService.ValidateDirectImport(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    //  DirectImport Validation
+                    error = ItemService.ValidateDirectImport(ItemViewModelItem);
+                    this.DirectImportError = error?.ErrorMessage ?? "";
+                    this.DirectImportBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "Duty":
-                    this.DutyError = ItemService.ValidateDuty(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    //  _XXX_ Validation
+                    error = ItemService.ValidateDuty(ItemViewModelItem);
+                    this.DutyError = error?.ErrorMessage ?? "";
+                    this.DutyBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "DtcPrice":
-                    this.DtcPriceError = ItemService.ValidateDtcPrice(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    //  DtcPrice Validation
+                    error = ItemService.ValidateDtcPrice(ItemViewModelItem);
+                    this.DtcPriceError = error?.ErrorMessage ?? "";
+                    this.DtcPriceBoxColor = error?.ReturnErrorColor() ?? "White";
                     break;
 
                 case "Ean":
-                    this.EanError = ItemService.ValidateEan(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    //  _XXX_ Validation
+                    error = ItemService.ValidateEan(ItemViewModelItem);
+                    this.EanError = error?.ErrorMessage ?? "";
+                    this.EanBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "EcommerceAsin":
-                    this.EcommerceAsinError = ItemService.ValidateEcommerceAsin(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    //  EcommerceAsin Validation
+                    error = ItemService.ValidateEcommerceAsin(ItemViewModelItem);
+                    this.EcommerceAsinError = error?.ErrorMessage ?? "";
+                    this.EcommerceAsinBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceBullet1":
-                    this.EcommerceBullet1Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "1")?.ErrorMessage ?? "";
+
+                    //  EcommerceBullet1 Validation
+                    error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "1");
+                    this.EcommerceBullet1Error = error?.ErrorMessage ?? "";
+                    this.EcommerceBullet1BoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceBullet2":
-                    this.EcommerceBullet2Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "2")?.ErrorMessage ?? "";
+
+                    //  EcommerceBullet2 Validation
+                    error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "2");
+                    this.EcommerceBullet2Error = error?.ErrorMessage ?? "";
+                    this.EcommerceBullet2BoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceBullet3":
-                    this.EcommerceBullet3Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "3")?.ErrorMessage ?? "";
+
+                    //  EcommerceBullet3 Validation
+                    error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "3");
+                    this.EcommerceBullet3Error = error?.ErrorMessage ?? "";
+                    this.EcommerceBullet3BoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceBullet4":
-                    this.EcommerceBullet4Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "4")?.ErrorMessage ?? "";
+
+                    //  EcommerceBullet4 Validation
+                    error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "4");
+                    this.EcommerceBullet4Error = error?.ErrorMessage ?? "";
+                    this.EcommerceBullet4BoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceBullet5":
-                    this.EcommerceBullet5Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "5")?.ErrorMessage ?? "";
+
+                    //  EcommerceBullet4 Validation
+                    error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "5");
+                    this.EcommerceBullet4Error = error?.ErrorMessage ?? "";
+                    this.EcommerceBullet4BoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceComponents":
-                    this.EcommerceComponentsError = ItemService.ValidateEcommerceComponents(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    //  EcommerceComponents Validation
+                    error = ItemService.ValidateEcommerceComponents(ItemViewModelItem);
+                    this.EcommerceComponentsError = error?.ErrorMessage ?? "";
+                    this.EcommerceComponentsBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceCost":
-                    this.EcommerceCostError = ItemService.ValidateEcommerceCost(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    //  EcommerceCost Validation
+                    error = ItemService.ValidateEcommerceCost(ItemViewModelItem);
+                    this.EcommerceCostError = error?.ErrorMessage ?? "";
+                    this.EcommerceCostBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceExternalId":
-                    this.EcommerceExternalIdError = ItemService.ValidateEcommerceExternalId(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    //  EcommerceExternalId Validation
+                    error = ItemService.ValidateEcommerceExternalId(ItemViewModelItem);
+                    this.EcommerceExternalIdError = error?.ErrorMessage ?? "";
+                    this.EcommerceExternalIdBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceExternalIdType":
-                    this.EcommerceExternalIdTypeError = ItemService.ValidateEcommerceExternalIdType(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    //  EcommerceExternalIdType Validation
+                    error = ItemService.ValidateEcommerceExternalIdType(ItemViewModelItem);
+                    this.EcommerceExternalIdTypeError = error?.ErrorMessage ?? "";
+                    this.EcommerceExternalIdTypeBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceGenericKeywords":
-                    this.EcommerceGenericKeywordsError = ItemService.ValidateEcommerceKeywords(ItemViewModelItem, "Generic")?.ErrorMessage ?? "";
+
+                    //  EcommerceGenericKeywords Validation
+                    error = ItemService.ValidateEcommerceKeywords(ItemViewModelItem, "Generic");
+                    this.EcommerceGenericKeywordsError = error?.ErrorMessage ?? "";
+                    this.EcommerceGenericKeywordsBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceItemHeight":
-                    this.EcommerceItemHeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Height")?.ErrorMessage ?? "";
+
+                    //  EcommerceItemHeight Validation
+                    error = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Height");
+                    this.EcommerceItemHeightError = error?.ErrorMessage ?? "";
+                    this.EcommerceItemHeightBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceItemLength":
-                    this.EcommerceItemLengthError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Length")?.ErrorMessage ?? "";
+
+                    //  EcommerceItemLength Validation
+                    error = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Length");
+                    this.EcommerceItemLengthError = error?.ErrorMessage ?? "";
+                    this.EcommerceItemLengthBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceItemName":
-                    this.EcommerceItemNameError = ItemService.ValidateEcommerceItemName(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    //  EcommerceItemName Validation
+                    error = ItemService.ValidateEcommerceItemName(ItemViewModelItem);
+                    this.EcommerceItemNameError = error?.ErrorMessage ?? "";
+                    this.EcommerceItemNameBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceItemTypeKeywords":
-                    this.EcommerceItemTypeKeywordsError = ItemService.ValidateEcommerceItemTypeKeywords(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    //  _XXX_ Validation
+                    error = ItemService.ValidateEcommerceItemTypeKeywords(ItemViewModelItem);
+                    this.EcommerceItemTypeKeywordsError = error?.ErrorMessage ?? "";
+                    this.EcommerceItemTypeKeywordsBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceItemWeight":
-                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Weight")?.ErrorMessage ?? "";
+                    //  EcommerceItemWeight Validation
+                    error = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Weight");
+                    this.EcommerceItemWeightError = error?.ErrorMessage ?? "";
+                    this.EcommerceItemWeightBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceItemWidth":
-                    this.EcommerceItemWidthError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Width")?.ErrorMessage ?? "";
+                    //  EcommerceItemWidth Validation
+                    error = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Width");
+                    this.EcommerceItemWidthError = error?.ErrorMessage ?? "";
+                    this.EcommerceItemWidthBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceModelName":
-                    this.EcommerceModelNameError = ItemService.ValidateEcommerceModelName(ItemViewModelItem)?.ErrorMessage ?? "";
+                    //  EcommerceModelName Validation
+                    error = ItemService.ValidateEcommerceModelName(ItemViewModelItem);
+                    this.EcommerceModelNameError = error?.ErrorMessage ?? "";
+                    this.EcommerceModelNameBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommercePackageHeight":
-                    this.EcommercePackageHeightError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Height")?.ErrorMessage ?? "";
+                    //  EcommercePackageHeight Validation
+                    error = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Height");
+                    this.EcommercePackageHeightError = error?.ErrorMessage ?? "";
+                    this.EcommercePackageHeightBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommercePackageLength":
-                    this.EcommercePackageLengthError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Length")?.ErrorMessage ?? "";
+                    //  EcommercePackageLength Validation
+                    error = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Length");
+                    this.EcommercePackageLengthError = error?.ErrorMessage ?? "";
+                    this.EcommercePackageLengthBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommercePackageWeight":
-                    this.EcommercePackageWeightError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Weight")?.ErrorMessage ?? "";
+                    //  EcommercePackageWeight Validation
+                    error = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Weight");
+                    this.EcommercePackageWeightError = error?.ErrorMessage ?? "";
+                    this.EcommercePackageWeightBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommercePackageWidth":
-                    this.EcommercePackageWidthError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Width")?.ErrorMessage ?? "";
+                    //  EcommercePackageWidth Validation
+                    error = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Width");
+                    this.EcommercePackageWidthError = error?.ErrorMessage ?? "";
+                    this.EcommercePackageWidthBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommercePageQty":
-                    this.EcommercePageQtyError = ItemService.ValidateEcommercePageQty(ItemViewModelItem)?.ErrorMessage ?? "";
+                    //  EcommercePageQty Validation
+                    error = ItemService.ValidateEcommercePageQty(ItemViewModelItem);
+                    this.EcommercePageQtyError = error?.ErrorMessage ?? "";
+                    this.EcommercePageQtyBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceParentAsin":
-                    this.EcommerceParentAsinError = ItemService.ValidateEcommerceParentAsin(ItemViewModelItem)?.ErrorMessage ?? "";
+                    //  EcommerceParentAsin Validation
+                    error = ItemService.ValidateEcommerceParentAsin(ItemViewModelItem);
+                    this.EcommerceParentAsinError = error?.ErrorMessage ?? "";
+                    this.EcommerceParentAsinBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceProductCategory":
-                    this.EcommerceProductCategoryError = ItemService.ValidateEcommerceProductCategory(ItemViewModelItem)?.ErrorMessage ?? "";
+                    //  EcommerceProductCategory Validation
+                    error = ItemService.ValidateEcommerceProductCategory(ItemViewModelItem);
+                    this.EcommerceProductCategoryError = error?.ErrorMessage ?? "";
+                    this.EcommerceProductCategoryBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceProductDescription":
-                    this.EcommerceProductDescriptionError = ItemService.ValidateEcommerceProductDescription(ItemViewModelItem)?.ErrorMessage ?? "";
+                    //  EcommerceProductDescription Validation
+                    error = ItemService.ValidateEcommerceProductDescription(ItemViewModelItem);
+                    this.EcommerceProductDescriptionError = error?.ErrorMessage ?? "";
+                    this.EcommerceProductDescriptionBoxColor = error?.ReturnErrorColor() ?? "White";
+                    
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceProductSubcategory":
-                    this.EcommerceProductSubcategoryError = ItemService.ValidateEcommerceProductSubcategory(ItemViewModelItem)?.ErrorMessage ?? "";
+                    //  EcommerceProductSubcategory Validation
+                    error = ItemService.ValidateEcommerceProductSubcategory(ItemViewModelItem);
+                    this.EcommerceProductSubcategoryError = error?.ErrorMessage ?? "";
+                    this.EcommerceProductSubcategoryBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceManufacturerName":
-                    this.EcommerceManufacturerNameError = ItemService.ValidateEcommerceManufacturerName(ItemViewModelItem)?.ErrorMessage ?? "";
+                    //  EcommerceManufacturerName Validation
+                    error = ItemService.ValidateEcommerceManufacturerName(ItemViewModelItem);
+                    this.EcommerceManufacturerNameError = error?.ErrorMessage ?? "";
+                    this.EcommerceManufacturerNameBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceMsrp":
-                    this.EcommerceMsrpError = ItemService.ValidateEcommerceMsrp(ItemViewModelItem)?.ErrorMessage ?? "";
+                    //  EcommerceMsrp Validation
+                    error = ItemService.ValidateEcommerceMsrp(ItemViewModelItem);
+                    this.EcommerceMsrpError = error?.ErrorMessage ?? "";
+                    this.EcommerceMsrpBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommereSize":
-                    this.EcommerceSizeError = ItemService.ValidateEcommerceSize(ItemViewModelItem)?.ErrorMessage ?? "";
+                    //  EcommerceSize Validation
+                    error = ItemService.ValidateEcommerceSize(ItemViewModelItem);
+                    this.EcommerceSizeError = error?.ErrorMessage ?? "";
+                    this.EcommerceSizeBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommerceSubjectKeywords":
-                    this.EcommerceSubjectKeywordsError = ItemService.ValidateEcommerceKeywords(ItemViewModelItem, "Subject")?.ErrorMessage ?? "";
+                    //  EcommerceSubjectKeywords Validation
+                    error = ItemService.ValidateEcommerceKeywords(ItemViewModelItem, "Subject");
+                    this.EcommerceSubjectKeywordsError = error?.ErrorMessage ?? "";
+                    this.EcommerceSubjectKeywordsBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "EcommereUpc":
-                    this.EcommerceUpcError = ItemService.ValidateEcommerceUpc(ItemViewModelItem)?.ErrorMessage ?? "";
+                    //  EcommereUpc Validation
+                    error = ItemService.ValidateEcommerceUpc(ItemViewModelItem);
+                    this.EcommerceUpcError = error?.ErrorMessage ?? "";
+                    this.EcommerceUpcBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "Genre1":
-                    this.Genre1Error = ItemService.ValidateGenre(ItemViewModelItem, 1)?.ErrorMessage ?? "";
+                    // Genre1 Validation
+                    error = ItemService.ValidateGenre(ItemViewModelItem, 1);
+                    this.Genre1Error = error?.ErrorMessage ?? "";
+                    this.Genre1BoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebInfo = CheckWebInfoTabColor();
                     break;
 
                 case "Genre2":
-                    this.Genre2Error = ItemService.ValidateGenre(ItemViewModelItem, 2)?.ErrorMessage ?? "";
+                    // Genre2 Validation
+                    error = ItemService.ValidateGenre(ItemViewModelItem, 2);
+                    this.Genre2Error = error?.ErrorMessage ?? "";
+                    this.Genre2BoxColor = error?.ReturnErrorColor() ?? "White";
+                    this.TabColorWebInfo = CheckWebInfoTabColor();
                     break;
 
                 case "Genre3":
-                    this.Genre3Error = ItemService.ValidateGenre(ItemViewModelItem, 3)?.ErrorMessage ?? "";
+                    // Genre3 Validation
+                    error = ItemService.ValidateGenre(ItemViewModelItem, 3);
+                    this.Genre3Error = error?.ErrorMessage ?? "";
+                    this.Genre3BoxColor = error?.ReturnErrorColor() ?? "White";
+                    this.TabColorWebInfo = CheckWebInfoTabColor();
                     break;
 
                 case "Gpc":
-                    this.GpcError = ItemService.ValidateGpc(ItemViewModelItem)?.ErrorMessage ?? "";
+                    //  Gpc Validation
+                    error = ItemService.ValidateGpc(ItemViewModelItem);
+                    this.GpcError = error?.ErrorMessage ?? "";
+                    this.GpcBoxColor = error?.ReturnErrorColor() ?? "White";
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "Height":
-                    this.HeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Height")?.ErrorMessage ?? "";
+                    //  Height Validation
+                    error = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Height");
+                    this.HeightError = error?.ErrorMessage ?? "";
+                    this.HeightBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "ImagePath":
-                    this.ImagePathError = ItemService.ValidateImagePath(ItemViewModelItem, "1")?.ErrorMessage ?? "";
+                    //  ImagePath Validation
+                    error = ItemService.ValidateImagePath(ItemViewModelItem, "1");
+                    this.ImagePathError = error?.ErrorMessage ?? "";
+                    this.ImagePathBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorImagePath = CheckImagePathTabColor();
                     SetImages();
                     break;
 
                 case "InnerpackHeight":
-                    this.InnerpackWidthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Width")?.ErrorMessage ?? "";
-                    this.InnerpackHeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Height")?.ErrorMessage ?? "";
-                    this.InnerpackLengthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Length")?.ErrorMessage ?? "";
-                    this.InnerpackWeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Weight")?.ErrorMessage ?? "";
-                    break;
-
                 case "InnerpackLength":
-                    this.InnerpackWidthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Width")?.ErrorMessage ?? "";
-                    this.InnerpackHeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Height")?.ErrorMessage ?? "";
-                    this.InnerpackLengthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Length")?.ErrorMessage ?? "";
-                    this.InnerpackWeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Weight")?.ErrorMessage ?? "";
-                    break;
-
                 case "InnerpackWeight":
-                    this.InnerpackWidthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Width")?.ErrorMessage ?? "";
-                    this.InnerpackHeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Height")?.ErrorMessage ?? "";
-                    this.InnerpackLengthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Length")?.ErrorMessage ?? "";
-                    this.InnerpackWeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Weight")?.ErrorMessage ?? "";
-                    break;
-
                 case "InnerpackWidth":
-                    this.InnerpackWidthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Width")?.ErrorMessage ?? "";
-                    this.InnerpackHeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Height")?.ErrorMessage ?? "";
-                    this.InnerpackLengthError = ItemService.ValidateInnerpack(ItemViewModelItem, "Length")?.ErrorMessage ?? "";
-                    this.InnerpackWeightError = ItemService.ValidateInnerpack(ItemViewModelItem, "Weight")?.ErrorMessage ?? "";
+                    //  InnerpackHeight Validation
+                    error = ItemService.ValidateInnerpack(ItemViewModelItem, "Height");
+                    this.InnerpackHeightError = error?.ErrorMessage ?? "";
+                    this.InnerpackHeightBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    //  InnerpackLength Validation
+                    error = ItemService.ValidateInnerpack(ItemViewModelItem, "Length");
+                    this.InnerpackLengthError = error?.ErrorMessage ?? "";
+                    this.InnerpackLengthBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    //  InnerpackWeight Validation
+                    error = ItemService.ValidateInnerpack(ItemViewModelItem, "Weight");
+                    this.InnerpackWeightError = error?.ErrorMessage ?? "";
+                    this.InnerpackWeightBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    //  InnerpackWidth Validation
+                    error = ItemService.ValidateInnerpack(ItemViewModelItem, "Width");
+                    this.InnerpackWidthError = error?.ErrorMessage ?? "";
+                    this.InnerpackWidthBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "InnerpackQuantity":
-                    this.InnerpackQuantityError = ItemService.ValidateInnerpackQuantity(ItemViewModelItem)?.ErrorMessage ?? "";
+                    //  InnerpackQuantity Validation
+                    error = ItemService.ValidateInnerpackQuantity(ItemViewModelItem);
+                    this.InnerpackQuantityError = error?.ErrorMessage ?? "";
+                    this.InnerpackQuantityBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "InnerpackUpc":
-                    this.InnerpackUpcError = ItemService.ValidatePackUpc(ItemViewModelItem, "Innerpack")?.ErrorMessage ?? "";
+                    //  InnerpackUpc Validation
+                    error = ItemService.ValidatePackUpc(ItemViewModelItem, "Innerpack");
+                    this.InnerpackUpcError = error?.ErrorMessage ?? "";
+                    this.InnerpackUpcBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "InStockDate":
-                    this.InStockDateError = ItemService.ValidateInStockDate(ItemViewModelItem)?.ErrorMessage ?? "";
+                    //  InStockDate Validation
+                    error = ItemService.ValidateInStockDate(ItemViewModelItem);
+                    this.InStockDateError = error?.ErrorMessage ?? "";
+                    this.InStockDateBoxColor = error?.ReturnErrorColor() ?? "White";
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "Isbn":
-                    this.IsbnError = ItemService.ValidateIsbn(ItemViewModelItem)?.ErrorMessage ?? "";
+                    //  ItemCategory Validation
+                    error = ItemService.ValidateIsbn(ItemViewModelItem);
+                    this.IsbnError = error?.ErrorMessage ?? "";
+                    this.IsbnBoxColor = error?.ReturnErrorColor() ?? "White";
+                    this.TabColorItemInfo = CheckItemInfoTabColor();                    
                     break;
 
                 case "ItemCategory":
-                    this.ItemCategoryError = ItemService.ValidateItemCategory(ItemViewModelItem)?.ErrorMessage ?? "";
+                    //  ItemCategory Validation
+                    error = ItemService.ValidateItemCategory(ItemViewModelItem);
+                    this.ItemCategoryError = error?.ErrorMessage ?? "";
+                    this.ItemCategoryBoxColor = error?.ReturnErrorColor() ?? "White";
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "ItemFamily":
-                    this.ItemFamilyError = ItemService.ValidateItemFamily(ItemViewModelItem)?.ErrorMessage ?? "";
+                    //  ItemFamily Validation
+                    error = ItemService.ValidateItemFamily(ItemViewModelItem);
+                    this.ItemFamilyError = error?.ErrorMessage ?? "";
+                    this.ItemFamilyBoxColor = error?.ReturnErrorColor() ?? "White";
+                    this.TabColorItemInfo = CheckItemInfoTabColor();                    
                     break;
 
                 case "ItemGroup":
-                    this.ItemGroupError = ItemService.ValidateItemGroup(ItemViewModelItem)?.ErrorMessage ?? "";
+                    //  ItemGroup Validation
+                    error = ItemService.ValidateItemGroup(ItemViewModelItem);
+                    this.ItemGroupError = error?.ErrorMessage ?? "";
+                    this.ItemGroupBoxColor = error?.ReturnErrorColor() ?? "White";
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "ItemId":
-                    this.ItemIdError = ItemService.ValidateItemId(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ErrorMessage ?? "";
+                    //  ItemId Validation
+                    error = ItemService.ValidateItemId(ItemViewModelItem);
+                    this.ItemIdError = error?.ErrorMessage ?? "";
+                    this.ItemIdBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // UpcValidation
+                    error = ItemService.ValidateUpc(ItemViewModelItem);
+                    this.UpcError = error?.ErrorMessage ?? "";
+                    this.UpcBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "ItemKeywords":
-                    this.ItemKeywordsError = ItemService.ValidateItemKeywords(ItemViewModelItem)?.ErrorMessage ?? "";
+                    // ItemKeywords Validation
+                    error = ItemService.ValidateItemKeywords(ItemViewModelItem);
+                    this.ItemKeywordsError = error?.ErrorMessage ?? "";
+                    this.ItemKeywordsBoxColor = error?.ReturnErrorColor() ?? "White";
+                    this.TabColorWebInfo = CheckWebInfoTabColor();                    
                     break;
 
                 case "ItemKeywordsOverride":
                     break;
 
                 case "Language":
-                    this.LanguageError = ItemService.ValidateLanguage(ItemViewModelItem)?.ErrorMessage ?? "";
+                    // Language Validation
+                    error = ItemService.ValidateLanguage(ItemViewModelItem);
+                    this.LanguageError = error?.ErrorMessage ?? "";
+                    this.LanguageBoxColor = error?.ReturnErrorColor() ?? "White";
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "Length":
-                    this.LengthError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Length")?.ErrorMessage ?? "";
+                    // Length Validation
+                    error = ItemService.ValidateItemDimension(ItemViewModelItem, "Length");
+                    this.LengthError = error?.ErrorMessage ?? "";
+                    this.LengthBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "LicenseBeginDate":
-                    this.LicenseBeginDateError = ItemService.ValidateLicenseBeginDate(ItemViewModelItem)?.ErrorMessage ?? "";
+                    // LicenseBeginDate Validation
+                    error = ItemService.ValidateLicenseBeginDate(ItemViewModelItem);
+                    this.LicenseBeginDateError = error?.ErrorMessage ?? "";
+                    this.LicenseBeginDateBoxColor = error?.ReturnErrorColor() ?? "White";
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "License":
                     RefreshPropertyList(ItemViewModelItem.License);
-                    this.LicenseError = ItemService.ValidateLicense(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.PropertyError = ItemService.ValidateProperty(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    // License Validation
+                    error = ItemService.ValidateLicense(ItemViewModelItem);
+                    this.LicenseError = error?.ErrorMessage ?? "";
+                    this.LicenseBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // Property Validation
+                    error = ItemService.ValidateProperty(ItemViewModelItem);
+                    this.PropertyError = error?.ErrorMessage ?? "";
+                    this.PropertyBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebInfo = CheckWebInfoTabColor();
                     break;
 
                 case "ListPriceCad":
-                    this.ListPriceCadError = ItemService.ValidateListPrice(ItemViewModelItem, "CAD")?.ErrorMessage ?? "";
-                    this.MsrpCadError = ItemService.ValidateMsrp(ItemViewModelItem, "CAD")?.ErrorMessage ?? "";
-                    this.PricingGroupError = ItemService.ValidatePricingGroup(ItemViewModelItem)?.ErrorMessage ?? "";
+                    // ListPriceCad Validation
+                    error = ItemService.ValidateMsrp(ItemViewModelItem, "CAD");
+                    this.ListPriceCadError = error?.ErrorMessage ?? "";
+                    this.ListPriceCadBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    // MsrpCad Validation
+                    error = ItemService.ValidateListPrice(ItemViewModelItem, "CAD");
+                    this.MsrpCadError = error?.ErrorMessage ?? "";
+                    this.MsrpCadBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    // PricingGroup Validation
+                    error = ItemService.ValidatePricingGroup(ItemViewModelItem);
+                    this.PricingGroupError = error?.ErrorMessage ?? "";
+                    this.PricingGroupBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "ListPriceMxn":
-                    this.MsrpMxnError = ItemService.ValidateMsrp(ItemViewModelItem, "MXN")?.ErrorMessage ?? "";
-                    this.ListPriceMxnError = ItemService.ValidateListPrice(ItemViewModelItem, "MXN")?.ErrorMessage ?? "";
+                    // MSRPPriceMxn Validation
+                    error = ItemService.ValidateMsrp(ItemViewModelItem, "MXN");
+                    this.MsrpMxnError = error?.ErrorMessage ?? "";
+                    this.MsrpMxnBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+
+                    // ListPriceMxn Validation
+                    error = ItemService.ValidateListPrice(ItemViewModelItem, "MXN");
+                    this.ListPriceMxnError = error?.ErrorMessage ?? "";
+                    this.ListPriceMxnBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "ListPriceUsd":
-                    this.ListPriceUsdError = ItemService.ValidateListPrice(ItemViewModelItem, "USD")?.ErrorMessage ?? "";
+                    // ListPriceUsd Validation
+                    error = ItemService.ValidateListPrice(ItemViewModelItem, "USD");
+                    this.ListPriceUsdError = error?.ErrorMessage ?? "";
+                    this.ListPriceUsdBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
                     this.ProductQtyTotal = ItemService.RetrieveB2bPrice(ItemViewModelItem.ListPriceUsd, this.ProductQty);
-                    this.MsrpError = ItemService.ValidateMsrp(ItemViewModelItem, "USD")?.ErrorMessage ?? "";
-                    this.PricingGroupError = ItemService.ValidatePricingGroup(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.StatsCodeError = ItemService.ValidateStatsCode(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.CountryOfOriginError = ItemService.ValidateCountryOfOrigin(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.LanguageError = ItemService.ValidateLanguage(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.TerritoryError = ItemService.ValidateTerritory(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.GpcError = ItemService.ValidateGpc(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    // Msrp Validation
+                    error = ItemService.ValidateMsrp(ItemViewModelItem, "USD");
+                    this.MsrpError = error?.ErrorMessage ?? "";
+                    this.MsrpBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    // PricingGroup Validation
+                    error = ItemService.ValidatePricingGroup(ItemViewModelItem);
+                    this.PricingGroupError = error?.ErrorMessage ?? "";
+                    this.PricingGroupBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // StatsCode Validation
+                    error = ItemService.ValidateStatsCode(ItemViewModelItem);
+                    this.StatsCodeError = error?.ErrorMessage ?? "";
+                    this.StatsCodeBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // CountryOfOrigin Validation
+                    error = ItemService.ValidateCountryOfOrigin(ItemViewModelItem);
+                    this.CountryOfOriginError = error?.ErrorMessage ?? "";
+                    this.CountryOfOriginBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // Language Validation
+                    error = ItemService.ValidateLanguage(ItemViewModelItem);
+                    this.LanguageError = error?.ErrorMessage ?? "";
+                    this.LanguageBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // Territory Validation
+                    error = ItemService.ValidateTerritory(ItemViewModelItem);
+                    this.TerritoryError = error?.ErrorMessage ?? "";
+                    this.TerritoryBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // Gpc Validation
+                    error = ItemService.ValidateGpc(ItemViewModelItem);
+                    this.GpcError = error?.ErrorMessage ?? "";
+                    this.GpcBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // Upc Validation
+                    error = ItemService.ValidateUpc(ItemViewModelItem);
+                    this.UpcError = error?.ErrorMessage ?? "";
+                    this.UpcBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "MetaDescription":
-                    this.MetaDescriptionError = ItemService.ValidateMetaDescription(ItemViewModelItem)?.ErrorMessage ?? "";
+                    // Property Validation
+                    error = ItemService.ValidateMetaDescription(ItemViewModelItem);
+                    this.MetaDescriptionError = error?.ErrorMessage ?? "";
+                    this.MetaDescriptionBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebInfo = CheckWebInfoTabColor();
                     break;
 
                 case "MfgSource":
-                    this.MfgSourceError = ItemService.ValidateMfgSource(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.CostProfileGroupError = ItemService.ValidateCostProfileGroup(ItemViewModelItem)?.ErrorMessage ?? "";
+                    // MfgSource Validation
+                    error = ItemService.ValidateMfgSource(ItemViewModelItem);
+                    this.MfgSourceError = error?.ErrorMessage ?? "";
+                    this.MfgSourceBoxColor = error?.ReturnErrorColor() ?? "White";
+                    
+                    // CostProfileGroup Validation
+                    error = ItemService.ValidateCostProfileGroup(ItemViewModelItem);
+                    this.CostProfileGroupError = error?.ErrorMessage ?? "";
+                    this.CostProfileGroupBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();                    
                     break;
 
                 case "Msrp":
-                    this.MsrpError = ItemService.ValidateMsrp(ItemViewModelItem, "USD")?.ErrorMessage ?? "";
+                    // Msrp Validation
+                    error = ItemService.ValidateMsrp(ItemViewModelItem, "USD");
+                    this.MsrpError = error?.ErrorMessage ?? "";
+                    this.MsrpBoxColor = error?.ReturnErrorColor() ?? "Alice Blue";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "MsrpCad":
-                    this.MsrpCadError = ItemService.ValidateMsrp(ItemViewModelItem, "CAD")?.ErrorMessage ?? "";
+                    // MsrpCad Validation
+                    error = ItemService.ValidateMsrp(ItemViewModelItem, "CAD");
+                    this.MsrpCadError = error?.ErrorMessage ?? "";
+                    this.MsrpCadBoxColor = error?.ReturnErrorColor() ?? "Alice Blue";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();                    
                     break;
 
                 case "MsrpMxn":
-                    this.MsrpMxnError = ItemService.ValidateMsrp(ItemViewModelItem, "MXN")?.ErrorMessage ?? "";
+                    // MsrpMXN Validation
+                    error = ItemService.ValidateMsrp(ItemViewModelItem, "MXN");
+                    this.MsrpMxnError = error?.ErrorMessage ?? "";
+                    this.MsrpMxnBoxColor = error?.ReturnErrorColor() ?? "Alice Blue";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "PricingGroup":
-                    this.PricingGroupError = ItemService.ValidatePricingGroup(ItemViewModelItem)?.ErrorMessage ?? "";
+                    // PricingGroup Validation
+                    error = ItemService.ValidatePricingGroup(ItemViewModelItem);
+                    this.PricingGroupError = error?.ErrorMessage ?? "";
+                    this.PricingGroupBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "PrintOnDemand":
-                    this.PrintOnDemandError = ItemService.ValidatePrintOnDemand(ItemViewModelItem)?.ErrorMessage ?? "";
+                    // PricingGroup Validation
+                    error = ItemService.ValidatePrintOnDemand(ItemViewModelItem);
+                    this.PrintOnDemandError = error?.ErrorMessage ?? "";
+                    this.PrintOnDemandBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "ProductFormat":
-                    this.ProductFormatError = ItemService.ValidateProductFormat(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.ProductIdTranslationError = ItemService.ValidateProductIdTranslation(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.EanError = ItemService.ValidateEan(ItemViewModelItem)?.ErrorMessage ?? "";
+                    // ProductFormat Validation
+                    error = ItemService.ValidateProductFormat(ItemViewModelItem);
+                    this.ProductFormatError = error?.ErrorMessage ?? "";
+                    this.ProductFormatBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // ProductIdTranslation Validation
+                    error = ItemService.ValidateProductIdTranslation(ItemViewModelItem);
+                    this.ProductIdTranslationError = error?.ErrorMessage ?? "";
+                    this.ProductIdTranslationBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // Upc Validation
+                    error = ItemService.ValidateUpc(ItemViewModelItem);
+                    this.UpcError = error?.ErrorMessage ?? "";
+                    this.UpcBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // Ean Validation
+                    error = ItemService.ValidateEan(ItemViewModelItem);
+                    this.EanError = error?.ErrorMessage ?? "";
+                    this.EanBoxColor = error?.ReturnErrorColor() ?? "White";
+                    
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "ProductGroup":
                     RefreshProductLines();
                     RefreshProductFormats("");
+
+                    // ProductFormat Validation
+                    error = ItemService.ValidateProductFormat(ItemViewModelItem);
+                    this.ProductFormatError = error?.ErrorMessage ?? "";
+                    this.ProductFormatBoxColor = error?.ReturnErrorColor() ?? "White";
                     this.ProductFormatError = ItemService.ValidateProductFormat(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.ProductLineError = ItemService.ValidateProductLine(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.ProductGroupError = ItemService.ValidateProductGroup(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ErrorMessage ?? "";
+
+                    // ProductLine Validation
+                    error = ItemService.ValidateProductLine(ItemViewModelItem);
+                    this.ProductLineError = error?.ErrorMessage ?? "";
+                    this.ProductLineBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // ProductGroup Validation
+                    error = ItemService.ValidateProductGroup(ItemViewModelItem);
+                    this.ProductGroupError = error?.ErrorMessage ?? "";
+                    this.ProductGroupBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // Upc Validation
+                    error = ItemService.ValidateUpc(ItemViewModelItem);
+                    this.UpcError = error?.ErrorMessage ?? "";
+                    this.UpcBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "ProductIdTranslation":
-                    this.BillOfMaterialsError = ItemService.ValidateBillOfMaterials(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.ProductIdTranslationError = ItemService.ValidateProductIdTranslation(ItemViewModelItem)?.ErrorMessage ?? "";
+                    // BillOfMaterials Validation
+                    error = ItemService.ValidateBillOfMaterials(ItemViewModelItem);
+                    this.BillOfMaterialsError = error?.ErrorMessage ?? "";
+                    this.BillOfMaterialsBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // ProductIdTranslation Validation
+                    error = ItemService.ValidateProductIdTranslation(ItemViewModelItem);
+                    this.ProductIdTranslationError = error?.ErrorMessage ?? "";
+                    this.ProductIdTranslationBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "ProductLine":
                     RefreshProductFormats(this.ProductLine);
-                    this.EanError = ItemService.ValidateEan(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.ProductFormatError = ItemService.ValidateProductFormat(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.ProductLineError = ItemService.ValidateProductLine(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ErrorMessage ?? "";
+                    // Ean Validation
+                    error = ItemService.ValidateEan(ItemViewModelItem);
+                    this.EanError = error?.ErrorMessage ?? "";
+                    this.EanBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // ProductFormat Validation
+                    error = ItemService.ValidateProductFormat(ItemViewModelItem);
+                    this.ProductFormatError = error?.ErrorMessage ?? "";
+                    this.ProductFormatBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // ProductLine Validation
+                    error = ItemService.ValidateProductLine(ItemViewModelItem);
+                    this.ProductLineError = error?.ErrorMessage ?? "";
+                    this.ProductLineBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // Upc Validation
+                    error = ItemService.ValidateUpc(ItemViewModelItem);
+                    this.UpcError = error?.ErrorMessage ?? "";
+                    this.UpcBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "ProductQty":
-                    this.ProductQtyTotal = ItemService.RetrieveB2bPrice(ItemViewModelItem.ListPriceUsd, ItemViewModelItem.ProductQty);
-                    this.ProductQtyError = ItemService.ValidateProductQty(ItemViewModelItem)?.ErrorMessage ?? "";
+                    // ProductQty Validation
+                    error = ItemService.ValidateProductQty(ItemViewModelItem);
+                    this.ProductQtyError = error?.ErrorMessage ?? "";
+                    this.ProductQtyBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // ProductQty Validation
+                    error = ItemService.ValidateProductQty(ItemViewModelItem);
+                    this.ProductQtyError = error?.ErrorMessage ?? "";
+                    this.ProductQtyBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "Property":
-                    this.PropertyError = ItemService.ValidateProperty(ItemViewModelItem)?.ErrorMessage ?? "";
+                    // XXX Validation
+                    error = ItemService.ValidateProperty(ItemViewModelItem);
+                    this.PropertyError = error?.ErrorMessage ?? "";
+                    this.PropertyBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebInfo = CheckWebInfoTabColor();                    
                     break;
 
                 case "PsStatus":
-                    this.PsStatusError = ItemService.ValidatePsStatus(ItemViewModelItem)?.ErrorMessage ?? "";
+                    // PsStatus Validation
+                    error = ItemService.ValidatePsStatus(ItemViewModelItem);
+                    this.PsStatusError = error?.ErrorMessage ?? "";
+                    this.PsStatusBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "SatCode":
-                    this.SatCodeError = ItemService.ValidateSatCode(ItemViewModelItem)?.ErrorMessage ?? "";
+                    // SatCode Validation
+                    error = ItemService.ValidateSatCode(ItemViewModelItem);
+                    this.SatCodeError = error?.ErrorMessage ?? "";
+                    this.SatCodeBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
+                case "SellOnAllPosters":
                 case "SellOnAllPostersCheck":
-                    this.SellOnAllPostersError = ItemService.ValidateSellOnValue(ItemViewModelItem, "All Posters")?.ErrorMessage ?? "";
+                    // SellOnAllPostersCheck Validation
+                    error = ItemService.ValidateSellOnValue(ItemViewModelItem, "All Posters");
+                    this.SellOnAllPostersError = error?.ErrorMessage ?? "";
+                    this.SellOnAllPostersBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebFlag = CheckWebFlagsTabColor();
                     break;
 
+                case "SellOnAmazon":
                 case "SellOnAmazonCheck":
-                    this.SellOnAmazonError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Amazon")?.ErrorMessage ?? "";
+                    // SellOnAmazon Validation
+                    error = ItemService.ValidateSellOnValue(ItemViewModelItem, "Amazon");
+                    this.SellOnAmazonError = error?.ErrorMessage ?? "";
+                    this.SellOnAmazonBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebFlag = CheckWebFlagsTabColor();
                     break;
 
+                case "SellOnAmazonSellerCentral":
                 case "SellOnAmazonSellerCentralCheck":
-                    this.SellOnAmazonSellerCentralError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Amazon Seller Central")?.ErrorMessage ?? "";
+                    // SellOnAmazonSellerCentral Validation
+                    error = ItemService.ValidateSellOnValue(ItemViewModelItem, "Amazon Seller Central");
+                    this.SellOnAmazonSellerCentralError = error?.ErrorMessage ?? "";
+                    this.SellOnAmazonSellerCentralBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebFlag = CheckWebFlagsTabColor();
                     break;
 
+                case "SellOnEcommerce":
                 case "SellOnEcommerceCheck":
-                    this.SellOnEcommerceError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Ecommerce")?.ErrorMessage ?? "";
+                    // SellOnEcommerce Validation
+                    error = ItemService.ValidateSellOnValue(ItemViewModelItem, "Ecommerce");
+                    this.SellOnEcommerceError = error?.ErrorMessage ?? "";
+                    this.SellOnEcommerceBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebFlag = CheckWebFlagsTabColor();
                     break;
 
+                case "SellOnFanatics":
                 case "SellOnFanaticsCheck":
-                    this.SellOnFanaticsError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Fanatics")?.ErrorMessage ?? "";
+                    // SellOnFanatics Validation
+                    error = ItemService.ValidateSellOnValue(ItemViewModelItem, "Fanatics");
+                    this.SellOnFanaticsError = error?.ErrorMessage ?? "";
+                    this.SellOnFanaticsBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebFlag = CheckWebFlagsTabColor();
                     break;
 
+                case "SellOnGuitarCenter":
                 case "SellOnGuitarCenterCheck":
-                    this.SellOnGuitarCenterError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Guitar Center")?.ErrorMessage ?? "";
+                    // SellOnGuitarCenter Validation
+                    error = ItemService.ValidateSellOnValue(ItemViewModelItem, "Guitar Center");
+                    this.SellOnGuitarCenterError = error?.ErrorMessage ?? "";
+                    this.SellOnGuitarCenterBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebFlag = CheckWebFlagsTabColor();
                     break;
 
+                case "SellOnHayneedle":
                 case "SellOnHayneedleCheck":
-                    this.SellOnHayneedleError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Hayneedle")?.ErrorMessage ?? "";
+                    // SellOnHayneedle Validation
+                    error = ItemService.ValidateSellOnValue(ItemViewModelItem, "Hayneedle");
+                    this.SellOnHayneedleError = error?.ErrorMessage ?? "";
+                    this.SellOnHayneedleBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebFlag = CheckWebFlagsTabColor();
                     break;
 
+                case "SellOnHouzz":
                 case "SellOnHouzzCheck":
-                    this.SellOnHouzzError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Houzz")?.ErrorMessage ?? "";
+                    // SellOnHouzz Validation
+                    error = ItemService.ValidateSellOnValue(ItemViewModelItem, "Houzz");
+                    this.SellOnHouzzError = error?.ErrorMessage ?? "";
+                    this.SellOnHouzzBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebFlag = CheckWebFlagsTabColor();
                     break;
 
+                case "SellOnTarget":
                 case "SellOnTargetCheck":
-                    this.SellOnTargetError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Target")?.ErrorMessage ?? "";
+                    // SellOnTarget Validation
+                    error = ItemService.ValidateSellOnValue(ItemViewModelItem, "Target");
+                    this.SellOnTargetError = error?.ErrorMessage ?? "";
+                    this.SellOnTargetBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebFlag = CheckWebFlagsTabColor();
                     break;
 
+                case "SellOnTrends":
                 case "SellOnTrendsCheck":
-                    this.TitleError = ItemService.ValidateTitle(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.MetaDescriptionError = ItemService.ValidateMetaDescription(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.CategoryError = ItemService.ValidateCategory(ItemViewModelItem, "1")?.ErrorMessage ?? "";
-                    this.ItemKeywordsError = ItemService.ValidateItemKeywords(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.SellOnTrendsError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Trends")?.ErrorMessage??"";
+                    // Title Validation
+                    error = ItemService.ValidateTitle(ItemViewModelItem);
+                    this.TitleError = error?.ErrorMessage ?? "";
+                    this.TitleBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // MetaDescription Validation
+                    error = ItemService.ValidateMetaDescription(ItemViewModelItem);
+                    this.MetaDescriptionError = error?.ErrorMessage ?? "";
+                    this.MetaDescriptionBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // Category Validation
+                    error = ItemService.ValidateCategory(ItemViewModelItem, "1");
+                    this.CategoryError = error?.ErrorMessage ?? "";
+                    this.CategoryBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // ItemKeywords Validation
+                    error = ItemService.ValidateItemKeywords(ItemViewModelItem);
+                    this.ItemKeywordsError = error?.ErrorMessage ?? "";
+                    this.ItemKeywordsBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // SellOnTrends Validation
+                    error = ItemService.ValidateSellOnValue(ItemViewModelItem, "Trends");
+                    this.SellOnTrendsError = error?.ErrorMessage ?? "";
+                    this.SellOnTrendsBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebFlag = CheckWebFlagsTabColor();
+                    this.TabColorWebInfo = CheckWebInfoTabColor();
                     break;
 
+                case "SellOnTrs":
                 case "SellOnTrsCheck":
-                    this.SellOnTrsError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Shop Trends")?.ErrorMessage ?? "";
-                    this.DtcPriceError = ItemService.ValidateDtcPrice(ItemViewModelItem)?.ErrorMessage ?? "";
-                    this.Genre1Error = ItemService.ValidateGenre(ItemViewModelItem,1)?.ErrorMessage ?? "";
+                    // SellOnTrs Validation
+                    error = ItemService.ValidateSellOnValue(ItemViewModelItem, "Shop Trends");
+                    this.SellOnTrsError = error?.ErrorMessage ?? "";
+                    this.SellOnTrsBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // DtcPrice Validation
+                    error = ItemService.ValidateDtcPrice(ItemViewModelItem);
+                    this.DtcPriceError = error?.ErrorMessage ?? "";
+                    this.DtcPriceBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // Genre1 Validation
+                    error = ItemService.ValidateGenre(ItemViewModelItem, 1);
+                    this.Genre1Error = error?.ErrorMessage ?? "";
+                    this.Genre1BoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebFlag = CheckWebFlagsTabColor();
+                    this.TabColorWebInfo = CheckWebInfoTabColor();
                     break;
 
+                case "SellOnWalmart":
                 case "SellOnWalmartCheck":
-                    this.SellOnWalmartError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Walmart")?.ErrorMessage??"";
+                    // SellOnWalmart Validation
+                    error = ItemService.ValidateSellOnValue(ItemViewModelItem, "Walmart");
+                    this.SellOnWalmartError = error?.ErrorMessage ?? "";
+                    this.SellOnWalmartBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebFlag = CheckWebFlagsTabColor();
                     break;
 
+                case "SellOnWayfair":
                 case "SellOnWayfairCheck":
-                    this.SellOnWayfairError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Wayfair")?.ErrorMessage??"";
+                    // SellOnWayfair Validation
+                    error = ItemService.ValidateSellOnValue(ItemViewModelItem, "Wayfair");
+                    this.SellOnWayfairError = error?.ErrorMessage ?? "";
+                    this.SellOnWayfairBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebFlag = CheckWebFlagsTabColor();
                     break;
 
                 case "ShortDescription":
-                    this.ShortDescriptionError = ItemService.ValidateShortDescription(ItemViewModelItem)?.ErrorMessage??"";
+                    // ShortDescription Validation
+                    error = ItemService.ValidateShortDescription(ItemViewModelItem);
+                    this.ShortDescriptionError = error?.ErrorMessage ?? "";
+                    this.ShortDescriptionBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebInfo = CheckWebInfoTabColor();
                     break;
 
                 case "Size":
-                    this.SizeError = ItemService.ValidateSize(ItemViewModelItem)?.ErrorMessage??"";
+                    // Size Validation
+                    error = ItemService.ValidateSize(ItemViewModelItem);
+                    this.SizeError = error?.ErrorMessage ?? "";
+                    this.SizeBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebInfo = CheckWebInfoTabColor();
                     break;
 
                 case "StandardCost":
-                    this.StandardCostError = ItemService.ValidateStandardCost(ItemViewModelItem)?.ErrorMessage??"";
+                    // StandardCost Validation
+                    error = ItemService.ValidateStandardCost(ItemViewModelItem);
+                    this.StandardCostError = error?.ErrorMessage ?? "";
+                    this.StandardCostBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "StatsCode":
-                    this.StatsCodeError = ItemService.ValidateStatsCode(ItemViewModelItem)?.ErrorMessage??"";
+                    // StandardCost Validation
+                    error = ItemService.ValidateStatsCode(ItemViewModelItem);
+                    this.StatsCodeError = error?.ErrorMessage ?? "";
+                    this.StatsCodeBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "TariffCode":
-                    this.TariffCodeError = ItemService.ValidateTariffCode(ItemViewModelItem)?.ErrorMessage??"";
+                    // StandardCost Validation
+                    error = ItemService.ValidateTariffCode(ItemViewModelItem);
+                    this.TariffCodeError = error?.ErrorMessage ?? "";
+                    this.TariffCodeBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "Territory":
-                    this.TerritoryError = ItemService.ValidateTerritory(ItemViewModelItem)?.ErrorMessage??"";
+                    // Territory Validation
+                    error = ItemService.ValidateTerritory(ItemViewModelItem);
+                    this.TerritoryError = error?.ErrorMessage ?? "";
+                    this.TerritoryBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "Title":
-                    this.TitleError = ItemService.ValidateTitle(ItemViewModelItem)?.ErrorMessage??"";
+                    // Title Validation
+                    error = ItemService.ValidateTitle(ItemViewModelItem);
+                    this.TitleError = error?.ErrorMessage ?? "";
+                    this.TitleBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebInfo = CheckWebInfoTabColor();
                     break;
 
                 case "TitleOverride":
                     break;
 
                 case "Udex":
-                    this.UdexError = ItemService.ValidateUdex(ItemViewModelItem)?.ErrorMessage??"";
+                    // Udex Validation
+                    error = ItemService.ValidateUdex(ItemViewModelItem);
+                    this.UdexError = error?.ErrorMessage ?? "";
+                    this.UdexBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "Upc":
-                    this.UpcError = ItemService.ValidateUpc(ItemViewModelItem)?.ErrorMessage??"";
-                    this.ProductFormatError = ItemService.ValidateProductFormat(ItemViewModelItem)?.ErrorMessage??"";
-                    this.ProductGroupError = ItemService.ValidateProductGroup(ItemViewModelItem)?.ErrorMessage??"";
-                    this.ProductLineError = ItemService.ValidateProductLine(ItemViewModelItem)?.ErrorMessage??"";
+                    // Upc Validation
+                    error = ItemService.ValidateUpc(ItemViewModelItem);
+                    this.UpcError = error?.ErrorMessage ?? "";
+                    this.UpcBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // ProductFormat Validation
+                    error = ItemService.ValidateProductFormat(ItemViewModelItem);
+                    this.ProductFormatError = error?.ErrorMessage ?? "";
+                    this.ProductFormatBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // ProductGroup Validation
+                    error = ItemService.ValidateProductGroup(ItemViewModelItem);
+                    this.ProductGroupError = error?.ErrorMessage ?? "";
+                    this.ProductGroupBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    // ProductLine Validation
+                    error = ItemService.ValidateProductLine(ItemViewModelItem);
+                    this.ProductLineError = error?.ErrorMessage ?? "";
+                    this.ProductLineBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "Warranty":
-                    this.WarrantyError = ItemService.ValidateWarranty(ItemViewModelItem)?.ErrorMessage??"";
+                    // Warranty Validation
+                    error = ItemService.ValidateWarranty(ItemViewModelItem);
+                    this.WarrantyError = error?.ErrorMessage ?? "";
+                    this.WarrantyBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "WarrantyCheck":
-                    this.WarrantyCheckError = ItemService.ValidateWarrantyCheck(ItemViewModelItem)?.ErrorMessage??"";
+                    // WarrantyCheck Validation
+                    error = ItemService.ValidateWarrantyCheck(ItemViewModelItem);
+                    this.WarrantyCheckError = error?.ErrorMessage ?? "";
+                    this.WarrantyCheckBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
                 case "WebsitePrice":
-                    this.WebsitePriceError = ItemService.ValidateWebsitePrice(ItemViewModelItem)?.ErrorMessage ?? "";
+                    // WebsitePrice Validation
+                    error = ItemService.ValidateWebsitePrice(ItemViewModelItem);
+                    this.WebsitePriceError = error?.ErrorMessage ?? "";
+                    this.WebsitePriceBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebInfo = CheckWebInfoTabColor();
                     break;
 
                 case "WebsitePriceOverride":
                     break;
 
                 case "Weight":
-                    this.WeightError = ItemService.ValidateItemDimension(ItemViewModelItem, "Weight")?.ErrorMessage??"";
+                    // Weight Validation
+                    error = ItemService.ValidateItemDimension(ItemViewModelItem, "Weight");
+                    this.WeightError = error?.ErrorMessage ?? "";
+                    this.WeightBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "Width":
-                    this.WidthError = ItemService.ValidateItemDimension(ItemViewModelItem, "Width")?.ErrorMessage??"";
+                    // Width Validation
+                    error = ItemService.ValidateItemDimension(ItemViewModelItem, "Width");
+                    this.WidthError = error?.ErrorMessage ?? "";
+                    this.WidthBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
+
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 default:
@@ -9922,22 +9970,6 @@ namespace Odin.ViewModels
         public void RemoveItem()
         {
             this.Remove = true;
-        }
-
-        /// <summary>
-        ///     Returns the error color depending on the error message
-        /// </summary>
-        /// <param name="value">error message</param>
-        /// <param name="baseColor">base color if something other than default white</param>
-        /// <returns>Either White / baseColor if no error exists or Tomato if error does exist</returns>
-        public string ReturnErrorColor(string value, string baseColor = "White")
-        {
-            if (value == "")
-            {
-                return baseColor;
-            }
-            else
-                return "Tomato";
         }
 
         /// <summary>
@@ -10256,7 +10288,8 @@ namespace Odin.ViewModels
             {
                 foreach (ItemError error in errors)
                 {
-                    AssignError(error);
+                    FlagError(error.ErrorField);
+                    // AssignError(error);
                     this.ItemErrors.Add(error);
                 }
             }

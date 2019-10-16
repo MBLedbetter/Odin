@@ -4079,7 +4079,6 @@ namespace OdinServices
         /// <returns></returns>
         public ItemError ValidateEcommercePageQty(ItemObject var)
         {
-            string errorMessage = "";
             if (!string.IsNullOrEmpty(var.EcommercePageQty))
             {
                 if (var.EcommercePageQty.Length > 4)

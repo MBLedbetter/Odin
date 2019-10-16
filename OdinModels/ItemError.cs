@@ -125,7 +125,20 @@ namespace OdinModels
         private int _lineNumber;
 
         #endregion // Properties
-        
+
+        #region Methods
+
+        public string ReturnErrorColor()
+        {
+            if (this.ErrorType == "Error")
+            {
+                return "Tomato";
+            }
+            else return "PaleGoldenrod";
+        }
+
+        #endregion // Methods
+
 
         #region Constructor
 
