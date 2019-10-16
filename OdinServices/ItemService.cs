@@ -1006,12 +1006,14 @@ namespace OdinServices
                     Weight = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Weight, WorksheetColumnHeaders.ItemWeight), 1),
                     Width = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Width, WorksheetColumnHeaders.ItemWidth), 1)
                 };
+
                 item.EcommerceParentAsin = AutoFillEcommerceParentAsin(item);
                 if (!string.IsNullOrEmpty(item.ImagePath)){ item.EcommerceImagePath1 = CreateImageUrl(item, item.ImagePath, 1);}
                 if (!string.IsNullOrEmpty(item.AltImageFile1)) { item.EcommerceImagePath2 = CreateImageUrl(item, item.ImagePath, 2); }
                 if (!string.IsNullOrEmpty(item.AltImageFile2)) { item.EcommerceImagePath3 = CreateImageUrl(item, item.ImagePath, 3); }
                 if (!string.IsNullOrEmpty(item.AltImageFile3)) { item.EcommerceImagePath4 = CreateImageUrl(item, item.ImagePath, 4); }
                 if (!string.IsNullOrEmpty(item.AltImageFile4)) { item.EcommerceImagePath5 = CreateImageUrl(item, item.ImagePath, 5); }
+               
                 // Load override attributes if admin
                 if (GlobalData.UserPermissions.Contains("ADMIN_CONTROLS"))
                 {
@@ -1035,7 +1037,7 @@ namespace OdinServices
                 }
                 item.EcommerceCountryofOrigin = RetrieveFullCountryOfOrigin(item.CountryOfOrigin);
 
-                item.ResetUpdate();
+                // item.ResetUpdate();
                 if(status == "Update")
                 {
                     if (!string.IsNullOrEmpty(item.EcommerceItemName)&& string.IsNullOrEmpty(item.WebsiteUrl))
@@ -1429,7 +1431,7 @@ namespace OdinServices
                     newTemplates.Add(CompleteTemplate(template));
                     foreach (ItemError error in ValidateAllTemplate(template, "Update"))
                     {
-                        errors.Add(error.ReturnErrorMessage());
+                        errors.Add(error.ErrorMessage);
                     }
                 }
                 else
@@ -4077,7 +4079,6 @@ namespace OdinServices
         /// <returns></returns>
         public ItemError ValidateEcommercePageQty(ItemObject var)
         {
-            string errorMessage = "";
             if (!string.IsNullOrEmpty(var.EcommercePageQty))
             {
                 if (var.EcommercePageQty.Length > 4)

@@ -6064,315 +6064,315 @@ namespace Odin.ViewModels
             switch (field)
             {
                 case "AccountingGroup":
-                    this.AccountingGroupError = ItemService.ValidateAccountingGroup(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.AccountingGroupError = ItemService.ValidateAccountingGroup(TemplateObject)?.ErrorMessage ??"";
                     break;
 
                 case "CasepackHeight":
-                    this.CasepackHeightError = ItemService.ValidateCasepack(TemplateObject, "Height")?.ReturnErrorMessage() ?? "";
+                    this.CasepackHeightError = ItemService.ValidateCasepack(TemplateObject, "Height")?.ErrorMessage ?? "";
                     break;
 
                 case "CasepackLength":
-                    this.CasepackLengthError = ItemService.ValidateCasepack(TemplateObject, "Length")?.ReturnErrorMessage() ?? "";
+                    this.CasepackLengthError = ItemService.ValidateCasepack(TemplateObject, "Length")?.ErrorMessage ?? "";
                     break;
 
                 case "CasepackWeight":
-                    this.CasepackWeightError = ItemService.ValidateCasepack(TemplateObject, "Weight")?.ReturnErrorMessage() ?? "";
+                    this.CasepackWeightError = ItemService.ValidateCasepack(TemplateObject, "Weight")?.ErrorMessage ?? "";
                     break;
 
                 case "CasepackWidth":
-                    this.CasepackWidthError = ItemService.ValidateCasepack(TemplateObject, "Width")?.ReturnErrorMessage() ?? "";
+                    this.CasepackWidthError = ItemService.ValidateCasepack(TemplateObject, "Width")?.ErrorMessage ?? "";
                     break;
 
                 case "CasepackQty":
-                    this.CasepackQtyError = ItemService.ValidateCasepackQty(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.CasepackQtyError = ItemService.ValidateCasepackQty(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "Category":
-                    this.CategoryError = ItemService.ValidateCategory(TemplateObject, "1")?.ReturnErrorMessage()??"";
+                    this.CategoryError = ItemService.ValidateCategory(TemplateObject, "1")?.ErrorMessage??"";
                     break;
 
                 case "Category2":
-                    this.Category2Error = ItemService.ValidateCategory(TemplateObject, "2")?.ReturnErrorMessage()??"";
+                    this.Category2Error = ItemService.ValidateCategory(TemplateObject, "2")?.ErrorMessage??"";
                     break;
 
                 case "Category3":
-                    this.Category3Error = ItemService.ValidateCategory(TemplateObject, "3")?.ReturnErrorMessage()??"";
+                    this.Category3Error = ItemService.ValidateCategory(TemplateObject, "3")?.ErrorMessage??"";
                     break;
 
                 case "Copyright":
-                    this.CopyrightError = ItemService.ValidateCopyright(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.CopyrightError = ItemService.ValidateCopyright(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "CountryOfOrigin":
-                    this.CountryOfOriginError = ItemService.ValidateCountryOfOrigin(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.CountryOfOriginError = ItemService.ValidateCountryOfOrigin(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "CostProfileGroup":
-                    this.CostProfileGroupError = ItemService.ValidateCostProfileGroup(TemplateObject)?.ReturnErrorMessage()??"";
-                    this.MfgSourceError = ItemService.ValidateMfgSource(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.CostProfileGroupError = ItemService.ValidateCostProfileGroup(TemplateObject)?.ErrorMessage??"";
+                    this.MfgSourceError = ItemService.ValidateMfgSource(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "DefaultActualCostCad":
-                    this.DefaultActualCostCadError = ItemService.ValidateDefaultActualCost(TemplateObject, "CAD")?.ReturnErrorMessage()??"";
+                    this.DefaultActualCostCadError = ItemService.ValidateDefaultActualCost(TemplateObject, "CAD")?.ErrorMessage??"";
                     break;
 
                 case "DefaultActualCostUsd":
-                    this.DefaultActualCostUsdError = ItemService.ValidateDefaultActualCost(TemplateObject, "USD")?.ReturnErrorMessage()??"";
+                    this.DefaultActualCostUsdError = ItemService.ValidateDefaultActualCost(TemplateObject, "USD")?.ErrorMessage??"";
                     break;
 
                 case "DtcPrice":
-                    this.DtcPriceError = ItemService.ValidateDtcPrice(TemplateObject)?.ReturnErrorMessage() ?? "";
+                    this.DtcPriceError = ItemService.ValidateDtcPrice(TemplateObject)?.ErrorMessage ?? "";
                     break;
 
                 case "Duty":
-                    this.DutyError = ItemService.ValidateDuty(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.DutyError = ItemService.ValidateDuty(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "EcommerceBullet1":
-                    this.EcommerceBullet1Error = ItemService.ValidateEcommerceBullet(TemplateObject, "1")?.ReturnErrorMessage()??"";
+                    this.EcommerceBullet1Error = ItemService.ValidateEcommerceBullet(TemplateObject, "1")?.ErrorMessage??"";
                     break;
 
                 case "EcommerceBullet2":
-                    this.EcommerceBullet2Error = ItemService.ValidateEcommerceBullet(TemplateObject, "2")?.ReturnErrorMessage()??"";
+                    this.EcommerceBullet2Error = ItemService.ValidateEcommerceBullet(TemplateObject, "2")?.ErrorMessage??"";
                     break;
 
                 case "EcommerceBullet3":
-                    this.EcommerceBullet3Error = ItemService.ValidateEcommerceBullet(TemplateObject, "3")?.ReturnErrorMessage()??"";
+                    this.EcommerceBullet3Error = ItemService.ValidateEcommerceBullet(TemplateObject, "3")?.ErrorMessage??"";
                     break;
 
                 case "EcommerceBullet4":
-                    this.EcommerceBullet4Error = ItemService.ValidateEcommerceBullet(TemplateObject, "4")?.ReturnErrorMessage()??"";
+                    this.EcommerceBullet4Error = ItemService.ValidateEcommerceBullet(TemplateObject, "4")?.ErrorMessage??"";
                     break;
 
                 case "EcommerceBullet5":
-                    this.EcommerceBullet5Error = ItemService.ValidateEcommerceBullet(TemplateObject, "5")?.ReturnErrorMessage()??"";
+                    this.EcommerceBullet5Error = ItemService.ValidateEcommerceBullet(TemplateObject, "5")?.ErrorMessage??"";
                     break;
 
                 case "EcommerceComponents":
-                    this.EcommerceComponentsError = ItemService.ValidateEcommerceComponents(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.EcommerceComponentsError = ItemService.ValidateEcommerceComponents(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "EcommerceCost":
-                    this.EcommerceCostError = ItemService.ValidateEcommerceCost(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.EcommerceCostError = ItemService.ValidateEcommerceCost(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "EcommerceExternalIdType":
-                    this.EcommerceExternalIdTypeError = ItemService.ValidateEcommerceExternalIdType(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.EcommerceExternalIdTypeError = ItemService.ValidateEcommerceExternalIdType(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "EcommerceItemHeight":
-                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Height")?.ReturnErrorMessage()??"";
+                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Height")?.ErrorMessage??"";
                     break;
 
                 case "EcommerceItemLength":
-                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Length")?.ReturnErrorMessage()??"";
+                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Length")?.ErrorMessage??"";
                     break;
 
                 case "EcommerceItemTypeKeywords":
-                    this.EcommerceItemTypeKeywordsError = ItemService.ValidateEcommerceItemTypeKeywords(TemplateObject)?.ReturnErrorMessage() ?? "";
+                    this.EcommerceItemTypeKeywordsError = ItemService.ValidateEcommerceItemTypeKeywords(TemplateObject)?.ErrorMessage ?? "";
                     break;
 
                 case "EcommerceItemWeight":
-                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Weight")?.ReturnErrorMessage()??"";
+                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Weight")?.ErrorMessage??"";
                     break;
 
                 case "EcommerceItemWidth":
-                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Width")?.ReturnErrorMessage()??"";
+                    this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Width")?.ErrorMessage??"";
                     break;
 
                 case "EcommerceModelName":
-                    this.EcommerceModelNameError = ItemService.ValidateEcommerceModelName(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.EcommerceModelNameError = ItemService.ValidateEcommerceModelName(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "EcommercePackageHeight":
-                    this.EcommercePackageHeightError = ItemService.ValidateEcommercePackageDimension(TemplateObject, "Height")?.ReturnErrorMessage()??"";
+                    this.EcommercePackageHeightError = ItemService.ValidateEcommercePackageDimension(TemplateObject, "Height")?.ErrorMessage??"";
                     break;
 
                 case "EcommercePackageLength":
-                    this.EcommercePackageLengthError = ItemService.ValidateEcommercePackageDimension(TemplateObject, "Length")?.ReturnErrorMessage()??"";
+                    this.EcommercePackageLengthError = ItemService.ValidateEcommercePackageDimension(TemplateObject, "Length")?.ErrorMessage??"";
                     break;
 
                 case "EcommercePackageWeight":
-                    this.EcommercePackageWeightError = ItemService.ValidateEcommercePackageDimension(TemplateObject, "Weight")?.ReturnErrorMessage()??"";
+                    this.EcommercePackageWeightError = ItemService.ValidateEcommercePackageDimension(TemplateObject, "Weight")?.ErrorMessage??"";
                     break;
 
                 case "EcommercePackageWidth":
-                    this.EcommercePackageWidthError = ItemService.ValidateEcommercePackageDimension(TemplateObject, "Width")?.ReturnErrorMessage()??"";
+                    this.EcommercePackageWidthError = ItemService.ValidateEcommercePackageDimension(TemplateObject, "Width")?.ErrorMessage??"";
                     break;
 
                 case "EcommercePageQty":
-                    this.EcommercePageQtyError = ItemService.ValidateEcommercePageQty(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.EcommercePageQtyError = ItemService.ValidateEcommercePageQty(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "EcommerceProductCategory":
-                    this.EcommerceProductCategoryError = ItemService.ValidateEcommerceProductCategory(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.EcommerceProductCategoryError = ItemService.ValidateEcommerceProductCategory(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "EcommerceProductDescription":
-                    this.EcommerceProductDescriptionError = ItemService.ValidateEcommerceProductDescription(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.EcommerceProductDescriptionError = ItemService.ValidateEcommerceProductDescription(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "EcommerceProductSubcategory":
-                    this.EcommerceProductSubcategoryError = ItemService.ValidateEcommerceProductSubcategory(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.EcommerceProductSubcategoryError = ItemService.ValidateEcommerceProductSubcategory(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "EcommerceManufacturerName":
-                    this.EcommerceManufacturerNameError = ItemService.ValidateEcommerceManufacturerName(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.EcommerceManufacturerNameError = ItemService.ValidateEcommerceManufacturerName(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "EcommerceMsrp":
-                    this.EcommerceMsrpError = ItemService.ValidateEcommerceMsrp(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.EcommerceMsrpError = ItemService.ValidateEcommerceMsrp(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "EcommerceSize":
-                    this.EcommerceSizeError = ItemService.ValidateEcommerceSize(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.EcommerceSizeError = ItemService.ValidateEcommerceSize(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "Gpc":
-                    this.GpcError = ItemService.ValidateGpc(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.GpcError = ItemService.ValidateGpc(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "Height":
-                    this.EcommerceItemHeightError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Height")?.ReturnErrorMessage()??"";
+                    this.EcommerceItemHeightError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Height")?.ErrorMessage??"";
                     break;
 
                 case "InnerpackHeight":
-                    this.InnerpackHeightError = ItemService.ValidateInnerpack(TemplateObject, "Height")?.ReturnErrorMessage()??"";
+                    this.InnerpackHeightError = ItemService.ValidateInnerpack(TemplateObject, "Height")?.ErrorMessage??"";
                     break;
 
                 case "InnerpackLength":
-                    this.InnerpackLengthError = ItemService.ValidateInnerpack(TemplateObject, "Length")?.ReturnErrorMessage() ?? "";
+                    this.InnerpackLengthError = ItemService.ValidateInnerpack(TemplateObject, "Length")?.ErrorMessage ?? "";
                     break;
 
                 case "InnerpackWeight":
-                    this.InnerpackWeightError = ItemService.ValidateInnerpack(TemplateObject, "Weight")?.ReturnErrorMessage() ?? "";
+                    this.InnerpackWeightError = ItemService.ValidateInnerpack(TemplateObject, "Weight")?.ErrorMessage ?? "";
                     break;
 
                 case "InnerpackWidth":
-                    this.InnerpackWidthError = ItemService.ValidateInnerpack(TemplateObject, "Width")?.ReturnErrorMessage() ?? "";
+                    this.InnerpackWidthError = ItemService.ValidateInnerpack(TemplateObject, "Width")?.ErrorMessage ?? "";
                     break;
 
                 case "InnerpackQuantity":
-                    this.InnerpackQuantityError = ItemService.ValidateInnerpackQuantity(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.InnerpackQuantityError = ItemService.ValidateInnerpackQuantity(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "ItemCategory":
-                    this.ItemCategoryError = ItemService.ValidateItemCategory(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.ItemCategoryError = ItemService.ValidateItemCategory(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "ItemFamily":
-                    this.ItemFamilyError = ItemService.ValidateItemFamily(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.ItemFamilyError = ItemService.ValidateItemFamily(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "ItemGroup":
-                    this.ItemGroupError = ItemService.ValidateItemGroup(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.ItemGroupError = ItemService.ValidateItemGroup(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "Length":
-                    this.EcommerceItemLengthError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Length")?.ReturnErrorMessage()??"";
+                    this.EcommerceItemLengthError = ItemService.ValidateEcommerceItemDimension(TemplateObject, "Length")?.ErrorMessage??"";
                     break;
 
                 case "ListPriceCad":
-                    this.ListPriceCadError = ItemService.ValidateListPrice(TemplateObject, "CAD")?.ReturnErrorMessage()??"";
-                    this.MsrpCadError = ItemService.ValidateMsrp(TemplateObject, "CAD")?.ReturnErrorMessage()??"";
-                    this.PricingGroupError = ItemService.ValidatePricingGroup(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.ListPriceCadError = ItemService.ValidateListPrice(TemplateObject, "CAD")?.ErrorMessage??"";
+                    this.MsrpCadError = ItemService.ValidateMsrp(TemplateObject, "CAD")?.ErrorMessage??"";
+                    this.PricingGroupError = ItemService.ValidatePricingGroup(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "ListPriceMxn":
-                    this.MsrpMxnError = ItemService.ValidateMsrp(TemplateObject, "MXN")?.ReturnErrorMessage()??"";
-                    this.ListPriceMxnError = ItemService.ValidateListPrice(TemplateObject, "MXN")?.ReturnErrorMessage()??"";
+                    this.MsrpMxnError = ItemService.ValidateMsrp(TemplateObject, "MXN")?.ErrorMessage??"";
+                    this.ListPriceMxnError = ItemService.ValidateListPrice(TemplateObject, "MXN")?.ErrorMessage??"";
                     break;
 
                 case "ListPriceUsd":
-                    this.ListPriceUsdError = ItemService.ValidateListPrice(TemplateObject, "USD")?.ReturnErrorMessage()??"";
+                    this.ListPriceUsdError = ItemService.ValidateListPrice(TemplateObject, "USD")?.ErrorMessage??"";
                     break;
 
                 case "MetaDescription":
-                    this.MetaDescriptionError = ItemService.ValidateMetaDescription(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.MetaDescriptionError = ItemService.ValidateMetaDescription(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "MfgSource":
-                    this.MfgSourceError = ItemService.ValidateMfgSource(TemplateObject)?.ReturnErrorMessage()??"";
-                    this.CostProfileGroupError = ItemService.ValidateCostProfileGroup(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.MfgSourceError = ItemService.ValidateMfgSource(TemplateObject)?.ErrorMessage??"";
+                    this.CostProfileGroupError = ItemService.ValidateCostProfileGroup(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "Msrp":
-                    this.MsrpError = ItemService.ValidateMsrp(TemplateObject, "USD")?.ReturnErrorMessage()??"";
+                    this.MsrpError = ItemService.ValidateMsrp(TemplateObject, "USD")?.ErrorMessage??"";
                     break;
 
                 case "MsrpCad":
-                    this.MsrpCadError = ItemService.ValidateMsrp(TemplateObject, "CAD")?.ReturnErrorMessage()??"";
+                    this.MsrpCadError = ItemService.ValidateMsrp(TemplateObject, "CAD")?.ErrorMessage??"";
                     break;
 
                 case "MsrpMxn":
-                    this.MsrpMxnError = ItemService.ValidateMsrp(TemplateObject, "MXN")?.ReturnErrorMessage()??"";
+                    this.MsrpMxnError = ItemService.ValidateMsrp(TemplateObject, "MXN")?.ErrorMessage??"";
                     break;
 
                 case "PricingGroup":
-                    this.PricingGroupError = ItemService.ValidatePricingGroup(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.PricingGroupError = ItemService.ValidatePricingGroup(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "PrintOnDemand":
-                    this.PrintOnDemandError = ItemService.ValidatePrintOnDemand(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.PrintOnDemandError = ItemService.ValidatePrintOnDemand(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "ProductFormat":
-                    this.ProductFormatError = ItemService.ValidateProductFormat(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.ProductFormatError = ItemService.ValidateProductFormat(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "ProductGroup":
                     RefreshProductLines();
                     RefreshProductFormats("");
-                    this.ProductGroupError = ItemService.ValidateProductGroup(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.ProductGroupError = ItemService.ValidateProductGroup(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "ProductLine":
                     RefreshProductFormats(this.ProductLine);
-                    this.ProductLineError = ItemService.ValidateProductLine(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.ProductLineError = ItemService.ValidateProductLine(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "ProductQty":
-                    this.ProductQtyError = ItemService.ValidateProductQty(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.ProductQtyError = ItemService.ValidateProductQty(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "PsStatus":
-                    this.PsStatusError = ItemService.ValidatePsStatus(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.PsStatusError = ItemService.ValidatePsStatus(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "SatCode":
-                    this.SatCodeError = ItemService.ValidateSatCode(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.SatCodeError = ItemService.ValidateSatCode(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "Size":
-                    this.SizeError = ItemService.ValidateSize(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.SizeError = ItemService.ValidateSize(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "TariffCode":
-                    this.TariffCodeError = ItemService.ValidateTariffCode(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.TariffCodeError = ItemService.ValidateTariffCode(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "TemplateId":
-                    this.TemplateIdError = ItemService.ValidateTemplateId(TemplateObject,true)?.ReturnErrorMessage() ?? "";
+                    this.TemplateIdError = ItemService.ValidateTemplateId(TemplateObject,true)?.ErrorMessage ?? "";
                     break;
 
                 case "Udex":
-                    this.UdexError = ItemService.ValidateUdex(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.UdexError = ItemService.ValidateUdex(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "Warranty":
-                    this.WarrantyError = ItemService.ValidateWarranty(TemplateObject)?.ReturnErrorMessage() ?? "";
+                    this.WarrantyError = ItemService.ValidateWarranty(TemplateObject)?.ErrorMessage ?? "";
                     break;
 
                 case "WebsitePrice":
-                    this.WebsitePriceError = ItemService.ValidateWebsitePrice(TemplateObject)?.ReturnErrorMessage()??"";
+                    this.WebsitePriceError = ItemService.ValidateWebsitePrice(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "Weight":
-                    this.WeightError = ItemService.ValidateItemDimension(TemplateObject, "Weight")?.ReturnErrorMessage()??"";
+                    this.WeightError = ItemService.ValidateItemDimension(TemplateObject, "Weight")?.ErrorMessage??"";
                     break;
 
                 case "Width":
-                    this.WidthError = ItemService.ValidateItemDimension(TemplateObject, "Width")?.ReturnErrorMessage()??"";
+                    this.WidthError = ItemService.ValidateItemDimension(TemplateObject, "Width")?.ErrorMessage??"";
                     break;
 
                 default:
@@ -6727,7 +6727,7 @@ namespace Odin.ViewModels
             {
                 foreach(ItemError error in ItemService.ValidateAllTemplate(this.TemplateObject, this.TemplateStatus))
                 {
-                    Errors.Add(error.ReturnErrorMessage());
+                    Errors.Add(error.ErrorMessage);
                 }
             }
             catch (Exception ex)

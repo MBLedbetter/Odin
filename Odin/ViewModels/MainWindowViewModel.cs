@@ -3146,6 +3146,12 @@ namespace Odin.ViewModels
         /// </summary>
         public void EditSelectedError()
         {
+            ItemObject item = Items.Where(x => x.ItemId == this.SelectedError.ItemIdNumber && 
+                                            x.ItemRow == this.SelectedError.LineNumber).FirstOrDefault();
+            this.SelectedItem = item;
+            EditSelectedItem(item);
+
+            /*
             foreach (ItemObject item in Items)
             {
                 if (item.ItemId == this.SelectedError.ItemIdNumber)
@@ -3155,6 +3161,7 @@ namespace Odin.ViewModels
                     break;
                 }
             }
+            */
         }
 
         /// <summary>
@@ -3163,15 +3170,12 @@ namespace Odin.ViewModels
         /// <param name="item"></param>
         public void EditSelectedItem(ItemObject item)
         {
-            ItemView window = new ItemView();
-            if (item == null)
+            List<ItemError> selectedItemErrors = ItemErrors.Where(x => x.ItemIdNumber == this.SelectedItem.ItemId).ToList();
+            ItemView window = new ItemView
             {
-                window.DataContext = new ItemViewModel(this.SelectedItem, this.ItemService, this.ItemErrors);
-            }
-            else
-            {
-                window.DataContext = new ItemViewModel(item, this.ItemService, this.ItemErrors);
-            }
+                DataContext = new ItemViewModel(this.SelectedItem, this.ItemService, selectedItemErrors)
+            };
+
             window.ShowDialog();
 
             if (window.DialogResult == true)
@@ -3180,17 +3184,15 @@ namespace Odin.ViewModels
                 {
                     RemoveItem((window.DataContext as ItemViewModel).ItemId);
                 }
-                else if (!((window.DataContext as ItemViewModel).Remove))
+                else
                 {
-                    string oldId = this.SelectedItem.ItemId;
+                    this.SelectedItem.UpdateItem((window.DataContext as ItemViewModel).ItemViewModelItem);
 
-                    SelectedItem.UpdateItem((window.DataContext as ItemViewModel).ItemViewModelItem);
-
-                    for (int x = this.ItemErrors.Count - 1; x >= 0; x--)
+                    foreach(ItemError error in selectedItemErrors)
                     {
-                        if (this.ItemErrors[x].ItemIdNumber == oldId)
+                        if(!(window.DataContext as ItemViewModel).ItemErrors.Where(x=> x.ErrorField == error.ErrorField).Any())
                         {
-                            this.ItemErrors.Remove(this.ItemErrors[x]);
+                            this.ItemErrors.Remove(error);
                         }
                     }
                 }
@@ -3895,6 +3897,7 @@ namespace Odin.ViewModels
         /// </summary>
         public void SubmitItems()
         {
+            List<ItemError> errors = new List<ItemError>();
             try
             {
                 if (Items[0].Status != "Remove")
@@ -3903,21 +3906,14 @@ namespace Odin.ViewModels
                     {
                         foreach (ItemError er in ItemService.ValidateItem(item, true))
                         {
-                            ItemErrors.Add(er);
+                            if (er.ErrorType == "Error")
+                            {
+                                errors.Add(er);
+                            }
                         }                    
-                        /*
-                        if(item.SellOnTrends!="Y")
-                        {
-                            ItemErrors.Add(new ItemError(
-                                item.ItemId,
-                                item.ItemRow, 
-                                "Sell on Trends must be set to 'Y' before an item can be submitted.", 
-                                "Sell On Trends"));
-                        }           
-                        */             
                     }
                 }
-                if ((ItemErrors.Count == 0) || (Items[0].Status == "Remove"))
+                if ((errors.Count == 0) || (Items[0].Status == "Remove"))
                 {
                     string comment = string.Empty;
                     string site = string.Empty;
@@ -3946,10 +3942,7 @@ namespace Odin.ViewModels
                         {
                             if ((item.SellOnTrends != "Y") && (item.SellOnTrs != "Y"))
                             {
-                                if (itemWebChecklist != string.Empty) {
-                                    itemWebChecklist += ", ";
-                                }
-                                itemWebChecklist += item.ItemId + ", ";
+                                itemWebChecklist = (itemWebChecklist != string.Empty) ? itemWebChecklist += ", ": itemWebChecklist += item.ItemId + ", ";
                             }
                         }
                         if (itemWebChecklist == string.Empty)
