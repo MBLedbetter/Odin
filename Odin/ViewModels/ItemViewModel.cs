@@ -7,7 +7,6 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 using Odin.Views;
-using System.Windows;
 using System.Windows.Media.Imaging;
 using System.IO;
 using Microsoft.Win32;
@@ -8554,7 +8553,7 @@ namespace Odin.ViewModels
 
         private void AssignError(ItemError error)
         {
-            switch (error.VarName.Trim())
+            switch (error.ErrorField.Trim())
             {
                 case "Accounting Group":
                     this.AccountingGroupError = error.ErrorMessage;
@@ -9066,7 +9065,7 @@ namespace Odin.ViewModels
                     break;
 
                 default:
-                    throw new ArgumentNullException("ItemViewModel Assign error unknown type " + error.VarName);
+                    throw new ArgumentNullException("ItemViewModel Assign error unknown type " + error.ErrorField);
             }
         }
         
@@ -10235,63 +10234,6 @@ namespace Odin.ViewModels
                 return true;
             }
         }
-        
-        /// <summary>
-        ///     Validate all ecommerce fields
-        /// </summary>
-        public void ValidateEcommerce()
-        {
-            this.EcommerceAsinError = ItemService.ValidateEcommerceAsin(ItemViewModelItem).ErrorMessage;
-            this.EcommerceBullet1Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "1").ErrorMessage;
-            this.EcommerceBullet2Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "2").ErrorMessage;
-            this.EcommerceBullet3Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "3").ErrorMessage;
-            this.EcommerceBullet4Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "4").ErrorMessage;
-            this.EcommerceBullet5Error = ItemService.ValidateEcommerceBullet(ItemViewModelItem, "5").ErrorMessage;
-            this.EcommerceComponentsError = ItemService.ValidateEcommerceComponents(ItemViewModelItem).ErrorMessage;
-            this.EcommerceCostError = ItemService.ValidateEcommerceCost(ItemViewModelItem).ErrorMessage;
-            this.EcommerceExternalIdTypeError = ItemService.ValidateEcommerceExternalIdType(ItemViewModelItem).ErrorMessage;
-            this.EcommerceExternalIdError = ItemService.ValidateEcommerceExternalId(ItemViewModelItem).ErrorMessage;
-            this.EcommerceGenericKeywordsError = ItemService.ValidateEcommerceKeywords(ItemViewModelItem, "Generic").ErrorMessage;
-            this.EcommerceItemHeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem,"Height").ErrorMessage;
-            this.EcommerceItemLengthError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Length").ErrorMessage;
-            this.EcommerceItemNameError = ItemService.ValidateEcommerceItemName(ItemViewModelItem).ErrorMessage;
-            this.EcommerceItemTypeKeywords = ItemService.ValidateEcommerceItemTypeKeywords(ItemViewModelItem).ErrorMessage;
-            this.EcommerceItemWeightError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem,"Weight").ErrorMessage;
-            this.EcommerceItemWidthError = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Width").ErrorMessage;
-            this.EcommerceModelNameError = ItemService.ValidateEcommerceModelName(ItemViewModelItem).ErrorMessage;
-            this.EcommercePackageHeightError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Height").ErrorMessage;
-            this.EcommercePackageLengthError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Length").ErrorMessage;
-            this.EcommercePackageWeightError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Weight").ErrorMessage;
-            this.EcommercePackageWidthError = ItemService.ValidateEcommercePackageDimension(ItemViewModelItem, "Width").ErrorMessage;
-            this.EcommercePageQtyError = ItemService.ValidateEcommercePageQty(ItemViewModelItem).ErrorMessage;
-            this.EcommerceParentAsinError = ItemService.ValidateEcommerceParentAsin(ItemViewModelItem).ErrorMessage;
-            this.EcommerceProductCategoryError = ItemService.ValidateEcommerceProductCategory(ItemViewModelItem).ErrorMessage;
-            this.EcommerceProductDescriptionError = ItemService.ValidateEcommerceProductDescription(ItemViewModelItem).ErrorMessage;
-            this.EcommerceProductSubcategoryError = ItemService.ValidateEcommerceProductSubcategory(ItemViewModelItem).ErrorMessage;
-            this.EcommerceManufacturerNameError = ItemService.ValidateEcommerceManufacturerName(ItemViewModelItem).ErrorMessage;
-            this.EcommerceMsrpError = ItemService.ValidateEcommerceMsrp(ItemViewModelItem).ErrorMessage;
-            this.EcommerceSizeError = ItemService.ValidateEcommerceSize(ItemViewModelItem).ErrorMessage;
-            this.EcommerceSubjectKeywordsError = ItemService.ValidateEcommerceKeywords(ItemViewModelItem, "Subject").ErrorMessage;
-            this.EcommerceUpcError = ItemService.ValidateEcommerceUpc(ItemViewModelItem).ErrorMessage;
-        }
-
-        /// <summary>
-        ///     Validate the sell on fields for external ecommerce sites
-        /// </summary>
-        public void ValidateSellOnFields()
-        {
-            this.SellOnAllPostersError = ItemService.ValidateSellOnValue(ItemViewModelItem, "All Posters").ErrorMessage;
-            this.SellOnAmazonError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Amazon").ErrorMessage;
-            this.SellOnAmazonSellerCentralError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Amazon Seller Central").ErrorMessage;
-            this.SellOnFanaticsError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Fanatics").ErrorMessage;
-            this.SellOnGuitarCenterError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Guitar Center").ErrorMessage;
-            this.SellOnHayneedleError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Hayneedle").ErrorMessage;
-            this.SellOnHouzzError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Houzz").ErrorMessage;
-            this.SellOnTargetError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Target").ErrorMessage;
-            this.SellOnTrsError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Shop Trends").ErrorMessage;
-            this.SellOnWalmartError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Walmart").ErrorMessage;
-            this.SellOnWayfairError = ItemService.ValidateSellOnValue(ItemViewModelItem, "Wayfair").ErrorMessage;
-        }
 
         #endregion //Methods
 
@@ -10302,7 +10244,7 @@ namespace Odin.ViewModels
         /// </summary>
         /// <param name="itemObj"></param>
         /// <param name="itemService"></param>
-        public ItemViewModel(ItemObject itemObj, ItemService itemService, ObservableCollection<ItemError> errors = null)
+        public ItemViewModel(ItemObject itemObj, ItemService itemService, List<ItemError> errors = null)
         {
             this.ItemService = itemService ?? throw new ArgumentNullException("itemService");
             this.ItemViewModelItem = (itemObj.Clone() as ItemObject);
@@ -10312,9 +10254,10 @@ namespace Odin.ViewModels
             SetImages();
             if (errors != null)
             {
-                foreach (ItemError error in errors.Where(x => x.ItemIdNumber == this.ItemViewModelItem.ItemId))
+                foreach (ItemError error in errors)
                 {
                     AssignError(error);
+                    this.ItemErrors.Add(error);
                 }
             }
         }

@@ -339,6 +339,7 @@ namespace OdinTests.ViewModels
             #region Assign
 
             GlobalData.ClearValues();
+            List<ItemError> errors = new List<ItemError>();
             ItemObject item = new ItemObject(1) {
                 EcommerceBullet1 = "Rickity Recked",
                 SellOnEcommerce = "Y"
@@ -347,7 +348,11 @@ namespace OdinTests.ViewModels
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
             ObservableCollection<ItemError> errorList = itemService.ValidateItem(item, false);
             GlobalData.EcomFlagRequirement = true;
-            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, errorList);
+            foreach (ItemError x in errorList)
+            {
+                errors.Add(x);
+            }
+            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, errors);
 
             #endregion // Assign
 
@@ -467,7 +472,14 @@ namespace OdinTests.ViewModels
             };
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
             ObservableCollection<ItemError> errorList = itemService.ValidateItem(item, false);
-            ItemViewModel itemViewModel = new ItemViewModel(item, itemService,  errorList);
+            List<ItemError> errors = new List<ItemError>();
+            foreach(ItemError x in errorList)
+            {
+                errors.Add(x);
+            }
+
+            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, errors);
+            errorList.Clear();
             item = new ItemObject(1)
             {
                 SellOnTrends = "N",
@@ -475,7 +487,11 @@ namespace OdinTests.ViewModels
             };
             ItemService itemService2 = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
             errorList = itemService.ValidateItem(item, false);
-            ItemViewModel itemViewModel2 = new ItemViewModel(item, itemService, errorList);
+            foreach (ItemError x in errorList)
+            {
+                errors.Add(x);
+            }
+            ItemViewModel itemViewModel2 = new ItemViewModel(item, itemService, errors);
             #endregion // Assign
 
             #region Act
@@ -498,6 +514,7 @@ namespace OdinTests.ViewModels
             #region Assign
 
             GlobalData.ClearValues();
+            List<ItemError> errors = new List<ItemError>();
             GlobalData.EcomFlagRequirement = true;
             ItemObject item = new ItemObject(1)
             {
@@ -505,7 +522,11 @@ namespace OdinTests.ViewModels
             };
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
             ObservableCollection<ItemError> errorList = itemService.ValidateItem(item, false);
-            ItemViewModel itemViewModel = new ItemViewModel(item, itemService,  errorList);
+            foreach (ItemError x in errorList)
+            {
+                errors.Add(x);
+            }
+            ItemViewModel itemViewModel = new ItemViewModel(item, itemService, errors);
 
             #endregion // Assign
 

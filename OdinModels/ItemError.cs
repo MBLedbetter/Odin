@@ -49,7 +49,7 @@ namespace OdinModels
                 {
                     return "";
                 }
-                return this.VarName + " " + _errorMessage;
+                return this.ErrorField + " " + _errorMessage;
             }
             set
             {
@@ -124,40 +124,6 @@ namespace OdinModels
         }
         private int _lineNumber;
 
-        public bool Status
-        {
-            get
-            {
-                return _status;
-            }
-            set
-            {
-                _status = value;
-                if (this.PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Status"));
-                }
-            }
-        }
-        private bool _status;
-
-        public string VarName
-        {
-            get
-            {
-                return _varName;
-            }
-            set
-            {
-                _varName = value;
-                if (this.PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("VarName"));
-                }
-            }
-        }
-        private string _varName;
-
         #endregion // Properties
         
 
@@ -171,12 +137,12 @@ namespace OdinModels
         /// <param name="errorMessage">Error message</param>
         /// <param name="varName">Field causing error</param>
         /// <param name="isError">Type of error</param>
-        public ItemError(string itemId, int lineNumber, string errorMessage, string varName, bool isError)
+        public ItemError(string itemId, int lineNumber, string errorMessage, string errorField, bool isError)
         {
             this.ItemIdNumber = itemId;
             this.LineNumber = lineNumber;
             this.ErrorMessage = errorMessage;
-            this.VarName = varName;
+            this.ErrorField = errorField;
             this.ErrorType = (isError) ? "Error" : "Warning";
         }
 
