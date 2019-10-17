@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace Odin.ViewModels
@@ -127,6 +125,7 @@ namespace Odin.ViewModels
             }
             this.SearchItems = ReturnList;
         }
+
         public void SortItemIds()
         {
             List<SearchItem> SortedList = new List<SearchItem>();

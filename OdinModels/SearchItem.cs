@@ -96,6 +96,7 @@ namespace OdinModels
             this.IsSelected = false;
             this.Status = status;
         }
+
         /// <summary>
         ///     Constructs a search item object with supplied fields for item Id and description
         /// </summary>

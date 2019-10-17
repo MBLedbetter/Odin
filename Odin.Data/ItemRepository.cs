@@ -4226,22 +4226,25 @@ namespace Odin.Data
         /// <returns></returns>
         private List<KeyValuePair<string, string>> RetrieveUpcs()
         {
-            List<KeyValuePair<string, string>> upcs = new List<KeyValuePair<string, string>>();
+            List<KeyValuePair<string, string>> result = new List<KeyValuePair<string, string>>();
 
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                var vanillaUpcs = context.InvItems.Where(x=>x.Setid=="SHARE").Select(x => new { x.UpcId, x.InvItemId }).ToList();
-                foreach (var x in vanillaUpcs)
-                {
-                    upcs.Add(new KeyValuePair<string, string>(x.UpcId, x.InvItemId));
-                }
-                var ecomUpcs = context.AmazonItemAttributes.Select(x => new { x.UpcOverride, x.InvItemId }).ToList();
-                foreach (var x in ecomUpcs)
-                {
-                    upcs.Add(new KeyValuePair<string, string>(x.UpcOverride, x.InvItemId));
-                }
+                List<KeyValuePair<string, string>> upcs = context.InvItems.Where(x => x.Setid == "SHARE")
+                  .Select(o => new { o.UpcId, o.InvItemId })
+                  .AsEnumerable()
+                  .Select(o => new KeyValuePair<string, string>(o.UpcId, o.InvItemId))
+                  .ToList();
+
+                List<KeyValuePair<string, string>> ecomUpcs = context.AmazonItemAttributes
+                  .Select(o => new { o.UpcOverride, o.InvItemId })
+                  .AsEnumerable()
+                  .Select(o => new KeyValuePair<string, string>(o.UpcOverride, o.InvItemId))
+                  .ToList();
+
+                result = upcs.Concat(ecomUpcs).ToList();
             }
-            return upcs;
+            return result;
         }
 
         /// <summary>

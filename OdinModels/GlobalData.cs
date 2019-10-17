@@ -9,24 +9,7 @@ namespace OdinModels
     public static class GlobalData
     {
         #region Public Properties
-
-        #region Permissions
-
-        public static List<string> UserPermissions
-        {
-            get
-            {
-                return _userPermissions;
-            }
-            set
-            {
-                _userPermissions = value;
-            }
-        }
-        private static List<string> _userPermissions = new List<string>();
-
-        #endregion // Permissions
-
+        
         /// <summary>
         ///     Gets or sets AccountingGroups
         /// </summary>
@@ -75,23 +58,6 @@ namespace OdinModels
 
         }
         private static List<ChildElement> _billofMaterials = new List<ChildElement>();
-
-        /// <summary>
-        ///     Copyright dropdown values
-        /// </summary>
-        public static List<string> CopyrightGroups
-        {
-            get
-            {
-                return _copyright;
-            }
-            set
-            {
-                _copyright = value;
-            }
-
-        }
-        private static List<string> _copyright = new List<string>();
 
         /// <summary>
         ///     Gets or sets CostProfileGroups
@@ -692,7 +658,7 @@ namespace OdinModels
         private static List<string> _upcProductFormatExceptions = new List<string>();
         
         /// <summary>
-        ///     List of existing upcs / item id pairs
+        ///     List of existing upc + itemId & ecommerce upc + item id pairs 
         /// </summary>
         public static List<KeyValuePair<string, string>> Upcs
         {
@@ -739,6 +705,19 @@ namespace OdinModels
         }
         private static List<string> _userNames = new List<string>();
 
+        public static List<string> UserPermissions
+        {
+            get
+            {
+                return _userPermissions;
+            }
+            set
+            {
+                _userPermissions = value;
+            }
+        }
+        private static List<string> _userPermissions = new List<string>();
+
         /// <summary>
         ///     Gets or sets UserRoles
         /// </summary>
@@ -775,7 +754,6 @@ namespace OdinModels
         public static void ClearValues()
         {
             AccountingGroups.Clear();
-            CopyrightGroups.Clear();
             CostProfileGroups.Clear();
             CountriesOfOrigin.Clear();
             CustomerIdConversions.Clear();
