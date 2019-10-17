@@ -4123,14 +4123,28 @@ namespace OdinServices
             {
                 return null;
             }
-            if (var.EcommerceParentAsin.Count() > 10)
+            else
             {
-                return new ItemError(
-                    var.ItemId,
-                    var.ItemRow,
-                    OdinServices.Properties.Resources.Error_LengthMax + "10 characters.",
-                    "Ecommerce Parent Asin",
-                    var.EcommerceParentAsinUpdate);
+                if (var.EcommerceParentAsin.Count() > 10)
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        OdinServices.Properties.Resources.Error_LengthMax + "10 characters.",
+                        "Ecommerce Parent Asin",
+                        var.EcommerceParentAsinUpdate);
+                }
+                int count = GlobalData.ProductVariations.Where(o => o.Key == var.ReturnVariantGroupId()).Count();
+                if (count > 1)
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "The variant Id of this product is assigned to multiple Ecommerce Parent Asins",
+                        "Ecommerce Parent Asin",
+                        false);
+                }
+                
             }
             return null;
         }

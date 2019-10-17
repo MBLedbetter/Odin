@@ -462,7 +462,7 @@ namespace OdinModels
         private static List<KeyValuePair<string, string>> _productLines = new List<KeyValuePair<string, string>>();
 
         /// <summary>
-        ///     List of product variations
+        ///     List of product variations [key = variantID, value = ParentAsin]
         /// </summary>
         public static List<KeyValuePair<string, string>> ProductVariations
         {
