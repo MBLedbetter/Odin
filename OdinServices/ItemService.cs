@@ -782,7 +782,7 @@ namespace OdinServices
             }
             return "";
         }
-                
+        
         /// <summary>
         ///     Calls a window explorer with workbook reader and loads in list of spreadsheet items
         /// </summary>
@@ -1748,26 +1748,7 @@ namespace OdinServices
             result.Sort();
             return result;
         }
-        /*
-        /// <summary>
-        ///     Removes prefixes and suffixes from itemId.
-        /// </summary>
-        /// <param name="itemId"></param>
-        /// <returns>ItemId core</returns>
-        public string RetrieveItemIdCore(string itemId)
-        {
-            
-            string idCore = itemId;
-            foreach (string x in GlobalData.ItemTypeExtensionsList.OrderBy(x => x.Length))
-            {
-                if(itemId.Contains(x))
-                {
-                    idCore = idCore.Replace(x,"");
-                }
-            }
-            return idCore;
-        }
-        */
+
         /// <summary>
         ///     Retrieves a list of most recent ItemRecords from ODIN_ITEM_UPDATE_RECORDS
         /// </summary>
@@ -2031,6 +2012,16 @@ namespace OdinServices
         public List<SearchItem> RetreiveSearchItemByTariffCode(string tariffCode, bool includeDisabled = false)
         {
             return ItemRepository.RetreiveSearchItemByTariffCode(tariffCode, includeDisabled);
+        }
+
+        /// <summary>
+        ///     Retrieve Parent Items that are flagged to be sold on shoptrends
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        public List<string> RetrieveParentItems(string itemId, string customer)
+        {
+            return ItemRepository.RetrieveParentItems(itemId, customer);
         }
 
         /// <summary>
@@ -3290,23 +3281,8 @@ namespace OdinServices
                         "Dtc Price",
                         var.DtcPriceUpdate);
                 }
-                else
-                {
-                    if (var.SellOnTrs == "Y")
-                    {
-                        if (Convert.ToDouble(var.DtcPrice) < 0.01)
-                        {
-                            return new ItemError(
-                                var.ItemId,
-                                var.ItemRow,
-                                "Value must be more that 0.00",
-                                "Dtc Price",
-                        var.DtcPriceUpdate);
-                        }
-                    }
-                }
             }
-            else
+            if (string.IsNullOrEmpty(var.DtcPrice) || !DbUtil.CheckGreaterThanZero(var.DtcPrice))
             {
                 if (var.SellOnTrs == "Y")
                 {
@@ -3315,7 +3291,7 @@ namespace OdinServices
                         var.ItemRow,
                         "Required if Sell on Shop Trends is set to 'Y'.",
                         "Dtc Price",
-                        var.DtcPriceUpdate);                    
+                        var.DtcPriceUpdate);
                 }
                 if (var.ProductLine == "Poster Frame" && var.ItemId.Substring(0, 3) == "POD")
                 {
@@ -3325,6 +3301,27 @@ namespace OdinServices
                         "Required if product line = Poster Frame and item Id starts with 'POD'.",
                         "Dtc Price",
                         var.DtcPriceUpdate);
+                }
+                //  Check if item has any parent items flagged for sale on shoptrends.com
+                List<string> parentIds = RetrieveParentItems(var.ItemId, GlobalData.CustomerIdConversions["TRS"]);
+                if (parentIds.Count > 1)
+                {
+                    string parentIdList = string.Empty;
+                    for(int x = 0; x < parentIds.Count(); x++)
+                    {
+                        if(x>10)
+                        {
+                            parentIdList += parentIds[x] + "...";
+                            break;
+                        }
+                        parentIdList += parentIds[x] + ", ";
+                    }
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Value must be more that 0.00 when it is a component of a product being sold on shop trends. (" + parentIdList + ")",
+                        "Dtc Price",
+                        true);
                 }
             }
             return null;
@@ -5693,52 +5690,52 @@ namespace OdinServices
                     {
                         if ((!GlobalData.LocalItemIds.Contains(productIdTranslation.ItemId.Trim())) && (!GlobalData.ItemIds.Contains(productIdTranslation.ItemId.Trim())))
                         {
+                            // Child element has an itemid that doesn't exist in the db or loacally
                             return new ItemError(
                                 var.ItemId,
                                 var.ItemRow,
                                 "Value contains an id that does not exist: " + productIdTranslation.ItemId,
                                 "Product Id Translations",
-                        var.ProductIdTranslationUpdate);
+                                var.ProductIdTranslationUpdate);
                         }
                     }
-                    int count = 0;
-                    string erroredId = string.Empty;
-                    foreach (ChildElement productIdTranslation2 in var.ProductIdTranslation)
+                    if (var.ProductIdTranslation.Where(o => o.ItemId == productIdTranslation.ItemId).Count() > 1)
                     {
-                        if ((productIdTranslation2.ItemId.Trim() == productIdTranslation.ItemId.Trim()))
-                        {
-                            count++;
-                            if(count>1)
-                            {
-                                erroredId = productIdTranslation.ItemId;
-                            }
-                        }
-                    }
-                    if(count >1)
-                    {
+                        //  Child item Id occurs in the list multiple times
                         return new ItemError(
                             var.ItemId,
                             var.ItemRow,
-                            "Value can not contain multiple occurances of the same item: " + erroredId,
+                            "Value can not contain multiple occurances of the same item: " + productIdTranslation.ItemId,
                             "Product Id Translations",
-                        var.ProductIdTranslationUpdate);
+                            var.ProductIdTranslationUpdate);
                     }
-                }
-                if (var.Status == "Update")
-                {
-                    if (!CheckExistingProductIdTranslationsMatch(var.ProductIdTranslation))
+                    if (var.Status == "Update")
                     {
-                        foreach (ChildElement productIdTranslation in var.ProductIdTranslation)
+                        if (!CheckExistingProductIdTranslationsMatch(var.ProductIdTranslation))
                         {
                             if (CheckItemHasOpenOrderLine(productIdTranslation.ItemId))
                             {
+                                // Open orders on this product is preventing any changes being made
                                 return new ItemError(
                                     var.ItemId,
                                     var.ItemRow,
                                     "Current open orders are preventing this change from taking place.",
                                     "Product Id Translations",
-                        var.ProductIdTranslationUpdate);
+                                    var.ProductIdTranslationUpdate);
                             }
+                        }
+                    }
+                    if (var.SellOnTrs == "Y")
+                    {
+                        if (!CheckDtcPrice(productIdTranslation.ItemId))
+                        {
+                            // Open orders on this product is preventing any changes being made
+                            return new ItemError(
+                                var.ItemId,
+                                var.ItemRow,
+                                "Product Component " + productIdTranslation.ItemId + " has a DTC price set to 0.00.",
+                                "Product Id Translations",
+                                var.ProductIdTranslationUpdate);
                         }
                     }
                 }
@@ -6608,6 +6605,25 @@ namespace OdinServices
             foreach (ChildElement x in GlobalData.BillofMaterials)
             {
                 if (x.ItemId == childId && x.ParentId == itemId)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        ///     Checks if Dtc Price is assigned
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        private bool CheckDtcPrice(string itemId)
+        {
+            decimal? dtcPrice = ItemRepository.RetrieveDtcPrice(itemId);
+
+            if (dtcPrice != null)
+            {
+                if (dtcPrice > 0)
                 {
                     return true;
                 }

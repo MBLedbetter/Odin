@@ -168,20 +168,46 @@
                         </TextBox.ToolTip>
                         Bill of Materials
                     </TextBox>
-                    <TextBox
-                        IsEnabled="{Binding BlockInfo}"
-                        HorizontalAlignment="Left"
-                        Margin="6,6,0,6"
+                    <ListView
+                        SelectedItem="{Binding SelectedBillOfMaterials}"
                         Grid.Row="1"
-                        TextWrapping="Wrap"
-                        MaxHeight="64"
-                        MaxLength="60"
                         Grid.Column="1"
                         Grid.RowSpan="2"
-                        Text="{Binding BillOfMaterials}"
+                        HorizontalAlignment="Left"
+                        ItemsSource="{Binding BillOfMaterials}"
+                        Margin="6,6,0,6"
+                        MaxHeight="64"
+                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                         VerticalContentAlignment="Center"
-                        VerticalScrollBarVisibility="Auto"
-                        Width="170" />
+                        Width="170" >
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn
+                                    DisplayMemberBinding="{Binding ItemId}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader
+                                            Content="Item Id"
+                                            Height="20"
+                                            HorizontalContentAlignment="Left"
+                                                MinWidth="60"
+                                            Padding="10,0,0,0"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn
+                                    DisplayMemberBinding="{Binding Qty}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader
+                                            Content="Qty"
+                                            Height="20"
+                                            HorizontalContentAlignment="Left"
+                                            Padding="10,0,0,0" />
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                     <!-- Casepack -->
                     <Label
                         Content="Casepack"
@@ -2677,19 +2703,46 @@
                         </TextBox.ToolTip>
                         Product Id Translation
                     </TextBox>
-                    <TextBox
+                    <ListView
+                        SelectedItem="{Binding SelectedProductIdTranslation}"
                         Grid.Column="7"
                         Grid.Row="0"
                         Grid.RowSpan="2"
                         HorizontalAlignment="Left"
-                        IsEnabled="{Binding IsEnabled}"
+                        ItemsSource="{Binding ProductIdTranslation}"
                         Margin="6,6,0,6"
                         MaxHeight="64"
-                        Text="{Binding ProductIdTranslation}"
-                        TextWrapping="Wrap"
+                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                         VerticalContentAlignment="Center"
-                        VerticalScrollBarVisibility="Auto"
-                        Width="170" />
+                        Width="170" >
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn
+                                    DisplayMemberBinding="{Binding ItemId}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader
+                                            Content="Item Id"
+                                            Height="20"
+                                            HorizontalContentAlignment="Left"
+                                                MinWidth="60"
+                                            Padding="10,0,0,0"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn
+                                    DisplayMemberBinding="{Binding Qty}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader
+                                            Content="Qty"
+                                            Height="20"
+                                            HorizontalContentAlignment="Left"
+                                            Padding="10,0,0,0" />
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                     <!-- PS Status -->
                     <TextBox
                         BorderThickness="0"

@@ -1479,6 +1479,20 @@ namespace Odin.Data
         }
 
         /// <summary>
+        ///     Retrieves the website price for the given itemId. Returns null if no value exists
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        public decimal? RetrieveDtcPrice(string itemId)
+        {
+            if(itemId=="TEST1234")
+            {
+                return 10.00m;
+            }
+            return null;
+        }
+
+        /// <summary>
         ///     Retrieves all the Global data values
         /// </summary>
         public void RetrieveGlobalData()
@@ -1765,6 +1779,23 @@ namespace Odin.Data
             return true;
         }
 
+        /// <summary>
+        ///     Retrieve Parent Items that are flagged to be sold on shoptrends
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        public List<string> RetrieveParentItems(string itemId, string customer)
+        {
+            List<string> results = new List<string>();
+
+            if (customer == "HasParent")
+            {
+                results.Add("TEST1234");
+                results.Add("TEST5678");
+            }
+
+            return results;
+        }
         /// <summary>
         ///     Retrives a child / parent match from PS_MARKETPLACE_PRODUCT_TRANSLATIONS
         /// </summary>

@@ -349,17 +349,17 @@ namespace Odin.ViewModels
         }
         private string _accountingGroupToolTip = string.Empty;
         
-        public string BillOfMaterials
+        public List<ChildElement> BillOfMaterials
         {
             get
             {
-                return this.ItemViewModelItem.ReturnBillOfMaterials();
+                return this.ItemViewModelItem.BillOfMaterials;
             }
             set
             {
-                if (this.ItemViewModelItem.ReturnBillOfMaterials() != value)
+                if (this.ItemViewModelItem.BillOfMaterials != value)
                 {
-                    this.ItemViewModelItem.BillOfMaterials = ItemService.ParseChildElementIds(this.ItemId, value);
+                    this.ItemViewModelItem.BillOfMaterials = value;
                     FlagError("BillOfMaterials");
                     OnPropertyChanged("BillOfMaterials");
                 }
@@ -2870,17 +2870,17 @@ namespace Odin.ViewModels
         /// <summary>
         ///     Gets or sets the ProductIdTranslation
         /// </summary>
-        public string ProductIdTranslation
+        public List<ChildElement> ProductIdTranslation
         {
             get
             {
-                return this.ItemViewModelItem.ReturnProductIdTranslations();
+                return this.ItemViewModelItem.ProductIdTranslation;
             }
             set
             {
-                if (this.ItemViewModelItem.ReturnProductIdTranslations() != value)
+                if (this.ItemViewModelItem.ProductIdTranslation != value)
                 {
-                    this.ItemViewModelItem.ProductIdTranslation = ItemService.ParseChildElementIds(this.ItemId, value);                    
+                    this.ItemViewModelItem.ProductIdTranslation = value;                    
                     FlagError("ProductIdTranslation");
                     OnPropertyChanged("ProductIdTranslation");
                 }
@@ -8600,6 +8600,7 @@ namespace Odin.ViewModels
                     this.AltImageFile2Error = error?.ErrorMessage ?? "";
                     this.AltImageFile2BoxColor = error?.ReturnErrorColor() ?? "White";
 
+                    this.TabColorImagePath = CheckImagePathTabColor();
                     SetImages();
                     break;
 
@@ -8610,6 +8611,7 @@ namespace Odin.ViewModels
                     this.AltImageFile3Error = error?.ErrorMessage ?? "";
                     this.AltImageFile3BoxColor = error?.ReturnErrorColor() ?? "White";
 
+                    this.TabColorImagePath = CheckImagePathTabColor();
                     SetImages();
                     break;
 
@@ -8620,6 +8622,7 @@ namespace Odin.ViewModels
                     this.AltImageFile4Error = error?.ErrorMessage ?? "";
                     this.AltImageFile4BoxColor = error?.ReturnErrorColor() ?? "White";
 
+                    this.TabColorImagePath = CheckImagePathTabColor();
                     SetImages();
                     break;
 
@@ -8818,6 +8821,8 @@ namespace Odin.ViewModels
                     error = ItemService.ValidateDtcPrice(ItemViewModelItem);
                     this.DtcPriceError = error?.ErrorMessage ?? "";
                     this.DtcPriceBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorWebInfo = CheckWebInfoTabColor();
                     break;
 
                 case "Ean":
@@ -9592,7 +9597,7 @@ namespace Odin.ViewModels
                     break;
 
                 case "Property":
-                    // XXX Validation
+                    // Property Validation
                     error = ItemService.ValidateProperty(ItemViewModelItem);
                     this.PropertyError = error?.ErrorMessage ?? "";
                     this.PropertyBoxColor = error?.ReturnErrorColor() ?? "White";

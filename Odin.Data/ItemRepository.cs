@@ -1560,6 +1560,26 @@ namespace Odin.Data
         }
         
         /// <summary>
+        ///     Retrieves the website price for the given itemId. Returns null if no value exists
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        public decimal? RetrieveDtcPrice(string itemId)
+        {
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                if ((context.ItemAttribEx.Any()))
+                {
+                    return (from o in context.ItemAttribEx
+                     where o.Setid == "SHARE"
+                        && o.InvItemId == itemId
+                     select o.WebsitePrice).FirstOrDefault();                    
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
         ///     Get list of appropriate External Id types for Amazon Products
         /// </summary>
         /// <returns>List of External Id Types</returns>
@@ -2090,7 +2110,8 @@ namespace Odin.Data
         }
 
         /// <summary>
-        ///     Check if item is listed as being on the shoptrends site. PS_ITEM_WEB_INFO.ON_SHOPTRENDS == "Y"
+        ///     Check if item is listed as having been setup on the shoptrends. 
+        ///     PS_ITEM_WEB_INFO.ON_SHOPTRENDS == "Y"
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
@@ -2098,14 +2119,17 @@ namespace Odin.Data
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                string result = (from o in context.ItemWebInfo where o.InvItemId == itemId select o.OnShopTrends).FirstOrDefault();
+                string result = (from o in context.ItemWebInfo
+                                 where o.InvItemId == itemId
+                                 select o.OnShopTrends).FirstOrDefault();
                 if (result == "Y") { return true; }
             }
             return false;
         }
 
         /// <summary>
-        ///     Check if item is listed as being on the trendsinteranational site. PS_ITEM_WEB_INFO.ON_SITE == "Y"
+        ///     Check if item is listed as having been setup on trendsinteranational. 
+        ///     PS_ITEM_WEB_INFO.ON_SITE == "Y"
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
@@ -2138,6 +2162,56 @@ namespace Odin.Data
                 }
             }
             return false;
+        }
+
+        /// <summary>
+        ///     Retrieve Parent Items that are flagged to be sold on shoptrends
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        public List<string> RetrieveParentItems(string itemId, string customer)
+        {
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                if ((context.MarketplaceProductTranslations.Any()))
+                {
+                   
+                    return (from marketplaceProductTranslations in context.MarketplaceProductTranslations
+                     join itemAttribEx in context.ItemAttribEx
+                        on
+                        new
+                        {
+                            Key1 = marketplaceProductTranslations.FromProductId,
+                            Key2 = "SHARE"
+                        }
+                        equals
+                        new
+                        {
+                            Key1 = itemAttribEx.InvItemId,
+                            Key2 = itemAttribEx.Setid
+                        }
+                     join customerProductAttributes in context.CustomerProductAttributes
+                        on
+                        new
+                        {
+                            Key1 = marketplaceProductTranslations.FromProductId,
+                            Key2 = "SHARE",
+                        }
+                        equals
+                        new
+                        {
+                            Key1 = customerProductAttributes.ProductId,
+                            Key2 = customerProductAttributes.Setid
+                        }
+                     where customerProductAttributes.SendInventory == "Y"
+                         && marketplaceProductTranslations.ToProductId == itemId
+                         && customerProductAttributes.CustId == customer
+                         && customerProductAttributes.Setid == "SHARE"
+                            select marketplaceProductTranslations.FromProductId).ToList();
+
+                }
+            }
+            return new List<string>();
         }
 
         /// <summary>
