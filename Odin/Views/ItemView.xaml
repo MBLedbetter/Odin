@@ -109,7 +109,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding AccountingGroupBoxColor}"
                                         Padding="3"
                                         Text="{Binding AccountingGroupError}"
                                         TextWrapping="Wrap" />
@@ -159,7 +159,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding BillOfMaterialsBoxColor}"
                                         Padding="3"
                                         Text="{Binding BillOfMaterialsError}"
                                         TextWrapping="Wrap" />
@@ -226,7 +226,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding CasepackHeightBoxColor}"
                                         Padding="3"
                                         Text="{Binding CasepackHeightError}"
                                         TextWrapping="Wrap" />
@@ -278,7 +278,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding CasepackLengthBoxColor}"
                                         Padding="3"
                                         Text="{Binding CasepackLengthError}"
                                         TextWrapping="Wrap" />
@@ -330,7 +330,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding CasepackQtyBoxColor}"
                                         Padding="3"
                                         Text="{Binding CasepackQtyError}"
                                         TextWrapping="Wrap" />
@@ -382,7 +382,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding CasepackUpcBoxColor}"
                                         Padding="3"
                                         Text="{Binding CasepackUpcError}"
                                         TextWrapping="Wrap" />
@@ -434,7 +434,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding CasepackWeightBoxColor}"
                                         Padding="3"
                                         Text="{Binding CasepackWeightError}"
                                         TextWrapping="Wrap" />
@@ -486,7 +486,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding CasepackWidthBoxColor}"
                                         Padding="3"
                                         Text="{Binding CasepackWidthError}"
                                         TextWrapping="Wrap" />
@@ -538,7 +538,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding ColorBoxColor}"
                                         Padding="3"
                                         Text="{Binding ColorError}"
                                         TextWrapping="Wrap" />
@@ -590,7 +590,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding CountryOfOriginBoxColor}"
                                         Padding="3"
                                         Text="{Binding CountryOfOriginError}"
                                         TextWrapping="Wrap" />
@@ -639,7 +639,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding CostProfileGroupBoxColor}"
                                         Padding="3"
                                         Text="{Binding CostProfileGroupError}"
                                         TextWrapping="Wrap" />
@@ -707,7 +707,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding DefaultActualCostCadBoxColor}"
                                         Padding="3"
                                         Text="{Binding DefaultActualCostCadError}"
                                         TextWrapping="Wrap" />
@@ -759,7 +759,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding DefaultActualCostUsdBoxColor}"
                                         Padding="3"
                                         Text="{Binding DefaultActualCostUsdError}"
                                         TextWrapping="Wrap" />
@@ -811,7 +811,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding DescriptionBoxColor}"
                                         Padding="3"
                                         Text="{Binding DescriptionError}"
                                         TextWrapping="Wrap" />
@@ -861,6 +861,7 @@
                     <!-- Direct Import -->
                     <TextBox
                         BorderThickness="0"
+                        Background="{Binding DirectImportBoxColor}"
                         Grid.Row="0"
                         Grid.Column="2"
                         HorizontalAlignment="Left"
@@ -888,7 +889,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding DirectImportBoxColor}"
                                         Padding="3"
                                         Text="{Binding DirectImportError}"
                                         TextWrapping="Wrap" />
@@ -940,7 +941,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding DutyBoxColor}"
                                         Padding="3"
                                         Text="{Binding DutyError}"
                                         TextWrapping="Wrap" />
@@ -994,7 +995,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EanBoxColor}"
                                         Padding="3"
                                         Text="{Binding EanError}"
                                         TextWrapping="Wrap" />
@@ -1047,7 +1048,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding GpcBoxColor}"
                                         Padding="3"
                                         Text="{Binding GpcError}"
                                         TextWrapping="Wrap" />
@@ -1117,7 +1118,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding InnerpackHeightBoxColor}"
                                         Padding="3"
                                         Text="{Binding InnerpackHeightError}"
                                         TextWrapping="Wrap" />
@@ -1169,7 +1170,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding InnerpackLengthBoxColor}"
                                         Padding="3"
                                         Text="{Binding InnerpackLengthError}"
                                         TextWrapping="Wrap" />
@@ -1221,7 +1222,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding InnerpackQuantityBoxColor}"
                                         Padding="3"
                                         Text="{Binding InnerpackQuantityError}"
                                         TextWrapping="Wrap" />
@@ -1273,7 +1274,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding InnerpackUpcBoxColor}"
                                         Padding="3"
                                         Text="{Binding InnerpackUpcError}"
                                         TextWrapping="Wrap" />
@@ -1326,7 +1327,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding InnerpackWeightBoxColor}"
                                         Padding="3"
                                         Text="{Binding InnerpackWeightError}"
                                         TextWrapping="Wrap" />
@@ -1379,7 +1380,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding InnerpackWidthBoxColor}"
                                         Padding="3"
                                         Text="{Binding InnerpackWidthError}"
                                         TextWrapping="Wrap" />
@@ -1432,7 +1433,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding IsbnBoxColor}"
                                         Padding="3"
                                         Text="{Binding IsbnError}"
                                         TextWrapping="Wrap" />
@@ -1485,7 +1486,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding ItemCategoryBoxColor}"
                                         Padding="3"
                                         Text="{Binding ItemCategoryError}"
                                         TextWrapping="Wrap" />
@@ -1548,7 +1549,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding HeightBoxColor}"
                                         Padding="3"
                                         Text="{Binding HeightError}"
                                         TextWrapping="Wrap" />
@@ -1601,7 +1602,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding LengthBoxColor}"
                                         Padding="3"
                                         Text="{Binding LengthError}"
                                         TextWrapping="Wrap" />
@@ -1654,7 +1655,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding WeightBoxColor}"
                                         Padding="3"
                                         Text="{Binding WeightError}"
                                         TextWrapping="Wrap" />
@@ -1706,7 +1707,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding WidthBoxColor}"
                                         Padding="3"
                                         Text="{Binding WidthError}"
                                         TextWrapping="Wrap" />
@@ -1759,7 +1760,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding ItemFamilyBoxColor}"
                                         Padding="3"
                                         Text="{Binding ItemFamilyError}"
                                         TextWrapping="Wrap" />
@@ -1813,7 +1814,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding ItemGroupBoxColor}"
                                         Padding="3"
                                         Text="{Binding ItemGroupError}"
                                         TextWrapping="Wrap" />
@@ -1863,7 +1864,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding ItemIdBoxColor}"
                                         Padding="3"
                                         Text="{Binding ItemIdError}"
                                         TextWrapping="Wrap" />
@@ -1917,7 +1918,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding LanguageBoxColor}"
                                         Padding="3"
                                         Text="{Binding LanguageError}"
                                         TextWrapping="Wrap" />
@@ -1966,7 +1967,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding LicenseBeginDateBoxColor}"
                                         Padding="3"
                                         Text="{Binding LicenseBeginDateError}"
                                         TextWrapping="Wrap" />
@@ -2030,7 +2031,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding ListPriceCadBoxColor}"
                                         Padding="3"
                                         Text="{Binding ListPriceCadError}"
                                         TextWrapping="Wrap" />
@@ -2083,7 +2084,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding ListPriceMxnBoxColor}"
                                         Padding="3"
                                         Text="{Binding ListPriceMxnError}"
                                         TextWrapping="Wrap" />
@@ -2136,7 +2137,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding ListPriceUsdBoxColor}"
                                         Padding="3"
                                         Text="{Binding ListPriceUsdError}"
                                         TextWrapping="Wrap" />
@@ -2189,7 +2190,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding MfgSourceBoxColor}"
                                         Padding="3"
                                         Text="{Binding MfgSourceError}"
                                         TextWrapping="Wrap" />
@@ -2256,7 +2257,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding MsrpBoxColor}"
                                         Padding="3"
                                         Text="{Binding MsrpError}"
                                         TextWrapping="Wrap" />
@@ -2308,7 +2309,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding MsrpCadBoxColor}"
                                         Padding="3"
                                         Text="{Binding MsrpCadError}"
                                         TextWrapping="Wrap" />
@@ -2360,7 +2361,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding MsrpMxnBoxColor}"
                                         Padding="3"
                                         Text="{Binding MsrpMxnError}"
                                         TextWrapping="Wrap" />
@@ -2412,7 +2413,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding PricingGroupBoxColor}"
                                         Padding="3"
                                         Text="{Binding PricingGroupError}"
                                         TextWrapping="Wrap" />
@@ -2462,7 +2463,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding PrintOnDemandBoxColor}"
                                         Padding="3"
                                         Text="{Binding PrintOnDemandError}"
                                         TextWrapping="Wrap" />
@@ -2514,7 +2515,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding ProductFormatBoxColor}"
                                         Padding="3"
                                         Text="{Binding ProductFormatError}"
                                         TextWrapping="Wrap" />
@@ -2564,7 +2565,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding ProductGroupBoxColor}"
                                         Padding="3"
                                         Text="{Binding ProductGroupError}"
                                         TextWrapping="Wrap" />
@@ -2614,7 +2615,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding ProductLineBoxColor}"
                                         Padding="3"
                                         Text="{Binding ProductLineError}"
                                         TextWrapping="Wrap" />
@@ -2667,7 +2668,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding ProductIdTranslationBoxColor}"
                                         Padding="3"
                                         Text="{Binding ProductIdTranslationError}"
                                         TextWrapping="Wrap" />
@@ -2721,7 +2722,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding PsStatusBoxColor}"
                                         Padding="3"
                                         Text="{Binding PsStatusError}"
                                         TextWrapping="Wrap" />
@@ -2771,7 +2772,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding SatCodeBoxColor}"
                                         Padding="3"
                                         Text="{Binding SatCodeError}"
                                         TextWrapping="Wrap" />
@@ -2823,7 +2824,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding StatsCodeBoxColor}"
                                         Padding="3"
                                         Text="{Binding StatsCodeError}"
                                         TextWrapping="Wrap" />
@@ -2873,7 +2874,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding StandardCostBoxColor}"
                                         Padding="3"
                                         Text="{Binding StandardCostError}"
                                         TextWrapping="Wrap" />
@@ -2924,8 +2925,8 @@
                                         Text="{Binding TariffCodeToolTip}"
                                         TextWrapping="Wrap" />
                                     <TextBlock 
+                                        Background="{Binding TariffCodeBoxColor}"
                                         Grid.Row="3"
-                                        Background="LightPink"
                                         Padding="3"
                                         Text="{Binding TariffCodeError}"
                                         TextWrapping="Wrap" />
@@ -2974,8 +2975,8 @@
                                         Text="{Binding TerritoryToolTip}"
                                         TextWrapping="Wrap" />
                                     <TextBlock 
+                                        Background="{Binding TerritoryBoxColor}"
                                         Grid.Row="3"
-                                        Background="LightPink"
                                         Padding="3"
                                         Text="{Binding TerritoryError}"
                                         TextWrapping="Wrap" />
@@ -3023,8 +3024,8 @@
                                         Text="{Binding UdexToolTip}"
                                         TextWrapping="Wrap" />
                                     <TextBlock 
+                                        Background="{Binding UdexBoxColor}"
                                         Grid.Row="3"
-                                        Background="LightPink"
                                         Padding="3"
                                         Text="{Binding UdexError}"
                                         TextWrapping="Wrap" />
@@ -3075,8 +3076,8 @@
                                         Text="{Binding UpcToolTip}"
                                         TextWrapping="Wrap" />
                                     <TextBlock 
+                                        Background="{Binding UpcBoxColor}"
                                         Grid.Row="3"
-                                        Background="LightPink"
                                         Padding="3"
                                         Text="{Binding UpcError}"
                                         TextWrapping="Wrap" />
@@ -3192,7 +3193,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding CategoryBoxColor}"
                                         Padding="3"
                                         Text="{Binding CategoryError}"
                                         TextWrapping="Wrap" />
@@ -3241,7 +3242,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding Category2BoxColor}"
                                         Padding="3"
                                         Text="{Binding Category2Error}"
                                         TextWrapping="Wrap" />
@@ -3291,7 +3292,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding Category3BoxColor}"
                                         Padding="3"
                                         Text="{Binding Category3Error}"
                                         TextWrapping="Wrap" />
@@ -3340,7 +3341,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding CopyrightBoxColor}"
                                         Padding="3"
                                         Text="{Binding CopyrightError}"
                                         TextWrapping="Wrap" />
@@ -3394,7 +3395,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding DtcPriceBoxColor}"
                                         Padding="3"
                                         Text="{Binding DtcPriceError}"
                                         TextWrapping="Wrap" />
@@ -3445,7 +3446,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding Genre1BoxColor}"
                                         Padding="3"
                                         Text="{Binding Genre1Error}"
                                         TextWrapping="Wrap" />
@@ -3493,7 +3494,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding Genre2BoxColor}"
                                         Padding="3"
                                         Text="{Binding Genre2Error}"
                                         TextWrapping="Wrap" />
@@ -3541,7 +3542,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding Genre3BoxColor}"
                                         Padding="3"
                                         Text="{Binding Genre3Error}"
                                         TextWrapping="Wrap" />
@@ -3638,7 +3639,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding ItemKeywordsBoxColor}"
                                         Padding="3"
                                         Text="{Binding ItemKeywordsError}"
                                         TextWrapping="Wrap" />
@@ -3690,7 +3691,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding LicenseBoxColor}"
                                         Padding="3"
                                         Text="{Binding LicenseError}"
                                         TextWrapping="Wrap" />
@@ -3739,7 +3740,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding MetaDescriptionBoxColor}"
                                         Padding="3"
                                         Text="{Binding MetaDescriptionError}"
                                         TextWrapping="Wrap" />
@@ -3789,7 +3790,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding ProductQtyBoxColor}"
                                         Padding="3"
                                         Text="{Binding ProductQtyError}"
                                         TextWrapping="Wrap" />
@@ -3887,7 +3888,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding PropertyBoxColor}"
                                         Padding="3"
                                         Text="{Binding PropertyError}"
                                         TextWrapping="Wrap" />
@@ -3935,7 +3936,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding ShortDescriptionBoxColor}"
                                         Padding="3"
                                         Text="{Binding ShortDescriptionError}"
                                         TextWrapping="Wrap" />
@@ -3988,7 +3989,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding SizeBoxColor}"
                                         Padding="3"
                                         Text="{Binding SizeError}"
                                         TextWrapping="Wrap" />
@@ -4040,7 +4041,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding TitleBoxColor}"
                                         Padding="3"
                                         Text="{Binding TitleError}"
                                         TextWrapping="Wrap" />
@@ -4092,7 +4093,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding WebsitePriceBoxColor}"
                                         Padding="3"
                                         Text="{Binding WebsitePriceError}"
                                         TextWrapping="Wrap" />
@@ -4180,7 +4181,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding SellOnEcommerceBoxColor}"
                                         Padding="3"
                                         Text="{Binding SellOnEcommerceError}"
                                         TextWrapping="Wrap" />
@@ -4228,7 +4229,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding SellOnAllPostersBoxColor}"
                                         Padding="3"
                                         Text="{Binding SellOnAllPostersError}"
                                         TextWrapping="Wrap" />
@@ -4276,7 +4277,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding SellOnAmazonBoxColor}"
                                         Padding="3"
                                         Text="{Binding SellOnAmazonError}"
                                         TextWrapping="Wrap" />
@@ -4324,7 +4325,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding SellOnAmazonSellerCentralBoxColor}"
                                         Padding="3"
                                         Text="{Binding SellOnAmazonSellerCentralError}"
                                         TextWrapping="Wrap" />
@@ -4372,7 +4373,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding SellOnFanaticsBoxColor}"
                                         Padding="3"
                                         Text="{Binding SellOnFanaticsError}"
                                         TextWrapping="Wrap" />
@@ -4420,7 +4421,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding SellOnGuitarCenterBoxColor}"
                                         Padding="3"
                                         Text="{Binding SellOnGuitarCenterError}"
                                         TextWrapping="Wrap" />
@@ -4468,7 +4469,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding SellOnHayneedleBoxColor}"
                                         Padding="3"
                                         Text="{Binding SellOnHayneedleError}"
                                         TextWrapping="Wrap" />
@@ -4516,7 +4517,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding SellOnHouzzBoxColor}"
                                         Padding="3"
                                         Text="{Binding SellOnHouzzError}"
                                         TextWrapping="Wrap" />
@@ -4564,7 +4565,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding SellOnTargetBoxColor}"
                                         Padding="3"
                                         Text="{Binding SellOnTargetError}"
                                         TextWrapping="Wrap" />
@@ -4611,7 +4612,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding SellOnTrendsBoxColor}"
                                         Padding="3"
                                         Text="{Binding SellOnTrendsError}"
                                         TextWrapping="Wrap" />
@@ -4658,7 +4659,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding SellOnTrsBoxColor}"
                                         Padding="3"
                                         Text="{Binding SellOnTrsError}"
                                         TextWrapping="Wrap" />
@@ -4705,7 +4706,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding SellOnWalmartBoxColor}"
                                         Padding="3"
                                         Text="{Binding SellOnWalmartError}"
                                         TextWrapping="Wrap" />
@@ -4753,7 +4754,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding SellOnWayfairBoxColor}"
                                         Padding="3"
                                         Text="{Binding SellOnWayfairError}"
                                         TextWrapping="Wrap" />
@@ -4836,7 +4837,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceAsinBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceAsinError}"
                                         TextWrapping="Wrap" />
@@ -4904,7 +4905,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceBullet1BoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceBullet1Error}"
                                         TextWrapping="Wrap" />
@@ -4957,7 +4958,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceBullet2BoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceBullet2Error}"
                                         TextWrapping="Wrap" />
@@ -5011,7 +5012,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceBullet3BoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceBullet3Error}"
                                         TextWrapping="Wrap" />
@@ -5064,7 +5065,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceBullet4BoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceBullet4Error}"
                                         TextWrapping="Wrap" />
@@ -5117,7 +5118,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceBullet5BoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceBullet5Error}"
                                         TextWrapping="Wrap" />
@@ -5170,7 +5171,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceComponentsBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceComponentsError}"
                                         TextWrapping="Wrap" />
@@ -5221,7 +5222,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceCostBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceCostError}"
                                         TextWrapping="Wrap" />
@@ -5272,7 +5273,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceExternalIdBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceExternalIdError}"
                                         TextWrapping="Wrap" />
@@ -5323,7 +5324,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceExternalIdTypeBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceExternalIdTypeError}"
                                         TextWrapping="Wrap" />
@@ -5353,7 +5354,10 @@
                         Grid.ColumnSpan="2"
                         Grid.Row="0"
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Top" Height="180" Grid.RowSpan="5" Width="322" />
+                        VerticalAlignment="Top" 
+                        Height="180" 
+                        Grid.RowSpan="5" 
+                        Width="322" />
                     <!-- Item Height -->
                     <TextBox
                         BorderThickness="0"
@@ -5386,7 +5390,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceItemHeightBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceItemHeightError}"
                                         TextWrapping="Wrap" />
@@ -5437,7 +5441,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceItemLengthBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceItemLengthError}"
                                         TextWrapping="Wrap" />
@@ -5488,7 +5492,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceItemNameBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceItemNameError}"
                                         TextWrapping="Wrap" />
@@ -5539,7 +5543,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceItemTypeKeywordsBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceItemTypeKeywordsError}"
                                         TextWrapping="Wrap" />
@@ -5590,7 +5594,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceItemWeightBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceItemWeightError}"
                                         TextWrapping="Wrap" />
@@ -5641,7 +5645,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceItemWidthBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceItemWidthError}"
                                         TextWrapping="Wrap" />
@@ -5692,7 +5696,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceManufacturerNameBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceManufacturerNameError}"
                                         TextWrapping="Wrap" />
@@ -5743,7 +5747,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceModelNameBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceModelNameError}"
                                         TextWrapping="Wrap" />
@@ -5794,7 +5798,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceMsrpBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceMsrpError}"
                                         TextWrapping="Wrap" />
@@ -5861,7 +5865,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommercePackageHeightBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommercePackageHeightError}"
                                         TextWrapping="Wrap" />
@@ -5912,7 +5916,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommercePackageLengthBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommercePackageLengthError}"
                                         TextWrapping="Wrap" />
@@ -5963,7 +5967,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommercePackageWeightBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommercePackageWeightError}"
                                         TextWrapping="Wrap" />
@@ -6014,7 +6018,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommercePackageWidthBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommercePackageWidthError}"
                                         TextWrapping="Wrap" />
@@ -6065,7 +6069,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceProductCategoryBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceProductCategoryError}"
                                         TextWrapping="Wrap" />
@@ -6116,7 +6120,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommercePageQtyBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommercePageQtyError}"
                                         TextWrapping="Wrap" />
@@ -6167,7 +6171,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceParentAsinBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceParentAsinError}"
                                         TextWrapping="Wrap" />
@@ -6218,7 +6222,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceProductDescriptionBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceProductDescriptionError}"
                                         TextWrapping="Wrap" />
@@ -6271,7 +6275,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceProductSubcategoryBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceProductSubcategoryError}"
                                         TextWrapping="Wrap" />
@@ -6322,7 +6326,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceGenericKeywordsBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceGenericKeywordsError}"
                                         TextWrapping="Wrap" />
@@ -6375,7 +6379,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceSubjectKeywordsBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceSearchTermsError}"
                                         TextWrapping="Wrap" />
@@ -6428,7 +6432,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceSizeBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceSizeError}"
                                         TextWrapping="Wrap" />
@@ -6479,7 +6483,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding WarrantyBoxColor}"
                                         Padding="3"
                                         Text="{Binding WarrantyError}"
                                         TextWrapping="Wrap" />
@@ -6504,7 +6508,7 @@
                     <!-- Warranty Required -->
                     <TextBox
                         BorderThickness="0"
-                        Background="{Binding  WarrantyCheckBoxColor}"
+                        Background="{Binding WarrantyCheckBoxColor}"
                         Grid.Row="9"
                         Grid.Column="6"
                         HorizontalAlignment="Left"
@@ -6533,7 +6537,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding WarrantyCheckBoxColor}"
                                         Padding="3"
                                         Text="{Binding WarrantyRequiredError}"
                                         TextWrapping="Wrap" />
@@ -6581,7 +6585,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding EcommerceUpcBoxColor}"
                                         Padding="3"
                                         Text="{Binding EcommerceUpcError}"
                                         TextWrapping="Wrap" />
@@ -6708,7 +6712,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding ImagePathBoxColor}"
                                         Padding="3"
                                         Text="{Binding ImagePathError}"
                                         TextWrapping="Wrap" />
@@ -6766,7 +6770,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding AltImageFile1BoxColor}"
                                         Padding="3"
                                         Text="{Binding AltImageFile1Error}"
                                         TextWrapping="Wrap" />
@@ -6824,7 +6828,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding AltImageFile2BoxColor}"
                                         Padding="3"
                                         Text="{Binding AltImageFile2Error}"
                                         TextWrapping="Wrap" />
@@ -6881,7 +6885,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding AltImageFile3BoxColor}"
                                         Padding="3"
                                         Text="{Binding AltImageFile3Error}"
                                         TextWrapping="Wrap" />
@@ -6940,7 +6944,7 @@
                                         TextWrapping="Wrap" />
                                     <TextBlock 
                                         Grid.Row="3"
-                                        Background="LightPink"
+                                        Background="{Binding AltImageFile4BoxColor}"
                                         Padding="3"
                                         Text="{Binding AltImageFile4Error}"
                                         TextWrapping="Wrap" />
