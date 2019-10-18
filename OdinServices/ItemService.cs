@@ -878,8 +878,6 @@ namespace OdinServices
                 GlobalData.LocalItemIds.Add(ItemId);
                 ItemObject item = new ItemObject(1)
                 {
-                    ItemRow = row + 1,
-                    ItemId = ItemId,
                     AccountingGroup = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.AccountingGroup, WorksheetColumnHeaders.AcctgGroup),
                     AltImageFile1 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ImagePath2),
                     AltImageFile2 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ImagePath3),
@@ -955,7 +953,9 @@ namespace OdinServices
                     ItemCategory = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ItemCategory).Trim(),
                     ItemFamily = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ItemFamily).Trim(),
                     ItemGroup = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ItemGroup),
+                    ItemId = ItemId,
                     ItemKeywords = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ItemKeywords),
+                    ItemRow = row + 1,
                     Language = DbUtil.OrderLanguage(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Language)),
                     Length = DbUtil.ZeroTrim(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Length, WorksheetColumnHeaders.ItemLength), 1),
                     License = RemoveSpecialChar(ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.License)),
@@ -1034,7 +1034,6 @@ namespace OdinServices
                         item.WebsiteUrl = CreateWebsiteUrl(item, true);
                     }
                     item.SetFlagDefaults();
-                    item.SetUpdates();
                 }
                 item.EcommerceCountryofOrigin = RetrieveFullCountryOfOrigin(item.CountryOfOrigin);
 
@@ -2016,7 +2015,7 @@ namespace OdinServices
         }
 
         /// <summary>
-        ///     Retrieve Parent Items that are flagged to be sold on shoptrends
+        ///     Retrieve Parent Items that are flagged to be sold for the given customer
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>

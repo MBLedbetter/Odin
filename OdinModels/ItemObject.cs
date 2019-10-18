@@ -2772,6 +2772,9 @@ namespace OdinModels
         }
         private string _rowColor = "White";
 
+        /// <summary>
+        ///     Gets of set the status of the item
+        /// </summary>
         public string Status
         {
             get
@@ -2783,6 +2786,7 @@ namespace OdinModels
                 _status = value;
                 if ((value == "Add") || (value == "Update")) { this.Active = 1; }
                 else { this.Active = 0; }
+                SetUpdates(value);
                 OnPropertyChanged("Status");
             }
         }
@@ -4236,9 +4240,12 @@ namespace OdinModels
             if (string.IsNullOrEmpty(this.WarrantyCheck)) { this.WarrantyCheck = "N"; }
         }
 
-        public void SetUpdates()
+        /// <summary>
+        ///     Sets all field update flags to true if products status = add
+        /// </summary>
+        private void SetUpdates(string value)
         {
-            if (this.Status == "Add")
+            if (value == "Add")
             {
                 this.AccountingGroupUpdate = true;
                 this.AltImageFile1Update = true;

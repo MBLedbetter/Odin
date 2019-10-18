@@ -1757,6 +1757,7 @@ namespace Odin.Data
                         ItemGroup = (!string.IsNullOrEmpty(odinItem.InvItemGroup)) ? odinItem.InvItemGroup.Trim() : "",
                         ItemKeywords = (!string.IsNullOrEmpty(odinItem.ItemKeywords)) ? odinItem.ItemKeywords.Trim() : "",
                         ItemKeywordsOverride = (!string.IsNullOrEmpty(odinItem.ItemKeywordsOverride)) ? odinItem.ItemKeywordsOverride.Trim() : "",
+                        ItemRow = row,
                         Language = (!string.IsNullOrEmpty(odinItem.Language)) ? DbUtil.OrderLanguage(odinItem.Language) : "",
                         Length = (odinItem.InvItemLength != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemLength), 1) : "",
                         License = (!string.IsNullOrEmpty(odinItem.License)) ? odinItem.License.Trim() : "",
@@ -1779,7 +1780,7 @@ namespace Odin.Data
                         ProductQty = (!string.IsNullOrEmpty(odinItem.ProdQty)) ? odinItem.ProdQty.Trim() : "",
                         Property = (!string.IsNullOrEmpty(odinItem.Property)) ? odinItem.Property.Trim() : "",
                         PrintOnDemand = (!string.IsNullOrEmpty(odinItem.PrintOnDemand)) ? odinItem.PrintOnDemand.Trim() : "",
-                        PsStatus = (!string.IsNullOrEmpty(odinItem.Psstatus)) ? odinItem.Psstatus.Trim() : "I",
+                        PsStatus = (!string.IsNullOrEmpty(odinItem.Psstatus)) ? odinItem.Psstatus.Trim() : "I",                        
                         SatCode = (!string.IsNullOrEmpty(odinItem.SatCode)) ? odinItem.SatCode.Trim() : "",
                         SellOnTrends = (!string.IsNullOrEmpty(odinItem.SellOnWeb)) ? odinItem.SellOnWeb : "N",
                         SellOnAllPosters = (!string.IsNullOrEmpty(odinItem.SellOnAllPosters)) ? odinItem.SellOnAllPosters : "N",
@@ -1798,6 +1799,7 @@ namespace Odin.Data
                         Size = (!string.IsNullOrEmpty(odinItem.Size)) ? odinItem.Size.Trim() : "",
                         StandardCost = (odinItem.StandardCost != null) ? Convert.ToString(odinItem.StandardCost).Trim() : "",
                         StatsCode = (!string.IsNullOrEmpty(odinItem.StatsCode)) ? odinItem.StatsCode.Trim() : "",
+                        Status = "Update",
                         TariffCode = (!string.IsNullOrEmpty(odinItem.HarmonizedCd)) ? odinItem.HarmonizedCd.Trim() : "",
                         Territory = (!string.IsNullOrEmpty(odinItem.Territory)) ? DbUtil.OrderTerritory(odinItem.Territory) : "",
                         Title = (!string.IsNullOrEmpty(odinItem.Title)) ? odinItem.Title.Trim() : "",
@@ -1810,9 +1812,7 @@ namespace Odin.Data
                         WebsitePriceOverride = (odinItem.WebsitePriceOverride != null) ? DbUtil.ZeroTrim(odinItem.WebsitePriceOverride.ToString(), 2) : "",
                         WebsiteUrl = (!string.IsNullOrEmpty(odinItem.WebsiteUrl)) ? odinItem.WebsiteUrl.Trim() : "",
                         Weight = (odinItem.InvItemWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWeight), 1) : "",
-                        Width = (odinItem.InvItemWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWidth), 1) : "",
-                        Status = "Update",
-                        ItemRow = row
+                        Width = (odinItem.InvItemWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWidth), 1) : ""                        
                     };
                     if (!string.IsNullOrEmpty(odinItem.Category))
                     {
