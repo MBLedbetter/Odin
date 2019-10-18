@@ -2993,7 +2993,7 @@ namespace Odin.ViewModels
 
         private void BackgroundWorkerSave_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (this.ItemErrors.Count==0)
+            if (this.ItemErrors.Where(o => o.ErrorType == "Error").Count() == 0)
             {
                 this.ProgressText = "Items Saved";
                 this.SubmitStatus = true;
@@ -3592,8 +3592,8 @@ namespace Odin.ViewModels
             Mouse.OverrideCursor = Cursors.Wait;
             
             bool savedRun = false;
-
-            if ((this.ItemErrors.Count == 0) && (this.Items.Count > 0))
+            
+            if ((this.ItemErrors.Where(o=>o.ErrorType=="Error").Count() == 0) && (this.Items.Count > 0))
             {
                 if (!savedRun)
                 {
