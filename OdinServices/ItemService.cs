@@ -1034,6 +1034,7 @@ namespace OdinServices
                         item.WebsiteUrl = CreateWebsiteUrl(item, true);
                     }
                     item.SetFlagDefaults();
+                    item.SetUpdates();
                 }
                 item.EcommerceCountryofOrigin = RetrieveFullCountryOfOrigin(item.CountryOfOrigin);
 
