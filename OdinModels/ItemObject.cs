@@ -4212,6 +4212,169 @@ namespace OdinModels
         }
 
         /// <summary>
+        ///     Set SellOn values to N for any empty fields and sets PsStatus to I if empty
+        /// </summary>
+        public void SetFlagDefaults()
+        {
+            if (string.IsNullOrEmpty(this.PsStatus)) { this.PsStatus = "I"; }
+            if (string.IsNullOrEmpty(this.OnShopTrends)) { this.OnShopTrends = "N"; }
+            if (string.IsNullOrEmpty(this.OnSite)) { this.OnSite = "N"; }
+            if (string.IsNullOrEmpty(this.SellOnAllPosters)) { this.SellOnAllPosters = "N"; }
+            if (string.IsNullOrEmpty(this.SellOnAmazon)) { this.SellOnAmazon = "N"; }
+            if (string.IsNullOrEmpty(this.SellOnAmazonSellerCentral)) { this.SellOnAmazonSellerCentral = "N"; }
+            if (string.IsNullOrEmpty(this.SellOnEcommerce)) { this.SellOnEcommerce = "N"; }
+            if (string.IsNullOrEmpty(this.SellOnFanatics)) { this.SellOnFanatics = "N"; }
+            if (string.IsNullOrEmpty(this.SellOnGuitarCenter)) { this.SellOnGuitarCenter = "N"; }
+            if (string.IsNullOrEmpty(this.SellOnHayneedle)) { this.SellOnHayneedle = "N"; }
+            if (string.IsNullOrEmpty(this.SellOnHouzz)) { this.SellOnHouzz = "N"; }
+            if (string.IsNullOrEmpty(this.SellOnTrs)) { this.SellOnTrs = "N"; }
+            if (string.IsNullOrEmpty(this.SellOnTarget)) { this.SellOnTarget = "N"; }
+            if (string.IsNullOrEmpty(this.SellOnTrends)) { this.SellOnTrends = "N"; }
+            if (string.IsNullOrEmpty(this.SellOnWalmart)) { this.SellOnWalmart = "N"; }
+            if (string.IsNullOrEmpty(this.SellOnWayfair)) { this.SellOnWayfair = "N"; }
+            if (string.IsNullOrEmpty(this.PrintOnDemand)) { this.PrintOnDemand = "N"; }
+            if (string.IsNullOrEmpty(this.WarrantyCheck)) { this.WarrantyCheck = "N"; }
+        }
+
+        public void SetUpdates()
+        {
+            if (this.Status == "Add")
+            {
+                this.AccountingGroupUpdate = true;
+                this.AltImageFile1Update = true;
+                this.AltImageFile2Update = true;
+                this.AltImageFile3Update = true;
+                this.AltImageFile4Update = true;
+                this.BillOfMaterialsUpdate = true;
+                this.CasepackHeightUpdate = true;
+                this.CasepackLengthUpdate = true;
+                this.CasepackQtyUpdate = true;
+                this.CasepackUpcUpdate = true;
+                this.CasepackWidthUpdate = true;
+                this.CasepackWeightUpdate = true;
+                this.CategoryUpdate = true;
+                this.Category2Update = true;
+                this.Category3Update = true;
+                this.ColorUpdate = true;
+                this.CopyrightUpdate = true;
+                this.CountryOfOriginUpdate = true;
+                this.CostProfileGroupUpdate = true;
+                this.DefaultActualCostCadUpdate = true;
+                this.DefaultActualCostUsdUpdate = true;
+                this.DescriptionUpdate = true;
+                this.DirectImportUpdate = true;
+                this.DtcPriceUpdate = true;
+                this.DutyUpdate = true;
+                this.EanUpdate = true;
+                this.EcommerceAsinUpdate = true;
+                this.EcommerceBullet1Update = true;
+                this.EcommerceBullet2Update = true;
+                this.EcommerceBullet3Update = true;
+                this.EcommerceBullet4Update = true;
+                this.EcommerceBullet5Update = true;
+                this.EcommerceComponentsUpdate = true;
+                this.EcommerceCostUpdate = true;
+                this.EcommerceCountryofOriginUpdate = true;
+                this.EcommerceExternalIdUpdate = true;
+                this.EcommerceExternalIdTypeUpdate = true;
+                this.EcommerceGenericKeywordsUpdate = true;
+                this.EcommerceItemHeightUpdate = true;
+                this.EcommerceItemLengthUpdate = true;
+                this.EcommerceItemNameUpdate = true;
+                this.EcommerceItemTypeKeywordsUpdate = true;
+                this.EcommerceItemWeightUpdate = true;
+                this.EcommerceItemWidthUpdate = true;
+                this.EcommerceManufacturerNameUpdate = true;
+                this.EcommerceModelNameUpdate = true;
+                this.EcommerceMsrpUpdate = true;
+                this.EcommercePackageHeightUpdate = true;
+                this.EcommercePackageLengthUpdate = true;
+                this.EcommercePackageWeightUpdate = true;
+                this.EcommercePackageWidthUpdate = true;
+                this.EcommercePageQtyUpdate = true;
+                this.EcommerceParentAsinUpdate = true;
+                this.EcommerceProductCategoryUpdate = true;
+                this.EcommerceProductDescriptionUpdate = true;
+                this.EcommerceProductSubcategoryUpdate = true;
+                this.EcommerceSizeUpdate = true;
+                this.EcommerceSubjectKeywordsUpdate = true;
+                this.EcommerceUpcUpdate = true;
+                this.Genre1Update = true;
+                this.Genre2Update = true;
+                this.Genre3Update = true;
+                this.GpcUpdate = true;
+                this.HeightUpdate = true;
+                this.ImagePathUpdate = true;
+                this.InnerpackHeightUpdate = true;
+                this.InnerpackLengthUpdate = true;
+                this.InnerpackQuantityUpdate = true;
+                this.InnerpackUpcUpdate = true;
+                this.InnerpackWidthUpdate = true;
+                this.InnerpackWeightUpdate = true;
+                this.InStockDateUpdate = true;
+                this.IsbnUpdate = true;
+                this.ItemCategoryUpdate = true;
+                this.ItemFamilyUpdate = true;
+                this.ItemGroupUpdate = true;
+                this.ItemKeywordsUpdate = true;
+                this.ItemKeywordsOverrideUpdate = true;
+                this.LanguageUpdate = true;
+                this.LengthUpdate = true;
+                this.LicenseBeginDateUpdate = true;
+                this.LicenseUpdate = true;
+                this.ListPriceCadUpdate = true;
+                this.ListPriceMxnUpdate = true;
+                this.ListPriceUsdUpdate = true;
+                this.MetaDescriptionUpdate = true;
+                this.MfgSourceUpdate = true;
+                this.MsrpUpdate = true;
+                this.MsrpCadUpdate = true;
+                this.MsrpMxnUpdate = true;
+                this.PricingGroupUpdate = true;
+                this.PrintOnDemandUpdate = true;
+                this.ProductFormatUpdate = true;
+                this.ProductGroupUpdate = true;
+                this.ProductIdTranslationUpdate = true;
+                this.ProductLineUpdate = true;
+                this.ProductQtyUpdate = true;
+                this.PropertyUpdate = true;
+                this.PsStatusUpdate = true;
+                this.SatCodeUpdate = true;
+                this.SellOnAttributesUpdate = true;
+                this.SellOnAllPostersUpdate = true;
+                this.SellOnAmazonUpdate = true;
+                this.SellOnAmazonSellerCentralUpdate = true;
+                this.SellOnEcommerceUpdate = true;
+                this.SellOnFanaticsUpdate = true;
+                this.SellOnGuitarCenterUpdate = true;
+                this.SellOnHayneedleUpdate = true;
+                this.SellOnHouzzUpdate = true;                
+                this.SellOnTargetUpdate = true;
+                this.SellOnTrendsUpdate = true;
+                this.SellOnTrsUpdate = true;
+                this.SellOnWalmartUpdate = true;
+                this.SellOnWayfairUpdate = true;
+                this.ShortDescriptionUpdate = true;
+                this.SizeUpdate = true;
+                this.StandardCostUpdate = true;
+                this.StatsCodeUpdate = true;
+                this.TariffCodeUpdate = true;
+                this.TerritoryUpdate = true;
+                this.TitleUpdate = true;
+                this.TitleOverrideUpdate = true;
+                this.UdexUpdate = true;
+                this.UpcUpdate = true;
+                this.WarrantyUpdate = true;
+                this.WarrantyCheckUpdate = true;
+                this.WebsitePriceUpdate = true;
+                this.WebsitePriceOverrideUpdate = true;
+                this.WebsiteUrlUpdate = true;
+                this.WeightUpdate = true;
+                this.WidthUpdate = true;
+            }
+        }
+
+        /// <summary>
         ///     Sets this items update values to that of the given item
         /// </summary>
         /// <param name="item"></param>
@@ -4361,31 +4524,6 @@ namespace OdinModels
                     this.Status = "Update";
                 }
             }
-        }
-        
-        /// <summary>
-        ///     Set SellOn values to N for any empty fields and sets PsStatus to I if empty
-        /// </summary>
-        public void SetFlagDefaults()
-        {
-            if (string.IsNullOrEmpty(this.PsStatus)) { this.PsStatus = "I"; }
-            if (string.IsNullOrEmpty(this.OnShopTrends)) { this.OnShopTrends = "N"; }
-            if (string.IsNullOrEmpty(this.OnSite)) { this.OnSite = "N"; }
-            if (string.IsNullOrEmpty(this.SellOnAllPosters)) { this.SellOnAllPosters = "N"; }
-            if (string.IsNullOrEmpty(this.SellOnAmazon)) { this.SellOnAmazon = "N"; }
-            if (string.IsNullOrEmpty(this.SellOnAmazonSellerCentral)) { this.SellOnAmazonSellerCentral = "N"; }
-            if (string.IsNullOrEmpty(this.SellOnEcommerce)) { this.SellOnEcommerce = "N"; }
-            if (string.IsNullOrEmpty(this.SellOnFanatics)) { this.SellOnFanatics = "N"; }
-            if (string.IsNullOrEmpty(this.SellOnGuitarCenter)) { this.SellOnGuitarCenter = "N"; }
-            if (string.IsNullOrEmpty(this.SellOnHayneedle)) { this.SellOnHayneedle = "N"; }
-            if (string.IsNullOrEmpty(this.SellOnHouzz)) { this.SellOnHouzz = "N"; }
-            if (string.IsNullOrEmpty(this.SellOnTrs)) { this.SellOnTrs = "N"; }
-            if (string.IsNullOrEmpty(this.SellOnTarget)) { this.SellOnTarget = "N"; }
-            if (string.IsNullOrEmpty(this.SellOnTrends)) { this.SellOnTrends = "N"; }
-            if (string.IsNullOrEmpty(this.SellOnWalmart)) { this.SellOnWalmart = "N"; }
-            if (string.IsNullOrEmpty(this.SellOnWayfair)) { this.SellOnWayfair = "N"; }
-            if (string.IsNullOrEmpty(this.PrintOnDemand)) { this.PrintOnDemand = "N"; }
-            if (string.IsNullOrEmpty(this.WarrantyCheck)) { this.WarrantyCheck = "N"; }
         }
         
         #endregion //Methods

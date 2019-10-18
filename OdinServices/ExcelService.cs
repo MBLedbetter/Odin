@@ -3144,7 +3144,7 @@ namespace OdinServices
             result += ","; /* Q */
             result += "\"" + url + "\","; /* R */
             result += "\"" + item.EcommerceItemName + "\","; /* S */
-            result += "\"" + item.ItemKeywords + "\","; /* T */
+            result += "\"" + item.ItemKeywords + ", " + item.ReturnVariantGroupId() + "\","; /* T */
             result += "\"" + item.EcommerceItemName + "\","; /* U */
             result += "\"" + ItemService.ReturnImageName(itemId, 1) + "\","; /* V */
             result += ","; /* W */

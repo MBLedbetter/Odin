@@ -8654,10 +8654,10 @@ namespace Odin.ViewModels
                     //  CasepackLength Validation
                     error = ItemService.ValidateCasepack(ItemViewModelItem, "Length");
                     this.CasepackLengthError = error?.ErrorMessage ?? "";
-                    this.CasepackLengthBoxColor = error?.ReturnErrorColor() ?? "WAliceBluehite";
+                    this.CasepackLengthBoxColor = error?.ReturnErrorColor() ?? "AliceBluehite";
 
                     //  CasepackWeight Validation
-                    error = ItemService.ValidateCasepack(ItemViewModelItem, "Weigth");
+                    error = ItemService.ValidateCasepack(ItemViewModelItem, "Weight");
                     this.CasepackWeightError = error?.ErrorMessage ?? "";
                     this.CasepackWeightBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
 
