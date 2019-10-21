@@ -1733,6 +1733,10 @@ namespace OdinServices
         public ItemObject RetrieveItem(string itemId, int count)
         {
             ItemObject item = ItemRepository.RetrieveItem(itemId, count);
+            if (string.IsNullOrEmpty(item.EcommerceParentAsin))
+            {
+                item.EcommerceParentAsin = AutoFillEcommerceParentAsin(item);
+            }
             // item.RelatedProducts = RetrieveRelatedProducts(item.ItemId);
             item.SetFlagDefaults();
             return item;
