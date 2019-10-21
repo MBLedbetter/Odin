@@ -180,6 +180,15 @@
                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                         VerticalContentAlignment="Center"
                         Width="170" >
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Remove Bill of Material"
+                                    Command="{Binding RemoveSelectedBillOfMaterialsCommand}"
+                                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedBillOfMaterials}" />
+                                <MenuItem Header="Add Item Translation"
+                                    Command="{Binding AddBillOfMaterialsCommand}" />
+                            </ContextMenu>
+                        </ListView.ContextMenu>
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
@@ -2715,6 +2724,15 @@
                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                         VerticalContentAlignment="Center"
                         Width="170" >
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Remove Product Translation"
+                                    Command="{Binding RemoveSelectedProductIdTranslationCommand}"
+                                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedProductIdTranslation}" />
+                                <MenuItem Header="Add Item Translation"
+                                    Command="{Binding AddProductIdTranslationCommand}" />
+                            </ContextMenu>
+                        </ListView.ContextMenu>
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>

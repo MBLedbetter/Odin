@@ -6,6 +6,7 @@ using OdinTests.Helpers;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Odin.Data;
+using System.Collections.ObjectModel;
 
 namespace OdinTests.BusinessLogicLayer.Models
 {
@@ -271,7 +272,7 @@ namespace OdinTests.BusinessLogicLayer.Models
             productFormatItem.ProductFormat = "1";
             productGroupItem.ProductGroup = "1";
             productGroupItem2.ProductGroup = "1";
-            productIdTranslationItem.ProductIdTranslation = new List<ChildElement>();
+            productIdTranslationItem.ProductIdTranslation = new ObservableCollection<ChildElement>();
             productLineItem.ProductLine = "1";
             productQtyItem.ProductQty = "1";
             propertyItem.Property = "1";
@@ -595,15 +596,15 @@ namespace OdinTests.BusinessLogicLayer.Models
         {
             #region Assemble
 
-            List<ChildElement> billOfMaterials = new List<ChildElement>() {
+            ObservableCollection<ChildElement> billOfMaterials = new ObservableCollection<ChildElement>() {
                 new ChildElement("RP1234", "ITEMID", 1),
                 new ChildElement("RP5678", "ITEMID", 2)
             };
-            List<ChildElement> sameBillOfMaterials = new List<ChildElement>() {
+            ObservableCollection<ChildElement> sameBillOfMaterials = new ObservableCollection<ChildElement>() {
                 new ChildElement("RP1234", "ITEMID", 1),
                 new ChildElement("RP5675", "ITEMID", 2)
             };
-            List<ChildElement> newBillOfMaterials = new List<ChildElement>() { 
+            ObservableCollection<ChildElement> newBillOfMaterials = new ObservableCollection<ChildElement>() { 
                 new ChildElement("RP5675", "ITEMID", 2),
                 new ChildElement("RP1234", "ITEMID", 1)
             };
@@ -649,11 +650,11 @@ namespace OdinTests.BusinessLogicLayer.Models
         {
             #region Assemble
 
-            List<ChildElement> billOfMaterials = new List<ChildElement>() { 
+            ObservableCollection<ChildElement> billOfMaterials = new ObservableCollection<ChildElement>() { 
                 new ChildElement("RP1234", "ITEMID", 1),
                 new ChildElement("RP5678", "ITEMID", 2)
             };
-            List<ChildElement> pOd = new List<ChildElement>() {
+            ObservableCollection<ChildElement> pOd = new ObservableCollection<ChildElement>() {
                 new ChildElement("RP1234", "ITEMID", 1),
                 new ChildElement("RP5678", "ITEMID", 2)
             };
@@ -1089,11 +1090,11 @@ namespace OdinTests.BusinessLogicLayer.Models
         {
             #region Assemble
 
-            List<ChildElement> billOfMaterials = new List<ChildElement>() { 
+            ObservableCollection<ChildElement> billOfMaterials = new ObservableCollection<ChildElement>() { 
                 new ChildElement("RP1234", "ITEMID", 1),
                 new ChildElement("RP5678", "ITEMID", 2)
             };
-            List<ChildElement> newBillOfMaterials = new List<ChildElement>() {
+            ObservableCollection<ChildElement> newBillOfMaterials = new ObservableCollection<ChildElement>() {
                 new ChildElement("RP5675", "ITEMID", 2),
                 new ChildElement("RP1234", "ITEMID", 1)
             };
@@ -1184,7 +1185,7 @@ namespace OdinTests.BusinessLogicLayer.Models
                 MsrpMxn = "msrpMxn",
                 ProductFormat = "productFormat",
                 ProductGroup = "productGroup",
-                ProductIdTranslation = new List<ChildElement>(),
+                ProductIdTranslation = new ObservableCollection<ChildElement>(),
                 ProductLine = "productLine",
                 ProductQty = "productQty",
                 Property = "property",

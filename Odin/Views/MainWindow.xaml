@@ -664,9 +664,6 @@
                     <MenuItem Header="Remove Item"
                         Command="{Binding RemoveSelectedItemCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}" />
-                    <!--MenuItem Header="Item Info"
-                        Command="{Binding GetItemInfoCommand}"
-                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}" /-->
                 </ContextMenu>
             </ListView.ContextMenu>
             <ListView.ItemContainerStyle>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 
@@ -133,7 +134,7 @@ namespace OdinModels
         /// <summary>
         ///     Gets or sets the BillOfMaterials
         /// </summary>
-        public List<ChildElement> BillOfMaterials
+        public ObservableCollection<ChildElement> BillOfMaterials
         {
             get
             {
@@ -147,7 +148,7 @@ namespace OdinModels
                 OnPropertyChanged("BillOfMaterials");
             }
         }
-        private List<ChildElement> _billOfMaterials = new List<ChildElement>();
+        private ObservableCollection<ChildElement> _billOfMaterials = new ObservableCollection<ChildElement>();
 
         /// <summary>
         ///     Gets or sets the BillOfMaterialsString
@@ -1919,7 +1920,7 @@ namespace OdinModels
         /// <summary>
         ///     List of Product Id Translations associated with this item object
         /// </summary>
-        public List<ChildElement> ProductIdTranslation
+        public ObservableCollection<ChildElement> ProductIdTranslation
         {
             get
             {
@@ -1933,7 +1934,7 @@ namespace OdinModels
                 OnPropertyChanged("ProductIdTranslation");
             }
         }
-        private List<ChildElement> _productIdTranslation = new List<ChildElement>();
+        private ObservableCollection<ChildElement> _productIdTranslation = new ObservableCollection<ChildElement>();
 
         /// <summary>
         ///     Gets or sets the ProductIdTranslationString

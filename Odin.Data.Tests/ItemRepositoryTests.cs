@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using LogLibrary;
 using OdinModels;
 using Odin.DbTableModels;
+using System.Collections.ObjectModel;
 
 namespace Odin.Data.Tests
 {
@@ -1089,12 +1090,12 @@ namespace Odin.Data.Tests
             GlobalData.CustomerIdConversions.Add("TRS", "000000000146515");
             GlobalData.ItemIdSuffixes.Add("DI");
 
-            List<ChildElement> billOfMaterials = new List<ChildElement>() {
+            ObservableCollection<ChildElement> billOfMaterials = new ObservableCollection<ChildElement>() {
                 new ChildElement("ST1111", "TestItem2", 1),
                 new ChildElement("ST2222", "TestItem2", 2)
             };
 
-            List<ChildElement> PID = new List<ChildElement>() {
+            ObservableCollection<ChildElement> PID = new ObservableCollection<ChildElement>() {
                 new ChildElement("ST1111", "TestItem2", 5),
                 new ChildElement("ST2222", "TestItem2", 1)
             };
@@ -1576,7 +1577,7 @@ namespace Odin.Data.Tests
                 AltImageFile2 = "ImagePath3",
                 AltImageFile3 = "ImagePath4",
                 AltImageFile4 = "ImagePath5",
-                BillOfMaterials = new List<ChildElement>(),
+                BillOfMaterials = new ObservableCollection<ChildElement>(),
                 CasepackHeight = "2.1",
                 CasepackLength = "2.2",
                 CasepackQty = "2",
@@ -1625,7 +1626,7 @@ namespace Odin.Data.Tests
                 MsrpMxn = "13.99",
                 ProductFormat = "ProductFormat",
                 ProductGroup = "ProductGroup",
-                ProductIdTranslation = new List<ChildElement>(),
+                ProductIdTranslation = new ObservableCollection<ChildElement>(),
                 ProductLine = "ProductLine",
                 ProductQty = "ProductQty",
                 PricingGroup = "PGroup",
@@ -2726,7 +2727,7 @@ namespace Odin.Data.Tests
             };
 
             // List with matching item ids
-            List<ChildElement> productIdTranslationList1 = new List<ChildElement>(new ChildElement[] {
+            ObservableCollection<ChildElement> productIdTranslationList1 = new ObservableCollection<ChildElement>(new ChildElement[] {
                 new ChildElement("ST1111", item.ItemId, 2),
                 new ChildElement("ST2222", item.ItemId, 2),
                 new ChildElement("ST3333", item.ItemId, 2)

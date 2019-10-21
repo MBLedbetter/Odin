@@ -2049,7 +2049,7 @@ namespace Odin.Services.Tests
 
             #region Act
 
-            List<ChildElement> x = itemService.ParseChildElementIds(parentId, productIds);
+            ObservableCollection<ChildElement> x = itemService.ParseChildElementIds(parentId, productIds);
 
             #endregion // Act
 
@@ -2487,7 +2487,7 @@ namespace Odin.Services.Tests
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
             GlobalData.BillofMaterials.Add(new ChildElement("TESTA", "TEST1"));
             GlobalData.BillofMaterials.Add(new ChildElement("TESTB", "TEST1"));
-            List<ChildElement> childList = new List<ChildElement>() {
+            ObservableCollection<ChildElement> childList = new ObservableCollection<ChildElement>() {
                 new ChildElement("TESTB", "TEST1"),
                 new ChildElement("TESTC", "TEST1")
             };
@@ -2523,7 +2523,7 @@ namespace Odin.Services.Tests
             #region Setup
 
             ItemService itemValidator = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            List<ChildElement> childList = new List<ChildElement>() {
+            ObservableCollection<ChildElement> childList = new ObservableCollection<ChildElement>() {
                 new ChildElement("TEST2", "TEST1"),
                 new ChildElement("TEST2", "TEST1")
             };
@@ -3647,16 +3647,16 @@ namespace Odin.Services.Tests
             GlobalData.ClearValues();
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
 
-            List<ChildElement> productIdTranslationList1 = new List<ChildElement>() {
+            ObservableCollection<ChildElement> productIdTranslationList1 = new ObservableCollection<ChildElement>() {
                 new ChildElement("TEST3", "ST9999", 2),
                 new ChildElement("TEST4", "ST9999", 2),
                 new ChildElement("TEST4", "ST9999", 2)
             };
-            List<ChildElement> productIdTranslationList2 = new List<ChildElement>() {
+            ObservableCollection<ChildElement> productIdTranslationList2 = new ObservableCollection<ChildElement>() {
                 new ChildElement("ST1111", "FROMITEM1", 2),
                 new ChildElement("ST2222", "FROMITEM1", 2)
             };
-            List<ChildElement> emptyProductIdTranslationList = new List<ChildElement>();
+            ObservableCollection<ChildElement> emptyProductIdTranslationList = new ObservableCollection<ChildElement>();
 
             GlobalData.LocalItemIds = new List<string>() {
                 "ST1111",

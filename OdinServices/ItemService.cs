@@ -1161,9 +1161,9 @@ namespace OdinServices
         /// </summary>
         /// <param name="productIds"></param>
         /// <returns></returns>
-        public List<ChildElement> ParseChildElementIds(string parentId, string productIds)
+        public ObservableCollection<ChildElement> ParseChildElementIds(string parentId, string productIds)
         {
-            List<ChildElement> result = new List<ChildElement>();
+            ObservableCollection<ChildElement> result = new ObservableCollection<ChildElement>();
             if (!string.IsNullOrEmpty(productIds))
             {
                 if (productIds != "[CLEAR]")
@@ -6872,7 +6872,7 @@ namespace OdinServices
         /// <param name="itemId"></param>
         /// <param name="productIdTranslationList"></param>
         /// <returns>false if a conflict emerges</returns>
-        private bool CheckExistingProductIdTranslationsMatch(List<ChildElement> productIdTranslationList)
+        private bool CheckExistingProductIdTranslationsMatch(ObservableCollection<ChildElement> productIdTranslationList)
         {
             foreach (ChildElement x in productIdTranslationList)
             {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data;
 using Odin.DbTableModels;
+using System.Collections.ObjectModel;
 
 namespace Odin.Data
 {
@@ -1681,7 +1682,7 @@ namespace Odin.Data
                         AltImageFile2 = (!string.IsNullOrEmpty(odinItem.AltImageFile2)) ? odinItem.AltImageFile2 : "",
                         AltImageFile3 = (!string.IsNullOrEmpty(odinItem.AltImageFile3)) ? odinItem.AltImageFile3 : "",
                         AltImageFile4 = (!string.IsNullOrEmpty(odinItem.AltImageFile4)) ? odinItem.AltImageFile4 : "",
-                        BillOfMaterials = (!string.IsNullOrEmpty(odinItem.BillOfMaterials)) ? DbUtil.ParseChildElements(odinItem.InvItemId, odinItem.BillOfMaterials) : new List<ChildElement>(),
+                        BillOfMaterials = (!string.IsNullOrEmpty(odinItem.BillOfMaterials)) ? DbUtil.ParseChildElements(odinItem.InvItemId, odinItem.BillOfMaterials) : new ObservableCollection<ChildElement>(),
                         CasepackHeight = (odinItem.CasepackHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.CasepackHeight), 1) : "",
                         CasepackLength = (odinItem.CasepackLength != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.CasepackLength), 1) : "",
                         CasepackQty = (!string.IsNullOrEmpty(Convert.ToString(odinItem.CasepackQty))) ? Convert.ToString(odinItem.CasepackQty).Trim() : "",
@@ -1775,7 +1776,7 @@ namespace Odin.Data
                         PricingGroup = (!string.IsNullOrEmpty(odinItem.PricingGroup)) ? odinItem.PricingGroup.Trim() : "",
                         ProductFormat = (!string.IsNullOrEmpty(odinItem.ProdFormat)) ? odinItem.ProdFormat.Trim() : "",
                         ProductGroup = (!string.IsNullOrEmpty(odinItem.ProdGroup)) ? odinItem.ProdGroup.Trim() : "",
-                        ProductIdTranslation = (!string.IsNullOrEmpty(odinItem.ProductIdTranslation)) ? DbUtil.ParseChildElements(odinItem.InvItemId, odinItem.ProductIdTranslation) : new List<ChildElement>(),
+                        ProductIdTranslation = (!string.IsNullOrEmpty(odinItem.ProductIdTranslation)) ? DbUtil.ParseChildElements(odinItem.InvItemId, odinItem.ProductIdTranslation) : new ObservableCollection<ChildElement>(),
                         ProductLine = (!string.IsNullOrEmpty(odinItem.ProdLine)) ? odinItem.ProdLine.Trim() : "",
                         ProductQty = (!string.IsNullOrEmpty(odinItem.ProdQty)) ? odinItem.ProdQty.Trim() : "",
                         Property = (!string.IsNullOrEmpty(odinItem.Property)) ? odinItem.Property.Trim() : "",

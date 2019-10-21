@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -320,9 +321,9 @@ namespace OdinModels
         /// <param name="parentId"></param>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static List<ChildElement> ParseChildElements(string parentId, string list)
+        public static ObservableCollection<ChildElement> ParseChildElements(string parentId, string list)
         {
-            List<ChildElement> result = new List<ChildElement>();
+            ObservableCollection<ChildElement> result = new ObservableCollection<ChildElement>();
             if (!string.IsNullOrEmpty(list))
             {
                 string[] groupings = list.Split(',');

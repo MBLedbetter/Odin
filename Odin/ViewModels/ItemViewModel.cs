@@ -12,6 +12,7 @@ using System.IO;
 using Microsoft.Win32;
 using System.Linq;
 using System.Text;
+using System.Windows;
 
 namespace Odin.ViewModels
 {
@@ -19,18 +20,37 @@ namespace Odin.ViewModels
     {
         #region Commands
 
-        public ICommand RemoveItemCommand
+        /// <summary>
+        ///     Calls AddProductIdTranslation
+        /// </summary>
+        public ICommand AddProductIdTranslationCommand
         {
             get
             {
-                if (_RemoveItemCommand == null)
+                if (_addProductIdTranslation == null)
                 {
-                    _RemoveItemCommand = new RelayCommand(param => RemoveItem());
+                    _addProductIdTranslation = new RelayCommand(param => AddProductIdTranslation());
                 }
-                return _RemoveItemCommand;
+                return _addProductIdTranslation;
             }
         }
-        private RelayCommand _RemoveItemCommand;
+        private RelayCommand _addProductIdTranslation;
+
+        /// <summary>
+        ///     Calls AddProductIdTranslation
+        /// </summary>
+        public ICommand AddBillOfMaterialsCommand
+        {
+            get
+            {
+                if (_addBillOfMaterials == null)
+                {
+                    _addBillOfMaterials = new RelayCommand(param => AddBillOfMaterials());
+                }
+                return _addBillOfMaterials;
+            }
+        }
+        private RelayCommand _addBillOfMaterials;
 
         public ICommand FindImage1Command
         {
@@ -96,6 +116,51 @@ namespace Odin.ViewModels
             }
         }
         private RelayCommand _findImage5Command;
+
+        public ICommand RemoveItemCommand
+        {
+            get
+            {
+                if (_RemoveItemCommand == null)
+                {
+                    _RemoveItemCommand = new RelayCommand(param => RemoveItem());
+                }
+                return _RemoveItemCommand;
+            }
+        }
+        private RelayCommand _RemoveItemCommand;
+
+        /// <summary>
+        ///     Calls RemoveSelectedProductIdTranslation on the selected ProductIdTranslation
+        /// </summary>
+        public ICommand RemoveSelectedBillOfMaterialsCommand
+        {
+            get
+            {
+                if (_removeSelectedBillOfMaterials == null)
+                {
+                    _removeSelectedBillOfMaterials = new RelayCommand(param => RemoveSelectedBillOfMaterials());
+                }
+                return _removeSelectedBillOfMaterials;
+            }
+        }
+        private RelayCommand _removeSelectedBillOfMaterials;
+
+        /// <summary>
+        ///     Calls RemoveSelectedProductIdTranslation on the selected ProductIdTranslation
+        /// </summary>
+        public ICommand RemoveSelectedProductIdTranslationCommand
+        {
+            get
+            {
+                if (_removeSelectedProductIdTranslation == null)
+                {
+                    _removeSelectedProductIdTranslation = new RelayCommand(param => RemoveSelectedProductIdTranslation());
+                }
+                return _removeSelectedProductIdTranslation;
+            }
+        }
+        private RelayCommand _removeSelectedProductIdTranslation;
 
         public ICommand SubmitItemCommand
         {
@@ -177,6 +242,16 @@ namespace Odin.ViewModels
                 else return "Hidden";
             }
         }
+
+        /// <summary>
+        ///     Gets or Sets the SelectedBillOfMaterials
+        /// </summary>
+        public ChildElement SelectedBillOfMaterials { get; set; }
+
+        /// <summary>
+        ///     Gets or Sets the SelectedProductIdTranslation
+        /// </summary>
+        public ChildElement SelectedProductIdTranslation { get;set; }
 
         /// <summary>
         ///  Check to distinguish between items and kits 1 == item & 0 == kit
@@ -349,7 +424,7 @@ namespace Odin.ViewModels
         }
         private string _accountingGroupToolTip = string.Empty;
         
-        public List<ChildElement> BillOfMaterials
+        public ObservableCollection<ChildElement> BillOfMaterials
         {
             get
             {
@@ -2870,7 +2945,7 @@ namespace Odin.ViewModels
         /// <summary>
         ///     Gets or sets the ProductIdTranslation
         /// </summary>
-        public List<ChildElement> ProductIdTranslation
+        public ObservableCollection<ChildElement> ProductIdTranslation
         {
             get
             {
@@ -8293,6 +8368,15 @@ namespace Odin.ViewModels
         
         #region Methods
 
+        public void AddProductIdTranslation()
+        {
+            MessageBox.Show("TEST");
+        }
+        public void AddBillOfMaterials()
+        {
+            MessageBox.Show("TEST 2");
+        }
+
         /// <summary>
         ///     Checks the Ecommerce Parent ASIN and autofills if needed.
         /// </summary>
@@ -9970,11 +10054,27 @@ namespace Odin.ViewModels
         }
 
         /// <summary>
+        ///     Removes the SelectedProductIdTranslation from this.ProductIdTranslation
+        /// </summary>
+        public void RemoveSelectedBillOfMaterials()
+        {
+            this.BillOfMaterials.Remove(this.SelectedBillOfMaterials);
+        }
+
+        /// <summary>
         ///     Removes current item from main window item list
         /// </summary>
         public void RemoveItem()
         {
             this.Remove = true;
+        }
+
+        /// <summary>
+        ///     Removes the SelectedProductIdTranslation from this.ProductIdTranslation
+        /// </summary>
+        public void RemoveSelectedProductIdTranslation()
+        {
+            this.ProductIdTranslation.Remove(this.SelectedProductIdTranslation);
         }
 
         /// <summary>

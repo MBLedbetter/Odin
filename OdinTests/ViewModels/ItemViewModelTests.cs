@@ -927,12 +927,12 @@ namespace OdinTests.ViewModels
         {
             #region Assemble
 
-            List<ChildElement> billOfMaterials = new List<ChildElement>() {
+            ObservableCollection<ChildElement> billOfMaterials = new ObservableCollection<ChildElement>() {
             new ChildElement("ST1111", "ST9999", 1),
             new ChildElement("ST2222", "ST9999", 2)
                 };
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            List<ChildElement> PID = new List<ChildElement>() {
+            ObservableCollection<ChildElement> PID = new ObservableCollection<ChildElement>() {
             new ChildElement("ST1111", "ST9999", 5),
             new ChildElement("ST2222", "ST9999", 1)
             };
