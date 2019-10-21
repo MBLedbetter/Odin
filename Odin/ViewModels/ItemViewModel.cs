@@ -8583,6 +8583,7 @@ namespace Odin.ViewModels
                     this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
+                case "ImagePath2":
                 case "AltImageFile1":
                     //  AltImageFile1 Validation
                     error = ItemService.ValidateImagePath(ItemViewModelItem, "2");
@@ -8594,7 +8595,7 @@ namespace Odin.ViewModels
                     break;
 
                 case "AltImageFile2":
-
+                case "ImagePath3":
                     //  AltImageFile2 Validation
                     error = ItemService.ValidateImagePath(ItemViewModelItem, "3");
                     this.AltImageFile2Error = error?.ErrorMessage ?? "";
@@ -8604,7 +8605,7 @@ namespace Odin.ViewModels
                     break;
 
                 case "AltImageFile3":
-
+                case "ImagePath4":
                     //  AltImageFile3 Validation
                     error = ItemService.ValidateImagePath(ItemViewModelItem, "4");
                     this.AltImageFile3Error = error?.ErrorMessage ?? "";
@@ -8614,7 +8615,7 @@ namespace Odin.ViewModels
                     break;
 
                 case "AltImageFile4":
-
+                case "ImagePath5":
                     //  AltImageFile4 Validation
                     error = ItemService.ValidateImagePath(ItemViewModelItem, "5");
                     this.AltImageFile4Error = error?.ErrorMessage ?? "";
@@ -9175,6 +9176,7 @@ namespace Odin.ViewModels
                     this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
+                case "ImagePath1":
                 case "ImagePath":
                     //  ImagePath Validation
                     error = ItemService.ValidateImagePath(ItemViewModelItem, "1");
