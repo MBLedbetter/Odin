@@ -681,7 +681,7 @@ namespace Odin.ViewModels
             }
         }
         private string _progressText;
-
+        
         /// <summary>
         ///     Bool keeps track of if items have been saved
         /// </summary>
@@ -697,8 +697,8 @@ namespace Odin.ViewModels
                 OnPropertyChanged("SaveStatus");
             }
         }
-        private bool _saveStatus;
-
+        private bool _saveStatus = false;
+        
         /// <summary>
         ///     The error that is selected in the view that this view model is bound to.
         /// </summary>
@@ -708,7 +708,7 @@ namespace Odin.ViewModels
         ///     The item that is selected in the view that this view model is bound to.
         /// </summary>
         public ItemObject SelectedItem { get; set; }
-
+        
         /// <summary>
         ///     Bool keeps track of if items have been saved
         /// </summary>
@@ -724,7 +724,7 @@ namespace Odin.ViewModels
                 OnPropertyChanged("SubmitStatus");
             }
         }
-        private bool _submitStatus;
+        private bool _submitStatus = false;
          
         /// <summary>
         ///     Display Title for top bar of main window view
@@ -2970,8 +2970,7 @@ namespace Odin.ViewModels
                     break;
                 }
                 ((BackgroundWorker)sender).ReportProgress(i + 1);
-            }
-            this.SaveStatus = true;         
+            }  
         }
 
         private void BackgroundWorkerValidate_DoWork(object sender, DoWorkEventArgs e)
@@ -2996,23 +2995,16 @@ namespace Odin.ViewModels
             if (this.ItemErrors.Where(o => o.ErrorType == "Error").Count() == 0)
             {
                 this.ProgressText = "Items Saved";
-                this.SubmitStatus = true;
             }
             else
             {
                 this.ProgressText = "Item Error Halted Save Process";
-                this.SubmitStatus = false;
-            }
-            this.SubmitStatus = true;            
-            this.SaveStatus = true;
+            }       
         }
 
         private void BackgroundWorkerValidate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-                this.ProgressText = "Item Validation Complete";
-                this.SubmitStatus = true;
-
-            this.SaveStatus = true;
+            this.ProgressText = "Item Validation Complete";
         }
 
         public void BackgroundWorkerSave_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -3068,6 +3060,8 @@ namespace Odin.ViewModels
             this.Items = new ObservableCollection<ItemObject>();
             this.ItemErrors = new ObservableCollection<ItemError>();
             GlobalData.LocalItemIds = new List<string>();
+            this.SubmitStatus = false;
+            this.SaveStatus = false;
         }
 
         /// <summary>
@@ -3150,18 +3144,6 @@ namespace Odin.ViewModels
                                             x.ItemRow == this.SelectedError.LineNumber).FirstOrDefault();
             this.SelectedItem = item;
             EditSelectedItem(item);
-
-            /*
-            foreach (ItemObject item in Items)
-            {
-                if (item.ItemId == this.SelectedError.ItemIdNumber)
-                {
-                    this.SelectedItem = item;
-                    EditSelectedItem(item);
-                    break;
-                }
-            }
-            */
         }
 
         /// <summary>
@@ -3195,6 +3177,11 @@ namespace Odin.ViewModels
                             this.ItemErrors.Remove(error);
                         }
                     }
+                    if(this.SelectedItem.HasUpdate)
+                    {
+                        this.SubmitStatus = false;
+                        this.SaveStatus = true;
+                    }
                 }
             }
         }
@@ -3222,9 +3209,6 @@ namespace Odin.ViewModels
                     worker.WorkerReportsProgress = true;
                     worker.RunWorkerCompleted += BackgroundWorkerValidate_RunWorkerCompleted;
                     worker.RunWorkerAsync();
-
-                    SaveStatus = true;
-                    SubmitStatus = false;
                 }
                 else if (type == "Remove")
                 {
@@ -3234,11 +3218,10 @@ namespace Odin.ViewModels
                         item.Status = "Remove";
                     }
                     this.ItemErrors.Clear();
-                    SaveStatus = false;
-                    SubmitStatus = true;
                 }
                 Mouse.OverrideCursor = null;
             }
+            this.SubmitStatus = true;
         }
 
         public void FindItemUpdateRecord()
@@ -3305,9 +3288,10 @@ namespace Odin.ViewModels
                 {
                     ErrorLog.LogError("Odin was unable to validate all the items.", ex.ToString());
                 }
-
-                SaveStatus = true;
-                SubmitStatus = false;
+                if(this.ItemErrors.Where(o => o.ErrorType == "Error").Count() == 0)
+                {
+                    this.SaveStatus = true;
+                }
 
                 Mouse.OverrideCursor = null;
             }
@@ -3602,14 +3586,14 @@ namespace Odin.ViewModels
                     worker.WorkerReportsProgress = true;
                     worker.RunWorkerCompleted += BackgroundWorkerSave_RunWorkerCompleted;
                     worker.RunWorkerAsync();
-                }  
+                }
+                this.SubmitStatus = true;
+                this.SaveStatus = false;
             }
             else
             {
                 MessageBox.Show("Please remove all errors before saving");
             }
-            this.SaveStatus = false;
-            this.SubmitStatus = false;
             Mouse.OverrideCursor = null;
         }
 
@@ -3897,7 +3881,7 @@ namespace Odin.ViewModels
         /// </summary>
         public void SubmitItems()
         {
-            List<ItemError> errors = new List<ItemError>();
+            ObservableCollection<ItemError> errors = new ObservableCollection<ItemError>();
             try
             {
                 if (Items[0].Status != "Remove")
@@ -3932,8 +3916,7 @@ namespace Odin.ViewModels
                         ExcelService.SubmitRequest(Items, "Remove", site, comment);
                         EmailService.SendPendingRequestEmail(GlobalData.UserName, comment, site, ExcelService.ReturnRequestNum());
                         MessageBox.Show("Items Removal Submitted Successfully");
-                        Items = new ObservableCollection<ItemObject>(); ;
-                        SubmitStatus = false;
+                        Items = new ObservableCollection<ItemObject>();
                     }
                     else
                     {
@@ -3966,7 +3949,6 @@ namespace Odin.ViewModels
                                 Mouse.OverrideCursor = null;
                                 MessageBox.Show("Items Submitted Successfully");
                                 Items = new ObservableCollection<ItemObject>();
-                                this.SubmitStatus = false;
                                 Mouse.OverrideCursor = null;
                             }
                             else
@@ -3986,7 +3968,6 @@ namespace Odin.ViewModels
                                 EmailService.SendPendingRequestEmail(GlobalData.UserName, comment, site, ExcelService.ReturnRequestNum());
                                 MessageBox.Show("Items Submitted Successfully");
                                 Items = new ObservableCollection<ItemObject>();
-                                this.SubmitStatus = false;
                                 Mouse.OverrideCursor = null;
                             }                            
                         }
@@ -3998,6 +3979,7 @@ namespace Odin.ViewModels
                 }
                 else
                 {
+                    this.ItemErrors = errors;
                     MessageBox.Show("Please resolve all errors before submitting.");
                 }
             }
@@ -4055,6 +4037,25 @@ namespace Odin.ViewModels
                 worker.RunWorkerCompleted += BackgroundWorkerValidate_RunWorkerCompleted;
                 worker.RunWorkerAsync();
             }
+            if (this.Items.Count() > 0)
+            {
+                if (this.Items.Where(o => o.HasUpdate == true).Count() > 0)
+                {
+                    this.SaveStatus = true;
+                    this.SubmitStatus = false;
+                }
+                else
+                {
+                    this.SaveStatus = false;
+                    this.SubmitStatus = true;
+                }
+            }
+            else
+            {
+                this.SaveStatus = false;
+                this.SubmitStatus = false;
+            }
+            
         }
 
         /// <summary>
@@ -4248,8 +4249,6 @@ namespace Odin.ViewModels
                 this.OptionService = optionService ?? throw new ArgumentNullException("optionService");
                 this.WorkbookReader = workbookReader ?? throw new ArgumentNullException("workbookReader");
                 SetUserOptionsDefaults();
-                this.SubmitStatus = false;
-                this.SaveStatus = false;
                 this.WindowTitle = SetWindowTitle();
             }
             catch

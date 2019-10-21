@@ -1477,16 +1477,19 @@ namespace OdinServices
         }
         
         /// <summary>
-        ///     Save items to web & combine categories
+        ///     Save items that have an update
         /// </summary>
         /// <param name="items"></param>
         public void InsertItem(ItemObject item, int count)
         {
-            if (item.PrintOnDemand == "")
+            if (item.HasUpdate)
             {
-                item.PrintOnDemand = "N";
+                if (item.PrintOnDemand == "")
+                {
+                    item.PrintOnDemand = "N";
+                }
+                ItemRepository.InsertAll(item, count);
             }
-            ItemRepository.InsertAll(item, count);
         }
 
         /// <summary>

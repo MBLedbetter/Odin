@@ -4029,6 +4029,7 @@ namespace OdinModels
             this.DefaultActualCostUsdUpdate = false;
             this.DefaultActualCostCadUpdate = false;
             this.DescriptionUpdate = false;
+            this.DtcPriceUpdate = false;
             this.DirectImportUpdate = false;
             this.DutyUpdate = false;
             this.EanUpdate = false;
@@ -4039,6 +4040,7 @@ namespace OdinModels
             this.EcommerceBullet4Update = false;
             this.EcommerceBullet5Update = false;
             this.EcommerceComponentsUpdate = false;
+            this.EcommerceCountryofOriginUpdate = false;
             this.EcommerceCostUpdate = false;
             this.EcommerceExternalIdUpdate = false;
             this.EcommerceExternalIdTypeUpdate = false;
@@ -4100,6 +4102,7 @@ namespace OdinModels
             this.ProductIdTranslationUpdate = false;
             this.ProductLineUpdate = false;
             this.ProductQtyUpdate = false;
+            this.PropertyUpdate = false;
             this.PricingGroupUpdate = false;
             this.PrintOnDemandUpdate = false;
             this.PsStatusUpdate = false;
