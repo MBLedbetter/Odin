@@ -371,6 +371,13 @@ namespace Odin.Data
         bool RetrieveProductIdTranslationMatch(string childId, string parentId);
 
         /// <summary>
+        ///     Retrieves the main image for a given item Id
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        KeyValuePair<string, int> RetrieveImageMain(string itemId);
+
+        /// <summary>
         ///     Retrieves a list of local image paths for the given item
         /// </summary>
         /// <param name="itemId"></param>

@@ -1194,7 +1194,7 @@ namespace OdinServices
             List<string> usedIdCores = new List<string>();
             Directory.CreateDirectory(location);
             foreach (ItemObject item in items)
-            {
+            {                
                 foreach (KeyValuePair<string,int> img in RetrieveImagePaths(item.ItemId))
                 {
                     if (CheckFileExists(img.Key, false))
@@ -1208,14 +1208,27 @@ namespace OdinServices
                                 Image myImage = Image.FromFile(img.Key, true);
                                 SaveJpeg(filename, myImage, 60);
                                 myImage.Dispose();
-                                if (!usedIdCores.Contains(item.ReturnVariantGroupId()) && img.Value == 1)
+                                if (item.ItemCategory == "POSTER")
                                 {
-                                    if (item.ItemCategory == "POSTER")
+                                    if (!usedIdCores.Contains(item.ReturnVariantGroupId()) && img.Value == 1)
                                     {
-                                        filename = location + @"\" + ReturnImageName("POSTER" + item.ReturnVariantGroupId(), img.Value);
-                                        Image posterImage = Image.FromFile(img.Key, true);
-                                        SaveJpeg(filename, posterImage, 60);
-                                        posterImage.Dispose();
+                                        string pod = "POD" + item.ReturnVariantGroupId();
+                                        KeyValuePair<string, int> parentImg = RetrieveImageMain(pod);
+
+                                        if (!string.IsNullOrEmpty(parentImg.Key))
+                                        {
+                                            filename = location + @"\" + ReturnImageName("POSTER" + item.ReturnVariantGroupId(), parentImg.Value);
+                                            Image posterImage = Image.FromFile(parentImg.Key, true);
+                                            SaveJpeg(filename, posterImage, 60);
+                                            posterImage.Dispose();
+                                        }
+                                        else
+                                        {
+                                            filename = location + @"\" + ReturnImageName("POSTER" + item.ReturnVariantGroupId(), img.Value);
+                                            Image posterImage = Image.FromFile(img.Key, true);
+                                            SaveJpeg(filename, posterImage, 60);
+                                            posterImage.Dispose();
+                                        }
                                         usedIdCores.Add(item.ReturnVariantGroupId());
                                     }
                                 }
@@ -1715,7 +1728,19 @@ namespace OdinServices
                 return "";
             }
         }
-        
+
+        /// <summary>
+        ///     Retrieves the main image for a given item Id
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        public KeyValuePair<string, int> RetrieveImageMain(string itemId)
+        {
+            KeyValuePair<string, int> results = ItemRepository.RetrieveImageMain(itemId);
+
+            return results;
+        }
+
         /// <summary>
         ///     Retrieves a list of local image paths for the given item
         /// </summary>

@@ -1617,15 +1617,39 @@ namespace Odin.Data
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns>KeyValuePair key=imagePath, value=imageNumber</returns>
+        public KeyValuePair<string, int> RetrieveImageMain(string itemId)
+        {
+            KeyValuePair<string, int> imagePath = new KeyValuePair<string, int>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                if (context.ItemAttribEx.Any(x => x.InvItemId == itemId && x.Setid == "SHARE"))
+                {
+                    var dataset = context.ItemAttribEx
+                    .Where(x => x.InvItemId == itemId && x.Setid == "SHARE")
+                    .Select(x => new { x.ImageFileName }).FirstOrDefault();
+
+                    if (!string.IsNullOrEmpty(dataset.ImageFileName))
+                    {
+                        return new KeyValuePair<string, int>(dataset.ImageFileName, 1);
+                    }
+                }
+                return imagePath;
+            }
+        }
+
+        /// <summary>
+        ///     Retrieves the local file paths for all the given images.
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns>KeyValuePair key=imagePath, value=imageNumber</returns>
         public List<KeyValuePair<string, int>> RetrieveImagePaths(string itemId)
         {
             List<KeyValuePair<string, int>> imagePaths = new List<KeyValuePair<string, int>>();
             int count = 1;
-            bool framed = (itemId.Substring(0, 2) == "FR")? true : false;
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 var dataset = context.ItemAttribEx
-                    .Where(x => x.InvItemId == itemId)
+                    .Where(x => x.InvItemId == itemId && x.Setid == "SHARE")
                     .Select(x => new { x.ImageFileName, x.AltImageFile1, x.AltImageFile2, x.AltImageFile3, x.AltImageFile4 }).FirstOrDefault();
 
                 if (!string.IsNullOrEmpty(dataset.ImageFileName)) { imagePaths.Add(new KeyValuePair<string, int>(dataset.ImageFileName, count)); count++; }
@@ -2825,13 +2849,13 @@ namespace Odin.Data
 
                 if (itemWebInfo != null)
                 {
-                    if (website.ToUpper()=="SHOPTRENDS.COM")
+                    if (website.ToUpper().Contains("SHOPTRENDS.COM"))
                     {
                         itemWebInfo.OnShopTrends = "Y";
                     }
-                    else
+                    if (website.ToUpper().Contains("TRENDSINTERNATIONAL.COM"))
                     {
-                        itemWebInfo.OnSite = "Y";
+                        itemWebInfo.OnShopTrends = "Y";
                     }
                 }
                 else

@@ -3957,7 +3957,7 @@ namespace Odin.ViewModels
                                 {
                                     DataContext = new CommentBoxViewModel()
                                 };
-                                window.ShowDialog();
+                                window.ShowDialog(); 
                                 if (window.DialogResult == true)
                                 {
                                     comment = (window.DataContext as CommentBoxViewModel).Comment;
