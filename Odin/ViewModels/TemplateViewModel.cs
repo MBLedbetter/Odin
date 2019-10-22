@@ -6113,11 +6113,11 @@ namespace Odin.ViewModels
                     break;
 
                 case "DefaultActualCostCad":
-                    this.DefaultActualCostCadError = ItemService.ValidateDefaultActualCost(TemplateObject, "CAD")?.ErrorMessage??"";
+                    this.DefaultActualCostCadError = ItemService.ValidateDefaultActualCost(TemplateObject, "Cad")?.ErrorMessage??"";
                     break;
 
                 case "DefaultActualCostUsd":
-                    this.DefaultActualCostUsdError = ItemService.ValidateDefaultActualCost(TemplateObject, "USD")?.ErrorMessage??"";
+                    this.DefaultActualCostUsdError = ItemService.ValidateDefaultActualCost(TemplateObject, "Usd")?.ErrorMessage??"";
                     break;
 
                 case "DtcPrice":
@@ -6273,18 +6273,18 @@ namespace Odin.ViewModels
                     break;
 
                 case "ListPriceCad":
-                    this.ListPriceCadError = ItemService.ValidateListPrice(TemplateObject, "CAD")?.ErrorMessage??"";
-                    this.MsrpCadError = ItemService.ValidateMsrp(TemplateObject, "CAD")?.ErrorMessage??"";
+                    this.ListPriceCadError = ItemService.ValidateListPrice(TemplateObject, "Cad")?.ErrorMessage??"";
+                    this.MsrpCadError = ItemService.ValidateMsrp(TemplateObject, "Cad")?.ErrorMessage??"";
                     this.PricingGroupError = ItemService.ValidatePricingGroup(TemplateObject)?.ErrorMessage??"";
                     break;
 
                 case "ListPriceMxn":
-                    this.MsrpMxnError = ItemService.ValidateMsrp(TemplateObject, "MXN")?.ErrorMessage??"";
-                    this.ListPriceMxnError = ItemService.ValidateListPrice(TemplateObject, "MXN")?.ErrorMessage??"";
+                    this.MsrpMxnError = ItemService.ValidateMsrp(TemplateObject, "Mxn")?.ErrorMessage??"";
+                    this.ListPriceMxnError = ItemService.ValidateListPrice(TemplateObject, "Mxn")?.ErrorMessage??"";
                     break;
 
                 case "ListPriceUsd":
-                    this.ListPriceUsdError = ItemService.ValidateListPrice(TemplateObject, "USD")?.ErrorMessage??"";
+                    this.ListPriceUsdError = ItemService.ValidateListPrice(TemplateObject, "Usd")?.ErrorMessage??"";
                     break;
 
                 case "MetaDescription":
@@ -6297,15 +6297,15 @@ namespace Odin.ViewModels
                     break;
 
                 case "Msrp":
-                    this.MsrpError = ItemService.ValidateMsrp(TemplateObject, "USD")?.ErrorMessage??"";
+                    this.MsrpError = ItemService.ValidateMsrp(TemplateObject, "Usd")?.ErrorMessage??"";
                     break;
 
                 case "MsrpCad":
-                    this.MsrpCadError = ItemService.ValidateMsrp(TemplateObject, "CAD")?.ErrorMessage??"";
+                    this.MsrpCadError = ItemService.ValidateMsrp(TemplateObject, "Cad")?.ErrorMessage??"";
                     break;
 
                 case "MsrpMxn":
-                    this.MsrpMxnError = ItemService.ValidateMsrp(TemplateObject, "MXN")?.ErrorMessage??"";
+                    this.MsrpMxnError = ItemService.ValidateMsrp(TemplateObject, "Mxn")?.ErrorMessage??"";
                     break;
 
                 case "PricingGroup":

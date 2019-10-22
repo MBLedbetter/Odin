@@ -2855,7 +2855,7 @@ namespace Odin.Data
                     }
                     if (website.ToUpper().Contains("TRENDSINTERNATIONAL.COM"))
                     {
-                        itemWebInfo.OnShopTrends = "Y";
+                        itemWebInfo.OnSite = "Y";
                     }
                 }
                 else
