@@ -2944,6 +2944,11 @@ namespace Odin.ViewModels
             window.ShowDialog();
         }
         
+        /// <summary>
+        ///     Saves all items in Items (if they have been updated)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BackgroundWorkerSave_DoWork(object sender, DoWorkEventArgs e)
         {
             for(int i = 0; i<this.Items.Count;i++)
@@ -2973,23 +2978,31 @@ namespace Odin.ViewModels
             }  
         }
 
+        /// <summary>
+        ///     Validate each item in Items
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BackgroundWorkerValidate_DoWork(object sender, DoWorkEventArgs e)
         {
             ObservableCollection<ItemError> errors = new ObservableCollection<ItemError>();
-            for (int i = 0; i < this.Items.Count ;i++)
+            for (int i = 0; i < this.Items.Count; i++)
             {
-                if (this.Items[i].HasUpdate)
+                foreach (ItemError error in this.ItemService.ValidateItem(this.Items[i], false))
                 {
-                    foreach (ItemError error in this.ItemService.ValidateItem(this.Items[i], false))
-                    {
-                        errors.Add(error);
-                    }
+                    errors.Add(error);
                 }
+
                 ((BackgroundWorker)sender).ReportProgress(i + 1);
             }
             this.ItemErrors = errors;
         }
 
+        /// <summary>
+        ///     Run once BackgroundWorkerSave has completed. Updates progress text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BackgroundWorkerSave_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (this.ItemErrors.Where(o => o.ErrorType == "Error").Count() == 0)

@@ -1486,7 +1486,7 @@ namespace OdinServices
         }
         
         /// <summary>
-        ///     Save items that have an update
+        ///     Save items if any fields have been updated
         /// </summary>
         /// <param name="items"></param>
         public void InsertItem(ItemObject item, int count)

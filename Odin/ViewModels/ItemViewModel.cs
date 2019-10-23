@@ -528,6 +528,8 @@ namespace Odin.ViewModels
             {
                 if (this.ItemViewModelItem.CasepackQty != value)
                 {
+                    this.ItemViewModelItem.CasepackQty=value;
+                    FlagError("CasepackQty");
                     OnPropertyChanged("CasepackQty");
                 }
             }
@@ -9112,7 +9114,7 @@ namespace Odin.ViewModels
                     this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
-                case "EcommereSize":
+                case "EcommerceSize":
                     //  EcommerceSize Validation
                     error = ItemService.ValidateEcommerceSize(ItemViewModelItem);
                     this.EcommerceSizeError = error?.ErrorMessage ?? "";
@@ -9130,8 +9132,8 @@ namespace Odin.ViewModels
                     this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
-                case "EcommereUpc":
-                    //  EcommereUpc Validation
+                case "EcommerceUpc":
+                    //  EcommerceUpc Validation
                     error = ItemService.ValidateEcommerceUpc(ItemViewModelItem);
                     this.EcommerceUpcError = error?.ErrorMessage ?? "";
                     this.EcommerceUpcBoxColor = error?.ReturnErrorColor() ?? "White";
