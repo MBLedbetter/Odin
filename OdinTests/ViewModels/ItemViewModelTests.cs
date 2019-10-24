@@ -353,11 +353,12 @@ namespace OdinTests.ViewModels
                 errors.Add(x);
             }
             ItemViewModel itemViewModel = new ItemViewModel(item, itemService, errors);
+            GlobalData.CustomerIdConversions.Add("TRS", "000");
 
             #endregion // Assign
 
             #region Act
-            
+
 
             #endregion // Act
 
@@ -464,6 +465,7 @@ namespace OdinTests.ViewModels
             #region Assign
 
             GlobalData.ClearValues();
+            GlobalData.CustomerIdConversions.Add("TRS", "000");
             GlobalData.EcomFlagRequirement = true;
             ItemObject item = new ItemObject(1)
             {
@@ -514,6 +516,7 @@ namespace OdinTests.ViewModels
             #region Assign
 
             GlobalData.ClearValues();
+            GlobalData.CustomerIdConversions.Add("TRS", "000");
             List<ItemError> errors = new List<ItemError>();
             GlobalData.EcomFlagRequirement = true;
             ItemObject item = new ItemObject(1)
@@ -927,12 +930,12 @@ namespace OdinTests.ViewModels
         {
             #region Assemble
 
-            ObservableCollection<ChildElement> billOfMaterials = new ObservableCollection<ChildElement>() {
+            List<ChildElement> billOfMaterials = new List<ChildElement>() {
             new ChildElement("ST1111", "ST9999", 1),
             new ChildElement("ST2222", "ST9999", 2)
                 };
             ItemService itemService = new ItemService(new FakeWorkbookReader(), new TestItemRepository(), new TestTemplateRepository());
-            ObservableCollection<ChildElement> PID = new ObservableCollection<ChildElement>() {
+            List<ChildElement> PID = new List<ChildElement>() {
             new ChildElement("ST1111", "ST9999", 5),
             new ChildElement("ST2222", "ST9999", 1)
             };

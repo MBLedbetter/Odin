@@ -424,7 +424,7 @@ namespace Odin.ViewModels
         }
         private string _accountingGroupToolTip = string.Empty;
         
-        public ObservableCollection<ChildElement> BillOfMaterials
+        public List<ChildElement> BillOfMaterials
         {
             get
             {
@@ -2947,7 +2947,7 @@ namespace Odin.ViewModels
         /// <summary>
         ///     Gets or sets the ProductIdTranslation
         /// </summary>
-        public ObservableCollection<ChildElement> ProductIdTranslation
+        public List<ChildElement> ProductIdTranslation
         {
             get
             {

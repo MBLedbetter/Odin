@@ -134,7 +134,7 @@ namespace OdinModels
         /// <summary>
         ///     Gets or sets the BillOfMaterials
         /// </summary>
-        public ObservableCollection<ChildElement> BillOfMaterials
+        public List<ChildElement> BillOfMaterials
         {
             get
             {
@@ -148,7 +148,7 @@ namespace OdinModels
                 OnPropertyChanged("BillOfMaterials");
             }
         }
-        private ObservableCollection<ChildElement> _billOfMaterials = new ObservableCollection<ChildElement>();
+        private List<ChildElement> _billOfMaterials = new List<ChildElement>();
 
         /// <summary>
         ///     Gets or sets the BillOfMaterialsString
@@ -1920,7 +1920,7 @@ namespace OdinModels
         /// <summary>
         ///     List of Product Id Translations associated with this item object
         /// </summary>
-        public ObservableCollection<ChildElement> ProductIdTranslation
+        public List<ChildElement> ProductIdTranslation
         {
             get
             {
@@ -1934,7 +1934,7 @@ namespace OdinModels
                 OnPropertyChanged("ProductIdTranslation");
             }
         }
-        private ObservableCollection<ChildElement> _productIdTranslation = new ObservableCollection<ChildElement>();
+        private List<ChildElement> _productIdTranslation = new List<ChildElement>();
 
         /// <summary>
         ///     Gets or sets the ProductIdTranslationString

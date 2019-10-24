@@ -77,6 +77,10 @@
       <Project>{cf739e41-e669-4b29-9f08-1c3940373234}</Project>
       <Name>Odin.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Odin.Utilities\Odin.Utilities.csproj">
+      <Project>{4504aa3a-4b4d-475d-95a9-2850eac31c39}</Project>
+      <Name>Odin.Utilities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OdinModels\OdinModels.csproj">
       <Project>{00bde998-721e-483a-94a4-3a7fe5dd7260}</Project>
       <Name>OdinModels</Name>

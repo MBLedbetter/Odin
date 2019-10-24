@@ -1613,8 +1613,8 @@ namespace Odin.Data
             GlobalData.MetaDescriptions = RetrieveMetaDescriptionList();
             GlobalData.ProductCategories = RetrieveProductCategories();
             GlobalData.ProductFormats = RetrieveProductFormatList();
-            GlobalData.ProductIdTranslationPrices = RetrieveProductIdTranslationPriceDictionary();
-            GlobalData.ProductIdTranslations = RetrieveProductIdTranslationList();
+            // GlobalData.ProductIdTranslationPrices = RetrieveProductIdTranslationPriceDictionary();
+            // GlobalData.ProductIdTranslations = RetrieveProductIdTranslationList();
             GlobalData.ProductLines = RetrieveProductLines();
             GlobalData.ProductLines = RetrieveProductLines();
             GlobalData.ProductVariations = RetrieveProductVariations(GlobalData.CustomerIdConversions["AMAZON"]);
@@ -1708,7 +1708,7 @@ namespace Odin.Data
                         AltImageFile2 = (!string.IsNullOrEmpty(odinItem.AltImageFile2)) ? odinItem.AltImageFile2 : "",
                         AltImageFile3 = (!string.IsNullOrEmpty(odinItem.AltImageFile3)) ? odinItem.AltImageFile3 : "",
                         AltImageFile4 = (!string.IsNullOrEmpty(odinItem.AltImageFile4)) ? odinItem.AltImageFile4 : "",
-                        BillOfMaterials = (!string.IsNullOrEmpty(odinItem.BillOfMaterials)) ? DbUtil.ParseChildElements(odinItem.InvItemId, odinItem.BillOfMaterials) : new ObservableCollection<ChildElement>(),
+                        BillOfMaterials = (!string.IsNullOrEmpty(odinItem.BillOfMaterials)) ? DbUtil.ParseChildElements(odinItem.InvItemId, odinItem.BillOfMaterials) : new List<ChildElement>(),
                         CasepackHeight = (odinItem.CasepackHeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.CasepackHeight), 1) : "",
                         CasepackLength = (odinItem.CasepackLength != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.CasepackLength), 1) : "",
                         CasepackQty = (!string.IsNullOrEmpty(Convert.ToString(odinItem.CasepackQty))) ? Convert.ToString(odinItem.CasepackQty).Trim() : "",
@@ -1802,7 +1802,7 @@ namespace Odin.Data
                         PricingGroup = (!string.IsNullOrEmpty(odinItem.PricingGroup)) ? odinItem.PricingGroup.Trim() : "",
                         ProductFormat = (!string.IsNullOrEmpty(odinItem.ProdFormat)) ? odinItem.ProdFormat.Trim() : "",
                         ProductGroup = (!string.IsNullOrEmpty(odinItem.ProdGroup)) ? odinItem.ProdGroup.Trim() : "",
-                        ProductIdTranslation = (!string.IsNullOrEmpty(odinItem.ProductIdTranslation)) ? DbUtil.ParseChildElements(odinItem.InvItemId, odinItem.ProductIdTranslation) : new ObservableCollection<ChildElement>(),
+                        ProductIdTranslation = (!string.IsNullOrEmpty(odinItem.ProductIdTranslation)) ? DbUtil.ParseChildElements(odinItem.InvItemId, odinItem.ProductIdTranslation) : new List<ChildElement>(),
                         ProductLine = (!string.IsNullOrEmpty(odinItem.ProdLine)) ? odinItem.ProdLine.Trim() : "",
                         ProductQty = (!string.IsNullOrEmpty(odinItem.ProdQty)) ? odinItem.ProdQty.Trim() : "",
                         Property = (!string.IsNullOrEmpty(odinItem.Property)) ? odinItem.Property.Trim() : "",
@@ -3775,19 +3775,22 @@ namespace Odin.Data
             
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                foreach (AmazonItemAttributes x in (from o in context.AmazonItemAttributes select o))
+                var query = (from o in context.AmazonItemAttributes
+                             where o.Asin != ""
+                             select new { o.InvItemId, o.Asin })
+                             .OrderBy(o => o.InvItemId).ToList();                
+
+                foreach (var x in query)
                 {
-                    if (!string.IsNullOrEmpty(x.Asin))
+                    if (results.ContainsKey(x.Asin))
                     {
-                        if(results.ContainsKey(x.Asin))
-                        {
-                            results[x.Asin] = results[x.Asin] + ", " + x.InvItemId;
-                        }
-                        else
-                        {
-                            results.Add(x.Asin, x.InvItemId);
-                        }
+                        results[x.Asin] = results[x.Asin] + ", " + x.InvItemId;
                     }
+                    else
+                    {
+                        results.Add(x.Asin, x.InvItemId);
+                    }
+                    
                 }
             }
             
@@ -3939,7 +3942,10 @@ namespace Odin.Data
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                return (from o in context.ItemAttribEx select o.InvItemId).ToList();
+                return (from o in context.ItemAttribEx
+                        select o.InvItemId)
+                        .OrderByDescending(o => o)
+                        .ToList();
             }
         }
 
@@ -4095,25 +4101,26 @@ namespace Odin.Data
         ///     Retrieves a Dictionary of itemids and their dtc prices
         /// </summary>
         /// <returns></returns>
-        private Dictionary<string,decimal> RetrieveProductIdTranslationPriceDictionary()
+        private List<KeyValuePair<string, decimal>> RetrieveProductIdTranslationList()
         {
-            Dictionary<string, decimal> result = new Dictionary<string, decimal>();
+            List<KeyValuePair<string, decimal>> result = new List<KeyValuePair<string, decimal>>();
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 if ((context.ItemAttribEx.Any()))
                 {
                     var query = (from o in context.ItemAttribEx
                                  where o.Setid == "SHARE"
-                                 select new { o.InvItemId, o.DtcPrice }).ToList();
+                                 select new { o.InvItemId, o.DtcPrice }
+                                 ).OrderBy(o=>o.InvItemId).ToList();
                     foreach (var x in query)
                     {
-                        result.Add(x.InvItemId, x.DtcPrice);
+                        result.Add(new KeyValuePair<string,decimal>(x.InvItemId, x.DtcPrice));
                     }
                 }
             }
             return result;
         }
-
+        /*
         /// <summary>
         ///     Retrieves a Dictionary of itemids and their dtc prices
         /// </summary>
@@ -4126,7 +4133,8 @@ namespace Odin.Data
                 if ((context.MarketplaceProductTranslations.Any()))
                 {
                     var query = (from o in context.MarketplaceProductTranslations
-                                 select new { o.FromProductId, o.ToProductId }).ToList();
+                                 select new { o.FromProductId, o.ToProductId })
+                                 .OrderBy(o => o.FromProductId).ToList();
                     foreach (var x in query)
                     {
                         result.Add(new KeyValuePair<string,string>(x.FromProductId, x.ToProductId));
@@ -4135,7 +4143,7 @@ namespace Odin.Data
             }
             return result;
         }
-
+        */
         /// <summary>
         ///     Retrieve list of all product lines from PS_PRODUCT_LINES with product group values
         /// </summary>

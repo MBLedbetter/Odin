@@ -1157,9 +1157,9 @@ namespace OdinServices
         /// </summary>
         /// <param name="productIds"></param>
         /// <returns></returns>
-        public ObservableCollection<ChildElement> ParseChildElementIds(string parentId, string productIds)
+        public List<ChildElement> ParseChildElementIds(string parentId, string productIds)
         {
-            ObservableCollection<ChildElement> result = new ObservableCollection<ChildElement>();
+            List<ChildElement> result = new List<ChildElement>();
             if (!string.IsNullOrEmpty(productIds))
             {
                 if (productIds != "[CLEAR]")
@@ -1956,7 +1956,7 @@ namespace OdinServices
             foreach(KeyValuePair<string,string> x in GlobalData.ItemTypeExtensions)
             {
                 string y = (x.Key+idCore+x.Value).Trim();
-                if(GlobalData.ItemIds.Contains(y)||GlobalData.LocalItemIds.Contains(y))
+                if(GlobalData.ItemIds.Contains(y) || GlobalData.LocalItemIds.Contains(y))
                 {
                     relatedProducts.Add(y);
                 }
@@ -2047,9 +2047,14 @@ namespace OdinServices
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        public List<string> RetrieveParentItems(string itemId, string customer)
+        public List<string> RetrieveParentItems(string itemId)
         {
-            return ItemRepository.RetrieveParentItems(itemId, customer);
+            if (GlobalData.ProductIdTranslations.Where(x => x.Key == itemId).Any())
+            {
+                return GlobalData.ProductIdTranslations.Where(x => x.Key == itemId)
+                    .Select(o => o.Value).ToList();
+            }
+            else return new List<string>();
         }
 
         /// <summary>
@@ -3267,7 +3272,9 @@ namespace OdinServices
         /// <returns></returns>
         public ItemError ValidateDirectImport(ItemObject var)
         {
-            if (var.DirectImport == "" || var.DirectImport.ToUpper() == "Y" || var.DirectImport.ToUpper() == "N")
+            if (var.DirectImport == ""
+                || var.DirectImport.ToUpper() == "Y" 
+                || var.DirectImport.ToUpper() == "N")
             {
                 return null;
             }
@@ -3331,6 +3338,7 @@ namespace OdinServices
                         var.DtcPriceUpdate);
                 }
                 //  Check if item has any parent items flagged for sale on shoptrends.com
+                /*
                 List<string> parentIds = RetrieveParentItems(var.ItemId, GlobalData.CustomerIdConversions["TRS"]);
                 if (parentIds.Count > 1)
                 {
@@ -3351,6 +3359,7 @@ namespace OdinServices
                         "Dtc Price",
                         true);
                 }
+                */
             }
             return null;
         }
@@ -3476,7 +3485,7 @@ namespace OdinServices
                             var.ItemRow,
                             "Multiple items contain this ASIN: " + GlobalData.Asins[var.EcommerceAsin] + ". Please fix duplicates before saving.",
                             "Ecommerce Asin",
-                    var.EcommerceAsinUpdate);
+                            var.EcommerceAsinUpdate);
                     }
                     else
                     {
@@ -3485,7 +3494,7 @@ namespace OdinServices
                             var.ItemRow,
                             "Another item already contains this ASIN: "+ GlobalData.Asins[var.EcommerceAsin],
                             "Ecommerce Asin",
-                    var.EcommerceAsinUpdate);
+                            var.EcommerceAsinUpdate);
                     }
                 }
             }
@@ -6865,15 +6874,6 @@ namespace OdinServices
                     }
                 }
             }
-            /*
-            foreach(KeyValuePair<string,string> x in GlobalData.ProductLines)
-            {
-                if(x.Key == productLine && x.Value == productGroup)
-                {
-                    return true;
-                }
-            }
-            */
             return false;
         }
 
@@ -6900,7 +6900,7 @@ namespace OdinServices
         /// <param name="itemId"></param>
         /// <param name="productIdTranslationList"></param>
         /// <returns>false if a conflict emerges</returns>
-        private bool CheckExistingProductIdTranslationsMatch(ObservableCollection<ChildElement> productIdTranslationList)
+        private bool CheckExistingProductIdTranslationsMatch(List<ChildElement> productIdTranslationList)
         {
             foreach (ChildElement x in productIdTranslationList)
             {

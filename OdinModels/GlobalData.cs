@@ -448,7 +448,7 @@ namespace OdinModels
         /// <summary>
         ///     List of all ItemIds with their dtc prices
         /// </summary>
-        public static Dictionary<string,decimal> ProductIdTranslationPrices
+        public static List<KeyValuePair<string, decimal>> ProductIdTranslationPrices
         {
             get
             {
@@ -459,7 +459,7 @@ namespace OdinModels
                 _productIdTranslationPrices = value;
             }
         }
-        private static Dictionary<string, decimal> _productIdTranslationPrices = new Dictionary<string, decimal>();
+        private static List<KeyValuePair<string, decimal>> _productIdTranslationPrices = new List<KeyValuePair<string, decimal>>();
 
         /// <summary>
         ///     List of all the product id translation pairs
