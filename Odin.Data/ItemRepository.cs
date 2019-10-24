@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data;
 using Odin.DbTableModels;
-using System.Collections.ObjectModel;
 
 namespace Odin.Data
 {
@@ -1561,26 +1560,6 @@ namespace Odin.Data
         }
         
         /// <summary>
-        ///     Retrieves the website price for the given itemId. Returns null if no value exists
-        /// </summary>
-        /// <param name="itemId"></param>
-        /// <returns></returns>
-        public decimal? RetrieveDtcPrice(string itemId)
-        {
-            using (OdinContext context = this.contextFactory.CreateContext())
-            {
-                if ((context.ItemAttribEx.Any()))
-                {
-                    return (from o in context.ItemAttribEx
-                     where o.Setid == "SHARE"
-                        && o.InvItemId == itemId
-                     select o.WebsitePrice).FirstOrDefault();                    
-                }
-            }
-            return null;
-        }
-
-        /// <summary>
         ///     Get list of appropriate External Id types for Amazon Products
         /// </summary>
         /// <returns>List of External Id Types</returns>
@@ -1613,9 +1592,7 @@ namespace Odin.Data
             GlobalData.MetaDescriptions = RetrieveMetaDescriptionList();
             GlobalData.ProductCategories = RetrieveProductCategories();
             GlobalData.ProductFormats = RetrieveProductFormatList();
-            // GlobalData.ProductIdTranslationPrices = RetrieveProductIdTranslationPriceDictionary();
-            // GlobalData.ProductIdTranslations = RetrieveProductIdTranslationList();
-            GlobalData.ProductLines = RetrieveProductLines();
+            GlobalData.ProductGoups = RetrieveProductGroupList();
             GlobalData.ProductLines = RetrieveProductLines();
             GlobalData.ProductVariations = RetrieveProductVariations(GlobalData.CustomerIdConversions["AMAZON"]);
             GlobalData.Properties = RetrieveProperties();
@@ -1649,7 +1626,8 @@ namespace Odin.Data
                 {
                     var dataset = context.ItemAttribEx
                     .Where(x => x.InvItemId == itemId && x.Setid == "SHARE")
-                    .Select(x => new { x.ImageFileName }).FirstOrDefault();
+                    .Select(x => new { x.ImageFileName })
+                    .FirstOrDefault();
 
                     if (!string.IsNullOrEmpty(dataset.ImageFileName))
                     {
@@ -1784,7 +1762,6 @@ namespace Odin.Data
                         ItemGroup = (!string.IsNullOrEmpty(odinItem.InvItemGroup)) ? odinItem.InvItemGroup.Trim() : "",
                         ItemKeywords = (!string.IsNullOrEmpty(odinItem.ItemKeywords)) ? odinItem.ItemKeywords.Trim() : "",
                         ItemKeywordsOverride = (!string.IsNullOrEmpty(odinItem.ItemKeywordsOverride)) ? odinItem.ItemKeywordsOverride.Trim() : "",
-                        ItemRow = row,
                         Language = (!string.IsNullOrEmpty(odinItem.Language)) ? DbUtil.OrderLanguage(odinItem.Language) : "",
                         Length = (odinItem.InvItemLength != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemLength), 1) : "",
                         License = (!string.IsNullOrEmpty(odinItem.License)) ? odinItem.License.Trim() : "",
@@ -1807,7 +1784,7 @@ namespace Odin.Data
                         ProductQty = (!string.IsNullOrEmpty(odinItem.ProdQty)) ? odinItem.ProdQty.Trim() : "",
                         Property = (!string.IsNullOrEmpty(odinItem.Property)) ? odinItem.Property.Trim() : "",
                         PrintOnDemand = (!string.IsNullOrEmpty(odinItem.PrintOnDemand)) ? odinItem.PrintOnDemand.Trim() : "",
-                        PsStatus = (!string.IsNullOrEmpty(odinItem.Psstatus)) ? odinItem.Psstatus.Trim() : "I",                        
+                        PsStatus = (!string.IsNullOrEmpty(odinItem.Psstatus)) ? odinItem.Psstatus.Trim() : "I",
                         SatCode = (!string.IsNullOrEmpty(odinItem.SatCode)) ? odinItem.SatCode.Trim() : "",
                         SellOnTrends = (!string.IsNullOrEmpty(odinItem.SellOnWeb)) ? odinItem.SellOnWeb : "N",
                         SellOnAllPosters = (!string.IsNullOrEmpty(odinItem.SellOnAllPosters)) ? odinItem.SellOnAllPosters : "N",
@@ -1826,7 +1803,6 @@ namespace Odin.Data
                         Size = (!string.IsNullOrEmpty(odinItem.Size)) ? odinItem.Size.Trim() : "",
                         StandardCost = (odinItem.StandardCost != null) ? Convert.ToString(odinItem.StandardCost).Trim() : "",
                         StatsCode = (!string.IsNullOrEmpty(odinItem.StatsCode)) ? odinItem.StatsCode.Trim() : "",
-                        Status = "Update",
                         TariffCode = (!string.IsNullOrEmpty(odinItem.HarmonizedCd)) ? odinItem.HarmonizedCd.Trim() : "",
                         Territory = (!string.IsNullOrEmpty(odinItem.Territory)) ? DbUtil.OrderTerritory(odinItem.Territory) : "",
                         Title = (!string.IsNullOrEmpty(odinItem.Title)) ? odinItem.Title.Trim() : "",
@@ -1839,7 +1815,9 @@ namespace Odin.Data
                         WebsitePriceOverride = (odinItem.WebsitePriceOverride != null) ? DbUtil.ZeroTrim(odinItem.WebsitePriceOverride.ToString(), 2) : "",
                         WebsiteUrl = (!string.IsNullOrEmpty(odinItem.WebsiteUrl)) ? odinItem.WebsiteUrl.Trim() : "",
                         Weight = (odinItem.InvItemWeight != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWeight), 1) : "",
-                        Width = (odinItem.InvItemWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWidth), 1) : ""                        
+                        Width = (odinItem.InvItemWidth != null) ? DbUtil.ZeroTrim(Convert.ToString(odinItem.InvItemWidth), 1) : "",
+                        Status = "Update",
+                        ItemRow = row
                     };
                     if (!string.IsNullOrEmpty(odinItem.Category))
                     {
@@ -2137,8 +2115,7 @@ namespace Odin.Data
         }
 
         /// <summary>
-        ///     Check if item is listed as having been setup on the shoptrends. 
-        ///     PS_ITEM_WEB_INFO.ON_SHOPTRENDS == "Y"
+        ///     Check if item is listed as being on the shoptrends site. PS_ITEM_WEB_INFO.ON_SHOPTRENDS == "Y"
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
@@ -2146,17 +2123,14 @@ namespace Odin.Data
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                string result = (from o in context.ItemWebInfo
-                                 where o.InvItemId == itemId
-                                 select o.OnShopTrends).FirstOrDefault();
+                string result = (from o in context.ItemWebInfo where o.InvItemId == itemId select o.OnShopTrends).FirstOrDefault();
                 if (result == "Y") { return true; }
             }
             return false;
         }
 
         /// <summary>
-        ///     Check if item is listed as having been setup on trendsinteranational. 
-        ///     PS_ITEM_WEB_INFO.ON_SITE == "Y"
+        ///     Check if item is listed as being on the trendsinteranational site. PS_ITEM_WEB_INFO.ON_SITE == "Y"
         /// </summary>
         /// <param name="itemId"></param>
         /// <returns></returns>
@@ -2189,56 +2163,6 @@ namespace Odin.Data
                 }
             }
             return false;
-        }
-
-        /// <summary>
-        ///     Retrieve Parent Items that are flagged to be sold on shoptrends
-        /// </summary>
-        /// <param name="itemId"></param>
-        /// <returns></returns>
-        public List<string> RetrieveParentItems(string itemId, string customer)
-        {
-            using (OdinContext context = this.contextFactory.CreateContext())
-            {
-                if ((context.MarketplaceProductTranslations.Any()))
-                {
-                   
-                    return (from marketplaceProductTranslations in context.MarketplaceProductTranslations
-                     join itemAttribEx in context.ItemAttribEx
-                        on
-                        new
-                        {
-                            Key1 = marketplaceProductTranslations.FromProductId,
-                            Key2 = "SHARE"
-                        }
-                        equals
-                        new
-                        {
-                            Key1 = itemAttribEx.InvItemId,
-                            Key2 = itemAttribEx.Setid
-                        }
-                     join customerProductAttributes in context.CustomerProductAttributes
-                        on
-                        new
-                        {
-                            Key1 = marketplaceProductTranslations.FromProductId,
-                            Key2 = "SHARE",
-                        }
-                        equals
-                        new
-                        {
-                            Key1 = customerProductAttributes.ProductId,
-                            Key2 = customerProductAttributes.Setid
-                        }
-                     where customerProductAttributes.SendInventory == "Y"
-                         && marketplaceProductTranslations.ToProductId == itemId
-                         && customerProductAttributes.CustId == customer
-                         && customerProductAttributes.Setid == "SHARE"
-                            select marketplaceProductTranslations.FromProductId).ToList();
-
-                }
-            }
-            return new List<string>();
         }
 
         /// <summary>
@@ -3775,22 +3699,19 @@ namespace Odin.Data
             
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                var query = (from o in context.AmazonItemAttributes
-                             where o.Asin != ""
-                             select new { o.InvItemId, o.Asin })
-                             .OrderBy(o => o.InvItemId).ToList();                
-
-                foreach (var x in query)
+                foreach (AmazonItemAttributes x in (from o in context.AmazonItemAttributes select o))
                 {
-                    if (results.ContainsKey(x.Asin))
+                    if (!string.IsNullOrEmpty(x.Asin))
                     {
-                        results[x.Asin] = results[x.Asin] + ", " + x.InvItemId;
+                        if(results.ContainsKey(x.Asin))
+                        {
+                            results[x.Asin] = results[x.Asin] + ", " + x.InvItemId;
+                        }
+                        else
+                        {
+                            results.Add(x.Asin, x.InvItemId);
+                        }
                     }
-                    else
-                    {
-                        results.Add(x.Asin, x.InvItemId);
-                    }
-                    
                 }
             }
             
@@ -3929,7 +3850,9 @@ namespace Odin.Data
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                return (from o in context.InvItemGroup select o.InvItemGroup).ToList();
+                return (from o in context.InvItemGroup select o.InvItemGroup)
+                    .OrderBy(o => o)
+                    .ToList();
             }
         }
 
@@ -3942,10 +3865,9 @@ namespace Odin.Data
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                return (from o in context.ItemAttribEx
-                        select o.InvItemId)
-                        .OrderByDescending(o => o)
-                        .ToList();
+                return (from o in context.ItemAttribEx select o.InvItemId)
+                    .OrderBy(o => o)
+                    .ToList();
             }
         }
 
@@ -3993,10 +3915,11 @@ namespace Odin.Data
             {
                 if (context.LanguageTbl.Any())
                 {
-                    results = (from o in context.OdinWebLanguages select o.Language).ToList();
+                    results = (from o in context.OdinWebLanguages select o.Language)
+                    .OrderBy(o => o)
+                    .ToList(); ;
                 }
             }
-            results.Sort();
             return results;
         }
 
@@ -4008,9 +3931,11 @@ namespace Odin.Data
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                List<string> result = (from o in context.OdinWebLicense select o.License).Distinct().ToList();
+                List<string> result = (from o in context.OdinWebLicense select o.License)
+                    .Distinct()
+                    .OrderBy(o=>o)
+                    .ToList();
                 result.Add("");
-                result.Sort();
                 return result;
             }
         }
@@ -4098,53 +4023,6 @@ namespace Odin.Data
         }
 
         /// <summary>
-        ///     Retrieves a Dictionary of itemids and their dtc prices
-        /// </summary>
-        /// <returns></returns>
-        private List<KeyValuePair<string, decimal>> RetrieveProductIdTranslationList()
-        {
-            List<KeyValuePair<string, decimal>> result = new List<KeyValuePair<string, decimal>>();
-            using (OdinContext context = this.contextFactory.CreateContext())
-            {
-                if ((context.ItemAttribEx.Any()))
-                {
-                    var query = (from o in context.ItemAttribEx
-                                 where o.Setid == "SHARE"
-                                 select new { o.InvItemId, o.DtcPrice }
-                                 ).OrderBy(o=>o.InvItemId).ToList();
-                    foreach (var x in query)
-                    {
-                        result.Add(new KeyValuePair<string,decimal>(x.InvItemId, x.DtcPrice));
-                    }
-                }
-            }
-            return result;
-        }
-        /*
-        /// <summary>
-        ///     Retrieves a Dictionary of itemids and their dtc prices
-        /// </summary>
-        /// <returns></returns>
-        private List<KeyValuePair<string, string>> RetrieveProductIdTranslationList()
-        {
-            List<KeyValuePair<string, string>> result = new List<KeyValuePair<string, string>>();
-            using (OdinContext context = this.contextFactory.CreateContext())
-            {
-                if ((context.MarketplaceProductTranslations.Any()))
-                {
-                    var query = (from o in context.MarketplaceProductTranslations
-                                 select new { o.FromProductId, o.ToProductId })
-                                 .OrderBy(o => o.FromProductId).ToList();
-                    foreach (var x in query)
-                    {
-                        result.Add(new KeyValuePair<string,string>(x.FromProductId, x.ToProductId));
-                    }
-                }
-            }
-            return result;
-        }
-        */
-        /// <summary>
         ///     Retrieve list of all product lines from PS_PRODUCT_LINES with product group values
         /// </summary>
         /// <returns>List of all product lines</returns>
@@ -4184,7 +4062,9 @@ namespace Odin.Data
                                  {
                                      vid = p.Key.VariationGroupId,
                                      pid = p.Key.ExternalParentId
-                                 }).ToList();
+                                 })
+                                 .OrderBy(o => o.vid)
+                                 .ToList();
 
                     foreach (var x in query)
                     {
@@ -4227,10 +4107,11 @@ namespace Odin.Data
             {
                 if (context.ItemStatusTbl.Any())
                 {
-                    values = (from o in context.ItemStatusTbl select o.StatusCd).ToList();
+                    values = (from o in context.ItemStatusTbl select o.StatusCd)
+                        .OrderBy(o=>o)
+                        .ToList();
                 }
             }
-            values.Sort();
             return values;
         }
 
@@ -4301,16 +4182,16 @@ namespace Odin.Data
         /// <returns>List of tarriff codes</returns>
         private List<string> RetrieveTariffCodeList()
         {
-            List<string> results = new List<string>();
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 if (context.HrmnTariffCd.Any())
                 {
-                    results = (from o in context.HrmnTariffCd select o.HarmonizedCd).ToList();
+                    return (from o in context.HrmnTariffCd select o.HarmonizedCd)
+                        .OrderBy(o => o)
+                        .ToList();
                 }
-                results.Sort();
             }
-            return results;
+            return new List<string>();
         }
 
         /// <summary>
@@ -4321,10 +4202,14 @@ namespace Odin.Data
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                List<string> values = (from o in context.OdinWebTerritories select o.Territory).ToList();
-                values.Sort();
-                return values;
+                if (context.OdinWebTerritories.Any())
+                {
+                    return (from o in context.OdinWebTerritories select o.Territory)
+                    .OrderBy(o => o)
+                    .ToList();
+                }
             }
+            return new List<string>();
         }
 
         /// <summary>
@@ -4353,10 +4238,16 @@ namespace Odin.Data
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                List<string> values = (from o in context.OdinUserRoles select o.Username).Distinct().ToList();
-                values.Sort();
-                return values;
+                if (context.OdinUserRoles.Any())
+                {
+                    List<string> values = (from o in context.OdinUserRoles select o.Username)
+                        .Distinct()
+                        .OrderBy(o => o)
+                        .ToList();
+                    return values;
+                }
             }
+            return new List<string>();
         }
 
         /// <summary>
@@ -4367,9 +4258,11 @@ namespace Odin.Data
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                List<string> values = (from o in context.OdinRolePermissions select o.Role).Distinct().ToList();
+                List<string> values = (from o in context.OdinRolePermissions select o.Role)
+                    .Distinct()
+                    .OrderBy(o => o)
+                    .ToList();
                 values.Add("");
-                values.Sort();
                 return values;
             }
         }
@@ -4397,6 +4290,7 @@ namespace Odin.Data
                   .ToList();
 
                 result = upcs.Concat(ecomUpcs).ToList();
+                result.Sort();
             }
             return result;
         }
