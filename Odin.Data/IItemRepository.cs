@@ -310,13 +310,6 @@ namespace Odin.Data
         List<string> RetrieveActiveEcommerceItemIds(string startDate, string endDate, string productGroup, string customerName);
 
         /// <summary>
-        ///     Retrieves the website price for the given itemId. Returns null if no value exists
-        /// </summary>
-        /// <param name="itemId"></param>
-        /// <returns></returns>
-        decimal? RetrieveDtcPrice(string itemId);
-
-        /// <summary>
         ///     Retrieves all the Global data values
         /// </summary>
         void RetrieveGlobalData();
@@ -362,12 +355,6 @@ namespace Odin.Data
         /// <returns></returns>
         bool RetrieveOnShopTrends(string itemId);
 
-        /// <summary>
-        ///     Retrieve Parent Items that are flagged to be sold on shoptrends
-        /// </summary>
-        /// <param name="itemId"></param>
-        /// <returns></returns>
-        List<string> RetrieveParentItems(string itemId, string customer);
         /// <summary>
         ///     Check if item is listed as being on the trendsinteranational site. PS_ITEM_WEB_INFO.ON_SITE == "Y"
         /// </summary>

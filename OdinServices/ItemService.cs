@@ -3682,7 +3682,7 @@ namespace OdinServices
                                     var.ItemRow,
                                     OdinServices.Properties.Resources.Error_SpecialChars,
                                     "Ecommerce External Id",
-                        var.EcommerceExternalIdUpdate);
+                                    var.EcommerceExternalIdUpdate);
                             }
                             if (!DbUtil.IsNumber(var.EcommerceExternalId))
                             {
@@ -5764,6 +5764,7 @@ namespace OdinServices
                     }
                     if (var.SellOnTrs == "Y")
                     {
+                        /*
                         if (!CheckDtcPrice(productIdTranslation.ItemId))
                         {
                             // Open orders on this product is preventing any changes being made
@@ -5774,6 +5775,7 @@ namespace OdinServices
                                 "Product Id Translations",
                                 var.ProductIdTranslationUpdate);
                         }
+                        */
                     }
                 }
             }
@@ -6648,26 +6650,7 @@ namespace OdinServices
             }
             return false;
         }
-
-        /// <summary>
-        ///     Checks if Dtc Price is assigned
-        /// </summary>
-        /// <param name="itemId"></param>
-        /// <returns></returns>
-        private bool CheckDtcPrice(string itemId)
-        {
-            decimal? dtcPrice = ItemRepository.RetrieveDtcPrice(itemId);
-
-            if (dtcPrice != null)
-            {
-                if (dtcPrice > 0)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
+        
         /// <summary>
         ///     Checks that provided image path returns a file
         /// </summary>

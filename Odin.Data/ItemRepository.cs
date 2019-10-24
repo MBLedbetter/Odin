@@ -1626,8 +1626,7 @@ namespace Odin.Data
                 {
                     var dataset = context.ItemAttribEx
                     .Where(x => x.InvItemId == itemId && x.Setid == "SHARE")
-                    .Select(x => new { x.ImageFileName })
-                    .FirstOrDefault();
+                    .Select(x => new { x.ImageFileName }).FirstOrDefault();
 
                     if (!string.IsNullOrEmpty(dataset.ImageFileName))
                     {
@@ -4240,12 +4239,8 @@ namespace Odin.Data
             {
                 if (context.OdinUserRoles.Any())
                 {
-                    List<string> values = (from o in context.OdinUserRoles select o.Username)
-                        .Distinct()
-                        .OrderBy(o => o)
-                        .ToList();
-                    return values;
-                }
+                    return (from o in context.OdinUserRoles select o.Username).ToList();
+                }                
             }
             return new List<string>();
         }
@@ -4258,7 +4253,7 @@ namespace Odin.Data
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                List<string> values = (from o in context.OdinRolePermissions select o.Role)
+                List<string> values =(from o in context.OdinRolePermissions select o.Role)
                     .Distinct()
                     .OrderBy(o => o)
                     .ToList();
@@ -4290,7 +4285,7 @@ namespace Odin.Data
                   .ToList();
 
                 result = upcs.Concat(ecomUpcs).ToList();
-                result.Sort();
+                result.Sort((x, y) => x.Key.CompareTo(y.Key));
             }
             return result;
         }
