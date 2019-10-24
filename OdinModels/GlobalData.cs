@@ -446,6 +446,38 @@ namespace OdinModels
         private static List<string> _productGoups = new List<string>();
 
         /// <summary>
+        ///     List of all ItemIds with their dtc prices
+        /// </summary>
+        public static Dictionary<string,decimal> ProductIdTranslationPrices
+        {
+            get
+            {
+                return _productIdTranslationPrices;
+            }
+            set
+            {
+                _productIdTranslationPrices = value;
+            }
+        }
+        private static Dictionary<string, decimal> _productIdTranslationPrices = new Dictionary<string, decimal>();
+
+        /// <summary>
+        ///     List of all the product id translation pairs
+        /// </summary>
+        public static List<KeyValuePair<string, string>> ProductIdTranslations
+        {
+            get
+            {
+                return _productIdTranslationS;
+            }
+            set
+            {
+                _productIdTranslationS = value;
+            }
+        }
+        private static List<KeyValuePair<string, string>> _productIdTranslationS = new List<KeyValuePair<string, string>>();
+
+        /// <summary>
         ///     List of accepted product lines
         /// </summary>
         public static List<KeyValuePair<string, string>> ProductLines

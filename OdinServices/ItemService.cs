@@ -5696,7 +5696,7 @@ namespace OdinServices
                             var.ItemRow,
                             "Value is required when the Pricing Group = 'FRP'.",
                             "Product Id Translations",
-                        var.ProductIdTranslationUpdate);
+                            var.ProductIdTranslationUpdate);
                     }
                 }
                 return null;
@@ -5718,7 +5718,7 @@ namespace OdinServices
                     {
                         if ((!GlobalData.LocalItemIds.Contains(productIdTranslation.ItemId.Trim())) && (!GlobalData.ItemIds.Contains(productIdTranslation.ItemId.Trim())))
                         {
-                            // Child element has an itemid that doesn't exist in the db or loacally
+                            // Error if child element has an itemid that doesn't exist in the db or loacally
                             return new ItemError(
                                 var.ItemId,
                                 var.ItemRow,

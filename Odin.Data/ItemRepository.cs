@@ -1613,7 +1613,9 @@ namespace Odin.Data
             GlobalData.MetaDescriptions = RetrieveMetaDescriptionList();
             GlobalData.ProductCategories = RetrieveProductCategories();
             GlobalData.ProductFormats = RetrieveProductFormatList();
-            GlobalData.ProductGoups = RetrieveProductGroupList();
+            GlobalData.ProductIdTranslationPrices = RetrieveProductIdTranslationPriceDictionary();
+            GlobalData.ProductIdTranslations = RetrieveProductIdTranslationList();
+            GlobalData.ProductLines = RetrieveProductLines();
             GlobalData.ProductLines = RetrieveProductLines();
             GlobalData.ProductVariations = RetrieveProductVariations(GlobalData.CustomerIdConversions["AMAZON"]);
             GlobalData.Properties = RetrieveProperties();
@@ -4087,6 +4089,51 @@ namespace Odin.Data
                 }
             }
             return values;
+        }
+
+        /// <summary>
+        ///     Retrieves a Dictionary of itemids and their dtc prices
+        /// </summary>
+        /// <returns></returns>
+        private Dictionary<string,decimal> RetrieveProductIdTranslationPriceDictionary()
+        {
+            Dictionary<string, decimal> result = new Dictionary<string, decimal>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                if ((context.ItemAttribEx.Any()))
+                {
+                    var query = (from o in context.ItemAttribEx
+                                 where o.Setid == "SHARE"
+                                 select new { o.InvItemId, o.DtcPrice }).ToList();
+                    foreach (var x in query)
+                    {
+                        result.Add(x.InvItemId, x.DtcPrice);
+                    }
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        ///     Retrieves a Dictionary of itemids and their dtc prices
+        /// </summary>
+        /// <returns></returns>
+        private List<KeyValuePair<string, string>> RetrieveProductIdTranslationList()
+        {
+            List<KeyValuePair<string, string>> result = new List<KeyValuePair<string, string>>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                if ((context.MarketplaceProductTranslations.Any()))
+                {
+                    var query = (from o in context.MarketplaceProductTranslations
+                                 select new { o.FromProductId, o.ToProductId }).ToList();
+                    foreach (var x in query)
+                    {
+                        result.Add(new KeyValuePair<string,string>(x.FromProductId, x.ToProductId));
+                    }
+                }
+            }
+            return result;
         }
 
         /// <summary>
