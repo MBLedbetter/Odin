@@ -2726,7 +2726,7 @@ namespace OdinServices
                 if (CSV_REMOVE.Count > 1)
                 {
                     int RemoveLength = CSV_REMOVE.Count;
-                    string filePath = desktop + @"\Request-" + "-" + requestId + "_Remove_New.csv";
+                    string filePath = desktop + @"\Request-" + "-" + requestId + "_TrendsInternational_Remove.csv";
                     string delimiter = ",";
 
                     StringBuilder sb = new StringBuilder();
@@ -2737,8 +2737,7 @@ namespace OdinServices
                 }
                 if (CSV_Add.Count > 1)
                 {
-                    string csvFilePath = desktop + @"\Request-" + "-" + requestId + "_Au_New.csv";
-                    string csvImageFilePath = desktop + @"\Request-" + "-" + requestId + "_Au_Images.csv";
+                    string csvFilePath = desktop + @"\Request-" + "-" + requestId + "_TrendsInternational_New.csv";
                     string delimiter = ",";
                     StringBuilder sb = new StringBuilder();
                     StringBuilder sbl = new StringBuilder();
@@ -2748,7 +2747,6 @@ namespace OdinServices
                         sb.AppendLine(string.Join(delimiter, CSV_Add[index]));
                     }
                     File.WriteAllText(csvFilePath, sb.ToString());
-                    File.WriteAllText(csvImageFilePath, sbi.ToString());
                 }
             } // End foreach (Request request in requests)
         }
@@ -2798,14 +2796,31 @@ namespace OdinServices
                                 }
                             }
                         }
-                        CSV_Add.Add(WriteMagento2ParentLine(item, childProducts));
+
+                        // if a POD variation of a poster product exists use its information for the parent product
+                        ItemObject parentItem = item;
+                        if (item.ItemCategory == "POSTER" && item.ItemId.Substring(0, 2) != "POD")
+                        {
+                            string pod = "POD" + idCore;
+                            //  if current list has a pod variation use it
+                            if(itemList.Where(p=>p.ItemId==pod).Count()>0)
+                            {
+                                parentItem = itemList.Where(p => p.ItemId == pod).FirstOrDefault();
+                            }
+                            // if not check global itemids for a pod variation
+                            else if (GlobalData.ItemIds.Contains(pod))
+                            {
+                                parentItem = ItemService.RetrieveItem(pod, item.ItemRow);
+                            }
+                        }
+                        CSV_Add.Add(WriteMagento2ParentLine(parentItem, childProducts));
                         idCores.Add(idCore);
-                        ItemService.InsertMarketplaceCustomerProducts("POSTER" + idCore, item.Title, "000000000146515");
+                        ItemService.InsertMarketplaceCustomerProducts("POSTER" + idCore, parentItem.Title, "000000000146515");
                     }
                 }
                 if (CSV_Add.Count > 1)
                 {
-                    string csvFilePath = desktop + @"\Request-" + "-" + requestId + "_Add.csv";
+                    string csvFilePath = desktop + @"\Request-" + "-" + requestId + "_ShopTrends_Add.csv";
                     string delimiter = ",";
                     StringBuilder sb = new StringBuilder();
                     StringBuilder sbl = new StringBuilder();
@@ -2995,7 +3010,6 @@ namespace OdinServices
             string result = string.Empty;
             string title = (string.IsNullOrEmpty(item.EcommerceItemName)) ? item.Title : item.EcommerceItemName;
             title = (string.IsNullOrEmpty(item.TitleOverride)) ? item.Title : item.TitleOverride;
-            string itemKeywords = (string.IsNullOrEmpty(item.ItemKeywordsOverride)) ? item.ItemKeywordsOverride : item.ItemKeywordsOverride;
             string dateAdded = item.Status == "Add" ? DateTime.Now.ToShortDateString() : "";
 
             result += "\"" + item.ItemId.Trim() + "\","; /* A */
@@ -3017,7 +3031,7 @@ namespace OdinServices
             result += ","; /* Q */
             result += "\"" + item.ItemId + "\","; /* R */
             result += "\"" + title + "\","; /* S */
-            result += "\"" + item.ItemKeywords + "\","; /* T */
+            result += "\"" + item.ItemKeywords + ", " + item.ReturnVariantGroupId() + "\","; /* T */
             result += "\"" + title + "\","; /* U */
             result += "\"" + ItemService.ReturnImageName(item.ItemId, 1) + "\","; /* V */
             result += ","; /* W */
@@ -3112,16 +3126,10 @@ namespace OdinServices
         public string WriteMagento2ParentLine(ItemObject item, List<string> childProducts)
         {
             string result = string.Empty;
-            // string title = (string.IsNullOrEmpty(item.EcommerceItemName)) ? item.Title : item.EcommerceItemName;
-            /*
-            if (!string.IsNullOrEmpty(item.TitleOverride))
-            {
-                title = item.TitleOverride;
-            }
-            */
-            // string url = ItemService.CreateUrl(item.ItemId, item.EcommerceItemName, item.ItemGroup, false);
+
             int pos = item.WebsiteUrl.LastIndexOf("/") + 1;
-            string url = item.WebsiteUrl.Substring(pos, item.WebsiteUrl.Length - pos); // prints "world"
+            string url = item.WebsiteUrl.Substring(pos, item.WebsiteUrl.Length - pos);
+            url = url.Replace(".html", "");
             string itemId = "POSTER" + item.ReturnVariantGroupId();
             string dateAdded = (item.Status == "Add") ? DateTime.Now.ToShortDateString() : "";
 

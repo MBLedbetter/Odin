@@ -740,7 +740,7 @@ namespace OdinServices
             }
             return "";            
         }
-        
+
         /// <summary>
         ///     Generates a url based on the itemId and the title of a product
         /// </summary>
@@ -749,38 +749,34 @@ namespace OdinServices
         /// <returns></returns>
         public string CreateWebsiteUrl(ItemObject item, bool fullUrl)
         {
-            if (item.SellOnTrs == "Y")
+            if (item.ItemCategory == "POSTER")
             {
-                if (item.ItemCategory == "POSTER")
+                string podUrl = RetrieveWebsiteUrl("POD" + item.ReturnVariantGroupId());
+                if (!string.IsNullOrEmpty(podUrl))
                 {
-                    string podUrl = RetrieveWebsiteUrl("POD" + item.ReturnVariantGroupId());
-                    if (!string.IsNullOrEmpty(podUrl))
-                    {
-                        return podUrl;
-                    }
+                    return podUrl;
                 }
-                string title = item.Title.Replace(" ", "-");
-                title = title.Replace(":", "-");
-                title = title.Replace("---", "-");
-                title = title.Replace("--", "-");
-                string result = title.ToLower();
-                if (item.ItemCategory == "POSTER")
-                {
-                    result += "-poster" + item.ReturnVariantGroupId();
-                }
-                else
-                {
-                    result += item.ItemId;
-                }
-
-                if (fullUrl)
-                {
-                    result = "https://shoptrends.com/" + result + ".html";
-                }
-
-                return result.ToLower();
             }
-            return "";
+            string title = item.Title.Replace(" ", "-");
+            title = title.Replace(":", "-");
+            title = title.Replace("---", "-");
+            title = title.Replace("--", "-");
+            string result = title.ToLower();
+            if (item.ItemCategory == "POSTER")
+            {
+                result += "-poster" + item.ReturnVariantGroupId();
+            }
+            else
+            {
+                result += item.ItemId;
+            }
+
+            if (fullUrl)
+            {
+                result = "https://shoptrends.com/" + result + ".html";
+            }
+
+            return result.ToLower();
         }
         
         /// <summary>
@@ -1193,7 +1189,7 @@ namespace OdinServices
             List<string> usedIdCores = new List<string>();
             Directory.CreateDirectory(location);
             foreach (ItemObject item in items)
-            {
+            {                
                 foreach (KeyValuePair<string,int> img in RetrieveImagePaths(item.ItemId))
                 {
                     if (CheckFileExists(img.Key, false))
@@ -1207,14 +1203,27 @@ namespace OdinServices
                                 Image myImage = Image.FromFile(img.Key, true);
                                 SaveJpeg(filename, myImage, 60);
                                 myImage.Dispose();
-                                if (!usedIdCores.Contains(item.ReturnVariantGroupId()) && img.Value == 1)
+                                if (item.ItemCategory == "POSTER")
                                 {
-                                    if (item.ItemCategory == "POSTER")
+                                    if (!usedIdCores.Contains(item.ReturnVariantGroupId()) && img.Value == 1)
                                     {
-                                        filename = location + @"\" + ReturnImageName("POSTER" + item.ReturnVariantGroupId(), img.Value);
-                                        Image posterImage = Image.FromFile(img.Key, true);
-                                        SaveJpeg(filename, posterImage, 60);
-                                        posterImage.Dispose();
+                                        string pod = "POD" + item.ReturnVariantGroupId();
+                                        KeyValuePair<string, int> parentImg = RetrieveImageMain(pod);
+
+                                        if (!string.IsNullOrEmpty(parentImg.Key))
+                                        {
+                                            filename = location + @"\" + ReturnImageName("POSTER" + item.ReturnVariantGroupId(), parentImg.Value);
+                                            Image posterImage = Image.FromFile(parentImg.Key, true);
+                                            SaveJpeg(filename, posterImage, 60);
+                                            posterImage.Dispose();
+                                        }
+                                        else
+                                        {
+                                            filename = location + @"\" + ReturnImageName("POSTER" + item.ReturnVariantGroupId(), img.Value);
+                                            Image posterImage = Image.FromFile(img.Key, true);
+                                            SaveJpeg(filename, posterImage, 60);
+                                            posterImage.Dispose();
+                                        }
                                         usedIdCores.Add(item.ReturnVariantGroupId());
                                     }
                                 }
@@ -1476,16 +1485,19 @@ namespace OdinServices
         }
         
         /// <summary>
-        ///     Save items to web & combine categories
+        ///     Save items if any fields have been updated
         /// </summary>
         /// <param name="items"></param>
         public void InsertItem(ItemObject item, int count)
         {
-            if (item.PrintOnDemand == "")
+            if (item.HasUpdate)
             {
-                item.PrintOnDemand = "N";
+                if (item.PrintOnDemand == "")
+                {
+                    item.PrintOnDemand = "N";
+                }
+                ItemRepository.InsertAll(item, count);
             }
-            ItemRepository.InsertAll(item, count);
         }
 
         /// <summary>
@@ -1711,7 +1723,19 @@ namespace OdinServices
                 return "";
             }
         }
-        
+
+        /// <summary>
+        ///     Retrieves the main image for a given item Id
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        public KeyValuePair<string, int> RetrieveImageMain(string itemId)
+        {
+            KeyValuePair<string, int> results = ItemRepository.RetrieveImageMain(itemId);
+
+            return results;
+        }
+
         /// <summary>
         ///     Retrieves a list of local image paths for the given item
         /// </summary>
@@ -2169,10 +2193,10 @@ namespace OdinServices
             validationError =ValidateCostProfileGroup(var);
             if (validationError != null) { ErrorList.Add(validationError); }
             // DefaultActualCostCad //
-            validationError =ValidateDefaultActualCost(var, "CAD");
+            validationError =ValidateDefaultActualCost(var, "Cad");
             if (validationError != null) { ErrorList.Add(validationError); }
             // Default Actual Cost Usd //
-            validationError =ValidateDefaultActualCost(var, "USD");
+            validationError =ValidateDefaultActualCost(var, "Usd");
             if (validationError != null) { ErrorList.Add(validationError); }
             // Description //
             validationError =ValidateDescription(var);
@@ -2355,13 +2379,13 @@ namespace OdinServices
             validationError =ValidateLicenseBeginDate(var);
             if (validationError != null) { ErrorList.Add(validationError); }
             // List Price Cad //
-            validationError =ValidateListPrice(var, "CAD");
+            validationError =ValidateListPrice(var, "Cad");
             if (validationError != null) { ErrorList.Add(validationError); }
             // List Price Mxn //
-            validationError =ValidateListPrice(var, "MXN");
+            validationError =ValidateListPrice(var, "Mxn");
             if (validationError != null) { ErrorList.Add(validationError); }
             // List Price Usd //
-            validationError =ValidateListPrice(var, "USD");
+            validationError =ValidateListPrice(var, "Usd");
             if (validationError != null) { ErrorList.Add(validationError); }
             // Meta Description //
             validationError = ValidateMetaDescription(var);
@@ -2370,13 +2394,13 @@ namespace OdinServices
             validationError =ValidateMfgSource(var);
             if (validationError != null) { ErrorList.Add(validationError); }
             // List Msrp //
-            validationError =ValidateMsrp(var, "USD");
+            validationError =ValidateMsrp(var, "Usd");
             if (validationError != null) { ErrorList.Add(validationError); }
             // Msrp Cad //
-            validationError =ValidateMsrp(var, "CAD");
+            validationError =ValidateMsrp(var, "Cad");
             if (validationError != null) { ErrorList.Add(validationError); }
             // Msrp Mxn //
-            validationError =ValidateMsrp(var, "MXN");
+            validationError =ValidateMsrp(var, "Mxn");
             if (validationError != null) { ErrorList.Add(validationError); }
             // Product Format //
             validationError =ValidateProductFormat(var);
@@ -2518,9 +2542,9 @@ namespace OdinServices
             if (validationError != null) { ErrorMessages.Add(validationError); }
             validationError = ValidateCostProfileGroup(var);
             if (validationError != null) { ErrorMessages.Add(validationError); }
-            validationError = ValidateDefaultActualCost(var, "CAD");
+            validationError = ValidateDefaultActualCost(var, "Cad");
             if (validationError != null) { ErrorMessages.Add(validationError); }
-            validationError = ValidateDefaultActualCost(var, "USD");
+            validationError = ValidateDefaultActualCost(var, "Usd");
             if (validationError != null) { ErrorMessages.Add(validationError); }
             validationError = ValidateDuty(var);
             if (validationError != null) { ErrorMessages.Add(validationError); }
@@ -2546,19 +2570,19 @@ namespace OdinServices
             if (validationError != null) { ErrorMessages.Add(validationError); }
             validationError = ValidateItemDimension(var,"Length");
             if (validationError != null) { ErrorMessages.Add(validationError); }
-            validationError = ValidateListPrice(var, "CAD");
+            validationError = ValidateListPrice(var, "Cad");
             if (validationError != null) { ErrorMessages.Add(validationError); }
-            validationError = ValidateListPrice(var, "MXN");
+            validationError = ValidateListPrice(var, "Mxn");
             if (validationError != null) { ErrorMessages.Add(validationError); }
-            validationError = ValidateListPrice(var, "USD");
+            validationError = ValidateListPrice(var, "Usd");
             if (validationError != null) { ErrorMessages.Add(validationError); }
             validationError = ValidateMfgSource(var);
             if (validationError != null) { ErrorMessages.Add(validationError); }
-            validationError = ValidateMsrp(var, "USD");
+            validationError = ValidateMsrp(var, "Usd");
             if (validationError != null) { ErrorMessages.Add(validationError); }
-            validationError = ValidateMsrp(var, "CAD");
+            validationError = ValidateMsrp(var, "Cad");
             if (validationError != null) { ErrorMessages.Add(validationError); }
-            validationError = ValidateMsrp(var, "MXN");
+            validationError = ValidateMsrp(var, "Mxn");
             if (validationError != null) { ErrorMessages.Add(validationError); }
             validationError = ValidateProductFormat(var);
             if (validationError != null) { ErrorMessages.Add(validationError); }
@@ -3132,15 +3156,15 @@ namespace OdinServices
             bool update = false;
             switch (currency)
             {
-                case "USD":
+                case "Usd":
                     value = var.ListPriceUsd;
                     update = var.ListPriceUsdUpdate;
                     break;
-                case "CAD":
+                case "Cad":
                     value = var.ListPriceCad;
                     update = var.ListPriceCadUpdate;
                     break;
-                case "MXN":
+                case "Mxn":
                     value = var.ListPriceMxn;
                     update = var.ListPriceMxnUpdate;
                     break;
@@ -5354,20 +5378,20 @@ namespace OdinServices
             bool update = false;
             switch (type)
             {
-                case "CAD":
+                case "Cad":
                     value = var.MsrpCad;
                     update = var.MsrpCadUpdate;
-                    name = "MSRP CAD";
+                    name = "Msrp Cad";
                     break;
-                case "MXN":
+                case "Mxn":
                     value = var.MsrpMxn;
                     update = var.MsrpMxnUpdate;
-                    name = "MSRP MXN";
+                    name = "Msrp Mxn";
                     break;
-                case "USD":
+                case "Usd":
                     value = var.Msrp;
                     update = var.MsrpUpdate;
-                    name = "MSRP";
+                    name = "Msrp";
                     break;
                 default:
                     throw new ArgumentNullException("ValidateMsrp unknown type " + type);
@@ -5474,15 +5498,15 @@ namespace OdinServices
             bool update = false;
             switch (currency)
             {
-                case "USD":
+                case "Usd":
                     value = var.ListPriceUsd;
                     update = var.ListPriceUsdUpdate;
                     break;
-                case "CAD":
+                case "Cad":
                     value = var.ListPriceCad;
                     update = var.ListPriceCadUpdate;
                     break;
-                case "MXN":
+                case "Mxn":
                     value = var.ListPriceMxn;
                     update = var.ListPriceMxnUpdate;
                     break;

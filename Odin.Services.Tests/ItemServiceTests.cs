@@ -1850,97 +1850,7 @@ namespace Odin.Services.Tests
             Assert.AreEqual("Ecommerce Size", item.EcommerceSize);
             Assert.AreEqual("Ecommerce Upc", item.EcommerceUpc);
             Assert.AreEqual("Amazon Active", item.SellOnAmazon);
-
-            Assert.IsFalse(item.AccountingGroupUpdate); // Accounting Group    
-            Assert.IsFalse(item.CasepackHeightUpdate); // CasepackHeight
-            Assert.IsFalse(item.CasepackLengthUpdate); // CasepackLength
-            Assert.IsFalse(item.CasepackQtyUpdate); // CasepackQty
-            Assert.IsFalse(item.CasepackWidthUpdate); // CasepackWidth
-            Assert.IsFalse(item.CasepackWeightUpdate); // CasepackWeight
-            Assert.IsFalse(item.ColorUpdate); // Color
-            Assert.IsFalse(item.CountryOfOriginUpdate); // Country of Origin
-            Assert.IsFalse(item.CostProfileGroupUpdate); // Cost Profile Group
-            Assert.IsFalse(item.DefaultActualCostCadUpdate); // Default Actual Cost CAD
-            Assert.IsFalse(item.DefaultActualCostUsdUpdate); // Default Actual Cost USD
-            Assert.IsFalse(item.DescriptionUpdate); // Description
-            Assert.IsFalse(item.EanUpdate); // Ean
-            Assert.IsFalse(item.GpcUpdate); // Gpc
-            Assert.IsFalse(item.HeightUpdate); // Height
-            Assert.IsFalse(item.InStockDateUpdate); // In Stock DAte
-            Assert.IsFalse(item.InnerpackHeightUpdate); // Innerpack Height
-            Assert.IsFalse(item.InnerpackLengthUpdate); // Innerpack Length
-            Assert.IsFalse(item.InnerpackQuantityUpdate); // Innerpack Quantity
-            Assert.IsFalse(item.InnerpackWidthUpdate); // Innerpack Width
-            Assert.IsFalse(item.InnerpackWeightUpdate); // Innerpack Weight
-            Assert.IsFalse(item.IsbnUpdate); // Isbn
-            Assert.IsFalse(item.ItemCategoryUpdate); // ItemCategory
-            Assert.IsFalse(item.ItemFamilyUpdate); // Item Family
-            Assert.IsFalse(item.ItemGroupUpdate); // Item Group
-            Assert.IsFalse(item.LanguageUpdate); // Language
-            Assert.IsFalse(item.LengthUpdate); // Length
-            Assert.IsFalse(item.LicenseBeginDateUpdate); // License Begin Date
-            Assert.IsFalse(item.ListPriceCadUpdate); // List Price Cad
-            Assert.IsFalse(item.ListPriceMxnUpdate); // List Price Mxn
-            Assert.IsFalse(item.ListPriceUsdUpdate); // List Price Usd
-            Assert.IsFalse(item.MetaDescriptionUpdate); // MetaDescription
-            Assert.IsFalse(item.MfgSourceUpdate); // Mfg Source
-            Assert.IsFalse(item.MsrpUpdate); // MSRP
-            Assert.IsFalse(item.MsrpCadUpdate); // MSRPCAD
-            Assert.IsFalse(item.MsrpMxnUpdate); // MSRPMXN
-            Assert.IsFalse(item.ProductFormatUpdate); // Product Format
-            Assert.IsFalse(item.ProductGroupUpdate); // Product Group
-            Assert.IsFalse(item.ProductLineUpdate); // Product Line
-            Assert.IsFalse(item.PricingGroupUpdate); // Pricing Group
-            Assert.IsFalse(item.StandardCostUpdate); // Standard Cost
-            Assert.IsFalse(item.StatsCodeUpdate); // Stats Code
-            Assert.IsFalse(item.TariffCodeUpdate); // Tariff Code
-            Assert.IsFalse(item.TerritoryUpdate); // Territory
-            Assert.IsFalse(item.UdexUpdate); // Udex
-            Assert.IsFalse(item.UpcUpdate); // Upc
-            Assert.IsFalse(item.WeightUpdate); // Weight
-            Assert.IsFalse(item.WidthUpdate); // Width
-            Assert.IsFalse(item.ItemKeywordsUpdate); // Item Keywords
-            Assert.IsFalse(item.CopyrightUpdate); // Copyright
-            Assert.IsFalse(item.LicenseUpdate); // License
-            Assert.IsFalse(item.CategoryUpdate); // Category
-            Assert.IsFalse(item.TitleUpdate); // Title
-            Assert.IsFalse(item.ShortDescriptionUpdate); // Short Description
-            Assert.IsFalse(item.SizeUpdate); // Size
-            Assert.IsFalse(item.EcommerceAsinUpdate);
-            Assert.IsFalse(item.EcommerceBullet1Update);
-            Assert.IsFalse(item.EcommerceBullet2Update);
-            Assert.IsFalse(item.EcommerceBullet3Update);
-            Assert.IsFalse(item.EcommerceBullet4Update);
-            Assert.IsFalse(item.EcommerceBullet5Update);
-            Assert.IsFalse(item.EcommerceComponentsUpdate);
-            Assert.IsFalse(item.EcommerceCostUpdate);
-            Assert.IsFalse(item.EcommerceExternalIdUpdate);
-            Assert.IsFalse(item.EcommerceExternalIdTypeUpdate);
-            // Assert.IsFalse(item.EcommerceImagePath1Update);
-            // Assert.IsFalse(item.EcommerceImagePath2Update);
-            // Assert.IsFalse(item.EcommerceImagePath3Update);
-            // Assert.IsFalse(item.EcommerceImagePath4Update);
-            // Assert.IsFalse(item.EcommerceImagePath5Update);
-            Assert.IsFalse(item.EcommerceItemHeightUpdate);
-            Assert.IsFalse(item.EcommerceItemLengthUpdate);
-            Assert.IsFalse(item.EcommerceItemNameUpdate);
-            Assert.IsFalse(item.EcommerceItemWeightUpdate);
-            Assert.IsFalse(item.EcommerceItemWidthUpdate);
-            Assert.IsFalse(item.EcommerceModelNameUpdate);
-            Assert.IsFalse(item.EcommercePackageHeightUpdate);
-            Assert.IsFalse(item.EcommercePackageLengthUpdate);
-            Assert.IsFalse(item.EcommercePackageWeightUpdate);
-            Assert.IsFalse(item.EcommercePackageWidthUpdate);
-            Assert.IsFalse(item.EcommercePageQtyUpdate);
-            Assert.IsFalse(item.EcommerceProductCategoryUpdate);
-            Assert.IsFalse(item.EcommerceProductDescriptionUpdate);
-            Assert.IsFalse(item.EcommerceProductSubcategoryUpdate);
-            Assert.IsFalse(item.EcommerceManufacturerNameUpdate);
-            Assert.IsFalse(item.EcommerceMsrpUpdate);
-            Assert.IsFalse(item.EcommerceGenericKeywordsUpdate);
-            Assert.IsFalse(item.EcommerceSizeUpdate);
-            Assert.IsFalse(item.EcommerceUpcUpdate);
-
+            
             #endregion // Assert
         }
 
@@ -2226,7 +2136,7 @@ namespace Odin.Services.Tests
             // Assert that the first item's properties are correct
             Assert.AreEqual("9", item.DefaultActualCostUsd);
             Assert.AreEqual("RP1234", item.ItemId);
-            Assert.IsFalse(item.DefaultActualCostUsdUpdate);
+            Assert.IsTrue(item.DefaultActualCostUsdUpdate);
 
             #endregion // Assert
         }

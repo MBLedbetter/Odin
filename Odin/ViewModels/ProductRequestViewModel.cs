@@ -336,11 +336,11 @@ namespace Odin.ViewModels
         /// </summary>
         public void CreateCSVFile()
         {
-            if (this.SelectedRequest.Website == "ShopTrends.com")
+            if (this.SelectedRequest.Website.Contains("ShopTrends.com"))
             {
                 CreateMagento2File();
             }
-            else
+            if (this.SelectedRequest.Website.Contains("TrendsInternational.com"))
             {
                 CreateMagento1File();
             }

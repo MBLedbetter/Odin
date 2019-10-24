@@ -603,6 +603,8 @@ namespace Odin.ViewModels
             {
                 if (this.ItemViewModelItem.CasepackQty != value)
                 {
+                    this.ItemViewModelItem.CasepackQty=value;
+                    FlagError("CasepackQty");
                     OnPropertyChanged("CasepackQty");
                 }
             }
@@ -8853,7 +8855,7 @@ namespace Odin.ViewModels
                 case "DefaultActualCostCad":
 
                     //  DefaultActualCostCad Validation
-                    error = ItemService.ValidateDefaultActualCost(ItemViewModelItem, "CAD");
+                    error = ItemService.ValidateDefaultActualCost(ItemViewModelItem, "Cad");
                     this.DefaultActualCostCadError = error?.ErrorMessage ?? "";
                     this.DefaultActualCostCadBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
 
@@ -8863,7 +8865,7 @@ namespace Odin.ViewModels
                 case "DefaultActualCostUsd":
 
                     //  DefaultActualCostUsd Validation
-                    error = ItemService.ValidateDefaultActualCost(ItemViewModelItem, "USD");
+                    error = ItemService.ValidateDefaultActualCost(ItemViewModelItem, "Usd");
                     this.DefaultActualCostUsdError = error?.ErrorMessage ?? "";
                     this.DefaultActualCostUsdBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
 
@@ -9030,6 +9032,7 @@ namespace Odin.ViewModels
                     this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
+                case "EcommerceHeight":
                 case "EcommerceItemHeight":
 
                     //  EcommerceItemHeight Validation
@@ -9040,6 +9043,7 @@ namespace Odin.ViewModels
                     this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
+                case "EcommerceLength":
                 case "EcommerceItemLength":
 
                     //  EcommerceItemLength Validation
@@ -9062,7 +9066,7 @@ namespace Odin.ViewModels
 
                 case "EcommerceItemTypeKeywords":
 
-                    //  _XXX_ Validation
+                    //  EcommerceItemTypeKeywords Validation
                     error = ItemService.ValidateEcommerceItemTypeKeywords(ItemViewModelItem);
                     this.EcommerceItemTypeKeywordsError = error?.ErrorMessage ?? "";
                     this.EcommerceItemTypeKeywordsBoxColor = error?.ReturnErrorColor() ?? "White";
@@ -9071,6 +9075,7 @@ namespace Odin.ViewModels
                     break;
 
                 case "EcommerceItemWeight":
+                case "EcommerceWeight":
                     //  EcommerceItemWeight Validation
                     error = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Weight");
                     this.EcommerceItemWeightError = error?.ErrorMessage ?? "";
@@ -9080,6 +9085,7 @@ namespace Odin.ViewModels
                     break;
 
                 case "EcommerceItemWidth":
+                case "EcommerceWidth":
                     //  EcommerceItemWidth Validation
                     error = ItemService.ValidateEcommerceItemDimension(ItemViewModelItem, "Width");
                     this.EcommerceItemWidthError = error?.ErrorMessage ?? "";
@@ -9197,7 +9203,7 @@ namespace Odin.ViewModels
                     this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
-                case "EcommereSize":
+                case "EcommerceSize":
                     //  EcommerceSize Validation
                     error = ItemService.ValidateEcommerceSize(ItemViewModelItem);
                     this.EcommerceSizeError = error?.ErrorMessage ?? "";
@@ -9215,8 +9221,8 @@ namespace Odin.ViewModels
                     this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
-                case "EcommereUpc":
-                    //  EcommereUpc Validation
+                case "EcommerceUpc":
+                    //  EcommerceUpc Validation
                     error = ItemService.ValidateEcommerceUpc(ItemViewModelItem);
                     this.EcommerceUpcError = error?.ErrorMessage ?? "";
                     this.EcommerceUpcBoxColor = error?.ReturnErrorColor() ?? "White";
@@ -9426,12 +9432,12 @@ namespace Odin.ViewModels
 
                 case "ListPriceCad":
                     // ListPriceCad Validation
-                    error = ItemService.ValidateMsrp(ItemViewModelItem, "CAD");
+                    error = ItemService.ValidateMsrp(ItemViewModelItem, "Cad");
                     this.ListPriceCadError = error?.ErrorMessage ?? "";
                     this.ListPriceCadBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
 
                     // MsrpCad Validation
-                    error = ItemService.ValidateListPrice(ItemViewModelItem, "CAD");
+                    error = ItemService.ValidateListPrice(ItemViewModelItem, "Cad");
                     this.MsrpCadError = error?.ErrorMessage ?? "";
                     this.MsrpCadBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
 
@@ -9445,13 +9451,13 @@ namespace Odin.ViewModels
 
                 case "ListPriceMxn":
                     // MSRPPriceMxn Validation
-                    error = ItemService.ValidateMsrp(ItemViewModelItem, "MXN");
+                    error = ItemService.ValidateMsrp(ItemViewModelItem, "Mxn");
                     this.MsrpMxnError = error?.ErrorMessage ?? "";
                     this.MsrpMxnBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
 
 
                     // ListPriceMxn Validation
-                    error = ItemService.ValidateListPrice(ItemViewModelItem, "MXN");
+                    error = ItemService.ValidateListPrice(ItemViewModelItem, "Mxn");
                     this.ListPriceMxnError = error?.ErrorMessage ?? "";
                     this.ListPriceMxnBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
 
@@ -9460,14 +9466,14 @@ namespace Odin.ViewModels
 
                 case "ListPriceUsd":
                     // ListPriceUsd Validation
-                    error = ItemService.ValidateListPrice(ItemViewModelItem, "USD");
+                    error = ItemService.ValidateListPrice(ItemViewModelItem, "Usd");
                     this.ListPriceUsdError = error?.ErrorMessage ?? "";
                     this.ListPriceUsdBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
 
                     this.ProductQtyTotal = ItemService.RetrieveB2bPrice(ItemViewModelItem.ListPriceUsd, this.ProductQty);
 
                     // Msrp Validation
-                    error = ItemService.ValidateMsrp(ItemViewModelItem, "USD");
+                    error = ItemService.ValidateMsrp(ItemViewModelItem, "Usd");
                     this.MsrpError = error?.ErrorMessage ?? "";
                     this.MsrpBoxColor = error?.ReturnErrorColor() ?? "AliceBlue";
 
@@ -9519,6 +9525,7 @@ namespace Odin.ViewModels
                     break;
 
                 case "MfgSource":
+                case "MFGSource":
                     // MfgSource Validation
                     error = ItemService.ValidateMfgSource(ItemViewModelItem);
                     this.MfgSourceError = error?.ErrorMessage ?? "";
@@ -9534,7 +9541,7 @@ namespace Odin.ViewModels
 
                 case "Msrp":
                     // Msrp Validation
-                    error = ItemService.ValidateMsrp(ItemViewModelItem, "USD");
+                    error = ItemService.ValidateMsrp(ItemViewModelItem, "Usd");
                     this.MsrpError = error?.ErrorMessage ?? "";
                     this.MsrpBoxColor = error?.ReturnErrorColor() ?? "Alice Blue";
 
@@ -9543,7 +9550,7 @@ namespace Odin.ViewModels
 
                 case "MsrpCad":
                     // MsrpCad Validation
-                    error = ItemService.ValidateMsrp(ItemViewModelItem, "CAD");
+                    error = ItemService.ValidateMsrp(ItemViewModelItem, "Cad");
                     this.MsrpCadError = error?.ErrorMessage ?? "";
                     this.MsrpCadBoxColor = error?.ReturnErrorColor() ?? "Alice Blue";
 
@@ -9552,7 +9559,7 @@ namespace Odin.ViewModels
 
                 case "MsrpMxn":
                     // MsrpMXN Validation
-                    error = ItemService.ValidateMsrp(ItemViewModelItem, "MXN");
+                    error = ItemService.ValidateMsrp(ItemViewModelItem, "Mxn");
                     this.MsrpMxnError = error?.ErrorMessage ?? "";
                     this.MsrpMxnBoxColor = error?.ReturnErrorColor() ?? "Alice Blue";
 
@@ -9691,6 +9698,7 @@ namespace Odin.ViewModels
                     this.TabColorWebInfo = CheckWebInfoTabColor();                    
                     break;
 
+                case "PSStatus":
                 case "PsStatus":
                     // PsStatus Validation
                     error = ItemService.ValidatePsStatus(ItemViewModelItem);
@@ -9831,6 +9839,7 @@ namespace Odin.ViewModels
                     break;
 
                 case "SellOnTrs":
+                case "SellOnShopTrends":
                 case "SellOnTrsCheck":
                     // SellOnTrs Validation
                     error = ItemService.ValidateSellOnValue(ItemViewModelItem, "Shop Trends");

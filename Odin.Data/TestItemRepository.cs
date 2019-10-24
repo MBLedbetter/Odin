@@ -239,6 +239,16 @@ namespace Odin.Data
                 "Exception3"
             };
         }
+        /// <summary>
+        ///     Retrieves the local file paths for all the given images.
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns>KeyValuePair key=imagePath, value=imageNumber</returns>
+        public KeyValuePair<string, int> RetrieveImageMain(string itemId)
+        {
+            KeyValuePair<string, int> imagePath = new KeyValuePair<string, int>();
+            return imagePath;
+        }
 
         /// <summary>
         ///     Retrieves a list of local image paths for the given item
