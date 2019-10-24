@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Odin.Services.Tests", "Odin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Odin.DbTableModels", "Odin.DbTableModels\Odin.DbTableModels.csproj", "{8FB2AFAF-75A9-45EF-8F8D-B79464A39086}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Odin.Utilities", "Odin.Utilities\Odin.Utilities.csproj", "{4504AA3A-4B4D-475D-95A9-2850EAC31C39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +80,10 @@ Global
 		{8FB2AFAF-75A9-45EF-8F8D-B79464A39086}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FB2AFAF-75A9-45EF-8F8D-B79464A39086}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FB2AFAF-75A9-45EF-8F8D-B79464A39086}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4504AA3A-4B4D-475D-95A9-2850EAC31C39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4504AA3A-4B4D-475D-95A9-2850EAC31C39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4504AA3A-4B4D-475D-95A9-2850EAC31C39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4504AA3A-4B4D-475D-95A9-2850EAC31C39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
