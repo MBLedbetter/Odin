@@ -9866,6 +9866,7 @@ namespace Odin.ViewModels
                     this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
+                case "UPC":
                 case "Upc":
                     // Upc Validation
                     error = ItemService.ValidateUpc(ItemViewModelItem);

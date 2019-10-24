@@ -3677,7 +3677,7 @@ namespace OdinServices
                                     var.ItemRow,
                                     OdinServices.Properties.Resources.Error_SpecialChars,
                                     "Ecommerce External Id",
-                        var.EcommerceExternalIdUpdate);
+                                    var.EcommerceExternalIdUpdate);
                             }
                             if (!DbUtil.IsNumber(var.EcommerceExternalId))
                             {
