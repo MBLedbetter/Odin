@@ -3849,7 +3849,9 @@ namespace Odin.Data
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                return (from o in context.InvItemGroup select o.InvItemGroup).ToList();
+                return (from o in context.InvItemGroup select o.InvItemGroup)
+                    .OrderBy(o => o)
+                    .ToList();
             }
         }
 
@@ -3862,7 +3864,9 @@ namespace Odin.Data
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                return (from o in context.ItemAttribEx select o.InvItemId).ToList();
+                return (from o in context.ItemAttribEx select o.InvItemId)
+                    .OrderBy(o => o)
+                    .ToList();
             }
         }
 
@@ -3910,10 +3914,11 @@ namespace Odin.Data
             {
                 if (context.LanguageTbl.Any())
                 {
-                    results = (from o in context.OdinWebLanguages select o.Language).ToList();
+                    results = (from o in context.OdinWebLanguages select o.Language)
+                    .OrderBy(o => o)
+                    .ToList(); ;
                 }
             }
-            results.Sort();
             return results;
         }
 
@@ -3925,9 +3930,11 @@ namespace Odin.Data
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                List<string> result = (from o in context.OdinWebLicense select o.License).Distinct().ToList();
+                List<string> result = (from o in context.OdinWebLicense select o.License)
+                    .Distinct()
+                    .OrderBy(o=>o)
+                    .ToList();
                 result.Add("");
-                result.Sort();
                 return result;
             }
         }
@@ -4054,7 +4061,9 @@ namespace Odin.Data
                                  {
                                      vid = p.Key.VariationGroupId,
                                      pid = p.Key.ExternalParentId
-                                 }).ToList();
+                                 })
+                                 .OrderBy(o => o.vid)
+                                 .ToList();
 
                     foreach (var x in query)
                     {
@@ -4097,10 +4106,11 @@ namespace Odin.Data
             {
                 if (context.ItemStatusTbl.Any())
                 {
-                    values = (from o in context.ItemStatusTbl select o.StatusCd).ToList();
+                    values = (from o in context.ItemStatusTbl select o.StatusCd)
+                        .OrderBy(o=>o)
+                        .ToList();
                 }
             }
-            values.Sort();
             return values;
         }
 
@@ -4171,16 +4181,16 @@ namespace Odin.Data
         /// <returns>List of tarriff codes</returns>
         private List<string> RetrieveTariffCodeList()
         {
-            List<string> results = new List<string>();
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 if (context.HrmnTariffCd.Any())
                 {
-                    results = (from o in context.HrmnTariffCd select o.HarmonizedCd).ToList();
+                    return (from o in context.HrmnTariffCd select o.HarmonizedCd)
+                        .OrderBy(o => o)
+                        .ToList();
                 }
-                results.Sort();
             }
-            return results;
+            return new List<string>();
         }
 
         /// <summary>
@@ -4191,10 +4201,14 @@ namespace Odin.Data
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                List<string> values = (from o in context.OdinWebTerritories select o.Territory).ToList();
-                values.Sort();
-                return values;
+                if (context.OdinWebTerritories.Any())
+                {
+                    return (from o in context.OdinWebTerritories select o.Territory)
+                    .OrderBy(o => o)
+                    .ToList();
+                }
             }
+            return new List<string>();
         }
 
         /// <summary>
@@ -4223,10 +4237,16 @@ namespace Odin.Data
         {
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                List<string> values = (from o in context.OdinUserRoles select o.Username).Distinct().ToList();
-                values.Sort();
-                return values;
+                if (context.OdinUserRoles.Any())
+                {
+                    List<string> values = (from o in context.OdinUserRoles select o.Username)
+                    .Distinct()
+                    .OrderBy(o => o)
+                    .ToList();
+                    return values;
+                }
             }
+            return new List<string>();
         }
 
         /// <summary>
