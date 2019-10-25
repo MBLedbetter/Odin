@@ -12,6 +12,7 @@ namespace Odin.Data.Tests
     [TestClass]
     public class ItemRepositoryTests
     {
+
         #region Insert Tests
 
         /// <summary>

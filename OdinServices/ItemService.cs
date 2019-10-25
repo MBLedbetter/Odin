@@ -5703,7 +5703,8 @@ namespace OdinServices
                 {
                     if (!string.IsNullOrEmpty(productIdTranslation.ItemId))
                     {
-                        if ((!GlobalData.LocalItemIds.Contains(productIdTranslation.ItemId.Trim())) && (!GlobalData.ItemIds.Contains(productIdTranslation.ItemId.Trim())))
+                        if (!(GlobalData.LocalItemIds.BinarySearch(productIdTranslation.ItemId.Trim()) < 0)
+                            && !(GlobalData.ItemIds.BinarySearch(productIdTranslation.ItemId.Trim()) < 0))
                         {
                             // Error if child element has an itemid that doesn't exist in the db or loacally
                             return new ItemError(
@@ -6206,7 +6207,7 @@ namespace OdinServices
                        var.ItemRow,
                        "Value does not match any values set up in the database.",
                        "Stats Code",
-                           var.StatsCodeUpdate);
+                       var.StatsCodeUpdate);
                 }                
             }
             return null;
@@ -6232,7 +6233,7 @@ namespace OdinServices
                        "Tariff Code",
                        var.TariffCodeUpdate);
                 }
-                if(!GlobalData.TariffCodes.Contains(var.TariffCode))
+                if(GlobalData.TariffCodes.BinarySearch(var.TariffCode)<0)
                 {
                     return new ItemError(
                        var.ItemId,

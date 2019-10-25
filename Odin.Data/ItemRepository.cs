@@ -4230,7 +4230,9 @@ namespace Odin.Data
             {
                 if (context.StatsCodes.Any())
                 {
-                    var query = (from o in context.StatsCodes select o).ToList();
+                    var query = (from o in context.StatsCodes select o)
+                        .OrderBy(x=>x.StatsCode)
+                        .ToList();
                     foreach (var x in query)
                     {
                         results.Add(x.StatsCode, x.BrandName);
