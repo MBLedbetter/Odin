@@ -9856,8 +9856,14 @@ namespace Odin.ViewModels
                     this.Genre1Error = error?.ErrorMessage ?? "";
                     this.Genre1BoxColor = error?.ReturnErrorColor() ?? "White";
 
+                    // ProductIdTranslation Validation
+                    error = ItemService.ValidateProductIdTranslation(ItemViewModelItem);
+                    this.ProductIdTranslationError = error?.ErrorMessage ?? "";
+                    this.ProductIdTranslationBoxColor = error?.ReturnErrorColor() ?? "White";
+
                     this.TabColorWebFlag = CheckWebFlagsTabColor();
                     this.TabColorWebInfo = CheckWebInfoTabColor();
+                    this.TabColorItemInfo = CheckItemInfoTabColor();
                     break;
 
                 case "SellOnWalmart":

@@ -55,6 +55,7 @@
     <Compile Include="ItemObject.cs" />
     <Compile Include="Layout.cs" />
     <Compile Include="PermissionObj.cs" />
+    <Compile Include="ProductComponent.cs" />
     <Compile Include="ProductFormat.cs" />
     <Compile Include="ChildElement.cs" />
     <Compile Include="ProductVariation.cs" />

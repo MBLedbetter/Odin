@@ -446,36 +446,20 @@ namespace OdinModels
         private static List<string> _productGoups = new List<string>();
 
         /// <summary>
-        ///     List of all ItemIds with their dtc prices
+        ///     List of product translation components
         /// </summary>
-        public static List<KeyValuePair<string, decimal>> ProductIdTranslationPrices
+        public static List<ProductComponent> ProductTranslationComponents
         {
             get
             {
-                return _productIdTranslationPrices;
+                return _productTranslationComponents;
             }
             set
             {
-                _productIdTranslationPrices = value;
+                _productTranslationComponents = value;
             }
         }
-        private static List<KeyValuePair<string, decimal>> _productIdTranslationPrices = new List<KeyValuePair<string, decimal>>();
-
-        /// <summary>
-        ///     List of all the product id translation pairs
-        /// </summary>
-        public static List<KeyValuePair<string, string>> ProductIdTranslations
-        {
-            get
-            {
-                return _productIdTranslationS;
-            }
-            set
-            {
-                _productIdTranslationS = value;
-            }
-        }
-        private static List<KeyValuePair<string, string>> _productIdTranslationS = new List<KeyValuePair<string, string>>();
+        private static List<ProductComponent> _productTranslationComponents = new List<ProductComponent>();
 
         /// <summary>
         ///     List of accepted product lines
@@ -573,6 +557,22 @@ namespace OdinModels
             }
         }
         private static List<string> _shoptrendsBrands = new List<string>();
+        
+        /// <summary>
+        ///     Gets or sets List of ItemIds on Shoptrends
+        /// </summary>
+        public static List<string> ShoptrendsItems
+        {
+            get
+            {
+                return _shoptrendsItems;
+            }
+            set
+            {
+                _shoptrendsItems = value;
+            }
+        }
+        private static List<string> _shoptrendsItems = new List<string>();
 
         /// <summary>
         ///     List of characters not allow in the peoplesoft database

@@ -184,9 +184,11 @@
                             <ContextMenu>
                                 <MenuItem Header="Remove Bill of Material"
                                     Command="{Binding RemoveSelectedBillOfMaterialsCommand}"
-                                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedBillOfMaterials}" />
+                                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedBillOfMaterials}"
+                                    IsEnabled="{Binding IsEnabled}" />
                                 <MenuItem Header="Add Item Translation"
-                                    Command="{Binding AddBillOfMaterialsCommand}" />
+                                    Command="{Binding AddBillOfMaterialsCommand}"
+                                    IsEnabled="{Binding IsEnabled}" />
                             </ContextMenu>
                         </ListView.ContextMenu>
                         <ListView.View>
@@ -2676,7 +2678,6 @@
                         Grid.RowSpan="2"
                         Grid.Column="6"
                         HorizontalAlignment="Left"
-                        IsEnabled="{Binding IsEnabled}"
                         Margin="6,8,0,8"
                         Padding="3"
                         TextWrapping="WrapWithOverflow"
@@ -2728,9 +2729,11 @@
                             <ContextMenu>
                                 <MenuItem Header="Remove Product Translation"
                                     Command="{Binding RemoveSelectedProductIdTranslationCommand}"
-                                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedProductIdTranslation}" />
+                                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedProductIdTranslation}" 
+                                    IsEnabled="{Binding IsEnabled}"/>
                                 <MenuItem Header="Add Item Translation"
-                                    Command="{Binding AddProductIdTranslationCommand}" />
+                                    Command="{Binding AddProductIdTranslationCommand}"
+                                    IsEnabled="{Binding IsEnabled}" />
                             </ContextMenu>
                         </ListView.ContextMenu>
                         <ListView.View>

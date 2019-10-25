@@ -1593,6 +1593,7 @@ namespace Odin.Data
             GlobalData.ProductCategories = RetrieveProductCategories();
             GlobalData.ProductFormats = RetrieveProductFormatList();
             GlobalData.ProductGoups = RetrieveProductGroupList();
+            GlobalData.ProductTranslationComponents = RetrieveProductTranslationComponents();
             GlobalData.ProductLines = RetrieveProductLines();
             GlobalData.ProductVariations = RetrieveProductVariations(GlobalData.CustomerIdConversions["AMAZON"]);
             GlobalData.Properties = RetrieveProperties();
@@ -1600,6 +1601,7 @@ namespace Odin.Data
             GlobalData.PsStatuses = RetrievePsStatuses();
             GlobalData.RequestStatus = RetrieveRequestStatuses();
             GlobalData.ShoptrendsBrands = RetrieveShopTrendsBrands();
+            GlobalData.ShoptrendsItems = RetrieveCustomerItems(GlobalData.CustomerIdConversions["TRS"]);
             GlobalData.SpecialCharacters = RetrieveSpecialCharacters();
             GlobalData.StatsCodes = RetrieveStatsCodes();
             GlobalData.TariffCodes = RetrieveTariffCodeList();
@@ -1870,7 +1872,9 @@ namespace Odin.Data
                                                      Status = g.Key.ItemInputStatus,
                                                      UserName = g.Key.Username,
                                                      InputDate = g.Max(x => x.InputDate)
-                                                 }).ToList();
+                                                 })
+                                                .OrderBy(o => o.ItemId)
+                                                .ToList();
                     foreach (var x in odinItemUpdateRecords)
                     {
                         if (!itemIds.Contains(x.ItemId))
@@ -1903,7 +1907,9 @@ namespace Odin.Data
                                                     ItemId = g.Key.InvItemId,
                                                     Status = g.Key.ItemFieldC2,
                                                     Description = g.Key.Descr
-                                                }).ToList();
+                                                })
+                                                .OrderBy(o=>o.ItemId)
+                                                .ToList();
 
                 foreach (var searchItem in searchItems)
                 {
@@ -1928,7 +1934,9 @@ namespace Odin.Data
             {
                 List<OdinItemUpdateRecords> odinItemUpdateRecords = (from o in context.OdinItemUpdateRecords
                                                                      where o.InvItemId == itemId
-                                                                     select o).ToList();
+                                                                     select o)
+                                                                     .OrderBy(o=>o.InputDate)
+                                                                     .ToList();
 
                 foreach (OdinItemUpdateRecords odinItemUpdateRecord in odinItemUpdateRecords)
                 {
@@ -3789,6 +3797,25 @@ namespace Odin.Data
         }
         
         /// <summary>
+        ///     Retrieves a List of itemids for products being sold by a given customer
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
+        private List<string> RetrieveCustomerItems(string customerId)
+        {
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                return  (from o in context.CustomerProductAttributes
+                         where o.Setid=="SHARE" 
+                            && o.CustId == customerId
+                            && o.SendInventory == "Y"
+                         select o.ProductId)
+                         .OrderBy(o=>o)
+                         .ToList();
+            }
+        }
+
+        /// <summary>
         ///     Retrieves a List of exception values for a given field
         /// </summary>
         /// <param name="field">Field being granted the exception</param>
@@ -3937,6 +3964,44 @@ namespace Odin.Data
                 result.Add("");
                 return result;
             }
+        }
+
+        /// <summary>
+        ///     Retrieves a list of product components their dtcPrice and their parent item
+        /// </summary>
+        /// <returns>List(productid, parentid)</returns>
+        private List<ProductComponent> RetrieveProductTranslationComponents()
+        {
+            List<ProductComponent> results = new List<ProductComponent>();
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                var x = (from marketplaceProductTranslations in context.MarketplaceProductTranslations
+                         join itemAttribEx in context.ItemAttribEx
+                            on
+                            new
+                            {
+                                Key1 = marketplaceProductTranslations.ToProductId
+                            }
+                            equals
+                            new
+                            {
+                                Key1 = itemAttribEx.InvItemId
+                            }
+                         where itemAttribEx.Setid == "SHARE"
+                         select new
+                         {
+                             ParentId = marketplaceProductTranslations.FromProductId,
+                             ItemId = marketplaceProductTranslations.ToProductId,
+                             DtcPrice = itemAttribEx.DtcPrice
+                         })
+                         .OrderBy(o=>o.ParentId).ThenBy(o=>o.ItemId)
+                         .ToList();
+                foreach (var y in x)
+                {
+                    results.Add(new ProductComponent(y.ItemId, y.ParentId, y.DtcPrice.ToString()));
+                }
+            }
+            return results;
         }
         
         /// <summary>
