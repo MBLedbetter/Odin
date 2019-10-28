@@ -3073,6 +3073,7 @@ namespace Odin.ViewModels
             this.Items = new ObservableCollection<ItemObject>();
             this.ItemErrors = new ObservableCollection<ItemError>();
             GlobalData.LocalItemIds = new List<string>();
+            GlobalData.UpcsLocal.Clear();
             this.SubmitStatus = false;
             this.SaveStatus = false;
         }
@@ -3175,15 +3176,26 @@ namespace Odin.ViewModels
 
             if (window.DialogResult == true)
             {
+                string oldUpc = this.SelectedItem.Upc;
+                string oldEcomUpc = this.SelectedItem.EcommerceUpc;
                 if ((window.DataContext as ItemViewModel).Remove)
                 {
                     RemoveItem((window.DataContext as ItemViewModel).ItemId);
+                    GlobalData.LocalItemIds.Remove((window.DataContext as ItemViewModel).ItemId);
+                    GlobalData.UpcsLocal.Remove(new KeyValuePair<string, string>(oldUpc, this.SelectedItem.ItemId));
+                    GlobalData.UpcsLocal.Remove(new KeyValuePair<string, string>(oldEcomUpc, this.SelectedItem.ItemId));
                 }
                 else
                 {
+                    // UpdateLocalUpcs((window.DataContext as ItemViewModel).ItemViewModelItem, "Update");
                     this.SelectedItem.UpdateItem((window.DataContext as ItemViewModel).ItemViewModelItem);
 
-                    foreach(ItemError error in selectedItemErrors)
+                    GlobalData.UpcsLocal.Remove(new KeyValuePair<string, string>(oldUpc, this.SelectedItem.ItemId));
+                    GlobalData.UpcsLocal.Add(new KeyValuePair<string, string>(this.SelectedItem.Upc, this.SelectedItem.ItemId));
+                    GlobalData.UpcsLocal.Remove(new KeyValuePair<string, string>(oldEcomUpc, this.SelectedItem.ItemId));
+                    GlobalData.UpcsLocal.Add(new KeyValuePair<string, string>(this.SelectedItem.EcommerceUpc, this.SelectedItem.ItemId));
+
+                    foreach (ItemError error in selectedItemErrors)
                     {
                         if(!(window.DataContext as ItemViewModel).ItemErrors.Where(x=> x.ErrorField == error.ErrorField).Any())
                         {
@@ -4001,7 +4013,37 @@ namespace Odin.ViewModels
                 ErrorLog.LogError("Odin was unable to submit the item request.", ex.ToString());
             }
         }
-        
+
+        /*
+        public void UpdateLocalUpcs(ItemObject item, string status)
+        {
+            KeyValuePair<string, string> upc = new KeyValuePair<string, string>(item.Upc, item.ItemId);
+            KeyValuePair<string, string> ecomUpc = new KeyValuePair<string, string>(item.EcommerceUpc, item.ItemId);
+            if (status=="Remove")
+            {
+                if (!string.IsNullOrEmpty(item.Upc))
+                {
+                    GlobalData.UpcsLocal.Remove(new KeyValuePair<string, string>(item.Upc, item.ItemId));
+                }
+                if (!string.IsNullOrEmpty(item.EcommerceUpc))
+                {
+                    GlobalData.UpcsLocal.Remove(new KeyValuePair<string, string>(item.EcommerceUpc, item.ItemId));
+                }
+            }
+            else
+            {
+                if(item.UpcUpdate)
+                {
+
+                }
+                if (item.EcommerceUpcUpdate)
+                {
+
+                }
+            }
+        }
+        */
+
         /// <summary>
         ///     Scan Active items for 
         /// </summary>

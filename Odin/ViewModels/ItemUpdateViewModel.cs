@@ -241,7 +241,7 @@ namespace Odin.ViewModels
             foreach (ItemObject item in loadedValues)
             {
                 itemIds.Add(item.ItemId);
-                if ((ItemService.CheckIdDuplicate(item.ItemId, itemIds))&&GlobalData.ItemIds.Contains(item.ItemId))
+                if ((ItemService.CheckIdDuplicate(item.ItemId, itemIds)) && GlobalData.ItemIds.Contains(item.ItemId))
                 {
                     try
                     {

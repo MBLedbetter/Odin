@@ -706,6 +706,22 @@ namespace OdinModels
         private static List<KeyValuePair<string, string>> _upcs = new List<KeyValuePair<string, string>>();
 
         /// <summary>
+        ///     List of local upc + itemId & local ecommerce upc + item id pairs 
+        /// </summary>
+        public static List<KeyValuePair<string, string>> UpcsLocal
+        {
+            get
+            {
+                return _upcsLocal;
+            }
+            set
+            {
+                _upcsLocal = value;
+            }
+        }
+        private static List<KeyValuePair<string, string>> _upcsLocal = new List<KeyValuePair<string, string>>();
+
+        /// <summary>
         ///     Username of current user
         /// </summary>
         public static string UserName

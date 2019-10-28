@@ -1009,7 +1009,15 @@ namespace OdinServices
                 if (!string.IsNullOrEmpty(item.AltImageFile2)) { item.EcommerceImagePath3 = CreateImageUrl(item, item.ImagePath, 3); }
                 if (!string.IsNullOrEmpty(item.AltImageFile3)) { item.EcommerceImagePath4 = CreateImageUrl(item, item.ImagePath, 4); }
                 if (!string.IsNullOrEmpty(item.AltImageFile4)) { item.EcommerceImagePath5 = CreateImageUrl(item, item.ImagePath, 5); }
-               
+                
+                if(!string.IsNullOrEmpty(item.Upc))
+                {
+                    GlobalData.UpcsLocal.Add(new KeyValuePair<string, string>(item.Upc, item.ItemId));
+                }
+                if (!string.IsNullOrEmpty(item.EcommerceUpc))
+                {
+                    GlobalData.UpcsLocal.Add(new KeyValuePair<string, string>(item.EcommerceUpc, item.ItemId));
+                }
                 // Load override attributes if admin
                 if (GlobalData.UserPermissions.Contains("ADMIN_CONTROLS"))
                 {
@@ -6724,6 +6732,8 @@ namespace OdinServices
 
             // Retrieve list of all products with the given UPC
             List<KeyValuePair<string, string>> matches = GlobalData.Upcs.Where(v => v.Key == upc).ToList();
+            // Retrieve list of all local products with the given UPC            
+            matches = matches.Concat(GlobalData.UpcsLocal.Where(v => v.Key == upc).ToList()).ToList();
 
             foreach (KeyValuePair<string, string> obj in matches)
             {
