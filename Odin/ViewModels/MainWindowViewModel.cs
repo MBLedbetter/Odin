@@ -2958,7 +2958,7 @@ namespace Odin.ViewModels
                     if (this.Items[i].Status != "Saved")
                     {
                         ItemService.InsertItem(this.Items[i], i + 1);
-                        if (!GlobalData.ItemIds.Contains(this.Items[i].ItemId))
+                        if (GlobalData.ItemIds.BinarySearch(this.Items[i].ItemId)<0)
                         {
                             GlobalData.ItemIds.Add(this.Items[i].ItemId);
                         }
@@ -2975,7 +2975,8 @@ namespace Odin.ViewModels
                     break;
                 }
                 ((BackgroundWorker)sender).ReportProgress(i + 1);
-            }  
+            }
+            GlobalData.ItemIds.Sort();
         }
 
         /// <summary>
@@ -3187,7 +3188,6 @@ namespace Odin.ViewModels
                 }
                 else
                 {
-                    // UpdateLocalUpcs((window.DataContext as ItemViewModel).ItemViewModelItem, "Update");
                     this.SelectedItem.UpdateItem((window.DataContext as ItemViewModel).ItemViewModelItem);
 
                     GlobalData.UpcsLocal.Remove(new KeyValuePair<string, string>(oldUpc, this.SelectedItem.ItemId));
@@ -4013,37 +4013,7 @@ namespace Odin.ViewModels
                 ErrorLog.LogError("Odin was unable to submit the item request.", ex.ToString());
             }
         }
-
-        /*
-        public void UpdateLocalUpcs(ItemObject item, string status)
-        {
-            KeyValuePair<string, string> upc = new KeyValuePair<string, string>(item.Upc, item.ItemId);
-            KeyValuePair<string, string> ecomUpc = new KeyValuePair<string, string>(item.EcommerceUpc, item.ItemId);
-            if (status=="Remove")
-            {
-                if (!string.IsNullOrEmpty(item.Upc))
-                {
-                    GlobalData.UpcsLocal.Remove(new KeyValuePair<string, string>(item.Upc, item.ItemId));
-                }
-                if (!string.IsNullOrEmpty(item.EcommerceUpc))
-                {
-                    GlobalData.UpcsLocal.Remove(new KeyValuePair<string, string>(item.EcommerceUpc, item.ItemId));
-                }
-            }
-            else
-            {
-                if(item.UpcUpdate)
-                {
-
-                }
-                if (item.EcommerceUpcUpdate)
-                {
-
-                }
-            }
-        }
-        */
-
+        
         /// <summary>
         ///     Scan Active items for 
         /// </summary>

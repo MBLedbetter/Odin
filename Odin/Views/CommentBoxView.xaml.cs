@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Odin.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,12 +26,18 @@ namespace Odin.Views
        
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
+            if ((this.DataContext as CommentBoxViewModel).BoxChecked())
+            {
+                this.DialogResult = true;
+            }
         }
 
         private void SkipButton_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = false;
+            if ((this.DataContext as CommentBoxViewModel).BoxChecked())
+            {
+                this.DialogResult = false;
+            }
         }
     }
 }

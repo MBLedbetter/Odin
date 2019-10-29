@@ -2167,7 +2167,7 @@ namespace OdinServices
             validationError =ValidateCasepackQty(var);
             if (validationError != null) { ErrorList.Add(validationError); }
             // Category //
-            validationError =ValidateCategory(var, "1");
+            validationError = ValidateCategory(var, "1", isSubmit);
             if (validationError != null) { ErrorList.Add(validationError); }
             // Category 2 //
             validationError =ValidateCategory(var, "2");
@@ -2203,7 +2203,7 @@ namespace OdinServices
             validationError =ValidateDirectImport(var);
             if (validationError != null) { ErrorList.Add(validationError); }
             // DTC Price //
-            validationError = ValidateDtcPrice(var);
+            validationError = ValidateDtcPrice(var, isSubmit);
             if (validationError != null) { ErrorList.Add(validationError); }
             // Duty //
             validationError =ValidateDuty(var);
@@ -2308,7 +2308,7 @@ namespace OdinServices
             validationError =ValidateEcommerceUpc(var);
             if (validationError != null) { ErrorList.Add(validationError); }
             // Genre1 //
-            validationError = ValidateGenre(var,1);
+            validationError = ValidateGenre(var,1, isSubmit);
             if (validationError != null) { ErrorList.Add(validationError); }
             // Genre2 //
             validationError = ValidateGenre(var, 2);
@@ -2323,7 +2323,7 @@ namespace OdinServices
             validationError =ValidateItemDimension(var, "Height");
             if (validationError != null) { ErrorList.Add(validationError); }
             // Image Path //
-            validationError =ValidateImagePath(var, "1");
+            validationError =ValidateImagePath(var, "1", isSubmit);
             if (validationError != null) { ErrorList.Add(validationError); }
             // Innerpack Height //
             validationError =ValidateInnerpack(var, "Height");
@@ -2359,10 +2359,10 @@ namespace OdinServices
             validationError =ValidateItemGroup(var);
             if (validationError != null) { ErrorList.Add(validationError); }
             // Item Id //
-            validationError =ValidateItemId(var);
+            validationError = ValidateItemId(var);
             if (validationError != null) { ErrorList.Add(validationError); }
             // Item Keywords //
-            validationError =ValidateItemKeywords(var);
+            validationError = ValidateItemKeywords(var, isSubmit);
             if (validationError != null) { ErrorList.Add(validationError); }
             // Language //
             validationError =ValidateLanguage(var);
@@ -2927,7 +2927,7 @@ namespace OdinServices
         /// <param name="value">Item Obejct</param>
         /// <param name="categoryNumber">Category Number as string</param>
         /// <returns></returns>
-        public ItemError ValidateCategory(ItemObject var, string categoryNumber)
+        public ItemError ValidateCategory(ItemObject var, string categoryNumber, bool isSubmit = false)
         {
             string value = string.Empty;
             bool webRequired = false;
@@ -2940,6 +2940,10 @@ namespace OdinServices
                     webRequired = true;
                     fieldName = "Category";
                     update = var.CategoryUpdate;
+                    if(isSubmit && var.SellOnTrends == "Y")
+                    {
+                        update = true;
+                    }
                     break;
                 case "2":
                     value = var.Category2;
@@ -3287,8 +3291,13 @@ namespace OdinServices
         /// </summary>
         /// <param name="var">Item Object</param>
         /// <returns></returns>
-        public ItemError ValidateDtcPrice(ItemObject var)
+        public ItemError ValidateDtcPrice(ItemObject var, bool isSubmit = false)
         {
+            bool update = var.DtcPriceUpdate;
+            if(isSubmit && var.SellOnTrs=="Y")
+            {
+                update = true;
+            }
             if (!string.IsNullOrEmpty(var.DtcPrice))
             {
                 if (var.DtcPrice.Length > 9)
@@ -3298,7 +3307,7 @@ namespace OdinServices
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "9 characters.",
                         "Dtc Price",
-                        var.DtcPriceUpdate);
+                        update);
                 }
                 if (!DbUtil.IsNumber(var.DtcPrice))
                 {
@@ -3307,7 +3316,7 @@ namespace OdinServices
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_NonNumeric,
                         "Dtc Price",
-                        var.DtcPriceUpdate);
+                        update);
                 }
             }
             if (string.IsNullOrEmpty(var.DtcPrice) || !DbUtil.CheckGreaterThanZero(var.DtcPrice))
@@ -3319,7 +3328,7 @@ namespace OdinServices
                         var.ItemRow,
                         "Required if Sell on Shop Trends is set to 'Y'.",
                         "Dtc Price",
-                        var.DtcPriceUpdate);
+                        update);
                 }
                 if (var.ProductLine == "Poster Frame" && var.ItemId.Substring(0, 3) == "POD")
                 {
@@ -3328,7 +3337,7 @@ namespace OdinServices
                         var.ItemRow,
                         "Required if product line = Poster Frame and item Id starts with 'POD'.",
                         "Dtc Price",
-                        var.DtcPriceUpdate);
+                        update);
                 }
                 List<string> parents = GlobalData.ProductTranslationComponents
                     .Where(x => x.ProductId == var.ItemId)
@@ -4437,7 +4446,7 @@ namespace OdinServices
         /// <param name="var">Item Object</param>
         /// <param name="type"></param>
         /// <returns>Error message or "" if value is valid</returns>
-        public ItemError ValidateGenre(ItemObject var, int type)
+        public ItemError ValidateGenre(ItemObject var, int type, bool isSubmit = false)
         {
             
             string value = string.Empty;
@@ -4447,6 +4456,10 @@ namespace OdinServices
                 case 1:
                     value = var.Genre1;
                     update = var.Genre1Update;
+                    if(isSubmit && var.SellOnTrs=="Y")
+                    {
+                        update = true;
+                    }
                     break;
                 case 2:
                     value = var.Genre2;
@@ -4634,7 +4647,7 @@ namespace OdinServices
         /// </summary>
         /// <param name="var">Item Object</param>
         /// <param name="imageNumber">Image number as string</param>
-        public ItemError ValidateImagePath(ItemObject var, string imageNumber)
+        public ItemError ValidateImagePath(ItemObject var, string imageNumber, bool isSubmit = false)
         {
             string value = string.Empty;
             bool required = false;
@@ -4645,6 +4658,11 @@ namespace OdinServices
                     value = var.ImagePath.Trim();
                     update = var.ImagePathUpdate;
                     required = true;
+                    if(isSubmit)
+                    {
+                        // Image Path 1 is required for any item being submited to an online store
+                        update = true;
+                    }
                     break;
                 case "2":
                     value = var.AltImageFile1.Trim();
@@ -4672,78 +4690,76 @@ namespace OdinServices
                 {
                     fileType = value.Substring(value.Length - 4).ToUpper();
                 }
-                if (!string.IsNullOrEmpty(value))
+                if (value.Contains("'") || value.Contains("`"))
                 {
-                    if (value.Contains("'") || value.Contains("`"))
-                    {
-                        return new ItemError(
-                            var.ItemId,
-                            var.ItemRow,
-                            "Value cannot contain apostrophes.",
-                            "Image Path " + imageNumber,
-                            update);
-                    }
-                    if (CheckSpecialChar(value))
-                    {
-                        return new ItemError(
-                            var.ItemId,
-                            var.ItemRow,
-                            "Value cannot contain special characters.",
-                            "Image Path " + imageNumber,
-                            update);
-                    }
-                    if (fileType != ".JPG"
-                            && fileType != ".PNG"
-                            && fileType != ".TIF")
-                    {
-                        return new ItemError(
-                            var.ItemId,
-                            var.ItemRow,
-                            "Invalid file type. (Must be .jpg, .png, or .tif).",
-                            "Image Path " + imageNumber,
-                            update);
-                    }
-                    if (!CheckFileExists(value, false))
-                    {
-                        return new ItemError(
-                            var.ItemId,
-                            var.ItemRow,
-                            @" could not find image with given filepath : " + value,
-                            "Image Path " + imageNumber,
-                            update);
-                    }
-                    if (!CheckFileSize(value, false) && fileType != ".TIF")
-                    {
-                        return new ItemError(
-                            var.ItemId,
-                            var.ItemRow,
-                            @" Image file is too large (Max 20,000KB for .jpg & .png files)",
-                            "Image Path " + imageNumber,
-                            update);
-                    }
-                    if (value.Length > 254)
-                    {
-                        return new ItemError(
-                            var.ItemId,
-                            var.ItemRow,
-                            OdinServices.Properties.Resources.Error_LengthMax + "254 characters.",
-                            "Image Path " + imageNumber,
-                            update);
-                    }
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Value cannot contain apostrophes.",
+                        "Image Path " + imageNumber,
+                        update);
                 }
-                else
+                if (CheckSpecialChar(value))
                 {
-                    if((var.SellOnTrends == "Y" || var.SellOnTrs == "Y") && required)
-                    {
-                        return new ItemError(
-                            var.ItemId,
-                            var.ItemRow,
-                            OdinServices.Properties.Resources.Error_RequiredWeb,
-                            "Image Path " + imageNumber,
-                            update);
-                    }
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Value cannot contain special characters.",
+                        "Image Path " + imageNumber,
+                        update);
+                }
+                if (fileType != ".JPG"
+                        && fileType != ".PNG"
+                        && fileType != ".TIF")
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Invalid file type. (Must be .jpg, .png, or .tif).",
+                        "Image Path " + imageNumber,
+                        update);
+                }
+                if (!CheckFileExists(value, false))
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        @" could not find image with given filepath : " + value,
+                        "Image Path " + imageNumber,
+                        update);
+                }
+                if (!CheckFileSize(value, false) && fileType != ".TIF")
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        @" Image file is too large (Max 20,000KB for .jpg & .png files)",
+                        "Image Path " + imageNumber,
+                        update);
+                }
+                if (value.Length > 254)
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        OdinServices.Properties.Resources.Error_LengthMax + "254 characters.",
+                        "Image Path " + imageNumber,
+                        update);
                 }
             }
+            else
+            {
+                if ((var.SellOnTrends == "Y" || var.SellOnTrs == "Y") && required)
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        OdinServices.Properties.Resources.Error_RequiredWeb,
+                        "Image Path " + imageNumber,
+                        update);
+                }
+            }
+
             return null;
         }
 
@@ -5140,9 +5156,14 @@ namespace OdinServices
         /// </summary>
         /// <param name="var">Item Object</param>
         /// <returns></returns>
-        public ItemError ValidateItemKeywords(ItemObject var)
+        public ItemError ValidateItemKeywords(ItemObject var, bool isSubmit = false)
         {
-            if(!string.IsNullOrEmpty(var.ItemKeywords))
+            bool update = var.ItemKeywordsUpdate;
+            if(isSubmit && var.SellOnTrends=="Y")
+            {
+                update = true;
+            }
+            if (!string.IsNullOrEmpty(var.ItemKeywords))
             {
                 if (var.ItemKeywords.Length > 1000)
                 {
@@ -5151,7 +5172,7 @@ namespace OdinServices
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_LengthMax + "1000 characters.",
                         "Item Keywords",
-                        var.ItemKeywordsUpdate);
+                        update);
                 }
             }
             if (var.HasWeb)
@@ -5163,7 +5184,7 @@ namespace OdinServices
                         var.ItemRow,
                         OdinServices.Properties.Resources.Error_RequiredWeb,
                         "Item Keywords",
-                        var.ItemKeywordsUpdate);
+                        update);
                 }
             }
             return null;

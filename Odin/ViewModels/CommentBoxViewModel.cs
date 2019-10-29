@@ -5,13 +5,15 @@ using Odin.Views;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using System.Windows.Input;
+using System.Windows;
 
 namespace Odin.ViewModels
 {
     class CommentBoxViewModel : ViewModelBase, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler CommentPropertyChanged;
-
+        
         #region Properties
 
         /// <summary>
@@ -101,5 +103,27 @@ namespace Odin.ViewModels
         }
 
         #endregion // Properties
+
+        #region Methods
+
+        /// <summary>
+        ///     Returns true if a website box has been checked. Otherwise it displays a message
+        ///     and returns false
+        /// </summary>
+        /// <returns></returns>
+        public bool BoxChecked()
+        {
+            if(this.ShopTrendsCheckBox || this.TrendsInternationalCheckBox)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Please check a website to submit to.");
+                return false;
+            }
+        }
+
+        #endregion // Methods
     }
 }
