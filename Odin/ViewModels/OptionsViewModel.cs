@@ -1945,13 +1945,13 @@ namespace Odin.ViewModels
         {
             TextPromptView textWindow = new TextPromptView()
             {
-                DataContext = new TextPromptViewModel()
+                DataContext = new TextPromptViewModel("Add Option", "Option")
             };
             textWindow.ShowDialog();
 
             if (textWindow.DialogResult==true)
             {
-                string result = (textWindow.DataContext as TextPromptViewModel).TextValue;
+                string result = (textWindow.DataContext as TextPromptViewModel).Field1Value;
 
                 if (optionType == "ProductFormatExclusion")
                 {

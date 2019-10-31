@@ -308,12 +308,12 @@ namespace Odin.ViewModels
             {
                 TextPromptView textWindow = new TextPromptView
                 {
-                    DataContext = new TextPromptViewModel()
+                    DataContext = new TextPromptViewModel("Add Field", "Field")
                 };
                 textWindow.ShowDialog();
                 if (textWindow.DialogResult == true)
                 {
-                    field = '"' + (textWindow.DataContext as TextPromptViewModel).TextValue + '"';
+                    field = '"' + (textWindow.DataContext as TextPromptViewModel).Field1Value + '"';
                 }
                 else return;
             }
@@ -475,12 +475,14 @@ namespace Odin.ViewModels
                     if (this.ExcelLayout == "-NEW-")
                     {
                         // int newId = RetrieveExcelLayoutNames().Count + 1;
-                        TextPromptView textWindow = new TextPromptView();
-                        textWindow.DataContext = new TextPromptViewModel();
+                        TextPromptView textWindow = new TextPromptView
+                        {
+                            DataContext = new TextPromptViewModel("Save Excel", "Excel Name")
+                        };
                         textWindow.ShowDialog();
                         if (textWindow.DialogResult == true)
                         {
-                            string name = (textWindow.DataContext as TextPromptViewModel).TextValue;
+                            string name = (textWindow.DataContext as TextPromptViewModel).Field1Value;
                             if (this.ExcelLists.Contains(name))
                             {
                                 MessageBox.Show(name + " is already being used by another layout. Please select another name.");
@@ -525,12 +527,14 @@ namespace Odin.ViewModels
             string field = this.SelectedField;
             if (this.SelectedField == "-TEXT-")
             {
-                TextPromptView textWindow = new TextPromptView();
-                textWindow.DataContext = new TextPromptViewModel();
+                TextPromptView textWindow = new TextPromptView
+                {
+                    DataContext = new TextPromptViewModel("", "")
+                };
                 textWindow.ShowDialog();
                 if (textWindow.DialogResult == true)
                 {
-                    field = '"' + (textWindow.DataContext as TextPromptViewModel).TextValue + '"';
+                    field = '"' + (textWindow.DataContext as TextPromptViewModel).Field1Value + '"';
                 }
                 else return;
             }

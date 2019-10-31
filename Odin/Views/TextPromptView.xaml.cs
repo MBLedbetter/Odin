@@ -22,7 +22,7 @@ namespace Odin.Views
         public TextPromptView()
         {
             InitializeComponent();
-            TextFocus.Focus();
+            TextBox1.Focus();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

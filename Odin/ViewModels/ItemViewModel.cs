@@ -8508,10 +8508,29 @@ namespace Odin.ViewModels
         
         #region Methods
 
+        /// <summary>
+        ///     Opens textprompt for adding a new Product Id Translation
+        /// </summary>
         public void AddProductIdTranslation()
         {
-            MessageBox.Show("TEST");
+            TextPromptView textWindow = new TextPromptView()
+            {
+                DataContext = new TextPromptViewModel("Add Product Id Translation", "Item Id", "Qty")
+            };
+            textWindow.ShowDialog();
+
+            if (textWindow.DialogResult == true)
+            {
+                this.ProductIdTranslation.Add(new ChildElement(
+                    (textWindow.DataContext as TextPromptViewModel).Field1Value, 
+                    this.ItemId,
+                    Convert.ToInt32((textWindow.DataContext as TextPromptViewModel).Field2Value)));
+            }
         }
+
+        /// <summary>
+        ///     Opens textprompt for adding a new Bill of Materials
+        /// </summary>
         public void AddBillOfMaterials()
         {
             MessageBox.Show("TEST 2");
