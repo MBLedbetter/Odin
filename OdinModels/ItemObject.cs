@@ -1233,7 +1233,25 @@ namespace OdinModels
             }
         }
         private string _ecommerceupc = string.Empty;
-        
+
+        /// <summary>
+        ///     Gets or sets the Exclusive
+        /// </summary>
+        public string Exclusive
+        {
+            get
+            {
+                return _exclusive;
+            }
+            set
+            {
+                if (_exclusive != value) { ExclusiveUpdate = true; }
+                _exclusive = value;
+                OnPropertyChanged("Exclusive");
+            }
+        }
+        private string _exclusive = string.Empty;
+
         /// <summary>
         ///     Gets or sets the Genre1
         /// </summary>
@@ -1844,6 +1862,24 @@ namespace OdinModels
             }
         }
         private string _onSite = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the Orientation
+        /// </summary>
+        public string Orientation
+        {
+            get
+            {
+                return _orientation;
+            }
+            set
+            {
+                if (_orientation != value) { this.OrientationUpdate = true; }
+                _orientation = value;
+                OnPropertyChanged("Orientation");
+            }
+        }
+        private string _orientation = string.Empty;
 
         /// <summary>
         ///     Gets or sets the PricingGroup
@@ -3612,6 +3648,11 @@ namespace OdinModels
         public bool EcommerceUpcUpdate = false;
 
         /// <summary>
+        ///     Exclusive update flag
+        /// </summary>
+        public bool ExclusiveUpdate = false;
+
+        /// <summary>
         ///     Genre1Update update flag
         /// </summary>
         public bool Genre1Update = false;
@@ -3765,6 +3806,11 @@ namespace OdinModels
         ///     MsrpMxnUpdate update flag
         /// </summary>
         public bool MsrpMxnUpdate = false;
+
+        /// <summary>
+        ///     Orientation update flag
+        /// </summary>
+        public bool OrientationUpdate = false;
 
         /// <summary>
         ///     PricingGroupUpdate update flag
@@ -4071,6 +4117,7 @@ namespace OdinModels
             this.EcommerceSizeUpdate = false;
             this.EcommerceSubjectKeywordsUpdate = false;
             this.EcommerceUpcUpdate = false;
+            this.ExclusiveUpdate = false;
             this.Genre1Update = false;
             this.Genre2Update = false;
             this.Genre3Update = false;
@@ -4102,6 +4149,7 @@ namespace OdinModels
             this.MsrpUpdate = false;
             this.MsrpCadUpdate = false;
             this.MsrpMxnUpdate = false;
+            this.OrientationUpdate = false;
             this.ProductFormatUpdate = false;
             this.ProductGroupUpdate = false;
             this.ProductIdTranslationUpdate = false;
@@ -4310,6 +4358,7 @@ namespace OdinModels
                 this.EcommerceSizeUpdate = true;
                 this.EcommerceSubjectKeywordsUpdate = true;
                 this.EcommerceUpcUpdate = true;
+                this.ExclusiveUpdate = true;
                 this.Genre1Update = true;
                 this.Genre2Update = true;
                 this.Genre3Update = true;
@@ -4341,6 +4390,7 @@ namespace OdinModels
                 this.MsrpUpdate = true;
                 this.MsrpCadUpdate = true;
                 this.MsrpMxnUpdate = true;
+                this.OrientationUpdate = true;
                 this.PricingGroupUpdate = true;
                 this.PrintOnDemandUpdate = true;
                 this.ProductFormatUpdate = true;
@@ -4456,6 +4506,7 @@ namespace OdinModels
                 this.EcommerceSize = item.EcommerceSize;
                 this.EcommerceSubjectKeywords = item.EcommerceSubjectKeywords;
                 this.EcommerceUpc = item.EcommerceUpc;
+                this.Exclusive = item.Exclusive;
                 this.Genre1 = item.Genre1;
                 this.Genre2 = item.Genre2;
                 this.Genre3 = item.Genre3;
@@ -4488,6 +4539,7 @@ namespace OdinModels
                 this.Msrp = item.Msrp;
                 this.MsrpCad = item.MsrpCad;
                 this.MsrpMxn = item.MsrpMxn;
+                this.Orientation = item.Orientation;
                 this.ProductFormat = item.ProductFormat;
                 this.ProductGroup = item.ProductGroup;
                 this.ProductIdTranslation = item.ProductIdTranslation;

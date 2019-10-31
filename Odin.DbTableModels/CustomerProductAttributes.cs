@@ -26,6 +26,11 @@ namespace Odin.DbTableModels
         public int InnerpackQty { get; set; }
 
         /// <summary>
+        ///     Gets or sets IS_EXCLUSIVE
+        /// </summary>
+        public string IsExclusive { get; set; }
+
+        /// <summary>
         ///     Gets or sets PRODUCT_ID
         /// </summary>
         public string ProductId { get; set; }

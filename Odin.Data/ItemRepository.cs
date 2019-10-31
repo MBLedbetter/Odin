@@ -255,20 +255,64 @@ namespace Odin.Data
         /// <param name="flag"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public void InsertCustomerProductAttributes(string itemId, string customerId, string sendInventoryFlag, OdinContext context)
+        public void InsertCustomerProductAttributes(ItemObject item, string customerName, string customerId, OdinContext context)
         {
-            if (sendInventoryFlag == "Y")
+            string sendInventory = "N";
+            switch(GlobalData.CustomerIdConversions[customerName])
             {
-                if (!context.CustomerProductAttributes.Any(o => o.ProductId == itemId && o.CustId == customerId && o.Setid == "SHARE"))
+                case "ALL POSTERS":
+                    sendInventory = item.SellOnAllPosters;
+                    break;
+                case "AMAZON":
+                    sendInventory = item.SellOnAmazon;
+                    break;
+                case "AMAZON SELLER CENTRAL":
+                    sendInventory = item.SellOnAmazonSellerCentral;
+                    break;
+                case "FANATICS":
+                    sendInventory = item.SellOnFanatics;
+                    break;
+                case "GUITAR CENTER":
+                    sendInventory = item.SellOnGuitarCenter;
+                    break;
+                case "HAYNEEDLE":
+                    sendInventory = item.SellOnHayneedle;
+                    break;
+                case "HOUZZ":
+                    sendInventory = item.SellOnHouzz;
+                    break;
+                case "TARGET":
+                    sendInventory = item.SellOnTarget;
+                    break;
+                case "TRS":
+                    sendInventory = item.SellOnTrs;
+                    break;
+                case "WALMART":
+                    sendInventory = item.SellOnWalmart;
+                    break;
+                case "WAYFAIR":
+                    sendInventory = item.SellOnWayfair;
+                    break;
+                default:
+
+                    break;
+            }
+            string isExclusive = (customerId == item.Exclusive) ? "Y" : "N";
+
+            // only insert the values if the item has been flagged or set as an exclusive
+            if (sendInventory == "Y" || isExclusive == "Y")
+            {
+                if (!context.CustomerProductAttributes.Any(o => o.ProductId == item.ItemId && o.CustId == customerId && o.Setid == "SHARE"))
                 {
                     context.CustomerProductAttributes.Add(new CustomerProductAttributes
                     {
                         Setid = "SHARE",
-                        ProductId = itemId,
+                        ProductId = item.ItemId,
                         CustId = customerId,
                         InnerpackQty = 0,
+                        IsExclusive = isExclusive,
                         CasepackQty = 0,
-                        SendInventory = sendInventoryFlag
+                        SendInventory = sendInventory
                     });
                 }
             }
@@ -282,17 +326,10 @@ namespace Odin.Data
         /// <returns></returns>
         public void InsertCustomerProductAttributesAll(ItemObject item, OdinContext context)
         {
-            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["ALL POSTERS"], item.SellOnAllPosters, context) ;
-            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["AMAZON"], item.SellOnAmazon, context);
-            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["AMAZON SELLER CENTRAL"], item.SellOnAmazonSellerCentral, context);
-            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["FANATICS"], item.SellOnFanatics, context);
-            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["GUITAR CENTER"], item.SellOnGuitarCenter, context);
-            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["HAYNEEDLE"], item.SellOnHayneedle, context);
-            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["HOUZZ"], item.SellOnHouzz, context);
-            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["TARGET"], item.SellOnTarget, context);
-            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["TRS"], item.SellOnTrs, context);
-            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["WALMART"], item.SellOnWalmart, context) ;
-            InsertCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["WAYFAIR"], item.SellOnWayfair, context);            
+            foreach(var cust in GlobalData.CustomerIdConversions)
+            {
+                InsertCustomerProductAttributes(item, cust.Key, cust.Value, context);
+            }
         }
         
         /// <summary>
@@ -720,6 +757,7 @@ namespace Odin.Data
                 DirectImport = item.DirectImport,
                 Duty = item.Duty,
                 Ean = item.Ean,
+                Exclusive = item.Exclusive,
                 Fplcanl1 = "",
                 Fplusl1 = "",
                 Genre1 = item.Genre1,
@@ -753,6 +791,7 @@ namespace Odin.Data
                 Msrp = item.Msrp,
                 MsrpCad = item.MsrpCad,
                 MsrpMxn = item.MsrpMxn,
+                Orientation = item.Orientation,
                 ProductFormat = item.ProductFormat,
                 ProductGroup = item.ProductGroup,
                 ProductIdTranslation = item.ReturnProductIdTranslations(),
@@ -1744,6 +1783,7 @@ namespace Odin.Data
                         EcommerceSubjectKeywords = (!string.IsNullOrEmpty(odinItem.EcommerceSubjectKeywords)) ? odinItem.EcommerceSubjectKeywords.Trim() : "",
                         EcommerceSize = (!string.IsNullOrEmpty(odinItem.EcommerceSize)) ? odinItem.EcommerceSize.Trim() : "",
                         EcommerceUpc = (!string.IsNullOrEmpty(odinItem.EcommerceUpc)) ? odinItem.EcommerceUpc.Trim() : "",
+                        Exclusive = (!string.IsNullOrEmpty(odinItem.ProductExclusive)) ? odinItem.ProductExclusive.Trim() : "",
                         Genre1 = (!string.IsNullOrEmpty(odinItem.Genre1)) ? odinItem.Genre1.Trim() : "",
                         Genre2 = (!string.IsNullOrEmpty(odinItem.Genre2)) ? odinItem.Genre2.Trim() : "",
                         Genre3 = (!string.IsNullOrEmpty(odinItem.Genre3)) ? odinItem.Genre3.Trim() : "",
@@ -1777,6 +1817,7 @@ namespace Odin.Data
                         Msrp = (!string.IsNullOrEmpty(odinItem.MsrpUsd)) ? DbUtil.ZeroTrim(odinItem.MsrpUsd, 2) : "",
                         OnSite = (!string.IsNullOrEmpty(odinItem.OnSite)) ? odinItem.OnSite : "",
                         OnShopTrends = (!string.IsNullOrEmpty(odinItem.OnShopTrends)) ? odinItem.OnShopTrends : "",
+                        Orientation = (!string.IsNullOrEmpty(odinItem.ProductOrientation)) ? odinItem.ProductOrientation.Trim() : "",
                         PricingGroup = (!string.IsNullOrEmpty(odinItem.PricingGroup)) ? odinItem.PricingGroup.Trim() : "",
                         ProductFormat = (!string.IsNullOrEmpty(odinItem.ProdFormat)) ? odinItem.ProdFormat.Trim() : "",
                         ProductGroup = (!string.IsNullOrEmpty(odinItem.ProdGroup)) ? odinItem.ProdGroup.Trim() : "",
@@ -1935,12 +1976,145 @@ namespace Odin.Data
                 List<OdinItemUpdateRecords> odinItemUpdateRecords = (from o in context.OdinItemUpdateRecords
                                                                      where o.InvItemId == itemId
                                                                      select o)
-                                                                     .OrderBy(o=>o.InputDate)
+                                                                     .OrderBy(o => o.InputDate)
                                                                      .ToList();
 
                 foreach (OdinItemUpdateRecords odinItemUpdateRecord in odinItemUpdateRecords)
                 {
-                    ItemObject item = new ItemObject(1);
+                    ItemObject item = new ItemObject(1)
+                    {
+                        AccountingGroup = odinItemUpdateRecord.AccountingGroup,
+                        AltImageFile1 = odinItemUpdateRecord.AltImageFile1,
+                        AltImageFile2 = odinItemUpdateRecord.AltImageFile2,
+                        AltImageFile3 = odinItemUpdateRecord.AltImageFile3,
+                        AltImageFile4 = odinItemUpdateRecord.AltImageFile4,
+                        CasepackHeight = odinItemUpdateRecord.CasepackHeight,
+                        CasepackLength = odinItemUpdateRecord.CasepackLength,
+                        CasepackQty = odinItemUpdateRecord.CasepackQty,
+                        CasepackUpc = odinItemUpdateRecord.CasepackUpc,
+                        CasepackWidth = odinItemUpdateRecord.CasepackWidth,
+                        CasepackWeight = odinItemUpdateRecord.CasepackWeight,
+                        Category = odinItemUpdateRecord.Category,
+                        Category2 = odinItemUpdateRecord.Category2,
+                        Category3 = odinItemUpdateRecord.Category3,
+                        Color = odinItemUpdateRecord.Color,
+                        Copyright = odinItemUpdateRecord.Copyright,
+                        CountryOfOrigin = odinItemUpdateRecord.CountryOfOrigin,
+                        CostProfileGroup = odinItemUpdateRecord.CostProfileGroup,
+                        Description = odinItemUpdateRecord.Description,
+                        DirectImport = odinItemUpdateRecord.DirectImport,
+                        DefaultActualCostCad = odinItemUpdateRecord.DefaultActualCostCad,
+                        DefaultActualCostUsd = odinItemUpdateRecord.DefaultActualCostUsd,
+                        Duty = odinItemUpdateRecord.Duty,
+                        Ean = odinItemUpdateRecord.Ean,
+                        EcommerceItemName = odinItemUpdateRecord.AItemName,
+                        EcommerceItemTypeKeywords = odinItemUpdateRecord.AItemTypeKeywords,
+                        EcommerceModelName = odinItemUpdateRecord.AModelName,
+                        EcommerceProductCategory = odinItemUpdateRecord.AProductCategory,
+                        EcommerceProductSubcategory = odinItemUpdateRecord.AProductSubcategory,
+                        EcommerceAsin = odinItemUpdateRecord.AAsin,
+                        EcommerceBullet1 = odinItemUpdateRecord.ABullet1,
+                        EcommerceBullet2 = odinItemUpdateRecord.ABullet2,
+                        EcommerceBullet3 = odinItemUpdateRecord.ABullet3,
+                        EcommerceBullet4 = odinItemUpdateRecord.ABullet4,
+                        EcommerceBullet5 = odinItemUpdateRecord.ABullet5,
+                        EcommerceProductDescription = odinItemUpdateRecord.AProductDescription,
+                        EcommerceExternalIdType = odinItemUpdateRecord.AExternalIdType,
+                        EcommerceExternalId = odinItemUpdateRecord.AExternalId,
+                        EcommerceGenericKeywords = odinItemUpdateRecord.AGenericKeywords,
+                        EcommerceSubjectKeywords = odinItemUpdateRecord.ASubjectKeywords,
+                        EcommerceImagePath1 = odinItemUpdateRecord.AImageUrl1,
+                        EcommerceImagePath2 = odinItemUpdateRecord.AImageUrl2,
+                        EcommerceImagePath3 = odinItemUpdateRecord.AImageUrl3,
+                        EcommerceImagePath4 = odinItemUpdateRecord.AImageUrl4,
+                        EcommerceImagePath5 = odinItemUpdateRecord.AImageUrl5,
+                        EcommerceSize = odinItemUpdateRecord.ASize,
+                        EcommerceUpc = odinItemUpdateRecord.AUpc,
+                        EcommerceCost = odinItemUpdateRecord.ACost,
+                        EcommerceMsrp = odinItemUpdateRecord.AMsrp,
+                        EcommerceManufacturerName = odinItemUpdateRecord.AManufacturerName,
+                        EcommerceItemLength = odinItemUpdateRecord.AItemLength,
+                        EcommerceItemHeight = odinItemUpdateRecord.AItemHeight,
+                        EcommerceItemWeight = odinItemUpdateRecord.AItemWeight,
+                        EcommerceItemWidth = odinItemUpdateRecord.AItemWidth,
+                        EcommercePackageHeight = odinItemUpdateRecord.APackageHeight,
+                        EcommercePackageLength = odinItemUpdateRecord.APackageLength,
+                        EcommercePackageWeight = odinItemUpdateRecord.APackageWeight,
+                        EcommercePackageWidth = odinItemUpdateRecord.APackageWidth,
+                        EcommercePageQty = odinItemUpdateRecord.APageQty,
+                        EcommerceParentAsin = odinItemUpdateRecord.AParentAsin,
+                        EcommerceComponents = odinItemUpdateRecord.AComponents,
+                        Exclusive = odinItemUpdateRecord.Exclusive,
+                        Gpc = odinItemUpdateRecord.Gpc,
+                        Genre1 = odinItemUpdateRecord.Genre1,
+                        Genre2 = odinItemUpdateRecord.Genre2,
+                        Genre3 = odinItemUpdateRecord.Genre3,
+                        Height = odinItemUpdateRecord.Height,
+                        ImagePath = odinItemUpdateRecord.ImagePath,
+                        InnerpackHeight = odinItemUpdateRecord.InnerpackHeight,
+                        InnerpackLength = odinItemUpdateRecord.InnerpackLength,
+                        InnerpackQuantity = odinItemUpdateRecord.InnerpackQty,
+                        InnerpackUpc = odinItemUpdateRecord.InnerpackUpc,
+                        InnerpackWidth = odinItemUpdateRecord.InnerpackWidth,
+                        InnerpackWeight = odinItemUpdateRecord.InnerpackWeight,
+                        Isbn = odinItemUpdateRecord.Isbn,
+                        ItemCategory = odinItemUpdateRecord.ItemCategory,
+                        ItemFamily = odinItemUpdateRecord.ItemFamily,
+                        ItemGroup = odinItemUpdateRecord.ItemGroup,
+                        ItemId = odinItemUpdateRecord.InvItemId,
+                        ItemKeywords = odinItemUpdateRecord.ItemKeywords,
+                        Language = odinItemUpdateRecord.Language,
+                        License = odinItemUpdateRecord.License,
+                        LicenseBeginDate = odinItemUpdateRecord.LicenseBeginDate,
+                        ListPriceUsd = odinItemUpdateRecord.ListPriceUsd,
+                        ListPriceCad = odinItemUpdateRecord.ListPriceCad,
+                        ListPriceMxn = odinItemUpdateRecord.ListPriceMxn,
+                        Length = odinItemUpdateRecord.Length,
+                        MetaDescription = odinItemUpdateRecord.MetaDescription,
+                        MfgSource = odinItemUpdateRecord.MfgSource,
+                        Msrp = odinItemUpdateRecord.Msrp,
+                        MsrpCad = odinItemUpdateRecord.MsrpCad,
+                        MsrpMxn = odinItemUpdateRecord.MsrpMxn,
+                        Orientation = odinItemUpdateRecord.Orientation,
+                        PrintOnDemand = odinItemUpdateRecord.PrintOnDemand,
+                        ProductFormat = odinItemUpdateRecord.ProductFormat,
+                        ProductGroup = odinItemUpdateRecord.ProductGroup,
+                        ProductLine = odinItemUpdateRecord.ProductLine,
+                        ProductQty = odinItemUpdateRecord.ProdQty,
+                        Property = odinItemUpdateRecord.Property,
+                        PricingGroup = odinItemUpdateRecord.PricingGroup,
+                        PsStatus = odinItemUpdateRecord.PsStatus,
+                        SatCode = odinItemUpdateRecord.SatCode,
+                        SellOnAllPosters = odinItemUpdateRecord.SellOnAllposters,
+                        SellOnAmazon = odinItemUpdateRecord.SellOnAmazon,
+                        SellOnAmazonSellerCentral = odinItemUpdateRecord.SellOnAmazonSellerCentral,
+                        SellOnEcommerce = odinItemUpdateRecord.SellOnEcommerce,
+                        SellOnFanatics = odinItemUpdateRecord.SellOnFanatics,
+                        SellOnGuitarCenter = odinItemUpdateRecord.SellOnGuitarCenter,
+                        SellOnHayneedle = odinItemUpdateRecord.SellOnHayneedle,
+                        SellOnHouzz = odinItemUpdateRecord.SellOnHouzz,
+                        SellOnTarget = odinItemUpdateRecord.SellOnTarget,
+                        SellOnTrs = odinItemUpdateRecord.SellOnTrs,
+                        SellOnWalmart = odinItemUpdateRecord.SellOnWalmart,
+                        SellOnWayfair = odinItemUpdateRecord.SellOnWayfair,
+                        SellOnTrends = odinItemUpdateRecord.SellOnWeb,
+                        ShortDescription = odinItemUpdateRecord.ShortDesc,
+                        Size = odinItemUpdateRecord.Size,
+                        StandardCost = odinItemUpdateRecord.StandardCost,
+                        StatsCode = odinItemUpdateRecord.StatsCode,
+                        Status = odinItemUpdateRecord.ItemInputStatus,
+                        TariffCode = odinItemUpdateRecord.TariffCode,
+                        Territory = odinItemUpdateRecord.Territory,
+                        Title = odinItemUpdateRecord.Title,
+                        Udex = odinItemUpdateRecord.Udex,
+                        Upc = odinItemUpdateRecord.Upc,
+                        WebsitePrice = odinItemUpdateRecord.WebsitePrice,
+                        Weight = odinItemUpdateRecord.Weight,
+                        Width = odinItemUpdateRecord.Width,
+                        InStockDate = (!string.IsNullOrEmpty(odinItemUpdateRecord.InStockDate)) ? Convert.ToString(DbUtil.StripTime(odinItemUpdateRecord.InStockDate)) : "",
+                        UserName = odinItemUpdateRecord.Username,
+                        RecordDate = odinItemUpdateRecord.InputDate
+                    };
 
                     List<ChildElement> idTranslations = new List<ChildElement>();
                     if (!string.IsNullOrEmpty(odinItemUpdateRecord.ProductIdTranslation))
@@ -1961,138 +2135,7 @@ namespace Odin.Data
                             item.BillOfMaterials.Add(billOfMaterial);
                         }
                     }
-                    item.AccountingGroup = odinItemUpdateRecord.AccountingGroup;
-                    item.AltImageFile1 = odinItemUpdateRecord.AltImageFile1;
-                    item.AltImageFile2 = odinItemUpdateRecord.AltImageFile2;
-                    item.AltImageFile3 = odinItemUpdateRecord.AltImageFile3;
-                    item.AltImageFile4 = odinItemUpdateRecord.AltImageFile4;
-                    item.CasepackHeight = odinItemUpdateRecord.CasepackHeight;
-                    item.CasepackLength = odinItemUpdateRecord.CasepackLength;
-                    item.CasepackQty = odinItemUpdateRecord.CasepackQty;
-                    item.CasepackUpc = odinItemUpdateRecord.CasepackUpc;
-                    item.CasepackWidth = odinItemUpdateRecord.CasepackWidth;
-                    item.CasepackWeight = odinItemUpdateRecord.CasepackWeight;
-                    item.Category = odinItemUpdateRecord.Category;
-                    item.Category2 = odinItemUpdateRecord.Category2;
-                    item.Category3 = odinItemUpdateRecord.Category3;
-                    item.Color = odinItemUpdateRecord.Color;
-                    item.Copyright = odinItemUpdateRecord.Copyright;
-                    item.CountryOfOrigin = odinItemUpdateRecord.CountryOfOrigin;
-                    item.CostProfileGroup = odinItemUpdateRecord.CostProfileGroup;
-                    item.Description = odinItemUpdateRecord.Description;
-                    item.DirectImport = odinItemUpdateRecord.DirectImport;
-                    item.DefaultActualCostCad = odinItemUpdateRecord.DefaultActualCostCad;
-                    item.DefaultActualCostUsd = odinItemUpdateRecord.DefaultActualCostUsd;
-                    item.Duty = odinItemUpdateRecord.Duty;
-                    item.Ean = odinItemUpdateRecord.Ean;
-                    item.Gpc = odinItemUpdateRecord.Gpc;
-                    item.Genre1 = odinItemUpdateRecord.Genre1;
-                    item.Genre2 = odinItemUpdateRecord.Genre2;
-                    item.Genre3 = odinItemUpdateRecord.Genre3;
-                    item.Height = odinItemUpdateRecord.Height;
-                    item.ImagePath = odinItemUpdateRecord.ImagePath;
-                    item.InnerpackHeight = odinItemUpdateRecord.InnerpackHeight;
-                    item.InnerpackLength = odinItemUpdateRecord.InnerpackLength;
-                    item.InnerpackQuantity = odinItemUpdateRecord.InnerpackQty;
-                    item.InnerpackUpc = odinItemUpdateRecord.InnerpackUpc;
-                    item.InnerpackWidth = odinItemUpdateRecord.InnerpackWidth;
-                    item.InnerpackWeight = odinItemUpdateRecord.InnerpackWeight;
-                    item.Isbn = odinItemUpdateRecord.Isbn;
-                    item.ItemFamily = odinItemUpdateRecord.ItemFamily;
-                    item.ItemGroup = odinItemUpdateRecord.ItemGroup;
-                    item.ItemId = odinItemUpdateRecord.InvItemId;
-                    item.ItemKeywords = odinItemUpdateRecord.ItemKeywords;
-                    item.Language = odinItemUpdateRecord.Language;
-                    item.License = odinItemUpdateRecord.License;
-                    item.LicenseBeginDate = odinItemUpdateRecord.LicenseBeginDate;
-                    item.ListPriceUsd = odinItemUpdateRecord.ListPriceUsd;
-                    item.ListPriceCad = odinItemUpdateRecord.ListPriceCad;
-                    item.ListPriceMxn = odinItemUpdateRecord.ListPriceMxn;
-                    item.Length = odinItemUpdateRecord.Length;
-                    item.MetaDescription = odinItemUpdateRecord.MetaDescription;
-                    item.MfgSource = odinItemUpdateRecord.MfgSource;
-                    item.Msrp = odinItemUpdateRecord.Msrp;
-                    item.MsrpCad = odinItemUpdateRecord.MsrpCad;
-                    item.MsrpMxn = odinItemUpdateRecord.MsrpMxn;
-                    item.ItemCategory = odinItemUpdateRecord.ItemCategory;
-                    item.PrintOnDemand = odinItemUpdateRecord.PrintOnDemand;
-                    item.ProductFormat = odinItemUpdateRecord.ProductFormat;
-                    item.ProductGroup = odinItemUpdateRecord.ProductGroup;
-                    item.ProductLine = odinItemUpdateRecord.ProductLine;
-                    item.ProductQty = odinItemUpdateRecord.ProdQty;
-                    item.Property = odinItemUpdateRecord.Property;
-                    item.PricingGroup = odinItemUpdateRecord.PricingGroup;
-                    item.PsStatus = odinItemUpdateRecord.PsStatus;
-                    item.SatCode = odinItemUpdateRecord.SatCode;
-                    item.SellOnAllPosters = odinItemUpdateRecord.SellOnAllposters;
-                    item.SellOnAmazon = odinItemUpdateRecord.SellOnAmazon;
-                    item.SellOnAmazonSellerCentral = odinItemUpdateRecord.SellOnAmazonSellerCentral;
-                    item.SellOnEcommerce = odinItemUpdateRecord.SellOnEcommerce;
-                    item.SellOnFanatics = odinItemUpdateRecord.SellOnFanatics;
-                    item.SellOnGuitarCenter = odinItemUpdateRecord.SellOnGuitarCenter;
-                    item.SellOnHayneedle = odinItemUpdateRecord.SellOnHayneedle;
-                    item.SellOnHouzz = odinItemUpdateRecord.SellOnHouzz;
-                    item.SellOnTarget = odinItemUpdateRecord.SellOnTarget;
-                    item.SellOnTrs = odinItemUpdateRecord.SellOnTrs;
-                    item.SellOnWalmart = odinItemUpdateRecord.SellOnWalmart;
-                    item.SellOnWayfair = odinItemUpdateRecord.SellOnWayfair;
-                    item.SellOnTrends = odinItemUpdateRecord.SellOnWeb;
-                    item.ShortDescription = odinItemUpdateRecord.ShortDesc;
-                    item.Size = odinItemUpdateRecord.Size;
-                    item.StandardCost = odinItemUpdateRecord.StandardCost;
-                    item.StatsCode = odinItemUpdateRecord.StatsCode;
-                    item.Status = odinItemUpdateRecord.ItemInputStatus;
-                    item.TariffCode = odinItemUpdateRecord.TariffCode;
-                    item.Territory = odinItemUpdateRecord.Territory;
-                    item.Title = odinItemUpdateRecord.Title;
-                    item.Udex = odinItemUpdateRecord.Udex;
-                    item.Upc = odinItemUpdateRecord.Upc;
-                    item.WebsitePrice = odinItemUpdateRecord.WebsitePrice;
-                    item.Weight = odinItemUpdateRecord.Weight;
-                    item.Width = odinItemUpdateRecord.Width;
-                    item.InStockDate = (!string.IsNullOrEmpty(odinItemUpdateRecord.InStockDate)) ? Convert.ToString(DbUtil.StripTime(odinItemUpdateRecord.InStockDate)) : "";
-                    item.EcommerceItemName = odinItemUpdateRecord.AItemName;
-                    item.EcommerceItemTypeKeywords = odinItemUpdateRecord.AItemTypeKeywords;
-                    item.EcommerceModelName = odinItemUpdateRecord.AModelName;
-                    item.EcommerceProductCategory = odinItemUpdateRecord.AProductCategory;
-                    item.EcommerceProductSubcategory = odinItemUpdateRecord.AProductSubcategory;
-                    item.EcommerceAsin = odinItemUpdateRecord.AAsin;
-                    item.EcommerceBullet1 = odinItemUpdateRecord.ABullet1;
-                    item.EcommerceBullet2 = odinItemUpdateRecord.ABullet2;
-                    item.EcommerceBullet3 = odinItemUpdateRecord.ABullet3;
-                    item.EcommerceBullet4 = odinItemUpdateRecord.ABullet4;
-                    item.EcommerceBullet5 = odinItemUpdateRecord.ABullet5;
-                    item.EcommerceProductDescription = odinItemUpdateRecord.AProductDescription;
-                    item.EcommerceExternalIdType = odinItemUpdateRecord.AExternalIdType;
-                    item.EcommerceExternalId = odinItemUpdateRecord.AExternalId;
-                    item.EcommerceGenericKeywords = odinItemUpdateRecord.AGenericKeywords;
-                    item.EcommerceSubjectKeywords = odinItemUpdateRecord.ASubjectKeywords;
-                    item.EcommerceImagePath1 = odinItemUpdateRecord.AImageUrl1;
-                    item.EcommerceImagePath2 = odinItemUpdateRecord.AImageUrl2;
-                    item.EcommerceImagePath3 = odinItemUpdateRecord.AImageUrl3;
-                    item.EcommerceImagePath4 = odinItemUpdateRecord.AImageUrl4;
-                    item.EcommerceImagePath5 = odinItemUpdateRecord.AImageUrl5;
-                    item.EcommerceSize = odinItemUpdateRecord.ASize;
-                    item.EcommerceUpc = odinItemUpdateRecord.AUpc;
-                    item.EcommerceCost = odinItemUpdateRecord.ACost;
-                    item.EcommerceMsrp = odinItemUpdateRecord.AMsrp;
-                    item.EcommerceManufacturerName = odinItemUpdateRecord.AManufacturerName;
-                    item.EcommerceItemLength = odinItemUpdateRecord.AItemLength;
-                    item.EcommerceItemHeight = odinItemUpdateRecord.AItemHeight;
-                    item.EcommerceItemTypeKeywords = odinItemUpdateRecord.AItemTypeKeywords;
-                    item.EcommerceItemWeight = odinItemUpdateRecord.AItemWeight;
-                    item.EcommerceItemWidth = odinItemUpdateRecord.AItemWidth;
-                    item.EcommercePackageHeight = odinItemUpdateRecord.APackageHeight;
-                    item.EcommercePackageLength = odinItemUpdateRecord.APackageLength;
-                    item.EcommercePackageWeight = odinItemUpdateRecord.APackageWeight;
-                    item.EcommercePackageWidth = odinItemUpdateRecord.APackageWidth;
-                    item.EcommercePageQty = odinItemUpdateRecord.APageQty;
-                    item.EcommerceParentAsin = odinItemUpdateRecord.AParentAsin;
-                    item.EcommerceComponents = odinItemUpdateRecord.AComponents;
 
-                    item.UserName = odinItemUpdateRecord.Username;
-                    item.RecordDate = odinItemUpdateRecord.InputDate;
-                    item.Status = odinItemUpdateRecord.ItemInputStatus;
                     items.Add(item);
                 }
             }
@@ -2566,17 +2609,17 @@ namespace Odin.Data
         /// <returns></returns>
         public void UpdateCustomerProductAttributesAll(ItemObject item, OdinContext context)
         {
-            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["ALL POSTERS"], item.SellOnAllPosters, context);
-            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["AMAZON"], item.SellOnAmazon, context);
-            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["AMAZON SELLER CENTRAL"], item.SellOnAmazonSellerCentral, context);
-            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["FANATICS"], item.SellOnFanatics, context);
-            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["GUITAR CENTER"], item.SellOnGuitarCenter, context);
-            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["HAYNEEDLE"], item.SellOnHayneedle, context);
-            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["HOUZZ"], item.SellOnHouzz, context);
-            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["TARGET"], item.SellOnTarget, context);
-            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["TRS"], item.SellOnTrs, context);
-            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["WALMART"], item.SellOnWalmart, context);
-            UpdateCustomerProductAttributes(item.ItemId, GlobalData.CustomerIdConversions["WAYFAIR"], item.SellOnWayfair, context);
+            UpdateCustomerProductAttributes(item, GlobalData.CustomerIdConversions["ALL POSTERS"], item.SellOnAllPosters, context);
+            UpdateCustomerProductAttributes(item, GlobalData.CustomerIdConversions["AMAZON"], item.SellOnAmazon, context);
+            UpdateCustomerProductAttributes(item, GlobalData.CustomerIdConversions["AMAZON SELLER CENTRAL"], item.SellOnAmazonSellerCentral, context);
+            UpdateCustomerProductAttributes(item, GlobalData.CustomerIdConversions["FANATICS"], item.SellOnFanatics, context);
+            UpdateCustomerProductAttributes(item, GlobalData.CustomerIdConversions["GUITAR CENTER"], item.SellOnGuitarCenter, context);
+            UpdateCustomerProductAttributes(item, GlobalData.CustomerIdConversions["HAYNEEDLE"], item.SellOnHayneedle, context);
+            UpdateCustomerProductAttributes(item, GlobalData.CustomerIdConversions["HOUZZ"], item.SellOnHouzz, context);
+            UpdateCustomerProductAttributes(item, GlobalData.CustomerIdConversions["TARGET"], item.SellOnTarget, context);
+            UpdateCustomerProductAttributes(item, GlobalData.CustomerIdConversions["TRS"], item.SellOnTrs, context);
+            UpdateCustomerProductAttributes(item, GlobalData.CustomerIdConversions["WALMART"], item.SellOnWalmart, context);
+            UpdateCustomerProductAttributes(item, GlobalData.CustomerIdConversions["WAYFAIR"], item.SellOnWayfair, context);
         }
 
         /// <summary>
@@ -4418,19 +4461,31 @@ namespace Odin.Data
         /// <summary>
         ///     Updates the SEND_INVENTORY flage in PS_CUSTOMER_PRODUCT_ATTRIBUTES
         /// </summary>
-        private void UpdateCustomerProductAttributes(string itemId, string customer, string sellOnFlag, OdinContext context)
+        private void UpdateCustomerProductAttributes(ItemObject item, string customerId, string sellOnFlag, OdinContext context)
         {
-            CustomerProductAttributes customerProductAttributes = context.CustomerProductAttributes.SingleOrDefault(o => o.ProductId == itemId && o.CustId == customer && o.Setid == "SHARE");
+            CustomerProductAttributes customerProductAttributes = context.CustomerProductAttributes.SingleOrDefault(o => o.ProductId == item.ItemId 
+                                                                                                                    && o.CustId == customerId
+                                                                                                                    && o.Setid == "SHARE");
+            // If row already exists update
             if (customerProductAttributes != null)
             {
                 if (customerProductAttributes.SendInventory != sellOnFlag)
                 {
                     customerProductAttributes.SendInventory = sellOnFlag;
+                    if(customerId == item.Exclusive)
+                    {
+                        customerProductAttributes.IsExclusive = "Y";
+                    }
+                    else
+                    {
+                        customerProductAttributes.IsExclusive = "N";
+                    }
                 }
             }
             else
             {
-                InsertCustomerProductAttributes(itemId, customer, sellOnFlag, context);
+                var customerName = GlobalData.CustomerIdConversions.FirstOrDefault(x => x.Value == customerId).Key;
+                InsertCustomerProductAttributes(item, customerName, customerId, context);
             }
         }
                 

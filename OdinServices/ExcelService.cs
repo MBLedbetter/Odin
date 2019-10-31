@@ -673,6 +673,12 @@ namespace OdinServices
                                     rows[x, column] = items[x].EcommerceUpc;
                                 }
                                 break;
+                            case "Exclusive Customer":
+                                for (int x = 0; x < items.Count; x++)
+                                {
+                                    rows[x, column] = GlobalData.CustomerIdConversions.FirstOrDefault(o => o.Value == items[x].Exclusive).Key;
+                                }
+                                break;
                             case "Genre 1":
                                 for (int x = 0; x < items.Count; x++)
                                 {
@@ -1090,6 +1096,12 @@ namespace OdinServices
                                 for (int x = 0; x < items.Count; x++)
                                 {
                                     rows[x, column] = items[x].ProductLine;
+                                }
+                                break;
+                            case "Product Orientation":
+                                for (int x = 0; x < items.Count; x++)
+                                {
+                                    rows[x, column] = items[x].Orientation;
                                 }
                                 break;
                             case "Product Qty":

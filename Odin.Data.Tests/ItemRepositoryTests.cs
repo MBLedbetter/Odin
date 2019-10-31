@@ -436,7 +436,7 @@ namespace Odin.Data.Tests
             #region Act
             using (OdinContext context = OdinContextFactory.CreateContext())
             {
-                itemRepository.InsertCustomerProductAttributes("TEST1", "9", "N", context);
+                itemRepository.InsertCustomerProductAttributes(item, "AMAZON SELLER CENTRAL", "9", context);
                 context.SaveChanges();
             }
             #endregion // Act
@@ -485,7 +485,7 @@ namespace Odin.Data.Tests
             #region Act
             using (OdinContext context = OdinContextFactory.CreateContext())
             {
-                itemRepository.InsertCustomerProductAttributes("TEST1", "9" ,"Y", context);
+                itemRepository.InsertCustomerProductAttributes(item, "AMAZON SELLER CENTRAL", "9", context);
                 context.SaveChanges();
             }
             #endregion // Act

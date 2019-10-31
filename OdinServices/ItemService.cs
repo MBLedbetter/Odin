@@ -90,6 +90,7 @@ namespace OdinServices
             public static string EcommerceSubjectKeywords = "Ecommerce Subject Keywords";
             public static string EcommerceSize = "Ecommerce Size";
             public static string EcommerceUpc = "Ecommerce UPC";
+            public static string ExclusiveCustomer = "Exclusive Customer";
             public static string GenericKeywords = "Generic Keywords";
             public static string Genre1 = "Genre 1";
             public static string Genre2 = "Genre 2";
@@ -142,6 +143,7 @@ namespace OdinServices
             public static string ProductGroup = "Product Group";
             public static string ProductIdTranslation = "Product Id Translation";
             public static string ProductLine = "Product Line";
+            public static string ProductOrientation = "Product Orientation";
             public static string ProductQty = "Product Qty";
             public static string ProductQuantity = "Product Quantity";
             public static string Property = "Property";
@@ -509,6 +511,7 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.EcommerceSize)) && (item.EcommerceSize.Trim() != returnItem.EcommerceSize.Trim())) { returnItem.EcommerceSize = item.EcommerceSize; } 
             if ((!string.IsNullOrEmpty(item.EcommerceSubjectKeywords)) && (item.EcommerceSubjectKeywords.Trim() != returnItem.EcommerceSubjectKeywords.Trim())) { returnItem.EcommerceSubjectKeywords = item.EcommerceSubjectKeywords; } 
             if ((!string.IsNullOrEmpty(item.EcommerceUpc)) && (item.EcommerceUpc.Trim() != returnItem.EcommerceUpc.Trim())) { returnItem.EcommerceUpc = item.EcommerceUpc; }
+            if ((!string.IsNullOrEmpty(item.Exclusive)) && (item.Exclusive.Trim() != returnItem.Exclusive.Trim())) { returnItem.Exclusive = item.Exclusive; }
             if ((!string.IsNullOrEmpty(item.Genre1)) && (item.Genre1.Trim() != returnItem.Genre1.Trim())) { returnItem.Genre1 = item.Genre1; }
             if ((!string.IsNullOrEmpty(item.Genre2)) && (item.Genre2.Trim() != returnItem.Genre2.Trim())) { returnItem.Genre2 = item.Genre2; }
             if ((!string.IsNullOrEmpty(item.Genre3)) && (item.Genre3.Trim() != returnItem.Genre3.Trim())) { returnItem.Genre3 = item.Genre3; }
@@ -539,6 +542,7 @@ namespace OdinServices
             if ((!string.IsNullOrEmpty(item.Msrp)) && (item.Msrp.Trim() != returnItem.Msrp.Trim())) { returnItem.Msrp = string.IsNullOrEmpty(item.Msrp) ? "0.00" : item.Msrp; }
             if ((!string.IsNullOrEmpty(item.MsrpCad)) && (item.MsrpCad.Trim() != returnItem.MsrpCad.Trim())) { returnItem.MsrpCad = string.IsNullOrEmpty(item.MsrpCad) ? "0.00" : item.MsrpCad; }
             if ((!string.IsNullOrEmpty(item.MsrpMxn)) && (item.MsrpMxn.Trim() != returnItem.MsrpMxn.Trim())) { returnItem.MsrpMxn = string.IsNullOrEmpty(item.MsrpMxn) ? "0.00" : item.MsrpMxn; }
+            if ((!string.IsNullOrEmpty(item.Orientation)) && (item.Orientation.Trim() != returnItem.Orientation.Trim())) { returnItem.Orientation = item.Orientation; }
             if ((!string.IsNullOrEmpty(item.PricingGroup)) && (item.PricingGroup.Trim() != returnItem.PricingGroup.Trim())) { returnItem.PricingGroup = item.PricingGroup; }
             if ((!string.IsNullOrEmpty(item.PrintOnDemand)) && (item.PrintOnDemand.Trim() != returnItem.PrintOnDemand.Trim())) { returnItem.PrintOnDemand = item.PrintOnDemand; }
             if ((!string.IsNullOrEmpty(item.ProductGroup)) && (item.ProductGroup.Trim() != returnItem.ProductGroup.Trim())) { returnItem.ProductGroup = item.ProductGroup; }
@@ -932,6 +936,7 @@ namespace OdinServices
                     EcommerceSubjectKeywords = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceSearchTerms, WorksheetColumnHeaders.A_SearchTerms),
                     EcommerceSize = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceSize, WorksheetColumnHeaders.A_Size),
                     EcommerceUpc = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.EcommerceUpc),
+                    Exclusive = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ExclusiveCustomer),
                     Genre1 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Genre1),
                     Genre2 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Genre2),
                     Genre3 = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Genre3),
@@ -964,6 +969,7 @@ namespace OdinServices
                     Msrp = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.Msrp).Trim(),
                     MsrpCad = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.MsrpCad).Trim(),
                     MsrpMxn = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.MsrpMxn).Trim(),
+                    Orientation = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ProductOrientation),
                     PricingGroup = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.PricingGroup, WorksheetColumnHeaders.PricingGroupProduct).Trim(),
                     PrintOnDemand = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.PrintOnDemand).Trim(),
                     ProductFormat = ReadWorksheetCell(worksheetData, row, WorksheetColumnHeaders.ProductFormat).Trim(),
@@ -2307,6 +2313,9 @@ namespace OdinServices
             // Ecommerce Upc //
             validationError =ValidateEcommerceUpc(var);
             if (validationError != null) { ErrorList.Add(validationError); }
+            // Exclusive //
+            validationError = ValidateExclusive(var);
+            if (validationError != null) { ErrorList.Add(validationError); }
             // Genre1 //
             validationError = ValidateGenre(var,1, isSubmit);
             if (validationError != null) { ErrorList.Add(validationError); }
@@ -2391,7 +2400,7 @@ namespace OdinServices
             // Mfg Source //
             validationError =ValidateMfgSource(var);
             if (validationError != null) { ErrorList.Add(validationError); }
-            // List Msrp //
+            // Msrp //
             validationError =ValidateMsrp(var, "Usd");
             if (validationError != null) { ErrorList.Add(validationError); }
             // Msrp Cad //
@@ -2399,6 +2408,9 @@ namespace OdinServices
             if (validationError != null) { ErrorList.Add(validationError); }
             // Msrp Mxn //
             validationError =ValidateMsrp(var, "Mxn");
+            if (validationError != null) { ErrorList.Add(validationError); }
+            // Orientation //
+            validationError = ValidateOrientation(var);
             if (validationError != null) { ErrorList.Add(validationError); }
             // Product Format //
             validationError =ValidateProductFormat(var);
@@ -4441,6 +4453,28 @@ namespace OdinServices
         }
 
         /// <summary>
+        ///     Validates the Ecommerce Upc field. Returns ItemError or null if no error exists.
+        /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
+        public ItemError ValidateExclusive(ItemObject var)
+        {
+            if (!string.IsNullOrEmpty(var.Exclusive))
+            {
+                if (!GlobalData.CustomerIdConversions.Any(x=>x.Value== var.Exclusive))
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Value does not match any existing customer.",
+                        "Exclusive",
+                        var.ExclusiveUpdate);
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
         ///     Validates the genre field. Returns ItemError or null if no error exists.
         /// </summary>
         /// <param name="var">Item Object</param>
@@ -5448,6 +5482,28 @@ namespace OdinServices
                             name,
                         update);
                     }
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        ///     Validates Orientation field. Returns ItemError or null if no error exists.
+        /// </summary>
+        /// <param name="var">Item Object</param>
+        /// <returns></returns>
+        public ItemError ValidateOrientation(ItemObject var)
+        {
+            if (!string.IsNullOrEmpty(var.Orientation))
+            {
+                if (var.Orientation!= "Horizontal" && var.Orientation != "Portrait")
+                {
+                    return new ItemError(
+                        var.ItemId,
+                        var.ItemRow,
+                        "Value does not match any of the given options [Horizontal / Portrait].",
+                        "Orientation",
+                        var.OrientationUpdate);
                 }
             }
             return null;

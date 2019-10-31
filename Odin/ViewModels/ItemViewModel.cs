@@ -1329,6 +1329,66 @@ namespace Odin.ViewModels
         }
         private string _eanToolTip = string.Empty;
 
+
+        /// <summary>
+        ///     Gets or sets the Exclusive
+        /// </summary>
+        public string Exclusive
+        {
+            get
+            {
+                return this.ItemViewModelItem.Exclusive;
+            }
+            set
+            {
+                if (this.ItemViewModelItem.Exclusive != value)
+                {
+                    this.ItemViewModelItem.Exclusive = value;
+                    FlagError("Exclusive");
+                    OnPropertyChanged("Exclusive");
+                }
+            }
+        }
+        public string ExclusiveBoxColor
+        {
+            get
+            {
+                return _exclusiveBoxColor;
+            }
+            set
+            {
+                _exclusiveBoxColor = value;
+                OnPropertyChanged("ExclusiveBoxColor");
+            }
+        }
+        private string _exclusiveBoxColor = "White";
+        public string ExclusiveError
+        {
+            get
+            {
+                return _exclusiveError;
+            }
+            set
+            {
+                _exclusiveError = value;
+                OnPropertyChanged("ExclusiveError");
+            }
+        }
+        private string _exclusiveError = string.Empty;
+        public string ExclusiveToolTip
+        {
+            get
+            {
+                return _exclusiveToolTip;
+            }
+            set
+            {
+                _exclusiveToolTip = value;
+                OnPropertyChanged("ExclusiveToolTip");
+            }
+        }
+        private string _exclusiveToolTip = string.Empty;
+
         public string Duty
         {
             get
@@ -2707,6 +2767,65 @@ namespace Odin.ViewModels
             }
         }
         private string _msrpMxnToolTip = string.Empty;
+
+        /// <summary>
+        ///     Gets or sets the Orientation
+        /// </summary>
+        public string Orientation
+        {
+            get
+            {
+                return this.ItemViewModelItem.Orientation;
+            }
+            set
+            {
+                if (this.ItemViewModelItem.Orientation != value)
+                {
+                    this.ItemViewModelItem.Orientation = value;
+                    FlagError("Orientation");
+                    OnPropertyChanged("Orientation");
+                }
+            }
+        }
+        public string OrientationBoxColor
+        {
+            get
+            {
+                return _orientationBoxColor;
+            }
+            set
+            {
+                _orientationBoxColor = value;
+                OnPropertyChanged("OrientationBoxColor");
+            }
+        }
+        private string _orientationBoxColor = "White";
+        public string OrientationError
+        {
+            get
+            {
+                return _orientationError;
+            }
+            set
+            {
+                _orientationError = value;
+                OnPropertyChanged("OrientationError");
+            }
+        }
+        private string _orientationError = string.Empty;
+        public string OrientationToolTip
+        {
+            get
+            {
+                return _orientationToolTip;
+            }
+            set
+            {
+                _orientationToolTip = value;
+                OnPropertyChanged("OrientationToolTip");
+            }
+        }
+        private string _orientationToolTip = string.Empty;
 
         /// <summary>
         ///     Gets or sets the PricingGroup
@@ -8130,6 +8249,17 @@ namespace Odin.ViewModels
         }
 
         /// <summary>
+        ///     List of customers for the exclusive combo box
+        /// </summary>
+        public List<string> ExclusiveList
+        {
+            get
+            {
+                return GlobalData.Customers;
+            }
+        }
+
+        /// <summary>
         ///     Gets a list of Genre Options
         /// </summary>
         public List<string> GenreList
@@ -8172,6 +8302,14 @@ namespace Odin.ViewModels
             get
             {
                 return GlobalData.MetaDescriptions;
+            }
+        }
+
+        public List<string> OrientationList
+        {
+            get
+            {
+                return GlobalData.Orientations;
             }
         }
 
@@ -8490,6 +8628,7 @@ namespace Odin.ViewModels
                 DescriptionBoxColor,
                 EanBoxColor,
                 DutyBoxColor,
+                ExclusiveBoxColor,
                 GpcBoxColor,
                 HeightBoxColor,
                 InnerpackHeightBoxColor,
@@ -8513,6 +8652,7 @@ namespace Odin.ViewModels
                 MsrpBoxColor,
                 MsrpCadBoxColor,
                 MsrpMxnBoxColor,
+                OrientationBoxColor,
                 PricingGroupBoxColor,
                 PrintOnDemandBoxColor,
                 ProductFormatBoxColor,
@@ -9230,6 +9370,15 @@ namespace Odin.ViewModels
                     this.TabColorEcommerce = CheckEcommerceTabColor();
                     break;
 
+                case "Exclusive":
+                    //  Exclusive Validation
+                    error = ItemService.ValidateExclusive(ItemViewModelItem);
+                    this.ExclusiveError = error?.ErrorMessage ?? "";
+                    this.ExclusiveBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckEcommerceTabColor();
+                    break;
+
                 case "Genre1":
                     // Genre1 Validation
                     error = ItemService.ValidateGenre(ItemViewModelItem, 1);
@@ -9564,6 +9713,15 @@ namespace Odin.ViewModels
                     this.MsrpMxnBoxColor = error?.ReturnErrorColor() ?? "Alice Blue";
 
                     this.TabColorItemInfo = CheckItemInfoTabColor();
+                    break;
+
+                case "Orientation":
+                    //  Orientation Validation
+                    error = ItemService.ValidateOrientation(ItemViewModelItem);
+                    this.OrientationError = error?.ErrorMessage ?? "";
+                    this.OrientationBoxColor = error?.ReturnErrorColor() ?? "White";
+
+                    this.TabColorItemInfo = CheckEcommerceTabColor();
                     break;
 
                 case "PricingGroup":
@@ -10288,6 +10446,7 @@ namespace Odin.ViewModels
             this.EcommerceSizeToolTip = ReturnToolTip("EcommerceSize");
             this.EcommerceSubjectKeywordsToolTip = ReturnToolTip("EcommerceSubjectKeywords");
             this.EcommerceUpcToolTip = ReturnToolTip("EcommerceUpc");
+            this.ExclusiveToolTip = ReturnToolTip("Exclusive");
             this.Genre1ToolTip = ReturnToolTip("Genre");
             this.Genre2ToolTip = ReturnToolTip("Genre");
             this.Genre3ToolTip = ReturnToolTip("Genre");
@@ -10319,6 +10478,7 @@ namespace Odin.ViewModels
             this.MsrpToolTip = ReturnToolTip("Msrp");
             this.MsrpCadToolTip = ReturnToolTip("Msrp");
             this.MsrpMxnToolTip = ReturnToolTip("Msrp");
+            this.OrientationToolTip = ReturnToolTip("Orientation");
             this.PricingGroupToolTip = ReturnToolTip("PricingGroup");
             this.PrintOnDemandToolTip = ReturnToolTip("PrintOnDemand");
             this.ProductFormatToolTip = ReturnToolTip("ProductFormat");

@@ -90,6 +90,22 @@ namespace OdinModels
             }
         }
         private static Dictionary<string, string> _countriesOfOrigin = new Dictionary<string, string>();
+        
+        /// <summary>
+        ///     Gets or sets CostProfileGroups
+        /// </summary>
+        public static List<string> Customers
+        {
+            get
+            {
+                return _customers;
+            }
+            set
+            {
+                _customers = value;
+            }
+        }
+        private static List<string> _customers = new List<string>();
 
         /// <summary>
         ///     Key value pair list of customer Names and their current customer id
@@ -364,6 +380,22 @@ namespace OdinModels
             }
         }
         private static int _notificationNumber = 0;
+
+        /// <summary>
+        ///     Gets or sets Orientations
+        /// </summary>
+        public static List<string> Orientations
+        {
+            get
+            {
+                return _orientations;
+            }
+            set
+            {
+                _orientations = value;
+            }
+        }
+        private static List<string> _orientations = new List<string>();
 
         /// <summary>
         ///     Gets or sets PricingGroups

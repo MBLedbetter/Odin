@@ -532,6 +532,11 @@ namespace Odin.DbTableModels
         public string ProdCategory { get; set; }
 
         /// <summary>
+        ///     Gets or sets PRODUCT_EXCLUSIVE
+        /// </summary>
+        public string ProductExclusive { get; set; }
+
+        /// <summary>
         ///     Gets or sets PROD_FORMAT
         /// </summary>
         public string ProdFormat { get; set; }
@@ -545,6 +550,11 @@ namespace Odin.DbTableModels
         ///     Gets or sets PROD_LINE
         /// </summary>
         public string ProdLine { get; set; }
+
+        /// <summary>
+        ///     Gets or sets PRODUCT_ORIENTATION
+        /// </summary>
+        public string ProductOrientation { get; set; }
 
         /// <summary>
         ///     Gets or sets PROD_QTY

@@ -331,6 +331,11 @@ namespace Odin.DbTableModels
         public string Ean { get; set; }
 
         /// <summary>
+        ///     Gets or sets EXCLUSIVE
+        /// </summary>
+        public string Exclusive { get; set; }
+
+        /// <summary>
         ///     Gets or sets FPLCANL1
         /// </summary>
         public string Fplcanl1 { get; set; }
@@ -509,6 +514,11 @@ namespace Odin.DbTableModels
         ///     Gets or sets MSRP_MXN
         /// </summary>
         public string MsrpMxn { get; set; }
+
+        /// <summary>
+        ///     Gets or sets ORIENTATION
+        /// </summary>
+        public string Orientation { get; set; }
 
         /// <summary>
         ///     Gets or sets PRICING_GROUP

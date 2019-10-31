@@ -1047,6 +1047,7 @@ namespace Odin.Data
             modelBuilder.Entity<CustomerProductAttributes>().Property(p => p.CasepackQty).HasColumnName("CASEPACK_QTY");
             modelBuilder.Entity<CustomerProductAttributes>().Property(p => p.CustId).HasColumnName("CUST_ID");
             modelBuilder.Entity<CustomerProductAttributes>().Property(p => p.InnerpackQty).HasColumnName("INNERPACK_QTY");
+            modelBuilder.Entity<CustomerProductAttributes>().Property(p => p.IsExclusive).HasColumnName("IS_EXCLUSIVE");
             modelBuilder.Entity<CustomerProductAttributes>().Property(p => p.ProductId).HasColumnName("PRODUCT_ID");
             modelBuilder.Entity<CustomerProductAttributes>().Property(p => p.SendInventory).HasColumnName("SEND_INVENTORY");
             modelBuilder.Entity<CustomerProductAttributes>().Property(p => p.Setid).HasColumnName("SETID");
@@ -1175,7 +1176,6 @@ namespace Odin.Data
             modelBuilder.Entity<EnBomHeader>().Property(p => p.Text254).HasColumnName("TEXT254");
 
         }
-
 
         /// <summary>
         ///             This method maps the EnBomOutputs class to the database.
@@ -2544,6 +2544,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.DtcPrice).HasColumnName("DTC_PRICE");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Duty).HasColumnName("DUTY");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Ean).HasColumnName("EAN");
+            modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Exclusive).HasColumnName("EXCLUSIVE");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Fplcanl1).HasColumnName("FPLCANL1");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Fplusl1).HasColumnName("FPLUSL1");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Genre1).HasColumnName("GENRE_1");
@@ -2580,6 +2581,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Msrp).HasColumnName("MSRP");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.MsrpCad).HasColumnName("MSRP_CAD");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.MsrpMxn).HasColumnName("MSRP_MXN");
+            modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.Orientation).HasColumnName("ORIENTATION");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.PricingGroup).HasColumnName("PRICING_GROUP");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.PrintOnDemand).HasColumnName("PRINT_ON_DEMAND");
             modelBuilder.Entity<OdinItemUpdateRecords>().Property(p => p.ProdQty).HasColumnName("PROD_QTY");
