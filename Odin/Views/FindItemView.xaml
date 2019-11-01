@@ -130,7 +130,7 @@
                                 <GridView.Columns>
                                     <GridViewColumn
                                     DisplayMemberBinding="{Binding ItemId}"
-                                    Width="80">
+                                    Width="120">
                                         <GridViewColumn.Header>
                                             <GridViewColumnHeader
                                             Content="Item Id"

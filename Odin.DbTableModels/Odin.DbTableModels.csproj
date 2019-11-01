@@ -115,6 +115,8 @@
     <Compile Include="ProdPgrpLnk.cs" />
     <Compile Include="ProdPrice.cs" />
     <Compile Include="ProdPriceBu.cs" />
+    <Compile Include="ProductAttributes.cs" />
+    <Compile Include="ProductAttributeTypes.cs" />
     <Compile Include="ProductFormats.cs" />
     <Compile Include="ProductGroups.cs" />
     <Compile Include="ProductLines.cs" />

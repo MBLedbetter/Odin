@@ -29,7 +29,6 @@ namespace Odin.ViewModels
 
         #region Properties
 
-
         /// <summary>
         ///     Gets or sets the Field1Title
         /// </summary>

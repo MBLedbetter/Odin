@@ -517,6 +517,11 @@ namespace Odin.DbTableModels
         public string OnSite { get; set; }
 
         /// <summary>
+        ///     Gets or sets ORIENTATION
+        /// </summary>
+        public string Orientation { get; set; }
+
+        /// <summary>
         ///     Gets or sets PRICING_GROUP
         /// </summary>
         public string PricingGroup { get; set; }
@@ -550,11 +555,6 @@ namespace Odin.DbTableModels
         ///     Gets or sets PROD_LINE
         /// </summary>
         public string ProdLine { get; set; }
-
-        /// <summary>
-        ///     Gets or sets PRODUCT_ORIENTATION
-        /// </summary>
-        public string ProductOrientation { get; set; }
 
         /// <summary>
         ///     Gets or sets PROD_QTY

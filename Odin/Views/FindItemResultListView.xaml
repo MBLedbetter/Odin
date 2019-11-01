@@ -47,7 +47,7 @@
 
                         <GridViewColumn
                             DisplayMemberBinding="{Binding ItemId}"
-                            Width="80">
+                            Width="120">
                             <GridViewColumn.Header>
                                 <GridViewColumnHeader
                                     Content="Item Id"
@@ -59,7 +59,7 @@
                         </GridViewColumn>
                         <GridViewColumn
                             DisplayMemberBinding="{Binding Description}"
-                            Width="100">
+                            Width="240">
                             <GridViewColumn.Header>
                                 <GridViewColumnHeader
                                     Content="Description"

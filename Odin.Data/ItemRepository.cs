@@ -100,6 +100,10 @@ namespace Odin.Data
                         InsertPurchItemAttr(item, context);
                         InsertPvItmCategory(item, context);
                         InsertUomTypeInvAll(item, context);
+                        if(string.IsNullOrEmpty(item.Orientation))
+                        {
+                            InsertProductAttributes(item, "ORIENTATION", item.Orientation, context);
+                        }
                         if (item.ItemOverrideUpdate)
                         {
                             InsertOdinItemOverrideInfo(item, context);
@@ -141,6 +145,13 @@ namespace Odin.Data
                         if (item.ProdPgrpLnkUpdate) { UpdateProdPgrpLnkAll(item); }
                         if (item.ProdPriceUpdate) { UpdateProdPriceAll(item, context); }
                         if (item.ProdPriceBuUpdate) { UpdateProdPriceBuAll(item, context); }
+                        if (item.ProductAttributesUpdate)
+                        {
+                            if (item.OrientationUpdate)
+                            {
+                                UpdateProductAttributes(item, "ORIENTATION", item.Orientation, context);
+                            }
+                        }
                         if (item.PurchItemAttrUpdate) { UpdatePurchItemAttr(item, context); }
                         if (item.PvItmCategoryUpdate) { UpdatePvItmCategory(item); }
                         if (item.BillOfMaterialsUpdate)
@@ -1233,6 +1244,28 @@ namespace Odin.Data
         }
 
         /// <summary>
+        ///     Runs InsertProductAttributes
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public void InsertProductAttributes(ItemObject item, string type, string value, OdinContext context)
+        {
+            if (!context.ProductAttributes.Any(o => o.ProductId == item.ItemId))
+            {
+                context.ProductAttributes.Add(new ProductAttributes
+                {
+                    AttributeType = type,
+                    AttributeValue = value,
+                    ProductId = item.ItemId,
+                    SetId = "SHARE",
+                    TimeStamp = DateTime.Now,
+                    UserId = GlobalData.UserName
+                });
+            }
+        }
+
+        /// <summary>
         /// Insert item info into PS_PROD_UOM
         /// </summary>
         public void InsertProdUom(ItemObject item, OdinContext context)
@@ -1619,6 +1652,7 @@ namespace Odin.Data
             GlobalData.CostProfileGroups = RetrieveCostProfileGroups();
             GlobalData.CountriesOfOrigin = RetrieveCountriesOfOrigin();
             GlobalData.CustomerIdConversions = RetrieveCustomerIdConversionsList();
+            GlobalData.Customers = RetrieveCustomerList();
             GlobalData.ExternalIdTypes = RetrieveEcommerceExternalIdTypeList();
             GlobalData.Genres = RetrieveGenres();
             GlobalData.ItemCategories = RetrieveItemCategories();
@@ -1629,6 +1663,7 @@ namespace Odin.Data
             GlobalData.Languages = RetrieveLanguages();
             GlobalData.Licenses = RetrieveLicenseList();
             GlobalData.MetaDescriptions = RetrieveMetaDescriptionList();
+            GlobalData.Orientations = RetrieveOrientations();
             GlobalData.ProductCategories = RetrieveProductCategories();
             GlobalData.ProductFormats = RetrieveProductFormatList();
             GlobalData.ProductGoups = RetrieveProductGroupList();
@@ -1817,7 +1852,7 @@ namespace Odin.Data
                         Msrp = (!string.IsNullOrEmpty(odinItem.MsrpUsd)) ? DbUtil.ZeroTrim(odinItem.MsrpUsd, 2) : "",
                         OnSite = (!string.IsNullOrEmpty(odinItem.OnSite)) ? odinItem.OnSite : "",
                         OnShopTrends = (!string.IsNullOrEmpty(odinItem.OnShopTrends)) ? odinItem.OnShopTrends : "",
-                        Orientation = (!string.IsNullOrEmpty(odinItem.ProductOrientation)) ? odinItem.ProductOrientation.Trim() : "",
+                        Orientation = (!string.IsNullOrEmpty(odinItem.Orientation)) ? odinItem.Orientation.Trim() : "",
                         PricingGroup = (!string.IsNullOrEmpty(odinItem.PricingGroup)) ? odinItem.PricingGroup.Trim() : "",
                         ProductFormat = (!string.IsNullOrEmpty(odinItem.ProdFormat)) ? odinItem.ProdFormat.Trim() : "",
                         ProductGroup = (!string.IsNullOrEmpty(odinItem.ProdGroup)) ? odinItem.ProdGroup.Trim() : "",
@@ -2992,6 +3027,29 @@ namespace Odin.Data
         }
 
         /// <summary>
+        ///     Updates PS_PRODUCT_ATTRIBUTES
+        /// </summary>
+        /// <param name="item">Item being updated</param>
+        /// <param name="type">field type</param>
+        /// <param name="value">field value</param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public void UpdateProductAttributes(ItemObject item,string type, string value, OdinContext context)
+        {
+            ProductAttributes productAttributes = context.ProductAttributes.SingleOrDefault(o => o.ProductId == item.ItemId 
+                && o.AttributeType == type);
+            if (productAttributes != null)
+            {
+                productAttributes.AttributeValue = value;
+            }
+            else
+            {
+                // if item product attribute doesn't already exist insert new line
+                InsertProductAttributes(item, type, value, context);
+            }
+        }
+
+        /// <summary>
         ///     Insert item info into PS_PRODUCT_VARIATIONS
         /// </summary>
         public void UpdateProductVariantions(ItemObject item, string customerId, OdinContext context)
@@ -3838,7 +3896,23 @@ namespace Odin.Data
             }
             return returnValues;
         }
-        
+        /// <summary>
+        ///     Retrieves a key value pair list of customer names and their coresponding customer ID from the 
+        ///     ODIN_CUSTOMER_CONVERSION table.
+        /// </summary>
+        /// <returns></returns>
+        private List<string> RetrieveCustomerList()
+        {
+            using (OdinContext context = this.contextFactory.CreateContext())
+            {
+                if ((from o in context.OdinCustomerConversion select o.CustName).Any())
+                {
+                    return (from o in context.OdinCustomerConversion select o.CustName).ToList();
+                }
+            }
+            return new List<string>();
+        }
+
         /// <summary>
         ///     Retrieves a List of itemids for products being sold by a given customer
         /// </summary>
@@ -4058,7 +4132,19 @@ namespace Odin.Data
                 return (from o in context.OdinMetaDescription orderby o.MetaDescription select o.MetaDescription).ToList();
             }
         }
-        
+
+        /// <summary>
+        ///     Retrieves List of Orientations
+        /// </summary>
+        /// <returns></returns>
+        private List<string> RetrieveOrientations()
+        {
+            return new List<string>() {
+                "",
+                "LANDSCAPE",
+                "PORTRAIT"};
+        }
+
         /// <summary>
         ///     Retrieves Pricing Group values from DB
         /// </summary>

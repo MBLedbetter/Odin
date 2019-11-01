@@ -3296,6 +3296,23 @@ namespace OdinModels
             }
         }
 
+
+        /// <summary>
+        ///    Update flag for fields stored in ProductAttributes
+        /// </summary>
+        /// <returns></returns>
+        public bool ProductAttributesUpdate
+        {
+            get
+            {
+                if (this.OrientationUpdate)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
         /// <summary>
         ///    Update flag for fields stored in PurchItemAttr
         /// </summary>

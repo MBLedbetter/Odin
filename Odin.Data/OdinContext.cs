@@ -381,6 +381,16 @@ namespace Odin.Data
         public DbSet<ProdPriceBu> ProdPriceBu { get; set; }
 
         /// <summary>
+        ///     Gets or sets a list of the ProductAttributes lines that are in this context.
+        /// </summary>
+        public DbSet<ProductAttributes> ProductAttributes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a list of the ProductAttributeTypes lines that are in this context.
+        /// </summary>
+        public DbSet<ProductAttributeTypes> ProductAttributeTypes{ get; set; }
+
+        /// <summary>
         ///     Gets or sets a list of the ProductFormats lines that are in this context.
         /// </summary>
         public DbSet<ProductFormats> ProductFormats { get; set; }
@@ -558,6 +568,8 @@ namespace Odin.Data
             MapProdPgrpLnk(modelBuilder);
             MapProdPrice(modelBuilder);
             MapProdPriceBu(modelBuilder);
+            MapProductAttributes(modelBuilder);
+            MapProductAttributeTypes(modelBuilder);
             MapProductFormats(modelBuilder);
             MapProductGroups(modelBuilder);
             MapProductLines(modelBuilder);
@@ -2217,6 +2229,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItem>().Property(p => p.Newcategory).HasColumnName("NEWCATEGORY");
             modelBuilder.Entity<OdinItem>().Property(p => p.OnShopTrends).HasColumnName("ON_SHOPTRENDS");
             modelBuilder.Entity<OdinItem>().Property(p => p.OnSite).HasColumnName("ON_SITE");
+            modelBuilder.Entity<OdinItem>().Property(p => p.Orientation).HasColumnName("ORIENTATION");
             modelBuilder.Entity<OdinItem>().Property(p => p.PricingGroup).HasColumnName("PRICING_GROUP");
             modelBuilder.Entity<OdinItem>().Property(p => p.PrintOnDemand).HasColumnName("PRINT_ON_DEMAND");
             modelBuilder.Entity<OdinItem>().Property(p => p.ProdCategory).HasColumnName("PROD_CATEGORY");
@@ -2224,6 +2237,7 @@ namespace Odin.Data
             modelBuilder.Entity<OdinItem>().Property(p => p.ProdGroup).HasColumnName("PROD_GROUP");
             modelBuilder.Entity<OdinItem>().Property(p => p.ProdLine).HasColumnName("PROD_LINE");
             modelBuilder.Entity<OdinItem>().Property(p => p.ProdQty).HasColumnName("PROD_QTY");
+            modelBuilder.Entity<OdinItem>().Property(p => p.ProductExclusive).HasColumnName("PRODUCT_EXCLUSIVE");
             modelBuilder.Entity<OdinItem>().Property(p => p.ProductIdTranslation).HasColumnName("PRODUCT_ID_TRANSLATION");
             modelBuilder.Entity<OdinItem>().Property(p => p.Property).HasColumnName("PROPERTY");
             modelBuilder.Entity<OdinItem>().Property(p => p.Psstatus).HasColumnName("PSSTATUS");
@@ -3520,6 +3534,56 @@ namespace Odin.Data
             modelBuilder.Entity<ProdPriceBu>().Property(p => p.ProductId).HasColumnName("PRODUCT_ID");
             modelBuilder.Entity<ProdPriceBu>().Property(p => p.Setid).HasColumnName("SETID");
             modelBuilder.Entity<ProdPriceBu>().Property(p => p.UnitOfMeasure).HasColumnName("UNIT_OF_MEASURE");
+        }
+
+        /// <summary>
+        ///             This method maps the ProductAttributes class to the database.
+        /// </summary>
+        /// 
+        /// <param name="DbModelBuilder modelBuilder">
+        ///             The DbDbModelBuilder modelBuilder to update with the mapping.
+        /// </param>
+        private void MapProductAttributes(DbModelBuilder modelBuilder)
+        {
+            // Map the ProductFormats class to the PS_PRODUCT_ATTRIBUTES table
+            modelBuilder.Entity<ProductAttributes>()
+                .HasKey(p => new
+                {
+                    p.SetId,
+                    p.ProductId,
+                    p.AttributeType,
+                    p.AttributeValue
+                })
+                .ToTable("PS_PRODUCT_ATTRIBUTES");
+
+            // Map each column
+            modelBuilder.Entity<ProductAttributes>().Property(p => p.SetId).HasColumnName("SETID");
+            modelBuilder.Entity<ProductAttributes>().Property(p => p.ProductId).HasColumnName("PRODUCT_ID");
+            modelBuilder.Entity<ProductAttributes>().Property(p => p.AttributeType).HasColumnName("ATTRIBUTE_TYPE");
+            modelBuilder.Entity<ProductAttributes>().Property(p => p.AttributeValue).HasColumnName("ATTRIBUTE_VALUE");
+            modelBuilder.Entity<ProductAttributes>().Property(p => p.UserId).HasColumnName("USER_ID");
+            modelBuilder.Entity<ProductAttributes>().Property(p => p.TimeStamp).HasColumnName("TIMESTAMP");
+        }
+
+        /// <summary>
+        ///             This method maps the ProductAttributeTypes class to the database.
+        /// </summary>
+        /// 
+        /// <param name="DbModelBuilder modelBuilder">
+        ///             The DbDbModelBuilder modelBuilder to update with the mapping.
+        /// </param>
+        private void MapProductAttributeTypes(DbModelBuilder modelBuilder)
+        {
+            // Map the ProductFormats class to the PS_PRODUCT_ATTRIBUTE_TYPES table
+            modelBuilder.Entity<ProductAttributeTypes>()
+                .HasKey(p => new
+                {
+                    p.AttributeType
+                })
+                .ToTable("PS_PRODUCT_ATTRIBUTE_TYPES");
+
+            // Map each column
+            modelBuilder.Entity<ProductAttributeTypes>().Property(p => p.AttributeType).HasColumnName("ATTRIBUTE_TYPE");
         }
 
         /// <summary>

@@ -727,7 +727,7 @@ namespace OdinServices
                         return returnValue.ToLower();
                     }
                     // last resort, default to point to trendsinternational.com catalog 
-                    else
+                    else if(item.SellOnTrends=="Y")
                     {
                         if (imagePath.Length > 2)
                         {
@@ -2736,7 +2736,7 @@ namespace OdinServices
         /// <returns></returns>
         public ItemError ValidateBillOfMaterials(ItemObject var)
         {
-            List<string> BomIdList = new List<string>();
+            List<string> bomIdList = new List<string>();
             bool existingValue = false;
             
             if (var.BillOfMaterials.Count() == 0)
@@ -2770,22 +2770,23 @@ namespace OdinServices
                             var.ItemRow,
                             "Field cannot be updated through Odin. The Bill of materials field does not match the values currently saved for this item. Once established Bill of Materials can only be updated through peoplesoft.",
                             "Bill of Materials",
-                        var.BillOfMaterialsUpdate);
+                            var.BillOfMaterialsUpdate);
                     }
                 }
                 if (!string.IsNullOrEmpty(billOfMaterial.ItemId))
                 {
-                    if ((!GlobalData.LocalItemIds.Contains(billOfMaterial.ItemId.Trim())) && (!GlobalData.ItemIds.Contains(billOfMaterial.ItemId.Trim())))
+                    if ((!GlobalData.LocalItemIds.Contains(billOfMaterial.ItemId.Trim())) 
+                        && (!GlobalData.ItemIds.Contains(billOfMaterial.ItemId.Trim())))
                     {
                         return new ItemError(
                             var.ItemId,
                             var.ItemRow,
                             "Field contains an id that does not exist: " + billOfMaterial.ItemId + ". These items must exist in the database before they can be used as a bill of material.",
                             "Bill of Materials",
-                        var.BillOfMaterialsUpdate);
+                            var.BillOfMaterialsUpdate);
                     }
                 }
-                if (BomIdList.Contains(billOfMaterial.ItemId.Trim()))
+                if (bomIdList.Contains(billOfMaterial.ItemId.Trim()))
                 {
                     return new ItemError(
                         var.ItemId,
@@ -2796,7 +2797,7 @@ namespace OdinServices
                 }
                 else
                 {
-                    BomIdList.Add(billOfMaterial.ItemId.Trim());
+                    bomIdList.Add(billOfMaterial.ItemId.Trim());
                 }
             }
             return null;
@@ -4023,7 +4024,7 @@ namespace OdinServices
                         var.EcommerceMsrpUpdate);
                 }
             }
-            if (var.HasEcommerce && GlobalData.EcomFlagRequirement)
+            if (var.HasEcommerce && var.SellOnEcommerce == "Y")
             {
                 if (string.IsNullOrEmpty(var.EcommerceMsrp))
                 {
