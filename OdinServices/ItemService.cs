@@ -5503,7 +5503,7 @@ namespace OdinServices
                     return new ItemError(
                         var.ItemId,
                         var.ItemRow,
-                        "Value does not match any of the given options [Horizontal / Portrait].",
+                        "Value does not match any of the given options [HORIZONTAL / PORTRAIT].",
                         "Orientation",
                         var.OrientationUpdate);
                 }

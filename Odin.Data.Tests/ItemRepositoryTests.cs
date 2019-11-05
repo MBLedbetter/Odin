@@ -1176,6 +1176,7 @@ namespace Odin.Data.Tests
                 DirectImport = "N",
                 Duty = "Duty",
                 Ean = "EAN",
+                Exclusive = "AMAZON",
                 Gpc = "GPC",
                 Height = "2",
                 ImagePath = "ImagePath",
@@ -1204,6 +1205,7 @@ namespace Odin.Data.Tests
                 Msrp = "7.77",
                 MsrpCad = "19.99",
                 MsrpMxn = "9.99",
+                Orientation = "Orientation",
                 ProductFormat = "ProdF",
                 ProductGroup = "ProdG",
                 ProductIdTranslation = PID,
@@ -1308,6 +1310,7 @@ namespace Odin.Data.Tests
             Assert.AreEqual("DESCRIPTION", newItem.Description);
             Assert.AreEqual("N", newItem.DirectImport);
             Assert.AreEqual("EAN", newItem.Ean);
+            Assert.AreEqual("AMAZON", newItem.Exclusive);
             Assert.AreEqual("GPC", newItem.Gpc);
             Assert.AreEqual("2.0", newItem.Height);
             Assert.AreEqual("8.7", newItem.InnerpackHeight);
@@ -1335,6 +1338,7 @@ namespace Odin.Data.Tests
             Assert.AreEqual("7.77", newItem.Msrp);
             Assert.AreEqual("19.99", newItem.MsrpCad);
             Assert.AreEqual("9.99", newItem.MsrpMxn);
+            Assert.AreEqual("Orientation", newItem.Orientation);
             Assert.AreEqual("ProdF", newItem.ProductFormat);
             Assert.AreEqual("ProdG", newItem.ProductGroup);
             Assert.AreEqual("ST1111 (5), ST2222", newItem.ReturnProductIdTranslations());
@@ -1598,6 +1602,7 @@ namespace Odin.Data.Tests
                 DirectImport = "N",
                 Duty = "Duty",
                 Ean = "Ean",
+                Exclusive = "Exclusive",
                 Gpc = "Gpc",
                 Height = "Height",
                 ImagePath = "ImagePath",
@@ -1625,6 +1630,7 @@ namespace Odin.Data.Tests
                 Msrp = "11.99",
                 MsrpCad = "12.99",
                 MsrpMxn = "13.99",
+                Orientation = "Orientation",
                 ProductFormat = "ProductFormat",
                 ProductGroup = "ProductGroup",
                 ProductIdTranslation = new List<ChildElement>(),
@@ -1699,6 +1705,7 @@ namespace Odin.Data.Tests
                 Assert.AreEqual("N", itemUpdateRecord.DirectImport);  //item.DirectImport
                 Assert.AreEqual("Duty", itemUpdateRecord.Duty);  //item.Duty
                 Assert.AreEqual("Ean", itemUpdateRecord.Ean);  //item.Ean
+                Assert.AreEqual("Exclusive", itemUpdateRecord.Exclusive);  //item.Exclusive
                 Assert.AreEqual("Gpc", itemUpdateRecord.Gpc);  //item.Gpc
                 Assert.AreEqual("Height", itemUpdateRecord.Height);  //item.Height
                 Assert.AreEqual("ImagePath", itemUpdateRecord.ImagePath);  //item.ImagePath
@@ -1726,6 +1733,7 @@ namespace Odin.Data.Tests
                 Assert.AreEqual("11.99", itemUpdateRecord.Msrp);  //item.Msrp
                 Assert.AreEqual("12.99", itemUpdateRecord.MsrpCad);  //item.MsrpCad
                 Assert.AreEqual("13.99", itemUpdateRecord.MsrpMxn);  //item.MsrpMxn
+                Assert.AreEqual("Orientation", itemUpdateRecord.Orientation);  //item.Orientation
                 Assert.AreEqual("ProductFormat", itemUpdateRecord.ProductFormat);  //item.ProductFormat
                 Assert.AreEqual("ProductGroup", itemUpdateRecord.ProductGroup);  //item.ProductGroup
                 // Assert.AreEqual("", itemUpdateRecord.ProductIdTranslation);  //item.ReturnProductIdTranslations()
@@ -2967,6 +2975,7 @@ namespace Odin.Data.Tests
 
             ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",
+                Exclusive= "WALMART",
                 SellOnAllPosters = "Y",
                 SellOnAmazon = "N",
                 SellOnFanatics = "Y",
@@ -2993,6 +3002,7 @@ namespace Odin.Data.Tests
             item.SellOnFanatics = "N";
             item.SellOnGuitarCenter = "N";
             item.SellOnHayneedle = "Y";
+            item.Exclusive = "AMAZON";
             // item.SellOnHouzz = "Y";
             item.SellOnTarget = "N";
             item.SellOnTrs = "N";
@@ -3022,6 +3032,7 @@ namespace Odin.Data.Tests
 
                 Assert.AreEqual("2", result[1].CustId);
                 Assert.AreEqual("Y", result[1].SendInventory);
+                Assert.AreEqual("Y", result[1].IsExclusive);
 
                 Assert.AreEqual("3", result[2].CustId);
                 Assert.AreEqual("N", result[2].SendInventory);
@@ -3102,8 +3113,7 @@ namespace Odin.Data.Tests
             #endregion // Assemble
 
             #region Act
-
-
+            
             using (OdinContext context = OdinContextFactory.CreateContext())
             {
                 itemRepository.InsertEcommerceValues(item, context);

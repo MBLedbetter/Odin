@@ -100,7 +100,7 @@ namespace Odin.Data
                         InsertPurchItemAttr(item, context);
                         InsertPvItmCategory(item, context);
                         InsertUomTypeInvAll(item, context);
-                        if(string.IsNullOrEmpty(item.Orientation))
+                        if(!string.IsNullOrEmpty(item.Orientation))
                         {
                             InsertProductAttributes(item, "ORIENTATION", item.Orientation, context);
                         }
@@ -308,7 +308,7 @@ namespace Odin.Data
 
                     break;
             }
-            string isExclusive = (customerId == item.Exclusive) ? "Y" : "N";
+            string isExclusive = (customerName == item.Exclusive) ? "Y" : "N";
 
             // only insert the values if the item has been flagged or set as an exclusive
             if (sendInventory == "Y" || isExclusive == "Y")
@@ -1898,6 +1898,10 @@ namespace Odin.Data
                         Status = "Update",
                         ItemRow = row
                     };
+                    if(!string.IsNullOrEmpty(odinItem.ProductExclusive))
+                    {
+                        item.Exclusive = GlobalData.CustomerIdConversions.FirstOrDefault(x => x.Value == odinItem.ProductExclusive).Key;
+                    }
                     if (!string.IsNullOrEmpty(odinItem.Category))
                     {
                         List<string> Categories = DbUtil.ParseCategories(odinItem.Category);
