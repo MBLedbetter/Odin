@@ -5498,7 +5498,7 @@ namespace OdinServices
         {
             if (!string.IsNullOrEmpty(var.Orientation))
             {
-                if (var.Orientation!= "Horizontal" && var.Orientation != "Portrait")
+                if (var.Orientation!= "HORIZONTAL" && var.Orientation != "PORTRAIT")
                 {
                     return new ItemError(
                         var.ItemId,
