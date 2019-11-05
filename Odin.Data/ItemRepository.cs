@@ -269,7 +269,7 @@ namespace Odin.Data
         public void InsertCustomerProductAttributes(ItemObject item, string customerName, string customerId, OdinContext context)
         {
             string sendInventory = "N";
-            switch(GlobalData.CustomerIdConversions[customerName])
+            switch(customerName)
             {
                 case "ALL POSTERS":
                     sendInventory = item.SellOnAllPosters;
@@ -313,7 +313,9 @@ namespace Odin.Data
             // only insert the values if the item has been flagged or set as an exclusive
             if (sendInventory == "Y" || isExclusive == "Y")
             {
-                if (!context.CustomerProductAttributes.Any(o => o.ProductId == item.ItemId && o.CustId == customerId && o.Setid == "SHARE"))
+                if (!context.CustomerProductAttributes.Any(o => o.ProductId == item.ItemId 
+                        && o.CustId == customerId 
+                        && o.Setid == "SHARE"))
                 {
                     context.CustomerProductAttributes.Add(new CustomerProductAttributes
                     {
@@ -2080,10 +2082,10 @@ namespace Odin.Data
                         EcommerceParentAsin = odinItemUpdateRecord.AParentAsin,
                         EcommerceComponents = odinItemUpdateRecord.AComponents,
                         Exclusive = odinItemUpdateRecord.Exclusive,
-                        Gpc = odinItemUpdateRecord.Gpc,
                         Genre1 = odinItemUpdateRecord.Genre1,
                         Genre2 = odinItemUpdateRecord.Genre2,
                         Genre3 = odinItemUpdateRecord.Genre3,
+                        Gpc = odinItemUpdateRecord.Gpc,
                         Height = odinItemUpdateRecord.Height,
                         ImagePath = odinItemUpdateRecord.ImagePath,
                         InnerpackHeight = odinItemUpdateRecord.InnerpackHeight,
@@ -3903,14 +3905,17 @@ namespace Odin.Data
         /// <returns></returns>
         private List<string> RetrieveCustomerList()
         {
+            List<string> customers = new List<string>();
             using (OdinContext context = this.contextFactory.CreateContext())
             {
                 if ((from o in context.OdinCustomerConversion select o.CustName).Any())
                 {
-                    return (from o in context.OdinCustomerConversion select o.CustName).ToList();
+                    customers = (from o in context.OdinCustomerConversion select o.CustName).ToList();
                 }
             }
-            return new List<string>();
+            customers.Sort();
+            customers.Insert(0, "");
+            return customers;
         }
 
         /// <summary>
@@ -4516,7 +4521,9 @@ namespace Odin.Data
             BuItemsInv buItemsInv = context.BuItemsInv.SingleOrDefault(o => o.InvItemId == item.ItemId && o.BusinessUnit == businessUnit);
             if (buItemsInv != null)
             {
-                if (buItemsInv.CountryIstOrigin != item.CountryOfOrigin || buItemsInv.CurrentCost != Convert.ToDecimal(defaultActualCost) || buItemsInv.SourceCode != item.MfgSource)
+                if (buItemsInv.CountryIstOrigin != item.CountryOfOrigin 
+                    || buItemsInv.CurrentCost != Convert.ToDecimal(defaultActualCost) 
+                    || buItemsInv.SourceCode != item.MfgSource)
                 {
                     buItemsInv.CountryIstOrigin = item.CountryOfOrigin;
                     buItemsInv.CurrentCost = Convert.ToDecimal(defaultActualCost);

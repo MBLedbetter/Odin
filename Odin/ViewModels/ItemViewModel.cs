@@ -8515,7 +8515,7 @@ namespace Odin.ViewModels
         {
             TextPromptView textWindow = new TextPromptView()
             {
-                DataContext = new TextPromptViewModel("Add Product Id Translation", "Item Id", "Qty")
+                DataContext = new TextPromptViewModel("Add Product Id Translation", "Item Id", "string", "Qty", "int")
             };
             textWindow.ShowDialog();
 
@@ -8531,11 +8531,12 @@ namespace Odin.ViewModels
                         qty = Convert.ToInt32((textWindow.DataContext as TextPromptViewModel).Field2Value);
                     }
                 }
-
-                this.ProductIdTranslation.Add(new ChildElement(
+                List<ChildElement> newIdTranslations = this.ProductIdTranslation;
+                newIdTranslations.Add(new ChildElement(
                     (textWindow.DataContext as TextPromptViewModel).Field1Value, 
                     this.ItemId,
                     qty));
+                this.ProductIdTranslation = newIdTranslations;
             }
         }
 
@@ -8544,7 +8545,31 @@ namespace Odin.ViewModels
         /// </summary>
         public void AddBillOfMaterials()
         {
-            MessageBox.Show("TEST 2");
+            TextPromptView textWindow = new TextPromptView()
+            {
+                DataContext = new TextPromptViewModel("Add Bill of Material", "Item Id", "string", "Qty", "int")
+            };
+            textWindow.ShowDialog();
+
+            if (textWindow.DialogResult == true)
+            {
+                string itemId = (textWindow.DataContext as TextPromptViewModel).Field1Value;
+                int qty = 1;
+
+                if (!string.IsNullOrEmpty((textWindow.DataContext as TextPromptViewModel).Field2Value))
+                {
+                    if (DbUtil.IsNumber((textWindow.DataContext as TextPromptViewModel).Field2Value))
+                    {
+                        qty = Convert.ToInt32((textWindow.DataContext as TextPromptViewModel).Field2Value);
+                    }
+                }
+                List<ChildElement> newBillOfMaterialss = this.BillOfMaterials;
+                newBillOfMaterialss.Add(new ChildElement(
+                    (textWindow.DataContext as TextPromptViewModel).Field1Value,
+                    this.ItemId,
+                    qty));
+                this.BillOfMaterials = newBillOfMaterialss;
+            }
         }
 
         /// <summary>

@@ -308,7 +308,7 @@ namespace Odin.ViewModels
             {
                 TextPromptView textWindow = new TextPromptView
                 {
-                    DataContext = new TextPromptViewModel("Add Field", "Field")
+                    DataContext = new TextPromptViewModel("Add Field", "Field", "string")
                 };
                 textWindow.ShowDialog();
                 if (textWindow.DialogResult == true)
@@ -477,7 +477,7 @@ namespace Odin.ViewModels
                         // int newId = RetrieveExcelLayoutNames().Count + 1;
                         TextPromptView textWindow = new TextPromptView
                         {
-                            DataContext = new TextPromptViewModel("Save Excel", "Excel Name")
+                            DataContext = new TextPromptViewModel("Save Excel", "Excel Name", "string")
                         };
                         textWindow.ShowDialog();
                         if (textWindow.DialogResult == true)
@@ -529,7 +529,7 @@ namespace Odin.ViewModels
             {
                 TextPromptView textWindow = new TextPromptView
                 {
-                    DataContext = new TextPromptViewModel("", "")
+                    DataContext = new TextPromptViewModel("", "", "string")
                 };
                 textWindow.ShowDialog();
                 if (textWindow.DialogResult == true)

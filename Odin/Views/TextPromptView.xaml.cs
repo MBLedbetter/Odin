@@ -32,13 +32,20 @@ namespace Odin.Views
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            if ((this.DataContext as TextPromptViewModel).Submit())
+            if (!(this.DataContext as TextPromptViewModel).HasErrors())
             {
-                this.DialogResult = true;
+                if ((this.DataContext as TextPromptViewModel).Submit())
+                {
+                    this.DialogResult = true;
+                }
+                else
+                {
+                    this.DialogResult = false;
+                }
             }
             else
             {
-                this.DialogResult = false;
+                MessageBox.Show((this.DataContext as TextPromptViewModel).ReturnErrors());
             }
         }
     }

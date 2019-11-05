@@ -1945,7 +1945,7 @@ namespace Odin.ViewModels
         {
             TextPromptView textWindow = new TextPromptView()
             {
-                DataContext = new TextPromptViewModel("Add Option", "Option")
+                DataContext = new TextPromptViewModel("Add Option", "Option","string")
             };
             textWindow.ShowDialog();
 

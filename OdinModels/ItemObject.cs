@@ -1289,7 +1289,7 @@ namespace OdinModels
         private string _genre2 = string.Empty;
 
         /// <summary>
-        ///     Gets or sets the Genre1
+        ///     Gets or sets the Genre3
         /// </summary>
         public string Genre3
         {
@@ -3295,8 +3295,7 @@ namespace OdinModels
                 return false;
             }
         }
-
-
+        
         /// <summary>
         ///    Update flag for fields stored in ProductAttributes
         /// </summary>
@@ -3351,7 +3350,9 @@ namespace OdinModels
         {
             get
             {
-                if (this.SellOnAllPostersUpdate ||
+                if (
+                    this.ExclusiveUpdate || 
+                    this.SellOnAllPostersUpdate ||
                     this.SellOnAmazonUpdate ||
                     this.SellOnAmazonSellerCentralUpdate ||
                     this.SellOnFanaticsUpdate ||

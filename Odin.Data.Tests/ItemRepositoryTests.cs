@@ -472,13 +472,13 @@ namespace Odin.Data.Tests
             connectionManager.SetUseTrustedConnection(true);
             LogServiceFactory logServiceFactory = new LogServiceFactory("Odin");
             OdinContextFactory OdinContextFactory = new OdinContextFactory(connectionManager, logServiceFactory);
-            GlobalData.CustomerIdConversions.Add("AMAZON SELLER CENTRAL", "9");
 
             ItemObject item = new ItemObject(1)
             {
                 ItemId = "TEST1",
                 SellOnAmazonSellerCentral = "Y"
             };
+            GlobalData.CustomerIdConversions.Add("AMAZON SELLER CENTRAL", "9");
 
             #endregion // Assemble
 
@@ -2964,7 +2964,6 @@ namespace Odin.Data.Tests
             GlobalData.CustomerIdConversions.Add("GUITAR CENTER", "9");
             GlobalData.CustomerIdConversions.Add("AMAZON SELLER CENTRAL", "10");
             GlobalData.CustomerIdConversions.Add("TRS", "000000000146515");
-            GlobalData.CustomerIdConversions.Add("SHOP TRENDS", "000000000146515");
 
             ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",

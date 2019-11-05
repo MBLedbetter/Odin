@@ -379,6 +379,7 @@ namespace OdinServices
             if (item.EcommerceSize.Trim() == "[CLEAR]") { item.EcommerceSize = ""; }
             if (item.EcommerceSubjectKeywords.Trim() == "[CLEAR]") { item.EcommerceSubjectKeywords = ""; }
             if (item.EcommerceUpc.Trim() == "[CLEAR]") { item.EcommerceUpc = ""; }
+            if (item.Exclusive.Trim() == "[CLEAR]") { item.Exclusive = ""; }
             if (item.Genre1.Trim() == "[CLEAR]") { item.Genre1 = ""; }
             if (item.Genre2.Trim() == "[CLEAR]") { item.Genre2 = ""; }
             if (item.Genre3.Trim() == "[CLEAR]") { item.Genre3 = ""; }
@@ -4462,7 +4463,7 @@ namespace OdinServices
         {
             if (!string.IsNullOrEmpty(var.Exclusive))
             {
-                if (!GlobalData.CustomerIdConversions.Any(x=>x.Value== var.Exclusive))
+                if (GlobalData.CustomerIdConversions[var.Exclusive] == null)
                 {
                     return new ItemError(
                         var.ItemId,
