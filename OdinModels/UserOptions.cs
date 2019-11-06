@@ -960,6 +960,19 @@ namespace OdinModels
         }
         private static bool _eanVisibility = true;
 
+        public static bool ExclusiveVisibility
+        {
+            get
+            {
+                return _exclusiveVisibility;
+            }
+            set
+            {
+                _exclusiveVisibility = value;
+            }
+        }
+        private static bool _exclusiveVisibility = true;
+
         public static bool GpcVisibility
         {
             get
@@ -1232,6 +1245,19 @@ namespace OdinModels
             }
         }
         private static bool _msrpMxnVisibility = true;
+
+        public static bool OrientationVisibility
+        {
+            get
+            {
+                return _orientationVisibility;
+            }
+            set
+            {
+                _orientationVisibility = value;
+            }
+        }
+        private static bool _orientationVisibility = true;
 
         public static bool PricingGroupVisibility
         {

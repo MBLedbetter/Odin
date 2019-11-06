@@ -1245,7 +1245,7 @@ namespace OdinModels
             }
             set
             {
-                if (_exclusive != value) { ExclusiveUpdate = true; }
+                if (_exclusive != value) { this.ExclusiveUpdate = true; }
                 _exclusive = value;
                 OnPropertyChanged("Exclusive");
             }

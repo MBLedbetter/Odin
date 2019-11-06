@@ -1037,6 +1037,23 @@ namespace Odin.ViewModels
         private string _eanVisibility = "auto";
 
         /// <summary>
+        ///     Gets or sets the ExclusiveVisibility field
+        /// </summary>
+        public string ExclusiveVisibility
+        {
+            get
+            {
+                return _exclusiveVisibility;
+            }
+            set
+            {
+                _exclusiveVisibility = value;
+                OnPropertyChanged("ExclusiveVisibility");
+            }
+        }
+        private string _exclusiveVisibility = "auto";
+
+        /// <summary>
         ///     Gets or sets the Genre1Visibility field
         /// </summary>
         public string Genre1Visibility
@@ -1443,6 +1460,23 @@ namespace Odin.ViewModels
             }
         }
         private string _msrpMxnVisibility = "auto";
+
+        /// <summary>
+        ///     Gets or sets the OrientationVisibilty field
+        /// </summary>
+        public string OrientationVisibility
+        {
+            get
+            {
+                return _orientationVisibilty;
+            }
+            set
+            {
+                _orientationVisibilty = value;
+                OnPropertyChanged("OrientationVisibilty");
+            }
+        }
+        private string _orientationVisibilty = "auto";
 
         /// <summary>
         ///     Gets or sets the PricingGroupVisibility field
@@ -3642,6 +3676,7 @@ namespace Odin.ViewModels
             this.DirectImportVisibility = (UserOptions.DirectImportVisibility) ? "100" : "0";
             this.DutyVisibility = (UserOptions.DutyVisibility) ? "100" : "0";
             this.EanVisibility = (UserOptions.EanVisibility) ? "100" : "0";
+            this.ExclusiveVisibility = (UserOptions.ExclusiveVisibility) ? "100" : "0";
             this.Genre1Visibility = (UserOptions.Genre1Visibility) ? "100" : "0";
             this.Genre2Visibility = (UserOptions.Genre2Visibility) ? "100" : "0";
             this.Genre3Visibility = (UserOptions.Genre3Visibility) ? "100" : "0";
@@ -3666,6 +3701,7 @@ namespace Odin.ViewModels
             this.MsrpVisibility = (UserOptions.MsrpVisibility) ? "100" : "0";
             this.MsrpCadVisibility = (UserOptions.MsrpCadVisibility) ? "100" : "0";
             this.MsrpMxnVisibility = (UserOptions.MsrpMxnVisibility) ? "100" : "0";
+            this.OrientationVisibility = (UserOptions.OrientationVisibility) ? "100" : "0";
             this.PricingGroupVisibility = (UserOptions.PricingGroupVisibility) ? "100" : "0";
             this.PrintOnDemandVisibility = (UserOptions.PrintOnDemandVisibility) ? "100" : "0";
             this.ProductFormatVisibility = (UserOptions.ProductFormatVisibility) ? "100" : "0";

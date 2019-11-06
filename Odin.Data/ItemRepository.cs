@@ -4563,25 +4563,22 @@ namespace Odin.Data
             CustomerProductAttributes customerProductAttributes = context.CustomerProductAttributes.SingleOrDefault(o => o.ProductId == item.ItemId 
                                                                                                                     && o.CustId == customerId
                                                                                                                     && o.Setid == "SHARE");
+            var customerName = GlobalData.CustomerIdConversions.FirstOrDefault(x => x.Value == customerId).Key;
+            string isExclusive = (customerName == item.Exclusive) ? "Y" : "N";
             // If row already exists update
             if (customerProductAttributes != null)
             {
                 if (customerProductAttributes.SendInventory != sellOnFlag)
                 {
                     customerProductAttributes.SendInventory = sellOnFlag;
-                    if(customerId == item.Exclusive)
-                    {
-                        customerProductAttributes.IsExclusive = "Y";
-                    }
-                    else
-                    {
-                        customerProductAttributes.IsExclusive = "N";
-                    }
                 }
+                if (customerProductAttributes.IsExclusive != isExclusive)
+                {
+                    customerProductAttributes.IsExclusive = isExclusive;
+                }           
             }
             else
             {
-                var customerName = GlobalData.CustomerIdConversions.FirstOrDefault(x => x.Value == customerId).Key;
                 InsertCustomerProductAttributes(item, customerName, customerId, context);
             }
         }

@@ -1127,6 +1127,14 @@
                             Padding="5" />
                     </GridViewColumn>
                     <GridViewColumn
+                        DisplayMemberBinding="{Binding Exclusive}"
+                        Width="{Binding ExclusiveVisibility}">
+                        <GridViewColumnHeader
+                            Content="Exclusive"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
                         DisplayMemberBinding="{Binding Genre1}"
                         Width="{Binding Genre1Visibility}">
                         <GridViewColumnHeader
@@ -1411,6 +1419,14 @@
                         Width="{Binding MsrpMxnVisibility}">
                         <GridViewColumnHeader
                             Content="MsrpMxn"
+                            HorizontalContentAlignment="Left"
+                            Padding="5" />
+                    </GridViewColumn>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Orientation}"
+                        Width="{Binding OrientationVisibility}">
+                        <GridViewColumnHeader
+                            Content="Orientation"
                             HorizontalContentAlignment="Left"
                             Padding="5" />
                     </GridViewColumn>

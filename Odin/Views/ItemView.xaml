@@ -185,10 +185,10 @@
                                 <MenuItem Header="Remove Bill of Material"
                                     Command="{Binding RemoveSelectedBillOfMaterialsCommand}"
                                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedBillOfMaterials}"
-                                    />
-                                <MenuItem Header="Add Item Translation"
+                                    IsEnabled="{Binding IsEnabled}" />
+                                <MenuItem Header="Add Bill of Materials"
                                     Command="{Binding AddBillOfMaterialsCommand}"
-                                     />
+                                    IsEnabled="{Binding IsEnabled}" />
                             </ContextMenu>
                         </ListView.ContextMenu>
                         <ListView.View>
@@ -1076,7 +1076,7 @@
                                     <Label 
                                         Grid.Row="0"
                                         Background="PowderBlue"
-                                        Content="Item Category" 
+                                        Content="Exclusive" 
                                         FontWeight="Bold" />
                                     <TextBlock 
                                         Grid.Row="2"

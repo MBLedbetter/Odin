@@ -1328,8 +1328,7 @@ namespace Odin.ViewModels
             }
         }
         private string _eanToolTip = string.Empty;
-
-
+        
         /// <summary>
         ///     Gets or sets the Exclusive
         /// </summary>
@@ -1389,6 +1388,9 @@ namespace Odin.ViewModels
         }
         private string _exclusiveToolTip = string.Empty;
 
+        /// <summary>
+        ///     Gets or sets Duty (hehehe)
+        /// </summary>
         public string Duty
         {
             get

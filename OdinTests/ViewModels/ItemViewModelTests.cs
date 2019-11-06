@@ -571,6 +571,7 @@ namespace OdinTests.ViewModels
             item.DirectImport = "DirectImport";
             item.Duty = "Duty";
             item.Ean = "Ean";
+            item.Exclusive = "Exclusive";
             item.Gpc = "Gpc";
             item.Height = "Height";
             item.InnerpackHeight = "InnerpackHeight";
@@ -594,6 +595,7 @@ namespace OdinTests.ViewModels
             item.Msrp = "Msrp";
             item.MsrpCad = "MsrpCad";
             item.MsrpMxn = "MsrpMxn";
+            item.Orientation = "Orientation";
             item.ProductFormat = "ProductFormat";
             item.ProductGroup = "ProductGroup";
             item.ProductLine = "ProductLine";
@@ -681,6 +683,7 @@ namespace OdinTests.ViewModels
             Assert.AreEqual(itemViewModel.DirectImport, "DirectImport");
             Assert.AreEqual(itemViewModel.Duty, "Duty");
             Assert.AreEqual(itemViewModel.Ean, "Ean");
+            Assert.AreEqual(itemViewModel.Exclusive, "Exclusive");
             Assert.AreEqual(itemViewModel.Gpc, "Gpc");
             Assert.AreEqual(itemViewModel.Height, "Height");
             Assert.AreEqual(itemViewModel.InnerpackHeight, "InnerpackHeight");
@@ -704,6 +707,7 @@ namespace OdinTests.ViewModels
             Assert.AreEqual(itemViewModel.Msrp, "Msrp");
             Assert.AreEqual(itemViewModel.MsrpCad, "MsrpCad");
             Assert.AreEqual(itemViewModel.MsrpMxn, "MsrpMxn");
+            Assert.AreEqual(itemViewModel.Orientation, "Orientation");
             Assert.AreEqual(itemViewModel.ProductFormat, "ProductFormat");
             Assert.AreEqual(itemViewModel.ProductGroup, "ProductGroup");
             Assert.AreEqual(itemViewModel.ProductLine, "ProductLine");
@@ -799,6 +803,7 @@ namespace OdinTests.ViewModels
             item.DirectImport = "DirectImport";
             item.Duty = "Duty";
             item.Ean = "Ean";
+            item.Exclusive = "Exclusive";
             item.Gpc = "Gpc";
             item.Height = "Height";
             item.InnerpackHeight = "InnerpackHeight";
@@ -820,6 +825,7 @@ namespace OdinTests.ViewModels
             item.ListPriceUsd = "ListPriceUsd";
             item.ListPriceCad = "ListPriceCad";
             item.ListPriceMxn = "ListPriceMxn";
+            item.Orientation = "Orientation";
             item.MetaDescription = "MetaDescription";
             item.MfgSource = "MfgSource";
             item.Msrp = "Msrp";
@@ -875,6 +881,7 @@ namespace OdinTests.ViewModels
             Assert.AreEqual(itemViewModel.DirectImport, "DirectImport");
             Assert.AreEqual(itemViewModel.Duty, "Duty");
             Assert.AreEqual(itemViewModel.Ean, "Ean");
+            Assert.AreEqual(itemViewModel.Exclusive, "Exclusive");
             Assert.AreEqual(itemViewModel.Gpc, "Gpc");
             Assert.AreEqual(itemViewModel.Height, "Height");
             Assert.AreEqual(itemViewModel.InnerpackHeight, "InnerpackHeight");
@@ -901,6 +908,7 @@ namespace OdinTests.ViewModels
             Assert.AreEqual(itemViewModel.Msrp, "Msrp");
             Assert.AreEqual(itemViewModel.MsrpCad, "MsrpCad");
             Assert.AreEqual(itemViewModel.MsrpMxn, "MsrpMxn");
+            Assert.AreEqual(itemViewModel.Orientation, "Orientation");
             Assert.AreEqual(itemViewModel.ProductFormat, "ProductFormat");
             Assert.AreEqual(itemViewModel.ProductGroup, "ProductGroup");
             Assert.AreEqual(itemViewModel.ProductLine, "ProductLine");
