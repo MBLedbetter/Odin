@@ -577,16 +577,16 @@ namespace Odin.ViewModels
 
                                     foreach (ItemObject CurrentItem in this.ItemList)
                                     {
-    if (returnedItem.ItemId == CurrentItem.ItemId)
-    {
-        exists = true;
-        break;
-    }
+                                        if (returnedItem.ItemId == CurrentItem.ItemId)
+                                        {
+                                            exists = true;
+                                            break;
+                                        }
                                     }
                                     if (!exists)
                                     {
-    itemIds.Add(returnedItem.ItemId);
-    this.ItemList.Add(ItemService.RetrieveItem(returnedItem.ItemId, this.ItemList.Count + 1));
+                                        itemIds.Add(returnedItem.ItemId);
+                                        this.ItemList.Add(ItemService.RetrieveItem(returnedItem.ItemId, this.ItemList.Count + 1));
                                     }
                                 }
                                 this.ItemLoadCount = this.SearchItemIds.Count;
@@ -614,8 +614,8 @@ namespace Odin.ViewModels
                                 {
                                     if (returnedItem.ItemId == CurrentItem.ItemId)
                                     {
-    exists = true;
-    break;
+                                        exists = true;
+                                        break;
                                     }
                                 }
                                 if (!exists)

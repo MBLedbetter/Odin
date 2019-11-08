@@ -1776,7 +1776,6 @@ namespace OdinServices
             {
                 item.EcommerceParentAsin = AutoFillEcommerceParentAsin(item);
             }
-            // item.RelatedProducts = RetrieveRelatedProducts(item.ItemId);
             item.SetFlagDefaults();
             return item;
         }
