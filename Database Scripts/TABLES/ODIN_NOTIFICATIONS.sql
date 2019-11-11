@@ -22,6 +22,7 @@ INSERT INTO ODIN_NOTIFICATIONS VALUES (17, '2019-04-30 00:00:00.000', 'New searc
 INSERT INTO ODIN_NOTIFICATIONS VALUES (19, '2019-07-01 00:00:00.000', 'Validation added. Items cannot contain both Bill of Materials and Product Id Translations.')
 INSERT INTO ODIN_NOTIFICATIONS VALUES (20, '2019-07-08 00:00:00.000', 'Validation update. DTC Price can no longer be set to 0.00.')
 INSERT INTO ODIN_NOTIFICATIONS VALUES (21, '2019-10-18 00:00:00.000', 'New Error handling. Existing errors for existing items will be grandfathered in as "Warnings" and will not be required to fix before saving items.')
+INSERT INTO ODIN_NOTIFICATIONS VALUES (22, '2019-11-11 00:00:00.000', 'New Fields Added. "Exclusive Customer" and "Product Orientation"')
 
 */
 SET ANSI_NULLS ON
