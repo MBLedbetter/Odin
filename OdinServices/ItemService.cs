@@ -4462,8 +4462,8 @@ namespace OdinServices
         {
             if (!string.IsNullOrEmpty(var.Exclusive))
             {
-                if (GlobalData.CustomerIdConversions[var.Exclusive] == null)
-                {
+                if (!GlobalData.CustomerIdConversions.ContainsKey(var.Exclusive))
+                { 
                     return new ItemError(
                         var.ItemId,
                         var.ItemRow,

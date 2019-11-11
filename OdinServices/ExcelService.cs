@@ -676,7 +676,7 @@ namespace OdinServices
                             case "Exclusive Customer":
                                 for (int x = 0; x < items.Count; x++)
                                 {
-                                    rows[x, column] = GlobalData.CustomerIdConversions.FirstOrDefault(o => o.Value == items[x].Exclusive).Key;
+                                    rows[x, column] = items[x].Exclusive;
                                 }
                                 break;
                             case "Genre 1":
