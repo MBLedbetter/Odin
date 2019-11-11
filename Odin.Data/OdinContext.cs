@@ -3551,8 +3551,7 @@ namespace Odin.Data
                 {
                     p.SetId,
                     p.ProductId,
-                    p.AttributeType,
-                    p.AttributeValue
+                    p.AttributeType
                 })
                 .ToTable("PS_PRODUCT_ATTRIBUTES");
 

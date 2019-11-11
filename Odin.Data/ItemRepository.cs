@@ -295,7 +295,7 @@ namespace Odin.Data
                 case "TARGET":
                     sendInventory = item.SellOnTarget;
                     break;
-                case "TRS":
+                case "SHOP TRENDS":
                     sendInventory = item.SellOnTrs;
                     break;
                 case "WALMART":
@@ -1677,7 +1677,7 @@ namespace Odin.Data
             GlobalData.PsStatuses = RetrievePsStatuses();
             GlobalData.RequestStatus = RetrieveRequestStatuses();
             GlobalData.ShoptrendsBrands = RetrieveShopTrendsBrands();
-            GlobalData.ShoptrendsItems = RetrieveCustomerItems(GlobalData.CustomerIdConversions["TRS"]);
+            GlobalData.ShoptrendsItems = RetrieveCustomerItems(GlobalData.CustomerIdConversions["SHOP TRENDS"]);
             GlobalData.SpecialCharacters = RetrieveSpecialCharacters();
             GlobalData.StatsCodes = RetrieveStatsCodes();
             GlobalData.TariffCodes = RetrieveTariffCodeList();
@@ -2658,7 +2658,7 @@ namespace Odin.Data
             UpdateCustomerProductAttributes(item, GlobalData.CustomerIdConversions["HAYNEEDLE"], item.SellOnHayneedle, context);
             UpdateCustomerProductAttributes(item, GlobalData.CustomerIdConversions["HOUZZ"], item.SellOnHouzz, context);
             UpdateCustomerProductAttributes(item, GlobalData.CustomerIdConversions["TARGET"], item.SellOnTarget, context);
-            UpdateCustomerProductAttributes(item, GlobalData.CustomerIdConversions["TRS"], item.SellOnTrs, context);
+            UpdateCustomerProductAttributes(item, GlobalData.CustomerIdConversions["SHOP TRENDS"], item.SellOnTrs, context);
             UpdateCustomerProductAttributes(item, GlobalData.CustomerIdConversions["WALMART"], item.SellOnWalmart, context);
             UpdateCustomerProductAttributes(item, GlobalData.CustomerIdConversions["WAYFAIR"], item.SellOnWayfair, context);
         }
@@ -3827,8 +3827,7 @@ namespace Odin.Data
                         }
                     }
                 }
-            }
-            
+            }            
             return results;
         }
 
@@ -3890,7 +3889,8 @@ namespace Odin.Data
             List<string> custNameList = new List<string>();
             using (OdinContext context = this.contextFactory.CreateContext())
             {
-                List<OdinCustomerConversion> odinCustomerConversions = (from o in context.OdinCustomerConversion select o).ToList();
+                List<OdinCustomerConversion> odinCustomerConversions = (from o in context.OdinCustomerConversion
+                                                                        select o).OrderBy(o=>o.CustName).ToList();
                 foreach (OdinCustomerConversion x in odinCustomerConversions)
                 {
                     if (!custNameList.Contains(x.CustName))

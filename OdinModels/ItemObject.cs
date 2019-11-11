@@ -2873,6 +2873,7 @@ namespace OdinModels
                     this.ProdPgrpLnkUpdate ||
                     this.ProdPriceBuUpdate ||
                     this.ProdPriceUpdate ||
+                    this.ProductAttributesUpdate ||
                     this.PurchItemAttrUpdate ||
                     this.PvItmCategoryUpdate ||
                     this.SellOnFlagUpdate)

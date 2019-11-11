@@ -353,7 +353,7 @@ namespace OdinTests.ViewModels
                 errors.Add(x);
             }
             ItemViewModel itemViewModel = new ItemViewModel(item, itemService, errors);
-            GlobalData.CustomerIdConversions.Add("TRS", "000");
+            GlobalData.CustomerIdConversions.Add("SHOP TRENDS", "000");
 
             #endregion // Assign
 
@@ -465,7 +465,7 @@ namespace OdinTests.ViewModels
             #region Assign
 
             GlobalData.ClearValues();
-            GlobalData.CustomerIdConversions.Add("TRS", "000");
+            GlobalData.CustomerIdConversions.Add("SHOP TRENDS", "000");
             GlobalData.EcomFlagRequirement = true;
             ItemObject item = new ItemObject(1)
             {
@@ -516,7 +516,7 @@ namespace OdinTests.ViewModels
             #region Assign
 
             GlobalData.ClearValues();
-            GlobalData.CustomerIdConversions.Add("TRS", "000");
+            GlobalData.CustomerIdConversions.Add("SHOP TRENDS", "000");
             List<ItemError> errors = new List<ItemError>();
             GlobalData.EcomFlagRequirement = true;
             ItemObject item = new ItemObject(1)

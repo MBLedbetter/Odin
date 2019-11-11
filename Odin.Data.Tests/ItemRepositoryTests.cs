@@ -1088,7 +1088,7 @@ namespace Odin.Data.Tests
             GlobalData.CustomerIdConversions.Add("WAYFAIR", "000000000130446");
             GlobalData.CustomerIdConversions.Add("GUITAR CENTER", "000000000145389");
             GlobalData.CustomerIdConversions.Add("SHOP TRENDS", "000000000146515");
-            GlobalData.CustomerIdConversions.Add("TRS", "000000000146515");
+            GlobalData.CustomerIdConversions.Add("SHOP TRENDS", "000000000146515");
             GlobalData.ItemIdSuffixes.Add("DI");
 
             List<ChildElement> billOfMaterials = new List<ChildElement>() {
@@ -2971,7 +2971,7 @@ namespace Odin.Data.Tests
             GlobalData.CustomerIdConversions.Add("WAYFAIR", "7");
             GlobalData.CustomerIdConversions.Add("GUITAR CENTER", "9");
             GlobalData.CustomerIdConversions.Add("AMAZON SELLER CENTRAL", "10");
-            GlobalData.CustomerIdConversions.Add("TRS", "000000000146515");
+            GlobalData.CustomerIdConversions.Add("SHOP TRENDS", "000000000146515");
 
             ItemObject item = new ItemObject(1) {
                 ItemId = "TEST1",

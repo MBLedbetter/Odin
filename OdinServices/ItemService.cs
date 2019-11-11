@@ -5497,12 +5497,12 @@ namespace OdinServices
         {
             if (!string.IsNullOrEmpty(var.Orientation))
             {
-                if (var.Orientation!= "HORIZONTAL" && var.Orientation != "PORTRAIT")
+                if (var.Orientation != "LANDSCAPE" && var.Orientation != "PORTRAIT")
                 {
                     return new ItemError(
                         var.ItemId,
                         var.ItemRow,
-                        "Value does not match any of the given options [HORIZONTAL / PORTRAIT].",
+                        "Value does not match any of the given options [LANDSCAPE / PORTRAIT].",
                         "Orientation",
                         var.OrientationUpdate);
                 }
